@@ -17,8 +17,8 @@
             <li><a class="nav-link" href="{{ route('register') }}">Регистрация</a></li>
         @else
             <li>
-                <a href="#">
-                    {{ Auth::user()->name }}
+                <a href="{{ url('/dashboard') }}">
+                    {{ ucfirst(Auth::user()->name) }}
                 </a>
             </li>
 

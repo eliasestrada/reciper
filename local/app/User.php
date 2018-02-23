@@ -18,6 +18,10 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    public function recipes() {
+        return $this->hasMany('App\Recipe');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

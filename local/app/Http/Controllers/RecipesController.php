@@ -8,6 +8,16 @@ use App\Recipe;
 class RecipesController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -52,7 +62,8 @@ class RecipesController extends Controller
         $recipe->text = '';
         $recipe->time = 0;
         $recipe->category = '';
-        $recipe->approved = 0;
+        $recipe->approved = 1;
+        $recipe->user_id = auth()->user()->id;
         $recipe->save();
 
         return redirect('/recipes')->with('success', 'Добавленно');
