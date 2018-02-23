@@ -41,7 +41,24 @@ class RecipesController extends Controller
             'intro' => 'required'
         ]);
 
-        return '123';
+        // Create Recipe in DB
+        $recipe = new Recipe;
+        $recipe->title = $request->input('title');
+        $recipe->intro = $request->input('intro');
+        $recipe->ingredients = '';
+        $recipe->advice = '';
+        $recipe->text = '';
+        $recipe->time = 396;
+        $recipe->category = '';
+        //$recipe->step = ;
+        //$recipe->views = ;
+        $recipe->approved = 1;
+        //$recipe->edit = ;
+        //$recipe->likes = ;
+        //$recipe->reports = ;
+        $recipe->save();
+
+        return redirect('/recipes')->with('success', 'Добавленно');
     }
 
     /**
