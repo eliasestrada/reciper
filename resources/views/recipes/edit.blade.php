@@ -2,7 +2,7 @@
 @section('content')
 
     <h1>Редактирование рецепта</h1>
-    {!! Form::open(['action' => ['RecipesController@update', $recipe->id], 'method' => 'post', 'class' => 'form']) !!}
+    {!! Form::open(['action' => ['RecipesController@update', $recipe->id], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
         <p>
             {{ Form::label('название', 'Название') }}</p>
             {{ Form::text('название', $recipe->title, ['placeholder' => 'Название']) }}
@@ -12,6 +12,9 @@
             {{ Form::textarea('описание', $recipe->intro, ['placeholder' => 'Описание']) }}
         </p>
         {{ Form::hidden('_method', 'PUT') }}
+        <p>
+            {{ Form::file('изображение') }}
+        </p>
         {{ Form::submit('Сохранить', ['class' => 'button']) }}</p>
     {!! Form::close() !!}
 

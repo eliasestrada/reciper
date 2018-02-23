@@ -63,7 +63,7 @@ class RecipesController extends Controller
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get extention
             $extension = $request->file('изображение')->getClientOriginalExtension();
-            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            $fileNameToStore = 'recipe-' . Recipe::find($id)->id . '-by-'.auth()->user()->name.'.' . $extension;
             // Upload
             $path = $request->file('изображение')->storeAs('public/images', $fileNameToStore);
         } else {
@@ -128,8 +128,22 @@ class RecipesController extends Controller
     {
         $this->validate($request, [
             'название' => 'required|string|min:5|max:255',
-            'описание' => 'required|string|min:10|max:1000'
+            'описание' => 'required|string|min:10|max:1000',
+            'изображение' => 'image|nullable|max:1999'
         ]);
+
+        // Handle file uploading
+        if ($request->hasFile('изображение')) {
+            // Get filename
+            $filenameWithExt = $request->file('изображение')->getClientOriginalName();
+            // Get filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get extention
+            $extension = $request->file('изображение')->getClientOriginalExtension();
+            $fileNameToStore = 'recipe-' . Recipe::find($id)->id . '-by-'.auth()->user()->name.'.' . $extension;
+            // Upload
+            $path = $request->file('изображение')->storeAs('public/images', $fileNameToStore);
+        }
 
         // Create Recipe in DB
         $recipe = Recipe::find($id);
@@ -140,7 +154,10 @@ class RecipesController extends Controller
         $recipe->text = '';
         $recipe->time = 0;
         $recipe->category = '';
-        $recipe->approved = 0;
+        $recipe->approved = 1;
+        if ($request->hasFile('изображение')) {
+            $recipe->image = $fileNameToStore;
+        }
         $recipe->save();
 
         return redirect('/recipes')->with('success', 'Рецепт успешно изменен');
@@ -159,6 +176,10 @@ class RecipesController extends Controller
         // Check for correct user
         if (auth()->user()->id !== $recipe->user_id) {
             return redirect('/recipes')->with('error', 'Вы не можете редактировать не свои рецепты.');
+        }
+
+        if ($recipe->image != 'default.jpg') {
+            Storage::delete('public/images/'.$recipe->image);
         }
 
         $recipe->delete();

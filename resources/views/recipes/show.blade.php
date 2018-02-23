@@ -26,7 +26,7 @@
             <p>{{ $recipe->intro }}</p>
 
             <!-- Картинка -->
-            <img src="{{ asset('img.jpg') }}" alt="{{ $recipe->name }}" title="{{ $recipe->name }}" class="recipe-img">
+            <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->name }}" title="{{ $recipe->name }}" class="recipe-img">
 
             <!-- Категория -->
             <a href="#" title="link">
