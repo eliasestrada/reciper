@@ -14,7 +14,9 @@ class RecipesController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::where('approved', 1)->orderBy('id', 'desc')->paginate(1);
+        $recipes = Recipe::where('approved', 1)
+                        ->latest()
+                        ->paginate(30);
         return view('recipes.index')->with('recipes', $recipes);
     }
 
@@ -37,25 +39,20 @@ class RecipesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'intro' => 'required'
+            'название' => 'required',
+            'описание' => 'required'
         ]);
 
         // Create Recipe in DB
         $recipe = new Recipe;
-        $recipe->title = $request->input('title');
-        $recipe->intro = $request->input('intro');
+        $recipe->title = $request->input('название');
+        $recipe->intro = $request->input('описание');
         $recipe->ingredients = '';
         $recipe->advice = '';
         $recipe->text = '';
-        $recipe->time = 396;
+        $recipe->time = 0;
         $recipe->category = '';
-        //$recipe->step = ;
-        //$recipe->views = ;
-        $recipe->approved = 1;
-        //$recipe->edit = ;
-        //$recipe->likes = ;
-        //$recipe->reports = ;
+        $recipe->approved = 0;
         $recipe->save();
 
         return redirect('/recipes')->with('success', 'Добавленно');
@@ -81,7 +78,8 @@ class RecipesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $recipe = Recipe::find($id);
+        return view('recipes.edit')->with('recipe', $recipe);
     }
 
     /**
@@ -93,7 +91,24 @@ class RecipesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'название' => 'required|string|min:5|max:255',
+            'описание' => 'required|string|min:10|max:1000'
+        ]);
+
+        // Create Recipe in DB
+        $recipe = Recipe::find($id);
+        $recipe->title = $request->input('название');
+        $recipe->intro = $request->input('описание');
+        $recipe->ingredients = '';
+        $recipe->advice = '';
+        $recipe->text = '';
+        $recipe->time = 0;
+        $recipe->category = '';
+        $recipe->approved = 0;
+        $recipe->save();
+
+        return redirect('/recipes')->with('success', 'Рецепт успешно изменен');
     }
 
     /**
@@ -104,6 +119,8 @@ class RecipesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $recipe = Recipe::find($id);
+        $recipe->delete();
+        return redirect('/recipes')->with('success', 'Рецепт успешно удален');
     }
 }

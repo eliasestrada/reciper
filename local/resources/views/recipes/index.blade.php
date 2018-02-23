@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
+
     <h2>Рецепты</h2>
     <section class="recipes">
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
+
     <section class="grid-recipe">
         <div class="recipe-content">
 
@@ -9,6 +9,11 @@
                 <i class="fa fa-heart-o like-icon"></i> 
                 <i>{{ $recipe->likes }}</i>
             </div>
+            <a href="{{ url('/recipes/'.$recipe->id.'/edit') }}" title="Редактировать рецепт" class="button">Редактировать</a>
+            {!! Form::open(['action' => ['RecipesController@destroy', $recipe->id], 'method' => 'post']) !!}
+                {{ Form::hidden('_method', 'DELETE') }}
+                {{ Form::submit('Delete', ['class' => 'button', 'style' => 'background: brown;']) }}
+            {!! Form::close() !!}
             
             <!-- Название рецепта -->
             <h1>{{ $recipe->name }}</h1>
@@ -81,4 +86,5 @@
             </ul>
         </div>
     </section>
+
 @endsection

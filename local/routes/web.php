@@ -16,3 +16,6 @@ Route::get('/contact', 'PagesController@contact');
 Route::get('/search', 'PagesController@search');
 
 Route::resource('recipes', 'RecipesController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
