@@ -27,6 +27,8 @@
     --lightGray: #e0e0e0;
     --darkGray: #333;
     --paper: #eee;
+    --error: #DC3545;
+    --success: #28A745;
     --headerFont: 'pattaya', Arial, Helvetica;
     --mainFont: 'titillium', Arial, Helvetica;
     --logoFont: 'vibes', Arial, Helvetica;
@@ -68,13 +70,22 @@ img {
 }
 
 .message {
+    width: 15rem;
     display: block;
-    padding: .1rem .4rem;
-    margin: .3rem;
-    background: var(--lightGray);
-    color: #000;
+    padding: .3rem .7rem;
+    margin: .2rem auto;
+    color: #fff;
     border-radius: .2rem;
     border: solid 1px #c9c9c9;
+    opacity: .9;
+}
+
+.error {
+    background: var(--error);
+}
+
+.success {
+    background: var(--success);
 }
 
 .headline {
@@ -88,8 +99,10 @@ img {
 .wrapper {
     color: var(--darkGray);
     background: var(--paper);
+    padding-top: 4rem;
 }
 
+.wrapper h1,
 .wrapper h2 {
     font-family: var(--headerFont);
 }
@@ -236,7 +249,7 @@ img {
 /* -- Form -- */
 .form {
     height: auto;
-    margin: 1.25rem;
+    margin: 1rem auto;
     padding: 2rem;
 }
 
