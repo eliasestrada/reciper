@@ -18,4 +18,4 @@ Route::get('/search', 'PagesController@search');
 Route::resource('recipes', 'RecipesController');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index');

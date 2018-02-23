@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+    <h1>Войти</h1>
     <form method="POST" action="{{ route('login') }}" class="form">
         @csrf
 
