@@ -91,8 +91,14 @@ class RecipesController extends Controller
         $recipe->image = $fileNameToStore;
         $recipe->save();
 
-        //return redirect('/recipes')->with('success', 'Рецепт успешно добавлен');
-        return redirect()->back()->with('success', 'Рецепт успешно сохранен');
+        //$recipe = DB::table('recipes')->where('title', $request->input('название'))->first();
+        $recipe = DB::table('recipes')->where([
+            ['title', '=', $request->input('название')],
+            ['user_id', '=', auth()->user()->id],
+            ['approved', '=', 0]
+        ])->first();
+
+        return redirect('/recipes/'.$recipe->id.'/edit')->with('success', 'Рецепт успешно сохранен');
     }
 
     /**
@@ -201,6 +207,6 @@ class RecipesController extends Controller
         }
 
         $recipe->delete();
-        return redirect('/recipes')->with('success', 'Рецепт успешно удален');
+        return redirect('/dashboard')->with('success', 'Рецепт успешно удален');
     }
 }

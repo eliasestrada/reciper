@@ -9,7 +9,7 @@
                 <div>
                     <!-- Image -->
                     <a href="{{ url('/recipes/'.$recipe->id) }}">
-                        <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="" title="" >
+                        <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{$recipe->title}}" title="{{$recipe->title}}">
                     </a>
                     <div class="cards-content">
                         <!-- Title -->
