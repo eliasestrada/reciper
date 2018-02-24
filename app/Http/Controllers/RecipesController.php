@@ -63,7 +63,7 @@ class RecipesController extends Controller
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get extention
             $extension = $request->file('изображение')->getClientOriginalExtension();
-            $fileNameToStore = 'recipe-' . Recipe::find($id)->id . '-by-'.auth()->user()->name.'.' . $extension;
+            $fileNameToStore = 'recipe-' . Recipe::find($id)->id . '.' . $extension;
             // Upload
             $path = $request->file('изображение')->storeAs('public/images', $fileNameToStore);
         } else {
@@ -140,7 +140,7 @@ class RecipesController extends Controller
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get extention
             $extension = $request->file('изображение')->getClientOriginalExtension();
-            $fileNameToStore = 'recipe-' . Recipe::find($id)->id . '-by-'.auth()->user()->name.'.' . $extension;
+            $fileNameToStore = 'recipe-' . Recipe::find($id)->id . '.' . $extension;
             // Upload
             $path = $request->file('изображение')->storeAs('public/images', $fileNameToStore);
         }
