@@ -65,25 +65,25 @@
             <ul>
                 <li>
                     <a href="recipe.php">
-                        <img src="media/img/pictures/img1.jpg" alt="..">
+                        <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="..">
                     </a>
                     <p>Курица и что-то еще непонятное</p>
                 </li>
                 <li>
                     <a href="recipe.php">
-                        <img src="media/img/pictures/img2.jpg" alt="..">
+                        <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="..">
                     </a>
                     <p>Курица и что-то еще непонятное</p>
                 </li>
                 <li>
                     <a href="recipe.php">
-                        <img src="media/img/pictures/img3.jpg" alt="..">
+                        <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="..">
                     </a>
                     <p>Курица и что-то еще непонятное</p>
                 </li>
                 <li>
                     <a href="recipe.php">
-                        <img src="media/img/pictures/img1.jpg" alt="..">
+                        <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="..">
                     </a>
                     <p>Курица и что-то еще непонятное</p>
                 </li>

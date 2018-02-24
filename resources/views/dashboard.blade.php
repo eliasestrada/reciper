@@ -1,13 +1,14 @@
 @extends('layouts.app')
 @section('content')
 
-    <h2>Админ панель</h2>
+    <h3>Панель управления</h3>
+    <h4>{{ ucfirst(Auth::user()->name) }}</h4>
     <br /><hr /><br />
 
     <a href="{{ url('/recipes/create') }}" title="Добавить рецепт" class="button">Добавить рецепт</a>
 
     @if (count($recipes) > 0)
-        <table>
+        <table style="width:90%; margin: .5rem 5%; border-bottom: solid 1px;">
             @foreach ($recipes as $recipe)
                 <tr>
                     <td>
