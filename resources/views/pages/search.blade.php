@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="wrapper">
     <h2><i class="fa fa-search" aria-hidden="true"></i> Поиск</h2>
     <p>Воспользуйтесь поиском чтобы найти рецепты или категориию рецептов.</p>
 
@@ -33,4 +35,6 @@
             </div>
         </div>
     </section>
+</div>
+
 @endsection

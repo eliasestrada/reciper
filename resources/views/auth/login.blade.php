@@ -2,6 +2,7 @@
 
 @section('content')
 
+<div class="wrapper">
     <h1>Войти</h1>
     <form method="POST" action="{{ route('login') }}" class="form">
         @csrf
@@ -31,5 +32,6 @@
 
         <a class="btn btn-link" href="{{ route('password.request') }}">Забыли пароль?</a>
     </form>
+</div>
 
 @endsection

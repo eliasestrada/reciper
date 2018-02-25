@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="wrapper">
     <h1>{{ $title }}</h1>
 
     @if (count($recipes) > 0)
@@ -10,5 +12,6 @@
             @endforeach
         </ul>
     @endif
+</div>
 
 @endsection

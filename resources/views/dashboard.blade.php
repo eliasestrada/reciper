@@ -1,6 +1,8 @@
 @extends('layouts.app')
+
 @section('content')
 
+<div class="wrapper">
     <h3>Панель управления</h3>
     <h4>{{ ucfirst(Auth::user()->name) }}</h4>
     <br /><hr /><br />
@@ -29,5 +31,6 @@
     @else
         <p class="content">У вас еще нет рецептов.</p>
     @endif
+</div>
 
 @endsection

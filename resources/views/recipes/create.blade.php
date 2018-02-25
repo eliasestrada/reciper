@@ -1,6 +1,8 @@
 @extends('layouts.app')
+
 @section('content')
 
+<div class="wrapper">
     <h1>Добавление рецепта</h1>
     {!! Form::open(['action' => 'RecipesController@store', 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
 
@@ -34,5 +36,6 @@
         {{ Form::file('изображение') }}
         {{ Form::submit('Сохранить') }}
     {!! Form::close() !!}
+</div>
 
 @endsection

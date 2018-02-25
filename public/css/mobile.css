@@ -111,6 +111,7 @@ img {
     color: var(--darkGray);
     background: var(--paper);
     padding-top: 4em;
+    z-index: -2;
 }
 
 .wrapper h1,
@@ -147,14 +148,12 @@ img {
     transition: 200ms;
     z-index: 5;
     text-shadow: 1px 1px 1px var(--darkGray);
-    font-weight: 100;
     font-family: var(--logoFont);
 }
 
 .logo-opened {
-    width: 60%;
-    margin: .5em auto 0 auto;
-    font-size: 1em;
+    margin: .7em auto 0 auto;
+    font-size: .8em;
 }
 
 .logo-closed {
@@ -226,10 +225,10 @@ img {
 }
 
 /* -- Header -- */
-
 .header {
-    min-height: 27.2em;
+    min-height: 30em;
     color: #fff;
+    margin-bottom: -1em;
 }
 
 .bg-image {
@@ -239,21 +238,24 @@ img {
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 28.12em;
-    z-index: 0;
+    height: 30em;
+    z-index: -1;
+    opacity: .5;
 }
 
 .header h1 {
-    padding-top: 6.25em;
+    padding-top: 2.2em;
     padding-bottom: 0;
     font-family: var(--headerFont);
-    font-size: 3.75em;
-    text-shadow: .12em .12em .06em black;
+    font-size: 3.2em;
+    text-shadow: 2px 2px 2px black;
+    z-index: 30;
 }
 
 .header p {
-    text-shadow: .06em .06em .06em black;
-    margin: .31em .6em;
+    text-shadow: 1px 1px 1px black;
+    margin: .3em .6em;
+    z-index: 3;
 }
 
 /* -- Form -- */
@@ -417,13 +419,13 @@ img {
 .category {
     color: #fff;
     display: inline-block;
-    line-height: .93em;
-    font-size: .7em;
+    line-height: .9em;
+    font-size: .8em;
     background: #555;
     border: solid 1px #bebebe;
-    padding: .1em .4em;
+    padding: .3em .7em;
     margin-top: .6em;
-    border-radius: .6em;
+    border-radius: 1em;
 }
 
 .date {
@@ -434,14 +436,13 @@ img {
     line-height: 0.2em;
 }
 
-
 .add-material {
-	width: 5em;
-	height: 5em;
+	width: .97em;
+	height: .97em;
     position: fixed;
     top: 70vh;
     right: 2em;
-    font-size: 5.1em!important;
+    font-size: 5.1em !important;
     background: #eee;
     color: var(--main);
     border-radius: 100%;
@@ -473,7 +474,7 @@ img {
 
 .grid-recipe {
     color: var(--darkGray);
-    padding: 4.37em .6em .93em .6em;
+    padding: 0 .6em .93em .6em;
     background: var(--paper);
 }
 

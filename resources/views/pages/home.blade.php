@@ -11,7 +11,7 @@
         </div>
     </header>
 
-    <section class="wrapper" style="min-height:auto; padding: 1rem .8rem .93rem .8rem;">
+    <section class="wrapper" style="min-height:auto; padding: 1em .8em .93em .8em;">
         <h2>Куховарим вместе</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe sint eligendi possimus? Unde officiis magnam laborum ipsa distinctio odio, vero dolores dicta aliquam aperiam repellendus. Perferendis officiis deserunt velit voluptas nobis sequi animi totam, accusantium, ex eius quia, natus quo?</p>
     </section>

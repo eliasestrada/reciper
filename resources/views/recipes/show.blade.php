@@ -1,6 +1,8 @@
 @extends('layouts.app')
+
 @section('content')
 
+<div class="wrapper">
     <section class="grid-recipe">
         <div class="recipe-content">
 
@@ -90,5 +92,6 @@
             </ul>
         </div>
     </section>
+</div>
 
 @endsection

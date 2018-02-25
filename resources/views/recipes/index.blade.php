@@ -1,6 +1,8 @@
 @extends('layouts.app')
+
 @section('content')
 
+<div class="wrapper">
     <h2>Рецепты</h2>
     <section class="recipes">
 
@@ -33,5 +35,6 @@
 
     <!-- Add recipe button-->
     <a href="{{ url('/recipes/create') }}" class="fa fa-plus-circle add-material" title="Добавить рецепт"></a>
+</div>
 
 @endsection

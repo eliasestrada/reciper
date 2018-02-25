@@ -1,46 +1,73 @@
 @extends('layouts.app')
+
 @section('content')
 
+<div class="wrapper">
     <h1>Редактирование рецепта</h1>
+
     {!! Form::open(['action' => ['RecipesController@update', $recipe->id], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
 
-        {{ Form::label('название', 'Название') }}
-        {{ Form::text('название', $recipe->title, ['placeholder' => 'Название']) }}
+        <div class="form-group">
+            {{ Form::label('название', 'Название') }}
+            {{ Form::text('название', $recipe->title, ['placeholder' => 'Название']) }}
+        </div>
 
-        {{ Form::label('описание', 'Описание') }}
-        {{ Form::textarea('описание', $recipe->intro, ['placeholder' => 'Описание']) }}
+        <div class="form-group">
+            {{ Form::label('описание', 'Описание') }}
+            {{ Form::textarea('описание', $recipe->intro, ['placeholder' => 'Описание']) }}
+        </div>
 
-        {{ Form::label('ингридиенты', 'Ингридиенты') }}
-        {{ Form::textarea('ингридиенты', $recipe->ingredients, ['placeholder' => 'Ингридиенты']) }}
+        <div class="form-group">
+            {{ Form::label('ингридиенты', 'Ингридиенты') }}
+            {{ Form::textarea('ингридиенты', $recipe->ingredients, ['placeholder' => 'Ингридиенты']) }}
+        </div>
 
-        {{ Form::label('совет', 'Совет') }}
-        {{ Form::textarea('совет', $recipe->advice, ['placeholder' => 'Совет']) }}
+        <div class="form-group">
+            {{ Form::label('совет', 'Совет') }}
+            {{ Form::textarea('совет', $recipe->advice, ['placeholder' => 'Совет']) }}
+        </div>
 
-        {{ Form::label('приготовление', 'Приготовление') }}
-        {{ Form::textarea('приготовление', $recipe->text, ['placeholder' => 'Приготовление']) }}
+        <div class="form-group">
+            {{ Form::label('приготовление', 'Приготовление') }}
+            {{ Form::textarea('приготовление', $recipe->text, ['placeholder' => 'Приготовление']) }}
+        </div>
 
-        {{ Form::label('категория', 'Категория') }}
-        <select name="категория">
-            @foreach ($categories as $category)
-                <option selected value="{{ $category->category }}">{{ $category->category }}</option>
-            @endforeach
-            <option selected value="{{ $recipe->category }}">{{ $recipe->category }}</option>
-        </select>
+        <div class="form-group">
+            {{ Form::label('категория', 'Категория') }}
+        </div>
 
-        {{ Form::label('время', 'Время приготовления в минутах') }}
-        {{ Form::number('время', $recipe->time) }}
+        <div class="form-group">
+            <select name="категория">
+                @foreach ($categories as $category)
+                    <option selected value="{{ $category->category }}">{{ $category->category }}</option>
+                @endforeach
+                <option selected value="{{ $recipe->category }}">{{ $recipe->category }}</option>
+            </select>
+        </div>
 
-        <!-- Image -->
-        <section class="recipes">
-            <div>
-                <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{$recipe->title}}" title="{{$recipe->title}}">
-            </div>
-        </section>
+        <div class="form-group">
+            {{ Form::label('время', 'Время приготовления в минутах') }}
+            {{ Form::number('время', $recipe->time) }}
+        </div>
 
-        {{ Form::file('изображение', ['class' => "upload-image-form"]) }}
+        <div class="form-group">
+            <section class="recipes">
+                <div>
+                    <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{$recipe->title}}" title="{{$recipe->title}}">
+                </div>
+            </section>
+        </div>
 
-        {{ Form::hidden('_method', 'PUT') }}
-        {{ Form::submit('Сохранить') }}
+        <div class="form-group">
+            {{ Form::file('изображение', ['class' => "upload-image-form"]) }}
+        </div>
+
+        <div class="form-group">
+            {{ Form::hidden('_method', 'PUT') }}
+            {{ Form::submit('Сохранить') }}
+        </div>
+
     {!! Form::close() !!}
+</div>
 
 @endsection

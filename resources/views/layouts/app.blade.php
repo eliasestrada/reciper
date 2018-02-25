@@ -1,15 +1,18 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
+
     @include('includes.head')
+
 </head>
 <body>
     @include('includes.navbar')
     <main id="main">
-        <div class="wrapper">
-            @include('includes.messages')
-            @yield('content')
-        </div>
+
+        @include('includes.messages')
+
+        @yield('content')
+
     </main>
     @include('includes.footer')
     <!-- Javascript -->
