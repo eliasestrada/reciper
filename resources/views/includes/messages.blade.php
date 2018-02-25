@@ -1,3 +1,4 @@
+
 @if (count($errors) > 0)
     <div class="message error">
     <strong>Ошибки:</strong>

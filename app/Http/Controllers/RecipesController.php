@@ -40,11 +40,11 @@ class RecipesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'название' => 'string|min:5|max:255',
-            'описание' => 'string|max:2000',
-            'ингридиенты' => 'string|max:5000',
-            'совет' => 'string|max:5000',
-            'приготовление' => 'string|max:10000',
+            'название' => 'max:255',
+            'описание' => 'max:2000',
+            'ингридиенты' => 'max:5000',
+            'совет' => 'max:5000',
+            'приготовление' => 'max:10000',
             'время' => 'numeric|digits_between:0,1000',
             'изображение' => 'image|nullable|max:1999'
         ]);
@@ -76,13 +76,6 @@ class RecipesController extends Controller
         $recipe->user_id = auth()->user()->id;
         $recipe->image = $fileNameToStore;
         $recipe->save();
-
-        //$recipe = DB::table('recipes')->where('title', $request->input('название'))->first();
-        $recipe = DB::table('recipes')->where([
-            ['title', '=', $request->input('название')],
-            ['user_id', '=', auth()->user()->id],
-            ['approved', '=', 0]
-        ])->first();
 
         return redirect('/recipes/'.$recipe->id.'/edit')->with('success', 'Рецепт успешно сохранен');
     }
