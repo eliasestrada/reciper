@@ -3,9 +3,10 @@
 @section('content')
 
 <div class="wrapper">
-    <h3>Панель управления</h3>
-    <h4>{{ ucfirst(Auth::user()->name) }}</h4>
-    <br /><hr /><br />
+    <div class="content">
+        <h2>Панель управления</h2>
+        <h3>{{ Auth::user()->name }}</h3>
+    </div>
 
     <a href="{{ url('/recipes/create') }}" title="Добавить рецепт" class="button">Добавить рецепт</a>
 

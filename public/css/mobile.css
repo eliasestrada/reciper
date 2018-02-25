@@ -98,13 +98,6 @@ img {
     background: var(--success);
 }
 
-.headline {
-    display: block;
-    font-size: 1.3em;
-    margin-bottom: 1.2em;
-    color: var(--darkGray);
-}
-
 /* --- wrapper --- */
 .wrapper {
     min-height: 20em;
@@ -174,6 +167,10 @@ img {
     transition: .3s;
 }
 
+.admin-li {
+    background: #737397;
+}
+
 #nav-menu li:first-child {
     border: none;
     font-size: 1.3em;
@@ -192,7 +189,7 @@ img {
 .hamburger-menu {
     width: 2em;
     left: 0.6em;
-    border-radius: 50%;
+    border-radius: 500em;
     cursor: pointer;
     text-align: center;
     top: .5em;
@@ -213,7 +210,7 @@ img {
 	position: fixed;
 	background: var(--main);
 	font-size: 1.6em;
-	line-height: 2.15em;
+	line-height: 2em;
 	z-index: 3;
 	transition: all 200ms linear;
 	-webkit-user-select: none;
@@ -373,11 +370,12 @@ img {
     font-size: .95em;
 }
 
+.content h1,
 .content h2,
 .content h3 {
     color: var(--darkGray);
-    font-size: 1.37em;
     font-family: var(--headerFont);
+    text-transform: capitalize;
 }
 
 .content p {
@@ -388,6 +386,7 @@ img {
 
 .content p::first-letter {
     margin-left: 1em;
+    text-transform: uppercase;
 }
 
 /* -- Recipes -- */

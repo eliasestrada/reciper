@@ -12,24 +12,22 @@
         <li><a href="{{ url('/search') }}" title="Поиск"><i class="fa fa-search"></i></a></li>
         <li><a href="{{ url('/') }}" title="На главную">Главная</a></li>
         <li><a href="{{ url('/recipes') }}" title="Рецепты">Рецепты</a></li>
-        @guest
-            <li><a class="nav-link" href="{{ route('login') }}">Войти</a></li>
-            <li><a class="nav-link" href="{{ route('register') }}">Регистрация</a></li>
-        @else
-            <li>
+
+        @auth
+            <li class="admin-li">
                 <a href="{{ url('/dashboard') }}">Панель</a>
             </li>
 
-            <li>
+            <li class="admin-li">
                 <a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
                     Выйти
                 </a>
 
-                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                      @csrf
-                 </form>
+                </form>
             </li>
         @endguest
     </ul>
