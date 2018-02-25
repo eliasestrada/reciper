@@ -17,7 +17,7 @@
                         <!-- Title -->
                         <h3>{{$recipe->title}}</h3>
                         <!-- Intro -->
-                        <p>{{ mb_substr($recipe->intro, 0, 180, "utf-8") }}</p>
+                        <p>{{ mb_substr($recipe->intro, 0, 180, "utf-8") }}{{ strlen($recipe->intro) > 180 ? '...' : '' }}</p>
                         <!-- Category -->
                         <a href="#" title="link"><span class="category">{{$recipe->category}}</span></a>
                         <!-- Time -->
