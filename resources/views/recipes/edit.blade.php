@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="wrapper">
-    <h1>Редактирование рецепта</h1>
-
     {!! Form::open(['action' => ['RecipesController@update', $recipe->id], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
+
+        <h1>Редактирование рецепта</h1>
 
         <div class="form-group">
             {{ Form::label('название', 'Название') }}

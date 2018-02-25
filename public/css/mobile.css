@@ -256,9 +256,9 @@ img {
 
 /* -- Form -- */
 .form-group {
-    width: 80%;
+    width: 100%;
     text-align: left;
-    margin: 0 10% .4em 10%;
+    margin: 0 0 .4em 0;
 }
 
 .form {
@@ -288,13 +288,12 @@ img {
 }
 
 .form textarea {
-    width: 80%;
+    width: 100%;
     height: 17em;
+    padding: .31em .31em;
     display: block;
     border: solid .06em #888;
     border-radius: .25em;
-    padding: .31em .31em;
-    margin: .43em 10%;
     resize: none;
     overflow: hidden;
 }
@@ -310,7 +309,7 @@ img {
 }
 
 .form label {
-    font-size: .72em;
+    font-size: .75em;
     font-weight: bold;
     color: var(--darkGray);
 }

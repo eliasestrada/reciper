@@ -125,9 +125,9 @@ body {
 
 /* -- Contact form -- */
 .form-group {
-    width: 50%;
+    width: 60%;
     text-align: left;
-    margin: 0 25% .4em 25%;
+    margin: 0 20% .4em 20%;
 }
 
 @media (min-width: 1900px) {
