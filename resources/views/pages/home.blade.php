@@ -22,7 +22,7 @@
             <li>
                 <div class="card">
                     <a href="recipe.php">
-                        <img src="{{ asset('img.jpg') }}" alt="Вермишель" title="Вермишель">
+                        <img src="{{ asset('storage/other/img.jpg') }}" alt="Вермишель" title="Вермишель">
                     </a>
                     <div class="cards-content">
                         <h3>Вермишель</h3>
@@ -33,7 +33,7 @@
             <li>
                 <div class="card">
                     <a href="recipe.php">
-                        <img src="{{ asset('img.jpg') }}" alt="Мясо" title="Мясо">
+                        <img src="{{ asset('storage/other/img.jpg') }}" alt="Мясо" title="Мясо">
                     </a>
                     <div class="cards-content">
                         <h3>Мясо</h3>
@@ -44,7 +44,7 @@
             <li>
                 <div class="card">
                     <a href="recipe.php">
-                        <img src="{{ asset('img.jpg') }}" alt="Зелень" title="Зелень">
+                        <img src="{{ asset('storage/other/img.jpg') }}" alt="Зелень" title="Зелень">
                     </a>
                     <div class="cards-content">
                         <h3>Зелень</h3>

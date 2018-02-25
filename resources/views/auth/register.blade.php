@@ -7,15 +7,29 @@
     <form method="POST" action="{{ route('register') }}" class="form">
         @csrf
 
-        <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Фамилия" required autofocus>
+        <div class="form-group">
+            <label for="name">Имя и фамилия</label>
+            <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Имя и фамилия" required autofocus>
+        </div>
 
-        <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Эл. адресс" required>
+        <div class="form-group">
+            <label for="email">Эл. адресс</label>
+            <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Эл. адресс" required>
+        </div>
 
-        <input type="password" id="password" name="password" placeholder="Пароль" required>
+        <div class="form-group">
+            <label for="password">Пароль</label>
+            <input type="password" id="password" name="password" placeholder="Пароль" required>
+        </div>
 
-        <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Повторите пароль" required>
+        <div class="form-group">
+            <label for="password_confirmation">Повторите пароль</label>
+            <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Повторите пароль" required>
+        </div>
 
-        <button type="submit" class="button">Регистрация</button>
+        <div class="form-group">
+            <input type="submit" value="Регистрация">
+        </div>
     </form>
 </div>
 

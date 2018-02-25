@@ -1,16 +1,16 @@
 @font-face {
     font-family: pattaya;
-    src: url(../fonts/pattaya.ttf);
+    src: url(../storage/fonts/pattaya.ttf);
 }
 
 @font-face {
     font-family: titillium;
-    src: url(../fonts/titillium.ttf);
+    src: url(../storage/fonts/titillium.ttf);
 }
 
 @font-face {
     font-family: vibes;
-    src: url(../fonts/greatvibes.ttf);
+    src: url(../storage/fonts/greatvibes.ttf);
 }
 
 @keyframes shake{
@@ -32,7 +32,7 @@
     --headerFont: 'pattaya', Arial, Helvetica;
     --mainFont: 'titillium', Arial, Helvetica;
     --logoFont: 'vibes', Arial, Helvetica;
-    --headerImage: var(--main) url("../img.jpg");
+    --headerImage: var(--main) url("../storage/other/img.jpg");
 }
 
 /* -- Reset -- */
@@ -147,19 +147,18 @@ img {
 #logo {
     transition: 200ms;
     z-index: 5;
-    text-shadow: 1px 1px 1px var(--darkGray);
     font-family: var(--logoFont);
 }
 
 .logo-opened {
     margin: .7em auto 0 auto;
-    font-size: .8em;
+    font-size: 1.1em;
 }
 
 .logo-closed {
     width: 6.3em;
     margin: .6em auto 0 auto;
-    font-size: 1em;
+    font-size: 1.1em;
 }
 
 #nav-menu ul {
@@ -187,7 +186,7 @@ img {
 #nav-menu a {
     display: block;
     color: #fff;
-    text-shadow: 1px 1px 1px var(--darkGray);
+    text-shadow: 1px 1px 1px #000;
 }
 
 .hamburger-menu {
@@ -240,7 +239,7 @@ img {
     width: 100%;
     height: 30em;
     z-index: -1;
-    opacity: .5;
+    opacity: .6;
 }
 
 .header h1 {
@@ -506,7 +505,7 @@ img {
 }
 
 .items > ul > li {
-    list-style-image: url('../img/tick.png');
+    list-style-image: url('../storage/other/tick.png');
     margin: .18em;
     font-size: 1em;
 }
@@ -521,9 +520,9 @@ img {
     min-height: 3.5em;
     margin-top: .93em;
     list-style: none;
-    counter-incement: item;
+    counter-increment: item;
     position: relative;
-    left: 1.85em;
+    left: 2em;
     border-left: solid .06em var(--main);
     padding: 0 .93em 0 .93em;
 }
@@ -531,9 +530,9 @@ img {
 .instruction li:before {
     color: var(--main);
     content: counter(item);
-    font-size: 2.5em;
+    font-size: 3em;
     position: absolute;
-    left: -2.5em;
+    left: -1em;
 }
 
 .side-bar {

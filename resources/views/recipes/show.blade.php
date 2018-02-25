@@ -21,27 +21,21 @@
                 {!! Form::close() !!}
             @endif
             
-            <!-- Название рецепта -->
-            <h1>{{ $recipe->name }}</h1>
+            <h1>{{ $recipe->title }}</h1>
 
-            <!-- Краткое описание -->
             <p>{{ $recipe->intro }}</p>
 
-            <!-- Картинка -->
             <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->name }}" title="{{ $recipe->name }}" class="recipe-img">
 
-            <!-- Категория -->
             <a href="#" title="link">
                 <span class="category">{{ $recipe->category }}</span>
             </a>
 
-            <!-- Время приготовления -->
             <div class="date"><i class="fa fa-clock-o"></i> {{ $recipe->time }}</div>
 
-            <!-- Ингридиенты -->
             <div class="items">
                 <h3>Ингридиенты</h3>
-                <ul>{{ $recipe->ingredients }}</ul>
+                <ul>{!! convertToListItems($recipe->ingredients) !!}</ul>
             </div>
 
             <!-- Совет -->
@@ -51,7 +45,7 @@
             <span class="headline">{{ $recipe->name }}</span>
 
             <!-- Приготовление -->
-            <ol class="instruction">{{ $recipe->text }}</ol>
+            <ol class="instruction">{!! convertToListItems($recipe->text) !!}</ol>
 
             <!-- Дата и Автор -->
             <div class="date">

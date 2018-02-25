@@ -8,15 +8,17 @@
 
     <!-- Form -->
     <form action="" method="POST" class="form">
-        <input type="search" name="search" autocomplete="off" placeholder="Искать">
-        <button type="submit" style="display: none;"></button>
+        <div class="form-group">
+            <input type="search" name="search" autocomplete="off" placeholder="Искать">
+        </div>
+        <input type="submit" style="display: none;">
     </form>
 
     <!-- Results -->
     <section class="recipes">
         <div>
             <a href="recipe.php">
-                <img src="{{ asset('img.jpg') }}" alt="pasta" title="Макароны">
+                <img src="{{ asset('storage/other/img.jpg') }}" alt="pasta" title="Макароны">
             </a>
             <div class="cards-content">
                 <h3>Вермишель</h3>
@@ -26,7 +28,7 @@
         </div>
         <div>
             <a href="recipe.php">
-                <img src="{{ asset('img.jpg') }}" alt="Мясо" title="Мясо">
+                <img src="{{ asset('storage/other/img.jpg') }}" alt="Мясо" title="Мясо">
             </a>
             <div class="cards-content">
                 <h3>Мясо</h3>
