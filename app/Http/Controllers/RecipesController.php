@@ -40,7 +40,7 @@ class RecipesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'название' => 'max:255',
+            'название' => 'max:199',
             'описание' => 'max:2000',
             'ингридиенты' => 'max:5000',
             'совет' => 'max:5000',
@@ -82,9 +82,21 @@ class RecipesController extends Controller
 
 
     // Display the specified resource.
+    // TODO: Make it more cleaner.
     public function show($id)
     {
         $recipe = Recipe::find($id);
+
+        if (!$recipe) {
+            return redirect('/recipes');
+        }
+
+        $recipe = Recipe::find($id)->where('approved', 1)->first();
+
+        if (!$recipe) {
+            return redirect('/recipes');
+        }
+
         return view('recipes.show')->with('recipe', $recipe);
     }
 
@@ -105,6 +117,7 @@ class RecipesController extends Controller
         return view('recipes.edit')
                             ->with('recipe', $recipe)
                             ->with('categories', $categories);
+        
     }
 
 
@@ -112,11 +125,11 @@ class RecipesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'название' => 'string|min:5|max:255',
-            'описание' => 'string|max:2000',
-            'ингридиенты' => 'string|max:5000',
-            'совет' => 'string|max:5000',
-            'приготовление' => 'string|max:10000',
+            'название' => 'max:199',
+            'описание' => 'max:2000',
+            'ингридиенты' => 'max:5000',
+            'совет' => 'max:5000',
+            'приготовление' => 'max:10000',
             'время' => 'numeric|digits_between:0,1000',
             'изображение' => 'image|nullable|max:1999'
         ]);

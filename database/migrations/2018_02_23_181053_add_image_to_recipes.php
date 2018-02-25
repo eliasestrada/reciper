@@ -13,7 +13,7 @@ class AddImageToRecipes extends Migration
             $table->string('image');
         });
     }
-
+    
 
     public function down()
     {
