@@ -11,6 +11,7 @@ class PagesController extends Controller
         return view('pages.home')->with('title', $title);
     }
 
+
     public function contact() {
         $data = [
             'title' => 'Заголовок',
@@ -18,6 +19,7 @@ class PagesController extends Controller
         ];
         return view('pages.recipes')->with($data);
     }
+
 
     public function search() {
         return view('pages.search');

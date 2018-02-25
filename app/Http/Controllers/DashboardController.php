@@ -7,21 +7,15 @@ use App\User;
 
 class DashboardController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
+    // Create a new controller instance.
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    // Show the application dashboard.
     public function index()
     {
         $user_id = auth()->user()->id;

@@ -1,9 +1,12 @@
 @if (count($errors) > 0)
-    @foreach ($errors->all() as $error)
-        <p class="message error">
-            {{ $error }}
-        </p>
-    @endforeach
+    <div class="message error">
+    <strong>Ошибки:</strong>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li> 
+            @endforeach
+        </ul>
+    </div>
 @endif
 
 @if (session('success'))

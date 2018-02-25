@@ -9,21 +9,14 @@ use App\Recipe;
 
 class RecipesController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    // Create a new controller instance.
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    // Display a listing of the resource.
     public function index()
     {
         $recipes = Recipe::where('approved', 1)
@@ -32,11 +25,8 @@ class RecipesController extends Controller
         return view('recipes.index')->with('recipes', $recipes);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    // Show the form for creating a new resource.
     public function create()
     {
         // For select input
@@ -45,12 +35,8 @@ class RecipesController extends Controller
         return view('recipes.create')->with('categories', $categories);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
+    // Store a newly created resource in storage.
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -101,24 +87,16 @@ class RecipesController extends Controller
         return redirect('/recipes/'.$recipe->id.'/edit')->with('success', 'Рецепт успешно сохранен');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    // Display the specified resource.
     public function show($id)
     {
         $recipe = Recipe::find($id);
         return view('recipes.show')->with('recipe', $recipe);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+    // Show the form for editing the specified resource.
     public function edit($id)
     {
         $recipe = Recipe::find($id);
@@ -137,13 +115,7 @@ class RecipesController extends Controller
     }
 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // Update the specified resource in storage.
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -187,12 +159,9 @@ class RecipesController extends Controller
         return redirect()->back()->with('success', 'Рецепт успешно сохранен');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+
+    // Remove the specified resource from storage.
     public function destroy($id)
     {
         $recipe = Recipe::find($id);

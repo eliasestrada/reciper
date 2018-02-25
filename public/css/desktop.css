@@ -126,11 +126,11 @@ body {
 
 /* -- Contact form -- */
 .form input {
-    width: 18.75rem;
+    width: 23rem;
 }
 
 .form textarea {
-    width: 18.75rem;
+    width: 23rem;
 }
 
 @media (min-width: 1900px) {
