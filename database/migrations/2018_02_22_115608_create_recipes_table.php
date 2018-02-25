@@ -16,21 +16,18 @@ class CreateRecipesTable extends Migration
         Schema::create('recipes', function (Blueprint $table) {
             $table->charset = 'utf8';
             $table->collation = 'utf8mb4_general_ci';
-            $table->timestamps();
             $table->increments('id');
-            $table->string('title');
-            $table->text('intro');
-            $table->text('ingredients');
-            $table->text('advice');
-            $table->text('text');
-            $table->integer('time');
+            $table->string('title')->nullable();
+            $table->text('intro')->nullable();
+            $table->text('ingredients')->nullable();
+            $table->text('advice')->nullable();
+            $table->text('text')->nullable();
+            $table->integer('time')->unsigned();
             $table->string('category');
-            $table->integer('step');
-            $table->integer('views');
+            $table->bigInteger('views');
+            $table->bigInteger('likes');
             $table->boolean('approved');
-            $table->boolean('edit');
-            $table->integer('likes');
-            $table->integer('reports');
+            $table->timestamps();
         });
     }
 

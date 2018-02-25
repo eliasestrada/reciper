@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class AddImageToRecipes extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::table('recipes', function($table) {
@@ -18,11 +14,7 @@ class AddImageToRecipes extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::table('recipes', function($table) {
