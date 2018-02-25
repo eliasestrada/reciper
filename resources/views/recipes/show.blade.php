@@ -12,7 +12,8 @@
                 <i>{{ $recipe->likes }}</i>
             </div>
 
-            @if (!Auth::guest() && Auth::user()->id == $recipe->user_id)
+            @auth
+            @if (Auth::user()->id == $recipe->user_id)
                 <a href="{{ url('/recipes/'.$recipe->id.'/edit') }}" title="Редактировать рецепт" class="button">Редактировать</a>
 
                 {!! Form::open(['action' => ['RecipesController@destroy', $recipe->id], 'method' => 'post']) !!}
@@ -20,6 +21,7 @@
                     {{ Form::submit('Удалить', ['class' => 'button', 'style' => 'background: brown;']) }}
                 {!! Form::close() !!}
             @endif
+            @endauth
             
             <h1>{{ $recipe->title }}</h1>
 
