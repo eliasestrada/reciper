@@ -37,8 +37,14 @@
 
 /* -- Reset -- */
 * { margin: 0; padding: 0; }
+
 a { text-decoration: none; color: var(--main);}
-textarea, form { font-size: 100%; margin: 0; }
+
+textarea, form {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 button { cursor: pointer; }
 
 html, body {
@@ -49,15 +55,17 @@ html, body {
 
 button, input, select, textarea {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 100%;
+    font-size: 100%;
+    box-sizing: border-box;
 }
 
+/* -- Code -- */
 body {
     margin: 0;
     font-family: var(--mainFont);
     background: var(--darkGray);
     color: #eee;
-    font-size: .93rem;
+    font-size: 1rem;
     line-height: 1.5;
     text-align: center;
     counter-reset: item;
@@ -70,15 +78,16 @@ img {
 }
 
 .message {
-    width: 15rem;
+    width: 15em;
     display: block;
-    padding: .3rem 1.7rem;
-    margin: .2rem auto;
+    padding: .3em 1.7em;
+    margin: .2em auto;
     color: #fff;
-    border-radius: .2rem;
+    border-radius: .3em;
     border: solid 1px #c9c9c9;
-    opacity: .9;
+    opacity: .8;
     text-align: left;
+    font-size: .9em;
 }
 
 .error {
@@ -91,17 +100,17 @@ img {
 
 .headline {
     display: block;
-    font-size: 1.3rem;
-    margin-bottom: 1.2rem;
+    font-size: 1.3em;
+    margin-bottom: 1.2em;
     color: var(--darkGray);
 }
 
 /* --- wrapper --- */
 .wrapper {
-    min-height: 20rem;
+    min-height: 20em;
     color: var(--darkGray);
     background: var(--paper);
-    padding-top: 4rem;
+    padding-top: 4em;
 }
 
 .wrapper h1,
@@ -110,7 +119,7 @@ img {
 }
 
 .container {
-    padding: 2rem;
+    padding: 2em;
 }
 
 /* -- Navigation menu -- */
@@ -130,8 +139,8 @@ img {
 }
 
 .nav-opened {
-    width: 12rem;
-    padding-top: 1.25rem;
+    width: 12em;
+    padding-top: 1.25em;
 }
 
 #logo {
@@ -144,32 +153,32 @@ img {
 
 .logo-opened {
     width: 60%;
-    margin: .5rem auto 0 auto;
-    font-size: 1rem;
+    margin: .5em auto 0 auto;
+    font-size: 1em;
 }
 
 .logo-closed {
-    width: 6.3rem;
-    margin: .6rem auto 0 auto;
-    font-size: 1.2rem;
+    width: 6.3em;
+    margin: .6em auto 0 auto;
+    font-size: 1em;
 }
 
 #nav-menu ul {
-    padding: 1.85rem 0 5rem 0;
+    padding: 1.85em 0 5em 0;
     display: none;
 }
 
 #nav-menu li {
-    height: 2.5rem;
-    line-height: 2.5rem;
+    height: 2.5em;
+    line-height: 2.5em;
     list-style: none;
-    border-bottom: .06rem solid var(--mainHover);
+    border-bottom: .06em solid var(--mainHover);
     transition: .3s;
 }
 
 #nav-menu li:first-child {
     border: none;
-    font-size: 1.3rem;
+    font-size: 1.3em;
 }
 
 #nav-menu li:hover {
@@ -183,13 +192,12 @@ img {
 }
 
 .hamburger-menu {
-	width: 2.5rem;
-    left: 0.6rem;
-    border-radius: 500px;
+    width: 2em;
+    left: 0.6em;
+    border-radius: 50%;
     cursor: pointer;
-    text-align: left;
-    padding-left: 1.1rem;
-    top: .3rem;
+    text-align: center;
+    top: .5em;
 }
 
 .regular-menu {
@@ -199,15 +207,15 @@ img {
     border-radius: 0;
     cursor: pointer;
     text-align: left;
-    padding-left: 1.56rem;
+    padding-left: .8em;
 }
 
 #menu-container {
-	height: 3.43rem;
+	height: 2em;
 	position: fixed;
 	background: var(--main);
-	font-size: 1.7rem;
-	line-height: 3.5rem;
+	font-size: 1.6em;
+	line-height: 2.15em;
 	z-index: 3;
 	transition: all 200ms linear;
 	-webkit-user-select: none;
@@ -220,7 +228,7 @@ img {
 /* -- Header -- */
 
 .header {
-    min-height: 27.2rem;
+    min-height: 27.2em;
     color: #fff;
 }
 
@@ -231,88 +239,111 @@ img {
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 28.12rem;
+    height: 28.12em;
     z-index: 0;
 }
 
 .header h1 {
-    padding-top: 6.25rem;
+    padding-top: 6.25em;
     padding-bottom: 0;
     font-family: var(--headerFont);
-    font-size: 3.75rem;
-    text-shadow: .12rem .12rem .06rem black;
+    font-size: 3.75em;
+    text-shadow: .12em .12em .06em black;
 }
 
 .header p {
-    text-shadow: .06rem .06rem .06rem black;
-    margin: .31rem .6rem;
+    text-shadow: .06em .06em .06em black;
+    margin: .31em .6em;
 }
 
 /* -- Form -- */
+.form-group {
+    width: 80%;
+    text-align: left;
+    margin: 0 10% .4em 10%;
+}
+
 .form {
     height: auto;
-    margin: 1rem auto;
-    padding: 2rem;
+    margin: 1em auto;
+    padding: 2em;
 }
 
 .form input,
 .form select {
-    width: 15.8rem;
-    height: 1.85rem;
+    width: 100%;
+    height: 2.2em;
     display: block;
-    border-radius: .25rem;
-    border: solid .06rem #888;
-    padding: 0 .31rem;
-    margin: .43rem auto;
+    border-radius: .2em;
+    border: solid .06em #888;
+    padding: 0 .31em;
+}
+
+.form input[type="submit"] {
+    width: 100%;
+    margin-top: .5em;
+    margin-bottom: 1em;
+    background: var(--main);
+    color: #eee;
+    cursor: pointer;
+    transition: 200ms;
 }
 
 .form textarea {
-    width: 15.8rem;
-    height: 17rem;
+    width: 80%;
+    height: 17em;
     display: block;
-    border: solid .06rem #888;
-    border-radius: .25rem;
-    padding: .31rem .31rem;
-    margin: .31rem auto;
+    border: solid .06em #888;
+    border-radius: .25em;
+    padding: .31em .31em;
+    margin: .43em 10%;
     resize: none;
     overflow: hidden;
 }
 
 .upload-image-form {
-    margin: 1rem;
+    margin: 1em;
 }
 
 .upload-image-form[type="file"] {
     background: var(--main);
     color: #fff;
-    border-radius: .5rem;
+    border-radius: .5em;
+}
+
+.form label {
+    font-size: .72em;
+    font-weight: bold;
+    color: var(--darkGray);
 }
 
 .button {
-    width: 10.8rem;
-    height: 1.85rem;
-    margin: .93rem auto;
-    padding: 0 .25rem;
+    width: 10.8em;
+    height: 1.85em;
+    margin: .93em auto;
+    padding: 0 .25em;
     text-align: center;
     display: block;
-    line-height: 1.85rem;
+    line-height: 1.85em;
     background: var(--main);
-    left: -12.5rem;
+    left: -12.5em;
     color: #eee;
     border: none;
-    font-size: .93rem;
-    font-weight: bold;
-    border-radius: .18rem;
+    font-size: .93em;
+    border-radius: .15em;
     transition: 400ms linear all;
 }
 
-.button:hover {
+.button:hover,
+.form input[type="submit"]:hover {
     background: var(--mainHover);
 }
 
+
+
 /* --- Cards --- */
 #cards {
-    padding: 1rem;
+    padding: 1em;
     padding-bottom: 0;
 }
 
@@ -323,39 +354,39 @@ img {
 #cards li {
     background: var(--lightGray);
     color: var(--darkGray);
-    border-radius: .1rem;
-    margin-bottom: 1rem;
+    border-radius: .1em;
+    margin-bottom: 1em;
 }
 
 .cards-content {
-    padding: .8rem;
+    padding: .8em;
     color: var(--darkGray);
-    font-size: .87rem;
+    font-size: .87em;
 }
 
 /* -- Content -- */
 
 .content {
-    padding: .8rem;
+    padding: .8em;
     color: var(--darkGray);
-    font-size: .95rem;
+    font-size: .95em;
 }
 
 .content h2,
 .content h3 {
     color: var(--darkGray);
-    font-size: 1.37rem;
+    font-size: 1.37em;
     font-family: var(--headerFont);
 }
 
 .content p {
-    padding: .4rem;
+    padding: .4em;
     color: var(--darkGray);
     text-align: left;
 }
 
 .content p::first-letter {
-    margin-left: 1rem;
+    margin-left: 1em;
 }
 
 /* -- Recipes -- */
@@ -363,20 +394,20 @@ img {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    padding: .31rem 0 .6rem 0;
+    padding: .31em 0 .6em 0;
 }
 
 .recipes > div {
     flex-basis: 40%;
-    min-width: 17.5rem;
-    border-radius: .2rem;
-    margin: .6rem .31rem 0 .31rem;
-    border: solid .1rem #e0e0cc;
+    min-width: 17.5em;
+    border-radius: .2em;
+    margin: .6em .31em 0 .31em;
+    border: solid .1em #e0e0cc;
     background: #fff;
 }
 
 .recipes img {
-    border-bottom: solid .2rem #e0e0cc;
+    border-bottom: solid .2em #e0e0cc;
 }
 
 .recipes > div > a > img:hover {
@@ -386,35 +417,35 @@ img {
 .category {
     color: #fff;
     display: inline-block;
-    line-height: .93rem;
-    font-size: .7rem;
+    line-height: .93em;
+    font-size: .7em;
     background: #555;
     border: solid 1px #bebebe;
-    padding: .1rem .4rem;
-    margin-top: .6rem;
-    border-radius: .6rem;
+    padding: .1em .4em;
+    margin-top: .6em;
+    border-radius: .6em;
 }
 
 .date {
     color: #555;
     font-weight: bold;
-    font-size: .7rem;
-    margin: .5rem auto;
-    line-height: 0.2rem;
+    font-size: .7em;
+    margin: .5em auto;
+    line-height: 0.2em;
 }
 
 
 .add-material {
-	width: 5rem;
-	height: 5rem;
+	width: 5em;
+	height: 5em;
     position: fixed;
     top: 70vh;
-    right: 2rem;
-    font-size: 5.1rem!important;
+    right: 2em;
+    font-size: 5.1em!important;
     background: #eee;
     color: var(--main);
     border-radius: 100%;
-    box-shadow: 0 .12rem .31rem .12rem var(--darkGray);
+    box-shadow: 0 .12em .31em .12em var(--darkGray);
     cursor: pointer;
     transition: all 80ms linear;
     z-index: 5;
@@ -426,12 +457,12 @@ img {
 
 /* -- Steps -- */
 .adding-steps {
-    margin: .5rem;
+    margin: .5em;
 }
 
 .adding-steps i {
-    margin: 0 1rem;
-    font-size: 1.3rem;
+    margin: 0 1em;
+    font-size: 1.3em;
 }
 
 .done-step {
@@ -442,7 +473,7 @@ img {
 
 .grid-recipe {
     color: var(--darkGray);
-    padding: 4.37rem .6rem .93rem .6rem;
+    padding: 4.37em .6em .93em .6em;
     background: var(--paper);
 }
 
@@ -451,67 +482,67 @@ img {
 }
 
 .grid-recipe p {
-    margin: 1.12rem .31rem;
+    margin: 1.12em .31em;
 }
 
 .recipe-img {
     width: 80%;
-    margin: .6rem 10%;
-    border-radius: .18rem;
+    margin: .6em 10%;
+    border-radius: .18em;
 }
 
 .items {
-    width: 14.37rem;
-    padding: .6rem 2.5rem;
+    width: 14.37em;
+    padding: .6em 2.5em;
     margin: 0 auto;
     text-align: left;
 }
 
 .items h3 {
     text-align: center;
-    margin-bottom: .6rem;
+    margin-bottom: .6em;
     color: #3a3a3a;
 }
 
 .items > ul > li {
     list-style-image: url('../img/tick.png');
-    margin: .18rem;
-    font-size: 1rem;
+    margin: .18em;
+    font-size: 1em;
 }
 
 .instruction {
-    margin: 1.3rem 2.18rem;
+    margin: 1.3em 2.18em;
     text-align: left;
-    padding-bottom: 1rem;
+    padding-bottom: 1em;
 }
 
 .instruction li {
-    min-height: 3.5rem;
-    margin-top: .93rem;
+    min-height: 3.5em;
+    margin-top: .93em;
     list-style: none;
-    counter-increment: item;
+    counter-incement: item;
     position: relative;
-    left: 1.85rem;
-    border-left: solid .06rem var(--main);
-    padding: 0 .93rem 0 .93rem;
+    left: 1.85em;
+    border-left: solid .06em var(--main);
+    padding: 0 .93em 0 .93em;
 }
 
 .instruction li:before {
     color: var(--main);
     content: counter(item);
-    font-size: 2.5rem;
+    font-size: 2.5em;
     position: absolute;
-    left: -2.5rem;
+    left: -2.5em;
 }
 
 .side-bar {
     width: 70%;
-    padding: 1.85rem 15% 1.25rem 15%;
+    padding: 1.85em 15% 1.25em 15%;
     border-top: solid 1px #999;
 }
 
 .side-bar img {
-    border-radius: .18rem;
+    border-radius: .18em;
 }
 
 .side-bar img:hover {
@@ -521,11 +552,11 @@ img {
 .side-bar li {
     margin: 1 auto;
     list-style: none;
-    padding-bottom: .6rem;
+    padding-bottom: .6em;
 }
 
 .like-icon {
-    font-size: 1.5rem!important;
+    font-size: 1.5em!important;
     color: brown;
     cursor: pointer;
 }
@@ -533,11 +564,11 @@ img {
 /* -- Profile-menu-line -- */
 .profile-menu-line {
     width: 98%;
-    height: 1.4rem;
-    padding: 0 1% 1rem .3%;
+    height: 1.4em;
+    padding: 0 1% 1em .3%;
     text-align: center;
     border-bottom: solid 1px var(--darkGray);
-    margin-bottom: 1rem;
+    margin-bottom: 1em;
 }
 
 .profile-menu-line ul {
@@ -546,22 +577,22 @@ img {
 
 .profile-menu-line a {
     width: 20%;
-    height: 1.7rem;
-    padding-bottom: .6rem;
+    height: 1.7em;
+    padding-bottom: .6em;
     display: block;
     float: left;
     color: var(--darkGray);
-    font-size: 1.3rem;
+    font-size: 1.3em;
 }
 
 .profile-menu-line a:hover {
     background: #e6e6e6;
-    border-radius: .2rem;
+    border-radius: .2em;
 }
 
 /* --- Footer --- */
 footer {
-    padding: .75rem;
+    padding: .75em;
     color: #fff;
     background: var(--darkGray);
     text-align: center;
@@ -586,12 +617,12 @@ footer {
 
 footer h3{
     color: var(--gray);
-    font-size: 1.06rem;
+    font-size: 1.06em;
 }
 
 footer li {
     list-style: none;
-    padding: .18rem;
+    padding: .18em;
 }
 
 footer a {
@@ -603,12 +634,12 @@ footer a:hover {
 }
 
 .footer-col {
-    padding: .93rem;
+    padding: .93em;
 }
 
 .copyright {
-    margin-top: 1.85rem;
-    font-size: .75rem;
+    margin-top: 1.85em;
+    font-size: .75em;
     font-weight: 100;
     color: var(--gray);
 }

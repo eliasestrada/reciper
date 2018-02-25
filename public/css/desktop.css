@@ -125,12 +125,10 @@ body {
 }
 
 /* -- Contact form -- */
-.form input {
-    width: 23rem;
-}
-
-.form textarea {
-    width: 23rem;
+.form-group {
+    width: 50%;
+    text-align: left;
+    margin: 0 25% .4em 25%;
 }
 
 @media (min-width: 1900px) {

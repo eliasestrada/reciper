@@ -32,7 +32,7 @@
         {{ Form::number('время', '0') }}
 
         {{ Form::file('изображение') }}
-        {{ Form::submit('Сохранить', ['class' => 'button']) }}
+        {{ Form::submit('Сохранить') }}
     {!! Form::close() !!}
 
 @endsection

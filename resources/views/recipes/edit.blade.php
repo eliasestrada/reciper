@@ -40,7 +40,7 @@
         {{ Form::file('изображение', ['class' => "upload-image-form"]) }}
 
         {{ Form::hidden('_method', 'PUT') }}
-        {{ Form::submit('Сохранить', ['class' => 'button']) }}
+        {{ Form::submit('Сохранить') }}
     {!! Form::close() !!}
 
 @endsection
