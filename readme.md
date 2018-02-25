@@ -1,6 +1,6 @@
-<p<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
-#<p align="center">Laravel is beautiful</p>
+<h1 align="center">Laravel is beautiful</h1>
 
 <p align="center">
 	
