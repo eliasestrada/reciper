@@ -19,7 +19,7 @@
                 <h3>Рецепты</h3>
             </div>
             <div class="dashboard-cards-rows">
-                <h3>15</h3>
+                <h3>{{ $allrecipes }}</h3>
             </div>
             <div class="dashboard-cards-rows">
                 <a href="" title="" class="dashboard-btn">Показать</a>

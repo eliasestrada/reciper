@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -21,7 +22,10 @@ class DashboardController extends Controller
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
 
-        return view('dashboard')->withRecipes($user->recipes);
+        // Count recipes and visits
+        $allrecipes = DB::table('recipes')->count();
 
+        return view('dashboard')->withRecipes($user->recipes)
+                                ->withAllrecipes($allrecipes);
     }
 }
