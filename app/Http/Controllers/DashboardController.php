@@ -14,13 +14,14 @@ class DashboardController extends Controller
         $this->middleware('auth');
     }
 
-
+    // INDEX
     // Show the application dashboard.
     public function index()
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        return view('dashboard')->with('recipes', $user->recipes);
+
+        return view('dashboard')->withRecipes($user->recipes);
 
     }
 }

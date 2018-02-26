@@ -136,8 +136,8 @@ class RecipesController extends Controller
         $categories = DB::table('categories')->get();
 
         return view('recipes.edit')
-                            ->with('recipe', $recipe)
-                            ->with('categories', $categories);
+                            ->withRecipe($recipe)
+                            ->withCategories($categories);
         
     }
 

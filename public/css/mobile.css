@@ -522,7 +522,7 @@ img {
 .items > ul > li {
     list-style-image: url('../storage/other/tick.png');
     margin: .18em;
-    font-size: 1em;
+    font-size: 1em; 
 }
 
 .instruction {
@@ -628,36 +628,49 @@ img {
     font-size: .9em;
 }
 
-/* -- Profile-menu-line -- */
-
-.profile-menu-line {
-    width: 98%;
-    height: 1.4em;
-    padding: 0 1% 1em .3%;
-    text-align: center;
-    border-bottom: solid 1px var(--darkGray);
-    margin-bottom: 1em;
+/* -- Dashboard Cards -- */
+.dashboard-cards {
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+    flex-flow: wrap;
 }
 
-.profile-menu-line ul {
-    list-style: none;
+.dashboard-cards > div {
+    width: 9em;
+    min-height: 13rem;
+    margin: .3em .3em;
+    padding: 2em;
+    border: solid 1px;
+    border-radius: 3px;
+    background-position: center;
 }
 
-.profile-menu-line a {
-    width: 20%;
-    height: 1.7em;
-    padding-bottom: .6em;
-    display: block;
-    float: left;
-    color: var(--darkGray);
-    font-size: 1.3em;
+.dashboard-cards > div h3 {
+    font-weight: bold;
+    font-family: var(--headerFont);
+    font-size: 1.7em;
 }
 
-.profile-menu-line a:hover {
-    background: #e6e6e6;
-    border-radius: .2em;
+.dashboard-cards-rows {
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.dashboard-btn {
+    padding: .3em 1.5em;
+    background: var(--main);
+    border-radius: 3px;
+    color: #fff;
+}
+
+.dashboard-btn:hover {
+    background: var(--mainHover);
+}
 /* --- Footer --- */
 
 footer {
