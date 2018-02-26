@@ -21,9 +21,6 @@
             <div class="dashboard-cards-rows">
                 <h3>{{ $allrecipes }}</h3>
             </div>
-            <div class="dashboard-cards-rows">
-                <a href="" title="" class="dashboard-btn">Показать</a>
-            </div>
         </div>
         <div style="background: url('{{ asset('storage/other/people.jpg') }}');">
             <div class="dashboard-cards-rows">
@@ -33,10 +30,18 @@
                 <h3>Посетители</h3>
             </div>
             <div class="dashboard-cards-rows">
-                <h3>1250</h3>
+                <h3>{{ $allvisits }}</h3>
+            </div>
+        </div>
+        <div style="background: url('{{ asset('storage/other/people.jpg') }}');">
+            <div class="dashboard-cards-rows">
+                <i class="fa fa-mouse-pointer" style="font-size: 2.5em;"></i>
             </div>
             <div class="dashboard-cards-rows">
-                <a href="" title="" class="dashboard-btn">Показать</a>
+                <h3>Клики</h3>
+            </div>
+            <div class="dashboard-cards-rows">
+                <h3>{{ $allclicks }}</h3>
             </div>
         </div>
     </div>

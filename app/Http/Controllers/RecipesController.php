@@ -106,11 +106,10 @@ class RecipesController extends Controller
             return redirect('/recipes');
         }
 
-        // TODO: Make it more cleaner.
-        // FIXME: Too much if statements
+        // FIXME: Make it more cleaner. Too much if statements
         if (empty(auth()->user()->id) && $recipe->approved == 0) {
             return redirect('/recipes');
-        } elseif (auth()->user()->id != $recipe->user_id) {
+        } elseif (auth()->user()->id != $recipe->user_id && $recipe->approved == 0) {
             return redirect('/recipes');
         }
 

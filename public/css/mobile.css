@@ -639,38 +639,27 @@ img {
 }
 
 .dashboard-cards > div {
-    width: 9em;
-    min-height: 13rem;
+    width: 8em;
+    min-height: 10rem;
     margin: .3em .3em;
     padding: 2em;
     border: solid 1px;
     border-radius: 3px;
-    background-position: center;
 }
 
 .dashboard-cards > div h3 {
     font-weight: bold;
     font-family: var(--headerFont);
-    font-size: 1.7em;
+    font-size: 1.8em;
 }
 
 .dashboard-cards-rows {
-    height: 25%;
+    height: 33.2%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.dashboard-btn {
-    padding: .3em 1.5em;
-    background: var(--main);
-    border-radius: 3px;
-    color: #fff;
-}
-
-.dashboard-btn:hover {
-    background: var(--mainHover);
-}
 /* --- Footer --- */
 
 footer {

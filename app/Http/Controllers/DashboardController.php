@@ -24,8 +24,13 @@ class DashboardController extends Controller
 
         // Count recipes and visits
         $allrecipes = DB::table('recipes')->count();
+        $allvisits = DB::table('visitor_registry')->count();
+        $allclicks = DB::table('visitor_registry')->sum('clicks');
 
-        return view('dashboard')->withRecipes($user->recipes)
-                                ->withAllrecipes($allrecipes);
+        return view('dashboard')
+                ->withRecipes($user->recipes)
+                ->withAllrecipes($allrecipes)
+                ->withAllvisits($allvisits)
+                ->withAllclicks($allclicks);
     }
 }
