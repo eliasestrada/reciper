@@ -5,7 +5,23 @@
 <div class="wrapper">
     {!! Form::open(['action' => ['RecipesController@update', $recipe->id], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
 
-        <h1>Редактирование рецепта</h1>
+        <div class="recipe-buttons">
+            {{--  Save button  --}}
+            {{ Form::submit('&#xf0c7;', ['class' => "fa"]) }}
+
+            {{--  View button  --}}
+            <a href="{{ url('/recipes/'.$recipe->id) }}"><i class="fa">&#xf06e;</i></a>
+        </div>
+
+
+        <div class="check-box-ready">
+            <div class="check-box-ready-wrap">
+                {{ Form::checkbox('ready', 1, null) }}
+                <p>Готово к публикации</p>
+            </div>
+        </div>
+
+        <h2>Добавление рецепта</h2>
 
         <div class="form-group">
             {{ Form::label('название', 'Название') }}
@@ -60,13 +76,8 @@
 
         <div class="form-group">
             {{ Form::file('изображение', ['class' => "upload-image-form"]) }}
-        </div>
-
-        <div class="form-group">
             {{ Form::hidden('_method', 'PUT') }}
-            {{ Form::submit('Сохранить') }}
         </div>
-
     {!! Form::close() !!}
 </div>
 

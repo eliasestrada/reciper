@@ -6,6 +6,10 @@
 
     {!! Form::open(['action' => 'RecipesController@store', 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
 
+        <div class="recipe-buttons">
+            {{ Form::submit('&#xf0c7;', ['class' => "fa"]) }}
+        </div>
+
         <h2>Добавление рецепта</h2>
 
         <div class="form-group">
@@ -53,11 +57,6 @@
         <div class="form-group">
             {{ Form::file('изображение') }}
         </div>
-
-        <div class="form-group">
-            {{ Form::submit('Сохранить') }}
-        </div>
-
     {!! Form::close() !!}
 </div>
 

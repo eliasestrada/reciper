@@ -13,14 +13,18 @@
             </div>
 
             @auth
-            @if (Auth::user()->id == $recipe->user_id)
-                <a href="{{ url('/recipes/'.$recipe->id.'/edit') }}" title="Редактировать рецепт" class="button">Редактировать</a>
+                @if (Auth::user()->id == $recipe->user_id)
+                    <div class="recipe-buttons">
+                        {{--  Edit button  --}}
+                        <a href="{{ url('/recipes/'.$recipe->id.'/edit') }}" title="Редактировать рецепт" class="fa">&#xf040;</a>
 
-                {!! Form::open(['action' => ['RecipesController@destroy', $recipe->id], 'method' => 'post']) !!}
-                    {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Удалить', ['class' => 'button', 'style' => 'background: brown;']) }}
-                {!! Form::close() !!}
-            @endif
+                        {{--  Delete button  --}}
+                        {!! Form::open(['action' => ['RecipesController@destroy', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
+                            {{ Form::hidden('_method', 'DELETE') }}
+                            {{ Form::submit('&#xf014;', ['class' => 'fa', 'style' => 'background: brown;']) }}
+                        {!! Form::close() !!}
+                    </div>
+                @endif
             @endauth
             
             <h1>{{ $recipe->title }}</h1>
