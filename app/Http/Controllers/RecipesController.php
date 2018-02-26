@@ -82,7 +82,6 @@ class RecipesController extends Controller
 
 
     // Display the specified resource.
-    // TODO: Make it more cleaner.
     public function show($id)
     {
         $recipe = Recipe::find($id);
@@ -91,9 +90,17 @@ class RecipesController extends Controller
             return redirect('/recipes');
         }
 
-        $recipe = Recipe::find($id)->where('approved', 1)->first();
+        $recipe = Recipe::find($id)->first();
 
         if (!$recipe) {
+            return redirect('/recipes');
+        }
+
+        // TODO: Make it more cleaner.
+        // FIXME: Too much if statements
+        if (empty(auth()->user()->id) && $recipe->approved == 0) {
+            return redirect('/recipes');
+        } elseif (auth()->user()->id != $recipe->user_id) {
             return redirect('/recipes');
         }
 
