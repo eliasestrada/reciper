@@ -13,11 +13,24 @@
     src: url(../storage/fonts/greatvibes.ttf);
 }
 
-@keyframes shake{
-    10%, 90% { font-size:100%; }
-    20%, 80% { font-size:110%; }
-    30%, 50%, 70% { font-size:120%; }
-    40%, 60% { font-size:130%; }
+@keyframes shake {
+    10%,
+    90% {
+        font-size: 100%;
+    }
+    20%,
+    80% {
+        font-size: 110%;
+    }
+    30%,
+    50%,
+    70% {
+        font-size: 120%;
+    }
+    40%,
+    60% {
+        font-size: 130%;
+    }
 }
 
 :root {
@@ -34,30 +47,45 @@
 }
 
 /* -- Reset -- */
-* { margin: 0; padding: 0; }
 
-a { text-decoration: none; color: var(--main);}
+* {
+    margin: 0;
+    padding: 0;
+}
 
-textarea, form {
+a {
+    text-decoration: none;
+    color: var(--main);
+}
+
+textarea,
+form {
     width: 100%;
     box-sizing: border-box;
 }
 
-button { cursor: pointer; }
+button {
+    cursor: pointer;
+}
 
-html, body {
+html,
+body {
     height: 100%;
-	-ms-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
 
-button, input, select, textarea {
-	font-family: Arial, Helvetica, sans-serif;
+button,
+input,
+select,
+textarea {
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 100%;
     box-sizing: border-box;
 }
 
 /* -- Code -- */
+
 body {
     margin: 0;
     font-family: var(--mainFont);
@@ -77,12 +105,17 @@ img {
 
 .message {
     width: 80%;
-    padding: 4.3em 10% 0 10%;
-    margin-bottom: -3em;
-    color: #000;
+    height: auto;
+    padding: 4em 10% 0 10%;
+    margin-bottom: -3.3em;
+    color: #fff;
+    font-weight: bold;
     text-align: center;
-    font-size: .9em;
     background: var(--paper);
+}
+
+.message li {
+    list-style: none;
 }
 
 .error {
@@ -90,10 +123,11 @@ img {
 }
 
 .success {
-    color: #1a7930;
+    color: #145323;
 }
 
 /* --- wrapper --- */
+
 .wrapper {
     min-height: 20em;
     color: var(--darkGray);
@@ -112,6 +146,7 @@ img {
 }
 
 /* -- Navigation menu -- */
+
 #nav-menu {
     position: fixed;
     background: var(--main);
@@ -172,7 +207,7 @@ img {
 }
 
 #nav-menu li:hover {
-    background:var(--mainHover);
+    background: var(--mainHover);
 }
 
 #nav-menu a {
@@ -191,7 +226,7 @@ img {
 }
 
 .regular-menu {
-	width: 100%;
+    width: 100%;
     left: 0;
     top: 0;
     border-radius: 0;
@@ -201,21 +236,22 @@ img {
 }
 
 #menu-container {
-	height: 2em;
-	position: fixed;
-	background: var(--main);
-	font-size: 1.6em;
-	line-height: 2em;
-	z-index: 3;
-	transition: all 200ms linear;
-	-webkit-user-select: none;
-	-moz-user-select: none; 
-	-ms-user-select: none;
-	user-select: none;
+    height: 2em;
+    position: fixed;
+    background: var(--main);
+    font-size: 1.6em;
+    line-height: 2em;
+    z-index: 3;
+    transition: all 200ms linear;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     opacity: 0.9;
 }
 
 /* -- Header -- */
+
 .header {
     min-height: 30em;
     color: #fff;
@@ -250,6 +286,7 @@ img {
 }
 
 /* -- Form -- */
+
 .form-group {
     width: 100%;
     text-align: left;
@@ -332,9 +369,8 @@ img {
     background: var(--mainHover);
 }
 
-
-
 /* --- Cards --- */
+
 #cards {
     padding: 1em;
     padding-bottom: 0;
@@ -385,6 +421,7 @@ img {
 }
 
 /* -- Recipes -- */
+
 .recipes {
     display: flex;
     flex-flow: row wrap;
@@ -392,7 +429,7 @@ img {
     padding: .31em 0 .6em 0;
 }
 
-.recipes > div {
+.recipes>div {
     flex-basis: 40%;
     min-width: 17.5em;
     border-radius: .2em;
@@ -405,7 +442,7 @@ img {
     border-bottom: solid .2em #e0e0cc;
 }
 
-.recipes > div > a > img:hover {
+.recipes>div>a>img:hover {
     opacity: 0.8;
 }
 
@@ -430,8 +467,8 @@ img {
 }
 
 .add-material {
-	width: .97em;
-	height: .97em;
+    width: .97em;
+    height: .97em;
     position: fixed;
     top: 70vh;
     right: 2em;
@@ -450,6 +487,7 @@ img {
 }
 
 /* -- Steps -- */
+
 .adding-steps {
     margin: .5em;
 }
@@ -498,7 +536,7 @@ img {
     color: #3a3a3a;
 }
 
-.items > ul > li {
+.items>ul>li {
     list-style-image: url('../storage/other/tick.png');
     margin: .18em;
     font-size: 1em;
@@ -550,12 +588,13 @@ img {
 }
 
 .like-icon {
-    font-size: 1.5em!important;
+    font-size: 1.5em !important;
     color: brown;
     cursor: pointer;
 }
 
 /* -- Edit recipe -- */
+
 .recipe-buttons {
     width: auto;
     grid-area: edit-recipe-buttons;
@@ -607,6 +646,7 @@ img {
 }
 
 /* -- Profile-menu-line -- */
+
 .profile-menu-line {
     width: 98%;
     height: 1.4em;
@@ -636,6 +676,7 @@ img {
 }
 
 /* --- Footer --- */
+
 footer {
     padding: .75em;
     color: #fff;
@@ -643,9 +684,7 @@ footer {
     text-align: center;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-    "column-a column-b"
-    "column-c column-c";
+    grid-template-areas: "column-a column-b" "column-c column-c";
 }
 
 #column-a {
@@ -660,7 +699,7 @@ footer {
     grid-area: column-c;
 }
 
-footer h3{
+footer h3 {
     color: var(--gray);
     font-size: 1.06em;
 }

@@ -19,9 +19,8 @@ class RecipesController extends Controller
     // Display a listing of the resource.
     public function index()
     {
-        $recipes = Recipe::where('approved', 1)
-                        ->latest()
-                        ->paginate(30);
+        $recipes = Recipe::where('approved', 1)->latest()->paginate(30);
+
         return view('recipes.index')->with('recipes', $recipes);
     }
 
@@ -51,15 +50,26 @@ class RecipesController extends Controller
 
         // Handle file uploading
         if ($request->hasFile('изображение')) {
+
             // Get filename
-            $filenameWithExt = $request->file('изображение')->getClientOriginalName();
+            $filenameWithExt = $request
+                    ->file('изображение')
+                    ->getClientOriginalName();
+
             // Get filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
             // Get extention
-            $extension = $request->file('изображение')->getClientOriginalExtension();
-            $fileNameToStore = 'recipe-by-' . auth()->user()->id . '.' . $extension;
+            $extension = $request
+                    ->file('изображение')
+                    ->getClientOriginalExtension();
+
+            $fileNameToStore = 'recipe-by-' . auth()
+                    ->user()->id . '.' . $extension;
+
             // Upload
-            $path = $request->file('изображение')->storeAs('public/images', $fileNameToStore);
+            $path = $request->file('изображение')
+                    ->storeAs('public/images', $fileNameToStore);
         } else {
             $fileNameToStore = 'default.jpg';
         }
@@ -131,31 +141,59 @@ class RecipesController extends Controller
     // Update the specified resource in storage.
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'название' => 'max:199',
-            'описание' => 'max:2000',
-            'ингридиенты' => 'max:5000',
-            'совет' => 'max:5000',
-            'приготовление' => 'max:10000',
-            'время' => 'numeric|digits_between:0,1000',
-            'изображение' => 'image|nullable|max:1999'
-        ]);
+
+        // If ready to publish
+        if (isset($request->ready)) {
+            $this->validate($request, [
+                'название' => 'min:5|max:199',
+                'описание' => 'min:20|max:2000',
+                'ингридиенты' => 'min:20|max:5000',
+                'совет' => 'max:5000',
+                'приготовление' => 'min:100|max:10000',
+                'время' => 'numeric|digits_between:0,1000',
+                'изображение' => 'image|nullable|max:1999'
+            ]);
+        } else {
+            $this->validate($request, [
+                'название' => 'max:199',
+                'описание' => 'max:2000',
+                'ингридиенты' => 'max:5000',
+                'совет' => 'max:5000',
+                'приготовление' => 'max:10000',
+                'время' => 'numeric|digits_between:0,1000',
+                'изображение' => 'image|nullable|max:1999'
+            ]);
+        }
 
         // Handle file uploading
         if ($request->hasFile('изображение')) {
+
             // Get filename
-            $filenameWithExt = $request->file('изображение')->getClientOriginalName();
+            $filenameWithExt = $request
+                    ->file('изображение')
+                    ->getClientOriginalName();
+
             // Get filename
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+
             // Get extention
-            $extension = $request->file('изображение')->getClientOriginalExtension();
-            $fileNameToStore = 'recipe-by-' . auth()->user()->id . '.' . $extension;
+            $extension = $request
+                    ->file('изображение')
+                    ->getClientOriginalExtension();
+
+            $fileNameToStore = 'recipe-by-' . auth()
+                    ->user()->id . '.' . $extension;
+
             // Upload
-            $path = $request->file('изображение')->storeAs('public/images', $fileNameToStore);
+            $path = $request
+                    ->file('изображение')
+                    ->storeAs('public/images', $fileNameToStore);
         }
 
         // Create Recipe in DB
         $recipe = Recipe::find($id);
+
+        $recipe->ready = isset($request->ready) ? 1 : 0;
         $recipe->title = $request->input('название');
         $recipe->intro = $request->input('описание');
         $recipe->ingredients = $request->input('ингридиенты');
@@ -167,9 +205,11 @@ class RecipesController extends Controller
         if ($request->hasFile('изображение')) {
             $recipe->image = $fileNameToStore;
         }
+
         $recipe->save();
 
-        return redirect()->back()->with('success', 'Рецепт успешно сохранен');
+        return redirect()->back()
+                ->with('success', 'Рецепт успешно сохранен');
     }
 
 
@@ -181,7 +221,8 @@ class RecipesController extends Controller
 
         // Check for correct user
         if (auth()->user()->id !== $recipe->user_id) {
-            return redirect('/recipes')->with('error', 'Вы не можете редактировать не свои рецепты.');
+            return redirect('/recipes')
+                    ->with('error', 'Вы не можете редактировать не свои рецепты.');
         }
 
         if ($recipe->image != 'default.jpg') {
@@ -189,6 +230,7 @@ class RecipesController extends Controller
         }
 
         $recipe->delete();
-        return redirect('/dashboard')->with('success', 'Рецепт успешно удален');
+        return redirect('/dashboard')
+                ->with('success', 'Рецепт успешно удален');
     }
 }

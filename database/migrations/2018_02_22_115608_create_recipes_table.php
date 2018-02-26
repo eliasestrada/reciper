@@ -20,6 +20,7 @@ class CreateRecipesTable extends Migration
             $table->string('category')->default('Разное');
             $table->bigInteger('views')->default(0);
             $table->bigInteger('likes')->default(0);
+            $table->bigInteger('ready')->default(0);
             $table->boolean('approved')->default(0);
             $table->timestamps();
         });
