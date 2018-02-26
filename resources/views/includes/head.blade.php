@@ -10,6 +10,7 @@
 
 <!-- Links -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
 
 <!-- Other -->
 <title>{{ config('app.name', 'Delicious Food') }}</title>
