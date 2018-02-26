@@ -114,9 +114,7 @@ img {
     background: var(--paper);
 }
 
-.message li {
-    list-style: none;
-}
+.message li { list-style: none; }
 
 .error {
     color: brown;
@@ -486,21 +484,6 @@ img {
     color: var(--mainHover);
 }
 
-/* -- Steps -- */
-
-.adding-steps {
-    margin: .5em;
-}
-
-.adding-steps i {
-    margin: 0 1em;
-    font-size: 1.3em;
-}
-
-.done-step {
-    color: var(--main);
-}
-
 /* -- Recipe -- */
 
 .grid-recipe {
@@ -524,7 +507,7 @@ img {
 }
 
 .items {
-    width: 14.37em;
+    width: 18em;
     padding: .6em 2.5em;
     margin: 0 auto;
     text-align: left;
@@ -536,7 +519,7 @@ img {
     color: #3a3a3a;
 }
 
-.items>ul>li {
+.items > ul > li {
     list-style-image: url('../storage/other/tick.png');
     margin: .18em;
     font-size: 1em;
@@ -554,17 +537,17 @@ img {
     list-style: none;
     counter-increment: item;
     position: relative;
-    left: 2em;
+    left: 2.5em;
     border-left: solid .06em var(--main);
-    padding: 0 .93em 0 .93em;
+    padding: 0 .93em;
 }
 
 .instruction li:before {
     color: var(--main);
     content: counter(item);
-    font-size: 3em;
+    font-size: 2em;
     position: absolute;
-    left: -1em;
+    left: -1.6em;
 }
 
 .side-bar {

@@ -13,9 +13,7 @@ body {
     border-radius: 0 0 .3rem .3rem;
 }
 
-.wrapper {
-    padding-top: .8rem;
-}
+.wrapper { padding-top: .8rem; }
 
 .message {
     width: 80%;
@@ -24,9 +22,7 @@ body {
 }
 
 /* -- Cards -- */
-#cards {
-    padding: .7rem;
-}
+#cards { padding: .7rem; }
 
 #cards ul {
     display: flex;

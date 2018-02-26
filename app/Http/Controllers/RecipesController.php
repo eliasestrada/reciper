@@ -15,7 +15,7 @@ class RecipesController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-
+    // INDEX
     // Display a listing of the resource.
     public function index()
     {
@@ -34,7 +34,7 @@ class RecipesController extends Controller
         return view('recipes.create')->with('categories', $categories);
     }
 
-
+    // STORE
     // Store a newly created resource in storage.
     public function store(Request $request)
     {
@@ -90,7 +90,7 @@ class RecipesController extends Controller
         return redirect('/recipes/'.$recipe->id.'/edit')->with('success', 'Рецепт успешно сохранен');
     }
 
-
+    // SHOW
     // Display the specified resource.
     public function show($id)
     {
@@ -117,7 +117,7 @@ class RecipesController extends Controller
         return view('recipes.show')->with('recipe', $recipe);
     }
 
-
+    // EDIT
     // Show the form for editing the specified resource.
     public function edit($id)
     {
@@ -126,6 +126,10 @@ class RecipesController extends Controller
         // Check for correct user
         if (auth()->user()->id !== $recipe->user_id) {
             return redirect('/recipes')->with('error', 'Вы не можете редактировать не свои рецепты.');
+        }
+
+        if ($recipe->ready == 1) {
+            return redirect('/recipes')->with('error', 'Вы не можете редактировать рецепты которые находятся на рассмотрении.');
         }
 
         // For select input
@@ -137,7 +141,7 @@ class RecipesController extends Controller
         
     }
 
-
+    // UPDATE
     // Update the specified resource in storage.
     public function update(Request $request, $id)
     {
@@ -208,12 +212,13 @@ class RecipesController extends Controller
 
         $recipe->save();
 
-        return redirect()->back()
-                ->with('success', 'Рецепт успешно сохранен');
+        return $recipe->ready == 1
+                ? redirect()->back()->with('success', 'Рецепт успешно сохранен')
+                : redirect('/dashboard')->with('success', 'Рецепт добавлен на рассмотрение и будет опубликован после одобрения администрации.');
     }
 
 
-
+    // DESTROY
     // Remove the specified resource from storage.
     public function destroy($id)
     {

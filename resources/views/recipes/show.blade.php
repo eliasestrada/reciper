@@ -13,7 +13,7 @@
             </div>
 
             @auth
-                @if (Auth::user()->id == $recipe->user_id)
+                @if (Auth::user()->id == $recipe->user_id && $recipe->ready == 0)
                     <div class="recipe-buttons">
                         {{--  Edit button  --}}
                         <a href="{{ url('/recipes/'.$recipe->id.'/edit') }}" title="Редактировать рецепт" class="fa">&#xf040;</a>
