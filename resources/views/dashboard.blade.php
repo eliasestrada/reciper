@@ -4,11 +4,10 @@
 
 <div class="wrapper">
     <div class="content">
-        <h2>Панель управления</h2>
-        <h3>{{ Auth::user()->name }}</h3>
+        <h2>{{ Auth::user()->name }}</h2>
     </div>
 
-    <a href="{{ url('/recipes/create') }}" title="Добавить рецепт" class="button">Добавить рецепт</a>
+    <a href="/recipes/create" title="Добавить рецепт" class="button">Добавить рецепт</a>
 
     <div class="dashboard-cards">
         <div style="background: url('{{ asset('storage/other/food.jpg') }}');">
@@ -58,7 +57,7 @@
                     <p class="content">{{ $recipe->title }}</p>
                 </td>
                 <td>
-                    <a href="{{ url('/recipes/'.$recipe->id.'/edit') }}">Изменить</a>
+                    <a href="/recipes/{{ $recipe->id }}/edit">Изменить</a>
                 </td>
                 <td>
                     {!! Form::open(['action' => ['RecipesController@destroy', $recipe->id], 'method' => 'post']) !!}

@@ -7,7 +7,7 @@
         <div class="card-content">
             <h1>{{ $title }}</h1>
             <p>Lorem ipsm, dolor sit amet consectetur adipisicing elit. Adipisci eum error earum soluta voluptatum nisi laboriosam eos saepe asperiores dolorum.</p>
-            <a href="{{ url('/search') }}" class="button">Искать</a>
+            <a href="/search" class="button">Искать</a>
         </div>
     </header>
 

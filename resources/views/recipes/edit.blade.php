@@ -10,7 +10,7 @@
             {{ Form::submit('&#xf0c7;', ['class' => "fa"]) }}
 
             {{--  View button  --}}
-            <a href="{{ url('/recipes/'.$recipe->id) }}"><i class="fa">&#xf06e;</i></a>
+            <a href="/recipes/{{ $recipe->id }}"><i class="fa">&#xf06e;</i></a>
         </div>
 
 
@@ -25,34 +25,31 @@
 
         <div class="form-group">
             {{ Form::label('название', 'Название') }}
-            {{ Form::text('название', $recipe->title, ['placeholder' => 'Название']) }}
+            {{ Form::text('название', $recipe->title, ['placeholder' => 'Название рецепта']) }}
         </div>
 
         <div class="form-group">
             {{ Form::label('описание', 'Описание') }}
-            {{ Form::textarea('описание', $recipe->intro, ['placeholder' => 'Описание']) }}
+            {{ Form::textarea('описание', $recipe->intro, ['placeholder' => 'Краткое описание рецепта']) }}
         </div>
 
         <div class="form-group">
             {{ Form::label('ингридиенты', 'Ингридиенты') }}
-            {{ Form::textarea('ингридиенты', $recipe->ingredients, ['placeholder' => 'Ингридиенты']) }}
+            {{ Form::textarea('ингридиенты', $recipe->ingredients, ['placeholder' => 'Все ингридиенты рецепта. После каждого ингридиента нажимайте кнопку Ввод (Enter) чтобы разделить их на строки.']) }}
         </div>
 
         <div class="form-group">
             {{ Form::label('совет', 'Совет') }}
-            {{ Form::textarea('совет', $recipe->advice, ['placeholder' => 'Совет']) }}
+            {{ Form::textarea('совет', $recipe->advice, ['placeholder' => 'Это поле не обязательно к заполнению, если у вас есть просьба или совет который может помочь в приготовлении блюда пишите его сюда.']) }}
         </div>
 
         <div class="form-group">
             {{ Form::label('приготовление', 'Приготовление') }}
-            {{ Form::textarea('приготовление', $recipe->text, ['placeholder' => 'Приготовление']) }}
+            {{ Form::textarea('приготовление', $recipe->text, ['placeholder' => 'Опишите процесс приготовления по пунктам используя Ввод (Enter) для отделения пунктов друг от друга.']) }}
         </div>
 
         <div class="form-group">
             {{ Form::label('категория', 'Категория') }}
-        </div>
-
-        <div class="form-group">
             <select name="категория">
                 @foreach ($categories as $category)
                     <option selected value="{{ $category->category }}">{{ $category->category }}</option>

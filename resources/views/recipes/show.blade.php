@@ -8,15 +8,14 @@
 
             <!-- Лайки -->
             <div style="font-weight:bold;">
-                <i class="fa fa-heart-o like-icon"></i> 
-                <i>{{ $recipe->likes }}</i>
+                <i class="fa fa-heart-o like-icon" data-likes="{{ $recipe->likes }}"></i> 
             </div>
 
             @auth
                 @if (Auth::user()->id == $recipe->user_id && $recipe->ready == 0)
                     <div class="recipe-buttons">
                         {{--  Edit button  --}}
-                        <a href="{{ url('/recipes/'.$recipe->id.'/edit') }}" title="Редактировать рецепт" class="fa">&#xf040;</a>
+                        <a href="/recipes/{{ $recipe->id }}/edit" title="Редактировать рецепт" class="fa">&#xf040;</a>
 
                         {{--  Delete button  --}}
                         {!! Form::open(['action' => ['RecipesController@destroy', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
@@ -37,7 +36,7 @@
                 <span class="category">{{ $recipe->category }}</span>
             </a>
 
-            <div class="date"><i class="fa fa-clock-o"></i> {{ $recipe->time }}</div>
+            <div class="date"><i class="fa fa-clock-o"></i> {{ $recipe->time }} мин.</div>
 
             <div class="items">
                 <h3>Ингридиенты</h3>

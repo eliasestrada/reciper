@@ -99,6 +99,11 @@ body {
     margin: .6rem auto;
 }
 
+.items {
+    width: 20em;
+    padding: .6em 1em;
+}
+
 .recipe-content {
     grid-area: recipe-content;
     margin-left: .93rem;

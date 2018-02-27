@@ -220,7 +220,7 @@ img {
     border-radius: 500em;
     cursor: pointer;
     text-align: center;
-    top: .5em;
+    top: 1.1em;
 }
 
 .regular-menu {
@@ -345,7 +345,7 @@ img {
     color: var(--darkGray);
 }
 
-.button {
+.button{
     width: 10.8em;
     height: 1.85em;
     margin: .93em auto;
@@ -507,8 +507,8 @@ img {
 }
 
 .items {
-    width: 18em;
-    padding: .6em 2.5em;
+    width: 80%;
+    padding: .6em 10%;
     margin: 0 auto;
     text-align: left;
 }
@@ -522,7 +522,6 @@ img {
 .items > ul > li {
     list-style-image: url('../storage/other/tick.png');
     margin: .18em;
-    font-size: 1em; 
 }
 
 .instruction {

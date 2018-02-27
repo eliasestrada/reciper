@@ -10,7 +10,7 @@
             @foreach ($recipes as $recipe)
                 <div>
                     <!-- Image -->
-                    <a href="{{ url('/recipes/'.$recipe->id) }}">
+                    <a href="/recipes/{{ $recipe->id }}">
                         <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{$recipe->title}}" title="{{$recipe->title}}">
                     </a>
                     <div class="cards-content">
@@ -35,7 +35,7 @@
 
     <!-- Add recipe button-->
     @auth
-        <a href="{{ url('/recipes/create') }}" class="fa fa-plus-circle add-material" title="Добавить рецепт"></a>
+        <a href="/recipes/create" class="fa fa-plus-circle add-material" title="Добавить рецепт"></a>
     @endauth
 </div>
 
