@@ -16,35 +16,46 @@
 @keyframes heart-beat {
     10%,
     90% {
-        color: #7a0000;
+        color: #700101;
         transform: scale(1);
     }
     20%,
     80% {
-        color: #aa0000;
+        color: #860101;
         transform: scale(1.1);
     }
     30%,
     50%,
     70% {
-        color: #e60000;
+        color: #a50202;
         transform: scale(1.15);
     }
     40%,
     60% {
-        color: #ff0000;
+        color: #c40101;
         transform: scale(1.2);
     }
 }
 
-@keyframes rotate {
+@keyframes disappear {
     from {
-        color: #7a0000;
+        margin-left: 0em;
         transform: rotate(0deg);
     }
     to {
-        color: #aa0000;
-        transform: rotate(360deg);
+        margin-left: -100em;
+        transform: rotate(2160deg);
+    }
+}
+
+@keyframes appear {
+    0% {
+        margin-left: -100em;
+        transform: rotate(0deg);
+    }
+    100% {
+        margin-left: 0em;
+        transform: rotate(2160deg);
     }
 }
 
@@ -588,22 +599,29 @@ img {
 
 .like-icon {
     font-size: 1.5em !important;
-    color: #7a0000;
+    color: #700101;
     cursor: pointer;
-    transition: 300ms ease color;
-    animation: heart-beat 1.7s infinite both;
+    transition: 300ms ease;
+    animation: appear 1s;
+    margin-left: 0;
+    animation: heart-beat 1.7s infinite both 2.5s, appear 2s;
     animation-direction: alternate;
     transform: scale(1);
     background: none;
     border: none;
 }
 
-/* -- Edit recipe -- */
-
-.rotate {
-    animation: rotate 1.3s infinite;
+.disappear {
+    animation: disappear 1.3s infinite;
     animation-timing-function: linear;
 }
+
+#all-likes {
+    padding-left: .2em;
+    font-size: .9em;
+}
+
+/* -- Edit recipe -- */
 
 .recipe-buttons {
     width: auto;

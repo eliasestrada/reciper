@@ -12,13 +12,13 @@
                     {!! Form::open(['action' => ['RecipesController@like', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
                         {{ Form::hidden('todo', 'set') }}
                         {{ Form::submit('&#xf08a;', ['class' => 'like-icon fa']) }}
-                        <i>{{ $recipe->likes }}</i>
+                        <i id="all-likes">{{ $recipe->likes }}</i>
                     {!! Form::close() !!}
                 @else
                     {!! Form::open(['action' => ['RecipesController@like', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
                         {{ Form::hidden('todo', 'delete') }}
                         {{ Form::submit('&#xf004;', ['class' => 'like-icon fa']) }}
-                        <i>{{ $recipe->likes }}</i>
+                        <i id="all-likes">{{ $recipe->likes }}</i>
                     {!! Form::close() !!}
                 @endif
             </div>
@@ -107,11 +107,13 @@
 
 <script>
     let likeIcon = document.querySelector(".like-icon")
+    let allLikes = document.getElementById("all-likes")
 
     likeIcon.addEventListener('click', animateLikeButton)
 
     function animateLikeButton() {
-        return likeIcon.classList.add("rotate")
+        likeIcon.classList.add("disappear")
+        allLikes.innerHTML = ''
     }
 </script>
 
