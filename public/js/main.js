@@ -14,7 +14,7 @@ function openMenu() {
     logoNav.style.opacity = "1"
     logoNav.style.display = "block"
     menuUl.style.display = "block"
-	opened = true
+    opened = true
 }
 
 function closeMenu() {
@@ -28,7 +28,7 @@ function closeMenu() {
         logoNav.style.display = "none"
     }
 
-	opened = false
+    opened = false
 }
 
 function hideMenuBarIntoButton() {
@@ -44,19 +44,16 @@ function hideMenuBarIntoButton() {
             logoNav.style.opacity = "1"
             logoNav.style.display = "block"
         }
-        
-        
-        
     }
 }
 
 // Events
 button.addEventListener('click', openMenu)
 
-window.addEventListener('mouseup', function(event) {
-	if (event.target != menuNav && opened === true && event.target.parentNode != menuNav) {
-		closeMenu()
-	}
+window.addEventListener('mouseup', function (event) {
+    if (event.target != menuNav && opened === true && event.target.parentNode != menuNav) {
+        closeMenu()
+    }
 })
 
 //button.addEventListener('dblclick', () => location.reload())

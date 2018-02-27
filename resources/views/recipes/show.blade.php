@@ -105,4 +105,14 @@
     </section>
 </div>
 
+<script>
+    let likeIcon = document.querySelector(".like-icon")
+
+    likeIcon.addEventListener('click', animateLikeButton)
+
+    function animateLikeButton() {
+        return likeIcon.classList.add("rotate")
+    }
+</script>
+
 @endsection

@@ -37,6 +37,17 @@
     }
 }
 
+@keyframes rotate {
+    from {
+        color: #7a0000;
+        transform: rotate(0deg);
+    }
+    to {
+        color: #aa0000;
+        transform: rotate(360deg);
+    }
+}
+
 :root {
     --main: #8080ff;
     --mainHover: #6969d3;
@@ -588,6 +599,11 @@ img {
 }
 
 /* -- Edit recipe -- */
+
+.rotate {
+    animation: rotate 1.3s infinite;
+    animation-timing-function: linear;
+}
 
 .recipe-buttons {
     width: auto;
