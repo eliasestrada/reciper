@@ -222,11 +222,22 @@ class RecipesController extends Controller
     }
 
     // Like
-    public function like($id)
+    public function like($id, Request $request)
     {
-        $recipe = DB::table('recipes')->where('id', $id)->increment('likes');
+        $recipe = DB::table('recipes')->where('id', $id);
 
-        return back()->withCookie(cookie('liked', 1, 5000));
+        if ($request->input('todo') == 'set') {
+            // +1 like
+            $recipe->increment('likes');
+            return back()->withCookie(cookie('liked', 1, 5000));
+
+        } elseif ($request->input('todo') == 'delete') {
+            // -1 like
+            $recipe->decrement('likes');
+            $cookie = \Cookie::forget('liked');
+            return back()->withCookie($cookie);
+        }
+        return back()->withCookie($cookie);
     }
 
 
