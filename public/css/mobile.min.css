@@ -16,12 +16,12 @@
 @keyframes heart-beat {
     10%,
     90% {
-    color: brown;
+    color: #7a0000;
     transform: scale(1);
     }
     20%,
     80% {
-    color: #e60000;
+    color: #aa0000;
     transform: scale(1.1);
     }
     30%,
@@ -574,7 +574,7 @@ img {
 
 .like-icon[data-likes] {
     font-size: 1.5em !important;
-    color: brown;
+    color: #7a0000;
     cursor: pointer;
     transition: 300ms ease color;
     animation: heart-beat 1.7s infinite both;

@@ -76,7 +76,6 @@
             <div class="form-group">
                 {{ Form::label('изображение', 'Изображение не должно быть высокого разрешения.') }}
                 {{ Form::file('изображение', ['class' => "upload-image-form"]) }}
-                {{ Form::hidden('_method', 'PUT') }}
             </div>
         </div>
 
