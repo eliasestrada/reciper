@@ -7,8 +7,15 @@
         <div class="recipe-content">
 
             <!-- Лайки -->
-            <div style="font-weight:bold;">
-                <i class="fa fa-heart-o like-icon" data-likes="{{ $recipe->likes }}"></i> 
+            <div id="favorite-buttons" style="font-weight:bold;">
+                @if (isset($_COOKIE['liked']))
+                    {!! Form::open(['action' => ['RecipesController@like', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
+                        {{ Form::hidden('_method', 'DELETE') }}
+                        {{ Form::submit('&#xf08a;', ['class' => 'like-icon fa', 'style' => 'background: brown;', 'data-likes' => $recipe->likes]) }}
+                    {!! Form::close() !!}
+                @else
+                    <i class="fa fa-heart-o like-icon" data-likes="{{ $recipe->likes }}" ></i>
+                @endif
             </div>
 
             @auth

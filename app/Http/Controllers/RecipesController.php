@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Cookie\CookieJar;
 use App\Recipe;
 
 class RecipesController extends Controller
@@ -218,6 +219,14 @@ class RecipesController extends Controller
         return $recipe->ready == 0
                 ? redirect()->back()->with('success', 'Рецепт успешно сохранен')
                 : redirect('/dashboard')->with('success', 'Рецепт добавлен на рассмотрение и будет опубликован после одобрения администрации.');
+    }
+
+    // Add like
+    public function like($id)
+    {
+        $recipe = DB::table('recipes')->where('id', $id)->increment('likes');
+
+        return die('success');
     }
 
 
