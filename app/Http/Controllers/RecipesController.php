@@ -13,7 +13,7 @@ class RecipesController extends Controller
     // Create a new controller instance.
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'like']]);
     }
 
     // INDEX
@@ -221,12 +221,12 @@ class RecipesController extends Controller
                 : redirect('/dashboard')->with('success', 'Рецепт добавлен на рассмотрение и будет опубликован после одобрения администрации.');
     }
 
-    // Add like
+    // Like
     public function like($id)
     {
         $recipe = DB::table('recipes')->where('id', $id)->increment('likes');
 
-        return die('success');
+        return back()->withCookie(cookie('liked', 1, 5000));
     }
 
 

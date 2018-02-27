@@ -15,7 +15,7 @@ Route::get('/', 'PagesController@home');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/search', 'PagesController@search');
 
-Route::get('/like', 'RecipesController@like');
+Route::post('/recipes/{recipe}/like', 'RecipesController@like');
 Route::resource('recipes', 'RecipesController');
 Auth::routes();
 

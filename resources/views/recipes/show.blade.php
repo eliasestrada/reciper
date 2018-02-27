@@ -8,13 +8,16 @@
 
             <!-- Лайки -->
             <div id="favorite-buttons" style="font-weight:bold;">
-                @if (isset($_COOKIE['liked']))
+                @if (Cookie::get('liked') == null)
                     {!! Form::open(['action' => ['RecipesController@like', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
-                        {{ Form::hidden('_method', 'DELETE') }}
-                        {{ Form::submit('&#xf08a;', ['class' => 'like-icon fa', 'style' => 'background: brown;', 'data-likes' => $recipe->likes]) }}
+                        {{ Form::submit('&#xf08a;', ['class' => 'like-icon fa']) }}
+                        <i>{{ $recipe->likes }}</i>
                     {!! Form::close() !!}
                 @else
-                    <i class="fa fa-heart-o like-icon" data-likes="{{ $recipe->likes }}" ></i>
+                    {!! Form::open(['action' => ['RecipesController@like', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
+                        {{ Form::submit('&#xf004;', ['class' => 'like-icon fa']) }}
+                        <i>{{ $recipe->likes }}</i>
+                    {!! Form::close() !!}
                 @endif
             </div>
 

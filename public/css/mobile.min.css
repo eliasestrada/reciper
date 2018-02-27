@@ -16,24 +16,24 @@
 @keyframes heart-beat {
     10%,
     90% {
-    color: #7a0000;
-    transform: scale(1);
+        color: #7a0000;
+        transform: scale(1);
     }
     20%,
     80% {
-    color: #aa0000;
-    transform: scale(1.1);
+        color: #aa0000;
+        transform: scale(1.1);
     }
     30%,
     50%,
     70% {
-    color: #e60000;
-    transform: scale(1.15);
+        color: #e60000;
+        transform: scale(1.15);
     }
     40%,
     60% {
-    color: #ff0000;
-    transform: scale(1.2);
+        color: #ff0000;
+        transform: scale(1.2);
     }
 }
 
@@ -118,7 +118,9 @@ img {
     background: var(--paper);
 }
 
-.message li { list-style: none; }
+.message li {
+    list-style: none;
+}
 
 .error {
     color: brown;
@@ -489,6 +491,7 @@ img {
 }
 
 /* -- Recipe -- */
+
 .grid-recipe {
     color: var(--darkGray);
     padding: 0 .6em .93em .6em;
@@ -522,7 +525,7 @@ img {
     color: #3a3a3a;
 }
 
-.items > ul > li {
+.items>ul>li {
     list-style-image: url('../storage/other/tick.png');
     margin: .18em;
 }
@@ -572,7 +575,7 @@ img {
     padding-bottom: .6em;
 }
 
-.like-icon[data-likes] {
+.like-icon {
     font-size: 1.5em !important;
     color: #7a0000;
     cursor: pointer;
@@ -580,13 +583,8 @@ img {
     animation: heart-beat 1.7s infinite both;
     animation-direction: alternate;
     transform: scale(1);
-}
-
-.like-icon[data-likes]::after {
-	content: attr(data-likes);
-    font-size: .6em !important;
-    margin-left: 3px;
-    color: #000;
+    background: none;
+    border: none;
 }
 
 /* -- Edit recipe -- */
@@ -642,6 +640,7 @@ img {
 }
 
 /* -- Dropdowns -- */
+
 .accordion {
     background-color: #ddd;
     color: var(--darkGray);
@@ -656,7 +655,10 @@ img {
     border-radius: 4px
 }
 
-.active, .accordion:hover { background-color: #b4b4b4; }
+.active,
+.accordion:hover {
+    background-color: #b4b4b4;
+}
 
 .accordion:after {
     content: '\002B';
@@ -667,7 +669,9 @@ img {
     margin-left: 5px;
 }
 
-.active:after { content: "\2212"; }
+.active:after {
+    content: "\2212";
+}
 
 .panel {
     padding: .2em 1em;
@@ -677,6 +681,7 @@ img {
 }
 
 /* -- Dashboard Cards -- */
+
 .dashboard-cards {
     padding: .3em;
     display: flex;
@@ -686,7 +691,7 @@ img {
     flex-flow: wrap;
 }
 
-.dashboard-cards > div {
+.dashboard-cards>div {
     width: 6em;
     min-height: 8rem;
     margin: .3em .3em;
@@ -695,7 +700,7 @@ img {
     border-radius: 3px;
 }
 
-.dashboard-cards > div h3 {
+.dashboard-cards>div h3 {
     font-weight: bold;
     font-family: var(--headerFont);
     font-size: 1.3em;
