@@ -13,23 +13,27 @@
     src: url(../storage/fonts/greatvibes.ttf);
 }
 
-@keyframes shake {
+@keyframes heart-beat {
     10%,
     90% {
-        font-size: 100%;
+    color: brown;
+    transform: scale(1);
     }
     20%,
     80% {
-        font-size: 110%;
+    color: #e60000;
+    transform: scale(1.1);
     }
     30%,
     50%,
     70% {
-        font-size: 120%;
+    color: #e60000;
+    transform: scale(1.15);
     }
     40%,
     60% {
-        font-size: 130%;
+    color: #ff0000;
+    transform: scale(1.2);
     }
 }
 
@@ -345,7 +349,7 @@ img {
     color: var(--darkGray);
 }
 
-.button{
+.button {
     width: 10.8em;
     height: 1.85em;
     margin: .93em auto;
@@ -569,10 +573,21 @@ img {
     padding-bottom: .6em;
 }
 
-.like-icon {
+.like-icon[data-likes] {
     font-size: 1.5em !important;
     color: brown;
     cursor: pointer;
+    transition: 300ms ease color;
+    animation: heart-beat 1.7s infinite both;
+    animation-direction: alternate;
+    transform: scale(1);
+}
+
+.like-icon[data-likes]::after {
+	content: attr(data-likes);
+    font-size: .6em !important;
+    margin-left: 3px;
+    color: #000;
 }
 
 /* -- Edit recipe -- */
