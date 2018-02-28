@@ -64,7 +64,7 @@
                     
                 @endforeach
 {{--  TODO:  --}}
-                {{ $recipes->links() }}
+                {{ $admin_recipes->links() }}
 
             @else
                 <p class="content">Нет непровереных рецептов.</p>
