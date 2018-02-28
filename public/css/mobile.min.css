@@ -753,6 +753,40 @@ img {
     align-items: center;
 }
 
+/* -- List of recipes -- */
+
+.list-of-recipes {
+    width: 90%;
+    margin: 1em 4%;
+    padding: .5em 1%;
+    display: inline-block;
+}
+
+.list-of-recipes h3 {
+    margin: .5em;
+    color: #444;
+}
+
+.each-recipe {
+    padding: .3em;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "each-image each-content";
+    grid-gap: .5em;
+}
+
+.each-recipe img {
+    grid-area: each-image;
+}
+
+.each-content {
+    grid-area: each-content;
+    background: var(--paper);
+    color: #444;
+    font-size: .8em;
+}
+
 /* --- Footer --- */
 
 footer {

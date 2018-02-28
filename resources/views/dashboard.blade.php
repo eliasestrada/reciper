@@ -47,36 +47,28 @@
 
     @if (Auth::user()->admin === 1)
         <div class="list-of-recipes">
-            <ul>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-            </ul>
+            <h3>Рецепты на рассмотрении</h3>
+
+            @if (count($recipes) > 0)
+                @foreach ($recipes as $recipe)
+                    <a href="#">
+                        <div class="each-recipe">
+                            <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
+                            <div class="each-content">
+                                <span>{{ $recipe->title }}</span>
+                                <span>{{ mb_substr($recipe->intro, 0, 150, "utf-8") }}{{ strlen($recipe->intro) > 150 ? '...' : '' }}</span>
+                                <p>{{ $recipe->author }}</p>
+                                <p>{{ $recipe->updated_at }}</p>
+                            </div>
+                            
+                        </div>
+                    </a>
+                @endforeach
+            @else
+                <p class="content">Нет непровереных рецептов.</p>
+            @endif
         </div>
     @endif
 </div>
 
 @endsection
-
-
-{{--
-    @if (count($recipes) > 0)
-        @foreach ($recipes as $recipe)
-            <tr>
-                <td>
-                    <p class="content">{{ $recipe->title }}</p>
-                </td>
-                <td>
-                    <a href="/recipes/{{ $recipe->id }}/edit">Изменить</a>
-                </td>
-                <td>
-                    {!! Form::open(['action' => ['RecipesController@destroy', $recipe->id], 'method' => 'post']) !!}
-                        {{ Form::hidden('_method', 'DELETE') }}
-                        {{ Form::submit('Delete') }}
-                    {!! Form::close() !!}
-                </td>
-            </tr>
-        @endforeach
-    @else
-        <p class="content">У вас еще нет рецептов.</p>
-    @endif
---}}

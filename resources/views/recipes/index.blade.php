@@ -35,7 +35,9 @@
 
     <!-- Add recipe button-->
     @auth
-        <a href="/recipes/create" class="fa fa-plus-circle add-material" title="Добавить рецепт"></a>
+        @if (Auth::user()->admin === 1)
+            <a href="/recipes/create" class="fa fa-plus-circle add-material" title="Добавить рецепт"></a>
+        @endif
     @endauth
 </div>
 
