@@ -22,35 +22,35 @@ class DashboardController extends Controller
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
         $unapproved = DB::table('recipes')
-            ->where([['approved', '=', 0], ['ready', '=', 1]])
-            ->oldest()
-            ->paginate(10);
+                ->where([['approved', '=', 0], ['ready', '=', 1]])
+                ->oldest()
+                ->paginate(10);
 
         // Count recipes and visits
         $allrecipes = DB::table('recipes')
-            ->count();
+                ->count();
         $allvisits = DB::table('visitor_registry')
-            ->count();
+                ->count();
         $allclicks = DB::table('visitor_registry')
-            ->sum('clicks');
+                ->sum('clicks');
         $allunapproved = DB::table('recipes')
-            ->where([['approved', 0], ['ready', 1]])
-            ->count();
+                ->where([['approved', 0], ['ready', 1]])
+                ->count();
 
         return view('dashboard')
-            ->withRecipes($user->recipes)
-            ->withAllrecipes($allrecipes)
-            ->withAllvisits($allvisits)
-            ->withAllclicks($allclicks)
-            ->withAllunapproved($allunapproved)
-            ->withUnapproved($unapproved);
+                ->withRecipes($user->recipes)
+                ->withAllrecipes($allrecipes)
+                ->withAllvisits($allvisits)
+                ->withAllclicks($allclicks)
+                ->withAllunapproved($allunapproved)
+                ->withUnapproved($unapproved);
     }
 
     public function closeNotification() {
 
         DB::table('users')
-            ->where([['id', auth()->user()->id], ['admin', 1]])
-            ->update(['notif' => 0]);
+                ->where([['id', auth()->user()->id], ['admin', 1]])
+                ->update(['notif' => 0]);
 
         return back();
     }

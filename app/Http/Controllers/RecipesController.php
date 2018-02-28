@@ -228,7 +228,7 @@ class RecipesController extends Controller
                 : redirect('/dashboard')->with('success', 'Рецепт добавлен на рассмотрение и будет опубликован после одобрения администрации.');
     }
 
-    // Like
+    // LIKE
     public function like($id, Request $request)
     {
         $recipe = DB::table('recipes')->where('id', $id);
@@ -247,6 +247,28 @@ class RecipesController extends Controller
         return back()->withCookie($cookie);
     }
 
+    // APPROVE
+    public function answer($id, Request $request)
+    {
+        $recipe = DB::table('recipes')
+            ->where([['id', $id], ['approved', 0]]);
+
+        if (!$recipe) {
+            return back();
+        }
+
+        if ($request->input('answer') == 'approve') {
+            $recipe->update(['approved' => 1]);
+            // TODO: Notification to author if author is not admin, that his recipe has been posted
+            return redirect('/recipes')
+                    ->with('success', 'Рецепт одобрен и опубликован.');
+        } elseif ($request->input('answer') == 'cancel') {
+            $recipe->update(['ready' => 0]);
+            // TODO: Notification to author if author is not admin, that he needs to edit the recipe
+            return redirect('/recipes')
+                    ->with('success', 'Вы вернули рецепт на повторное редактирование.');
+        }
+    }
 
     // DESTROY
     // Remove the specified resource from storage.

@@ -6,7 +6,7 @@
     <section class="grid-recipe">
         <div class="recipe-content">
 
-            <!-- Лайки -->
+            {{--  Likes  --}}
             <div id="favorite-buttons" style="font-weight:bold;">
                 @if (Cookie::get('liked') == null)
                     {!! Form::open(['action' => ['RecipesController@like', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
@@ -23,6 +23,7 @@
                 @endif
             </div>
 
+            {{--  Buttons  --}}
             @auth
                 @if (Auth::user()->id == $recipe->user_id && $recipe->ready == 0)
                     <div class="recipe-buttons">
@@ -33,6 +34,19 @@
                         {!! Form::open(['action' => ['RecipesController@destroy', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
                             {{ Form::hidden('_method', 'DELETE') }}
                             {{ Form::submit('&#xf014;', ['class' => 'fa', 'style' => 'background: brown;']) }}
+                        {!! Form::close() !!}
+                    </div>
+                @endif
+
+                @if (Auth::user()->admin === 1 && $recipe->approved == 0)
+                    <div class="recipe-buttons">
+                        {!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
+                            {{ Form::hidden('answer', 'approve') }}
+                            {{ Form::submit('&#xf00c;', ['class' => 'fa', 'style' => 'background: green;']) }}
+                        {!! Form::close() !!}
+                        {!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
+                            {{ Form::hidden('answer', 'cancel') }}
+                            {{ Form::submit('&#xf00d;', ['class' => 'fa', 'style' => 'background: brown;']) }}
                         {!! Form::close() !!}
                     </div>
                 @endif
