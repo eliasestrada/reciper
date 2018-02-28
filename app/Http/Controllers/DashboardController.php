@@ -21,6 +21,8 @@ class DashboardController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
+        $admin_recipes = DB::table('recipes')->where('approved', 0)->latest()->paginate(1);
+        //  TODO:
 
         // Count recipes and visits
         $allrecipes = DB::table('recipes')->count();
@@ -31,6 +33,7 @@ class DashboardController extends Controller
                 ->withRecipes($user->recipes)
                 ->withAllrecipes($allrecipes)
                 ->withAllvisits($allvisits)
-                ->withAllclicks($allclicks);
+                ->withAllclicks($allclicks)
+                ->with('admin_recipes', $admin_recipes);
     }
 }

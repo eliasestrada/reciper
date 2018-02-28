@@ -49,21 +49,23 @@
         <div class="list-of-recipes">
             <h3>Рецепты на рассмотрении</h3>
 
-            @if (count($recipes) > 0)
-                @foreach ($recipes as $recipe)
-                    <a href="#">
-                        <div class="each-recipe">
-                            <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
-                            <div class="each-content">
-                                <span>{{ $recipe->title }}</span>
-                                <span>{{ mb_substr($recipe->intro, 0, 150, "utf-8") }}{{ strlen($recipe->intro) > 150 ? '...' : '' }}</span>
-                                <p>{{ $recipe->author }}</p>
-                                <p>{{ $recipe->updated_at }}</p>
-                            </div>
-                            
+            @if (count($admin_recipes) > 0)
+                @foreach ($admin_recipes as $recipe)
+                    
+                    <div class="each-recipe" data-updated="Обновленно {{ facebookTimeAgo($recipe->updated_at) }}" data-author="Автор: {{ $recipe->author }}">
+                        <a href="/recipes/{{ $recipe->id }}">
+                            <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="Перейти к рецепту">
+                        </a>
+                        <div class="each-content">
+                            <span>{{ $recipe->title }}</span>
+                            <span>{{ $recipe->intro }}</span>
                         </div>
-                    </a>
+                    </div>
+                    
                 @endforeach
+{{--  TODO:  --}}
+                {{ $recipes->links() }}
+
             @else
                 <p class="content">Нет непровереных рецептов.</p>
             @endif
