@@ -66,9 +66,8 @@
 
             <!-- Дата и Автор -->
             <div class="date">
-                <p>Добавленно {{ $recipe->date }}</p>
+                <p>Добавленно {{ facebookTimeAgo($recipe->updated_at) }}</p>
                 <p>Автор: {{ $recipe->author }}</p>
-                <p>{{ $recipe->views }} просмотров</p>
             </div>
         </div>
 

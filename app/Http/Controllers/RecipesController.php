@@ -60,6 +60,7 @@ class RecipesController extends Controller
         $recipe->time = $request->input('время');
         $recipe->category = $request->input('категория');
         $recipe->user_id = auth()->user()->id;
+        $recipe->author = auth()->user()->name;
         $recipe->image = 'default.jpg';
 
         $recipe->save();
