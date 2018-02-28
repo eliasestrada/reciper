@@ -23,27 +23,11 @@
 
         <h2>Добавление рецепта</h2>
 
-        <div class="form-group">
-            <section class="recipes">
-                <div>
-                    <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{$recipe->title}}" title="{{$recipe->title}}">
-                </div>
-            </section>
-        </div>
-
         <button class="accordion" type="button">Название</button>
         <div class="panel">
             <div class="form-group">
                 {{ Form::label('название', 'Название') }}
                 {{ Form::text('название', $recipe->title, ['placeholder' => 'Название рецепта']) }}
-            </div>
-        </div>
-
-        <button class="accordion" type="button">Название</button>
-        <div class="panel">
-            <div class="form-group">
-                {{ Form::label('описание', 'Описание') }}
-                {{ Form::textarea('описание', $recipe->intro, ['placeholder' => 'Краткое описание рецепта']) }}
             </div>
         </div>
 
@@ -106,6 +90,15 @@
                 {{ Form::label('изображение', 'Изображение не должно быть высокого разрешения.') }}
                 {{ Form::file('изображение', ['class' => "upload-image-form"]) }}
                 {{ Form::hidden('_method', 'PUT') }}
+
+                <div class="form-group">
+                    <section class="recipes">
+                        <div>
+                            <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{$recipe->title}}" title="{{$recipe->title}}">
+                        </div>
+                    </section>
+                </div>
+
             </div>
         </div>
 

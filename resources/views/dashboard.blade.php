@@ -44,6 +44,15 @@
             </div>
         </div>
     </div>
+
+    @if (Auth::user()->admin === 1)
+        <div class="list-of-recipes">
+            <ul>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+            </ul>
+        </div>
+    @endif
 </div>
 
 @endsection

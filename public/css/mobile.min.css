@@ -44,7 +44,6 @@
     }
     25% {
         opacity: 1;
-        transform: scale(1.4);
     }
     50% {
         opacity: 1;
@@ -232,10 +231,6 @@ img {
     list-style: none;
     border-bottom: .06em solid var(--mainHover);
     transition: .3s;
-}
-
-.admin-li {
-    background: #737397;
 }
 
 #nav-menu li:first-child {
@@ -623,7 +618,7 @@ img {
 }
 
 .disappear {
-    animation: disappear .5s;
+    animation: disappear .3s;
     animation-timing-function: linear;
 }
 
