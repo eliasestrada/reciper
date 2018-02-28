@@ -13,62 +13,6 @@
     src: url(../storage/fonts/greatvibes.ttf);
 }
 
-@keyframes heart-beat {
-    10%,
-    90% {
-        color: #700101;
-        transform: scale(1);
-    }
-    20%,
-    80% {
-        color: #860101;
-        transform: scale(1.1);
-    }
-    30%,
-    50%,
-    70% {
-        color: #a50202;
-        transform: scale(1.15);
-    }
-    40%,
-    60% {
-        color: #c40101;
-        transform: scale(1.2);
-    }
-}
-
-@keyframes disappear {
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    25% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.6);
-    }
-    75% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0);
-    }
-}
-
-@keyframes appear {
-    0% {
-        margin-left: -100em;
-        transform: rotate(0deg);
-    }
-    100% {
-        margin-left: 0em;
-        transform: rotate(2160deg);
-    }
-}
-
 :root {
     --main: #8080ff;
     --mainHover: #6969d3;
@@ -817,28 +761,42 @@ img {
     display: flex;
     padding: .2em .4em;
     position: absolute;
-    top: .6em;
-    left: .6em;
+    top: .3em;
+    left: .3em;
     color: white;
     text-align: center;
     color: white;
-    text-shadow: 0 1px 1px #f00;
+    text-shadow: 1px 1px 1px #444;
     background: #f55;
     box-shadow: 0 6px 6px -6px black;
-    transition: all 0.5s ease;
+    animation: notification 2s;
+    transition: left 0.5s ease, opacity 1s ease;
     z-index: 20;
 }
 
 .notification p {
-    margin: .5em;
+    margin: .7em;
 }
 
 .close-notif {
     border: none;
     background: none;
     color: #fff;
-    font-size: 1.2em;
+    font-size: 1.3em;
     margin: .5em;
+    text-shadow: 1px 1px 1px #444;
+    cursor: pointer;
+}
+
+.close-notif:hover {
+    text-shadow: 3px 3px 1px #444;
+}
+
+.bell-alert {
+    animation: ring 4s .7s ease-in-out infinite;
+    transform-origin: 50% 4px;
+    font-size: 1.3em;
+    text-shadow: 1px 1px 1px #444;
 }
 
 /* -- Pagination -- */
@@ -958,4 +916,98 @@ footer a:hover {
     font-size: .75em;
     font-weight: 100;
     color: var(--gray);
+}
+
+/* -- ANIMATIONS -- */
+
+@keyframes heart-beat {
+    10%,
+    90% {
+        color: #700101;
+        transform: scale(1);
+    }
+    20%,
+    80% {
+        color: #860101;
+        transform: scale(1.1);
+    }
+    30%,
+    50%,
+    70% {
+        color: #a50202;
+        transform: scale(1.15);
+    }
+    40%,
+    60% {
+        color: #c40101;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.6);
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+@keyframes notification {
+    from {
+        left: -100%;
+    }
+    to {
+        left: .6em;
+    }
+}
+
+@keyframes ring {
+    0% { transform: rotate(0); }
+    1% { transform: rotate(30deg); }
+    3% { transform: rotate(-28deg); }
+    5% { transform: rotate(34deg); }
+    7% { transform: rotate(-32deg); }
+    9% { transform: rotate(30deg); }
+    11% { transform: rotate(-28deg); }
+    13% { transform: rotate(26deg); }
+    15% { transform: rotate(-24deg); }
+    17% { transform: rotate(22deg); }
+    19% { transform: rotate(-20deg); }
+    21% { transform: rotate(18deg); }
+    23% { transform: rotate(-16deg); }
+    25% { transform: rotate(14deg); }
+    27% { transform: rotate(-12deg); }
+    29% { transform: rotate(10deg); }
+    31% { transform: rotate(-8deg); }
+    33% { transform: rotate(6deg); }
+    35% { transform: rotate(-4deg); }
+    37% { transform: rotate(2deg); }
+    39% { transform: rotate(-1deg); }
+    41% { transform: rotate(1deg); }
+    43% { transform: rotate(0); }
+    100% { transform: rotate(0); }
+}
+
+@keyframes appear {
+    0% {
+        margin-left: -100em;
+        transform: rotate(0deg);
+    }
+    100% {
+        margin-left: 0em;
+        transform: rotate(2160deg);
+    }
 }

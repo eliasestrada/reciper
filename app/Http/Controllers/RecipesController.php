@@ -217,6 +217,10 @@ class RecipesController extends Controller
             $recipe->image = $fileNameToStore;
         }
 
+        if (isset($request->ready)) {
+            DB::table('users')->where('admin', 1)->update(['notif' => 1]);
+        }
+
         $recipe->save();
 
         return $recipe->ready == 0

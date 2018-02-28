@@ -7,7 +7,8 @@
     {{--  Admin notification  --}}
     @if ($allunapproved > 0 && Auth::user()->notif === 1)
         <div class="notification">
-            <p>У вас есть {{ $allunapproved }} {{ $allunapproved == 1 ? 'непроверенный рецепт' : 'непроверенных рецептов' }}</p>
+            <i class="fa fa-bell-o bell-alert" style="font-size: 1.3em; margin: .5em; padding-top: .15em;"></i>
+            <p>У вас есть {{ $allunapproved }} {{ $allunapproved == 1 ? 'непроверенный рецепт' : 'непроверенных рецепта' }}</p>
             {!! Form::open(['action' => ['DashboardController@closeNotification'], 'method' => 'post', 'style' => 'width: auto; display: flex;']) !!}
                 {{ Form::submit('&#xf00d;', ['class' => 'fa close-notif']) }}
             {!! Form::close() !!}
@@ -79,5 +80,16 @@
         </div>
     @endif
 </div>
+
+<script>
+    let notification = document.querySelector(".notification")
+
+    notification.addEventListener('click', animateNotification)
+
+    function animateNotification() {
+        notification.classList.add("disappear")
+        notification.style.opacity = '0'
+    }
+</script>
 
 @endsection
