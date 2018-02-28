@@ -4,10 +4,13 @@
 
 <div class="wrapper">
 
-    @if ($allunapproved > 0)
+    {{--  Admin notification  --}}
+    @if ($allunapproved > 0 && Auth::user()->notif === 1)
         <div class="notification">
             <p>У вас есть {{ $allunapproved }} {{ $allunapproved == 1 ? 'непроверенный рецепт' : 'непроверенных рецептов' }}</p>
-            <button class="close-notif"><i class="fa fa-times"></i></button>
+            {!! Form::open(['action' => ['DashboardController@closeNotification'], 'method' => 'post', 'style' => 'width: auto; display: flex;']) !!}
+                {{ Form::submit('&#xf00d;', ['class' => 'fa close-notif']) }}
+            {!! Form::close() !!}
         </div>
     @endif
 
@@ -17,6 +20,7 @@
 
     <a href="/recipes/create" title="Добавить рецепт" class="button">Добавить рецепт</a>
 
+    {{--  3 Cards  --}}
     <div class="dashboard-cards">
         <div style="background: url('{{ asset('storage/other/food.jpg') }}');">
             <div class="dashboard-cards-rows">
