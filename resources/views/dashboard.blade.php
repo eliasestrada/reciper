@@ -3,6 +3,14 @@
 @section('content')
 
 <div class="wrapper">
+
+    @if ($allunapproved > 0)
+        <div class="notification">
+            <p>У вас есть {{ $allunapproved }} {{ $allunapproved == 1 ? 'непроверенный рецепт' : 'непроверенных рецептов' }}</p>
+            <button class="close-notif"><i class="fa fa-times"></i></button>
+        </div>
+    @endif
+
     <div class="content">
         <h2>{{ Auth::user()->name }}</h2>
     </div>
@@ -47,11 +55,9 @@
 
     @if (Auth::user()->admin === 1)
         <div class="list-of-recipes">
-            <h3>Рецепты на рассмотрении</h3>
-
-            @if (count($admin_recipes) > 0)
-                @foreach ($admin_recipes as $recipe)
-                    
+            @if (count($unapproved) > 0)
+                <h3>Рецепты на рассмотрении {{ $allunapproved }}</h3>
+                @foreach ($unapproved as $recipe)
                     <div class="each-recipe" data-updated="Обновленно {{ facebookTimeAgo($recipe->updated_at) }}" data-author="Автор: {{ $recipe->author }}">
                         <a href="/recipes/{{ $recipe->id }}">
                             <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="Перейти к рецепту">
@@ -61,11 +67,8 @@
                             <span>{{ $recipe->intro }}</span>
                         </div>
                     </div>
-                    
                 @endforeach
-{{--  TODO:  --}}
-                {{ $admin_recipes->links() }}
-
+                {{ $unapproved->links() }}
             @else
                 <p class="content">Нет непровереных рецептов.</p>
             @endif

@@ -24,7 +24,7 @@
         <h2>Добавление рецепта</h2>
 
         <button class="accordion" type="button">Название</button>
-        <div class="panel">
+        <div class="accordion-panel">
             <div class="form-group">
                 {{ Form::label('название', 'Название') }}
                 {{ Form::text('название', $recipe->title, ['placeholder' => 'Название рецепта']) }}
@@ -32,7 +32,7 @@
         </div>
 
         <button class="accordion" type="button">Описание</button>
-        <div class="panel">
+        <div class="accordion-panel">
             <div class="form-group">
                     {{ Form::label('описание', 'Описание') }}
                     {{ Form::textarea('описание', $recipe->intro, ['placeholder' => 'Краткое описание рецепта']) }}
@@ -40,7 +40,7 @@
         </div>
 
         <button class="accordion" type="button">Ингридиенты</button>
-        <div class="panel">
+        <div class="accordion-panel">
             <div class="form-group">
                 {{ Form::label('ингридиенты', 'Ингридиенты') }}
                 {{ Form::textarea('ингридиенты', $recipe->ingredients, ['placeholder' => 'Все ингридиенты рецепта. После каждого ингридиента нажимайте кнопку Ввод (Enter) чтобы разделить их на строки.']) }}
@@ -48,7 +48,7 @@
         </div>
 
         <button class="accordion" type="button">Совет</button>
-        <div class="panel">
+        <div class="accordion-panel">
             <div class="form-group">
                 {{ Form::label('совет', 'Совет') }}
                 {{ Form::textarea('совет', $recipe->advice, ['placeholder' => 'Это поле не обязательно к заполнению, если у вас есть просьба или совет который может помочь в приготовлении блюда пишите его сюда.']) }}
@@ -56,7 +56,7 @@
         </div>
 
         <button class="accordion" type="button">Приготовление</button>
-        <div class="panel">
+        <div class="accordion-panel">
             <div class="form-group">
                 {{ Form::label('приготовление', 'Приготовление') }}
                 {{ Form::textarea('приготовление', $recipe->text, ['placeholder' => 'Опишите процесс приготовления по пунктам используя Ввод (Enter) для отделения пунктов друг от друга.']) }}
@@ -64,7 +64,7 @@
         </div>
 
         <button class="accordion" type="button">Категория</button>
-        <div class="panel">
+        <div class="accordion-panel">
             <div class="form-group">
                 {{ Form::label('категория', 'Категория') }}
                 <select name="категория">
@@ -77,7 +77,7 @@
         </div>
 
         <button class="accordion" type="button">Время приготовления</button>
-        <div class="panel">
+        <div class="accordion-panel">
             <div class="form-group">
                 {{ Form::label('время', 'Время приготовления в минутах') }}
                 {{ Form::number('время', $recipe->time) }}
@@ -85,7 +85,7 @@
         </div>
 
         <button class="accordion" type="button">Изображение</button>
-        <div class="panel">
+        <div class="accordion-panel">
             <div class="form-group">
                 {{ Form::label('изображение', 'Изображение не должно быть высокого разрешения.') }}
                 {{ Form::file('изображение', ['class' => "upload-image-form"]) }}
@@ -112,7 +112,7 @@ var i
 
 for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function(){
-        this.classList.toggle("active")
+        this.classList.toggle("accordion-active")
         var panel = this.nextElementSibling
 
         if (panel.style.maxHeight) {

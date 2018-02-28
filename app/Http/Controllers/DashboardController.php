@@ -21,19 +21,28 @@ class DashboardController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        $admin_recipes = DB::table('recipes')->where('approved', 0)->latest()->paginate(1);
-        //  TODO:
+        $unapproved = DB::table('recipes')
+                ->where([['approved', '=', 0], ['ready', '=', 1]])
+                ->oldest()
+                ->paginate(10);
 
         // Count recipes and visits
-        $allrecipes = DB::table('recipes')->count();
-        $allvisits = DB::table('visitor_registry')->count();
-        $allclicks = DB::table('visitor_registry')->sum('clicks');
+        $allrecipes = DB::table('recipes')
+                ->count();
+        $allvisits = DB::table('visitor_registry')
+                ->count();
+        $allclicks = DB::table('visitor_registry')
+                ->sum('clicks');
+        $allunapproved = DB::table('recipes')
+                ->where([['approved', '=', 0], ['ready', '=', 1]])
+                ->count();
 
         return view('dashboard')
                 ->withRecipes($user->recipes)
                 ->withAllrecipes($allrecipes)
                 ->withAllvisits($allvisits)
                 ->withAllclicks($allclicks)
-                ->with('admin_recipes', $admin_recipes);
+                ->withAllunapproved($allunapproved)
+                ->withUnapproved($unapproved);
     }
 }
