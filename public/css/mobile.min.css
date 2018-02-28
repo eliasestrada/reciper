@@ -38,13 +38,24 @@
 }
 
 @keyframes disappear {
-    from {
-        margin-left: 0em;
-        transform: rotate(0deg);
+    0% {
+        opacity: 1;
+        transform: scale(1);
     }
-    to {
-        margin-left: -100em;
-        transform: rotate(2160deg);
+    25% {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.6);
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
     }
 }
 
@@ -612,7 +623,7 @@ img {
 }
 
 .disappear {
-    animation: disappear 1.3s infinite;
+    animation: disappear .5s;
     animation-timing-function: linear;
 }
 
