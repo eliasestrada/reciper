@@ -11,13 +11,9 @@
 @endif
 
 @if (session('success'))
-    <p class="message success">
-        {{ session('success') }}
-    </p>
+    <p class="message success">{{ session('success') }}</p>
 @endif
 
 @if (session('error'))
-    <p class="message error">
-        {{ session('error') }}
-    </p>
+    <p class="message error">{{ session('error') }}</p>
 @endif

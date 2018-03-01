@@ -17,7 +17,6 @@ class RecipesController extends Controller
     }
 
     // INDEX
-    // Display a listing of the resource.
     public function index()
     {
         $recipes = Recipe::where('approved', 1)->latest()->paginate(30);
@@ -36,7 +35,6 @@ class RecipesController extends Controller
     }
 
     // STORE
-    // Store a newly created resource in storage.
     public function store(Request $request)
     {
 
@@ -98,7 +96,6 @@ class RecipesController extends Controller
     }
 
     // SHOW
-    // Display the specified resource.
     public function show($id)
     {
         $recipe = Recipe::find($id);
@@ -113,31 +110,38 @@ class RecipesController extends Controller
             return redirect('/recipes');
         }
 
-        // FIXME: Make it more cleaner. Too much if statements
+        // Rules for auth users
         if (empty(auth()->user()->id) && $recipe->approved == 0) {
-            return redirect('/recipes');
-        } elseif (!empty(auth()->user()->admin) == 1) {
-            return view('recipes.show')->with('recipe', $recipe);
-        } elseif (!empty(auth()->user()->id) != $recipe->user_id && $recipe->approved == 0 && auth()->user()->author !== 1) {
-            return redirect('/recipes');
-        } 
+            return redirect('/recipes')
+                    ->with('error', 'У вас нет права просматривать этот рецепт.');
+        }
+
+        // Rules for auth users
+        if (!empty(auth()->user()->id)) {
+            if (auth()->user()->admin !== 1 && auth()->user()->id !== $recipe->user_id) {
+                return redirect('/recipes');
+            } elseif (auth()->user()->id !== $recipe->user_id && $recipe->approved === 0 && $recipe->ready === 0) {
+                return redirect('/recipes')
+                        ->with('error', 'Этот рецепт находится в процессе написания.');
+            }
+        }
 
         return view('recipes.show')->with('recipe', $recipe);
     }
 
     // EDIT
-    // Show the form for editing the specified resource.
     public function edit($id)
     {
         $recipe = Recipe::find($id);
 
         // Check for correct user
         if (auth()->user()->id !== $recipe->user_id) {
-            return redirect('/recipes')->with('error', 'Вы не можете редактировать не свои рецепты.');
+            return redirect('/recipes')
+                    ->with('error', 'Вы не можете редактировать не свои рецепты.');
         }
 
         if ($recipe->ready == 1) {
-            return redirect('/recipes')->with('error', 'Вы не можете редактировать рецепты которые находятся на рассмотрении.');
+            return redirect('/recipes')->with('error', 'Вы не можете редактировать рецепты которые находятся на рассмотрении или уже опубликованны.');
         }
 
         // For select input
@@ -150,7 +154,6 @@ class RecipesController extends Controller
     }
 
     // UPDATE
-    // Update the specified resource in storage.
     public function update(Request $request, $id)
     {
 
@@ -212,20 +215,27 @@ class RecipesController extends Controller
         $recipe->text = $request->input('приготовление');
         $recipe->time = $request->input('время');
         $recipe->category = $request->input('категория');
+        $recipe->approved = (auth()->user()->admin === 1) ? 1 : 0;
 
         if ($request->hasFile('изображение')) {
             $recipe->image = $fileNameToStore;
         }
 
-        if (isset($request->ready)) {
+        if (isset($request->ready) && auth()->user()->admin !== 1) {
             DB::table('users')->where('admin', 1)->update(['notif' => 1]);
         }
 
         $recipe->save();
 
-        return $recipe->ready == 0
-                ? redirect()->back()->with('success', 'Рецепт успешно сохранен')
-                : redirect('/dashboard')->with('success', 'Рецепт добавлен на рассмотрение и будет опубликован после одобрения администрации.');
+        if ($recipe->ready === 0) {
+            return redirect()->back()
+                    ->with('success', 'Рецепт успешно сохранен');
+        } elseif ($recipe->ready === 1 && auth()->user()->admin === 1) {
+            return redirect('/recipes')
+                    ->with('success', 'Рецепт опубликован и доступен для посетителей.');
+        }
+        return redirect('/dashboard')
+                    ->with('success', 'Рецепт добавлен на рассмотрение и будет опубликован после одобрения администрации.');
     }
 
     // LIKE
@@ -251,7 +261,7 @@ class RecipesController extends Controller
     public function answer($id, Request $request)
     {
         $recipe = DB::table('recipes')
-            ->where([['id', $id], ['approved', 0]]);
+            ->where([['id', $id], ['approved', 0], ['ready', 1]]);
 
         if (!$recipe) {
             return back();

@@ -38,7 +38,8 @@
                     </div>
                 @endif
 
-                @if (Auth::user()->admin === 1 && $recipe->approved == 0)
+                {{--  Buttons for admin  --}}
+                @if (Auth::user()->admin === 1 && $recipe->approved === 0 && Auth::user()->id !== $recipe->user_id)
                     <div class="recipe-buttons">
                         {!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
                             {{ Form::hidden('answer', 'approve') }}
