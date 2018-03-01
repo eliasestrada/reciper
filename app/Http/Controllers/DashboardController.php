@@ -9,18 +9,19 @@ use App\User;
 class DashboardController extends Controller
 {
 
-    // Create a new controller instance.
     public function __construct()
     {
         $this->middleware('auth');
     }
 
     // INDEX
-    // Show the application dashboard.
     public function index()
     {
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
+        $recipes = DB::table('recipes')
+                ->where('user_id', auth()->user()->id)
+                ->latest()
+                ->paginate(10);
+
         $unapproved = DB::table('recipes')
                 ->where([['approved', '=', 0], ['ready', '=', 1]])
                 ->oldest()
@@ -37,8 +38,13 @@ class DashboardController extends Controller
                 ->where([['approved', 0], ['ready', 1]])
                 ->count();
 
+        if (auth()->user()->author !== 1 || auth()->user()->admin !== 1) {
+                return redirect('/recipes')
+                        ->with('success', 'Вы не имеете права посещать эту страницу.');
+        }
+
         return view('dashboard')
-                ->withRecipes($user->recipes)
+                ->withRecipes($recipes)
                 ->withAllrecipes($allrecipes)
                 ->withAllvisits($allvisits)
                 ->withAllclicks($allclicks)
