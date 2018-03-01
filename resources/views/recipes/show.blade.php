@@ -31,7 +31,7 @@
                         <a href="/recipes/{{ $recipe->id }}/edit" title="Редактировать рецепт" class="fa">&#xf040;</a>
 
                         {{--  Delete button  --}}
-                        {!! Form::open(['action' => ['RecipesController@destroy', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
+                        {!! Form::open(['action' => ['RecipesController@destroy', $recipe->id], 'method' => 'post', 'style' => 'width: auto;', 'onsubmit' => 'return confirm("Вы точно хотите удалить этот рецепт?")']) !!}
                             {{ Form::hidden('_method', 'DELETE') }}
                             {{ Form::submit('&#xf014;', ['class' => 'fa', 'style' => 'background: brown;']) }}
                         {!! Form::close() !!}
@@ -41,11 +41,12 @@
                 {{--  Buttons for admin  --}}
                 @if (Auth::user()->admin === 1 && $recipe->approved === 0 && Auth::user()->id !== $recipe->user_id)
                     <div class="recipe-buttons">
-                        {!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
+                        {!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto;', 'onsubmit' => 'return confirm("Вы точно хотите опубликовать этот рецепт?")']) !!}
                             {{ Form::hidden('answer', 'approve') }}
                             {{ Form::submit('&#xf00c;', ['class' => 'fa', 'style' => 'background: green;']) }}
                         {!! Form::close() !!}
-                        {!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto;']) !!}
+
+                        {!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto;', 'onsubmit' => 'return confirm("Вы точно хотите вернуть этот рецепт автору на доработку?")']) !!}
                             {{ Form::hidden('answer', 'cancel') }}
                             {{ Form::submit('&#xf00d;', ['class' => 'fa', 'style' => 'background: brown;']) }}
                         {!! Form::close() !!}

@@ -55,7 +55,3 @@ window.addEventListener('mouseup', function (event) {
         closeMenu()
     }
 })
-
-//button.addEventListener('dblclick', () => location.reload())
-
-window.onscroll = () => hideMenuBarIntoButton()
