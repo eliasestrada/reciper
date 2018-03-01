@@ -47,7 +47,7 @@ class RecipesController extends Controller
             'время' => 'numeric|digits_between:0,1000',
             'изображение' => 'image|nullable|max:1999'
         ]);
-        
+
         // Create Recipe in DB
         $recipe = new Recipe;
         $recipe->title = $request->input('название');
@@ -150,7 +150,7 @@ class RecipesController extends Controller
         return view('recipes.edit')
                             ->withRecipe($recipe)
                             ->withCategories($categories);
-        
+
     }
 
     // UPDATE
@@ -164,7 +164,7 @@ class RecipesController extends Controller
                 'описание' => 'min:20|max:2000',
                 'ингридиенты' => 'min:20|max:5000',
                 'совет' => 'max:5000',
-                'приготовление' => 'min:100|max:10000',
+                'приготовление' => 'min:80|max:10000',
                 'время' => 'numeric|digits_between:0,1000',
                 'изображение' => 'image|nullable|max:1999'
             ]);
