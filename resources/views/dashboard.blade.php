@@ -62,7 +62,7 @@
     @if (Auth::user()->admin === 1)
         <div class="list-of-recipes">
             @if (count($unapproved) > 0)
-                <h3>Рецепты на рассмотрении - {{ $allunapproved }}</h3>
+                <h3>Рецепты на рассмотрении {{ $allunapproved }}</h3>
                 @foreach ($unapproved as $unapprove)
                     <div class="each-recipe" data-updated="Обновленно {{ facebookTimeAgo($unapprove->updated_at) }}" data-author="Автор: {{ $unapprove->author }}">
                         <a href="/recipes/{{ $unapprove->id }}">
@@ -85,7 +85,7 @@
     @if (Auth::user()->author === 1)
         <div class="list-of-recipes">
             @if (count($recipes) > 0)
-                <h3>Мои рецепты - {{ count($recipes) }}</h3>
+                <h3>Мои рецепты</h3>
                 @foreach ($recipes as $recipe)
             <div class="each-recipe" data-updated="Дата написания {{ facebookTimeAgo($recipe->updated_at) }}" data-author="Статус: {{ $recipe->approved === 1 ? 'Проверен' : 'Не проверен' }}">
                         <a href="/recipes/{{ $recipe->id }}">

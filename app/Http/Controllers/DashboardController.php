@@ -38,7 +38,7 @@ class DashboardController extends Controller
                 ->where([['approved', 0], ['ready', 1]])
                 ->count();
 
-        if (auth()->user()->author !== 1 || auth()->user()->admin !== 1) {
+        if (auth()->user()->author !== 1 && auth()->user()->admin !== 1) {
                 return redirect('/recipes')
                         ->with('success', 'Вы не имеете права посещать эту страницу.');
         }
