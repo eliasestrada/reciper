@@ -447,29 +447,9 @@ img {
     line-height: .2em
 }
 
-.add-material {
-    width: .97em;
-    height: .97em;
-    position: fixed;
-    top: 70vh;
-    right: 2em;
-    font-size: 5.1em !important;
-    background: #eee;
-    color: var(--main);
-    border-radius: 100%;
-    box-shadow: 0 .12em .31em .12em var(--darkGray);
-    cursor: pointer;
-    transition: all 80ms linear;
-    z-index: 5
-}
-
 .recipe-img,
 .side-bar img {
     border-radius: .18em
-}
-
-.add-material:hover {
-    color: var(--mainHover)
 }
 
 .grid-recipe {
@@ -550,8 +530,8 @@ img {
     cursor: pointer;
     transition: .3s ease;
     margin-left: 0;
-    animation: heart-beat 1.7s infinite both 2.5s, appear 2s;
-    animation-direction: alternate;
+    animation: heart-beat 1.7s infinite both 1s, disappear 1s;
+    animation-direction: alternate, reverse;
     transform: scale(1);
     background: 0 0;
     border: none
@@ -1013,16 +993,5 @@ footer a:hover {
     }
     41% {
         transform: rotate(1deg)
-    }
-}
-
-@keyframes appear {
-    0% {
-        margin-left: -100em;
-        transform: rotate(0)
-    }
-    100% {
-        margin-left: 0;
-        transform: rotate(2160deg)
     }
 }

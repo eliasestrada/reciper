@@ -32,13 +32,6 @@
             <p class="content">Нет рецептов</p>
         @endif
     </section>
-
-    <!-- Add recipe button-->
-    @auth
-        @if (Auth::user()->admin === 1)
-            <a href="/recipes/create" class="fa fa-plus-circle add-material" title="Добавить рецепт"></a>
-        @endif
-    @endauth
 </div>
 
 @endsection

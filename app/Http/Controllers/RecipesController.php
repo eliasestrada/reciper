@@ -116,9 +116,9 @@ class RecipesController extends Controller
         // FIXME: Make it more cleaner. Too much if statements
         if (empty(auth()->user()->id) && $recipe->approved == 0) {
             return redirect('/recipes');
-        } elseif (auth()->user()->admin == 1) {
+        } elseif (!empty(auth()->user()->admin) == 1) {
             return view('recipes.show')->with('recipe', $recipe);
-        } elseif (auth()->user()->id != $recipe->user_id && $recipe->approved == 0 && auth()->user()->author !== 1) {
+        } elseif (!empty(auth()->user()->id) != $recipe->user_id && $recipe->approved == 0 && auth()->user()->author !== 1) {
             return redirect('/recipes');
         } 
 
