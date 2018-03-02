@@ -61,11 +61,18 @@ class DashboardController extends Controller
                 ->withNotifications($notifications);
     }
 
+    // NOTIFICATIONS
     public function notifications() {
 
+		$user_id = auth()->user()->id;
+
         $notifications = DB::table('notifications')
-                ->where('user_id', auth()->user()->id)
-                ->paginate(10);
+                ->where('user_id', $user_id)
+				->paginate(10);
+
+		DB::table('users')
+				->where('id', $user_id)
+				->update(['notif_check' => NOW()]);
 
         return view('notifications')
                         ->withNotifications($notifications);
