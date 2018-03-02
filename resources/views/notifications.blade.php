@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('content')
+@section('title', 'Оповещения')
+
+@section('body')
 
 <div class="wrapper">
     <h2><i class="fa fa-bell-o bell-alert"></i> Оповещения</h2>

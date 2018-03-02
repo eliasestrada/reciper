@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-
-    @include('includes.head')
-
+	@include('includes.head')
+	<title>@yield('title') - Delicious Food</title>
 </head>
 <body>
     @include('includes.navbar')
@@ -11,7 +10,7 @@
 
         @include('includes.messages')
 
-        @yield('content')
+        @yield('body')
 
     </main>
     @include('includes.footer')

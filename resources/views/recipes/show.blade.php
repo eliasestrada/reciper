@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('content')
+@section('title', $recipe->title)
+
+@section('body')
 
 <div class="wrapper">
     <section class="grid-recipe">

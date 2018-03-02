@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('content')
+@section('title', 'Связь с нами')
+
+@section('body')
 
 <div class="wrapper">
     <h1>{{ $title }}</h1>

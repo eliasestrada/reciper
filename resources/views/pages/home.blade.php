@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('content')
+@section('title', 'Главная')
+
+@section('body')
     <!-- Header header -->
     <header class="header">
         <div class="bg-image"></div>

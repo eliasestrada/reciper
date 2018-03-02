@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('content')
+@section('title', 'Поиск')
+
+@section('body')
 
 <div class="wrapper">
     <h2><i class="fa fa-search" aria-hidden="true"></i> Поиск</h2>

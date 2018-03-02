@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('body')
 
 <div class="wrapper">
     <h1>Войти</h1>

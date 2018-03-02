@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('content')
+@section('title', Auth::user()->name)
+
+@section('body')
 
 <div class="wrapper">
 
