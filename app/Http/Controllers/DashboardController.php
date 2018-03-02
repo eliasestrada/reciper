@@ -17,8 +17,10 @@ class DashboardController extends Controller
     // INDEX
     public function index()
     {
+		$user = auth()->user();
+
         $recipes = DB::table('recipes')
-                ->where('user_id', auth()->user()->id)
+                ->where('user_id', $user->id)
                 ->latest()
                 ->paginate(10);
 
@@ -28,12 +30,12 @@ class DashboardController extends Controller
                 ->paginate(10);
 
         $notifications = DB::table('notifications')
-                ->where([['user_id', auth()->user()->id], ['created_at', '>', auth()->user()->notif_check]])
+                ->where([['user_id', $user->id], ['created_at', '>', $user->notif_check]])
 				->count();
 
-		if (auth()->user()->admin === 1) {
+		if ($user->admin === 1) {
 			$notifications_for_admin = DB::table('notifications')
-				->where([['for_admins', 1], ['created_at', '>', auth()->user()->notif_check]])
+				->where([['for_admins', 1], ['created_at', '>', $user->notif_check]])
 				->count();
 
 			$notifications += $notifications_for_admin;
@@ -52,7 +54,7 @@ class DashboardController extends Controller
                 ->where([['approved', 0], ['ready', 1]])
                 ->count();
 
-        if (auth()->user()->author !== 1 && auth()->user()->admin !== 1) {
+        if ($user->author !== 1 && $user->admin !== 1) {
                 return redirect('/recipes')
                         ->with('success', 'Вы не имеете права посещать эту страницу.');
         }

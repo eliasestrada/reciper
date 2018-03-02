@@ -37,6 +37,7 @@ class RecipesController extends Controller
     // STORE
     public function store(Request $request)
     {
+		$user = auth()->user();
 
         $this->validate($request, [
             'название' => 'max:199',
@@ -57,8 +58,8 @@ class RecipesController extends Controller
         $recipe->text = $request->input('приготовление');
         $recipe->time = $request->input('время');
         $recipe->category = $request->input('категория');
-        $recipe->user_id = auth()->user()->id;
-        $recipe->author = auth()->user()->name;
+        $recipe->user_id = $user->id;
+        $recipe->author = $user->name;
         $recipe->image = 'default.jpg';
 
         $recipe->save();
@@ -98,7 +99,8 @@ class RecipesController extends Controller
     // SHOW
     public function show($id)
     {
-        $recipe = Recipe::find($id);
+		$recipe = Recipe::find($id);
+		$user = auth()->user();
 
         if (!$recipe) {
             return redirect('/recipes');
@@ -110,17 +112,17 @@ class RecipesController extends Controller
             return redirect('/recipes');
         }
 
-        // Rules for auth users
-        if (empty(auth()->user()->id) && $recipe->approved == 0) {
+        // Rules for visitors
+        if (empty($user->id) && $recipe->approved == 0) {
             return redirect('/recipes')
                     ->with('error', 'У вас нет права просматривать этот рецепт.');
         }
 
         // Rules for auth users
-        if (!empty(auth()->user()->id)) {
-            if (auth()->user()->admin !== 1 && auth()->user()->id !== $recipe->user_id) {
+        if (!empty($user->id)) {
+            if ($user->admin !== 1 && $user->id !== $recipe->user_id && $recipe->ready === 0) {
                 return redirect('/recipes');
-            } elseif (auth()->user()->id !== $recipe->user_id && $recipe->approved === 0 && $recipe->ready === 0) {
+            } elseif ($user->id !== $recipe->user_id && $recipe->approved === 0 && $recipe->ready === 0) {
                 return redirect('/recipes')
                         ->with('error', 'Этот рецепт находится в процессе написания.');
             }
@@ -156,6 +158,7 @@ class RecipesController extends Controller
     // UPDATE
     public function update(Request $request, $id)
     {
+		$user = auth()->user();
 
         // If ready to publish
         if (isset($request->ready)) {
@@ -215,16 +218,16 @@ class RecipesController extends Controller
         $recipe->text = $request->input('приготовление');
         $recipe->time = $request->input('время');
         $recipe->category = $request->input('категория');
-        $recipe->approved = (auth()->user()->admin === 1) ? 1 : 0;
+        $recipe->approved = ($user->admin === 1) ? 1 : 0;
 
         if ($request->hasFile('изображение')) {
             $recipe->image = $fileNameToStore;
         }
 
 		// Send notification to admins
-        if (isset($request->ready) && auth()->user()->admin !== 1) {
+        if (isset($request->ready) && $user->admin !== 1) {
 
-			$message = auth()->user()->name.' закончил(а) написание рецепта под названием "'.$recipe->title.'". Проверте его.';
+			$message = $user->name.' закончил(а) написание рецепта под названием "'.$recipe->title.'". Проверте его.';
 
 			DB::table('notifications')->insert([
 				'title' => 'Рецепт готов',
@@ -239,7 +242,7 @@ class RecipesController extends Controller
         if ($recipe->ready === 0) {
             return redirect()->back()
                     ->with('success', 'Рецепт успешно сохранен');
-        } elseif ($recipe->ready === 1 && auth()->user()->admin === 1) {
+        } elseif ($recipe->ready === 1 && $user->admin === 1) {
             return redirect('/recipes')
                     ->with('success', 'Рецепт опубликован и доступен для посетителей.');
         }
@@ -277,12 +280,14 @@ class RecipesController extends Controller
         }
 
         if ($request->input('answer') == 'approve') {
-            $recipe->update(['approved' => 1]);
+			$recipe->update(['approved' => 1]);
+
             // TODO: Notification to author if author is not admin, that his recipe has been posted
             return redirect('/recipes')
                     ->with('success', 'Рецепт одобрен и опубликован.');
         } elseif ($request->input('answer') == 'cancel') {
-            $recipe->update(['ready' => 0]);
+			$recipe->update(['ready' => 0]);
+
             // TODO: Notification to author if author is not admin, that he needs to edit the recipe
             return redirect('/recipes')
                     ->with('success', 'Вы вернули рецепт на повторное редактирование.');
@@ -290,10 +295,9 @@ class RecipesController extends Controller
     }
 
     // DESTROY
-    // Remove the specified resource from storage.
     public function destroy($id)
     {
-        $recipe = Recipe::find($id);
+		$recipe = Recipe::find($id);
 
         // Check for correct user
         if (auth()->user()->id !== $recipe->user_id) {
