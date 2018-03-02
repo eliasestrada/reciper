@@ -27,6 +27,14 @@ class DashboardController extends Controller
                 ->oldest()
                 ->paginate(10);
 
+        $notifications = DB::table('notifications')
+                ->where([
+                        ['user_id', auth()->user()->id],
+                        ['created_at', '>', auth()->user()->notif_check]
+                ])->count();
+
+        $notifications = empty($notifications) ? '' : 'data-notif= '.$notifications;
+
         // Count recipes and visits
         $allrecipes = DB::table('recipes')
                 ->count();
@@ -49,15 +57,17 @@ class DashboardController extends Controller
                 ->withAllvisits($allvisits)
                 ->withAllclicks($allclicks)
                 ->withAllunapproved($allunapproved)
-                ->withUnapproved($unapproved);
+                ->withUnapproved($unapproved)
+                ->withNotifications($notifications);
     }
 
-    public function closeNotification() {
+    public function notifications() {
 
-        DB::table('users')
-                ->where([['id', auth()->user()->id], ['admin', 1]])
-                ->update(['notif' => 0]);
+        $notifications = DB::table('notifications')
+                ->where('user_id', auth()->user()->id)
+                ->paginate(10);
 
-        return back();
+        return view('notifications')
+                        ->withNotifications($notifications);
     }
 }

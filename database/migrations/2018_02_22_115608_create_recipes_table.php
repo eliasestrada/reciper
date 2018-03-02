@@ -16,7 +16,7 @@ class CreateRecipesTable extends Migration
             $table->text('ingredients')->nullable();
             $table->text('advice')->nullable();
             $table->text('text')->nullable();
-            $table->integer('time')->default(0);
+            integer('time')->default(0);
             $table->string('category')->default('Разное');
             $table->text('author');
             $table->bigInteger('views')->default(0);

@@ -4,22 +4,12 @@
 
 <div class="wrapper">
 
-    {{--  Admin notification  --}}
-    @if ($allunapproved > 0 && Auth::user()->notif === 1)
-        <div class="notification">
-            <i class="fa fa-bell-o bell-alert" style="font-size: 1.3em; margin: .5em; padding-top: .15em;"></i>
-            <p>У вас есть {{ $allunapproved }} {{ $allunapproved == 1 ? 'непроверенный рецепт' : 'непроверенных рецепта' }}</p>
-            {!! Form::open(['action' => ['DashboardController@closeNotification'], 'method' => 'post', 'style' => 'width: auto; display: flex;']) !!}
-                {{ Form::submit('&#xf00d;', ['class' => 'fa close-notif']) }}
-            {!! Form::close() !!}
-        </div>
-    @endif
-
     <div class="content">
         <h2>{{ Auth::user()->name }}</h2>
     </div>
 
     <a href="/recipes/create" title="Добавить рецепт" class="button">Добавить рецепт</a>
+    <a href="/notifications" title="Оповещения" class="button" {{ $notifications }}>Оповещения</a>
 
     {{--  3 Cards  --}}
     <div class="dashboard-cards">
@@ -104,16 +94,5 @@
         </div>
     @endif
 </div>
-
-<script>
-    let notification = document.querySelector(".notification")
-
-    notification.addEventListener('click', animateNotification)
-
-    function animateNotification() {
-        notification.classList.add("disappear")
-        notification.style.opacity = '0'
-    }
-</script>
 
 @endsection

@@ -347,17 +347,31 @@ img {
     display: block;
     line-height: 1.85em;
     background: var(--main);
-    left: -12.5em;
     color: #eee;
     border: none;
     font-size: .93em;
     border-radius: .15em;
-    transition: .4s linear all
+    transition: .4s linear all;
+    position: relative;
 }
 
 .button:hover,
 .form input[type=submit]:hover {
     background: var(--mainHover)
+}
+
+.button[data-notif]::after {
+    content: attr(data-notif);
+    min-width: 20px;
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    position: absolute;
+    left: -8px;
+    top: -4px;
+    background: #860101;
+    border: solid 1px #fff;
+    border-radius: 50%;
 }
 
 #cards {
@@ -720,42 +734,6 @@ img {
     overflow: auto
 }
 
-.close-notif,
-.notification {
-    color: #fff;
-    text-shadow: 1px 1px 1px #444
-}
-
-.notification {
-    display: flex;
-    padding: .2em .4em;
-    position: absolute;
-    top: .3em;
-    left: .3em;
-    text-align: center;
-    background: #f55;
-    box-shadow: 0 6px 6px -6px #000;
-    animation: notification 2s;
-    transition: left .5s ease, opacity 1s ease;
-    z-index: 20
-}
-
-.notification p {
-    margin: .7em
-}
-
-.close-notif {
-    border: none;
-    background: 0 0;
-    font-size: 1.3em;
-    margin: .5em;
-    cursor: pointer
-}
-
-.close-notif:hover {
-    text-shadow: 3px 3px 1px #444
-}
-
 .bell-alert {
     animation: ring 4s .7s ease-in-out infinite;
     transform-origin: 50% 4px;
@@ -826,6 +804,9 @@ img {
     cursor: not-allowed;
     background: #fff
 }
+
+
+/* Footer */
 
 footer a,
 footer h3 {
