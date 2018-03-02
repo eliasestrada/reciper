@@ -65,8 +65,10 @@
                     </div>
                 @endforeach
                 {{ $unapproved->links() }}
-            @else
-                <p class="content">Нет непровереных рецептов.</p>
+			@else
+				<div class="content">
+					<h4>Нет непровереных рецептов</h4>
+				</div>
             @endif
         </div>
     @endif
@@ -88,8 +90,10 @@
                     </div>
                 @endforeach
                 {{ $recipes->links() }}
-            @else
-                <p class="content">Нет непровереных рецептов.</p>
+			@else
+				<div class="content">
+					<h4>У вас пока нет рецептов</h4>
+				</div>
             @endif
         </div>
     @endif

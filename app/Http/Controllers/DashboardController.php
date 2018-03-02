@@ -28,10 +28,16 @@ class DashboardController extends Controller
                 ->paginate(10);
 
         $notifications = DB::table('notifications')
-                ->where([
-                        ['user_id', auth()->user()->id],
-                        ['created_at', '>', auth()->user()->notif_check]
-                ])->count();
+                ->where([['user_id', auth()->user()->id], ['created_at', '>', auth()->user()->notif_check]])
+				->count();
+
+		if (auth()->user()->admin === 1) {
+			$notifications_for_admin = DB::table('notifications')
+				->where([['for_admins', 1], ['created_at', '>', auth()->user()->notif_check]])
+				->count();
+
+			$notifications += $notifications_for_admin;
+		}
 
         $notifications = empty($notifications) ? '' : 'data-notif= '.$notifications;
 
@@ -67,7 +73,8 @@ class DashboardController extends Controller
 		$user_id = auth()->user()->id;
 
         $notifications = DB::table('notifications')
-                ->where('user_id', $user_id)
+				->where('user_id', $user_id)
+				->orWhere('for_admins', 1)
 				->paginate(10);
 
 		DB::table('users')

@@ -221,8 +221,17 @@ class RecipesController extends Controller
             $recipe->image = $fileNameToStore;
         }
 
+		// Send notification to admins
         if (isset($request->ready) && auth()->user()->admin !== 1) {
-            DB::table('users')->where('admin', 1)->update(['notif' => 1]);
+
+			$message = auth()->user()->name.' закончил(а) написание рецепта под названием "'.$recipe->title.'". Проверте его.';
+
+			DB::table('notifications')->insert([
+				'title' => 'Рецепт готов',
+				'message' => $message,
+				'for_admins' => 1,
+				'created_at' => NOW()
+			]);
         }
 
         $recipe->save();
