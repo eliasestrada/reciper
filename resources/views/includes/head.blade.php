@@ -5,6 +5,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Styles -->
+<link rel="stylesheet" href="{{ asset('css/bootstrap-grid.min.css') }
 <link rel="stylesheet" href="{{ asset('css/mobile.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/desktop.min.css') }}" media="screen and (min-width: 640px)">
 
