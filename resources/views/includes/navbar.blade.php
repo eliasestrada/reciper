@@ -13,22 +13,22 @@
         <li><a href="/" title="На главную">Главная</a></li>
         <li><a href="/recipes" title="Рецепты">Рецепты</a></li>
 
-        @auth
-            <li class="admin-li">
-                <a href="{{ url('/dashboard') }}">Панель</a>
+		@auth
+            <li class="admin-btn">
+                <a href="{{ url('/dashboard') }}">Панель <i class="fa fa-user-circle"></i></a>
             </li>
 
-            <li class="admin-li">
+            <li class="admin-btn">
                 <a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                    Выйти
+                    Выйти <i class="fa fa-sign-out"></i>
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                      @csrf
                 </form>
-            </li>
+			</li>
         @endguest
     </ul>
 </nav>

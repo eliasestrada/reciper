@@ -62,7 +62,7 @@ body {
     display: block
 }
 
-#nav-menu li {
+#nav-menu li{
     width: 5rem;
     height: 100%;
     margin-top: -2px;
@@ -77,6 +77,11 @@ body {
 
 #menu-container {
     display: none
+}
+
+.admin-btn {
+	float: right;
+	margin-right: .7em;
 }
 
 .recipes>div {

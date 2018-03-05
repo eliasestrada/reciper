@@ -85,33 +85,19 @@
 
         <!-- Еще рецепты -->
         <div class="side-bar">
-            <span class="headline">Еще рецепты:</span>
-            <ul>
-                <li>
-                    <a href="recipe.php">
-                        <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="..">
-                    </a>
-                    <p>Курица и что-то еще непонятное</p>
-                </li>
-                <li>
-                    <a href="recipe.php">
-                        <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="..">
-                    </a>
-                    <p>Курица и что-то еще непонятное</p>
-                </li>
-                <li>
-                    <a href="recipe.php">
-                        <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="..">
-                    </a>
-                    <p>Курица и что-то еще непонятное</p>
-                </li>
-                <li>
-                    <a href="recipe.php">
-                        <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="..">
-                    </a>
-                    <p>Курица и что-то еще непонятное</p>
-                </li>
-            </ul>
+			<span class="headline">Еще рецепты:</span>
+			@if (count($random_recipes) > 0)
+				<ul>
+					@foreach ($random_recipes as $random)
+						<li>
+							<a href="/recipes/{{ $random->id }}">
+								<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{ $random->title }}">
+							</a>
+							<p>{{ $random->title }}</p>
+						</li>
+					@endforeach
+				</ul>
+			@endif
         </div>
     </section>
 </div>

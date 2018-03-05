@@ -164,6 +164,11 @@ img {
     padding-top: 1.25em
 }
 
+.admin-btn {
+	padding: .3em .5em 0 .5em;
+	background: #383853;
+}
+
 #logo {
     transition: .2s;
     z-index: 5;
@@ -340,18 +345,18 @@ img {
 
 .button {
     width: 10.8em;
-    height: 1.85em;
-    margin: .93em auto;
+    height: 2.2em;
+    margin: .6em auto;
     padding: 0 .25em;
     text-align: center;
     display: block;
-    line-height: 1.85em;
+    line-height: 2.2em;
     background: var(--main);
     color: #eee;
     border: none;
     font-size: .93em;
     border-radius: .15em;
-    transition: .4s linear all;
+    transition: .2s linear all;
     position: relative;
 }
 

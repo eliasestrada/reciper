@@ -86,14 +86,13 @@ class RecipesController extends Controller
     // SHOW
     public function show($id)
     {
-		$recipe = Recipe::find($id);
 		$user = auth()->user();
+		$recipe = Recipe::find($id);
 
-        if (!$recipe) {
-            return redirect('/recipes');
-        }
-
-        $recipe = Recipe::find($id);
+		$random_recipes = Recipe::inRandomOrder()
+				->where('approved', 1)
+				->limit(5)
+				->get();
 
         if (!$recipe) {
             return redirect('/recipes');
@@ -115,7 +114,9 @@ class RecipesController extends Controller
             }
         }
 
-        return view('recipes.show')->with('recipe', $recipe);
+		return view('recipes.show')
+				->with('recipe', $recipe)
+				->with('random_recipes', $random_recipes);
     }
 
     // EDIT

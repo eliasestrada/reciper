@@ -1,19 +1,17 @@
 <footer>
-    <ul class="footer-col" id="column-a">
+    <ul>
         <li><h3>Навигация</h3></li>
         <li><a href="/">Главная</a></li>
         <li><a href="/recipes">Рецепты</a></li>
-        <li><a href="#">Связь с нами</a></li>
+        {{--  TODO: <li><a href="/contact">Связь с нами</a></li>  --}}
     </ul>
 
-    <ul class="footer-col" id="column-b">
+    {{--  TODO: <ul class="footer-col" id="column-b">
         <li><h3>Условия и приватность</h3></li>
         <li><a href="#">О нас</a></li>
-        <li><a href="#">Условия</a></li>
-        <li><a href="#">Конф</a></li>
-    </ul>
+    </ul>  --}}
 
-    <div class="copyright" id="column-c">
+    <div class="copyright">
         <li>Copyright &copy; {{ date("Y") }}</li>
     </div>
 </footer>
