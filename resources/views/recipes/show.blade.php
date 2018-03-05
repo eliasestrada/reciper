@@ -62,7 +62,7 @@
 
             <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->name }}" title="{{ $recipe->name }}" class="recipe-img">
 
-            <a href="#" title="link">
+            <a href="/search?for={{ $recipe->category }}" title="link">
                 <span class="category">{{ $recipe->category }}</span>
             </a>
 

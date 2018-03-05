@@ -17,7 +17,7 @@ class PagesController extends Controller
 	// SEARCH
 	public function search(Request $request)
     {
-		$query = $request->input('search_for');
+		$query = $request->input('for');
 
 		if ($query) {
 			$recipes = Recipe::where('title', 'LIKE', '%' . $query . '%')

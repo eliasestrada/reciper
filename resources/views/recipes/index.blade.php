@@ -21,7 +21,7 @@
                         <!-- Intro -->
                         <p>{{ mb_substr($recipe->intro, 0, 180, "utf-8") }}{{ strlen($recipe->intro) > 180 ? '...' : '' }}</p>
                         <!-- Category -->
-                        <a href="#" title="link"><span class="category">{{$recipe->category}}</span></a>
+                        <a href="/search?for={{$recipe->category}}" title="link"><span class="category">{{$recipe->category}}</span></a>
                         <!-- Time -->
                         <div class="date"><i class="fa fa-clock-o"></i> {{$recipe->time}} мин.</div>
                     </div>

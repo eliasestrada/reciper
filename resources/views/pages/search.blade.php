@@ -10,7 +10,7 @@
 	{{--  Form  --}}
 	<form action="/search" method="GET" role="search" class="form">
 		<div class="form-group">
-			<input type="search" name="search_for" placeholder="Искать">
+			<input type="search" name="for" placeholder="Искать">
 			<input type="submit" value="Поиск" style="display: none;">
 		</div>
 	</form>
@@ -26,7 +26,7 @@
 		            <div class="cards-content">
 		                <h3>{{ $recipe->title }}</h3>
 		                <p>{{ $recipe->intro }}</p>
-		                <a href="/search/{{ $recipe->category }}" title="{{ $recipe->category }}"><span class="category">{{ $recipe->category }}</span></a>
+		                <a href="/search?for={{ $recipe->category }}" title="{{ $recipe->category }}"><span class="category">{{ $recipe->category }}</span></a>
 		            </div>
 		        </div>
 		    </section>
