@@ -275,7 +275,7 @@ class RecipesController extends Controller
         }
 
         $recipe->delete();
-        return redirect('/dashboard')
+        return redirect('/recipes')
                 ->with('success', 'Рецепт успешно удален');
 	}
 }
