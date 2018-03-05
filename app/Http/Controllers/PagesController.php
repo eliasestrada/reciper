@@ -24,11 +24,13 @@ class PagesController extends Controller
 					->orWhere('ingredients', 'LIKE', '%' . $query . '%')
 					->orWhere('category', 'LIKE', '%' . $query . '%')
 					->paginate(20);
+			$message = count($recipes) < 1 ? 'Ничего не найденно' : '';
 		} else {
 			$recipes = '';
+			$message = 'Воспользуйтесь поиском чтобы найти рецепты, ингридиенты или категории.';
 		}
-
 		return view('pages.search')
-					->withRecipes($recipes);
+					->withRecipes($recipes)
+					->withMessage($message);
 	}
 }

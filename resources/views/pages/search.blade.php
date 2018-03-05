@@ -5,13 +5,12 @@
 @section('body')
 
 <div class="wrapper">
-    <h2><i class="fa fa-search" aria-hidden="true"></i> Поиск</h2>
-    <p>Воспользуйтесь поиском чтобы найти рецепты или категориию рецептов.</p>
+    <h2><i class="fa fa-search"></i> Поиск</h2>
 
 	{{--  Form  --}}
 	<form action="/search" method="GET" role="search" class="form">
 		<div class="form-group">
-			<input type="text" name="search_for" placeholder="Искать">
+			<input type="search" name="search_for" placeholder="Искать">
 			<input type="submit" value="Поиск" style="display: none;">
 		</div>
 	</form>
@@ -33,11 +32,11 @@
 		    </section>
 	    @endforeach
 	    {{ $recipes->links() }}
-	@else
-		<div class="content">
-			<h4>Ничего не найдено</h4>
-		</div>
-    @endif
+	@endif
+
+	<div class="content">
+		<h4>{{ $message }}</h4>
+	</div>
 
 
 </div>
