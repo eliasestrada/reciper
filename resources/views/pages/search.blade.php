@@ -5,7 +5,8 @@
 @section('body')
 
 <div class="wrapper">
-    <h2><i class="fa fa-search"></i> Поиск</h2>
+	<h2 class="headline"><i class="fa fa-search"></i> Поиск</h2>
+	<br />
 
 	{{--  Form  --}}
 	<form action="/search" method="GET" role="search" class="form">
@@ -35,7 +36,7 @@
 	@endif
 
 	<div class="content">
-		<h4>{{ $message }}</h4>
+		<h4 class="content center">{{ $message }}</h4>
 	</div>
 
 

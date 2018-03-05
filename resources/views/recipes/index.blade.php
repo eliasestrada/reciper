@@ -5,7 +5,7 @@
 @section('body')
 
 <div class="wrapper">
-    <h2>Рецепты</h2>
+    <h2 class="headline">Рецепты</h2>
     <section class="recipes">
 
         @if (count($recipes) > 0)
@@ -19,7 +19,7 @@
                         <!-- Title -->
                         <h3>{{$recipe->title}}</h3>
                         <!-- Intro -->
-                        <p>{{ mb_substr($recipe->intro, 0, 180, "utf-8") }}{{ strlen($recipe->intro) > 180 ? '...' : '' }}</p>
+                        <p class="content">{{ mb_substr($recipe->intro, 0, 180, "utf-8") }}{{ strlen($recipe->intro) > 180 ? '...' : '' }}</p>
                         <!-- Category -->
                         <a href="/search?for={{$recipe->category}}" title="link"><span class="category">{{$recipe->category}}</span></a>
                         <!-- Time -->

@@ -5,7 +5,7 @@
 @section('body')
 
 <div class="wrapper">
-	<h2>Мои рецепты</h2>
+	<h2 class="headline">Мои рецепты</h2>
 
 	{{--  All my recipes  --}}
 	@if (Auth::user()->author === 1)
@@ -26,9 +26,7 @@
 			@endforeach
 			{{ $recipes->links() }}
 		@else
-			<div class="content">
-				<h4>У вас пока нет рецептов</h4>
-			</div>
+			<p class="content center">У вас пока нет рецептов</p>
 		@endif
 	</div>
 	@endif

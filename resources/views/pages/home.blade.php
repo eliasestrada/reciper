@@ -7,59 +7,34 @@
     <header class="header">
         <div class="bg-image"></div>
         <div class="card-content">
-            <h1>{{ $title }}</h1>
+            <h1>Delicious Food</h1>
             <p>Lorem ipsm, dolor sit amet consectetur adipisicing elit. Adipisci eum error earum soluta voluptatum nisi laboriosam eos saepe asperiores dolorum.</p>
             <a href="/search" class="button">Искать</a>
         </div>
     </header>
 
-    <section class="wrapper" style="min-height:auto; padding: 1em .8em .93em .8em;">
-        <h2>Куховарим вместе</h2>
+    <section class="home-section">
+        <h2 class="headline">Куховарим вместе</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe sint eligendi possimus? Unde officiis magnam laborum ipsa distinctio odio, vero dolores dicta aliquam aperiam repellendus. Perferendis officiis deserunt velit voluptas nobis sequi animi totam, accusantium, ex eius quia, natus quo?</p>
     </section>
 
     <!-- Cards -->
-    <section id="cards" class="grid-cards">
-        <ul>
-            <li>
-                <div class="card">
-                    <a href="recipe.php">
-                        <img src="{{ asset('storage/other/img.jpg') }}" alt="Вермишель" title="Вермишель">
+    <section class="recipes">
+		@if (count($random_recipes) > 0)
+			@foreach ($random_recipes as $random)
+				<div>
+                    <!-- Image -->
+                    <a href="/recipes/{{ $random->id }}">
+                        <img src="{{ asset('storage/images/'.$random->image) }}" alt="{{$random->title}}" title="{{$random->title}}">
                     </a>
-                    <div class="cards-content">
-                        <h3>Вермишель</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum culpa neque quo eum et quasi velit voluptatum cum maiores exercitationem.</p>
-                    </div>
                 </div>
-            </li>
-            <li>
-                <div class="card">
-                    <a href="recipe.php">
-                        <img src="{{ asset('storage/other/img.jpg') }}" alt="Мясо" title="Мясо">
-                    </a>
-                    <div class="cards-content">
-                        <h3>Мясо</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum culpa neque quo eum et quasi velit voluptatum cum maiores exercitationem.</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="card">
-                    <a href="recipe.php">
-                        <img src="{{ asset('storage/other/img.jpg') }}" alt="Зелень" title="Зелень">
-                    </a>
-                    <div class="cards-content">
-                        <h3>Зелень</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum culpa neque quo eum et quasi velit voluptatum cum maiores exercitationem.</p>
-                    </div>
-                </div>
-            </li>
-        </ul>
+			@endforeach
+		@endif
     </section>
 
     <!-- Final -->
-    <section class="wrapper" style="min-height:auto; padding: 1rem .8rem .93rem .8rem;">
-        <h2 class="content-title">Какой-то текст</h2>
+    <section class="home-section">
+        <h2 class="headline">Какой-то текст</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe sint eligendi possimus? Unde officiis magnam laborum ipsa distinctio odio, vero dolores dicta aliquam aperiam repellendus. Perferendis officiis deserunt velit voluptas nobis sequi
             animi totam, accusantium, ex eius quia, natus quo?</p>
     </section>

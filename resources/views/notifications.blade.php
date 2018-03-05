@@ -5,7 +5,7 @@
 @section('body')
 
 <div class="wrapper">
-    <h2><i class="fa fa-bell-o bell-alert"></i> Оповещения</h2>
+    <h2 class="headline"><i class="fa fa-bell-o bell-alert"></i> Оповещения</h2>
 
 	@if (count($notifications) > 0)
 		<div style="padding: 1em 0;">
@@ -19,9 +19,7 @@
 		</div>
 		{{ $notifications->links() }}
 	@else
-		<div class="content">
-			<h4>У вас пока нет оповещений</h4>
-		</div>
+		<p class="content center">У вас пока нет оповещений</p>
 	@endif
 </div>
 

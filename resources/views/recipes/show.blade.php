@@ -50,7 +50,7 @@
                 @endif
             @endauth
             
-            <h1>{{ $recipe->title }}</h1>
+            <h1 class="headline">{{ $recipe->title }}</h1>
 
             <p>{{ $recipe->intro }}</p>
 

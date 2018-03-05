@@ -10,8 +10,14 @@ class PagesController extends Controller
 {
 	// HOME
     public function home() {
-        $title = "Рецепты";
-        return view('pages.home')->with('title', $title);
+
+		$random_recipes = Recipe::inRandomOrder()
+				->where('approved', 1)
+				->limit(3)
+				->get();
+
+		return view('pages.home')
+				->with('random_recipes', $random_recipes);
 	}
 
 	// SEARCH

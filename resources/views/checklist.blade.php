@@ -5,7 +5,7 @@
 @section('body')
 
 <div class="wrapper">
-    <h2>Проверочная</h2>
+    <h2 class="content">Проверочная</h2>
 
 	{{--  Unapproved recipes  --}}
     @if (Auth::user()->admin === 1)
@@ -25,9 +25,7 @@
                 @endforeach
                 {{ $unapproved->links() }}
 			@else
-				<div class="content">
-					<h4>Нет непровереных рецептов</h4>
-				</div>
+				<p class="content center">Нет непровереных рецептов</p>
             @endif
         </div>
     @endif

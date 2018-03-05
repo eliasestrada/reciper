@@ -6,9 +6,7 @@
 
 <div class="wrapper">
 
-    <div class="content">
-        <h2>{{ Auth::user()->name }}</h2>
-    </div>
+    <h2 class="headline">{{ Auth::user()->name }}</h2>
 
 	<a href="/recipes/create" title="Добавить рецепт" class="button" style="background: green;">Добавить рецепт</a>
 	<a href="/my_recipes" title="Мои рецепты" class="button">Мои рецепты</a>
@@ -25,7 +23,7 @@
                 <i class="fa fa-file-text-o" style="font-size: 2.5em;"></i>
             </div>
             <div class="dashboard-cards-rows">
-                <h3>Рецепты</h3>
+                <h3 class="headline">Рецепты</h3>
             </div>
             <div class="dashboard-cards-rows">
                 <h3>{{ $allrecipes }}</h3>
@@ -36,7 +34,7 @@
                 <i class="fa fa-users" style="font-size: 2.5em;"></i>
             </div>
             <div class="dashboard-cards-rows">
-                <h3>Посетители</h3>
+                <h3 class="headline">Посетители</h3>
             </div>
             <div class="dashboard-cards-rows">
                 <h3>{{ $allvisits }}</h3>
@@ -47,7 +45,7 @@
                 <i class="fa fa-mouse-pointer" style="font-size: 2.5em;"></i>
             </div>
             <div class="dashboard-cards-rows">
-                <h3>Клики</h3>
+                <h3 class="headline">Клики</h3>
             </div>
             <div class="dashboard-cards-rows">
                 <h3>{{ $allclicks }}</h3>
