@@ -24,10 +24,7 @@ class DashboardController extends Controller
                 ->latest()
                 ->paginate(10);
 
-        $unapproved = DB::table('recipes')
-                ->where([['approved', '=', 0], ['ready', '=', 1]])
-                ->oldest()
-                ->paginate(10);
+        
 
         $notifications = DB::table('notifications')
                 ->where([['user_id', $user->id], ['created_at', '>', $user->notif_check]])
@@ -50,9 +47,6 @@ class DashboardController extends Controller
                 ->count();
         $allclicks = DB::table('visitor_registry')
                 ->sum('clicks');
-        $allunapproved = DB::table('recipes')
-                ->where([['approved', 0], ['ready', 1]])
-                ->count();
 
         if ($user->author !== 1 && $user->admin !== 1) {
                 return redirect('/recipes')
@@ -64,8 +58,6 @@ class DashboardController extends Controller
                 ->withAllrecipes($allrecipes)
                 ->withAllvisits($allvisits)
                 ->withAllclicks($allclicks)
-                ->withAllunapproved($allunapproved)
-                ->withUnapproved($unapproved)
                 ->withNotifications($notifications);
     }
 
@@ -84,6 +76,18 @@ class DashboardController extends Controller
 				->update(['notif_check' => NOW()]);
 
         return view('notifications')
-                        ->withNotifications($notifications);
+                ->withNotifications($notifications);
+	}
+	
+	// CHECKLIST
+    public function checklist() {
+
+		$unapproved = DB::table('recipes')
+                ->where([['approved', '=', 0], ['ready', '=', 1]])
+                ->oldest()
+				->paginate(10);
+
+		return view('checklist')
+				->withUnapproved($unapproved);
     }
 }

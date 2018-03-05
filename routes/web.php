@@ -20,6 +20,7 @@ Route::get('/search', 'PagesController@search');
 
 // Recipes
 Route::get('/recipes/{recipe}/like', 'RecipesController@like');
+Route::get('/recipes/{recipe}/dislike', 'RecipesController@dislike');
 Route::post('/recipes/{recipe}/answer', 'RecipesController@answer');
 Route::resource('recipes', 'RecipesController');
 Auth::routes();
@@ -27,3 +28,4 @@ Auth::routes();
 // Users
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/notifications', 'DashboardController@notifications');
+Route::get('/checklist', 'DashboardController@checklist')->middleware('admin');

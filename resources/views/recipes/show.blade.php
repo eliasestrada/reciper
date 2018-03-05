@@ -10,18 +10,12 @@
 
             {{--  Likes  --}}
             <div id="favorite-buttons" style="font-weight:bold;">
-                @if (Cookie::get('liked') == null)
-                    {!! Form::open(['action' => ['RecipesController@like', $recipe->id], 'method' => 'get', 'style' => 'width: auto;']) !!}
-                        {{ Form::hidden('todo', 'set') }}
-                        {{ Form::submit('&#xf08a;', ['class' => 'like-icon fa']) }}
-                        <i>{{ $recipe->likes }}</i>
-                    {!! Form::close() !!}
-                @else
-                    {!! Form::open(['action' => ['RecipesController@like', $recipe->id], 'method' => 'get', 'style' => 'width: auto;']) !!}
-                        {{ Form::hidden('todo', 'delete') }}
-                        {{ Form::submit('&#xf004;', ['class' => 'like-icon fa']) }}
-                        <i>{{ $recipe->likes }}</i>
-                    {!! Form::close() !!}
+				@if (Cookie::get('liked') == null)
+					<a href="/recipes/{{ $recipe->id }}/like" class="like-icon fa">&#xf08a;</a>
+					<i>{{ $recipe->likes }}</i>
+				@else
+					<a href="/recipes/{{ $recipe->id }}/dislike" class="like-icon fa">&#xf004;</a>
+					<i>{{ $recipe->likes }}</i>
                 @endif
             </div>
 

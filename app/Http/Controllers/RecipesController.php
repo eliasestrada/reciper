@@ -15,7 +15,12 @@ class RecipesController extends Controller
     // Create a new controller instance.
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show', 'like']]);
+        $this->middleware('auth', ['except' => [
+			'index',
+			'show',
+			'like',
+			'dislike'
+		]]);
     }
 
     // INDEX
@@ -208,22 +213,17 @@ class RecipesController extends Controller
     }
 
     // LIKE
-    public function like($id, Request $request)
+    public function like($id)
     {
-        $recipe = DB::table('recipes')->where('id', $id);
-
-        if ($request->input('todo') == 'set') {
-            // +1 like
-            $recipe->increment('likes');
-            return back()->withCookie(cookie('liked', 1, 5000));
-
-        } elseif ($request->input('todo') == 'delete') {
-            // -1 like
-            $recipe->decrement('likes');
-            $cookie = \Cookie::forget('liked');
-            return back()->withCookie($cookie);
-		}
-        return empty($request->input('todo')) ? back() : back()->withCookie($cookie);
+		Recipe::find($id)->increment('likes');
+        return back()->withCookie(cookie('liked', 1, 5000));
+	}
+	
+	// DISLIKE
+    public function dislike($id)
+    {
+		Recipe::find($id)->decrement('likes');
+		return back()->withCookie(\Cookie::forget('liked'));
     }
 
     // APPROVE
