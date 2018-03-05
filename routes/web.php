@@ -29,3 +29,4 @@ Auth::routes();
 Route::get('/dashboard', 'DashboardController@index')->middleware('author');
 Route::get('/notifications', 'DashboardController@notifications')->middleware('author');
 Route::get('/checklist', 'DashboardController@checklist')->middleware('admin');
+Route::get('/my_recipes', 'DashboardController@my_recipes')->middleware('author');

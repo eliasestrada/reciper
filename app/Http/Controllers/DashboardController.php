@@ -19,13 +19,6 @@ class DashboardController extends Controller
     {
 		$user = auth()->user();
 
-        $recipes = DB::table('recipes')
-                ->where('user_id', $user->id)
-                ->latest()
-                ->paginate(10);
-
-        
-
         $notifications = DB::table('notifications')
                 ->where([['user_id', $user->id], ['created_at', '>', $user->notif_check]])
 				->count();
@@ -61,7 +54,6 @@ class DashboardController extends Controller
         }
 
         return view('dashboard')
-                ->withRecipes($recipes)
                 ->withAllrecipes($allrecipes)
                 ->withAllvisits($allvisits)
 				->withAllclicks($allclicks)
@@ -98,5 +90,19 @@ class DashboardController extends Controller
 
 		return view('checklist')
 				->withUnapproved($unapproved);
+	}
+	
+	// MY_RECIPES
+    public function my_recipes() {
+
+		$user = auth()->user();
+
+		$recipes = DB::table('recipes')
+				->where('user_id', $user->id)
+				->latest()
+				->paginate(20);
+
+		return view('my_recipes')
+				->withRecipes($recipes);
     }
 }
