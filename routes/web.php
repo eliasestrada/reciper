@@ -26,6 +26,6 @@ Route::resource('recipes', 'RecipesController');
 Auth::routes();
 
 // Users
-Route::get('/dashboard', 'DashboardController@index');
-Route::get('/notifications', 'DashboardController@notifications');
+Route::get('/dashboard', 'DashboardController@index')->middleware('author');
+Route::get('/notifications', 'DashboardController@notifications')->middleware('author');
 Route::get('/checklist', 'DashboardController@checklist')->middleware('admin');

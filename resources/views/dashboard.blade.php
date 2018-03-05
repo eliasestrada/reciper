@@ -10,9 +10,12 @@
         <h2>{{ Auth::user()->name }}</h2>
     </div>
 
-    <a href="/recipes/create" title="Добавить рецепт" class="button">Добавить рецепт</a>
+	<a href="/recipes/create" title="Добавить рецепт" class="button">Добавить рецепт</a>
 	<a href="/notifications" title="Оповещения" class="button" {{ $notifications }}>Оповещения</a>
-	<a href="/checklist" title="Проверочная" class="button">Проверочная</a>
+
+	@if (Auth::user()->admin === 1)
+		<a href="/checklist" title="Проверочная" class="button">Проверочная</a>
+	@endif
 
     {{--  3 Cards  --}}
     <div class="dashboard-cards">
