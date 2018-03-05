@@ -17,22 +17,23 @@
 	</form>
 
 	{{--  Results  --}}
-    @if($recipes)
-	    @foreach($recipes as $recipe)
-		    <section class="recipes">
-		        <div>
-		            <a href="/recipes/{{ $recipe->id }}">
-		                <img src="{{ asset('storage/images/' . $recipe->image) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
-		            </a>
-		            <div class="cards-content">
-		                <h3>{{ $recipe->title }}</h3>
-		                <p>{{ $recipe->intro }}</p>
-		                <a href="/search?for={{ $recipe->category }}" title="{{ $recipe->category }}"><span class="category">{{ $recipe->category }}</span></a>
-		            </div>
-		        </div>
-		    </section>
-	    @endforeach
-	    {{ $recipes->links() }}
+	@if($recipes)
+		<section class="recipes">
+			@foreach($recipes as $recipe)
+				
+					<div>
+						<a href="/recipes/{{ $recipe->id }}">
+							<img src="{{ asset('storage/images/' . $recipe->image) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
+						</a>
+						<div class="cards-content">
+							<h3>{{ $recipe->title }}</h3>
+							<p>{{ $recipe->intro }}</p>
+							<a href="/search?for={{ $recipe->category }}" title="{{ $recipe->category }}"><span class="category">{{ $recipe->category }}</span></a>
+						</div>
+					</div>
+			@endforeach
+			{{ $recipes->links() }}
+		</section>
 	@endif
 
 	<div class="content">
