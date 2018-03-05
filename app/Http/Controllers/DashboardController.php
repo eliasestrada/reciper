@@ -47,12 +47,6 @@ class DashboardController extends Controller
 				
 		$allunapproved = !empty($allunapproved) ? 'data-notif='.$allunapproved : '';
 
-
-        if ($user->author !== 1 && $user->admin !== 1) {
-                return redirect('/recipes')
-                        ->with('success', 'Вы не имеете права посещать эту страницу.');
-        }
-
         return view('dashboard')
                 ->withAllrecipes($allrecipes)
                 ->withAllvisits($allvisits)

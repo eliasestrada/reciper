@@ -55,3 +55,5 @@ window.addEventListener('mouseup', function (event) {
         closeMenu()
     }
 })
+
+window.onscroll = () => hideMenuBarIntoButton()
