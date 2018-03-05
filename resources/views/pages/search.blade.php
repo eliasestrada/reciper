@@ -8,37 +8,33 @@
     <h2><i class="fa fa-search" aria-hidden="true"></i> Поиск</h2>
     <p>Воспользуйтесь поиском чтобы найти рецепты или категориию рецептов.</p>
 
-    <!-- Form -->
-    <form action="" method="POST" class="form">
-        <div class="form-group">
-            <input type="search" name="search" autocomplete="off" placeholder="Искать">
-        </div>
-        <input type="submit" style="display: none;">
-    </form>
+    {!! Form::open(['action' => ['RecipesController@search', $recipe->id], 'method' => 'get']) !!}
+    	{{ Form::text('word', null, ['placeholder' => 'Искать']) }}
+    	{{ Form::submit('', ['style', 'display: none;']) }}
+    {!! Form::close() !!}
 
     <!-- Results -->
-    <section class="recipes">
-        <div>
-            <a href="recipe.php">
-                <img src="{{ asset('storage/other/img.jpg') }}" alt="pasta" title="Макароны">
-            </a>
-            <div class="cards-content">
-                <h3>Вермишель</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum culpa neque quo eum et quasi velit voluptatum cum maiores exercitationem.</p>
-                <a href="#" title="link"><span class="category">Вторые блюда</span></a>
-            </div>
-        </div>
-        <div>
-            <a href="recipe.php">
-                <img src="{{ asset('storage/other/img.jpg') }}" alt="Мясо" title="Мясо">
-            </a>
-            <div class="cards-content">
-                <h3>Мясо</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum culpa neque quo eum et quasi velit voluptatum cum maiores exercitationem.</p>
-                <a href="#" title="link"><span class="category">Мясо</span></a>
-            </div>
-        </div>
-    </section>
+    @if(count($recipes) > 0)
+	    @foreach($resipes as $recipe)
+		    <section class="recipes">
+		        <div>
+		            <a href="/recipes/{{ $recipe->id }}">
+		                <img src="{{ asset('storage/images/' . $recipe->image . ') }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
+		            </a>
+		            <div class="cards-content">
+		                <h3>{{ $recipe->title }}</h3>
+		                <p>{{ $recipe->intro }}</p>
+		                <a href="/search/{{ $recipe->category }}" title="{{ $recipe->category }}"><span class="category">{{ $recipe->category }}</span></a>
+		            </div>
+		        </div>
+		    </section>
+	    @endforeach
+	    {{ $recipes->links() }}
+	@else
+		<div class="content">
+			<h3>Ничего не найдено</h3>
+		</div>
+    @endif
 </div>
 
 @endsection

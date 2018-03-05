@@ -15,6 +15,7 @@ Route::get('/', 'PagesController@home');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/search', 'PagesController@search');
 
+Route::get('/search/{recipe}', 'RecipesController@search');
 Route::post('/recipes/{recipe}/like', 'RecipesController@like');
 Route::post('/recipes/{recipe}/answer', 'RecipesController@answer');
 Route::resource('recipes', 'RecipesController');
@@ -22,4 +23,3 @@ Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/notifications', 'DashboardController@notifications');
-
