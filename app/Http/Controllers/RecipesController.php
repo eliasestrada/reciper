@@ -72,7 +72,7 @@ class RecipesController extends Controller
         if ($request->hasFile('изображение')) {
         	$image = $request->file('изображение');
         	$title = str_replace(" ", "_", strtolower($recipe->title));
-        	$filename = $recipe->id . '-' . $title . '.' . $image->getClientOriginalExtention();
+        	$filename = $recipe->id . '-' . $title . '.' . $image->getClientOriginalExtension();
         	Image::make($image)->resize(640, 480)->save(public_path( '/storage/images/' . $filename ));
         
         	$recipe->image = $filename;
