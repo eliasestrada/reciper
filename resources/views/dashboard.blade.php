@@ -14,7 +14,7 @@
 	<a href="/notifications" title="Оповещения" class="button" {{ $notifications }}>Оповещения</a>
 
 	@if (Auth::user()->admin === 1)
-		<a href="/checklist" title="Проверочная" class="button">Проверочная</a>
+		<a href="/checklist" title="Проверочная" class="button" {{ $allunapproved }}>Проверочная</a>
 	@endif
 
     {{--  3 Cards  --}}

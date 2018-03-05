@@ -8,13 +8,12 @@
     <h2><i class="fa fa-bell-o bell-alert"></i> Оповещения</h2>
 
 	@if (count($notifications) > 0)
-		<div>
+		<div style="padding: 1em 0;">
 			@foreach ($notifications as $notification)
-				<div class="content">
-					<h3>{{ $notification->title }}</h3>
-					<p>{{ $notification->message }}</p>
-					<p>{{ $notification->created_at }}</p>
-					<hr />
+				<div class="notification">
+					<h4 class="notification-title">{{ $notification->title }}</h4>
+					<p class="notification-date">{{ $notification->created_at }}</p>
+					<p class="notification-message">{{ $notification->message }}</p>
 				</div>
 			@endforeach
 		</div>

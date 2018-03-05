@@ -38,7 +38,7 @@ class DashboardController extends Controller
 			$notifications += $notifications_for_admin;
 		}
 
-        $notifications = empty($notifications) ? '' : 'data-notif= '.$notifications;
+        $notifications = empty($notifications) ? '' : 'data-notif='.$notifications;
 
         // Count recipes and visits
         $allrecipes = DB::table('recipes')
@@ -46,7 +46,14 @@ class DashboardController extends Controller
         $allvisits = DB::table('visitor_registry')
                 ->count();
         $allclicks = DB::table('visitor_registry')
-                ->sum('clicks');
+				->sum('clicks');
+				
+		$allunapproved = DB::table('recipes')
+                ->where([['approved', '=', 0], ['ready', '=', 1]])
+				->count();
+				
+		$allunapproved = !empty($allunapproved) ? 'data-notif='.$allunapproved : '';
+
 
         if ($user->author !== 1 && $user->admin !== 1) {
                 return redirect('/recipes')
@@ -57,7 +64,8 @@ class DashboardController extends Controller
                 ->withRecipes($recipes)
                 ->withAllrecipes($allrecipes)
                 ->withAllvisits($allvisits)
-                ->withAllclicks($allclicks)
+				->withAllclicks($allclicks)
+				->withAllunapproved($allunapproved)
                 ->withNotifications($notifications);
     }
 
@@ -69,6 +77,7 @@ class DashboardController extends Controller
         $notifications = DB::table('notifications')
 				->where('user_id', $user_id)
 				->orWhere('for_admins', 1)
+				->latest()
 				->paginate(10);
 
 		DB::table('users')

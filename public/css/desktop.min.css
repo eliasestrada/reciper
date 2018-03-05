@@ -149,6 +149,13 @@ body {
     font-size: .9em
 }
 
+/* -- Notifications -- */
+.notification {
+	width: 60%;
+	margin: .5em 15%;
+	padding: .5em 5%;
+}
+
 @media (min-width:1900px) {
     .grid-recipe {
         grid-template-columns: 12.5rem 1fr 15.62rem 12.5rem;

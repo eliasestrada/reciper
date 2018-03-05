@@ -184,20 +184,7 @@ class RecipesController extends Controller
             Image::make($image)->resize(640, 480)->save(public_path( '/storage/images/' . $filename ));
 
             $recipe->image = $filename;
-        }
-
-		// Send notification to admins
-        if (isset($request->ready) && $user->admin !== 1) {
-
-			$message = $user->name.' закончил(а) написание рецепта под названием "'.$recipe->title.'". Проверте его.';
-
-			DB::table('notifications')->insert([
-				'title' => 'Рецепт готов',
-				'message' => $message,
-				'for_admins' => 1,
-				'created_at' => NOW()
-			]);
-        }
+		}
 
         $recipe->save();
 
@@ -229,23 +216,45 @@ class RecipesController extends Controller
     // APPROVE
     public function answer($id, Request $request)
     {
-        $recipe = DB::table('recipes')
+        $update_recipe = DB::table('recipes')
             ->where([['id', $id], ['approved', 0], ['ready', 1]]);
 
-        if (!$recipe) {
+        if (!$update_recipe) {
             return back();
-        }
+        } else {
+			$recipe = Recipe::find($id);
+		}
 
         if ($request->input('answer') == 'approve') {
-			$recipe->update(['approved' => 1]);
+			
+			$update_recipe->update(['approved' => 1]);
 
-            // TODO: Notification to author if author is not admin, that his recipe has been posted
+			$message = 'Рецепт под названием "' . $recipe->title . '" был опубликован.';
+
+            DB::table('notifications')->insert([
+				'user_id' => $recipe->user_id,
+				'title' => 'Рецепт опубликован',
+				'message' => $message,
+				'for_admins' => 0,
+				'created_at' => NOW()
+			]);
+
             return redirect('/recipes')
                     ->with('success', 'Рецепт одобрен и опубликован.');
         } elseif ($request->input('answer') == 'cancel') {
-			$recipe->update(['ready' => 0]);
 
-            // TODO: Notification to author if author is not admin, that he needs to edit the recipe
+			$update_recipe->update(['ready' => 0]);
+
+			$message = 'Рецепт под названием "' . $recipe->title . '" не был опубликован так как администрация венула его вам на переработку.';
+
+            DB::table('notifications')->insert([
+				'user_id' => $recipe->user_id,
+				'title' => 'Рецепт не опубликован',
+				'message' => $message,
+				'for_admins' => 0,
+				'created_at' => NOW()
+			]);
+
             return redirect('/recipes')
                     ->with('success', 'Вы вернули рецепт на повторное редактирование.');
         }
