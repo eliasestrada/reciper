@@ -21,7 +21,7 @@
 
             {{--  Buttons  --}}
             @auth
-                @if (Auth::user()->id == $recipe->user_id && $recipe->ready == 0)
+                @if (Auth::user()->id == $recipe->user_id && $recipe->ready == 0 || Auth::user()->admin === 1)
                     <div class="recipe-buttons">
                         {{--  Edit button  --}}
                         <a href="/recipes/{{ $recipe->id }}/edit" title="Редактировать рецепт" class="fa">&#xf040;</a>

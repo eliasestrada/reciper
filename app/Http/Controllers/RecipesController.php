@@ -16,10 +16,7 @@ class RecipesController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except' => [
-			'index',
-			'show',
-			'like',
-			'dislike'
+			'index', 'show', 'like', 'dislike'
 		]]);
     }
 
@@ -124,15 +121,16 @@ class RecipesController extends Controller
     // EDIT
     public function edit($id)
     {
-        $recipe = Recipe::find($id);
+		$recipe = Recipe::find($id);
+		$user = auth()->user();
 
         // Check for correct user
-        if (auth()->user()->id !== $recipe->user_id) {
+        if ($user->id !== $recipe->user_id && $user->admin !== 1) {
             return redirect('/recipes')
                     ->with('error', 'Вы не можете редактировать не свои рецепты.');
         }
 
-        if ($recipe->ready == 1) {
+        if ($recipe->ready == 1 && $user->admin !== 1) {
 			return redirect('/recipes')
 					->with('error', 'Вы не можете редактировать рецепты которые находятся на рассмотрении или уже опубликованны.');
         }
@@ -264,9 +262,10 @@ class RecipesController extends Controller
     public function destroy($id)
     {
 		$recipe = Recipe::find($id);
+		$user = auth()->user();
 
         // Check for correct user
-        if (auth()->user()->id !== $recipe->user_id) {
+        if ($user->id !== $recipe->user_id && $user->admin !== 1) {
             return redirect('/recipes')
                     ->with('error', 'Вы не можете редактировать не свои рецепты.');
         }
