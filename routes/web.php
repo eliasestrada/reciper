@@ -10,16 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Input;
+use App\Recipe;
 
+// Pages
 Route::get('/', 'PagesController@home');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/search', 'PagesController@search');
 
-Route::get('/search/{recipe}', 'RecipesController@search');
-Route::post('/recipes/{recipe}/like', 'RecipesController@like');
+// Recipes
+Route::get('/recipes/{recipe}/like', 'RecipesController@like');
 Route::post('/recipes/{recipe}/answer', 'RecipesController@answer');
 Route::resource('recipes', 'RecipesController');
 Auth::routes();
 
+// Users
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/notifications', 'DashboardController@notifications');

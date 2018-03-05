@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Cookie\CookieJar;
+
 use App\Recipe;
 use Image;
 
@@ -76,7 +77,8 @@ class RecipesController extends Controller
 
         $recipe->save();
 
-        return redirect('/recipes/'.$recipe->id.'/edit')->with('success', 'Рецепт успешно сохранен');
+		return redirect('/recipes/'.$recipe->id.'/edit')
+				->with('success', 'Рецепт успешно сохранен');
     }
 
     // SHOW
@@ -126,7 +128,8 @@ class RecipesController extends Controller
         }
 
         if ($recipe->ready == 1) {
-            return redirect('/recipes')->with('error', 'Вы не можете редактировать рецепты которые находятся на рассмотрении или уже опубликованны.');
+			return redirect('/recipes')
+					->with('error', 'Вы не можете редактировать рецепты которые находятся на рассмотрении или уже опубликованны.');
         }
 
         // For select input
@@ -219,8 +222,8 @@ class RecipesController extends Controller
             $recipe->decrement('likes');
             $cookie = \Cookie::forget('liked');
             return back()->withCookie($cookie);
-        }
-        return back()->withCookie($cookie);
+		}
+        return empty($request->input('todo')) ? back() : back()->withCookie($cookie);
     }
 
     // APPROVE
@@ -266,23 +269,5 @@ class RecipesController extends Controller
         $recipe->delete();
         return redirect('/dashboard')
                 ->with('success', 'Рецепт успешно удален');
-    }
-    
-    // SEARCH
-    public function search($keyword, Request $request) {
-
-		if ($request) {
-    		$word = $request->input('word');
-		} else {
-    		$word = $keyword;
-		}
-
-    	$recipe = Recipe::where('title', 'LIKE', '%' . $word . '%')
-    			->orWhere('ingredients', 'LIKE', '%' . $word . '%')
-    			->orWhere('category', 'LIKE', '%' . $word . '%')
-    			->paginate(20);
-
-    	return view('recipes.search')
-    			->withRecipes($recipes);
-    }
+	}
 }

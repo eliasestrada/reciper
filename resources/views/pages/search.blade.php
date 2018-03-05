@@ -8,18 +8,21 @@
     <h2><i class="fa fa-search" aria-hidden="true"></i> Поиск</h2>
     <p>Воспользуйтесь поиском чтобы найти рецепты или категориию рецептов.</p>
 
-    {!! Form::open(['action' => ['RecipesController@search', $recipe->id], 'method' => 'get']) !!}
-    	{{ Form::text('word', null, ['placeholder' => 'Искать']) }}
-    	{{ Form::submit('', ['style', 'display: none;']) }}
-    {!! Form::close() !!}
+	{{--  Form  --}}
+	<form action="/search" method="GET" role="search" class="form">
+		<div class="form-group">
+			<input type="text" name="search_for" placeholder="Искать">
+			<input type="submit" value="Поиск" style="display: none;">
+		</div>
+	</form>
 
-    <!-- Results -->
-    @if(count($recipes) > 0)
-	    @foreach($resipes as $recipe)
+	{{--  Results  --}}
+    @if($recipes)
+	    @foreach($recipes as $recipe)
 		    <section class="recipes">
 		        <div>
 		            <a href="/recipes/{{ $recipe->id }}">
-		                <img src="{{ asset('storage/images/' . $recipe->image . ') }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
+		                <img src="{{ asset('storage/images/' . $recipe->image) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
 		            </a>
 		            <div class="cards-content">
 		                <h3>{{ $recipe->title }}</h3>
@@ -32,9 +35,11 @@
 	    {{ $recipes->links() }}
 	@else
 		<div class="content">
-			<h3>Ничего не найдено</h3>
+			<h4>Ничего не найдено</h4>
 		</div>
     @endif
+
+
 </div>
 
 @endsection
