@@ -5,13 +5,14 @@
 @section('body')
 
 <div class="wrapper">
-    <h2 class="content">Проверочная</h2>
+	<h2 class="headline">Проверочная</h2>
+	<p class="content center">Здесь отображаются все рецепты которые готовы к публикации. Вам нужно проверить.</p>
 
 	{{--  Unapproved recipes  --}}
     @if (Auth::user()->admin === 1)
         <div class="list-of-recipes">
             @if (count($unapproved) > 0)
-                <h3>Рецепты на рассмотрении {{ count($unapproved) }}</h3>
+                <h4 style="margin: .5em;">Рецепты на рассмотрении {{ count($unapproved) }}</h4>
                 @foreach ($unapproved as $unapprove)
                     <div class="each-recipe" data-updated="Обновленно {{ facebookTimeAgo($unapprove->updated_at) }}" data-author="Автор: {{ $unapprove->author }}">
                         <a href="/recipes/{{ $unapprove->id }}">

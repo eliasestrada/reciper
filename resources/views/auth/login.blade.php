@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Войти')
+
 @section('body')
 
 <div class="wrapper">
-    <h1>Войти</h1>
+    <h1 class="headline">Войти</h1>
     <form method="POST" action="{{ route('login') }}" class="form">
         @csrf
 
@@ -30,7 +32,7 @@
             {{ Form::submit('Войти') }}
         </div>
 
-        <a class="btn btn-link" href="{{ route('password.request') }}">Забыли пароль?</a>
+        {{-- TODO: <a class="btn btn-link" href="{{ route('password.request') }}">Забыли пароль?</a>  --}}
     </form>
 </div>
 

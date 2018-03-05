@@ -85,7 +85,7 @@
 
         <!-- Еще рецепты -->
         <div class="side-bar">
-			<span class="headline">Еще рецепты:</span>
+			<h4 class="headline">Еще рецепты:</h4>
 			@if (count($random_recipes) > 0)
 				<ul>
 					@foreach ($random_recipes as $random)
@@ -93,7 +93,7 @@
 							<a href="/recipes/{{ $random->id }}">
 								<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{ $random->title }}">
 							</a>
-							<p>{{ $random->title }}</p>
+							<p class="headline">{{ $random->title }}</p>
 						</li>
 					@endforeach
 				</ul>

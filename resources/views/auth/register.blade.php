@@ -1,15 +1,17 @@
 @extends('layouts.app')
 
+@section('title', 'Регистрация')
+
 @section('body')
 
 <div class="wrapper">
-    <h1>Регистрация</h1>
+    <h1 class="headline">Регистрация</h1>
     <form method="POST" action="{{ route('register') }}" class="form">
         @csrf
 
         <div class="form-group">
-            <label for="name">Имя и фамилия</label>
-            <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Имя и фамилия" required autofocus>
+            <label for="name">Это имя будет отображаться на всех ваших рецептах</label>
+            <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Имя" required autofocus>
         </div>
 
         <div class="form-group">

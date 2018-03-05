@@ -12,7 +12,7 @@
 			@foreach ($notifications as $notification)
 				<div class="notification">
 					<h4 class="notification-title">{{ $notification->title }}</h4>
-					<p class="notification-date">{{ $notification->created_at }}</p>
+					<p class="notification-date">{{ facebookTimeAgo($notification->created_at) }}</p>
 					<p class="notification-message">{{ $notification->message }}</p>
 				</div>
 			@endforeach
