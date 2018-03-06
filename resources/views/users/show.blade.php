@@ -5,6 +5,8 @@
 @section('content')
 
 <div class="wrapper">
+	@include('includes.profile-menu-line')
+
 	<div class="profile-header">
 		<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{ $user->name }}" />
 		<h1>{{ $user->name }}</h1>

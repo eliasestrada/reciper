@@ -2,9 +2,14 @@
 
 @section('title', 'Все авторы')
 
+@section('head')
+	<style>#all-users { border-bottom: 3px solid #a8a8a8; }</style>
+@endsection
+
 @section('content')
 
 <div class="wrapper">
+	@include('includes.profile-menu-line')
     <h2 class="headline">Все авторы</h2>
     <section>
 

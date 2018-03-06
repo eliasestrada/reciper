@@ -5,6 +5,7 @@
 @section('content')
 
 <div class="wrapper">
+	@include('includes.profile-menu-line')
     <h2 class="headline"><i class="fa fa-bell-o bell-alert"></i> Оповещения</h2>
 
 	@if (count($notifications) > 0)

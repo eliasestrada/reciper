@@ -3,24 +3,20 @@
 @section('title', Auth::user()->name)
 
 @section('head')
-	<style></style>
+	<style>#my-profile { border-bottom: 3px solid #a8a8a8; }</style>
 @endsection
 
 @section('content')
 
 <div class="wrapper">
-	<div class="profile-menu-line">
-		<a href="/my_recipes" title="Мои рецепты" id="my-resipes"><i class="fa fa-file-text-o"></i></a>
-		<a href="/users" title="Авторы" id="all-authors"><i class="fa fa-users"></i></a>
-	</div>
+	@include('includes.profile-menu-line')
 
     <h2 class="headline">{{ Auth::user()->name }}</h2>
 
-	@if (Auth::user()->author === 1)
+	
 		<a href="/recipes/create" title="Добавить рецепт" class="button">Новый рецепт</a>
-		
 		<a href="/notifications" title="Оповещения" class="button" {{ $notifications }}>Оповещения</a>
-	@endif
+	
 
 	@if (Auth::user()->admin === 1)
 		<a href="/checklist" title="Проверочная" class="button" {{ $allunapproved }}>Проверочная</a>

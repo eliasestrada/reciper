@@ -959,7 +959,7 @@ img {
 ==================== */
 
 .profile-header {
-	height: 20em;
+	height: 15em;
 }
 
 .profile-header img {
@@ -970,6 +970,26 @@ img {
 
 .profile-header h1 {
 	font-family: var(--headerFont);
+}
+
+.profile-menu-line {
+	height: 2.5em;
+	line-height: 2.5em;
+	margin-top: -.8em;
+	margin-bottom: .5em;
+	background: #e6e6e6;
+	border-bottom: 1px solid #a8a8a8;
+}
+
+.profile-menu-line a {
+	color: #414141;
+	font-size: 1.3em;
+	padding: .2em 1.8em;
+	margin: 0;
+}
+
+.profile-menu-line a:hover {
+	border-bottom: 3px solid #a8a8a8;
 }
 
 /* Pagination

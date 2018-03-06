@@ -5,6 +5,7 @@
 @section('content')
 
 <div class="wrapper">
+	@include('includes.profile-menu-line')
 	<h2 class="headline">Проверочная</h2>
 
 	{{--  Unapproved recipes  --}}
