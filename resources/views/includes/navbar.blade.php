@@ -14,11 +14,11 @@
         <li><a href="/recipes" title="Рецепты">Рецепты</a></li>
 
 		@auth
-            <li class="admin-btn">
-                <a href="{{ url('/dashboard') }}">Панель <i class="fa fa-user-circle"></i></a>
+            <li>
+                <a href="{{ url('/dashboard') }}">Панель</a>
             </li>
 
-            <li class="admin-btn">
+            <li>
                 <a href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
