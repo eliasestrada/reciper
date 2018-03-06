@@ -11,13 +11,16 @@ class DashboardController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+		$this->middleware('auth');
     }
 
     // INDEX
     public function index()
     {
 		$user = auth()->user();
+
+		// Update last visit
+		DB::table('users')->where('id', $user->id)->update(['updated_at' => NOW()]);
 
         $notifications = DB::table('notifications')
                 ->where([['user_id', $user->id], ['created_at', '>', $user->notif_check]])
@@ -98,5 +101,5 @@ class DashboardController extends Controller
 
 		return view('my_recipes')
 				->withRecipes($recipes);
-    }
+	}
 }
