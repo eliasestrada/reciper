@@ -21,7 +21,7 @@
 
             {{--  Buttons  --}}
             @auth
-                @if (Auth::user()->id == $recipe->user_id && $recipe->ready == 0 || Auth::user()->admin === 1)
+                @if (Auth::user()->id == $recipe->user_id && $recipe->ready == 0)
                     <div class="recipe-buttons">
                         {{--  Edit button  --}}
                         <a href="/recipes/{{ $recipe->id }}/edit" title="Редактировать рецепт" class="fa">&#xf040;</a>
@@ -35,7 +35,7 @@
                 @endif
 
                 {{--  Buttons for admin  --}}
-                @if (Auth::user()->admin === 1 && $recipe->approved === 0 && Auth::user()->id !== $recipe->user_id)
+                @if (Auth::user()->admin === 1 && $recipe->approved === 0)
                     <div class="recipe-buttons">
                         {!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto;', 'onsubmit' => 'return confirm("Вы точно хотите опубликовать этот рецепт?")']) !!}
                             {{ Form::hidden('answer', 'approve') }}
@@ -90,10 +90,10 @@
 				<ul>
 					@foreach ($random_recipes as $random)
 						<li>
+							<p class="headline">{{ $random->title }}</p>
 							<a href="/recipes/{{ $random->id }}">
 								<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{ $random->title }}">
 							</a>
-							<p class="headline">{{ $random->title }}</p>
 						</li>
 					@endforeach
 				</ul>

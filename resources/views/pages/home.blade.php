@@ -9,7 +9,7 @@
         <div class="card-content">
             <h1>Delicious Food</h1>
             <p>Lorem ipsm, dolor sit amet consectetur adipisicing elit. Adipisci eum error earum soluta voluptatum nisi laboriosam eos saepe asperiores dolorum.</p>
-            <a href="/search" class="button">Искать</a>
+            <a href="/search" class="button" style="box-shadow:none;">Искать</a>
         </div>
     </header>
 

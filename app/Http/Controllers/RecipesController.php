@@ -68,9 +68,8 @@ class RecipesController extends Controller
         // Handle image uploading
         if ($request->hasFile('изображение')) {
         	$image = $request->file('изображение');
-        	$title = str_replace(" ", "_", strtolower($recipe->title));
-        	$filename = $recipe->id . '-' . $title . '.' . $image->getClientOriginalExtension();
-        	Image::make($image)->resize(600, 400)->save(public_path( '/storage/images/' . $filename ));
+        	$filename = time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(600, 400)->save(storage_path('app/public/images/' . $filename ));
         
         	$recipe->image = $filename;
         } else {
@@ -178,9 +177,8 @@ class RecipesController extends Controller
         // Handle image uploading
         if ($request->hasFile('изображение')) {
             $image = $request->file('изображение');
-            $title = str_replace(" ", "_", strtolower($recipe->title));
-            $filename = $recipe->id . '-' . $title . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(600, 400)->save(public_path( '/storage/images/' . $filename ));
+        	$filename = time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(600, 400)->save(storage_path('app/public/images/' . $filename ));
 
             $recipe->image = $filename;
 		}

@@ -9,7 +9,7 @@
     <h2 class="headline">{{ Auth::user()->name }}</h2>
 
 	@if (Auth::user()->author === 1)
-		<a href="/recipes/create" title="Добавить рецепт" class="button" style="background: green;">Добавить рецепт</a>
+		<a href="/recipes/create" title="Добавить рецепт" class="button" style="background: #add5f7; text-shadow: none;">Новый рецепт</a>
 		<a href="/my_recipes" title="Мои рецепты" class="button">Мои рецепты</a>
 		<a href="/notifications" title="Оповещения" class="button" {{ $notifications }}>Оповещения</a>
 	@endif

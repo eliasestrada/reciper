@@ -6,7 +6,6 @@
 
 <div class="wrapper">
 	<h2 class="headline">Проверочная</h2>
-	<p class="content center">Здесь отображаются все рецепты которые готовы к публикации. Вам нужно проверить.</p>
 
 	{{--  Unapproved recipes  --}}
     @if (Auth::user()->admin === 1)
