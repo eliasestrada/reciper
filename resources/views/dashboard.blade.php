@@ -12,6 +12,7 @@
 		<a href="/recipes/create" title="Добавить рецепт" class="button">Новый рецепт</a>
 		<a href="/my_recipes" title="Мои рецепты" class="button">Мои рецепты</a>
 		<a href="/notifications" title="Оповещения" class="button" {{ $notifications }}>Оповещения</a>
+		<a href="/authors" title="Авторы" class="button" {{ $notifications }}>Авторы</a>
 	@endif
 
 	@if (Auth::user()->admin === 1)

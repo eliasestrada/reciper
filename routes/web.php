@@ -31,6 +31,9 @@ Route::get('/notifications', 'DashboardController@notifications')->middleware('a
 Route::get('/checklist', 'DashboardController@checklist')->middleware('admin');
 Route::get('/my_recipes', 'DashboardController@my_recipes')->middleware('author');
 
+// Authors
+Route::get('/authors', 'AuthorsController@index')->middleware('author');
+
 // -----------------------
 // Auth::routes();
 // Authentication Routes...

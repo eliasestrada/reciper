@@ -711,8 +711,7 @@ img {
 /* Edit create recipe
 ==================== */
 
-.check-box-ready,
-.dashboard-cards {
+.check-box-ready {
 	justify-content: center;
 	display: flex;
 }
@@ -781,6 +780,8 @@ img {
 	align-items: stretch;
 	align-content: stretch;
 	flex-flow: wrap;
+	justify-content: center;
+	display: flex;
 }
 
 .dashboard-cards>div {
