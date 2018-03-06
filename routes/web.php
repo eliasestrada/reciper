@@ -26,13 +26,11 @@ Route::resource('recipes', 'RecipesController');
 
 
 // Users
+Route::resource('users', 'UsersController')->middleware('author');
 Route::get('/dashboard', 'DashboardController@index')->middleware('author');
 Route::get('/notifications', 'DashboardController@notifications')->middleware('author');
 Route::get('/checklist', 'DashboardController@checklist')->middleware('admin');
 Route::get('/my_recipes', 'DashboardController@my_recipes')->middleware('author');
-
-// Authors
-Route::get('/authors', 'AuthorsController@index')->middleware('author');
 
 // -----------------------
 // Auth::routes();

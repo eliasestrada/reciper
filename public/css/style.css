@@ -772,6 +772,34 @@ img {
 	transition: max-height .3s ease-out;
 }
 
+/* Users
+==================== */
+
+.users-list {
+	width: 80%;
+	margin: 0 10%;
+	padding: .5em;
+}
+
+.users-list li {
+	position: relative;
+	height: 4.5em;
+	display: flex;
+}
+
+.users-list img {
+	width: 4em;
+	height: 4em;
+	margin: .5em 1em;
+	border-radius: 50%;
+}
+
+.user-content {
+	margin-top: 1em;
+	font-size: .85em;
+	text-align: left;
+}
+
 /* Dashboard
 ==================== */
 
