@@ -9,26 +9,26 @@
 
 	{{--  All my recipes  --}}
 	@if (Auth::user()->author === 1)
-	<div class="list-of-recipes">
-		@if (count($recipes) > 0)
-			@foreach ($recipes as $recipe)
-				<div class="each-recipe" data-updated="Дата написания {{ facebookTimeAgo($recipe->updated_at) }}" data-author="Статус: {{ $recipe->approved === 1 ? 'Проверен' : 'Не проверен' }}">
+		<div class="list-of-recipes">
+			@if (count($recipes) > 0)
+				@foreach ($recipes as $recipe)
+					<div class="each-recipe" data-updated="Дата написания {{ facebookTimeAgo($recipe->updated_at) }}" data-author="Статус: {{ $recipe->approved === 1 ? 'Проверен' : 'Не проверен' }}">
 
-					<a href="/recipes/{{ $recipe->id }}">
-						<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="Перейти к рецепту">
-					</a>
+						<a href="/recipes/{{ $recipe->id }}">
+							<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="Перейти к рецепту">
+						</a>
 
-					<div class="each-content">
-						<span>{{ $recipe->title }}</span>
-						<span>{{ $recipe->intro }}</span>
+						<div class="each-content">
+							<span>{{ $recipe->title }}</span>
+							<span>{{ $recipe->intro }}</span>
+						</div>
 					</div>
-				</div>
-			@endforeach
-			{{ $recipes->links() }}
-		@else
-			<p class="content center">У вас пока нет рецептов</p>
-		@endif
-	</div>
+				@endforeach
+				{{ $recipes->links() }}
+			@else
+				<p class="content center">У вас пока нет рецептов</p>
+			@endif
+		</div>
 	@endif
 </div>
 

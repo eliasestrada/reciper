@@ -33,7 +33,14 @@ class UsersController extends Controller
     {
 		$user = User::find($id);
 
-		return view('users.show')->withUser($user);
+		$recipes = DB::table('recipes')
+				->where('user_id', $user->id)
+				->latest()
+				->paginate(20);
+
+		return view('users.show')
+				->withRecipes($recipes)
+				->withUser($user);
 	}
 
 	// EDIT
