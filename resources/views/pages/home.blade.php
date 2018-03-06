@@ -3,8 +3,8 @@
 @section('title', 'Главная')
 
 @section('body')
-    <!-- Header header -->
-    <header class="header">
+    <!-- Home Header -->
+    <header class="home-header">
         <div class="bg-image"></div>
         <div class="card-content">
             <h1>Delicious Food</h1>

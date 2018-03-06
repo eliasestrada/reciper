@@ -47,7 +47,6 @@ html {
 body {
 	text-align: center;
 	font-family: var(--mainFont);
-	background: var(--darkGray);
 	color: #eee;
 	font-size: 1rem;
 	line-height: 1.5;
@@ -206,10 +205,6 @@ img {
 	}
 }
 
-.header h1 {
-	font-family: var(--headerFont);
-}
-
 .logo-opened {
 	margin: .7em auto 0;
 	font-size: 1.1em;
@@ -309,7 +304,7 @@ img {
 	}
 }
 
-/* Header Home
+/* Home Header
 ==================== */
 
 .home-section {
@@ -318,10 +313,24 @@ img {
 	padding: 3em 2em;
 }
 
-.header {
+.home-header {
 	min-height: 30em;
 	color: #fff;
 	margin-bottom: -1em;
+}
+
+.home-header h1 {
+	padding-top: 2.2em;
+	padding-bottom: 0;
+	font-size: 3.2em;
+	text-shadow: 2px 2px 2px #000;
+	z-index: 30;
+}
+
+.home-header p {
+	text-shadow: 1px 1px 1px #000;
+	margin: .3em .6em;
+	z-index: 3;
 }
 
 .bg-image {
@@ -334,20 +343,6 @@ img {
 	height: 30em;
 	z-index: -1;
 	opacity: .6;
-}
-
-.header h1 {
-	padding-top: 2.2em;
-	padding-bottom: 0;
-	font-size: 3.2em;
-	text-shadow: 2px 2px 2px #000;
-	z-index: 30;
-}
-
-.header p {
-	text-shadow: 1px 1px 1px #000;
-	margin: .3em .6em;
-	z-index: 3;
 }
 
 /* Form
@@ -431,7 +426,6 @@ img {
 	width: 10em;
 	margin: .5em auto;
 	box-shadow: 0px 2px 1px white inset, 0px -2px 8px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
-	-webkit-transition:box-shadow 0.5s;
 }
 
 .button:hover {
@@ -968,7 +962,3 @@ img {
 
 /* Footer
 ==================== */
-
-footer {
-	
-}

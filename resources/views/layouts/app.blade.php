@@ -6,13 +6,11 @@
 </head>
 <body>
     @include('includes.navbar')
-    <main id="main">
 
-        @include('includes.messages')
+    @include('includes.messages')
 
-        @yield('body')
+    @yield('body')
 
-    </main>
     @include('includes.footer')
 
     {{ Visitor::log() }}
