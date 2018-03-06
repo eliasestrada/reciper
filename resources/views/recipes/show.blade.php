@@ -21,7 +21,7 @@
 
             {{--  Buttons  --}}
             @auth
-                @if (Auth::user()->id == $recipe->user_id && $recipe->ready == 0)
+                @if (Auth::user()->id == $recipe->user_id && $recipe->ready === 0)
                     <div class="recipe-buttons">
                         {{--  Edit button  --}}
                         <a href="/recipes/{{ $recipe->id }}/edit" title="Редактировать рецепт" class="fa">&#xf040;</a>
@@ -35,7 +35,7 @@
                 @endif
 
                 {{--  Buttons for admin  --}}
-                @if (Auth::user()->admin === 1 && $recipe->approved === 0)
+                @if (Auth::user()->admin === 1 && $recipe->approved === 0 && $recipe->ready === 1)
                     <div class="recipe-buttons">
                         {!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto;', 'onsubmit' => 'return confirm("Вы точно хотите опубликовать этот рецепт?")']) !!}
                             {{ Form::hidden('answer', 'approve') }}
