@@ -2,7 +2,7 @@
 
 @section('title', 'Главная')
 
-@section('body')
+@section('content')
     <!-- Home Header -->
     <header class="home-header">
         <div class="header-bg-image"></div>

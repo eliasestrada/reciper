@@ -2,7 +2,7 @@
 
 @section('title', $recipe->title)
 
-@section('body')
+@section('content')
 
 <div class="wrapper">
     <section class="grid-recipe row">

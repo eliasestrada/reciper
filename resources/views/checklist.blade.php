@@ -2,7 +2,7 @@
 
 @section('title', 'Проверочная')
 
-@section('body')
+@section('content')
 
 <div class="wrapper">
 	<h2 class="headline">Проверочная</h2>

@@ -2,7 +2,7 @@
 
 @section('title', 'Оповещения')
 
-@section('body')
+@section('content')
 
 <div class="wrapper">
     <h2 class="headline"><i class="fa fa-bell-o bell-alert"></i> Оповещения</h2>

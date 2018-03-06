@@ -2,7 +2,7 @@
 
 @section('title', 'Поиск')
 
-@section('body')
+@section('content')
 
 <div class="wrapper">
 	<h2 class="headline"><i class="fa fa-search"></i> Поиск</h2>

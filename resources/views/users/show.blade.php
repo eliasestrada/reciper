@@ -2,7 +2,7 @@
 
 @section('title', $user->name)
 
-@section('body')
+@section('content')
 
 <div class="wrapper">
 	<div class="profile-header">

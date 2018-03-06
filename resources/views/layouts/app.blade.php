@@ -3,19 +3,20 @@
 <head>
 	@include('includes.head')
 	<title>@yield('title') - Delicious Food</title>
+	@yield('head')
 </head>
 <body>
     @include('includes.navbar')
 
     @include('includes.messages')
 
-    @yield('body')
+    @yield('content')
 
     @include('includes.footer')
 
     {{ Visitor::log() }}
 
     <!-- Javascript -->
-    <script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
 </body>
 </html>

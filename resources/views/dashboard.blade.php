@@ -2,17 +2,24 @@
 
 @section('title', Auth::user()->name)
 
-@section('body')
+@section('head')
+	<style></style>
+@endsection
+
+@section('content')
 
 <div class="wrapper">
+	<div class="profile-menu-line">
+		<a href="/my_recipes" title="Мои рецепты" id="my-resipes"><i class="fa fa-file-text-o"></i></a>
+		<a href="/users" title="Авторы" id="all-authors"><i class="fa fa-users"></i></a>
+	</div>
 
     <h2 class="headline">{{ Auth::user()->name }}</h2>
 
 	@if (Auth::user()->author === 1)
 		<a href="/recipes/create" title="Добавить рецепт" class="button">Новый рецепт</a>
-		<a href="/my_recipes" title="Мои рецепты" class="button">Мои рецепты</a>
+		
 		<a href="/notifications" title="Оповещения" class="button" {{ $notifications }}>Оповещения</a>
-		<a href="/users" title="Авторы" class="button" {{ $notifications }}>Авторы</a>
 	@endif
 
 	@if (Auth::user()->admin === 1)

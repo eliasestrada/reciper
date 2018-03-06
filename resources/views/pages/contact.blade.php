@@ -2,7 +2,7 @@
 
 @section('title', 'Связь с нами')
 
-@section('body')
+@section('content')
 
 <div class="wrapper">
     <h1>{{ $title }}</h1>

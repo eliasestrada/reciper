@@ -2,7 +2,7 @@
 
 @section('title', 'Рецепты')
 
-@section('body')
+@section('content')
 
 <div class="wrapper">
     <h2 class="headline">Рецепты</h2>

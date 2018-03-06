@@ -2,7 +2,7 @@
 
 @section('title', 'Редактировать')
 
-@section('body')
+@section('content')
 
 <div class="wrapper">
     {!! Form::open(['action' => ['RecipesController@update', $recipe->id], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
