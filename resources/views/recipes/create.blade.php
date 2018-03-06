@@ -11,7 +11,7 @@
             {{ Form::submit('&#xf0c7;', ['class' => "fa"]) }}
         </div>
 
-        <h2>Добавление рецепта</h2>
+        <h2 class="headline">Добавление рецепта</h2>
 
         <button class="accordion" type="button">Название</button>
         <div class="accordion-panel">

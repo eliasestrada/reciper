@@ -15,7 +15,6 @@
             <a href="/recipes/{{ $recipe->id }}"><i class="fa">&#xf06e;</i></a>
         </div>
 
-
         <div class="check-box-ready">
             <div class="check-box-ready-wrap">
                 {{ Form::checkbox('ready', 1, null) }}
@@ -23,7 +22,7 @@
             </div>
         </div>
 
-        <h2>Добавление рецепта</h2>
+        <h2 class="headline">Добавление рецепта</h2>
 
         <button class="accordion" type="button">Название</button>
         <div class="accordion-panel">

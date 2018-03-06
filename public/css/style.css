@@ -35,7 +35,6 @@
 * {
 	padding: 0;
 	margin: 0;
-	box-sizing: border-box;
 }
 
 html {
@@ -60,25 +59,17 @@ body {
 	}
 }
 
-input,
-select,
-textarea {
+input, select, textarea {
 	width: 100%;
 	font-family: Arial, Helvetica, sans-serif;
-}
-
-form,
-textarea {
-	width: 100%;
+	line-height: 1;
+	box-sizing: border-box;
+	font-size: 1rem;
 }
 
 a {
 	text-decoration: none;
 	color: var(--main);
-}
-
-button {
-	cursor: pointer;
 }
 
 img {
@@ -146,6 +137,11 @@ img {
 	list-style: none;
 }
 
+.zero {
+	margin: 0;
+	padding: 0;
+}
+
 /* Nav bar
 ==================== */
 
@@ -185,7 +181,6 @@ img {
 }
 
 .admin-btn {
-	padding: .3em .5em 0 .5em;
 	background: #383853;
 }
 
@@ -193,6 +188,7 @@ img {
 	.admin-btn {
 		float: right;
 		margin-right: .7em;
+		padding: .2em;
 	}
 }
 
@@ -200,6 +196,7 @@ img {
 	transition: .2s;
 	z-index: 5;
 	font-family: var(--logoFont);
+	letter-spacing: 2px;
 }
 
 @media (min-width: 640px) {
@@ -376,10 +373,11 @@ img {
 	}
 }
 
-.form { padding: 0 2em 2em; }
+.form {
+	padding: 0 2em 2em;
+}
 
 .form input, .form select {
-	width: 100%;
 	height: 2.2em;
 	display: block;
 	border-radius: 2px;
@@ -427,10 +425,10 @@ img {
 }
 
 .button {
-	background: #ECECEC;
+	background: #fff;
 	position: relative;
 	border-radius: 15px;
-	padding: .4em .8em;
+	padding: .5em 1em;
 	display: block;
 	font-weight: bold;
 	color:#7f7f7f;
@@ -439,7 +437,12 @@ img {
 	border: 1px solid #a7a7a7;
 	width: 10em;
 	margin: .5em auto;
-	box-shadow: 0px 2px 1px white inset, 0px -2px 8px white, 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 8px 10px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	box-shadow:
+		0px 2px 1px #ECECEC inset,
+		0px -2px 20px #ECECEC, 0px 2px 1px #999,
+		0px 8px 5px #999;
+	
 }
 
 .button:hover {
@@ -477,6 +480,8 @@ img {
 	flex-flow: row wrap;
 	justify-content: center;
 	padding: .31em 0 .6em;
+	color: #555;
+	
 }
 
 .recipes>div {
@@ -484,12 +489,23 @@ img {
 	min-width: 17.5em;
 	border-radius: .2em;
 	margin: .6em .31em 0;
-	border: .1em solid #e0e0cc;
+	border: .2em solid #e0e0cc;
 	background: #fff;
+	border-radius: 6px;
 }
 
 .recipes img {
 	border-bottom: solid .2em #e0e0cc;
+	border-radius: 4px 4px 0 0;
+}
+
+.recipes-content {
+	font-size: .95em;
+	padding: .6em;
+}
+
+.recipes-content p::first-letter {
+	margin-left: .5em;
 }
 
 .recipes>div>a>img:hover { opacity: .8; }
@@ -737,6 +753,7 @@ img {
 	font-size: .8em;
 	transition: .4s;
 	border-radius: 4px;
+	cursor: pointer;
 }
 
 .accordion-active, .accordion:hover { background-color: #b4b4b4; }

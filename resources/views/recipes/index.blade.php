@@ -15,7 +15,7 @@
                     <a href="/recipes/{{ $recipe->id }}">
                         <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{$recipe->title}}" title="{{$recipe->title}}">
                     </a>
-                    <div class="cards-content">
+                    <div class="recipes-content">
                         <!-- Title -->
                         <h3>{{$recipe->title}}</h3>
                         <!-- Intro -->

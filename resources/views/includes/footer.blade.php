@@ -1,7 +1,7 @@
 <footer>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-6 col-sm-4 col-lg-2 col-lg-offset-3">
+			<div class="col-xs-6 col-sm-4 zero">
 				<ul class="unstyled-list">
 					<li><strong>Навигация</strong></li>
 					<li><a href="/">Главная</a></li>
@@ -10,7 +10,7 @@
 				</ul>
 			</div>
 
-			<div class="col-xs-6 col-sm-4 col-lg-2">
+			<div class="col-xs-6 col-sm-4 zero">
 				<ul class="unstyled-list">
 					<li><strong>Популярное</strong></li>
 					<li><a href="">Что-то</a></li>
@@ -20,7 +20,7 @@
 				</ul>
 			</div>
 
-			<div class="col-xs-12 col-sm-4 col-lg-2">
+			<div class="col-xs-12 col-sm-4 zero">
 				<ul class="unstyled-list">
 					<li><strong>Популярное</strong></li>
 					<li><a href="">Чкарамак</a></li>

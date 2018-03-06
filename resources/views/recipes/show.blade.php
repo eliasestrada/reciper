@@ -5,7 +5,7 @@
 @section('body')
 
 <div class="wrapper">
-    <section class="grid-recipe">
+    <section class="grid-recipe row">
         <div class="recipe-content">
 
             {{--  Likes  --}}
@@ -74,7 +74,7 @@
             <span class="headline">{{ $recipe->name }}</span>
 
             <!-- Приготовление -->
-            <ol class="instruction">{!! convertToListItems($recipe->text) !!}</ol>
+            <ol class="instruction unstyled-list">{!! convertToListItems($recipe->text) !!}</ol>
 
             <!-- Дата и Автор -->
             <div class="date">
@@ -87,7 +87,7 @@
         <div class="side-bar">
 			<h4 class="headline">Еще рецепты:</h4>
 			@if (count($random_recipes) > 0)
-				<ul>
+				<ul class="unstyled-list">
 					@foreach ($random_recipes as $random)
 						<li>
 							<p class="headline">{{ $random->title }}</p>
