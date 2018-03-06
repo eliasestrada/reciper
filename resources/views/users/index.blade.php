@@ -17,7 +17,7 @@
 						</a>
 						<div class="user-content">
 							<h3 class="project-name">{{ $user->name }}</h3>
-							<p class="project-title">{{ $user->updated_at }}</p>
+							<p class="project-title">В сети: {{ facebookTimeAgo($user->updated_at) }}</p>
 						</div>
 					</li>
 				</ul>
