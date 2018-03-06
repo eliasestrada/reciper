@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="wrapper">
-    <section class="grid-recipe row">
+    <section class="grid-recipe">
         <div class="recipe-content">
 
             {{--  Likes  --}}
