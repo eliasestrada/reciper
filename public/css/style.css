@@ -26,7 +26,7 @@
 	--headerFont: 'pattaya', Arial, Helvetica;
 	--mainFont: 'titillium', Arial, Helvetica;
 	--logoFont: 'vibes', Arial, Helvetica;
-	--headerImage: var(--main) url(../storage/other/img.jpg);
+	--headerImage: url(../storage/other/img.jpg);
 }
 
 /* Reset
@@ -48,6 +48,7 @@ body {
 	text-align: center;
 	font-family: var(--mainFont);
 	color: #eee;
+	background: var(--darkGray);
 	font-size: 1rem;
 	line-height: 1.5;
 	counter-reset: item;
@@ -137,7 +138,13 @@ img {
 	text-align: left;
 }
 
-.center { text-align: center; }
+.center {
+	text-align: center;
+}
+
+.unstyled-list {
+	list-style: none;
+}
 
 /* Nav bar
 ==================== */
@@ -307,33 +314,28 @@ img {
 /* Home Header
 ==================== */
 
-.home-section {
-	background: var(--paper);
-	color: #333;
-	padding: 3em 2em;
-}
-
 .home-header {
 	min-height: 30em;
 	color: #fff;
 	margin-bottom: -1em;
 }
 
-.home-header h1 {
+.header-content h1 {
 	padding-top: 2.2em;
 	padding-bottom: 0;
-	font-size: 3.2em;
+	font-size: 3em;
 	text-shadow: 2px 2px 2px #000;
 	z-index: 30;
+	font-family: var(--headerFont);
 }
 
-.home-header p {
+.header-content p {
 	text-shadow: 1px 1px 1px #000;
 	margin: .3em .6em;
 	z-index: 3;
 }
 
-.bg-image {
+.header-bg-image {
 	position: absolute;
 	background: var(--headerImage);
 	background-position: center;
@@ -342,7 +344,19 @@ img {
 	width: 100%;
 	height: 30em;
 	z-index: -1;
-	opacity: .6;
+}
+
+.header-bg-content {
+	padding: 1em;
+}
+
+/* Home sections
+==================== */
+
+.home-section {
+	background: var(--paper);
+	color: #333;
+	padding: 3em 4em;
 }
 
 /* Form
@@ -962,3 +976,11 @@ img {
 
 /* Footer
 ==================== */
+
+footer .container {
+	padding: 1em;
+}
+
+footer a:hover {
+	color: var(--mainHover);
+}
