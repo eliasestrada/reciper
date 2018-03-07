@@ -124,9 +124,10 @@ img {
 }
 
 .content {
-	padding: .4em;
+	padding: .4em 1.2em;
 	color: var(--darkGray);
 	text-align: left;
+	font-size: .95em;
 }
 
 .center {

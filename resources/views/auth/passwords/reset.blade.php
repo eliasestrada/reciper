@@ -3,70 +3,54 @@
 @section('title', 'Сброс пароля')
 
 @section('content')
+
 <div class="wrapper">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Reset Password</div>
+	<h2 class="headline">Сброс пароля</h2>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.request') }}">
-                        @csrf
+	<form method="POST" action="{{ route('password.request') }}" class="form">
+		@csrf
 
-                        <input type="hidden" name="token" value="{{ $token }}">
+		<input type="hidden" name="token" value="{{ $token }}">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+		<div class="form-group">
+			<label for="email">Эл. адресс</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email or old('email') }}" required autofocus>
+			<input id="email" type="email" name="email" value="{{ $email or old('email') }}" placeholder="Эл. адресс" required autofocus>
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+			@if ($errors->has('email'))
+				<span class="message error" style="background:none;">
+					{{ $errors->first('email') }}
+				</span>
+			@endif
+		</div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+		<div class="form-group">
+			<label for="password">Новый пароль</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+			<input id="password" type="password" placeholder="Новый пароль" name="password" required>
 
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+			@if ($errors->has('password'))
+				<span class="message error" style="background:none;">
+					{{ $errors->first('password') }}
+				</span>
+			@endif
+		</div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation" required>
+		<div class="form-group">
+			<label for="password-confirm">Повторите новый пароль</label>
+			<input id="password-confirm" type="password" name="password_confirmation" placeholder="Повторите новый пароль" required>
 
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+			@if ($errors->has('password_confirmation'))
+				<span class="message error" style="background:none;">
+					{{ $errors->first('password_confirmation') }}
+				</span>
+			@endif
+		</div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Reset Password
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="form-group">
+			<input type="submit" value="Сбросить пароль">
+		</div>
+	</form>
 </div>
+
 @endsection
