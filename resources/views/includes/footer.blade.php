@@ -1,32 +1,27 @@
 <footer>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-6 col-sm-4 zero">
+
+			@if (count($footer_rand_recipes) > 0)
+				@foreach ($footer_rand_recipes->chunk(4) as $random_chunk)
+					<div class="col-xs-6 col-sm-4 zero">
+						<ul class="unstyled-list">
+							<li><strong>Навигация</strong></li>
+							@foreach ($random_chunk as $footer_recipe)
+								<li><a href="/recipes/{{ $footer_recipe->id }}">{{ $footer_recipe->title }}</a></li>
+							@endforeach
+						</ul>
+					</div>
+				@endforeach
+			@endif
+
+			<div class="col-xs-12 col-sm-4 zero">
 				<ul class="unstyled-list">
 					<li><strong>Навигация</strong></li>
 					<li><a href="/">Главная</a></li>
 					<li><a href="/recipes">Рецепты</a></li>
-					<li><a href="">О нас</a></li>
-				</ul>
-			</div>
-
-			<div class="col-xs-6 col-sm-4 zero">
-				<ul class="unstyled-list">
-					<li><strong>Популярное</strong></li>
-					<li><a href="">Что-то</a></li>
-					<li><a href="">Парапане</a></li>
-					<li><a href="">Лорамас</a></li>
-					<li><a href="">Ронепро</a></li>
-				</ul>
-			</div>
-
-			<div class="col-xs-12 col-sm-4 zero">
-				<ul class="unstyled-list">
-					<li><strong>Популярное</strong></li>
-					<li><a href="">Чкарамак</a></li>
-					<li><a href="">Простор</a></li>
-					<li><a href="">Купалав</a></li>
-					<li><a href="">Зопарлав</a></li>
+					<li><a href="/contact">Связь с нами</a></li>
+					<li><a href="/contact">Поиск</a></li>
 				</ul>
 			</div>
 		</div>

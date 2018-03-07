@@ -15,8 +15,13 @@ use App\Recipe;
 
 // Pages
 Route::get('/', 'PagesController@home');
-Route::get('/contact', 'PagesController@contact');
 Route::get('/search', 'PagesController@search');
+
+Route::get('/contact', 'ContactController@index');
+Route::post('/contact', [
+	'uses' => 'ContactController@store',
+	'as' => 'contact.store'
+]);
 
 // Recipes
 Route::get('/recipes/{recipe}/like', 'RecipesController@like');

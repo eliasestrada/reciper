@@ -5,15 +5,27 @@
 @section('content')
 
 <div class="wrapper">
-    <h1>{{ $title }}</h1>
+	<div class="container">
+		<h1 class="headline">Связь с нами</h1>
+		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut, consequatur.</p>
+		<br>
 
-    @if (count($recipes) > 0)
-        <ul>
-            @foreach ($recipes as $recipe)
-            <li>{{ $recipe }}</li>
-            @endforeach
-        </ul>
-    @endif
+		<form action="{{ route('contact.store') }}" method="POST" class="form">
+			@csrf
+			<div class="form-group">
+				<input type="text" name="имя" placeholder="Имя">
+			</div>
+			<div class="form-group">
+				<input type="text" name="почта" placeholder="Эл. почта">
+			</div>
+			<div class="form-group">
+				<textarea name="сообщение" placeholder="Введите сообщение"></textarea>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Отправить">
+			</div>
+		</form>
+	</div>
 </div>
 
 @endsection
