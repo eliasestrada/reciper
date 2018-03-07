@@ -12,6 +12,7 @@ class PagesController extends Controller
     public function home() {
 
 		$random_recipes = Recipe::inRandomOrder()
+				->select(['id', 'title', 'image'])
 				->where('approved', 1)
 				->limit(3)
 				->get();

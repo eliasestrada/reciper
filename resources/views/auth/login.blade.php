@@ -32,7 +32,7 @@
             {{ Form::submit('Войти') }}
         </div>
 
-        {{-- TODO: <a class="btn btn-link" href="{{ route('password.request') }}">Забыли пароль?</a>  --}}
+        <a href="{{ route('password.request') }}">Забыли пароль?</a>
     </form>
 </div>
 

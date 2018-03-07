@@ -8,7 +8,7 @@
 						<ul class="unstyled-list">
 							<li><strong>Навигация</strong></li>
 							@foreach ($random_chunk as $footer_recipe)
-								<li><a href="/recipes/{{ $footer_recipe->id }}">{{ $footer_recipe->title }}</a></li>
+								<li><a href="/recipes/{{ $footer_recipe->id }}" ti>{{ $footer_recipe->title }}</a></li>
 							@endforeach
 						</ul>
 					</div>

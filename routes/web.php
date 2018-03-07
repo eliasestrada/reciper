@@ -36,20 +36,4 @@ Route::get('/dashboard', 'DashboardController@index')->middleware('author');
 Route::get('/notifications', 'DashboardController@notifications')->middleware('author');
 Route::get('/checklist', 'DashboardController@checklist')->middleware('admin');
 Route::get('/my_recipes', 'DashboardController@my_recipes')->middleware('author');
-
-// -----------------------
-// Auth::routes();
-// Authentication Routes...
-$this->get('яхочувойти', 'Auth\LoginController@showLoginForm')->name('login');
-$this->post('яхочувойти', 'Auth\LoginController@login');
-$this->post('яхочувыйти', 'Auth\LoginController@logout')->name('logout');
-
-// Registration Routes...
-$this->get('яхочузарегестрироваться', 'Auth\RegisterController@showRegistrationForm')->name('register');
-$this->post('яхочузарегестрироваться', 'Auth\RegisterController@register');
-
-// Password Reset Routes...
-$this->get('777/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-$this->post('777/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-$this->get('777/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-$this->post('777/password/reset', 'Auth\ResetPasswordController@reset');
+Auth::routes();
