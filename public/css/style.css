@@ -327,11 +327,17 @@ img {
 	font-family: var(--headerFont);
 }
 
+.header-content h2 {
+	font-family: var(--headerFont);
+	text-shadow: 2px 2px 2px #000;
+}
+
 .header-content p {
 	text-shadow: 1px 1px 1px #000;
 	margin: .3em .6em;
 	z-index: 3;
 }
+
 
 .header-bg-image {
 	position: absolute;
@@ -346,6 +352,29 @@ img {
 
 .header-bg-content {
 	padding: 1em;
+}
+
+.home-button {
+	display: block;
+	margin: .5em auto;
+	width: 3em;
+	height: 3em;
+	line-height: 3em;
+	text-align: center;
+	border-radius: 50%;
+	background: #1e5799;
+	background: -moz-linear-gradient(top, #1e5799, #6d91b9);
+	background: -webkit-linear-gradient(top, #1e5799,#6d91b9);
+	background: linear-gradient(to bottom, #1e5799,#6d91b9);
+	color: #fff;
+	font-size: 1.6em;
+}
+
+.home-button:hover,
+.home-button:active {
+	background: -moz-linear-gradient(top, #194c86, #607fa3);
+	background: -webkit-linear-gradient(top, #194c86,#607fa3);
+	background: linear-gradient(to bottom, #194c86,#607fa3);
 }
 
 /* Home sections

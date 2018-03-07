@@ -8,14 +8,14 @@
         <div class="header-bg-image"></div>
         <div class="header-content">
             <h1>Delicious Food</h1>
-            <p>Lorem ipsm, dolor sit amet consectetur adipisicing elit. Adipisci eum error earum soluta voluptatum nisi laboriosam eos saepe asperiores dolorum.</p>
-            <a href="/search" class="button" style="box-shadow:none;">Искать</a>
+            <h2>Рецепты от простых до необычных</h2>
+            <a href="/search" class="home-button"><i class="fa fa-search"></i></a>
         </div>
     </header>
 
     <section class="home-section">
-		<h2 class="headline">Куховарим вместе</h2>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe sint eligendi possimus? Unde officiis magnam laborum ipsa distinctio odio, vero dolores dicta aliquam aperiam repellendus. Perferendis officiis deserunt velit voluptas nobis sequi animi totam, accusantium, ex eius quia, natus quo?</p>
+		<h2 class="headline">Готовим вместе</h2>
+		<p>Хотелось бы поделиться с вами кулинарными секретами. Здесь вы найдете самые проверенные и оригинальные рецепты, от простых до необычных, и, главное, совсем не сложных в приготовлении. Больше Вам не придется долго искать действительно проверенный и вкусный рецепт!</p>
 		</div>
     </section>
 
@@ -35,8 +35,7 @@
 
     <!-- Final -->
     <section class="home-section">
-        <h2 class="headline">Какой-то текст</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe sint eligendi possimus? Unde officiis magnam laborum ipsa distinctio odio, vero dolores dicta aliquam aperiam repellendus. Perferendis officiis deserunt velit voluptas nobis sequi
-            animi totam, accusantium, ex eius quia, natus quo?</p>
+        <h2 class="headline">Требованием к завтраку</h2>
+        <p>Утренний прием пищи, в режиме питания человека является важным моментом. От пищи на завтрак, во многом зависит трудоспособность человека, его настроение на остальную часть дня. Главным требованием к завтраку должно быть не только его быстрое приготовление, но и благотворное влияние на весь организм. Поэтому хороший завтрак должен совмещать в себе и питательные вещества, минералы, и витамины. У нас на сайте мы стараемся собрать рецепты приготовления завтраков самых простых, но полноценных и полезных для человеческого организма, которые желательно употреблять с самого утра.</p>
     </section>
 @endsection
