@@ -1,23 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Отослать пароль')
+@section('title', 'Сбросить пароль')
 
 @section('content')
 
 <div class="wrapper">
-	<h2 class="headline">Отослать пароль ссылку на почту</h2>
-	@if (session('status'))
-		<div class="alert alert-success">
-			{{ session('status') }}
-		</div>
-	@endif
+	<h2 class="headline">Сбросить пароль</h2>
 
 	<form method="POST" action="{{ route('password.email') }}" class="form">
 		@csrf
 
 		<div class="form-group">
 			<label for="email">Эл. почта</label>
-			<input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Эл. почта" required>
+			<input id="email" type="email" name="email" placeholder="Эл. почта" required>
 		</div>
 
 		<div class="form-group">
