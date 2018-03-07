@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="wrapper">
-    
+	<h2 class="headline">Сброс пароля</h2>
 	<form method="POST" action="{{ route('password.request') }}" class="form">
 		@csrf
 

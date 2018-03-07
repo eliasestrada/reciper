@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Сброс пароля')
+@section('title', 'Отослать пароль')
 
 @section('content')
 
 <div class="wrapper">
-
+	<h2 class="headline">Отослать пароль ссылку на почту</h2>
 	@if (session('status'))
 		<div class="alert alert-success">
 			{{ session('status') }}
