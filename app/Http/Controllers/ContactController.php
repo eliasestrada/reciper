@@ -27,7 +27,7 @@ class ContactController extends Controller
 		], function($mail) use($request) {
 			$mail->to('deliciousfood.kh@gmail.com', env('APP_NAME'));
 			$mail->from($request->почта, $request->имя);
-			$mail->subject('Сообщение от ' . $request->имя);
+			$mail->subject('Отправитель: ' . $request->почта);
 		});
 
 		return redirect()->back()
