@@ -15,6 +15,7 @@
 			<input type="submit" value="Поиск" style="display: none;">
 		</div>
 	</form>
+	
 
 	{{--  Results  --}}
 	@if($recipes)
@@ -25,7 +26,7 @@
 						<a href="/recipes/{{ $recipe->id }}">
 							<img src="{{ asset('storage/images/' . $recipe->image) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
 						</a>
-						<div class="cards-content">
+						<div class="recipes-content">
 							<h3>{{ $recipe->title }}</h3>
 							<p>{{ $recipe->intro }}</p>
 							<a href="/search?for={{ $recipe->category }}" title="{{ $recipe->category }}"><span class="category">{{ $recipe->category }}</span></a>
