@@ -68,7 +68,7 @@ class RecipesController extends Controller
         // Handle image uploading
         if ($request->hasFile('изображение')) {
         	$image = $request->file('изображение');
-        	$filename = time() . '.' . $image->getClientOriginalExtension();
+        	$filename = time() . rand() . '.' . $image->getClientOriginalExtension();
             Image::make($image)->resize(600, 400)->save(storage_path('app/public/images/' . $filename ));
         
         	$recipe->image = $filename;
@@ -177,7 +177,7 @@ class RecipesController extends Controller
         // Handle image uploading
         if ($request->hasFile('изображение')) {
             $image = $request->file('изображение');
-        	$filename = time() . '.' . $image->getClientOriginalExtension();
+        	$filename = time() . rand() . '.' . $image->getClientOriginalExtension();
             Image::make($image)->resize(600, 400)->save(storage_path('app/public/images/' . $filename ));
 
             $recipe->image = $filename;
