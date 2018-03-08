@@ -5,8 +5,8 @@
 
 <!-- Navigation menu -->
 <nav id="nav-menu" class="nav-closed">
-    <a href="/" title="На главную" id="logo" class="logo-closed">
-        <h2>{{ config('app.name', 'Delicious Food') }}</h2>
+	<a href="/" title="На главную" id="logo" class="logo-closed">
+		<img src="{{ asset('storage/other/logo.png') }}" alt="Логотип">
     </a>
     <ul>
         <li><a href="/search" title="Поиск"><i class="fa fa-search"></i></a></li>
