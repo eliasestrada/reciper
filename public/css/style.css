@@ -2,8 +2,8 @@
 ==================== */
 
 @font-face {
-	font-family: pattaya;
-	src: url(../storage/fonts/pattaya.ttf);
+	font-family: lobster;
+	src: url(../storage/fonts/lobster.ttf);
 }
 
 :root {
@@ -13,7 +13,7 @@
 	--lightGray: #e0e0e0;
 	--darkGray: #333;
 	--paper: #eee;
-	--headerFont: 'pattaya', Arial, Helvetica;
+	--headerFont: 'lobster', Arial, Helvetica;
 	--mainFont: Arial, Helvetica;
 	--headerImage: url(../storage/other/img.jpg);
 }
