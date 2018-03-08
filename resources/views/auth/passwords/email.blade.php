@@ -16,8 +16,8 @@
 		@csrf
 
 		<div class="form-group">
-			<label for="email">Эл. адресс</label>
-			<input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Эл. адресс" required>
+			<label for="email">Эл. адрес</label>
+			<input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Эл. адрес" required>
 
 			@if ($errors->has('email'))
 				<span class="message error"style="background:none;">

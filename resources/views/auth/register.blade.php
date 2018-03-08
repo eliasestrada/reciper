@@ -15,8 +15,8 @@
         </div>
 
         <div class="form-group">
-            <label for="email">Эл. адресс</label>
-            <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Эл. адресс" required>
+            <label for="email">Эл. адрес</label>
+            <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Эл. адрес" required>
         </div>
 
         <div class="form-group">

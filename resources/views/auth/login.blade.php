@@ -10,8 +10,8 @@
         @csrf
 
         <div class="form-group">
-            {{ Form::label('email', 'Эл. адресс') }}
-            {{ Form::email('email', null, ['placeholder' => 'Эл. адресс']) }}
+            {{ Form::label('email', 'Эл. адрес') }}
+            {{ Form::email('email', null, ['placeholder' => 'Эл. адрес']) }}
         </div>
 
         <div class="form-group">

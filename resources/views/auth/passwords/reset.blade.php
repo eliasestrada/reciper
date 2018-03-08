@@ -13,9 +13,9 @@
 		<input type="hidden" name="token" value="{{ $token }}">
 
 		<div class="form-group">
-			<label for="email">Эл. адресс</label>
+			<label for="email">Эл. адрес</label>
 
-			<input id="email" type="email" name="email" value="{{ $email or old('email') }}" placeholder="Эл. адресс" required autofocus>
+			<input id="email" type="email" name="email" value="{{ $email or old('email') }}" placeholder="Эл. адрес" required autofocus>
 
 			@if ($errors->has('email'))
 				<span class="message error" style="background:none;">
