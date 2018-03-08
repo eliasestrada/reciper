@@ -24,8 +24,9 @@
 						</a>
 
 						<div class="each-content">
-							<span>{{ $recipe->title }}</span>
-							<span>{{ $recipe->intro }}</span>
+							<span style="font-size: 1.05em;">{{ $recipe->title }}</span>
+							<br />
+							<span style="color: gray;">{{ $recipe->intro }}</span>
 						</div>
 					</div>
 				@endforeach
