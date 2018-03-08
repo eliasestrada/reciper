@@ -20,6 +20,7 @@
 
 	@if (Auth::user()->admin === 1)
 		<a href="/checklist" title="Проверочная" class="button" {{ $allunapproved }}>Проверочная</a>
+		<a href="/feedback" title="Обратная связь" class="button" {{ $allfeedback }}>Обратная связь</a>
 	@endif
 
     {{--  3 Cards  --}}

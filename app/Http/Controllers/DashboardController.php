@@ -23,8 +23,7 @@ class DashboardController extends Controller
 		DB::table('users')->where('id', $user->id)->update(['updated_at' => NOW()]);
 
         $notifications = DB::table('notifications')
-                ->where([['user_id', $user->id], ['created_at', '>', $user->notif_check]])
-				->count();
+                ->where([['user_id', $user->id], ['created_at', '>', $user->notif_check]])->count();
 
 		if ($user->admin === 1) {
 			$notifications_for_admin = DB::table('notifications')
@@ -43,18 +42,25 @@ class DashboardController extends Controller
                 ->count();
         $allclicks = DB::table('visitor_registry')
 				->sum('clicks');
-				
+
+		// Unapproved recipes
 		$allunapproved = DB::table('recipes')
                 ->where([['approved', '=', 0], ['ready', '=', 1]])
 				->count();
-				
 		$allunapproved = !empty($allunapproved) ? 'data-notif='.$allunapproved : '';
+
+		// Feedback
+		$allfeedback = DB::table('contact')
+				->where('created_at', '>', $user->contact_check)
+				->count();
+		$allfeedback = !empty($allfeedback) ? 'data-notif='.$allfeedback : '';
 
         return view('dashboard')
                 ->withAllrecipes($allrecipes)
                 ->withAllvisits($allvisits)
 				->withAllclicks($allclicks)
 				->withAllunapproved($allunapproved)
+				->withAllfeedback($allfeedback)
                 ->withNotifications($notifications);
     }
 

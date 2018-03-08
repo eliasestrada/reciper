@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
@@ -14,6 +14,26 @@ class ContactController extends Controller
 	}
 	
 	// STORE
+	public function store(Request $request) {
+	
+		$this->validate($request, [
+			'имя' => 'required|min:3|max:50',
+			'почта' => 'required|email',
+			'сообщение' => 'required|min:20|max:5000'
+		]);
+		
+		DB::table('contact')->insert([
+			'name' => $request->имя,
+			'email' => $request->почта,
+			'message' => $request->сообщение,
+			'created_at' => NOW()
+		]);
+
+		return redirect()->back()
+				->with('success', 'Спасибо за ваш отзыв.');
+	}
+
+	/* ============================================
 	public function store(Request $request) {
 	
 		$this->validate($request, [
@@ -33,4 +53,5 @@ class ContactController extends Controller
 		return redirect()->back()
 				->with('success', 'Спасибо за ваш отзыв.');
 	}
+	============================================ */
 }
