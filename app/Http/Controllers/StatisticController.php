@@ -12,20 +12,12 @@ class StatisticController extends Controller
 
 		$visitors = DB::table('visitor_registry')
 				->orderBy('clicks', 'desc')
-				->paginate(50);
+				->paginate(40);
 
-		$cities = [];
 		$sxgeo = new SxGeo(storage_path().'/geo/SxGeoCity.dat');
 
-		foreach ($visitors as $visitor) {
-			$cities[] = $sxgeo->getCityFull($visitor->ip);
-		}
-
-		//$full_info  = $sxgeo->getCityFull($ip);
-		//$visitors = $sxgeo->get($ip);
-
 		return view('statistic')
-				->withCities($cities)
+				->withSxgeo($sxgeo)
 				->withVisitors($visitors);
 	}
 }
