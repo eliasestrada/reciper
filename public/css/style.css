@@ -260,7 +260,7 @@ img {
 #menu-container {
 	height: 2em;
 	font-size: 1.6em;
-	line-height: 2em;
+	line-height: 2.1em;
 	z-index: 3;
 	transition: all .2s linear;
 	-webkit-user-select: none;
@@ -796,10 +796,12 @@ img {
 }
 
 .users-list img {
-	width: 4em;
-	height: 4em;
+	width: 3.7em;
+	height: 3.7em;
 	margin: .5em 1em;
-	border-radius: 50%;
+	border-radius: 3px;
+	border: solid 3px #fff;
+	border-bottom: solid 6px #fff;
 }
 
 .user-content {
@@ -939,6 +941,8 @@ img {
 	grid-row: 2;
 	font-size: .8em;
 	overflow: auto;
+	text-align: left;
+	margin-left: .5em;
 }
 
 @media (min-width: 640px) {
@@ -965,8 +969,11 @@ img {
 
 .profile-header img {
 	width: 10em;
-	border-radius: 50%;
+	border-radius: 2px;
+	border: solid 5px #fff;
+	border-bottom: solid 1em #fff;
 	margin: .3em auto;
+	box-shadow: 1px 1px .5em #333;
 }
 
 .profile-header h1 {

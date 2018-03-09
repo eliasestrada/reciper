@@ -9,6 +9,9 @@
 @section('content')
 
 <div class="wrapper">
+	<h2 class="headline">Настройки</h2>
+	<p class="content center">Единственное требование к выбору изображению это соотношение его сторон, оно долно быть квадратное, в противном случае изображение будет искажено.</p>
+
 	{{--  Upload image  --}}
 	{!! Form::open(['action' => ['SettingsController@updatePhoto', null], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
 		<div class="form-group">
@@ -17,7 +20,7 @@
 				<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{$user->name}}" />
 			</div>
 
-			{{ Form::label('изображение', 'Единственное требование к выбору изображению это соотношение его сторон, оно долно быть квадратное, в противном случае изображение будет искажено.') }}
+			{{ Form::label('изображение') }}
 			{{ Form::hidden('delete', 0) }}
 			{{ Form::file('изображение', ['class' => "upload-image-form"]) }}
 			{{ Form::hidden('_method', 'PUT') }}
