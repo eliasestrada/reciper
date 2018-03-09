@@ -22,11 +22,11 @@
 					<li><a href="/recipes">Рецепты</a></li>
 					<li><a href="/contact">Обратная связь</a></li>
 					<li><a href="/contact">Поиск</a></li>
-					<a href="/" title="На главную" id="logo" class="logo-closed">
-						<img src="{{ asset('favicon.png') }}" alt="Логотип" style="width: 50px; margin: auto;">
+					<a href="/" title="На главную">
+						<img src="{{ asset('favicon.png') }}" alt="Логотип" class="footer-logo">
 					</a>
 					<br />
-					<p style="color: gray; font-size: 0.7em;">&copy; {{ date('Y') }} Delicious Food</p>
+					<p class="footer-copyright">&copy; {{ date('Y') }} Delicious Food</p>
 				</ul>
 			</div>
 		</div>
