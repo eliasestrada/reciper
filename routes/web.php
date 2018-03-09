@@ -40,3 +40,6 @@ Auth::routes();
 
 // Feedback
 Route::resource('feedback', 'FeedbackController')->middleware('admin');
+
+// Statistic
+Route::get('/statistic', 'StatisticController@visitors')->middleware('admin');
