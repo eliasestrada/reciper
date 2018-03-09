@@ -16,7 +16,6 @@
 	
 	<a href="/recipes/create" title="Добавить рецепт" class="button">Новый рецепт</a>
 	<a href="/notifications" title="Оповещения" class="button" {{ $notifications }}>Оповещения</a>
-	
 
 	@if (Auth::user()->admin === 1)
 		<a href="/checklist" title="Проверочная" class="button" {{ $allunapproved }}>Проверочная</a>

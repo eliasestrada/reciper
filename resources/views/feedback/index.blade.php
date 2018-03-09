@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="wrapper">
-	<h2 class="headline">Сообщения от посетителей {{ count($feedback) }} шт.</h2>
+	<h2 class="headline">Сообщения: {{ count($feedback) }}</h2>
 
 		@if (count($feedback) > 0)
 			<div style="padding: 1em 0;">

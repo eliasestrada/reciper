@@ -74,17 +74,10 @@ img {
 	width: 80%;
 	height: auto;
 	padding: 1em 10% 0 10%;
-	margin-bottom: -3.3em;
 	color: #fff;
 	background: var(--paper);
 	text-align: center;
 	font-weight: 700;
-}
-
-@media (min-width: 640px) {
-	.message {
-		margin-bottom: 0;
-	}
 }
 
 .error { color: brown; }
@@ -94,7 +87,7 @@ img {
 	min-height: 20em;
 	color: var(--darkGray);
 	background: var(--paper);
-	padding-top: 4em;
+	padding-top: .2em;
 	z-index: -2;
 }
 

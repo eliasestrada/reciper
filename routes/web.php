@@ -16,6 +16,7 @@ use App\Recipe;
 // Pages
 Route::get('/', 'PagesController@home');
 Route::get('/search', 'PagesController@search');
+Route::get('/settings', 'PagesController@settings')->middleware('author');
 
 Route::get('/contact', 'ContactController@index');
 Route::post('/contact', [

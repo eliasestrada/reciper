@@ -40,4 +40,9 @@ class PagesController extends Controller
 					->withRecipes($recipes)
 					->withMessage($message);
 	}
+
+	// SETTINGS
+    public function settings() {
+		return view('pages.settings');
+	}
 }
