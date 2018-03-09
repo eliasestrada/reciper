@@ -87,13 +87,13 @@ img {
 	min-height: 20em;
 	color: var(--darkGray);
 	background: var(--paper);
-	padding-top: .2em;
+	padding-top: 4em;
 	z-index: -2;
 }
 
 @media (min-width: 640px) {
 	.wrapper {
-		padding-top: .8rem;
+		padding-top: .5rem;
 	}
 }
 
@@ -985,11 +985,13 @@ img {
 	background: #e6e6e6;
 	border-bottom: 1px solid #a8a8a8;
 	padding-top: 3em;
+	margin-bottom: -3.7em;
 }
 
 @media (min-width: 640px) {
 	.profile-menu-line {
 		padding-top: 0;
+		margin-bottom: 0;
 	}
 }
 
