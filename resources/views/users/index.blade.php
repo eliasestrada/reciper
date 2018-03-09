@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('title', 'Все авторы')
 
@@ -9,10 +9,9 @@
 @section('content')
 
 <div class="wrapper">
-	@include('includes.profile-menu-line')
-    <h2 class="headline">Все авторы</h2>
-    <section>
+	<h2 class="headline">Все авторы</h2>
 
+    <section>
 		@if (count($users) > 0)
 			<ul class="users-list unstyled-list">
 				@foreach ($users as $user)

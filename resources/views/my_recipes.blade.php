@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('title', 'Мои рецепты')
 
@@ -9,7 +9,6 @@
 @section('content')
 
 <div class="wrapper">
-	@include('includes.profile-menu-line')
 	<h2 class="headline">Мои рецепты</h2>
 
 	{{--  All my recipes  --}}

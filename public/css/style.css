@@ -73,7 +73,7 @@ img {
 .message {
 	width: 80%;
 	height: auto;
-	padding: 4em 10% 0;
+	padding: 1em 10% 0 10%;
 	margin-bottom: -3.3em;
 	color: #fff;
 	background: var(--paper);
@@ -83,8 +83,6 @@ img {
 
 @media (min-width: 640px) {
 	.message {
-		width: 80%;
-		padding: 1em 10% 0;
 		margin-bottom: 0;
 	}
 }
@@ -984,18 +982,23 @@ img {
 
 .profile-menu-line {
 	height: 2.5em;
-	line-height: 2.5em;
-	margin-top: -.8em;
-	margin-bottom: .5em;
 	background: #e6e6e6;
 	border-bottom: 1px solid #a8a8a8;
+	padding-top: 3em;
+}
+
+@media (min-width: 640px) {
+	.profile-menu-line {
+		padding-top: 0;
+	}
 }
 
 .profile-menu-line a {
+	width: 23.5%;
+	display: inline-block;
 	color: #414141;
-	font-size: 1.3em;
-	padding: .35em 1.3em;
-	margin: 0;
+	font-size: 1.2em;
+	padding: .4em 0 3px 0;
 }
 
 .profile-menu-line a:hover {

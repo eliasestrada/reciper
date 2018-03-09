@@ -1,11 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('title', 'Статистика')
 
 @section('content')
 
 <div class="wrapper">
-	@include('includes.profile-menu-line')
     <h2 class="headline">Статистика</h2>
 
 	@if (count($visitors) > 0)

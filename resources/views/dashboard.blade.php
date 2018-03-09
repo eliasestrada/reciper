@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('title', Auth::user()->name)
 
@@ -9,8 +9,6 @@
 @section('content')
 
 <div class="wrapper">
-	@include('includes.profile-menu-line')
-
 	<div class="profile-header">
 		<h1>{{ Auth::user()->name }}</h1>
 		<img src="{{ asset('storage/uploads/'.Auth::user()->image) }}" alt="{{ Auth::user()->name }}" />

@@ -1,10 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('title', 'Редактировать')
 
 @section('content')
 
 <div class="wrapper">
+
     {!! Form::open(['action' => ['RecipesController@update', $recipe->id], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
 
         <div class="recipe-buttons">

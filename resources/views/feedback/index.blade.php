@@ -1,11 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('title', 'Обратная связь')
 
 @section('content')
 
 <div class="wrapper">
-	@include('includes.profile-menu-line')
 	<h2 class="headline">Сообщения от посетителей {{ count($feedback) }} шт.</h2>
 
 		@if (count($feedback) > 0)

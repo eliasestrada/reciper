@@ -9,6 +9,8 @@
 
 	@include('includes.navbar')
 
+	@include('includes.profile-menu-line')
+
     @include('includes.messages')
 
     @yield('content')

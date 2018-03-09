@@ -1,17 +1,17 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('title', $user->name)
 
 @section('content')
 
 <div class="wrapper">
-	@include('includes.profile-menu-line')
 
 	<div class="profile-header">
 		<h1>{{ $user->name }}</h1>
 		<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{ $user->name }}" />
 		<p class="content center">В сети: {{ facebookTimeAgo($user->updated_at) }}</p>
 	</div>
+
 	<div class="container">
 		{{--  All my recipes  --}}
 		<div class="list-of-recipes">

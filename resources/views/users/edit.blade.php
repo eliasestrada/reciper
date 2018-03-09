@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('title', 'Настройки')
 
@@ -9,8 +9,6 @@
 @section('content')
 
 <div class="wrapper">
-	@include('includes.profile-menu-line')
-
 	{{--  Upload image  --}}
 	{!! Form::open(['action' => ['UsersController@update', null], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
 		<div class="form-group">
