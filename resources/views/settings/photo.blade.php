@@ -3,14 +3,14 @@
 @section('title', 'Настройки')
 
 @section('head')
-	<style>#edit-profile { border-bottom: 3px solid #a8a8a8; }</style>
+	<style>#settings { border-bottom: 3px solid #a8a8a8; }</style>
 @endsection
 
 @section('content')
 
 <div class="wrapper">
 	{{--  Upload image  --}}
-	{!! Form::open(['action' => ['UsersController@update', null], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
+	{!! Form::open(['action' => ['SettingsController@updatePhoto', null], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
 		<div class="form-group">
 
 			<div class="profile-header" style="height: 11em;">
@@ -26,7 +26,7 @@
 	{!! Form::close() !!}
 
 	{{--  Delete image  --}}
-	{!! Form::open(['action' => ['UsersController@update', null], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
+	{!! Form::open(['action' => ['SettingsController@updatePhoto', null], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
 		<div class="form-group">
 			{{ Form::hidden('delete', 1) }}
 			{{ Form::hidden('_method', 'PUT') }}

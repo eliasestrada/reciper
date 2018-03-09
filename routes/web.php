@@ -16,7 +16,7 @@ use App\Recipe;
 // Pages
 Route::get('/', 'PagesController@home');
 Route::get('/search', 'PagesController@search');
-Route::get('/settings', 'PagesController@settings')->middleware('author');
+
 
 Route::get('/contact', 'ContactController@index');
 Route::post('/contact', [
@@ -38,10 +38,12 @@ Route::get('/my_recipes', 'DashboardController@my_recipes')->middleware('author'
 
 // Users
 Route::get('/users', 'UsersController@index')->middleware('author');
-Route::get('/edit', 'UsersController@edit')->middleware('author');
-Route::put('/edit', 'UsersController@update')->middleware('author');
 Route::get('/users/{user}', 'UsersController@show')->middleware('author');
 
+// Settings
+Route::get('/settings', 'SettingsController@index')->middleware('author');
+Route::get('/settings/photo', 'SettingsController@editPhoto')->middleware('author');
+Route::put('/settings/photo', 'SettingsController@updatePhoto')->middleware('author');
 
 // Feedback
 Route::resource('feedback', 'FeedbackController')->middleware('admin');
