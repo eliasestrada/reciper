@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\User;
+use Eseath\SxGeo\SxGeo;
 
 class DashboardController extends Controller
 {
@@ -75,6 +76,11 @@ class DashboardController extends Controller
 				->latest()
 				->paginate(10);
 
+		$sxGeo = new SxGeo(storage_path().'/geo/SxGeoCity.dat');
+		$fullInfo  = $sxGeo->getCityFull('46.133.239.97');
+		$briefInfo = $sxGeo->get('46.133.239.97');
+
+		dd($briefInfo);
 		DB::table('users')
 				->where('id', $user_id)
 				->update(['notif_check' => NOW()]);
