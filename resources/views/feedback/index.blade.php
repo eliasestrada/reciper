@@ -6,26 +6,22 @@
 
 <div class="wrapper">
 	@include('includes.profile-menu-line')
-	<h2 class="headline">Обратная связь</h2>
+	<h2 class="headline">Сообщения от посетителей {{ count($feedback) }} шт.</h2>
 
-	<div class="list-of-recipes">
 		@if (count($feedback) > 0)
-			<h4 style="margin: .5em;">Сообщения от посетителей {{ count($feedback) }}</h4>
-			@foreach ($feedback as $feed)
-				<div class="each-recipe" data-updated="Обновленно {{ facebookTimeAgo($feed->created_at) }}" data-author="Автор: {{ $feed->name }}">
-					<img src="{{ asset('storage/other/default_feedback.jpg') }}">
-					<div class="each-content">
-						<span style="font-size: 1.05em;">Эл. адрес: {{ $feed->email }}</span>
-						<br />
-						<span style="color: gray;">{{ $feed->message }}</span>
+			<div style="padding: 1em 0;">
+				@foreach ($feedback as $feed)
+					<div class="notification">
+						<h4 class="notification-title">{{ $feed->email }}</h4>
+						<p class="notification-date">{{ $feed->name }} ({{ facebookTimeAgo($feed->created_at) }})</p>
+						<p class="notification-message">{{ $feed->message }}</p>
 					</div>
-				</div>
-			@endforeach
+				@endforeach
+			</div>
 			{{ $feedback->links() }}
 		@else
 			<p class="content center">Нет непровереных рецептов</p>
 		@endif
-	</div>
 </div>
 
 @endsection

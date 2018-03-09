@@ -786,13 +786,20 @@ img {
 .users-list {
 	width: 80%;
 	margin: 0 10%;
-	padding: .5em;
+	padding: 2em 0;
 }
 
 .users-list li {
 	position: relative;
 	height: 4.5em;
 	display: flex;
+	padding-bottom: .5em;
+	border-bottom: 1px solid #b6b6b6;
+}
+
+.users-list li:hover {
+	background-color: #ddd;
+	border-radius: 5px
 }
 
 .users-list img {
@@ -803,7 +810,7 @@ img {
 }
 
 .user-content {
-	margin-top: 1em;
+	margin-top: 1.3em;
 	font-size: .85em;
 	text-align: left;
 }
