@@ -8,8 +8,8 @@
 	@include('includes.profile-menu-line')
 
 	<div class="profile-header">
-		<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{ $user->name }}" />
 		<h1>{{ $user->name }}</h1>
+		<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{ $user->name }}" />
 		<p class="content center">В сети: {{ facebookTimeAgo($user->updated_at) }}</p>
 	</div>
 	<div class="container">

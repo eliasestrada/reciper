@@ -11,11 +11,13 @@
 <div class="wrapper">
 	@include('includes.profile-menu-line')
 
-    <h2 class="headline">{{ Auth::user()->name }}</h2>
-
+	<div class="profile-header">
+		<h1>{{ Auth::user()->name }}</h1>
+		<img src="{{ asset('storage/uploads/'.Auth::user()->image) }}" alt="{{ Auth::user()->name }}" />
+	</div>
 	
-		<a href="/recipes/create" title="Добавить рецепт" class="button">Новый рецепт</a>
-		<a href="/notifications" title="Оповещения" class="button" {{ $notifications }}>Оповещения</a>
+	<a href="/recipes/create" title="Добавить рецепт" class="button">Новый рецепт</a>
+	<a href="/notifications" title="Оповещения" class="button" {{ $notifications }}>Оповещения</a>
 	
 
 	@if (Auth::user()->admin === 1)

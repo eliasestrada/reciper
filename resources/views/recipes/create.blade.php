@@ -76,7 +76,7 @@
         <button class="accordion" type="button">Изображение</button>
         <div class="accordion-panel">
             <div class="form-group">
-                {{ Form::label('изображение', 'Изображение не должно быть высокого разрешения.') }}
+                {{ Form::label('изображение', 'Изображение') }}
                 {{ Form::file('изображение', ['class' => "upload-image-form"]) }}
             </div>
         </div>

@@ -29,14 +29,18 @@ Route::get('/recipes/{recipe}/dislike', 'RecipesController@dislike');
 Route::post('/recipes/{recipe}/answer', 'RecipesController@answer');
 Route::resource('recipes', 'RecipesController');
 
-
-// Users
-Route::resource('users', 'UsersController')->middleware('author');
+Auth::routes();
 Route::get('/dashboard', 'DashboardController@index')->middleware('author');
 Route::get('/notifications', 'DashboardController@notifications')->middleware('author');
 Route::get('/checklist', 'DashboardController@checklist')->middleware('admin');
 Route::get('/my_recipes', 'DashboardController@my_recipes')->middleware('author');
-Auth::routes();
+
+// Users
+Route::get('/users', 'UsersController@index')->middleware('author');
+Route::get('/edit', 'UsersController@edit')->middleware('author');
+Route::put('/edit', 'UsersController@update')->middleware('author');
+Route::get('/users/{user}', 'UsersController@show')->middleware('author');
+
 
 // Feedback
 Route::resource('feedback', 'FeedbackController')->middleware('admin');

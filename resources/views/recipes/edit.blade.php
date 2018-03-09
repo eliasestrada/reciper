@@ -88,18 +88,17 @@
         <button class="accordion" type="button">Изображение</button>
         <div class="accordion-panel">
             <div class="form-group">
-                {{ Form::label('изображение', 'Изображение не должно быть высокого разрешения.') }}
+                {{ Form::label('изображение', 'Изображение') }}
                 {{ Form::file('изображение', ['class' => "upload-image-form"]) }}
                 {{ Form::hidden('_method', 'PUT') }}
 
                 <div class="form-group">
                     <section class="recipes">
                         <div>
-                            <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{$recipe->title}}" title="{{$recipe->title}}">
+                            <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{$recipe->title}}">
                         </div>
                     </section>
                 </div>
-
             </div>
         </div>
 

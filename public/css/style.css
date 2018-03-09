@@ -371,6 +371,7 @@ img {
 	margin-bottom: .4em;
 	text-align: left;
 	width: 100%;
+	line-height: 1.2;
 }
 
 @media (min-width: 640px) {
@@ -419,6 +420,7 @@ img {
 .upload-image-form[type=file] {
 	height: 1.6em;
 	padding: 0;
+	margin: .5em 0;
 	background: var(--main);
 	color: #fff;
 }
@@ -992,7 +994,7 @@ img {
 .profile-menu-line a {
 	color: #414141;
 	font-size: 1.3em;
-	padding: .2em 1.8em;
+	padding: .35em 1.3em;
 	margin: 0;
 }
 
