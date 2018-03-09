@@ -19,8 +19,9 @@
                             <img src="{{ asset('storage/images/'.$unapprove->image) }}" alt="{{ $unapprove->title }}" title="Перейти к рецепту">
                         </a>
                         <div class="each-content">
-                            <span>{{ $unapprove->title }}</span>
-                            <span>{{ $unapprove->intro }}</span>
+                            <span style="font-size: 1.1em;"><b>{{ $unapprove->title }}</b></span>
+                            <br />
+                            <span style="color: gray;">{{ $unapprove->intro }}</span>
                         </div>
                     </div>
                 @endforeach

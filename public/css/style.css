@@ -109,7 +109,6 @@ img {
 .headline {
 	color: var(--darkGray);
 	font-family: var(--headerFont);
-	text-transform: capitalize;
 }
 
 .content {
@@ -362,7 +361,7 @@ img {
 .home-section {
 	background: var(--paper);
 	color: #333;
-	padding: 3em 4em;
+	padding: 2em 2.5em;
 }
 
 /* Form
@@ -957,13 +956,6 @@ img {
 	}
 }
 
-.bell-alert {
-	animation: ring 4s .7s ease-in-out infinite;
-	transform-origin: 50% 4px;
-	font-size: 1.3em;
-	text-shadow: 1px 1px 1px #444;
-}
-
 /* Profile
 ==================== */
 
@@ -1090,32 +1082,4 @@ footer a:hover {
 	25%, 75% { opacity: 1; }
 	50% { opacity: 1; transform: scale(1.6); }
 	100% { opacity: 0; transform: scale(0); }
-}
-
-@keyframes notification {
-	from { left: -100%; }
-	to { left: .6em; }
-}
-
-@keyframes ring {
-	0%, 100%, 43% { transform: rotate(0); }
-	1%, 9% { ransform: rotate(30deg); }
-	11%, 3% { transform: rotate(-28deg); }
-	5% { transform: rotate(34deg); }
-	7% { transform: rotate(-32deg); }
-	13% { transform: rotate(26deg); }
-	15% { transform: rotate(-24deg); }
-	17% { transform: rotate(22deg); }
-	19% { transform: rotate(-20deg); }
-	21% { transform: rotate(18deg); }
-	23% { transform: rotate(-16deg); }
-	25% { transform: rotate(14deg); }
-	27% { transform: rotate(-12deg); }
-	29% { transform: rotate(10deg); }
-	31% { transform: rotate(-8deg); }
-	33% { transform: rotate(6deg); }
-	35% { transform: rotate(-4deg); }
-	37% { transform: rotate(2deg); }
-	39% { transform: rotate(-1deg); }
-	41% { transform: rotate(1deg); }
 }
