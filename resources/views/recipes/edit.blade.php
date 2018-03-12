@@ -6,7 +6,9 @@
 
 <div class="wrapper">
 
-    {!! Form::open(['action' => ['RecipesController@update', $recipe->id], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
+	{!! Form::open(['action' => ['RecipesController@update', $recipe->id], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
+
+		@method('PUT')
 
         <div class="recipe-buttons">
             {{--  Save button  --}}
@@ -36,8 +38,8 @@
         <button class="accordion" type="button">Описание</button>
         <div class="accordion-panel">
             <div class="form-group">
-                    {{ Form::label('описание', 'Описание') }}
-                    {{ Form::textarea('описание', $recipe->intro, ['placeholder' => 'Краткое описание рецепта']) }}
+				{{ Form::label('описание', 'Описание') }}
+				{{ Form::textarea('описание', $recipe->intro, ['placeholder' => 'Краткое описание рецепта']) }}
             </div>
         </div>
 
@@ -90,8 +92,7 @@
         <div class="accordion-panel">
             <div class="form-group">
                 {{ Form::label('изображение', 'Изображение') }}
-                {{ Form::file('изображение', ['class' => "upload-image-form"]) }}
-                {{ Form::hidden('_method', 'PUT') }}
+				{{ Form::file('изображение', ['class' => "upload-image-form"]) }}
 
                 <div class="form-group">
                     <section class="recipes">

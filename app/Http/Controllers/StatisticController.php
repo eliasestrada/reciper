@@ -8,6 +8,11 @@ use Eseath\SxGeo\SxGeo;
 
 class StatisticController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('admin');
+	}
+
     public function visitors() {
 
 		$visitors = DB::table('visitor_registry')

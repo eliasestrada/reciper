@@ -13,17 +13,17 @@
                 <div>
                     <!-- Image -->
                     <a href="/recipes/{{ $recipe->id }}">
-                        <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{$recipe->title}}" title="{{$recipe->title}}">
+                        <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
                     </a>
                     <div class="recipes-content">
                         <!-- Title -->
                         <h3>{{$recipe->title}}</h3>
                         <!-- Intro -->
-                        <p class="content">{{ mb_substr($recipe->intro, 0, 180, "utf-8") }}{{ strlen($recipe->intro) > 180 ? '...' : '' }}</p>
+                        <p class="content">{{ str_limit($recipe->intro, 100) }}</p>
                         <!-- Category -->
-                        <a href="/search?for={{$recipe->category}}" title="link"><span class="category">{{$recipe->category}}</span></a>
+                        <a href="/search?for={{ $recipe->category }}" title="link"><span class="category">{{ $recipe->category }}</span></a>
                         <!-- Time -->
-                        <div class="date"><i class="fa fa-clock-o"></i> {{$recipe->time}} мин.</div>
+                        <div class="date"><i class="fa fa-clock-o"></i> {{ $recipe->time }} мин.</div>
                     </div>
                 </div>
             @endforeach

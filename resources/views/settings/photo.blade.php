@@ -14,8 +14,10 @@
 
 	{{--  Upload image  --}}
 	{!! Form::open(['action' => ['SettingsController@updatePhoto', null], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
-		<div class="form-group">
 
+		@method('PUT')
+
+		<div class="form-group">
 			<div class="profile-header" style="height: 11em;">
 				<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{$user->name}}" />
 			</div>
@@ -23,16 +25,17 @@
 
 			{{ Form::hidden('delete', 0) }}
 			{{ Form::file('изображение', ['class' => "upload-image-form"]) }}
-			{{ Form::hidden('_method', 'PUT') }}
 			{{ Form::submit('Сохранить') }}
 		</div>
 	{!! Form::close() !!}
 
 	{{--  Delete image  --}}
 	{!! Form::open(['action' => ['SettingsController@updatePhoto', null], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
+
+		@method('PUT')
+
 		<div class="form-group">
 			{{ Form::hidden('delete', 1) }}
-			{{ Form::hidden('_method', 'PUT') }}
 			{{ Form::submit('Удалить', ['style' => 'background: brown; margin-top: -2.3rem;']) }}
 		</div>
 	{!! Form::close() !!}

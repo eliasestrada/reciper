@@ -10,6 +10,11 @@ use Image;
 
 class SettingsController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware('author');
+	}
+
 	// INDEX
     public function index() {
 		return view('settings.index');

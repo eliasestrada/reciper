@@ -8,6 +8,11 @@ use App\User;
 
 class UsersController extends Controller
 {
+	public function __construct()
+    {
+		$this->middleware('author');
+	}
+
     // INDEX
     public function index() {
 		$users = DB::table('users')->paginate(30);

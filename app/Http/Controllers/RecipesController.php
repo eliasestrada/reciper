@@ -12,7 +12,6 @@ use Image;
 
 class RecipesController extends Controller
 {
-    // Create a new controller instance.
     public function __construct()
     {
         $this->middleware('auth', ['except' => [
@@ -29,7 +28,7 @@ class RecipesController extends Controller
     }
 
 
-    // Show the form for creating a new resource.
+    // CREATE
     public function create()
     {
         // For select input
