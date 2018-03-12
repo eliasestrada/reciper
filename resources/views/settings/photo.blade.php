@@ -19,8 +19,8 @@
 			<div class="profile-header" style="height: 11em;">
 				<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{$user->name}}" />
 			</div>
+			<br />
 
-			{{ Form::label('изображение') }}
 			{{ Form::hidden('delete', 0) }}
 			{{ Form::file('изображение', ['class' => "upload-image-form"]) }}
 			{{ Form::hidden('_method', 'PUT') }}

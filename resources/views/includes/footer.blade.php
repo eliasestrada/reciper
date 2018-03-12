@@ -21,7 +21,7 @@
 					<li><a href="/">Главная</a></li>
 					<li><a href="/recipes">Рецепты</a></li>
 					<li><a href="/contact">Обратная связь</a></li>
-					<li><a href="/contact">Поиск</a></li>
+					<li><a href="/search">Поиск</a></li>
 					<a href="/" title="На главную">
 						<img src="{{ asset('favicon.png') }}" alt="Логотип" class="footer-logo">
 					</a>
