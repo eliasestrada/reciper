@@ -74,7 +74,10 @@
             <span class="headline">{{ $recipe->name }}</span>
 
             <!-- Приготовление -->
-            <ol class="instruction unstyled-list">{!! convertToListItems($recipe->text) !!}</ol>
+            <ol class="instruction unstyled-list">
+				{!! convertToListItems($recipe->text) !!}
+				<p class="headline">Приятного аппетита!</p>
+			</ol>
 
             <!-- Дата и Автор -->
             <div class="date">

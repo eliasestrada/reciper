@@ -71,13 +71,20 @@ img {
 ==================== */
 
 .message {
-	width: 80%;
-	height: auto;
-	padding: 1em 10% 0 10%;
-	color: #fff;
-	background: var(--paper);
-	text-align: center;
-	font-weight: 700;
+	width:80%;
+	height:auto;
+	text-align:center;
+	padding:3.7em 10% 0 10%;
+	margin-bottom:-4em;
+	color:#fff;
+	background:var(--paper);
+	font-weight:700
+}
+
+@media (min-width:640px) {
+	.message {
+		padding-top:0;margin-bottom:0;
+	}
 }
 
 .error { color: brown; }
