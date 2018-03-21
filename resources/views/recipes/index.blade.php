@@ -5,35 +5,35 @@
 @section('content')
 
 <div class="wrapper">
-    <h2 class="headline">Рецепты</h2>
-    <section class="recipes">
+	<h2 class="headline">Рецепты</h2>
 
-        @if (count($recipes) > 0)
-            @foreach ($recipes as $recipe)
-                <div>
-                    <!-- Image -->
-                    <a href="/recipes/{{ $recipe->id }}">
-                        <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
-                    </a>
-                    <div class="recipes-content">
-                        <!-- Title -->
-                        <h3>{{$recipe->title}}</h3>
-                        <!-- Intro -->
-                        <p class="content">{{ str_limit($recipe->intro, 100) }}</p>
-                        <!-- Category -->
-                        <a href="/search?for={{ $recipe->category }}" title="link"><span class="category">{{ $recipe->category }}</span></a>
-                        <!-- Time -->
-                        <div class="date"><i class="fa fa-clock-o"></i> {{ $recipe->time }} мин.</div>
-                    </div>
-                </div>
-            @endforeach
+	<div class="container recipes">
+		<div class="row">
+			@if (count($recipes) > 0)
+				@foreach ($recipes as $recipe)
+					<div class="recipe-container col-xs-12 col-sm-6 col-md-4 col-lg-3">
+						
+						<div class="recipe">
+							<a href="/recipes/{{ $recipe->id }}">
+								<!-- Image -->
+								<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
+							</a>
+							<div class="recipes-content">
+								<!-- Title -->
+								<h3>{{$recipe->title}}</h3>
+							</div>
+						</div>
+					</div>
+				@endforeach
 
-            {{ $recipes->links() }}
+				{{ $recipes->links() }}
 
-        @else
-            <p class="content">Нет рецептов</p>
-        @endif
-    </section>
+			@else
+				<p class="content">Нет рецептов</p>
+			@endif
+
+		</div>
+	</div>
 </div>
 
 @endsection

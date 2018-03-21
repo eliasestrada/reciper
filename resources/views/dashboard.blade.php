@@ -8,7 +8,6 @@
 
 @section('content')
 
-<div class="wrapper">
 	<div class="profile-header">
 		<h1>{{ Auth::user()->name }}</h1>
 		<img src="{{ asset('storage/uploads/'.Auth::user()->image) }}" alt="{{ Auth::user()->name }}" />
@@ -59,6 +58,5 @@
             </div>
         </div>
     </div>
-</div>
 
 @endsection

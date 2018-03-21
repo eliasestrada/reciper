@@ -14,7 +14,7 @@ class PagesController extends Controller
 		$random_recipes = Recipe::inRandomOrder()
 				->select(['id', 'title', 'image'])
 				->where('approved', 1)
-				->limit(3)
+				->limit(9)
 				->get();
 
 		return view('pages.home')

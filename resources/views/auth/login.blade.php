@@ -17,16 +17,11 @@
         <div class="form-group">
             {{ Form::label('password', 'Пароль') }}
             {{ Form::password('password', null, ['placeholder' => 'Пароль']) }}
+		</div>
+		
+		<div class="form-group" style="display:flex;">
+			<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Запомнить меня
         </div>
-
-        {{--
-            <div class="form-group">
-                Tip: I don't need this for the first time
-                <label>
-                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Запомнить меня
-                </label>
-            </div>
-        --}}
 
         <div class="form-group">
             {{ Form::submit('Войти') }}

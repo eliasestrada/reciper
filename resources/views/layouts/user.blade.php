@@ -11,9 +11,11 @@
 
 	@include('includes.profile-menu-line')
 
-    @include('includes.messages')
+	@include('includes.messages')
 
-    @yield('content')
+	<div class="wrapper">
+		@yield('content')
+	</div>
 
     @include('includes.footer')
 

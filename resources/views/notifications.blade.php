@@ -4,7 +4,6 @@
 
 @section('content')
 
-<div class="wrapper">
     <h2 class="headline"><i class="fa fa-bell-o bell-alert"></i> Оповещения</h2>
 
 	@if (count($notifications) > 0)
@@ -21,6 +20,5 @@
 	@else
 		<p class="content center">У вас пока нет оповещений</p>
 	@endif
-</div>
 
 @endsection

@@ -1,9 +1,9 @@
-let menuNav = document.getElementById("nav-menu")
-let logoNav = document.getElementById("logo")
-let button = document.getElementById("hamburger")
-let menuConteiner = document.getElementById("menu-container")
-let menuUl = document.querySelector("#nav-menu ul")
-let opened = false
+let menuNav = document.getElementById("nav-menu"),
+	logoNav = document.getElementById("logo"),
+	button = document.getElementById("hamburger"),
+	menuConteiner = document.getElementById("menu-container"),
+	menuUl = document.querySelector("#nav-menu ul"),
+	opened = false
 
 
 // Functions

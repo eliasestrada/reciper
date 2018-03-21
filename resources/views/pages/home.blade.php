@@ -19,14 +19,23 @@
     </section>
 
     <!-- Cards -->
-    <section class="home-section recipes">
+    <section class="home-section">
 		@if (count($random_recipes) > 0)
-			@foreach ($random_recipes as $random)
-				<div class="home-card">
-					<!-- Image -->
-					<a href="/recipes/{{ $random->id }}">
-						<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{$random->title}}" title="{{$random->title}}">
-					</a>
+			@foreach ($random_recipes->chunk(3) as $chunk)
+				<div class="row">
+					@foreach ($chunk as $random)
+						<div class="recipe-container col-xs-12 col-sm-6 col-md-4">
+							<div class="recipe">
+								<a href="/recipes/{{ $random->id }}">
+									<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{$random->title}}" title="{{$random->title}}">
+								</a>
+								<div class="recipes-content">
+									<!-- Title -->
+									<h3>{{$random->title}}</h3>
+								</div>
+							</div>
+						</div>
+					@endforeach
 				</div>
 			@endforeach
 		@endif

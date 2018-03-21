@@ -4,8 +4,6 @@
 
 @section('content')
 
-<div class="wrapper">
-
 	<div class="profile-header">
 		<h1>{{ $user->name }}</h1>
 		<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{ $user->name }}" />
@@ -38,6 +36,5 @@
 			@endif
 		</div>
 	</div>
-</div>
 
 @endsection

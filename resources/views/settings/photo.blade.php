@@ -8,7 +8,6 @@
 
 @section('content')
 
-<div class="wrapper">
 	<h2 class="headline">Настройки</h2>
 	<p class="content center">Единственное требование к выбору изображению это соотношение его сторон, оно долно быть квадратное, в противном случае изображение будет искажено.</p>
 
@@ -39,6 +38,5 @@
 			{{ Form::submit('Удалить', ['style' => 'background: brown; margin-top: -2.3rem;']) }}
 		</div>
 	{!! Form::close() !!}
-</div>
 
 @endsection

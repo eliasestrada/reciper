@@ -4,7 +4,6 @@
 
 @section('content')
 
-<div class="wrapper">
 	<h2 class="headline">Проверочная</h2>
 
 	{{--  Unapproved recipes  --}}
@@ -30,6 +29,5 @@
             @endif
         </div>
     @endif
-</div>
 
 @endsection

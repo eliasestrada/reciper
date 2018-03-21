@@ -8,7 +8,6 @@
 
 @section('content')
 
-<div class="wrapper">
 	<h2 class="headline">Мои рецепты</h2>
 
 	{{--  All my recipes  --}}
@@ -35,6 +34,5 @@
 			@endif
 		</div>
 	@endif
-</div>
 
 @endsection

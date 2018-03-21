@@ -8,7 +8,6 @@
 
 @section('content')
 
-<div class="wrapper">
 	<h2 class="headline">Настройки</h2>
 	
 	<div class="container" style="margin-top: 1em;">
@@ -17,7 +16,6 @@
             Выйти <i class="fa fa-sign-out"></i>
         </a>
 	</div>
-</div>
 
 <form id="logout-form" action="{{route('logout')}}" method="POST" style="display:none;">
 	@csrf

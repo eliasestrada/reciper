@@ -8,7 +8,6 @@
 
 @section('content')
 
-<div class="wrapper">
 	<h2 class="headline">Все авторы</h2>
 
     <section>
@@ -29,6 +28,5 @@
             {{ $users->links() }}
         @endif
     </section>
-</div>
 
 @endsection

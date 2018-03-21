@@ -4,8 +4,6 @@
 
 @section('content')
 
-<div class="wrapper">
-
     {!! Form::open(['action' => 'RecipesController@store', 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
 
         <div class="recipe-buttons">
@@ -83,7 +81,6 @@
         </div>
 
     {!! Form::close() !!}
-</div>
 
 <script>
 // Dropdowns

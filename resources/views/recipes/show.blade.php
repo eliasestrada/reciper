@@ -52,49 +52,51 @@
             
             <h1 class="headline">{{ $recipe->title }}</h1>
 
+			{{--  Intro  --}}
             <p>{{ $recipe->intro }}</p>
 
             <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->name }}" title="{{ $recipe->name }}" class="recipe-img">
 
+			{{--  Category  --}}
             <a href="/search?for={{ $recipe->category }}" title="link">
                 <span class="category">{{ $recipe->category }}</span>
             </a>
 
+			{{--  Time  --}}
             <div class="date"><i class="fa fa-clock-o"></i> {{ $recipe->time }} мин.</div>
 
+			{{--  Items ( Ингридиенты ) --}}
+			<h3 class="decorated"><span>Ингридиенты</span></h3>
             <div class="items">
-                <h3>Ингридиенты</h3>
                 <ul>{!! convertToListItems($recipe->ingredients) !!}</ul>
             </div>
 
-            <!-- Совет -->
+            {{--  Совет  --}}
             <p>{{ $recipe->advice }}</p>
 
-            <!-- Название рецепта -->
-            <span class="headline">{{ $recipe->name }}</span>
-
-            <!-- Приготовление -->
+			{{--  Приготовление  --}}
+			<h3 class="decorated"><span>Приготовление</span></h3>
             <ol class="instruction unstyled-list">
 				{!! convertToListItems($recipe->text) !!}
-				<p class="headline">Приятного аппетита!</p>
 			</ol>
 
-            <!-- Дата и Автор -->
+			<h3 class="decorated"><span>Приятного аппетита!</span></h3>
+
+            {{--  Дата и Автор  --}}
             <div class="date">
                 <p>Добавленно {{ facebookTimeAgo($recipe->created_at) }}</p>
-				<p>Автор: {{ $recipe->author }}</p>
+				<p>Автор рецепта: {{ $recipe->author }}</p>
             </div>
         </div>
 
-        <!-- Еще рецепты -->
+        {{--  Еще рецепты  --}}
         <div class="side-bar">
-			<h4 class="headline">Еще рецепты:</h4>
+			<h3 class="decorated"><span>Еще рецепты:</span></h3>
 			@if (count($random_recipes) > 0)
 				<ul class="unstyled-list">
 					@foreach ($random_recipes as $random)
 						<li>
-							<p class="headline">{{ $random->title }}</p>
-							<a href="/recipes/{{ $random->id }}">
+							<a href="/recipes/{{ $random->id }}" title="{{ $random->title }}">
 								<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{ $random->title }}">
 							</a>
 						</li>
