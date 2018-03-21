@@ -1,10 +1,12 @@
 <?php
 
-function reloadPage() {
+function reloadPage()
+{
 	echo '<div style="display:none;"><meta http-equiv="refresh" content="0"></div>';
 }
 
-function convertToListItems($string) {
+function convertToListItems( $string )
+{
 	$list_of_ingredients = '';
 	$string = preg_replace("/[\r\n]+/", "\n", $string);
 	$string = explode("\n", $string);
@@ -14,67 +16,44 @@ function convertToListItems($string) {
 	return $list_of_ingredients;
 }
 
-function facebookTimeAgo($timestamp) {
-    $time_ago = strtotime($timestamp);
-    $current_time = time();
-    $time_difference = $current_time - $time_ago;
-    $seconds = $time_difference;
-    $minutes = round($seconds / 60 ); // value 60 is seconds
-    $hours = round($seconds / 3600); //value 3600 is 60 minutes * 60 sec
-    $days = round($seconds / 86400); //86400 = 24 * 60 * 60;
-    $weeks = round($seconds / 604800); // 7*24*60*60;
-    $months = round($seconds / 2629440); //((365+365+365+365+366)/5/12)*24*60*60
-    $years = round($seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
-    
-    if ($seconds <= 60) {
-        return "Только что";
-    } elseif ($minutes <=60) {
-		if ($minutes == 1) {
-			return "Минуту назад";
-		} elseif ($minutes >= 2 && $minutes <= 4) {
-            return $minutes . " минуты назад";
-		} else {
-            return "$minutes минут назад";
-        }
-    } elseif ($hours <= 24) {
-        if ($hours == 1) {
-            return "Час назад";
-        } elseif ($hours >= 2 && $hours <= 4) {
-			return $hours . " часа назад";
-		} else {
-            return $hours . " часов назад";
-        }
-    } elseif ($days <= 7) {
-        if ($days == 1) {
-            return "Вчера";
-		} elseif ($days >= 2 && $days <= 4) {
-			return $days . " дня назад";
-		} else {
-            return $days . " дней назад";
-        }
-    } elseif ($weeks <= 4.3) {
-        if ($weeks == 1) {
-            return "Неделю назад";
-        } elseif ($weeks >= 2 && $weeks <= 4) {
-			return $weeks . " недели назад";
-		} else {
-            return $weeks . " недель назад";
-        }
-    } elseif ($months <= 12) {
-        if ($months == 1) {
-            return "Месяц назад";
-        } elseif ($months >= 2 && $months <= 4) {
-			return $months . " месяца назад";
-		} else {
-            return $months . " месяцев назад";
-        }
-    } else {
-        if ($years == 1) {
-            return "Год назад";
-        } elseif ($years >= 2 && $years <= 4) {
-			return $years . " года назад";
-		} else {
-            return $years . " лет назад";
-        }
+function facebookTimeAgo( $date )
+{
+	$date = strtotime($date);
+    $stf      = 0;
+    $cur_time = time();
+    $diff     = $cur_time - $date;
+ 
+    $seconds = array( 'секунда', 'секунды', 'секунд' );
+    $minutes = array( 'минута', 'минуты', 'минут' );
+    $hours   = array( 'час', 'часа', 'часов' );
+    $days    = array( 'день', 'дня', 'дней' );
+    $weeks   = array( 'неделя', 'недели', 'недель' );
+    $months  = array( 'месяц', 'месяца', 'месяцев' );
+    $years   = array( 'год', 'года', 'лет' );
+    $decades = array( 'десятилетие', 'десятилетия', 'десятилетий' );
+ 
+    $phrase = array( $seconds, $minutes, $hours, $days, $weeks, $months, $years, $decades );
+    $length = array( 1, 60, 3600, 86400, 604800, 2630880, 31570560, 315705600 );
+ 
+    for ( $i = sizeof( $length ) - 1; ( $i >= 0 ) && ( ( $no = $diff / $length[ $i ] ) <= 1 ); $i -- ) {
+        ;
     }
+    if ( $i < 0 ) {
+        $i = 0;
+    }
+    $_time = $cur_time - ( $diff % $length[ $i ] );
+    $no    = floor( $no );
+    $value = sprintf( "%d %s ", $no, getPhrase( $no, $phrase[ $i ] ) );
+ 
+    if ( ( $stf == 1 ) && ( $i >= 1 ) && ( ( $cur_time - $_time ) > 0 ) ) {
+        $value .= time_ago( $_time );
+    }
+ 
+    return $value . ' назад';
+}
+ 
+function getPhrase( $number, $titles ) {
+    $cases = array( 2, 0, 1, 1, 1, 2 );
+ 
+    return $titles[ ( $number % 100 > 4 && $number % 100 < 20 ) ? 2 : $cases[ min( $number % 10, 5 ) ] ];
 }
