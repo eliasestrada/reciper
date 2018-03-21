@@ -26,7 +26,8 @@
 						<img src="{{ asset('favicon.png') }}" alt="Логотип" class="footer-logo">
 					</a>
 					<br />
-					<p class="footer-copyright">&copy; {{ date('Y') }} Delicious Food</p>
+					<p class="footer-copyright">&copy; {{ date('Y') }} Delicious Food <br /><br />
+					При копировании любых материалов с сайта активная ссылка на сайт deliciousfood.gq обязательна</p>
 				</ul>
 			</div>
 		</div>
