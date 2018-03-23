@@ -13,7 +13,7 @@
 
 	@include('includes.messages')
 
-	<div class="wrapper">
+	<div class="wrapper" style="padding-top: 1em;">
 		@yield('content')
 	</div>
 

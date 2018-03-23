@@ -34,4 +34,31 @@ class UsersController extends Controller
 				->withRecipes($recipes)
 				->withUser($user);
 	}
+
+	// ADD
+    public function add($id)
+    {
+		$user = DB::table('users')->where([['id', $id], ['author', 0]]);
+
+		if ($user) {
+			$user->update(['author' => 1]);
+
+			return back()->with('success', 'Пользователь добавлен и теперь может заходить в свой профиль.');
+		} else {
+			return back()->with('error', 'Пользователь не найден');
+		}
+	}
+
+	// DELETE
+    public function delete($id)
+    {
+		$user = DB::table('users')->where([['id', $id], ['author', 0]]);
+
+		if ($user) {
+			$user->delete();
+			return back()->with('success', 'Пользователь удален');
+		} else {
+			return back()->with('error', 'Пользователь не найден');
+		}
+	}
 }

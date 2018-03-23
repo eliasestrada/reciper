@@ -27,6 +27,8 @@ Route::post('/recipes/{recipe}/answer', 'RecipesController@answer');
 Route::resource('users', 'UsersController', ['only' => [
 	'index', 'show'
 ]]);
+Route::get('/user/{id}/add', 'UsersController@add');
+Route::get('/user/{id}/delete', 'UsersController@delete');
 
 // Dashboard
 Route::get('/dashboard', 'DashboardController@index');

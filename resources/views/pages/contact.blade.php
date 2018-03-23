@@ -7,7 +7,6 @@
 <div class="wrapper">
 	<div class="container">
 		<h1 class="headline">Связь с нами</h1>
-		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut, consequatur.</p>
 		<br>
 
 		<form action="{{ route('contact.store') }}" method="POST" class="form">

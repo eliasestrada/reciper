@@ -1,13 +1,28 @@
 :root {
+	/* Colors
+	==================== */
 	--main: #8080ff;
 	--mainHover: #6969d3;
 	--gray: #adadad;
 	--lightGray: #e0e0e0;
 	--darkGray: #333;
 	--paper: #eee;
+	--fontColor: #535353;
+
+	/* Fonts
+	==================== */
 	--headerFont: 'lobster', Arial, Helvetica;
 	--mainFont: Arial, Helvetica;
 	--headerImage: url(../storage/other/img.jpg);
+
+	/* Button
+	==================== */
+	--btnBg: -webkit-linear-gradient(top, #fff 0%,#eee 100%);
+	--btnBorder: 1px solid #6b6b6b;
+	--btnShadow:0px 2px 1px #ECECEC inset,
+				0px -1px 20px #ECECEC,
+				0px 1px 1px #999,
+				0px 3px 10px #999;
 }
 
 /* Reset
@@ -58,12 +73,16 @@ img {
 ==================== */
 
 .message {
+	padding: 2em 1em 0 1em;
 	text-align: center;
-	padding: 3.7em 1em 0 1em;
-	margin-bottom: -4em;
-	color:#fff;
 	background: var(--paper);
-	font-weight: 700
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.message-public {
+	padding: 4em 1em 0 1em;
+	margin-bottom: -3em;
 }
 
 .error { color: brown; }
@@ -337,25 +356,21 @@ img {
 }
 
 .button {
-	background: -webkit-linear-gradient(top, #fff 0%,#eee 100%);
-	position: relative;
-	border-radius: .5em;
+	width: 10em;
+	margin: .5em auto;
 	padding: .4em .8em;
 	display: block;
+	background: var(--btnBg);
+	position: relative;
+	border-radius: .5em;
 	font-weight: bold;
-	color:#929292;
+	color:var(--fontColor);
 	transition: box-shadow 300ms;
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #fff;
-	border: 1px solid #a7a7a7;
-	width: 10em;
-	margin: .5em auto;
+	border: var(--btnBorder);
 	cursor: pointer;
-	box-shadow:
-		0px 2px 1px #ECECEC inset,
-		0px -1px 20px #ECECEC,
-		0px 1px 1px #999,
-		0px 3px 10px #999;
+	box-shadow: var(--btnShadow);
 	
 }
 
@@ -681,7 +696,6 @@ img {
 
 .users-list li {
 	position: relative;
-	height: 4.5em;
 	display: flex;
 	padding-bottom: .5em;
 	border-bottom: 1px solid #b6b6b6;
@@ -705,6 +719,25 @@ img {
 	margin-top: 1.3em;
 	font-size: .85em;
 	text-align: left;
+}
+
+.button-add-user {
+	width: 13em;
+	padding: .5em 1em;
+	margin: .5em 0;
+	display: inline-block;
+	background: var(--btnBg);
+	color: var(--fontColor);
+	border: var(--btnBorder);
+	border-radius: 4px;
+	text-align: center;
+	transition: box-shadow 250ms;
+	box-shadow: var(--btnShadow);
+	font-weight: bold;
+}
+
+.button-add-user:hover {
+	box-shadow: none;
 }
 
 /* Dashboard
@@ -826,6 +859,12 @@ img {
 	margin-left: .5em;
 }
 
+.block-message-content {
+	padding: .5em 1em;
+	background: var(--lightGray);
+	border-radius: 4px;
+}
+
 /* Profile
 ==================== */
 
@@ -847,7 +886,6 @@ img {
 }
 
 .profile-menu-line {
-	height: 2.5em;
 	background: #e6e6e6;
 	border-bottom: 1px solid #a8a8a8;
 	padding-top: 3em;

@@ -9,7 +9,7 @@
 
 	@include('includes.navbar')
 
-    @include('includes.messages')
+	@include('includes.messages-public')
 
     @yield('content')
 
