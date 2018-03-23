@@ -24,7 +24,7 @@
 			@foreach ($random_recipes->chunk(3) as $chunk)
 				<div class="row">
 					@foreach ($chunk as $random)
-						<div class="recipe-container col-xs-12 col-sm-6 col-md-4">
+						<div class="recipe-container col-xs-12 col-sm-6 col-md-4" style="animation: appear {{ 3 + $loop->index }}s;">
 							<div class="recipe">
 								<a href="/recipes/{{ $random->id }}">
 									<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{$random->title}}" title="{{$random->title}}">
