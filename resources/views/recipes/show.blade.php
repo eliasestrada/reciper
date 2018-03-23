@@ -89,16 +89,21 @@
             </div>
         </div>
 
-        {{--  Еще рецепты  --}}
+        {{--  Еще рецепты Sidebar --}}
         <div class="side-bar">
 			<h3 class="decorated"><span>Еще рецепты:</span></h3>
 			@if (count($random_recipes) > 0)
 				<ul class="unstyled-list">
 					@foreach ($random_recipes as $random)
-						<li>
+						<li class="side-bar-recipe">
 							<a href="/recipes/{{ $random->id }}" title="{{ $random->title }}">
+								<!-- Image -->
 								<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{ $random->title }}">
 							</a>
+							<div class="side-bar-content">
+								<!-- Title -->
+								<h3>{{ $random->title }}</h3>
+							</div>
 						</li>
 					@endforeach
 				</ul>

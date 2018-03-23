@@ -30,7 +30,7 @@
 							</a>
 							<div class="recipes-content">
 								<!-- Title -->
-								<h3>{{$recipe->title}}</h3>
+								<h3>{{ $recipe->title }}</h3>
 							</div>
 						</div>
 					</div>

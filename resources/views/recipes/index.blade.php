@@ -12,11 +12,10 @@
 			@if (count($recipes) > 0)
 				@foreach ($recipes as $recipe)
 					<div class="recipe-container col-xs-12 col-sm-6 col-md-4 col-lg-3">
-						
 						<div class="recipe">
-							<a href="/recipes/{{ $recipe->id }}">
+							<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->title }}">
 								<!-- Image -->
-								<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
+								<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}">
 							</a>
 							<div class="recipes-content">
 								<!-- Title -->
