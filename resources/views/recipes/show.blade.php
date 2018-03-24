@@ -52,13 +52,13 @@
             
             <h1 class="headline">{{ $recipe->title }}</h1>
 
-			{{--  Intro  --}}
+            <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->name }}" class="recipe-img">
+            
+            {{--  Intro  --}}
             <p>{{ $recipe->intro }}</p>
 
-            <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->name }}" title="{{ $recipe->name }}" class="recipe-img">
-
 			{{--  Category  --}}
-            <a href="/search?for={{ $recipe->category }}" title="link">
+            <a href="/search?for={{ $recipe->category }}" title="{{ $recipe->category }}">
                 <span class="category">{{ $recipe->category }}</span>
             </a>
 

@@ -99,6 +99,8 @@ img {
 .headline {
 	color: var(--darkGray);
 	font-family: var(--headerFont);
+	line-height: 1.1;
+	margin: .4em 0;
 }
 
 .content {
@@ -454,7 +456,7 @@ img {
 	color: #555;
 	font-size: .7em;
 	margin: .5em auto;
-	line-height: .2em;
+	text-align: center;
 }
 
 /* Single recipe
@@ -497,15 +499,17 @@ img {
 	background: var(--paper);
 }
 
-.grid-recipe p {
-	margin: 1.12em .31em;
+.recipe-content > p {
+	margin: 1.1em .7em .4em .7em;
+	text-align: left;
+	font-size: .85em;
+	line-height: 1.5;
 }
 
 .recipe-img {
-	width: 80%;
-	margin: .6em 10%;
-	border-radius: 5px;
-	border: 2px solid var(--gray);
+	width: 96%;
+	margin: .6em 2%;
+	border-radius: 12px;
 	animation: appear 1s;
 }
 
@@ -515,15 +519,12 @@ img {
 	margin: 0 auto;
 	text-align: left;
 	background: 0 0;
-	border-radius: 5px;
+	border-radius: 10px;
 	border-top: dotted 2px var(--gray);
 	background: #eae6f3;
 	border-bottom: dotted 2px var(--gray);
 	font-size: .85em;
 	line-height: 1.5;
-	transition: border-radius .2s,background-color .2s;
-	animation: borderRadius 1.5s infinite both 1s;
-	animation-direction: alternate;
 }
 
 .items > ul > li {
