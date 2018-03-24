@@ -73,11 +73,14 @@ img {
 ==================== */
 
 .message {
-	padding: 2em 1em 0 1em;
+	padding: 1em 1em 0 1em;
 	text-align: center;
 	background: var(--paper);
 	font-weight: 700;
 	line-height: 1.3;
+	transition: transform 300ms;
+	animation: appearFromLeft 2s;
+	font-size: 1.1em;
 }
 
 .message-public {
@@ -85,8 +88,14 @@ img {
 	margin-bottom: -3em;
 }
 
-.error { color: brown; }
-.success { color: #145323; }
+.error {
+	color: brown;
+	text-shadow: 1px 1px 5px #ffa6a6;
+}
+.success {
+	color: #25833b;
+	text-shadow: 1px 1px 5px #92ff92;
+}
 
 .wrapper {
 	min-height: 20em;
@@ -823,7 +832,9 @@ img {
 	color: #555;
 }
 
-.notification-message { padding: .2em; }
+.notification-message {
+	padding: .2em;
+}
 
 /* My recipes
 ==================== */

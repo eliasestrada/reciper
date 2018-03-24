@@ -232,6 +232,12 @@
 	100% { opacity: 1;}
 }
 
+@keyframes appearFromLeft {
+	0% { margin-left: -100em; transform: scaleY(0); }
+	50% { margin-left: -100em; transform: scaleY(1); }
+	100% { margin-top: 0em; }
+}
+
 @keyframes appearWithRotate {
 	0% { opacity: 0; }
 	10% { transform: scale(0); }
