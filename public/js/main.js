@@ -1,8 +1,16 @@
-let menuNav = document.getElementById("nav-menu"),
-	logoNav = document.getElementById("logo"),
-	button = document.getElementById("hamburger"),
-	menuConteiner = document.getElementById("menu-container"),
+function $(e) {
+	return document.getElementById(e)
+}
+
+let menuNav = $("nav-menu"),
+	logoNav = $("logo"),
+	button = $("hamburger"),
+	menuConteiner = $("menu-container"),
+	headerImg = $("header-img"),
+	headerVideo = $("header-video"),
 	menuUl = document.querySelector("#nav-menu ul"),
+	homeSearchBtn = $("home-search-btn"),
+	headerSearchInput = $("header-search-input"),
 	opened = false
 
 
@@ -47,13 +55,30 @@ function hideMenuBarIntoButton() {
     }
 }
 
+function insertVideo() {
+	headerVideo.onloadeddata = function() {
+		headerImg.style.opacity = "0"
+		setTimeout(()=> headerImg.style.display = "none", 300);
+
+		headerVideo.style.animation = "appearWithOpacity 1s"
+	}
+}
+
+function showHeaderSearch() {
+	headerSearchInput.style.opacity = "1"
+}
+
 // Events
 button.addEventListener('click', openMenu)
+homeSearchBtn.addEventListener('click', showHeaderSearch)
 
 window.addEventListener('mouseup', function (event) {
     if (event.target != menuNav && opened === true && event.target.parentNode != menuNav) {
         closeMenu()
     }
 })
+
+// Home header
+window.addEventListener('load', insertVideo, false)
 
 window.onscroll = () => hideMenuBarIntoButton()
