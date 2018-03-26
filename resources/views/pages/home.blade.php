@@ -5,11 +5,7 @@
 @section('content')
     <!-- Home Header -->
     <header class="home-header">
-        <div class="header-bg-video">
-			<img src="{{ asset('storage/other/pan_img.jpg') }}" alt="pan" id="header-img">
-			<video src="{{ asset('storage/other/pan.mov') }}" autoplay="true" loop="true" id="header-video"></video>
-		</div>
-		<div class="header-overlay"></div>
+        <div class="header-bg-img"></div>
         <div class="header-content">
             <h1>Delicious Food</h1>
             <h2>Рецепты от простых до необычных</h2>

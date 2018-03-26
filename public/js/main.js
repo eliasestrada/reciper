@@ -6,8 +6,6 @@ let menuNav = $("nav-menu"),
 	logoNav = $("logo"),
 	button = $("hamburger"),
 	menuConteiner = $("menu-container"),
-	headerImg = $("header-img"),
-	headerVideo = $("header-video"),
 	menuUl = document.querySelector("#nav-menu ul"),
 	homeSearchBtn = $("home-search-btn"),
 	headerSearchInput = $("header-search-input"),
@@ -55,15 +53,6 @@ function hideMenuBarIntoButton() {
     }
 }
 
-function insertVideo() {
-	headerVideo.onloadeddata = function() {
-		headerImg.style.opacity = "0"
-		setTimeout(()=> headerImg.style.display = "none", 300);
-
-		headerVideo.style.animation = "appearWithOpacity 1s"
-	}
-}
-
 function showHeaderSearch() {
 	headerSearchInput.style.opacity = "1"
 }
@@ -77,8 +66,5 @@ window.addEventListener('mouseup', function (event) {
         closeMenu()
     }
 })
-
-// Home header
-window.addEventListener('load', insertVideo, false)
 
 window.onscroll = () => hideMenuBarIntoButton()
