@@ -23,7 +23,9 @@
 			<br />
 
 			{{ Form::hidden('delete', 0) }}
-			{{ Form::file('image', ['class' => "upload-image-form", 'id' => 'src-image']) }}
+
+			{{ Form::label('src-image', 'Выбрать файл', ['class' => 'image-label']) }}
+			{{ Form::file('image', ['style' => "display:none;", 'id' => 'src-image']) }}
 			{{ Form::submit('Сохранить') }}
 		</div>
 	{!! Form::close() !!}

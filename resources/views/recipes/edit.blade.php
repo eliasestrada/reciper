@@ -89,12 +89,12 @@
         <button class="accordion" type="button">Изображение</button>
         <div class="accordion-panel">
             <div class="form-group">
+				{{ Form::label('src-image', 'Выбрать файл', ['class' => 'image-label']) }}
+				{{ Form::file('изображение', ['style' => "display:none;", "id" => "src-image"]) }}
+
 				<section class="preview-image">
 					<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{$recipe->title}}" id="target-image">
 				</section>
-
-                {{ Form::label('изображение', 'Изображение') }}
-				{{ Form::file('изображение', ['class' => "upload-image-form", "id" => "src-image"]) }}
             </div>
         </div>
 

@@ -22,7 +22,7 @@
     {{ Visitor::log() }}
 
     <!-- Javascript -->
-	<script type="text/javascript" src="{{ URL::asset('js/main.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/main.js') }}?ver={{ env('APP_VER') }}"></script>
 	@yield('script')
 </body>
 </html>

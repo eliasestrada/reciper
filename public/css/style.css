@@ -392,16 +392,24 @@ img {
 	overflow: hidden;
 }
 
-.upload-image-form[type=file] {
-	height: 1.6em;
-	padding: 0;
-	margin: .5em 0;
-	background: var(--main);
-	color: #fff;
+.image-label {
+	border: dashed 3px var(--gray);
+	display: block;
+	margin: .5em auto;
+	text-align: center;
+	padding: .8em;
+	color: #777!important;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: border 250ms,
+				color 250ms;
 }
 
-.upload-image-form[type=file]:hover {
-	background: var(--mainHover);
+.image-label:hover {
+	border: dashed 3px #777;
+	color: #555!important;
+	transition: border-color 250ms;
 }
 
 .form label {
