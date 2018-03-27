@@ -27,12 +27,13 @@
         "classmap": [
             "database"
         ],
-        "files": [
-            "files/Helpers/helpers.php"
-        ],
         "psr-4": {
             "App\\": "app/"
-        }
+		},
+		"files": [
+			"app/Helpers/facebookTimeAgo.php",
+			"app/Helpers/functions.php"
+		]
     },
     "autoload-dev": {
         "psr-4": {

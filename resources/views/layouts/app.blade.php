@@ -17,7 +17,7 @@
 
     {{ Visitor::log() }}
 
-    <!-- Javascript -->
-	<script type="text/javascript" src="{{ URL::asset('js/main.js') }}?ver={{ config('app.version') }}"></script>
+	<!-- Javascript -->
+	{!! scriptTimestamp('/js/main.js') !!}
 </body>
 </html>

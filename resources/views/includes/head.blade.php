@@ -5,10 +5,10 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Styles -->
-<link rel="stylesheet" href="{{ asset('css/bootstrap-grid.min.css') }}">
-<link rel="stylesheet" href="{{ asset('css/style.css') }}?ver={{ config('app.version') }}">
-<link rel="stylesheet" href="{{ asset('css/media.css') }}?ver={{ config('app.version') }}">
+{!! styleTimestamp('/css/bootstrap-grid.min.css') !!}
+{!! styleTimestamp('/css/style.css') !!}
+{!! styleTimestamp('/css/media.css') !!}
 
 <!-- Links -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="shortcut icon" href="{{ asset('favicon.png') }}?ver={{ config('app.version') }}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
