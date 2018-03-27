@@ -201,16 +201,6 @@
 	}
 }
 
-/* Profile
-==================== */
-
-@media (min-width: 640px) {
-	.profile-menu-line {
-		padding-top: 0;
-		margin-bottom: 0;
-	}
-}
-
 /* Animations
 ==================== */
 
