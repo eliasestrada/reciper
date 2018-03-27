@@ -54,7 +54,10 @@ function hideMenuBarIntoButton() {
 }
 
 function showHeaderSearch() {
-	headerSearchInput.style.opacity = "1"
+	homeSearchBtn.style.display = "none"
+	headerSearchInput.style.display = "block"
+
+	setTimeout(() => headerSearchInput.style.opacity = "1", 500)
 }
 
 // Events

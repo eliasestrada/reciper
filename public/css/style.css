@@ -245,7 +245,7 @@ img {
 .header-content {
 	width: 94%;
 	position: absolute;
-	top: 50%;
+	top: 45%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	margin-top: -1em;
@@ -266,12 +266,12 @@ img {
 	padding-top: 2.8em;
 	padding-bottom: 0;
 	font-size: 3em;
-	animation-delay: 1s;
+	animation-delay: .5s;
 }
 
 .header-content h2 {
 	padding: 0 .3em;
-	animation-delay: 2s;
+	animation-delay: 1s;
 }
 
 .header-bg-img {
@@ -302,9 +302,9 @@ img {
 	background: #1e5799;
 	color: #fff;
 	font-size: 1.6em;
-	transition: transform 400ms, background-color 400ms;
 	animation: appearWithRotate 1s;
 	cursor: pointer;
+	transition: all 300ms;
 }
 
 .home-button:hover {
@@ -323,6 +323,7 @@ img {
 	color: #ffffff;
 	transition: border 300ms, opacity 400ms;
 	opacity: 0;
+	display: none;
 }
 
 .header-search input:focus {
@@ -480,7 +481,7 @@ img {
 
 .recipe-container img {
 	transition: transform 300ms;
-	border-radius: 12px 12px 0 0;
+	border-radius: 10px 10px 0 0;
 }
 
 .category {
@@ -552,7 +553,7 @@ img {
 .recipe-img {
 	width: 96%;
 	margin: .6em 2%;
-	border-radius: 12px;
+	border-radius: 9px;
 	animation: appear 1s;
 }
 
