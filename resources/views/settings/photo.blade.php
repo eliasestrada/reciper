@@ -18,12 +18,12 @@
 
 		<div class="form-group">
 			<div class="profile-header" style="height: 11em;">
-				<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{$user->name}}" />
+				<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{$user->name}}" id="target-image" style="width: 170px; height:170px;" />
 			</div>
 			<br />
 
 			{{ Form::hidden('delete', 0) }}
-			{{ Form::file('изображение', ['class' => "upload-image-form"]) }}
+			{{ Form::file('image', ['class' => "upload-image-form", 'id' => 'src-image']) }}
 			{{ Form::submit('Сохранить') }}
 		</div>
 	{!! Form::close() !!}
@@ -39,4 +39,12 @@
 		</div>
 	{!! Form::close() !!}
 
+@endsection
+
+@section('script')
+<script>
+	var src = document.getElementById("src-image")
+	var target = document.getElementById("target-image")
+	showImage(src, target)
+</script>
 @endsection

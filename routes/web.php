@@ -40,6 +40,9 @@ Route::get('/my_recipes', 'DashboardController@my_recipes');
 Route::get('/settings', 'SettingsController@index');
 Route::get('/settings/photo', 'SettingsController@editPhoto');
 Route::put('/settings/photo', 'SettingsController@updatePhoto');
+Route::get('/settings/general', 'SettingsController@general');
+Route::put('/settings/updateUserData', 'SettingsController@updateUserData');
+Route::put('/settings/updateUserPassword', 'SettingsController@updateUserPassword');
 
 // Statistic
 Route::get('/statistic', 'StatisticController@visitors');

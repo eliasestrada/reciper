@@ -6,16 +6,6 @@
 	src: url(../storage/fonts/lobster.ttf);
 }
 
-/* Common
-==================== */
-
-@media (min-width:640px) {
-	.message-public {
-		padding: 1em 1em 0 1em;
-		margin-bottom: 0;
-	}
-}
-
 /* Nav bar
 ==================== */
 
@@ -100,6 +90,16 @@
 
 	.recipe-container img {
 		border-radius: 5px;
+	}
+}
+
+/* Edit recipe
+================= */
+
+@media (min-width: 420px) {
+	.preview-image img {
+		width: 276px;
+		height: 184px;
 	}
 }
 

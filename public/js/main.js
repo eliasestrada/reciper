@@ -53,6 +53,13 @@ function hideMenuBarIntoButton() {
     }
 }
 
+function showImage(src, target) {
+	var fr = new FileReader()
+	
+	fr.onload = function(e) { target.src = this.result }
+	src.addEventListener("change", ()=> fr.readAsDataURL(src.files[0]))
+}
+
 function showHeaderSearch() {
 	homeSearchBtn.style.display = "none"
 	headerSearchInput.style.display = "block"

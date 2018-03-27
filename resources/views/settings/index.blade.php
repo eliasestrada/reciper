@@ -11,13 +11,15 @@
 	<h2 class="headline">Настройки</h2>
 	
 	<div class="container" style="margin-top: 1em;">
+		<a href="/settings/general" title="Общие" class="button">Общие</a>
 		<a href="/settings/photo" title="Настройки" class="button">Фотография</a>
+		<br />
 		<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="button">
             Выйти <i class="fa fa-sign-out"></i>
-        </a>
+		</a>
 	</div>
 
-<form id="logout-form" action="{{route('logout')}}" method="POST" style="display:none;">
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
 	@csrf
 </form>
 

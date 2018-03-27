@@ -75,30 +75,40 @@
         <button class="accordion" type="button">Изображение</button>
         <div class="accordion-panel">
             <div class="form-group">
+				<section class="preview-image">
+						<img src="{{ asset('storage/images/default.jpg') }}" alt="Изображение" id="target-image">
+				</section>
+
                 {{ Form::label('изображение', 'Изображение') }}
-                {{ Form::file('изображение', ['class' => "upload-image-form"]) }}
+                {{ Form::file('изображение', ['class' => "upload-image-form", "id" => "src-image"]) }}
             </div>
         </div>
 
     {!! Form::close() !!}
 
+@endsection
+
+@section('script')
 <script>
-// Dropdowns
-var acc = document.getElementsByClassName("accordion")
-var i
+	// Dropdowns
+	var acc = document.getElementsByClassName("accordion")
+	var src = document.getElementById("src-image")
+	var target = document.getElementById("target-image")
+	var i
 
-for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function(){
-        this.classList.toggle("accordion-active")
-        var panel = this.nextElementSibling
+	for (i = 0; i < acc.length; i++) {
+		acc[i].addEventListener("click", function(){
+			this.classList.toggle("accordion-active")
+			var panel = this.nextElementSibling
 
-        if (panel.style.maxHeight) {
-            panel.style.maxHeight = null
-        } else {
-            panel.style.maxHeight = panel.scrollHeight + "px"
-        } 
-    })
-}
+			if (panel.style.maxHeight) {
+				panel.style.maxHeight = null
+			} else {
+				panel.style.maxHeight = panel.scrollHeight + "px"
+			} 
+		})
+	}
+
+	showImage(src, target)
 </script>
-
 @endsection
