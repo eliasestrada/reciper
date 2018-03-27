@@ -2,7 +2,7 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
 	@include('includes.head')
-	<title>@yield('title') - Delicious Food</title>
+		<title>@yield('title') - {{ config('app.name') }}</title>
 	@yield('head')
 </head>
 <body>
@@ -18,6 +18,6 @@
     {{ Visitor::log() }}
 
     <!-- Javascript -->
-	<script type="text/javascript" src="{{ URL::asset('js/main.js') }}?ver={{ env('APP_VER') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('js/main.js') }}?ver={{ config('app.version') }}"></script>
 </body>
 </html>

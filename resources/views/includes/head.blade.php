@@ -6,9 +6,9 @@
 
 <!-- Styles -->
 <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.min.css') }}">
-<link rel="stylesheet" href="{{ asset('css/style.css') }}?ver={{ env('APP_VER') }}">
-<link rel="stylesheet" href="{{ asset('css/media.css') }}?ver={{ env('APP_VER') }}">
+<link rel="stylesheet" href="{{ asset('css/style.css') }}?ver={{ config('app.version') }}">
+<link rel="stylesheet" href="{{ asset('css/media.css') }}?ver={{ config('app.version') }}">
 
 <!-- Links -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="shortcut icon" href="{{ asset('favicon.png') }}?ver={{ env('APP_VER') }}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ asset('favicon.png') }}?ver={{ config('app.version') }}" type="image/x-icon">
