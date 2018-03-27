@@ -467,7 +467,7 @@ img {
 
 .recipes-content {
 	padding: .8em 1em;
-	border-radius: 0 0 12px 12px;
+	border-radius: 0 0 5px 5px;
 	border-bottom: dotted 2px var(--gray);
 	font-size: .85em;
 	transition: opacity 350ms;
