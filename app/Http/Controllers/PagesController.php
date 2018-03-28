@@ -8,7 +8,9 @@ use App\Recipe;
 
 class PagesController extends Controller
 {
-	// HOME
+	/* HOME
+	====================== */
+
     public function home() {
 
 		$random_recipes = Recipe::inRandomOrder()
@@ -21,7 +23,9 @@ class PagesController extends Controller
 				->with('random_recipes', $random_recipes);
 	}
 
-	// SEARCH
+	/* SEARCH
+	====================== */
+
 	public function search(Request $request)
     {
 		$query = $request->input('for');

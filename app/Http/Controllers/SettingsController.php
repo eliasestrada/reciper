@@ -16,12 +16,16 @@ class SettingsController extends Controller
         $this->middleware('author');
 	}
 
-	// INDEX
+	/* INDEX
+	====================== */
+
     public function index() {
 		return view('settings.index');
 	}
 
-    // EDIT PHOTO
+    /* EDIT PHOTO
+	====================== */
+
     public function editPhoto()
     {
 		$user = auth()->user();
@@ -30,7 +34,9 @@ class SettingsController extends Controller
 				->withUser($user);
 	}
 
-	// Update photo
+	/* UPDATE PHOTO
+	====================== */
+
 	public function updatePhoto(Request $request)
     {
         $this->validate($request, [
@@ -63,13 +69,17 @@ class SettingsController extends Controller
                     ->with('success', 'Настройки сохранены');
 	}
 	
-	// GENERAL
+	/* GENERAL
+	====================== */
+
 	public function general()
 	{
 		return view('settings.general');
 	}
 
-	// UpdateUserData
+	/* UPDATE USER DATA
+	====================== */
+
 	public function updateUserData(Request $request)
 	{
 		$this->validate($request, [
@@ -87,7 +97,9 @@ class SettingsController extends Controller
 		return back()->with('success', 'Настройки сохранены');
 	}
 
-	// UpdateUserPassword
+	/* UPDATE USER PASSWORD
+	====================== */
+
 	public function updateUserPassword(Request $request)
 	{
 		$this->validate($request, [

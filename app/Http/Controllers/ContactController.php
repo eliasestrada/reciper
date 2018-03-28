@@ -8,12 +8,16 @@ use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
-	// INDEX
+	/* INDEX
+	====================== */
+
     public function index() {
 		return view('pages.contact');
 	}
 	
-	// STORE
+	/* STORE
+	====================== */
+
 	public function store(Request $request) {
 	
 		$this->validate($request, [
@@ -32,26 +36,4 @@ class ContactController extends Controller
 		return redirect()->back()
 				->with('success', 'Спасибо за ваш отзыв.');
 	}
-
-	/* ============================================
-	public function store(Request $request) {
-	
-		$this->validate($request, [
-			'имя' => 'required|min:3|max:50',
-			'почта' => 'required|email',
-			'сообщение' => 'required|min:20|max:5000'
-		]);
-		
-		Mail::send('emails.contact-message', [
-			'msg' => $request->сообщение
-		], function($mail) use($request) {
-			$mail->to('deliciousfood.kh@gmail.com', env('APP_NAME'));
-			$mail->from($request->почта, $request->имя);
-			$mail->subject('Отправитель: ' . $request->почта);
-		});
-
-		return redirect()->back()
-				->with('success', 'Спасибо за ваш отзыв.');
-	}
-	============================================ */
 }

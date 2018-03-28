@@ -19,7 +19,9 @@ class RecipesController extends Controller
 		]]);
     }
 
-    // INDEX
+    /* INDEX
+	====================== */
+
     public function index()
     {
         $recipes = Recipe::where('approved', 1)->latest()->paginate(30);
@@ -28,7 +30,9 @@ class RecipesController extends Controller
     }
 
 
-    // CREATE
+    /* CREATE
+	====================== */
+
     public function create()
     {
         // For select input
@@ -37,7 +41,9 @@ class RecipesController extends Controller
         return view('recipes.create')->with('categories', $categories);
     }
 
-    // STORE
+    /* STORE
+	====================== */
+
     public function store(Request $request)
     {
 		$user = auth()->user();
@@ -81,7 +87,9 @@ class RecipesController extends Controller
 				->with('success', 'Рецепт успешно сохранен');
     }
 
-    // SHOW
+    /* SHOW
+	====================== */
+
     public function show($id)
     {
 		$user = auth()->user();
@@ -117,7 +125,9 @@ class RecipesController extends Controller
 				->with('random_recipes', $random_recipes);
     }
 
-    // EDIT
+    /* EDIT
+	====================== */
+
     public function edit($id)
     {
 		$recipe = Recipe::find($id);
@@ -143,7 +153,9 @@ class RecipesController extends Controller
 
     }
 
-    // UPDATE
+    /* UPDATE
+	====================== */
+
     public function update(Request $request, $id)
     {
 		$user = auth()->user();
@@ -195,21 +207,27 @@ class RecipesController extends Controller
                     ->with('success', 'Рецепт добавлен на рассмотрение и будет опубликован после одобрения администрации.');
     }
 
-    // LIKE
+    /* LIKE
+	====================== */
+
     public function like($id)
     {
 		Recipe::find($id)->increment('likes');
         return back()->withCookie(cookie('liked', 1, 5000));
 	}
 	
-	// DISLIKE
+	/* DISLIKE
+	====================== */
+
     public function dislike($id)
     {
 		Recipe::find($id)->decrement('likes');
 		return back()->withCookie(\Cookie::forget('liked'));
     }
 
-    // APPROVE
+    /* APPROVE
+	====================== */
+
     public function answer($id, Request $request)
     {
         $update_recipe = DB::table('recipes')
@@ -256,7 +274,9 @@ class RecipesController extends Controller
         }
     }
 
-    // DESTROY
+    /* DESTROY
+	====================== */
+
     public function destroy($id)
     {
 		$recipe = Recipe::find($id);

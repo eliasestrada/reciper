@@ -15,7 +15,9 @@ class DashboardController extends Controller
 		$this->middleware('admin')->only('checklist');
 	}
 
-    // INDEX
+	/* INDEX
+	====================== */
+
     public function index()
     {
 		$user = auth()->user();
@@ -65,7 +67,9 @@ class DashboardController extends Controller
                 ->withNotifications($notifications);
     }
 
-    // NOTIFICATIONS
+	/* NOTIFICATIONS
+	====================== */
+
     public function notifications() {
 
 		$user_id = auth()->user()->id;
@@ -84,7 +88,9 @@ class DashboardController extends Controller
                 ->withNotifications($notifications);
 	}
 	
-	// CHECKLIST
+	/* CHECKLIST
+	====================== */
+
     public function checklist() {
 
 		$unapproved = DB::table('recipes')
@@ -96,7 +102,9 @@ class DashboardController extends Controller
 				->withUnapproved($unapproved);
 	}
 	
-	// MY_RECIPES
+	/* MY_RECIPES
+	====================== */
+
     public function my_recipes() {
 
 		$user = auth()->user();
