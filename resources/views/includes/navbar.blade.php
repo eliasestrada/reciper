@@ -1,6 +1,10 @@
 <!-- Hamburger menu -->
 <div class="regular-menu" id="menu-container">
-    <i id="hamburger"><i class="fa fa-bars"></i></i>
+    <div id="hamburger" class="hamburger">
+		<span class="lines line1"></span>
+		<span class="lines line2"></span>
+		<span class="lines line3"></span>
+	</div>
 </div>
 
 <!-- Navigation menu -->
