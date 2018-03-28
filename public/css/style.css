@@ -305,6 +305,7 @@ img {
 	animation: appearWithRotate 1s;
 	cursor: pointer;
 	transition: all 300ms;
+	position: relative;
 }
 
 .home-button:hover {
@@ -639,16 +640,10 @@ img {
 }
 
 .like-icon {
-	font-size: 1.5em !important;
-	color: #700101;
 	cursor: pointer;
 	transition: .3s ease;
-	margin-left: 0;
 	animation: heart-beat 1.7s infinite both 1s, disappear 1s;
 	animation-direction: alternate, reverse;
-	transform: scale(1);
-	background: 0 0;
-	border: none;
 }
 
 .disappear {
@@ -857,6 +852,14 @@ img {
 	color: #444;
 }
 
+.icon-cards {
+	display: block;
+	margin: auto;
+	width: 40px;
+	height: 40px;
+	opacity: .8;
+}
+
 /* Notifications
 ==================== */
 
@@ -965,18 +968,26 @@ img {
 	background: #e6e6e6;
 	border-bottom: 1px solid #a8a8a8;
 	padding-top: 3em;
+	line-height: 0;
 }
 
 .profile-menu-line a {
 	width: 23.5%;
 	display: inline-block;
 	color: var(--fontColor);
-	font-size: 1.2em;
-	padding: .4em 0 3px 0;
+	padding: .6em 0;
 }
 
 .profile-menu-line a:hover {
 	background: var(--lightGray);
+}
+
+.icon-profile-menu-line {
+	display: block;
+	margin: auto;
+	width: 20px;
+	height: 20px;
+	opacity: .8;
 }
 
 /* Pagination

@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h2 class="headline"><i class="fa fa-bell-o bell-alert"></i> Оповещения</h2>
+    <h2 class="headline">Оповещения</h2>
 
 	@if (count($notifications) > 0)
 		<div style="padding: 1em 0;">
