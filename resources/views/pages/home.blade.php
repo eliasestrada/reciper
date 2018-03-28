@@ -60,3 +60,9 @@
 		@endif
     </section>
 @endsection
+
+@section('script')
+<script>
+	homeSearchBtn.addEventListener('click', showHeaderSearch)
+</script>
+@endsection

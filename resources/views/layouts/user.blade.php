@@ -2,7 +2,7 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
 	@include('includes.head')
-	<title>@yield('title') - Delicious Food</title>
+		<title>@yield('title') - Delicious Food</title>
 	@yield('head')
 </head>
 <body>

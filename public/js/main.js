@@ -69,7 +69,6 @@ function showHeaderSearch() {
 
 // Events
 button.addEventListener('click', openMenu)
-homeSearchBtn.addEventListener('click', showHeaderSearch)
 
 window.addEventListener('mouseup', function (event) {
     if (event.target != menuNav && opened === true && event.target.parentNode != menuNav) {
