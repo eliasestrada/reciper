@@ -13,10 +13,7 @@ Auth::routes();
 Route::get('/', 'PagesController@home');
 Route::get('/search', 'PagesController@search');
 Route::get('/contact', 'ContactController@index');
-Route::post('/contact', [
-	'uses' => 'ContactController@store',
-	'as' => 'contact.store'
-]);
+Route::post('/contact', 'ContactController@store');
 
 // Recipes
 Route::get('/recipes/{recipe}/like', 'RecipesController@like');
@@ -24,9 +21,7 @@ Route::get('/recipes/{recipe}/dislike', 'RecipesController@dislike');
 Route::post('/recipes/{recipe}/answer', 'RecipesController@answer');
 
 // Users
-Route::resource('users', 'UsersController', ['only' => [
-	'index', 'show'
-]]);
+Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
 Route::get('/user/{id}/add', 'UsersController@add');
 Route::get('/user/{id}/delete', 'UsersController@delete');
 

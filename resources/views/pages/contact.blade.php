@@ -9,21 +9,24 @@
 		<h1 class="headline">Связь с нами</h1>
 		<br>
 
-		<form action="{{ route('contact.store') }}" method="POST" class="form">
+		{!! Form::open(['action' => 'ContactController@store', 'method' => 'POST', 'class' => 'form']) !!}
 			@csrf
 			<div class="form-group">
-				<input type="text" name="имя" placeholder="Имя">
+				{{ Form::label('имя', 'Имя') }}
+				{{ Form::text('имя', '', ['placeholder' => 'Введите ваше имя']) }}
 			</div>
 			<div class="form-group">
-				<input type="text" name="почта" placeholder="Эл. почта">
+				{{ Form::label('почта', 'Эл. почта') }}
+				{{ Form::text('почта', '', ['placeholder' => 'Введите эл. почту']) }}
 			</div>
 			<div class="form-group">
-				<textarea name="сообщение" placeholder="Введите сообщение"></textarea>
+				{{ Form::label('сообщение', 'Cообщение') }}
+				{{ Form::textarea('сообщение', '', ['placeholder' => 'Введите сообщение']) }}
 			</div>
 			<div class="form-group">
-				<input type="submit" value="Отправить">
+				{{ Form::submit('Отправить') }}
 			</div>
-		</form>
+		{!! Form::close() !!}
 	</div>
 </div>
 

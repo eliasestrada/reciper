@@ -9,12 +9,12 @@
 	<br />
 
 	{{--  Form  --}}
-	<form action="/search" method="GET" role="search" class="form">
+	{!! Form::open(['action' => 'PagesController@search', 'method' => 'GET', 'class' => 'form']) !!}
 		<div class="form-group">
-			<input type="search" name="for" placeholder="Искать">
-			<input type="submit" value="Поиск" style="display: none;">
+			{{ Form::text('for', '', ['placeholder' => 'Введите критерии поиска...']) }}
+			{{ Form::submit('', ['style' => 'display:none'])}}
 		</div>
-	</form>
+	{!! Form::close() !!}
 
 	{{--  Results  --}}
 	@if($recipes)
@@ -25,11 +25,11 @@
 					<div class="recipe-container col-xs-12 col-sm-6 col-md-4 col-lg-3">
 						<div class="recipe">
 							<a href="/recipes/{{ $recipe->id }}">
-								<!-- Image -->
+								{{--  Image  --}}
 								<img  src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
 							</a>
 							<div class="recipes-content">
-								<!-- Title -->
+								{{--  Title  --}}
 								<h3>{{ $recipe->title }}</h3>
 							</div>
 						</div>

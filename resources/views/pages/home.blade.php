@@ -3,7 +3,7 @@
 @section('title', 'Главная')
 
 @section('content')
-    <!-- Home Header -->
+	{{--  Home Header  --}}
     <header class="home-header">
         <div class="header-bg-img"></div>
         <div class="header-content">
@@ -12,12 +12,12 @@
 			<a class="home-button" id="home-search-btn"><i class="fa fa-search"></i></a>
 
 			{{--  Form  --}}
-			<form action="/search" method="GET" role="search" class="header-search">
+			{!! Form::open(['action' => 'PagesController@search', 'method' => 'GET', 'class' => 'header-search']) !!}
 				<div class="form-group">
-					<input type="search" name="for" placeholder="Введите критерии поиска..." id="header-search-input">
-					<input type="submit" value="Поиск" style="display: none;">
+					{{ Form::text('for', '', ['id' => 'header-search-input', 'placeholder' => 'Введите критерии поиска...']) }}
+					{{ Form::submit('', ['style' => 'display:none']) }}
 				</div>
-			</form>
+			{!! Form::close() !!}
         </div>
     </header>
 
