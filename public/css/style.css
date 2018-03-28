@@ -211,7 +211,7 @@ img {
 	width: 55px;
 	height: 55px;
 	left: .4em;
-	border-radius: 43px;
+	border-radius: 50%;
 	top: .5em;
 	position: relative;
 	border: solid 1px rgba(0, 0, 0, .2);
