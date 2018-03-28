@@ -5,7 +5,6 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Styles -->
-{!! styleTimestamp('/css/bootstrap-grid.min.css') !!}
 {!! styleTimestamp('/css/style.css') !!}
 {!! styleTimestamp('/css/media.css') !!}
 
