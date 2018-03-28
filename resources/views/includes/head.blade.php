@@ -8,7 +8,6 @@
 {!! styleTimestamp('/css/bootstrap-grid.min.css') !!}
 {!! styleTimestamp('/css/style.css') !!}
 {!! styleTimestamp('/css/media.css') !!}
-{{--  {!! styleTimestamp('/css/font-awesome.min.css') !!}  --}}
 
 <!-- Links -->
 <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
