@@ -15,7 +15,7 @@
 		<div class="list-of-recipes">
 			@if (count($recipes) > 0)
 				@foreach ($recipes as $recipe)
-					<div class="each-recipe" data-updated="Дата написания {{ facebookTimeAgo($recipe->updated_at) }}" data-author="Статус: {{ $recipe->approved === 1 ? 'Проверен' : 'Не проверен' }}" style="animation: appear {{ 1 + $loop->index }}s;">
+					<div class="each-recipe" data-updated="Дата написания {{ facebookTimeAgo($recipe->updated_at) }}" data-author="Статус: {{ $recipe->approved === 1 ? 'Проверен' : 'Не проверен' }}" style="animation: appear 1.{{ $loop->index }}s;">
 
 						<a href="/recipes/{{ $recipe->id }}">
 							<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="Перейти к рецепту">
