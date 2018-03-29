@@ -145,7 +145,7 @@ class SettingsController extends Controller
 				->with('title_intro', $title_intro);
 	}
 
-	/* UPDATE TITLES
+	/* UPDATE BANNER
 	====================== */
 
 	public function updateBannerData(Request $request)
@@ -156,14 +156,46 @@ class SettingsController extends Controller
 			'title.max' => 'Заголовок должен быть не более 190 символов'
 		]);
 
-		// Save Banner new data
 		$banner = DB::table('titles')
 				->where('name', 'Баннер')
 				->update([
 					'title' => $request->title,
 					'text' => $request->text
-				]);	
+				]);
 
 		return back()->with('success', 'Настройки баннера сохранены');
+	}
+
+	/* UPDATE INTRO
+	====================== */
+
+	public function updateIntroData(Request $request)
+	{
+		$this->validate($request, [
+			'title' => 'max:190'
+		], [
+			'title.max' => 'Заголовок должен быть не более 190 символов'
+		]);
+
+		$banner = DB::table('titles')
+				->where('name', 'Интро')
+				->update([
+					'title' => $request->title,
+					'text' => $request->text
+				]);
+
+		return back()->with('success', 'Настройки интро главной страницы сохранены');
+	}
+
+	/* UPDATE FOOTER
+	====================== */
+
+	public function updateFooterData(Request $request)
+	{
+		$banner = DB::table('titles')
+				->where('name', 'Подвал')
+				->update(['text' => $request->text]);
+
+		return back()->with('success', 'Настройки подвала сохранены');
 	}
 }

@@ -50,10 +50,16 @@
 
 @media (min-width: 640px) {
 	.form-group {
-		width: 60%;
+		width: 50%;
 		text-align: left;
-		margin: 0 20% .4em;
+		margin: 0 25% .4em;
 	}
+
+	.accordion { width: 80%; }
+}
+
+@media (min-width: 910px) {
+	.accordion { width: 60em; }
 }
 
 /* Recipes
