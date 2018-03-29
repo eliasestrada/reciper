@@ -13,8 +13,13 @@
 	<div class="container" style="margin-top: 1em;">
 		<a href="/settings/general" title="Общие" class="button">Общие</a>
 		<a href="/settings/photo" title="Настройки" class="button">Фотография</a>
-		<br />
-		<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="button">
+
+		{{--  Для Админов  --}}
+		@if (Auth::user()->admin === 1)
+			<a href="/settings/titles" title="Заголовки" class="button">Заголовки</a>
+		@endif
+
+		<br /><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="button">
             Выйти <i class="fa fa-sign-out"></i>
 		</a>
 	</div>

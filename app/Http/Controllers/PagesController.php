@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use App\Recipe;
 
 class PagesController extends Controller
@@ -19,8 +20,20 @@ class PagesController extends Controller
 				->limit(9)
 				->get();
 
+		$title_banner = DB::table('titles')
+				->select(['title', 'text'])
+				->where('name', 'Баннер')
+				->first();
+
+		$title_intro = DB::table('titles')
+				->select(['title', 'text'])
+				->where('name', 'Интро')
+				->first();
+
 		return view('pages.home')
-				->with('random_recipes', $random_recipes);
+				->with('random_recipes', $random_recipes)
+				->with('title_banner', $title_banner)
+				->with('title_intro', $title_intro);
 	}
 
 	/* SEARCH

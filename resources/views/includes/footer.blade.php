@@ -30,8 +30,10 @@
 			<img src="{{ asset('favicon.png') }}" alt="Логотип" class="footer-logo">
 		</a>
 		<br />
-		<p class="footer-copyright">&copy; {{ date('Y') }} Delicious Food <br /><br />
-		При копировании любых материалов с сайта активная ссылка на сайт deliciousfood.gq обязательна.<br />Дизайн и создание: <a href="https://www.upwork.com/o/profiles/users/_~01f3e73b66ebe1e87b/" style="color:#8080ff;">Сергей Черненький</a></p>
+		<p class="footer-copyright">&copy; {{ date('Y') }} Delicious Food
+		<br /><br />
+		{{ $title_footer->text }}
+		<br />Дизайн и создание: <a href="https://www.upwork.com/o/profiles/users/_~01f3e73b66ebe1e87b/" style="color:#8080ff;">Сергей Черненький</a></p>
 
 	</div>
 </footer>

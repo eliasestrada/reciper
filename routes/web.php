@@ -36,6 +36,8 @@ Route::get('/settings', 'SettingsController@index');
 Route::get('/settings/photo', 'SettingsController@editPhoto');
 Route::put('/settings/photo', 'SettingsController@updatePhoto');
 Route::get('/settings/general', 'SettingsController@general');
+Route::get('/settings/titles', 'SettingsController@titles');
+Route::put('/settings/updateBannerData', 'SettingsController@updateBannerData');
 Route::put('/settings/updateUserData', 'SettingsController@updateUserData');
 Route::put('/settings/updateUserPassword', 'SettingsController@updateUserPassword');
 

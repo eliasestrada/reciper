@@ -7,8 +7,8 @@
     <header class="home-header">
         <div class="header-bg-img"></div>
         <div class="header-content">
-            <h1>Delicious Food</h1>
-            <h2>Рецепты от простых до необычных</h2>
+            <h1>{{ $title_banner->title }}</h1>
+			<h2>{{ $title_banner->text }}</h2>
 			<a class="home-button" id="home-search-btn">
 				<svg viewBox="0 0 250.313 250.313" width="30px" style="fill:#fff; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">
 					<g>
@@ -33,8 +33,8 @@
     </header>
 
     <section class="home-section">
-		<h2 class="headline">Готовим вместе</h2>
-		<p>Хотелось бы поделиться с вами кулинарными секретами. Здесь вы найдете самые проверенные и оригинальные рецепты, от простых до необычных, и, главное, совсем не сложных в приготовлении. Больше Вам не придется долго искать действительно проверенный и вкусный рецепт!</p>
+		<h2 class="headline">{{ $title_intro->title }}</h2>
+		<p>{{ $title_intro->text }}</p>
     </section>
 
     <!-- Cards -->

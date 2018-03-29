@@ -124,4 +124,46 @@ class SettingsController extends Controller
 			return back()->with('error', 'Неверный пароль');
         }
 	}
+
+	/* TITLES
+	====================== */
+
+	public function titles()
+	{
+		$title_banner = DB::table('titles')
+				->select(['title', 'text'])
+				->where('name', 'Баннер')
+				->first();
+
+		$title_intro = DB::table('titles')
+				->select(['title', 'text'])
+				->where('name', 'Интро')
+				->first();
+
+		return view('settings.titles')
+				->with('title_banner', $title_banner)
+				->with('title_intro', $title_intro);
+	}
+
+	/* UPDATE TITLES
+	====================== */
+
+	public function updateBannerData(Request $request)
+	{
+		$this->validate($request, [
+			'title' => 'max:190'
+		], [
+			'title.max' => 'Заголовок должен быть не более 190 символов'
+		]);
+
+		// Save Banner new data
+		$banner = DB::table('titles')
+				->where('name', 'Баннер')
+				->update([
+					'title' => $request->title,
+					'text' => $request->text
+				]);	
+
+		return back()->with('success', 'Настройки баннера сохранены');
+	}
 }
