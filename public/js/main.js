@@ -1,37 +1,31 @@
-function $(e) {
+function id(e) {
 	return document.getElementById(e)
 }
 
-let menuNav = $("nav-menu"),
-	logoNav = $("logo"),
-	button = $("hamburger"),
-	menuConteiner = $("menu-container"),
-	menuUl = document.querySelector("#nav-menu ul"),
-	homeSearchBtn = $("home-search-btn"),
-	headerSearchInput = $("header-search-input"),
-	opened = false
+let menuUl = document.querySelector("#nav-menu ul")
+let opened = false
 
 
 // Functions
 function openMenu() {
-    menuNav.className = "nav-opened"
-    menuConteiner.style.opacity = "0"
-    logoNav.className = "logo-opened"
-    logoNav.style.opacity = "1"
-    logoNav.style.display = "block"
+    id("nav-menu").className = "nav-opened"
+    id("menu-container").style.opacity = "0"
+    id("logo").className = "logo-opened"
+    id("logo").style.opacity = "1"
+    id("logo").style.display = "block"
     menuUl.style.display = "block"
     opened = true
 }
 
 function closeMenu() {
-    menuConteiner.style.opacity = "0.8"
-    menuNav.className = "nav-closed"
-    logoNav.className = "logo-closed"
+    id("menu-container").style.opacity = "0.8"
+    id("nav-menu").className = "nav-closed"
+    id("logo").className = "logo-closed"
     menuUl.style.display = "none"
 
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        logoNav.style.opacity = "0"
-        logoNav.style.display = "none"
+        id("logo").style.opacity = "0"
+        id("logo").style.display = "none"
     }
 
     opened = false
@@ -39,16 +33,16 @@ function closeMenu() {
 
 function hideMenuBarIntoButton() {
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        menuConteiner.className = "hamburger-menu"
+        id("menu-container").className = "hamburger-menu"
         if (opened === false) {
-            logoNav.style.opacity = "0"
-            logoNav.style.display = "none"
+            id("logo").style.opacity = "0"
+            id("logo").style.display = "none"
         }
     } else {
-        menuConteiner.className = "regular-menu"
+        id("menu-container").className = "regular-menu"
         if (opened === false) {
-            logoNav.style.opacity = "1"
-            logoNav.style.display = "block"
+            id("logo").style.opacity = "1"
+            id("logo").style.display = "block"
         }
     }
 }
@@ -61,17 +55,17 @@ function showImage(src, target) {
 }
 
 function showHeaderSearch() {
-	homeSearchBtn.style.display = "none"
-	headerSearchInput.style.display = "block"
+	id("home-search-btn").style.display = "none"
+	id("header-search-input").style.display = "block"
 
-	setTimeout(() => headerSearchInput.style.opacity = "1", 500)
+	setTimeout(() => id("header-search-input").style.opacity = "1", 500)
 }
 
 // Events
-button.addEventListener('click', openMenu)
+id("hamburger").addEventListener('click', openMenu)
 
 window.addEventListener('mouseup', function (event) {
-    if (event.target != menuNav && opened === true && event.target.parentNode != menuNav) {
+    if (event.target != id("nav-menu") && opened === true && event.target.parentNode != id("nav-menu")) {
         closeMenu()
     }
 })

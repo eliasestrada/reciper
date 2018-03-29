@@ -213,7 +213,8 @@ class RecipesController extends Controller
     public function like($id)
     {
 		Recipe::find($id)->increment('likes');
-        return back()->withCookie(cookie('liked', 1, 5000));
+		// return back()->withCookie(cookie('liked', 1, 5000));
+		echo 'You did it';
 	}
 	
 	/* DISLIKE

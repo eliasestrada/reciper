@@ -63,6 +63,6 @@
 
 @section('script')
 <script>
-	homeSearchBtn.addEventListener('click', showHeaderSearch)
+	id('home-search-btn').addEventListener('click', showHeaderSearch)
 </script>
 @endsection
