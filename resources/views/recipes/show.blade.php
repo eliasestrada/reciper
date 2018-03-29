@@ -23,12 +23,12 @@
                 @if (Auth::user()->id == $recipe->user_id && $recipe->ready === 0)
                     <div class="recipe-buttons">
                         {{--  Edit button  --}}
-                        <a href="/recipes/{{ $recipe->id }}/edit" title="Редактировать рецепт" class="fa">&#xf040;</a>
+                        <a href="/recipes/{{ $recipe->id }}/edit" title="Редактировать рецепт" class="edit-recipe-icon icon-edit"></a>
 
                         {{--  Delete button  --}}
-                        {!! Form::open(['action' => ['RecipesController@destroy', $recipe->id], 'method' => 'post', 'style' => 'width: auto;', 'onsubmit' => 'return confirm("Вы точно хотите удалить этот рецепт?")']) !!}
+                        {!! Form::open(['action' => ['RecipesController@destroy', $recipe->id], 'method' => 'post', 'style' => 'width: auto; display: inline-block;', 'onsubmit' => 'return confirm("Вы точно хотите удалить этот рецепт?")']) !!}
                             {{ Form::hidden('_method', 'DELETE') }}
-                            {{ Form::submit('&#xf014;', ['class' => 'fa', 'style' => 'background: brown;']) }}
+                            {{ Form::submit('', ['class' => 'edit-recipe-icon icon-delete']) }}
                         {!! Form::close() !!}
                     </div>
                 @endif

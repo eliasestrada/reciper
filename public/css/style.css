@@ -366,11 +366,13 @@ img {
 ==================== */
 
 .form-group {
-	margin-bottom: .4em;
+	margin: .4em auto;
 	text-align: left;
 	width: 100%;
-	line-height: 1.2;
+	line-height: 1.3;
 }
+
+.form { padding: 0 5%; }
 
 .form input,
 .form select {
@@ -431,7 +433,7 @@ img {
 }
 
 .form label {
-	font-size: .75em;
+	font-size: .8em;
 	color: var(--darkGray);
 }
 
@@ -687,30 +689,6 @@ img {
 	font-size: .9em;
 }
 
-.recipe-buttons {
-	width: auto;
-	grid-area: edit-recipe-buttons;
-	display: flex;
-	margin: .5em 1em;
-	justify-content: center;
-}
-
-.recipe-buttons a,
-.recipe-buttons input {
-	width: 2.5em !important;
-	height: 2.5em;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border: none;
-	border-radius: .2em;
-	font-size: 1.2em;
-	color: #fff;
-	background: var(--main);
-	margin: 0 .1em !important;
-	cursor: pointer;
-}
-
 /* Edit create recipe
 ==================== */
 
@@ -719,9 +697,45 @@ img {
 	display: flex;
 }
 
-.recipe-buttons a:hover,
-.recipe-buttons input:hover {
-	background: var(--mainHover);
+.icon-save {
+	background: var(--main) url(icons/save.png)!important;
+}
+
+.icon-eye {
+	background: var(--main) url(icons/eye.png)!important;
+}
+
+.icon-delete {
+	background: brown url(icons/delete.png)!important;
+}
+
+.icon-edit {
+	background: var(--main) url(icons/edit.png)!important;
+}
+
+.edit-recipe-icon {
+	background-position: center!important;
+	background-repeat: no-repeat!important;
+}
+
+.edit-recipe-icon:hover {
+	background-size: 28px!important;
+}
+
+.recipe-buttons {
+	margin: .5em auto;
+}
+
+
+.recipe-buttons a,
+.recipe-buttons input {
+	width: 50px !important;
+	display: inline-block;
+	height: 50px;
+	border: none;
+	border-radius: .2em;
+	margin: auto;
+	cursor: pointer;
 }
 
 .check-box-ready-wrap {
@@ -750,14 +764,14 @@ img {
 .accordion {
 	background-color: #ddd;
 	color: var(--darkGray);
-	padding: .8em;
+	padding: .7em;
 	width: 100%;
 	border: none;
 	border-bottom: 1px solid #b4b4b4;
 	text-align: left;
 	outline: 0;
 	font-size: .8em;
-	transition: .4s;
+	transition: background-color .4s;
 	border-radius: 4px;
 	cursor: pointer;
 }

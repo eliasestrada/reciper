@@ -10,10 +10,10 @@
 
         <div class="recipe-buttons">
             {{--  Save button  --}}
-            {{ Form::submit('&#xf0c7;', ['class' => "fa"]) }}
+            {{ Form::submit('', ['class' => "edit-recipe-icon icon-save"]) }}
 
             {{--  View button  --}}
-            <a href="/recipes/{{ $recipe->id }}"><i class="fa">&#xf06e;</i></a>
+            <a href="/recipes/{{ $recipe->id }}" class="edit-recipe-icon icon-eye"></a>
         </div>
 
         <div class="check-box-ready">

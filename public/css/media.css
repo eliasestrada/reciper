@@ -55,11 +55,25 @@
 		margin: 0 25% .4em;
 	}
 
-	.accordion { width: 80%; }
+	.accordion {
+		width: 80%;
+	}
+
+	.accordion-panel {
+		width: 80%;
+		margin: 0 10%;
+	}
 }
 
 @media (min-width: 910px) {
-	.accordion { width: 60em; }
+	.accordion {
+		width: 60em;
+	}
+
+	.accordion-panel {
+		width: 60em;
+		margin: 0 auto;
+	}
 }
 
 /* Recipes
