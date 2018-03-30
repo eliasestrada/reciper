@@ -31,9 +31,11 @@ class PagesController extends Controller
 				->first();
 
 		return view('pages.home')
-				->with('random_recipes', $random_recipes)
-				->with('title_banner', $title_banner)
-				->with('title_intro', $title_intro);
+				->with([
+					'random_recipes' => $random_recipes,
+					'title_banner' => $title_banner,
+					'title_intro' => $title_intro
+				]);
 	}
 
 	/* SEARCH
@@ -54,7 +56,9 @@ class PagesController extends Controller
 			$message = 'Воспользуйтесь поиском чтобы найти рецепты, ингридиенты или категории.';
 		}
 		return view('pages.search')
-					->with('recipes', $recipes)
-					->with('message', $message);
+					->with([
+						'recipes' => $recipes,
+						'message' => $message
+					]);
 	}
 }

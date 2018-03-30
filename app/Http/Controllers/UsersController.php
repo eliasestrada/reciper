@@ -35,8 +35,10 @@ class UsersController extends Controller
 				->paginate(20);
 
 		return view('users.show')
-				->with('recipes', $recipes)
-				->with('user', $user);
+				->with([
+					'recipes' => $recipes,
+					'user' => $user
+				]);
 	}
 
 	/* ADD

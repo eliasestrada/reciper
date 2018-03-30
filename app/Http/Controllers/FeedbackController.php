@@ -12,6 +12,9 @@ class FeedbackController extends Controller
         $this->middleware('admin');
 	}
 
+	/* INDEX
+	====================== */
+
     public function index()
     {
 		$user = auth()->user();
@@ -27,53 +30,5 @@ class FeedbackController extends Controller
 
 		return view('feedback.index')
 				->with('feedback', $feedback);
-    }
-
-    /* CREATE
-	====================== */
-
-    public function create()
-    {
-        //
-    }
-
-    /* STORE
-	====================== */
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /* SHOW
-	====================== */
-
-    public function show($id)
-    {
-        //
-    }
-
-    /* EDIT
-	====================== */
-
-    public function edit($id)
-    {
-        //
-    }
-
-    /* UPDATE
-	====================== */
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /* DESTROY
-	====================== */
-
-    public function destroy($id)
-    {
-        //
     }
 }

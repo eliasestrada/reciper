@@ -123,8 +123,10 @@ class RecipesController extends Controller
         }
 
 		return view('recipes.show')
-				->with('recipe', $recipe)
-				->with('random_recipes', $random_recipes);
+				->with([
+					'recipe' => $recipe,
+					'random_recipes' => $random_recipes
+				]);
     }
 
     /* EDIT

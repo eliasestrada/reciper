@@ -141,8 +141,10 @@ class SettingsController extends Controller
 				->first();
 
 		return view('settings.titles')
-				->with('title_banner', $title_banner)
-				->with('title_intro', $title_intro);
+				->with([
+					'title_banner', $title_banner,
+					'title_intro', $title_intro
+				]);
 	}
 
 	/* UPDATE BANNER
