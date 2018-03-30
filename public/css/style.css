@@ -346,6 +346,7 @@ img {
 	transition: border 300ms, opacity 400ms;
 	opacity: 0;
 	display: none;
+	outline: 0;
 }
 
 .header-search input:focus {
@@ -1126,6 +1127,7 @@ footer a:hover {
 	font-size: .7em;
 	color: var(--gray);
 	color: #c6c5ff;
+	margin: .5em;
 }
 
 /*

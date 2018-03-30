@@ -36,10 +36,6 @@
 		background: #5b5bbe;
 	}
 
-	#nav-menu li:first-child {
-		width: 2em;
-	}
-
 	#menu-container {
 		display: none;
 	}
