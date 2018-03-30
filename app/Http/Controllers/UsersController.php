@@ -19,7 +19,7 @@ class UsersController extends Controller
     public function index() {
 		$users = DB::table('users')->paginate(30);
 
-        return view('users.index')->withUsers($users);
+        return view('users.index')->with('users', $users);
 	}
 
     /* SHOW
@@ -35,8 +35,8 @@ class UsersController extends Controller
 				->paginate(20);
 
 		return view('users.show')
-				->withRecipes($recipes)
-				->withUser($user);
+				->with('recipes', $recipes)
+				->with('user', $user);
 	}
 
 	/* ADD

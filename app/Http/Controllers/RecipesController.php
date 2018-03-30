@@ -26,7 +26,8 @@ class RecipesController extends Controller
     {
         $recipes = Recipe::where('approved', 1)->latest()->paginate(30);
 
-        return view('recipes.index')->with('recipes', $recipes);
+		return view('recipes.index')
+				->with('recipes', $recipes);
     }
 
 
@@ -38,7 +39,8 @@ class RecipesController extends Controller
         // For select input
         $categories = DB::table('categories')->get();
 
-        return view('recipes.create')->with('categories', $categories);
+		return view('recipes.create')
+				->with('categories', $categories);
     }
 
     /* STORE
@@ -148,8 +150,8 @@ class RecipesController extends Controller
         $categories = DB::table('categories')->get();
 
         return view('recipes.edit')
-                        ->withRecipe($recipe)
-                        ->withCategories($categories);
+                        ->with('recipe', $recipe)
+                        ->with('categories', $categories);
 
     }
 

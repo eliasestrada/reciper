@@ -54,7 +54,7 @@ class PagesController extends Controller
 			$message = 'Воспользуйтесь поиском чтобы найти рецепты, ингридиенты или категории.';
 		}
 		return view('pages.search')
-					->withRecipes($recipes)
-					->withMessage($message);
+					->with('recipes', $recipes)
+					->with('message', $message);
 	}
 }

@@ -25,7 +25,7 @@ class StatisticController extends Controller
 		$sxgeo = new SxGeo(storage_path().'/geo/SxGeoCity.dat');
 
 		return view('statistic')
-				->withSxgeo($sxgeo)
-				->withVisitors($visitors);
+				->with('sxgeo', $sxgeo)
+				->with('visitors', $visitors);
 	}
 }

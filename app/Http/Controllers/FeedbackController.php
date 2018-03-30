@@ -26,7 +26,7 @@ class FeedbackController extends Controller
 				->update(['contact_check' => NOW()]);
 
 		return view('feedback.index')
-				->withFeedback($feedback);
+				->with('feedback', $feedback);
     }
 
     /* CREATE

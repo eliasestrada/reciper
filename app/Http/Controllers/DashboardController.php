@@ -58,13 +58,15 @@ class DashboardController extends Controller
 				->count();
 		$allfeedback = !empty($allfeedback) ? 'data-notif='.$allfeedback : '';
 
-        return view('dashboard')
-                ->withAllrecipes($allrecipes)
-                ->withAllvisits($allvisits)
-				->withAllclicks($allclicks)
-				->withAllunapproved($allunapproved)
-				->withAllfeedback($allfeedback)
-                ->withNotifications($notifications);
+		return view('dashboard')
+				->with([
+					'allrecipes' => $allrecipes,
+					'allvisits' => $allvisits,
+					'allclicks' => $allclicks,
+					'allunapproved' => $allunapproved,
+					'allfeedback' => $allfeedback,
+					'notifications' => $notifications
+				]);
     }
 
 	/* NOTIFICATIONS
@@ -85,7 +87,7 @@ class DashboardController extends Controller
 				->update(['notif_check' => NOW()]);
 
         return view('notifications')
-                ->withNotifications($notifications);
+                ->with('notifications', $notifications);
 	}
 	
 	/* CHECKLIST
@@ -99,7 +101,7 @@ class DashboardController extends Controller
 				->paginate(10);
 
 		return view('checklist')
-				->withUnapproved($unapproved);
+				->with('unapproved', $unapproved);
 	}
 	
 	/* MY_RECIPES
@@ -115,6 +117,6 @@ class DashboardController extends Controller
 				->paginate(20);
 
 		return view('my_recipes')
-				->withRecipes($recipes);
+				->with('recipes', $recipes);
 	}
 }

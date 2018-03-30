@@ -31,7 +31,7 @@ class SettingsController extends Controller
 		$user = auth()->user();
 
 		return view('settings.photo')
-				->withUser($user);
+				->with('user', $user);
 	}
 
 	/* UPDATE PHOTO
