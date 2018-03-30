@@ -67,7 +67,7 @@
 			{{--  Items ( Ингридиенты ) --}}
 			<h3 class="decorated"><span>Ингридиенты</span></h3>
             <div class="items">
-                <ul>{!! convertToListItems($recipe->ingredients) !!}</ul>
+                <ul>{!! $recipe->presentIngredients() !!}</ul>
             </div>
 
             {{--  Совет  --}}
@@ -76,7 +76,7 @@
 			{{--  Приготовление  --}}
 			<h3 class="decorated"><span>Приготовление</span></h3>
             <ol class="instruction unstyled-list">
-				{!! convertToListItems($recipe->text) !!}
+				{!! $recipe->presentText() !!}
 			</ol>
 
 			<h3 class="decorated"><span>Приятного аппетита!</span></h3>
