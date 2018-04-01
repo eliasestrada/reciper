@@ -702,28 +702,24 @@ img {
 }
 
 .icon-save {
-	background: var(--main) url(icons/save.png)!important;
+	background: var(--main) url(icons/recipe-sprite.png)!important;
 }
 
 .icon-eye {
-	background: var(--main) url(icons/eye.png)!important;
+	background: var(--main) url(icons/recipe-sprite.png) -150px 0!important;
 }
 
 .icon-delete {
-	background: brown url(icons/delete.png)!important;
+	background: brown url(icons/recipe-sprite.png) -50px 0!important;
 }
 
 .icon-edit {
-	background: var(--main) url(icons/edit.png)!important;
+	background: var(--main) url(icons/recipe-sprite.png) -100px 0!important;
 }
 
 .edit-recipe-icon {
-	background-position: center!important;
 	background-repeat: no-repeat!important;
-}
-
-.edit-recipe-icon:hover {
-	background-size: 28px!important;
+	background-position-y: center!important;
 }
 
 .recipe-buttons {
@@ -734,8 +730,8 @@ img {
 .recipe-buttons a,
 .recipe-buttons input {
 	width: 50px !important;
-	display: inline-block;
 	height: 50px;
+	display: inline-block;
 	border: none;
 	border-radius: .2em;
 	margin: auto;
