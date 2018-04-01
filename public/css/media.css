@@ -41,6 +41,30 @@
 	}
 }
 
+/* Admin Sidebar
+==================== */
+
+.admin-sidebar {
+	bottom: 0;
+	height: 100%;
+	width: 60px;
+}
+
+.admin-sidebar:hover {
+	width: 200px;
+	overflow: visible;
+}
+
+.admin-sidebar > .logout {
+	position:absolute;
+	left:0;
+	bottom: 51px;
+}
+
+#hide-on-big-screen {
+	display: none;
+}
+
 /* Home sections
 ==================== */
 

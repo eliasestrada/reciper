@@ -1,5 +1,11 @@
 <nav class="admin-sidebar">
 	<ul>
+		<li id="hide-on-big-screen">
+			<a>
+				<i class="icon-profile-menu-line"></i>
+				<span class="nav-text">Меню</span>
+			</a>
+		</li>
 		<li>
 			<a href="/dashboard" title="Профиль">
 				<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) 0 -25px;" class="icon-profile-menu-line"></i>
