@@ -1016,23 +1016,8 @@ img {
 /* Admin Menu
 ================== */
 
-.admin-sidebar .fa {
-	position: relative;
-	display: table-cell;
-	width: 60px;
-	height: 36px;
-	text-align: center;
-	vertical-align: middle;
-	font-size: 20px;
-}
-
-.admin-sidebar:hover {
-	width: 250px;
-	overflow: visible;
-}
-
 .admin-sidebar {
-	background: #212121;
+	background: linear-gradient(#222, #3d1355);
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -1044,10 +1029,15 @@ img {
 	transition: width .05s linear;
 	transform: translateZ(0) scale(1, 1);
 	z-index: 10;
-	padding-top: 3.6em;
+	margin-top: 51px;
 }
 
-.admin-sidebar>ul {
+.admin-sidebar:hover {
+	width: 250px;
+	overflow: visible;
+}
+
+.admin-sidebar > ul {
 	margin: 7px 0;
 }
 
@@ -1055,6 +1045,7 @@ img {
 	position: relative;
 	display: block;
 	width: 250px;
+	line-height: 40px;
 }
 
 .admin-sidebar li > a {
@@ -1062,7 +1053,7 @@ img {
 	display: table;
 	border-collapse: collapse;
 	border-spacing: 0;
-	color: #b6b6b6;
+	color: #fff;
 	font-family: arial;
 	font-size: 14px;
 	text-decoration: none;
@@ -1070,8 +1061,7 @@ img {
 	transition: background-color 200ms;
 }
 
-.admin-sidebar li:hover,
-.admin-sidebar li:hover a {
+.admin-sidebar li:hover {
 	color: #fff;
 	background: var(--main);
 	transition: background-color 200ms;
@@ -1080,7 +1070,20 @@ img {
 .admin-sidebar > .logout {
 	position:absolute;
 	left:0;
-	bottom:0;
+	bottom: 51px;
+}
+
+.icon-profile-menu-line {
+	width: 20px;
+	height: 20px;
+	margin: 0 20px;
+	vertical-align: middle;
+	position: relative;
+	display: inline-block;
+	background-size: 20px!important;
+	background-repeat: no-repeat!important;
+	background-position: center;
+	
 }
 
 /* Pagination
