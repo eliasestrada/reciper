@@ -1,3 +1,5 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
 :root {
 	/* Colors
 	==================== */
@@ -227,6 +229,7 @@ img {
 	background: var(--main);
 	position: fixed;
 	color: #fff;
+	z-index: 15;
 }
 
 .hamburger {
@@ -1010,30 +1013,74 @@ img {
 	font-family: var(--headerFont);
 }
 
-.profile-menu-line {
-	background: #e6e6e6;
-	border-bottom: 1px solid #a8a8a8;
-	padding-top: 3em;
-	line-height: 0;
+/* Admin Menu
+================== */
+
+.admin-sidebar .fa {
+	position: relative;
+	display: table-cell;
+	width: 60px;
+	height: 36px;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 20px;
 }
 
-.profile-menu-line a {
-	width: 23.5%;
-	display: inline-block;
-	color: var(--fontColor);
-	padding: .6em 0;
+.admin-sidebar:hover {
+	width: 250px;
+	overflow: visible;
 }
 
-.profile-menu-line a:hover {
-	background: var(--lightGray);
+.admin-sidebar {
+	background: #212121;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	width: 60px;
+	overflow: hidden;
+	-webkit-transition: width .05s linear;
+	transition: width .05s linear;
+	transform: translateZ(0) scale(1, 1);
+	z-index: 10;
+	padding-top: 3.6em;
 }
 
-.icon-profile-menu-line {
+.admin-sidebar>ul {
+	margin: 7px 0;
+}
+
+.admin-sidebar li {
+	position: relative;
 	display: block;
-	margin: auto;
-	width: 20px;
-	height: 20px;
-	opacity: .8;
+	width: 250px;
+}
+
+.admin-sidebar li > a {
+	position: relative;
+	display: table;
+	border-collapse: collapse;
+	border-spacing: 0;
+	color: #b6b6b6;
+	font-family: arial;
+	font-size: 14px;
+	text-decoration: none;
+	transform: translateZ(0) scale(1, 1);
+	transition: background-color 200ms;
+}
+
+.admin-sidebar li:hover,
+.admin-sidebar li:hover a {
+	color: #fff;
+	background: var(--main);
+	transition: background-color 200ms;
+}
+
+.admin-sidebar > .logout {
+	position:absolute;
+	left:0;
+	bottom:0;
 }
 
 /* Pagination

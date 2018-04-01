@@ -2,18 +2,17 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
 	@include('includes.head')
-		<title>@yield('title') - Delicious Food</title>
+	<title>@yield('title') - Delicious Food</title>
 	@yield('head')
 </head>
 <body>
 
 	@include('includes.navbar')
 
-	@include('includes.profile-menu-line')
-
 	@include('includes.messages')
 
-	<div class="wrapper" style="padding-top: 1em;">
+	<div class="wrapper" style="padding-top: 4em;">
+		@include('includes.profile-menu-line')
 		@yield('content')
 	</div>
 
