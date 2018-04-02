@@ -6,7 +6,6 @@
 
 <!-- Styles -->
 {!! styleTimestamp('/css/style.css') !!}
-{!! styleTimestamp('/css/media.css') !!}
 
 <!-- Links -->
 <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
