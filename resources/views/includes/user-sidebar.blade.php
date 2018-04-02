@@ -1,9 +1,9 @@
-<nav class="admin-sidebar">
+<nav class="user-sidebar">
 	<ul>
 		<li id="hide-on-big-screen">
 			<a>
 				<i class="icon-profile-menu-line"></i>
-				<span class="nav-text">Меню</span>
+				<span class="nav-text">&darr; Меню</span>
 			</a>
 		</li>
 		<li>

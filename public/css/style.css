@@ -875,7 +875,44 @@ img {
 /* Statistic
 ==================== */
 
+.statistic-table caption {
+	font-size: 1.5em;
+	margin: .3em .3em 0 .3em;
+	font-size: 1.3em;
+}
 
+.statistic-table {
+	width: 80%;
+	margin: 0 10%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+.statistic-table tr {
+	border: 1px solid #d8d8d8;
+	background: #e8eaff;
+}
+
+.statistic-table th {
+	background: var(--main);
+	color: #fff;
+	padding: .5em;
+}
+
+.statistic-table tr:nth-child(even) {
+	background: #f8f8f8;
+}
+
+.statistic-table td {
+	padding: .4em;
+	text-align: center;
+}
+
+.statistic-table td {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 
 /* Notifications
 ==================== */
@@ -984,7 +1021,7 @@ img {
 /* Admin Menu
 ================== */
 
-.admin-sidebar {
+.user-sidebar {
 	background: #222;
 	position: absolute;
 	top: 51px;
@@ -999,16 +1036,16 @@ img {
 	z-index: 10;
 }
 
-.admin-sidebar:hover {
+.user-sidebar:hover {
 	height: auto;
 	overflow: visible;
 }
 
-.admin-sidebar > ul {
+.user-sidebar > ul {
 	margin: 7px 0;
 }
 
-.admin-sidebar li {
+.user-sidebar li {
 	position: relative;
 	display: block;
 	width: 200px;
@@ -1016,7 +1053,7 @@ img {
 	margin: auto;
 }
 
-.admin-sidebar li > a {
+.user-sidebar li > a {
 	position: relative;
 	display: table;
 	border-collapse: collapse;
@@ -1029,7 +1066,7 @@ img {
 	transition: background-color 200ms;
 }
 
-.admin-sidebar li:hover {
+.user-sidebar li:hover {
 	color: #fff;
 	background: var(--main);
 	transition: background-color 200ms;
@@ -1051,16 +1088,16 @@ img {
 
 .pagination {
 	display: inline-block;
-	margin: 20px 0
+	margin: 20px 0;
 }
 
-.pagination>li { display: inline; }
+.pagination > li { display: inline; }
 
-.pagination>li>a,
-.pagination>li>span {
+.pagination > li > a,
+.pagination > li > span {
 	position: relative;
 	float: left;
-	padding: 5px 10px;
+	padding: 5px 15px;
 	margin-left: -1px;
 	line-height: 1.428571429;
 	text-decoration: none;
@@ -1068,42 +1105,44 @@ img {
 	border: 1px solid #bebebe;
 }
 
-.pagination>li>a { color: #333; }
+.pagination > li > a {
+	color: #333;
+}
 
-.pagination>li>span {
+.pagination > li > span {
 	background: var(--main);
 	color: #fff;
 }
 
-.pagination>li:first-child>a,
-.pagination>li:first-child>span {
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
 	margin-left: 0;
 	border-bottom-left-radius: 2px;
 	border-top-left-radius: 2px;
 	font-weight: 600;
 }
 
-.pagination>li:last-child>a,
-.pagination>li:last-child>span {
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
 	border-top-right-radius: 2px;
 	border-bottom-right-radius: 2px;
 	font-weight: 600;
 }
 
-.pagination>li>a:focus,
-.pagination>li>a:hover,
-.pagination>li>span:focus,
-.pagination>li>span:hover {
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
 	background: var(--mainHover);
 	color: #fff;
 }
 
-.pagination>.disabled>a,
-.pagination>.disabled>a:focus,
-.pagination>.disabled>a:hover,
-.pagination>.disabled>span,
-.pagination>.disabled>span:focus,
-.pagination>.disabled>span:hover {
+.pagination > .disabled > a,
+.pagination > .disabled > a:focus,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > span,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > span:hover {
 	color: #999;
 	cursor: not-allowed;
 	background: #fff;

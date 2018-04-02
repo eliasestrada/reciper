@@ -9,7 +9,7 @@
 
 	@include('includes.navbar')
 	
-	@include('includes.profile-menu-line')
+	@include('includes.user-sidebar')
 
 	<div class="wrapper wrapper-user">
 		@include('includes.messages')

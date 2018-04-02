@@ -51,24 +51,24 @@
 ==================== */
 
 @media (min-width: 640px) {
-	.admin-sidebar {
+	.user-sidebar {
 		bottom: 0;
 		height: 100%;
 		width: 60px;
 		position: absolute;
 	}
 	
-	.admin-sidebar:hover {
+	.user-sidebar:hover {
 		width: 200px;
 		height: 100%;
 		overflow: visible;
 	}
 
-	.admin-sidebar li {
+	.user-sidebar li {
 		margin: auto;
 	}
 	
-	.admin-sidebar > .logout {
+	.user-sidebar > .logout {
 		position: absolute;
 		left: 0;
 		bottom: 51px;
@@ -223,7 +223,7 @@
 
 @media (min-width: 640px) {
 	.notification {
-		width: 60%;
+		width: 70%;
 		margin: .5em 15%;
 		padding: .5em 5%;
 	}
