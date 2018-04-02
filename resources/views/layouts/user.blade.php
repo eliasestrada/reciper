@@ -11,7 +11,7 @@
 	
 	@include('includes.profile-menu-line')
 
-	<div class="wrapper" style="padding-top: 4em;">
+	<div class="wrapper wrapper-user">
 		@include('includes.messages')
 		@yield('content')
 	</div>

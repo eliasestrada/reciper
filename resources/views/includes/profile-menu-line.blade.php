@@ -30,6 +30,17 @@
 				<span class="nav-text">Пользователи</span>
 			</a>
 		</li>
+
+		{{--  For admin  --}}
+		@if (Auth::user()->admin === 1)
+			<li>
+				<a href="/statistic" title="Статистика">
+					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -25px 0;" class="icon-profile-menu-line"></i>
+					<span class="nav-text">Статистика</span>
+				</a>
+			</li>
+		@endif
+
 		<li>
 			<a href="/settings" title="Настройки">
 				<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -50px 0;" class="icon-profile-menu-line"></i>

@@ -24,10 +24,18 @@ class StatisticController extends Controller
 
 		$sxgeo = new SxGeo(storage_path().'/geo/SxGeoCity.dat');
 
+		// Count recipes and visits
+        $allrecipes = DB::table('recipes')->count();
+        $allvisits = DB::table('visitor_registry')->count();
+        $allclicks = DB::table('visitor_registry')->sum('clicks');
+
 		return view('statistic')
 				->with([
 					'sxgeo' => $sxgeo,
-					'visitors' => $visitors
+					'visitors' => $visitors,
+					'allrecipes' => $allrecipes,
+					'allvisits' => $allvisits,
+					'allclicks' => $allclicks
 				]);
 	}
 }

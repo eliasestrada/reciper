@@ -38,14 +38,6 @@ class DashboardController extends Controller
 
         $notifications = empty($notifications) ? '' : 'data-notif='.$notifications;
 
-        // Count recipes and visits
-        $allrecipes = DB::table('recipes')
-                ->count();
-        $allvisits = DB::table('visitor_registry')
-                ->count();
-        $allclicks = DB::table('visitor_registry')
-				->sum('clicks');
-
 		// Unapproved recipes
 		$allunapproved = DB::table('recipes')
                 ->where([['approved', '=', 0], ['ready', '=', 1]])
@@ -60,9 +52,6 @@ class DashboardController extends Controller
 
 		return view('dashboard')
 				->with([
-					'allrecipes' => $allrecipes,
-					'allvisits' => $allvisits,
-					'allclicks' => $allclicks,
 					'allunapproved' => $allunapproved,
 					'allfeedback' => $allfeedback,
 					'notifications' => $notifications

@@ -4,7 +4,23 @@
 
 @section('content')
 
-    <h2 class="headline">Статистика</h2>
+	<h2 class="headline">Статистика</h2>
+	
+	{{--  3 Cards  --}}
+	<table class="statistic-table">
+		<tr>
+			<td>Рецепты</td>
+			<td>{{ $allrecipes }}</td> 
+		</tr>
+		<tr>
+			<td>Посетители</td>
+			<td>{{ $allvisits }}</td> 
+		</tr>
+		<tr>
+			<td>Клики</td>
+			<td>{{ $allclicks }}</td> 
+		</tr>
+	</table>
 
 	@if (count($visitors) > 0)
 		<div style="padding: 1em 0;">
