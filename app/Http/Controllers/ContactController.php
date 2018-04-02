@@ -14,18 +14,18 @@ class ContactController extends Controller
     public function index() {
 		return view('pages.contact');
 	}
-	
+
 	/* STORE
 	====================== */
 
 	public function store(Request $request) {
-	
+
 		$this->validate($request, [
 			'имя' => 'required|min:3|max:50',
 			'почта' => 'required|email',
 			'сообщение' => 'required|min:20|max:5000'
 		]);
-		
+
 		DB::table('contact')->insert([
 			'name' => $request->имя,
 			'email' => $request->почта,
@@ -33,7 +33,6 @@ class ContactController extends Controller
 			'created_at' => NOW()
 		]);
 
-		return redirect()->back()
-				->with('success', 'Спасибо за ваш отзыв.');
+		return redirect()->back()->with('success', 'Спасибо за ваш отзыв.');
 	}
 }

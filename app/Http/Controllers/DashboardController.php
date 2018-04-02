@@ -26,7 +26,8 @@ class DashboardController extends Controller
 		DB::table('users')->where('id', $user->id)->update(['updated_at' => NOW()]);
 
         $notifications = DB::table('notifications')
-                ->where([['user_id', $user->id], ['created_at', '>', $user->notif_check]])->count();
+				->where([['user_id', $user->id], ['created_at', '>', $user->notif_check]])
+				->count();
 
 		if ($user->admin === 1) {
 			$notifications_for_admin = DB::table('notifications')
@@ -75,10 +76,9 @@ class DashboardController extends Controller
 				->where('id', $user_id)
 				->update(['notif_check' => NOW()]);
 
-        return view('notifications')
-                ->with('notifications', $notifications);
+        return view('notifications')->with('notifications', $notifications);
 	}
-	
+
 	/* CHECKLIST
 	====================== */
 
@@ -89,10 +89,9 @@ class DashboardController extends Controller
                 ->oldest()
 				->paginate(10);
 
-		return view('checklist')
-				->with('unapproved', $unapproved);
+		return view('checklist')->with('unapproved', $unapproved);
 	}
-	
+
 	/* MY_RECIPES
 	====================== */
 
@@ -105,7 +104,6 @@ class DashboardController extends Controller
 				->latest()
 				->paginate(20);
 
-		return view('my_recipes')
-				->with('recipes', $recipes);
+		return view('my_recipes')->with('recipes', $recipes);
 	}
 }

@@ -65,8 +65,7 @@ class SettingsController extends Controller
 		}
 		$user->save();
 		
-		return redirect('/settings/photo')
-                    ->with('success', 'Настройки сохранены');
+		return redirect('/settings/photo')->with('success', 'Настройки сохранены');
 	}
 	
 	/* GENERAL
@@ -142,8 +141,8 @@ class SettingsController extends Controller
 
 		return view('settings.titles')
 				->with([
-					'title_banner', $title_banner,
-					'title_intro', $title_intro
+					'title_banner' => $title_banner,
+					'title_intro' => $title_intro
 				]);
 	}
 

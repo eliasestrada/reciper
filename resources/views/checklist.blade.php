@@ -9,31 +9,30 @@
 	{{--  Unapproved recipes  --}}
     @if (Auth::user()->admin === 1)
         <div class="list-of-recipes">
-            @if (count($unapproved) > 0)
-                <h4 style="margin: .5em;">
-					Рецепты на рассмотрении {{ count($unapproved) }}
-				</h4>
-                @foreach ($unapproved as $unapprove)
-                    <div class="each-recipe" data-updated="Обновленно {{ facebookTimeAgo($unapprove->updated_at) }}" data-author="Автор: {{ $unapprove->author }}">
+			<h4 style="margin: .5em;">
+				Рецепты на рассмотрении {{ count($unapproved) }}
+			</h4>
 
-						{{-- Image --}}
-                        <a href="/recipes/{{ $unapprove->id }}">
-                            <img src="{{ asset('storage/images/'.$unapprove->image) }}" alt="{{ $unapprove->title }}" title="Перейти к рецепту">
-						</a>
+			@forelse ($unapproved as $unapprove)
+				<div class="each-recipe" data-updated="Обновленно {{ facebookTimeAgo($unapprove->updated_at) }}" data-author="Автор: {{ $unapprove->author }}">
 
-						{{-- Content --}}
-                        <div class="each-content">
-                            <span style="font-size: 1.1em;"><b>{{ $unapprove->title }}</b></span>
-                            <br />
-                            <span style="color: gray;">{{ $unapprove->intro }}</span>
-						</div>
+					{{-- Image --}}
+					<a href="/recipes/{{ $unapprove->id }}">
+						<img src="{{ asset('storage/images/'.$unapprove->image) }}" alt="{{ $unapprove->title }}" title="Перейти к рецепту">
+					</a>
 
-                    </div>
-                @endforeach
-                {{ $unapproved->links() }}
-			@else
+					{{-- Content --}}
+					<div class="each-content">
+						<span style="font-size: 1.1em;"><b>{{ $unapprove->title }}</b></span>
+						<br />
+						<span style="color: gray;">{{ $unapprove->intro }}</span>
+					</div>
+				</div>
+			@empty
 				<p class="content center">Нет непровереных рецептов</p>
-            @endif
+			@endforelse
+
+			{{ $unapproved->links() }}
         </div>
     @endif
 

@@ -47,13 +47,14 @@ class UsersController extends Controller
     public function add($id)
     {
 		$user = DB::table('users')->where([['id', $id], ['author', 0]]);
+		$messageSuccess = 'Пользователь добавлен и теперь может заходить в свой профиль.';
+		$messageError = 'Пользователь не найден';
 
 		if ($user) {
 			$user->update(['author' => 1]);
-
-			return back()->with('success', 'Пользователь добавлен и теперь может заходить в свой профиль.');
+			return back()->with('success', $messageSuccess);
 		} else {
-			return back()->with('error', 'Пользователь не найден');
+			return back()->with('error', $messageError);
 		}
 	}
 

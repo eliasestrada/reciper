@@ -882,8 +882,7 @@ img {
 }
 
 .statistic-table {
-	width: 80%;
-	margin: 0 10%;
+	width: 100%;
 	border-collapse: collapse;
 	table-layout: fixed;
 }
@@ -1333,9 +1332,17 @@ footer a:hover {
 	}
 }
 
+@media (min-width: 420px) {
+	.statistic-table {
+		width: 80%;
+		margin: 0 10%;
+		border-collapse: collapse;
+		table-layout: fixed;
+	}
+}
+
 /* Sidebar
 ================= */
-
 
 @media (min-width: 640px) {
 	.grid-recipe {
