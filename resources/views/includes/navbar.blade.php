@@ -16,9 +16,5 @@
         <li><a href="/" title="На главную">Главная</a></li>
 		<li><a href="/recipes" title="Рецепты">Рецепты</a></li>
 		<li><a href="/search" title="Поиск">Поиск</a></li>
-
-		@auth
-            <li><a href="{{ url('/dashboard') }}">Профиль</a></li>
-        @endguest
     </ul>
 </nav>

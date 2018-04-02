@@ -4,30 +4,28 @@
 
 @section('content')
 
-<div class="wrapper">
-	<h2 class="headline">Рецепты</h2>
+<h2 class="headline">Рецепты</h2>
 
-	<div class="container recipes">
-		<div class="row">
-			@forelse ($recipes as $recipe)
-				<div class="recipe-container col-xs-12 col-sm-6 col-md-4 col-lg-3">
-					<div class="recipe" style="animation: appear 1.{{ $loop->index }}s;">
-						<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->title }}">
-							<!-- Image -->
-							<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}">
-						</a>
-						<div class="recipes-content">
-							<!-- Title -->
-							<h3>{{$recipe->title}}</h3>
-						</div>
+<div class="container recipes">
+	<div class="row">
+		@forelse ($recipes as $recipe)
+			<div class="recipe-container col-xs-12 col-sm-6 col-md-4 col-lg-3">
+				<div class="recipe" style="animation: appear 1.{{ $loop->index }}s;">
+					<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->title }}">
+						<!-- Image -->
+						<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}">
+					</a>
+					<div class="recipes-content">
+						<!-- Title -->
+						<h3>{{$recipe->title}}</h3>
 					</div>
 				</div>
-			@empty
-				<p class="content">Нет рецептов</p>
-			@endforelse
+			</div>
+		@empty
+			<p class="content">Нет рецептов</p>
+		@endforelse
 
-			{{ $recipes->links() }}
-		</div>
+		{{ $recipes->links() }}
 	</div>
 </div>
 

@@ -1031,7 +1031,7 @@ img {
 	-webkit-transition: width .05s linear;
 	transition: width .1s linear;
 	transform: translateZ(0) scale(1, 1);
-	opacity: .95;
+	opacity: .9;
 	z-index: 10;
 }
 
@@ -1236,9 +1236,11 @@ footer a:hover {
 @media (min-width: 640px) {
 	.user-sidebar {
 		bottom: 0;
+		padding-top: 51px;
+		top: 0;
 		height: 100%;
 		width: 60px;
-		position: absolute;
+		position: fixed;
 	}
 	
 	.user-sidebar:hover {
@@ -1254,7 +1256,7 @@ footer a:hover {
 	.user-sidebar > .logout {
 		position: absolute;
 		left: 0;
-		bottom: 51px;
+		bottom: 0;
 	}
 	
 	#hide-on-big-screen {

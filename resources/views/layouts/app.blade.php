@@ -9,9 +9,13 @@
 
 	@include('includes.navbar')
 
-	@include('includes.messages-public')
+	@include('includes.user-sidebar')
 
-    @yield('content')
+	<div class="wrapper">
+		@include('includes.messages')
+
+		@yield('content')
+	</div>
 
     @include('includes.footer')
 

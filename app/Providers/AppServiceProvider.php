@@ -31,8 +31,10 @@ class AppServiceProvider extends ServiceProvider
 				->where('name', 'Подвал')
 				->first();
 
-		View::share('footer_rand_recipes', $footer_rand_recipes);
-		View::share('title_footer', $title_footer);
+		View::share([
+			'footer_rand_recipes' => $footer_rand_recipes,
+			'title_footer' => $title_footer
+		]);
     }
 
     /**
