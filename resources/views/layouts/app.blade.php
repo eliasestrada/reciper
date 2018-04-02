@@ -11,11 +11,17 @@
 
 	@include('includes.user-sidebar')
 
-	<div class="wrapper">
-		@include('includes.messages')
-
-		@yield('content')
-	</div>
+	@auth
+		<div class="wrapper wrapper-user">
+			@include('includes.messages')
+			@yield('content')
+		</div>
+	@else
+		@include('includes.messages-public')
+		<div class="wrapper">
+			@yield('content')
+		</div>
+	@endauth
 
     @include('includes.footer')
 
