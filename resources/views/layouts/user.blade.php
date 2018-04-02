@@ -8,11 +8,11 @@
 <body>
 
 	@include('includes.navbar')
-
-	@include('includes.messages')
+	
+	@include('includes.profile-menu-line')
 
 	<div class="wrapper" style="padding-top: 4em;">
-		@include('includes.profile-menu-line')
+		@include('includes.messages')
 		@yield('content')
 	</div>
 

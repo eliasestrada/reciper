@@ -44,25 +44,34 @@
 /* Admin Sidebar
 ==================== */
 
-.admin-sidebar {
-	bottom: 0;
-	height: 100%;
-	width: 60px;
-}
+@media (min-width: 640px) {
+	.admin-sidebar {
+		bottom: 0;
+		height: 100%;
+		width: 60px;
+		margin-top: 51px;
+		position: absolute;
+	}
+	
+	.admin-sidebar:hover {
+		width: 200px;
+		height: 100%;
+		overflow: visible;
+	}
 
-.admin-sidebar:hover {
-	width: 200px;
-	overflow: visible;
-}
-
-.admin-sidebar > .logout {
-	position:absolute;
-	left:0;
-	bottom: 51px;
-}
-
-#hide-on-big-screen {
-	display: none;
+	.admin-sidebar li {
+		margin: auto;
+	}
+	
+	.admin-sidebar > .logout {
+		position: absolute;
+		left: 0;
+		bottom: 51px;
+	}
+	
+	#hide-on-big-screen {
+		display: none;
+	}
 }
 
 /* Home sections
