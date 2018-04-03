@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h2 class="headline">Сообщения: {{ count($feedback) }}</h2>
+	<h2 class="headline">Сообщения: {{ $feedback->count() }}</h2>
 
 	<div style="padding: 1em 0;">
 		@forelse ($feedback as $feed)

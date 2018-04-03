@@ -13,7 +13,7 @@
 	<div class="container">
 		{{--  All my recipes  --}}
 		<div class="list-of-recipes">
-			<p class="content center">Всего рецептов: {{ count($recipes) }}</p>
+			<p class="content center">Всего рецептов: {{ $recipes->count() }}</p>
 
 			@forelse ($recipes as $recipe)
 				<div class="each-recipe" data-updated="Дата написания {{ facebookTimeAgo($recipe->updated_at) }}" data-author="Статус: {{ $recipe->approved === 1 ? 'Проверен' : 'Не проверен' }}">
