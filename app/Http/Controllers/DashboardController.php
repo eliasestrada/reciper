@@ -46,7 +46,7 @@ class DashboardController extends Controller
 		$allunapproved = !empty($allunapproved) ? 'data-notif='.$allunapproved : '';
 
 		// Feedback
-		$allfeedback = DB::table('contact')
+		$allfeedback = DB::table('feedback')
 				->where('created_at', '>', $user->contact_check)
 				->count();
 		$allfeedback = !empty($allfeedback) ? 'data-notif='.$allfeedback : '';

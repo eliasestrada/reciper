@@ -16,7 +16,7 @@
 
         <div class="form-group">
             {{ Form::label('password', 'Пароль') }}
-            {{ Form::password('password', null, ['placeholder' => 'Пароль']) }}
+			{{ Form::password('password', ['placeholder' => 'Пароль']) }}
 		</div>
 		
 		<div class="form-group" style="display:flex;">

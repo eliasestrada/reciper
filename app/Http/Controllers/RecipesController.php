@@ -293,7 +293,8 @@ class RecipesController extends Controller
             Storage::delete('public/images/'.$recipe->image);
         }
 
-        $recipe->delete();
+		$recipe->delete();
+
         return redirect('/my_recipes')->with('success', $messageSuccess);
 	}
 }

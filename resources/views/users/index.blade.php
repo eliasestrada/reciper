@@ -27,7 +27,7 @@
 									<p>Этот пользователь зарегестрировался {{ facebookTimeAgo( $user->created_at ) }}, не добавляйте пользователя если вы предварительно не просили его зарегестрироваться.</p>
 								
 									<a href="/user/{{ $user->id }}/add" class="button-add-user" title="Нажмите чтобы добавить этого пользователя к команде" onclick='return confirm("Вы точно хотите добавить этого пользователя как автора рецептов?")'>Добавить к команде</a>
-									<a href="/user/{{ $user->id }}/delete" class="button-add-user bg-red" title="Нажмите чтобы удалить этого пользователя" onclick='return confirm("Вы точно хотите удалить этого пользователя?")'>Удалить</a>
+									<a href="/user/{{ $user->id }}/delete" class="button-add-user" title="Нажмите чтобы удалить этого пользователя" onclick='return confirm("Вы точно хотите удалить этого пользователя?")'>Удалить</a>
 								</div>
 							@endif
 

@@ -855,6 +855,7 @@ img {
 	transition: box-shadow 250ms;
 	box-shadow: var(--btnShadow);
 	font-weight: bold;
+	cursor: pointer;
 }
 
 .button-add-user:hover {

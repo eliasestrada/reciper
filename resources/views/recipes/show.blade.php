@@ -26,7 +26,7 @@
 
 					{{--  Delete button  --}}
 					{!! Form::open(['action' => ['RecipesController@destroy', $recipe->id], 'method' => 'post', 'style' => 'width: auto; display: inline-block;', 'onsubmit' => 'return confirm("Вы точно хотите удалить этот рецепт?")']) !!}
-						{{ Form::hidden('_method', 'DELETE') }}
+						{{ method_field('delete') }}
 						{{ Form::submit('', ['class' => 'edit-recipe-icon icon-delete']) }}
 					{!! Form::close() !!}
 				</div>
