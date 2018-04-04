@@ -62,6 +62,11 @@
 
 @section('script')
 <script>
-	id('home-search-btn').addEventListener('click', showHeaderSearch)
+	document.getElementById('home-search-btn').addEventListener('click', () => {
+		id("home-search-btn").style.display = "none"
+		id("header-search-input").style.display = "block"
+	
+		setTimeout(() => id("header-search-input").style.opacity = "1", 500)
+	})
 </script>
 @endsection

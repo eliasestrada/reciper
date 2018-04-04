@@ -54,13 +54,6 @@ function showImage(src, target) {
 	src.addEventListener("change", ()=> fr.readAsDataURL(src.files[0]))
 }
 
-function showHeaderSearch() {
-	id("home-search-btn").style.display = "none"
-	id("header-search-input").style.display = "block"
-
-	setTimeout(() => id("header-search-input").style.opacity = "1", 500)
-}
-
 // Events
 id("hamburger").addEventListener('click', openMenu)
 
