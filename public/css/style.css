@@ -1300,12 +1300,6 @@ img {
 	background-repeat: no-repeat!important;
 }
 
-.user-sidebar > .logout {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-}
-
 @media (min-width: 740px) {
 	.disapear-on-big-screen {
 		display: none !important;

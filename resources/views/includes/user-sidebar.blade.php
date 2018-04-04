@@ -64,14 +64,12 @@
 				@endif
 			</div>
 		</ul>
-		<ul class="logout">
-			<li>
-				<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Выйти">
-					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -50px -25px;" class="icon-profile-menu-line"></i>
-					<span class="nav-text">Выйти</span>
-				</a>
-			</li>  
-		</ul>
+		<li>
+			<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Выйти">
+				<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -50px -25px;" class="icon-profile-menu-line"></i>
+				<span class="nav-text">Выйти</span>
+			</a>
+		</li>
 	</nav>
 
 	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
