@@ -26,7 +26,7 @@ class FeedbackController extends Controller
 
 		return view('feedback.index')->with('feedback', $feedback);
 	}
-	
+
 	/* DELETE
 	====================== */
 
