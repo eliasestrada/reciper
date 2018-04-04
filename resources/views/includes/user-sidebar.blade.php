@@ -1,6 +1,11 @@
 @auth     
 	<nav class="user-sidebar">
 		<ul>
+			<li class="disapear-on-big-screen">
+				<a>
+					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -75px -25px;" class="icon-profile-menu-line"></i>
+				</a>
+			</li>
 			<li>
 				<a href="/dashboard" title="Профиль">
 					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) 0 -25px;" class="icon-profile-menu-line"></i>
@@ -36,7 +41,7 @@
 				</li>
 			@endif
 			<li>
-				<a href="/settings" title="Настройки">
+				<a>
 					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -50px 0;" class="icon-profile-menu-line"></i>
 					<span>Настройки</span>
 				</a>

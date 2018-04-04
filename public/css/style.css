@@ -120,7 +120,7 @@ img {
 	color: var(--darkGray);
 	font-family: var(--headerFont);
 	line-height: 1.1;
-	margin-top: .2em;
+	margin: .5em;
 }
 
 .content {
@@ -1233,7 +1233,7 @@ img {
 	-webkit-transition: width 200ms, opacity 200ms;
 	transition: width 200ms, opacity 200ms;
 	transform: translateZ(0) scale(1, 1);
-	opacity: .7;
+	opacity: .5;
 	z-index: 10;
 	padding-top: 51px;
 }
@@ -1304,6 +1304,12 @@ img {
 	position: absolute;
 	left: 0;
 	bottom: 0;
+}
+
+@media (min-width: 740px) {
+	.disapear-on-big-screen {
+		display: none !important;
+	}
 }
 
 /* Pagination
