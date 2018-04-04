@@ -4,8 +4,7 @@
 
 @section('content')
 
-<h2 class="headline"><i class="fa fa-search"></i> Поиск</h2>
-<br />
+<h2 class="headline">Поиск</h2>
 
 {{--  Form  --}}
 {!! Form::open(['action' => 'PagesController@search', 'method' => 'GET', 'class' => 'form']) !!}

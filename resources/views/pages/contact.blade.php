@@ -6,7 +6,6 @@
 
 <div class="container">
 	<h1 class="headline">Связь с нами</h1>
-	<br>
 
 	{!! Form::open(['action' => 'ContactController@store', 'method' => 'POST', 'class' => 'form']) !!}
 		@csrf
