@@ -1,34 +1,28 @@
 @auth     
 	<nav class="user-sidebar">
 		<ul>
-			<li id="hide-on-big-screen">
-				<a>
-					<i class="icon-profile-menu-line"></i>
-					<span class="nav-text">&darr; Меню</span>
-				</a>
-			</li>
 			<li>
 				<a href="/dashboard" title="Профиль">
 					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) 0 -25px;" class="icon-profile-menu-line"></i>
-					<span class="nav-text">Профиль</span>
+					<span>Профиль</span>
 				</a>
 			</li>
 			<li>
 				<a href="/recipes/create" title="Добавить рецепт">
 					<i class="icon-profile-menu-line" style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -75px 0px;"></i>
-					<span class="nav-text">Новый рецепт</span>
+					<span>Новый рецепт</span>
 				</a>
 			</li>
 			<li>
 				<a href="/my_recipes" title="Мои рецепты">
 					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }})" class="icon-profile-menu-line"></i>
-					<span class="nav-text">Мои рецепты</span>
+					<span>Мои рецепты</span>
 				</a>
 			</li>
 			<li>
 				<a href="/users" title="Пользователи">
 					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -25px -25px;" class="icon-profile-menu-line"></i>
-					<span class="nav-text">Пользователи</span>
+					<span>Пользователи</span>
 				</a>
 			</li>
 
@@ -37,17 +31,33 @@
 				<li>
 					<a href="/statistic" title="Статистика">
 						<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -25px 0;" class="icon-profile-menu-line"></i>
-						<span class="nav-text">Статистика</span>
+						<span>Статистика</span>
 					</a>
 				</li>
 			@endif
-
 			<li>
 				<a href="/settings" title="Настройки">
 					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -50px 0;" class="icon-profile-menu-line"></i>
-					<span class="nav-text">Настройки</span>
+					<span>Настройки</span>
 				</a>
 			</li>
+
+			{{-- Menu Second Level --}}
+			<div class="menu-second-level">
+				<a href="/settings/general" title="Общие">
+					<span>Общие</span>
+				</a>
+				<a href="/settings/photo" title="Фотография">
+					<span>Фотография</span>
+				</a>
+
+				{{--  Для Админов  --}}
+				@if (Auth::user()->admin === 1)
+					<a href="/settings/titles" title="Заголовки">
+						<span>Заголовки</span>
+					</a>
+				@endif
+			</div>
 		</ul>
 		<ul class="logout">
 			<li>
