@@ -36,11 +36,6 @@
 				$geodata = $sxgeo->getCityFull($visitor->ip);
 				$country = $geodata['country']['name_ru'];
 				$city = $geodata['city']['name_ru'];
-
-				if (empty($country) && empty($city)) {
-					$country = 'Серега';
-					$city = 'Батя';
-				}
 			?>
 			<tr>
 				<td scope="row">{{ $country }} / {{ $city }}</td>
