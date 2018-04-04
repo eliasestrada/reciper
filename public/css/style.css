@@ -372,7 +372,7 @@ img {
 .home-section {
 	background: var(--paper);
 	color: #333;
-	padding: 2em 2.5em;
+	padding: 4em 2.5em 0 2.5em;
 }
 
 /* Form
