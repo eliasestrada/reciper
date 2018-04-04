@@ -28,13 +28,22 @@
 		<tbody>
 			<caption>Клики</caption>
 			<tr>
-				<th scope="col">Страна/Город</th>
+				<th scope="col">Страна / Город</th>
 				<th scope="col">Клики</th>
 			</tr>
 		@forelse ($visitors as $visitor)
-			<?php $geodata = $sxgeo->getCityFull($visitor->ip);?>
+			<?php
+				$geodata = $sxgeo->getCityFull($visitor->ip);
+				$country = $geodata['country']['name_ru'];
+				$city = $geodata['city']['name_ru'];
+
+				if (empty($country) && empty($city)) {
+					$country = 'Серега';
+					$city = 'Батя';
+				}
+			?>
 			<tr>
-				<td scope="row">{{ $geodata['country']['name_ru'] }} / {{ $geodata['city']['name_ru'] }}</td>
+				<td scope="row">{{ $country }} / {{ $city }}</td>
 				<td>{{ $visitor->clicks }}</td>
 			</tr>
 		@empty

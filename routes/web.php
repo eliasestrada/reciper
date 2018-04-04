@@ -32,7 +32,6 @@ Route::get('/checklist', 'DashboardController@checklist');
 Route::get('/my_recipes', 'DashboardController@my_recipes');
 
 // Settings ===========
-Route::get('/settings', 'SettingsController@index');
 Route::get('/settings/photo', 'SettingsController@editPhoto');
 Route::put('/settings/photo', 'SettingsController@updatePhoto');
 Route::get('/settings/general', 'SettingsController@general');

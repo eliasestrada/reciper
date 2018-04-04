@@ -16,13 +16,6 @@ class SettingsController extends Controller
         $this->middleware('author');
 	}
 
-	/* INDEX
-	====================== */
-
-    public function index() {
-		return view('settings.index');
-	}
-
     /* EDIT PHOTO
 	====================== */
 

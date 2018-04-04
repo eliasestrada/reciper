@@ -10,7 +10,7 @@ class StatisticController extends Controller
 {
 	public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('author');
 	}
 
 	/* VISITORS
@@ -20,7 +20,7 @@ class StatisticController extends Controller
 
 		$visitors = DB::table('visitor_registry')
 				->orderBy('clicks', 'desc')
-				->paginate(40);
+				->paginate(20);
 
 		$sxgeo = new SxGeo(storage_path().'/geo/SxGeoCity.dat');
 

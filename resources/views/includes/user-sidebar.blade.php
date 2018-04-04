@@ -30,16 +30,12 @@
 					<span>Пользователи</span>
 				</a>
 			</li>
-
-			{{--  For admin  --}}
-			@if (Auth::user()->admin === 1)
-				<li>
-					<a href="/statistic" title="Статистика">
-						<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -25px 0;" class="icon-profile-menu-line"></i>
-						<span>Статистика</span>
-					</a>
-				</li>
-			@endif
+			<li>
+				<a href="/statistic" title="Статистика">
+					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -25px 0;" class="icon-profile-menu-line"></i>
+					<span>Статистика</span>
+				</a>
+			</li>
 			<li>
 				<a>
 					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -50px 0;" class="icon-profile-menu-line"></i>
