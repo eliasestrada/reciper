@@ -72,6 +72,10 @@ img {
 	height: auto;
 }
 
+.spacer {
+	height: 2em;
+}
+
 /* Common
 ==================== */
 
@@ -372,7 +376,7 @@ img {
 .home-section {
 	background: var(--paper);
 	color: #333;
-	padding: 4em 2.5em 0 2.5em;
+	padding: 1em 2.5em;
 }
 
 /* Form
