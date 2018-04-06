@@ -2,10 +2,6 @@
 
 @section('title', 'Все авторы')
 
-@section('head')
-	<style>#all-users { border-bottom: 3px solid #a8a8a8; }</style>
-@endsection
-
 @section('content')
 
 	<h2 class="headline">Все авторы</h2>

@@ -2,10 +2,6 @@
 
 @section('title', 'Заголовки')
 
-@section('head')
-	<style>#settings { border-bottom: 3px solid #a8a8a8; }</style>
-@endsection
-
 @section('content')
 	<div class="container">
 		<h2 class="headline">Заголовки главной страницы</h2>

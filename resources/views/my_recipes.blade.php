@@ -2,10 +2,6 @@
 
 @section('title', 'Мои рецепты')
 
-@section('head')
-	<style>#my-resipes { border-bottom: 3px solid #a8a8a8; }</style>
-@endsection
-
 @section('content')
 
 	<h2 class="headline">Мои рецепты</h2>

@@ -2,10 +2,6 @@
 
 @section('title', 'Общие Настройки')
 
-@section('head')
-	<style>#settings { border-bottom: 3px solid #a8a8a8; }</style>
-@endsection
-
 @section('content')
 
 	<h3>Общие настройки</h3>

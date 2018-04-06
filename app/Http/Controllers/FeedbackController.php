@@ -22,7 +22,7 @@ class FeedbackController extends Controller
 		$feedback = Feedback::paginate(40);
 
 		// Mark that user saw these messages
-		User::find($user->id)->update(['contact_check' => NOW()]);
+		User::where('id', $user->id)->update(['contact_check' => NOW()]);
 
 		return view('feedback.index')->with('feedback', $feedback);
 	}

@@ -26,7 +26,7 @@ class ContactController extends Controller
 			'сообщение' => 'required|min:20|max:5000'
 		]);
 
-		DB::table('contact')->insert([
+		DB::table('feedback')->insert([
 			'name' => $request->имя,
 			'email' => $request->почта,
 			'message' => $request->сообщение,

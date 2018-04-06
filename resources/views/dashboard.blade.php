@@ -2,10 +2,6 @@
 
 @section('title', Auth::user()->name)
 
-@section('head')
-	<style>#my-profile { border-bottom: 3px solid #a8a8a8; }</style>
-@endsection
-
 @section('content')
 
 	<div class="profile-header">
