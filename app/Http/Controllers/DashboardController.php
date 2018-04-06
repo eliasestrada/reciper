@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Notification;
+use App\Feedback;
+use App\Recipe;
 use App\User;
 
 class DashboardController extends Controller
@@ -23,16 +25,18 @@ class DashboardController extends Controller
 		$user = auth()->user();
 
 		// Update last visit
-		DB::table('users')->where('id', $user->id)->update(['updated_at' => NOW()]);
+		User::where('id', $user->id)->update(['updated_at' => NOW()]);
 
-        $notifications = DB::table('notifications')
-				->where([['user_id', $user->id], ['created_at', '>', $user->notif_check]])
-				->count();
+        $notifications = Notification::where([
+			['user_id', $user->id],
+			['created_at', '>', $user->notif_check]
+		])->count();
 
 		if ($user->admin === 1) {
-			$notifications_for_admin = DB::table('notifications')
-				->where([['for_admins', 1], ['created_at', '>', $user->notif_check]])
-				->count();
+			$notifications_for_admin = Notification::where([
+				['for_admins', 1],
+				['created_at', '>', $user->notif_check]
+			])->count();
 
 			$notifications += $notifications_for_admin;
 		}
@@ -40,15 +44,11 @@ class DashboardController extends Controller
         $notifications = empty($notifications) ? '' : 'data-notif='.$notifications;
 
 		// Unapproved recipes
-		$allunapproved = DB::table('recipes')
-                ->where([['approved', '=', 0], ['ready', '=', 1]])
-				->count();
+		$allunapproved = Recipe::where([['approved', '=', 0], ['ready', '=', 1]])->count();
 		$allunapproved = !empty($allunapproved) ? 'data-notif='.$allunapproved : '';
 
 		// Feedback
-		$allfeedback = DB::table('feedback')
-				->where('created_at', '>', $user->contact_check)
-				->count();
+		$allfeedback = Feedback::where('created_at', '>', $user->contact_check)->count();
 		$allfeedback = !empty($allfeedback) ? 'data-notif='.$allfeedback : '';
 
 		return view('dashboard')
@@ -66,15 +66,12 @@ class DashboardController extends Controller
 
 		$user_id = auth()->user()->id;
 
-        $notifications = DB::table('notifications')
-				->where('user_id', $user_id)
+        $notifications = Notification::where('user_id', $user_id)
 				->orWhere('for_admins', 1)
 				->latest()
 				->paginate(10);
 
-		DB::table('users')
-				->where('id', $user_id)
-				->update(['notif_check' => NOW()]);
+		User::where('id', $user_id)->update(['notif_check' => NOW()]);
 
         return view('notifications')->with('notifications', $notifications);
 	}
@@ -84,10 +81,7 @@ class DashboardController extends Controller
 
     public function checklist() {
 
-		$unapproved = DB::table('recipes')
-                ->where([['approved', '=', 0], ['ready', '=', 1]])
-                ->oldest()
-				->paginate(10);
+		$unapproved = Recipe::where([['approved', '=', 0], ['ready', '=', 1]])->oldest()->paginate(10);
 
 		return view('checklist')->with('unapproved', $unapproved);
 	}
@@ -98,11 +92,7 @@ class DashboardController extends Controller
     public function my_recipes() {
 
 		$user = auth()->user();
-
-		$recipes = DB::table('recipes')
-				->where('user_id', $user->id)
-				->latest()
-				->paginate(20);
+		$recipes = Recipe::where('user_id', $user->id)->latest()->paginate(20);
 
 		return view('my_recipes')->with('recipes', $recipes);
 	}

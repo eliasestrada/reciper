@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Feedback;
 
 class ContactController extends Controller
 {
@@ -26,7 +26,7 @@ class ContactController extends Controller
 			'сообщение' => 'required|min:20|max:5000'
 		]);
 
-		DB::table('feedback')->insert([
+		Feedback::insert([
 			'name' => $request->имя,
 			'email' => $request->почта,
 			'message' => $request->сообщение,

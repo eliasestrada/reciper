@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Title;
 use App\User;
 use Image;
 
@@ -21,10 +21,7 @@ class SettingsController extends Controller
 
     public function editPhoto()
     {
-		$user = auth()->user();
-
-		return view('settings.photo')
-				->with('user', $user);
+		return view('settings.photo')->with('user', auth()->user());
 	}
 
 	/* UPDATE PHOTO
@@ -122,13 +119,11 @@ class SettingsController extends Controller
 
 	public function titles()
 	{
-		$title_banner = DB::table('titles')
-				->select(['title', 'text'])
+		$title_banner = Title::select(['title', 'text'])
 				->where('name', 'Баннер')
 				->first();
 
-		$title_intro = DB::table('titles')
-				->select(['title', 'text'])
+		$title_intro = Title::select(['title', 'text'])
 				->where('name', 'Интро')
 				->first();
 
@@ -150,8 +145,7 @@ class SettingsController extends Controller
 			'title.max' => 'Заголовок должен быть не более 190 символов'
 		]);
 
-		$banner = DB::table('titles')
-				->where('name', 'Баннер')
+		$banner = Title::where('name', 'Баннер')
 				->update([
 					'title' => $request->title,
 					'text' => $request->text
@@ -171,8 +165,7 @@ class SettingsController extends Controller
 			'title.max' => 'Заголовок должен быть не более 190 символов'
 		]);
 
-		$banner = DB::table('titles')
-				->where('name', 'Интро')
+		$banner = Title::where('name', 'Интро')
 				->update([
 					'title' => $request->title,
 					'text' => $request->text
@@ -186,8 +179,7 @@ class SettingsController extends Controller
 
 	public function updateFooterData(Request $request)
 	{
-		$banner = DB::table('titles')
-				->where('name', 'Подвал')
+		$banner = Title::where('name', 'Подвал')
 				->update(['text' => $request->text]);
 
 		return back()->with('success', 'Настройки подвала сохранены');

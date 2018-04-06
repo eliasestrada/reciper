@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Cookie\CookieJar;
+use App\Notification;
 use App\Recipe;
 use Image;
 
@@ -81,8 +82,7 @@ class RecipesController extends Controller
 
         $recipe->save();
 
-		return redirect('/recipes/'.$recipe->id.'/edit')
-				->with('success', 'Рецепт успешно сохранен');
+		return redirect('/recipes/'.$recipe->id.'/edit')->with('success', 'Рецепт успешно сохранен');
     }
 
     /* SHOW
@@ -148,8 +148,7 @@ class RecipesController extends Controller
         // For select input
         $categories = DB::table('categories')->get();
 
-        return view('recipes.edit')
-						->with(['recipe' => $recipe, 'categories' => $categories]);
+        return view('recipes.edit')->with(['recipe' => $recipe, 'categories' => $categories]);
     }
 
     /* UPDATE
@@ -241,7 +240,7 @@ class RecipesController extends Controller
 			
 			$update_recipe->update(['approved' => 1]);
 
-            DB::table('notifications')->insert([
+            Notification::insert([
 				'user_id' => $recipe->user_id,
 				'title' => 'Рецепт опубликован',
 				'message' => 'Рецепт под названием "' . $recipe->title . '" был опубликован.',
@@ -255,7 +254,7 @@ class RecipesController extends Controller
 
 			$update_recipe->update(['ready' => 0]);
 
-            DB::table('notifications')->insert([
+            Notification::insert([
 				'user_id' => $recipe->user_id,
 				'title' => 'Рецепт не опубликован',
 				'message' => 'Рецепт под названием "' . $recipe->title . '" не был опубликован так как администрация венула его вам на переработку.',

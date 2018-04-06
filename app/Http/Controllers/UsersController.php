@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Recipe;
 use App\User;
 
 class UsersController extends Controller
@@ -17,9 +17,7 @@ class UsersController extends Controller
 	====================== */
 
     public function index() {
-		$users = DB::table('users')->paginate(30);
-
-        return view('users.index')->with('users', $users);
+        return view('users.index')->with('users', User::paginate(30));
 	}
 
     /* SHOW
@@ -28,11 +26,7 @@ class UsersController extends Controller
 	public function show($id)
     {
 		$user = User::find($id);
-
-		$recipes = DB::table('recipes')
-				->where('user_id', $user->id)
-				->latest()
-				->paginate(20);
+		$recipes = Recipe::where('user_id', $user->id)->latest()->paginate(20);
 
 		return view('users.show')
 				->with([
@@ -46,7 +40,7 @@ class UsersController extends Controller
 
     public function add($id)
     {
-		$user = DB::table('users')->where([['id', $id], ['author', 0]]);
+		$user = User::where([['id', $id], ['author', 0]]);
 		$messageSuccess = 'Пользователь добавлен и теперь может заходить в свой профиль.';
 		$messageError = 'Пользователь не найден';
 
@@ -63,7 +57,7 @@ class UsersController extends Controller
 
     public function delete($id)
     {
-		$user = DB::table('users')->where([['id', $id], ['author', 0]]);
+		$user = User::where([['id', $id], ['author', 0]]);
 
 		if ($user) {
 			$user->delete();
