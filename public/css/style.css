@@ -851,11 +851,11 @@ img {
 }
 
 .icon-approve {
-	background: green url(icons/recipe-sprite.png) -100px 0!important;
+	background: green url(icons/recipe-sprite.png) -200px 0!important;
 }
 
 .icon-cancel {
-	background: brown url(icons/recipe-sprite.png) -100px 0!important;
+	background: brown url(icons/recipe-sprite.png) -250px 0!important;
 }
 
 .edit-recipe-icon {
