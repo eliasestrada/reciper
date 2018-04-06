@@ -8,9 +8,9 @@ Auth::routes();
 
 // Pages ===========
 Route::get('/', 'PagesController@home');
-Route::get('/search', 'PagesController@search');
-Route::get('/contact', 'ContactController@index');
-Route::post('/contact', 'ContactController@store');
+Route::get('search', 'PagesController@search');
+Route::get('contact', 'ContactController@index');
+Route::post('contact', 'ContactController@store');
 
 // Recipes ===========
 Route::resource('recipes', 'RecipesController');
@@ -22,14 +22,16 @@ Route::prefix('recipes/{recipe}')->group(function () {
 
 // Users ===========
 Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
-Route::get('/user/{id}/add', 'UsersController@add');
-Route::get('/user/{id}/delete', 'UsersController@delete');
+Route::prefix('user/{id}')->group(function () {
+	Route::get('add', 'UsersController@add');
+	Route::get('delete', 'UsersController@delete');
+});
 
 // Dashboard ===========
-Route::get('/dashboard', 'DashboardController@index');
-Route::get('/notifications', 'DashboardController@notifications');
-Route::get('/checklist', 'DashboardController@checklist');
-Route::get('/my_recipes', 'DashboardController@my_recipes');
+Route::get('dashboard', 'DashboardController@index');
+Route::get('notifications', 'DashboardController@notifications');
+Route::get('checklist', 'DashboardController@checklist');
+Route::get('my_recipes', 'DashboardController@my_recipes');
 
 // Settings ===========
 Route::prefix('settings')->group(function () {
@@ -48,4 +50,4 @@ Route::prefix('settings')->group(function () {
 });
 
 // Statistic ===========
-Route::get('/statistic', 'StatisticController@visitors');
+Route::get('statistic', 'StatisticController@visitors');

@@ -229,8 +229,7 @@ class RecipesController extends Controller
 
     public function answer($id, Request $request)
     {
-        $update_recipe = DB::table('recipes')
-            ->where([['id', $id], ['approved', 0], ['ready', 1]]);
+        $update_recipe = Recipe::where([['id', $id], ['approved', 0], ['ready', 1]]);
 
         if (!$update_recipe) {
             return back();
@@ -242,35 +241,29 @@ class RecipesController extends Controller
 			
 			$update_recipe->update(['approved' => 1]);
 
-			$messageSuccess = 'Рецепт под названием "' . $recipe->title . '" был опубликован.';
-			$returnSuccess = 'Рецепт одобрен и опубликован.';
-
             DB::table('notifications')->insert([
 				'user_id' => $recipe->user_id,
 				'title' => 'Рецепт опубликован',
-				'message' => $messageSuccess,
+				'message' => 'Рецепт под названием "' . $recipe->title . '" был опубликован.',
 				'for_admins' => 0,
 				'created_at' => NOW()
 			]);
 
-			return redirect('/recipes')->with('success', $returnSuccess);
+			return redirect('/recipes')->with('success', 'Рецепт одобрен и опубликован.');
 
         } elseif ($request->input('answer') == 'cancel') {
 
 			$update_recipe->update(['ready' => 0]);
 
-			$messageCancel = 'Рецепт под названием "' . $recipe->title . '" не был опубликован так как администрация венула его вам на переработку.';
-			$messageSuccess = 'Вы вернули рецепт на повторное редактирование.';
-
             DB::table('notifications')->insert([
 				'user_id' => $recipe->user_id,
 				'title' => 'Рецепт не опубликован',
-				'message' => $messageCancel,
+				'message' => 'Рецепт под названием "' . $recipe->title . '" не был опубликован так как администрация венула его вам на переработку.',
 				'for_admins' => 0,
 				'created_at' => NOW()
 			]);
 
-            return redirect('/recipes')->with('success', $messageSuccess);
+            return redirect('/recipes')->with('success', 'Вы вернули рецепт на повторное редактирование.');
         }
     }
 
@@ -281,12 +274,10 @@ class RecipesController extends Controller
     {
 		$recipe = Recipe::find($id);
 		$user = auth()->user();
-		$messageSuccess = 'Рецепт успешно удален';
-		$messageError = 'Вы не можете редактировать не свои рецепты.';
 
         // Check for correct user
         if ($user->id !== $recipe->user_id && $user->admin !== 1) {
-            return redirect('/recipes')->with('error', $messageError);
+            return redirect('/recipes')->with('error', 'Вы не можете редактировать не свои рецепты.');
         }
 
         if ($recipe->image != 'default.jpg') {
@@ -295,6 +286,6 @@ class RecipesController extends Controller
 
 		$recipe->delete();
 
-        return redirect('/my_recipes')->with('success', $messageSuccess);
+        return redirect('/my_recipes')->with('success', 'Рецепт успешно удален');
 	}
 }

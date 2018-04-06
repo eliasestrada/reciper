@@ -17,4 +17,6 @@ class Recipe extends Model
 	public function presentText() {
 		return convertToListItems($this->text);
 	}
+
+	
 }

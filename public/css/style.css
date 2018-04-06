@@ -850,6 +850,14 @@ img {
 	background: var(--main) url(icons/recipe-sprite.png) -100px 0!important;
 }
 
+.icon-approve {
+	background: green url(icons/recipe-sprite.png) -100px 0!important;
+}
+
+.icon-cancel {
+	background: brown url(icons/recipe-sprite.png) -100px 0!important;
+}
+
 .edit-recipe-icon {
 	background-repeat: no-repeat!important;
 	background-position-y: center!important;

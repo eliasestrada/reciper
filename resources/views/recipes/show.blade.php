@@ -35,14 +35,14 @@
 			{{--  Buttons for admin  --}}
 			@if (Auth::user()->admin === 1 && $recipe->approved === 0 && $recipe->ready === 1)
 				<div class="recipe-buttons">
-					{!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto;', 'onsubmit' => 'return confirm("Вы точно хотите опубликовать этот рецепт?")']) !!}
+					{!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto; display: inline-block;', 'onsubmit' => 'return confirm("Вы точно хотите опубликовать этот рецепт?")']) !!}
 						{{ Form::hidden('answer', 'approve') }}
-						{{ Form::submit('&#xf00c;', ['class' => 'fa', 'style' => 'background: green;']) }}
+						{{ Form::submit('', ['class' => 'edit-recipe-icon icon-approve']) }}
 					{!! Form::close() !!}
 
-					{!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto;', 'onsubmit' => 'return confirm("Вы точно хотите вернуть этот рецепт автору на доработку?")']) !!}
+					{!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto; display: inline-block;', 'onsubmit' => 'return confirm("Вы точно хотите вернуть этот рецепт автору на доработку?")']) !!}
 						{{ Form::hidden('answer', 'cancel') }}
-						{{ Form::submit('&#xf00d;', ['class' => 'fa', 'style' => 'background: brown;']) }}
+						{{ Form::submit('', ['class' => 'edit-recipe-icon icon-cancel']) }}
 					{!! Form::close() !!}
 				</div>
 			@endif
