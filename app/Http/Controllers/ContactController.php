@@ -29,8 +29,7 @@ class ContactController extends Controller
 		Feedback::insert([
 			'name' => $request->имя,
 			'email' => $request->почта,
-			'message' => $request->сообщение,
-			'created_at' => NOW()
+			'message' => $request->сообщение
 		]);
 
 		return redirect()->back()->with('success', 'Спасибо за ваш отзыв.');

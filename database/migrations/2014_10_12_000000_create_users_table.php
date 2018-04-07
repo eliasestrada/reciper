@@ -16,7 +16,10 @@ class CreateUsersTable extends Migration
             $table->boolean('admin')->default(0);
             $table->boolean('author')->default(0);
             $table->string('password');
-            $table->rememberToken();
+			$table->rememberToken();
+			$table->date('notif_check')->useCurrent();
+			$table->date('contact_check')->useCurrent();
+			$table->string('image');
             $table->timestamps();
         });
     }
