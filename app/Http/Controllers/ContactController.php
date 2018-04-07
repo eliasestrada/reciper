@@ -32,6 +32,8 @@ class ContactController extends Controller
 			'message' => $request->сообщение
 		]);
 
-		return redirect()->back()->with('success', 'Спасибо за ваш отзыв.');
+		return redirect()->back()->with(
+			'success', 'Спасибо за ваш отзыв.'
+		);
 	}
 }

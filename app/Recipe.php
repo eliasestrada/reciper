@@ -25,8 +25,4 @@ class Recipe extends Model
 	public function approved() {
 		return $this->approved === 1 ? true : false;
 	}
-
-	public function published() {
-		return $this->ready === 1 && $this->approved  === 1 ? true : false;
-	}
 }

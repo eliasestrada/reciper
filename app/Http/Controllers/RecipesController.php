@@ -108,9 +108,9 @@ class RecipesController extends Controller
         // Rules for visitors
         if (!$user && !$recipe->approved()) {
             return redirect('/recipes')->with(
-				'error', 'У вас нет права просматривать этот рецепт.'
+				'error', 'У вас нет права просматривать этот рецепт, так как он еще не опубликован'
 			);
-        }
+		}
 
         // Rules for auth users
         if ($user) {
@@ -118,18 +118,21 @@ class RecipesController extends Controller
                 return redirect('/recipes')->with(
 					'error', 'У вас нет права на просмотр этого рецепта'
 				);
-            } elseif (!$user->isAdmin() && !$user->hasRecipe($recipe->user_id) && !$recipe->published()) {
+            } elseif (!$user->hasRecipe($recipe->user_id) && !$recipe->ready()) {
                 return redirect('/recipes')->with(
 					'error', 'Этот рецепт находится в процессе написания.'
+				);
+			} elseif (!$user->isAdmin() && !$user->hasRecipe($recipe->user_id) && !$recipe->approved()) {
+                return redirect('/recipes')->with(
+					'error', 'Этот рецепт еще не одобрен.'
 				);
 			}
 		}
 
-		return view('recipes.show')
-				->with([
-					'recipe' => $recipe,
-					'random_recipes' => $random_recipes
-				]);
+		return view('recipes.show')->with([
+			'recipe' => $recipe,
+			'random_recipes' => $random_recipes
+		]);
     }
 
     /* EDIT
@@ -240,16 +243,12 @@ class RecipesController extends Controller
     public function answer($id, Request $request)
     {
         $update_recipe = Recipe::where([
-			['id', $id],
-			['approved', 0],
-			['ready', 1]
+			[ 'id', $id ],
+			[ 'approved', 0 ],
+			[ 'ready', 1 ]
 		]);
 
-        if (!$update_recipe) {
-            return redirect()->back();
-        } else {
-			$recipe = Recipe::find($id);
-		}
+		$recipe = Recipe::find($id);
 
         if ($request->input('answer') == 'approve') {
 			
