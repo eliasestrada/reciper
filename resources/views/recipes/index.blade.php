@@ -22,7 +22,7 @@
 				</div>
 			</div>
 		@empty
-			<p class="content">Нет рецептов</p>
+			<p class="content center">Нет рецептов</p>
 		@endforelse
 
 		{{ $recipes->links() }}
