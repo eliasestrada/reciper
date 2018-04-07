@@ -1,7 +1,6 @@
 
 @if (count($errors) > 0)
     <div class="message error">
-    <strong>Ошибки:</strong>
         <ul class="unstyled-list">
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li> 
