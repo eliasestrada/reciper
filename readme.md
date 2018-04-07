@@ -1,6 +1,4 @@
-<p align="center">
-	<img src="https://laravel.com/assets/img/components/logo-laravel.svg">
-</p>
+<h2>Delicious Food</h2>
 
 <h4>Using</h4>
 <ol>
@@ -8,7 +6,7 @@
 	<li>Vanilla Javascript</li>
 </ol>
 
-<h4>Packages</h4>
+<h4>Laravel Packages</h4>
 <ol>
 	<li>Image Intervention</li>
 	<li>Forms Collective</li>
