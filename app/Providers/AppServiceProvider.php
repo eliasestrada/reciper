@@ -5,8 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\DB;
 use App\Recipe;
+use App\Title;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,14 +26,9 @@ class AppServiceProvider extends ServiceProvider
 				->limit(8)
 				->get();
 
-		$title_footer = DB::table('titles')
-				->select('text')
+		$title_footer = Title::select('text')
 				->where('name', 'Подвал')
 				->first();
-		
-		if (!$title_footer) {
-			$title_footer = '';
-		}
 
 		View::share([
 			'footer_rand_recipes' => $footer_rand_recipes,
