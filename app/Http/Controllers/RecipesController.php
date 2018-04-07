@@ -74,9 +74,12 @@ class RecipesController extends Controller
         // Handle image uploading
         if ($request->hasFile('изображение')) {
         	$image = $request->file('изображение');
-        	$filename = time() . rand() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(600, 400)->save(storage_path('app/public/images/' . $filename ));
-        
+			$filename = time() . rand() . '.' . $image->getClientOriginalExtension();
+			
+            Image::make($image)->resize(600, 400)->save(
+				storage_path('app/public/images/' . $filename
+			));
+
         	$recipe->image = $filename;
         } else {
         	$recipe->image = 'default.jpg';
@@ -137,16 +140,17 @@ class RecipesController extends Controller
 		$recipe = Recipe::find($id);
 		$user = auth()->user();
 
-		$message1 = 'Вы не можете редактировать не свои рецепты.';
-		$message2 = 'Вы не можете редактировать рецепты которые находятся на рассмотрении или уже опубликованны.';
-
         // Check for correct user
         if (!$user->hasRecipe($recipe->user_id) && !$user->isAdmin()) {
-            return redirect('/recipes')->with('error', $message1);
+            return redirect('/recipes')->with(
+				'error', 'Вы не можете редактировать не свои рецепты.'
+			);
         }
 
         if ($recipe->ready() && !$user->isAdmin()) {
-			return redirect('/recipes')->with('error', $message2);
+			return redirect('/recipes')->with(
+				'error', 'Вы не можете редактировать рецепты которые находятся на рассмотрении или уже опубликованны.'
+			);
         }
 
         // For select input
@@ -160,8 +164,6 @@ class RecipesController extends Controller
 
     public function update(Request $request, $id)
     {
-		$user = auth()->user();
-
         // If ready to publish
         if (isset($request->ready)) {
             $this->validate($request, [
@@ -185,7 +187,7 @@ class RecipesController extends Controller
         $recipe->text = $request->input('приготовление');
         $recipe->time = $request->input('время');
         $recipe->category = $request->input('категория');
-        $recipe->approved = ($user->admin === 1) ? 1 : 0;
+        $recipe->approved = (auth()->user()->isAdmin()) ? 1 : 0;
 
         // Handle image uploading
         if ($request->hasFile('изображение')) {
@@ -204,7 +206,7 @@ class RecipesController extends Controller
             return redirect()->back()->with(
 				'success', 'Рецепт успешно сохранен'
 			);
-        } elseif ($recipe->ready() && $user->isAdmin()) {
+        } elseif ($recipe->ready() && auth()->user()->isAdmin()) {
             return redirect('/recipes')->with(
 				'success', 'Рецепт опубликован и доступен для посетителей.'
 			);

@@ -189,8 +189,9 @@ class SettingsController extends Controller
 
 	public function updateFooterData(Request $request)
 	{
-		$banner = Title::where('name', 'Подвал')
-				->update(['text' => $request->text]);
+		$banner = Title::where('name', 'Подвал')->update([
+			'text' => $request->text
+		]);
 
 		return back()->with(
 			'success', 'Настройки подвала сохранены'
