@@ -82,7 +82,8 @@ img {
 	padding: .5em 1em;
 	background: var(--paper);
 	transition: transform 300ms;
-	animation: appearFromLeft .4s;
+	animation: appearFromLeft 7s;
+	animation-fill-mode: forwards;
 	font-size: .9em;
 	color: #fff;
 	border-radius: 5px;
@@ -1398,9 +1399,11 @@ footer a:hover {
 }
 
 @keyframes appearFromLeft {
-	0% { margin-left: -100em; transform: scaleY(0); }
-	50% { margin-left: -100em; transform: scaleY(1); }
-	100% { margin-top: 0em; }
+	0% { margin-left: -100em; transform: scaleY(0); position: static; }
+	5% { margin-left: 0em; transform: scaleY(1); position: static; }
+	80% { margin-left: 0em; transform: scaleY(1); position: static; }
+	90% { margin-left: -100em; transform: scaleY(0); }
+	100% { position: absolute; left: -100em;}
 }
 
 @keyframes appearWithOpacity {
