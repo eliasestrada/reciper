@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -17,9 +18,9 @@ class CreateUsersTable extends Migration
             $table->boolean('author')->default(0);
             $table->string('password');
 			$table->rememberToken();
-			$table->date('notif_check')->useCurrent();
-			$table->date('contact_check')->useCurrent();
-			$table->string('image');
+			$table->timestamp('notif_check')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->timestamp('contact_check')->default(DB::raw('CURRENT_TIMESTAMP'));
+			$table->string('image')->default('default.jpg');
             $table->timestamps();
         });
     }
