@@ -29,13 +29,12 @@ class StatisticController extends Controller
         $allvisits = DB::table('visitor_registry')->count();
         $allclicks = DB::table('visitor_registry')->sum('clicks');
 
-		return view('statistic')
-				->with([
-					'sxgeo' => $sxgeo,
-					'visitors' => $visitors,
-					'allrecipes' => $allrecipes,
-					'allvisits' => $allvisits,
-					'allclicks' => $allclicks
-				]);
+		return view('statistic')->with([
+			'sxgeo' => $sxgeo,
+			'visitors' => $visitors,
+			'allrecipes' => $allrecipes,
+			'allvisits' => $allvisits,
+			'allclicks' => $allclicks
+		]);
 	}
 }

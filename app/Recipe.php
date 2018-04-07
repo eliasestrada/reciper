@@ -18,5 +18,15 @@ class Recipe extends Model
 		return convertToListItems($this->text);
 	}
 
-	
+	public function ready() {
+		return $this->ready === 1 ? true : false;
+	}
+
+	public function approved() {
+		return $this->approved === 1 ? true : false;
+	}
+
+	public function published() {
+		return $this->ready === 1 && $this->approved  === 1 ? true : false;
+	}
 }

@@ -25,7 +25,9 @@ class DashboardController extends Controller
 		$user = auth()->user();
 
 		// Update last visit
-		User::where('id', $user->id)->update(['updated_at' => NOW()]);
+		User::where('id', $user->id)->update([
+			'updated_at' => NOW()
+		]);
 
         $notifications = Notification::where([
 			['user_id', $user->id],
@@ -44,19 +46,21 @@ class DashboardController extends Controller
         $notifications = empty($notifications) ? '' : 'data-notif='.$notifications;
 
 		// Unapproved recipes
-		$allunapproved = Recipe::where([['approved', '=', 0], ['ready', '=', 1]])->count();
+		$allunapproved = Recipe::where([
+			['approved', '=', 0],
+			['ready', '=', 1]
+		])->count();
 		$allunapproved = !empty($allunapproved) ? 'data-notif='.$allunapproved : '';
 
 		// Feedback
 		$allfeedback = Feedback::where('created_at', '>', $user->contact_check)->count();
 		$allfeedback = !empty($allfeedback) ? 'data-notif='.$allfeedback : '';
 
-		return view('dashboard')
-				->with([
-					'allunapproved' => $allunapproved,
-					'allfeedback' => $allfeedback,
-					'notifications' => $notifications
-				]);
+		return view('dashboard')->with([
+			'allunapproved' => $allunapproved,
+			'allfeedback' => $allfeedback,
+			'notifications' => $notifications
+		]);
     }
 
 	/* NOTIFICATIONS
@@ -71,9 +75,13 @@ class DashboardController extends Controller
 				->latest()
 				->paginate(10);
 
-		User::where('id', $user_id)->update(['notif_check' => NOW()]);
+		User::where('id', $user_id)->update([
+			'notif_check' => NOW()
+		]);
 
-        return view('notifications')->with('notifications', $notifications);
+        return view('notifications')->with(
+			'notifications', $notifications
+		);
 	}
 
 	/* CHECKLIST
@@ -81,9 +89,14 @@ class DashboardController extends Controller
 
     public function checklist() {
 
-		$unapproved = Recipe::where([['approved', '=', 0], ['ready', '=', 1]])->oldest()->paginate(10);
+		$unapproved = Recipe::where([
+			['approved', '=', 0],
+			['ready', '=', 1]
+		])->oldest()->paginate(10);
 
-		return view('checklist')->with('unapproved', $unapproved);
+		return view('checklist')->with(
+			'unapproved', $unapproved
+		);
 	}
 
 	/* MY_RECIPES
@@ -94,6 +107,8 @@ class DashboardController extends Controller
 		$user = auth()->user();
 		$recipes = Recipe::where('user_id', $user->id)->latest()->paginate(20);
 
-		return view('my_recipes')->with('recipes', $recipes);
+		return view('my_recipes')->with(
+			'recipes', $recipes
+		);
 	}
 }

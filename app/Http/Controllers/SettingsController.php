@@ -21,7 +21,9 @@ class SettingsController extends Controller
 
     public function editPhoto()
     {
-		return view('settings.photo')->with('user', auth()->user());
+		return view('settings.photo')->with(
+			'user', auth()->user()
+		);
 	}
 
 	/* UPDATE PHOTO
@@ -55,7 +57,9 @@ class SettingsController extends Controller
 		}
 		$user->save();
 		
-		return redirect('/settings/photo')->with('success', 'Настройки сохранены');
+		return redirect('/settings/photo')->with(
+			'success', 'Настройки сохранены'
+		);
 	}
 	
 	/* GENERAL
@@ -83,7 +87,9 @@ class SettingsController extends Controller
 		$user->name = $request->name;
 		$user->save();
 
-		return back()->with('success', 'Настройки сохранены');
+		return back()->with(
+			'success', 'Настройки сохранены'
+		);
 	}
 
 	/* UPDATE USER PASSWORD
@@ -102,15 +108,20 @@ class SettingsController extends Controller
         ]);
 
 		$current_password = auth()->user()->password;
-          
-        if(Hash::check($request->old_password, $current_password)) {          
-			$user = User::find(auth()->user()->id);          
+
+        if(Hash::check($request->old_password, $current_password)) {
+			$user = User::find(auth()->user()->id);
 			$user->password = Hash::make($request->password);
-			$user->save(); 
-			return back()->with('success', 'Настройки сохранены');
+			$user->save();
+
+			return back()->with(
+				'success', 'Настройки сохранены'
+			);
         }
         else {           
-			return back()->with('error', 'Неверный пароль');
+			return back()->with(
+				'error', 'Неверный пароль'
+			);
         }
 	}
 
@@ -127,11 +138,10 @@ class SettingsController extends Controller
 				->where('name', 'Интро')
 				->first();
 
-		return view('settings.titles')
-				->with([
-					'title_banner' => $title_banner,
-					'title_intro' => $title_intro
-				]);
+		return view('settings.titles')->with([
+			'title_banner' => $title_banner,
+			'title_intro' => $title_intro
+		]);
 	}
 
 	/* UPDATE BANNER
@@ -139,19 +149,19 @@ class SettingsController extends Controller
 
 	public function updateBannerData(Request $request)
 	{
-		$this->validate($request, [
-			'title' => 'max:190'
-		], [
-			'title.max' => 'Заголовок должен быть не более 190 символов'
+		$this->validate($request,
+			['title' => 'max:190'],
+			['title.max' => 'Заголовок должен быть не более 190 символов']
+		);
+
+		$banner = Title::where('name', 'Баннер')->update([
+			'title' => $request->title,
+			'text' => $request->text
 		]);
 
-		$banner = Title::where('name', 'Баннер')
-				->update([
-					'title' => $request->title,
-					'text' => $request->text
-				]);
-
-		return back()->with('success', 'Настройки баннера сохранены');
+		return back()->with(
+			'success', 'Настройки баннера сохранены'
+		);
 	}
 
 	/* UPDATE INTRO
@@ -159,19 +169,19 @@ class SettingsController extends Controller
 
 	public function updateIntroData(Request $request)
 	{
-		$this->validate($request, [
-			'title' => 'max:190'
-		], [
-			'title.max' => 'Заголовок должен быть не более 190 символов'
+		$this->validate($request,
+			['title' => 'max:190'],
+			['title.max' => 'Заголовок должен быть не более 190 символов']
+		);
+
+		$banner = Title::where('name', 'Интро')->update([
+			'title' => $request->title,
+			'text' => $request->text
 		]);
 
-		$banner = Title::where('name', 'Интро')
-				->update([
-					'title' => $request->title,
-					'text' => $request->text
-				]);
-
-		return back()->with('success', 'Настройки интро главной страницы сохранены');
+		return back()->with(
+			'success', 'Настройки интро главной страницы сохранены'
+		);
 	}
 
 	/* UPDATE FOOTER
@@ -182,6 +192,8 @@ class SettingsController extends Controller
 		$banner = Title::where('name', 'Подвал')
 				->update(['text' => $request->text]);
 
-		return back()->with('success', 'Настройки подвала сохранены');
+		return back()->with(
+			'success', 'Настройки подвала сохранены'
+		);
 	}
 }

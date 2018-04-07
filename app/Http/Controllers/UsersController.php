@@ -17,7 +17,9 @@ class UsersController extends Controller
 	====================== */
 
     public function index() {
-        return view('users.index')->with('users', User::paginate(30));
+        return view('users.index')->with(
+			'users', User::paginate(30)
+		);
 	}
 
     /* SHOW
@@ -28,11 +30,10 @@ class UsersController extends Controller
 		$user = User::find($id);
 		$recipes = Recipe::where('user_id', $user->id)->latest()->paginate(20);
 
-		return view('users.show')
-				->with([
-					'recipes' => $recipes,
-					'user' => $user
-				]);
+		return view('users.show')->with([
+			'recipes' => $recipes,
+			'user' => $user
+		]);
 	}
 
 	/* ADD

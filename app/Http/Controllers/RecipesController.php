@@ -37,7 +37,9 @@ class RecipesController extends Controller
         // For select input
         $categories = DB::table('categories')->get();
 
-		return view('recipes.create')->with('categories', $categories);
+		return view('recipes.create')->with(
+			'categories', $categories
+		);
     }
 
     /* STORE
@@ -82,7 +84,9 @@ class RecipesController extends Controller
 
         $recipe->save();
 
-		return redirect('/recipes/'.$recipe->id.'/edit')->with('success', 'Рецепт успешно сохранен');
+		return redirect('/recipes/'.$recipe->id.'/edit')->with(
+			'success', 'Рецепт успешно сохранен'
+		);
     }
 
     /* SHOW
@@ -99,20 +103,24 @@ class RecipesController extends Controller
 				->get();
 
         // Rules for visitors
-        if (empty($user->id) && $recipe->approved == 0) {
-            return redirect('/recipes')
-                    ->with('error', 'У вас нет права просматривать этот рецепт.');
+        if (!$user && !$recipe->approved()) {
+            return redirect('/recipes')->with(
+				'error', 'У вас нет права просматривать этот рецепт.'
+			);
         }
 
         // Rules for auth users
-        if (!empty($user->id)) {
-            if ($user->admin !== 1 && $user->id !== $recipe->user_id && $recipe->ready === 0) {
-                return redirect('/recipes');
-            } elseif ($user->id !== $recipe->user_id && $recipe->approved === 0 && $recipe->ready === 0) {
-                return redirect('/recipes')
-                        ->with('error', 'Этот рецепт находится в процессе написания.');
-            }
-        }
+        if ($user) {
+            if (!$user->isAdmin() && !$user->hasRecipe($recipe->user_id) && !$recipe->ready()) {
+                return redirect('/recipes')->with(
+					'error', 'У вас нет права на просмотр этого рецепта'
+				);
+            } elseif (!$user->isAdmin() && !$user->hasRecipe($recipe->user_id) && !$recipe->published()) {
+                return redirect('/recipes')->with(
+					'error', 'Этот рецепт находится в процессе написания.'
+				);
+			}
+		}
 
 		return view('recipes.show')
 				->with([
@@ -133,11 +141,11 @@ class RecipesController extends Controller
 		$message2 = 'Вы не можете редактировать рецепты которые находятся на рассмотрении или уже опубликованны.';
 
         // Check for correct user
-        if ($user->id !== $recipe->user_id && $user->admin !== 1) {
+        if (!$user->hasRecipe($recipe->user_id) && !$user->isAdmin()) {
             return redirect('/recipes')->with('error', $message1);
         }
 
-        if ($recipe->ready == 1 && $user->admin !== 1) {
+        if ($recipe->ready() && !$user->isAdmin()) {
 			return redirect('/recipes')->with('error', $message2);
         }
 
@@ -182,23 +190,28 @@ class RecipesController extends Controller
         // Handle image uploading
         if ($request->hasFile('изображение')) {
             $image = $request->file('изображение');
-        	$filename = time() . rand() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(600, 400)->save(storage_path('app/public/images/' . $filename ));
+			$filename = time() . rand() . '.' . $image->getClientOriginalExtension();
+
+            Image::make($image)->resize(600, 400)->save(
+				storage_path('app/public/images/' . $filename )
+			);
 
             $recipe->image = $filename;
 		}
-
 		$recipe->save();
-		$message1 = 'Рецепт успешно сохранен';
-		$message2 = 'Рецепт опубликован и доступен для посетителей.';
-		$message3 = 'Рецепт добавлен на рассмотрение и будет опубликован после одобрения администрации.';
 
-        if ($recipe->ready === 0) {
-            return redirect()->back()->with('success', $message1);
-        } elseif ($recipe->ready === 1 && $user->admin === 1) {
-            return redirect('/recipes')->with('success', $message2);
+        if (!$recipe->ready()) {
+            return redirect()->back()->with(
+				'success', 'Рецепт успешно сохранен'
+			);
+        } elseif ($recipe->ready() && $user->isAdmin()) {
+            return redirect('/recipes')->with(
+				'success', 'Рецепт опубликован и доступен для посетителей.'
+			);
         }
-        return redirect('/dashboard')->with('success', $message3);
+        return redirect('/dashboard')->with(
+			'success', 'Рецепт добавлен на рассмотрение и будет опубликован после одобрения администрации.'
+		);
     }
 
     /* LIKE
@@ -224,27 +237,36 @@ class RecipesController extends Controller
 
     public function answer($id, Request $request)
     {
-        $update_recipe = Recipe::where([['id', $id], ['approved', 0], ['ready', 1]]);
+        $update_recipe = Recipe::where([
+			['id', $id],
+			['approved', 0],
+			['ready', 1]
+		]);
 
         if (!$update_recipe) {
-            return back();
+            return redirect()->back();
         } else {
 			$recipe = Recipe::find($id);
 		}
 
         if ($request->input('answer') == 'approve') {
 			
-			$update_recipe->update(['approved' => 1]);
+			$update_recipe->update([
+				'approved' => 1
+			]);
 
             Notification::insert([
 				'user_id' => $recipe->user_id,
 				'title' => 'Рецепт опубликован',
 				'message' => 'Рецепт под названием "' . $recipe->title . '" был опубликован.',
 				'for_admins' => 0,
-				'created_at' => NOW()
+				'created_at' => NOW(),
+				'updated_at' => NOW()
 			]);
 
-			return redirect('/recipes')->with('success', 'Рецепт одобрен и опубликован.');
+			return redirect('/recipes')->with(
+				'success', 'Рецепт одобрен и опубликован.'
+			);
 
         } elseif ($request->input('answer') == 'cancel') {
 
@@ -255,10 +277,13 @@ class RecipesController extends Controller
 				'title' => 'Рецепт не опубликован',
 				'message' => 'Рецепт под названием "' . $recipe->title . '" не был опубликован так как администрация венула его вам на переработку.',
 				'for_admins' => 0,
-				'created_at' => NOW()
+				'created_at' => NOW(),
+				'updated_at' => NOW()
 			]);
 
-            return redirect('/recipes')->with('success', 'Вы вернули рецепт на повторное редактирование.');
+            return redirect('/recipes')->with(
+				'success', 'Вы вернули рецепт на повторное редактирование.'
+			);
         }
     }
 
@@ -271,8 +296,10 @@ class RecipesController extends Controller
 		$user = auth()->user();
 
         // Check for correct user
-        if ($user->id !== $recipe->user_id && $user->admin !== 1) {
-            return redirect('/recipes')->with('error', 'Вы не можете редактировать не свои рецепты.');
+        if (!$user->hasRecipe($recipe->user_id) && !$user->isAdmin()) {
+            return redirect('/recipes')->with(
+				'error', 'Вы не можете редактировать не свои рецепты.'
+			);
         }
 
         if ($recipe->image != 'default.jpg') {
@@ -281,6 +308,8 @@ class RecipesController extends Controller
 
 		$recipe->delete();
 
-        return redirect('/my_recipes')->with('success', 'Рецепт успешно удален');
+        return redirect('/my_recipes')->with(
+			'success', 'Рецепт успешно удален'
+		);
 	}
 }

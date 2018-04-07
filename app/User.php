@@ -21,5 +21,13 @@ class User extends Authenticatable
     // The attributes that should be hidden for arrays.
     protected $hidden = [
         'password', 'remember_token',
-    ];
+	];
+
+	public function isAdmin() {
+        return $this->admin === 1 ? true : false;
+	}
+	
+	public function hasRecipe($recipe_user_id) {
+        return $this->id === $recipe_user_id ? true : false;
+	}
 }
