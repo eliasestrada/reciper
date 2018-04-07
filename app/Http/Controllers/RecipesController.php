@@ -98,10 +98,6 @@ class RecipesController extends Controller
 				->limit(5)
 				->get();
 
-        if (!$recipe) {
-            return redirect('/recipes');
-        }
-
         // Rules for visitors
         if (empty($user->id) && $recipe->approved == 0) {
             return redirect('/recipes')
