@@ -12,7 +12,7 @@
 			<h2>{{ $title_banner->text or '' }}</h2>
 			<a class="home-button" id="home-search-btn">
 				<svg viewBox="0 0 250.313 250.313" width="30px" style="fill:#fff; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">
-					<path d="{{ $icon }}"/>
+					<path d="{{ $icon }}" />
 				</svg>
 			</a>
 
