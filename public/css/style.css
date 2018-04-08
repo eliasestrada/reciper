@@ -306,6 +306,10 @@ img {
 	background: var(--mainHover) !important;
 }
 
+.categories-title:hover {
+	cursor: not-allowed;
+}
+
 .categories-menu {
 	width: 100%;
 	background: var(--main);
@@ -341,6 +345,10 @@ img {
 
 
 @media (min-width: 640px) {
+	.categories-title:hover {
+		cursor: pointer;
+	}
+
 	.categories-menu {
 		position: absolute;
 		top: 100%;
