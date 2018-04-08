@@ -27,7 +27,11 @@ class AppServiceProvider extends ServiceProvider
 				->get();
 
 		$title_footer = Title::select('text')->where('name', 'Подвал')->first();
-		$all_categories = Recipe::select('category')->distinct()->get()->toArray();
+		$all_categories = Recipe::select('category')
+				->distinct()
+				->orderBy('category')
+				->get()
+				->toArray();
 
 		View::share([
 			'footer_rand_recipes' => $footer_rand_recipes,

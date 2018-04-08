@@ -9,7 +9,7 @@
 {{--  Form  --}}
 {!! Form::open(['action' => 'PagesController@search', 'method' => 'GET', 'class' => 'form']) !!}
 	<div class="form-group">
-		{{ Form::text('for', '', ['placeholder' => 'Введите критерии поиска...']) }}
+		{{ Form::text('for', '', ['placeholder' => 'Введите критерии поиска...', 'style' =>'max-width:30em; margin: auto;']) }}
 		{{ Form::submit('', ['style' => 'display:none'])}}
 	</div>
 {!! Form::close() !!}
