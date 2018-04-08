@@ -16,5 +16,20 @@
         <li><a href="/" title="На главную">Главная</a></li>
 		<li><a href="/recipes" title="Рецепты">Рецепты</a></li>
 		<li><a href="/search" title="Поиск">Поиск</a></li>
+		<li id="categories-button" class="categories-button">
+			<a class="categories-title">Категории</a>
+			<div class="arrow-bottom" id="arrow-bottom"></div>
+			<div class="categories-menu" id="categories-menu">
+				<a href="/search?for=" title="">
+					<span>Блины</span>
+				</a>
+				<a href="/search?for=" title="">
+					<span>Что-то</span>
+				</a>
+				<a href="/search?for=" title="">
+					<span>Мясо</span>
+				</a>
+			</div>
+		</li>
     </ul>
 </nav>
