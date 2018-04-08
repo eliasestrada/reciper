@@ -65,7 +65,7 @@ if (window.matchMedia("(min-width: 640px)").matches) {
 			id('categories-menu').style.display = "block"
 			id('arrow-bottom').classList.add('arrow-bottom-rotate')
 			categoriesMenuOpened = true
-			setTimeout(() => id('categories-menu').style.opacity = "0.9", 100)
+			setTimeout(() => id('categories-menu').style.opacity = "1", 100)
 		} else if (categoriesMenuOpened === true) {
 			id('categories-menu').style.opacity = "0"
 			id('arrow-bottom').classList.remove('arrow-bottom-rotate')

@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use App\Recipe;
 use App\Title;
-use DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,16 +27,22 @@ class AppServiceProvider extends ServiceProvider
 				->get();
 
 		$title_footer = Title::select('text')->where('name', 'Подвал')->first();
+		$all_categories = Recipe::select('category')->distinct()->get()->toArray();
 
 		View::share([
 			'footer_rand_recipes' => $footer_rand_recipes,
-			'title_footer' => $title_footer
+			'title_footer' => $title_footer,
+			'all_categories' => $all_categories
 		]);
 
-		// Turn on ability to see queries
+		/**
+		 * Turn on ability to see queries
+		 * If you want to use it, add "use DB;" to the top of the page
+		 * 
+		 */
 		// DB::listen( function ( $query ) {
 		// 	dump($query->sql);
-		//  dump($query->bindings);
+		// 	dump($query->bindings);
 		// });
     }
 

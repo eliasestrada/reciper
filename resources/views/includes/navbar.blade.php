@@ -20,15 +20,13 @@
 			<a class="categories-title">Категории</a>
 			<div class="arrow-bottom" id="arrow-bottom"></div>
 			<div class="categories-menu" id="categories-menu">
-				<a href="/search?for=" title="">
-					<span>Блины</span>
-				</a>
-				<a href="/search?for=" title="">
-					<span>Что-то</span>
-				</a>
-				<a href="/search?for=" title="">
-					<span>Мясо</span>
-				</a>
+
+				@foreach ($all_categories as $category)
+					<a href="/search?for={{ $category['category'] }}" title="{{ $category['category'] }}">
+						<span>{{ $category['category'] }}</span>
+					</a>
+				@endforeach
+
 			</div>
 		</li>
     </ul>

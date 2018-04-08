@@ -151,10 +151,6 @@ img {
 	padding-top: 1.25em;
 }
 
-.admin-btn {
-	background: #383853;
-}
-
 .logo-opened {
 	width: 9em;
 	margin: auto;
@@ -215,7 +211,6 @@ img {
 	top: .5em;
 	position: relative;
 	border: solid 1px rgba(0, 0, 0, .2);
-	
 }
 
 #menu-container {
