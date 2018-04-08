@@ -303,6 +303,7 @@ class RecipesController extends Controller
 			);
         }
 
+		// Deleting image file
         if ($recipe->image != 'default.jpg') {
             Storage::delete('public/images/'.$recipe->image);
         }
