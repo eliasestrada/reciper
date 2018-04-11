@@ -1,0 +1,39 @@
+@media (min-width: 640px) {
+	#nav-menu {
+		width: 100%;
+		height: 51px;
+		padding: 0;
+		position: absolute;
+		text-align: right;
+	}
+
+	#logo {
+		left: 2rem;
+		position: absolute;
+	}
+
+	#nav-menu ul {
+		padding: .45em 10% 0 0;
+		display: block;
+	}
+
+	#nav-menu li {
+		width: 5.7em;
+		height: 100%;
+		margin-top: -2px;
+		display: inline-block;
+		border: none;
+		border-radius: .2em;
+		text-align: center;
+		padding: 0 .2em;
+		background: $mainHover;
+	}
+
+	#nav-menu li:hover {
+		background: #5b5bbe;
+	}
+
+	#menu-container {
+		display: none;
+	}
+}

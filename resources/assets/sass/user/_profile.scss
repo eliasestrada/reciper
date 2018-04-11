@@ -1,0 +1,38 @@
+.profile-header {
+	height: 15em;
+}
+
+.profile-header img {
+	width: 10em;
+	border-radius: 2px;
+	border: solid 5px #fff;
+	border-bottom: solid 1em #fff;
+	margin: .3em auto;
+	box-shadow: 1px 1px .5em #333;
+	transition: transform 400ms;
+	animation: appearWithRotate 1s;
+}
+
+.profile-header h1 {
+	font-family: $headerFont;
+}
+
+.list-of-recipes {
+	width: 90%;
+	margin: 1em 4%;
+	padding: .5em 1%;
+	display: inline-block;
+}
+
+.list-of-recipes h3 {
+	margin: .5em;
+	color: #444;
+}
+
+@media (min-width: 640px) {
+	.list-of-recipes {
+		width: 70%;
+		margin: 1em 10%;
+		padding: .5em 5%;
+	}
+}

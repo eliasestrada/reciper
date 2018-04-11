@@ -1,0 +1,75 @@
+.check-box-ready {
+	justify-content: center;
+	display: flex;
+}
+
+.icon-save {
+	background: $main url(icons/recipe-sprite.png)!important;
+}
+
+.icon-eye {
+	background: $main url(icons/recipe-sprite.png) -150px 0!important;
+}
+
+.icon-delete {
+	background: brown url(icons/recipe-sprite.png) -50px 0!important;
+}
+
+.icon-edit {
+	background: $main url(icons/recipe-sprite.png) -100px 0!important;
+}
+
+.icon-approve {
+	background: green url(icons/recipe-sprite.png) -200px 0!important;
+}
+
+.icon-cancel {
+	background: brown url(icons/recipe-sprite.png) -250px 0!important;
+}
+
+.edit-recipe-icon {
+	background-repeat: no-repeat!important;
+	background-position-y: center!important;
+}
+
+.recipe-buttons {
+	margin: .5em auto;
+}
+
+.recipe-buttons a,
+.recipe-buttons input {
+	width: 50px !important;
+	height: 50px;
+	display: inline-block;
+	border: none;
+	border-radius: .2em;
+	margin: auto;
+	cursor: pointer;
+}
+
+.check-box-ready-wrap {
+	display: flex;
+	padding: 0 1em;
+	align-items: center;
+}
+
+.check-box-ready input {
+	width: 1.2em;
+	margin-right: .5em;
+	cursor: pointer;
+}
+
+.check-box-ready p { font-size: .9em; }
+
+.preview-image img {
+	width: 230px;
+	height: 130px;
+	margin: 1em auto 0 auto;
+}
+
+@media (min-width: 420px) {
+	.preview-image img {
+		width: 276px;
+		height: 184px;
+	}
+}

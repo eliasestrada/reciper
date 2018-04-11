@@ -1,0 +1,88 @@
+.spacer {
+	height: 2em;
+}
+
+.message {
+	display: inline-block;
+	padding: .5em 1em;
+	background: $paper;
+	transition: transform 300ms;
+	animation: appearFromLeft 7s;
+	animation-fill-mode: forwards;
+	font-size: .9em;
+	color: #fff;
+	border-radius: 5px;
+}
+
+.error { background: #d34343; }
+.success { background: #3da355; }
+
+.wrapper {
+	min-height: 20em;
+	color: $darkGray;
+	background: $paper;
+	padding-top: 4em;
+	z-index: -2;
+}
+
+@media (min-width: 640px) {
+	.wrapper-user {
+		padding-top: 4em;
+	}
+}
+
+.headline {
+	color: $darkGray;
+	font-family: $headerFont;
+	line-height: 1.1;
+	margin: .5em;
+}
+
+.content {
+	padding: .4em .4em;
+	color: $darkGray;
+	text-align: left;
+	font-size: .95em;
+}
+
+.center {
+	text-align: center;
+}
+
+.unstyled-list {
+	list-style: none;
+}
+
+.loading,
+.loading::before {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 10em;
+	left: 50%;
+	margin-left: -20px;
+	border: 3px solid transparent;
+	border-top: 3px solid $mainHover;
+	border-bottom: 3px solid $mainHover;
+	border-radius: 50%;
+	animation: loadingRotate 1.1s infinite linear;
+}
+
+.loading::before {
+	width: 20px;
+	height: 20px;
+	content: '';
+	top: 4px;
+	left: 4px;
+	margin: 0;
+}
+
+.loading-title {
+	position: absolute;
+	top: 13em;
+	left: 50%;
+	margin-left: -40px;
+	animation: none;
+	border: none;
+	color: $mainHover;
+}

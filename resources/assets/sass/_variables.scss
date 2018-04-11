@@ -1,0 +1,21 @@
+// Colors
+$main: #8080ff;
+$mainHover: #6969d3;
+$gray: #adadad;
+$lightGray: #e0e0e0;
+$darkGray: #333;
+$paper: #eee;
+$fontColor: #535353;
+
+// Fonts
+$headerFont: 'Trebuchet MS', 'Franklin Gothic Medium', Tahoma, sans-serif;
+$mainFont: Arial, Helvetica;
+$headerImage: url(../storage/other/img.jpg);
+
+// Button
+$btnBg: -webkit-linear-gradient(top, #fff 0%,#eee 100%);
+$btnBorder: 1px solid #6b6b6b;
+$btnShadow:0px 2px 1px #ECECEC inset,
+			0px -1px 20px #ECECEC,
+			0px 1px 1px #999,
+			0px 3px 10px #999;

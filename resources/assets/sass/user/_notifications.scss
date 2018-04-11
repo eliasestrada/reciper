@@ -1,0 +1,32 @@
+.notification {
+	background: #dfdfdf;
+	color: #444;
+	border-radius: 4px;
+	font-size: .85rem;
+	margin: .5em 1em;
+	padding: .5em 1em;
+}
+
+.notification-title {
+	font-size: 1.1em;
+	padding: .2em;
+}
+
+.notification-date {
+	padding: .2em;
+	font-size: .8em;
+	font-weight: 700;
+	color: #555;
+}
+
+.notification-message {
+	padding: .2em;
+}
+
+@media (min-width: 640px) {
+	.notification {
+		width: 70%;
+		margin: .5em 15%;
+		padding: .5em 5%;
+	}
+}
