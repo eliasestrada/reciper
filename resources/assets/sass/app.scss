@@ -1,32 +1,21 @@
-@import "variables";
-@import "reset";
-@import "common";
+@import 'variables';
 
-// Nav-bar
-@import "navbar/nav";
-@import "navbar/nav-media";
-@import "navbar/categories";
+@import 'reset';
+@import 'accordion';
+@import 'animations';
+@import 'common';
+@import 'footer';
+@import 'form';
+@import 'grid';
+@import 'pagination';
 
-// Recipes
-@import "recipes/create";
-@import "recipes/show";
-@import "recipes/index";
-@import "recipes/my-recipes";
-
-// Home
-@import "pages/home";
-
-// User
-@import "user/user-sidebar";
-@import "user/users";
-@import "user/notifications";
-@import "user/profile";
-@import "user/statistic";
-
-// Other
-@import "form";
-@import "accordion";
-@import "pagination";
-@import "animations";
-@import "footer";
-@import "grid";
+// Navbar
+@import 'navbar/categories';
+@import 'navbar/nav-media';
+@import 'navbar/nav';
+@import 'pages/home';
+@import 'user/notifications';
+@import 'user/profile';
+@import 'user/statistic';
+@import 'user/user-sidebar';
+@import 'user/users';
