@@ -21,7 +21,7 @@ return [
     'locale' => 'ru',
 
     // Application Fallback Locale
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ru',
 
     // Encryption Key
     'key' => env('APP_KEY'),

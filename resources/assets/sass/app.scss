@@ -15,6 +15,12 @@
 @import 'footer';
 @import 'form';
 
+// Recipes
+@import 'recipes/create';
+@import 'recipes/index';
+@import 'recipes/my-recipes';
+@import 'recipes/show';
+
 // User
 @import 'user/notifications';
 @import 'user/profile';
