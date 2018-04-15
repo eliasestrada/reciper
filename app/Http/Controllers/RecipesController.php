@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\RecipeSaveRequest;
 use App\Http\Requests\RecipePublichRequest;
+use App\Helpers\Contracts\SaveRecipeDataContract;
 
 class RecipesController extends Controller
 {
@@ -48,39 +49,16 @@ class RecipesController extends Controller
 	 * Store
 	 * It will save the recipe to a database
 	 * 
-	 * @param RecipeSaveRequest is validating this method
+	 * @param RecipeSaveRequest $request is validating this method
+	 * @param SaveRecipeDataContract $saveImage
 	 */
-    public function store(RecipeSaveRequest $request)
+    public function store(RecipeSaveRequest $request, SaveRecipeDataContract $saveRecipeData)
     {
 		$user = auth()->user();
+		$recipe = new Recipe;
 
-        // Create Recipe in DB
-        $recipe = new Recipe;
-        $recipe->title = $request->input('название');
-        $recipe->intro = $request->input('описание');
-        $recipe->ingredients = $request->input('ингридиенты');
-        $recipe->advice = $request->input('совет');
-        $recipe->text = $request->input('приготовление');
-        $recipe->time = $request->input('время');
-        $recipe->category = $request->input('категория');
-        $recipe->user_id = $user->id;
-        $recipe->author = $user->name;
-
-        // Handle image uploading
-        if ($request->hasFile('изображение')) {
-        	$image = $request->file('изображение');
-			$filename = time() . rand() . '.' . $image->getClientOriginalExtension();
-			
-            Image::make($image)->resize(600, 400)->save(
-				storage_path('app/public/images/' . $filename
-			));
-
-        	$recipe->image = $filename;
-        } else {
-        	$recipe->image = 'default.jpg';
-        }
-
-        $recipe->save();
+		$saveRecipeData->save($request, $user, $recipe);
+		$recipe->save();
 
 		return redirect('/recipes/'.$recipe->id.'/edit')->with(
 			'success', 'Рецепт успешно сохранен'

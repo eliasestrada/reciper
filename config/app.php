@@ -2,33 +2,52 @@
 
 return [
 
-    // Application Name
+    /**
+	 * Application Name
+	 */
     'name' => env('APP_NAME', 'DeliciousFood'),
 
-    // Application Environment
+    /**
+	 * Application Environment
+	 */
     'env' => env('APP_ENV', 'production'),
 
-    // Application Debug Mode
+    /**
+	 * Application Debug Mode
+	 */
     'debug' => env('APP_DEBUG', false),
 
-    // Application URL
+    /**
+	 * Application URL
+	 */
     'url' => env('APP_URL', 'http://localhost'),
 
-    // Application Timezone
+    /**
+	 * Application Timezone
+	 */
     'timezone' => 'Europe/Kiev',
 
-    // Application Locale Configuration
+    /**
+	 * Application Locale Configuration
+	 */
     'locale' => 'ru',
 
-    // Application Fallback Locale
+    /**
+	 * Application Fallback Locale
+	 */
     'fallback_locale' => 'ru',
 
-    // Encryption Key
+    /**
+	 * Encryption Key
+	 */
     'key' => env('APP_KEY'),
     'cipher' => 'AES-256-CBC',
 
-    // Autoloaded Service Providers
+	/**
+	 * Autoloaded Service Providers
+	 */
     'providers' => [
+
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -58,10 +77,14 @@ return [
         App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
 		Intervention\Image\ImageServiceProvider::class,
+		App\Providers\UploadRecipeDataServiceProvider::class
     ],
 
-    // Class Aliases
+    /**
+	 * Class Aliases
+	 */
     'aliases' => [
+
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
@@ -96,7 +119,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
-		//'Html' => Collective\Html\HtmlFacade::class,
 		'Image' => Intervention\Image\Facades\Image::class,
+
+		// I'm not using this Html Collective
+		//'Html' => Collective\Html\HtmlFacade::class,
     ],
 ];
