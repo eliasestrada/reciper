@@ -1,21 +1,27 @@
-@import 'variables';
-
-@import 'reset';
-@import 'accordion';
-@import 'animations';
-@import 'common';
-@import 'footer';
-@import 'form';
-@import 'grid';
-@import 'pagination';
+// Modules
+@import 'modules/variables';
+@import 'modules/normalize';
+@import 'modules/common';
 
 // Navbar
-@import 'navbar/categories';
-@import 'navbar/nav-media';
 @import 'navbar/nav';
-@import 'pages/home';
+@import 'navbar/nav-media';
+@import 'navbar/categories';
+
+// Other
+@import 'home';
+@import 'accordion';
+@import 'pagination';
+@import 'footer';
+@import 'form';
+
+// User
 @import 'user/notifications';
 @import 'user/profile';
 @import 'user/statistic';
 @import 'user/user-sidebar';
 @import 'user/users';
+
+
+@import 'grid';
+@import 'animations';
