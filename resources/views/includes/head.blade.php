@@ -5,7 +5,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Styles -->
-{!! styleTimestamp('/css/app.css') !!}
+{!! styleTimestamp('/css/app.min.css') !!}
 
 <!-- Links -->
 <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
