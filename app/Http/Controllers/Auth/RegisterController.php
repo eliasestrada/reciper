@@ -51,8 +51,8 @@ class RegisterController extends Controller
             'name' => 'required|string|min:3|max:199',
             'email' => 'required|string|email|max:199|unique:users',
             'password' => 'required|string|min:6|confirmed',
-        ]);
-    }
+		]);
+	}
 
     // Create a new user instance after a valid registration.
     protected function create(array $data)
