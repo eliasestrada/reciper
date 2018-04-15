@@ -17,9 +17,9 @@ class DashboardController extends Controller
 		$this->middleware('admin')->only('checklist');
 	}
 
-	/* INDEX
-	====================== */
-
+	/**
+	 * Index. Dashboard
+	 */
     public function index()
     {
 		$user = auth()->user();
@@ -63,9 +63,9 @@ class DashboardController extends Controller
 		]);
     }
 
-	/* NOTIFICATIONS
-	====================== */
-
+	/**
+	 * Show all Notifications
+	 */
     public function notifications() {
 
 		$user_id = auth()->user()->id;
@@ -84,9 +84,10 @@ class DashboardController extends Controller
 		);
 	}
 
-	/* CHECKLIST
-	====================== */
-
+	/**
+	 * Checklist shows all recipes that need to be approved
+	 * by administration
+	 */
     public function checklist() {
 
 		$unapproved = Recipe::where([
@@ -99,9 +100,9 @@ class DashboardController extends Controller
 		);
 	}
 
-	/* MY_RECIPES
-	====================== */
-
+	/**
+	 * Show all my recipes
+	 */
     public function my_recipes() {
 
 		$user = auth()->user();

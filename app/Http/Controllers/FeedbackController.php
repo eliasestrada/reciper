@@ -13,42 +13,38 @@ class FeedbackController extends Controller
         $this->middleware('admin');
 	}
 
-	/* INDEX
-	====================== */
-
+	/**
+	 * Index
+	 */
     public function index()
     {
-		$feedback = Feedback::paginate(40);
-
 		// Mark that user saw these messages
 		User::where('id', auth()->user()->id)->update([
 			'contact_check' => NOW()
 		]);
 
 		return view('feedback.index')->with(
-			'feedback', $feedback
+			'feedback', Feedback::paginate(40)
 		);
 	}
 
-	/* DELETE
-	====================== */
-
+	/**
+	 * Delete
+	 * 
+	 * @param string $id
+	 */
 	public function destroy($id)
 	{
-		$feedback = Feedback::find($id);
-		$messageError = 'Только админ может удалять эти сообщения!';
-		$messageSuccess = 'Отзыв успешно удален';
-
         // Check for correct user
         if (!auth()->user()->isAdmin()) {
             return redirect('/feedback')->with(
-				'error', $messageError
+				'error', 'Только админ может удалять эти сообщения!'
 			);
         }
-		$feedback->delete();
+		Feedback::find($id)->delete();
 
         return redirect('/feedback')->with(
-			'success', $messageSuccess
+			'success', 'Отзыв успешно удален'
 		);
 	}
 }

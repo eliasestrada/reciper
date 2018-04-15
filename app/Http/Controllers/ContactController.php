@@ -8,16 +8,18 @@ use App\Feedback;
 
 class ContactController extends Controller
 {
-	/* INDEX
-	====================== */
-
+	/**
+	 * Index. Show contact page for visitors
+	 */
     public function index() {
 		return view('pages.contact');
 	}
 
-	/* STORE
-	====================== */
-
+	/**
+	 * Store in feedback table in database
+	 * 
+	 * @param Request $request
+	 */
 	public function store(Request $request) {
 
 		$this->validate($request, [

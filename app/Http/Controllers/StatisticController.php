@@ -13,9 +13,9 @@ class StatisticController extends Controller
         $this->middleware('author');
 	}
 
-	/* VISITORS
-	====================== */
-
+	/**
+	 * Visitors
+	 */
     public function visitors() {
 
 		$visitors = DB::table('visitor_registry')

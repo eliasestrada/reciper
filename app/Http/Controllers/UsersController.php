@@ -13,18 +13,20 @@ class UsersController extends Controller
 		$this->middleware('author');
 	}
 
-    /* INDEX
-	====================== */
-
+    /**
+	 * Index. Show all users
+	 */
     public function index() {
         return view('users.index')->with(
 			'users', User::paginate(30)
 		);
 	}
 
-    /* SHOW
-	====================== */
-
+    /**
+	 * Show one user
+	 * 
+	 * @param string $id
+	 */
 	public function show($id)
     {
 		$user = User::find($id);
@@ -36,9 +38,11 @@ class UsersController extends Controller
 		]);
 	}
 
-	/* ADD
-	====================== */
-
+	/**
+	 * Add user to authors
+	 * 
+	 * @param string $id
+	 */
     public function add($id)
     {
 		$user = User::where([['id', $id], ['author', 0]]);
@@ -55,9 +59,11 @@ class UsersController extends Controller
 		}
 	}
 
-	/* DELETE
-	====================== */
-
+	/**
+	 * Destroy the user
+	 * 
+	 * @param string $id
+	 */
     public function delete($id)
     {
 		$user = User::where([['id', $id], ['author', 0]]);

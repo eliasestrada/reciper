@@ -20,9 +20,9 @@ class RecipesController extends Controller
 		]]);
     }
 
-    /* INDEX
-	====================== */
-
+    /**
+	 * Index, show all approved recipes
+	 */
     public function index()
     {
         $recipes = Recipe::where('approved', 1)->latest()->paginate(30);
@@ -30,9 +30,9 @@ class RecipesController extends Controller
 		return view('recipes.index')->with('recipes', $recipes);
     }
 
-    /* CREATE
-	====================== */
-
+    /**
+	 * Create a new recipe in database
+	 */
     public function create()
     {
         // For select input
@@ -91,7 +91,6 @@ class RecipesController extends Controller
 	 * It will show the recipe on a single page
 	 * 
 	 * @param string $id
-	 * 
 	 */
     public function show($id)
     {
@@ -137,7 +136,6 @@ class RecipesController extends Controller
 	 * Edit single recipe
 	 * 
 	 * @param string $id
-	 * 
 	 */
     public function edit($id)
     {
@@ -168,7 +166,6 @@ class RecipesController extends Controller
 	 * 
 	 * @param Request $request
 	 * @param string $id
-	 * 
 	 */
     public function update(Request $request, $id)
     {
@@ -224,27 +221,34 @@ class RecipesController extends Controller
 		);
     }
 
-    /* LIKE
-	====================== */
-
+    /**
+	 * Like the recipe
+	 * 
+	 * @param string $id
+	 */
     public function like($id)
     {
 		Recipe::find($id)->increment('likes');
         return back()->withCookie(cookie('liked', 1, 5000));
 	}
 	
-	/* DISLIKE
-	====================== */
-
+	/**
+	 * Dislike
+	 * 
+	 * @param string $id
+	 */
     public function dislike($id)
     {
 		Recipe::find($id)->decrement('likes');
 		return back()->withCookie(\Cookie::forget('liked'));
     }
 
-    /* APPROVE
-	====================== */
-
+    /**
+	 * Approve
+	 * 
+	 * @param string $id
+	 * @param Request $request
+	 */
     public function answer($id, Request $request)
     {
         $update_recipe = Recipe::where([
@@ -293,9 +297,11 @@ class RecipesController extends Controller
         }
     }
 
-    /* DESTROY
-	====================== */
-
+    /**
+	 * Destroy the recipe
+	 * 
+	 * @param string $id
+	 */
     public function destroy($id)
     {
 		$recipe = Recipe::find($id);
