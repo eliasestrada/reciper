@@ -8,8 +8,9 @@ use App\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\RecipeRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\RecipeSaveRequest;
+use App\Http\Requests\RecipePublichRequest;
 
 class RecipesController extends Controller
 {
@@ -47,9 +48,9 @@ class RecipesController extends Controller
 	 * Store
 	 * It will save the recipe to a database
 	 * 
-	 * @param RecipeRequest is validating this method
+	 * @param RecipeSaveRequest is validating this method
 	 */
-    public function store(RecipeRequest $request)
+    public function store(RecipeSaveRequest $request)
     {
 		$user = auth()->user();
 
@@ -167,21 +168,8 @@ class RecipesController extends Controller
 	 * @param Request $request
 	 * @param string $id
 	 */
-    public function update(Request $request, $id)
+    public function update(RecipePublichRequest $request, $id)
     {
-        // If ready to publish
-        if (isset($request->ready)) {
-            $this->validate($request, [
-                'название' => 'min:5|max:199',
-                'описание' => 'min:20|max:2000',
-                'ингридиенты' => 'min:20|max:5000',
-                'совет' => 'max:5000',
-                'приготовление' => 'min:80|max:10000',
-                'время' => 'numeric|digits_between:0,1000',
-                'изображение' => 'image|nullable|max:1999'
-            ]);
-        }
-
         // Create Recipe in DB
         $recipe = Recipe::find($id);
         $recipe->ready = isset($request->ready) ? 1 : 0;

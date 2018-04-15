@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Http\Request;
 use App\Feedback;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
@@ -18,15 +19,9 @@ class ContactController extends Controller
 	/**
 	 * Store in feedback table in database
 	 * 
-	 * @param Request $request
+	 * @param ContactRequest $request
 	 */
-	public function store(Request $request) {
-
-		$this->validate($request, [
-			'имя' => 'required|min:3|max:50',
-			'почта' => 'required|email',
-			'сообщение' => 'required|min:20|max:5000'
-		]);
+	public function store(ContactRequest $request) {
 
 		Feedback::insert([
 			'name' => $request->имя,
