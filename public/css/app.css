@@ -42,10 +42,10 @@ img {
   display: inline-block;
   padding: .5em 1em;
   background: #eee;
-  -webkit-transition: -webkit-transform 300ms;
-  transition: -webkit-transform 300ms;
-  transition: transform 300ms;
-  transition: transform 300ms, -webkit-transform 300ms;
+  -webkit-transition: margin 300ms, -webkit-transform 300ms;
+  transition: margin 300ms, -webkit-transform 300ms;
+  transition: transform 300ms, margin 300ms;
+  transition: transform 300ms, margin 300ms, -webkit-transform 300ms;
   -webkit-animation: appearFromLeft 7s;
   animation: appearFromLeft 7s;
   -webkit-animation-fill-mode: forwards;
@@ -1521,7 +1521,7 @@ clearfix:after,
     transform: scaleY(1);
     position: static; }
   80% {
-    margin-left: 0em;
+    margin-left: .8em;
     -webkit-transform: scaleY(1);
     transform: scaleY(1);
     position: static; }
@@ -1545,7 +1545,7 @@ clearfix:after,
     transform: scaleY(1);
     position: static; }
   80% {
-    margin-left: 0em;
+    margin-left: .8em;
     -webkit-transform: scaleY(1);
     transform: scaleY(1);
     position: static; }

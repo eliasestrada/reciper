@@ -80,8 +80,8 @@ hamburger.addEventListener('click', () => {
  * @name CloseNavMenu
  * @event mouseup
  */
-window.addEventListener('mouseup', event => {
-    if (event.target != navMenu && opened === true && event.target.parentNode != navMenu) {
+window.addEventListener('mouseup', e => {
+    if (e.target != navMenu && opened === true && e.target.parentNode != navMenu) {
 		menuContainer.style.opacity = "0.8"
 		navMenu.className = "nav-closed"
 		logo.className = "logo-closed"

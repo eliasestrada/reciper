@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
-use App\Title;
-use App\User;
 use Image;
+use App\User;
+use App\Title;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\SettingsPhotoRequest;
+use App\Http\Requests\SettingsUpdateUserDataRequest;
+use App\Http\Requests\SettingsUpdateUserPasswordRequest;
 
 class SettingsController extends Controller
 {
@@ -16,9 +19,9 @@ class SettingsController extends Controller
         $this->middleware('author');
 	}
 
-    /* EDIT PHOTO
-	====================== */
-
+    /**
+	 * Edit photo
+	 */
     public function editPhoto()
     {
 		return view('settings.photo')->with(
@@ -26,18 +29,13 @@ class SettingsController extends Controller
 		);
 	}
 
-	/* UPDATE PHOTO
-	====================== */
-
-	public function updatePhoto(Request $request)
+	/**
+	 * Update photo
+	 * 
+	 * @param SettingsPhotoRequest $request
+	 */
+	public function updatePhoto(SettingsPhotoRequest $request)
     {
-        $this->validate($request, [
-            'image' => 'image|nullable|max:1999'
-		], [
-            'image.image' => 'Файл не является изображением',
-			'image.max' => 'Изображение не должно превышать :max Кбайт',
-			'image.uploaded' => 'Загрузка не удалась, возможно это связано с большим разширением, изображение не должно превышать 1999 Кбайт'
-        ]);
 		
 		$user = User::find(auth()->user()->id);
 
@@ -62,27 +60,21 @@ class SettingsController extends Controller
 		);
 	}
 	
-	/* GENERAL
-	====================== */
-
+	/**
+	 * General
+	 */
 	public function general()
 	{
 		return view('settings.general');
 	}
 
-	/* UPDATE USER DATA
-	====================== */
-
-	public function updateUserData(Request $request)
+	/**
+	 * Update User data
+	 * 
+	 * @param SettingsUpdateUserDataRequest $request
+	 */
+	public function updateUserData(SettingsUpdateUserDataRequest $request)
 	{
-		$this->validate($request, [
-			'name' => 'required|min:3|max:190'
-		], [
-            'name.required' => 'Поле имя обязателено к заполнению',
-			'name.min' => 'Имя должно быть хотябы 6 символов',
-			'name.max' => 'Имя не должно превышать 190 символов'
-        ]);
-
 		$user = User::find(auth()->user()->id);
 		$user->name = $request->name;
 		$user->save();
@@ -92,21 +84,13 @@ class SettingsController extends Controller
 		);
 	}
 
-	/* UPDATE USER PASSWORD
-	====================== */
-
-	public function updateUserPassword(Request $request)
+	/**
+	 * UPDATE USER PASSWORD
+	 * 
+	 * @param SettingsUpdateUserPasswordRequest $request
+	 */
+	public function updateUserPassword(SettingsUpdateUserPasswordRequest $request)
 	{
-		$this->validate($request, [
-			'old_password' => 'required|string',
-			'password' => 'required|string|min:6|confirmed'
-		], [
-            'old_password.required' => 'Старый пароль обязателен к заполнению',
-            'password.required' => 'Новый пароль обязателен к заполнению',
-            'password.min' => 'Пароль должен иметь хотябы 6 символов',
-            'password.confirmed' => 'Пароли не совпадают'
-        ]);
-
 		$current_password = auth()->user()->password;
 
         if(Hash::check($request->old_password, $current_password)) {
@@ -117,17 +101,16 @@ class SettingsController extends Controller
 			return back()->with(
 				'success', 'Настройки сохранены'
 			);
-        }
-        else {           
+        } else {           
 			return back()->with(
 				'error', 'Неверный пароль'
 			);
         }
 	}
 
-	/* TITLES
-	====================== */
-
+	/**
+	 * TITLES
+	 */
 	public function titles()
 	{
 		$title_banner = Title::select(['title', 'text'])
@@ -144,9 +127,9 @@ class SettingsController extends Controller
 		]);
 	}
 
-	/* UPDATE BANNER
-	====================== */
-
+	/**
+	 * UPDATE BANNER
+	 */
 	public function updateBannerData(Request $request)
 	{
 		$this->validate($request,
@@ -164,9 +147,11 @@ class SettingsController extends Controller
 		);
 	}
 
-	/* UPDATE INTRO
-	====================== */
-
+	/**
+	 * UPDATE INTRO
+	 * 
+	 * @param Request $request
+	 */
 	public function updateIntroData(Request $request)
 	{
 		$this->validate($request,
@@ -184,9 +169,11 @@ class SettingsController extends Controller
 		);
 	}
 
-	/* UPDATE FOOTER
-	====================== */
-
+	/**
+	 * UPDATE FOOTER
+	 * 
+	 * @param Request $request
+	 */
 	public function updateFooterData(Request $request)
 	{
 		$banner = Title::where('name', 'Подвал')->update([

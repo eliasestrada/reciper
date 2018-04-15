@@ -34,7 +34,7 @@ class DashboardController extends Controller
 			['created_at', '>', $user->notif_check]
 		])->count();
 
-		if ($user->admin === 1) {
+		if ($user->isAdmin) {
 			$notifications_for_admin = Notification::where([
 				['for_admins', 1],
 				['created_at', '>', $user->notif_check]

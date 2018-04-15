@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Cookie\CookieJar;
-use App\Notification;
-use App\Recipe;
 use Image;
+use App\Recipe;
+use App\Notification;
+use Illuminate\Http\Request;
+use Illuminate\Cookie\CookieJar;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\RecipeRequest;
+use Illuminate\Support\Facades\Storage;
 
 class RecipesController extends Controller
 {
@@ -42,22 +43,15 @@ class RecipesController extends Controller
 		);
     }
 
-    /* STORE
-	====================== */
-
-    public function store(Request $request)
+    /**
+	 * Store
+	 * It will save the recipe to a database
+	 * 
+	 * @param RecipeRequest is validating this method
+	 */
+    public function store(RecipeRequest $request)
     {
 		$user = auth()->user();
-
-        $this->validate($request, [
-            'название' => 'max:199',
-            'описание' => 'max:2000',
-            'ингридиенты' => 'max:5000',
-            'совет' => 'max:5000',
-            'приготовление' => 'max:10000',
-            'время' => 'numeric|digits_between:0,1000',
-            'изображение' => 'image|nullable|max:1999'
-        ]);
 
         // Create Recipe in DB
         $recipe = new Recipe;
@@ -92,9 +86,13 @@ class RecipesController extends Controller
 		);
     }
 
-    /* SHOW
-	====================== */
-
+    /**
+	 * Show
+	 * It will show the recipe on a single page
+	 * 
+	 * @param string $id
+	 * 
+	 */
     public function show($id)
     {
 		$user = auth()->user();
@@ -135,9 +133,12 @@ class RecipesController extends Controller
 		]);
     }
 
-    /* EDIT
-	====================== */
-
+    /**
+	 * Edit single recipe
+	 * 
+	 * @param string $id
+	 * 
+	 */
     public function edit($id)
     {
 		$recipe = Recipe::find($id);
@@ -162,9 +163,13 @@ class RecipesController extends Controller
         return view('recipes.edit')->with(['recipe' => $recipe, 'categories' => $categories]);
     }
 
-    /* UPDATE
-	====================== */
-
+    /**
+	 * Update single recipe
+	 * 
+	 * @param Request $request
+	 * @param string $id
+	 * 
+	 */
     public function update(Request $request, $id)
     {
         // If ready to publish

@@ -42,14 +42,16 @@ class UsersController extends Controller
     public function add($id)
     {
 		$user = User::where([['id', $id], ['author', 0]]);
-		$messageSuccess = 'Пользователь добавлен и теперь может заходить в свой профиль.';
-		$messageError = 'Пользователь не найден';
 
 		if ($user) {
 			$user->update(['author' => 1]);
-			return back()->with('success', $messageSuccess);
+			return back()->with(
+				'success', 'Пользователь добавлен и теперь может заходить в свой профиль.'
+			);
 		} else {
-			return back()->with('error', $messageError);
+			return back()->with(
+				'error', 'Пользователь не найден'
+			);
 		}
 	}
 
@@ -62,9 +64,13 @@ class UsersController extends Controller
 
 		if ($user) {
 			$user->delete();
-			return back()->with('success', 'Пользователь удален');
+			return back()->with(
+				'success', 'Пользователь удален'
+			);
 		} else {
-			return back()->with('error', 'Пользователь не найден');
+			return back()->with(
+				'error', 'Пользователь не найден'
+			);
 		}
 	}
 }

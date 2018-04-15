@@ -6,7 +6,7 @@
 	display: inline-block;
 	padding: .5em 1em;
 	background: $paper;
-	transition: transform 300ms;
+	transition: transform 300ms, margin 300ms;
 	animation: appearFromLeft 7s;
 	animation-fill-mode: forwards;
 	font-size: .9em;
