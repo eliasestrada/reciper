@@ -9,7 +9,20 @@ use Illuminate\Http\Request;
 use App\Helpers\Contracts\SaveRecipeDataContract;
 
 class SaveRecipeData implements SaveRecipeDataContract {
-	public static function save(Request $request, User $user, Recipe $recipe){
+
+	public $imageName;
+
+	/**
+	 * Returns name of uploaded file, if file doen not exist,
+	 * it will return string with the default file name
+	 * 
+	 * @param Request $request
+	 * @param User $user
+	 * @param Recipe $recipe
+	 */
+	public static function save(Request $request, User $user, Recipe $recipe) {
+		$thisClass = new self;
+		$thisClass->uploadImageToStorage($request);
 		$user = auth()->user();
 
         // Create Recipe in DB
@@ -22,9 +35,18 @@ class SaveRecipeData implements SaveRecipeDataContract {
         $recipe->category = $request->input('категория');
         $recipe->user_id = $user->id;
         $recipe->author = $user->name;
+		$recipe->image = $thisClass->whatNameOfUploadedImage();
+	}
 
-        // Handle image uploading
-        if ($request->hasFile('изображение')) {
+	/**
+	 * Returns name of uploaded file, if file doen not exist,
+	 * it will return string with the default file name
+	 * 
+	 * @return string
+	 * @param Request $request
+	 */
+	public function uploadImageToStorage(Request $request) {
+		if ($request->hasFile('изображение')) {
         	$image = $request->file('изображение');
 			$filename = time() . rand() . '.' . $image->getClientOriginalExtension();
 			
@@ -32,9 +54,16 @@ class SaveRecipeData implements SaveRecipeDataContract {
 				storage_path('app/public/images/' . $filename
 			));
 
-        	$recipe->image = $filename;
+        	$this->imageName = $filename;
         } else {
-        	$recipe->image = 'default.jpg';
+        	$this->imageName = 'default.jpg';
         }
+	}
+
+	/**
+	 * @return string
+	 */
+	public function whatNameOfUploadedImage() {
+		return $this->imageName;
 	}
 }
