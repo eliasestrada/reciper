@@ -51,3 +51,7 @@ Route::prefix('settings')->group(function () {
 
 // Statistic ===========
 Route::get('statistic', 'StatisticController@visitors');
+
+// Artisan commands
+Route::get('artisan/config/{url_key}', 'ArtisanController@cache');
+Route::get('artisan/clear/{url_key}', 'ArtisanController@clear');

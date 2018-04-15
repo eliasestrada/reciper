@@ -30,7 +30,7 @@ return [
     /**
 	 * Application Locale Configuration
 	 */
-    'locale' => 'ru',
+	'locale' => 'ru',
 
     /**
 	 * Application Fallback Locale
