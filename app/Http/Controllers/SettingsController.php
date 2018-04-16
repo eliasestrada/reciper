@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Image;
 use App\User;
-use App\Title;
+use App\Models\Title;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;

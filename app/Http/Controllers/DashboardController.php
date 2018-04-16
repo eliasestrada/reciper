@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Notification;
-use App\Feedback;
-use App\Recipe;
+use App\Models\Notification;
+use App\Models\Feedback;
+use App\Models\Recipe;
 use App\User;
 
 class DashboardController extends Controller

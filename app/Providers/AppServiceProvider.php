@@ -6,8 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
-use App\Recipe;
-use App\Title;
+use App\Models\Recipe;
+use App\Models\Title;
 
 class AppServiceProvider extends ServiceProvider
 {

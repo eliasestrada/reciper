@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Image;
-use App\Recipe;
-use App\Notification;
+use App\Models\Recipe;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Cookie\CookieJar;
 use Illuminate\Support\Facades\DB;

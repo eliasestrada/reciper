@@ -3,7 +3,7 @@
 namespace App\Helpers\Contracts;
 
 use App\User;
-use App\Recipe;
+use App\Model\Recipe;
 use Illuminate\Http\Request;
 
 Interface SaveRecipeDataContract {

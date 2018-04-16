@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Feedback;
+use App\Models\Feedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ContactRequest;

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
-use App\Recipe;
-use App\Title;
+use App\Models\Recipe;
+use App\Models\Title;
 
 class PagesController extends Controller
 {
