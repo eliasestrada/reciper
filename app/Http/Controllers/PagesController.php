@@ -15,18 +15,15 @@ class PagesController extends Controller
     public function home() {
 
 		$random_recipes = Recipe::inRandomOrder()
-				->select(['id', 'title', 'image'])
-				->where('approved', 1)
+				->whereApproved(1)
 				->limit(9)
-				->get();
+				->get(['id', 'title', 'image']);
 
-		$title_banner = Title::select(['title', 'text'])
-				->where('name', 'Баннер')
-				->first();
+		$title_banner = Title::whereName('Баннер')
+				->first(['title', 'text']);
 
-		$title_intro = Title::select(['title', 'text'])
-				->where('name', 'Интро')
-				->first();
+		$title_intro = Title::whereName('Интро')
+				->first(['title', 'text']);
 
 		// Code for SVG Icon
 		$icon = 'M244.186,214.604l-54.379-54.378c-0.289-0.289-0.628-0.491-0.93-0.76

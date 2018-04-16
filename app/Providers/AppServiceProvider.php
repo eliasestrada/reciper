@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\DB;
 use App\Recipe;
 use App\Title;
 
@@ -21,16 +22,15 @@ class AppServiceProvider extends ServiceProvider
 
 		// Sharing random recipes for footer
 		$footer_rand_recipes = Recipe::inRandomOrder()
-				->select(['id', 'title'])
-				->where('approved', 1)
+				->whereApproved(1)
 				->limit(8)
-				->get();
+				->get(['id', 'title']);
 
-		$title_footer = Title::select('text')->where('name', 'Подвал')->first();
-		$all_categories = Recipe::select('category')
-				->distinct()
+		$title_footer = Title::whereName('Подвал')
+				->first(['text']);
+		$all_categories = Recipe::distinct()
 				->orderBy('category')
-				->get()
+				->get(['category'])
 				->toArray();
 
 		View::share([

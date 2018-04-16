@@ -30,7 +30,7 @@ class UsersController extends Controller
 	public function show($id)
     {
 		$user = User::find($id);
-		$recipes = Recipe::where('user_id', $user->id)->latest()->paginate(20);
+		$recipes = Recipe::whereUserId($user->id)->latest()->paginate(20);
 
 		return view('users.show')->with([
 			'recipes' => $recipes,
@@ -45,7 +45,7 @@ class UsersController extends Controller
 	 */
     public function add($id)
     {
-		$user = User::where([['id', $id], ['author', 0]]);
+		$user = User::whereId($id)->whereAuthor(0);
 
 		if ($user) {
 			$user->update(['author' => 1]);
@@ -66,7 +66,7 @@ class UsersController extends Controller
 	 */
     public function delete($id)
     {
-		$user = User::where([['id', $id], ['author', 0]]);
+		$user = User::whereId($id)->whereAuthor(0);
 
 		if ($user) {
 			$user->delete();

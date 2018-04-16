@@ -113,13 +113,11 @@ class SettingsController extends Controller
 	 */
 	public function titles()
 	{
-		$title_banner = Title::select(['title', 'text'])
-				->where('name', 'Баннер')
-				->first();
+		$title_banner = Title::whereName('Баннер')
+				->first(['title', 'text']);
 
-		$title_intro = Title::select(['title', 'text'])
-				->where('name', 'Интро')
-				->first();
+		$title_intro = Title::whereName('Интро')
+				->first(['title', 'text']);
 
 		return view('settings.titles')->with([
 			'title_banner' => $title_banner,
@@ -137,7 +135,7 @@ class SettingsController extends Controller
 			['title.max' => 'Заголовок должен быть не более 190 символов']
 		);
 
-		$banner = Title::where('name', 'Баннер')->update([
+		$banner = Title::whereName('Баннер')->update([
 			'title' => $request->title,
 			'text' => $request->text
 		]);
@@ -159,7 +157,7 @@ class SettingsController extends Controller
 			['title.max' => 'Заголовок должен быть не более 190 символов']
 		);
 
-		$banner = Title::where('name', 'Интро')->update([
+		$banner = Title::whereName('Интро')->update([
 			'title' => $request->title,
 			'text' => $request->text
 		]);
@@ -176,7 +174,7 @@ class SettingsController extends Controller
 	 */
 	public function updateFooterData(Request $request)
 	{
-		$banner = Title::where('name', 'Подвал')->update([
+		$banner = Title::whereName('Подвал')->update([
 			'text' => $request->text
 		]);
 

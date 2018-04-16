@@ -77,7 +77,8 @@ class RecipesController extends Controller
 		$recipe = Recipe::find($id);
 
 		$random_recipes = Recipe::inRandomOrder()
-				->where([['approved', 1], ['id', '!=', $id]])
+				->whereApproved(1)
+				->where('id', '!=', $id)
 				->limit(5)
 				->get();
 

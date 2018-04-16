@@ -19,7 +19,7 @@ class FeedbackController extends Controller
     public function index()
     {
 		// Mark that user saw these messages
-		User::where('id', auth()->user()->id)->update([
+		User::whereId(auth()->user()->id)->update([
 			'contact_check' => NOW()
 		]);
 
