@@ -27,9 +27,7 @@ class RecipesController extends Controller
 	 */
     public function index()
     {
-        $recipes = Recipe::where('approved', 1)->latest()->paginate(30);
-
-		return view('recipes.index')->with('recipes', $recipes);
+		return view('recipes.index');
     }
 
     /**
