@@ -19,16 +19,6 @@ class SettingsController extends Controller
         $this->middleware('author');
 	}
 
-    /**
-	 * Edit photo
-	 */
-    public function editPhoto()
-    {
-		return view('settings.photo')->with(
-			'user', auth()->user()
-		);
-	}
-
 	/**
 	 * Update photo
 	 * 
@@ -58,14 +48,6 @@ class SettingsController extends Controller
 		return redirect('/settings/photo')->with(
 			'success', 'Настройки сохранены'
 		);
-	}
-	
-	/**
-	 * General
-	 */
-	public function general()
-	{
-		return view('settings.general');
 	}
 
 	/**

@@ -10,13 +10,6 @@ use App\Http\Requests\ContactRequest;
 class ContactController extends Controller
 {
 	/**
-	 * Index. Show contact page for visitors
-	 */
-    public function index() {
-		return view('pages.contact');
-	}
-
-	/**
 	 * Store in feedback table in database
 	 * 
 	 * @param ContactRequest $request

@@ -9,7 +9,7 @@ Auth::routes();
 // Pages ===========
 Route::get('/', 'PagesController@home');
 Route::get('search', 'PagesController@search');
-Route::get('contact', 'ContactController@index');
+Route::view('contact', 'pages.contact');
 Route::post('contact', 'ContactController@store');
 
 // Recipes ===========
@@ -35,9 +35,9 @@ Route::get('my_recipes', 'DashboardController@my_recipes');
 
 // Settings ===========
 Route::prefix('settings')->group(function () {
-	Route::get('photo', 'SettingsController@editPhoto');
+	Route::view('photo', 'settings.photo');
 	Route::put('photo', 'SettingsController@updatePhoto');
-	Route::get('general', 'SettingsController@general');
+	Route::view('general', 'settings.general');
 	Route::get('titles', 'SettingsController@titles');
 
 	Route::prefix('update')->group(function () {
