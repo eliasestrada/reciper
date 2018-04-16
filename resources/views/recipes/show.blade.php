@@ -112,7 +112,7 @@
 @endsection
 
 @section('script')
-<script>
+<script defer>
 	let likeIcon = document.querySelector(".like-icon")
 
 	likeIcon.addEventListener('click', animateLikeButton)

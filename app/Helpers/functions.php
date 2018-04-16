@@ -32,5 +32,5 @@ function scriptTimestamp( $path )
 	{
 		$timestamp = '';
 	}
-	return '<script async type="text/javascript" src="' . $path . $timestamp . '"></script>';
+	return '<script defer type="text/javascript" src="' . $path . $timestamp . '"></script>';
 }

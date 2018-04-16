@@ -103,7 +103,7 @@
 @endsection
 
 @section('script')
-<script>
+<script defer>
 	var acc = document.getElementsByClassName("accordion")
 	var src = document.getElementById("src-image")
 	var target = document.getElementById("target-image")

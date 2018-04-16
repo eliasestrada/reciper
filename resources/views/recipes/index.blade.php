@@ -14,7 +14,7 @@
 @endsection
 
 @section('script')
-<script>
+<script defer>
 	let pagination = {}
 	let paginationButtons = ''
 

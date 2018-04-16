@@ -56,7 +56,7 @@
 @endsection
 
 @section('script')
-<script>
+<script defer>
 	document.getElementById('home-search-btn').addEventListener('click', () => {
 		id("home-search-btn").style.display = "none"
 		id("header-search-input").style.display = "block"

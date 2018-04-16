@@ -83,7 +83,7 @@
 @endsection
 
 @section('script')
-<script>
+<script defer>
 	// Dropdowns
 	var acc = document.getElementsByClassName("accordion")
 	var src = document.getElementById("src-image")

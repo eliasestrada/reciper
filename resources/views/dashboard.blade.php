@@ -5,8 +5,8 @@
 @section('content')
 
 <div class="profile-header">
-	<h1>{{ Auth::user()->name }}</h1>
-	<img src="{{ asset('storage/uploads/'.Auth::user()->image) }}" alt="{{ Auth::user()->name }}" />
+	<h1>{{ auth()->user()->name }}</h1>
+	<img src="{{ asset('storage/uploads/'.auth()->user()->image) }}" alt="{{ auth()->user()->name }}" />
 </div>
 
 {{--  Buttons  --}}

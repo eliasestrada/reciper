@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use Image;
 use App\User;
-use App\Model\Recipe;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 use App\Helpers\Contracts\SaveRecipeDataContract;
 
