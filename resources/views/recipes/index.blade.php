@@ -59,7 +59,9 @@
 			`
 
 			// Inserting pagination into a target div
-			document.getElementById('target-for-pagination').innerHTML = paginationButtons
+			if (pagination.next_page_url || pagination.prev_page_url) {
+				document.getElementById('target-for-pagination').innerHTML = paginationButtons
+			}
 
 			/**
 			 * Add onclick event if previous page exists

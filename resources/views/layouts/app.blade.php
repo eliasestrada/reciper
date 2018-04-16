@@ -23,7 +23,7 @@
     {{ Visitor::log() }}
 
 	<!-- Javascript -->
-	{!! scriptTimestamp('/js/app.js') !!}
+	{!! scriptTimestamp('/js/app.min.js') !!}
 	@yield('script')
 </body>
 </html>
