@@ -16,7 +16,15 @@ class SettingsController extends Controller
 {
 	public function __construct()
     {
-        $this->middleware('author');
+		$this->middleware('author');
+	}
+
+	public function general() {
+		return view('settings.general');
+	}
+
+	public function photo() {
+		return view('settings.photo')->with('user', auth()->user());
 	}
 
 	/**

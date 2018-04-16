@@ -35,9 +35,9 @@ Route::get('my_recipes', 'DashboardController@my_recipes');
 
 // Settings ===========
 Route::prefix('settings')->group(function () {
-	Route::view('photo', 'settings.photo');
+	Route::get('photo', 'SettingsController@photo');
 	Route::put('photo', 'SettingsController@updatePhoto');
-	Route::view('general', 'settings.general');
+	Route::get('general', 'SettingsController@general');
 	Route::get('titles', 'SettingsController@titles');
 
 	Route::prefix('update')->group(function () {
