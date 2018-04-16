@@ -101,6 +101,6 @@ class DashboardController extends Controller
 		$user = auth()->user();
 		$recipes = Recipe::whereUserId($user->id)->latest()->paginate(20);
 
-		return view('my_recipes')->withEecipes($recipes);
+		return view('my_recipes')->withRecipes($recipes);
 	}
 }

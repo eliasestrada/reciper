@@ -115,11 +115,13 @@
 		.then(res => res.json())
 		.then(res => {
 			let output = ''
+			let i = 0;
 			res.data.forEach(random => {
+				i += 2
 				output += `
-					<li class="side-bar-recipe">
+					<li class="side-bar-recipe" style="animation: appearWithRotate 1.${ i }s;">
 						<a href="/recipes/${ random.id }" title="${ random.title }">
-							<img src="{{ asset('storage/images/${ random.image }') }}" alt="${ random.title }">
+							<img src="{{ asset('storage/images/${ random.image }') }}" alt="${ random.title }" id="target-img">
 						</a>
 						<div class="side-bar-content">
 							<h3>${ random.title }</h3>
