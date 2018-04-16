@@ -17,9 +17,7 @@ class UsersController extends Controller
 	 * Index. Show all users
 	 */
     public function index() {
-        return view('users.index')->with(
-			'users', User::paginate(30)
-		);
+        return view('users.index')->withUsers(User::paginate(30));
 	}
 
     /**
@@ -49,13 +47,11 @@ class UsersController extends Controller
 
 		if ($user) {
 			$user->update(['author' => 1]);
-			return back()->with(
-				'success', 'Пользователь добавлен и теперь может заходить в свой профиль.'
+			return back()->withSuccess(
+				'Пользователь добавлен и теперь может заходить в свой профиль.'
 			);
 		} else {
-			return back()->with(
-				'error', 'Пользователь не найден'
-			);
+			return back()->withError('Пользователь не найден');
 		}
 	}
 
@@ -70,13 +66,9 @@ class UsersController extends Controller
 
 		if ($user) {
 			$user->delete();
-			return back()->with(
-				'success', 'Пользователь удален'
-			);
+			return back()->withSuccess('Пользователь удален');
 		} else {
-			return back()->with(
-				'error', 'Пользователь не найден'
-			);
+			return back()->withError('Пользователь не найден');
 		}
 	}
 }

@@ -23,9 +23,7 @@ class FeedbackController extends Controller
 			'contact_check' => NOW()
 		]);
 
-		return view('feedback.index')->with(
-			'feedback', Feedback::paginate(40)
-		);
+		return view('feedback.index')->withFeedback(Feedback::paginate(40));
 	}
 
 	/**
@@ -37,14 +35,12 @@ class FeedbackController extends Controller
 	{
         // Check for correct user
         if (!auth()->user()->isAdmin()) {
-            return redirect('/feedback')->with(
-				'error', 'Только админ может удалять эти сообщения!'
+            return redirect('/feedback')->withError(
+				'Только админ может удалять эти сообщения!'
 			);
         }
 		Feedback::find($id)->delete();
 
-        return redirect('/feedback')->with(
-			'success', 'Отзыв успешно удален'
-		);
+        return redirect('/feedback')->withSuccess('Отзыв успешно удален');
 	}
 }

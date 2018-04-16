@@ -24,7 +24,7 @@ class SettingsController extends Controller
 	}
 
 	public function photo() {
-		return view('settings.photo')->with('user', auth()->user());
+		return view('settings.photo')->withUser(auth()->user());
 	}
 
 	/**
@@ -53,9 +53,7 @@ class SettingsController extends Controller
 		}
 		$user->save();
 		
-		return redirect('/settings/photo')->with(
-			'success', 'Настройки сохранены'
-		);
+		return redirect('/settings/photo')->withSuccess('Настройки сохранены');
 	}
 
 	/**
@@ -69,9 +67,7 @@ class SettingsController extends Controller
 		$user->name = $request->name;
 		$user->save();
 
-		return back()->with(
-			'success', 'Настройки сохранены'
-		);
+		return back()->withSuccess('Настройки сохранены');
 	}
 
 	/**
@@ -88,13 +84,9 @@ class SettingsController extends Controller
 			$user->password = Hash::make($request->password);
 			$user->save();
 
-			return back()->with(
-				'success', 'Настройки сохранены'
-			);
+			return back()->withSuccess('Настройки сохранены');
         } else {           
-			return back()->with(
-				'error', 'Неверный пароль'
-			);
+			return back()->withError('Неверный пароль');
         }
 	}
 
@@ -130,9 +122,7 @@ class SettingsController extends Controller
 			'text' => $request->text
 		]);
 
-		return back()->with(
-			'success', 'Настройки баннера сохранены'
-		);
+		return back()->withSuccess('Настройки баннера сохранены');
 	}
 
 	/**
@@ -152,8 +142,8 @@ class SettingsController extends Controller
 			'text' => $request->text
 		]);
 
-		return back()->with(
-			'success', 'Настройки интро главной страницы сохранены'
+		return back()->withSuccess(
+			'Настройки интро главной страницы сохранены'
 		);
 	}
 
@@ -168,8 +158,8 @@ class SettingsController extends Controller
 			'text' => $request->text
 		]);
 
-		return back()->with(
-			'success', 'Настройки подвала сохранены'
+		return back()->withSuccess(
+			'Настройки подвала сохранены'
 		);
 	}
 }

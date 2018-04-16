@@ -76,9 +76,7 @@ class DashboardController extends Controller
 			'notif_check' => NOW()
 		]);
 
-        return view('notifications')->with(
-			'notifications', $notifications
-		);
+        return view('notifications')->withNotifications($notifications);
 	}
 
 	/**
@@ -92,9 +90,7 @@ class DashboardController extends Controller
 				->oldest()
 				->paginate(10);
 
-		return view('checklist')->with(
-			'unapproved', $unapproved
-		);
+		return view('checklist')->withUnapproved($unapproved);
 	}
 
 	/**
@@ -105,8 +101,6 @@ class DashboardController extends Controller
 		$user = auth()->user();
 		$recipes = Recipe::whereUserId($user->id)->latest()->paginate(20);
 
-		return view('my_recipes')->with(
-			'recipes', $recipes
-		);
+		return view('my_recipes')->withEecipes($recipes);
 	}
 }

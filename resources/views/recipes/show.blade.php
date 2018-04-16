@@ -87,25 +87,10 @@
 		</div>
 	</div>
 
-	{{--  Еще рецепты Sidebar --}}
+	{{-- API: Еще рецепты Sidebar --}}
 	<div class="side-bar">
 		<h3 class="decorated"><span>Еще рецепты:</span></h3>
-		@if (count($random_recipes) > 0)
-			<ul class="unstyled-list">
-				@foreach ($random_recipes as $random)
-					<li class="side-bar-recipe">
-						<a href="/recipes/{{ $random->id }}" title="{{ $random->title }}">
-							<!-- Image -->
-							<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{ $random->title }}">
-						</a>
-						<div class="side-bar-content">
-							<!-- Title -->
-							<h3>{{ $random->title }}</h3>
-						</div>
-					</li>
-				@endforeach
-			</ul>
-		@endif
+		<ul class="unstyled-list target-for-random-recipes"></ul>
 	</div>
 </section>
 
@@ -113,7 +98,9 @@
 
 @section('script')
 <script defer>
+	// Like Icon
 	let likeIcon = document.querySelector(".like-icon")
+	let targetForRandomRecipes = document.querySelector(".target-for-random-recipes")
 
 	likeIcon.addEventListener('click', animateLikeButton)
 
@@ -121,5 +108,27 @@
 		likeIcon.classList.add("disappear")
 		likeIcon.style.opacity = '0'
 	}
+
+	// This function fetches recipes
+	(function fetchData() {
+		fetch('/api/show-random-recipes/{{ $recipe->id }}')
+		.then(res => res.json())
+		.then(res => {
+			let output = ''
+			res.data.forEach(random => {
+				output += `
+					<li class="side-bar-recipe">
+						<a href="/recipes/${ random.id }" title="${ random.title }">
+							<img src="{{ asset('storage/images/${ random.image }') }}" alt="${ random.title }">
+						</a>
+						<div class="side-bar-content">
+							<h3>${ random.title }</h3>
+						</div>
+					</li>`
+			})
+			targetForRandomRecipes.innerHTML = output
+		})
+		.catch(err => console.log(err))
+	})()
 </script>
 @endsection
