@@ -1,27 +1,27 @@
-footer .container {
+footer {
 	padding: 1em;
-}
 
-footer strong {
-	color: #6d6bff;
-}
+	strong {
+		color: #6d6bff;
+	}
 
-footer a {
-	color: #c6c5ff;
-}
+	a {
+		color: #c6c5ff;
 
-footer a:hover {
-	color: $mainHover;
-}
+		&:hover {
+			color: $mainHover;
+		}
+	}
 
-.footer-logo {
-	width: 50px;
-	margin: 0 auto;
-}
-
-.footer-copyright {
-	font-size: .7em;
-	color: $gray;
-	color: #c6c5ff;
-	margin: .5em;
+	.footer-logo {
+		width: 50px;
+		margin: 0 auto;
+	}
+	
+	.footer-copyright {
+		font-size: .7em;
+		color: $gray;
+		color: #c6c5ff;
+		margin: .5em;
+	}
 }

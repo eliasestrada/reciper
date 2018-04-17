@@ -17,7 +17,7 @@ class UsersController extends Controller
 	 * Index. Show all users
 	 */
     public function index() {
-        return view('users.index')->withUsers(User::paginate(30));
+        return view('users.index')->withUsers(User::simplePaginate(30));
 	}
 
     /**
