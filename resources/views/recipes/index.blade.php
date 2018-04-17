@@ -15,7 +15,7 @@
 
 @section('script')
 <script defer>
-	let pagination = {}
+	let pagin = {}
 	let paginationButtons = ''
 
 	// This function fetches recipes
@@ -50,16 +50,19 @@
 			makePagination(res.meta, res.links)
 
 			paginationButtons = `
-				<li class="page-item ${ pagination.prev_page_url ? '' : 'disabled' }">
+				<li class="page-item ${ pagin.prev_page_url ? '' : 'disabled' }">
 					<a href="#" class="page-link" id="prev-btn">&laquo;</a>
 				</li>
-				<li class="page-item ${ pagination.next_page_url ? '' : 'disabled' }">
+				<li class="page-item disabled">
+					<a class="page-link">${ pagin.current_page } / ${ pagin.last_page }</a>
+				</li>
+				<li class="page-item ${ pagin.next_page_url ? '' : 'disabled' }">
 					<a href="#" class="page-link" id="next-btn">&raquo;</a>
 				</li>
 			`
 
 			// Inserting pagination into a target div
-			if (pagination.next_page_url || pagination.prev_page_url) {
+			if (pagin.next_page_url || pagin.prev_page_url) {
 				document.getElementById('target-for-pagination').innerHTML = paginationButtons
 			}
 
@@ -67,9 +70,9 @@
 			 * Add onclick event if previous page exists
 			 * @event click
 			 */
-			if (pagination.prev_page_url) {
+			if (pagin.prev_page_url) {
 				document.getElementById('prev-btn').addEventListener('click', () => {
-					fetchData(pagination.prev_page_url)
+					fetchData(pagin.prev_page_url)
 				})
 			}
 
@@ -77,9 +80,9 @@
 			 * Add onclick event if next page exists
 			 * @event click
 			 */
-			if (pagination.next_page_url) {
+			if (pagin.next_page_url) {
 				document.getElementById('next-btn').addEventListener('click', () => { 
-					fetchData(pagination.next_page_url)
+					fetchData(pagin.next_page_url)
 				})
 			}
 		})
@@ -88,7 +91,7 @@
 
 	// We need this function for handling pagination
 	function makePagination(meta, links) {
-		pagination = {
+		pagin = {
 			current_page: meta.current_page,
 			last_page: meta.last_page,
 			next_page_url: links.next,

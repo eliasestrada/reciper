@@ -33,7 +33,6 @@
 					</div>
 				</div>
 			@endforeach
-			{{ $recipes->links() }}
 
 		</div>
 	</section>

@@ -10,7 +10,7 @@
 @if (auth()->user()->admin === 1)
 	<div class="list-of-recipes">
 		<h4 style="margin: .5em;">
-			Рецепты на рассмотрении {{ count($unapproved) }}
+			Рецепты на рассмотрении {{ $unapproved->count() }}
 		</h4>
 
 		@forelse ($unapproved as $unapprove)

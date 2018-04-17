@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h2 class="headline">Все авторы</h2>
+	<h2 class="headline">Все авторы {{ $users->count() }}</h2>
 
     <section>
 		<ul class="users-list unstyled-list">

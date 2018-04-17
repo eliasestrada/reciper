@@ -6,6 +6,28 @@
 	left: 0;
 	background: $main;
 	position: fixed;
+
+	ul {
+		padding: 1.85em 0 5em;
+		display: none;
+	}
+
+	li {
+		height: 2.5em;
+		line-height: 2.5em;
+		border-bottom: .06em solid $mainHover;
+		transition: .3s;
+
+		&:hover {
+			background: $mainHover;
+		}
+	}
+
+	a {
+		display: block;
+		color: #fff;
+		text-shadow: 1px 1px 1px #000;
+	}
 }
 
 .nav-closed {
@@ -22,43 +44,21 @@
 	width: 9em;
 	margin: auto;
 	transition: width 400ms;
-}
 
-.logo-opened:hover {
-	width: 10em;
+	&:hover {
+		width: 10em;
+	}
 }
 
 .logo-closed {
 	width: 9.5em;
 	margin: .4em auto;
 	transition: width 400ms, margin 400ms;
-}
-
-.logo-closed:hover {
-	margin: .3em auto;
-	width: 10em;
-}
-
-#nav-menu ul {
-	padding: 1.85em 0 5em;
-	display: none;
-}
-
-#nav-menu li {
-	height: 2.5em;
-	line-height: 2.5em;
-	border-bottom: .06em solid $mainHover;
-	transition: .3s;
-}
-
-#nav-menu li:hover {
-	background: $mainHover;
-}
-
-#nav-menu a {
-	display: block;
-	color: #fff;
-	text-shadow: 1px 1px 1px #000;
+	
+	&:hover {
+		margin: .3em auto;
+		width: 10em;
+	}
 }
 
 .regular-menu {
@@ -91,27 +91,27 @@
 	position: fixed;
 	color: #fff;
 	z-index: 15;
-}
 
-.hamburger {
-	width: 36px;
-	height: 35px;
-	position: relative;
-	top: 50%;
-	left: 8px;
-	transform: translateY(-50%);
-	cursor: pointer;
+	.hamburger {
+		width: 36px;
+		height: 35px;
+		position: relative;
+		top: 50%;
+		left: 8px;
+		transform: translateY(-50%);
+		cursor: pointer;
+	
+		.lines {
+			width: 26px;
+			height: 4px;
+			background: #fff;
+			position: absolute;
+			left: 5px;
+			border-radius: 5px;
+		}
+		
+		.line1 { top: 8px; }
+		.line2 { top: 16px; }
+		.line3 { top: 24px; }
+	}
 }
-
-.lines {
-	width: 26px;
-	height: 4px;
-	background: #fff;
-	position: absolute;
-	left: 5px;
-	border-radius: 5px;
-}
-
-.line1 { top: 8px; }
-.line2 { top: 16px; }
-.line3 { top: 24px; }

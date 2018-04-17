@@ -16,7 +16,7 @@
 		</tr>
 		<tr>
 			<td scope="row">Посетители</td>
-			<td>{{ $allvisits }}</td>
+			<td>{{ $visitors->count() }}</td>
 		</tr>
 		<tr>
 			<td scope="row">Клики</td>

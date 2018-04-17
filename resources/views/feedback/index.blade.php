@@ -20,7 +20,7 @@
 
 			</div>
 		@empty
-			<p class="content center">Нет непровереных рецептов</p>
+			<p class="content center">Нет сообщений</p>
 		@endforelse
 	</div>
 

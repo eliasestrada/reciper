@@ -8,19 +8,20 @@ function id(e) {
 	return document.getElementById(e)
 }
 
-let menuUl = document.querySelector("#nav-menu ul")
+let categoriesTitle = document.querySelector('.categories-title')
+let menuUl = document.querySelector('#nav-menu ul')
 let categoriesButton = id('categories-button')
 let categoriesMenu = id('categories-menu')
-let menuContainer = id("menu-container")
-let loadingTitle = id("loading-title")
+let menuContainer = id('menu-container')
+let loadingTitle = id('loading-title')
 let arrowBottom = id('arrow-bottom')
-let hamburger = id("hamburger")
-let navMenu = id("nav-menu")
-let loading = id("loading")
-let logo = id("logo")
-
-let opened = false
 let categoriesMenuOpened = false
+let hamburger = id('hamburger')
+let navMenu = id('nav-menu')
+let loading = id('loading')
+let logo = id('logo')
+let opened = false
+
 
 /**
  * Event works only if min-width of display is less than 640px
@@ -115,4 +116,14 @@ window.onscroll = () => {
             logo.style.display = "block"
         }
     }
+}
+
+/**
+ * Removing word 'Категории' on mobile screens,
+ * and put it back on desctop
+ */
+if (window.matchMedia( "( min-width: 640px )").matches) {
+	categoriesTitle.innerHTML = 'Категории'
+} else {
+	categoriesTitle.innerHTML = ''
 }

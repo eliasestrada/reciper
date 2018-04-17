@@ -4,7 +4,7 @@
 
 @section('content')
 
-	<h2 class="headline">Мои рецепты</h2>
+	<h2 class="headline">Мои рецепты {{ $recipes->count() }}</h2>
 
 	{{--  All my recipes  --}}
 	@if (auth()->user()->author === 1)

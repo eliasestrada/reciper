@@ -50,7 +50,8 @@ class PagesController extends Controller
 			$recipes = Recipe::where('title', 'LIKE', '%' . $query . '%')
 					->orWhere('ingredients', 'LIKE', '%' . $query . '%')
 					->orWhere('category', 'LIKE', '%' . $query . '%')
-					->paginate(20);
+					->take(50)
+					->get();
 			$message = count($recipes) < 1 ? 'Ничего не найденно' : '';
 		} else {
 			$recipes = '';

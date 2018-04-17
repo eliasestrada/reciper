@@ -17,7 +17,10 @@
 		<li><a href="/recipes" title="Рецепты">Рецепты</a></li>
 		<li><a href="/search" title="Поиск">Поиск</a></li>
 		<li id="categories-button" class="categories-button">
+
+			{{-- This categories-title working with JS --}}
 			<a class="categories-title">Категории</a>
+
 			<div class="arrow-bottom" id="arrow-bottom"></div>
 			<div class="categories-menu" id="categories-menu">
 

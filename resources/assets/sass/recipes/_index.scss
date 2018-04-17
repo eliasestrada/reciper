@@ -6,6 +6,15 @@
 	padding: .5rem 1rem;
 	position: relative;
 	transition: transform 400ms;
+
+	&:hover .recipes-content {
+		opacity: .9;
+	}
+	
+	img {
+		transition: transform 300ms;
+		border-radius: 10px 10px 0 0;
+	}
 }
 
 .recipes-content {
@@ -18,14 +27,6 @@
 	line-height: 1.2;
 }
 
-.recipe-container:hover .recipes-content {
-	opacity: .9;
-}
-
-.recipe-container img {
-	transition: transform 300ms;
-	border-radius: 10px 10px 0 0;
-}
 
 .category {
 	color: #fff;
@@ -66,9 +67,9 @@
 
 	.recipe-container {
 		padding: .5rem;
-	}
 
-	.recipe-container img {
-		border-radius: 5px;
+		img {
+			border-radius: 5px;
+		}
 	}
 }

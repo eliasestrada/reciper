@@ -1,10 +1,11 @@
 .categories-button {
 	position: relative;
 	cursor: pointer;
-}
+	margin-top: -40px;
 
-.categories-menu a:hover {
-	background: $mainHover !important;
+	a:hover {
+		background: $mainHover !important;
+	}
 }
 
 .categories-title:hover {
@@ -15,27 +16,28 @@
 	width: 100%;
 	background: $main;
 	transition: opacity 400ms;
-}
 
-.categories-menu a {
-	border-bottom: .06em solid $mainHover;
+	a {
+		border-bottom: .06em solid $mainHover;
+	}
 }
 
 /* Arrow */
 .arrow-bottom {
 	width: 0;
+	display: none;
 }
 
 .arrow-bottom:before,
 .arrow-bottom-rotate:before {
 	content: "";
 	border-top: 4px solid #fff;
-	border-left: 6px solid transparent;
-	border-right: 6px solid transparent;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
 	position: absolute;
 	top: 100%;
 	left: 50%;
-	margin-top: -7px;
+	margin-top: -9px;
 	margin-left: -6px;
 	transition: transform 300ms;
 }
@@ -46,6 +48,13 @@
 
 
 @media (min-width: 640px) {
+	.arrow-bottom {
+		display: block;
+	}
+	.categories-button {
+		margin-top: 0;
+	}
+
 	.categories-title:hover {
 		cursor: pointer;
 	}
