@@ -6,8 +6,8 @@ use Image;
 use App\Models\Recipe;
 use App\Models\Notification;
 use Illuminate\Http\Request;
-use Illuminate\Cookie\CookieJar;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\RecipeSaveRequest;
 use App\Http\Requests\RecipePublichRequest;
@@ -195,7 +195,7 @@ class RecipesController extends Controller
     public function dislike($id)
     {
 		Recipe::find($id)->decrement('likes');
-		return back()->withCookie(\Cookie::forget('liked'));
+		return back()->withCookie(Cookie::forget('liked'));
     }
 
     /**
