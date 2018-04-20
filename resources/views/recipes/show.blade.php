@@ -68,7 +68,7 @@
 		{{--  Items ( Ингридиенты ) --}}
 		<h3 class="decorated"><span>Ингридиенты</span></h3>
 		<div class="items">
-			<ul>{!! $recipe->ingredients !!}</ul>
+			<ul>{!! $recipe->ingredientsWithListItems() !!}</ul>
 		</div>
 
 		{{--  Совет  --}}
@@ -77,7 +77,7 @@
 		{{--  Приготовление  --}}
 		<h3 class="decorated"><span>Приготовление</span></h3>
 		<ol class="instruction unstyled-list">
-			{!! $recipe->text !!}
+			{!! $recipe->textWithListItems() !!}
 		</ol>
 
 		<h3 class="decorated"><span>Приятного аппетита!</span></h3>

@@ -13,14 +13,12 @@ class Recipe extends Model
         return $this->belongsTo('App\User');
 	}
 
-	// Accessor
-	public function getIngredientsAttribute($value) {
-		return convertToListItems($value);
+	public function ingredientsWithListItems() {
+		return convertToListItems($this->ingredients);
 	}
 
-	// Accessor
-	public function getTextAttribute($value) {
-		return convertToListItems($value);
+	public function textWithListItems() {
+		return convertToListItems($this->text);
 	}
 	
 	public function ready() {

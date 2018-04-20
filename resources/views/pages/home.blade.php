@@ -10,10 +10,8 @@
 	<div class="header-bg-overlay"></div>
 	<div class="header-content">
 
-		@isset($title_banner)
-			<h1>{{ $title_banner->title }}</h1>
-			<h2>{{ $title_banner->text }}</h2>
-		@endisset
+		<h1>{{ optional($title_banner)->title }}</h1>
+		<h2>{{ optional($title_banner)->text }}</h2>
 		
 		<a class="home-button" id="home-search-btn">
 			<svg viewBox="0 0 250.313 250.313" width="30px" style="fill:#fff; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">
@@ -32,10 +30,8 @@
 </header>
 
 <section class="home-section">
-	@isset( $title_intro)
-		<h2 class="headline">{{ $title_intro->title }}</h2>
-		<p>{{ $title_intro->text }}</p>
-	@endisset
+	<h2 class="headline">{{ optional($title_intro)->title }}</h2>
+	<p>{{ optional($title_intro)->text }}</p>
 </section>
 
 {{--  Cards  --}}

@@ -67,9 +67,9 @@
 
 	<button class="accordion" type="button">Категория</button>
 	<div class="accordion-panel">
-		<div class="form-group">
+		<div class="form-group simple-group">
 			{{ Form::label('category', 'Категория') }}
-			<select name="category simple-group">
+			<select name="category">
 				@foreach ($categories as $category)
 					<option selected value="{{ $category->category }}">{{ $category->category }}</option>
 				@endforeach

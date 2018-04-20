@@ -34,11 +34,9 @@
 			<img src="{{ asset('favicon.png') }}" alt="Логотип" class="footer-logo">
 		</a>
 
-		@isset($title_footer)
-			<p class="footer-copyright">
-				&copy; {{ date('Y') }} Delicious Food {{ $title_footer->text }}
-			</p>
-		@endisset
+		<p class="footer-copyright">
+			&copy; {{ date('Y') }} Delicious Food {{ optional($title_footer)->text }}
+		</p>
 
 		<p class="footer-copyright">
 			Дизайн и создание: <a href="https://www.upwork.com/o/profiles/users/_~01f3e73b66ebe1e87b/" style="color:#8080ff;">Сергей Черненький</a>

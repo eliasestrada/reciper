@@ -7,7 +7,7 @@
 <h2 class="headline">Рецепты</h2>
 
 <div class="container recipes">
-	<div class="row" id="target-for-recipes"></div>
+	<div id="target-for-recipes"></div>
 	<ul class="pagination" id="target-for-pagination"></ul>
 </div>
 
@@ -25,22 +25,29 @@
 		fetch(page_url)
 		.then(res => res.json())
 		.then(res => {
-			let recipes = ''
 			let i = 0
-
+			let recipes  = ''
+			let rowOpen  = '<div class="row">'
+			let rowClose = '</div>'
+			let addEveryForthCycle = (param) => {
+				return i % 4 == 0 ? param : ''
+			}
+			
 			// Looping our object
 			res.data.forEach(recipe => {
 				recipes += `
-					<div class="recipe-container col-xs-12 col-sm-6 col-md-4 col-lg-3">
-						<div class="recipe" style="animation: appear 1.${ i++ }s;">
-							<a href="/recipes/${ recipe.id }" title="${ recipe.title }">
-								<img src="storage/images/${ recipe.image }" alt="${ recipe.title }">
-							</a>
-							<div class="recipes-content">
-								<h3>${ recipe.title }</h3>
+					${ addEveryForthCycle(rowOpen) }
+						<div class="recipe-container col-xs-12 col-sm-6 col-md-4 col-lg-3">
+							<div class="recipe" style="animation: appear 1.${ i++ }s;">
+								<a href="/recipes/${ recipe.id }" title="${ recipe.title }">
+									<img src="storage/images/${ recipe.image }" alt="${ recipe.title }">
+								</a>
+								<div class="recipes-content">
+									<h3>${ recipe.title }</h3>
+								</div>
 							</div>
 						</div>
-					</div>`
+					${ addEveryForthCycle(rowClose) }`
 			})
 
 			// Inserting our recipes into a target div
@@ -65,21 +72,15 @@
 			if (pagin.next_page_url || pagin.prev_page_url) {
 				document.getElementById('target-for-pagination').innerHTML = paginationButtons
 			}
-
-			/**
-			 * Add onclick event if previous page exists
-			 * @event click
-			 */
+			
+			// Add onclick event if previous page exists
 			if (pagin.prev_page_url) {
 				document.getElementById('prev-btn').addEventListener('click', () => {
 					fetchData(pagin.prev_page_url)
 				})
 			}
 
-			/**
-			 * Add onclick event if next page exists
-			 * @event click
-			 */
+			// Add onclick event if next page exists
 			if (pagin.next_page_url) {
 				document.getElementById('next-btn').addEventListener('click', () => { 
 					fetchData(pagin.next_page_url)
