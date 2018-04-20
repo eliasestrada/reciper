@@ -3,9 +3,12 @@
 function convertToListItems( $string )
 {
 	$string = explode("\n", preg_replace("/[\r\n]+/", "\n", $string));
-	$list_of_ingredients = implode('', array_values($list_of_ingredients));
 
-	return $list_of_ingredients;
+	$list_of_ingredients = array_map(function($item) {
+		return '<li>' . $item . '</li>';
+	}, $string);
+
+	return implode('', array_values($list_of_ingredients));
 }
 
 function styleTimestamp( $path )

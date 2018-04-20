@@ -34,7 +34,6 @@ class RecipesController extends Controller
     {
         // For select input
         $categories = DB::table('categories')->get();
-
 		return view('recipes.create')->withCategories($categories);
     }
 
