@@ -11,7 +11,7 @@ class ArtisanController extends Controller
 	public function cache($url_key)
 	{
         if ($url_key != env('URL_KEY')) {
-            abort(403);
+            abort( 403 );
 		}
 
         try {
@@ -21,7 +21,7 @@ class ArtisanController extends Controller
             echo 'Настройки кеша сохранены';
 
         } catch (Exception $e) {
-            die($e->getMessage());
+            die( $e->getMessage() );
         }
 	}
 	
@@ -29,7 +29,7 @@ class ArtisanController extends Controller
 	public function clear($url_key)
 	{
         if ($url_key != env('URL_KEY')) {
-            abort(403);
+            abort( 403 );
 		}
 
         try {
@@ -40,7 +40,7 @@ class ArtisanController extends Controller
             echo 'Настройки кеша удалены';
 
         } catch (Exception $e) {
-            die($e->getMessage());
+            die( $e->getMessage() );
         }
     }
 }

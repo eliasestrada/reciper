@@ -52,14 +52,15 @@ class RecipesController extends Controller
 		$saveRecipeData->save($request, $user, $recipe);
 		$recipe->save();
 
-		return redirect('/recipes/'.$recipe->id.'/edit')
-			->withSuccess('Рецепт успешно сохранен');
+		return redirect('/recipes/'.$recipe->id.'/edit') ->withSuccess(
+			'Рецепт успешно сохранен'
+		);
     }
 
     // It will show the recipe on a single page
     public function show($id)
     {
-		$user = auth()->user();
+		$user   = auth()->user();
 		$recipe = Recipe::find($id);
 
         // Rules for visitors
@@ -93,7 +94,7 @@ class RecipesController extends Controller
     public function edit($id)
     {
 		$recipe = Recipe::find($id);
-		$user = auth()->user();
+		$user   = auth()->user();
 
         // Check for correct user
         if (!$user->hasRecipe($recipe->user_id) && !$user->isAdmin()) {
@@ -111,7 +112,7 @@ class RecipesController extends Controller
         // For select input
         $categories = DB::table('categories')->get();
         return view('recipes.edit')->with([
-			'recipe' => $recipe,
+			'recipe'     => $recipe,
 			'categories' => $categories
 		]);
     }
@@ -125,20 +126,20 @@ class RecipesController extends Controller
     public function update(RecipePublichRequest $request, $id)
     {
         // Create Recipe in DB
-        $recipe = Recipe::find($id);
-        $recipe->ready = isset($request->ready) ? 1 : 0;
-        $recipe->title = $request->input('название');
-        $recipe->intro = $request->input('описание');
+        $recipe              = Recipe::find($id);
+        $recipe->ready       = isset($request->ready) ? 1 : 0;
+        $recipe->title       = $request->input('название');
+        $recipe->intro       = $request->input('описание');
         $recipe->ingredients = $request->input('ингридиенты');
-        $recipe->advice = $request->input('совет');
-        $recipe->text = $request->input('приготовление');
-        $recipe->time = $request->input('время');
-        $recipe->category = $request->input('категория');
-        $recipe->approved = (auth()->user()->isAdmin()) ? 1 : 0;
+        $recipe->advice      = $request->input('совет');
+        $recipe->text        = $request->input('приготовление');
+        $recipe->time        = $request->input('время');
+        $recipe->category    = $request->input('категория');
+        $recipe->approved    = (auth()->user()->isAdmin()) ? 1 : 0;
 
         // Handle image uploading
         if ($request->hasFile('изображение')) {
-            $image = $request->file('изображение');
+            $image    = $request->file('изображение');
 			$filename = time() . rand() . '.' . $image->getClientOriginalExtension();
 
             Image::make($image)->resize(600, 400)->save(
@@ -196,9 +197,9 @@ class RecipesController extends Controller
 			]);
 
             Notification::insert([
-				'user_id' => $recipe->user_id,
-				'title' => 'Рецепт опубликован',
-				'message' => 'Рецепт под названием "' . $recipe->title . '" был опубликован.',
+				'user_id'    => $recipe->user_id,
+				'title'      => 'Рецепт опубликован',
+				'message'    => 'Рецепт под названием "' . $recipe->title . '" был опубликован.',
 				'for_admins' => 0,
 				'created_at' => NOW(),
 				'updated_at' => NOW()
@@ -210,12 +211,14 @@ class RecipesController extends Controller
 
         } elseif ($request->input('answer') == 'cancel') {
 
-			$update_recipe->update(['ready' => 0]);
+			$update_recipe->update([
+				'ready' => 0
+			]);
 
             Notification::insert([
-				'user_id' => $recipe->user_id,
-				'title' => 'Рецепт не опубликован',
-				'message' => 'Рецепт под названием "' . $recipe->title . '" не был опубликован так как администрация венула его вам на переработку.',
+				'user_id'    => $recipe->user_id,
+				'title'      => 'Рецепт не опубликован',
+				'message'    => 'Рецепт под названием "' . $recipe->title . '" не был опубликован так как администрация венула его вам на переработку.',
 				'for_admins' => 0,
 				'created_at' => NOW(),
 				'updated_at' => NOW()
@@ -231,7 +234,7 @@ class RecipesController extends Controller
     public function destroy($id)
     {
 		$recipe = Recipe::find($id);
-		$user = auth()->user();
+		$user   = auth()->user();
 
         // Check for correct user
         if (!$user->hasRecipe($recipe->user_id) && !$user->isAdmin()) {

@@ -24,25 +24,24 @@ class AppServiceProvider extends ServiceProvider
 		$footer_rand_recipes = Recipe::inRandomOrder()
 				->whereApproved(1)
 				->limit(8)
-				->get(['id', 'title']);
+				->get([ 'id', 'title' ]);
 
 		$title_footer = Title::whereName('Подвал')
-				->first(['text']);
+				->first([ 'text' ]);
 		$all_categories = Recipe::distinct()
 				->orderBy('category')
-				->get(['category'])
+				->get([ 'category' ])
 				->toArray();
 
 		View::share([
-			'footer_rand_recipes' => $footer_rand_recipes,
-			'title_footer' => $title_footer,
-			'all_categories' => $all_categories
+			'footer_rand_recipes'  => $footer_rand_recipes,
+			'title_footer'         => $title_footer,
+			'all_categories'       => $all_categories
 		]);
 
 		/**
 		 * Turn on ability to see queries
 		 * If you want to use it, add "use DB;" to the top of the page
-		 * 
 		 */
 		// DB::listen( function ( $query ) {
 		// 	dump($query->sql);

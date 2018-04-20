@@ -26,13 +26,13 @@ class StatisticController extends Controller
 
 		// Count recipes and visits
         $allrecipes = DB::table('recipes')->count();
-        $allclicks = DB::table('visitor_registry')->sum('clicks');
+        $allclicks  = DB::table('visitor_registry')->sum('clicks');
 
 		return view('statistic')->with([
-			'sxgeo' => $sxgeo,
-			'visitors' => $visitors,
-			'allrecipes' => $allrecipes,
-			'allclicks' => $allclicks
+			'sxgeo'       => $sxgeo,
+			'visitors'    => $visitors,
+			'allrecipes'  => $allrecipes,
+			'allclicks'   => $allclicks
 		]);
 	}
 }

@@ -35,8 +35,8 @@ class DashboardController extends Controller
 
 		if ($user->isAdmin()) {
 			$notifications_for_admin = Notification::where([
-				['for_admins', 1],
-				['created_at', '>', $user->notif_check]
+				[ 'for_admins', 1 ],
+				[ 'created_at', '>', $user->notif_check ]
 			])->count();
 
 			$notifications += $notifications_for_admin;
@@ -54,7 +54,7 @@ class DashboardController extends Controller
 
 		return view('dashboard')->with([
 			'allunapproved' => $allunapproved,
-			'allfeedback' => $allfeedback,
+			'allfeedback'   => $allfeedback,
 			'notifications' => $notifications
 		]);
     }

@@ -15,8 +15,8 @@ class ContactController extends Controller
 	{
 
 		Feedback::insert([
-			'name' => $request->имя,
-			'email' => $request->почта,
+			'name'    => $request->имя,
+			'email'   => $request->почта,
 			'message' => $request->сообщение
 		]);
 

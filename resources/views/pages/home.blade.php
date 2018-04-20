@@ -8,8 +8,12 @@
 		<div class="header-bg-img"></div>
 		<div class="header-bg-overlay"></div>
         <div class="header-content">
-            <h1>{{ $title_banner->title or '' }}</h1>
-			<h2>{{ $title_banner->text or '' }}</h2>
+
+			@isset($title_banner)
+				<h1>{{ $title_banner->title }}</h1>
+				<h2>{{ $title_banner->text }}</h2>
+			@endisset
+            
 			<a class="home-button" id="home-search-btn">
 				<svg viewBox="0 0 250.313 250.313" width="30px" style="fill:#fff; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">
 					<path d="{{ $icon }}" />
@@ -27,8 +31,10 @@
     </header>
 
     <section class="home-section">
-		<h2 class="headline">{{ $title_intro->title or '' }}</h2>
-		<p>{{ $title_intro->text or '' }}</p>
+		@isset( $title_intro)
+			<h2 class="headline">{{ $title_intro->title }}</h2>
+			<p>{{ $title_intro->text }}</p>
+		@endisset
     </section>
 
     {{--  Cards  --}}

@@ -27,8 +27,8 @@ class UsersController extends Controller
 		$recipes = Recipe::whereUserId($user->id)->latest()->paginate(20);
 
 		return view('users.show')->with([
-			'recipes' => $recipes,
-			'user' => $user
+			'recipes'  => $recipes,
+			'user'     => $user
 		]);
 	}
 

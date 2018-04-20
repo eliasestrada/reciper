@@ -8,7 +8,11 @@
 					<ul class="unstyled-list">
 						<li><strong>Рецепты</strong></li>
 						@foreach ($random_chunk as $footer_recipe)
-							<li><a href="/recipes/{{ $footer_recipe->id }}" title="{{ $footer_recipe->title }}">{{ $footer_recipe->title }}</a></li>
+							<li>
+								<a href="/recipes/{{ $footer_recipe->id }}" title="{{ $footer_recipe->title }}">
+									{{ $footer_recipe->title }}
+								</a>
+							</li>
 						@endforeach
 					</ul>
 				</div>
@@ -30,9 +34,11 @@
 			<img src="{{ asset('favicon.png') }}" alt="Логотип" class="footer-logo">
 		</a>
 
-		<p class="footer-copyright">
-			&copy; {{ date('Y') }} Delicious Food {{ $title_footer->text or '' }}
-		</p>
+		@isset($title_footer)
+			<p class="footer-copyright">
+				&copy; {{ date('Y') }} Delicious Food {{ $title_footer->text }}
+			</p>
+		@endisset
 
 		<p class="footer-copyright">
 			Дизайн и создание: <a href="https://www.upwork.com/o/profiles/users/_~01f3e73b66ebe1e87b/" style="color:#8080ff;">Сергей Черненький</a>

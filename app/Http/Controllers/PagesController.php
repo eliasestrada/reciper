@@ -16,13 +16,13 @@ class PagesController extends Controller
 		$random_recipes = Recipe::inRandomOrder()
 				->whereApproved(1)
 				->limit(9)
-				->get(['id', 'title', 'image']);
+				->get([ 'id', 'title', 'image' ]);
 
 		$title_banner = Title::whereName('Баннер')
-				->first(['title', 'text']);
+				->first([ 'title', 'text' ]);
 
 		$title_intro = Title::whereName('Интро')
-				->first(['title', 'text']);
+				->first([ 'title', 'text' ]);
 
 		// Code for SVG Icon
 		$icon = 'M244.186,214.604l-54.379-54.378c-0.289-0.289-0.628-0.491-0.93-0.76
@@ -30,9 +30,9 @@ class PagesController extends Controller
 
 		return view('pages.home')->with([
 			'random_recipes' => $random_recipes,
-			'title_banner' => $title_banner,
-			'title_intro' => $title_intro,
-			'icon' => $icon
+			'title_banner'   => $title_banner,
+			'title_intro'    => $title_intro,
+			'icon'           => $icon
 		]);
 	}
 

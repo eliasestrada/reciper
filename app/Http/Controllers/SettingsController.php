@@ -86,7 +86,7 @@ class SettingsController extends Controller
 	public function titles()
 	{
 		$title_banner = Title::whereName('Баннер')->first(['title', 'text']);
-		$title_intro = Title::whereName('Интро')->first(['title', 'text']);
+		$title_intro  = Title::whereName('Интро')->first(['title', 'text']);
 
 		return view('settings.titles')->with([
 			'title_banner' => $title_banner,
