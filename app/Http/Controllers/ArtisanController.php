@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Artisan;
 
 class ArtisanController extends Controller
 {
+	
     public function cache($url_key) {
         if ($url_key != env('URL_KEY')) {
             abort(403);
@@ -23,6 +24,7 @@ class ArtisanController extends Controller
         }
 	}
 	
+
 	public function clear($url_key) {
         if ($url_key != env('URL_KEY')) {
             abort(403);

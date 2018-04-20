@@ -8,23 +8,18 @@ use App\User;
 
 class UsersController extends Controller
 {
+
 	public function __construct()
     {
 		$this->middleware('author');
 	}
 
-    /**
-	 * Index. Show all users
-	 */
+
     public function index() {
         return view('users.index')->withUsers(User::simplePaginate(30));
 	}
 
-    /**
-	 * Show one user
-	 * 
-	 * @param string $id
-	 */
+
 	public function show($id)
     {
 		$user = User::find($id);
@@ -36,11 +31,8 @@ class UsersController extends Controller
 		]);
 	}
 
-	/**
-	 * Add user to authors
-	 * 
-	 * @param string $id
-	 */
+
+	// Add user to authors
     public function add($id)
     {
 		$user = User::whereId($id)->whereAuthor(0);
@@ -55,11 +47,7 @@ class UsersController extends Controller
 		}
 	}
 
-	/**
-	 * Destroy the user
-	 * 
-	 * @param string $id
-	 */
+
     public function delete($id)
     {
 		$user = User::whereId($id)->whereAuthor(0);

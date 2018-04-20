@@ -7,14 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthorMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $guard
-     * @return mixed
-     */
+    // Handle an incoming request.
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check() && Auth::user()->author === 1) {

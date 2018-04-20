@@ -8,14 +8,13 @@ use App\User;
 
 class FeedbackController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('admin');
 	}
 
-	/**
-	 * Index
-	 */
+
     public function index()
     {
 		// Mark that user saw these messages
@@ -26,11 +25,7 @@ class FeedbackController extends Controller
 		return view('feedback.index')->withFeedback(Feedback::paginate(40));
 	}
 
-	/**
-	 * Delete
-	 * 
-	 * @param string $id
-	 */
+
 	public function destroy($id)
 	{
         // Check for correct user

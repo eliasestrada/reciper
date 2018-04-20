@@ -9,11 +9,8 @@ use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
-	/**
-	 * Store in feedback table in database
-	 * 
-	 * @param ContactRequest $request
-	 */
+
+	// Store in feedback table in database
 	public function store(ContactRequest $request) {
 
 		Feedback::insert([

@@ -10,6 +10,7 @@ use App\User;
 
 class DashboardController extends Controller
 {
+
     public function __construct()
     {
 		$this->middleware('auth');
@@ -17,9 +18,7 @@ class DashboardController extends Controller
 		$this->middleware('admin')->only('checklist');
 	}
 
-	/**
-	 * Index. Dashboard
-	 */
+
     public function index()
     {
 		$user = auth()->user();
@@ -60,9 +59,8 @@ class DashboardController extends Controller
 		]);
     }
 
-	/**
-	 * Show all Notifications
-	 */
+
+	// Show all Notifications
     public function notifications() {
 
 		$user_id = auth()->user()->id;
@@ -79,6 +77,7 @@ class DashboardController extends Controller
         return view('notifications')->withNotifications($notifications);
 	}
 
+
 	/**
 	 * Checklist shows all recipes that need to be approved
 	 * by administration
@@ -93,9 +92,8 @@ class DashboardController extends Controller
 		return view('checklist')->withUnapproved($unapproved);
 	}
 
-	/**
-	 * Show all my recipes
-	 */
+	
+	// Show all my recipes
     public function my_recipes() {
 
 		$user = auth()->user();

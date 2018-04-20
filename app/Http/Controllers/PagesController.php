@@ -9,9 +9,7 @@ use App\Models\Title;
 
 class PagesController extends Controller
 {
-	/**
-	 * Home Page
-	 */
+
     public function home() {
 
 		$random_recipes = Recipe::inRandomOrder()
@@ -37,11 +35,7 @@ class PagesController extends Controller
 		]);
 	}
 
-	/**
-	 * Search
-	 * 
-	 * @param Request $request
-	 */
+
 	public function search(Request $request)
     {
 		$query = $request->input('for');

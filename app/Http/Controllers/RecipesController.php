@@ -22,17 +22,14 @@ class RecipesController extends Controller
 		]]);
     }
 
-    /**
-	 * Index, show all approved recipes
-	 */
+    // Index, show all approved recipes
     public function index()
     {
 		return view('recipes.index');
     }
 
-    /**
-	 * Create a new recipe in database
-	 */
+
+    // Create a new recipe in database
     public function create()
     {
         // For select input
@@ -41,10 +38,9 @@ class RecipesController extends Controller
 		return view('recipes.create')->withCategories($categories);
     }
 
+
     /**
-	 * Store
 	 * It will save the recipe to a database
-	 * 
 	 * @param RecipeSaveRequest $request is validating this method
 	 * @param SaveRecipeDataContract $saveImage
 	 */
@@ -60,12 +56,7 @@ class RecipesController extends Controller
 			->withSuccess('Рецепт успешно сохранен');
     }
 
-    /**
-	 * Show
-	 * It will show the recipe on a single page
-	 * 
-	 * @param string $id
-	 */
+    // It will show the recipe on a single page
     public function show($id)
     {
 		$user = auth()->user();
@@ -98,11 +89,7 @@ class RecipesController extends Controller
 		return view('recipes.show')->withRecipe($recipe);
     }
 
-    /**
-	 * Edit single recipe
-	 * 
-	 * @param string $id
-	 */
+
     public function edit($id)
     {
 		$recipe = Recipe::find($id);
@@ -129,10 +116,10 @@ class RecipesController extends Controller
 		]);
     }
 
+
     /**
 	 * Update single recipe
-	 * 
-	 * @param Request $request
+	 * @param RecipePublichRequest $request
 	 * @param string $id
 	 */
     public function update(RecipePublichRequest $request, $id)
@@ -176,34 +163,22 @@ class RecipesController extends Controller
 		);
     }
 
-    /**
-	 * Like the recipe
-	 * 
-	 * @param string $id
-	 */
+
     public function like($id)
     {
 		Recipe::find($id)->increment('likes');
         return back()->withCookie(cookie('liked', 1, 5000));
 	}
 	
-	/**
-	 * Dislike
-	 * 
-	 * @param string $id
-	 */
+
     public function dislike($id)
     {
 		Recipe::find($id)->decrement('likes');
 		return back()->withCookie(Cookie::forget('liked'));
     }
 
-    /**
-	 * Approve
-	 * 
-	 * @param string $id
-	 * @param Request $request
-	 */
+
+    // Approve the recipe (for admins)
     public function answer($id, Request $request)
     {
         $update_recipe = Recipe::where([
@@ -252,11 +227,7 @@ class RecipesController extends Controller
         }
     }
 
-    /**
-	 * Destroy the recipe
-	 * 
-	 * @param string $id
-	 */
+
     public function destroy($id)
     {
 		$recipe = Recipe::find($id);

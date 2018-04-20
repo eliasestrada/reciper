@@ -10,18 +10,15 @@ use App\Http\Resources\RecipesRandomResource;
 
 class ApiRecipesController extends Controller
 {
-	/**
-	 * All approved recipes
-	 */
+	
+	// All approved recipes
     public function index() {
 		$recipes = Recipe::whereApproved(1)->latest()->paginate(30);
 
 		return RecipesResource::collection($recipes);
 	}
 
-	/**
-	 * Show random recipes
-	 */
+
     public function showRandomRecipes($id) {
 		$random = Recipe::inRandomOrder()
 				->where('id', '!=', $id)
