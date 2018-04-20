@@ -17,7 +17,7 @@ class SettingsUpdateUserPasswordRequest extends FormRequest
     {
         return [
             'old_password' => 'required|string',
-			'password' => 'required|string|min:6|confirmed'
+			'password'     => 'required|string|min:6|confirmed'
         ];
 	}
 	
@@ -25,9 +25,9 @@ class SettingsUpdateUserPasswordRequest extends FormRequest
 	public function messages() {
 		return [
 			'old_password.required' => 'Старый пароль обязателен к заполнению',
-            'password.required' => 'Новый пароль обязателен к заполнению',
-            'password.min' => 'Пароль должен иметь хотябы 6 символов',
-            'password.confirmed' => 'Пароли не совпадают'
+            'password.required'     => 'Новый пароль обязателен к заполнению',
+            'password.min'          => 'Пароль должен иметь хотябы 6 символов',
+            'password.confirmed'    => 'Пароли не совпадают'
 		];
 	}
 }

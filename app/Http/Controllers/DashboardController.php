@@ -21,22 +21,20 @@ class DashboardController extends Controller
 
     public function index()
     {
-		$user = auth()->user();
-
 		// Update last visit
 		User::whereId($user->id)->update([
 			'updated_at' => NOW()
 		]);
 
         $notifications = Notification::where([
-			['user_id', $user->id],
-			['created_at', '>', $user->notif_check]
+			['user_id', user()->id],
+			['created_at', '>', user()->notif_check]
 		])->count();
 
-		if ($user->isAdmin()) {
+		if (user()->isAdmin()) {
 			$notifications_for_admin = Notification::where([
 				[ 'for_admins', 1 ],
-				[ 'created_at', '>', $user->notif_check ]
+				[ 'created_at', '>', user()->notif_check ]
 			])->count();
 
 			$notifications += $notifications_for_admin;
@@ -49,7 +47,7 @@ class DashboardController extends Controller
 		$allunapproved = !empty($allunapproved) ? 'data-notif='.$allunapproved : '';
 
 		// Feedback
-		$allfeedback = Feedback::where('created_at', '>', $user->contact_check)->count();
+		$allfeedback = Feedback::where('created_at', '>', user()->contact_check)->count();
 		$allfeedback = !empty($allfeedback) ? 'data-notif='.$allfeedback : '';
 
 		return view('dashboard')->with([
@@ -64,14 +62,12 @@ class DashboardController extends Controller
 	public function notifications()
 	{
 
-		$user_id = auth()->user()->id;
-
-        $notifications = Notification::whereUserId($user_id)
+        $notifications = Notification::whereUserId(user()->id)
 				->orWhere('for_admins', 1)
 				->latest()
 				->paginate(10);
 
-		User::whereId($user_id)->update([
+		User::whereId(user()->id)->update([
 			'notif_check' => NOW()
 		]);
 
@@ -93,14 +89,10 @@ class DashboardController extends Controller
 
 		return view('checklist')->withUnapproved($unapproved);
 	}
-
-	
 	// Show all my recipes
 	public function my_recipes()
 	{
-
-		$user = auth()->user();
-		$recipes = Recipe::whereUserId($user->id)->latest()->paginate(20);
+		$recipes = Recipe::whereUserId(user()->id)->latest()->paginate(20);
 
 		return view('my_recipes')->withRecipes($recipes);
 	}

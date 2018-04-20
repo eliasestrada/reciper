@@ -45,10 +45,9 @@ class RecipesController extends Controller
 	 */
     public function store(RecipeSaveRequest $request, SaveRecipeDataContract $saveRecipeData)
     {
-		$user = auth()->user();
 		$recipe = new Recipe;
 
-		$saveRecipeData->save($request, $user, $recipe);
+		$saveRecipeData->save($request, user(), $recipe);
 		$recipe->save();
 
 		return redirect('/recipes/'.$recipe->id.'/edit') ->withSuccess(
@@ -59,27 +58,26 @@ class RecipesController extends Controller
     // It will show the recipe on a single page
     public function show($id)
     {
-		$user   = auth()->user();
 		$recipe = Recipe::find($id);
 
         // Rules for visitors
-        if (!$user && !$recipe->approved()) {
+        if (!user() && !$recipe->approved()) {
             return redirect('/recipes')->withError(
 				'У вас нет права просматривать этот рецепт, так как он еще не опубликован'
 			);
 		}
 
         // Rules for auth users
-        if ($user) {
-            if (!$user->isAdmin() && !$user->hasRecipe($recipe->user_id) && !$recipe->ready()) {
+        if (user()) {
+            if (!user()->isAdmin() && !user()->hasRecipe($recipe->user_id) && !$recipe->ready()) {
                 return redirect('/recipes')->with(
 					'error', 'У вас нет права на просмотр этого рецепта'
 				);
-            } elseif (!$user->hasRecipe($recipe->user_id) && !$recipe->ready()) {
+            } elseif (!user()->hasRecipe($recipe->user_id) && !$recipe->ready()) {
                 return redirect('/recipes')->with(
 					'error', 'Этот рецепт находится в процессе написания.'
 				);
-			} elseif (!$user->isAdmin() && !$user->hasRecipe($recipe->user_id) && !$recipe->approved()) {
+			} elseif (!user()->isAdmin() && !user()->hasRecipe($recipe->user_id) && !$recipe->approved()) {
                 return redirect('/recipes')->with(
 					'error', 'Этот рецепт еще не одобрен.'
 				);
@@ -93,16 +91,15 @@ class RecipesController extends Controller
     public function edit($id)
     {
 		$recipe = Recipe::find($id);
-		$user   = auth()->user();
 
         // Check for correct user
-        if (!$user->hasRecipe($recipe->user_id) && !$user->isAdmin()) {
+        if (!user()->hasRecipe($recipe->user_id) && !user()->isAdmin()) {
             return redirect('/recipes')->withError(
 				'Вы не можете редактировать не свои рецепты.'
 			);
         }
 
-        if ($recipe->ready() && !$user->isAdmin()) {
+        if ($recipe->ready() && !user()->isAdmin()) {
 			return redirect('/recipes')->withError(
 				'Вы не можете редактировать рецепты которые находятся на рассмотрении или уже опубликованны.'
 			);
@@ -124,28 +121,28 @@ class RecipesController extends Controller
 	 */
     public function update(RecipePublichRequest $request, $id)
     {
-        // Create Recipe in DB
-        $recipe              = Recipe::find($id);
-        $recipe->ready       = isset($request->ready) ? 1 : 0;
-        $recipe->title       = $request->input('название');
-        $recipe->intro       = $request->input('описание');
-        $recipe->ingredients = $request->input('ингридиенты');
-        $recipe->advice      = $request->input('совет');
-        $recipe->text        = $request->input('приготовление');
-        $recipe->time        = $request->input('время');
-        $recipe->category    = $request->input('категория');
-        $recipe->approved    = (auth()->user()->isAdmin()) ? 1 : 0;
+		$recipe = Recipe::find($id);
+		$recipe->update($request->except([
+			'_token','_method', 'image'
+		]));
+
+		$recipe->update([
+			'ready'    => isset($request->ready) ? 1 : 0,
+			'approved' => user()->isAdmin() ? 1 : 0
+		]);
 
         // Handle image uploading
-        if ($request->hasFile('изображение')) {
-            $image    = $request->file('изображение');
+        if ($request->hasFile('image')) {
+            $image    = $request->file('image');
 			$filename = time() . rand() . '.' . $image->getClientOriginalExtension();
 
             Image::make($image)->resize(600, 400)->save(
 				storage_path('app/public/images/' . $filename )
 			);
 
-            $recipe->image = $filename;
+			$recipe->update([
+				'image' => $filename
+			]);
 		}
 		$recipe->save();
 
@@ -153,7 +150,7 @@ class RecipesController extends Controller
             return redirect()->back()->withSuccess(
 				'Рецепт успешно сохранен'
 			);
-        } elseif ($recipe->ready() && auth()->user()->isAdmin()) {
+        } elseif ($recipe->ready() && user()->isAdmin()) {
             return redirect('/recipes')->withSuccess(
 				'Рецепт опубликован и доступен для посетителей.'
 			);
@@ -230,23 +227,17 @@ class RecipesController extends Controller
     }
 
 
+	// We also deliting image in App\Observers\RecipeObserver
     public function destroy($id)
     {
 		$recipe = Recipe::find($id);
-		$user   = auth()->user();
 
         // Check for correct user
-        if (!$user->hasRecipe($recipe->user_id) && !$user->isAdmin()) {
+        if (!user()->hasRecipe($recipe->user_id) && !user()->isAdmin()) {
             return redirect('/recipes')->withError(
 				'Вы не можете редактировать не свои рецепты'
 			);
         }
-
-		// Deleting image file
-        if ($recipe->image != 'default.jpg') {
-            Storage::delete('public/images/'.$recipe->image);
-        }
-
 		$recipe->delete();
 
         return redirect('/my_recipes')->withSuccess('Рецепт успешно удален');

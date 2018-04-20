@@ -28,48 +28,48 @@
         <button class="accordion" type="button">Название</button>
         <div class="accordion-panel">
             <div class="form-group">
-                {{ Form::label('название', 'Название') }}
-                {{ Form::text('название', $recipe->title, ['placeholder' => 'Название рецепта']) }}
+                {{ Form::label('title', 'Название') }}
+                {{ Form::text('title', $recipe->title, ['placeholder' => 'Название рецепта']) }}
             </div>
         </div>
 
         <button class="accordion" type="button">Описание</button>
         <div class="accordion-panel">
             <div class="form-group">
-				{{ Form::label('описание', 'Описание') }}
-				{{ Form::textarea('описание', $recipe->intro, ['placeholder' => 'Краткое описание рецепта']) }}
+				{{ Form::label('intro', 'Описание') }}
+				{{ Form::textarea('intro', $recipe->intro, ['placeholder' => 'Краткое описание рецепта']) }}
             </div>
         </div>
 
         <button class="accordion" type="button">Ингридиенты</button>
         <div class="accordion-panel">
             <div class="form-group">
-                {{ Form::label('ингридиенты', 'Ингридиенты') }}
-                {{ Form::textarea('ингридиенты', $recipe->ingredients, ['placeholder' => 'Все ингридиенты рецепта. После каждого ингридиента нажимайте кнопку Ввод (Enter) чтобы разделить их на строки.']) }}
+                {{ Form::label('ingredients', 'Ингридиенты') }}
+                {{ Form::textarea('ingredients', $recipe->ingredients, ['placeholder' => 'Все ингридиенты рецепта. После каждого ингридиента нажимайте кнопку Ввод (Enter) чтобы разделить их на строки.']) }}
             </div>
         </div>
 
         <button class="accordion" type="button">Совет</button>
         <div class="accordion-panel">
             <div class="form-group">
-                {{ Form::label('совет', 'Совет') }}
-                {{ Form::textarea('совет', $recipe->advice, ['placeholder' => 'Это поле не обязательно к заполнению, если у вас есть просьба или совет который может помочь в приготовлении блюда пишите его сюда.']) }}
+                {{ Form::label('advice', 'Совет') }}
+                {{ Form::textarea('advice', $recipe->advice, ['placeholder' => 'Это поле не обязательно к заполнению, если у вас есть просьба или совет который может помочь в приготовлении блюда пишите его сюда.']) }}
             </div>
         </div>
 
         <button class="accordion" type="button">Приготовление</button>
         <div class="accordion-panel">
             <div class="form-group">
-                {{ Form::label('приготовление', 'Приготовление') }}
-                {{ Form::textarea('приготовление', $recipe->text, ['placeholder' => 'Опишите процесс приготовления по пунктам используя Ввод (Enter) для отделения пунктов друг от друга.']) }}
+                {{ Form::label('text', 'Приготовление') }}
+                {{ Form::textarea('text', $recipe->text, ['placeholder' => 'Опишите процесс приготовления по пунктам используя Ввод (Enter) для отделения пунктов друг от друга.']) }}
             </div>
         </div>
 
         <button class="accordion" type="button">Категория</button>
         <div class="accordion-panel">
             <div class="form-group">
-                {{ Form::label('категория', 'Категория') }}
-                <select name="категория">
+                {{ Form::label('category', 'Категория') }}
+                <select name="category">
                     @foreach ($categories as $category)
                         <option selected value="{{ $category->category }}">{{ $category->category }}</option>
                     @endforeach
@@ -81,8 +81,8 @@
         <button class="accordion" type="button">Время приготовления</button>
         <div class="accordion-panel">
             <div class="form-group">
-                {{ Form::label('время', 'Время приготовления в минутах') }}
-                {{ Form::number('время', $recipe->time) }}
+                {{ Form::label('time', 'Время приготовления в минутах') }}
+                {{ Form::number('time', $recipe->time) }}
             </div>
         </div>
 
@@ -90,7 +90,7 @@
         <div class="accordion-panel">
             <div class="form-group">
 				{{ Form::label('src-image', 'Выбрать файл', ['class' => 'image-label']) }}
-				{{ Form::file('изображение', ['style' => "display:none;", "id" => "src-image"]) }}
+				{{ Form::file('image', ['style' => "display:none;", "id" => "src-image"]) }}
 
 				<section class="preview-image">
 					<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{$recipe->title}}" id="target-image">

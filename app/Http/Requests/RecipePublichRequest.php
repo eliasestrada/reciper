@@ -20,13 +20,13 @@ class RecipePublichRequest extends FormRequest
     {
         if ($this->ready == 1) {
 			return [
-				'название' => 'min:5|max:199',
-				'описание' => 'min:20|max:2000',
-				'ингридиенты' => 'min:20|max:5000',
-				'совет' => 'max:5000',
-				'приготовление' => 'min:80|max:10000',
-				'время' => 'numeric|digits_between:0,1000',
-				'изображение' => 'image|nullable|max:1999'
+				'title'        => 'min:5|max:199',
+				'intro'        => 'min:20|max:2000',
+				'ingredients'  => 'min:20|max:5000',
+				'advice'       => 'max:5000',
+				'text'         => 'min:80|max:10000',
+				'time'         => 'numeric|digits_between:0,1000',
+				'image'        => 'image|nullable|max:1999'
 			];
 		}
 		return [];

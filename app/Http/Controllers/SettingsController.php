@@ -21,26 +21,28 @@ class SettingsController extends Controller
 		$this->middleware('author');
 	}
 
+	
 	public function general()
 	{
 		return view('settings.general');
 	}
 
+
 	public function photo()
 	{
-		return view('settings.photo')->withUser(auth()->user());
+		return view('settings.photo')->withUser(user());
 	}
 
 
 	public function updatePhoto(SettingsPhotoRequest $request)
     {
 		
-		$user = User::find(auth()->user()->id);
+		$user = User::find(user()->id);
 
 		if ($request->hasFile('image')) {
 			$image = $request->file('image');
 
-			$filename = 'user' . auth()->user()->id . '.' . $image->getClientOriginalExtension();
+			$filename = 'user' . user()->id . '.' . $image->getClientOriginalExtension();
 			
 			Image::make($image)->resize(300, 300)->save(storage_path('app/public/uploads/' . $filename ));
 			
@@ -59,7 +61,7 @@ class SettingsController extends Controller
 
 	public function updateUserData(SettingsUpdateUserDataRequest $request)
 	{
-		auth()->user()->update([
+		user()->update([
 			'name' => $request->name
 		]);
 
@@ -69,10 +71,8 @@ class SettingsController extends Controller
 
 	public function updateUserPassword(SettingsUpdateUserPasswordRequest $request)
 	{
-		$user = auth()->user();
-
-        if(Hash::check($request->old_password, $user->password)) {
-			$user->update([
+        if(Hash::check($request->old_password, user()->password)) {
+			user()->update([
 				'password' => Hash::make($request->password)
 			]);
 

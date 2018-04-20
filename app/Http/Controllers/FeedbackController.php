@@ -18,7 +18,7 @@ class FeedbackController extends Controller
     public function index()
     {
 		// Mark that user saw these messages
-		User::whereId(auth()->user()->id)->update([
+		User::whereId(user()->id)->update([
 			'contact_check' => NOW()
 		]);
 
@@ -29,7 +29,7 @@ class FeedbackController extends Controller
 	public function destroy($id)
 	{
         // Check for correct user
-        if (!auth()->user()->isAdmin()) {
+        if (!user()->isAdmin()) {
             return redirect('/feedback')->withError(
 				'Только админ может удалять эти сообщения!'
 			);

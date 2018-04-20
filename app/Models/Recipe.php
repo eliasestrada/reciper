@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
+	// The attributes that are mass assignable.
+    protected $guarded = ['id'];
+
     public function user() {
         return $this->belongsTo('App\User');
 	}

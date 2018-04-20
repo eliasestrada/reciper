@@ -77,7 +77,8 @@ return [
         App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
 		Intervention\Image\ImageServiceProvider::class,
-		App\Providers\UploadRecipeDataServiceProvider::class
+		App\Providers\UploadRecipeDataServiceProvider::class,
+		App\Providers\EloquentEventServiceProvider::class,
     ],
 
     /**

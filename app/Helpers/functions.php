@@ -11,6 +11,11 @@ function convertToListItems( $string )
 	return implode('', array_values($list_of_ingredients));
 }
 
+function user()
+{
+	return auth()->user();
+}
+
 function styleTimestamp( $path )
 {
 	try {
