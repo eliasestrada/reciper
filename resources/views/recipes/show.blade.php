@@ -19,7 +19,7 @@
 
 		{{--  Buttons  --}}
 		@auth
-			@if (Auth::user()->id == $recipe->user_id && $recipe->ready === 0)
+			@if (user()->hasRecipe($recipe->id) && !$recipe->ready())
 				<div class="recipe-buttons">
 					{{--  Edit button  --}}
 					<a href="/recipes/{{ $recipe->id }}/edit" title="Редактировать рецепт" class="edit-recipe-icon icon-edit"></a>
@@ -33,7 +33,7 @@
 			@endif
 
 			{{--  Buttons for admin  --}}
-			@if (Auth::user()->admin === 1 && $recipe->approved === 0 && $recipe->ready === 1)
+			@if (user()->isAdmin() && !$recipe->approved() && $recipe->ready())
 				<div class="recipe-buttons">
 					{!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto; display: inline-block;', 'onsubmit' => 'return confirm("Вы точно хотите опубликовать этот рецепт?")']) !!}
 						{{ Form::hidden('answer', 'approve') }}
@@ -66,7 +66,7 @@
 		{{--  Items ( Ингридиенты ) --}}
 		<h3 class="decorated"><span>Ингридиенты</span></h3>
 		<div class="items">
-			<ul>{!! $recipe->presentIngredients() !!}</ul>
+			<ul>{!! $recipe->ingredients !!}</ul>
 		</div>
 
 		{{--  Совет  --}}
@@ -75,7 +75,7 @@
 		{{--  Приготовление  --}}
 		<h3 class="decorated"><span>Приготовление</span></h3>
 		<ol class="instruction unstyled-list">
-			{!! $recipe->presentText() !!}
+			{!! $recipe->text !!}
 		</ol>
 
 		<h3 class="decorated"><span>Приятного аппетита!</span></h3>

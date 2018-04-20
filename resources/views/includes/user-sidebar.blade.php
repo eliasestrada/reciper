@@ -53,7 +53,7 @@
 				</a>
 
 				{{--  Для Админов  --}}
-				@if (Auth::user()->admin === 1)
+				@if (user()->isAdmin())
 					<a href="/settings/titles" title="Заголовки">
 						<span>Заголовки</span>
 					</a>

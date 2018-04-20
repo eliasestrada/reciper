@@ -7,7 +7,7 @@
 <h2 class="headline">Проверочная</h2>
 
 {{--  Unapproved recipes  --}}
-@if (auth()->user()->admin === 1)
+@admin
 	<div class="list-of-recipes">
 		<h4 style="margin: .5em;">
 			Рецепты на рассмотрении {{ $unapproved->count() }}
@@ -34,6 +34,6 @@
 
 		{{ $unapproved->links() }}
 	</div>
-@endif
+@endadmin
 
 @endsection

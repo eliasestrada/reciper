@@ -17,7 +17,7 @@
 						<h3 class="project-name">{{ $user->name }}</h3>
 						<p class="project-title">В сети: {{ facebookTimeAgo( $user->updated_at ) }}</p>
 
-						@if ( Auth::user()->admin === 1 && $user->author === 0 )
+						@if ( user()->isAdmin() && !$user->isAuthor() )
 							<div class="block-message-content">
 								<p>Этот пользователь зарегестрировался {{ facebookTimeAgo( $user->created_at ) }}, не добавляйте пользователя если вы предварительно не просили его зарегестрироваться.</p>
 							

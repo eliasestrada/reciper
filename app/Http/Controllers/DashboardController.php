@@ -22,7 +22,7 @@ class DashboardController extends Controller
     public function index()
     {
 		// Update last visit
-		User::whereId($user->id)->update([
+		User::whereId(user()->id)->update([
 			'updated_at' => NOW()
 		]);
 
@@ -57,7 +57,6 @@ class DashboardController extends Controller
 		]);
     }
 
-
 	// Show all Notifications
 	public function notifications()
 	{
@@ -74,14 +73,12 @@ class DashboardController extends Controller
         return view('notifications')->withNotifications($notifications);
 	}
 
-
 	/**
 	 * Checklist shows all recipes that need to be approved
 	 * by administration
 	 */
 	public function checklist()
 	{
-
 		$unapproved = Recipe::whereApproved(0)
 				->whereReady(1)
 				->oldest()

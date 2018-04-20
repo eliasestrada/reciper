@@ -12,7 +12,7 @@
 
 		<div class="form-group">
 			{{ Form::label('name', 'Имя') }}
-			{{ Form::text('name', auth()->user()->name, ['placeholder' => 'Ваше имя']) }}
+			{{ Form::text('name', user()->name, ['placeholder' => 'Ваше имя']) }}
 		</div>
 
 		<div class="form-group">

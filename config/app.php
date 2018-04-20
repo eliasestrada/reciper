@@ -79,6 +79,7 @@ return [
 		Intervention\Image\ImageServiceProvider::class,
 		App\Providers\UploadRecipeDataServiceProvider::class,
 		App\Providers\EloquentEventServiceProvider::class,
+		App\Providers\BladeServiceProvider::class,
     ],
 
     /**
