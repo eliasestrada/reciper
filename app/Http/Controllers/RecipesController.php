@@ -46,8 +46,7 @@ class RecipesController extends Controller
     public function store(RecipeSaveRequest $request, SaveRecipeDataContract $saveRecipeData)
     {
 		$recipe = new Recipe;
-
-		$saveRecipeData->save($request, user(), $recipe);
+		$saveRecipeData->save( $request, $recipe );
 		$recipe->save();
 
 		return redirect('/recipes/'.$recipe->id.'/edit') ->withSuccess(

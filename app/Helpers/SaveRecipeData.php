@@ -17,25 +17,23 @@ class SaveRecipeData implements SaveRecipeDataContract {
 	 * it will return string with the default file name
 	 * 
 	 * @param Request $request
-	 * @param User $user
 	 * @param Recipe $recipe
 	 */
-	public static function save(Request $request, User $user, Recipe $recipe) {
+	public static function save(Request $request, Recipe $recipe) {
 		$thisClass = new self;
 		$thisClass->uploadImageToStorage($request);
-		$user = auth()->user();
 
-        // Create Recipe in DB
-        $recipe->title = $request->input('название');
-        $recipe->intro = $request->input('описание');
-        $recipe->ingredients = $request->input('ингридиенты');
-        $recipe->advice = $request->input('совет');
-        $recipe->text = $request->input('приготовление');
-        $recipe->time = $request->input('время');
-        $recipe->category = $request->input('категория');
-        $recipe->user_id = $user->id;
-        $recipe->author = $user->name;
-		$recipe->image = $thisClass->whatNameOfUploadedImage();
+		// Create Recipe in DB
+        $recipe->title        = $request->input('title');
+        $recipe->intro        = $request->input('intro');
+        $recipe->ingredients  = $request->input('ingredients');
+        $recipe->advice       = $request->input('advice');
+        $recipe->text         = $request->input('text');
+        $recipe->time         = $request->input('time');
+        $recipe->category     = $request->input('category');
+        $recipe->user_id      = user()->id;
+        $recipe->author       = user()->name;
+		$recipe->image        = $thisClass->whatNameOfUploadedImage();
 	}
 
 	/**
@@ -46,8 +44,8 @@ class SaveRecipeData implements SaveRecipeDataContract {
 	 * @param Request $request
 	 */
 	public function uploadImageToStorage(Request $request) {
-		if ($request->hasFile('изображение')) {
-        	$image = $request->file('изображение');
+		if ($request->hasFile('image')) {
+        	$image = $request->file('image');
 			$filename = time() . rand() . '.' . $image->getClientOriginalExtension();
 			
             Image::make($image)->resize(600, 400)->save(

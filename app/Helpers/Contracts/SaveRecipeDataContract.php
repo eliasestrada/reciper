@@ -7,7 +7,7 @@ use App\Models\Recipe;
 use Illuminate\Http\Request;
 
 Interface SaveRecipeDataContract {
-	public static function save(Request $request, User $user, Recipe $recipe);
+	public static function save(Request $request, Recipe $recipe);
 	public function uploadImageToStorage(Request $request);
 	public function whatNameOfUploadedImage();
 }

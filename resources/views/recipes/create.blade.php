@@ -15,42 +15,42 @@
 	<button class="accordion" type="button">Название</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::text('название', '', ['placeholder' => 'Название рецепта']) }}
+			{{ Form::text('title', '', ['placeholder' => 'Название рецепта']) }}
 		</div>
 	</div>
 	
 	<button class="accordion" type="button">Описание</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::textarea('описание', '', ['placeholder' => 'Краткое описание рецепта']) }}
+			{{ Form::textarea('intro', '', ['placeholder' => 'Краткое описание рецепта']) }}
 		</div>
 	</div>
 	
 	<button class="accordion" type="button">Ингридиенты</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::textarea('ингридиенты', '', ['placeholder' => 'Все ингридиенты рецепта. После каждого ингридиента нажимайте кнопку Ввод (Enter) чтобы разделить их на строки.']) }}
+			{{ Form::textarea('ingredients', '', ['placeholder' => 'Все ингридиенты рецепта. После каждого ингридиента нажимайте кнопку Ввод (Enter) чтобы разделить их на строки.']) }}
 		</div>
 	</div>
 
 	<button class="accordion" type="button">Совет</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::textarea('совет', '', ['placeholder' => 'Это поле не обязательно к заполнению, если у вас есть просьба или совет который может помочь в приготовлении блюда пишите его сюда.']) }}
+			{{ Form::textarea('advice', '', ['placeholder' => 'Это поле не обязательно к заполнению, если у вас есть просьба или совет который может помочь в приготовлении блюда пишите его сюда.']) }}
 		</div>
 	</div>
 
 	<button class="accordion" type="button">Приготовление</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::textarea('приготовление', '', ['placeholder' => 'Опишите процесс приготовления по пунктам используя Ввод (Enter) для отделения пунктов друг от друга.']) }}
+			{{ Form::textarea('text', '', ['placeholder' => 'Опишите процесс приготовления по пунктам используя Ввод (Enter) для отделения пунктов друг от друга.']) }}
 		</div>
 	</div>
 
 	<button class="accordion" type="button">Категория</button>
 	<div class="accordion-panel">
 		<div class="form-group simple-group">
-			<select name="категория">
+			<select name="category">
 				@foreach ($categories as $category)
 					<option selected value="{{ $category->category }}">{{ $category->category }}</option>
 				@endforeach
@@ -61,8 +61,8 @@
 	<button class="accordion" type="button">Время приготовления</button>
 	<div class="accordion-panel">
 		<div class="form-group simple-group">
-			{{ Form::label('время', 'Время приготовления в минутах') }}
-			{{ Form::number('время', '0') }}
+			{{ Form::label('time', 'Время приготовления в минутах') }}
+			{{ Form::number('time', '0') }}
 		</div>
 	</div>
 
@@ -70,7 +70,7 @@
 	<div class="accordion-panel">
 		<div class="form-group simple-group">
 			{{ Form::label('src-image', 'Выбрать файл', ['class' => 'image-label']) }}
-			{{ Form::file('изображение', ['style' => "display:none;", "id" => "src-image"]) }}
+			{{ Form::file('image', ['style' => "display:none;", "id" => "src-image"]) }}
 			
 			<section class="preview-image">
 					<img src="{{ asset('storage/images/default.jpg') }}" alt="Изображение" id="target-image">
