@@ -1,4 +1,4 @@
-@auth     
+@author     
 	<nav class="user-sidebar">
 		<ul>
 			<li class="disapear-on-big-screen">
@@ -52,12 +52,11 @@
 					<span>Фотография</span>
 				</a>
 
-				{{--  Для Админов  --}}
-				@if (user()->isAdmin())
+				@admin
 					<a href="/settings/titles" title="Заголовки">
 						<span>Заголовки</span>
 					</a>
-				@endif
+				@endadmin
 			</div>
 		</ul>
 		<li>
@@ -71,4 +70,4 @@
 	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
 		@csrf
 	</form>
-@endauth
+@endauthor

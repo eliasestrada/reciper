@@ -2,7 +2,9 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
 	@include('includes.head')
-	<title>@yield('title') - {{ config('app.name') }}</title>
+	<title>
+		@yield('title') - {{ config('app.name') }}
+	</title>
 	@yield('head')
 </head>
 <body>
@@ -29,5 +31,6 @@
 	<!-- Javascript -->
 	{!! scriptTimestamp('/js/app.min.js') !!}
 	@yield('script')
+
 </body>
 </html>

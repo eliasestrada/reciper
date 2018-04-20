@@ -31,9 +31,11 @@
 					{!! Form::close() !!}
 				</div>
 			@endif
+		@endauth
 
-			{{--  Buttons for admin  --}}
-			@if (user()->isAdmin() && !$recipe->approved() && $recipe->ready())
+		{{--  Buttons for admin  --}}
+		@admin
+			@if (!$recipe->approved() && $recipe->ready())
 				<div class="recipe-buttons">
 					{!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto; display: inline-block;', 'onsubmit' => 'return confirm("Вы точно хотите опубликовать этот рецепт?")']) !!}
 						{{ Form::hidden('answer', 'approve') }}
@@ -46,7 +48,7 @@
 					{!! Form::close() !!}
 				</div>
 			@endif
-		@endauth
+		@endadmin
 		
 		<h1 class="headline">{{ $recipe->title }}</h1>
 

@@ -8,25 +8,25 @@
 <form method="POST" action="{{ route('login') }}" class="form">
 	@csrf
 
-	<div class="form-group">
+	<div class="form-group simple-group">
 		{{ Form::label('email', 'Эл. адрес') }}
 		{{ Form::email('email', null, ['placeholder' => 'Эл. адрес']) }}
 	</div>
 
-	<div class="form-group">
+	<div class="form-group simple-group">
 		{{ Form::label('password', 'Пароль') }}
 		{{ Form::password('password', ['placeholder' => 'Пароль']) }}
 	</div>
 	
-	<div class="form-group" style="display:flex;">
+	<div class="form-group simple-group" style="display:flex;">
 		<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Запомнить меня
 	</div>
 
-	<div class="form-group">
+	<div class="form-group simple-group">
 		{{ Form::submit('Войти') }}
 	</div>
 
-	<a href="{{ route('password.request') }}">Забыли пароль?</a>
+	{{-- <a href="{{ route('password.request') }}">Забыли пароль?</a> --}}
 </form>
 <div class="spacer"></div>
 

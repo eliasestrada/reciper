@@ -3,62 +3,64 @@
 @section('title', 'Главная')
 
 @section('content')
-	{{--  Home Header  --}}
-    <header class="home-header">
-		<div class="header-bg-img"></div>
-		<div class="header-bg-overlay"></div>
-        <div class="header-content">
 
-			@isset($title_banner)
-				<h1>{{ $title_banner->title }}</h1>
-				<h2>{{ $title_banner->text }}</h2>
-			@endisset
-            
-			<a class="home-button" id="home-search-btn">
-				<svg viewBox="0 0 250.313 250.313" width="30px" style="fill:#fff; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">
-					<path d="{{ $icon }}" />
-				</svg>
-			</a>
+{{--  Home Header  --}}
+<header class="home-header">
+	<div class="header-bg-img"></div>
+	<div class="header-bg-overlay"></div>
+	<div class="header-content">
 
-			{{--  Form  --}}
-			{!! Form::open(['action' => 'PagesController@search', 'method' => 'GET', 'class' => 'header-search']) !!}
-				<div class="form-group">
-					{{ Form::text('for', '', ['id' => 'header-search-input', 'placeholder' => 'Введите критерии поиска...']) }}
-					{{ Form::submit('', ['style' => 'display:none']) }}
-				</div>
-			{!! Form::close() !!}
-        </div>
-    </header>
-
-    <section class="home-section">
-		@isset( $title_intro)
-			<h2 class="headline">{{ $title_intro->title }}</h2>
-			<p>{{ $title_intro->text }}</p>
+		@isset($title_banner)
+			<h1>{{ $title_banner->title }}</h1>
+			<h2>{{ $title_banner->text }}</h2>
 		@endisset
-    </section>
+		
+		<a class="home-button" id="home-search-btn">
+			<svg viewBox="0 0 250.313 250.313" width="30px" style="fill:#fff; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">
+				<path d="{{ $icon }}" />
+			</svg>
+		</a>
 
-    {{--  Cards  --}}
-    <section class="home-section">
-		@if (count($random_recipes) > 0)
-			@foreach ($random_recipes->chunk(3) as $chunk)
-				<div class="row">
-					@foreach ($chunk as $random)
-						<div class="recipe-container col-xs-12 col-sm-6 col-md-4" style="animation: appear {{ 2 + $loop->index }}s;">
-							<div class="recipe">
-								<a href="/recipes/{{ $random->id }}">
-									<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{ $random->title }}">
-								</a>
-								<div class="recipes-content">
-									<!-- Title -->
-									<h3>{{ $random->title }}</h3>
-								</div>
+		{{--  Form  --}}
+		{!! Form::open(['action' => 'PagesController@search', 'method' => 'GET', 'class' => 'header-search']) !!}
+			<div class="form-group">
+				{{ Form::text('for', '', ['id' => 'header-search-input', 'placeholder' => 'Введите критерии поиска...']) }}
+				{{ Form::submit('', ['style' => 'display:none']) }}
+			</div>
+		{!! Form::close() !!}
+	</div>
+</header>
+
+<section class="home-section">
+	@isset( $title_intro)
+		<h2 class="headline">{{ $title_intro->title }}</h2>
+		<p>{{ $title_intro->text }}</p>
+	@endisset
+</section>
+
+{{--  Cards  --}}
+<section class="home-section">
+	@if (count($random_recipes) > 0)
+		@foreach ($random_recipes->chunk(3) as $chunk)
+			<div class="row">
+				@foreach ($chunk as $random)
+					<div class="recipe-container col-xs-12 col-sm-6 col-md-4" style="animation: appear {{ 2 + $loop->index }}s;">
+						<div class="recipe">
+							<a href="/recipes/{{ $random->id }}">
+								<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{ $random->title }}">
+							</a>
+							<div class="recipes-content">
+								<!-- Title -->
+								<h3>{{ $random->title }}</h3>
 							</div>
 						</div>
-					@endforeach
-				</div>
-			@endforeach
-		@endif
-    </section>
+					</div>
+				@endforeach
+			</div>
+		@endforeach
+	@endif
+</section>
+
 @endsection
 
 @section('script')

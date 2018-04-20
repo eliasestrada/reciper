@@ -8,8 +8,8 @@
 
 {{--  Form  --}}
 {!! Form::open(['action' => 'PagesController@search', 'method' => 'GET', 'class' => 'form']) !!}
-	<div class="form-group">
-		{{ Form::text('for', '', ['placeholder' => 'Введите критерии поиска...', 'style' =>'max-width:30em; margin: auto;']) }}
+	<div class="form-group simple-group">
+		{{ Form::text('for', '', ['placeholder' => 'Введите критерии поиска...']) }}
 		{{ Form::submit('', ['style' => 'display:none'])}}
 	</div>
 {!! Form::close() !!}
