@@ -63,23 +63,24 @@ class RecipesController extends Controller
         // Rules for visitors
         if (!user() && !$recipe->approved()) {
             return redirect('/recipes')->withError(
-				'У вас нет права просматривать этот рецепт, так как он еще не опубликован'
+				'У вас нет права просматривать этот рецепт, 
+				так как он еще не опубликован'
 			);
 		}
 
         // Rules for auth users
         if (user()) {
             if (!user()->isAdmin() && !user()->hasRecipe($recipe->user_id) && !$recipe->ready()) {
-                return redirect('/recipes')->with(
-					'error', 'У вас нет права на просмотр этого рецепта'
+                return redirect('/recipes')->withError(
+					'У вас нет права на просмотр этого рецепта'
 				);
             } elseif (!user()->hasRecipe($recipe->user_id) && !$recipe->ready()) {
-                return redirect('/recipes')->with(
-					'error', 'Этот рецепт находится в процессе написания.'
+                return redirect('/recipes')->withError(
+					'Этот рецепт находится в процессе написания.'
 				);
 			} elseif (!user()->isAdmin() && !user()->hasRecipe($recipe->user_id) && !$recipe->approved()) {
-                return redirect('/recipes')->with(
-					'error', 'Этот рецепт еще не одобрен.'
+                return redirect('/recipes')->withError(
+					'Этот рецепт еще не одобрен.'
 				);
 			}
 		}
@@ -101,7 +102,8 @@ class RecipesController extends Controller
 
         if ($recipe->ready() && !user()->isAdmin()) {
 			return redirect('/recipes')->withError(
-				'Вы не можете редактировать рецепты которые находятся на рассмотрении или уже опубликованны.'
+				'Вы не можете редактировать рецепты которые находятся на 
+				рассмотрении или уже опубликованны.'
 			);
         }
 
@@ -156,7 +158,8 @@ class RecipesController extends Controller
 			);
         }
         return redirect('/dashboard')->withSuccess(
-			'Рецепт добавлен на рассмотрение и будет опубликован после одобрения администрации.'
+			'Рецепт добавлен на рассмотрение и будет опубликован после 
+			одобрения администрации.'
 		);
     }
 
@@ -214,7 +217,8 @@ class RecipesController extends Controller
             Notification::insert([
 				'user_id'    => $recipe->user_id,
 				'title'      => 'Рецепт не опубликован',
-				'message'    => 'Рецепт под названием "' . $recipe->title . '" не был опубликован так как администрация венула его вам на переработку.',
+				'message'    => 'Рецепт под названием "' . $recipe->title . '" не был опубликован 
+								так как администрация венула его вам на переработку.',
 				'for_admins' => 0,
 				'created_at' => NOW(),
 				'updated_at' => NOW()
