@@ -11,7 +11,8 @@ class ContactController extends Controller
 {
 
 	// Store in feedback table in database
-	public function store(ContactRequest $request) {
+	public function store(ContactRequest $request)
+	{
 
 		Feedback::insert([
 			'name' => $request->имя,

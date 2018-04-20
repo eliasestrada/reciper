@@ -15,7 +15,8 @@ class StatisticController extends Controller
 	}
 
 
-    public function visitors() {
+	public function visitors()
+	{
 
 		$visitors = DB::table('visitor_registry')
 				->orderBy('clicks', 'desc')

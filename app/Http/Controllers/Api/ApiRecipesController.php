@@ -12,14 +12,16 @@ class ApiRecipesController extends Controller
 {
 	
 	// All approved recipes
-    public function index() {
+	public function index()
+	{
 		$recipes = Recipe::whereApproved(1)->latest()->paginate(30);
 
 		return RecipesResource::collection($recipes);
 	}
 
 
-    public function showRandomRecipes($id) {
+	public function showRandomRecipes($id)
+	{
 		$random = Recipe::inRandomOrder()
 				->where('id', '!=', $id)
 				->whereApproved(1)

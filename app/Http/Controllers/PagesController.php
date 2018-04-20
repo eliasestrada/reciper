@@ -10,7 +10,8 @@ use App\Models\Title;
 class PagesController extends Controller
 {
 
-    public function home() {
+	public function home()
+	{
 
 		$random_recipes = Recipe::inRandomOrder()
 				->whereApproved(1)

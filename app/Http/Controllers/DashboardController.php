@@ -61,7 +61,8 @@ class DashboardController extends Controller
 
 
 	// Show all Notifications
-    public function notifications() {
+	public function notifications()
+	{
 
 		$user_id = auth()->user()->id;
 
@@ -82,7 +83,8 @@ class DashboardController extends Controller
 	 * Checklist shows all recipes that need to be approved
 	 * by administration
 	 */
-    public function checklist() {
+	public function checklist()
+	{
 
 		$unapproved = Recipe::whereApproved(0)
 				->whereReady(1)
@@ -94,7 +96,8 @@ class DashboardController extends Controller
 
 	
 	// Show all my recipes
-    public function my_recipes() {
+	public function my_recipes()
+	{
 
 		$user = auth()->user();
 		$recipes = Recipe::whereUserId($user->id)->latest()->paginate(20);

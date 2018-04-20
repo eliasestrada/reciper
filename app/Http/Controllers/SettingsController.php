@@ -21,11 +21,13 @@ class SettingsController extends Controller
 		$this->middleware('author');
 	}
 
-	public function general() {
+	public function general()
+	{
 		return view('settings.general');
 	}
 
-	public function photo() {
+	public function photo()
+	{
 		return view('settings.photo')->withUser(auth()->user());
 	}
 
