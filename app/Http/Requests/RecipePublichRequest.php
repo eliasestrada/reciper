@@ -6,22 +6,16 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class RecipePublichRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
+    // Determine if the user is authorized to make this request.
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request,
+	/**
+	 * Get the validation rules that apply to the request, 
 	 * only if recipe is ready to publish
-     *
-     * @return array
-     */
+	 */
     public function rules()
     {
         if ($this->ready == 1) {
