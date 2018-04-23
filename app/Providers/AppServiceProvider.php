@@ -19,25 +19,24 @@ class AppServiceProvider extends ServiceProvider
     {
 		Schema::defaultStringLength(191);
 
+		$all_categories = Recipe::distinct()
+				->orderBy('category')
+				->get([ 'category' ])
+				->toArray();
+
 		// Sharing random recipes for footer
 		$footer_rand_recipes = Recipe::inRandomOrder()
 				->whereApproved(1)
 				->limit(8)
 				->get([ 'id', 'title' ]);
 
-		$title_footer = Title::whereName('Подвал')
-				->first([ 'text' ]);
-		$all_categories = Recipe::distinct()
-				->orderBy('category')
-				->get([ 'category' ])
-				->toArray();
+		$title_footer = Title::whereName('Подвал')->first([ 'text' ]);
 
 		view()->share(compact(
+			'all_categories',
 			'footer_rand_recipes',
-			'title_footer',
-			'all_categories'
+			'title_footer'
 		));
-
 
 		/**
 		 * Turn on ability to see queries
