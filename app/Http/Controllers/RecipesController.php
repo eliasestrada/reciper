@@ -34,7 +34,7 @@ class RecipesController extends Controller
     {
         // For select input
         $categories = DB::table('categories')->get();
-		return view('recipes.create')->withCategories($categories);
+		return view('recipes.create')->withCategories($categories);	
     }
 
 
@@ -55,10 +55,8 @@ class RecipesController extends Controller
     }
 
     // It will show the recipe on a single page
-    public function show($id)
+    public function show(Recipe $recipe)
     {
-		$recipe = Recipe::find($id);
-
         // Rules for visitors
         if (!user() && !$recipe->approved()) {
             return redirect('/recipes')->withError(

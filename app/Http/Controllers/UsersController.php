@@ -21,9 +21,8 @@ class UsersController extends Controller
 	}
 
 
-	public function show($id)
+	public function show(User $user)
     {
-		$user = User::find($id);
 		$recipes = Recipe::whereUserId($user->id)->latest()->paginate(20);
 
 		return view('users.show')->with([

@@ -2,28 +2,28 @@
 	width: 80%;
 	margin: 0 10%;
 	padding: 2em 0;
-}
 
-.users-list li {
-	position: relative;
-	display: flex;
-	padding-bottom: .5em;
-	border-bottom: 1px solid #b6b6b6;
-}
+	li {
+		position: relative;
+		display: flex;
+		padding-bottom: .5em;
+		border-bottom: 1px solid #b6b6b6;
 
-.users-list li:hover {
-	background-color: #ddd;
-	border-radius: 5px
-}
+		&:hover {
+			background-color: #ddd;
+			border-radius: 5px
+		}
+	}
 
-.users-list img {
-	width: 3.7em;
-	height: 3.7em;
-	margin: .5em 1em;
-	border-radius: 3px;
-	border: solid 3px #fff;
-	border-bottom: solid 6px #fff;
-	animation: appearWithRotate 2s;
+	img {
+		width: 3.7em;
+		height: 4em;
+		margin: .5em 1em;
+		border-radius: 3px;
+		border: solid 3px #fff;
+		border-bottom: solid 6px #fff;
+		animation: appearWithRotate 2s;
+	}
 }
 
 .user-content {
@@ -46,8 +46,8 @@
 	box-shadow: $btnShadow;
 	font-weight: bold;
 	cursor: pointer;
-}
 
-.button-add-user:hover {
-	box-shadow: none;
+	&:hover {
+		box-shadow: none;
+	}
 }

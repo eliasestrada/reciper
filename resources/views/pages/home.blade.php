@@ -10,8 +10,8 @@
 	<div class="header-bg-overlay"></div>
 	<div class="header-content">
 
-		<h1>{{ optional($title_banner)->title }}</h1>
-		<h2>{{ optional($title_banner)->text }}</h2>
+		<h1>{{ title_case(optional($title_banner)->title) }}</h1>
+		<h2>{{ title_case(optional($title_banner)->text) }}</h2>
 		
 		<a class="home-button" id="home-search-btn">
 			<svg viewBox="0 0 250.313 250.313" width="30px" style="fill:#fff; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">
@@ -30,7 +30,7 @@
 </header>
 
 <section class="home-section">
-	<h2 class="headline">{{ optional($title_intro)->title }}</h2>
+	<h2 class="headline">{{ title_case(optional($title_intro)->title) }}</h2>
 	<p>{{ optional($title_intro)->text }}</p>
 </section>
 

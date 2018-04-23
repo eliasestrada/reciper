@@ -50,7 +50,7 @@
 			@endif
 		@endadmin
 		
-		<h1 class="headline">{{ $recipe->title }}</h1>
+		<h1 class="headline">{{ title_case($recipe->title) }}</h1>
 
 		<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->name }}" class="recipe-img">
 		

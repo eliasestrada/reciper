@@ -1,40 +1,37 @@
-.statistic-table caption {
-	font-size: 1.5em;
-	margin: .3em .3em 0 .3em;
-	font-size: 1.3em;
-}
-
 .statistic-table {
 	width: 90%;
 	margin: auto;
 	border-collapse: collapse;
 	table-layout: fixed;
-}
 
-.statistic-table tr {
-	border: 1px solid #d8d8d8;
-	background: #e8eaff;
-}
+	caption {
+		font-size: 1.5em;
+		margin: .3em .3em 0 .3em;
+		font-size: 1.3em;
+	}
 
-.statistic-table th {
-	background: $main;
-	color: #fff;
-	padding: .5em;
-}
+	th {
+		background: $main;
+		color: #fff;
+		padding: .5em;
+	}
 
-.statistic-table tr:nth-child(even) {
-	background: #f8f8f8;
-}
+	tr {
+		border: 1px solid #d8d8d8;
+		background: #e8eaff;
 
-.statistic-table td {
-	padding: .4em;
-	text-align: center;
-}
+		&:nth-child(even) {
+			background: #f8f8f8;
+		}
+	}
 
-.statistic-table td {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	td {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		padding: .4em;
+		text-align: center;
+	}
 }
 
 @media (min-width: 420px) {
