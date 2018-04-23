@@ -80,6 +80,7 @@ return [
 		App\Providers\UploadRecipeDataServiceProvider::class,
 		App\Providers\EloquentEventServiceProvider::class,
 		App\Providers\BladeServiceProvider::class,
+		App\Providers\UserSidebarServiceProvider::class,
     ],
 
     /**

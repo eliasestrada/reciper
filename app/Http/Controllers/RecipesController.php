@@ -205,7 +205,6 @@ class RecipesController extends Controller
         }
     }
 
-
 	// We also deliting image in App\Observers\RecipeObserver
     public function destroy($id)
     {
@@ -218,7 +217,7 @@ class RecipesController extends Controller
 			);
         }
 		$recipe->delete();
-
+		
         return redirect('/my_recipes')->withSuccess('Рецепт успешно удален');
 	}
 }

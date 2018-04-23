@@ -12,74 +12,91 @@
 	opacity: .5;
 	z-index: 10;
 	padding-top: 51px;
+
+	&:hover {
+		overflow: visible;
+		width: 200px;
+		height: 100%;
+		overflow-y: scroll;
+		opacity: .95;
+	}
+
+	&::-webkit-scrollbar {
+		width: 0px;
+		background: transparent;
+	}
+	
+	& > ul {
+		margin: 7px 0;
+	}
+	
+	li {
+		position: relative;
+		display: block;
+		width: 200px;
+		line-height: 40px;
+		margin: auto;
+
+		&:hover {
+			color: #fff;
+			background: $main;
+		}
+	}
+
+	li > a {
+		position: relative;
+		display: table;
+		border-collapse: collapse;
+		border-spacing: 0;
+		color: #fff;
+		font-family: arial;
+		font-size: 14px;
+		text-decoration: none;
+		transform: translateZ(0) scale(1, 1);
+	}
+
+	.red-buttons[data-notif]::after {
+		content: attr(data-notif);
+		min-width: 20px;
+		height: 20px;
+		line-height: 20px;
+		display: inline-block;
+		position: absolute;
+		left: 22px;
+		top: 10px;
+		color: #fff;
+		text-shadow: none;
+		background: #860101;
+		border: solid 1px #fff;
+		border-radius: 50%;
+	}
+
+	.icon-profile-menu-line {
+		width: 25px;
+		height: 25px;
+		margin: 0 10px;
+		vertical-align: middle;
+		position: relative;
+		display: inline-block;
+		background-repeat: no-repeat!important;
+	}
 }
 
-.user-sidebar:hover {
-	overflow: visible;
-	width: 200px;
-	height: 100%;
-	overflow-y: scroll;
-	opacity: .95;
-}
+.menu-second-level {
+	a {
+		display: block;
+		padding: .3em .8em .3em 45px;
 
-/* Hide scrollbar */
-.user-sidebar::-webkit-scrollbar {
-    width: 0px;
-    background: transparent;
-}
+		&:hover {
+			background: $main;
+		}
+	}
 
-.user-sidebar > ul {
-	margin: 7px 0;
-}
-
-.user-sidebar li {
-	position: relative;
-	display: block;
-	width: 200px;
-	line-height: 40px;
-	margin: auto;
-}
-
-.menu-second-level a {
-	display: block;
-	padding: .3em .8em .3em 45px;
-}
-
-.menu-second-level a:hover {
-	background: $main;
-}
-
-.menu-second-level span {
-	display: block;
-	color: #fff;
-	text-align: left;
-}
-
-.user-sidebar li > a {
-	position: relative;
-	display: table;
-	border-collapse: collapse;
-	border-spacing: 0;
-	color: #fff;
-	font-family: arial;
-	font-size: 14px;
-	text-decoration: none;
-	transform: translateZ(0) scale(1, 1);
-}
-
-.user-sidebar li:hover {
-	color: #fff;
-	background: $main;
-}
-
-.icon-profile-menu-line {
-	width: 25px;
-	height: 25px;
-	margin: 0 10px;
-	vertical-align: middle;
-	position: relative;
-	display: inline-block;
-	background-repeat: no-repeat!important;
+	span {
+		display: block;
+		color: #fff;
+		text-align: left;
+	}
 }
 
 @media (min-width: 740px) {

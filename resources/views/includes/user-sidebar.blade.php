@@ -36,6 +36,26 @@
 					<span>Статистика</span>
 				</a>
 			</li>
+			@admin
+				<li>
+					<a href="/checklist" title="Проверочная" {{ $allunapproved }} class="red-buttons">
+						<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -25px 0;" class="icon-profile-menu-line"></i>
+						<span>Проверочная</span>
+					</a>
+				</li>
+				<li>
+					<a href="/feedback" title="Обратная связь" {{ $allfeedback }} class="red-buttons">
+						<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -25px 0;" class="icon-profile-menu-line"></i>
+						<span>Обратная связь</span>
+					</a>
+				</li>
+			@endadmin
+			<li>
+				<a href="/notifications" title="Оповещения" {{ $notifications }} class="red-buttons">
+					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -25px 0;" class="icon-profile-menu-line"></i>
+					<span>Оповещения</span>
+				</a>
+			</li>
 			<li>
 				<a>
 					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -50px 0;" class="icon-profile-menu-line"></i>
