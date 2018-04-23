@@ -22,7 +22,7 @@ class UserSidebarServiceProvider extends ServiceProvider
 				['created_at', '>', user()->notif_check]
 			])->count();
 			
-	
+
 			if (user()->isAdmin()) {
 				$notifications_for_admin = Notification::where([
 					[ 'for_admins', 1 ],
@@ -31,13 +31,13 @@ class UserSidebarServiceProvider extends ServiceProvider
 	
 				$notifications += $notifications_for_admin;
 			}
-	
+
 			$notifications = empty($notifications) ? '' : 'data-notif='.$notifications;
 	
 			// Unapproved recipes
 			$allunapproved = Recipe::whereApproved(0)->whereReady(1)->count();
 			$allunapproved = !empty($allunapproved) ? 'data-notif='.$allunapproved : '';
-	
+
 			// Feedback
 			$allfeedback = Feedback::where('created_at', '>', user()->contact_check)->count();
 			$allfeedback = !empty($allfeedback) ? 'data-notif='.$allfeedback : '';

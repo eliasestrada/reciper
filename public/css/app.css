@@ -1078,13 +1078,13 @@ footer {
     transform: translateZ(0) scale(1, 1); }
   .user-sidebar .red-buttons[data-notif]::after {
     content: attr(data-notif);
-    min-width: 20px;
-    height: 20px;
-    line-height: 20px;
+    min-width: 15px;
+    height: 15px;
+    line-height: 15px;
     display: inline-block;
     position: absolute;
-    left: 22px;
-    top: 10px;
+    left: 23px;
+    top: 5px;
     color: #fff;
     text-shadow: none;
     background: #860101;
