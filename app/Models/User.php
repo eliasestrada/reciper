@@ -15,8 +15,12 @@ class User extends Authenticatable
     ];
 
     public function recipes() {
-        return $this->hasMany('App\Models\Recipe');
-    }
+        return $this->hasMany(Recipe::class);
+	}
+	
+	public function notifications() {
+		return $this->hasMany(Notification::class);
+	}
 
     // The attributes that should be hidden for arrays.
     protected $hidden = [

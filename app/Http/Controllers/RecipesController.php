@@ -108,10 +108,9 @@ class RecipesController extends Controller
 
         // For select input
         $categories = DB::table('categories')->get();
-        return view('recipes.edit')->with([
-			'recipe'     => $recipe,
-			'categories' => $categories
-		]);
+        return view('recipes.edit')->with(compact(
+			'recipe', 'categories'
+		));
     }
 
 
@@ -178,50 +177,27 @@ class RecipesController extends Controller
 
 
     // Approve the recipe (for admins)
-    public function answer($id, Request $request)
+    public function answer($id)
     {
         $update_recipe = Recipe::where([
-			[ 'id', $id ],
-			[ 'approved', 0 ],
-			[ 'ready', 1 ]
+			[ 'id', $id ], [ 'approved', 0 ], [ 'ready', 1 ]
 		]);
 
 		$recipe = Recipe::find($id);
 
-        if ($request->input('answer') == 'approve') {
-			
-			$update_recipe->update([
-				'approved' => 1
-			]);
+        if (request('answer') == 'approve') {
+			$update_recipe->update([ 'approved' => 1 ]);
 
-            Notification::insert([
-				'user_id'    => $recipe->user_id,
-				'title'      => 'Рецепт опубликован',
-				'message'    => 'Рецепт под названием "' . $recipe->title . '" был опубликован.',
-				'for_admins' => 0,
-				'created_at' => NOW(),
-				'updated_at' => NOW()
-			]);
+			Notification::recipeHasBeenApproved($recipe->title, $recipe->user_id);
 
 			return redirect('/recipes')->withSuccess(
 				'Рецепт одобрен и опубликован.'
 			);
 
-        } elseif ($request->input('answer') == 'cancel') {
+        } elseif (request('answer') == 'cancel') {
+			$update_recipe->update([ 'ready' => 0 ]);
 
-			$update_recipe->update([
-				'ready' => 0
-			]);
-
-            Notification::insert([
-				'user_id'    => $recipe->user_id,
-				'title'      => 'Рецепт не опубликован',
-				'message'    => 'Рецепт под названием "' . $recipe->title . '" не был опубликован 
-								так как администрация венула его вам на переработку.',
-				'for_admins' => 0,
-				'created_at' => NOW(),
-				'updated_at' => NOW()
-			]);
+            Notification::recipeHasNotBeenCreated($recipe->title, $recipe->user_id);
 
             return redirect('/recipes')->withSuccess(
 				'Вы вернули рецепт на повторное редактирование'

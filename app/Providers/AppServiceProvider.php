@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
 use App\Models\Recipe;
 use App\Models\Title;
@@ -33,11 +32,12 @@ class AppServiceProvider extends ServiceProvider
 				->get([ 'category' ])
 				->toArray();
 
-		View::share([
-			'footer_rand_recipes'  => $footer_rand_recipes,
-			'title_footer'         => $title_footer,
-			'all_categories'       => $all_categories
-		]);
+		view()->share(compact(
+			'footer_rand_recipes',
+			'title_footer',
+			'all_categories'
+		));
+
 
 		/**
 		 * Turn on ability to see queries

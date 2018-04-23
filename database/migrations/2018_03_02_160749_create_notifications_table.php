@@ -13,7 +13,7 @@ class CreateNotificationsTable extends Migration
             $table->integer('user_id');
             $table->string('title');
 			$table->string('message');
-			$table->boolean('for_admins');
+			$table->boolean('for_admins')->default(0);
 			$table->timestamps();
         });
     }
