@@ -8,7 +8,7 @@
 			</li>
 			<li>
 				<a href="/dashboard" title="Профиль">
-					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) 0 -25px;" class="icon-profile-menu-line"></i>
+					<i style="background: url({{ asset('/storage/uploads/' . user()->image) }});" class="icon-profile-menu-line user-icon"></i>
 					<span>Профиль</span>
 				</a>
 			</li>

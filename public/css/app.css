@@ -1098,6 +1098,9 @@ footer {
     position: relative;
     display: inline-block;
     background-repeat: no-repeat !important; }
+  .user-sidebar .user-icon {
+    background-size: 25px !important;
+    border-radius: 50%; }
 
 .menu-second-level a {
   display: block;
