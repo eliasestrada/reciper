@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Notification;
 use App\Models\Feedback;
 use App\Models\Recipe;
-use App\User;
+use App\Models\User;
 
 class DashboardController extends Controller
 {

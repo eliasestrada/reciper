@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Image;
-use App\User;
+use App\Models\User;
 use App\Models\Title;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
