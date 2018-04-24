@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Написать')
+@section('title', trans('recipes.add_recipe'))
 
 @section('content')
 
@@ -10,44 +10,44 @@
 		{{ Form::submit('', ['class' => "edit-recipe-icon icon-save"]) }}
 	</div>
 
-	<h2 class="headline">Добавление рецепта</h2>
+	<h2 class="headline">@lang('recipes.add_recipe')</h2>
 
-	<button class="accordion" type="button">Название</button>
+	<button class="accordion" type="button">@lang('recipes.title')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::text('title', '', ['placeholder' => 'Название рецепта']) }}
+			{{ Form::text('title', '', ['placeholder' => trans('recipes.title')]) }}
 		</div>
 	</div>
 	
-	<button class="accordion" type="button">Описание</button>
+	<button class="accordion" type="button">@lang('recipes.intro')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::textarea('intro', '', ['placeholder' => 'Краткое описание рецепта']) }}
+			{{ Form::textarea('intro', '', ['placeholder' => trans('recipes.short_intro')]) }}
 		</div>
 	</div>
 	
-	<button class="accordion" type="button">Ингридиенты</button>
+	<button class="accordion" type="button">@lang('recipes.ingredients')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::textarea('ingredients', '', ['placeholder' => 'Все ингридиенты рецепта. После каждого ингридиента нажимайте кнопку Ввод (Enter) чтобы разделить их на строки.']) }}
+			{{ Form::textarea('ingredients', '', ['placeholder' => trans('recipes.ingredients_description')]) }}
 		</div>
 	</div>
 
-	<button class="accordion" type="button">Совет</button>
+	<button class="accordion" type="button">@lang('recipes.advice')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::textarea('advice', '', ['placeholder' => 'Это поле не обязательно к заполнению, если у вас есть просьба или совет который может помочь в приготовлении блюда пишите его сюда.']) }}
+			{{ Form::textarea('advice', '', ['placeholder' => trans('recipes.advice_description')]) }}
 		</div>
 	</div>
 
-	<button class="accordion" type="button">Приготовление</button>
+	<button class="accordion" type="button">@lang('recipes.text_of_recipe')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::textarea('text', '', ['placeholder' => 'Опишите процесс приготовления по пунктам используя Ввод (Enter) для отделения пунктов друг от друга.']) }}
+			{{ Form::textarea('text', '', ['placeholder' => trans('recipes.text_description')]) }}
 		</div>
 	</div>
 
-	<button class="accordion" type="button">Категория</button>
+	<button class="accordion" type="button">@lang('recipes.category')</button>
 	<div class="accordion-panel">
 		<div class="form-group simple-group">
 			<select name="category">
@@ -58,22 +58,22 @@
 		</div>
 	</div>
 
-	<button class="accordion" type="button">Время приготовления</button>
+	<button class="accordion" type="button">@lang('recipes.time')</button>
 	<div class="accordion-panel">
 		<div class="form-group simple-group">
-			{{ Form::label('time', 'Время приготовления в минутах') }}
+			{{ Form::label('time', trans('recipes.time_description')) }}
 			{{ Form::number('time', '0') }}
 		</div>
 	</div>
 
-	<button class="accordion" type="button">Изображение</button>
+	<button class="accordion" type="button">@lang('recipes.image')</button>
 	<div class="accordion-panel">
 		<div class="form-group simple-group">
-			{{ Form::label('src-image', 'Выбрать файл', ['class' => 'image-label']) }}
+			{{ Form::label('src-image', trans('recipes.select_file'), ['class' => 'image-label']) }}
 			{{ Form::file('image', ['style' => "display:none;", "id" => "src-image"]) }}
 			
 			<section class="preview-image">
-					<img src="{{ asset('storage/images/default.jpg') }}" alt="Изображение" id="target-image">
+					<img src="{{ asset('storage/images/default.jpg') }}" alt="@lang('recipes.image')" id="target-image">
 			</section>
 		</div>
 	</div>

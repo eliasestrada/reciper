@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Редактировать')
+@section('title', trans('recipes.add_recipe'))
 
 @section('content')
 
@@ -19,56 +19,56 @@
 	<div class="check-box-ready">
 		<div class="check-box-ready-wrap">
 			{{ Form::checkbox('ready', 1, null) }}
-			<p>Готово к публикации</p>
+			<p>@lang('recipes.ready_to_publish')</p>
 		</div>
 	</div>
 
-	<h2 class="headline">Добавление рецепта</h2>
+	<h2 class="headline">@lang('recipes.add_recipe')</h2>
 
-	<button class="accordion" type="button">Название</button>
+	<button class="accordion" type="button">@lang('recipes.title')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::label('title', 'Название') }}
-			{{ Form::text('title', $recipe->title, ['placeholder' => 'Название рецепта']) }}
+			{{ Form::label('title', trans('recipes.title')) }}
+			{{ Form::text('title', $recipe->title, ['placeholder' => trans('recipes.title')]) }}
 		</div>
 	</div>
 
-	<button class="accordion" type="button">Описание</button>
+	<button class="accordion" type="button">@lang('recipes.intro')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::label('intro', 'Описание') }}
-			{{ Form::textarea('intro', $recipe->intro, ['placeholder' => 'Краткое описание рецепта']) }}
+			{{ Form::label('intro', trans('recipes.intro')) }}
+			{{ Form::textarea('intro', $recipe->intro, ['placeholder' => trans('recipes.short_intro')]) }}
 		</div>
 	</div>
 
-	<button class="accordion" type="button">Ингридиенты</button>
+	<button class="accordion" type="button">@lang('recipes.ingredients')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::label('ingredients', 'Ингридиенты') }}
-			{{ Form::textarea('ingredients', $recipe->ingredients, ['placeholder' => 'Все ингридиенты рецепта. После каждого ингридиента нажимайте кнопку Ввод (Enter) чтобы разделить их на строки.']) }}
+			{{ Form::label('ingredients', trans('recipes.ingredients')) }}
+			{{ Form::textarea('ingredients', $recipe->ingredients, ['placeholder' => trans('recipes.ingredients_description')]) }}
 		</div>
 	</div>
 
-	<button class="accordion" type="button">Совет</button>
+	<button class="accordion" type="button">@lang('recipes.advice')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::label('advice', 'Совет') }}
-			{{ Form::textarea('advice', $recipe->advice, ['placeholder' => 'Это поле не обязательно к заполнению, если у вас есть просьба или совет который может помочь в приготовлении блюда пишите его сюда.']) }}
+			{{ Form::label('advice', trans('recipes.advice')) }}
+			{{ Form::textarea('advice', $recipe->advice, ['placeholder' => trans('recipes.advice_description')]) }}
 		</div>
 	</div>
 
-	<button class="accordion" type="button">Приготовление</button>
+	<button class="accordion" type="button">@lang('recipes.text_of_recipe')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
-			{{ Form::label('text', 'Приготовление') }}
-			{{ Form::textarea('text', $recipe->text, ['placeholder' => 'Опишите процесс приготовления по пунктам используя Ввод (Enter) для отделения пунктов друг от друга.']) }}
+			{{ Form::label('text', trans('recipes.text_of_recipe')) }}
+			{{ Form::textarea('text', $recipe->text, ['placeholder' => trans('recipes.text_description')]) }}
 		</div>
 	</div>
 
-	<button class="accordion" type="button">Категория</button>
+	<button class="accordion" type="button">@lang('recipes.category')</button>
 	<div class="accordion-panel">
 		<div class="form-group simple-group">
-			{{ Form::label('category', 'Категория') }}
+			{{ Form::label('category', trans('recipes.category')) }}
 			<select name="category">
 				@foreach ($categories as $category)
 					<option selected value="{{ $category->category }}">{{ $category->category }}</option>
@@ -78,18 +78,18 @@
 		</div>
 	</div>
 
-	<button class="accordion" type="button">Время приготовления</button>
+	<button class="accordion" type="button">@lang('recipes.time')</button>
 	<div class="accordion-panel">
 		<div class="form-group simple-group">
-			{{ Form::label('time', 'Время приготовления в минутах') }}
+			{{ Form::label('time', trans('recipes.time_description')) }}
 			{{ Form::number('time', $recipe->time) }}
 		</div>
 	</div>
 
-	<button class="accordion" type="button">Изображение</button>
+	<button class="accordion" type="button">@lang('recipes.image')</button>
 	<div class="accordion-panel">
 		<div class="form-group simple-group">
-			{{ Form::label('src-image', 'Выбрать файл', ['class' => 'image-label']) }}
+			{{ Form::label('src-image', trans('recipes.select_file'), ['class' => 'image-label']) }}
 			{{ Form::file('image', ['style' => "display:none;", "id" => "src-image"]) }}
 
 			<section class="preview-image">
