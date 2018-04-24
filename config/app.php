@@ -81,6 +81,7 @@ return [
 		App\Providers\EloquentEventServiceProvider::class,
 		App\Providers\BladeServiceProvider::class,
 		App\Providers\UserSidebarServiceProvider::class,
+		App\Providers\FooterServiceProvider::class,
     ],
 
     /**
