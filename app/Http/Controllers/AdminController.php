@@ -60,11 +60,13 @@ class AdminController extends Controller
         // Check for correct user
         if (!user()->isAdmin()) {
             return redirect('/feedback')->withError(
-				'Только админ может удалять эти сообщения!'
+				trans('admin.only_admin_can_delete')
 			);
         }
 		Feedback::find($id)->delete();
 
-        return redirect('/admin/feedback')->withSuccess('Отзыв успешно удален');
+        return redirect('/admin/feedback')->withSuccess(
+			trans('admin.feedback_has_been_deleted')
+		);
 	}
 }

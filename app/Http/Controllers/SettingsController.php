@@ -30,7 +30,7 @@ class SettingsController extends Controller
 
 	public function photo()
 	{
-		return view('settings.photo')->withUser(user());
+		return view('settings.photo');
 	}
 
 
@@ -55,14 +55,16 @@ class SettingsController extends Controller
 		}
 		$user->save();
 		
-		return redirect('/settings/photo')->withSuccess('Настройки сохранены');
+		return redirect('/settings/photo')->withSuccess(
+			trans('settings.saved')
+		);
 	}
 
 
 	public function updateUserData(SettingsUpdateUserDataRequest $request)
 	{
 		user()->update([ 'name' => $request->name ]);
-		return back()->withSuccess('Настройки сохранены');
+		return back()->withSuccess(trans('settings.saved'));
 	}
 
 
@@ -73,22 +75,22 @@ class SettingsController extends Controller
 				'password' => Hash::make($request->password)
 			]);
 
-			return back()->withSuccess('Настройки сохранены');
+			return back()->withSuccess(trans('settings.saved'));
         } else {           
-			return back()->withError('Неверный пароль');
+			return back()->withError(trans('settings.pwd_wrong'));
         }
 	}
 
 	
 	public function titles()
 	{
-		$title_banner = Title::whereName('Баннер')->first(['title', 'text']);
-		$title_intro  = Title::whereName('Интро')->first(['title', 'text']);
+		$title_banner  = Title::whereName('Баннер')->first(['title', 'text']);
+		$title_intro   = Title::whereName('Интро')->first(['title', 'text']);
+		$title_footer  = Title::whereName('Подвал')->first(['text']);
 
-		return view('settings.titles')->with([
-			'title_banner' => $title_banner,
-			'title_intro'  => $title_intro
-		]);
+		return view('settings.titles')->with(
+			compact('title_banner', 'title_intro', 'title_footer')
+		);
 	}
 
 	public function updateBannerData(SettingsUpdateHomeDataRequest $request)
@@ -98,7 +100,7 @@ class SettingsController extends Controller
 			'text'  => $request->text
 		]);
 
-		return back()->withSuccess('Настройки баннера сохранены');
+		return back()->withSuccess(trans('settings.saved'));
 	}
 
 
@@ -110,7 +112,7 @@ class SettingsController extends Controller
 		]);
 
 		return back()->withSuccess(
-			'Настройки интро главной страницы сохранены'
+			trans('settings.saved')
 		);
 	}
 
@@ -118,14 +120,14 @@ class SettingsController extends Controller
 	public function updateFooterData(Request $request)
 	{
 		$data = $this->validate($request,
-			[ 'text'     => 'max:190' ],
-			[ 'text.max' => 'Текст не должен быть не более 190 символов' ]
+			['text'     => 'max:190'],
+			['text.max' => trans('settings.footer_text_max')]
 		);
-		
+
 		Title::whereName('Подвал')->update($data);
 
 		return back()->withSuccess(
-			'Настройки подвала сохранены'
+			trans('settings.saved')
 		);
 	}
 }

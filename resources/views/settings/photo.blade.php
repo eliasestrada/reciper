@@ -14,7 +14,7 @@
 
 	<div class="form-group simple-group">
 		<div class="profile-header" style="height: 11em;">
-			<img src="{{ asset('storage/uploads/' . $user->image) }}" alt="{{ $user->name }}" id="target-image" style="width: 170px; height:186px;" />
+			<img src="{{ asset('storage/uploads/' . user()->image) }}" alt="{{ user()->name }}" id="target-image" style="width: 170px; height:186px;" />
 		</div>
 		<br />
 		{{ Form::hidden('delete', 0) }}

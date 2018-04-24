@@ -20,10 +20,12 @@ class NewMemberController extends Controller
 		if ($user) {
 			$user->update(['author' => 1]);
 			return back()->withSuccess(
-				'Пользователь добавлен и теперь может заходить в свой профиль.'
+				trans('new_member.member_has_been_added')
 			);
 		} else {
-			return back()->withError('Пользователь не найден');
+			return back()->withError(
+				trans('new_member.not_found')
+			);
 		}
 	}
 
@@ -34,9 +36,13 @@ class NewMemberController extends Controller
 
 		if ($user) {
 			$user->delete();
-			return back()->withSuccess('Пользователь удален');
+			return back()->withSuccess(
+				trans('new_member.member_has_been_deleted')
+			);
 		} else {
-			return back()->withError('Пользователь не найден');
+			return back()->withError(
+				trans('new_member.not_found')
+			);
 		}
 	}
 }
