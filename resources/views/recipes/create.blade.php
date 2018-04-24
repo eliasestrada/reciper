@@ -12,20 +12,23 @@
 
 	<h2 class="headline">@lang('recipes.add_recipe')</h2>
 
+	{{-- Title --}}
 	<button class="accordion" type="button">@lang('recipes.title')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
 			{{ Form::text('title', '', ['placeholder' => trans('recipes.title')]) }}
 		</div>
 	</div>
-	
+
+	{{-- Intro --}}
 	<button class="accordion" type="button">@lang('recipes.intro')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
 			{{ Form::textarea('intro', '', ['placeholder' => trans('recipes.short_intro')]) }}
 		</div>
 	</div>
-	
+
+	{{-- Ingredients --}}
 	<button class="accordion" type="button">@lang('recipes.ingredients')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
@@ -33,6 +36,7 @@
 		</div>
 	</div>
 
+	{{-- Advice --}}
 	<button class="accordion" type="button">@lang('recipes.advice')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
@@ -40,6 +44,7 @@
 		</div>
 	</div>
 
+	{{-- Text --}}
 	<button class="accordion" type="button">@lang('recipes.text_of_recipe')</button>
 	<div class="accordion-panel">
 		<div class="form-group">
@@ -47,6 +52,7 @@
 		</div>
 	</div>
 
+	{{-- Category --}}
 	<button class="accordion" type="button">@lang('recipes.category')</button>
 	<div class="accordion-panel">
 		<div class="form-group simple-group">
@@ -58,6 +64,7 @@
 		</div>
 	</div>
 
+	{{-- Time --}}
 	<button class="accordion" type="button">@lang('recipes.time')</button>
 	<div class="accordion-panel">
 		<div class="form-group simple-group">
@@ -66,6 +73,7 @@
 		</div>
 	</div>
 
+	{{-- Image --}}
 	<button class="accordion" type="button">@lang('recipes.image')</button>
 	<div class="accordion-panel">
 		<div class="form-group simple-group">

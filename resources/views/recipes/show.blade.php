@@ -10,15 +10,15 @@
 		{{--  Likes  --}}
 		<div id="favorite-buttons" style="font-weight:bold;">
 			@if (Cookie::get('liked') == null)
-				<a href="/recipes/{{ $recipe->id }}/like" class="like-icon like-icon-empty"></a>
+				<a href="/recipes/{{ $recipe->id }}/like" class="like-icon like-icon-empty" title="@lang('recipes.like')"></a>
 			@else
-				<a href="/recipes/{{ $recipe->id }}/dislike" class="like-icon like-icon-full"></a>
+				<a href="/recipes/{{ $recipe->id }}/dislike" class="like-icon like-icon-full" title="@lang('recipes.dislike')"></a>
 			@endif
 			<i>{{ $recipe->likes }}</i>
 		</div>
 
-		{{--  Buttons  --}}
 		@auth
+		{{--  Buttons  --}}
 			@if (user()->hasRecipe($recipe->user_id) && !$recipe->ready())
 				<div class="recipe-buttons">
 					{{--  Edit button  --}}
@@ -63,8 +63,8 @@
 		{{--  Time  --}}
 		<div class="date"><i class="fa fa-clock-o"></i> {{ $recipe->time }} мин.</div>
 
-		{{--  Items ( Ингридиенты ) --}}
-		<h3 class="decorated"><span>Ингридиенты</span></h3>
+		{{--  Items --}}
+		<h3 class="decorated"><span>@lang('recipes.ingredients')</span></h3>
 		<div class="items">
 			<ul>{!! $recipe->ingredientsWithListItems() !!}</ul>
 		</div>
@@ -73,23 +73,23 @@
 		<p>{{ $recipe->advice }}</p>
 
 		{{--  Приготовление  --}}
-		<h3 class="decorated"><span>Приготовление</span></h3>
+		<h3 class="decorated"><span>@lang('recipes.text_of_recipe')</span></h3>
 		<ol class="instruction unstyled-list">
 			{!! $recipe->textWithListItems() !!}
 		</ol>
 
-		<h3 class="decorated"><span>Приятного аппетита!</span></h3>
+		<h3 class="decorated"><span>@lang('recipes.bon_appetit')!</span></h3>
 
 		{{--  Дата и Автор  --}}
 		<div class="date">
-			<p>Добавленно {{ facebookTimeAgo($recipe->created_at) }}</p>
-			<p>Автор рецепта: {{ $recipe->author }}</p>
+			<p>@lang('recipes.added') {{ facebookTimeAgo($recipe->created_at) }}</p>
+			<p>@lang('recipes.author'): {{ $recipe->author }}</p>
 		</div>
 	</div>
 
 	{{-- API: Еще рецепты Sidebar --}}
 	<div class="side-bar">
-		<h3 class="decorated"><span>Еще рецепты:</span></h3>
+		<h3 class="decorated"><span>@lang('recipes.more')</span></h3>
 		<ul class="unstyled-list target-for-random-recipes"></ul>
 	</div>
 </section>

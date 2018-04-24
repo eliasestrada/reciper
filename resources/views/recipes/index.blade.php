@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Рецепты')
+@section('title', trans('recipes.recipes'))
 
 @section('content')
 
-<h2 class="headline">Рецепты</h2>
+<h2 class="headline">@lang('recipes.recipes')</h2>
 
 <div class="container recipes">
 	<div id="target-for-recipes"></div>
