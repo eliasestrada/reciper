@@ -23,10 +23,10 @@ class ApiRecipesController extends Controller
 	public function showRandomRecipes($id)
 	{
 		$random = Recipe::inRandomOrder()
-				->where('id', '!=', $id)
-				->whereApproved(1)
-				->limit(7)
-				->get();
+			->where('id', '!=', $id)
+			->whereApproved(1)
+			->limit(7)
+			->get();
 
 		return RecipesRandomResource::collection($random);
 	}

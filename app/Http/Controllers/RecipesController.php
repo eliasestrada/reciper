@@ -162,42 +162,11 @@ class RecipesController extends Controller
 		Recipe::find($id)->increment('likes');
         return back()->withCookie(cookie('liked', 1, 5000));
 	}
-	
 
     public function dislike($id)
     {
 		Recipe::find($id)->decrement('likes');
 		return back()->withCookie(Cookie::forget('liked'));
-    }
-
-
-    // Approve the recipe (for admins)
-    public function answer($id)
-    {
-        $update_recipe = Recipe::where([
-			[ 'id', $id ], [ 'approved', 0 ], [ 'ready', 1 ]
-		]);
-
-		$recipe = Recipe::find($id);
-
-        if (request('answer') == 'approve') {
-			$update_recipe->update([ 'approved' => 1 ]);
-
-			Notification::recipeHasBeenApproved($recipe->title, $recipe->user_id);
-
-			return redirect('/recipes')->withSuccess(
-				'Рецепт одобрен и опубликован.'
-			);
-
-        } elseif (request('answer') == 'cancel') {
-			$update_recipe->update([ 'ready' => 0 ]);
-
-            Notification::recipeHasNotBeenCreated($recipe->title, $recipe->user_id);
-
-            return redirect('/recipes')->withSuccess(
-				trans('recipes.you_gave_recipe_back_on_editing')
-			);
-        }
     }
 
 	// We also deliting image in App\Observers\RecipeObserver

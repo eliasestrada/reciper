@@ -37,13 +37,11 @@
 		@admin
 			@if (!$recipe->approved() && $recipe->ready())
 				<div class="recipe-buttons">
-					{!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto; display: inline-block;', 'onsubmit' => 'return confirm("Вы точно хотите опубликовать этот рецепт?")']) !!}
-						{{ Form::hidden('answer', 'approve') }}
+					{!! Form::open(['action' => ['ApproveController@ok', $recipe->id], 'method' => 'post', 'style' => 'width: auto; display: inline-block;', 'onsubmit' => 'return confirm("Вы точно хотите опубликовать этот рецепт?")']) !!}
 						{{ Form::submit('', ['class' => 'edit-recipe-icon icon-approve']) }}
 					{!! Form::close() !!}
 
-					{!! Form::open(['action' => ['RecipesController@answer', $recipe->id], 'method' => 'post', 'style' => 'width: auto; display: inline-block;', 'onsubmit' => 'return confirm("Вы точно хотите вернуть этот рецепт автору на доработку?")']) !!}
-						{{ Form::hidden('answer', 'cancel') }}
+					{!! Form::open(['action' => ['ApproveController@cancel', $recipe->id], 'method' => 'post', 'style' => 'width: auto; display: inline-block;', 'onsubmit' => 'return confirm("Вы точно хотите вернуть этот рецепт автору на доработку?")']) !!}
 						{{ Form::submit('', ['class' => 'edit-recipe-icon icon-cancel']) }}
 					{!! Form::close() !!}
 				</div>

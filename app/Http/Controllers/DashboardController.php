@@ -34,9 +34,9 @@ class DashboardController extends Controller
 	{
 
         $notifications = Notification::whereUserId(user()->id)
-				->orWhere('for_admins', 1)
-				->latest()
-				->paginate(10);
+			->orWhere('for_admins', 1)
+			->latest()
+			->paginate(10);
 
 		User::whereId(user()->id)->update([
 			'notif_check' => NOW()

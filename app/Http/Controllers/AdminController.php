@@ -18,9 +18,9 @@ class AdminController extends Controller
 	public function checklist()
 	{
 		$unapproved = Recipe::whereApproved(0)
-				->whereReady(1)
-				->oldest()
-				->paginate(10);
+			->whereReady(1)
+			->oldest()
+			->paginate(10);
 
 		return view('admin.checklist')->withUnapproved($unapproved);
 	}
@@ -29,8 +29,8 @@ class AdminController extends Controller
 	public function visitors()
 	{
 		$visitors = DB::table('visitor_registry')
-				->orderBy('clicks', 'desc')
-				->simplePaginate(40);
+			->orderBy('clicks', 'desc')
+			->simplePaginate(40);
 
 		$sxgeo = new SxGeo(storage_path().'/geo/SxGeoCity.dat');
 

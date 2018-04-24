@@ -14,7 +14,6 @@ Route::resource('recipes', 'RecipesController');
 Route::prefix('recipes/{recipe}')->group(function () {
 	Route::get('like', 'RecipesController@like');
 	Route::get('dislike', 'RecipesController@dislike');
-	Route::post('answer', 'RecipesController@answer');
 });
 
 // Users ===========
@@ -45,7 +44,12 @@ Route::prefix('settings')->group(function () {
 	});
 });
 
-// Artisan commands
+// Approving ======
+Route::post('answer/ok/{id}', 'ApproveController@ok');
+Route::post('answer/cansel/{id}', 'ApproveController@cancel');
+
+
+// Artisan commands =======
 Route::get('artisan/config/{url_key}', 'ArtisanController@cache');
 Route::get('artisan/clear/{url_key}', 'ArtisanController@clear');
 

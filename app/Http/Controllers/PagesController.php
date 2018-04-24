@@ -13,15 +13,15 @@ class PagesController extends Controller
 	public function home()
 	{
 		$random_recipes = Recipe::inRandomOrder()
-				->whereApproved(1)
-				->limit(9)
-				->get([ 'id', 'title', 'image' ]);
+			->whereApproved(1)
+			->limit(9)
+			->get([ 'id', 'title', 'image' ]);
 
 		$title_banner = Title::whereName('Баннер')
-				->first([ 'title', 'text' ]);
+			->first([ 'title', 'text' ]);
 
 		$title_intro = Title::whereName('Интро')
-				->first([ 'title', 'text' ]);
+			->first([ 'title', 'text' ]);
 
 		// Code for SVG Icon
 		$icon = 'M244.186,214.604l-54.379-54.378c-0.289-0.289-0.628-0.491-0.93-0.76
@@ -42,10 +42,10 @@ class PagesController extends Controller
 
 		if ($query) {
 			$recipes = Recipe::where('title', 'LIKE', '%' . $query . '%')
-					->orWhere('ingredients', 'LIKE', '%' . $query . '%')
-					->orWhere('category', 'LIKE', '%' . $query . '%')
-					->take(50)
-					->get();
+				->orWhere('ingredients', 'LIKE', '%' . $query . '%')
+				->orWhere('category', 'LIKE', '%' . $query . '%')
+				->take(50)
+				->get();
 			$message = count($recipes) < 1 ? 'Ничего не найденно' : '';
 		} else {
 			$recipes = '';

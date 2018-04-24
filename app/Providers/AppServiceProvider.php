@@ -20,9 +20,9 @@ class AppServiceProvider extends ServiceProvider
 		Schema::defaultStringLength(191);
 
 		$all_categories = Recipe::distinct()
-				->orderBy('category')
-				->get([ 'category' ])
-				->toArray();
+			->orderBy('category')
+			->get([ 'category' ])
+			->toArray();
 
 		view()->share(compact('all_categories'));
 
