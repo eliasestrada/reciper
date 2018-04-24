@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Обратная связь')
+@section('title', trans('admin.feedback'))
 
 @section('content')
 
-<h2 class="headline">Сообщения: {{ $feedback->count() }}</h2>
+<h2 class="headline">@lang('admin.messages') {{ $feedback->count() }}</h2>
 
 <div style="padding: 1em 0;">
 
@@ -16,12 +16,12 @@
 
 			{!! Form::open(['action' => ['AdminController@feedbackDestroy', $feed->id], 'method' => 'POST', 'onsubmit' => 'return confirm("Вы точно хотите удалить этот отзыв?")']) !!}
 				{{ method_field('delete') }}
-				{{ Form::submit('Удалить', ['class' => 'button-add-user']) }}
+				{{ Form::submit(trans('admin.delete'), ['class' => 'button-add-user']) }}
 			{!! Form::close() !!}
 
 		</div>
 	@empty
-		<p class="content center">Нет сообщений</p>
+		<p class="content center">@lang('admin.no_messages')</p>
 	@endforelse
 </div>
 

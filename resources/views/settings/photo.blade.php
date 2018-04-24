@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Настройки')
+@section('title', trans('settings.settings_photo'))
 
 @section('content')
 
-<h2 class="headline">Настройки</h2>
-<p class="content center">Единственное требование к выбору изображению это соотношение его сторон, оно долно быть квадратное, в противном случае изображение будет искажено.</p>
+<h2 class="headline">@lang('settings.settings_photo')</h2>
+<p class="content center">@lang('settings.photo_should_be_square')</p>
 
 {{--  Upload image  --}}
 {!! Form::open(['action' => ['SettingsController@updatePhoto', null], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
@@ -18,9 +18,9 @@
 		</div>
 		<br />
 		{{ Form::hidden('delete', 0) }}
-		{{ Form::label('src-image', 'Выбрать файл', ['class' => 'image-label']) }}
+		{{ Form::label('src-image', trans('form.select_file'), ['class' => 'image-label']) }}
 		{{ Form::file('image', ['style' => "display:none;", 'id' => 'src-image']) }}
-		{{ Form::submit('Сохранить') }}
+		{{ Form::submit(trans('form.save')) }}
 	</div>
 {!! Form::close() !!}
 
@@ -31,7 +31,7 @@
 
 	<div class="form-group simple-group">
 		{{ Form::hidden('delete', 1) }}
-		{{ Form::submit('Удалить', ['style' => 'background: brown; margin-top: -2.3rem;']) }}
+		{{ Form::submit(trans('form.delete'), ['style' => 'background: brown; margin-top: -2.3rem;']) }}
 	</div>
 {!! Form::close() !!}
 
