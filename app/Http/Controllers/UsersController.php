@@ -31,32 +31,11 @@ class UsersController extends Controller
 		]);
 	}
 
+	// Show all my recipes
+	public function my_recipes()
+	{
+		$recipes = Recipe::whereUserId(user()->id)->latest()->paginate(20);
 
-	// Add user to authors
-    public function add($id)
-    {
-		$user = User::whereId($id)->whereAuthor(0);
-
-		if ($user) {
-			$user->update(['author' => 1]);
-			return back()->withSuccess(
-				'Пользователь добавлен и теперь может заходить в свой профиль.'
-			);
-		} else {
-			return back()->withError('Пользователь не найден');
-		}
-	}
-
-
-    public function delete($id)
-    {
-		$user = User::whereId($id)->whereAuthor(0);
-
-		if ($user) {
-			$user->delete();
-			return back()->withSuccess('Пользователь удален');
-		} else {
-			return back()->withError('Пользователь не найден');
-		}
+		return view('users.my_recipes')->withRecipes($recipes);
 	}
 }

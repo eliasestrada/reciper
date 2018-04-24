@@ -17,16 +17,21 @@ Route::prefix('recipes/{recipe}')->group(function () {
 });
 
 // Users ===========
-Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
-Route::prefix('user/{id}')->group(function () {
-	Route::get('add', 'UsersController@add');
-	Route::get('delete', 'UsersController@delete');
+Route::prefix('users')->group(function () {
+	Route::get('/', 'UsersController@index');
+	Route::get('{user}', 'UsersController@show');
+	Route::get('my_recipes/all', 'UsersController@my_recipes');
+});
+
+// New Member ========
+Route::prefix('member/{id}')->group(function () {
+	Route::get('add', 'NewMemberController@add');
+	Route::get('delete', 'NewMemberController@delete');
 });
 
 // Dashboard ===========
 Route::get('dashboard', 'DashboardController@index');
 Route::get('notifications', 'DashboardController@notifications');
-Route::get('my_recipes', 'DashboardController@my_recipes');
 
 // Settings ===========
 Route::prefix('settings')->group(function () {

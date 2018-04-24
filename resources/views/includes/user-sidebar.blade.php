@@ -19,7 +19,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="/my_recipes" title="Мои рецепты">
+				<a href="/users/my_recipes/all" title="Мои рецепты">
 					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }})" class="icon-profile-menu-line"></i>
 					<span>Мои рецепты</span>
 				</a>

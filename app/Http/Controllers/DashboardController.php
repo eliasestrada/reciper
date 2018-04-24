@@ -44,12 +44,4 @@ class DashboardController extends Controller
 
         return view('notifications')->withNotifications($notifications);
 	}
-
-	// Show all my recipes
-	public function my_recipes()
-	{
-		$recipes = Recipe::whereUserId(user()->id)->latest()->paginate(20);
-
-		return view('my_recipes')->withRecipes($recipes);
-	}
 }
