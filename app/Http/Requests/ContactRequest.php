@@ -16,9 +16,21 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'имя' => 'required|min:3|max:50',
-			'почта' => 'required|email',
-			'сообщение' => 'required|min:20|max:5000'
+            'name'			 => 'required|min:3|max:50',
+			'email'			 => 'required|email',
+			'message'		 => 'required|min:20|max:5000'
         ];
+	}
+	
+	public function messages()
+    {
+        return [
+			'name.required'      	=> trans('my_valid.contact_name_required'),
+			'email.required'  		=> trans('my_valid.contact_email_required'),
+			'message.required' 		=> trans('my_valid.contact_message_required'),
+			'email.email' 			=> trans('my_valid.contact_email_email'),
+			'message.min' 			=> trans('my_valid.contact_message_min'),
+			'message.max' 			=> trans('my_valid.contact_message_max')
+		];
     }
 }

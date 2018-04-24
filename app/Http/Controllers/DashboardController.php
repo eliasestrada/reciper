@@ -45,19 +45,6 @@ class DashboardController extends Controller
         return view('notifications')->withNotifications($notifications);
 	}
 
-	/**
-	 * Checklist shows all recipes that need to be approved
-	 * by administration
-	 */
-	public function checklist()
-	{
-		$unapproved = Recipe::whereApproved(0)
-				->whereReady(1)
-				->oldest()
-				->paginate(10);
-
-		return view('checklist')->withUnapproved($unapproved);
-	}
 	// Show all my recipes
 	public function my_recipes()
 	{

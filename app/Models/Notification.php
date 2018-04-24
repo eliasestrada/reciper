@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Notification extends Model
 {
 	// The attributes that are mass assignable.
-	protected $guarded = [ 'id' ];
+	protected $fillable = [
+		'user_id', 'title', 'message', 'for_admins'
+	];
 
     public function user() {
 		return $this->belongsTo(User::class);

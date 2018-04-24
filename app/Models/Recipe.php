@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Recipe extends Model
 {
 	// The attributes that are mass assignable.
-    protected $guarded = ['id'];
+    // The attributes that are mass assignable.
+	protected $fillable = [
+		'title',   'intro',    'ingredients', 'advice',
+		'text',    'time',     'category',    'author',
+		'ready',   'approved', 'image',       'user_id'
+	];
 
     public function user() {
         return $this->belongsTo(User::class);

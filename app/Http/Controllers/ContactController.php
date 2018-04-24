@@ -13,15 +13,10 @@ class ContactController extends Controller
 	// Store in feedback table in database
 	public function store(ContactRequest $request)
 	{
-
-		Feedback::insert([
-			'name'    => $request->имя,
-			'email'   => $request->почта,
-			'message' => $request->сообщение
-		]);
+		Feedback::create($request->only('name', 'email', 'message'));
 
 		return redirect()->back()->withSuccess(
-			'Спасибо за ваш отзыв.'
+			trans('feedback.thanks_for_feedback')
 		);
 	}
 }

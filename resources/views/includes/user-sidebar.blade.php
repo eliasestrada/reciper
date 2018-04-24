@@ -30,21 +30,21 @@
 					<span>Пользователи</span>
 				</a>
 			</li>
-			<li>
-				<a href="/statistic" title="Статистика">
-					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -25px 0;" class="icon-profile-menu-line"></i>
-					<span>Статистика</span>
-				</a>
-			</li>
 			@admin
 				<li>
-					<a href="/checklist" title="Проверочная" {{ $allunapproved }} class="red-buttons">
+					<a href="/admin/statistic" title="Статистика">
+						<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -25px 0;" class="icon-profile-menu-line"></i>
+						<span>Статистика</span>
+					</a>
+				</li>
+				<li>
+					<a href="/admin/checklist" title="Проверочная" {{ $allunapproved }} class="red-buttons">
 						<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -50px -50px;" class="icon-profile-menu-line"></i>
 						<span>Проверочная</span>
 					</a>
 				</li>
 				<li>
-					<a href="/feedback" title="Обратная связь" {{ $allfeedback }} class="red-buttons">
+					<a href="/admin/feedback" title="Обратная связь" {{ $allfeedback }} class="red-buttons">
 						<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) 0 -50px;" class="icon-profile-menu-line"></i>
 						<span>Обратная связь</span>
 					</a>

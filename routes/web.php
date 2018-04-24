@@ -1,8 +1,5 @@
 <?php
 
-// All resources
-Route::resource('feedback', 'FeedbackController');
-
 // Login and Register
 Auth::routes();
 
@@ -30,7 +27,6 @@ Route::prefix('user/{id}')->group(function () {
 // Dashboard ===========
 Route::get('dashboard', 'DashboardController@index');
 Route::get('notifications', 'DashboardController@notifications');
-Route::get('checklist', 'DashboardController@checklist');
 Route::get('my_recipes', 'DashboardController@my_recipes');
 
 // Settings ===========
@@ -49,9 +45,14 @@ Route::prefix('settings')->group(function () {
 	});
 });
 
-// Statistic ===========
-Route::get('statistic', 'StatisticController@visitors');
-
 // Artisan commands
 Route::get('artisan/config/{url_key}', 'ArtisanController@cache');
 Route::get('artisan/clear/{url_key}', 'ArtisanController@clear');
+
+// Admin ===========
+Route::prefix('admin')->group(function () {
+	Route::get('checklist', 'AdminController@checklist');
+	Route::get('statistic', 'AdminController@visitors');
+	Route::get('feedback', 'AdminController@feedback');
+	Route::delete('feedback/{id}', 'AdminController@feedbackDestroy');
+});

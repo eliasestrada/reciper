@@ -18,7 +18,6 @@ class CreateTitleTable extends Migration
 			$table->string('name');
 			$table->string('title');
 			$table->text('text');
-            $table->timestamps();
         });
     }
 
