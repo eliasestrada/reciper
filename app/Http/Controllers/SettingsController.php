@@ -61,17 +61,14 @@ class SettingsController extends Controller
 
 	public function updateUserData(SettingsUpdateUserDataRequest $request)
 	{
-		user()->update([
-			'name' => $request->name
-		]);
-
+		user()->update([ 'name' => $request->name ]);
 		return back()->withSuccess('Настройки сохранены');
 	}
 
 
 	public function updateUserPassword(SettingsUpdateUserPasswordRequest $request)
 	{
-        if(Hash::check($request->old_password, user()->password)) {
+        if (Hash::check($request->old_password, user()->password)) {
 			user()->update([
 				'password' => Hash::make($request->password)
 			]);

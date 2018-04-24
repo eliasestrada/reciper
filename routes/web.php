@@ -13,7 +13,7 @@ Route::post('contact', 'ContactController@store');
 Route::resource('recipes', 'RecipesController');
 Route::prefix('recipes/{recipe}')->group(function () {
 	Route::get('like', 'RecipesController@like');
-	Route::get('dislike', 'RecipesController@dislike');
+	Route::get('dislike/', 'RecipesController@dislike');
 });
 
 // Users ===========

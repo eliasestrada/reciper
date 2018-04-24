@@ -40,8 +40,8 @@ class RecipesController extends Controller
 
     /**
 	 * It will save the recipe to a database
-	 * @param RecipeSaveRequest $request is validating this method
-	 * @param SaveRecipeDataContract $saveImage
+	 * @see RecipeSaveRequest is validating this method
+	 * @see SaveRecipeDataContract
 	 */
     public function store(RecipeSaveRequest $request, SaveRecipeDataContract $saveRecipeData)
     {
@@ -85,10 +85,8 @@ class RecipesController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(Recipe $recipe)
     {
-		$recipe = Recipe::find($id);
-
         // Check for correct user
         if (!user()->hasRecipe($recipe->user_id) && !user()->isAdmin()) {
             return redirect('/recipes')->withError(
@@ -109,15 +107,12 @@ class RecipesController extends Controller
 		));
     }
 
-
     /**
 	 * Update single recipe
-	 * @param RecipePublichRequest $request
-	 * @param string $id
+	 * @see RecipePublichRequest
 	 */
-    public function update(RecipePublichRequest $request, $id)
+    public function update(RecipePublichRequest $request, Recipe $recipe)
     {
-		$recipe = Recipe::find($id);
 		$recipe->update($request->except([
 			'_token','_method', 'image'
 		]));
@@ -157,31 +152,30 @@ class RecipesController extends Controller
     }
 
 
-    public function like($id)
+    public function like(Recipe $recipe)
     {
-		Recipe::find($id)->increment('likes');
+		$recipe->increment('likes');
         return back()->withCookie(cookie('liked', 1, 5000));
 	}
 
-    public function dislike($id)
+    public function dislike(Recipe $recipe)
     {
-		Recipe::find($id)->decrement('likes');
+		$recipe->decrement('likes');
 		return back()->withCookie(Cookie::forget('liked'));
     }
 
 	// We also deliting image in App\Observers\RecipeObserver
-    public function destroy($id)
+    public function destroy(Recipe $recipe)
     {
-		$recipe = Recipe::find($id);
-
         // Check for correct user
         if (!user()->hasRecipe($recipe->user_id) && !user()->isAdmin()) {
             return redirect('/recipes')->withError(
 				trans('recipes.you_cannot_edit_peoples_recipes')
 			);
-        }
+		}
+
 		$recipe->delete();
-		
+
         return redirect('/my_recipes')->withSuccess(
 			trans('recipes.deleted')
 		);
