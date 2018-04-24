@@ -16,7 +16,7 @@
 	<div class="wrapper">
 
 		<div class="loading" id="loading"></div>
-		<h4 class="loading-title" id="loading-title">Загрузка ...</h4>
+		<h4 class="loading-title" id="loading-title">@lang('includes.loading') ...</h4>
 
 		@include('includes.messages')
 

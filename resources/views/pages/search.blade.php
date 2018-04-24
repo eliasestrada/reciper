@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'Поиск')
+@section('title', trans('pages.search'))
 
 @section('content')
 
-<h2 class="headline">Поиск</h2>
+<h2 class="headline">@lang('pages.search')</h2>
 
 {{--  Form  --}}
 {!! Form::open(['action' => 'PagesController@search', 'method' => 'GET', 'class' => 'form']) !!}
 	<div class="form-group simple-group">
-		{{ Form::text('for', '', ['placeholder' => 'Введите критерии поиска...']) }}
+		{{ Form::text('for', '', ['placeholder' => trans('pages.search_details')]) }}
 		{{ Form::submit('', ['style' => 'display:none'])}}
 	</div>
 {!! Form::close() !!}
@@ -22,12 +22,14 @@
 			@foreach ($recipes as $recipe)
 				<div class="recipe-container col-xs-12 col-sm-6 col-md-4 col-lg-3">
 					<div class="recipe">
+
+						{{--  Image  --}}
 						<a href="/recipes/{{ $recipe->id }}">
-							{{--  Image  --}}
 							<img  src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
 						</a>
+
+						{{--  Title  --}}
 						<div class="recipes-content">
-							{{--  Title  --}}
 							<h3>{{ $recipe->title }}</h3>
 						</div>
 					</div>

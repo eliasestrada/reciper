@@ -1,28 +1,28 @@
 @extends('layouts.app')
 
-@section('title', 'Связь с нами')
+@section('title', trans('pages.feedback'))
 
 @section('content')
 
 <div class="container">
-	<h1 class="headline">Связь с нами</h1>
+	<h1 class="headline">@lang('pages.feedback')</h1>
 
 	{!! Form::open(['action' => 'ContactController@store', 'method' => 'POST', 'class' => 'form']) !!}
 		@csrf
 		<div class="form-group simple-group">
-			{{ Form::label('name', 'Имя') }}
-			{{ Form::text('name', '', ['placeholder' => 'Введите ваше имя']) }}
+			{{ Form::label('name', trans('form.name')) }}
+			{{ Form::text('name', '', ['placeholder' => trans('form.name')]) }}
 		</div>
 		<div class="form-group simple-group">
-			{{ Form::label('email', 'Эл. почта') }}
-			{{ Form::text('email', '', ['placeholder' => 'Введите эл. почту']) }}
+			{{ Form::label('email', trans('form.email')) }}
+			{{ Form::text('email', '', ['placeholder' => trans('form.email')]) }}
 		</div>
 		<div class="form-group simple-group">
-			{{ Form::label('message', 'Cообщение') }}
-			{{ Form::textarea('message', '', ['placeholder' => 'Введите сообщение']) }}
+			{{ Form::label('message', trans('form.message')) }}
+			{{ Form::textarea('message', '', ['placeholder' => trans('form.message')]) }}
 		</div>
 		<div class="form-group simple-group">
-			{{ Form::submit('Отправить') }}
+			{{ Form::submit(trans('form.send')) }}
 		</div>
 	{!! Form::close() !!}
 </div>

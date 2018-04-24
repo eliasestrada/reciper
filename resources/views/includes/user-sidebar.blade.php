@@ -7,74 +7,74 @@
 				</a>
 			</li>
 			<li>
-				<a href="/dashboard" title="Профиль">
+				<a href="/dashboard" title="@lang('includes.profile')">
 					<i style="background: url({{ asset('/storage/uploads/' . user()->image) }});" class="icon-profile-menu-line user-icon"></i>
-					<span>Профиль</span>
+					<span>@lang('includes.profile')</span>
 				</a>
 			</li>
 			<li>
-				<a href="/recipes/create" title="Добавить рецепт">
+				<a href="/recipes/create" title="@lang('includes.new_recipe')">
 					<i class="icon-profile-menu-line" style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -75px 0px;"></i>
-					<span>Новый рецепт</span>
+					<span>@lang('includes.new_recipe')</span>
 				</a>
 			</li>
 			<li>
-				<a href="/users/my_recipes/all" title="Мои рецепты">
+				<a href="/users/my_recipes/all" title="@lang('includes.my_recipes')">
 					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }})" class="icon-profile-menu-line"></i>
-					<span>Мои рецепты</span>
+					<span>@lang('includes.my_recipes')</span>
 				</a>
 			</li>
 			<li>
-				<a href="/users" title="Пользователи">
+				<a href="/users" title="@lang('includes.users')">
 					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -25px -25px;" class="icon-profile-menu-line"></i>
-					<span>Пользователи</span>
+					<span>@lang('includes.users')</span>
 				</a>
 			</li>
 			@admin
 				<li>
-					<a href="/admin/statistic" title="Статистика">
+					<a href="/admin/statistic" title="@lang('includes.statistics')">
 						<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -25px 0;" class="icon-profile-menu-line"></i>
-						<span>Статистика</span>
+						<span>@lang('includes.statistics')</span>
 					</a>
 				</li>
 				<li>
-					<a href="/admin/checklist" title="Проверочная" {{ $allunapproved }} class="red-buttons">
+					<a href="/admin/checklist" title="@lang('includes.checklist')" {{ $allunapproved }} class="red-buttons">
 						<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -50px -50px;" class="icon-profile-menu-line"></i>
-						<span>Проверочная</span>
+						<span>@lang('includes.checklist')</span>
 					</a>
 				</li>
 				<li>
-					<a href="/admin/feedback" title="Обратная связь" {{ $allfeedback }} class="red-buttons">
+					<a href="/admin/feedback" title="@lang('includes.feedback')" {{ $allfeedback }} class="red-buttons">
 						<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) 0 -50px;" class="icon-profile-menu-line"></i>
-						<span>Обратная связь</span>
+						<span>@lang('includes.feedback')</span>
 					</a>
 				</li>
 			@endadmin
 			<li>
-				<a href="/notifications" title="Оповещения" {{ $notifications }} class="red-buttons">
+				<a href="/notifications" title="@lang('includes.notifications')" {{ $notifications }} class="red-buttons">
 					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -25px -50px;" class="icon-profile-menu-line"></i>
-					<span>Оповещения</span>
+					<span>@lang('includes.notifications')</span>
 				</a>
 			</li>
 			<li>
-				<a>
+				<a title="@lang('includes.settings')">
 					<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -50px 0;" class="icon-profile-menu-line"></i>
-					<span>Настройки</span>
+					<span>@lang('includes.settings')</span>
 				</a>
 			</li>
 
 			{{-- Menu Second Level --}}
 			<div class="menu-second-level">
 				<a href="/settings/general" title="Общие">
-					<span>Общие</span>
+					<span>@lang('includes.general')</span>
 				</a>
 				<a href="/settings/photo" title="Фотография">
-					<span>Фотография</span>
+					<span>@lang('includes.photo')</span>
 				</a>
 
 				@admin
 					<a href="/settings/titles" title="Заголовки">
-						<span>Заголовки</span>
+						<span>@lang('includes.titles')</span>
 					</a>
 				@endadmin
 			</div>
@@ -82,7 +82,7 @@
 		<li>
 			<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Выйти">
 				<i style="background: url({{ asset('/css/icons/admin-sprite.png') }}) -50px -25px;" class="icon-profile-menu-line"></i>
-				<span class="nav-text">Выйти</span>
+				<span class="nav-text">@lang('includes.logout')</span>
 			</a>
 		</li>
 	</nav>

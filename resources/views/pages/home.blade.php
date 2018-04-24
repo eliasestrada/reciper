@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Главная')
+@section('title', trans('pages.home'))
 
 @section('content')
 
@@ -22,7 +22,7 @@
 		{{--  Form  --}}
 		{!! Form::open(['action' => 'PagesController@search', 'method' => 'GET', 'class' => 'header-search']) !!}
 			<div class="form-group">
-				{{ Form::text('for', '', ['id' => 'header-search-input', 'placeholder' => 'Введите критерии поиска...']) }}
+				{{ Form::text('for', '', ['id' => 'header-search-input', 'placeholder' => trans('pages.search_details')]) }}
 				{{ Form::submit('', ['style' => 'display:none']) }}
 			</div>
 		{!! Form::close() !!}
@@ -42,11 +42,14 @@
 				@foreach ($chunk as $random)
 					<div class="recipe-container col-xs-12 col-sm-6 col-md-4" style="animation: appear {{ 2 + $loop->index }}s;">
 						<div class="recipe">
+
 							<a href="/recipes/{{ $random->id }}">
 								<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{ $random->title }}">
 							</a>
+							
 							<div class="recipes-content">
-								<!-- Title -->
+
+								{{-- Title --}}
 								<h3>{{ $random->title }}</h3>
 							</div>
 						</div>

@@ -6,7 +6,7 @@
 			@foreach ($footer_rand_recipes->chunk(4) as $random_chunk)
 				<div class="col-xs-6 col-sm-4">
 					<ul class="unstyled-list">
-						<li><strong>Рецепты</strong></li>
+						<li><strong>@lang('includes.recipes')</strong></li>
 						@foreach ($random_chunk as $footer_recipe)
 							<li>
 								<a href="/recipes/{{ $footer_recipe->id }}" title="{{ $footer_recipe->title }}">
@@ -21,17 +21,17 @@
 			{{--  Navigation  --}}
 			<div class="col-xs-12 col-sm-4">
 				<ul class="unstyled-list">
-					<li><strong>Навигация</strong></li>
-					<li><a href="/">Главная</a></li>
-					<li><a href="/recipes">Рецепты</a></li>
-					<li><a href="/contact">Обратная связь</a></li>
-					<li><a href="/search">Поиск</a></li>
+					<li><strong>@lang('includes.navigation')</strong></li>
+					<li><a href="/">@lang('includes.home')</a></li>
+					<li><a href="/recipes">@lang('includes.recipes')</a></li>
+					<li><a href="/contact">@lang('includes.feedback')</a></li>
+					<li><a href="/search">@lang('includes.search')</a></li>
 				</ul>
 			</div>
 		</div>
 
-		<a href="/" title="На главную">
-			<img src="{{ asset('favicon.png') }}" alt="Логотип" class="footer-logo">
+		<a href="/" title="@lang('includes.home')">
+			<img src="{{ asset('favicon.png') }}" alt="@lang('includes.logo')" class="footer-logo">
 		</a>
 
 		<p class="footer-copyright">
@@ -39,7 +39,7 @@
 		</p>
 
 		<p class="footer-copyright">
-			Дизайн и создание: <a href="https://www.upwork.com/o/profiles/users/_~01f3e73b66ebe1e87b/" style="color:#8080ff;">Сергей Черненький</a>
+			@lang('includes.my_rights')
 		</p>
 	</div>
 </footer>
