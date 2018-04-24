@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Статистика')
+@section('title', trans('admin.statistics'))
 
 @section('content')
 
 <table class="statistic-table">
-	<caption>Статистика</caption>
+	<caption>@lang('admin.statistics')</caption>
 	<tr>
-		<th scope="col">Страна/Город</th>
-		<th scope="col">Клики</th>
+		<th scope="col">@lang('admin.country_and_city')</th>
+		<th scope="col">@lang('admin.clicks')</th>
 	</tr>
 	<tr>
 		<td scope="row">Рецепты</td>
@@ -19,19 +19,19 @@
 		<td>{{ $allvisitors }}</td>
 	</tr>
 	<tr>
-		<td scope="row">Клики</td>
+		<td scope="row">@lang('admin.clicks')</td>
 		<td>{{ $allclicks }}</td>
 	</tr>
 </table>
 
 <table class="statistic-table">
 	<tbody>
-		<caption>Клики</caption>
+		<caption>@lang('admin.clicks')</caption>
 		<tr>
-			<th scope="col">Страна / Город</th>
-			<th scope="col">Клики</th>
+			<th scope="col">@lang('admin.country_and_city')</th>
+			<th scope="col">@lang('admin.clicks')</th>
 		</tr>
-	@forelse ($visitors as $visitor)
+	@foreach ($visitors as $visitor)
 		<?php
 			$geodata = $sxgeo->getCityFull($visitor->ip);
 			$country = $geodata['country']['name_ru'];
@@ -41,9 +41,7 @@
 			<td scope="row">{{ $country }} / {{ $city }}</td>
 			<td>{{ $visitor->clicks }}</td>
 		</tr>
-	@empty
-		<p class="content center">У вас пока нет оповещений</p>
-	@endforelse
+	@endforeach
 </table>
 
 {{ $visitors->links() }}

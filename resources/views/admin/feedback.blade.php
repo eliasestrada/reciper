@@ -16,7 +16,7 @@
 
 			{!! Form::open(['action' => ['AdminController@feedbackDestroy', $feed->id], 'method' => 'POST', 'onsubmit' => 'return confirm("Вы точно хотите удалить этот отзыв?")']) !!}
 				{{ method_field('delete') }}
-				{{ Form::submit(trans('admin.delete'), ['class' => 'button-add-user']) }}
+				{{ Form::submit(trans('form.delete'), ['class' => 'button-add-user']) }}
 			{!! Form::close() !!}
 
 		</div>
