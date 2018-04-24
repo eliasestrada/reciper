@@ -13,7 +13,7 @@ Route::post('contact', 'ContactController@store');
 Route::resource('recipes', 'RecipesController');
 Route::prefix('recipes/{recipe}')->group(function () {
 	Route::get('like', 'RecipesController@like');
-	Route::get('dislike/', 'RecipesController@dislike');
+	Route::get('dislike', 'RecipesController@dislike');
 });
 
 // Users ===========
@@ -51,7 +51,7 @@ Route::prefix('settings')->group(function () {
 
 // Approving ======
 Route::post('answer/ok/{id}', 'ApproveController@ok');
-Route::post('answer/cansel/{id}', 'ApproveController@cancel');
+Route::post('answer/cancel/{id}', 'ApproveController@cancel');
 
 
 // Artisan commands =======
