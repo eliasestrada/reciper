@@ -25,8 +25,8 @@ class SettingsUpdateHomeDataRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.max' => 'Заголовок должен быть не более 190 символов',
-			'text.max'  => 'Текст должен быть не более 900 символов'
+            'title.max' => trans('my_valid.settings_title_max'),
+			'text.max'  => trans('my_valid.settings_text_max')
         ];
     }
 }

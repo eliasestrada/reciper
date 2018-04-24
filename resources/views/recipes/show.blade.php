@@ -19,7 +19,7 @@
 
 		{{--  Buttons  --}}
 		@auth
-			@if (user()->hasRecipe($recipe->id) && !$recipe->ready())
+			@if (user()->hasRecipe($recipe->user_id) && !$recipe->ready())
 				<div class="recipe-buttons">
 					{{--  Edit button  --}}
 					<a href="/recipes/{{ $recipe->id }}/edit" title="Редактировать рецепт" class="edit-recipe-icon icon-edit"></a>

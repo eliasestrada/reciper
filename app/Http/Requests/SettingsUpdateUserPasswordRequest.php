@@ -24,10 +24,10 @@ class SettingsUpdateUserPasswordRequest extends FormRequest
 	// Get the validation messages that apply to the request.
 	public function messages() {
 		return [
-			'old_password.required' => 'Старый пароль обязателен к заполнению',
-            'password.required'     => 'Новый пароль обязателен к заполнению',
-            'password.min'          => 'Пароль должен иметь хотябы 6 символов',
-            'password.confirmed'    => 'Пароли не совпадают'
+			'old_password.required' => trans('my_valid.settings_pwd_required'),
+            'password.required'     => trans('my_valid.settings_new_pwd_required'),
+            'password.min'          => trans('my_valid.settings_pwd_min'),
+            'password.confirmed'    => trans('my_valid.settings_pwd_confirmed')
 		];
 	}
 }

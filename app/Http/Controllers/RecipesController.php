@@ -50,7 +50,7 @@ class RecipesController extends Controller
 		$recipe->save();
 
 		return redirect('/recipes/'.$recipe->id.'/edit') ->withSuccess(
-			'Рецепт успешно сохранен'
+			trans('recipes.recipe_has_been_saved')
 		);
     }
 
@@ -60,8 +60,7 @@ class RecipesController extends Controller
         // Rules for visitors
         if (!user() && !$recipe->approved()) {
             return redirect('/recipes')->withError(
-				'У вас нет права просматривать этот рецепт, 
-				так как он еще не опубликован'
+				trans('recipes.no_rights_to_see')
 			);
 		}
 
@@ -69,15 +68,15 @@ class RecipesController extends Controller
         if (user()) {
             if (!user()->isAdmin() && !user()->hasRecipe($recipe->user_id) && !$recipe->ready()) {
                 return redirect('/recipes')->withError(
-					'У вас нет права на просмотр этого рецепта'
+					trans('recipes.no_rights_to_see')
 				);
             } elseif (!user()->hasRecipe($recipe->user_id) && !$recipe->ready()) {
                 return redirect('/recipes')->withError(
-					'Этот рецепт находится в процессе написания.'
+					trans('recipes.is_not_written_yet')
 				);
 			} elseif (!user()->isAdmin() && !user()->hasRecipe($recipe->user_id) && !$recipe->approved()) {
                 return redirect('/recipes')->withError(
-					'Этот рецепт еще не одобрен.'
+					trans('recipes.not_approved_yet')
 				);
 			}
 		}
@@ -93,14 +92,13 @@ class RecipesController extends Controller
         // Check for correct user
         if (!user()->hasRecipe($recipe->user_id) && !user()->isAdmin()) {
             return redirect('/recipes')->withError(
-				'Вы не можете редактировать не свои рецепты.'
+				trans('recipes.no_rights_to_edit')
 			);
         }
 
         if ($recipe->ready() && !user()->isAdmin()) {
 			return redirect('/recipes')->withError(
-				'Вы не можете редактировать рецепты которые находятся на 
-				рассмотрении или уже опубликованны.'
+				trans('recipes.cannot_edit_unproved')
 			);
         }
 
@@ -146,16 +144,15 @@ class RecipesController extends Controller
 
         if (!$recipe->ready()) {
             return redirect()->back()->withSuccess(
-				'Рецепт успешно сохранен'
+				trans('recipes.saved')
 			);
         } elseif ($recipe->ready() && user()->isAdmin()) {
             return redirect('/recipes')->withSuccess(
-				'Рецепт опубликован и доступен для посетителей.'
+				trans('recipes.recipe_is_published')
 			);
         }
         return redirect('/dashboard')->withSuccess(
-			'Рецепт добавлен на рассмотрение и будет опубликован после 
-			одобрения администрации.'
+			trans('recipes.added_to_approving')
 		);
     }
 
@@ -198,7 +195,7 @@ class RecipesController extends Controller
             Notification::recipeHasNotBeenCreated($recipe->title, $recipe->user_id);
 
             return redirect('/recipes')->withSuccess(
-				'Вы вернули рецепт на повторное редактирование'
+				trans('recipes.you_gave_recipe_back_on_editing')
 			);
         }
     }
@@ -211,11 +208,13 @@ class RecipesController extends Controller
         // Check for correct user
         if (!user()->hasRecipe($recipe->user_id) && !user()->isAdmin()) {
             return redirect('/recipes')->withError(
-				'Вы не можете редактировать не свои рецепты'
+				trans('recipes.you_cannot_edit_peoples_recipes')
 			);
         }
 		$recipe->delete();
 		
-        return redirect('/my_recipes')->withSuccess('Рецепт успешно удален');
+        return redirect('/my_recipes')->withSuccess(
+			trans('recipes.deleted')
+		);
 	}
 }

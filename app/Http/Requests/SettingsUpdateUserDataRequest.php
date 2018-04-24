@@ -23,9 +23,9 @@ class SettingsUpdateUserDataRequest extends FormRequest
 	// Get the validation messages that apply to the request.
 	public function messages() {
 		return [
-			'name.required' => 'Поле имя обязателено к заполнению',
-			'name.min' => 'Имя должно быть хотябы 6 символов',
-			'name.max' => 'Имя не должно превышать 190 символов'
+			'name.required' => trans('my_valid.settings_name_required'),
+			'name.min'      => trans('my_valid.settings_name_min'),
+			'name.max' 		=> trans('my_valid.settings_name_max')
 		];
 	}
 }

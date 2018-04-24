@@ -26,28 +26,22 @@ class RecipeSaveRequest extends FormRequest
         ];
 	}
 
-
     public function messages()
     {
         return [
-            'title.min'             => 'Название рецепта не должно быть менее 5 символов',
-			'title.max'             => 'Название рецепта не должно быть более 199 символов',
-			'intro.min'             => 'Краткое описание не должно быть менее 20 символов',
-			'intro.max'             => 'Краткое описание не должно быть не более 2000 символов',
-			'ingredients.min'       => 'Колличество символов в поле ингридиенты не должно быть менее 
-										20 символов',
-			'ingredients.max'       => 'Колличество символов в поле ингридиенты не должно быть не более 
-										5000 символов',
-			'advice.max'            => 'Колличество символов в поле совет не должно быть не более 
-										5000 символов',
-			'text.min'              => 'Колличество символов в поле приготовление не должно быть менее 
-										80 символов',
-			'text.max'              => 'Колличество символов в поле приготовление не должно быть более 
-										10 000 символов',
-			'time.numeric'          => 'Время должно быть числом',
-			'time.digits_between'   => 'Время должно быть числом между 0 и 1999',
-			'image.image'           => 'Изображение должно быть файлом изображения JPG',
-			'image.max'             => 'Максимальный допустимый обьем изображения 1999 кбайт'
+            'title.min'             => trans('my_valid.recipe_min'),
+			'title.max'             => trans('my_valid.recipe_title_max'),
+			'intro.min'             => trans('my_valid.recipe_intro_max'),
+			'intro.max'             => trans('my_valid.recipe_intro_max'),
+			'ingredients.min'       => trans('my_valid.recipe_ingredients_min'),
+			'ingredients.max'       => trans('my_valid.recipe_ingredients_max'),
+			'advice.max'            => trans('my_valid.recipe_advice_max'),
+			'text.min'              => trans('my_valid.recipe_text_min'),
+			'text.max'              => trans('my_valid.recipe_text_max'),
+			'time.numeric'          => trans('my_valid.recipe_time_numeric'),
+			'time.digits_between'   => trans('my_valid.recipe_digits_between'),
+			'image.image'           => trans('my_valid.recipe_image_image'),
+			'image.max'             => trans('my_valid.recipe_image_max')
         ];
     }
 }
