@@ -8,7 +8,10 @@
 </div>
 
 {{-- List Items --}}
-<div class="list-of-added-items" id="list-of-added-items"></div>
+<div class="list-of-added-items">
+	<h3>Список покупок</h3>
+	<ul id="list-of-added-items"></ul>
+</div>
 
 {{--  Navigation menu  --}}
 <nav id="nav-menu" class="nav-closed">

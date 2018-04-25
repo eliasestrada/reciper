@@ -135,11 +135,27 @@
 	})()
 
 	// List Items
+	let i = 0
 	let items = []
 	let list = document.getElementById('list-of-added-items')
 
-	document.querySelectorAll('#items li').forEach(item => items.push(item.innerHTML))
+	document.querySelectorAll('#items li').forEach(item => {
+		i++
+		items.push(`<li class="each-item">${ item.innerHTML }</li>`)
+	})
 
-	
+	list.innerHTML = items.join('')
+
+	document.querySelectorAll('.each-item').forEach(item => {
+		item.addEventListener('click', () => {
+			if (item.className == "each-item checked") {
+				item.classList.remove('checked')
+			} else {
+				item.classList.add("checked")
+			}
+			
+		})
+	})
+
 </script>
 @endsection
