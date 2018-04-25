@@ -21,4 +21,3 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('recipes', 'Api\ApiRecipesController@index');
 Route::get('show-random-recipes/{id}', 'Api\ApiRecipesController@showRandomRecipes');
-Route::get('items', 'Api\ApiItemsController@show');
