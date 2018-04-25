@@ -11,10 +11,12 @@ function convertToListItems( $string )
 	return implode('', array_values($list_of_ingredients));
 }
 
+
 function user()
 {
 	return auth()->user();
 }
+
 
 function styleTimestamp( $path )
 {
@@ -28,6 +30,7 @@ function styleTimestamp( $path )
 	return '<link rel="stylesheet" href="' . $path . $timestamp . '">';
 }
 
+
 function scriptTimestamp( $path )
 {
 	try {
@@ -38,4 +41,10 @@ function scriptTimestamp( $path )
 		$timestamp = '';
 	}
 	return '<script defer type="text/javascript" src="' . $path . $timestamp . '"></script>';
+}
+
+
+function activeIfRouteIs($route)
+{
+    return request()->is($route) ? 'active' : '';
 }

@@ -23,6 +23,10 @@
 		}
 	}
 
+	.active {
+		background: $mainHoverDark;
+	}
+
 	a {
 		display: block;
 		color: #fff;

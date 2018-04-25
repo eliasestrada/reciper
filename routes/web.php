@@ -55,8 +55,8 @@ Route::post('answer/cancel/{id}', 'ApproveController@cancel');
 
 
 // Artisan commands =======
-Route::get('artisan/config/{url_key}', 'ArtisanController@cache');
-Route::get('artisan/clear/{url_key}', 'ArtisanController@clear');
+Route::get('php/artisan/cache/{url_key}', 'ArtisanController@cache');
+Route::get('php/artisan/clear/{url_key}', 'ArtisanController@clear');
 
 // Admin ===========
 Route::prefix('admin')->group(function () {

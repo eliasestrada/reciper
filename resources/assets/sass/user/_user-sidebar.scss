@@ -43,6 +43,10 @@
 		}
 	}
 
+	.active {
+		background: $main;
+	}
+
 	li > a {
 		position: relative;
 		display: table;

@@ -143,6 +143,8 @@ img {
     transition: .3s; }
     #nav-menu li:hover {
       background: #6969d3; }
+  #nav-menu .active {
+    background: #4949a8; }
   #nav-menu a {
     display: block;
     color: #fff;
@@ -244,7 +246,7 @@ img {
       margin-top: -2px;
       display: inline-block;
       border: none;
-      border-radius: .2em;
+      border-radius: 3px;
       text-align: center;
       padding: 0 .2em;
       background: #6969d3; }
@@ -255,8 +257,7 @@ img {
 
 .categories-button {
   position: relative;
-  cursor: pointer;
-  margin-top: -40px; }
+  cursor: pointer; }
   .categories-button a:hover {
     background: #6969d3 !important; }
 
@@ -346,13 +347,9 @@ img {
     .home-header .header-content h1 {
       padding-top: 2.8em;
       padding-bottom: 0;
-      font-size: 3em;
+      font-size: 2.5em;
       -webkit-animation-delay: .5s;
       animation-delay: .5s; }
-    .home-header .header-content h2 {
-      padding: 0 .3em;
-      -webkit-animation-delay: 1s;
-      animation-delay: 1s; }
   .home-header .header-bg-img,
   .home-header .header-bg-overlay {
     position: absolute;
@@ -497,6 +494,9 @@ footer {
     color: #c6c5ff; }
     footer a:hover {
       color: #6969d3; }
+  footer .active {
+    color: #d5b0ff;
+    text-decoration: underline; }
   footer .footer-logo {
     width: 50px;
     margin: 0 auto; }
@@ -1055,6 +1055,8 @@ footer {
     .user-sidebar li:hover {
       color: #fff;
       background: #8080ff; }
+  .user-sidebar .active {
+    background: #8080ff; }
   .user-sidebar li > a {
     position: relative;
     display: table;

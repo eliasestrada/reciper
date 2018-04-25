@@ -17,8 +17,7 @@
 		transform: translate(-50%, -50%);
 		margin-top: -1em;
 
-		h1,
-		h2 {
+		h1 {
 			animation: appearWithOpacity 2s;
 			animation-fill-mode: forwards;
 			transition: opacity 300ms;
@@ -27,18 +26,10 @@
 			z-index: 30;
 			opacity: 0;
 			line-height: 1.2;
-		}
-		
-		h1 {
 			padding-top: 2.8em;
 			padding-bottom: 0;
-			font-size: 3em;
+			font-size: 2.5em;
 			animation-delay: .5s;
-		}
-		
-		h2 {
-			padding: 0 .3em;
-			animation-delay: 1s;
 		}
 	}
 	

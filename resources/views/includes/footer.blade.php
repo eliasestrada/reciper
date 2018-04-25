@@ -22,10 +22,26 @@
 			<div class="col-xs-12 col-sm-4">
 				<ul class="unstyled-list">
 					<li><strong>@lang('includes.navigation')</strong></li>
-					<li><a href="/">@lang('includes.home')</a></li>
-					<li><a href="/recipes">@lang('includes.recipes')</a></li>
-					<li><a href="/contact">@lang('includes.feedback')</a></li>
-					<li><a href="/search">@lang('includes.search')</a></li>
+					<li>
+						<a href="/" class="{{ activeIfRouteIs('/') }}">
+							@lang('includes.home')
+						</a>
+					</li>
+					<li>
+						<a href="/recipes" class="{{ activeIfRouteIs('recipes') }}">
+							@lang('includes.recipes')
+						</a>
+					</li>
+					<li>
+						<a href="/contact" class="{{ activeIfRouteIs('contact') }}">
+							@lang('includes.feedback')
+						</a>
+					</li>
+					<li>
+						<a href="/search" class="{{ activeIfRouteIs('search') }}">
+							@lang('includes.search')
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>
