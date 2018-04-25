@@ -17,7 +17,6 @@ class ArtisanController extends Controller
         try {
             Artisan::call('config:cache');
             Artisan::call('route:cache');
-            Artisan::call('cache:table');
             echo 'Настройки кеша сохранены';
 
         } catch (Exception $e) {
