@@ -26,7 +26,7 @@
 
     @include('includes.footer')
 
-    {{ Visitor::log() }}
+	{{ Visitor::log() }}
 
 	<!-- Javascript -->
 	{!! scriptTimestamp('/js/app.min.js') !!}

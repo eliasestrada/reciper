@@ -17,7 +17,6 @@ class CreateModelsItemsTable extends Migration
             $table->increments('id');
             $table->string('ip', 30);
             $table->string('list');
-            $table->timestamps();
         });
     }
 
