@@ -7,12 +7,6 @@
 	</div>
 </div>
 
-{{-- List Items --}}
-<div class="list-of-added-items">
-	<h3>Список покупок</h3>
-	<ul id="list-of-added-items"></ul>
-</div>
-
 {{--  Navigation menu  --}}
 <nav id="nav-menu" class="nav-closed">
 	<a href="/" title="@lang('includes.home')" id="logo" class="logo-closed">
