@@ -65,8 +65,9 @@
 
 		{{--  Items --}}
 		<h3 class="decorated"><span>@lang('recipes.ingredients')</span></h3>
-		<div class="items">
+		<div class="items" id="items">
 			<ul>{!! $recipe->ingredientsWithListItems() !!}</ul>
+			<button class="add-to-list-btn" id="add-to-list-btn">Добавить в список</button>
 		</div>
 
 		{{--  Совет  --}}
@@ -132,5 +133,13 @@
 		})
 		.catch(err => console.log(err))
 	})()
+
+	// List Items
+	let items = []
+	let list = document.getElementById('list-of-added-items')
+
+	document.querySelectorAll('#items li').forEach(item => items.push(item.innerHTML))
+
+	
 </script>
 @endsection

@@ -61,6 +61,24 @@
 	border-bottom: dotted 2px $gray;
 	font-size: .85em;
 	line-height: 1.5;
+
+	.add-to-list-btn {
+		width: 80%;
+		margin: 15px 10% 5px 10%;
+		padding: 6px;
+		border: none;
+		background: $main;
+		color: #fff;
+		text-shadow: 1px 1px 1px #000;
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background-color .2s;
+
+		&:hover {
+			background: $mainHover;
+			transition: background-color .2s;
+		}
+	}
 }
 
 .items > ul > li {

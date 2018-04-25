@@ -7,6 +7,9 @@
 	</div>
 </div>
 
+{{-- List Items --}}
+<div class="list-of-added-items" id="list-of-added-items"></div>
+
 {{--  Navigation menu  --}}
 <nav id="nav-menu" class="nav-closed">
 	<a href="/" title="@lang('includes.home')" id="logo" class="logo-closed">
