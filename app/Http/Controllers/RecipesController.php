@@ -176,7 +176,7 @@ class RecipesController extends Controller
 
 		$recipe->delete();
 
-        return redirect('/my_recipes/all')->withSuccess(
+        return redirect('/users/my_recipes/all')->withSuccess(
 			trans('recipes.deleted')
 		);
 	}
