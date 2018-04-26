@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
-	// The attributes that are mass assignable.
-    // The attributes that are mass assignable.
 	protected $fillable = [
 		'title',   'intro',    'ingredients', 'advice',
 		'text',    'time',     'category',    'author',

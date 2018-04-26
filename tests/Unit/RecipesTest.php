@@ -16,10 +16,6 @@ class RecipesTest extends TestCase
     public function testWithRelationship()
     {
         $categories = DB::table('categories')->get()->toArray();
-		
-		$categories = array_map(function($category) {
-			return $category->category;
-		}, $categories);
 
 		dd($categories);
     }
