@@ -56,8 +56,8 @@
 		<p>{{ $recipe->intro }}</p>
 
 		{{--  Category  --}}
-		<a href="/search?for={{ $recipe->category }}" title="{{ $recipe->category }}">
-			<span class="category">{{ $recipe->category }}</span>
+		<a href="/search?for={{ $recipe->category_id }}" title="{{ $recipe->category->category }}">
+			<span class="category">{{ $recipe->category->category }}</span>
 		</a>
 
 		{{--  Time  --}}
@@ -83,7 +83,7 @@
 		{{--  Дата и Автор  --}}
 		<div class="date">
 			<p>@lang('recipes.added') {{ facebookTimeAgo($recipe->created_at) }}</p>
-			<p>@lang('recipes.author'): {{ $recipe->author }}</p>
+			<p>@lang('recipes.author'): {{ $recipe->user->name }}</p>
 		</div>
 	</div>
 

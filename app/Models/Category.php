@@ -9,7 +9,7 @@ class Category extends Model
 	protected $fillable = [ 'categories' ];
 	public $timestamps  = false;
 
-	public function recipe() {
-		return $this->belongsTo(Recipe::class);
+	public function recipes() {
+		return $this->hasMany(Recipe::class);
 	}
 }

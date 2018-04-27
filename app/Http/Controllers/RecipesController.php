@@ -43,10 +43,42 @@ class RecipesController extends Controller
 	 * @see RecipeSaveRequest is validating this method
 	 * @see SaveRecipeDataContract
 	 */
-    public function store(RecipeSaveRequest $request, SaveRecipeDataContract $saveRecipeData)
+    public function store(RecipeSaveRequest $request)
     {
-		$recipe = new Recipe;
-		$saveRecipeData->save( $request, $recipe );
+		if ($request->hasFile('image')) {
+			$image = $request->file('image');
+			$filename = time() . rand() . '.' . $image->getClientOriginalExtension();
+			
+			Image::make($image)->resize(600, 400)->save(
+				storage_path('app/public/images/' . $filename
+			));
+		} else {
+			$filename = 'default.jpg';
+		}
+
+		$recipe = Recipe::create([
+			'title'    	  => request('title'),
+			'intro'		  => request('intro'),
+			'ingredients' => request('ingredients'),
+			'advice' 	  => request('advice'),
+			'image' 	  => $filename,
+			'text' 		  => request('text'),
+			'time'		  => request('time'),
+			'category'	  => request('category'),
+			'user_id' 	  => user()->id
+		]);
+
+		//$recipe = new Recipe;
+		//$recipe->title        = $request->title;
+        //$recipe->intro        = $request->intro;
+        //$recipe->ingredients  = $request->ingredients;
+        //$recipe->advice       = $request->advice;
+        //$recipe->text         = $request->text;
+        //$recipe->time         = $request->time;
+        //$recipe->category     = $request->category;
+        //$recipe->user_id      = user()->id;
+
+
 		$recipe->save();
 
 		return redirect('/recipes/'.$recipe->id.'/edit') ->withSuccess(

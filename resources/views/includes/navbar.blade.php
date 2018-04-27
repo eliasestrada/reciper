@@ -31,8 +31,8 @@
 			<div class="categories-menu" id="categories-menu">
 
 				@foreach ($all_categories as $category)
-					<a href="/search?for={{ $category['category'] }}" title="{{ $category['category'] }}">
-						<span>{{ $category['category'] }}</span>
+					<a href="/search?for={{ $category->category->id }}" title="{{ $category->category->category }}">
+						<span>{{ $category->category->category }}</span>
 					</a>
 				@endforeach
 

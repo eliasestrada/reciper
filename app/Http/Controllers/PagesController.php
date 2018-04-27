@@ -35,12 +35,18 @@ class PagesController extends Controller
 	public function search(Request $request)
     {
 		$query = $request->input('for');
-
 		if ($query) {
-			$recipes = Recipe::where('title', 'LIKE', '%' . $query . '%')
-				->orWhere('ingredients', 'LIKE', '%' . $query . '%')
-				->orWhere('category', 'LIKE', '%' . $query . '%')
-				->take(50)->get();
+			if (is_numeric($query)) {
+				$recipes = Recipe::whereCategoryId($query)
+					->take(50)
+					->get();
+			} else {
+				$recipes = Recipe::where('title', 'LIKE', '%' . $query . '%')
+					->orWhere('ingredients', 'LIKE', '%' . $query . '%')
+					->take(50)
+					->get();
+			}
+
 			$message = count($recipes) < 1 ? trans('pages.nothing_found') : '';
 		} else {
 			$recipes = '';

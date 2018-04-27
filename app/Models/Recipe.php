@@ -7,13 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Recipe extends Model
 {
 	protected $fillable = [
-		'title',   'intro',    'ingredients', 'advice',
-		'text',    'time',     'category',    'author',
-		'ready',   'approved', 'image',       'user_id'
+		'title', 'intro', 'ingredients', 'advice', 'text', 'time',
+		'category', 'ready', 'approved', 'image', 'user_id'
 	];
 
     public function user() {
         return $this->belongsTo(User::class);
+	}
+
+	public function category() {
+        return $this->belongsTo(Category::class);
 	}
 
 	public function ingredientsWithListItems() {
