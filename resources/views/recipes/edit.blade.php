@@ -74,11 +74,11 @@
 	<div class="accordion-panel">
 		<div class="form-group simple-group">
 			{{ Form::label('category', trans('recipes.category')) }}
-			<select name="category">
+			<select name="category_id">
 				@foreach ($categories as $category)
-					<option selected value="{{ $category->category }}">{{ $category->category }}</option>
+					<option selected value="{{ $category->id }}">{{ $category->category }}</option>
 				@endforeach
-				<option selected value="{{ $recipe->category }}">{{ $recipe->category }}</option>
+				<option selected value="{{ $recipe->category->id }}">{{ $recipe->category->category }}</option>
 			</select>
 		</div>
 	</div>

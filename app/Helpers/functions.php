@@ -48,3 +48,11 @@ function activeIfRouteIs($route)
 {
     return request()->is($route) ? 'active' : '';
 }
+
+function setNameForRecipeImage($extension = null)
+{
+	if ($extension) {
+		return time() . '.' . $extension;
+	}
+	return 'default.jpg';
+}

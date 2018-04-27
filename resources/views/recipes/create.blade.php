@@ -56,9 +56,9 @@
 	<button class="accordion" type="button">@lang('recipes.category')</button>
 	<div class="accordion-panel">
 		<div class="form-group simple-group">
-			<select name="category">
+			<select name="category_id">
 				@foreach ($categories as $category)
-					<option selected value="{{ $category->category }}">{{ $category->category }}</option>
+					<option selected value="{{ $category->id }}">{{ $category->category }}</option>
 				@endforeach
 			</select>
 		</div>

@@ -47,36 +47,24 @@ class RecipesController extends Controller
     {
 		if ($request->hasFile('image')) {
 			$image = $request->file('image');
-			$filename = time() . rand() . '.' . $image->getClientOriginalExtension();
-			
+			$extention = $image->getClientOriginalExtension();
+			$image_name = setNameForRecipeImage($extention);
+
 			Image::make($image)->resize(600, 400)->save(
-				storage_path('app/public/images/' . $filename
+				storage_path('app/public/images/' . $image_name
 			));
-		} else {
-			$filename = 'default.jpg';
 		}
 
-		$recipe = Recipe::create([
+		$recipe = user()->recipes()->create([
+			'image' 	  => $image_name,
+			'category_id' => request('category_id'),
 			'title'    	  => request('title'),
 			'intro'		  => request('intro'),
 			'ingredients' => request('ingredients'),
 			'advice' 	  => request('advice'),
-			'image' 	  => $filename,
 			'text' 		  => request('text'),
-			'time'		  => request('time'),
-			'category'	  => request('category'),
-			'user_id' 	  => user()->id
+			'time'		  => request('time')
 		]);
-
-		//$recipe = new Recipe;
-		//$recipe->title        = $request->title;
-        //$recipe->intro        = $request->intro;
-        //$recipe->ingredients  = $request->ingredients;
-        //$recipe->advice       = $request->advice;
-        //$recipe->text         = $request->text;
-        //$recipe->time         = $request->time;
-        //$recipe->category     = $request->category;
-        //$recipe->user_id      = user()->id;
 
 
 		$recipe->save();
@@ -145,32 +133,27 @@ class RecipesController extends Controller
 	 */
     public function update(RecipePublichRequest $request, Recipe $recipe)
     {
-		$recipe->update($request->except([
-			'_token','_method', 'image'
-		]));
+		// Handle image uploading
+		if ($request->hasFile('image')) {
+			$image     = $request->file('image');
+			$extention = $image->getClientOriginalExtension();
+			$image_name = setNameForRecipeImage($extention);
+
+			Image::make($image)->resize(600, 400)->save(
+				storage_path('app/public/images/' . $image_name )
+			);
+
+			$recipe->update([ 'image' => $image_name ]);
+		}
+		$recipe->update( $request->except([ '_token','_method', 'image' ]) );
 
 		$recipe->update([
 			'ready'    => isset($request->ready) ? 1 : 0,
 			'approved' => user()->isAdmin() ? 1 : 0
 		]);
 
-        // Handle image uploading
-        if ($request->hasFile('image')) {
-            $image    = $request->file('image');
-			$filename = time() . rand() . '.' . $image->getClientOriginalExtension();
-
-            Image::make($image)->resize(600, 400)->save(
-				storage_path('app/public/images/' . $filename )
-			);
-
-			$recipe->update([
-				'image' => $filename
-			]);
-		}
-		$recipe->save();
-
         if (!$recipe->ready()) {
-            return redirect()->back()->withSuccess(
+            return back()->withSuccess(
 				trans('recipes.saved')
 			);
         } elseif ($recipe->ready() && user()->isAdmin()) {
