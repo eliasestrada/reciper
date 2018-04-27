@@ -17,7 +17,7 @@ class ArtisanController extends Controller
         try {
             Artisan::call('config:cache');
             Artisan::call('route:cache');
-            echo 'Настройки кеша сохранены';
+            echo 'Настройки кеша сохранены! <br> <a href="/" title="На главную">На главную</a>';
 
         } catch (Exception $e) {
             die( $e->getMessage() );
@@ -36,7 +36,7 @@ class ArtisanController extends Controller
 			Artisan::call('config:clear');
 			Artisan::call('view:clear');
 			Artisan::call('route:clear');
-            echo 'Настройки кеша удалены';
+            echo 'Настройки кеша удалены! <br> <a href="/" title="На главную">На главную</a>';
 
         } catch (Exception $e) {
             die( $e->getMessage() );

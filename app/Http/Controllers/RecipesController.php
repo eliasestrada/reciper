@@ -45,6 +45,8 @@ class RecipesController extends Controller
 	 */
     public function store(RecipeSaveRequest $request)
     {
+		$image_name = 'default.jpg';
+
 		if ($request->hasFile('image')) {
 			$image = $request->file('image');
 			$extention = $image->getClientOriginalExtension();
