@@ -76,7 +76,7 @@ hamburger.addEventListener('click', () => {
 
 /**
  * Closing navigation menu on mobile screen
- * after clicking anywhere exapt our navigation
+ * after clicking anywhere except our navigation
  * 
  * @name CloseNavMenu
  * @event mouseup
@@ -119,8 +119,8 @@ window.onscroll = () => {
 }
 
 /**
- * Removing word 'Категории' on mobile screens,
- * and put it back on desctop
+ * Removing word 'Категории' on mobile screen,
+ * and put it back on descktop
  */
 if (window.matchMedia( "( min-width: 640px )").matches) {
 	categoriesTitle.innerHTML = 'Категории'
