@@ -29,15 +29,15 @@ let opened = false
  * @name NavMenuCategories
  * @event click
  */
-if (window.matchMedia( "( min-width: 640px )").matches) {
+if (window.matchMedia("( min-width: 640px )").matches) {
 	categoriesButton.addEventListener('click', () => {
 
-		if ( categoriesMenuOpened === false ) {
+		if (categoriesMenuOpened === false) {
 			categoriesMenu.style.display = "block"
 			arrowBottom.classList.add('arrow-bottom-rotate')
 			categoriesMenuOpened = true
 			setTimeout(() => categoriesMenu.style.opacity = "1", 100)
-		} else if ( categoriesMenuOpened === true ) {
+		} else if (categoriesMenuOpened === true) {
 			categoriesMenu.style.opacity = "0"
 			arrowBottom.classList.remove('arrow-bottom-rotate')
 			categoriesMenuOpened = false
@@ -66,12 +66,12 @@ window.onload = () => {
  */
 hamburger.addEventListener('click', () => {
 	navMenu.className = "nav-opened"
-    menuContainer.style.opacity = "0"
-    logo.className = "logo-opened"
-    logo.style.opacity = "1"
-    logo.style.display = "block"
-    menuUl.style.display = "block"
-    opened = true
+	menuContainer.style.opacity = "0"
+	logo.className = "logo-opened"
+	logo.style.opacity = "1"
+	logo.style.display = "block"
+	menuUl.style.display = "block"
+	opened = true
 })
 
 /**
@@ -82,7 +82,7 @@ hamburger.addEventListener('click', () => {
  * @event mouseup
  */
 window.addEventListener('mouseup', e => {
-    if (e.target != navMenu && opened === true && e.target.parentNode != navMenu) {
+	if (e.target != navMenu && opened === true && e.target.parentNode != navMenu) {
 		menuContainer.style.opacity = "0.8"
 		navMenu.className = "nav-closed"
 		logo.className = "logo-closed"
@@ -93,7 +93,7 @@ window.addEventListener('mouseup', e => {
 			logo.style.display = "none"
 		}
 		opened = false
-    }
+	}
 })
 
 /**
@@ -105,24 +105,24 @@ window.addEventListener('mouseup', e => {
 window.onscroll = () => {
 	if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
 		menuContainer.className = "hamburger-menu"
-        if (opened === false) {
-            logo.style.opacity = "0"
-            logo.style.display = "none"
-        }
-    } else {
-        menuContainer.className = "regular-menu"
-        if (opened === false) {
-            logo.style.opacity = "1"
-            logo.style.display = "block"
-        }
-    }
+		if (opened === false) {
+			logo.style.opacity = "0"
+			logo.style.display = "none"
+		}
+	} else {
+		menuContainer.className = "regular-menu"
+		if (opened === false) {
+			logo.style.opacity = "1"
+			logo.style.display = "block"
+		}
+	}
 }
 
 /**
  * Removing word 'Категории' on mobile screen,
  * and put it back on descktop
  */
-if (window.matchMedia( "( min-width: 640px )").matches) {
+if (window.matchMedia("( min-width: 640px )").matches) {
 	categoriesTitle.innerHTML = 'Категории'
 } else {
 	categoriesTitle.innerHTML = ''
