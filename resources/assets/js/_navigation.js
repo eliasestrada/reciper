@@ -1,7 +1,5 @@
 /**
  * Event works only if min-width of display is less than 640px
- * 
- * @name NavMenuCategories
  * @event click
  */
 if (window.matchMedia("( min-width: 640px )").matches) {
@@ -26,7 +24,6 @@ if (window.matchMedia("( min-width: 640px )").matches) {
  * Opens navigation menu on mobile screens
  * after clicking on 'humburger' button
  * 
- * @name OpenNavigationMenu
  * @event click
  */
 hamburger.addEventListener('click', () => {
@@ -43,7 +40,6 @@ hamburger.addEventListener('click', () => {
  * Closing navigation menu on mobile screen
  * after clicking anywhere except our navigation
  * 
- * @name CloseNavMenu
  * @event mouseup
  */
 window.addEventListener('mouseup', e => {
@@ -52,34 +48,29 @@ window.addEventListener('mouseup', e => {
 		navMenu.className = "nav-closed"
 		logo.className = "logo-closed"
 		menuUl.style.display = "none"
+		opened = false
 
-		if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+		if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)
 			logo.style.opacity = "0"
 			logo.style.display = "none"
-		}
-		opened = false
 	}
 })
 
 /**
  * Hide Navbar into a humburger menu
  * when user scrolls lower than 100 px
- * 
- * @name HideNavbar
  */
 window.onscroll = () => {
 	if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
 		menuContainer.className = "hamburger-menu"
-		if (opened === false) {
+		if (opened === false)
 			logo.style.opacity = "0"
 			logo.style.display = "none"
-		}
 	} else {
 		menuContainer.className = "regular-menu"
-		if (opened === false) {
+		if (opened === false)
 			logo.style.opacity = "1"
 			logo.style.display = "block"
-		}
 	}
 }
 

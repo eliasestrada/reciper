@@ -12,9 +12,9 @@ let mix = require('laravel-mix');
  */
 
 var components = [
-	'public/js/components/modules.js',
-	'public/js/components/functions.js',
-	'public/js/components/navigation.js'
+	'resources/assets/js/_modules.js',
+	'resources/assets/js/_functions.js',
+	'resources/assets/js/_navigation.js'
 ]
 
 var options = {
@@ -31,7 +31,7 @@ var sync = {
 }
 
 mix.sass('resources/assets/sass/app.scss', 'public/css')
-	.scripts(components, 'public/js/app.js')
+	.babel(components, 'public/js/app.js')
 	.disableNotifications()
 	.browserSync(sync)
 	.options(options)
