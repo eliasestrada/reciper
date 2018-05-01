@@ -12,7 +12,9 @@ let mix = require('laravel-mix');
  */
 
 var components = [
-	'public/js/components/app.js'
+	'public/js/components/modules.js',
+	'public/js/components/functions.js',
+	'public/js/components/navigation.js'
 ]
 
 var options = {
@@ -22,7 +24,10 @@ var options = {
 var sync = {
 	proxy: 'localhost:8000',
 	browser: 'chrome',
-	files: [ 'public/css/*.css' ]
+	files: [
+		'public/css/*.css',
+		'public/js/*.js'
+	]
 }
 
 mix.sass('resources/assets/sass/app.scss', 'public/css')
