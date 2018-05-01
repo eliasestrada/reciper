@@ -11,5 +11,22 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+var components = [
+	'public/js/components/app.js'
+]
+
+var options = {
+	processCssUrls: false
+}
+
+var sync = {
+	proxy: 'localhost:8000',
+	browser: 'chrome',
+	files: [ 'public/css/*.css' ]
+}
+
+mix.sass('resources/assets/sass/app.scss', 'public/css')
+	.scripts(components, 'public/js/app.js')
+	.disableNotifications()
+	.browserSync(sync)
+	.options(options)
