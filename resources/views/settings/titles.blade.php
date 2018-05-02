@@ -13,7 +13,7 @@
 
 		@method('PUT')
 
-		<div class="form-group">
+		<div class="form-group  simple-group">
 			<h2 class="form-headline">
 				<i class="title-icon" style="background: url('/css/icons/svg/photo.svg')"></i>
 				@lang('settings.banner')
@@ -45,7 +45,7 @@
 
 		@method('PUT')
 
-		<div class="form-group">
+		<div class="form-group simple-group">
 			<h2 class="form-headline">
 				<i class="title-icon" style="background: url('/css/icons/svg/list-add.svg')"></i>
 				@lang('settings.intro')
@@ -75,7 +75,7 @@
 
 		@method('PUT')
 
-		<div class="form-group">
+		<div class="form-group simple-group">
 			<h2 class="form-headline">
 				<i class="title-icon" style="background: url('/css/icons/svg/list-add.svg')"></i>
 				@lang('settings.footer')
