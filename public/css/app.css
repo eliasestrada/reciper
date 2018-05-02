@@ -1367,6 +1367,10 @@ footer .footer-copyright {
   background: #8080ff;
 }
 
+.user-sidebar .remove-hover:hover {
+  background: none;
+}
+
 .user-sidebar .active {
   background: #8080ff;
 }
@@ -1407,27 +1411,15 @@ footer .footer-copyright {
   vertical-align: middle;
   position: relative;
   display: inline-block;
-  background-repeat: no-repeat !important;
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
 }
 
 .user-sidebar .user-icon {
   background-size: 25px !important;
   border-radius: 50%;
-}
-
-.menu-second-level a {
-  display: block;
-  padding: .3em .8em .3em 45px;
-}
-
-.menu-second-level a:hover {
-  background: #8080ff;
-}
-
-.menu-second-level span {
-  display: block;
-  color: #fff;
-  text-align: left;
+  filter: invert(0%);
+  -webkit-filter: invert(0%);
 }
 
 @media (min-width: 740px) {
