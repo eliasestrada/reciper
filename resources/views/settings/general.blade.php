@@ -4,30 +4,37 @@
 
 @section('content')
 
-<h3>@lang('settings.general')</h3>
-
 {!! Form::open(['action' => 'SettingsController@updateUserData', 'method' => 'POST', 'class' => 'form']) !!}
 
 	@method('PUT')
 
 	<div class="form-group simple-group">
+		<h2 class="form-headline">
+			<i class="title-icon" style="background: url('/css/icons/svg/wrench.svg')"></i>
+			@lang('settings.general')
+		</h2>
+
 		{{ Form::label('name', trans('form.name')) }}
 		{{ Form::text('name', user()->name, ['placeholder' => trans('form.name')]) }}
 	</div>
 
 	<div class="form-group simple-group">
-		{{ Form::submit(trans('form.save')) }}
+		{{ Form::submit(trans('form.save_changes')) }}
 	</div>
 
 {!! Form::close() !!}
 
-<h3>@lang('form.change_pwd')</h3>
 
 {!! Form::open(['action' => 'SettingsController@updateUserPassword', 'method' => 'POST', 'class' => 'form']) !!}
 
 	@method('PUT')
 
 	<div class="form-group simple-group">
+		<h2 class="form-headline">
+			<i class="title-icon" style="background: url('/css/icons/svg/question.svg')"></i>
+			@lang('form.change_pwd')
+		</h2>
+		
 		{{ Form::label('old_password', trans('form.current_pwd')) }}
 		{{ Form::password('old_password', ['placeholder' => trans('form.current_pwd')]) }}
 	</div>

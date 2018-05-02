@@ -34,15 +34,15 @@
 .headline {
 	color: $darkGray;
 	font-family: $headerFont;
-	line-height: 1.1;
-	margin: .5em;
+	line-height: 1;
+	font-size: 1.3em;
+	margin-top: .2em;
 }
 
 .content {
 	padding: .4em .4em;
-	color: $darkGray;
+	color: #444444;
 	text-align: left;
-	font-size: .95em;
 }
 
 .center {
@@ -85,4 +85,13 @@
 	animation: none;
 	border: none;
 	color: $mainHover;
+}
+
+.hr {
+	display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc;
+    margin: .7em auto;
+    padding: 0; 
 }
