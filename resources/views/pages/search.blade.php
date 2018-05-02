@@ -4,12 +4,23 @@
 
 @section('content')
 
-<h2 class="headline">@lang('pages.search')</h2>
-
 {{--  Form  --}}
-{!! Form::open(['action' => 'PagesController@search', 'method' => 'GET', 'class' => 'form']) !!}
+{!! Form::open([
+	'action' => 'PagesController@search',
+	'method' => 'GET',
+	'class' => 'form'
+]) !!}
 	<div class="form-group simple-group">
-		{{ Form::text('for', '', ['placeholder' => trans('pages.search_details')]) }}
+		<h2 class="form-headline">
+			<i class="title-icon" style="background: url('/css/icons/svg/search.svg')"></i>
+			@lang('pages.search')
+		</h2>
+
+		{{ Form::text('for', '', [
+			'placeholder' => trans('pages.search_details'),
+			'id' => 'search-input'
+		]) }}
+
 		{{ Form::submit('', ['style' => 'display:none'])}}
 	</div>
 {!! Form::close() !!}

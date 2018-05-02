@@ -16,6 +16,7 @@ class ExampleTest extends TestCase
     {
 		// $this->get('/')->assertStatus(200);
 		// $this->get('/')->assertSee('Delicious');
+		$this->assertTrue(true);
 		
     }
 }

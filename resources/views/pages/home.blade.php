@@ -14,9 +14,7 @@
 		<h2>{{ title_case(optional($title_banner)->text) }}</h2>
 		
 		<a class="home-button" id="home-search-btn">
-			<svg viewBox="0 0 250.313 250.313" width="30px" style="fill:#fff; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">
-				<path d="{{ $icon }}" />
-			</svg>
+			<i style="background: url('/css/icons/svg/search.svg')"></i>
 		</a>
 
 		{{--  Form  --}}

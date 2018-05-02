@@ -22,12 +22,8 @@ class PagesController extends Controller
 		$title_intro = Title::whereName('Интро')
 			->first([ 'title', 'text' ]);
 
-		// Code for SVG Icon
-		$icon = trans('pages.search_icon');
-
 		return view('pages.home')->with(compact(
-			'random_recipes', 'title_banner',
-			'title_intro',	  'icon'
+			'random_recipes', 'title_banner', 'title_intro'
 		));
 	}
 

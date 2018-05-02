@@ -3,6 +3,27 @@
 	text-align: left;
 	width: 90%;
 	line-height: 1.3;
+
+	
+	.form-headline {
+		margin: .4em auto;
+		text-align: left;
+		font-size: 1.05em;
+		line-height: 1.1;
+		padding: 7px .7em;
+		background: $mainLight;
+		color: #fff;
+	}
+
+	.title-icon {
+		display: inline-block;
+		width: 18px;
+		height: 18px;
+		margin-right: 4px;
+		opacity: .85;
+		filter: invert(100%);
+		-webkit-filter: invert(100%);
+	}
 }
 
 .simple-group {
@@ -11,15 +32,17 @@
 
 .form {
 	padding: .5em 5%;
+	color: $darkGray;
 
 	input,
 	select {
-		height: 2.2em;
+		height: 2.4em;
 		display: block;
-		border-radius: 4px;
-		background: #f5f5f5;
-		border: 1px solid #a5a5a5;
+		border-radius: 2px;
+		background: $inputColor;
+		border: 1px solid #c7c7c7;
 		padding: 0 .5em;
+		margin-bottom: 10px;
 	}
 
 	input {
@@ -27,10 +50,18 @@
 			width: 100%;
 			margin-top: .5em;
 			margin-bottom: 1em;
-			background: $main;
-			color: #eee;
+			text-align: center;
+			font-size: .9em;
+			background: none;
+			border: none;
 			cursor: pointer;
 			transition: .2s;
+			font-weight: bold;
+			color: $darkGray;
+
+			&:hover {
+				background: $inputColor;
+			}
 		}
 		
 		&[type=checkbox] {
@@ -38,21 +69,17 @@
 			height: 1.2em;
 			margin-right: .5em;
 		}
-
-		&[type=submit]:hover {
-			background: $mainHover;
-		}
 	}
 
 	textarea {
 		width: 100%;
-		height: 12em;
+		height: 10em;
 		padding: .4em .5em;
 		display: block;
-		border: .06em solid #a5a5a5;
+		border: 1px solid #c7c7c7;
 		border-radius: 2px;
-		background: #f5f5f5;
-		resize: none;
+		background: $inputColor;
+		resize: vertical;
 		overflow-x: hidden;
 	}
 
@@ -63,7 +90,7 @@
 
 	.image-label {
 		border: dashed 3px $gray;
-		display: block;
+		display: inline-block;
 		margin: .5em auto;
 		text-align: center;
 		padding: .8em;

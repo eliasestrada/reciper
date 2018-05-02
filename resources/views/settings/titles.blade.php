@@ -5,95 +5,90 @@
 @section('content')
 
 <div class="container">
-	<h2 class="headline">@lang('settings.titles_home_page')</h2>
+	{{--  Настройки Баннера  --}} {!! Form::open([
+		'action' => 'SettingsController@updateBannerData',
+		'method' => 'POST',
+		'class' => 'form'
+	]) !!}
 
-	{{--  Настройки Баннера  --}}
-	<button class="accordion" type="button">@lang('settings.banner')</button>
-	<div class="accordion-panel">
-		{!! Form::open(['action' => 'SettingsController@updateBannerData', 'method' => 'POST', 'class' => 'form']) !!}
+		@method('PUT')
 
-			@method('PUT')
+		<div class="form-group  simple-group">
+			<h2 class="form-headline">
+				<i class="title-icon" style="background: url('/css/icons/svg/photo.svg')"></i>
+				@lang('settings.banner')
+			</h2>
 
-			<div class="form-group">
-				{{ Form::label('title', trans('settings.banner_title')) }}
-				{{ Form::text('title', $title_banner->title, ['placeholder' => trans('settings.banner_title')]) }}
-			</div>
+			{{ Form::label('title', trans('settings.banner_title')) }}
+			{{ Form::text('title', $title_banner->title, [
+				'placeholder' => trans('settings.banner_title')
+			]) }}
 
-			<div class="form-group">
-				{{ Form::label('text', trans('settings.banner_text')) }}
-				{{ Form::textarea('text', $title_banner->text, ['placeholder' => trans('settings.banner_text')]) }}
-			</div>
+			{{ Form::label('text', trans('settings.banner_text')) }}
+			{{ Form::textarea('text', $title_banner->text, [
+				'placeholder' => trans('settings.banner_text')
+			]) }}
+		</div>
 
-			<div class="form-group">
-				{{ Form::submit(trans('form.save')) }}
-			</div>
-		{!! Form::close() !!}
-	</div>
+		<div class="form-group">
+			{{ Form::submit(trans('form.save')) }}
+		</div>
+	{!! Form::close() !!}
 
-	{{--  Настройки Интро  --}}
-	<button class="accordion" type="button">@lang('settings.intro')</button>
-	<div class="accordion-panel">
-		{!! Form::open(['action' => 'SettingsController@updateIntroData', 'method' => 'POST', 'class' => 'form']) !!}
+	<hr class="hr" />
 
-			@method('PUT')
+	{{--  Настройки Интро  --}} {!! Form::open([
+		'action' => 'SettingsController@updateIntroData',
+		'method' => 'POST',
+		'class' => 'form'
+	]) !!}
 
-			<div class="form-group">
-				{{ Form::label('title', trans('settings.intro_title')) }}
-				{{ Form::text('title', $title_intro->title, ['placeholder' => trans('settings.intro_title')]) }}
-			</div>
+		@method('PUT')
 
-			<div class="form-group">
-				{{ Form::label('text', trans('settings.intro_text')) }}
-				{{ Form::textarea('text', $title_intro->text, ['placeholder' => trans('settings.intro_text')]) }}
-			</div>
+		<div class="form-group simple-group">
+			<h2 class="form-headline">
+				<i class="title-icon" style="background: url('/css/icons/svg/list-add.svg')"></i>
+				@lang('settings.intro')
+			</h2>
 
-			<div class="form-group">
-				{{ Form::submit(trans('form.save')) }}
-			</div>
-		{!! Form::close() !!}
-	</div>
+			{{ Form::label('title', trans('settings.intro_title')) }}
+			{{ Form::text('title', $title_intro->title, [
+				'placeholder' => trans('settings.intro_title')
+			]) }}
 
-	{{--  Настройки подвала  --}}
-	<button class="accordion" type="button">@lang('settings.footer')</button>
-	<div class="accordion-panel">
-		{!! Form::open(['action' => 'SettingsController@updateFooterData', 'method' => 'POST', 'class' => 'form']) !!}
+			{{ Form::label('text', trans('settings.intro_text')) }}
+			{{ Form::textarea('text', $title_intro->text, [
+				'placeholder' => trans('settings.intro_text')
+			]) }}
 
-			@method('PUT')
+			{{ Form::submit(trans('form.save')) }}
+		</div>
+	{!! Form::close() !!}
 
-			<div class="form-group">
-				{{ Form::label('text', trans('settings.footer_text')) }}
-				{{ Form::textarea('text', $title_footer->text, ['placeholder' => trans('settings.footer_text')]) }}
-			</div>
+	<hr class="hr" />
 
-			<div class="form-group">
-				{{ Form::submit(trans('form.save')) }}
-			</div>
-		{!! Form::close() !!}
-	</div>
+	{{--  Настройки подвала  --}} {!! Form::open([
+		'action' => 'SettingsController@updateFooterData',
+		'method' => 'POST',
+		'class' => 'form'
+	]) !!}
+
+		@method('PUT')
+
+		<div class="form-group simple-group">
+			<h2 class="form-headline">
+				<i class="title-icon" style="background: url('/css/icons/svg/list-add.svg')"></i>
+				@lang('settings.footer')
+			</h2>
+
+			{{ Form::label('text', trans('settings.footer_text')) }}
+			{{ Form::textarea('text', $title_footer->text, [
+				'placeholder' => trans('settings.footer_text')
+			]) }}
+
+			{{ Form::submit(trans('form.save')) }}
+		</div>
+	{!! Form::close() !!}
 </div>
 
-@endsection
-
-@section('script')
-<script>
-	var acc = document.getElementsByClassName("accordion")
-	var src = document.getElementById("src-image")
-	var target = document.getElementById("target-image")
-	var i
-
-	for (i = 0; i < acc.length; i++) {
-		acc[i].addEventListener("click", function(){
-			this.classList.toggle("accordion-active")
-			var panel = this.nextElementSibling
-
-			if (panel.style.maxHeight) {
-				panel.style.maxHeight = null
-			} else {
-				panel.style.maxHeight = panel.scrollHeight + "px"
-			} 
-		})
-	}
-	
-	showImage(src, target)
-</script>
 @endsection

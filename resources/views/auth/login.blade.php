@@ -4,12 +4,16 @@
 
 @section('content')
 
-<h2 class="headline">@lang('form.login')</h2>
 <form method="POST" action="{{ route('login') }}" class="form">
 
 	@csrf
 
 	<div class="form-group simple-group">
+		<h2 class="form-headline">
+			<i class="title-icon" style="background: url('/css/icons/svg/user.svg')"></i>
+			@lang('form.login')
+		</h2>
+
 		{{ Form::label('email', trans('form.email')) }}
 		{{ Form::email('email', null, ['placeholder' => trans('form.email')]) }}
 	</div>

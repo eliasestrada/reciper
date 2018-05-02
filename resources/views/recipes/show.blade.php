@@ -121,7 +121,7 @@
 				output += `
 					<li class="side-bar-recipe" style="animation: appearWithRotate 1.${ i }s;">
 						<a href="/recipes/${ random.id }" title="${ random.title }">
-							<img src="{{ asset('storage/images/${ random.image }') }}" alt="${ random.title }" id="target-img">
+							<img src="/storage/images/${ random.image }" alt="${ random.title }" id="target-img">
 						</a>
 						<div class="side-bar-content">
 							<h3>${ random.title }</h3>

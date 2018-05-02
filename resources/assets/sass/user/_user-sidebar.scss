@@ -43,6 +43,10 @@
 		}
 	}
 
+	.remove-hover:hover {
+		background: none;
+	}
+
 	.active {
 		background: $main;
 	}
@@ -75,35 +79,22 @@
 		border-radius: 50%;
 	}
 
-	.icon-profile-menu-line {
+	.sidebar-icon {
 		width: 25px;
 		height: 25px;
 		margin: 0 10px;
 		vertical-align: middle;
 		position: relative;
 		display: inline-block;
-		background-repeat: no-repeat!important;
+		filter: invert(100%);
+		-webkit-filter: invert(100%);
 	}
+
 	.user-icon {
 		background-size: 25px !important;
 		border-radius: 50%;
-	}
-}
-
-.menu-second-level {
-	a {
-		display: block;
-		padding: .3em .8em .3em 45px;
-
-		&:hover {
-			background: $main;
-		}
-	}
-
-	span {
-		display: block;
-		color: #fff;
-		text-align: left;
+		filter: invert(0%);
+		-webkit-filter: invert(0%);
 	}
 }
 

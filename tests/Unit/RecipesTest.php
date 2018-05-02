@@ -13,10 +13,15 @@ class RecipesTest extends TestCase
 {
 	use DatabaseTransactions;
 
-    public function testWithRelationship()
+    public function testFirst()
     {
-        $categories = DB::table('categories')->get()->toArray();
+		// $recipe = Recipe::find(2)->delete();
+		// $this->assertTrue($recipe);
 
-		dd($categories);
+		// $this->assertDatabaseHas('recipes', [ 'id' => 1 ]);
+		// $this->assertDatabaseMissing('recipes', [ 'id' => 1 ]);
+
+		$response = $this->get('/');
+		$response->assertSee('Delicious Food');
     }
 }
