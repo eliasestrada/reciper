@@ -76,7 +76,7 @@
 	{{-- Image --}}
 	<button class="accordion" type="button">@lang('recipes.image')</button>
 	<div class="accordion-panel">
-		<div class="form-group simple-group">
+		<div class="form-group simple-group" style="text-align:center;">
 			{{ Form::label('src-image', trans('recipes.select_file'), ['class' => 'image-label']) }}
 			{{ Form::file('image', ['style' => "display:none;", "id" => "src-image"]) }}
 			
