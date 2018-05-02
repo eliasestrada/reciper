@@ -43,7 +43,7 @@
 	</div>
 
 	<div class="form-group simple-group">
-		{{ Form::submit(trans('form.save')) }}
+		{{ Form::submit(trans('form.save_changes')) }}
 	</div>
 
 {!! Form::close() !!}

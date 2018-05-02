@@ -14,11 +14,11 @@
 
 	input,
 	select {
-		height: 2.2em;
+		height: 2.4em;
 		display: block;
-		border-radius: 4px;
-		background: #f5f5f5;
-		border: 1px solid #a5a5a5;
+		border-radius: 2px;
+		background: $inputColor;
+		border: 1px solid #c7c7c7;
 		padding: 0 .5em;
 	}
 
@@ -27,20 +27,23 @@
 			width: 100%;
 			margin-top: .5em;
 			margin-bottom: 1em;
-			background: $main;
-			color: #eee;
+			text-align: left;
+			font-size: .9em;
+			background: none;
+			border: none;
 			cursor: pointer;
 			transition: .2s;
+			font-weight: bold;
+
+			&:hover {
+				background: $inputColor;
+			}
 		}
 		
 		&[type=checkbox] {
 			width: 1.2em;
 			height: 1.2em;
 			margin-right: .5em;
-		}
-
-		&[type=submit]:hover {
-			background: $mainHover;
 		}
 	}
 
