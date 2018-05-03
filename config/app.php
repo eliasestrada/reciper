@@ -2,50 +2,32 @@
 
 return [
 
-    /**
-	 * Application Name
-	 */
+    // Application Name
     'name' => env('APP_NAME', 'DeliciousFood'),
 
-    /**
-	 * Application Environment
-	 */
+    // Application Environment
     'env' => env('APP_ENV', 'production'),
 
-    /**
-	 * Application Debug Mode
-	 */
+    // Application Debug Mode
     'debug' => env('APP_DEBUG', false),
 
-    /**
-	 * Application URL
-	 */
+    // Application URL
     'url' => env('APP_URL', 'http://localhost'),
 
-    /**
-	 * Application Timezone
-	 */
+    // Application Timezone
     'timezone' => 'Europe/Kiev',
 
-    /**
-	 * Application Locale Configuration
-	 */
+    // Application Locale Configuration
 	'locale' => 'ru',
 
-    /**
-	 * Application Fallback Locale
-	 */
+    // Application Fallback Locale
     'fallback_locale' => 'ru',
 
-    /**
-	 * Encryption Key
-	 */
+    // Encryption Key
     'key' => env('APP_KEY'),
     'cipher' => 'AES-256-CBC',
 
-	/**
-	 * Autoloaded Service Providers
-	 */
+	// Autoloaded Service Providers
     'providers' => [
 
         Illuminate\Auth\AuthServiceProvider::class,
@@ -84,9 +66,7 @@ return [
 		App\Providers\FooterServiceProvider::class,
     ],
 
-    /**
-	 * Class Aliases
-	 */
+    // Class Aliases
     'aliases' => [
 
         'App' => Illuminate\Support\Facades\App::class,
