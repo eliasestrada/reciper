@@ -108,34 +108,3 @@
 {!! Form::close() !!}
 
 @endsection
-
-@section('script')
-<script defer>
-	var acc = document.getElementsByClassName("accordion")
-	var src = document.getElementById("src-image")
-	var target = document.getElementById("target-image")
-	var i
-
-	for (i = 0; i < acc.length; i++) {
-		acc[i].addEventListener("click", function(){
-			this.classList.toggle("accordion-active")
-			var panel = this.nextElementSibling
-
-			if (panel.style.maxHeight) {
-				panel.style.maxHeight = null
-			} else {
-				panel.style.maxHeight = panel.scrollHeight + "px"
-			} 
-		})
-	}
-
-	function showImage(src, target) {
-		var fr = new FileReader()
-		
-		fr.onload = function(e) { target.src = this.result }
-		src.addEventListener("change", ()=> fr.readAsDataURL(src.files[0]))
-	}
-
-	showImage(src, target)
-</script>
-@endsection

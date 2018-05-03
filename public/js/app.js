@@ -7,6 +7,7 @@ function id(e) {
 }
 
 var categoriesTitle = document.querySelector('.categories-title');
+var accordion = document.getElementsByClassName("accordion");
 var menuUl = document.querySelector('#nav-menu ul');
 var categoriesButton = id('categories-button');
 var categoriesMenu = id('categories-menu');
@@ -15,11 +16,14 @@ var loadingTitle = id('loading-title');
 var arrowBottom = id('arrow-bottom');
 var searchInput = id('search-input');
 var categoriesMenuOpened = false;
+var target = id("target-image");
 var hamburger = id('hamburger');
 var navMenu = id('nav-menu');
 var loading = id('loading');
+var src = id("src-image");
 var logo = id('logo');
 var opened = false;
+var i = void 0;
 /**
  * After page has been loaded, it will
  * remove the loading animation
@@ -29,8 +33,41 @@ window.onload = function () {
 	loadingTitle.innerHTML = '';
 };
 
-if (searchInput) {
-	if (Number.isInteger(parseInt(searchInput.value))) searchInput.setAttribute('value', '');
+if (searchInput && Number.isInteger(parseInt(searchInput.value))) searchInput.setAttribute('value', '');
+
+/**
+ * This function auto updates pictures after selecting them via
+ * file input
+ * @param {string} src 
+ * @param {string} target 
+ */
+function showImage(src, target) {
+	var fr = new FileReader();
+
+	fr.onload = function (e) {
+		target.src = this.result;
+	};
+	src.addEventListener("change", function () {
+		return fr.readAsDataURL(src.files[0]);
+	});
+}
+
+// User on page where variables:
+// src and target exist, run function
+if (src && target) showImage(src, target);
+
+/**
+ * Loop for accordion functionality
+ */
+if (accordion) {
+	for (i = 0; i < accordion.length; i++) {
+		accordion[i].addEventListener("click", function () {
+			this.classList.toggle("accordion-active");
+			var panel = this.nextElementSibling;
+
+			panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
+		});
+	}
 }
 /**
  * Event works only if min-width of display is less than 640px
