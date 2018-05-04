@@ -137,6 +137,10 @@ class RecipesController extends Controller
     {
 		// Handle image uploading
 		if ($request->hasFile('image')) {
+			if ($recipe->image != 'default.jpg') {
+				Storage::delete('public/images/'.$recipe->image);
+			}
+
 			$image     = $request->file('image');
 			$extention = $image->getClientOriginalExtension();
 			$image_name = setNameForRecipeImage($extention);
