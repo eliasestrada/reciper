@@ -116,12 +116,6 @@ class RecipesController extends Controller
 			);
         }
 
-        if ($recipe->ready() && !user()->isAdmin()) {
-			return redirect('/recipes')->withError(
-				trans('recipes.cannot_edit_unproved')
-			);
-        }
-
         // For select input
         $categories = DB::table('categories')->get();
         return view('recipes.edit')->with(compact(
