@@ -792,6 +792,72 @@ footer .footer-copyright {
           box-shadow: none;
 }
 
+.item-list {
+  width: 80%;
+  margin: 0 10%;
+  padding: 1em 0;
+}
+
+.item-list a {
+  color: #333;
+}
+
+.item-list li {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: .5em;
+  border-bottom: 1px solid #b6b6b6;
+}
+
+.item-list li:hover {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+.item-list img {
+  width: 6em;
+  height: 4em;
+  margin: .5em 1em;
+  border-radius: 3px;
+  border: solid 3px #fff;
+  border-bottom: solid 6px #fff;
+  -webkit-animation: appearWithRotate 2s;
+          animation: appearWithRotate 2s;
+}
+
+.item-content {
+  margin-top: 1.3em;
+  font-size: .85em;
+  text-align: left;
+}
+
+.button-add-user {
+  width: 13em;
+  padding: .5em 1em;
+  margin: .5em 0;
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #fff 0%, #eee 100%);
+  color: #535353;
+  border: 1px solid #6b6b6b;
+  border-radius: 4px;
+  text-align: center;
+  -webkit-transition: -webkit-box-shadow 250ms;
+  transition: -webkit-box-shadow 250ms;
+  transition: box-shadow 250ms;
+  transition: box-shadow 250ms, -webkit-box-shadow 250ms;
+  -webkit-box-shadow: 0px 2px 1px #ECECEC inset, 0px -1px 20px #ECECEC, 0px 1px 1px #999, 0px 3px 10px #999;
+          box-shadow: 0px 2px 1px #ECECEC inset, 0px -1px 20px #ECECEC, 0px 1px 1px #999, 0px 3px 10px #999;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button-add-user:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .icon-save {
   background: #8080ff url(icons/recipe-sprite.png) !important;
 }
@@ -953,69 +1019,6 @@ footer .footer-copyright {
   }
   .recipe-container img {
     border-radius: 5px;
-  }
-}
-
-.each-recipe {
-  padding: .2em;
-  margin-bottom: .3em;
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1.2rem 1fr 1.2rem;
-  grid-gap: .4em;
-  border: 1px solid #d3ccff;
-  background: #f4f3ff;
-  border-radius: 2px;
-}
-
-.each-recipe[data-author]::after, .each-recipe[data-author]::before {
-  grid-column: 1/3;
-  color: #555;
-  background: #e7e3ff;
-  font-size: .8em;
-}
-
-.each-recipe[data-author]::before {
-  content: attr(data-author);
-  grid-row: 1;
-}
-
-.each-recipe[data-updated]::after {
-  content: attr(data-updated);
-  grid-row: 3;
-}
-
-.each-recipe img {
-  grid-column: 1/2;
-  grid-row: 2;
-}
-
-.each-recipe .each-content {
-  height: 6em;
-  grid-column: 2/3;
-  grid-row: 2;
-  font-size: .8em;
-  overflow: auto;
-  text-align: left;
-  margin-left: .5em;
-}
-
-.each-recipe .block-message-content {
-  padding: .5em 1em;
-  background: #e0e0e0;
-  border-radius: 4px;
-}
-
-@media (min-width: 640px) {
-  .each-recipe {
-    grid-template-columns: 8em 3fr;
-  }
-  .each-recipe img {
-    max-width: 8em;
-  }
-  .each-recipe .each-content {
-    height: auto;
-    font-size: .9em;
   }
 }
 
@@ -1468,68 +1471,6 @@ footer .footer-copyright {
   .disapear-on-big-screen {
     display: none !important;
   }
-}
-
-.users-list {
-  width: 80%;
-  margin: 0 10%;
-  padding: 2em 0;
-}
-
-.users-list li {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding-bottom: .5em;
-  border-bottom: 1px solid #b6b6b6;
-}
-
-.users-list li:hover {
-  background-color: #ddd;
-  border-radius: 5px;
-}
-
-.users-list img {
-  width: 3.7em;
-  height: 4em;
-  margin: .5em 1em;
-  border-radius: 3px;
-  border: solid 3px #fff;
-  border-bottom: solid 6px #fff;
-  -webkit-animation: appearWithRotate 2s;
-          animation: appearWithRotate 2s;
-}
-
-.user-content {
-  margin-top: 1.3em;
-  font-size: .85em;
-  text-align: left;
-}
-
-.button-add-user {
-  width: 13em;
-  padding: .5em 1em;
-  margin: .5em 0;
-  display: inline-block;
-  background: -webkit-linear-gradient(top, #fff 0%, #eee 100%);
-  color: #535353;
-  border: 1px solid #6b6b6b;
-  border-radius: 4px;
-  text-align: center;
-  -webkit-transition: -webkit-box-shadow 250ms;
-  transition: -webkit-box-shadow 250ms;
-  transition: box-shadow 250ms;
-  transition: box-shadow 250ms, -webkit-box-shadow 250ms;
-  -webkit-box-shadow: 0px 2px 1px #ECECEC inset, 0px -1px 20px #ECECEC, 0px 1px 1px #999, 0px 3px 10px #999;
-          box-shadow: 0px 2px 1px #ECECEC inset, 0px -1px 20px #ECECEC, 0px 1px 1px #999, 0px 3px 10px #999;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.button-add-user:hover {
-  -webkit-box-shadow: none;
-          box-shadow: none;
 }
 
 /*

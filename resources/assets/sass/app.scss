@@ -14,11 +14,11 @@
 @import 'pagination';
 @import 'footer';
 @import 'form';
+@import 'items';
 
 // Recipes
 @import 'recipes/create';
 @import 'recipes/index';
-@import 'recipes/my-recipes';
 @import 'recipes/show';
 
 // User
@@ -26,7 +26,6 @@
 @import 'user/profile';
 @import 'user/statistic';
 @import 'user/user-sidebar';
-@import 'user/users';
 
 
 @import 'grid';

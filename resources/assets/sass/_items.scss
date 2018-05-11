@@ -1,7 +1,11 @@
-.users-list {
+.item-list {
 	width: 80%;
 	margin: 0 10%;
-	padding: 2em 0;
+	padding: 1em 0;
+
+	a {
+		color: $darkGray;
+	}
 
 	li {
 		position: relative;
@@ -16,7 +20,7 @@
 	}
 
 	img {
-		width: 3.7em;
+		width: 6em;
 		height: 4em;
 		margin: .5em 1em;
 		border-radius: 3px;
@@ -26,7 +30,7 @@
 	}
 }
 
-.user-content {
+.item-content {
 	margin-top: 1.3em;
 	font-size: .85em;
 	text-align: left;
