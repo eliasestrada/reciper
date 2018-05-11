@@ -8,26 +8,21 @@
 
 {{--  Unapproved recipes  --}}
 @admin
-	<div class="list-of-recipes">
-		<h4 style="margin: .5em;">
-			@lang('admin.unapproved') {{ $unapproved->count() }}
-		</h4>
+	<div class="item-list unstyled-list">
+		<p class="content center">@lang('admin.unapproved') {{ $unapproved->count() }}</p>
 
 		@forelse ($unapproved as $unapprove)
-			<div class="each-recipe" data-updated="Обновленно {{ facebookTimeAgo($unapprove->updated_at) }}" data-author="@lang('admin.author'): {{ $unapprove->author }}">
-
-				{{-- Image --}}
-				<a href="/recipes/{{ $unapprove->id }}">
-					<img src="{{ asset('storage/images/'.$unapprove->image) }}" alt="{{ $unapprove->title }}" title="@lang('admin.to_recipe')">
-				</a>
-
-				{{-- Content --}}
-				<div class="each-content">
-					<span style="font-size: 1.1em;"><b>{{ $unapprove->title }}</b></span>
-					<br />
-					<span style="color: gray;">{{ $unapprove->intro }}</span>
-				</div>
-			</div>
+			<a href="/recipes/{{ $unapprove->id }}" title="{{ $unapprove->title }}">
+				<li>
+					<img src="{{ asset('storage/images/'.$unapprove->image) }}" alt="{{ $unapprove->title }}" />
+					<div class="item-content">
+						<h3 class="project-name">{{ $unapprove->title }}</h3>
+						<p class="project-title">
+							@lang('users.date') {{ facebookTimeAgo($unapprove->created_at) }}
+						</p>
+					</div>
+				</li>
+			</a>
 		@empty
 			<p class="content center">@lang('admin.no_unapproved')</p>
 		@endforelse

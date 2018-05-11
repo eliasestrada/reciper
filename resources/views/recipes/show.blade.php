@@ -19,7 +19,7 @@
 
 		@auth
 		{{--  Buttons  --}}
-			@if (user()->hasRecipe($recipe->user_id) && !$recipe->ready())
+			@if (user()->hasRecipe($recipe->user_id))
 				<div class="recipe-buttons">
 					{{--  Edit button  --}}
 					<a href="/recipes/{{ $recipe->id }}/edit" title="Редактировать рецепт" class="edit-recipe-icon icon-edit"></a>
@@ -47,7 +47,7 @@
 				</div>
 			@endif
 		@endadmin
-		
+
 		<h1 class="headline">{{ title_case($recipe->title) }}</h1>
 
 		<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->name }}" class="recipe-img">
@@ -83,7 +83,7 @@
 		{{--  Дата и Автор  --}}
 		<div class="date">
 			<p>@lang('recipes.added') {{ facebookTimeAgo($recipe->created_at) }}</p>
-			<p>@lang('recipes.author'): {{ $recipe->user->name }}</p>
+			<p>@lang('recipes.author'): {{ optional($recipe->user)->name }}</p>
 		</div>
 	</div>
 

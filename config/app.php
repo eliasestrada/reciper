@@ -59,7 +59,6 @@ return [
         App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
 		Intervention\Image\ImageServiceProvider::class,
-		App\Providers\UploadRecipeDataServiceProvider::class,
 		App\Providers\EloquentEventServiceProvider::class,
 		App\Providers\BladeServiceProvider::class,
 		App\Providers\UserSidebarServiceProvider::class,

@@ -8,20 +8,22 @@
 
 {{--  All my recipes  --}}
 @author
-	<div class="list-of-recipes">
+	<div class="item-list unstyled-list">
 		@forelse ($recipes as $recipe)
-			<div class="each-recipe" data-updated="@lang('users.date') {{ facebookTimeAgo($recipe->created_at) }}" data-author="@lang('users.status'): {{ $recipe->approved === 1 ? trans('users.checked') : trans('users.not_checked') }}" style="animation: appear 1.{{ $loop->index }}s;">
-
-				<a href="/recipes/{{ $recipe->id }}">
-					<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="@lang('users.go_to_recipe')">
-				</a>
-
-				<div class="each-content">
-					<span style="font-size: 1.05em;">{{ $recipe->title }}</span>
-					<br />
-					<span style="color: gray;">{{ $recipe->intro }}</span>
-				</div>
-			</div>
+			<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->title }}">
+				<li style="border-left:solid 3px #{{ $recipe->approved() ? '65b56e' : 'ce7777' }};">
+					<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" />
+					<div class="item-content">
+						<h3 class="project-name">{{ $recipe->title }}</h3>
+						<p class="project-title">
+							@lang('users.status'): {{ $recipe->approved() ? trans('users.checked') : trans('users.not_checked') }}
+						</p>
+						<p class="project-title">
+							@lang('users.date') {{ facebookTimeAgo($recipe->created_at) }}
+						</p>
+					</div>
+				</li>
+			</a>
 		@empty
 			<p class="content center">@lang('users.no_recipes_yet')</p>
 		@endforelse
