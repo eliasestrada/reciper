@@ -28,10 +28,12 @@ class AppServiceProvider extends ServiceProvider
 		 * Turn on ability to see queries
 		 * If you want to use it, add "use DB;" to the top of the page
 		 */
-		// DB::listen( function ( $query ) {
-		// 	dump($query->sql);
-		// 	dump($query->bindings);
-		// });
+		/*
+		DB::listen( function ( $query ) {
+			dump($query->sql);
+			dump($query->bindings);
+		});
+		*/
     }
 
     /**

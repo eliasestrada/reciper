@@ -53,7 +53,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Weboap\Visitor\VisitorServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
@@ -63,6 +62,7 @@ return [
 		App\Providers\BladeServiceProvider::class,
 		App\Providers\UserSidebarServiceProvider::class,
 		App\Providers\FooterServiceProvider::class,
+		App\Providers\VisitorProvider::class,
     ],
 
     // Class Aliases

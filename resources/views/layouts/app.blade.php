@@ -26,8 +26,6 @@
 
     @include('includes.footer')
 
-	{{ Visitor::log() }}
-
 	<!-- Javascript -->
 	{!! scriptTimestamp('/js/app.js') !!}
 	@yield('script')

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Recipe;
+use App\Models\Visitor;
 use Eseath\SxGeo\SxGeo;
 use App\Models\Feedback;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -28,19 +28,13 @@ class AdminController extends Controller
 
 	public function visitors()
 	{
-		$visitors = DB::table('visitor_registry')
-			->orderBy('clicks', 'desc')
-			->simplePaginate(40);
-
+		$visitors = Visitor::latest()->simplePaginate(40);
 		$sxgeo = new SxGeo(storage_path().'/geo/SxGeoCity.dat');
-
-		// Count recipes and visits
-        $allrecipes = DB::table('recipes')->count();
-        $allvisitors = DB::table('visitor_registry')->distinct('ip')->count();
-        $allclicks  = DB::table('visitor_registry')->sum('clicks');
+        $allrecipes = Recipe::count();
+        $allvisitors = Visitor::distinct('ip')->count();
 
 		return view('admin.statistic')->with(compact(
-			'sxgeo', 'visitors', 'allrecipes', 'allclicks', 'allvisitors'
+			'sxgeo', 'visitors', 'allrecipes', 'allvisitors'
 		));
 	}
 
