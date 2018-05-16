@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use App\Models\Title;
 use App\Models\Recipe;
 use App\Models\Category;
@@ -24,16 +25,19 @@ class AppServiceProvider extends ServiceProvider
 
 		view()->share(compact('all_categories'));
 
-		/**
-		 * Turn on ability to see queries
-		 * If you want to use it, add "use DB;" to the top of the page
-		 */
-		/*
-		DB::listen( function ( $query ) {
-			dump($query->sql);
-			dump($query->bindings);
+		// DB::listen( function ( $query ) {
+		// 	dump($query->sql);
+		// 	dump($query->bindings);
+		// });
+
+		// Update last visit
+		view()->composer('*', function ($view) {
+			if (auth()->check()) {
+				User::whereId(user()->id)->update([
+					'updated_at' => NOW()
+				]);
+			}
 		});
-		*/
     }
 
     /**

@@ -21,11 +21,6 @@ class DashboardController extends Controller
 
     public function index()
     {
-		// Update last visit
-		User::whereId(user()->id)->update([
-			'updated_at' => NOW()
-		]);
-
 		return view('dashboard');
     }
 
