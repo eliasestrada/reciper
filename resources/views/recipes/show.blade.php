@@ -25,10 +25,10 @@
 					<a href="/recipes/{{ $recipe->id }}/edit" title="Редактировать рецепт" class="edit-recipe-icon icon-edit"></a>
 
 					{{--  Delete button  --}}
-					{!! Form::open(['action' => ['RecipesController@destroy', $recipe->id], 'method' => 'post', 'style' => 'width: auto; display: inline-block;', 'onsubmit' => 'return confirm("Вы точно хотите удалить этот рецепт?")']) !!}
-						{{ method_field('delete') }}
-						{{ Form::submit('', ['class' => 'edit-recipe-icon icon-delete']) }}
-					{!! Form::close() !!}
+					<form action="{{ action('RecipesController@destroy', ['recipe' => $recipe->id]) }}" method="post" style="width: auto; display: inline-block;" onsubmit="return confirm('@lang('recipes.are_you_sure_to_delete')')">
+						@method('delete') @csrf
+						<input type="submit" value="" class="edit-recipe-icon icon-delete">
+					</form>
 				</div>
 			@endif
 		@endauth
@@ -37,13 +37,15 @@
 		@admin
 			@if (!$recipe->approved() && $recipe->ready())
 				<div class="recipe-buttons">
-					{!! Form::open(['action' => ['ApproveController@ok', $recipe->id], 'method' => 'post', 'style' => 'width: auto; display: inline-block;', 'onsubmit' => 'return confirm("Вы точно хотите опубликовать этот рецепт?")']) !!}
-						{{ Form::submit('', ['class' => 'edit-recipe-icon icon-approve']) }}
-					{!! Form::close() !!}
+					<form action="{{ action('ApproveController@ok', ['recipe' => $recipe->id]) }}" method="post" style="width: auto; display: inline-block;" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
+						@csrf
+						<input type="submit" value="" class="edit-recipe-icon icon-approve">
+					</form>
 
-					{!! Form::open(['action' => ['ApproveController@cancel', $recipe->id], 'method' => 'post', 'style' => 'width: auto; display: inline-block;', 'onsubmit' => 'return confirm("Вы точно хотите вернуть этот рецепт автору на доработку?")']) !!}
-						{{ Form::submit('', ['class' => 'edit-recipe-icon icon-cancel']) }}
-					{!! Form::close() !!}
+					<form action="{{ action('ApproveController@cancel', ['recipe' => $recipe->id]) }}" method="post" style="width: auto; display: inline-block;" onsubmit="return confirm('@lang('recipes.are_you_sure_to_cancel')')">
+						@csrf
+						<input type="submit" value="" class="edit-recipe-icon icon-cancel">
+					</form>
 				</div>
 			@endif
 		@endadmin
