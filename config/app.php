@@ -2,7 +2,7 @@
 
 return [
 
-    // Application Name
+	// Application Name
     'name' => env('APP_NAME', 'DeliciousFood'),
 
     // Application Environment
