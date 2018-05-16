@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Image;
 use App\Models\Recipe;
+use App\Models\Category;
 use App\Models\Notification;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\RecipeSaveRequest;
@@ -32,9 +32,8 @@ class RecipesController extends Controller
     // Create a new recipe in database
     public function create()
     {
-        // For select input
-        $categories = DB::table('categories')->get();
-		return view('recipes.create')->withCategories($categories);	
+		return view('recipes.create')
+			->withCategories(Category::get());	
     }
 
 
@@ -116,8 +115,7 @@ class RecipesController extends Controller
 			);
         }
 
-        // For select input
-        $categories = DB::table('categories')->get();
+        $categories = Category::get();
         return view('recipes.edit')->with(compact(
 			'recipe', 'categories'
 		));

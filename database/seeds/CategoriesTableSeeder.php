@@ -1,13 +1,13 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class CategoriesTableSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('categories')->insert([
+        Category::insert([
 			[ 'category' => 'Вторые блюда' ],
 			[ 'category' => 'Выпечка' ],
 			[ 'category' => 'Гарниры' ],
