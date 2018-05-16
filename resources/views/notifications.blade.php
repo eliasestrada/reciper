@@ -4,7 +4,10 @@
 
 @section('content')
 
-<h2 class="headline">@lang('dashboard.notifications')</h2>
+<h2 class="content center">@lang('dashboard.notifications')</h2>
+<h3>
+	{{ count($notifications) > 0 ? trans('admin.messages') .' '. count($notifications) : '' }}
+</h3>
 
 <div style="padding: 1em 0;">
 	@forelse ($notifications as $notification)

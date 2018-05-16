@@ -4,9 +4,9 @@
 
 @section('content')
 
-<h2 class="headline">@lang('users.all_authors') {{ $users->count() }}</h2>
-<ul class="item-list unstyled-list">
+<h2 class="content center">@lang('users.all_authors') </h2>
 
+<ul class="item-list unstyled-list">
 	@foreach ($users as $user)
 		<a href="/users/{{ $user->id }}" title="{{ $user->name }}">
 			<li>

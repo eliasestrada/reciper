@@ -4,7 +4,11 @@
 
 @section('content')
 
-<h2 class="headline">@lang('admin.messages') {{ $feedback->count() }}</h2>
+
+<h2 class="content center">@lang('includes.feedback')</h2>
+<h3>
+	{{ count($feedback) > 0 ? trans('admin.messages') .' '. count($feedback) : '' }}
+</h3>
 
 <div style="padding: 1em 0;">
 

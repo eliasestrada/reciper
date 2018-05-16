@@ -4,12 +4,14 @@
 
 @section('content')
 
-<h2 class="headline">@lang('admin.checklist')</h2>
+<h2 class="content center">@lang('admin.checklist')</h2>
 
 {{--  Unapproved recipes  --}}
 @admin
 	<div class="item-list unstyled-list">
-		<p class="content center">@lang('admin.unapproved') {{ $unapproved->count() }}</p>
+		<h4>
+			{{ $unapproved->count() > 0 ? trans('admin.unapproved') .' '. $unapproved->count() : '' }}
+		</h4>
 
 		@forelse ($unapproved as $unapprove)
 			<a href="/recipes/{{ $unapprove->id }}" title="{{ $unapprove->title }}">
