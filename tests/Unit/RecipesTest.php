@@ -13,15 +13,24 @@ class RecipesTest extends TestCase
 {
 	use DatabaseTransactions;
 
-    public function testFirst()
+	/** @test*/
+    public function checkIfRecipeCanBeCreatedInDatabase()
     {
-		// $recipe = Recipe::find(2)->delete();
-		// $this->assertTrue($recipe);
-
-		// $this->assertDatabaseHas('recipes', [ 'id' => 1 ]);
-		// $this->assertDatabaseMissing('recipes', [ 'id' => 1 ]);
-
-		$response = $this->get('/');
-		$response->assertSee('Delicious Food');
-    }
+		$recipe = factory(Recipe::class)->create(['title' => 'hello']);
+		
+		$this->assertDatabaseHas('recipes', [
+			'title' => 'hello'
+		]);		
+	}
+	
+	/** @test */
+	public function checkIfCannotEditSomeonesRecipe()
+	{
+		$recipe = factory(Recipe::class)->create(['title' => 'World']);
+		$user = factory(User::class)->create(['admin' => 1]);
+		
+		$this->actingAs($user)
+			->visit('/recipe/' . $recipe->id)
+			->see($recipe->title);
+	}
 }
