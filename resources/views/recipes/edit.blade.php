@@ -75,10 +75,11 @@
 		<div class="form-group simple-group">
 			{{ Form::label('category', trans('recipes.category')) }}
 			<select name="category_id">
-				@foreach ($categories as $category)
-					<option selected value="{{ $category->id }}">{{ $category->category }}</option>
-				@endforeach
 				<option selected value="{{ $recipe->category->id }}">{{ $recipe->category->category }}</option>
+				<option>--------------------------</option>
+				@foreach ($categories as $category)
+					<option value="{{ $category->id }}">{{ $category->category }}</option>
+				@endforeach
 			</select>
 		</div>
 	</div>

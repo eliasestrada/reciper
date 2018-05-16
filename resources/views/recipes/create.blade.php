@@ -58,7 +58,7 @@
 		<div class="form-group simple-group">
 			<select name="category_id">
 				@foreach ($categories as $category)
-					<option selected value="{{ $category->id }}">{{ $category->category }}</option>
+					<option value="{{ $category->id }}">{{ $category->category }}</option>
 				@endforeach
 			</select>
 		</div>
