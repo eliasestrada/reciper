@@ -1,4 +1,3 @@
-
 @if (count($errors) > 0)
     <div class="message error">
         <ul class="unstyled-list">
