@@ -8,7 +8,8 @@
 
 <h4>Laravel Packages</h4>
 <ol>
-	<li>Image Intervention</li>
+	<li>laravel / dusk</li>
+	<li>Intervention / image</li>
 	<li>Forms Collective</li>
 	<li>Html Collective</li>
 </ol>
