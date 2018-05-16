@@ -44,11 +44,15 @@ if (searchInput && Number.isInteger(parseInt(searchInput.value))) searchInput.se
 function showImage(src, target) {
 	var fr = new FileReader();
 
-	fr.onload = function (e) {
-		target.src = this.result;
-	};
 	src.addEventListener("change", function () {
-		return fr.readAsDataURL(src.files[0]);
+		if (src.files.length !== 0) {
+			fr.readAsDataURL(src.files[0]);
+			fr.onload = function (e) {
+				target.src = this.result;
+			};
+		} else {
+			target.src = '/storage/images/default.jpg';
+		}
 	});
 }
 

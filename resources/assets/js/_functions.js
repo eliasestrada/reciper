@@ -19,9 +19,15 @@ if (searchInput && Number.isInteger(parseInt(searchInput.value)))
  */
 function showImage(src, target) {
 	var fr = new FileReader()
-	
-	fr.onload = function(e) { target.src = this.result }
-	src.addEventListener("change", ()=> fr.readAsDataURL(src.files[0]))
+
+	src.addEventListener("change", ()=> {
+		if (src.files.length !== 0) {
+			fr.readAsDataURL(src.files[0])
+			fr.onload = function(e) { target.src = this.result }
+		} else {
+			target.src = '/storage/images/default.jpg'
+		}
+	})
 }
 
 // User on page where variables:
