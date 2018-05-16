@@ -2,7 +2,7 @@
 	<div class="item-list unstyled-list">
 		@isset($title, $recipes)
 			<h2 class="headline">
-				{{ $title }} {{ $recipes->count() < 1 ? '' : $recipes->count() }}
+				{{ count($recipes) > 0 ? $title .' '. count($recipes) : '' }}
 			</h2>
 		@endisset
 
