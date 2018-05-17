@@ -28,7 +28,7 @@
 	</div>
 
 	<div class="form-group simple-group">
-		{{ Form::submit(trans('form.login')) }}
+		{{ Form::submit(trans('form.login'), ['id' => 'go-to-account']) }}
 	</div>
 
 	{{-- <a href="{{ route('password.request') }}">@lang('form.forgot_pwd')</a> --}}
