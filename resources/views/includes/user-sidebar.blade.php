@@ -73,11 +73,21 @@
 				</a>
 			</li>
 
+			@admin
+			{{-- logs --}}
+				<li class="{{ activeIfRouteIs('logs') }}">
+					<a href="/logs" title="@lang('logs.logs')">
+						<i style="background: url(/css/icons/svg/information-outline.svg)" class="sidebar-icon"></i>
+						<span>@lang('logs.logs')</span>
+					</a>
+				</li>
+			@endadmin
+
 			{{-- settings --}}
 			<li class="remove-hover">
 				<a>
 					<i style="background: url(/css/icons/svg/cog.svg)" class="sidebar-icon"></i>
-					<span>@lang('includes.settings')</span>
+					<span class="text-white">@lang('includes.settings')</span>
 				</a>
 			</li>
 
