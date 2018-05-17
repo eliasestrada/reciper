@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
+	@yield('head')
 	@include('includes.head')
 	<title>
 		@yield('title') - {{ config('app.name') }}
 	</title>
-	@yield('head')
 </head>
 <body>
 
