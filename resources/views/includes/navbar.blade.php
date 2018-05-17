@@ -25,16 +25,18 @@
 		<li id="categories-button" class="categories-button">
 
 			{{-- This categories-title working with JS --}}
-			<a class="categories-title">Категории</a>
+			<a class="categories-title">@lang('includes.categories')</a>
 
 			<div class="arrow-bottom" id="arrow-bottom"></div>
 			<div class="categories-menu" id="categories-menu">
 
-				@foreach ($all_categories as $category)
-					<a href="/search?for={{ $category->category->id }}" title="{{ $category->category->category }}">
-						<span>{{ $category->category->category }}</span>
-					</a>
-				@endforeach
+				@isset($all_categories)
+					@foreach ($all_categories as $category)
+						<a href="/search?for={{ $category->category->id }}" title="{{ $category->category->category }}">
+							<span>{{ $category->category->category }}</span>
+						</a>
+					@endforeach
+				@endisset
 
 			</div>
 		</li>

@@ -4,6 +4,7 @@ return [
 
 	// Navigation
 	'recipes' => 'Рецепты',
+	'categories' => 'Категории',
 	'navigation' => 'Навигация',
 	'home' => 'Главная',
 	'feedback' => 'Обратная связь',
