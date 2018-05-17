@@ -10,6 +10,7 @@
 <ol>
 	<li>laravel / dusk</li>
 	<li>Intervention / image</li>
+	<li>rap2hpoutre / laravel-log-viewer</li>
 	<li>Forms Collective</li>
 	<li>Html Collective</li>
 </ol>
