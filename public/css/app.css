@@ -865,6 +865,8 @@ footer .footer-copyright {
 
 .logs .sidebar {
   line-height: 1.1;
+  background: #E2E2E2;
+  border-radius: 5px;
 }
 
 .logs .text {
