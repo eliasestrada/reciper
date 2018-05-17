@@ -10,8 +10,8 @@
 	<div class="header-bg-overlay"></div>
 	<div class="header-content">
 
-		<h1>{{ title_case(optional($title_banner)->title) }}</h1>
-		<h2>{{ title_case(optional($title_banner)->text) }}</h2>
+		<h1>{{ title_case($title_banner->title ?? '') }}</h1>
+		<h2>{{ title_case($title_banner->text ?? '') }}</h2>
 		
 		<a class="home-button" id="home-search-btn">
 			<i style="background: url('/css/icons/svg/search.svg')"></i>
@@ -28,13 +28,13 @@
 </header>
 
 <section class="home-section">
-	<h2 class="headline">{{ title_case(optional($title_intro)->title) }}</h2>
-	<p>{{ optional($title_intro)->text }}</p>
+	<h2 class="headline">{{ title_case($title_intro->title ?? '') }}</h2>
+	<p>{{ $title_intro->text ?? '' }}</p>
 </section>
 
 {{--  Cards  --}}
 <section class="home-section">
-	@if (count($random_recipes) > 0)
+	@if (isset($random_recipes) && (count($random_recipes) > 0))
 		@foreach ($random_recipes->chunk(3) as $chunk)
 			<div class="row">
 				@foreach ($chunk as $random)
