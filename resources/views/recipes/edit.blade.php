@@ -10,7 +10,7 @@
 
 	<div class="recipe-buttons">
 		{{--  Save button  --}}
-		{{ Form::submit('', ['class' => "edit-recipe-icon icon-save"]) }}
+		<input type="submit" id="submit-save-recipe" class="edit-recipe-icon icon-save" value="">
 
 		{{--  View button  --}}
 		<a href="/recipes/{{ $recipe->id }}" class="edit-recipe-icon icon-eye"></a>
