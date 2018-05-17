@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Recipe;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class EloquentEventServiceProvider extends ServiceProvider
@@ -10,6 +11,8 @@ class EloquentEventServiceProvider extends ServiceProvider
     // Bootstrap services.
     public function boot()
     {
-        Recipe::observe(\App\Observers\RecipeObserver::class);
+		if (Schema::hasTable('recipes')) {
+			Recipe::observe(\App\Observers\RecipeObserver::class);
+		}
     }
 }

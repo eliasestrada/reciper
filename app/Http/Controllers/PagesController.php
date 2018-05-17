@@ -2,25 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Input;
-use Illuminate\Http\Request;
-use App\Models\Recipe;
 use App\Models\Title;
+use App\Models\Recipe;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Schema;
 
 class PagesController extends Controller
 {
 
 	public function home()
 	{
-		$random_recipes = Recipe::inRandomOrder()
-			->whereApproved(1)->limit(9)
-			->get([ 'id', 'title', 'image' ]);
+		if (Schema::hasTable('recipes')) {
+			$random_recipes = Recipe::inRandomOrder()
+				->whereApproved(1)->limit(9)
+				->get([ 'id', 'title', 'image' ]);
+		}
 
-		$title_banner = Title::whereName('Баннер')
-			->first([ 'title', 'text' ]);
+		if (Schema::hasTable('titles')) {
+			$title_banner = Title::whereName('Баннер')
+				->first([ 'title', 'text' ]);
 
-		$title_intro = Title::whereName('Интро')
-			->first([ 'title', 'text' ]);
+			$title_intro = Title::whereName('Интро')
+				->first([ 'title', 'text' ]);
+		}
 
 		return view('pages.home')->with(compact(
 			'random_recipes', 'title_banner', 'title_intro'

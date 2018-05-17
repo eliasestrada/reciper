@@ -21,23 +21,28 @@ class AppServiceProvider extends ServiceProvider
     {
 		Schema::defaultStringLength(191);
 
-		$all_categories = Recipe::distinct()->select('category_id')->get();
+		if (Schema::hasTable('recipes')) {
+			$all_categories = Recipe::distinct()->select('category_id')->get();
+	
+			view()->share(compact('all_categories'));
+		}
 
-		view()->share(compact('all_categories'));
+		// Update last visit
+		if (Schema::hasTable('users')) {
+			view()->composer('*', function ($view) {
+				if (auth()->check()) {
+					User::whereId(user()->id)->update([
+						'updated_at' => NOW()
+					]);
+				}
+			});
+		}
+
 
 		// DB::listen( function ( $query ) {
 		// 	dump($query->sql);
 		// 	dump($query->bindings);
 		// });
-
-		// Update last visit
-		view()->composer('*', function ($view) {
-			if (auth()->check()) {
-				User::whereId(user()->id)->update([
-					'updated_at' => NOW()
-				]);
-			}
-		});
     }
 
     /**
