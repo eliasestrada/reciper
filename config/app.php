@@ -63,6 +63,7 @@ return [
 		App\Providers\UserSidebarServiceProvider::class,
 		App\Providers\FooterServiceProvider::class,
 		App\Providers\VisitorProvider::class,
+		Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
     ],
 
     // Class Aliases
