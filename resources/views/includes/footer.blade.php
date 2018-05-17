@@ -3,20 +3,22 @@
 		<div class="row">
 
 			{{--  Random recipes  --}}
-			@foreach ($footer_rand_recipes->chunk(4) as $random_chunk)
-				<div class="col-xs-6 col-sm-4">
-					<ul class="unstyled-list">
-						<li><strong>@lang('includes.recipes')</strong></li>
-						@foreach ($random_chunk as $footer_recipe)
-							<li>
-								<a href="/recipes/{{ $footer_recipe->id }}" title="{{ $footer_recipe->title }}">
-									{{ $footer_recipe->title }}
-								</a>
-							</li>
-						@endforeach
-					</ul>
-				</div>
-			@endforeach
+			@isset($footer_rand_recipes)
+				@foreach ($footer_rand_recipes->chunk(4) as $random_chunk)
+					<div class="col-xs-6 col-sm-4">
+						<ul class="unstyled-list">
+							<li><strong>@lang('includes.recipes')</strong></li>
+							@foreach ($random_chunk as $footer_recipe)
+								<li>
+									<a href="/recipes/{{ $footer_recipe->id }}" title="{{ $footer_recipe->title }}">
+										{{ $footer_recipe->title }}
+									</a>
+								</li>
+							@endforeach
+						</ul>
+					</div>
+				@endforeach
+			@endisset
 
 			{{--  Navigation  --}}
 			<div class="col-xs-12 col-sm-4">
@@ -51,7 +53,7 @@
 		</a>
 
 		<p class="footer-copyright">
-			&copy; {{ date('Y') }} Delicious Food {{ optional($title_footer)->text }}
+			&copy; {{ date('Y') }} Delicious Food {{ $title_footer->text ?? '' }}
 		</p>
 
 		<p class="footer-copyright">
