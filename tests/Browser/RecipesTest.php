@@ -16,10 +16,33 @@ class RecipesTest extends DuskTestCase
 	/** @test */
     public function checkIfUserCanEditHisOwnRecipe()
     {
-        $this->browse(function ($first) {
+		$recipe = Recipe::where('user_id', 1)->first();
+
+        $this->browse(function ($first) use ($recipe) {
 			$first->loginAs(User::find(1))
-				->visit('/recipes/1')
-				->assertSee('hello');
+				->visit('/recipes/' . $recipe->id)
+				->click('.edit-recipe-icon')
+				->assertPathIs('/recipes/'.$recipe->id.'/edit')
+				->check('ready')
+				->click('#submit-save-recipe')
+				->assertSee('Рецепт опубликован')
+				->assertPathIs('/recipes')
+				->pause(1000);
+        });
+	}
+
+	/** @test */
+    public function checkIfUserCantEditOtherRecipes()
+    {
+		$recipe = Recipe::where('user_id', 1)->first();
+
+        $this->browse(function ($first) use ($recipe) {
+			$first->loginAs(User::find(2))
+				->visit('/recipes/' . $recipe->id)
+				->pause(1000)
+				->assertDontSee('.edit-recipe-icon')
+				->visit('/recipes/' . $recipe->id . '/edit')
+				->assertSee('Вы не можете редактировать');
         });
     }
 }
