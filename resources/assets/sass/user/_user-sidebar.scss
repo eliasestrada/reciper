@@ -51,12 +51,16 @@
 		background: $main;
 	}
 
-	li > a {
+	li > a,
+	li > form > button {
 		position: relative;
 		display: table;
 		border-collapse: collapse;
 		border-spacing: 0;
 		color: #fff;
+		background: none;
+		border: none;
+		cursor: pointer;
 		font-family: arial;
 		font-size: 14px;
 		text-decoration: none;

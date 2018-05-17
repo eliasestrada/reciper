@@ -10,7 +10,7 @@
 			{{-- dashboard --}}
 			<li class="{{ activeIfRouteIs('dashboard') }}">
 				<a href="/dashboard" title="@lang('includes.profile')">
-					<i style="background: url(/storage/uploads/{{ user()->image }})" class="sidebar-icon user-icon"></i>
+					<i style="background: url(/storage/uploads/{{ optional(user())->image }})" class="sidebar-icon user-icon"></i>
 					<span>@lang('includes.profile')</span>
 				</a>
 			</li>
@@ -120,14 +120,14 @@
 
 		{{-- logout --}}
 		<li class="{{ activeIfRouteIs('logout') }}">
-			<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Выйти">
-				<i style="background: url(/css/icons/svg/stand-by.svg)" class="sidebar-icon"></i>
-				<span class="nav-text">@lang('includes.logout')</span>
-			</a>
+			<form id="logout-form" action="{{ route('logout') }}" method="POST">
+				@csrf
+				<button type="submit" style="padding: 7px 0;" id="logout-btn">
+					<i style="background: url(/css/icons/svg/stand-by.svg)" class="sidebar-icon"></i>
+					<span class="nav-text">@lang('includes.logout')</span>
+				</button>
+			</form>
 		</li>
 	</nav>
 
-	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
-		@csrf
-	</form>
 @endauthor
