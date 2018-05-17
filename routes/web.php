@@ -3,6 +3,10 @@
 // Login and Register
 Auth::routes();
 
+Route::get('logs',
+	'\Rap2hpoutre\LaravelLogViewer\LogViewerController@index'
+)->middleware('admin');
+
 // Pages ===========
 Route::get('/', 'PagesController@home');
 Route::get('search', 'PagesController@search');
