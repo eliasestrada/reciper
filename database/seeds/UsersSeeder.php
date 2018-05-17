@@ -22,5 +22,7 @@ class UsersSeeder extends Seeder
 			'contact_check' => date("Y-m-d H:i:s"),
 			'image'         => 'user1.jpg'
 		]);
+
+		factory(User::class)->create();
     }
 }

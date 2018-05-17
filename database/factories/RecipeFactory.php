@@ -5,12 +5,12 @@ use Faker\Generator as Faker;
 
 $factory->define(Recipe::class, function (Faker $faker) {
     return [
-		'user_id'       => 1,
+		'user_id'       => rand(1, 2),
 		'category_id'   => 1,
         'title'         => $faker->catchPhrase,
 		'intro'         => $faker->text(200),
 		'ingredients'   => $faker->text(40),
-		'text'          => $faker->text(100),
+		'text'          => $faker->text(1000),
 		'time'          => rand(10, 160),
 		'ready'         => 1,
 		'approved'      => 1,
