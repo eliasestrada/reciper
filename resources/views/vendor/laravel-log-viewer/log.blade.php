@@ -18,7 +18,7 @@
 <div class="logs container-fluid">
 	<div class="row">
 		<div class="col-12 col-md-2 sidebar mb-3">
-			<h4>@lang('logs.logs')</h4>
+			<h4 class="pt-3">@lang('logs.logs')</h4>
 			<div class="list-group">
 				@foreach($files as $file)
 					<a href="?l={{ \Illuminate\Support\Facades\Crypt::encrypt($file) }}" class="list-group-item {{ $current_file == $file ? 'list-group-item-dark' : 'list-group-item-light' }}">
