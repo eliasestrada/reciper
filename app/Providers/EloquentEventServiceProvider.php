@@ -13,6 +13,8 @@ class EloquentEventServiceProvider extends ServiceProvider
     {
 		if (Schema::hasTable('recipes')) {
 			Recipe::observe(\App\Observers\RecipeObserver::class);
+		} else {
+			\Log::emergency(trans('logs.no_recipes_table'));
 		}
     }
 }

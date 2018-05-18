@@ -13,7 +13,7 @@ class FooterServiceProvider extends ServiceProvider
     public function boot()
     {
 		// Sharing random recipes for footer
-		if (Schema::hasTable('recipes') && Schema::hasTable('titles')) {
+		if (Schema::hasTable('recipes') || Schema::hasTable('titles')) {
 			$footer_rand_recipes = Recipe::inRandomOrder()
 					->whereApproved(1)
 					->limit(8)
@@ -27,6 +27,8 @@ class FooterServiceProvider extends ServiceProvider
 					'title_footer'
 				));
 			});
+		} else {
+			\Log::emergency(trans('logs.no_recipes_or_titles_table'));
 		}
     }
 

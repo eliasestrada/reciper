@@ -25,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
 			$all_categories = Recipe::distinct()->select('category_id')->get();
 	
 			view()->share(compact('all_categories'));
+		} else {
+			\Log::emergency(trans('logs.no_recipes_table'));
 		}
 
 		// Update last visit
@@ -36,6 +38,8 @@ class AppServiceProvider extends ServiceProvider
 					]);
 				}
 			});
+		} else {
+			\Log::emergency(trans('logs.no_users_table'));
 		}
 
 
