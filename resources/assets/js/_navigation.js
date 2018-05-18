@@ -1,7 +1,4 @@
-/**
- * Event works only if min-width of display is less than 640px
- * @event click
- */
+// Event works only if min-width of display is less than 640px
 if (window.matchMedia("( min-width: 640px )").matches) {
 	categoriesButton.addEventListener('click', () => {
 
@@ -78,8 +75,7 @@ window.onscroll = () => {
  * Removing word 'Категории' on mobile screen,
  * and put it back on descktop
  */
-if (window.matchMedia("( min-width: 640px )").matches) {
-	categoriesTitle.innerHTML = 'Категории'
-} else {
-	categoriesTitle.innerHTML = ''
-}
+categoriesTitle.innerHTML
+	= window.matchMedia("( min-width: 640px )").matches
+	? 'Категории'
+	: ''
