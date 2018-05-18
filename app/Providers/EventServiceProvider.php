@@ -9,19 +9,22 @@ class EventServiceProvider extends ServiceProvider
 {
     /**
      * The event listener mappings for the application.
-     *
-     * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
+        'Illuminate\Auth\Events\Registered' => [
+            'App\Listeners\LogNewUser',
+            'App\Listeners\DestroyUserSession',
+		],
+		'Illuminate\Auth\Events\Login' => [
+            'App\Listeners\LogLoggedInUser',
+        ],
+		'Illuminate\Auth\Events\Attempting' => [
+            'App\Listeners\LogAttemptingUser',
         ],
     ];
 
     /**
      * Register any events for your application.
-     *
-     * @return void
      */
     public function boot()
     {
