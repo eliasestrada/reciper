@@ -1,15 +1,14 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature\Recipes;
 
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Recipe;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class RecipesTest extends TestCase
+class DatabaseTest extends TestCase
 {
 	use DatabaseTransactions;
 
@@ -17,20 +16,9 @@ class RecipesTest extends TestCase
     public function checkIfRecipeCanBeCreatedInDatabase()
     {
 		$recipe = factory(Recipe::class)->create(['title' => 'hello']);
-		
+
 		$this->assertDatabaseHas('recipes', [
 			'title' => 'hello'
 		]);		
-	}
-	
-	/** @test */
-	public function checkIfCannotEditSomeonesRecipe()
-	{
-		$recipe = factory(Recipe::class)->create(['title' => 'World']);
-		$user = factory(User::class)->create(['admin' => 1]);
-		
-		$this->actingAs($user)
-			->visit('/recipe/' . $recipe->id)
-			->see($recipe->title);
 	}
 }

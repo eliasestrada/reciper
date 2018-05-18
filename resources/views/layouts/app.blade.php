@@ -29,6 +29,5 @@
 	<!-- Javascript -->
 	{!! scriptTimestamp('/js/app.js') !!}
 	@yield('script')
-
 </body>
 </html>
