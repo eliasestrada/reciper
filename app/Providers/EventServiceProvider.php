@@ -13,7 +13,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'Illuminate\Auth\Events\Registered' => [
             'App\Listeners\LogNewUser',
-            'App\Listeners\DestroyUserSession',
+            'App\Listeners\SendEmailToAdmin',
 		],
 		'Illuminate\Auth\Events\Login' => [
             'App\Listeners\LogLoggedInUser',
