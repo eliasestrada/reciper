@@ -8,14 +8,9 @@ class Visitor extends Model
 {
 	protected $fillable = ['ip', 'name'];
 
-    public static function getIpAddressFromVisitor() {
-		return request()->ip();
+	public static function incrementRequestsOrCreateIfNewVisitor() {
+		return ( self::whereIp(request()->ip())->count() > 0 )
+			? self::whereIp(request()->ip())->increment('requests')
+			: self::create(['ip' => request()->ip()]);
 	}
-
-	public static function firstOrCreateNewVisitor() {
-		return self::firstOrCreate([
-			'ip' => self::getIpAddressFromVisitor()
-		]);
-	}
-
 }
