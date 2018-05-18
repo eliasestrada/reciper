@@ -1,0 +1,9 @@
+@component('components.error')
+	@slot('error')
+		@lang('errors.500')
+	@endslot
+	@slot('title')
+		@lang('errors.500_title')
+	@endslot
+	@lang('errors.500_description')
+@endcomponent
