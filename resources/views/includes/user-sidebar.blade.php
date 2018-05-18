@@ -50,7 +50,7 @@
 
 				{{-- checklist --}}
 				<li class="{{ activeIfRouteIs('admin/checklist') }}">
-					<a href="/admin/checklist" title="@lang('includes.checklist')" {{ $allunapproved }} class="red-buttons">
+					<a href="/admin/checklist" title="@lang('includes.checklist')" {{ $allunapproved ?? '' }} class="red-buttons">
 						<i style="background: url(/css/icons/svg/search.svg)" class="sidebar-icon"></i>
 						<span>@lang('includes.checklist')</span>
 					</a>
@@ -58,7 +58,7 @@
 
 				{{-- feedback --}}
 				<li class="{{ activeIfRouteIs('admin/feedback') }}">
-					<a href="/admin/feedback" title="@lang('includes.feedback')" {{ $allfeedback }} class="red-buttons">
+					<a href="/admin/feedback" title="@lang('includes.feedback')" {{ $allfeedback ?? '' }} class="red-buttons">
 						<i style="background: url(/css/icons/svg/conversation.svg);" class="sidebar-icon"></i>
 						<span>@lang('includes.feedback')</span>
 					</a>
@@ -67,7 +67,7 @@
 
 			{{-- notifications --}}
 			<li class="{{ activeIfRouteIs('notifications') }}">
-				<a href="/notifications" title="@lang('includes.notifications')" {{ $notifications }} class="red-buttons">
+				<a href="/notifications" title="@lang('includes.notifications')" {{ $notifications ?? '' }} class="red-buttons">
 					<i style="background: url(/css/icons/svg/notifications.svg)" class="sidebar-icon"></i>
 					<span>@lang('includes.notifications')</span>
 				</a>

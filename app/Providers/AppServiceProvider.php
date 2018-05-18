@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
 	
 			view()->share(compact('all_categories'));
 		} else {
-			\Log::emergency(trans('logs.no_recipes_table'));
+			\Log::emergency(trans('logs.no_table', ['table' => 'recipes']));
 		}
 
 		// Update last visit
@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
 				}
 			});
 		} else {
-			\Log::emergency(trans('logs.no_users_table'));
+			\Log::emergency(trans('logs.no_table', ['table' => 'users']));
 		}
 
 

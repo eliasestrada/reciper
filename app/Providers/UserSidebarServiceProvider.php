@@ -17,7 +17,7 @@ class UserSidebarServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-		if (Schema::hasTable('notifications') || Schema::hasTable('recipes') || Schema::hasTable('feedback')) {
+		if (Schema::hasTable('notifications') && Schema::hasTable('recipes') && Schema::hasTable('feedback')) {
 			view()->composer('includes.user-sidebar', function($view) {
 				if (user()) {
 					$notifications = Notification::where([
@@ -51,7 +51,9 @@ class UserSidebarServiceProvider extends ServiceProvider
 				}
 			});
 		} else {
-			\Log::emergency(trans('logs.no_notif_or_feed_or_recip_table'));
+			\Log::emergency(trans('logs.no_table', ['table' => 'notifications']));
+			\Log::emergency(trans('logs.no_table', ['table' => 'recipes']));
+			\Log::emergency(trans('logs.no_table', ['table' => 'feedback']));
 		}
     }
 

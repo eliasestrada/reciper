@@ -14,7 +14,7 @@ class VisitorProvider extends ServiceProvider
 		if (Schema::hasTable('visitors')) {
 			Visitor::incrementRequestsOrCreateIfNewVisitor();
 		} else {
-			\Log::emergency(trans('logs.no_visitors_table'));
+			\Log::emergency(trans('logs.no_table', ['table' => 'visitors']));
 		}
     }
 }
