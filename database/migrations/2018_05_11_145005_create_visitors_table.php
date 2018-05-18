@@ -17,6 +17,7 @@ class CreateVisitorsTable extends Migration
             $table->increments('id');
             $table->string('name', 50)->nullable();
             $table->ipAddress('ip');
+            $table->integer('requests')->default(0);
             $table->timestamps();
         });
     }
