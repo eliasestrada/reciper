@@ -11,7 +11,7 @@ return [
 	'visitors' => 'Посетители',
 	'recipes' => 'Рецепты',
 	'no_name' => 'Имя не указано',
-	'name' => 'Имя',
+	'requests' => 'Запросов',
 	'messages' => 'Сообщения:',
 	'feedback' => 'Обратная связь',
 	'no_messages' => 'Нет сообщений',

@@ -22,10 +22,10 @@
 
 <table class="statistic-table">
 	<tbody>
-		<caption>@lang('admin.name')</caption>
+		<caption>@lang('admin.visitors')</caption>
 		<tr>
 			<th scope="col">@lang('admin.country_and_city')</th>
-			<th scope="col">@lang('admin.name')</th>
+			<th scope="col">@lang('admin.requests')</th>
 		</tr>
 	@foreach ($visitors as $visitor)
 		<?php
@@ -35,7 +35,7 @@
 		?>
 		<tr>
 			<td scope="row">{{ $country }} / {{ $city }}</td>
-			<td>{{ $visitor->name ?? trans('admin.no_name') }}</td>
+			<td>{{ $visitor->requests }}</td>
 		</tr>
 	@endforeach
 </table>
