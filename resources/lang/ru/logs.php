@@ -17,5 +17,6 @@ return [
 
 	// Errors
 	'no_table' => 'Таблица :table не найденна',
+	'artisan' => 'Артисан команда ":command" была выполнена',
 
 ];

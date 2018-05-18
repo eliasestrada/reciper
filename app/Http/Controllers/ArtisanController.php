@@ -15,7 +15,8 @@ class ArtisanController extends Controller
 		}
         try {
             Artisan::call('config:cache');
-            Artisan::call('route:cache');
+			Artisan::call('route:cache');
+			\Log::info(trans('logs.artisan', ['command' => 'cache']));
             echo 'Настройки кеша сохранены! <br> <a href="/" title="На главную">На главную</a>';
 
         } catch (Exception $e) {
@@ -34,6 +35,7 @@ class ArtisanController extends Controller
 			Artisan::call('config:clear');
 			Artisan::call('view:clear');
 			Artisan::call('route:clear');
+			\Log::info(trans('logs.artisan', ['command' => 'clear']));
             echo 'Настройки кеша удалены! <br> <a href="/" title="На главную">На главную</a>';
         } catch (Exception $e) {
             die( $e->getMessage() );
@@ -47,7 +49,8 @@ class ArtisanController extends Controller
 			echo 'Работа сайта приостановленна! <br> <a href="/" title="На главную">На главную</a>';
 		}
         try {
-            Artisan::call('down');
+			Artisan::call('down');
+			\Log::info(trans('logs.artisan', ['command' => 'down']));
         } catch (Exception $e) {
             die( $e->getMessage() );
         }
