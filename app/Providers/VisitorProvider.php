@@ -12,7 +12,7 @@ class VisitorProvider extends ServiceProvider
     public function boot()
     {
 		if (Schema::hasTable('visitors')) {
-			Visitor::firstOrCreateNewVisitor();
+			Visitor::incrementRequestsOrCreateIfNewVisitor();
 		}
     }
 }
