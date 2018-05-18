@@ -13,10 +13,8 @@ class ArtisanController extends Controller
         if ($url_key != config('custom.url_key')) {
             abort( 403 );
 		}
-
         try {
             Artisan::call('config:cache');
-            //Artisan::call('view:cache');
             Artisan::call('route:cache');
             echo 'Настройки кеша сохранены! <br> <a href="/" title="На главную">На главную</a>';
 
@@ -31,16 +29,27 @@ class ArtisanController extends Controller
         if ($url_key != config('custom.url_key')) {
             abort( 403 );
 		}
-
         try {
 			Artisan::call('cache:clear');
 			Artisan::call('config:clear');
 			Artisan::call('view:clear');
 			Artisan::call('route:clear');
             echo 'Настройки кеша удалены! <br> <a href="/" title="На главную">На главную</a>';
-
         } catch (Exception $e) {
             die( $e->getMessage() );
         }
-    }
+	}
+
+	public function down($url_key)
+	{
+        if ($url_key != config('custom.url_key')) {
+			abort( 403 );
+			echo 'Работа сайта приостановленна! <br> <a href="/" title="На главную">На главную</a>';
+		}
+        try {
+            Artisan::call('down');
+        } catch (Exception $e) {
+            die( $e->getMessage() );
+        }
+	}
 }

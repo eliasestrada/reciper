@@ -59,6 +59,7 @@ Route::post('answer/cancel/{id}', 'ApproveController@cancel');
 
 
 // Artisan commands =======
+Route::get('php/artisan/down/{url_key}', 'ArtisanController@down');
 Route::get('php/artisan/cache/{url_key}', 'ArtisanController@cache');
 Route::get('php/artisan/clear/{url_key}', 'ArtisanController@clear');
 
