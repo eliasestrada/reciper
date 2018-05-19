@@ -3,7 +3,7 @@
 
 Новый пользователь был зарегистрирован на {{ config('app.name') }}, подтвердите регистрацию пользователя или удалите его если вы предварительно не обговаривали его регистрацию.
 
-@component('mail::button', ['url' => 'http://localhost:3000/users'])
+@component('mail::button', ['url' => config('app.url') . '/users'])
 Перейти к пользователю
 @endcomponent
 
