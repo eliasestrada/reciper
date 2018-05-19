@@ -53,8 +53,8 @@ img {
   transition: margin 300ms, -webkit-transform 300ms;
   transition: transform 300ms, margin 300ms;
   transition: transform 300ms, margin 300ms, -webkit-transform 300ms;
-  -webkit-animation: appearFromLeft 7s;
-          animation: appearFromLeft 7s;
+  -webkit-animation: appearFromLeft 8s;
+          animation: appearFromLeft 8s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
   font-size: .9em;
