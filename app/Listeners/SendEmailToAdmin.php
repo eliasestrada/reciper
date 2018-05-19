@@ -3,13 +3,12 @@
 namespace App\Listeners;
 
 use Carbon\Carbon;
-use App\Jobs\SendEmailJob;
 use App\Mail\UserRegisteredMail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendEmailToAdmin implements ShouldQueue
+class SendEmailToAdmin
 {
     // Create the event listener
     public function __construct()
@@ -19,10 +18,10 @@ class SendEmailToAdmin implements ShouldQueue
 
     public function handle(Registered $event)
     {
-		$job = (new SendEmailJob)->delay(
-			Carbon::now()->addSeconds(10)
-		);
-
-		dispatch($job);
+		\Mail::to('deliciousfood.kh@gmail.com')->send(new UserRegisteredMail);
+		// $job = (new SendEmailJob)->delay(
+		// 	Carbon::now()->addSeconds(10)
+		// );
+		// dispatch($job);
     }
 }
