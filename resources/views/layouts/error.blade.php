@@ -8,7 +8,5 @@
 	<div class="wrapper" style="padding:0 1.2rem;">
 		@yield('content')
 	</div>
-    @include('includes.footer')
-	{!! scriptTimestamp('/js/app.js') !!}
 </body>
 </html>
