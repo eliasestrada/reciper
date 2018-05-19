@@ -41,18 +41,4 @@ class ArtisanController extends Controller
             die( $e->getMessage() );
         }
 	}
-
-	public function down($url_key)
-	{
-        if ($url_key != config('custom.url_key')) {
-			abort( 403 );
-			echo 'Работа сайта приостановленна! <br> <a href="/" title="На главную">На главную</a>';
-		}
-        try {
-			Artisan::call('down');
-			\Log::info(trans('logs.artisan', ['command' => 'down']));
-        } catch (Exception $e) {
-            die( $e->getMessage() );
-        }
-	}
 }
