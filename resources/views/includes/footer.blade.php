@@ -53,11 +53,7 @@
 		</a>
 
 		<p class="footer-copyright">
-			&copy; {{ date('Y') }} Delicious Food {{ $title_footer->text ?? '' }}
-		</p>
-
-		<p class="footer-copyright">
-			@lang('includes.my_rights')
+			&copy; {{ date('Y') }} Delicious Food <br /> {{ $title_footer->text ?? '' }}
 		</p>
 	</div>
 </footer>
