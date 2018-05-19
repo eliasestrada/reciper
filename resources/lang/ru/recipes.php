@@ -43,4 +43,7 @@ return [
 	'are_you_sure_to_publish' => 'Вы точно хотите опубликовать этот рецепт?',
 	'are_you_sure_to_cancel' => 'Вы точно хотите вернуть этот рецепт автору на доработку?',
 
+	// Listener
+	'new_recipe' => config('app.name') . '. Рецепт на рассмотрении! ',
+
 ];

@@ -7,6 +7,7 @@ use App\Models\Recipe;
 use App\Models\Category;
 use App\Models\Notification;
 use Illuminate\Http\Request;
+use App\Events\RecipeIsReady;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\RecipeSaveRequest;
@@ -158,7 +159,10 @@ class RecipesController extends Controller
             return redirect('/recipes')->withSuccess(
 				trans('recipes.recipe_is_published')
 			);
-        }
+		}
+
+		event(new RecipeIsReady($recipe));
+	
         return redirect('/dashboard')->withSuccess(
 			trans('recipes.added_to_approving')
 		);
