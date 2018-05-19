@@ -8,13 +8,13 @@
 	position: fixed;
 
 	ul {
-		padding: 1.85em 0 5em;
+		padding: 1.9em 0 5em;
 		display: none;
 	}
 
 	li {
-		height: 2.5em;
-		line-height: 2.5em;
+		height: 2.7em;
+		line-height: 2.7em;
 		border-bottom: .06em solid $mainHover;
 		transition: .3s;
 
@@ -40,8 +40,8 @@
 }
 
 .nav-opened {
-	width: 12em;
-	padding-top: 1.25em;
+	width: 13em;
+	padding-top: 1.5em;
 }
 
 .logo-opened {
@@ -55,8 +55,8 @@
 }
 
 .logo-closed {
-	width: 9.5em;
-	margin: .4em auto;
+	width: 10em;
+	margin: .6em auto;
 	transition: width 400ms, margin 400ms;
 	
 	&:hover {
@@ -76,18 +76,18 @@
 
 .hamburger-menu {
 	width: 55px;
-	height: 55px;
+	height: 55px !important;
 	left: .4em;
-	border-radius: 50%;
+	border-radius: 150px;
 	top: .5em;
 	position: relative;
 	border: solid 1px rgba(0, 0, 0, .2);
 }
 
 #menu-container {
-	height: 2em;
+	height: 2.5em;
 	font-size: 1.6em;
-	line-height: 2.1em;
+	line-height: 2.5em;
 	z-index: 3;
 	transition: all .2s linear;
 	opacity: .9;

@@ -1,7 +1,7 @@
 @author
 	<div class="item-list unstyled-list">
 		@isset($title, $recipes)
-			<h2 class="headline">
+			<h2 class="content center">
 				{{ count($recipes) > 0 ? $title .' '. count($recipes) : '' }}
 			</h2>
 		@endisset

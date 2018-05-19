@@ -1,3 +1,8 @@
+.recipe-content .headline {
+	font-size: 1.5em;
+	margin: 30px auto;
+}
+
 .decorated  {
 	overflow: hidden;
 	text-transform: uppercase;
@@ -51,39 +56,19 @@
 
 .items {
 	width: 96%;
-	padding: .6em 15%;
-	margin: 0 auto;
+	padding: 1.5em 15%;
+	margin: 2em auto;
 	text-align: left;
-	background: 0 0;
 	border-radius: 10px;
 	border-top: dotted 2px $gray;
-	background: #eae6f3;
 	border-bottom: dotted 2px $gray;
-	font-size: .85em;
-	line-height: 1.5;
-
-	.add-to-list-btn {
-		width: 80%;
-		margin: 15px 10% 5px 10%;
-		padding: 6px;
-		border: none;
-		background: $main;
-		color: #fff;
-		text-shadow: 1px 1px 1px #000;
-		border-radius: 5px;
-		cursor: pointer;
-		transition: background-color .2s;
-
-		&:hover {
-			background: $mainHover;
-			transition: background-color .2s;
-		}
-	}
+	font-size: .9em;
+	line-height: 1.4;
 }
 
 .items > ul > li {
 	list-style-image: url(../storage/other/tick.png);
-	margin: 0 .1em
+	margin: 0 .1em;
 }
 
 .instruction {
@@ -165,6 +150,31 @@
 	animation-timing-function: linear;
 }
 
+.category {
+	color: #fff;
+	display: inline-block;
+	line-height: .9em;
+	font-size: .8em;
+	background: #555;
+	transition: background-color 200ms;
+	border: 1px solid #bebebe;
+	padding: .4em 1em;
+	margin-top: .6em;
+	border-radius: 1em;
+	
+	&:hover {
+		background: #4d4d4d;
+		transition: background-color 200ms;
+	}
+}
+
+.date {
+	color: #555;
+	font-size: .8em;
+	margin: .5em auto;
+	text-align: center;
+}
+
 #all-likes {
 	padding-left: .2em;
 	font-size: .9em;
@@ -184,8 +194,8 @@
 		}
 
 		.items {
-			width: 23em;
-			padding: .6em 3em;
+			width: 24em;
+			padding: 1.5em 3.4em;
 		}
 	
 		.recipe-content {
