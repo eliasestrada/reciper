@@ -47,9 +47,10 @@ window.addEventListener('mouseup', e => {
 		menuUl.style.display = "none"
 		opened = false
 
-		if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)
+		if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
 			logo.style.opacity = "0"
 			logo.style.display = "none"
+		}
 	}
 })
 

@@ -119,8 +119,10 @@ window.addEventListener('mouseup', function (e) {
 		menuUl.style.display = "none";
 		opened = false;
 
-		if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) logo.style.opacity = "0";
-		logo.style.display = "none";
+		if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+			logo.style.opacity = "0";
+			logo.style.display = "none";
+		}
 	}
 });
 

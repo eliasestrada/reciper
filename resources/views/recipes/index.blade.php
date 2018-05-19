@@ -4,10 +4,12 @@
 
 @section('content')
 
-<h2 class="headline">@lang('recipes.recipes')</h2>
+<h2 class="content center">@lang('recipes.recipes')</h2>
 
 <div class="container recipes">
-	<div id="target-for-recipes"></div>
+	<div class="row">
+		<div id="target-for-recipes"></div>
+	</div>
 	<ul class="pagination" id="target-for-pagination"></ul>
 </div>
 
@@ -25,29 +27,21 @@
 		fetch(page_url)
 		.then(res => res.json())
 		.then(res => {
-			let i = 0
 			let recipes  = ''
-			let rowOpen  = '<div class="row">'
-			let rowClose = '</div>'
-			let addEveryForthCycle = (param) => {
-				return i % 4 == 0 ? param : ''
-			}
 			
 			// Looping our object
 			res.data.forEach(recipe => {
 				recipes += `
-					${ addEveryForthCycle(rowOpen) }
-						<div class="recipe-container col-xs-12 col-sm-6 col-md-4 col-lg-3">
-							<div class="recipe" style="animation: appear 1.${ i++ }s;">
-								<a href="/recipes/${ recipe.id }" title="${ recipe.title }">
-									<img src="storage/images/${ recipe.image }" alt="${ recipe.title }">
-								</a>
-								<div class="recipes-content">
-									<h3>${ recipe.title }</h3>
-								</div>
+					<div class="recipe-container col-md-3 col-6 col-sm-4">
+						<div class="recipe">
+							<a href="/recipes/${ recipe.id }" title="${ recipe.title }">
+								<img src="storage/images/${ recipe.image }" alt="${ recipe.title }">
+							</a>
+							<div class="recipes-content">
+								<h3>${ recipe.title }</h3>
 							</div>
 						</div>
-					${ addEveryForthCycle(rowClose) }`
+					</div>`
 			})
 
 			// Inserting our recipes into a target div
