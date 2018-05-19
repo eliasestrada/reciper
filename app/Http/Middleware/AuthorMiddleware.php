@@ -13,6 +13,8 @@ class AuthorMiddleware
         if (Auth::guard($guard)->check() && Auth::user()->author === 1) {
 			return $next($request);
         }
-        return redirect('/');
+        return redirect('/recipes')->withError(
+			trans('messages.only_author_access')
+		);
     }
 }
