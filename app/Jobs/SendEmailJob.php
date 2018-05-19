@@ -20,6 +20,6 @@ class SendEmailJob implements ShouldQueue
 
     public function handle()
     {
-        \Mail::to('test@gmail.com')->send(new UserRegisteredMail);
+        //
     }
 }
