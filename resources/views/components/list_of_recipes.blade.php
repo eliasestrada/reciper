@@ -17,7 +17,7 @@
 								@lang('users.status'): {{ $recipe->approved() ? trans('users.checked') : trans('users.not_checked') }}
 							</p>
 							<p class="project-title">
-								@lang('users.date') {{ facebookTimeAgo($recipe->created_at) }}
+								@lang('users.date') {{ facebookTimeAgo($recipe->updated_at) }}
 							</p>
 						</div>
 					</li>
