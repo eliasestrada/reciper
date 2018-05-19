@@ -1,20 +1,5 @@
 <?php
 
-// use Carbon\Carbon;
-// use App\Jobs\SendEmailJob;
-// use App\Mail\UserRegisteredMail;
-
-// Route::get('mail_sent', function () {
-// 	$job = (new SendEmailJob)->delay(Carbon::now()->addSeconds(15));
-// 	dispatch($job);
-// });
-
-// Route::get('mail', function () {
-// 	return new UserRegisteredMail;
-// });
-
-// =======================================
-
 // Login and Register
 Auth::routes();
 
