@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
 		'Illuminate\Auth\Events\Attempting' => [
             'App\Listeners\LogAttemptingUser',
         ],
+		'App\Events\RecipeIsReady' => [
+            'App\Listeners\SendSms',
+        ],
     ];
 
     /**
