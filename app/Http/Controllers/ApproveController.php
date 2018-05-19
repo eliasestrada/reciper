@@ -8,13 +8,8 @@ use Illuminate\Http\Request;
 
 class ApproveController extends Controller
 {
-	public function ok($id) {
-
-		$recipe = Recipe::whereId($id)
-			->whereApproved(0)
-			->whereReady(1)
-			->first();
-
+	public function ok(Recipe $recipe)
+	{
 		Notification::recipeHasBeenApproved(
 			$recipe->title, $recipe->user_id
 		);
@@ -26,13 +21,8 @@ class ApproveController extends Controller
 	}
 
     // Approve the recipe (for admins)
-    public function cancel($id)
+    public function cancel(Recipe $recipe)
     {
-        $recipe = Recipe::whereId($id)
-			->whereApproved(1)
-			->whereReady(1)
-			->first();
-
 		Notification::recipeHasNotBeenCreated(
 			$recipe->title, $recipe->user_id
 		);

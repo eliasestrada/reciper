@@ -54,8 +54,8 @@ Route::prefix('settings')->group(function () {
 });
 
 // Approving ======
-Route::post('answer/ok/{id}', 'ApproveController@ok');
-Route::post('answer/cancel/{id}', 'ApproveController@cancel');
+Route::post('answer/ok/{recipe}', 'ApproveController@ok');
+Route::post('answer/cancel/{recipe}', 'ApproveController@cancel');
 
 
 // Artisan commands =======
