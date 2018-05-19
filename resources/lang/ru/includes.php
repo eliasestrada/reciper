@@ -10,7 +10,6 @@ return [
 	'feedback' => 'Обратная связь',
 	'search' => 'Поиск',
 	'logo' => 'Логотип',
-	'my_rights' => 'Дизайн и создание: <a style="color:#8080ff;">Сергей Чёрненький</a>',
 
 	// User sidebar
 	'profile' => 'Профиль',
