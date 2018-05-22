@@ -147,3 +147,29 @@ window.onscroll = function () {
  * and put it back on descktop
  */
 categoriesTitle.innerHTML = window.matchMedia("( min-width: 640px )").matches ? 'Категории' : '';
+function showTargetAfterClickButton(btn, target) {
+	var visible = false;
+
+	btn.addEventListener('click', function () {
+		if (visible === true) {
+			target.style.display = 'none';
+			visible = false;
+		} else if (visible === false) {
+			target.style.display = 'block';
+			visible = true;
+		}
+	});
+}
+
+// Run function
+if (id('btn-for-banner') && id('banner-form')) {
+	showTargetAfterClickButton(id('btn-for-banner'), id('banner-form'));
+}
+
+if (id('btn-for-intro') && id('intro-form')) {
+	showTargetAfterClickButton(id('btn-for-intro'), id('intro-form'));
+}
+
+if (id('btn-for-footer') && id('footer-form')) {
+	showTargetAfterClickButton(id('btn-for-footer'), id('footer-form'));
+}
