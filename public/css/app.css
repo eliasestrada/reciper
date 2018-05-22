@@ -223,8 +223,7 @@ img {
 }
 
 .logo-closed:hover {
-  margin: .3em auto;
-  width: 10em;
+  margin: .5em auto;
 }
 
 .regular-menu {
