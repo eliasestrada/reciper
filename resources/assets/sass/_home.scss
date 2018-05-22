@@ -76,7 +76,7 @@
 		line-height: 3em;
 		text-align: center;
 		border-radius: 50%;
-		background: #1e5799;
+		background: $main;
 		color: #fff;
 		font-size: 1.6em;
 		animation: appearWithRotate 1s;
@@ -93,7 +93,7 @@
 		}
 
 		&:hover {
-			background: #861b50;
+			background: $mainDark;
 			transition: transform 400ms, background-color 400ms;
 		}
 	}
@@ -120,30 +120,30 @@
 
 .edit-btn {
 	display: flex;
-		margin: .5em auto;
-		width: 40px;
-		height: 40px;
-		line-height: 40px;
-		text-align: center;
-		border-radius: 50%;
-		background: #1e5799;
-		color: #fff;
-		font-size: 1.6em;
-		cursor: pointer;
-		transition: opacity 300ms;
-		position: relative;
-		opacity: .8;
+	margin: .5em auto;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	background: $main;
+	color: #fff;
+	font-size: 1.6em;
+	cursor: pointer;
+	transition: opacity 300ms;
+	position: relative;
+	opacity: .8;
 
-		i {
-			width: 15px;
-			height: 15px;
-			margin: auto;
-			filter: invert(100%);
-			-webkit-filter: invert(100%);
-		}
+	i {
+		width: 15px;
+		height: 15px;
+		margin: auto;
+		filter: invert(100%);
+		-webkit-filter: invert(100%);
+	}
 
-		&:hover {
-			transition: opacity 400ms;
-			opacity: 1;
-		}
+	&:hover {
+		transition: opacity 400ms;
+		opacity: 1;
+	}
 }

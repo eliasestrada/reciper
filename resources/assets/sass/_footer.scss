@@ -2,19 +2,18 @@ footer {
 	padding: 1em;
 
 	strong {
-		color: #6d6bff;
+		color: $main;
 	}
 
 	a {
-		color: #c6c5ff;
+		color: #cfcfcf;
 
 		&:hover {
-			color: $mainHover;
+			color: #a5a5a5;
 		}
 	}
 
 	.active {
-		color: #d5b0ff;
 		text-decoration: underline;
 	}
 
@@ -26,7 +25,7 @@ footer {
 	.footer-copyright {
 		font-size: .7em;
 		color: $gray;
-		color: #c6c5ff;
+		color: #c0bfff;
 		margin: .5em;
 	}
 }

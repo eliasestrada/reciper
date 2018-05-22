@@ -10,9 +10,9 @@
 		text-align: left;
 		font-size: 1.05em;
 		line-height: 1.1;
-		padding: 7px .7em;
-		background: $mainLight;
-		color: #fff;
+		padding: 14px .7em;
+		border-top: solid 3px $mainDark;
+		color: #444;
 	}
 
 	.title-icon {
@@ -21,8 +21,8 @@
 		height: 18px;
 		margin-right: 4px;
 		opacity: .85;
-		filter: invert(100%);
-		-webkit-filter: invert(100%);
+		filter: invert(15%);
+		-webkit-filter: invert(15%);
 	}
 }
 
