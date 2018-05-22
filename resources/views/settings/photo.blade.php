@@ -23,7 +23,7 @@
 		{{ Form::hidden('delete', 0) }}
 		{{ Form::label('src-image', trans('form.select_file'), ['class' => 'image-label']) }}
 		{{ Form::file('image', ['style' => "display:none;", 'id' => 'src-image']) }}
-		{{ Form::submit(trans('form.save_changes'), ['style' => 'text-align:center;']) }}
+		{{ Form::submit(trans('form.save_changes'), ['class' => 'center bg-none']) }}
 	</div>
 {!! Form::close() !!}
 
@@ -34,7 +34,7 @@
 
 	<div class="form-group simple-group">
 		{{ Form::hidden('delete', 1) }}
-		{{ Form::submit(trans('form.delete_photo'), ['style' => 'text-align:center; margin-top: -2.3rem; color:brown;']) }}
+		{{ Form::submit(trans('form.delete_photo'), ['style' => 'margin-top: -2.3rem; color:brown;', 'class' => 'center bg-none']) }}
 	</div>
 {!! Form::close() !!}
 
