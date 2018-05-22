@@ -106,16 +106,6 @@
 					<span>@lang('includes.photo')</span>
 				</a>
 			</li>
-
-			@admin
-				{{-- settings/titles --}}
-				<li class="{{ activeIfRouteIs('settings/titles') }}">
-					<a href="/settings/titles" title="Заголовки">
-						<i style="background: url(/css/icons/svg/cheveron-right.svg)" class="sidebar-icon"></i>
-						<span>@lang('includes.titles')</span>
-					</a>
-				</li>
-			@endadmin
 		</ul>
 
 		{{-- logout --}}
