@@ -7,9 +7,7 @@
 <h2 class="content center">@lang('recipes.recipes')</h2>
 
 <div class="container recipes">
-	<div class="row">
-		<div id="target-for-recipes"></div>
-	</div>
+	<div class="row" id="target-for-recipes"></div>
 	<ul class="pagination" id="target-for-pagination"></ul>
 </div>
 

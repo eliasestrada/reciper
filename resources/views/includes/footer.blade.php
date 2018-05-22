@@ -5,7 +5,7 @@
 			{{--  Random recipes  --}}
 			@isset($footer_rand_recipes)
 				@foreach ($footer_rand_recipes->chunk(4) as $random_chunk)
-					<div class="col-xs-6 col-sm-4">
+					<div class="col-6 col-sm-4">
 						<ul class="unstyled-list">
 							<li><strong>@lang('includes.recipes')</strong></li>
 							@foreach ($random_chunk as $footer_recipe)
@@ -21,7 +21,7 @@
 			@endisset
 
 			{{--  Navigation  --}}
-			<div class="col-xs-12 col-sm-4">
+			<div class="col-12 col-sm-4">
 				<ul class="unstyled-list">
 					<li><strong>@lang('includes.navigation')</strong></li>
 					<li>

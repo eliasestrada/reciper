@@ -86,21 +86,17 @@
 </section>
 
 {{--  Cards  --}}
-<section class="home-section">
+<section class="home-section container">
 	@if (isset($random_recipes) && (count($random_recipes) > 0))
-		@foreach ($random_recipes->chunk(3) as $chunk)
+		@foreach ($random_recipes->chunk(4) as $chunk)
 			<div class="row">
 				@foreach ($chunk as $random)
-					<div class="recipe-container col-xs-12 col-sm-6 col-md-4" style="animation: appear {{ 2 + $loop->index }}s;">
+					<div class="recipe-container col-md-3 col-6 col-sm-4">
 						<div class="recipe">
-
 							<a href="/recipes/{{ $random->id }}">
 								<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{ $random->title }}">
 							</a>
-							
 							<div class="recipes-content">
-
-								{{-- Title --}}
 								<h3>{{ $random->title }}</h3>
 							</div>
 						</div>
