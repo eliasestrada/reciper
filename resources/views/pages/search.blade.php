@@ -29,24 +29,20 @@
 @if ($recipes)
 	<section class="container recipes">
 		<div class="row">
-
 			@foreach ($recipes as $recipe)
-				<div class="recipe-container col-xs-12 col-sm-6 col-md-4 col-lg-3">
+				<div class="recipe-container col-12 col-sm-6 col-md-4 col-lg-3">
 					<div class="recipe">
 
 						{{--  Image  --}}
 						<a href="/recipes/{{ $recipe->id }}">
 							<img  src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
 						</a>
-
-						{{--  Title  --}}
 						<div class="recipes-content">
 							<h3>{{ $recipe->title }}</h3>
 						</div>
 					</div>
 				</div>
 			@endforeach
-
 		</div>
 	</section>
 @endif
