@@ -81,18 +81,6 @@ class SettingsController extends Controller
         }
 	}
 
-	
-	public function titles()
-	{
-		$title_banner  = Title::whereName('Баннер')->first(['title', 'text']);
-		$title_intro   = Title::whereName('Интро')->first(['title', 'text']);
-		$title_footer  = Title::whereName('Подвал')->first(['text']);
-
-		return view('settings.titles')->with(
-			compact('title_banner', 'title_intro', 'title_footer')
-		);
-	}
-
 	public function updateBannerData(SettingsUpdateHomeDataRequest $request)
 	{
 		Title::whereName('Баннер')->update([

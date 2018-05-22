@@ -42,7 +42,6 @@ Route::prefix('settings')->group(function () {
 	Route::get('photo', 'SettingsController@photo');
 	Route::put('photo', 'SettingsController@updatePhoto');
 	Route::get('general', 'SettingsController@general');
-	Route::get('titles', 'SettingsController@titles');
 
 	Route::prefix('update')->group(function () {
 		Route::put('userData', 'SettingsController@updateUserData');
