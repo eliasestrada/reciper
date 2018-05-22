@@ -20,11 +20,8 @@ class PagesController extends Controller
 		}
 
 		if (Schema::hasTable('titles')) {
-			$title_banner = Title::whereName('Баннер')
-				->first([ 'title', 'text' ]);
-
-			$title_intro = Title::whereName('Интро')
-				->first([ 'title', 'text' ]);
+			$title_banner = Title::whereName('Баннер')->first([ 'title', 'text' ]);
+			$title_intro = Title::whereName('Интро')->first([ 'title', 'text' ]);
 		}
 
 		return view('pages.home')->with(compact(
