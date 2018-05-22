@@ -15,7 +15,7 @@ class PagesController extends Controller
 	{
 		if (Schema::hasTable('recipes')) {
 			$random_recipes = Recipe::inRandomOrder()
-				->whereApproved(1)->limit(9)
+				->whereApproved(1)->limit(12)
 				->get([ 'id', 'title', 'image' ]);
 		}
 
