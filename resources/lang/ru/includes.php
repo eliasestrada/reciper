@@ -23,7 +23,6 @@ return [
 	'settings' => 'Настройки',
 	'general' => 'Общие',
 	'photo' => 'Фотография',
-	'titles' => 'Заголовки',
 	'logout' => 'Выйти',
 
 	// layout

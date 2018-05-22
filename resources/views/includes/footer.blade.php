@@ -55,5 +55,26 @@
 		<p class="footer-copyright">
 			&copy; {{ date('Y') }} Delicious Food <br /> {{ $title_footer->text ?? '' }}
 		</p>
+
+		@admin
+			{{--  Настройки подвала  --}}
+			<a class="edit-btn" title="@lang('home.edit_banner')" id="btn-for-footer">
+				<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
+			</a>
+			{!! Form::open([
+				'action' => 'SettingsController@updateFooterData',
+				'method' => 'POST',
+				'class' => 'form none',
+				'id' => 'footer-form'
+			]) !!}
+				@method('PUT')
+				<div class="form-group">
+					{{ Form::textarea('text', $title_footer->text, [
+						'placeholder' => trans('settings.footer_text')
+					]) }}
+					{{ Form::submit(trans('form.save'), ['class' => 'blue']) }}
+				</div>
+			{!! Form::close() !!}
+		@endadmin
 	</div>
 </footer>

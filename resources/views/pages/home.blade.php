@@ -12,6 +12,31 @@
 
 		<h1>{{ title_case($title_banner->title ?? '') }}</h1>
 		<h2>{{ title_case($title_banner->text ?? '') }}</h2>
+
+		{{-- Настройки Баннера --}}
+		@admin
+			<a class="edit-btn" title="@lang('home.edit_banner')" id="btn-for-banner">
+				<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
+			</a>
+			{!! Form::open([
+				'action' => 'SettingsController@updateBannerData',
+				'method' => 'POST',
+				'class' => 'form none',
+				'id' => 'banner-form'
+			]) !!}
+				<div class="form-group">
+					@method('PUT')
+					{{ Form::text('title', $title_banner->title, [
+						'placeholder' => trans('settings.banner_title')
+					]) }}
+		
+					{{ Form::textarea('text', $title_banner->text, [
+						'placeholder' => trans('settings.banner_text')
+					]) }}
+					{{ Form::submit(trans('form.save'), ['class' => 'blue']) }}
+				</div>
+			{!! Form::close() !!}
+		@endadmin
 		
 		<a class="home-button" id="home-search-btn">
 			<i style="background: url('/css/icons/svg/search.svg')"></i>
@@ -30,6 +55,34 @@
 <section class="home-section">
 	<h2 class="headline">{{ title_case($title_intro->title ?? '') }}</h2>
 	<p>{{ $title_intro->text ?? '' }}</p>
+
+	@admin
+		{{--  Настройки Интро  --}}
+		<a class="edit-btn" title="@lang('home.edit_intro')" id="btn-for-intro">
+			<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
+		</a>
+		{!! Form::open([
+			'action' => 'SettingsController@updateIntroData',
+			'method' => 'POST',
+			'class' => 'form none',
+			'id' => 'intro-form'
+		]) !!}
+
+			@method('PUT')
+
+			<div class="form-group">
+				{{ Form::text('title', $title_intro->title, [
+					'placeholder' => trans('settings.intro_title')
+				]) }}
+
+				{{ Form::textarea('text', $title_intro->text, [
+					'placeholder' => trans('settings.intro_text')
+				]) }}
+
+				{{ Form::submit(trans('form.save'), ['class' => 'blue']) }}
+			</div>
+		{!! Form::close() !!}
+	@endadmin
 </section>
 
 {{--  Cards  --}}
