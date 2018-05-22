@@ -74,12 +74,12 @@ img {
   min-height: 20em;
   color: #333;
   background: #eee;
-  padding-top: 4em;
+  padding-top: 5em;
   z-index: -2;
 }
 
 @media (min-width: 640px) {
-  .wrapper-user {
+  .wrapper {
     padding-top: 4em;
   }
 }
@@ -149,6 +149,10 @@ img {
   border-top: 1px solid #cccccc;
   margin: .7em auto;
   padding: 0;
+}
+
+.none {
+  display: none;
 }
 
 #nav-menu {
@@ -531,6 +535,40 @@ img {
   transition: border 300ms;
 }
 
+.edit-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: .5em auto;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background: #1e5799;
+  color: #fff;
+  font-size: 1.6em;
+  cursor: pointer;
+  -webkit-transition: opacity 300ms;
+  transition: opacity 300ms;
+  position: relative;
+  opacity: .8;
+}
+
+.edit-btn i {
+  width: 15px;
+  height: 15px;
+  margin: auto;
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+}
+
+.edit-btn:hover {
+  -webkit-transition: opacity 400ms;
+  transition: opacity 400ms;
+  opacity: 1;
+}
+
 .accordion {
   background-color: #ddd;
   color: #333;
@@ -722,22 +760,31 @@ footer .footer-copyright {
   text-align: center;
   font-size: .9em;
   background: none;
+  color: #333;
   border: none;
   cursor: pointer;
   -webkit-transition: .2s;
   transition: .2s;
   font-weight: bold;
-  color: #333;
 }
 
 .form input[type=submit]:hover {
-  background: #e9e9e9;
+  background: #dddddd;
 }
 
 .form input[type=checkbox] {
   width: 1.2em;
   height: 1.2em;
   margin-right: .5em;
+}
+
+.form .blue {
+  background: #8080ff !important;
+  color: #fff !important;
+}
+
+.form .blue:hover {
+  background: #6969d3 !important;
 }
 
 .form textarea {

@@ -53,14 +53,14 @@
 			text-align: center;
 			font-size: .9em;
 			background: none;
+			color: #333;
 			border: none;
 			cursor: pointer;
 			transition: .2s;
 			font-weight: bold;
-			color: $darkGray;
 
 			&:hover {
-				background: $inputColor;
+				background: #dddddd;
 			}
 		}
 		
@@ -68,6 +68,15 @@
 			width: 1.2em;
 			height: 1.2em;
 			margin-right: .5em;
+		}
+	}
+
+	.blue {
+		background: $main !important;
+		color: #fff !important;
+		
+		&:hover {
+			background: $mainHover !important;
 		}
 	}
 
