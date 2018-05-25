@@ -18,10 +18,4 @@ class BladeServiceProvider extends ServiceProvider
 			return auth()->check() && user()->isAuthor();
 		});
     }
-
-    // Register services.
-    public function register()
-    {
-        //
-    }
 }
