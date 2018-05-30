@@ -11,13 +11,6 @@ let mix = require('laravel-mix');
  |
  */
 
-var components = [
-	'resources/assets/js/_modules.js',
-	'resources/assets/js/_functions.js',
-	'resources/assets/js/_navigation.js',
-	'resources/assets/js/_home.js',
-]
-
 var options = {
 	processCssUrls: false
 }
@@ -32,7 +25,7 @@ var sync = {
 }
 
 mix.sass('resources/assets/sass/app.scss', 'public/css')
-	.babel(components, 'public/js/app.js')
+	.babel('resources/assets/js/*.js', 'public/js/app.js')
 	.disableNotifications()
 	.browserSync(sync)
 	.options(options)
