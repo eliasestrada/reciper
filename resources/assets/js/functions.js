@@ -1,19 +1,19 @@
 // After page has been loaded, it will
 // remove the loading animation
 window.onload = () => {
-	loading.classList.remove("loading")
-	loadingTitle.innerHTML = ''
+	$('loading').classList.remove("loading")
+	$('loading-title').innerHTML = ''
 }
 
-if (searchInput && Number.isInteger(parseInt(searchInput.value)))
-	searchInput.setAttribute('value', '')
+if ($('search-input') && Number.isInteger(parseInt($('search-input').value)))
+	$('search-input').setAttribute('value', '')
 
 
 // This object auto updates pictures after
 // selecting them via file input
 let imageUploader = {
-	target: id("target-image"),
-	src: id("src-image"),
+	target: $("target-image"),
+	src: $("src-image"),
 	fr: new FileReader(),
 	showImage: function () {
 		this.src.addEventListener("change", ()=> {
@@ -35,6 +35,8 @@ if (imageUploader.src && imageUploader.target)
 	imageUploader.showImage()
 
 // Loop for accordion functionality
+let accordion = document.getElementsByClassName("accordion")
+
 if (accordion) {
 	for (i = 0; i < accordion.length; i++) {
 		accordion[i].addEventListener("click", function(){
