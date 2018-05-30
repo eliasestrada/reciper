@@ -1,0 +1,19 @@
+.btn {
+	width: 13em;
+	padding: .5em 1em;
+	margin: .5em 0;
+	display: inline-block;
+	background: $btnBg;
+	color: $fontColor;
+	border: $btnBorder;
+	border-radius: 4px;
+	text-align: center;
+	transition: box-shadow 250ms;
+	box-shadow: $btnShadow;
+	font-weight: bold;
+	cursor: pointer;
+
+	&:hover {
+		box-shadow: none;
+	}
+}

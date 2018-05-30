@@ -12,10 +12,6 @@
 	border-radius: 4px;
 	cursor: pointer;
 
-	&-active:after {
-		content: "\2212";
-	}
-
 	&-active,
 	&:hover {
 		background-color: #b4b4b4;
@@ -28,6 +24,10 @@
 		font-size: 1.1em;
 		margin-left: 5px;
 	}
+}
+
+.accordion-active:after {
+	content: "\2212";
 }
 
 .accordion-panel {

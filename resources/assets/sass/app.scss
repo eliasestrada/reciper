@@ -11,11 +11,12 @@
 // Other
 @import 'home';
 @import 'accordion';
-@import 'pagination';
 @import 'footer';
 @import 'form';
 @import 'items';
 @import 'logs';
+@import 'buttons';
+@import 'animations';
 
 // Recipes
 @import 'recipes/create';
@@ -28,6 +29,6 @@
 @import 'user/statistic';
 @import 'user/user-sidebar';
 
-
-@import 'grid';
-@import 'animations';
+// Bootstrap
+@import 'bootstrap/grid';
+@import 'bootstrap/pagination';

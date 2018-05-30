@@ -7,6 +7,7 @@
 
 	li {
 		position: relative;
+		height: auto;
 		display: flex;
 		padding: .5em;
 		border-bottom: 1px solid #b6b6b6;
@@ -37,24 +38,4 @@
 	margin-top: .8em;
 	font-size: .85em;
 	text-align: left;
-}
-
-.button-add-user {
-	width: 13em;
-	padding: .5em 1em;
-	margin: .5em 0;
-	display: inline-block;
-	background: $btnBg;
-	color: $fontColor;
-	border: $btnBorder;
-	border-radius: 4px;
-	text-align: center;
-	transition: box-shadow 250ms;
-	box-shadow: $btnShadow;
-	font-weight: bold;
-	cursor: pointer;
-
-	&:hover {
-		box-shadow: none;
-	}
 }
