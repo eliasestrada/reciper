@@ -7,6 +7,8 @@
 
 html {
   height: 100%;
+  -moz-text-size-adjust: 100%;
+       text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -1580,6 +1582,8 @@ ol, ul, dl {
   left: 0;
   background: #0B65B1;
   position: fixed;
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 #nav-menu ul {
@@ -1648,6 +1652,8 @@ ol, ul, dl {
   top: 0;
   border-radius: 0;
   padding-left: .3em;
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 .hamburger-menu {
@@ -1657,7 +1663,8 @@ ol, ul, dl {
   border-radius: 150px;
   top: .5em;
   position: relative;
-  border: solid 1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 #menu-container {
@@ -1757,12 +1764,14 @@ ol, ul, dl {
 .categories-menu {
   width: 100%;
   background: #0B65B1;
-  -webkit-transition: opacity 400ms;
-  transition: opacity 400ms;
 }
 
 .categories-menu a {
   border-bottom: 0.06em solid #314152;
+}
+
+.categories-menu a:last-child {
+  border-bottom: 3px solid #314152;
 }
 
 /* Arrow */
@@ -1788,11 +1797,6 @@ ol, ul, dl {
   transition: transform 300ms, -webkit-transform 300ms;
 }
 
-.arrow-bottom-rotate:before {
-  -webkit-transform: rotateX(180deg);
-          transform: rotateX(180deg);
-}
-
 @media (min-width: 640px) {
   .arrow-bottom {
     display: block;
@@ -1807,9 +1811,20 @@ ol, ul, dl {
     width: 150%;
     position: absolute;
     top: 100%;
+    margin-top: 5px;
     left: -20%;
-    display: none;
-    opacity: 0;
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    -webkit-transition: -webkit-transform 400ms;
+    transition: -webkit-transform 400ms;
+    transition: transform 400ms;
+    transition: transform 400ms, -webkit-transform 400ms;
+    -webkit-transform: perspective(1000px) rotateX(-90deg);
+            transform: perspective(1000px) rotateX(-90deg);
+  }
+  .categor-menu-opened {
+    -webkit-transform: perspective(1000px) rotateX(0deg);
+            transform: perspective(1000px) rotateX(0deg);
   }
 }
 
@@ -1929,11 +1944,31 @@ ol, ul, dl {
   transition: transform 400ms, background-color 400ms, -webkit-transform 400ms;
 }
 
-.home-header .header-search input {
+.home-header .home-search {
   width: 80%;
+  max-width: 30em;
+  position: absolute;
+  top: 1em;
+  left: 50%;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transition: -webkit-transform 400ms;
+  transition: -webkit-transform 400ms;
+  transition: transform 400ms;
+  transition: transform 400ms, -webkit-transform 400ms;
+  -webkit-transform: translateX(-50%) perspective(1000px) rotateX(-90deg);
+          transform: translateX(-50%) perspective(1000px) rotateX(-90deg);
+}
+
+.home-header .show-search {
+  -webkit-transform: translateX(-50%) perspective(1000px) rotateX(0deg);
+          transform: translateX(-50%) perspective(1000px) rotateX(0deg);
+}
+
+.home-header .header-search input {
+  width: 100%;
   height: 2em;
   padding: 0 1em;
-  margin: 1em 10% 0 10%;
   border-radius: 10px;
   border: 2px solid #1e5799;
   background: rgba(0, 0, 0, 0.4);
@@ -1941,7 +1976,6 @@ ol, ul, dl {
   -webkit-transition: border 300ms, opacity 400ms;
   transition: border 300ms, opacity 400ms;
   outline: 0;
-  opacity: 0;
 }
 
 .home-header .header-search input:focus {
@@ -1950,10 +1984,41 @@ ol, ul, dl {
   transition: border 300ms;
 }
 
+.home-edit-form {
+  position: absolute;
+  width: 80%;
+  max-width: 35em;
+  top: 100%;
+  left: 50%;
+  z-index: 100;
+  background: #e0e0e0;
+  border-radius: 4px;
+  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transition: -webkit-transform 400ms;
+  transition: -webkit-transform 400ms;
+  transition: transform 400ms;
+  transition: transform 400ms, -webkit-transform 400ms;
+  -webkit-transform: translate(-50%, -50%) perspective(1000px) rotateX(-90deg);
+          transform: translate(-50%, -50%) perspective(1000px) rotateX(-90deg);
+}
+
+.show-elem {
+  -webkit-transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
+          transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
+}
+
 .edit-btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   margin: .5em auto;
   width: 40px;
   height: 40px;
@@ -1966,8 +2031,8 @@ ol, ul, dl {
   cursor: pointer;
   -webkit-transition: opacity 300ms;
   transition: opacity 300ms;
-  position: relative;
-  opacity: .8;
+  opacity: .7;
+  z-index: 120;
 }
 
 .edit-btn i {
