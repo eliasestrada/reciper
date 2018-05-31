@@ -6,6 +6,7 @@
 	left: 0;
 	background: $main;
 	position: fixed;
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
 
 	ul {
 		padding: 1.9em 0 5em;
@@ -71,6 +72,7 @@
 	top: 0;
 	border-radius: 0;
 	padding-left: .3em;
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
 }
 
 .hamburger-menu {
@@ -80,7 +82,7 @@
 	border-radius: 150px;
 	top: .5em;
 	position: relative;
-	border: solid 1px rgba(0, 0, 0, .2);
+	box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
 }
 
 #menu-container {
