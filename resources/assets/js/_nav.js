@@ -1,23 +1,10 @@
-// Event works only if min-width of display is less than 640px
-let categoriesMenuOpened = false
 
-if (window.matchMedia("( min-width: 640px )").matches) {
-	$('categories-button').addEventListener('click', () => {
-
-		if (categoriesMenuOpened === false) {
-			$('categories-menu').style.display = "block"
-			$('arrow-bottom').classList.add('arrow-bottom-rotate')
-			categoriesMenuOpened = true
-			setTimeout(() => $('categories-menu').style.opacity = "1", 100)
-		} else if (categoriesMenuOpened === true) {
-			$('categories-menu').style.opacity = "0"
-			$('arrow-bottom').classList.remove('arrow-bottom-rotate')
-			categoriesMenuOpened = false
-			setTimeout(() => $('categories-menu').style.display = "none", 100)
-		}
-	})
+/**
+ * Function runs only if min-width of display is less than 640px
+ */
+if (window.matchMedia("( min-width: 640px )").matches && $('categories-button')) {
+	addClassToElement('categories-menu', 'categories-button', 'categor-menu-opened')
 }
-
 
 /**
  * Opens navigation menu on mobile screens
