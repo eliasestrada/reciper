@@ -9,7 +9,7 @@
 
 		{{--  Likes  --}}
 		<div id="favorite-buttons" style="font-weight:bold;">
-			@if (Cookie::get('liked') == null)
+			@if (Cookie::get('liked') != $recipe->id)
 				<a href="/recipes/{{ $recipe->id }}/like" class="like-icon like-icon-empty" title="@lang('recipes.like')"></a>
 			@else
 				<a href="/recipes/{{ $recipe->id }}/dislike" class="like-icon like-icon-full" title="@lang('recipes.dislike')"></a>

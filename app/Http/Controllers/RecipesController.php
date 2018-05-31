@@ -172,13 +172,16 @@ class RecipesController extends Controller
     public function like(Recipe $recipe)
     {
 		$recipe->increment('likes');
-        return back()->withCookie(cookie('liked', 1, 5000));
+        return back()->withCookie(cookie('liked', $recipe->id, 5000));
 	}
 
     public function dislike(Recipe $recipe)
     {
-		$recipe->decrement('likes');
-		return back()->withCookie(Cookie::forget('liked'));
+		if ($recipe->id == Cookie::get('liked')) {
+			$recipe->decrement('likes');
+			return back()->withCookie(Cookie::forget('liked'));
+		}
+		return back();
     }
 
 	// We also deliting image in App\Observers\RecipeObserver
