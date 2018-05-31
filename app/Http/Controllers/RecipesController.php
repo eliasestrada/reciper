@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Image;
 use App\Models\Recipe;
 use App\Models\Category;
 use App\Models\Notification;
@@ -12,10 +11,13 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\RecipeSaveRequest;
 use App\Http\Requests\RecipePublichRequest;
+use App\Helpers\Traits\RecipesControllerHelpers;
 use App\Helpers\Contracts\SaveRecipeDataContract;
 
 class RecipesController extends Controller
 {
+	use RecipesControllerHelpers;
+
     public function __construct()
     {
         $this->middleware('auth', ['except' => [
@@ -45,33 +47,10 @@ class RecipesController extends Controller
 	 */
     public function store(RecipeSaveRequest $request)
     {
-		$image_name = 'default.jpg';
+		$image_name = $this->saveImageIfExists($request->file('image'));
+		$recipe 	= $this->createOrUpdateRecipe($request, $image_name);
 
-		if ($request->hasFile('image')) {
-			$image = $request->file('image');
-			$extention = $image->getClientOriginalExtension();
-			$image_name = setNameForRecipeImage($extention);
-
-			Image::make($image)->resize(600, 400)->save(
-				storage_path('app/public/images/' . $image_name
-			));
-		}
-
-		$recipe = user()->recipes()->create([
-			'image' 	  => $image_name,
-			'category_id' => request('category_id'),
-			'title'    	  => request('title'),
-			'intro'		  => request('intro'),
-			'ingredients' => request('ingredients'),
-			'advice' 	  => request('advice'),
-			'text' 		  => request('text'),
-			'time'		  => request('time')
-		]);
-
-
-		$recipe->save();
-
-		return redirect('/recipes/'.$recipe->id.'/edit') ->withSuccess(
+		return redirect('/recipes/'.$recipe->id.'/edit')->withSuccess(
 			trans('recipes.recipe_has_been_saved')
 		);
     }
@@ -81,25 +60,21 @@ class RecipesController extends Controller
     {
         // Rules for visitors
         if (!user() && !$recipe->approved()) {
-            return redirect('/recipes')->withError(
-				trans('recipes.no_rights_to_see')
-			);
+            return redirect('/recipes')->withError(trans('recipes.no_rights_to_see'));
 		}
 
         // Rules for auth users
         if (user()) {
             if (!user()->isAdmin() && !user()->hasRecipe($recipe->user_id) && !$recipe->ready()) {
-                return redirect('/recipes')->withError(
-					trans('recipes.no_rights_to_see')
-				);
-            } elseif (!user()->hasRecipe($recipe->user_id) && !$recipe->ready()) {
-                return redirect('/recipes')->withError(
-					trans('recipes.is_not_written_yet')
-				);
-			} elseif (!user()->isAdmin() && !user()->hasRecipe($recipe->user_id) && !$recipe->approved()) {
-                return redirect('/recipes')->withError(
-					trans('recipes.not_approved_yet')
-				);
+                return redirect('/recipes')->withError(trans('recipes.no_rights_to_see'));
+			}
+
+			if (!user()->hasRecipe($recipe->user_id) && !$recipe->ready()) {
+                return redirect('/recipes')->withError(trans('recipes.not_written'));
+			}
+
+			if (!user()->isAdmin() && !user()->hasRecipe($recipe->user_id) && !$recipe->approved()) {
+                return redirect('/recipes')->withError(trans('recipes.not_approved'));
 			}
 		}
 
@@ -129,43 +104,20 @@ class RecipesController extends Controller
     public function update(RecipePublichRequest $request, Recipe $recipe)
     {
 		// Handle image uploading
-		if ($request->hasFile('image')) {
-			if ($recipe->image != 'default.jpg') {
-				Storage::delete('public/images/'.$recipe->image);
-			}
+		$image_name = $this->saveImageIfExists($request->file('image'), $recipe->image);
 
-			$image     = $request->file('image');
-			$extention = $image->getClientOriginalExtension();
-			$image_name = setNameForRecipeImage($extention);
-
-			Image::make($image)->resize(600, 400)->save(
-				storage_path('app/public/images/' . $image_name )
-			);
-
-			$recipe->update([ 'image' => $image_name ]);
-		}
-		$recipe->update( $request->except([ '_token','_method', 'image' ]) );
-
-		$recipe->update([
-			'ready'    => isset($request->ready) ? 1 : 0,
-			'approved' => user()->isAdmin() ? 1 : 0
-		]);
+		$this->deleteOldImage($recipe->image);
+		$this->createOrUpdateRecipe($request, $image_name, $recipe);
 
         if (!$recipe->ready()) {
-            return back()->withSuccess(
-				trans('recipes.saved')
-			);
-        } elseif ($recipe->ready() && user()->isAdmin()) {
-            return redirect('/recipes')->withSuccess(
-				trans('recipes.recipe_is_published')
-			);
+            return back()->withSuccess(trans('recipes.saved'));
 		}
-
+		
+		if ($recipe->ready() && user()->isAdmin()) {
+            return redirect('/recipes')->withSuccess(trans('recipes.recipe_published'));
+		}
 		event(new RecipeIsReady($recipe));
-	
-        return redirect('/dashboard')->withSuccess(
-			trans('recipes.added_to_approving')
-		);
+        return redirect('/dashboard')->withSuccess(trans('recipes.added_to_approving'));
     }
 
 
@@ -189,15 +141,11 @@ class RecipesController extends Controller
     {
         // Check for correct user
         if (!user()->hasRecipe($recipe->user_id) && !user()->isAdmin()) {
-            return redirect('/recipes')->withError(
-				trans('recipes.you_cannot_edit_peoples_recipes')
-			);
+            return redirect('/recipes')->withError(trans('recipes.you_cant_edit_recipe'));
 		}
-
+		$this->deleteOldImage($recipe->image);
 		$recipe->delete();
 
-        return redirect('/users/my_recipes/all')->withSuccess(
-			trans('recipes.deleted')
-		);
+        return redirect('/users/my_recipes/all')->withSuccess(trans('recipes.deleted'));
 	}
 }
