@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Title;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use App\Helpers\Traits\CommonHelper;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Schema;
 
 class PagesController extends Controller
 {
+	use CommonHelper;
 
 	public function home()
 	{
@@ -32,19 +34,20 @@ class PagesController extends Controller
 
 	public function search(Request $request)
     {
-		$query = $request->input('for');
-		if ($query) {
-			if (is_numeric($query)) {
-				$recipes = Recipe::whereCategoryId($query)
-					->take(50)
-					->get();
-			} else {
-				$recipes = Recipe::where('title', 'LIKE', '%' . $query . '%')
-					->orWhere('ingredients', 'LIKE', '%' . $query . '%')
-					->take(50)
-					->get();
-			}
+		if ($this->checkIfTableExists('recipes')) {
+			return view('pages.search')->withError(trans('message.fail_connection'));
+		}
 
+		if ($request = $request->input('for')) {
+			if (is_numeric($request)) {
+				$query = Recipe::query()
+					->whereCategoryId($request);
+			} else {
+				$query = Recipe::query()
+					->where('title', 'LIKE', '%' . $request . '%')
+					->orWhere('ingredients', 'LIKE', '%' . $request . '%');
+			}
+			$recipes = $query->take(50)->get();
 			$message = count($recipes) < 1 ? trans('pages.nothing_found') : '';
 		} else {
 			$recipes = '';

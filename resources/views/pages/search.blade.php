@@ -26,7 +26,7 @@
 {!! Form::close() !!}
 
 {{--  Results  --}}
-@if ($recipes)
+@isset($recipes)
 	<section class="recipes">
 		<div class="row">
 			@foreach ($recipes as $recipe)
@@ -45,10 +45,10 @@
 			@endforeach
 		</div>
 	</section>
-@endif
+@endisset
 
 <div class="content">
-	<h4 class="content text-center">{{ $message }}</h4>
+	<h4 class="content text-center">{{ $message ?? '' }}</h4>
 </div>
 
 @endsection
