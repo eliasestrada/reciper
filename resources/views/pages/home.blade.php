@@ -18,24 +18,21 @@
 			<a class="edit-btn" title="@lang('home.edit_banner')" id="btn-for-banner">
 				<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
 			</a>
-			{!! Form::open([
-				'action' => 'SettingsController@updateBannerData',
-				'method' => 'POST',
-				'class' => 'form none',
-				'id' => 'banner-form'
-			]) !!}
-				<div class="form-group">
-					@method('PUT')
-					{{ Form::text('title', $title_banner->title, [
-						'placeholder' => trans('settings.banner_title')
-					]) }}
-		
-					{{ Form::textarea('text', $title_banner->text, [
-						'placeholder' => trans('settings.banner_text')
-					]) }}
-					{{ Form::submit(trans('form.save'), ['class' => 'blue']) }}
-				</div>
-			{!! Form::close() !!}
+			<div class="home-edit-form" id="banner-form">
+				{!! Form::open(['action' => 'SettingsController@updateBannerData', 'method' => 'POST', 'class' => 'form']) !!}
+					<div class="form-group">
+						@method('PUT')
+						{{ Form::text('title', $title_banner->title, [
+							'placeholder' => trans('settings.banner_title')
+						]) }}
+			
+						{{ Form::textarea('text', $title_banner->text, [
+							'placeholder' => trans('settings.banner_text')
+						]) }}
+						{{ Form::submit(trans('form.save'), ['class' => 'blue']) }}
+					</div>
+				{!! Form::close() !!}
+			</div>
 		@endadmin
 		
 		<a class="home-button" id="home-search-btn">
@@ -44,15 +41,17 @@
 
 		{{--  Form  --}}
 		{!! Form::open(['action' => 'PagesController@search', 'method' => 'GET', 'class' => 'header-search']) !!}
-			<div class="form-group">
-				{{ Form::text('for', '', ['id' => 'header-search-input', 'placeholder' => trans('pages.search_details')]) }}
-				{{ Form::submit('', ['style' => 'display:none']) }}
+			<div class="form-group" style="position:relative;">
+				<div class="home-search" id="search-form">
+					{{ Form::text('for', '', ['id' => 'header-search-input', 'placeholder' => trans('pages.search_details')]) }}
+					{{ Form::submit('', ['style' => 'display:none']) }}
+				</div>
 			</div>
 		{!! Form::close() !!}
 	</div>
 </header>
 
-<section class="home-section">
+<section class="home-section" style="position:relative;">
 	<h2 class="headline">{{ title_case($title_intro->title ?? '') }}</h2>
 	<p>{{ $title_intro->text ?? '' }}</p>
 
@@ -61,27 +60,24 @@
 		<a class="edit-btn" title="@lang('home.edit_intro')" id="btn-for-intro">
 			<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
 		</a>
-		{!! Form::open([
-			'action' => 'SettingsController@updateIntroData',
-			'method' => 'POST',
-			'class' => 'form none',
-			'id' => 'intro-form'
-		]) !!}
-
-			@method('PUT')
-
-			<div class="form-group">
-				{{ Form::text('title', $title_intro->title, [
-					'placeholder' => trans('settings.intro_title')
-				]) }}
-
-				{{ Form::textarea('text', $title_intro->text, [
-					'placeholder' => trans('settings.intro_text')
-				]) }}
-
-				{{ Form::submit(trans('form.save'), ['class' => 'blue']) }}
-			</div>
-		{!! Form::close() !!}
+		<div class="home-edit-form" id="intro-form">
+			{!! Form::open(['action' => 'SettingsController@updateIntroData', 'method' => 'POST', 'class' => 'form' ]) !!}
+	
+				@method('PUT')
+	
+				<div class="form-group">
+					{{ Form::text('title', $title_intro->title, [
+						'placeholder' => trans('settings.intro_title')
+					]) }}
+	
+					{{ Form::textarea('text', $title_intro->text, [
+						'placeholder' => trans('settings.intro_text')
+					]) }}
+	
+					{{ Form::submit(trans('form.save'), ['class' => 'blue']) }}
+				</div>
+			{!! Form::close() !!}
+		</div>
 	@endadmin
 </section>
 
@@ -107,15 +103,4 @@
 	@endif
 </section>
 
-@endsection
-
-@section('script')
-<script defer>
-	document.getElementById('home-search-btn').addEventListener('click', () => {
-		id("home-search-btn").style.display = "none"
-		id("header-search-input").style.display = "block"
-	
-		setTimeout(() => id("header-search-input").style.opacity = "1", 500)
-	})
-</script>
 @endsection

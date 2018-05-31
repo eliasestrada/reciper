@@ -24,7 +24,7 @@
 		</li>
 		<li id="categories-button" class="categories-button">
 
-			{{-- This categories-title working with JS --}}
+			{{-- Categories --}}
 			<a class="categories-title">@lang('includes.categories')</a>
 
 			<div class="arrow-bottom" id="arrow-bottom"></div>
