@@ -5,7 +5,7 @@
 @section('content')
 
 
-<h2 class="content center">@lang('includes.feedback')</h2>
+<h2 class="content text-center">@lang('includes.feedback')</h2>
 <h3>
 	{{ count($feedback) > 0 ? trans('admin.messages') .' '. count($feedback) : '' }}
 </h3>
@@ -25,7 +25,7 @@
 
 		</div>
 	@empty
-		<p class="content center">@lang('admin.no_messages')</p>
+		<p class="content text-center">@lang('admin.no_messages')</p>
 	@endforelse
 </div>
 

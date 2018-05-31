@@ -1,7 +1,7 @@
 @author
-	<div class="container">
+	<div>
 		@isset($title, $recipes)
-			<h2 class="content center">
+			<h2 class="content text-center">
 				{{ count($recipes) > 0 ? $title .' '. count($recipes) : '' }}
 			</h2>
 		@endisset
@@ -25,7 +25,7 @@
 					</a>
 				@empty
 					@isset($no_recipes)
-						<p class="content center">{{ $no_recipes }}</p>
+						<p class="content text-center">{{ $no_recipes }}</p>
 					@endisset
 				@endforelse
 			@endisset

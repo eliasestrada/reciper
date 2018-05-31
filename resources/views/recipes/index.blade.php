@@ -4,9 +4,9 @@
 
 @section('content')
 
-<h2 class="content center">@lang('recipes.recipes')</h2>
+<h2 class="content text-center">@lang('recipes.recipes')</h2>
 
-<div class="container recipes">
+<div class="recipes">
 	<div class="row" id="target-for-recipes"></div>
 	<ul class="pagination" id="target-for-pagination"></ul>
 </div>
@@ -30,7 +30,7 @@
 			// Looping our object
 			res.data.forEach(recipe => {
 				recipes += `
-					<div class="recipe-container col-md-3 col-6 col-sm-4">
+					<div class="recipe-container col-md-3 col-12 col-sm-6">
 						<div class="recipe">
 							<a href="/recipes/${ recipe.id }" title="${ recipe.title }">
 								<img src="storage/images/${ recipe.image }" alt="${ recipe.title }">

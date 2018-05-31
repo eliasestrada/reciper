@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h2 class="content center">@lang('dashboard.notifications')</h2>
+<h2 class="content text-center">@lang('dashboard.notifications')</h2>
 <h3>
 	{{ count($notifications) > 0 ? trans('admin.messages') .' '. count($notifications) : '' }}
 </h3>
@@ -17,7 +17,7 @@
 			<p class="notification-message">{{ $notification->message }}</p>
 		</div>
 	@empty
-		<p class="content center">@lang('dashboard.you_do_not_have_notifications')</p>
+		<p class="content text-center">@lang('dashboard.you_do_not_have_notifications')</p>
 	@endforelse
 </div>
 

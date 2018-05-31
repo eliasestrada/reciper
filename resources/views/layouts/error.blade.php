@@ -6,7 +6,9 @@
 </head>
 <body>
 	<div class="wrapper" style="padding:0 1.2rem;">
-		@yield('content')
+		<div class="container">
+			@yield('content')
+		</div>
 	</div>
 </body>
 </html>

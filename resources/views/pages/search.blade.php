@@ -27,7 +27,7 @@
 
 {{--  Results  --}}
 @if ($recipes)
-	<section class="container recipes">
+	<section class="recipes">
 		<div class="row">
 			@foreach ($recipes as $recipe)
 				<div class="recipe-container col-12 col-sm-6 col-md-4 col-lg-3">
@@ -48,7 +48,7 @@
 @endif
 
 <div class="content">
-	<h4 class="content center">{{ $message }}</h4>
+	<h4 class="content text-center">{{ $message }}</h4>
 </div>
 
 @endsection

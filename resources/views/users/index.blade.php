@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h2 class="content center">@lang('users.all_authors')</h2>
+<h2 class="content text-center">@lang('users.all_authors')</h2>
 
 <div class="container">
 	<ul class="item-list unstyled-list">
