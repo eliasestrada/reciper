@@ -98,19 +98,32 @@
 			transition: transform 400ms, background-color 400ms;
 		}
 	}
+
+	.home-search {
+		width: 80%;
+		max-width: 30em;
+		position: absolute;
+		top: 1em;
+		left: 50%;
+		transform-origin: top;
+		transition: transform 400ms;
+		transform: translateX(-50%) perspective(1000px) rotateX(-90deg);
+	}
+
+	.show-search {
+		transform: translateX(-50%) perspective(1000px) rotateX(0deg);
+	}
 	
 	.header-search input {
-		width: 80%;
+		width: 100%;
 		height: 2em;
 		padding: 0 1em;
-		margin: 1em 10% 0 10%;
 		border-radius: 10px;
 		border: 2px solid #1e5799;
 		background: rgba(0, 0, 0, .4);
 		color: #ffffff;
 		transition: border 300ms, opacity 400ms;
 		outline: 0;
-		opacity: 0;
 
 		&:focus {
 			border: 2px solid #861b50;
@@ -119,8 +132,31 @@
 	}
 }
 
+.home-edit-form {
+	position: absolute;
+	width: 80%;
+	max-width: 35em;
+	top: 100%;
+	left: 50%;
+	z-index: 100;
+	background: $lightGray;
+	border-radius: 4px;
+	box-shadow: 3px 3px 3px rgba($color: #000000, $alpha: .4);
+	transform-origin: top;
+	transition: transform 400ms;
+	transform: translate(-50%, -50%) perspective(1000px) rotateX(-90deg);
+}
+
+.show-elem {
+	transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
+}
+
 .edit-btn {
 	display: flex;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	margin: .5em auto;
 	width: 40px;
 	height: 40px;
@@ -132,8 +168,8 @@
 	font-size: 1.6em;
 	cursor: pointer;
 	transition: opacity 300ms;
-	position: relative;
-	opacity: .8;
+	opacity: .7;
+	z-index: 120;
 
 	i {
 		width: 15px;
