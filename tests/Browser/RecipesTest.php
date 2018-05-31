@@ -10,8 +10,6 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class RecipesTest extends DuskTestCase
 {
-	use DatabaseMigrations;
-
 	/** @test */
     public function checkIfUserCanEditHisOwnRecipe()
     {

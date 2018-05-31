@@ -8,8 +8,6 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UserAccessTest extends DuskTestCase
 {
-	use DatabaseMigrations;
-
     /** @test */
     public function tryToLoginAsExistingUserAndLogout()
     {
@@ -44,9 +42,9 @@ class UserAccessTest extends DuskTestCase
 				->type('password_confirmation', '111111')
 				->click('#register-btn')
 				->pause(1000)
-				->assertPathIs('/')
+				->assertPathIs('/recipes')
 				->visit('/dashboard')
-				->assertPathIs('/');
+				->assertPathIs('/recipes');
 		});
 	}
 }
