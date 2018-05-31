@@ -3,6 +3,11 @@
 @import 'modules/normalize';
 @import 'modules/common';
 
+// Bootstrap
+@import 'bootstrap/other';
+@import 'bootstrap/grid';
+@import 'bootstrap/pagination';
+
 // Navbar
 @import 'navbar/nav';
 @import 'navbar/nav-media';
@@ -10,7 +15,6 @@
 
 // Other
 @import 'home';
-@import 'accordion';
 @import 'footer';
 @import 'form';
 @import 'items';
@@ -28,7 +32,3 @@
 @import 'user/profile';
 @import 'user/statistic';
 @import 'user/user-sidebar';
-
-// Bootstrap
-@import 'bootstrap/grid';
-@import 'bootstrap/pagination';
