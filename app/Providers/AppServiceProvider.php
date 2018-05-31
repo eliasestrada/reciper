@@ -12,24 +12,27 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
     public function boot()
     {
+		$this->databaseSettings();
+		$this->showListOfCategories();
+		$this->updateLastUserVisit();
+    }
+
+
+	public function databaseSettings()
+	{
 		Schema::defaultStringLength(191);
+		// Script that shows current executed query
+		// DB::listen( function ( $query ) {
+		// 	dump($query->sql);
+		// 	dump($query->bindings);
+		// });
+	}
 
-		if (Schema::hasTable('recipes')) {
-			$all_categories = Recipe::distinct()->select('category_id')->get();
-	
-			view()->share(compact('all_categories'));
-		} else {
-			\Log::emergency(trans('logs.no_table', ['table' => 'recipes']));
-		}
 
-		// Update last visit
+	public function updateLastUserVisit()
+	{
 		if (Schema::hasTable('users')) {
 			view()->composer('*', function ($view) {
 				if (auth()->check()) {
@@ -39,23 +42,18 @@ class AppServiceProvider extends ServiceProvider
 				}
 			});
 		} else {
-			\Log::emergency(trans('logs.no_table', ['table' => 'users']));
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
 		}
+	}
 
 
-		// DB::listen( function ( $query ) {
-		// 	dump($query->sql);
-		// 	dump($query->bindings);
-		// });
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
+	public function showListOfCategories()
+	{
+		if (Schema::hasTable('recipes')) {
+			$all_categories = Recipe::distinct()->select('category_id')->get();
+			view()->share(compact('all_categories'));
+		} else {
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+		}
+	}
 }

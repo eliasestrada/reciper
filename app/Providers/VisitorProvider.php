@@ -11,10 +11,16 @@ class VisitorProvider extends ServiceProvider
     // Bootstrap services
     public function boot()
     {
+		$this->visitorVisitsTheSite();
+	}
+
+
+	public function visitorVisitsTheSite()
+	{
 		if (Schema::hasTable('visitors')) {
 			Visitor::incrementRequestsOrCreateIfNewVisitor();
 		} else {
-			\Log::emergency(trans('logs.no_table', ['table' => 'visitors']));
+			logger()->emergency(trans('logs.no_table', ['table' => 'visitors']));
 		}
-    }
+	}
 }

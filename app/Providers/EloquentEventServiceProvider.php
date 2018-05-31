@@ -9,6 +9,12 @@ class EloquentEventServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+		$this->listOfAllObservers();
+	}
+
+
+	public function listOfAllObservers()
+	{
 		Recipe::observe(\App\Observers\RecipeObserver::class);
-    }
+	}
 }
