@@ -14,10 +14,13 @@
 .categories-menu {
 	width: 100%;
 	background: $main;
-	transition: opacity 400ms;
 
 	a {
 		border-bottom: .06em solid $mainHover;
+		
+		&:last-child {
+			border-bottom: 3px solid $mainHover;
+		}
 	}
 }
 
@@ -41,15 +44,13 @@
 	transition: transform 300ms;
 }
 
-.arrow-bottom-rotate:before {
-	transform: rotateX(180deg);
-}
 
 
 @media (min-width: 640px) {
 	.arrow-bottom {
 		display: block;
 	}
+
 	.categories-button {
 		margin-top: 0;
 	}
@@ -62,8 +63,14 @@
 		width: 150%;
 		position: absolute;
 		top: 100%;
+		margin-top: 5px;
 		left: -20%;
-		display: none;
-		opacity: 0;
+		transform-origin: top;
+		transition: transform 400ms;
+		transform: perspective(1000px) rotateX(-90deg);
+	}
+
+	.categor-menu-opened {
+		transform: perspective(1000px) rotateX(0deg);
 	}
 }
