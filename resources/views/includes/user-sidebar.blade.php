@@ -33,7 +33,7 @@
 
 			{{-- users --}}
 			<li class="{{ activeIfRouteIs('users') }}">
-				<a href="/users" title="@lang('includes.users')">
+				<a href="/users" title="@lang('includes.users')" {{ $all_new_users ?? '' }} class="red-buttons">
 					<i style="background: url(/css/icons/svg/user-group.svg)" class="sidebar-icon"></i>
 					<span>@lang('includes.users')</span>
 				</a>
@@ -50,7 +50,7 @@
 
 				{{-- checklist --}}
 				<li class="{{ activeIfRouteIs('admin/checklist') }}">
-					<a href="/admin/checklist" title="@lang('includes.checklist')" {{ $allunapproved ?? '' }} class="red-buttons">
+					<a href="/admin/checklist" title="@lang('includes.checklist')" {{ $all_unapproved ?? '' }} class="red-buttons">
 						<i style="background: url(/css/icons/svg/search.svg)" class="sidebar-icon"></i>
 						<span>@lang('includes.checklist')</span>
 					</a>
@@ -58,7 +58,7 @@
 
 				{{-- feedback --}}
 				<li class="{{ activeIfRouteIs('admin/feedback') }}">
-					<a href="/admin/feedback" title="@lang('includes.feedback')" {{ $allfeedback ?? '' }} class="red-buttons">
+					<a href="/admin/feedback" title="@lang('includes.feedback')" {{ $all_feedback ?? '' }} class="red-buttons">
 						<i style="background: url(/css/icons/svg/conversation.svg);" class="sidebar-icon"></i>
 						<span>@lang('includes.feedback')</span>
 					</a>

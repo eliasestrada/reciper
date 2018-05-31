@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use App\Models\Recipe;
 use App\Models\Feedback;
 use App\Models\Notification;
@@ -14,6 +15,7 @@ class UserSidebarServiceProvider extends ServiceProvider
     {
 		$this->countAndComposeAllNotifications();
 		$this->countAndComposeAllFeedback();
+		$this->countAndComposeNewUsers();
 		$this->countAndComposeAllUnprovedRecipes();
     }
 
@@ -33,11 +35,10 @@ class UserSidebarServiceProvider extends ServiceProvider
 							[ 'for_admins', 1 ],
 							[ 'created_at', '>', user()->notif_check ]
 						])->count();
-
 						$notifications += $notifications_for_admin;
 					}
-					$notifications = empty($notifications) ? '' : 'data-notif='.$notifications;
 
+					$notifications = empty($notifications) ? '' : 'data-notif='.$notifications;
 					$view->with(compact('notifications'));
 				}
 			});
@@ -52,9 +53,9 @@ class UserSidebarServiceProvider extends ServiceProvider
 		if (Schema::hasTable('feedback')) {
 			view()->composer('includes.user-sidebar', function($view) {
 				if (user()) {
-					$allfeedback = Feedback::where('created_at', '>', user()->contact_check)->count();
-					$allfeedback = !empty($allfeedback) ? 'data-notif='.$allfeedback : '';
-					$view->with(compact('allfeedback'));
+					$feed = Feedback::where('created_at', '>', user()->contact_check)->count();
+					$all_feedback = !empty($feed) ? 'data-notif='.$feed : '';
+					$view->with(compact('all_feedback'));
 				}
 			});
 		} else {
@@ -68,13 +69,29 @@ class UserSidebarServiceProvider extends ServiceProvider
 		if (Schema::hasTable('recipes')) {
 			view()->composer('includes.user-sidebar', function($view) {
 				if (user()) {
-					$allunapproved = Recipe::whereApproved(0)->whereReady(1)->count();
-					$allunapproved = !empty($allunapproved) ? 'data-notif='.$allunapproved : '';
-					$view->with(compact('allunapproved'));
+					$recipes = Recipe::whereApproved(0)->whereReady(1)->count();
+					$all_unapproved = !empty($recipes) ? 'data-notif='.$recipes : '';
+					$view->with(compact('all_unapproved'));
 				}
 			});
 		} else {
 			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+		}
+	}
+
+
+	public function countAndComposeNewUsers()
+	{
+		if (Schema::hasTable('users')) {
+			view()->composer('includes.user-sidebar', function($view) {
+				if (user()) {
+					$new_users = User::whereAuthor(0)->count();
+					$all_new_users = !empty($new_users) ? 'data-notif='.$new_users : '';
+					$view->with(compact('all_new_users'));
+				}
+			});
+		} else {
+			logger()->emergency(trans('logs.no_table', ['table' => 'users']));
 		}
 	}
 }
