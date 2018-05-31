@@ -25,7 +25,10 @@ return [
 	'photo' => 'Фотография',
 	'logout' => 'Выйти',
 
-	// layout
+	// Layout
 	'loading' => 'Загрузка',
+
+	// Footer
+	'popular_recipes' => 'Популярное'
 
 ];
