@@ -12,34 +12,51 @@ class FooterServiceProvider extends ServiceProvider
 
     public function boot()
     {
-		// Sharing random recipes for footer
-		if (Schema::hasTable('recipes') && Schema::hasTable('titles')) {
-			$footer_rand_recipes = Recipe::inRandomOrder()
-					->whereApproved(1)
-					->limit(8)
-					->get([ 'id', 'title' ]);
-	
-			$title_footer = Title::whereName('Подвал')->first([ 'text' ]);
-	
-			view()->composer('includes.footer', function ($view) use ($footer_rand_recipes, $title_footer) {
-				$view->with(compact(
-					'footer_rand_recipes',
-					'title_footer'
-				));
-			});
-		} else {
-			\Log::emergency(trans('logs.no_table', ['table' => 'recipes']));
-			\Log::emergency(trans('logs.no_table', ['table' => 'titles']));
-		}
+		$this->getAndComposeRandomRecipes();
+		$this->getAndComposePopularRecipes();
+		$this->getAndComposeTitleForFooter();
     }
 
-    /**
-     * Register services.
-     *
-     * @return void
-     */
-    public function register()
+
+    public function getAndComposeRandomRecipes()
     {
-        //
-    }
+        if (Schema::hasTable('recipes')) {
+			view()->composer('includes.footer', function ($view) {
+				$view->with('rand_recipes',
+					Recipe::inRandomOrder()
+						->whereApproved(1)
+						->limit(20)
+						->get([ 'id', 'title' ]));
+			});
+		} else {
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+		}
+	}
+
+    public function getAndComposePopularRecipes()
+    {
+        if (Schema::hasTable('recipes')) {
+			view()->composer('includes.footer', function ($view) {
+				$view->with('popular_recipes',
+					Recipe::whereApproved(1)
+						->orderBy('likes', 'desc')
+						->limit(10)
+						->get([ 'id', 'title' ]));
+			});
+		} else {
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+		}
+	}
+
+
+	public function getAndComposeTitleForFooter()
+	{
+		if (Schema::hasTable('titles')) {
+			view()->composer('includes.footer', function ($view) {
+				$view->with('title_footer', Title::whereName('Подвал')->first(['text']));
+			});
+		} else {
+			logger()->emergency(trans('logs.no_table', ['table' => 'titles']));
+		}
+	}
 }

@@ -1,8 +1,7 @@
-<footer>
+<footer class="px-5">
 	<div class="row">
-
 		{{--  Navigation  --}}
-		<div class="col-12 col-sm-4 text-left">
+		<div class="col-12 col-sm-6 col-md-3 text-left">
 			<ul class="unstyled-list">
 				<li><strong>@lang('includes.navigation')</strong></li>
 				<li>
@@ -29,15 +28,15 @@
 		</div>
 
 		{{--  Random recipes  --}}
-		@isset($footer_rand_recipes)
-			@foreach ($footer_rand_recipes->chunk(4) as $random_chunk)
-				<div class="col-6 col-sm-4 text-left">
+		@isset($rand_recipes)
+			@foreach ($rand_recipes->chunk(10) as $random_chunk)
+				<div class="col-12 col-sm-6 col-md-3 text-left">
 					<ul class="unstyled-list">
 						<li><strong>@lang('includes.recipes')</strong></li>
-						@foreach ($random_chunk as $footer_recipe)
+						@foreach ($random_chunk as $recipe)
 							<li>
-								<a href="/recipes/{{ $footer_recipe->id }}" title="{{ $footer_recipe->title }}">
-									{{ $footer_recipe->title }}
+								<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->title }}">
+									{{ $recipe->title }}
 								</a>
 							</li>
 						@endforeach
@@ -45,6 +44,22 @@
 				</div>
 			@endforeach
 		@endisset
+
+		{{--  Popular recipes  --}}
+		<div class="col-12 col-sm-6 col-md-3 text-left">
+			<ul class="unstyled-list">
+				@isset($popular_recipes)
+					<li><strong>@lang('includes.popular_recipes')</strong></li>
+					@foreach ($popular_recipes as $recipe)
+						<li>
+							<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->title }}">
+								{{ $recipe->title }}
+							</a>
+						</li>
+					@endforeach
+				@endisset
+			<ul>
+		</div>
 	</div>
 
 	<a href="/" title="@lang('includes.home')">
