@@ -7,14 +7,28 @@ function $(e) {
 }
 
 var i = void 0;
-// After page has been loaded, it will
-// remove the loading animation
-window.onload = function () {
-	$('loading').classList.remove("loading");
-	$('loading-title').innerHTML = '';
-};
 
-if ($('search-input') && Number.isInteger(parseInt($('search-input').value))) $('search-input').setAttribute('value', '');
+/**
+ * Show certain element by adding class and removing after
+ * another click event
+ * 
+ * @param {string} element that u want to show
+ * @param {string} button that u want to click
+ * @param {string} className class that you want to add after click 
+ */
+function addClassToElement(element, button, className) {
+	var visible = false;
+
+	$(button).addEventListener('click', function () {
+		if (visible === false) {
+			$(element).classList.add(className);
+			visible = true;
+		} else if (visible === true) {
+			$(element).classList.remove(className);
+			visible = false;
+		}
+	});
+}
 
 // This object auto updates pictures after
 // selecting them via file input
@@ -37,71 +51,41 @@ var imageUploader = {
 			}
 		});
 	}
+
 	// User on page where variables:
 	// src and target exist, run function
-};if (imageUploader.src && imageUploader.target) imageUploader.showImage();
-
-// Loop for accordion functionality
-var accordion = document.getElementsByClassName("accordion");
-
-if (accordion) {
-	for (i = 0; i < accordion.length; i++) {
-		accordion[i].addEventListener("click", function () {
-			this.classList.toggle("accordion-active");
-			var panel = this.nextElementSibling;
-
-			panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
-		});
-	}
+};if (imageUploader.src && imageUploader.target) {
+	imageUploader.showImage();
 }
-function showTargetAfterClickButton(btn, target) {
-	var visible = false;
-
-	btn.addEventListener('click', function () {
-		if (visible === true) {
-			target.style.display = 'none';
-			visible = false;
-		} else if (visible === false) {
-			target.style.display = 'block';
-			visible = true;
-		}
-	});
-}
+// After page has been loaded, it will
+// remove the loading animation
+window.onload = function () {
+	$('loading').classList.remove("loading");
+	$('loading-title').innerHTML = '';
+};
 
 // Run function
-if ($('btn-for-banner') && $('banner-form')) {
-	showTargetAfterClickButton($('btn-for-banner'), $('banner-form'));
+if ($('btn-for-banner')) {
+	addClassToElement('banner-form', 'btn-for-banner', 'show-elem');
 }
 
-if ($('btn-for-intro') && $('intro-form')) {
-	showTargetAfterClickButton($('btn-for-intro'), $('intro-form'));
+if ($('btn-for-intro')) {
+	addClassToElement('intro-form', 'btn-for-intro', 'show-elem');
 }
 
-if ($('btn-for-footer') && $('footer-form')) {
-	showTargetAfterClickButton($('btn-for-footer'), $('footer-form'));
+if ($('btn-for-footer')) {
+	addClassToElement('footer-form', 'btn-for-footer', 'show-elem');
 }
-// Event works only if min-width of display is less than 640px
-var categoriesMenuOpened = false;
 
-if (window.matchMedia("( min-width: 640px )").matches) {
-	$('categories-button').addEventListener('click', function () {
+if ($('search-form')) {
+	addClassToElement('search-form', 'home-search-btn', 'show-search');
+}
 
-		if (categoriesMenuOpened === false) {
-			$('categories-menu').style.display = "block";
-			$('arrow-bottom').classList.add('arrow-bottom-rotate');
-			categoriesMenuOpened = true;
-			setTimeout(function () {
-				return $('categories-menu').style.opacity = "1";
-			}, 100);
-		} else if (categoriesMenuOpened === true) {
-			$('categories-menu').style.opacity = "0";
-			$('arrow-bottom').classList.remove('arrow-bottom-rotate');
-			categoriesMenuOpened = false;
-			setTimeout(function () {
-				return $('categories-menu').style.display = "none";
-			}, 100);
-		}
-	});
+/**
+ * Function runs only if min-width of display is less than 640px
+ */
+if (window.matchMedia("( min-width: 640px )").matches && $('categories-button')) {
+	addClassToElement('categories-menu', 'categories-button', 'categor-menu-opened');
 }
 
 /**
@@ -164,3 +148,28 @@ window.onscroll = function () {
  * and put it back on descktop
  */
 document.querySelector('.categories-title').innerHTML = window.matchMedia("( min-width: 640px )").matches ? 'Категории' : '';
+
+/**
+ * @param {string} input
+ * @returns {boolean}
+ */
+function inputValueIsInteger(input) {
+	if (Number.isInteger(parseInt($(input).value))) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * @param {string} input 
+ */
+function setInputValueToEmpty(input) {
+	if (input = $(input)) {
+		input.setAttribute('value', '');
+	}
+}
+
+// Run funtion
+if (inputValueIsInteger('search-input')) {
+	setInputValueToEmpty('search-input');
+}
