@@ -1,8 +1,8 @@
 @author     
-	<nav class="user-sidebar">
+	<nav class="user-sidebar" id="user-sidebar">
 		<ul>
 			<li class="disapear-on-big-screen">
-				<a>
+				<a id="user-sidebar-activator" style="width:200px;" class="text-left">
 					<i style="background: url(/css/icons/svg/cheveron-outline-right.svg)" class="sidebar-icon"></i>
 				</a>
 			</li>

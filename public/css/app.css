@@ -3114,15 +3114,7 @@ footer .footer-copyright {
           transform: translateZ(0) scale(1, 1);
   opacity: .5;
   z-index: 10;
-  padding-top: 70px;
-}
-
-.user-sidebar:hover {
-  overflow: visible;
-  width: 200px;
-  height: 100%;
-  overflow-y: scroll;
-  opacity: .95;
+  padding-top: 65px;
 }
 
 .user-sidebar::-webkit-scrollbar {
@@ -3206,8 +3198,23 @@ footer .footer-copyright {
   -webkit-filter: invert(0%);
 }
 
-@media (min-width: 740px) {
+.active-sidebar {
+  overflow: visible;
+  width: 200px;
+  height: 100%;
+  overflow-y: scroll;
+  opacity: .95;
+}
+
+@media (min-width: 640px) {
   .disapear-on-big-screen {
     display: none !important;
+  }
+  .user-sidebar:hover {
+    overflow: visible;
+    width: 200px;
+    height: 100%;
+    overflow-y: scroll;
+    opacity: .95;
   }
 }

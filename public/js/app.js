@@ -152,3 +152,6 @@ function setInputValueToEmpty(input) {
 if ($('search-input') && inputValueIsInteger('search-input')) {
 	setInputValueToEmpty('search-input');
 }
+if ($('user-sidebar')) {
+	addClassToElement('user-sidebar', 'user-sidebar-activator', 'active-sidebar');
+}
