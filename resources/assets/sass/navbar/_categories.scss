@@ -2,14 +2,10 @@
 	position: relative;
 	cursor: pointer;
 
-	a:hover {
-		background: $mainHover !important;
-	}
+	a:hover { background: $mainHover; }
 }
 
-.categories-title:hover {
-	cursor: not-allowed;
-}
+.categories-title:hover { cursor: not-allowed; }
 
 .categories-menu {
 	width: 100%;
@@ -53,14 +49,18 @@
 
 	.categories-button {
 		margin-top: 0;
+
+		a:hover {
+			background: none;
+			text-decoration: underline;
+		}
 	}
 
-	.categories-title:hover {
-		cursor: pointer;
-	}
+	.categories-title:hover { cursor: pointer; }
 
 	.categories-menu {
-		width: 150%;
+		width: 200%;
+		font-size: .9em;
 		position: absolute;
 		top: 100%;
 		margin-top: 5px;
