@@ -10,7 +10,7 @@
 {{--  Navigation menu  --}}
 <nav id="nav-menu" class="nav-closed">
 	<a href="/" title="@lang('includes.home')" id="logo" class="logo-closed">
-		<img src="{{ asset('storage/other/logo.png') }}" alt="@lang('includes.logo')">
+		<h1>{{ config('app.name') }}</h1>
     </a>
     <ul>
 		<li class="{{ activeIfRouteIs('/') }}">
