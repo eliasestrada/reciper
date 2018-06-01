@@ -9,13 +9,13 @@
 	box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
 
 	ul {
-		padding: 1.9em 0 5em;
+		padding: 1em 0 5em;
 		display: none;
 	}
 
 	li {
 		height: 2.6em;
-		line-height: 2.7em;
+		line-height: 2.6em;
 		border-bottom: .06em solid $mainHover;
 		transition: border .3s;
 
@@ -23,15 +23,13 @@
 			font-family: $headerFont;
 			text-transform: lowercase;
 			font-weight: 100;
-			font-size: 1em;
+			font-size: .95em;
 		}
 
-		&:hover {
-			background: $mainHover;
-		}
+		&:hover { background: $mainHover; }
 	}
 
-	.active { text-decoration: underline; }
+	.active { background: $mainHover; }
 
 	a {
 		display: block;
@@ -74,10 +72,11 @@
 	width: 12em;
 	font-family: $headerFont;
 	margin: 1em auto;
-	transition: width 400ms, margin 400ms;
+	transition: color 200ms;
 	
-	&:hover {
-		margin: 1.1em auto;
+	h1:hover {
+		color: lighten($mainLight, 40%);
+		transition: color 200ms;
 	}
 }
 

@@ -12,10 +12,10 @@
 	background: $main;
 
 	a {
-		border-bottom: .06em solid $mainHover;
+		border-bottom: 1px solid $mainHover;
 		
 		&:last-child {
-			border-bottom: 3px solid $mainHover;
+			border-bottom: 5px solid $mainHover;
 		}
 	}
 }
@@ -33,7 +33,7 @@
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
 	position: absolute;
-	top: 100%;
+	top: 115%;
 	left: 50%;
 	margin-top: -9px;
 	margin-left: -6px;
@@ -49,10 +49,12 @@
 
 	.categories-button {
 		margin-top: 0;
+		border-bottom: none !important;
 
 		a:hover {
 			background: none;
-			text-decoration: underline;
+			border-bottom: $navBorderBottom;
+			transition: border .5s;
 		}
 	}
 
@@ -64,7 +66,7 @@
 		position: absolute;
 		top: 100%;
 		margin-top: 5px;
-		left: -20%;
+		right: -50%;
 		transform-origin: top;
 		transition: transform 400ms;
 		transform: perspective(1000px) rotateX(-90deg);
