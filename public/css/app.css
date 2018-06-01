@@ -1674,6 +1674,8 @@ ol, ul, dl {
 .nav-closed {
   width: 100%;
   height: 0;
+  font-size: .9em;
+  margin-top: 5px;
 }
 
 .logo-closed {
@@ -1741,11 +1743,12 @@ ol, ul, dl {
     width: 100%;
     height: 55px;
     padding: 0;
+    margin: 0;
     text-align: right;
   }
   #nav-menu #logo {
     left: 1.5rem;
-    top: -4px;
+    top: 0;
     position: absolute;
   }
   #nav-menu ul {
