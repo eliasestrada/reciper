@@ -8,7 +8,6 @@
 	overflow: hidden;
 	-webkit-transition: width 200ms, opacity 200ms;
 	transition: width 200ms, opacity 200ms;
-	transform: translateZ(0) scale(1, 1);
 	opacity: .5;
 	z-index: 10;
 	padding-top: 65px;
@@ -32,6 +31,11 @@
 		&:hover {
 			color: #fff;
 			background: $mainDark;
+		}
+
+		&:hover .sidebar-icon {
+			transform: scale(1.2);
+			transition: transform .2s;
 		}
 	}
 
@@ -76,18 +80,19 @@
 	}
 
 	.sidebar-icon {
-		width: 25px;
-		height: 25px;
+		width: 23px;
+		height: 23px;
 		margin: 0 10px;
 		vertical-align: middle;
 		position: relative;
 		display: inline-block;
 		filter: invert(100%);
 		-webkit-filter: invert(100%);
+		transition: transform .2s;
 	}
 
 	.user-icon {
-		background-size: 25px !important;
+		background-size: 23px !important;
 		border-radius: 1px;
 		filter: invert(0%);
 		-webkit-filter: invert(0%);
