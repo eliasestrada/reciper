@@ -3109,11 +3109,11 @@ footer .footer-copyright {
   top: 0;
   height: 100%;
   bottom: 0;
-  width: 42px;
+  width: 38px;
   overflow: hidden;
   -webkit-transition: width 200ms, opacity 200ms;
   transition: width 200ms, opacity 200ms;
-  opacity: .5;
+  opacity: .45;
   z-index: 10;
   padding-top: 65px;
 }
@@ -3181,7 +3181,7 @@ footer .footer-copyright {
   line-height: 15px;
   display: inline-block;
   position: absolute;
-  left: 23px;
+  left: 19px;
   top: 5px;
   color: #fff;
   text-shadow: none;
@@ -3193,7 +3193,7 @@ footer .footer-copyright {
 .user-sidebar .sidebar-icon {
   width: 23px;
   height: 23px;
-  margin: 0 10px;
+  margin: 0 13px 0 7px;
   vertical-align: middle;
   position: relative;
   display: inline-block;
