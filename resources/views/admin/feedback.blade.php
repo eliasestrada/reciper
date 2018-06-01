@@ -5,10 +5,10 @@
 @section('content')
 
 
-<h2 class="content text-center">@lang('includes.feedback')</h2>
-<h3>
-	{{ count($feedback) > 0 ? trans('admin.messages') .' '. count($feedback) : '' }}
-</h3>
+<h1 class="headline">
+	@lang('includes.feedback') 
+	{{ count($feedback) > 0 ? count($feedback) : '' }}
+</h1>
 
 <div class="py-5">
 

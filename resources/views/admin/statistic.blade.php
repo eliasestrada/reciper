@@ -4,8 +4,9 @@
 
 @section('content')
 
+<h1 class="headline mb-3">@lang('admin.statistics')</h1>
+
 <table class="statistic-table">
-	<caption>@lang('admin.statistics')</caption>
 	<tr>
 		<th scope="col"></th>
 		<th scope="col"></th>

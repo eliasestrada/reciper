@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h2 class="content text-center">@lang('recipes.recipes')</h2>
+<h1 class="headline">@lang('recipes.recipes')</h1>
 
 <div class="recipes">
 	<div class="row" id="target-for-recipes"></div>

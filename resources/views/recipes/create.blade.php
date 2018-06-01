@@ -8,11 +8,11 @@
 	<div class="row">
 
 		<div class="col-12">
+			<h1 class="headline">@lang('recipes.add_recipe')</h1>
 			{{-- Edit button --}}
 			<div class="recipe-buttons col-12">
 				{{ Form::submit('', ['class' => "edit-recipe-icon icon-save"]) }}
 			</div>
-			<h2 class="headline">@lang('recipes.add_recipe')</h2>
 		</div>
 	
 		<div class="col-12 col-md-4">
