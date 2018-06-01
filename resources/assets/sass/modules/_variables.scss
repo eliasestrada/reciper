@@ -1,8 +1,15 @@
+@font-face {
+	font-family: Comfortaa;
+    src: url(fonts/Comfortaa/Comfortaa-Regular.ttf);
+    //src: url(fonts/Comfortaa/Comfortaa-Bold.ttf);
+    //src: url(fonts/Comfortaa/Comfortaa-Light.ttf);
+}
+
 // Colors
-$mainLight: #1f77c0;
-$main: #0B65B1;
-$mainDark: #2a3949;
-$mainHover: #314152;
+$mainLight: #6b6494;
+$main: #484074;
+$mainHover: #403969;
+$mainDark: #312d47;
 $gray: #adadad;
 $lightGray: #e0e0e0;
 $darkGray: #333;
@@ -14,16 +21,19 @@ $fontColor: #535353;
 // Forms
 $inputColor: #f5f5f5;
 $inputRadius: 4px;
+$formLines: #444;
 
 // Fonts
-$headerFont: 'Trebuchet MS', 'Franklin Gothic Medium', Tahoma, sans-serif;
+$headerFont: 'Comfortaa', sans-serif;
 $mainFont: Arial, Helvetica;
 $headerImage: url(../storage/other/img.jpg);
 
 // Button
 $btnBg: -webkit-linear-gradient(top, #fff 0%,#eee 100%);
 $btnBorder: 1px solid #6b6b6b;
-$btnShadow: 0px 2px 1px #ECECEC inset,
-			0px -1px 20px #ECECEC,
-			0px 1px 1px #999,
-			0px 3px 10px #999;
+$btnShadow: 1px 1px 1px #868686;
+
+// Button main
+$btnMainBg: -webkit-linear-gradient(top, $main 0%, $mainHover 100%);
+$btnMainBorder: 1px solid darken($main, 1%);
+$btnMainShadow: 1px 1px 1px darken($main, 40%);
