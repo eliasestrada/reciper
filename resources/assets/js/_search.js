@@ -19,6 +19,6 @@ function setInputValueToEmpty(input) {
 }
 
 // Run funtion
-if (inputValueIsInteger('search-input')) {
+if ($('search-input') && inputValueIsInteger('search-input')) {
 	setInputValueToEmpty('search-input')
 }
