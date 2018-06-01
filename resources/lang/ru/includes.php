@@ -9,7 +9,6 @@ return [
 	'home' => 'Главная',
 	'feedback' => 'Обратная связь',
 	'search' => 'Поиск',
-	'logo' => 'Логотип',
 
 	// User sidebar
 	'profile' => 'Профиль',
