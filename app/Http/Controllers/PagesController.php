@@ -6,7 +6,6 @@ use App\Models\Title;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use App\Helpers\Traits\CommonHelper;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Schema;
 
 class PagesController extends Controller

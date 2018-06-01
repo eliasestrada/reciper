@@ -4,12 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Recipe;
 use App\Models\Category;
-use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Events\RecipeIsReady;
-use App\Helpers\Traits\CommonHelper;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\RecipeSaveRequest;
 use App\Http\Requests\RecipePublichRequest;
 use App\Helpers\Traits\RecipesControllerHelpers;
@@ -18,7 +15,6 @@ use App\Helpers\Contracts\SaveRecipeDataContract;
 class RecipesController extends Controller
 {
 	use RecipesControllerHelpers;
-	use CommonHelper;
 
     public function __construct()
     {
@@ -58,14 +54,8 @@ class RecipesController extends Controller
     }
 
     // It will show the recipe on a single page
-    public function show($recipe)
+    public function show(Recipe $recipe)
     {
-		if ($this->checkIfTableExists('recipes')) {
-			return redirect('/recipes')->withError(trans('message.fail_connection'));
-		}
-
-		$recipe = Recipe::find($recipe);
-
         // Rules for visitors
         if (!user() && !$recipe->approved()) {
             return redirect('/recipes')->withError(trans('recipes.no_rights_to_see'));
