@@ -13,3 +13,5 @@
 	<li><a href="https://github.com/rap2hpoutre/laravel-log-viewer">rap2hpoutre/laravel-log-viewer</a></li>
 	<li><a href="https://laravelcollective.com/docs/5.4/html">Laravel Collective Forms & HTML</a></li>
 </ol>
+
+<p>If someone looks for Laravel Log Package this one is shit: rap2hpoutre/laravel-log-viewer, don't evev try it. </p>
