@@ -5,10 +5,8 @@
 	<title>@yield('title') - {{ config('app.name') }}</title>
 </head>
 <body>
-	<div class="wrapper px-5">
-		<div class="container">
-			@yield('content')
-		</div>
+	<div class="px-5" style="background:#eee;">
+		@yield('content')
 	</div>
 </body>
 </html>
