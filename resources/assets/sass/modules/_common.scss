@@ -1,7 +1,3 @@
-.spacer {
-	height: 2em;
-}
-
 .message {
 	display: inline-block;
 	padding: .5em 1em;
@@ -23,11 +19,12 @@
 	background: $paper;
 	padding-top: 5em;
 	z-index: -2;
+	padding-bottom: 5px;
 }
 
 @media (min-width: 640px) {
 	.wrapper {
-		padding-top: 4em;
+		padding-top: 4.4em;
 	}
 }
 
@@ -90,8 +87,4 @@
     border-top: 1px solid #cccccc;
     margin: .7em auto;
     padding: 0; 
-}
-
-.none {
-	display: none;
 }
