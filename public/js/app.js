@@ -119,29 +119,8 @@ window.addEventListener('mouseup', function (e) {
 		$('logo').className = "logo-closed";
 		document.querySelector('#nav-menu ul').style.display = "none";
 		opened = false;
-
-		if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-			$('logo').style.opacity = "0";
-			$('logo').style.display = "none";
-		}
 	}
 });
-
-/**
- * Hide Navbar into a humburger menu
- * when user scrolls lower than 100 px
- */
-window.onscroll = function () {
-	if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-		$('menu-container').className = "hamburger-menu";
-		if (opened === false) $('logo').style.opacity = "0";
-		$('logo').style.display = "none";
-	} else {
-		$('menu-container').className = "regular-menu";
-		if (opened === false) $('logo').style.opacity = "1";
-		$('logo').style.display = "block";
-	}
-};
 
 /**
  * Removing word 'Категории' on mobile screen,
