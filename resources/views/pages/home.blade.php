@@ -18,7 +18,7 @@
 			<a class="edit-btn" title="@lang('home.edit_banner')" id="btn-for-banner">
 				<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
 			</a>
-			@component('components.home_edit_form.blade', ['array' => $title_banner])
+			@component('components.home_edit_form', ['array' => $title_banner])
 				@slot('id')
 					banner-form
 				@endslot
@@ -59,7 +59,7 @@
 		<a class="edit-btn" title="@lang('home.edit_intro')" id="btn-for-intro">
 			<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
 		</a>
-		@component('components.home_edit_form.blade', ['array' => $title_intro])
+		@component('components.home_edit_form', ['array' => $title_intro])
 			@slot('id')
 				intro-form
 			@endslot

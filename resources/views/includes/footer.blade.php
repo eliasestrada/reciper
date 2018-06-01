@@ -76,7 +76,7 @@
 			<a class="edit-btn" title="@lang('home.edit_banner')" id="btn-for-footer">
 				<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
 			</a>
-			@component('components.home_edit_form.blade', ['array' => $title_footer])
+			@component('components.home_edit_form', ['array' => $title_footer])
 				@slot('id')
 					footer-form
 				@endslot
