@@ -103,8 +103,5 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
 		'Image' => Intervention\Image\Facades\Image::class,
-
-		// I'm not using this Html Collective
-		//'Html' => Collective\Html\HtmlFacade::class,
     ],
 ];
