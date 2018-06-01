@@ -11,7 +11,7 @@
 		@foreach ($users as $user)
 			<a href="/users/{{ $user->id }}" title="{{ $user->name }}" >
 				<li>
-					<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{ $user->name }}" style="width:3.7em;" />
+					<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{ $user->name }}" style="width:67px; height:71px;" />
 					<div class="item-content">
 						<h3 class="project-name">{{ $user->name }}</h3>
 						<p class="project-title">
@@ -23,11 +23,11 @@
 									@lang('users.new_user', ['date' => facebookTimeAgo($user->created_at )])
 								</p>
 								
-								<a href="/member/{{ $user->id }}/add" class="btn" title="@lang('users.click_to_add')" onclick='return confirm("@lang('users.sure_to_add')")'>
+								<a href="/member/{{ $user->id }}/add" class="btn btn-main d-inline-block" title="@lang('users.click_to_add')" onclick='return confirm("@lang('users.sure_to_add')")'>
 									@lang('users.add_to_team')
 								</a>
 								
-								<a href="/member/{{ $user->id }}/delete" class="btn" title="@lang('users.click_to_delete')" onclick='return confirm("@lang('users.sure_to_delete')")'>
+								<a href="/member/{{ $user->id }}/delete" class="btn d-inline-block" title="@lang('users.click_to_delete')" onclick='return confirm("@lang('users.sure_to_delete')")'>
 									@lang('users.delete')
 								</a>
 							@endif
