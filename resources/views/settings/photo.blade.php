@@ -21,10 +21,10 @@
 		<div class="col-12">
 			{{--  Upload image  --}}
 			{!! Form::open(['action' => ['SettingsController@updatePhoto', null], 'method' => 'PUT', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
-				<div class="form-group simple-group" style="text-align:center;">
+				<div class="form-group simple-group text-center">
 					{{ Form::hidden('delete', 0) }}
 					{{ Form::label('src-image', trans('form.select_file'), ['class' => 'image-label']) }}
-					{{ Form::file('image', ['style' => "display:none;", 'id' => 'src-image']) }}
+					{{ Form::file('image', ['class' => "d-none", 'id' => 'src-image']) }}
 					{{ Form::submit(trans('form.save_changes'), ['class' => 'btn btn-main']) }}
 				</div>
 			{!! Form::close() !!}

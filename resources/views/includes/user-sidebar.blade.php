@@ -112,7 +112,7 @@
 		<li class="{{ activeIfRouteIs('logout') }}">
 			<form id="logout-form" action="{{ route('logout') }}" method="POST">
 				@csrf
-				<button type="submit" style="padding: 7px 0;" id="logout-btn">
+				<button type="submit" class="py-2" id="logout-btn">
 					<i style="background: url(/css/icons/svg/stand-by.svg)" class="sidebar-icon"></i>
 					<span class="nav-text">@lang('includes.logout')</span>
 				</button>

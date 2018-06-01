@@ -87,11 +87,11 @@
 		</div>
 
 		{{-- Image --}}
-		<div class="form-group simple-group col-12" style="text-align:center;">
+		<div class="form-group simple-group text-center col-12">
 			<div class="row">
 				<div class="col-md-4 offset-md-2">
-					{{ Form::label('src-image', trans('recipes.select_file'), ['class' => 'image-label', 'style' => 'margin-top:1.5em;']) }}
-					{{ Form::file('image', ['style' => "display:none;", "id" => "src-image"]) }}
+					{{ Form::label('src-image', trans('recipes.select_file'), ['class' => 'image-label mt-3']) }}
+					{{ Form::file('image', ['class' => "d-none", "id" => "src-image"]) }}
 				</div>
 				<div class="col-md-4">
 					<section class="preview-image">

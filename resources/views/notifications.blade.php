@@ -9,7 +9,7 @@
 	{{ count($notifications) > 0 ? trans('admin.messages') .' '. count($notifications) : '' }}
 </h3>
 
-<div style="padding: 1em 0;">
+<div class="py-5">
 	@forelse ($notifications as $notification)
 		<div class="notification">
 			<h4 class="notification-title">{{ $notification->title }}</h4>

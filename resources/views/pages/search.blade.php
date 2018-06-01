@@ -21,7 +21,7 @@
 			'id' => 'search-input'
 		]) }}
 
-		{{ Form::submit('', ['style' => 'display:none'])}}
+		{{ Form::submit('', ['class' => 'd-none'])}}
 	</div>
 {!! Form::close() !!}
 

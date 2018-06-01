@@ -30,6 +30,5 @@
 		</button>
 	</div>
 </form>
-<div class="spacer"></div>
 
 @endsection

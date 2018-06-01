@@ -25,7 +25,7 @@
 					<a href="/recipes/{{ $recipe->id }}/edit" title="Редактировать рецепт" class="edit-recipe-icon icon-edit"></a>
 
 					{{--  Delete button  --}}
-					<form action="{{ action('RecipesController@destroy', ['recipe' => $recipe->id]) }}" method="post" style="width: auto; display: inline-block;" onsubmit="return confirm('@lang('recipes.are_you_sure_to_delete')')">
+					<form action="{{ action('RecipesController@destroy', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" style="width: auto" onsubmit="return confirm('@lang('recipes.are_you_sure_to_delete')')">
 						@method('delete') @csrf
 						<input type="submit" value="" class="edit-recipe-icon icon-delete">
 					</form>
@@ -37,12 +37,12 @@
 		@admin
 			@if (!$recipe->approved() && $recipe->ready())
 				<div class="recipe-buttons">
-					<form action="{{ action('ApproveController@ok', ['recipe' => $recipe->id]) }}" method="post" style="width: auto; display: inline-block;" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
+					<form action="{{ action('ApproveController@ok', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" style="width:auto" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
 						@csrf
 						<input type="submit" value="" class="edit-recipe-icon icon-approve">
 					</form>
 
-					<form action="{{ action('ApproveController@cancel', ['recipe' => $recipe->id]) }}" method="post" style="width: auto; display: inline-block;" onsubmit="return confirm('@lang('recipes.are_you_sure_to_cancel')')">
+					<form action="{{ action('ApproveController@cancel', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" style="width:auto" onsubmit="return confirm('@lang('recipes.are_you_sure_to_cancel')')">
 						@csrf
 						<input type="submit" value="" class="edit-recipe-icon icon-cancel">
 					</form>

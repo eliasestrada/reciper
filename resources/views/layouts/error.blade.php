@@ -5,7 +5,7 @@
 	<title>@yield('title') - {{ config('app.name') }}</title>
 </head>
 <body>
-	<div class="wrapper" style="padding:0 1.2rem;">
+	<div class="wrapper px-5">
 		<div class="container">
 			@yield('content')
 		</div>

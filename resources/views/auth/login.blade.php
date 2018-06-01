@@ -35,6 +35,5 @@
 
 	{{-- <a href="{{ route('password.request') }}">@lang('form.forgot_pwd')</a> --}}
 </form>
-<div class="spacer"></div>
 
 @endsection

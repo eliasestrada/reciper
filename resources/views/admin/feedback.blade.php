@@ -10,7 +10,7 @@
 	{{ count($feedback) > 0 ? trans('admin.messages') .' '. count($feedback) : '' }}
 </h3>
 
-<div style="padding: 1em 0;">
+<div class="py-5">
 
 	@forelse ($feedback as $feed)
 		<div class="notification">
