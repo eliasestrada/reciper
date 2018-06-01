@@ -19,12 +19,11 @@
 			width: 5.7em;
 			display: inline-block;
 			border: none;
-			border-radius: 3px;
 			text-align: center;
-			padding: 0 .2em;
 
 			&:hover {
-				background: $mainHover;
+				text-decoration: underline;
+				background: none;
 			}
 		}
 	}

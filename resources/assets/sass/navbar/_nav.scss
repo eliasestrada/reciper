@@ -17,12 +17,21 @@
 		height: 2.6em;
 		line-height: 2.7em;
 		border-bottom: .06em solid $mainHover;
-		transition: .3s;
+		transition: border .3s;
 
-		&:hover { background: $mainHover; }
+		a {
+			font-family: $headerFont;
+			text-transform: lowercase;
+			font-weight: 100;
+			font-size: 1em;
+		}
+
+		&:hover {
+			background: $mainHover;
+		}
 	}
 
-	.active { background: $mainHover; }
+	.active { text-decoration: underline; }
 
 	a {
 		display: block;
@@ -43,13 +52,15 @@
 
 // Opened
 .nav-opened {
-	width: 13em;
+	width: 15em;
 	padding-top: 1.5em;
 }
 
 .logo-opened {
-	width: 9em;
-	margin: auto;
+	font-family: $headerFont;
+	font-size: .85em;
+	width: 90%;
+	margin: 1em auto 0 auto;
 	transition: width 400ms;
 }
 
@@ -60,12 +71,13 @@
 }
 
 .logo-closed {
-	width: 10em;
-	margin: .6em auto;
+	width: 12em;
+	font-family: $headerFont;
+	margin: 1em auto;
 	transition: width 400ms, margin 400ms;
 	
 	&:hover {
-		margin: .5em auto;
+		margin: 1.1em auto;
 	}
 }
 
