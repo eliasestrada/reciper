@@ -11,9 +11,11 @@
 	font-weight: bold;
 	font-size: .9rem;
 	cursor: pointer;
+	transition: box-shadow .2s;
 
 	&:hover {
 		box-shadow: none;
+		transition: box-shadow .2s;
 	}
 }
 

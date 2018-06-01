@@ -5,18 +5,21 @@
     //src: url(fonts/Comfortaa/Comfortaa-Light.ttf);
 }
 
-// Colors
-$mainLight: #6b6494;
+// Main Colors
 $main: #484074;
-$mainHover: #403969;
-$mainDark: #312d47;
 $gray: #adadad;
-$lightGray: #e0e0e0;
-$darkGray: #333;
-
 $paper: #eee;
-$navBorderBottom: solid 2px lighten($mainLight, 10%);
 $fontColor: #535353;
+
+// Shades
+$mainLight: lighten($main, 40%);
+$mainHover: darken($main, 5%);
+$mainDark: darken($main, 15%);
+$lightGray: lighten($gray, 30%);
+$darkGray: darken($gray, 50%);
+
+// Navigation
+$navBorderBottom: solid 2px $mainLight;
 
 // Home header
 $homeHeaderImage: url(../storage/other/img.jpg);
@@ -37,11 +40,11 @@ $headerFont: 'Comfortaa', sans-serif;
 $mainFont: Arial, Helvetica;
 
 // Button
-$btnBg: -webkit-linear-gradient(top, #fff 0%,#eee 100%);
+$btnBg: -webkit-linear-gradient(top, #fff 0%,#d4d4d4 100%);
 $btnBorder: 1px solid #6b6b6b;
 $btnShadow: 1px 1px 1px #868686;
 
 // Button main
-$btnMainBg: -webkit-linear-gradient(top, $main 0%, $mainHover 100%);
+$btnMainBg: -webkit-linear-gradient(top, $main 0%, lighten($mainDark, 4%) 100%);
 $btnMainBorder: 1px solid darken($main, 1%);
 $btnMainShadow: 1px 1px 1px darken($main, 40%);

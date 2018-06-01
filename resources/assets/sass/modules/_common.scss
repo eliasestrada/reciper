@@ -29,11 +29,37 @@
 }
 
 .headline {
-	color: $darkGray;
+	color: $mainDark;
 	font-family: $headerFont;
-	line-height: 1;
-	font-size: 1.3em;
-	margin: .5em;
+	text-shadow: 1px 1px 3px $mainLight;
+	display: inline-block;
+	font-size: 1.4em;
+	margin: .4em;
+	position: relative;
+
+	&::first-letter {
+		text-transform: uppercase;
+	}
+
+	&::before {
+		content: '';
+		width: 80px;
+		height: 2px;
+		background: $main;
+		position: absolute;
+		left: -20px;
+		top: -4px;
+	}
+
+	&::after {
+		content: '';
+		width: 3px;
+		height: 40px;
+		background: $main;
+		position: absolute;
+		left: -10px;
+		top: -10px;
+	}
 }
 
 .content {
