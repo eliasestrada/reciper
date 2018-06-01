@@ -13,16 +13,25 @@ class UsersSeeder extends Seeder
     public function run()
     {
 		User::create([
-			'email'         => '1990serzhil@gmail.com',
-			'name'          => 'Серый',
-			'admin'         => 1,
-			'author'        => 1,
-			'password'      => '$2y$10$GYXbndwPHbGZhE.SJcuYpeHE7qYlgEenW7Gktm1es/o71r94UpQQq',
-			'notif_check'   => date("Y-m-d H:i:s"),
+			'email' => '11@11.com',
+			'name' => 'Серый',
+			'admin' => 1,
+			'author' => 1,
+			'password' => bcrypt('111111'),
+			'notif_check' => date("Y-m-d H:i:s"),
 			'contact_check' => date("Y-m-d H:i:s"),
-			'image'         => 'user1.jpg'
+			'image' => 'user1.jpg'
 		]);
 
-		factory(User::class)->create();
+		User::create([
+			'email' => '22@22.com',
+			'name' => 'Ира',
+			'admin' => 1,
+			'author' => 1,
+			'password' => bcrypt('111111'),
+			'notif_check' => date("Y-m-d H:i:s"),
+			'contact_check' => date("Y-m-d H:i:s"),
+			'image' => 'user2.jpg'
+		]);
     }
 }
