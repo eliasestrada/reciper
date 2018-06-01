@@ -18,21 +18,20 @@
 			<a class="edit-btn" title="@lang('home.edit_banner')" id="btn-for-banner">
 				<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
 			</a>
-			<div class="home-edit-form" id="banner-form">
-				{!! Form::open(['action' => 'SettingsController@updateBannerData', 'method' => 'POST', 'class' => 'form']) !!}
-					<div class="form-group">
-						@method('PUT')
-						{{ Form::text('title', $title_banner->title, [
-							'placeholder' => trans('settings.banner_title')
-						]) }}
-			
-						{{ Form::textarea('text', $title_banner->text, [
-							'placeholder' => trans('settings.banner_text')
-						]) }}
-						{{ Form::submit(trans('form.save'), ['class' => 'blue']) }}
-					</div>
-				{!! Form::close() !!}
-			</div>
+			@component('components.home_edit_form.blade', ['array' => $title_banner])
+				@slot('id')
+					banner-form
+				@endslot
+				@slot('action')
+					SettingsController@updateBannerData
+				@endslot
+				@slot('holder_title')
+					@lang('settings.banner_title')
+				@endslot
+				@slot('holder_text')
+					@lang('settings.banner_text')
+				@endslot
+			@endcomponent
 		@endadmin
 		
 		<a class="home-button" id="home-search-btn">
@@ -44,7 +43,7 @@
 			<div class="form-group" style="position:relative;">
 				<div class="home-search" id="search-form">
 					{{ Form::text('for', '', ['id' => 'header-search-input', 'placeholder' => trans('pages.search_details')]) }}
-					{{ Form::submit('', ['style' => 'display:none']) }}
+					{{ Form::submit('', ['class' => 'd-none']) }}
 				</div>
 			</div>
 		{!! Form::close() !!}
@@ -60,24 +59,20 @@
 		<a class="edit-btn" title="@lang('home.edit_intro')" id="btn-for-intro">
 			<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
 		</a>
-		<div class="home-edit-form" id="intro-form">
-			{!! Form::open(['action' => 'SettingsController@updateIntroData', 'method' => 'POST', 'class' => 'form' ]) !!}
-	
-				@method('PUT')
-	
-				<div class="form-group">
-					{{ Form::text('title', $title_intro->title, [
-						'placeholder' => trans('settings.intro_title')
-					]) }}
-	
-					{{ Form::textarea('text', $title_intro->text, [
-						'placeholder' => trans('settings.intro_text')
-					]) }}
-	
-					{{ Form::submit(trans('form.save'), ['class' => 'blue']) }}
-				</div>
-			{!! Form::close() !!}
-		</div>
+		@component('components.home_edit_form.blade', ['array' => $title_intro])
+			@slot('id')
+				intro-form
+			@endslot
+			@slot('action')
+				SettingsController@updateIntroData
+			@endslot
+			@slot('holder_title')
+				@lang('settings.intro_title')
+			@endslot
+			@slot('holder_text')
+				@lang('settings.intro_text')
+			@endslot
+		@endcomponent
 	@endadmin
 </section>
 
