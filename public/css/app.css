@@ -1871,7 +1871,7 @@ ol, ul, dl {
 .home-section {
   background: #eee;
   color: #333;
-  padding: 1.5em 1.5em;
+  padding: 1.5em 1.8em;
 }
 
 .home-section .headline {
@@ -1946,8 +1946,8 @@ ol, ul, dl {
 }
 
 .home-header .header-bg-overlay {
-  background: #222;
-  opacity: .5;
+  background: #13111b;
+  opacity: 0.55;
 }
 
 .home-header .header-bg-content {
@@ -1958,15 +1958,13 @@ ol, ul, dl {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: .5em auto;
-  width: 3em;
-  height: 3em;
-  line-height: 3em;
+  margin: .6em auto;
+  width: 4.3em;
+  height: 4.3em;
   text-align: center;
   border-radius: 50%;
   background: #484074;
   color: #fff;
-  font-size: 1.6em;
   -webkit-animation: appearWithRotate 1s;
           animation: appearWithRotate 1s;
   -webkit-animation-fill-mode: forwards;
@@ -1977,14 +1975,12 @@ ol, ul, dl {
           animation-delay: 1s;
   opacity: 0;
   cursor: pointer;
-  -webkit-transition: all 300ms;
-  transition: all 300ms;
   position: relative;
 }
 
 .home-header .home-button i {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   margin: auto;
   filter: invert(95%);
   -webkit-filter: invert(95%);
@@ -2101,6 +2097,27 @@ ol, ul, dl {
   -webkit-transition: opacity 400ms;
   transition: opacity 400ms;
   opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .home-section {
+    padding: 1.4em;
+  }
+  .home-section .headline {
+    font-size: 1.3em;
+  }
+  .home-section p {
+    font-size: 1em;
+  }
+  .home-header .header-content {
+    width: 90%;
+  }
+  .home-header .header-content h1 {
+    font-size: 2em;
+  }
+  .home-header .header-content h2 {
+    font-size: 1em;
+  }
 }
 
 footer {

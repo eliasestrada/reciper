@@ -14,8 +14,11 @@
 @import 'navbar/nav-media';
 @import 'navbar/categories';
 
+// Home
+@import 'home/home';
+@import 'home/home-media';
+
 // Other
-@import 'home';
 @import 'footer';
 @import 'form';
 @import 'items';

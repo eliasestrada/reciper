@@ -18,6 +18,11 @@ $paper: #eee;
 $navBorderBottom: solid 2px lighten($mainLight, 10%);
 $fontColor: #535353;
 
+// Home header
+$homeHeaderImage: url(../storage/other/img.jpg);
+$homeHeaderOpacity: .55;
+$homeHeaderBg: darken($mainDark, 14%);
+
 // Small notification button
 $smallNotifBtnBg: #a70e0e;
 $smallNotifBtnColor: #fff;
@@ -30,7 +35,6 @@ $formLines: #444;
 // Fonts
 $headerFont: 'Comfortaa', sans-serif;
 $mainFont: Arial, Helvetica;
-$headerImage: url(../storage/other/img.jpg);
 
 // Button
 $btnBg: -webkit-linear-gradient(top, #fff 0%,#eee 100%);
