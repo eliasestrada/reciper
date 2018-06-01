@@ -1,19 +1,33 @@
 .btn {
-	width: 13em;
-	padding: .5em 1em;
-	margin: .5em 0;
-	display: inline-block;
-	background: $btnBg;
+	padding: .5rem 1rem;
+	margin: 5px auto;
+	display: block;
+	background: $btnBg !important;
 	color: $fontColor;
-	border: $btnBorder;
+	border: $btnBorder !important;
 	border-radius: 4px;
-	text-align: center;
 	transition: box-shadow 250ms;
 	box-shadow: $btnShadow;
 	font-weight: bold;
+	font-size: .9rem;
 	cursor: pointer;
 
 	&:hover {
 		box-shadow: none;
+	}
+}
+
+.btn-lg {
+	width: 100%;
+}
+
+.btn-main {
+	background: $btnMainBg !important;
+	box-shadow: $btnMainShadow;
+	border: $btnMainBorder !important;
+	color: #fff !important;
+	
+	&:hover {
+		background: $mainHover !important;
 	}
 }
