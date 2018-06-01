@@ -33,7 +33,7 @@
 
 			{{-- users --}}
 			<li class="{{ activeIfRouteIs('users') }}">
-				<a href="/users" title="@lang('includes.users')" {{ $all_new_users ?? '' }} class="red-buttons">
+				<a href="/users" title="@lang('includes.users')" {{ $all_new_users ?? '' }} class="small-notif-btn">
 					<i style="background: url(/css/icons/svg/user-group.svg)" class="sidebar-icon"></i>
 					<span>@lang('includes.users')</span>
 				</a>
@@ -50,7 +50,7 @@
 
 				{{-- checklist --}}
 				<li class="{{ activeIfRouteIs('admin/checklist') }}">
-					<a href="/admin/checklist" title="@lang('includes.checklist')" {{ $all_unapproved ?? '' }} class="red-buttons">
+					<a href="/admin/checklist" title="@lang('includes.checklist')" {{ $all_unapproved ?? '' }} class="small-notif-btn">
 						<i style="background: url(/css/icons/svg/search.svg)" class="sidebar-icon"></i>
 						<span>@lang('includes.checklist')</span>
 					</a>
@@ -58,7 +58,7 @@
 
 				{{-- feedback --}}
 				<li class="{{ activeIfRouteIs('admin/feedback') }}">
-					<a href="/admin/feedback" title="@lang('includes.feedback')" {{ $all_feedback ?? '' }} class="red-buttons">
+					<a href="/admin/feedback" title="@lang('includes.feedback')" {{ $all_feedback ?? '' }} class="small-notif-btn">
 						<i style="background: url(/css/icons/svg/conversation.svg);" class="sidebar-icon"></i>
 						<span>@lang('includes.feedback')</span>
 					</a>
@@ -67,7 +67,7 @@
 
 			{{-- notifications --}}
 			<li class="{{ activeIfRouteIs('notifications') }}">
-				<a href="/notifications" title="@lang('includes.notifications')" {{ $notifications ?? '' }} class="red-buttons">
+				<a href="/notifications" title="@lang('includes.notifications')" {{ $notifications ?? '' }} class="small-notif-btn">
 					<i style="background: url(/css/icons/svg/notifications.svg)" class="sidebar-icon"></i>
 					<span>@lang('includes.notifications')</span>
 				</a>

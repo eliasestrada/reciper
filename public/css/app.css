@@ -3166,7 +3166,7 @@ footer .footer-copyright {
           transform: translateZ(0) scale(1, 1);
 }
 
-.user-sidebar .red-buttons[data-notif]::after {
+.user-sidebar .small-notif-btn[data-notif]::after {
   content: attr(data-notif);
   min-width: 15px;
   height: 15px;
@@ -3177,7 +3177,7 @@ footer .footer-copyright {
   top: 5px;
   color: #fff;
   text-shadow: none;
-  background: #860101;
+  background: #a70e0e;
   border: solid 1px #fff;
   border-radius: 50%;
 }

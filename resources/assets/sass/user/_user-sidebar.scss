@@ -67,7 +67,7 @@
 		transform: translateZ(0) scale(1, 1);
 	}
 
-	.red-buttons[data-notif]::after {
+	.small-notif-btn[data-notif]::after {
 		content: attr(data-notif);
 		min-width: 15px;
 		height: 15px;
@@ -76,10 +76,10 @@
 		position: absolute;
 		left: 23px;
 		top: 5px;
-		color: #fff;
+		color: $smallNotifBtnColor;
 		text-shadow: none;
-		background: #860101;
-		border: solid 1px #fff;
+		background: $smallNotifBtnBg;
+		border: solid 1px $smallNotifBtnColor;
 		border-radius: 50%;
 	}
 
