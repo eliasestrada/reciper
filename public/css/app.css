@@ -2748,7 +2748,7 @@ footer .footer-copyright {
 .decorated {
   overflow: hidden;
   text-transform: uppercase;
-  color: #333;
+  color: #312d47;
   margin: .3em 0;
   font-weight: normal;
 }
@@ -2760,7 +2760,7 @@ footer .footer-copyright {
 
 .decorated span::before, .decorated span::after {
   content: "";
-  border-bottom: 2px dotted #adadad;
+  border-bottom: 2px dotted #484074;
   width: 180%;
   margin: 0 1em;
   position: absolute;
@@ -2802,8 +2802,8 @@ footer .footer-copyright {
   margin: 2em auto;
   text-align: left;
   border-radius: 10px;
-  border-top: dotted 2px #adadad;
-  border-bottom: dotted 2px #adadad;
+  border-top: dotted 2px #484074;
+  border-bottom: dotted 2px #484074;
   font-size: .9em;
   line-height: 1.4;
 }
@@ -2825,7 +2825,7 @@ footer .footer-copyright {
   counter-increment: item;
   position: relative;
   left: 2.5em;
-  border-left: dotted 2px #adadad;
+  border-left: dotted 2px #484074;
   padding: 0 .93em;
 }
 
@@ -2845,10 +2845,14 @@ footer .footer-copyright {
 
 .side-bar img {
   border-radius: 12px 12px 0 0;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
 }
 
 .side-bar img:hover {
-  opacity: .8;
+  opacity: .9;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
 }
 
 .side-bar-recipe {
@@ -2953,7 +2957,9 @@ footer .footer-copyright {
     grid-area: side-bar;
     width: 12.5rem;
     padding: 0 0 1.25rem 2rem;
-    border-left: solid 1px #bbb;
+  }
+  .grid-recipe .side-bar ul {
+    padding-top: .7em;
   }
   .grid-recipe .side-bar .side-bar-content {
     font-size: .7em;
@@ -3195,7 +3201,7 @@ footer .footer-copyright {
 
 .user-sidebar .user-icon {
   background-size: 25px !important;
-  border-radius: 50%;
+  border-radius: 1px;
   filter: invert(0%);
   -webkit-filter: invert(0%);
 }

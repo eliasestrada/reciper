@@ -6,7 +6,7 @@
 .decorated  {
 	overflow: hidden;
 	text-transform: uppercase;
-	color: $darkGray;
+	color: $mainDark;
 	margin: .3em 0;
 	font-weight: normal;
 
@@ -17,7 +17,7 @@
 		&::before,
 		&::after {
 			content: "";
-			border-bottom: 2px dotted $gray;
+			border-bottom: 2px dotted $main;
 			width: 180%;
 			margin: 0 1em;
 			position: absolute;
@@ -60,8 +60,8 @@
 	margin: 2em auto;
 	text-align: left;
 	border-radius: 10px;
-	border-top: dotted 2px $gray;
-	border-bottom: dotted 2px $gray;
+	border-top: dotted 2px $main;
+	border-bottom: dotted 2px $main;
 	font-size: .9em;
 	line-height: 1.4;
 }
@@ -82,7 +82,7 @@
 		counter-increment: item;
 		position: relative;
 		left: 2.5em;
-		border-left: dotted 2px $gray;
+		border-left: dotted 2px $main;
 		padding: 0 .93em;
 
 		&:before {
@@ -102,9 +102,11 @@
 
 	img {
 		border-radius: 12px 12px 0 0;
+		transition: opacity .3s;
 	
 		&:hover {
-			opacity: .8;
+			opacity: .9;
+			transition: opacity .3s;
 		}
 	}
 }
@@ -207,11 +209,9 @@
 			grid-area: side-bar;
 			width: 12.5rem;
 			padding: 0 0 1.25rem 2rem;
-			border-left: solid 1px #bbb;
 	
-			.side-bar-content {
-				font-size: .7em;
-			}
+			ul { padding-top: .7em; }
+			.side-bar-content { font-size: .7em; }
 		}
 	}
 }
