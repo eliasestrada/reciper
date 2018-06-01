@@ -75,12 +75,12 @@
 
 			@admin
 			{{-- logs --}}
-				<li class="{{ activeIfRouteIs('logs') }}">
+				{{-- <li class="{{ activeIfRouteIs('logs') }}">
 					<a href="/logs" title="@lang('logs.logs')">
 						<i style="background: url(/css/icons/svg/information-outline.svg)" class="sidebar-icon"></i>
 						<span>@lang('logs.logs')</span>
 					</a>
-				</li>
+				</li> --}}
 			@endadmin
 
 			{{-- settings --}}
