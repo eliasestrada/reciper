@@ -6,9 +6,7 @@
 
 <div class="row">
 	<div class="col-md-6">
-		{!! Form::open(['action' => 'SettingsController@updateUserPassword', 'method' => 'POST', 'class' => 'form']) !!}
-		
-			@method('PUT')
+		{!! Form::open(['action' => 'SettingsController@updateUserPassword', 'method' => 'PUT', 'class' => 'form']) !!}
 		
 			<div class="form-group simple-group">
 				<h2 class="form-headline">
@@ -37,9 +35,7 @@
 		{!! Form::close() !!}
 	</div>
 	<div class="col-md-6">
-		{!! Form::open(['action' => 'SettingsController@updateUserData', 'method' => 'POST', 'class' => 'form']) !!}
-
-			@method('PUT')
+		{!! Form::open(['action' => 'SettingsController@updateUserData', 'method' => 'PUT', 'class' => 'form']) !!}
 		
 			<div class="form-group simple-group">
 				<h2 class="form-headline">

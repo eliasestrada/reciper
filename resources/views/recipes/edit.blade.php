@@ -4,12 +4,11 @@
 
 @section('content')
 
-{!! Form::open(['action' => ['RecipesController@update', $recipe->id], 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
-
-	@method('PUT')
+{!! Form::open(['action' => ['RecipesController@update', $recipe->id], 'method' => 'PUT', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
 
 	<div class="row">
 		<div class="col-12">
+			<h1 class="headline">@lang('recipes.add_recipe')</h1>
 			<div class="recipe-buttons">
 				{{--  Save button  --}}
 				<input type="submit" id="submit-save-recipe" class="edit-recipe-icon icon-save" value="">
@@ -19,14 +18,12 @@
 			</div>
 		</div>
 
-		<div class="check-box-ready col-12">
-			<div class="check-box-ready-wrap">
+		<div class="check-box-ready d-flex col-12">
+			<div class="d-flex">
 				{{ Form::checkbox('ready', 1, null) }}
 				<p>@lang('recipes.ready_to_publish')</p>
 			</div>
 		</div>
-
-		<h2 class="headline col-12">@lang('recipes.add_recipe')</h2>
 
 		<div class="col-12 col-md-4">
 			{{-- Title --}}
