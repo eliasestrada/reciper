@@ -21,27 +21,33 @@
 		{{--  Buttons  --}}
 			@if (user()->hasRecipe($recipe->user_id))
 				<div class="recipe-buttons">
+
 					{{--  Edit button  --}}
-					<a href="/recipes/{{ $recipe->id }}/edit" title="Редактировать рецепт" class="edit-recipe-icon icon-edit"></a>
+					<a href="/recipes/{{ $recipe->id }}/edit" title="@lang('recipes.edit_recipe')" class="edit-recipe-icon icon-edit"></a>
 
 					{{--  Delete button  --}}
 					<form action="{{ action('RecipesController@destroy', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" style="width: auto" onsubmit="return confirm('@lang('recipes.are_you_sure_to_delete')')">
-						@method('delete') @csrf
+
+						@method('delete')
+						@csrf
+
 						<input type="submit" value="" class="edit-recipe-icon icon-delete">
 					</form>
 				</div>
 			@endif
 		@endauth
 
-		{{--  Buttons for admin  --}}
 		@admin
 			@if (!$recipe->approved() && $recipe->ready())
 				<div class="recipe-buttons">
+
+					{{-- Approve --}}
 					<form action="{{ action('ApproveController@ok', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" style="width:auto" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
 						@csrf
 						<input type="submit" value="" class="edit-recipe-icon icon-approve">
 					</form>
 
+					{{-- Cancel --}}
 					<form action="{{ action('ApproveController@cancel', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" style="width:auto" onsubmit="return confirm('@lang('recipes.are_you_sure_to_cancel')')">
 						@csrf
 						<input type="submit" value="" class="edit-recipe-icon icon-cancel">
