@@ -1,5 +1,5 @@
 .user-sidebar {
-	background: #222;
+	background: darken($mainDark, 15%);
 	position: fixed;
 	top: 0;
 	height: 100%;
@@ -39,7 +39,7 @@
 
 		&:hover {
 			color: #fff;
-			background: $main;
+			background: $mainDark;
 		}
 	}
 
