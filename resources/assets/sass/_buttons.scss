@@ -30,6 +30,6 @@
 	color: #fff !important;
 	
 	&:hover {
-		background: $mainHover !important;
+		background: lighten($mainHover, 2%) !important;
 	}
 }
