@@ -12,7 +12,6 @@ return [
 	'recipes' => 'Рецепты',
 	'no_name' => 'Имя не указано',
 	'requests' => 'Запросов',
-	'messages' => 'Сообщения:',
 	'feedback' => 'Обратная связь',
 	'no_messages' => 'Нет сообщений',
 	'country_and_city' => 'Страна / Город',
