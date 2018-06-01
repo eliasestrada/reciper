@@ -29,9 +29,9 @@
 				{{ Form::label('password_confirmation', trans('form.repeat_new_pwd')) }}
 				{{ Form::password('password_confirmation', ['placeholder' => trans('form.repeat_new_pwd')]) }}
 			</div>
-		
-			<div class="form-group simple-group">
-				{{ Form::submit(trans('form.save_changes')) }}
+
+			<div class="form-group simple-group mt-4">
+				<button class="btn" type="submit">@lang('form.save_changes')</button>
 			</div>
 		
 		{!! Form::close() !!}
@@ -50,11 +50,11 @@
 				{{ Form::label('name', trans('form.name')) }}
 				{{ Form::text('name', user()->name, ['placeholder' => trans('form.name')]) }}
 			</div>
-		
-			<div class="form-group simple-group">
-				{{ Form::submit(trans('form.save_changes')) }}
+
+			<div class="form-group simple-group mt-4">
+				<button class="btn" type="submit">@lang('form.save_changes')</button>
 			</div>
-		
+
 		{!! Form::close() !!}
 	</div>
 </div>

@@ -25,7 +25,9 @@
 		<label for="password_confirmation">@lang('form.pwd_confirm')</label>
 		<input type="password" id="password_confirmation" name="password_confirmation" placeholder="@lang('form.pwd_confirm')" required>
 
-		<input type="submit" value="@lang('form.register')" id="register-btn">
+		<button type="submit" id="register-btn" class="btn btn-lg btn-main mt-3">
+			@lang('form.register')
+		</button>
 	</div>
 </form>
 <div class="spacer"></div>

@@ -23,12 +23,14 @@
 		{{ Form::password('password', ['placeholder' => trans('form.pwd')]) }}
 	</div>
 	
-	<div class="form-group simple-group" style="display:flex;">
+	<div class="form-group simple-group mt-3 d-flex">
 		<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> @lang('form.remember_me')
 	</div>
 
 	<div class="form-group simple-group">
-		{{ Form::submit(trans('form.login'), ['id' => 'go-to-account']) }}
+		<button type="submit" id="go-to-account" class="btn btn-lg btn-main">
+			@lang('form.login')
+		</button>
 	</div>
 
 	{{-- <a href="{{ route('password.request') }}">@lang('form.forgot_pwd')</a> --}}
