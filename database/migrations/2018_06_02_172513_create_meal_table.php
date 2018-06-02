@@ -11,6 +11,7 @@ class CreateMealTable extends Migration
         Schema::create('meal', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('name_ru', 20);
+			$table->string('name_en', 20);
         });
     }
 
