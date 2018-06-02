@@ -34,34 +34,6 @@
 	}
 }
 
-@keyframes appearFromLeft {
-	// Appears
-	0% {
-		margin-left: -100em;
-		transform: scaleY(0);
-		position: static;
-	}
-	5% {
-		margin-left: 0em;
-		transform: scaleY(1);
-		position: static;
-	}
-	80% {
-		margin-left: .8em;
-		transform: scaleY(1);
-		position: static;
-	}
-	// Goes away
-	90% {
-		margin-left: -100em;
-		transform: scaleY(0);
-	}
-	100% {
-		position: absolute;
-		left: -100em;
-	}
-}
-
 @keyframes appearWithOpacity {
 	0% {
 		opacity: 0;

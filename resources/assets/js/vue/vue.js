@@ -4,7 +4,8 @@ window.Vue = require('vue');
 
 const components = [
 	'Recipes',
-	'RandomRecipesSidebar'
+	'RandomRecipesSidebar',
+	'Message'
 ]
 
 components.forEach(comp => {
