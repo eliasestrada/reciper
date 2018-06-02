@@ -11,10 +11,11 @@ let mix = require('laravel-mix');
  |
  */
 
+//  Vanilla
 var jsFilesToCompile = [
-	'resources/assets/js/modules.js',
-	'resources/assets/js/functions/_*.js',
-	'resources/assets/js/_*.js',
+	'resources/assets/js/vanilla/modules.js',
+	'resources/assets/js/vanilla/functions/_*.js',
+	'resources/assets/js/vanilla/components_*.js',
 ];
 
 mix.babel(jsFilesToCompile, 'public/js/app.js')
