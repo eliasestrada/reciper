@@ -10,8 +10,7 @@ class CreateMealTable extends Migration
     {
         Schema::create('meal', function (Blueprint $table) {
 			$table->increments('id');
-			$table->string('title', 20);
-            $table->timestamps();
+			$table->string('name', 20);
         });
     }
 
