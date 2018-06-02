@@ -12,13 +12,14 @@ let mix = require('laravel-mix');
  */
 
 //  Vanilla
-var jsFilesToCompile = [
+var vanillaFilesToCompile = [
 	'resources/assets/js/vanilla/modules.js',
 	'resources/assets/js/vanilla/functions/_*.js',
-	'resources/assets/js/vanilla/components_*.js',
+	'resources/assets/js/vanilla/components/_*.js',
 ];
 
-mix.babel(jsFilesToCompile, 'public/js/app.js')
+mix.js('resources/assets/js/vue/vue.js', 'public/js')
+	.babel(vanillaFilesToCompile, 'public/js/vanilla.js')
 	.sass('resources/assets/sass/app.scss', 'public/css/app.css')
 	.disableNotifications()
 	.browserSync({
