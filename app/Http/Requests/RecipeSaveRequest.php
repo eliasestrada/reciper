@@ -16,7 +16,7 @@ class RecipeSaveRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'max:199',
+            'title' => 'max:190',
             'intro' => 'max:2000',
             'ingredients'  => 'max:5000',
             'advice' => 'max:5000',

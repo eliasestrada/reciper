@@ -20,7 +20,7 @@ class RecipePublichRequest extends FormRequest
     {
         if ($this->ready == 1) {
 			return [
-				'title' => 'min:5|max:199',
+				'title' => 'min:5|max:190',
 				'intro' => 'min:20|max:2000',
 				'ingredients' => 'min:20|max:5000',
 				'advice' => 'max:5000',
