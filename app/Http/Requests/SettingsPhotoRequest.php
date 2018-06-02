@@ -23,9 +23,9 @@ class SettingsPhotoRequest extends FormRequest
 	// Get the validation messages that apply to the request.
 	public function messages() {
 		return [
-			'image.image'       => trans('my_valid.settings_image_image'),
-			'image.max'  		=> trans('my_valid.settings_image_max'),
-			'image.uploaded' 	=> trans('my_valid.settings_image_uploaded'),
+			'image.image' => trans('settings.settings_image_image'),
+			'image.max' => trans('settings.settings_image_max'),
+			'image.uploaded' => trans('settings.settings_image_uploaded'),
 		];
 	}
 }

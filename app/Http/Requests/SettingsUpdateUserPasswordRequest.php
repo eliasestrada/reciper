@@ -17,17 +17,17 @@ class SettingsUpdateUserPasswordRequest extends FormRequest
     {
         return [
             'old_password' => 'required|string',
-			'password'     => 'required|string|min:6|confirmed'
+			'password' => 'required|string|min:6|confirmed'
         ];
 	}
 	
 	// Get the validation messages that apply to the request.
 	public function messages() {
 		return [
-			'old_password.required' => trans('my_valid.settings_pwd_required'),
-            'password.required'     => trans('my_valid.settings_new_pwd_required'),
-            'password.min'          => trans('my_valid.settings_pwd_min'),
-            'password.confirmed'    => trans('my_valid.settings_pwd_confirmed')
+			'old_password.required' => trans('settings.settings_pwd_required'),
+            'password.required' => trans('settings.settings_new_pwd_required'),
+            'password.min' => trans('settings.settings_pwd_min'),
+            'password.confirmed'    => trans('settings.settings_pwd_confirmed')
 		];
 	}
 }

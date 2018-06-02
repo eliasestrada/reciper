@@ -23,9 +23,9 @@ class SettingsUpdateUserDataRequest extends FormRequest
 	// Get the validation messages that apply to the request.
 	public function messages() {
 		return [
-			'name.required' => trans('my_valid.settings_name_required'),
-			'name.min'      => trans('my_valid.settings_name_min'),
-			'name.max' 		=> trans('my_valid.settings_name_max')
+			'name.required' => trans('settings.settings_name_required'),
+			'name.min' => trans('settings.settings_name_min'),
+			'name.max' => trans('settings.settings_name_max')
 		];
 	}
 }

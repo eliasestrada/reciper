@@ -17,7 +17,7 @@ class SettingsUpdateHomeDataRequest extends FormRequest
     {
         return [
             'title' => 'max:190',
-			'text'  => 'max:900'
+			'text' => 'max:900'
         ];
 	}
 
@@ -25,8 +25,8 @@ class SettingsUpdateHomeDataRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.max' => trans('my_valid.settings_title_max'),
-			'text.max'  => trans('my_valid.settings_text_max')
+            'title.max' => trans('settings.settings_title_max'),
+			'text.max' => trans('settings.settings_text_max')
         ];
     }
 }
