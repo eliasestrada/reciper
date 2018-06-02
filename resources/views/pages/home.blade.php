@@ -10,30 +10,12 @@
 	<div class="header-bg-overlay"></div>
 	<div class="header-content">
 
-		<h1>{{ title_case($title_banner->title ?? '') }}</h1>
-		<h2>{{ title_case($title_banner->text ?? '') }}</h2>
+		<h1>{{ config('app.name') }}</h1>
+		<div class="home-meal">
+			<a href="#">Завтрак</a>, <a href="#">обед</a> или <a href="#">ужин</a>?
+		</div>
 
-		{{-- Настройки Баннера --}}
-		@admin
-			<a class="edit-btn" title="@lang('home.edit_banner')" id="btn-for-banner">
-				<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
-			</a>
-			@component('components.home_edit_form', ['array' => $title_banner])
-				@slot('id')
-					banner-form
-				@endslot
-				@slot('action')
-					SettingsController@updateBannerData
-				@endslot
-				@slot('holder_title')
-					@lang('settings.banner_title')
-				@endslot
-				@slot('holder_text')
-					@lang('settings.banner_text')
-				@endslot
-			@endcomponent
-		@endadmin
-		
+		{{-- Search button --}}
 		<a class="home-button" id="home-search-btn">
 			<i style="background: url('/css/icons/svg/search.svg')"></i>
 		</a>

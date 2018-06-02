@@ -15,6 +15,6 @@ class EloquentEventServiceProvider extends ServiceProvider
 
 	public function listOfAllObservers()
 	{
-		Recipe::observe(\App\Observers\RecipeObserver::class);
+		//Recipe::observe(\App\Observers\RecipeObserver::class);
 	}
 }

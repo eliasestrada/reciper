@@ -12,12 +12,6 @@ class TitlesSeeder extends Seeder
      */
     public function run()
     {
-        Title::create([
-			'name'  => 'Баннер',
-			'title' => 'Delicious Food',
-			'text'  => 'Рецепты от простых до необычных'
-		]);
-
 		Title::create([
 			'name'  => 'Интро',
 			'title' => 'Готовим вместе',

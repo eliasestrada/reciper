@@ -62,12 +62,6 @@ window.onload = function () {
 	$('loading').classList.remove("loading");
 	$('loading-title').innerHTML = '';
 };
-
-// Run function
-if ($('btn-for-banner')) {
-	activeAfterClickBtn('banner-form', 'btn-for-banner');
-}
-
 if ($('btn-for-intro')) {
 	activeAfterClickBtn('intro-form', 'btn-for-intro');
 }
