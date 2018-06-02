@@ -3,11 +3,12 @@
   src: url(fonts/Comfortaa/Comfortaa-Regular.ttf);
 }
 
-* {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  -ms-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 html {
@@ -1699,13 +1700,14 @@ ol, ul, dl {
 .nav-closed {
   width: 100%;
   height: 0;
-  font-size: .9em;
+  font-size: 14px;
   margin-top: 5px;
 }
 
 .logo-closed {
   width: 12em;
   font-family: "Comfortaa", sans-serif;
+  font-size: 14px;
   margin: 1em auto;
   -webkit-transition: color 200ms;
   transition: color 200ms;
@@ -1795,7 +1797,7 @@ ol, ul, dl {
     -webkit-transition: border .5s;
     transition: border .5s;
   }
-  #nav-menu .active {
+  #nav-menu > ul > .active {
     text-decoration: none;
     background: none;
     border-bottom: solid 2px #b3aed2;
@@ -1821,6 +1823,7 @@ ol, ul, dl {
 .categories-menu {
   width: 100%;
   background: #484074;
+  border-radius: 0 0 6px 6px;
 }
 
 .categories-menu a {
@@ -1828,7 +1831,7 @@ ol, ul, dl {
 }
 
 .categories-menu a:last-child {
-  border-bottom: 5px solid #443c6d;
+  border-bottom: none;
 }
 
 /* Arrow */
@@ -1875,8 +1878,8 @@ ol, ul, dl {
     width: 200%;
     font-size: .9em;
     position: absolute;
-    top: 100%;
-    margin-top: 5px;
+    top: 47px;
+    padding-top: 5px;
     right: -50%;
     -webkit-transform-origin: top;
             transform-origin: top;
@@ -1886,8 +1889,9 @@ ol, ul, dl {
     transition: transform 400ms, -webkit-transform 400ms;
     -webkit-transform: perspective(1000px) rotateX(-90deg);
             transform: perspective(1000px) rotateX(-90deg);
+    opacity: .95;
   }
-  .categor-menu-opened {
+  .categories-menu.active {
     -webkit-transform: perspective(1000px) rotateX(0deg);
             transform: perspective(1000px) rotateX(0deg);
   }
@@ -2008,6 +2012,8 @@ ol, ul, dl {
   height: 28px;
   margin: auto;
   filter: invert(95%);
+  -ms-filter: invert(95%);
+  -moz-filter: invert(95%);
   -webkit-filter: invert(95%);
 }
 
@@ -2035,7 +2041,7 @@ ol, ul, dl {
           transform: translateX(-50%) perspective(1000px) rotateX(-90deg);
 }
 
-.home-header .show-search {
+.home-header .home-search.active {
   -webkit-transform: translateX(-50%) perspective(1000px) rotateX(0deg);
           transform: translateX(-50%) perspective(1000px) rotateX(0deg);
 }
@@ -2080,7 +2086,7 @@ ol, ul, dl {
           transform: translate(-50%, -50%) perspective(1000px) rotateX(-90deg);
 }
 
-.show-elem {
+.home-edit-form.active {
   -webkit-transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
           transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
 }
@@ -2115,6 +2121,8 @@ ol, ul, dl {
   height: 15px;
   margin: auto;
   filter: invert(100%);
+  -ms-filter: invert(100%);
+  -moz-filter: invert(100%);
   -webkit-filter: invert(100%);
 }
 
@@ -2201,6 +2209,8 @@ footer .footer-copyright {
   margin-right: 4px;
   opacity: .85;
   filter: invert(15%);
+  -ms-filter: invert(15%);
+  -moz-filter: invert(15%);
   -webkit-filter: invert(15%);
 }
 
@@ -3224,6 +3234,8 @@ footer .footer-copyright {
   position: relative;
   display: inline-block;
   filter: invert(100%);
+  -ms-filter: invert(100%);
+  -moz-filter: invert(100%);
   -webkit-filter: invert(100%);
   -webkit-transition: -webkit-transform .2s;
   transition: -webkit-transform .2s;
@@ -3235,10 +3247,12 @@ footer .footer-copyright {
   background-size: 23px !important;
   border-radius: 1px;
   filter: invert(0%);
+  -ms-filter: invert(0%);
+  -moz-filter: invert(0%);
   -webkit-filter: invert(0%);
 }
 
-.active-sidebar {
+.user-sidebar.active {
   overflow: visible;
   width: 200px;
   height: 100%;

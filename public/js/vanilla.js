@@ -16,15 +16,15 @@ var i = void 0;
  * @param {string} button that u want to click
  * @param {string} className class that you want to add after click 
  */
-function addClassToElement(element, button, className) {
+function activeAfterClickBtn(element, button) {
 	var visible = false;
 
 	$(button).addEventListener('click', function () {
 		if (visible === false) {
-			$(element).classList.add(className);
+			$(element).classList.add('active');
 			visible = true;
 		} else if (visible === true) {
-			$(element).classList.remove(className);
+			$(element).classList.remove('active');
 			visible = false;
 		}
 	});
@@ -66,26 +66,26 @@ window.onload = function () {
 
 // Run function
 if ($('btn-for-banner')) {
-	addClassToElement('banner-form', 'btn-for-banner', 'show-elem');
+	activeAfterClickBtn('banner-form', 'btn-for-banner');
 }
 
 if ($('btn-for-intro')) {
-	addClassToElement('intro-form', 'btn-for-intro', 'show-elem');
+	activeAfterClickBtn('intro-form', 'btn-for-intro');
 }
 
 if ($('btn-for-footer')) {
-	addClassToElement('footer-form', 'btn-for-footer', 'show-elem');
+	activeAfterClickBtn('footer-form', 'btn-for-footer');
 }
 
 if ($('search-form')) {
-	addClassToElement('search-form', 'home-search-btn', 'show-search');
+	activeAfterClickBtn('search-form', 'home-search-btn');
 }
 
 /**
  * Function runs only if min-width of display is less than 640px
  */
 if (window.matchMedia("( min-width: 640px )").matches && $('categories-button')) {
-	addClassToElement('categories-menu', 'categories-button', 'categor-menu-opened');
+	activeAfterClickBtn('categories-menu', 'categories-button');
 }
 
 /**
@@ -153,5 +153,5 @@ if ($('search-input') && inputValueIsInteger('search-input')) {
 	setInputValueToEmpty('search-input');
 }
 if ($('user-sidebar')) {
-	addClassToElement('user-sidebar', 'user-sidebar-activator', 'active-sidebar');
+	activeAfterClickBtn('user-sidebar', 'user-sidebar-activator');
 }

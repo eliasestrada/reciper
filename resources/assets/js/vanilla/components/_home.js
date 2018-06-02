@@ -1,17 +1,17 @@
 
 // Run function
 if ($('btn-for-banner')) {
-	addClassToElement('banner-form', 'btn-for-banner', 'show-elem')
+	activeAfterClickBtn('banner-form', 'btn-for-banner')
 }
 
 if ($('btn-for-intro')) {
-	addClassToElement('intro-form', 'btn-for-intro', 'show-elem')
+	activeAfterClickBtn('intro-form', 'btn-for-intro')
 }
 
 if ($('btn-for-footer')) {
-	addClassToElement('footer-form', 'btn-for-footer', 'show-elem')
+	activeAfterClickBtn('footer-form', 'btn-for-footer')
 }
 
 if ($('search-form')) {
-	addClassToElement('search-form', 'home-search-btn', 'show-search')
+	activeAfterClickBtn('search-form', 'home-search-btn')
 }

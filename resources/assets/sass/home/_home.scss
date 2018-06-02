@@ -97,6 +97,8 @@
 			height: 28px;
 			margin: auto;
 			filter: invert(95%);
+			-ms-filter: invert(95%);
+			-moz-filter: invert(95%);
 			-webkit-filter: invert(95%);
 		}
 
@@ -117,7 +119,7 @@
 		transform: translateX(-50%) perspective(1000px) rotateX(-90deg);
 	}
 
-	.show-search {
+	.home-search.active {
 		transform: translateX(-50%) perspective(1000px) rotateX(0deg);
 	}
 	
@@ -154,7 +156,7 @@
 	transform: translate(-50%, -50%) perspective(1000px) rotateX(-90deg);
 }
 
-.show-elem {
+.home-edit-form.active {
 	transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
 }
 
@@ -183,6 +185,8 @@
 		height: 15px;
 		margin: auto;
 		filter: invert(100%);
+		-ms-filter: invert(100%);
+		-moz-filter: invert(100%);
 		-webkit-filter: invert(100%);
 	}
 

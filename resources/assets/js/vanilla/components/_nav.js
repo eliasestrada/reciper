@@ -3,7 +3,7 @@
  * Function runs only if min-width of display is less than 640px
  */
 if (window.matchMedia("( min-width: 640px )").matches && $('categories-button')) {
-	addClassToElement('categories-menu', 'categories-button', 'categor-menu-opened')
+	activeAfterClickBtn('categories-menu', 'categories-button')
 }
 
 /**

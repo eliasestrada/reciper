@@ -1,3 +1,3 @@
 if ($('user-sidebar')) {
-	addClassToElement('user-sidebar', 'user-sidebar-activator', 'active-sidebar')
+	activeAfterClickBtn('user-sidebar', 'user-sidebar-activator')
 }

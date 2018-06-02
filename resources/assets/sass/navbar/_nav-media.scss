@@ -32,7 +32,7 @@
 			}
 		}
 
-		.active {
+		& > ul > .active {
 			text-decoration: none;
 			background: none;
 			border-bottom: $navBorderBottom;
