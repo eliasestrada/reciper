@@ -8,7 +8,7 @@
 </div>
 
 {{--  Navigation menu  --}}
-<nav id="nav-menu" class="nav-closed">
+<nav id="nav-menu" class="nav-closed{{ request()->is('/') ? ' is-home' : '' }}">
 	<a href="/" title="@lang('includes.home')" id="logo" class="logo-closed">
 		<h2>{{ config('app.name') }}</h2>
     </a>
