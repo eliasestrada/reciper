@@ -57,7 +57,7 @@ ol, ul, dl {
 
 .message {
   display: inline-block;
-  padding: .5em 1em;
+  padding: .8em 1em;
   background: #eee;
   -webkit-transition: margin 300ms, -webkit-transform 300ms;
   transition: margin 300ms, -webkit-transform 300ms;
@@ -70,6 +70,7 @@ ol, ul, dl {
   font-size: .9em;
   color: #fff;
   border-radius: 5px;
+  margin: 5px auto 15px auto;
 }
 
 .error {
