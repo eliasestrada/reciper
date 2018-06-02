@@ -11,9 +11,9 @@ class CreateRecipesTable extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('user_id');
-			$table->integer('category_id');
-			$table->integer('meal_id');
+			$table->integer('user_id')->unsigned()->default(1);
+			$table->integer('category_id')->unsigned()->default(1);
+			$table->integer('meal_id')->unsigned()->default(1);
             $table->string('title')->nullable();
             $table->text('intro')->nullable();
             $table->text('ingredients')->nullable();
@@ -25,7 +25,7 @@ class CreateRecipesTable extends Migration
             $table->bigInteger('ready')->default(0);
 			$table->boolean('approved')->default(0);
 			$table->string('image')->default('default.jpg');
-            $table->timestamps();
+			$table->timestamps();
         });
     }
 
