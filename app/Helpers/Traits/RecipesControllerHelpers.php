@@ -18,7 +18,7 @@ trait RecipesControllerHelpers
 			));
 			return $image_name;
 		}
-		return 'default.jpg';
+		return null;
 	}
 
 
@@ -33,7 +33,7 @@ trait RecipesControllerHelpers
 	public function createOrUpdateRecipe($request, $image_name, $recipe = null)
 	{
 		$recipe_columns = [
-			'image' => $image_name,
+			'image' => $image_name ? $image_name : $recipe->image ?? 'default.jpg',
 			'category_id' => $request->category_id,
 			'title' => $request->title,
 			'intro' => $request->intro,

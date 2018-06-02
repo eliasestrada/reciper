@@ -46,7 +46,7 @@ class RecipesController extends Controller
     public function store(RecipeSaveRequest $request)
     {
 		$image_name = $this->saveImageIfExists($request->file('image'));
-		$recipe 	= $this->createOrUpdateRecipe($request, $image_name);
+		$recipe = $this->createOrUpdateRecipe($request, $image_name);
 
 		return redirect('/recipes/'.$recipe->id.'/edit')->withSuccess(
 			trans('recipes.recipe_has_been_saved')
@@ -104,7 +104,10 @@ class RecipesController extends Controller
 		// Handle image uploading
 		$image_name = $this->saveImageIfExists($request->file('image'), $recipe->image);
 
-		$this->deleteOldImage($recipe->image);
+		if ($request->file('image')) {
+			$this->deleteOldImage($recipe->image);
+		}
+
 		$this->createOrUpdateRecipe($request, $image_name, $recipe);
 
         if (!$recipe->ready()) {
