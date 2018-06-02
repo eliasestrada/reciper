@@ -10,7 +10,7 @@
 {{--  Navigation menu  --}}
 <nav id="nav-menu" class="nav-closed">
 	<a href="/" title="@lang('includes.home')" id="logo" class="logo-closed">
-		<h1>{{ config('app.name') }}</h1>
+		<h2>{{ config('app.name') }}</h2>
     </a>
     <ul>
 		<li class="{{ activeIfRouteIs('/') }}">
