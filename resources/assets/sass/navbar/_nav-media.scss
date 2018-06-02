@@ -39,12 +39,12 @@
 		}
 	}
 
-	.is-home {
-		background: linear-gradient(rgba(0, 0, 0, .7), transparent) !important;
-		box-shadow: none !important;
-	}
-
 	#menu-container {
 		display: none;
 	}
+}
+
+.is-home {
+	background: linear-gradient(rgba(0, 0, 0, .7), transparent) !important;
+	box-shadow: none !important;
 }

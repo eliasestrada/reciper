@@ -1,5 +1,5 @@
 {{--  Hamburger menu  --}}
-<div class="regular-menu" id="menu-container">
+<div class="regular-menu{{ request()->is('/') ? ' is-home' : '' }}" id="menu-container">
     <div id="hamburger" class="hamburger">
 		<span class="lines line1"></span>
 		<span class="lines line2"></span>
