@@ -13,7 +13,7 @@
 
 	@include('includes.user-sidebar')
 
-	<div class="wrapper pb-5">
+	<div class="wrapper pb-5" id="app">
 		<div class="container">
 			<div class="loading" id="loading"></div>
 			<h4 class="loading-title" id="loading-title">@lang('includes.loading') ...</h4>
@@ -27,7 +27,8 @@
     @include('includes.footer')
 
 	<!-- Javascript -->
-	{!! scriptTimestamp('/js/app.js') !!}
+	{!! scriptTimestamp('/js/vue.js') !!}
+	{!! scriptTimestamp('/js/vanilla.js') !!}
 	@yield('script')
 </body>
 </html>
