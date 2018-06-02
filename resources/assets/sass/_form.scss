@@ -21,6 +21,8 @@
 		margin-right: 4px;
 		opacity: .85;
 		filter: invert(15%);
+		-ms-filter: invert(15%);
+		-moz-filter: invert(15%);
 		-webkit-filter: invert(15%);
 	}
 }

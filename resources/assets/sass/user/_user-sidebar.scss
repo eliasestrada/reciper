@@ -87,6 +87,8 @@
 		position: relative;
 		display: inline-block;
 		filter: invert(100%);
+		-ms-filter: invert(100%);
+		-moz-filter: invert(100%);
 		-webkit-filter: invert(100%);
 		transition: transform .2s;
 	}
@@ -95,11 +97,13 @@
 		background-size: 23px !important;
 		border-radius: 1px;
 		filter: invert(0%);
+		-ms-filter: invert(0%);
+		-moz-filter: invert(0%);
 		-webkit-filter: invert(0%);
 	}
 }
 
-.active-sidebar {
+.user-sidebar.active {
 	overflow: visible;
 	width: 200px;
 	height: 100%;
