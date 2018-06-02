@@ -1970,7 +1970,7 @@ button.close {
   margin-top: -1em;
 }
 
-.home-header .header-content h1, .home-header .header-content h2 {
+.home-header .header-content h1, .home-header .header-content .home-meal {
   -webkit-animation: appearWithOpacity 2s;
           animation: appearWithOpacity 2s;
   -webkit-animation-fill-mode: forwards;
@@ -1992,10 +1992,36 @@ button.close {
           animation-delay: .5s;
 }
 
-.home-header .header-content h2 {
+.home-header .header-content .home-meal {
   font-size: 1.2em;
   -webkit-animation-delay: .7s;
           animation-delay: .7s;
+  position: relative;
+}
+
+.home-header .header-content .home-meal a {
+  display: inline-block;
+  color: #fff;
+  -webkit-transition: padding .3s, background-color .5s, -webkit-transform .2s;
+  transition: padding .3s, background-color .5s, -webkit-transform .2s;
+  transition: padding .3s, transform .2s, background-color .5s;
+  transition: padding .3s, transform .2s, background-color .5s, -webkit-transform .2s;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  border-radius: 20px;
+}
+
+.home-header .header-content .home-meal a:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  -webkit-transition: padding .3s, background-color .5s, -webkit-transform .2s;
+  transition: padding .3s, background-color .5s, -webkit-transform .2s;
+  transition: padding .3s, transform .2s, background-color .5s;
+  transition: padding .3s, transform .2s, background-color .5s, -webkit-transform .2s;
+  background: #292543;
+  padding: 0 15px;
+  -webkit-box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+          box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
 }
 
 .home-header .header-bg-img,

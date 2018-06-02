@@ -12,7 +12,10 @@
 
 		<h1>{{ config('app.name') }}</h1>
 		<div class="home-meal">
-			<a href="#">Завтрак</a>, <a href="#">обед</a> или <a href="#">ужин</a>?
+			@lang('home.what_u_like')<br />
+			<a href="#">@lang('home.breakfast')</a>, 
+			<a href="#">@lang('home.lunch')</a> @lang('home.or') 
+			<a href="#">@lang('home.dinner')</a>?
 		</div>
 
 		{{-- Search button --}}

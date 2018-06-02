@@ -28,7 +28,7 @@
 		transform: translate(-50%, -50%);
 		margin-top: -1em;
 
-		h1, h2 {
+		h1, .home-meal {
 			animation: appearWithOpacity 2s;
 			animation-fill-mode: forwards;
 			transition: opacity 300ms;
@@ -46,9 +46,26 @@
 			animation-delay: .5s;
 		}
 
-		h2 {
+		.home-meal {
 			font-size: 1.2em;
 			animation-delay: .7s;
+			position: relative;
+
+			a {
+				display: inline-block;
+				color: #fff;
+				transition: padding .3s, transform .2s, background-color .5s;
+				transform: scale(1);
+				border-radius: 20px;
+
+				&:hover {
+					transform: scale(1.2);
+					transition: padding .3s, transform .2s, background-color .5s;
+					background: $mainDark;
+					padding: 0 15px;
+					box-shadow: 2px 2px 15px rgba(0, 0, 0, .6);
+				}
+			}
 		}
 	}
 	
