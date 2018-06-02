@@ -10,12 +10,13 @@
 .categories-menu {
 	width: 100%;
 	background: $main;
+	border-radius: 0 0 6px 6px;
 
 	a {
 		border-bottom: 1px solid $mainHover;
 		
 		&:last-child {
-			border-bottom: 5px solid $mainHover;
+			border-bottom: none;
 		}
 	}
 }
@@ -40,8 +41,6 @@
 	transition: transform 300ms;
 }
 
-
-
 @media (min-width: 640px) {
 	.arrow-bottom {
 		display: block;
@@ -64,15 +63,16 @@
 		width: 200%;
 		font-size: .9em;
 		position: absolute;
-		top: 100%;
-		margin-top: 5px;
+		top: 47px;
+		padding-top: 5px;
 		right: -50%;
 		transform-origin: top;
 		transition: transform 400ms;
 		transform: perspective(1000px) rotateX(-90deg);
+		opacity: .95;
 	}
 
-	.categor-menu-opened {
+	.categories-menu.active {
 		transform: perspective(1000px) rotateX(0deg);
 	}
 }
