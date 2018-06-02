@@ -9,12 +9,11 @@ function $(e) {
 var i = void 0;
 
 /**
- * Show certain element by adding class and removing after
- * another click event
+ * Show certain element by adding active class and
+ * removing after another click event
  * 
  * @param {string} element that u want to show
  * @param {string} button that u want to click
- * @param {string} className class that you want to add after click 
  */
 function activeAfterClickBtn(element, button) {
 	var visible = false;
