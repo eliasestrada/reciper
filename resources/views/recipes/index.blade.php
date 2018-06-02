@@ -7,7 +7,7 @@
 <h1 class="headline">@lang('recipes.recipes')</h1>
 
 <div class="recipes">
-	<Recipes></Recipes>
+	<recipes></recipes>
 </div>
 
 @endsection

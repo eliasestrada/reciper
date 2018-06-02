@@ -98,7 +98,7 @@
 	{{-- API: Еще рецепты Sidebar --}}
 	<div class="side-bar">
 		<h3 class="decorated"><span>@lang('recipes.more')</span></h3>
-		<ul class="unstyled-list target-for-random-recipes"></ul>
+		<random-recipes-sidebar resipe-id="{{ $recipe->id }}"></random-recipes-sidebar>
 	</div>
 </section>
 
@@ -106,40 +106,11 @@
 
 @section('script')
 <script defer>
-	// Like Icon
-	let likeIcon = document.querySelector(".like-icon")
-	let targetForRandomRecipes = document.querySelector(".target-for-random-recipes")
-
-	likeIcon.addEventListener('click', animateLikeButton)
+	document.querySelector(".like-icon").addEventListener('click', animateLikeButton)
 
 	function animateLikeButton() {
 		likeIcon.classList.add("disappear")
 		likeIcon.style.opacity = '0'
 	}
-
-	// This function fetches recipes
-	(function fetchData() {
-		fetch('/api/show-random-recipes/{{ $recipe->id }}')
-		.then(res => res.json())
-		.then(res => {
-			let output = ''
-			let i = 0;
-			res.data.forEach(random => {
-				i += 2
-				output += `
-					<li class="side-bar-recipe" style="animation: appearWithRotate 1.${ i }s;">
-						<a href="/recipes/${ random.id }" title="${ random.title }">
-							<img src="/storage/images/${ random.image }" alt="${ random.title }" id="target-img">
-						</a>
-						<div class="side-bar-content">
-							<h3>${ random.title }</h3>
-						</div>
-					</li>`
-			})
-			targetForRandomRecipes.innerHTML = output
-		})
-		.catch(err => console.log(err))
-	})()
-
 </script>
 @endsection

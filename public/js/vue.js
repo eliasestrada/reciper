@@ -3818,28 +3818,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_core_js__);
 
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 window.Vue = __webpack_require__(343);
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-var components = ['Recipes'];
+var components = ['Recipes', 'RandomRecipesSidebar'];
 
 components.forEach(function (comp) {
-  Vue.component(comp, __webpack_require__(347)("./" + comp + '.vue'));
+	Vue.component(comp, __webpack_require__(347)("./" + comp + '.vue'));
 });
 
 var app = new Vue({
-  el: '#app'
+	el: '#app'
 });
 
 /***/ }),
@@ -20128,6 +20116,7 @@ process.umask = function() { return 0; };
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./RandomRecipesSidebar.vue": 357,
 	"./Recipes.vue": 348
 };
 function webpackContext(req) {
@@ -20494,6 +20483,156 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(349)
+/* script */
+var __vue_script__ = __webpack_require__(358)
+/* template */
+var __vue_template__ = __webpack_require__(359)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\vue\\components\\RandomRecipesSidebar.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-36b67c8a", Component.options)
+  } else {
+    hotAPI.reload("data-v-36b67c8a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 358 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			recipes: []
+		};
+	},
+	created: function created() {
+		this.fetchData();
+	},
+
+
+	props: ['resipeId'],
+
+	methods: {
+		fetchData: function fetchData() {
+			var _this = this;
+
+			fetch('/api/show-random-recipes/' + this.resipeId).then(function (res) {
+				return res.json();
+			}).then(function (res) {
+				return _this.recipes = res.data;
+			}).catch(function (err) {
+				return console.log(err);
+			});
+		}
+	}
+});
+
+/***/ }),
+/* 359 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "ul",
+    { staticClass: "unstyled-list" },
+    _vm._l(_vm.recipes, function(recipe) {
+      return _c(
+        "li",
+        {
+          key: recipe.id,
+          staticClass: "side-bar-recipe",
+          staticStyle: { animation: "appearWithRotate 1s" }
+        },
+        [
+          _c(
+            "a",
+            { attrs: { href: "/recipes/" + recipe.id, title: recipe.title } },
+            [
+              _c("img", {
+                attrs: {
+                  src: "/storage/images/" + recipe.image,
+                  alt: recipe.title
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "side-bar-content" }, [
+            _c("h3", [_vm._v(_vm._s(recipe.title))])
+          ])
+        ]
+      )
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-36b67c8a", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
