@@ -24,6 +24,7 @@ class CreateRecipesTable extends Migration
             $table->bigInteger('ready')->default(0);
 			$table->boolean('approved')->default(0);
 			$table->string('image')->default('default.jpg');
+			$table->string('meal_time', 30)->nullable();
             $table->timestamps();
         });
     }
