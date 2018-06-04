@@ -17,6 +17,11 @@ function user()
 	return auth()->user();
 }
 
+function language()
+{
+	return app()->getLocale();
+}
+
 
 function styleTimestamp( $path )
 {
