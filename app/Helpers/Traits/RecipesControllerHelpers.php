@@ -3,7 +3,7 @@
 namespace App\Helpers\Traits;
 
 use Image;
-use Illuminate\Support\Facades\Storage;
+use Storage;
 
 trait RecipesControllerHelpers
 {

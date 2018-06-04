@@ -2,7 +2,7 @@
 
 namespace App\Helpers\Traits;
 
-use Illuminate\Support\Facades\Schema;
+use Schema;
 
 trait CommonHelper
 {

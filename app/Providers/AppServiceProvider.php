@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
+use DB;
+use Schema;
 use App\Models\User;
 use App\Models\Title;
 use App\Models\Recipe;
 use App\Models\Category;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
