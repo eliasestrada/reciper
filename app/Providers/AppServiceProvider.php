@@ -33,13 +33,18 @@ class AppServiceProvider extends ServiceProvider
 
 	public function updateLastUserVisit()
 	{
-		view()->composer('*', function ($view) {
-			if (auth()->check()) {
-				User::whereId(user()->id)->update([
-					'updated_at' => NOW()
-				]);
-			}
-		});
+
+		if (Schema::hasTable('users')) {
+			view()->composer('*', function ($view) {
+				if (auth()->check()) {
+					User::whereId(user()->id)->update([
+						'updated_at' => NOW()
+					]);
+				}
+			}); 
+		} else {
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+		}
 	}
 
 
