@@ -17,7 +17,7 @@ class PagesController extends Controller
 
 	public function home()
 	{
-		if (Schema::hasTable('recipes')) {
+		if (Schema::hasTable('recipes_' . locale())) {
 			$random_recipes = Recipe::inRandomOrder()
 				->whereApproved(1)->limit(12)
 				->get([ 'id', 'title', 'image' ]);
@@ -35,7 +35,7 @@ class PagesController extends Controller
 
 	public function search(Request $request)
     {
-		if ($this->checkIfTableExists('recipes')) {
+		if ($this->checkIfTableExists('recipes_' . locale())) {
 			return view('pages.search')->withError(trans('message.fail_connection'));
 		}
 
@@ -50,7 +50,7 @@ class PagesController extends Controller
 				// Search for meal time
 				$recipes = Meal
 					::where('name_' . locale(), 'LIKE', '%'.$request.'%')
-					->with('recipes')
+					->with('recipes_' . locale())
 					->take(50)
 					->get();
 			} else {
@@ -58,7 +58,7 @@ class PagesController extends Controller
 				$request = str_replace('-', ' ', $request);
 				$recipes = Category
 					::where('name_' . locale(), 'LIKE', '%'.$request.'%')
-					->with('recipes')
+					->with('recipes_' . locale())
 					->take(50)
 					->get();
 			}

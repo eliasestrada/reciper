@@ -66,7 +66,7 @@ class UserSidebarServiceProvider extends ServiceProvider
 
 	public function countAndComposeAllUnprovedRecipes()
 	{
-		if (Schema::hasTable('recipes')) {
+		if (Schema::hasTable('recipes_' . locale())) {
 			view()->composer('includes.user-sidebar', function($view) {
 				if (user()) {
 					$recipes = Recipe::whereApproved(0)->whereReady(1)->count();
@@ -75,7 +75,7 @@ class UserSidebarServiceProvider extends ServiceProvider
 				}
 			});
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes_' . locale()]));
 		}
 	}
 

@@ -17,7 +17,7 @@ class DatabaseTest extends TestCase
     {
 		$recipe = factory(Recipe::class)->create(['title' => 'hello']);
 
-		$this->assertDatabaseHas('recipes', [
+		$this->assertDatabaseHas('recipes_' . locale(), [
 			'title' => 'hello'
 		]);		
 	}

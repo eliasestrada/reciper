@@ -9,7 +9,7 @@ class CreateRecipesTable extends Migration
 
     public function up()
     {
-        Schema::create('recipes', function (Blueprint $table) {
+        Schema::create('recipes_' . locale(), function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('user_id')->unsigned()->default(1);
 			$table->integer('category_id')->unsigned()->default(1);
@@ -32,6 +32,6 @@ class CreateRecipesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('recipes');
+        Schema::dropIfExists('recipes_' . locale());
     }
 }

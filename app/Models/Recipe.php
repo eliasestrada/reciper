@@ -2,11 +2,23 @@
 
 namespace App\Models;
 
+use Schema;
 use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
 	protected $guarded = [ 'id' ];
+	protected $table = 'recipes_ru';
+
+	/**
+	 * Name of the table depends on locale state
+	 */
+	public function __construct()
+	{
+		if (Schema::hasTable('recipes_' . locale())) {
+			$this->table = 'recipes_' . locale();
+		}
+	}
 
     public function user() {
         return $this->belongsTo(User::class);

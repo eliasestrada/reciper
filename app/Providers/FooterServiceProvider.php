@@ -20,7 +20,7 @@ class FooterServiceProvider extends ServiceProvider
 
     public function getAndComposeRandomRecipes()
     {
-        if (Schema::hasTable('recipes')) {
+        if (Schema::hasTable('recipes_' . locale())) {
 			view()->composer('includes.footer', function ($view) {
 				$view->with('rand_recipes',
 					Recipe::inRandomOrder()
@@ -29,13 +29,13 @@ class FooterServiceProvider extends ServiceProvider
 						->get([ 'id', 'title' ]));
 			});
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes_' . locale()]));
 		}
 	}
 
     public function getAndComposePopularRecipes()
     {
-        if (Schema::hasTable('recipes')) {
+        if (Schema::hasTable('recipes_' . locale())) {
 			view()->composer('includes.footer', function ($view) {
 				$view->with('popular_recipes',
 					Recipe::whereApproved(1)
@@ -44,7 +44,7 @@ class FooterServiceProvider extends ServiceProvider
 						->get([ 'id', 'title' ]));
 			});
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes_' . locale()]));
 		}
 	}
 

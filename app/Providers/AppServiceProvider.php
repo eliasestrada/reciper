@@ -42,14 +42,14 @@ class AppServiceProvider extends ServiceProvider
 				}
 			}); 
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes_' . locale()]));
 		}
 	}
 
 
 	public function showListOfCategories()
 	{
-		if (Schema::hasTable('recipes')) {
+		if (Schema::hasTable('recipes_' . locale())) {
 			$all_categories = Recipe::distinct()->get(['category_id']);
 			$categories = [];
 
@@ -59,7 +59,7 @@ class AppServiceProvider extends ServiceProvider
 
 			view()->share(compact('categories'));
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes_' . locale()]));
 		}
 	}
 }
