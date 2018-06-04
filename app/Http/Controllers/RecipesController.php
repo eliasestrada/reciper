@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Cookie;
 use App\Models\Recipe;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Events\RecipeIsReady;
-use Cookie;
 use App\Http\Requests\RecipeSaveRequest;
 use App\Http\Requests\RecipePublichRequest;
 use App\Helpers\Traits\RecipesControllerHelpers;
