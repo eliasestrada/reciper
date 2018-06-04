@@ -5,10 +5,10 @@
 
 		<h1>{{ config('app.name') }}</h1>
 		<div class="home-meal">
-			@lang('home.what_u_like')<br />
-			<a href="search?for={{ trans('home.breakfast') }}">@lang('home.breakfast')</a>, 
-			<a href="search?for={{ trans('home.lunch') }}">@lang('home.lunch')</a> @lang('home.or') 
-			<a href="search?for={{ trans('home.dinner') }}">@lang('home.dinner')</a>?
+			@lang('header.what_u_like')<br />
+			<a href="search?for={{ trans('header.breakfast') }}">@lang('header.breakfast')</a>, 
+			<a href="search?for={{ trans('header.lunch') }}">@lang('header.lunch')</a> @lang('header.or') 
+			<a href="search?for={{ trans('header.dinner') }}">@lang('header.dinner')</a>?
 		</div>
 
 		{{-- Search button --}}

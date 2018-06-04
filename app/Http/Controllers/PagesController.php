@@ -40,9 +40,9 @@ class PagesController extends Controller
 		}
 
 		$meal_time = [
-			mb_strtolower(trans('home.breakfast')),
-			mb_strtolower(trans('home.lunch')),
-			mb_strtolower(trans('home.dinner'))
+			mb_strtolower(trans('header.breakfast')),
+			mb_strtolower(trans('header.lunch')),
+			mb_strtolower(trans('header.dinner'))
 		];
 
 		if ($request = mb_strtolower($request->input('for'))) {
