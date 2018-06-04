@@ -2,30 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Meal;
+use Schema;
 use App\Models\Title;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use App\Helpers\Traits\CommonHelper;
 
 
 class PagesController extends Controller
 {
+	use CommonHelper;
+
 	public function home()
 	{
-		$random_recipes = Recipe::inRandomOrder()
-			->whereApproved(1)->limit(12)
-			->get([ 'id', 'title', 'image' ]);
+		if (Schema::hasTable('recipes')) {
+			$random_recipes = Recipe::inRandomOrder()
+				->whereApproved(1)->limit(12)
+				->get([ 'id', 'title', 'image' ]);
+		}
 
-		$meal = Meal::get();
+		if (Schema::hasTable('titles')) {
+			$title_intro = Title::whereName('Интро')->first([ 'title', 'text' ]);
+		}
 
 		return view('pages.home')->with(compact(
-			'random_recipes', 'title_intro', 'meal'
+			'random_recipes', 'title_intro'
 		));
 	}
 
 
 	public function search(Request $request)
     {
+		if ($this->checkIfTableExists('recipes')) {
+			return view('pages.search')->withError(trans('message.fail_connection'));
+		}
+
 		if ($request = $request->input('for')) {
 			if (is_numeric($request)) {
 				$query = Recipe::query()

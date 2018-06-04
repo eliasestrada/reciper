@@ -33,7 +33,6 @@ class AppServiceProvider extends ServiceProvider
 
 	public function updateLastUserVisit()
 	{
-
 		if (Schema::hasTable('users')) {
 			view()->composer('*', function ($view) {
 				if (auth()->check()) {
@@ -50,7 +49,11 @@ class AppServiceProvider extends ServiceProvider
 
 	public function showListOfCategories()
 	{
+		if (Schema::hasTable('recipes')) {
 			$all_categories = Recipe::distinct()->select('category_id')->get();
 			view()->share(compact('all_categories'));
+		} else {
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+		}
 	}
 }
