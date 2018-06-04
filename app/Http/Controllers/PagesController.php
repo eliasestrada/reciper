@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Schema;
+use App\Models\Meal;
 use App\Models\Title;
 use App\Models\Recipe;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Helpers\Traits\CommonHelper;
 
@@ -37,16 +39,41 @@ class PagesController extends Controller
 			return view('pages.search')->withError(trans('message.fail_connection'));
 		}
 
-		if ($request = $request->input('for')) {
-			if (is_numeric($request)) {
-				$query = Recipe::query()
-					->whereCategoryId($request);
+		$meal_time = [
+			mb_strtolower(trans('home.breakfast')),
+			mb_strtolower(trans('home.lunch')),
+			mb_strtolower(trans('home.dinner'))
+		];
+
+		if ($request = mb_strtolower($request->input('for'))) {
+			if (in_array($request, $meal_time)) {
+				// Search for meal time
+				$recipes = Meal
+					::where('name_'.config('app.locale'), 'LIKE', '%'.$request.'%')
+					->with('recipes')
+					->take(50)
+					->get();
 			} else {
-				$query = Recipe::query()
-					->where('title', 'LIKE', '%' . $request . '%')
-					->orWhere('ingredients', 'LIKE', '%' . $request . '%');
+				// Search for categories
+				$request = str_replace('-', ' ', $request);
+				$recipes = Category
+					::where('name_'.config('app.locale'), 'LIKE', '%'.$request.'%')
+					->with('recipes')
+					->take(50)
+					->get();
 			}
-			$recipes = $query->take(50)->get();
+
+			if ($recipes->count() > 0) {
+				$recipes = $recipes[0]->recipes;
+			} else {
+				// Search for recipes
+				$recipes = Recipe
+					::where('title', 'LIKE', '%'.$request.'%')
+					->orWhere('ingredients', 'LIKE', '%'.$request.'%')
+					->take(50)
+					->get();
+			}
+
 			$message = count($recipes) < 1 ? trans('pages.nothing_found') : '';
 		} else {
 			$recipes = '';
