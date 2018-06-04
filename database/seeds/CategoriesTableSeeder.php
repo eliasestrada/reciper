@@ -8,21 +8,21 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         Category::insert([
-			[ 'category' => 'Вторые блюда' ],
-			[ 'category' => 'Выпечка' ],
-			[ 'category' => 'Гарниры' ],
-			[ 'category' => 'Десерты' ],
-			[ 'category' => 'Детские блюда' ],
-			[ 'category' => 'Завтраки' ],
-			[ 'category' => 'Крупы' ],
-			[ 'category' => 'Мультиварка' ],
-			[ 'category' => 'Мясо' ],
-			[ 'category' => 'Овощи' ],
-			[ 'category' => 'Рыба' ],
-			[ 'category' => 'Салаты' ],
-			[ 'category' => 'Соусы' ],
-			[ 'category' => 'Суши' ],
-			[ 'category' => 'Разное' ]
+			[ 'name' => 'Вторые блюда' ],
+			[ 'name' => 'Выпечка' ],
+			[ 'name' => 'Гарниры' ],
+			[ 'name' => 'Десерты' ],
+			[ 'name' => 'Детские блюда' ],
+			[ 'name' => 'Завтраки' ],
+			[ 'name' => 'Крупы' ],
+			[ 'name' => 'Мультиварка' ],
+			[ 'name' => 'Мясо' ],
+			[ 'name' => 'Овощи' ],
+			[ 'name' => 'Рыба' ],
+			[ 'name' => 'Салаты' ],
+			[ 'name' => 'Соусы' ],
+			[ 'name' => 'Суши' ],
+			[ 'name' => 'Разное' ]
 		]);
     }
 }

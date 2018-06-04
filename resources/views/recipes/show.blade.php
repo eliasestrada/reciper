@@ -64,8 +64,8 @@
 		<p>{{ $recipe->intro }}</p>
 
 		{{--  Category  --}}
-		<a href="/search?for={{ $recipe->category_id }}" title="{{ $recipe->category->category }}">
-			<span class="category">{{ $recipe->category->category }}</span>
+		<a href="/search?for={{ $recipe->category_id }}" title="{{ $recipe->category->name }}">
+			<span class="category">{{ $recipe->category->name }}</span>
 		</a>
 
 		{{--  Time  --}}

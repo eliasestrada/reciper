@@ -37,10 +37,10 @@
 			<div class="form-group simple-group">
 				{{ Form::label('category', trans('recipes.category')) }}
 				<select name="category_id">
-					<option selected value="{{ $recipe->category->id }}">{{ $recipe->category->category }}</option>
+					<option selected value="{{ $recipe->category->id }}">{{ $recipe->category->name }}</option>
 					<option>--------------------------</option>
 					@foreach ($categories as $category)
-						<option value="{{ $category->id }}">{{ $category->category }}</option>
+						<option value="{{ $category->id }}">{{ $category->name }}</option>
 					@endforeach
 				</select>
 			</div>

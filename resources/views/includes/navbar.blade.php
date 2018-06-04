@@ -32,8 +32,8 @@
 
 				@isset($all_categories)
 					@foreach ($all_categories as $category)
-						<a href="/search?for={{ $category->category->id }}" title="{{ $category->category->category }}">
-							<span>{{ $category->category->category }}</span>
+						<a href="/search?for={{ $category->category->id }}" title="{{ $category->category->name }}">
+							<span>{{ $category->category->name }}</span>
 						</a>
 					@endforeach
 				@endisset
