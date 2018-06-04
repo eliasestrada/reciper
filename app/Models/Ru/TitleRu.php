@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Ru;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Title extends Model
+class TitleRu extends Model
 {
+	protected $table = 'titles_ru';
 	protected $fillable = [ 'name', 'title', 'text' ];
 	public $timestamps  = false;
 }

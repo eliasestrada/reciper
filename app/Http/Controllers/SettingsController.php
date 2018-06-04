@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Image;
-use App\Models\User;
-use App\Models\Title;
-use Illuminate\Http\Request;
 use Hash;
+use Image;
 use Storage;
+use App\Models\User;
+use App\Models\Ru\TitleRu;
+use Illuminate\Http\Request;
 use App\Http\Requests\SettingsPhotoRequest;
 use App\Http\Requests\SettingsUpdateHomeDataRequest;
 use App\Http\Requests\SettingsUpdateUserDataRequest;
@@ -83,7 +83,7 @@ class SettingsController extends Controller
 
 	public function updateBannerData(SettingsUpdateHomeDataRequest $request)
 	{
-		Title::whereName('Баннер')->update([
+		TitleRu::whereName('Баннер')->update([
 			'title' => $request->title,
 			'text'  => $request->text
 		]);
@@ -94,7 +94,7 @@ class SettingsController extends Controller
 
 	public function updateIntroData(SettingsUpdateHomeDataRequest $request)
 	{
-		Title::whereName('Интро')->update([
+		TitleRu::whereName('Интро')->update([
 			'title' => $request->title,
 			'text'  => $request->text
 		]);
@@ -112,7 +112,7 @@ class SettingsController extends Controller
 			['text.max' => trans('settings.footer_text_max')]
 		);
 
-		Title::whereName('Подвал')->update($data);
+		TitleRu::whereName('Подвал')->update($data);
 
 		return back()->withSuccess(
 			trans('settings.saved')
