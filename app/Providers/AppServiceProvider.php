@@ -5,8 +5,7 @@ namespace App\Providers;
 use DB;
 use Schema;
 use App\Models\User;
-use App\Models\Trans\Title;
-use App\Models\Recipe;
+use App\Models\Trans\Recipe;
 use App\Models\Trans\Title;
 use Illuminate\Support\ServiceProvider;
 
@@ -42,14 +41,14 @@ class AppServiceProvider extends ServiceProvider
 				}
 			}); 
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes_' . locale()]));
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
 		}
 	}
 
 
 	public function showListOfCategories()
 	{
-		if (Schema::hasTable('recipes_' . locale())) {
+		if (Schema::hasTable('recipes')) {
 			$all_categories = Recipe::distinct()->get(['category_id']);
 			$categories = [];
 
@@ -59,7 +58,7 @@ class AppServiceProvider extends ServiceProvider
 
 			view()->share(compact('categories'));
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes_' . locale()]));
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
 		}
 	}
 }

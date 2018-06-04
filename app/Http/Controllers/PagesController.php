@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Schema;
-use App\Models\Meal;
+use App\Models\Trans\Meal;
 use App\Models\Trans\Title;
-use App\Models\Recipe;
-use App\Models\Trans\Title;
+use App\Models\Trans\Recipe;
 use Illuminate\Http\Request;
+use App\Models\Trans\Category;
 use App\Helpers\Traits\CommonHelper;
 
 
@@ -17,13 +17,13 @@ class PagesController extends Controller
 
 	public function home()
 	{
-		if (Schema::hasTable('recipes_' . locale())) {
+		if (Schema::hasTable('recipes')) {
 			$random_recipes = Recipe::inRandomOrder()
 				->whereApproved(1)->limit(12)
 				->get([ 'id', 'title', 'image' ]);
 		}
 
-		if (Schema::hasTable('titles_ru')) {
+		if (Schema::hasTable('titles')) {
 			$title_intro = Title::where('name', 'Интро')->first([ 'title', 'text' ]);
 		}
 
@@ -35,7 +35,7 @@ class PagesController extends Controller
 
 	public function search(Request $request)
     {
-		if ($this->checkIfTableExists('recipes_' . locale())) {
+		if ($this->checkIfTableExists('recipes')) {
 			return view('pages.search')->withError(trans('message.fail_connection'));
 		}
 
@@ -50,7 +50,7 @@ class PagesController extends Controller
 				// Search for meal time
 				$recipes = Meal
 					::where('name_' . locale(), 'LIKE', '%'.$request.'%')
-					->with('recipes_' . locale())
+					->with('recipes')
 					->take(50)
 					->get();
 			} else {
@@ -58,7 +58,7 @@ class PagesController extends Controller
 				$request = str_replace('-', ' ', $request);
 				$recipes = Category
 					::where('name_' . locale(), 'LIKE', '%'.$request.'%')
-					->with('recipes_' . locale())
+					->with('recipes')
 					->take(50)
 					->get();
 			}

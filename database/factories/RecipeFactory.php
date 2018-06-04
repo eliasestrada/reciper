@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Recipe;
+use App\Models\Trans\Recipe;
 use Faker\Generator as Faker;
 
 $factory->define(Recipe::class, function (Faker $faker) {

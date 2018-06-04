@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Schema;
-use App\Models\Recipe;
+use App\Models\Trans\Recipe;
 use App\Models\Trans\Title;
 use Illuminate\Support\ServiceProvider;
 
@@ -20,7 +20,7 @@ class FooterServiceProvider extends ServiceProvider
 
     public function getAndComposeRandomRecipes()
     {
-        if (Schema::hasTable('recipes_' . locale())) {
+        if (Schema::hasTable('recipes')) {
 			view()->composer('includes.footer', function ($view) {
 				$view->with('rand_recipes',
 					Recipe::inRandomOrder()
@@ -29,13 +29,13 @@ class FooterServiceProvider extends ServiceProvider
 						->get([ 'id', 'title' ]));
 			});
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes_' . locale()]));
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
 		}
 	}
 
     public function getAndComposePopularRecipes()
     {
-        if (Schema::hasTable('recipes_' . locale())) {
+        if (Schema::hasTable('recipes')) {
 			view()->composer('includes.footer', function ($view) {
 				$view->with('popular_recipes',
 					Recipe::whereApproved(1)
@@ -44,19 +44,19 @@ class FooterServiceProvider extends ServiceProvider
 						->get([ 'id', 'title' ]));
 			});
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes_' . locale()]));
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
 		}
 	}
 
 
 	public function getAndComposeTitleForFooter()
 	{
-		if (Schema::hasTable('titles_ru')) {
+		if (Schema::hasTable('titles')) {
 			view()->composer('includes.footer', function ($view) {
 				$view->with('title_footer', Title::whereName('Подвал')->first(['text']));
 			});
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'titles_ru']));
+			logger()->emergency(trans('logs.no_table', ['table' => 'titles']));
 		}
 	}
 }

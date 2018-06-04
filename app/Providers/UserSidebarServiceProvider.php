@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\User;
-use App\Models\Recipe;
+use App\Models\Trans\Recipe;
 use App\Models\Feedback;
 use App\Models\Notification;
 use Schema;
@@ -66,7 +66,7 @@ class UserSidebarServiceProvider extends ServiceProvider
 
 	public function countAndComposeAllUnprovedRecipes()
 	{
-		if (Schema::hasTable('recipes_' . locale())) {
+		if (Schema::hasTable('recipes')) {
 			view()->composer('includes.user-sidebar', function($view) {
 				if (user()) {
 					$recipes = Recipe::whereApproved(0)->whereReady(1)->count();
@@ -75,7 +75,7 @@ class UserSidebarServiceProvider extends ServiceProvider
 				}
 			});
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes_' . locale()]));
+			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
 		}
 	}
 

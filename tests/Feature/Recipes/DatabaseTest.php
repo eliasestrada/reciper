@@ -4,7 +4,7 @@ namespace Tests\Feature\Recipes;
 
 use Tests\TestCase;
 use App\Models\User;
-use App\Models\Recipe;
+use App\Models\Trans\Recipe;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -17,7 +17,7 @@ class DatabaseTest extends TestCase
     {
 		$recipe = factory(Recipe::class)->create(['title' => 'hello']);
 
-		$this->assertDatabaseHas('recipes_' . locale(), [
+		$this->assertDatabaseHas('recipes', [
 			'title' => 'hello'
 		]);		
 	}

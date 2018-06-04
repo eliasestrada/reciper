@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Recipe;
+use App\Models\Trans\Recipe;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 

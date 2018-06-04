@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Recipe;
+use App\Models\Trans\Recipe;
 use App\Models\Visitor;
 use Eseath\SxGeo\SxGeo;
 use App\Models\Feedback;
