@@ -6,7 +6,7 @@ use App\Models\Recipe;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Events\RecipeIsReady;
-use Illuminate\Support\Facades\Cookie;
+use Cookie;
 use App\Http\Requests\RecipeSaveRequest;
 use App\Http\Requests\RecipePublichRequest;
 use App\Helpers\Traits\RecipesControllerHelpers;

@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Recipe;
 use App\Models\Feedback;
 use App\Models\Notification;
-use Illuminate\Support\Facades\Schema;
+use Schema;
 use Illuminate\Support\ServiceProvider;
 
 class UserSidebarServiceProvider extends ServiceProvider

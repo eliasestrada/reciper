@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Models\Title;
 use App\Models\Recipe;
-use Illuminate\Support\Facades\Schema;
+use Schema;
 use Illuminate\Support\ServiceProvider;
 
 class FooterServiceProvider extends ServiceProvider
