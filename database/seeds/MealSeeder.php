@@ -7,17 +7,10 @@ class MealSeeder extends Seeder
 {
     public function run()
     {
-        Meal::create([
-			'name_ru' => 'Завтрак',
-			'name_en' => 'Breakfast'
-			]);
-        Meal::create([
-			'name_ru' => 'Обед',
-			'name_en' => 'Lunch'
-			]);
-        Meal::create([
-			'name_ru' => 'Ужин',
-			'name_en' => 'Dinner'
-			]);
+        Meal::insert([
+			[ 'name' => 'breakfast' ],
+			[ 'name' => 'lunch' ],
+			[ 'name' => 'dinner' ],
+		]);
     }
 }
