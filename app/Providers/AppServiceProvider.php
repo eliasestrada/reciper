@@ -33,27 +33,19 @@ class AppServiceProvider extends ServiceProvider
 
 	public function updateLastUserVisit()
 	{
-		if (Schema::hasTable('users')) {
-			view()->composer('*', function ($view) {
-				if (auth()->check()) {
-					User::whereId(user()->id)->update([
-						'updated_at' => NOW()
-					]);
-				}
-			});
-		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
-		}
+		view()->composer('*', function ($view) {
+			if (auth()->check()) {
+				User::whereId(user()->id)->update([
+					'updated_at' => NOW()
+				]);
+			}
+		});
 	}
 
 
 	public function showListOfCategories()
 	{
-		if (Schema::hasTable('recipes')) {
 			$all_categories = Recipe::distinct()->select('category_id')->get();
 			view()->share(compact('all_categories'));
-		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
-		}
 	}
 }
