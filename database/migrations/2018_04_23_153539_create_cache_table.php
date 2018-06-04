@@ -6,11 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateCacheTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('cache', function (Blueprint $table) {
@@ -20,11 +16,7 @@ class CreateCacheTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::dropIfExists('cache');
