@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Cookie;
 use App\Models\Recipe;
-use App\Models\Category;
+use App\Models\Trans\Title;
 use Illuminate\Http\Request;
 use App\Events\RecipeIsReady;
 use App\Http\Requests\RecipeSaveRequest;

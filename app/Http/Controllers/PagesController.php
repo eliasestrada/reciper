@@ -6,7 +6,7 @@ use Schema;
 use App\Models\Meal;
 use App\Models\Trans\Title;
 use App\Models\Recipe;
-use App\Models\Category;
+use App\Models\Trans\Title;
 use Illuminate\Http\Request;
 use App\Helpers\Traits\CommonHelper;
 

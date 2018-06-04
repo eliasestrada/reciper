@@ -7,7 +7,7 @@ use Schema;
 use App\Models\User;
 use App\Models\Trans\Title;
 use App\Models\Recipe;
-use App\Models\Category;
+use App\Models\Trans\Title;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
