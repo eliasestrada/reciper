@@ -32,7 +32,7 @@
 
 				@isset($categories)
 					@foreach ($categories as $categ)
-						<a href="/search?for={{ $categ['id'] }}" title="{{ $categ['name_'.config('app.locale')] }}">
+						<a href="/search?for={{ str_replace(' ', '-', $categ['name_'.config('app.locale')]) }}" title="{{ $categ['name_'.config('app.locale')] }}">
 							<span>{{ $categ['name_'.config('app.locale')] }}</span>
 						</a>
 					@endforeach

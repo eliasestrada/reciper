@@ -41,10 +41,8 @@ window.addEventListener('mouseup', e => {
 })
 
 /**
- * Removing word 'Категории' on mobile screen,
- * and put it back on descktop
+ * Removing word 'Категории' on mobile screen
  */
-document.querySelector('.categories-title').innerHTML
-	= window.matchMedia("( min-width: 640px )").matches
-	? 'Категории'
-	: ''
+if (window.matchMedia("( max-width: 640px )").matches) {
+	document.querySelector('.categories-title').innerHTML = ''
+}
