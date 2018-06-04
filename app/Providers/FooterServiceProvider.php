@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Models\Ru\TitleRu;
-use App\Models\Recipe;
 use Schema;
+use App\Models\Recipe;
+use App\Models\Ru\Title;
 use Illuminate\Support\ServiceProvider;
 
 class FooterServiceProvider extends ServiceProvider
@@ -14,7 +14,7 @@ class FooterServiceProvider extends ServiceProvider
     {
 		$this->getAndComposeRandomRecipes();
 		$this->getAndComposePopularRecipes();
-		$this->getAndComposeTitleRuForFooter();
+		$this->getAndComposeTitleForFooter();
     }
 
 
@@ -49,11 +49,11 @@ class FooterServiceProvider extends ServiceProvider
 	}
 
 
-	public function getAndComposeTitleRuForFooter()
+	public function getAndComposeTitleForFooter()
 	{
 		if (Schema::hasTable('titles_ru')) {
 			view()->composer('includes.footer', function ($view) {
-				$view->with('title_footer', TitleRu::whereName('Подвал')->first(['text']));
+				$view->with('title_footer', Title::whereName('Подвал')->first(['text']));
 			});
 		} else {
 			logger()->emergency(trans('logs.no_table', ['table' => 'titles_ru']));

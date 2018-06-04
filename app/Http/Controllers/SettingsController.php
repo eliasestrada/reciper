@@ -6,7 +6,7 @@ use Hash;
 use Image;
 use Storage;
 use App\Models\User;
-use App\Models\Ru\TitleRu;
+use App\Models\Ru\Title;
 use Illuminate\Http\Request;
 use App\Http\Requests\SettingsPhotoRequest;
 use App\Http\Requests\SettingsUpdateHomeDataRequest;
@@ -83,7 +83,7 @@ class SettingsController extends Controller
 
 	public function updateBannerData(SettingsUpdateHomeDataRequest $request)
 	{
-		TitleRu::whereName('Баннер')->update([
+		Title::whereName('Баннер')->update([
 			'title' => $request->title,
 			'text'  => $request->text
 		]);
@@ -94,7 +94,7 @@ class SettingsController extends Controller
 
 	public function updateIntroData(SettingsUpdateHomeDataRequest $request)
 	{
-		TitleRu::whereName('Интро')->update([
+		Title::whereName('Интро')->update([
 			'title' => $request->title,
 			'text'  => $request->text
 		]);
@@ -112,7 +112,7 @@ class SettingsController extends Controller
 			['text.max' => trans('settings.footer_text_max')]
 		);
 
-		TitleRu::whereName('Подвал')->update($data);
+		Title::whereName('Подвал')->update($data);
 
 		return back()->withSuccess(
 			trans('settings.saved')
