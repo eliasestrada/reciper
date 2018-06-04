@@ -50,7 +50,7 @@ class AppServiceProvider extends ServiceProvider
 	public function showListOfCategories()
 	{
 		if (Schema::hasTable('recipes')) {
-			$all_categories = Recipe::distinct()->select('category_id')->get();
+			$all_categories = Recipe::distinct()->get(['category_id']);
 			view()->share(compact('all_categories'));
 		} else {
 			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
