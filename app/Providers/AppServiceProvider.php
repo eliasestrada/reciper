@@ -51,7 +51,13 @@ class AppServiceProvider extends ServiceProvider
 	{
 		if (Schema::hasTable('recipes')) {
 			$all_categories = Recipe::distinct()->get(['category_id']);
-			view()->share(compact('all_categories'));
+			$categories = [];
+
+			foreach ($all_categories as $category) {
+				array_push($categories, $category->category->toArray());
+			}
+
+			view()->share(compact('categories'));
 		} else {
 			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
 		}

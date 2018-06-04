@@ -30,10 +30,10 @@
 			<div class="arrow-bottom" id="arrow-bottom"></div>
 			<div class="categories-menu" id="categories-menu">
 
-				@isset($all_categories)
-					@foreach ($all_categories as $category)
-						<a href="/search?for={{ $category->category->id }}" title="{{ $category->category->name }}">
-							<span>{{ $category->category->name }}</span>
+				@isset($categories)
+					@foreach ($categories as $categ)
+						<a href="/search?for={{ $categ['id'] }}" title="{{ $categ['name_'.config('app.locale')] }}">
+							<span>{{ $categ['name_'.config('app.locale')] }}</span>
 						</a>
 					@endforeach
 				@endisset
