@@ -5,7 +5,7 @@ namespace App\Providers;
 use DB;
 use Schema;
 use App\Models\User;
-use App\Models\Title;
+use App\Models\Trans\Title;
 use App\Models\Recipe;
 use App\Models\Category;
 use Illuminate\Support\ServiceProvider;

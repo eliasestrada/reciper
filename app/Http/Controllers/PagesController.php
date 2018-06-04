@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Schema;
 use App\Models\Meal;
-use App\Models\Title;
+use App\Models\Trans\Title;
 use App\Models\Recipe;
 use App\Models\Category;
 use Illuminate\Http\Request;

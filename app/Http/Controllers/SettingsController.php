@@ -6,7 +6,7 @@ use Hash;
 use Image;
 use Storage;
 use App\Models\User;
-use App\Models\Title;
+use App\Models\Trans\Title;
 use Illuminate\Http\Request;
 use App\Http\Requests\SettingsPhotoRequest;
 use App\Http\Requests\SettingsUpdateHomeDataRequest;
