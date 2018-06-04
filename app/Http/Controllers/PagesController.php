@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Schema;
 use App\Models\Meal;
-use App\Models\Title;
+use App\Models\Ru\TitleRu;
 use App\Models\Recipe;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -23,8 +23,8 @@ class PagesController extends Controller
 				->get([ 'id', 'title', 'image' ]);
 		}
 
-		if (Schema::hasTable('titles')) {
-			$title_intro = Title::whereName('Интро')->first([ 'title', 'text' ]);
+		if (Schema::hasTable('titles_ru')) {
+			$title_intro = TitleRu::where('name', 'Интро')->first([ 'title', 'text' ]);
 		}
 
 		return view('pages.home')->with(compact(
