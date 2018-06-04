@@ -17,7 +17,7 @@ function user()
 	return auth()->user();
 }
 
-function language()
+function locale()
 {
 	return app()->getLocale();
 }

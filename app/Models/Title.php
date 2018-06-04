@@ -16,8 +16,8 @@ class Title extends Model
 	 */
 	public function __construct()
 	{
-		if (Schema::hasTable('title_' . language())) {
-			$this->table = 'titles_' . language();
+		if (Schema::hasTable('title_' . locale())) {
+			$this->table = 'titles_' . locale();
 		}
 	}
 }
