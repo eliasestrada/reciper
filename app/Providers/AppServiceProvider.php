@@ -40,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
 						'updated_at' => NOW()
 					]);
 				}
-			});
+			}); 
 		} else {
 			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
 		}
