@@ -30,13 +30,13 @@
 			<div class="arrow-bottom" id="arrow-bottom"></div>
 			<div class="categories-menu" id="categories-menu">
 
-				@isset($categories)
+				{{-- @isset($categories)
 					@foreach ($categories as $categ)
 						<a href="/search?for={{ str_replace(' ', '-', $categ['name_'.config('app.locale')]) }}" title="{{ $categ['name_'.config('app.locale')] }}">
 							<span>{{ $categ['name_'.config('app.locale')] }}</span>
 						</a>
 					@endforeach
-				@endisset
+				@endisset --}}
 
 			</div>
 		</li>
