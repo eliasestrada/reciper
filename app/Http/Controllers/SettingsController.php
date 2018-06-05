@@ -81,22 +81,12 @@ class SettingsController extends Controller
         }
 	}
 
-	public function updateBannerData(SettingsUpdateHomeDataRequest $request)
-	{
-		Title::whereName('Баннер')->update([
-			'title' => $request->title,
-			'text'  => $request->text
-		]);
-
-		return back()->withSuccess(trans('settings.saved'));
-	}
-
 
 	public function updateIntroData(SettingsUpdateHomeDataRequest $request)
 	{
-		Title::whereName('Интро')->update([
-			'title' => $request->title,
-			'text'  => $request->text
+		Title::whereName('intro')->update([
+			'title_'.getLocale() => $request->title,
+			'text_'.getLocale()  => $request->text
 		]);
 
 		return back()->withSuccess(
@@ -112,7 +102,9 @@ class SettingsController extends Controller
 			['text.max' => trans('settings.footer_text_max')]
 		);
 
-		Title::whereName('Подвал')->update($data);
+		Title::whereName('footer')->update([
+			'text_'.getLocale() => $request->text
+		]);
 
 		return back()->withSuccess(
 			trans('settings.saved')

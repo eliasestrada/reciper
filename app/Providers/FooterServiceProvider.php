@@ -52,8 +52,10 @@ class FooterServiceProvider extends ServiceProvider
 	public function getAndComposeTitleForFooter()
 	{
 		if (Schema::hasTable('titles')) {
-			view()->composer('includes.footer', function ($view) {
-				$view->with('title_footer', Title::whereName('Подвал')->first(['text']));
+			$title_footer = Title::whereName('footer')->value('text_'.getLocale());
+
+			view()->composer('includes.footer', function ($view) use ($title_footer) {
+				$view->with('title_footer', $title_footer);
 			});
 		} else {
 			logger()->emergency(trans('logs.no_table', ['table' => 'titles']));

@@ -24,11 +24,14 @@ class PagesController extends Controller
 		}
 
 		if (Schema::hasTable('titles')) {
-			$title_intro = Title::where('name', 'Интро')->first([ 'title', 'text' ]);
+			$intro = Title::where('name', 'intro');
+
+			$title_intro = $intro->value('title_' . getLocale());
+			$text_intro = $intro->value('text_' . getLocale());
 		}
 
 		return view('pages.home')->with(compact(
-			'random_recipes', 'title_intro'
+			'random_recipes', 'title_intro', 'text_intro'
 		));
 	}
 
