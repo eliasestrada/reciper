@@ -58,7 +58,7 @@ ol, ul, dl {
 .wrapper {
   min-height: 20em;
   color: #2e2d2d;
-  background: #eee;
+  background: #f3f3f3;
   padding-top: 5em;
   z-index: -2;
 }
@@ -1936,7 +1936,7 @@ button.close {
 }
 
 .home-section {
-  background: #eee;
+  background: #f3f3f3;
   color: #333;
   padding: 1.5em 1.8em;
 }
@@ -2829,7 +2829,7 @@ footer .footer-copyright {
 .grid-recipe {
   color: #2e2d2d;
   padding: 0 .6em;
-  background: #eee;
+  background: #f3f3f3;
 }
 
 .recipe-content > p {
