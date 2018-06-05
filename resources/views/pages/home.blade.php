@@ -8,20 +8,30 @@
 @include('includes.header')
 
 <section class="home-section" style="position:relative;">
-	<h2 class="headline">{{ title_case($title_intro->title ?? '') }}</h2>
-	<p>{{ $title_intro->text ?? '' }}</p>
+	@isset($title_intro)
+		<h2 class="headline">{{ title_case($title_intro ?? '') }}</h2>
+	@endisset
+	@isset($text_intro)
+		<p>{{ $text_intro ?? '' }}</p>
+	@endisset
 
 	@admin
 		{{--  Настройки Интро  --}}
 		<a class="edit-btn" title="@lang('home.edit_intro')" id="btn-for-intro">
 			<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
 		</a>
-		@component('components.home_edit_form', ['array' => $title_intro])
+		@component('components.edit_form')
 			@slot('id')
 				intro-form
 			@endslot
 			@slot('action')
 				SettingsController@updateIntroData
+			@endslot
+			@slot('title')
+				{{ $title_intro }}
+			@endslot
+			@slot('text')
+				{{ $text_intro }}
 			@endslot
 			@slot('holder_title')
 				@lang('settings.intro_title')

@@ -67,7 +67,7 @@
 	</a>
 
 	<p class="footer-copyright">
-		&copy; {{ date('Y') }} Delicious Food <br /> {{ $title_footer->text ?? '' }}
+		&copy; {{ date('Y') }} Delicious Food <br /> {{ $title_footer ?? '' }}
 	</p>
 
 	@admin
@@ -76,9 +76,12 @@
 			<a class="edit-btn" title="@lang('home.edit_banner')" id="btn-for-footer">
 				<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
 			</a>
-			@component('components.home_edit_form', ['array' => $title_footer])
+			@component('components.edit_form')
 				@slot('id')
 					footer-form
+				@endslot
+				@slot('text')
+					{{ $title_footer }}
 				@endslot
 				@slot('action')
 					SettingsController@updateFooterData
