@@ -23,18 +23,34 @@ class Recipe extends Model
 	}
 
 	public function ingredientsWithListItems() {
-		return convertToListItems($this->ingredients);
+		if (locale() === 'ru') {
+			return convertToListItems($this->ingredients_ru);
+		} elseif (locale() === 'en') {
+			return convertToListItems($this->ingredients_en);
+		}
 	}
 
 	public function textWithListItems() {
-		return convertToListItems($this->text);
+		if (locale() === 'ru') {
+			return convertToListItems($this->text_ru);
+		} elseif (locale() === 'en') {
+			return convertToListItems($this->text_en);
+		}
 	}
 	
 	public function ready() {
-		return $this->ready === 1 ? true : false;
+		if (locale() === 'ru') {
+			return $this->ready_ru === 1 ? true : false;
+		} elseif (locale() === 'en') {
+			return $this->ready_en === 1 ? true : false;
+		}
 	}
 
 	public function approved() {
-		return $this->approved === 1 ? true : false;
+		if (locale() === 'ru') {
+			return $this->approved_ru === 1 ? true : false;
+		} elseif (locale() === 'en') {
+			return $this->approved_en === 1 ? true : false;
+		}
 	}
 }
