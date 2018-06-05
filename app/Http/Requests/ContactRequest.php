@@ -16,7 +16,6 @@ class ContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:50',
 			'email' => 'required|email',
 			'message' => 'required|min:20|max:5000'
         ];
@@ -25,7 +24,6 @@ class ContactRequest extends FormRequest
 	public function messages()
     {
         return [
-			'name.required' => trans('contact.contact_name_required'),
 			'email.required' => trans('contact.contact_email_required'),
 			'message.required' => trans('contact.contact_message_required'),
 			'email.email' => trans('contact.contact_email_email'),
