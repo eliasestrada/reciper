@@ -17,10 +17,11 @@ function user()
 	return auth()->user();
 }
 
-function getLocale()
+function locale()
 {
 	return app()->getLocale();
 }
+
 
 
 function styleTimestamp( $path )
