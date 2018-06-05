@@ -11,9 +11,9 @@ class CreateVisitorsTable extends Migration
     {
         Schema::create('visitors', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50)->nullable();
-            $table->ipAddress('ip');
+            $table->smallInteger('recipes')->default(0);
             $table->integer('requests')->default(0);
+            $table->ipAddress('ip');
             $table->timestamps();
         });
     }
