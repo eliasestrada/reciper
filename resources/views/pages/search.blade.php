@@ -29,16 +29,16 @@
 @isset($recipes)
 	<section class="recipes">
 		<div class="row">
-			@foreach ($recipes as $recipe)
+			@foreach ($recipes->toArray() as $recipe)
 				<div class="recipe-container col-12 col-sm-6 col-md-4 col-lg-3">
 					<div class="recipe">
 
 						{{--  Image  --}}
-						<a href="/recipes/{{ $recipe->id }}">
-							<img  src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->title }}" title="{{ $recipe->title }}">
+						<a href="/recipes/{{ $recipe['id'] }}">
+							<img  src="{{ asset('storage/images/'.$recipe['image']) }}" alt="{{ $recipe['title_'.locale()] }}" title="{{ $recipe['title_'.locale()] }}">
 						</a>
 						<div class="recipes-content">
-							<h3>{{ $recipe->title }}</h3>
+							<h3>{{ $recipe['title_'.locale()] }}</h3>
 						</div>
 					</div>
 				</div>
