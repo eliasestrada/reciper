@@ -11,8 +11,12 @@ class CreateTitleTable extends Migration
         Schema::create('titles', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('name');
-			$table->string('title');
-			$table->text('text');
+			// Russian
+			$table->string('title_ru')->nullable();
+			$table->text('text_ru')->nullable();
+			// English
+			$table->string('title_en')->nullable();
+			$table->text('text_en')->nullable();
         });
     }
 
