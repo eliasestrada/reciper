@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Artisan;
-use Illuminate\Http\Request;
 
 
 class ArtisanController extends Controller

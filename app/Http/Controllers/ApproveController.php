@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Recipe;
 use App\Models\Notification;
-use Illuminate\Http\Request;
 
 class ApproveController extends Controller
 {

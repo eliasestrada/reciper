@@ -7,7 +7,6 @@ use App\Models\Recipe;
 use App\Models\Visitor;
 use Eseath\SxGeo\SxGeo;
 use App\Models\Feedback;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
