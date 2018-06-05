@@ -74,9 +74,10 @@ class PagesController extends Controller
 					->get();
 			}
 
+
 			$message = count($recipes) < 1 ? trans('pages.nothing_found') : '';
 		} else {
-			$recipes = '';
+			$recipes = [];
 			$message = trans('pages.use_search');
 		}
 
