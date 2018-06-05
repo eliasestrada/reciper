@@ -15,14 +15,14 @@
 	@forelse ($feedback as $feed)
 		<div class="notification">
 			<h4 class="notification-title">{{ $feed->email }}</h4>
-			<p class="notification-date">{{ $feed->name }} ({{ facebookTimeAgo($feed->created_at) }})</p>
+			<p class="notification-date">{{ facebookTimeAgo($feed->created_at) }}</p>
 			<p class="notification-message">{{ $feed->message }}</p>
 
-			{!! Form::open(['action' => ['AdminController@feedbackDestroy', $feed->id], 'method' => 'POST', 'onsubmit' => 'return confirm("Вы точно хотите удалить этот отзыв?")']) !!}
-				{{ method_field('delete') }}
-				{{ Form::submit(trans('form.delete'), ['class' => 'button-add-user']) }}
-			{!! Form::close() !!}
-
+			<form action="{{ action('AdminController@feedbackDestroy', ['id' => $feed->id]) }}" method="post" onsubmit="return confirm('@lang('contact.sure_del_feed')')">
+				@method('delete')
+				@csrf
+				<button type="submit" class="btn">@lang('form.delete')</button>
+			</form>
 		</div>
 	@empty
 		<p class="content text-center">@lang('admin.no_messages')</p>
