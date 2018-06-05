@@ -49,7 +49,7 @@ class PagesController extends Controller
 			if (in_array($request, $meal_time)) {
 				// Search for meal time
 				$recipes = Meal
-					::where('name_' . locale(), 'LIKE', '%'.$request.'%')
+					::where('name_' . getLocale(), 'LIKE', '%'.$request.'%')
 					->with('recipes')
 					->take(50)
 					->get();
@@ -57,7 +57,7 @@ class PagesController extends Controller
 				// Search for categories
 				$request = str_replace('-', ' ', $request);
 				$recipes = Category
-					::where('name_' . locale(), 'LIKE', '%'.$request.'%')
+					::where('name_' . getLocale(), 'LIKE', '%'.$request.'%')
 					->with('recipes')
 					->take(50)
 					->get();
