@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Trans;
+namespace App\Models;
 
 use Schema;
 use Illuminate\Database\Eloquent\Model;

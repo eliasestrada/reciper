@@ -3,7 +3,7 @@
 namespace Tests\Browser;
 
 use App\Models\User;
-use App\Models\Trans\Recipe;
+use App\Models\Recipe;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

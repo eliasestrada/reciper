@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use Storage;
-use App\Models\Trans\Recipe;
+use App\Models\Recipe;
 
 class RecipeObserver
 {

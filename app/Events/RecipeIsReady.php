@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\Trans\Recipe;
+use App\Models\Recipe;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;

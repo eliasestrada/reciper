@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Schema;
-use App\Models\Trans\Meal;
-use App\Models\Trans\Title;
-use App\Models\Trans\Recipe;
+use App\Models\Meal;
+use App\Models\Title;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
-use App\Models\Trans\Category;
+use App\Models\Category;
 use App\Helpers\Traits\CommonHelper;
 
 

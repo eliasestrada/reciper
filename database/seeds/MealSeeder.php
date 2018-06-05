@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Trans\Meal;
+use App\Models\Meal;
 use Illuminate\Database\Seeder;
 
 class MealSeeder extends Seeder

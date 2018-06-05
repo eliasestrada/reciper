@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Trans\Title;
+use App\Models\Title;
 use Illuminate\Database\Seeder;
 
 class TitleSeeder extends Seeder

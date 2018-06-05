@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Schema;
-use App\Models\Trans\Recipe;
-use App\Models\Trans\Title;
+use App\Models\Recipe;
+use App\Models\Title;
 use Illuminate\Support\ServiceProvider;
 
 class FooterServiceProvider extends ServiceProvider

@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\User;
-use App\Models\Trans\Recipe;
+use App\Models\Recipe;
 use App\Models\Feedback;
 use App\Models\Notification;
 use Schema;

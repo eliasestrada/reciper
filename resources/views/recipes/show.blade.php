@@ -77,9 +77,6 @@
 			<ul>{!! $recipe->ingredientsWithListItems() !!}</ul>
 		</div>
 
-		{{--  Совет  --}}
-		<p>{{ $recipe->advice }}</p>
-
 		{{--  Приготовление  --}}
 		<h3 class="decorated"><span>@lang('recipes.text_of_recipe')</span></h3>
 		<ol class="instruction unstyled-list">

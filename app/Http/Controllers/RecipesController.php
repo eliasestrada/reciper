@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Cookie;
-use App\Models\Trans\Recipe;
-use App\Models\Trans\Title;
+use App\Models\Recipe;
+use App\Models\Title;
 use Illuminate\Http\Request;
 use App\Events\RecipeIsReady;
 use App\Http\Requests\RecipeSaveRequest;

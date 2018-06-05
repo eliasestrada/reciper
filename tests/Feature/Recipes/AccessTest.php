@@ -4,7 +4,7 @@ namespace Tests\Feature\Recipes;
 
 use Tests\TestCase;
 use App\Models\User;
-use App\Models\Trans\Recipe;
+use App\Models\Recipe;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 

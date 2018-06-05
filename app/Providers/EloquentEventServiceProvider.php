@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Trans\Recipe;
+use App\Models\Recipe;
 use Illuminate\Support\ServiceProvider;
 
 class EloquentEventServiceProvider extends ServiceProvider
