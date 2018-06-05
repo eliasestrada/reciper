@@ -2028,8 +2028,8 @@ button.close {
   position: absolute;
   top: 0;
   left: 0;
-  background: #231f39 url(../storage/other/img.jpg);
-  background-blend-mode: lighten;
+  background: rgba(72, 64, 116, 0.5) url(../storage/other/img.jpg);
+  background-blend-mode: overlay;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -74,7 +74,7 @@
 		top: 0;
 		left: 0;
 		background: $homeHeaderBg $homeHeaderImage;
-		background-blend-mode: lighten;
+		background-blend-mode: overlay;
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -82,7 +82,7 @@
 		height: 100vh;
 		width: 100%;
 		overflow: hidden;
-		box-shadow: 0px 3px 15px rgba(0, 0, 0, .3);
+		box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.3);
 	}
 	
 	.header-bg-content {

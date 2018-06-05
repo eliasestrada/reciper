@@ -23,7 +23,7 @@ $navBorderBottom: solid 2px $mainLight;
 
 // Home header
 $homeHeaderImage: url(../storage/other/img.jpg);
-$homeHeaderBg: darken($mainDark, 3%);
+$homeHeaderBg: rgba($main, .5);
 
 // Small notification button
 $smallNotifBtnBg: #a70e0e;
