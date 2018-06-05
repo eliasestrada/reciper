@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ locale() }}">
 <head>
 	@include('includes.head')
 	<title>@yield('title') - {{ config('app.name') }}</title>
