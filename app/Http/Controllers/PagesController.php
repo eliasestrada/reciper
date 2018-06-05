@@ -18,16 +18,18 @@ class PagesController extends Controller
 	public function home()
 	{
 		if (Schema::hasTable('recipes')) {
-			$random_recipes = Recipe::inRandomOrder()
-				->whereApproved(1)->limit(12)
-				->get([ 'id', 'title', 'image' ]);
+			$random_recipes = Recipe
+				::inRandomOrder()
+				->where("approved_".locale(), 1)
+				->limit(12)
+				->get(['id', "title_".locale(), 'image']);
 		}
 
 		if (Schema::hasTable('titles')) {
-			$intro = Title::where('name', 'intro');
+			$intro = Title::whereName("intro_".locale());
 
-			$title_intro = $intro->value('title_' . getLocale());
-			$text_intro = $intro->value('text_' . getLocale());
+			$title_intro = $intro->value("title_".locale());
+			$text_intro = $intro->value("text_".locale());
 		}
 
 		return view('pages.home')->with(compact(
@@ -52,7 +54,7 @@ class PagesController extends Controller
 			if (in_array($request, $meal_time)) {
 				// Search for meal time
 				$recipes = Meal
-					::where('name_' . getLocale(), 'LIKE', '%'.$request.'%')
+					::where("name_".locale(), 'LIKE', '%'.$request.'%')
 					->with('recipes')
 					->take(50)
 					->get();
@@ -60,7 +62,7 @@ class PagesController extends Controller
 				// Search for categories
 				$request = str_replace('-', ' ', $request);
 				$recipes = Category
-					::where('name_' . getLocale(), 'LIKE', '%'.$request.'%')
+					::where("name_".locale(), 'LIKE', '%'.$request.'%')
 					->with('recipes')
 					->take(50)
 					->get();
@@ -71,8 +73,8 @@ class PagesController extends Controller
 			} else {
 				// Search for recipes
 				$recipes = Recipe
-					::where('title', 'LIKE', '%'.$request.'%')
-					->orWhere('ingredients', 'LIKE', '%'.$request.'%')
+					::where("title_".locale(), 'LIKE', '%'.$request.'%')
+					->orWhere("ingredients_".locale(), 'LIKE', '%'.$request.'%')
 					->take(50)
 					->get();
 			}

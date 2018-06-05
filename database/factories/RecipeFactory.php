@@ -13,18 +13,18 @@ $factory->define(Recipe::class, function (Faker $faker) {
 		'image' => 'default.jpg',
 
 		// Russian language
-        'title_ru' => $faker->catchPhrase,
-		'intro_ru' => $faker->text(200),
-		'ingredients_ru' => $faker->text(40),
-		'text_ru' => $faker->text(1000),
+        'title_ru' => 'Русское название № ' . rand(),
+		'intro_ru' => 'Вступление на русском языке ' . rand(),
+		'ingredients_ru' => 'Руские ингридиенты ' . rand(),
+		'text_ru' => 'Текст тоже русский ' . rand(),
 		'ready_ru' => 1,
 		'approved_ru' => 1,
 
 		// Russian language
-        'title_en' => $faker->catchPhrase,
-		'intro_en' => $faker->text(200),
-		'ingredients_en' => $faker->text(40),
-		'text_en' => $faker->text(1000),
+        'title_en' => 'Enlish title # ' . rand(),
+		'intro_en' => 'Intro in english ' . rand(),
+		'ingredients_en' => 'English ingredients ' . rand(),
+		'text_en' => 'Text in english ' . rand(),
 		'ready_en' => 1,
 		'approved_en' => 1
     ];

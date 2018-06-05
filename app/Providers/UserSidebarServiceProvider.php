@@ -69,7 +69,10 @@ class UserSidebarServiceProvider extends ServiceProvider
 		if (Schema::hasTable('recipes')) {
 			view()->composer('includes.user-sidebar', function($view) {
 				if (user()) {
-					$recipes = Recipe::whereApproved(0)->whereReady(1)->count();
+					$recipes = Recipe
+						::where("approved_{locale()}", 0)
+						->where("ready_{locale()}", 1)
+						->count();
 					$all_unapproved = !empty($recipes) ? 'data-notif='.$recipes : '';
 					$view->with(compact('all_unapproved'));
 				}
