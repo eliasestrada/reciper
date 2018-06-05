@@ -92,8 +92,8 @@
 	.home-button {
 		display: flex;
 		margin: .6em auto;
-		width: 4.3em;
-		height: 4.3em;
+		width: 5em;
+		height: 5em;
 		text-align: center;
 		border-radius: 50%;
 		background: $main;
@@ -105,6 +105,7 @@
 		opacity: 0;
 		cursor: pointer;
 		position: relative;
+		border: none;
 
 		i {
 			width: 28px;
@@ -139,6 +140,8 @@
 	
 	.header-search input {
 		width: 100%;
+		position: absolute;
+		top: 3.8em;
 		height: 2em;
 		padding: 0 1em;
 		border-radius: 10px;

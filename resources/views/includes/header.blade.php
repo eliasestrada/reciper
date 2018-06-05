@@ -10,18 +10,15 @@
 			<a href="search?for={{ trans('header.dinner') }}">@lang('header.dinner')</a>?
 		</div>
 
-		{{-- Search button --}}
-		<a class="home-button" id="home-search-btn">
-			<i style="background: url('/css/icons/svg/search.svg')"></i>
-		</a>
-
 		{{--  Form  --}}
 		{!! Form::open(['action' => 'PagesController@search', 'method' => 'GET', 'class' => 'header-search']) !!}
 			<div class="form-group" style="position:relative;">
 				<div class="home-search" id="search-form">
 					{{ Form::text('for', '', ['id' => 'header-search-input', 'placeholder' => trans('pages.search_details')]) }}
-					{{ Form::submit('', ['class' => 'd-none']) }}
 				</div>
+				<button type="submit" class="home-button" id="home-search-btn">
+					<i style="background: url('/css/icons/svg/search.svg')"></i>
+				</button>
 			</div>
 		{!! Form::close() !!}
 	</div>
