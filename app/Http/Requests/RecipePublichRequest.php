@@ -23,7 +23,6 @@ class RecipePublichRequest extends FormRequest
 				'title' => 'min:5|max:190',
 				'intro' => 'min:20|max:2000',
 				'ingredients' => 'min:20|max:5000',
-				'advice' => 'max:5000',
 				'text' => 'min:80|max:10000',
 				'time' => 'numeric|digits_between:0,1000',
 				'image' => 'image|nullable|max:1999'
@@ -43,7 +42,6 @@ class RecipePublichRequest extends FormRequest
 				'intro.max' => trans('recipes.recipe_intro_max'),
 				'ingredients.min' => trans('recipes.recipe_ingredients_min'),
 				'ingredients.max' => trans('recipes.recipe_ingredients_max'),
-				'advice.max' => trans('recipes.recipe_advice_max'),
 				'text.min' => trans('recipes.recipe_text_min'),
 				'text.max' => trans('recipes.recipe_text_max'),
 				'time.numeric' => trans('recipes.recipe_time_numeric'),

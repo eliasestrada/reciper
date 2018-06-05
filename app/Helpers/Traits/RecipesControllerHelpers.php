@@ -38,7 +38,6 @@ trait RecipesControllerHelpers
 			'title' => $request->title,
 			'intro' => $request->intro,
 			'ingredients' => $request->ingredients,
-			'advice' => $request->advice,
 			'text' => $request->text,
 			'time' => $request->time,
 			'ready' => isset($request->ready) ? 1 : 0,

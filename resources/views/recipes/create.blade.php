@@ -51,19 +51,12 @@
 		<div class="col-12 col-lg-6">
 			{{-- Advice --}}
 			<div class="form-group">
-				<label>@lang('recipes.advice')</label>
-				{{ Form::textarea('advice', '', ['placeholder' => trans('recipes.advice_description')]) }}
-			</div>
-		</div>
-
-		<div class="col-12 col-lg-6">
-			{{-- Intro --}}
-			<div class="form-group">
 				<label>@lang('recipes.intro')</label>
 				{{ Form::textarea('intro', '', ['placeholder' => trans('recipes.short_intro')]) }}
 			</div>
 		</div>
-		<div class="col-12 col-lg-6">
+
+		<div class="col-12">
 			{{-- Text --}}
 			<div class="form-group">
 				<label>@lang('recipes.text_of_recipe')</label>

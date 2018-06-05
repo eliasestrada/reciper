@@ -19,7 +19,6 @@ class RecipeSaveRequest extends FormRequest
             'title' => 'max:190',
             'intro' => 'max:2000',
             'ingredients'  => 'max:5000',
-            'advice' => 'max:5000',
             'text' => 'max:10000',
             'time' => 'numeric|digits_between:0,1999',
             'image' => 'image|nullable|max:1999'
@@ -35,7 +34,6 @@ class RecipeSaveRequest extends FormRequest
 			'intro.max' => trans('recipes.recipe_intro_max'),
 			'ingredients.min' => trans('recipes.recipe_ingredients_min'),
 			'ingredients.max' => trans('recipes.recipe_ingredients_max'),
-			'advice.max' => trans('recipes.recipe_advice_max'),
 			'text.min' => trans('recipes.recipe_text_min'),
 			'text.max' => trans('recipes.recipe_text_max'),
 			'time.numeric' => trans('recipes.recipe_time_numeric'),
