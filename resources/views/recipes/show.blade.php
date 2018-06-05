@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $recipe->title)
+@section('title', $title)
 
 @section('content')
 
@@ -56,12 +56,12 @@
 			@endif
 		@endadmin
 
-		<h1 class="headline">{{ title_case($recipe->title) }}</h1>
+		<h1 class="headline">{{ title_case($title) }}</h1>
 
-		<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->name }}" class="recipe-img">
+		<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $title }}" class="recipe-img">
 		
 		{{--  Intro  --}}
-		<p>{{ $recipe->intro }}</p>
+		<p>{{ $intro }}</p>
 
 		{{--  Category  --}}
 		<a href="/search?for={{ $recipe->category_id }}" title="{{ $recipe->category->name }}">

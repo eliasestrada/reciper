@@ -56,6 +56,8 @@ class RecipesController extends Controller
     // It will show the recipe on a single page
     public function show(Recipe $recipe)
     {
+		$recipe_array = $recipe->toArray();
+
         // Rules for visitors
         if (!user() && !$recipe->approved()) {
             return redirect('/recipes')->withError(trans('recipes.no_rights_to_see'));
@@ -76,7 +78,11 @@ class RecipesController extends Controller
 			}
 		}
 
-		return view('recipes.show')->withRecipe($recipe);
+		return view('recipes.show')->with([
+			'recipe' => $recipe,
+			'title' => $recipe_array['title_'.locale()],
+			'intro' => $recipe_array['intro_'.locale()],
+		]);
     }
 
 
