@@ -2024,12 +2024,12 @@ button.close {
           box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
 }
 
-.home-header .header-bg-img,
-.home-header .header-bg-overlay {
+.home-header .header-bg-img {
   position: absolute;
   top: 0;
   left: 0;
-  background: url(../storage/other/img.jpg);
+  background: #231f39 url(../storage/other/img.jpg);
+  background-blend-mode: lighten;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2038,11 +2038,6 @@ button.close {
   overflow: hidden;
   -webkit-box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.3);
           box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.3);
-}
-
-.home-header .header-bg-overlay {
-  background: #0d0b15;
-  opacity: 0.55;
 }
 
 .home-header .header-bg-content {
