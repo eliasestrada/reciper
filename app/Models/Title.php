@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Title extends Model
 {
-	protected $fillable = [ 'name', 'title', 'text' ];
+	protected $guarded = ['id'];
 	public $timestamps  = false;
 }

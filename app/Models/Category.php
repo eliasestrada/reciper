@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-	protected $fillable = [ 'categories' ];
+	protected $guarded = ['id'];
 	public $timestamps  = false;
 
 	public function recipes() {

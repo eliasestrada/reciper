@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Meal extends Model
 {
 	protected $table = 'meal';
-	protected $fillable = ['name'];
+	protected $guarded = ['id'];
 	public $timestamps  = false;
 
 	public function recipes()
