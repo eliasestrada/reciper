@@ -26,7 +26,7 @@ class PagesController extends Controller
 		}
 
 		if (Schema::hasTable('titles')) {
-			$intro = Title::whereName("intro_".locale());
+			$intro = Title::whereName("intro");
 
 			$title_intro = $intro->value("title_".locale());
 			$text_intro = $intro->value("text_".locale());
