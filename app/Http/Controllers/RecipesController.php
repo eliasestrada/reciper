@@ -96,10 +96,11 @@ class RecipesController extends Controller
 			);
         }
 
-        $categories = Category::get();
-        return view('recipes.edit')->with(compact(
-			'recipe', 'categories'
-		));
+        return view('recipes.edit')->with([
+			'recipe' => $recipe,
+			'categories' => Category::get(),
+			'category' => $recipe->category->toArray()['name_'.locale()]
+		]);
     }
 
     /**
