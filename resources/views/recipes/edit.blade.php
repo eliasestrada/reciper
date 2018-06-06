@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post" class="form" enctype="multipart/form-data">
+<form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post" class="form" enctype="multipart/form-data" id="form-update-recipe">
 
 	@method('put')
 	@csrf
@@ -19,6 +19,10 @@
 				{{--  View button  --}}
 				<a href="/recipes/{{ $recipe->id }}" class="edit-recipe-icon icon-eye" title="@lang('recipes.view_recipe')"></a>
 
+				{{-- Publish button --}}
+				<a href="#" class="edit-recipe-icon icon-publish" title="@lang('recipes.view_recipe')" id="publish-btn"></a>
+				<input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
+
 				{{--  Delete button  --}}
 				<delete-recipe-btn
 					recipe-id="{{ $recipe->id }}"
@@ -26,13 +30,6 @@
 					deleting="{{ trans('recipes.deleting') }}"
 					confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
 				</delete-recipe-btn>
-			</div>
-		</div>
-
-		<div class="check-box-ready d-flex col-12">
-			<div class="d-flex">
-				<input type="checkbox" name="ready" value="1" title="@lang('recipes.press_to_publish')">
-				<p title="@lang('recipes.press_to_publish')">@lang('recipes.ready_to_publish')</p>
 			</div>
 		</div>
 
