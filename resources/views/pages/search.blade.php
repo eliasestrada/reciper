@@ -5,7 +5,6 @@
 @section('content')
 
 {{--  Form  --}}
-
 <form action="{{ action('PagesController@search') }}" method="get" class="form">
 	<div class="form-group simple-group">
 		<h2 class="form-headline">
