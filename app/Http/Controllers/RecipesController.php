@@ -144,17 +144,4 @@ class RecipesController extends Controller
 		}
 		return back();
     }
-
-	// We also deliting image in App\Observers\RecipeObserver
-    public function destroy(Recipe $recipe)
-    {
-        // Check for correct user
-        if (!user()->hasRecipe($recipe->user_id) && !user()->isAdmin()) {
-            return redirect('/recipes')->withError(trans('recipes.you_cant_edit_recipe'));
-		}
-		$this->deleteOldImage($recipe->image);
-		$recipe->delete();
-
-        return redirect('/users/my_recipes/all')->withSuccess(trans('recipes.deleted'));
-	}
 }
