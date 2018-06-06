@@ -29,6 +29,19 @@ function activeAfterClickBtn(element, button) {
 	});
 }
 
+/**
+ * The function will check the given checkbox after clicking given
+ * button, then it will submit the closest form to checkbox
+ * @param {string} checkbox 
+ * @param {string} button 
+ */
+function checkCheckboxThenSubmit(checkbox, button) {
+	$(button).addEventListener('click', function () {
+		if ($(checkbox).checked = true) {
+			$(checkbox).closest('form').submit();
+		}
+	});
+}
 // This object auto updates pictures after
 // selecting them via file input
 var imageUploader = {
@@ -62,6 +75,9 @@ window.onload = function () {
 	$('loading').classList.remove("loading");
 	$('loading-title').innerHTML = '';
 };
+if ($('ready-checkbox')) {
+	checkCheckboxThenSubmit('ready-checkbox', 'publish-btn');
+}
 /**
  * These functions allows admin see edit form after clicking
  * edit button
