@@ -18,6 +18,13 @@
 	
 				{{--  View button  --}}
 				<a href="/recipes/{{ $recipe->id }}" class="edit-recipe-icon icon-eye"></a>
+
+				{{--  Delete button  --}}
+				<delete-recipe-btn
+					recipe-id="{{ $recipe->id }}"
+					deleted-fail="{{ trans('recipes.deleted_fail') }}"
+					confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
+				</delete-recipe-btn>
 			</div>
 		</div>
 

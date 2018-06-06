@@ -26,13 +26,11 @@
 					<a href="/recipes/{{ $recipe->id }}/edit" title="@lang('recipes.edit_recipe')" class="edit-recipe-icon icon-edit"></a>
 
 					{{--  Delete button  --}}
-					<form action="{{ action('RecipesController@destroy', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" style="width: auto" onsubmit="return confirm('@lang('recipes.are_you_sure_to_delete')')">
-
-						@method('delete')
-						@csrf
-
-						<input type="submit" value="" class="edit-recipe-icon icon-delete">
-					</form>
+					<delete-recipe-btn
+						recipe-id="{{ $recipe->id }}"
+						deleted-fail="{{ trans('recipes.deleted_fail') }}"
+						confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
+					</delete-recipe-btn>
 				</div>
 			@endif
 		@endauth
