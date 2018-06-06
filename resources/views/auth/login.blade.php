@@ -14,13 +14,13 @@
 			@lang('form.login')
 		</h2>
 
-		{{ Form::label('email', trans('form.email')) }}
-		{{ Form::email('email', null, ['placeholder' => trans('form.email')]) }}
+		<label for="email">@lang('form.email')</label>
+		<input type="email" name="email" placeholder="@lang('form.email')">
 	</div>
 
 	<div class="form-group simple-group">
-		{{ Form::label('password', trans('form.pwd')) }}
-		{{ Form::password('password', ['placeholder' => trans('form.pwd')]) }}
+		<label for="password">@lang('form.pwd')</label>
+		<input type="password" name="password" placeholder="@lang('form.pwd')">
 	</div>
 	
 	<div class="form-group simple-group mt-3 d-flex">
