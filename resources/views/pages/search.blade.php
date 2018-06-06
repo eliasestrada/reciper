@@ -7,6 +7,9 @@
 {{--  Form  --}}
 
 <form action="{{ action('PagesController@search') }}" method="get" class="form">
+
+	@csrf
+
 	<div class="form-group simple-group">
 		<h2 class="form-headline">
 			<i class="title-icon" style="background: url('/css/icons/svg/search.svg')"></i>

@@ -7,6 +7,8 @@
 <form action="{{ action('RecipesController@store') }}" method="post" class="form" enctype="multipart/form-data">
 	<div class="row">
 
+		@csrf
+
 		<div class="col-12">
 			<h1 class="headline">@lang('recipes.add_recipe')</h1>
 			{{-- Edit button --}}

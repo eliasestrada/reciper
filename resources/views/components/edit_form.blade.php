@@ -2,6 +2,7 @@
 	<form action="{{ action($action) }}" method="post" class="form">
 
 		@method('put')
+		@csrf
 
 		<div class="form-group">
 			@if (isset($title) && isset($holder_title))
