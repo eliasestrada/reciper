@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Recipe;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class RecipesRandomResource extends JsonResource
@@ -9,15 +10,9 @@ class RecipesRandomResource extends JsonResource
     // Transform the resource into an array.
     public function toArray($request)
     {
-		if (locale() === 'ru') {
-			$title = $this->title_ru;
-		} elseif (locale() === 'en') {
-			$title = $this->title_en;
-		}
-
         return [
 			'id' => $this->id,
-			'title' => $title,
+			'title' => $this->resource->toArray()['title_'.locale()],
 			'image' => $this->image
 		];
     }
