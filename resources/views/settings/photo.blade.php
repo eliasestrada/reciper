@@ -20,22 +20,37 @@
 		</div>
 		<div class="col-12">
 			{{--  Upload image  --}}
-			{!! Form::open(['action' => ['SettingsController@updatePhoto', null], 'method' => 'PUT', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
+			<form action="{{ action('SettingsController@updatePhoto') }}" method="post" enctype="multipart/form-data" class="form">
+
+				@method('put') @csrf
+
 				<div class="form-group simple-group text-center">
-					{{ Form::hidden('delete', 0) }}
-					{{ Form::label('src-image', trans('form.select_file'), ['class' => 'image-label mb-3']) }}
-					{{ Form::file('image', ['class' => "d-none", 'id' => 'src-image']) }}
-					{{ Form::submit(trans('form.save_changes'), ['class' => 'btn btn-main']) }}
+					<input type="hidden" name="delete" value="0">
+
+					<label for="src-image" class="image-label mb-5">
+						@lang('form.select_file')
+					</label>
+
+					<input type="file" name="image" id="src-image" class="d-none">
+
+					<button type="submit" style="margin-top:-1.7rem;" class="btn btn-main btn-lg">
+						@lang('form.save_changes')
+					</button>
 				</div>
-			{!! Form::close() !!}
+			</form>
 
 			{{--  Delete image  --}}
-			{!! Form::open(['action' => ['SettingsController@updatePhoto', null], 'method' => 'PUT', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
+			<form action="{{ action('SettingsController@updatePhoto') }}" method="post" enctype="multipart/form-data" class="form">
+
+				@method('put') @csrf
+
 				<div class="form-group simple-group">
-					{{ Form::hidden('delete', 1) }}
-					{{ Form::submit(trans('form.delete_photo'), ['style' => 'margin-top: -1.7rem;', 'class' => 'btn']) }}
+					<input type="hidden" name="delete" value="1">
+					<button type="submit" style="margin-top:-1.4rem;" class="btn btn-lg">
+						@lang('form.delete_photo')
+					</button>
 				</div>
-			{!! Form::close() !!}
+			</form>
 		</div>
 	</div>
 </div>
