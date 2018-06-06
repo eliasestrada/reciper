@@ -32,7 +32,7 @@
 			{{-- Title --}}
 			<div class="form-group">
 				<label for="title">@lang('recipes.title')</label>
-				<input type="text" name="title" id="title" placeholder="@lang('recipes.title')" value="{{ $recipe->title }}">
+				<input type="text" name="title" id="title" placeholder="@lang('recipes.title')" value="{{ $recipe->toArray()['title_'.locale()] }}">
 			</div>
 		</div>
 		<div class="col-12 col-md-4">
@@ -62,18 +62,14 @@
 			{{-- Ingredients --}}
 			<div class="form-group">
 				<label for="ingredients">@lang('recipes.ingredients')</label>
-				<textarea name="ingredients" id="ingredients" placeholder="@lang('recipes.ingredients_description')">
-					{{ $recipe->ingredients }}
-				</textarea>
+				<textarea name="ingredients" id="ingredients" placeholder="@lang('recipes.ingredients_description')">{{ $recipe->toArray()['ingredients_'.locale()] }}</textarea>
 			</div>
 		</div>
 		<div class="col-12 col-lg-6">
 			{{-- Advice --}}
 			<div class="form-group">
 				<label for="intro">@lang('recipes.intro')</label>
-				<textarea name="intro" id="intro" placeholder="@lang('recipes.short_intro')">
-					{{ $recipe->intro }}
-				</textarea>
+				<textarea name="intro" id="intro" placeholder="@lang('recipes.short_intro')">{{ $recipe->toArray()['intro_'.locale()] }}</textarea>
 			</div>
 		</div>
 
@@ -81,9 +77,7 @@
 			{{-- Intro --}}
 			<div class="form-group">
 				<label for="text">@lang('recipes.text_of_recipe')</label>
-				<textarea name="text" id="text" placeholder="@lang('recipes.text_description')">
-					{{ $recipe->text }}
-				</textarea>
+				<textarea name="text" id="text" placeholder="@lang('recipes.text_description')">{{ $recipe->toArray()['text_'.locale()] }}</textarea>
 			</div>
 		</div>
 

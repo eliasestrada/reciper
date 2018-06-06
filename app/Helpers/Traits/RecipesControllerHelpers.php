@@ -35,13 +35,14 @@ trait RecipesControllerHelpers
 		$recipe_columns = [
 			'image' => $image_name ? $image_name : $recipe->image ?? 'default.jpg',
 			'category_id' => $request->category_id,
-			'title' => $request->title,
-			'intro' => $request->intro,
-			'ingredients' => $request->ingredients,
-			'text' => $request->text,
 			'time' => $request->time,
-			'ready' => isset($request->ready) ? 1 : 0,
-			'approved' => user()->isAdmin() ? 1 : 0
+
+			'title_'.locale() => $request->title,
+			'intro_'.locale() => $request->intro,
+			'text_'.locale() => $request->text,
+			'ingredients_'.locale() => $request->ingredients,
+			'ready_'.locale() => isset($request->ready) ? 1 : 0,
+			'approved_'.locale() => user()->isAdmin() ? 1 : 0
 		];
 
 		return $recipe
