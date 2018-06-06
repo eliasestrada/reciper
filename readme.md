@@ -11,7 +11,6 @@
 	<li><a href="https://github.com/laravel/dusk">laravel/dusk</a></li>
 	<li><a href="http://image.intervention.io/">Intervention/image</a></li>
 	<li><a href="https://github.com/rap2hpoutre/laravel-log-viewer">rap2hpoutre/laravel-log-viewer</a></li>
-	<li><a href="https://laravelcollective.com/docs/5.4/html">Laravel Collective Forms & HTML</a></li>
 </ol>
 
 <p>
