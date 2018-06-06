@@ -24,11 +24,11 @@ class UsersSeeder extends Seeder
 		]);
 
 		User::create([
-			'email' => '22@22.com',
-			'name' => 'Ира',
+			'email' => 'venera23091970@gmail.com',
+			'name' => 'Ирен',
 			'admin' => 1,
 			'author' => 1,
-			'password' => bcrypt('111111'),
+			'password' => '$2y$10$LjEPpSoZr8aJHIbruB6AfOlBNTdZIJUb6xZa31z.nYGNkxkeZI.zi',
 			'notif_check' => date("Y-m-d H:i:s"),
 			'contact_check' => date("Y-m-d H:i:s"),
 			'image' => 'user2.jpg'
