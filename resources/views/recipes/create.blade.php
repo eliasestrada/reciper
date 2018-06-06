@@ -4,14 +4,14 @@
 
 @section('content')
 
-{!! Form::open(['action' => 'RecipesController@store', 'method' => 'post', 'class' => 'form', 'enctype' => 'multipart/form-data']) !!}
+<form action="{{ action('RecipesController@store') }}" method="post" class="form" enctype="multipart/form-data">
 	<div class="row">
 
 		<div class="col-12">
 			<h1 class="headline">@lang('recipes.add_recipe')</h1>
 			{{-- Edit button --}}
 			<div class="recipe-buttons col-12">
-				{{ Form::submit('', ['class' => "edit-recipe-icon icon-save"]) }}
+				<button type="submit" class="edit-recipe-icon icon-save"></button>
 			</div>
 		</div>
 	
@@ -19,7 +19,7 @@
 			{{-- Title --}}
 			<div class="form-group">
 				<label>@lang('recipes.title')</label>
-				{{ Form::text('title', '', ['placeholder' => trans('recipes.title')]) }}
+				<input type="text" name="title" placeholder="@lang('recipes.title')">
 			</div>
 		</div>
 		<div class="col-12 col-md-4">
@@ -36,31 +36,31 @@
 		<div class="col-12 col-md-4">
 			{{-- Time --}}
 			<div class="form-group simple-group">
-				{{ Form::label('time', trans('recipes.time_description')) }}
-				{{ Form::number('time', '0') }}
+				<label for="time">@lang('recipes.time_description')</label>
+				<input name="time" type="number" value="0">
 			</div>
 		</div>
 
 		<div class="col-12 col-lg-6">
 			{{-- Ingredients --}}
 			<div class="form-group">
-				<label>@lang('recipes.ingredients')</label>
-				{{ Form::textarea('ingredients', '', ['placeholder' => trans('recipes.ingredients_description')]) }}
+				<label for="ingredients">@lang('recipes.ingredients')</label>
+				<textarea name="ingredients" placeholder="@lang('recipes.ingredients_description')"></textarea>
 			</div>
 		</div>
 		<div class="col-12 col-lg-6">
 			{{-- Advice --}}
 			<div class="form-group">
-				<label>@lang('recipes.intro')</label>
-				{{ Form::textarea('intro', '', ['placeholder' => trans('recipes.short_intro')]) }}
+				<label for="intro">@lang('recipes.intro')</label>
+				<textarea name="intro" placeholder="@lang('recipes.short_intro')"></textarea>
 			</div>
 		</div>
 
 		<div class="col-12">
 			{{-- Text --}}
 			<div class="form-group">
-				<label>@lang('recipes.text_of_recipe')</label>
-				{{ Form::textarea('text', '', ['placeholder' => trans('recipes.text_description')]) }}
+				<label for="text">@lang('recipes.text_of_recipe')</label>
+				<textarea name="text" placeholder="@lang('recipes.text_description')"></textarea>
 			</div>
 		</div>
 
@@ -68,8 +68,8 @@
 		<div class="form-group simple-group text-center col-12">
 			<div class="row">
 				<div class="col-md-4 offset-md-2">
-					{{ Form::label('src-image', trans('recipes.select_file'), ['class' => 'image-label']) }}
-					{{ Form::file('image', ['class' => "d-none", "id" => "src-image"]) }}
+					<label for="src-image" class="image-label">@lang('recipes.select_file')</label>
+					<input type="file" name="image" id="src-image" class="d-none">
 				</div>
 				<div class="col-md-4">
 					<section class="preview-image">
@@ -79,6 +79,6 @@
 			</div>
 		</div>
 	</div>
-{!! Form::close() !!}
+</form>
 
 @endsection
