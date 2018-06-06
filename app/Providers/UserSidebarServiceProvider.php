@@ -70,8 +70,8 @@ class UserSidebarServiceProvider extends ServiceProvider
 			view()->composer('includes.user-sidebar', function($view) {
 				if (user()) {
 					$recipes = Recipe
-						::where("approved_{locale()}", 0)
-						->where("ready_{locale()}", 1)
+						::where("approved_".locale(), 0)
+						->where("ready_".locale(), 1)
 						->count();
 					$all_unapproved = !empty($recipes) ? 'data-notif='.$recipes : '';
 					$view->with(compact('all_unapproved'));
