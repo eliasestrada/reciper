@@ -30,7 +30,9 @@
 				<label for="category_id">@lang('recipes.category')</label>
 				<select name="category_id" id="category_id">
 					@foreach ($categories as $category)
-						<option value="{{ $category->id }}">{{ $category->name }}</option>
+						<option value="{{ $category->id }}">
+							{{ $category->toArray()['name_'.locale()] }}
+						</option>
 					@endforeach
 				</select>
 			</div>
