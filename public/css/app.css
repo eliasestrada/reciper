@@ -2679,11 +2679,15 @@ footer .footer-copyright {
 }
 
 .icon-approve {
-  background: darkolivegreen url(icons/recipe-sprite.png) -200px 0 !important;
+  background: darkslategray url(icons/recipe-sprite.png) -200px 0 !important;
 }
 
 .icon-cancel {
   background: darkred url(icons/recipe-sprite.png) -250px 0 !important;
+}
+
+.icon-publish {
+  background: darkslategray url(icons/recipe-sprite.png) -300px 0 !important;
 }
 
 .edit-recipe-icon {
@@ -2703,22 +2707,6 @@ footer .footer-copyright {
   border-radius: .2em;
   margin: auto;
   cursor: pointer;
-}
-
-.check-box-ready {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 5px auto;
-}
-
-.check-box-ready input {
-  margin-right: 0.5 0.3em;
-  cursor: pointer;
-}
-
-.check-box-ready p {
-  font-size: 1em;
 }
 
 .preview-image img {

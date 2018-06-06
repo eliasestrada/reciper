@@ -15,11 +15,15 @@
 }
 
 .icon-approve {
-	background: darkolivegreen url(icons/recipe-sprite.png) -200px 0!important;
+	background: darkslategray url(icons/recipe-sprite.png) -200px 0!important;
 }
 
 .icon-cancel {
 	background: darkred url(icons/recipe-sprite.png) -250px 0!important;
+}
+
+.icon-publish {
+	background: darkslategray url(icons/recipe-sprite.png) -300px 0!important;
 }
 
 .edit-recipe-icon {
@@ -39,19 +43,6 @@
 		margin: auto;
 		cursor: pointer;
 	}
-}
-
-.check-box-ready {
-	justify-content: center;
-	margin: 5px auto;
-
-	input {
-		margin-right: .5.3em;
-		cursor: pointer;
-	}
-
-	p { font-size: 1em; }
-
 }
 
 .preview-image img {
