@@ -33,14 +33,14 @@
 			</div>
 		</div>
 
-		<div class="col-12 col-md-4">
+		<div class="col-12 col-sm-6 col-md-3">
 			{{-- Title --}}
 			<div class="form-group">
 				<label for="title">@lang('recipes.title')</label>
 				<input type="text" name="title" id="title" placeholder="@lang('recipes.title')" value="{{ $recipe->toArray()['title_'.locale()] }}">
 			</div>
 		</div>
-		<div class="col-12 col-md-4">
+		<div class="col-12 col-sm-6 col-md-3">
 			{{-- Category --}}
 			<div class="form-group simple-group">
 				<label for="category_id">@lang('recipes.category')</label>
@@ -55,11 +55,24 @@
 				</select>
 			</div>
 		</div>
-		<div class="col-12 col-md-4">
+		<div class="col-12 col-sm-6 col-md-3">
 			{{-- Time --}}
 			<div class="form-group simple-group">
 				<label for="time">@lang('recipes.time_description')</label>
 				<input type="number" name="time" id="time" value="{{ $recipe->time }}">
+			</div>
+		</div>
+		<div class="col-12 col-sm-6 col-md-3">
+			{{-- Meal time --}}
+			<div class="form-group simple-group">
+				<label for="meal">@lang('recipes.meal_description')</label>
+				<select name="meal" id="meal">
+					<option value="{{ $recipe->meal->id }}">{{ title_case($meal) }}</option>
+					<option>-------------</option>
+					<option value="1">{{ title_case(trans('header.breakfast')) }}</option>
+					<option value="2">{{ title_case(trans('header.lunch')) }}</option>
+					<option value="3">{{ title_case(trans('header.dinner')) }}</option>
+				</select>
 			</div>
 		</div>
 

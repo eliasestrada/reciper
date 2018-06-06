@@ -35,6 +35,7 @@ trait RecipesControllerHelpers
 		$recipe_columns = [
 			'image' => $image_name ? $image_name : $recipe->image ?? 'default.jpg',
 			'category_id' => $request->category_id,
+			'meal_id' => $request->meal,
 			'time' => $request->time,
 
 			'title_'.locale() => $request->title,

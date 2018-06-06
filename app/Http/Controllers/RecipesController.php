@@ -98,6 +98,7 @@ class RecipesController extends Controller
 
         return view('recipes.edit')->with([
 			'recipe' => $recipe,
+			'meal' => $recipe->meal->toArray()['name_'.locale()],
 			'categories' => Category::get(),
 			'category' => $recipe->category->toArray()['name_'.locale()]
 		]);

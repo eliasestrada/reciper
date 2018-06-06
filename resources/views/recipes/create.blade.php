@@ -17,14 +17,14 @@
 			</div>
 		</div>
 	
-		<div class="col-12 col-md-4">
+		<div class="col-12 col-sm-6 col-md-3">
 			{{-- Title --}}
 			<div class="form-group">
 				<label for="title">@lang('recipes.title')</label>
 				<input type="text" name="title" placeholder="@lang('recipes.title')" id="title">
 			</div>
 		</div>
-		<div class="col-12 col-md-4">
+		<div class="col-12 col-sm-6 col-md-3">
 			{{-- Category --}}
 			<div class="form-group simple-group">
 				<label for="category_id">@lang('recipes.category')</label>
@@ -37,11 +37,22 @@
 				</select>
 			</div>
 		</div>
-		<div class="col-12 col-md-4">
+		<div class="col-12 col-sm-6 col-md-3">
 			{{-- Time --}}
 			<div class="form-group simple-group">
 				<label for="time">@lang('recipes.time_description')</label>
 				<input name="time" type="number" value="0" id="time">
+			</div>
+		</div>
+		<div class="col-12 col-sm-6 col-md-3">
+			{{-- Meal time --}}
+			<div class="form-group simple-group">
+				<label for="meal">@lang('recipes.meal_description')</label>
+				<select name="meal" id="meal">
+					<option value="1">{{ title_case(trans('header.breakfast')) }}</option>
+					<option value="2">{{ title_case(trans('header.lunch')) }}</option>
+					<option value="3">{{ title_case(trans('header.dinner')) }}</option>
+				</select>
 			</div>
 		</div>
 
