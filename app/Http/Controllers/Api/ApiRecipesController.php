@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipesResource;
 use App\Http\Resources\RecipesRandomResource;
+use App\Helpers\Traits\RecipesControllerHelpers;
 
 class ApiRecipesController extends Controller
 {
-	
+	use RecipesControllerHelpers;
+
 	// All approved recipes
 	public function index()
 	{
@@ -34,4 +36,19 @@ class ApiRecipesController extends Controller
 
 		return RecipesRandomResource::collection($random);
 	}
+
+
+	public function destroy($id)
+    {
+		$recipe = Recipe::find($id);
+
+		$this->deleteOldImage($recipe->image);
+
+		if ($recipe->delete()) {
+			return 'success';
+		}
+
+		logger()->error(trans('recipes.deleted_fail'));
+		return 'failed';
+    }
 }
