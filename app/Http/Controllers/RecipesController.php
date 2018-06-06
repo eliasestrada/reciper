@@ -49,7 +49,7 @@ class RecipesController extends Controller
 		$recipe = $this->createOrUpdateRecipe($request, $image_name);
 
 		return redirect('/recipes/'.$recipe->id.'/edit')->withSuccess(
-			trans('recipes.recipe_has_been_saved')
+			trans('recipes.saved')
 		);
     }
 

@@ -29,6 +29,7 @@
 					<delete-recipe-btn
 						recipe-id="{{ $recipe->id }}"
 						deleted-fail="{{ trans('recipes.deleted_fail') }}"
+						deleting="{{ trans('recipes.deleting') }}"
 						confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
 					</delete-recipe-btn>
 				</div>

@@ -14,15 +14,16 @@
 			<h1 class="headline">@lang('recipes.add_recipe')</h1>
 			<div class="recipe-buttons">
 				{{--  Save button  --}}
-				<input type="submit" id="submit-save-recipe" class="edit-recipe-icon icon-save" value="">
+				<input type="submit" id="submit-save-recipe" class="edit-recipe-icon icon-save" title="@lang('recipes.save_recipe')" value="">
 	
 				{{--  View button  --}}
-				<a href="/recipes/{{ $recipe->id }}" class="edit-recipe-icon icon-eye"></a>
+				<a href="/recipes/{{ $recipe->id }}" class="edit-recipe-icon icon-eye" title="@lang('recipes.view_recipe')"></a>
 
 				{{--  Delete button  --}}
 				<delete-recipe-btn
 					recipe-id="{{ $recipe->id }}"
 					deleted-fail="{{ trans('recipes.deleted_fail') }}"
+					deleting="{{ trans('recipes.deleting') }}"
 					confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
 				</delete-recipe-btn>
 			</div>
@@ -30,8 +31,8 @@
 
 		<div class="check-box-ready d-flex col-12">
 			<div class="d-flex">
-				<input type="checkbox" name="ready" value="1">
-				<p>@lang('recipes.ready_to_publish')</p>
+				<input type="checkbox" name="ready" value="1" title="@lang('recipes.press_to_publish')">
+				<p title="@lang('recipes.press_to_publish')">@lang('recipes.ready_to_publish')</p>
 			</div>
 		</div>
 

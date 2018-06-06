@@ -4,7 +4,7 @@
 			<p v-if="error" class="alert alert-danger mt-2">{{ error }}</p>
 		</div>
 		<span v-else>
-			<button @click="deleteRecipe" type="button" class="edit-recipe-icon icon-delete"></button>
+			<button @click="deleteRecipe" :title="deleting" type="button" class="edit-recipe-icon icon-delete"></button>
 		</span>
 	</span>
 </template>
@@ -17,7 +17,7 @@ export default {
 		}
 	},
 
-	props: ['confirm', 'recipeId', 'deletedFail'],
+	props: ['confirm', 'recipeId', 'deletedFail', 'deleting'],
 	 
 	methods: {
 		deleteRecipe () {
