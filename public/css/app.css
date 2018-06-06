@@ -2695,7 +2695,7 @@ footer .footer-copyright {
   margin: .5em auto;
 }
 
-.recipe-buttons a, .recipe-buttons input {
+.recipe-buttons a, .recipe-buttons input, .recipe-buttons button {
   width: 50px !important;
   height: 50px;
   display: inline-block;
