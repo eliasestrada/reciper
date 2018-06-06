@@ -5,28 +5,21 @@
 @section('content')
 
 {{--  Form  --}}
-{!! Form::open([
-	'action' => 'PagesController@search',
-	'method' => 'GET',
-	'class' => 'form'
-]) !!}
+
+<form action="{{ action('PagesController@search') }}" method="get" class="form">
 	<div class="form-group simple-group">
 		<h2 class="form-headline">
 			<i class="title-icon" style="background: url('/css/icons/svg/search.svg')"></i>
 			@lang('pages.search')
 		</h2>
 
-		{{ Form::text('for', '', [
-			'placeholder' => trans('pages.search_details'),
-			'id' => 'search-input'
-		]) }}
-
-		{{ Form::submit('', ['class' => 'd-none'])}}
+		<input type="text" name="for" id="search-input" placeholder="@lang('pages.search_details')">
+		<button type="submit" class="d-none"></button>
 	</div>
-{!! Form::close() !!}
+</form>
 
 {{--  Results  --}}
-@isset($recipes)
+@if (isset($recipes) && count($recipes) > 0)
 	<section class="recipes">
 		<div class="row">
 			@foreach ($recipes->toArray() as $recipe)
@@ -45,7 +38,7 @@
 			@endforeach
 		</div>
 	</section>
-@endisset
+@endif
 
 <div class="content">
 	<h4 class="content text-center">{{ $message ?? '' }}</h4>

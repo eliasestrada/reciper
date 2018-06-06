@@ -11,15 +11,15 @@
 		</div>
 
 		{{--  Form  --}}
-		{!! Form::open(['action' => 'PagesController@search', 'method' => 'GET', 'class' => 'header-search']) !!}
+		<form action="{{ action('PagesController@search') }}" method="get" class="header-search">
 			<div class="form-group" style="position:relative;">
 				<div class="home-search" id="search-form">
-					{{ Form::text('for', '', ['id' => 'header-search-input', 'placeholder' => trans('pages.search_details')]) }}
+					<input type="text" name="for" id="header-search-input" placeholder="@lang('pages.search_details')">
 				</div>
 				<button type="submit" class="home-button" id="home-search-btn">
 					<i style="background: url('/css/icons/svg/search.svg')"></i>
 				</button>
 			</div>
-		{!! Form::close() !!}
+		</form>
 	</div>
 </header>
