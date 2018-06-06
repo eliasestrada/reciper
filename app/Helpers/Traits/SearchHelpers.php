@@ -45,9 +45,9 @@ trait SearchHelpers
 
 	public function mealTime() {
 		return [
-			mb_strtolower(trans('header.breakfast')),
-			mb_strtolower(trans('header.lunch')),
-			mb_strtolower(trans('header.dinner'))
+			trans('header.breakfast'),
+			trans('header.lunch'),
+			trans('header.dinner')
 		];
 	}
 }
