@@ -18,15 +18,15 @@
 		<div class="col-12 col-md-4">
 			{{-- Title --}}
 			<div class="form-group">
-				<label>@lang('recipes.title')</label>
-				<input type="text" name="title" placeholder="@lang('recipes.title')">
+				<label for="title">@lang('recipes.title')</label>
+				<input type="text" name="title" placeholder="@lang('recipes.title')" id="title">
 			</div>
 		</div>
 		<div class="col-12 col-md-4">
 			{{-- Category --}}
 			<div class="form-group simple-group">
-				<label>@lang('recipes.category')</label>
-				<select name="category_id">
+				<label for="category_id">@lang('recipes.category')</label>
+				<select name="category_id" id="category_id">
 					@foreach ($categories as $category)
 						<option value="{{ $category->id }}">{{ $category->name }}</option>
 					@endforeach
@@ -37,7 +37,7 @@
 			{{-- Time --}}
 			<div class="form-group simple-group">
 				<label for="time">@lang('recipes.time_description')</label>
-				<input name="time" type="number" value="0">
+				<input name="time" type="number" value="0" id="time">
 			</div>
 		</div>
 
@@ -45,14 +45,14 @@
 			{{-- Ingredients --}}
 			<div class="form-group">
 				<label for="ingredients">@lang('recipes.ingredients')</label>
-				<textarea name="ingredients" placeholder="@lang('recipes.ingredients_description')"></textarea>
+				<textarea name="ingredients" placeholder="@lang('recipes.ingredients_description')" id="ingredients"></textarea>
 			</div>
 		</div>
 		<div class="col-12 col-lg-6">
 			{{-- Advice --}}
 			<div class="form-group">
 				<label for="intro">@lang('recipes.intro')</label>
-				<textarea name="intro" placeholder="@lang('recipes.short_intro')"></textarea>
+				<textarea name="intro" placeholder="@lang('recipes.short_intro')" id="intro"></textarea>
 			</div>
 		</div>
 
@@ -60,7 +60,7 @@
 			{{-- Text --}}
 			<div class="form-group">
 				<label for="text">@lang('recipes.text_of_recipe')</label>
-				<textarea name="text" placeholder="@lang('recipes.text_description')"></textarea>
+				<textarea name="text" placeholder="@lang('recipes.text_description')" id="text"></textarea>
 			</div>
 		</div>
 
