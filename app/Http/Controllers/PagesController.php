@@ -18,6 +18,7 @@ class PagesController extends Controller
 		if (Schema::hasTable('recipes')) {
 			$random_recipes = Recipe
 				::inRandomOrder()
+				->where("ready_".locale(), 1)
 				->where("approved_".locale(), 1)
 				->limit(12)
 				->get(['id', "title_".locale(), 'image']);
