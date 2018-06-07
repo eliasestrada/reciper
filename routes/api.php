@@ -19,4 +19,5 @@ Route::get('show-random-recipes/{id}', 'Api\ApiRecipesController@showRandomRecip
 Route::prefix('recipes')->group(function () {
 	Route::get('/', 'Api\ApiRecipesController@index');
 	Route::delete('{id}', 'Api\ApiRecipesController@destroy');
+	Route::get('categories', 'Api\ApiRecipesController@categories');
 });

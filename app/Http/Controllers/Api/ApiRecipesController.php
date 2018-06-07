@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Recipe;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipesResource;
+use App\Http\Resources\CategoriesResource;
 use App\Http\Resources\RecipesRandomResource;
 use App\Helpers\Traits\RecipesControllerHelpers;
 
@@ -35,6 +37,12 @@ class ApiRecipesController extends Controller
 			->get();
 
 		return RecipesRandomResource::collection($random);
+	}
+
+
+	public function categories()
+	{
+		return Category::get(['id', 'name_'.locale()]);
 	}
 
 
