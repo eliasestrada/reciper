@@ -53,12 +53,18 @@
 
 .add-remove-field {
 	margin-top: 1.9em;
+	margin-right: 3px !important;
 	cursor: pointer;
 	font-weight: bold;
 	border: none !important;
 	font-size: .9em;
-	padding-left: 0;
-	padding-right: 0;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	outline: none;
+
+	&:hover {
+		background: lighten($mainLight, 15%);
+	}
 }
 
 @media (min-width: 420px) {

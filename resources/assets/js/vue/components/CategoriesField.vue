@@ -1,10 +1,12 @@
 <template>
 	<div class="row">
-		<div v-for="field in fields" :key="field" class="col-12 col-sm-6 col-md-3">
+		<div v-for="(field, i) in fields" :key="field" class="col-12 col-sm-6 col-md-3">
 			<div class="form-group simple-group">
 				<label :for="'category_id' + field">{{ label }} {{ field }}</label>
-				<select @click="hideChooseWord" name="category_id">
-					<option v-show="fieldNotClicked">--- {{ select }} ---</option>
+				<select name="categories[]">
+					<option v-if="recipeCategories[i]" :value="recipeCategories[i]['id']" selected>
+						{{ recipeCategories[i]['name'] }}
+					</option>
 					<option v-for="categ in categories" :key="categ['id']" :value="categ['id']">
 						{{ categ['name_' + locale] }}
 					</option>
@@ -13,13 +15,13 @@
 		</div>
 		<div class="col-12 col-sm-6 col-md-3 row">
 			<div v-if="visibleAddBtn" class="col-6 pr-0">
-				<div class="form-group simple-group">
-					<input @click="addField" type="button" :value="add+' +'" class="add-remove-field" style="color:darkgreen;">
+				<div class="form-group simple-group" :title="add">
+					<input @click="addField" type="button" :value="add + ' +'" class="add-remove-field" style="color:darkgreen;">
 				</div>
 			</div>
-			<div v-if="visibleDelBtn" class="col-6 pl-0">
+			<div v-if="visibleDelBtn" class="col-6 pl-0" :title="deleting">
 				<div class="form-group simple-group">
-					<input @click="deleteField" type="button" :value="deleting+' -'" class="add-remove-field" style="color:brown;">
+					<input @click="deleteField" type="button" :value="deleting + ' -'" class="add-remove-field" style="color:brown;">
 				</div>
 			</div>
 		</div>
@@ -30,18 +32,19 @@
 export default {
 	data() {
 		return {
+			recipeCategories: [],
 			categories: [],
 			fields: 1,
 			visibleAddBtn: true,
-			visibleDelBtn: false,
-			fieldNotClicked: true
+			visibleDelBtn: false
 		}
 	},
 
-	props: ['label', 'locale', 'select', 'deleting', 'add'],
+	props: ['label', 'locale', 'select', 'deleting', 'add', 'recipeId'],
 
 	created() {
-		this.fetchCategories()
+		this.fetchCategories(),
+		this.fetchFieldsFromDb()
 	},
 	 
 	methods: {
@@ -52,11 +55,34 @@ export default {
 			.catch(err => console.log(err))
 		},
 
+		fetchFieldsFromDb() {
+			if (this.recipeId) {
+				fetch(`/api/recipes/recipe_categories/${this.recipeId}`)
+				.then(res => res.json())
+				.then(res => {
+					this.recipeCategories = res.data
+					this.fields = res.data.length
+					this.stableButtons()
+				})
+				.catch(err => console.log(err))
+			}
+		},
+
 		addField() {
 			if (this.fields <= 2 && this.fields > 0) {
 				this.fields++
 			}
+			this.stableButtons()
+		},
 
+		deleteField() {
+			if (this.fields > 1) {
+				this.fields--
+			}
+			this.stableButtons()
+		},
+
+		stableButtons() {
 			if (this.fields > 1) {
 				this.visibleDelBtn = true
 			}
@@ -64,12 +90,6 @@ export default {
 			if (this.fields === 3) {
 				this.visibleAddBtn = false
 				this.visibleDelBtn = true
-			}
-		},
-
-		deleteField() {
-			if (this.fields > 1) {
-				this.fields--
 			}
 
 			if (this.fields < 3) {
@@ -79,10 +99,6 @@ export default {
 			if (this.fields === 1) {
 				this.visibleDelBtn = false
 			}
-		},
-
-		hideChooseWord() {
-			this.fieldNotClicked = false
 		}
 	}
 }

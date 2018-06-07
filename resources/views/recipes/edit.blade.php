@@ -33,45 +33,30 @@
 			</div>
 		</div>
 
-		<div class="col-12 col-sm-6 col-md-3">
+		<div class="col-12 col-sm-6 col-md-4">
 			{{-- Title --}}
 			<div class="form-group">
 				<label for="title">@lang('recipes.title')</label>
 				<input type="text" name="title" id="title" placeholder="@lang('recipes.title')" value="{{ $recipe->toArray()['title_'.locale()] }}">
 			</div>
 		</div>
-		<div class="col-12 col-sm-6 col-md-3">
-			{{-- Category --}}
-			<div class="form-group simple-group">
-				<label for="category_id">@lang('recipes.category')</label>
-				<select name="category_id" id="category_id">
-					<option selected value="{{ $recipe->category->id }}">{{ $category }}</option>
-					<option>--------------------------</option>
-					@foreach ($categories as $category)
-						<option value="{{ $category->id }}">
-							{{ $category->toArray()['name_'.locale()] }}
-						</option>
-					@endforeach
-				</select>
-			</div>
-		</div>
-		<div class="col-12 col-sm-6 col-md-3">
+		<div class="col-12 col-sm-6 col-md-4">
 			{{-- Time --}}
 			<div class="form-group simple-group">
 				<label for="time">@lang('recipes.time_description')</label>
 				<input type="number" name="time" id="time" value="{{ $recipe->time }}">
 			</div>
 		</div>
-		<div class="col-12 col-sm-6 col-md-3">
+		<div class="col-12 col-sm-6 col-md-4">
 			{{-- Meal time --}}
 			<div class="form-group simple-group">
 				<label for="meal">@lang('recipes.meal_description')</label>
 				<select name="meal" id="meal">
-					<option value="{{ $recipe->meal->id }}">{{ title_case($meal) }}</option>
-					<option>-------------</option>
-					<option value="1">{{ title_case(trans('header.breakfast')) }}</option>
-					<option value="2">{{ title_case(trans('header.lunch')) }}</option>
-					<option value="3">{{ title_case(trans('header.dinner')) }}</option>
+					@foreach ($meal as $m)
+						<option value="{{ $m['id'] }}" {{ selectedIfEqual($m['id'], $recipe->meal->id) }}>
+							{{ title_case($m['name_'.locale()]) }}
+						</option>
+					@endforeach
 				</select>
 			</div>
 		</div>
@@ -92,11 +77,22 @@
 		</div>
 
 		<div class="col-12">
-			{{-- Intro --}}
+			{{-- Text --}}
 			<div class="form-group">
 				<label for="text">@lang('recipes.text_of_recipe')</label>
 				<textarea name="text" id="text" placeholder="@lang('recipes.text_description')">{{ $recipe->toArray()['text_'.locale()] }}</textarea>
 			</div>
+		</div>
+
+		<div class="form-group col-12">
+			<categories-field
+				locale="{{ locale() }}"
+				label="@lang('recipes.category')"
+				select="@lang('form.select')"
+				deleting="@lang('form.deleting')"
+				add="@lang('form.add')"
+				recipe-id="{{ $recipe->id }}">
+			</categories-field>
 		</div>
 
 		{{-- Image --}}

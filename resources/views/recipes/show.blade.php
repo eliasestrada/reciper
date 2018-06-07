@@ -63,9 +63,11 @@
 		<p>{{ $intro }}</p>
 
 		{{--  Category  --}}
-		<a href="/search?for={{ $recipe->category_id }}" title="{{ $category }}">
-			<span class="category">{{ $category }}</span>
-		</a>
+		@foreach ($categories as $category)
+			<a href="/search?for={{ $category['id'] }}" title="{{ $category['name_'.locale()] }}">
+				<span class="category">{{ $category['name_'.locale()] }}</span>
+			</a>
+		@endforeach
 
 		{{--  Time  --}}
 		<div class="date"><i class="fa fa-clock-o"></i> {{ $recipe->time }} мин.</div>
