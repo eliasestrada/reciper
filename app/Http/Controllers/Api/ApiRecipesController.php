@@ -10,6 +10,7 @@ use App\Http\Resources\RecipesResource;
 use App\Http\Resources\CategoriesResource;
 use App\Http\Resources\RecipesRandomResource;
 use App\Helpers\Traits\RecipesControllerHelpers;
+use App\Http\Resources\RecipeCategoriesResource;
 
 class ApiRecipesController extends Controller
 {
@@ -30,7 +31,8 @@ class ApiRecipesController extends Controller
 
 	public function showRandomRecipes($id)
 	{
-		$random = Recipe::inRandomOrder()
+		$random = Recipe
+			::inRandomOrder()
 			->where('id', '!=', $id)
 			->where('approved_'.locale(), 1)
 			->limit(7)
@@ -46,11 +48,23 @@ class ApiRecipesController extends Controller
 	}
 
 
+	public function recipeCategories($id)
+	{
+		$categories = Recipe
+			::whereId($id)
+			->with('categories')
+			->first()
+			->categories;
+		return RecipeCategoriesResource::collection($categories);
+	}
+
+
 	public function destroy($id)
     {
 		$recipe = Recipe::find($id);
 
 		$this->deleteOldImage($recipe->image);
+		$recipe->categories()->detach();
 
 		if ($recipe->delete()) {
 			return 'success';
