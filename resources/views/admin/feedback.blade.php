@@ -21,7 +21,7 @@
 			<form action="{{ action('AdminController@feedbackDestroy', ['id' => $feed->id]) }}" method="post" onsubmit="return confirm('@lang('contact.sure_del_feed')')">
 				@method('delete')
 				@csrf
-				<button type="submit" class="btn">@lang('form.delete')</button>
+				<button type="submit" class="btn">@lang('form.deleting')</button>
 			</form>
 		</div>
 	@empty
