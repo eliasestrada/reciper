@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Cookie;
+use App\Models\Meal;
 use App\Models\Title;
 use App\Models\Recipe;
 use App\Models\Category;
@@ -34,7 +35,7 @@ class RecipesController extends Controller
     public function create()
     {
 		return view('recipes.create')
-			->withCategories(Category::get());	
+			->withMeal(Meal::get(['id', 'name_'.locale()])->toArray());	
     }
 
 
@@ -78,12 +79,11 @@ class RecipesController extends Controller
 			}
 		}
 
-		return view('recipes.show')->with([
-			'recipe' => $recipe,
-			'title' => $recipe_array['title_'.locale()],
-			'intro' => $recipe_array['intro_'.locale()],
-			'category' => $recipe->category->toArray()['name_'.locale()]
-		]);
+		return view('recipes.show')
+			->withRecipe($recipe)
+			->withTitle($recipe_array['title_'.locale()])
+			->withIntro($recipe_array['intro_'.locale()])
+			->withCategory($recipe->category->toArray()['name_'.locale()]);
     }
 
 
@@ -94,14 +94,11 @@ class RecipesController extends Controller
             return redirect('/recipes')->withError(
 				trans('recipes.no_rights_to_edit')
 			);
-        }
+		}
 
-        return view('recipes.edit')->with([
-			'recipe' => $recipe,
-			'meal' => $recipe->meal->toArray()['name_'.locale()],
-			'categories' => Category::get(),
-			'category' => $recipe->category->toArray()['name_'.locale()]
-		]);
+		return view('recipes.edit')
+			->withRecipe($recipe)
+			->withMeal(Meal::get(['id', 'name_'.locale()])->toArray());
     }
 
     /**
