@@ -83,7 +83,7 @@ class RecipesController extends Controller
 			->withRecipe($recipe)
 			->withTitle($recipe_array['title_'.locale()])
 			->withIntro($recipe_array['intro_'.locale()])
-			->withCategory($recipe->category->toArray()['name_'.locale()]);
+			->withCategories($recipe->categories->toArray());
     }
 
 
