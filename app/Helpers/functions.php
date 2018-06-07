@@ -1,7 +1,6 @@
 <?php
 
-function convertToListItems( $string )
-{
+function convertToListItems( $string ) {
 	$string = explode("\n", preg_replace("/[\r\n]+/", "\n", $string));
 
 	$list_of_ingredients = array_map(function($item) {
@@ -12,20 +11,20 @@ function convertToListItems( $string )
 }
 
 
-function user()
-{
+function user() {
 	return auth()->user();
 }
 
-function locale()
-{
+
+function locale() {
 	return app()->getLocale();
 }
 
+function selectedIfEqual($number1, $number2) {
+	return $number1 === $number2 ? 'selected' : '';
+}
 
-
-function styleTimestamp( $path )
-{
+function styleTimestamp($path) {
 	try {
 		$timestamp = '?v=' . File::lastModified(public_path() . $path);
 	}
@@ -37,8 +36,7 @@ function styleTimestamp( $path )
 }
 
 
-function scriptTimestamp( $path )
-{
+function scriptTimestamp( $path ) {
 	try {
 		$timestamp = '?v=' . File::lastModified(public_path() . $path);
 	}
@@ -50,13 +48,11 @@ function scriptTimestamp( $path )
 }
 
 
-function activeIfRouteIs($route)
-{
+function activeIfRouteIs($route) {
     return request()->is($route) ? 'active' : '';
 }
 
-function setNameForRecipeImage($extension = null)
-{
+function setNameForRecipeImage($extension = null) {
 	if ($extension) {
 		return time() . '.' . $extension;
 	}
