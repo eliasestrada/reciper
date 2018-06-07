@@ -25,20 +25,18 @@
 		<li id="categories-button" class="categories-button">
 
 			{{-- Categories --}}
-			<a class="categories-title">@lang('includes.categories')</a>
+			@isset($category_names)
+				<a class="categories-title">@lang('includes.categories')</a>
 
-			<div class="arrow-bottom" id="arrow-bottom"></div>
-			<div class="categories-menu" id="categories-menu">
-
-				@isset($categories)
-					@foreach ($categories as $categ)
-						<a href="/search?for={{ str_replace(' ', '-', $categ['name_'.config('app.locale')]) }}" title="{{ $categ['name_'.config('app.locale')] }}">
-							<span>{{ $categ['name_'.config('app.locale')] }}</span>
+				<div class="arrow-bottom" id="arrow-bottom"></div>
+				<div class="categories-menu" id="categories-menu">
+					@foreach ($category_names as $name)
+						<a href="/search?for={{ str_replace(' ', '-', $name) }}" title="{{ $name }}">
+							<span>{{ $name }}</span>
 						</a>
 					@endforeach
-				@endisset
-
-			</div>
+				</div>
+			@endisset
 		</li>
     </ul>
 </nav>

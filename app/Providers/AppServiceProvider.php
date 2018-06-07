@@ -49,14 +49,17 @@ class AppServiceProvider extends ServiceProvider
 	public function showListOfCategories()
 	{
 		if (Schema::hasTable('recipes')) {
-			$all_categories = Recipe::distinct()->get(['category_id']);
-			$categories = [];
-
-			foreach ($all_categories as $category) {
-				array_push($categories, $category->category->toArray());
-			}
-
-			view()->share(compact('categories'));
+			$all_categories = Recipe
+				::with('categories')
+				->first()
+				->categories
+				->toArray();
+				
+			$category_names = array_map(function($item) {
+				return $item['name_'.locale()];
+			}, $all_categories);
+				
+			view()->share(compact('category_names'));
 		} else {
 			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
 		}
