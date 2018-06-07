@@ -2715,6 +2715,16 @@ footer .footer-copyright {
   margin: 1em auto 0 auto;
 }
 
+.add-remove-field {
+  margin-top: 1.9em;
+  cursor: pointer;
+  font-weight: bold;
+  border: none !important;
+  font-size: .9em;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 @media (min-width: 420px) {
   .preview-image img {
     width: 276px;
