@@ -34,7 +34,6 @@ trait RecipesControllerHelpers
 	{
 		$recipe_columns = [
 			'image' => $image_name ? $image_name : $recipe->image ?? 'default.jpg',
-			'category_id' => $request->category_id,
 			'meal_id' => $request->meal,
 			'time' => $request->time,
 
@@ -46,8 +45,14 @@ trait RecipesControllerHelpers
 			'approved_'.locale() => user()->isAdmin() ? 1 : 0
 		];
 
-		return $recipe
-			? $recipe->update($recipe_columns)
-			: user()->recipes()->create($recipe_columns);
+		if ($recipe) {
+			$recipe->categories()->sync($request->categories);
+			return $recipe->update($recipe_columns);
+		}
+
+		$create = user()->recipes()->create($recipe_columns);
+		$create->categories()->sync($request->categories);
+
+		return $create;
 	}
 }
