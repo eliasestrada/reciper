@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RecipePublichRequest extends FormRequest
@@ -19,7 +20,7 @@ class RecipePublichRequest extends FormRequest
     public function rules()
     {
         if ($this->ready == 1) {
-			return [
+			$rules = [
 				'title' => 'min:5|max:190',
 				'intro' => 'min:20|max:2000',
 				'ingredients' => 'min:20|max:5000',
@@ -28,6 +29,14 @@ class RecipePublichRequest extends FormRequest
 				'time' => 'numeric|digits_between:0,1000',
 				'image' => 'image|nullable|max:1999'
 			];
+
+			$db_categories = Category::count();
+			$categories = request('categories');
+
+			foreach(range(0, count($categories)) as $i) {
+				$rules['categories.' . $i] = "numeric|digits_between:1,{$db_categories}";
+			}
+			return $rules;
 		}
 		return [];
 	}
@@ -48,6 +57,9 @@ class RecipePublichRequest extends FormRequest
 
 				'ingredients.min' => trans('recipes.ingredients_min'),
 				'ingredients.max' => trans('recipes.ingredients_max'),
+
+				'categories.numeric' => trans('recipes.categories_numeric'),
+				'categories.digits_between' => trans('recipes.categories_numeric'),
 
 				'text.min' => trans('recipes.text_min'),
 				'text.max' => trans('recipes.text_max'),
