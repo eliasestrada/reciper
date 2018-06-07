@@ -18,8 +18,8 @@ class Recipe extends Model
 		return $this->belongsTo(Meal::class);
 	}
 
-	public function category() {
-        return $this->belongsTo(Category::class);
+	public function categories() {
+        return $this->belongsToMany(Category::class);
 	}
 
 	public function ingredientsWithListItems() {

@@ -12,7 +12,6 @@ class CreateRecipesTable extends Migration
         Schema::create('recipes', function (Blueprint $table) {
 			$table->increments('id');
 			$table->integer('user_id')->unsigned()->default(1);
-			$table->integer('category_id')->unsigned()->default(1);
 			$table->integer('meal_id')->unsigned()->default(1);
             $table->integer('time')->default(0);
             $table->bigInteger('views')->default(0);

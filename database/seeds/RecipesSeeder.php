@@ -24,7 +24,6 @@ class RecipesSeeder extends Seeder
 	{
 		return Recipe::create([
 			'user_id' => 2,
-			'category_id' => 5,
 			'meal_id' => 1,
 			'time' => 90,
 			'likes' => 27,
@@ -69,7 +68,6 @@ class RecipesSeeder extends Seeder
 	{
 		return Recipe::create([
 			'user_id' => 2,
-			'category_id' => 1,
 			'meal_id' => 2,
 			'time' => 30,
 			'likes' => 24,
@@ -108,7 +106,6 @@ class RecipesSeeder extends Seeder
 	{
 		return Recipe::create([
 			'user_id' => 1,
-			'category_id' => 5,
 			'meal_id' => 1,
 			'time' => 10,
 			'likes' => 27,
@@ -148,7 +145,6 @@ class RecipesSeeder extends Seeder
 	{
 		return Recipe::create([
 			'user_id' => 2,
-			'category_id' => 3,
 			'meal_id' => 2,
 			'time' => 60,
 			'likes' => 9,
