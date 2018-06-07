@@ -20,4 +20,5 @@ Route::prefix('recipes')->group(function () {
 	Route::get('/', 'Api\ApiRecipesController@index');
 	Route::delete('{id}', 'Api\ApiRecipesController@destroy');
 	Route::get('categories', 'Api\ApiRecipesController@categories');
+	Route::get('recipe_categories/{id}', 'Api\ApiRecipesController@recipeCategories');
 });
