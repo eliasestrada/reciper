@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Category;
+use App\Rules\UniqueCategory;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RecipeSaveRequest extends FormRequest
@@ -24,6 +25,7 @@ class RecipeSaveRequest extends FormRequest
 			'meal' => 'numeric|digits_between:1,3',
             'time' => 'numeric|digits_between:0,1999',
 			'image' => 'image|nullable|max:1999',
+			'categories' => [new UniqueCategory],
 		];
 
 		$db_categories = Category::count();
