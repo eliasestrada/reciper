@@ -79,12 +79,6 @@
 		{{-- Image --}}
 		<div class="col-12 col-md-6">
 			@component('components.forms.image_field')
-				@slot('image')
-					default.jpg
-				@endslot
-				@slot('alt')
-					@lang('recipes.image')
-				@endslot
 			@endcomponent
 		</div>
 	</div>

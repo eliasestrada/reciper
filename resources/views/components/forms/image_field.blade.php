@@ -8,6 +8,10 @@
 	<input type="file" name="image" id="src-image" class="d-none">
 
 	<section class="preview-image">
-		<img src="{{ asset('storage/images/'.$image) }}" alt="{{ $alt }}" id="target-image">
+		<img 
+			src="{{ asset('storage/images/' . ($image ?? 'default.jpg')) }}" 
+			alt="{{ ($alt ?? trans('recipes.image')) }}" 
+			id="target-image"
+		>
 	</section>
 </div>
