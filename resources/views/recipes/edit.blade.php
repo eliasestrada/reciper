@@ -61,22 +61,22 @@
 			</div>
 		</div>
 
+		{{-- Ingredients --}}
 		<div class="col-12 col-lg-6">
-			{{-- Ingredients --}}
-			<div class="form-group">
-				<label for="ingredients">@lang('recipes.ingredients')</label>
-				<textarea name="ingredients" id="ingredients" placeholder="@lang('recipes.ingredients_description')">{{ $recipe->toArray()['ingredients_'.locale()] }}</textarea>
-			</div>
-		</div>
-		<div class="col-12 col-lg-6">
-			{{-- Advice --}}
-			@component('comps')
-				
+			@component('comps.forms.ingredients_field')
+				@slot('ingredients')
+					{{ $recipe->toArray()['ingredients_'.locale()] }}
+				@endslot
 			@endcomponent
-			<div class="form-group">
-				<label for="intro">@lang('recipes.intro')</label>
-				<textarea name="intro" id="intro" placeholder="@lang('recipes.short_intro')">{{ $recipe->toArray()['intro_'.locale()] }}</textarea>
-			</div>
+		</div>
+
+		{{-- Advice --}}
+		<div class="col-12 col-lg-6">
+			@component('comps.forms.intro_field')
+				@slot('intro')
+					{{ $recipe->toArray()['intro_'.locale()] }}
+				@endslot
+			@endcomponent
 		</div>
 
 		{{-- Text --}}

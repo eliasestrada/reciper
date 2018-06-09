@@ -45,19 +45,16 @@
 			</div>
 		</div>
 
+		{{-- Ingredients --}}
 		<div class="col-12 col-lg-6">
-			{{-- Ingredients --}}
-			<div class="form-group">
-				<label for="ingredients">@lang('recipes.ingredients')</label>
-				<textarea name="ingredients" placeholder="@lang('recipes.ingredients_description')" id="ingredients"></textarea>
-			</div>
+			@component('comps.forms.ingredients_field')
+			@endcomponent
 		</div>
+
+		{{-- Advice --}}
 		<div class="col-12 col-lg-6">
-			{{-- Advice --}}
-			<div class="form-group">
-				<label for="intro">@lang('recipes.intro')</label>
-				<textarea name="intro" placeholder="@lang('recipes.short_intro')" id="intro"></textarea>
-			</div>
+			@component('comps.forms.intro_field')
+			@endcomponent
 		</div>
 
 		<div class="col-12 mb-2">
