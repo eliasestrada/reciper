@@ -1,4 +1,4 @@
-@component('components.error', ['btn' => false])
+@component('comps.error', ['btn' => false])
 	@slot('error')
 		@lang('errors.503')
 	@endslot

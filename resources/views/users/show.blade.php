@@ -11,7 +11,7 @@
 </div>
 
 {{--  All my recipes  --}}
-@component('components.list_of_recipes', ['recipes' => $recipes])
+@component('comps.list_of_recipes', ['recipes' => $recipes])
 	@slot('title')
 		@lang('users.all_recipes')
 	@endslot

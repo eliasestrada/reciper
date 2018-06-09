@@ -70,6 +70,9 @@
 		</div>
 		<div class="col-12 col-lg-6">
 			{{-- Advice --}}
+			@component('comps')
+				
+			@endcomponent
 			<div class="form-group">
 				<label for="intro">@lang('recipes.intro')</label>
 				<textarea name="intro" id="intro" placeholder="@lang('recipes.short_intro')">{{ $recipe->toArray()['intro_'.locale()] }}</textarea>
@@ -78,7 +81,7 @@
 
 		{{-- Text --}}
 		<div class="col-12 mb-2">
-			@component('components.forms.text_field')
+			@component('comps.forms.text_field')
 				@slot('text')
 					{{ $recipe->toArray()['text_'.locale()] }}
 				@endslot
@@ -99,7 +102,7 @@
 
 		{{-- Image --}}
 		<div class="col-12 col-md-6">
-			@component('components.forms.image_field')
+			@component('comps.forms.image_field')
 				@slot('image')
 					{{ $recipe->image }}
 				@endslot

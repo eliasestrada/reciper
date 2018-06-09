@@ -5,7 +5,7 @@
 @section('content')
 
 @admin
-	@component('components.list_of_recipes', ['recipes' => $unapproved])
+	@component('comps.list_of_recipes', ['recipes' => $unapproved])
 		@slot('title')
 			@lang('admin.checklist')
 		@endslot

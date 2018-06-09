@@ -4,7 +4,7 @@
 
 @section('content')
 
-@component('components.list_of_recipes', ['recipes' => $recipes])
+@component('comps.list_of_recipes', ['recipes' => $recipes])
 	@slot('title')
 		@lang('users.my_recipes')
 	@endslot

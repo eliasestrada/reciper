@@ -1,4 +1,4 @@
-@component('components.error')
+@component('comps.error')
 	@slot('error')
 		@lang('errors.500')
 	@endslot

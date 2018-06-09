@@ -61,7 +61,7 @@
 		</div>
 
 		<div class="col-12 mb-2">
-			@component('components.forms.text_field')
+			@component('comps.forms.text_field')
 			@endcomponent
 		</div>
 
@@ -78,7 +78,7 @@
 
 		{{-- Image --}}
 		<div class="col-12 col-md-6">
-			@component('components.forms.image_field')
+			@component('comps.forms.image_field')
 			@endcomponent
 		</div>
 	</div>
