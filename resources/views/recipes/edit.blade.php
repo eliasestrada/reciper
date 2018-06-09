@@ -47,18 +47,14 @@
 				<input type="number" name="time" id="time" value="{{ $recipe->time }}">
 			</div>
 		</div>
+
+		{{-- Meal time --}}
 		<div class="col-12 col-sm-6 col-md-4">
-			{{-- Meal time --}}
-			<div class="form-group simple-group">
-				<label for="meal">@lang('recipes.meal_description')</label>
-				<select name="meal" id="meal">
-					@foreach ($meal as $m)
-						<option value="{{ $m['id'] }}" {{ selectedIfEqual($m['id'], $recipe->meal->id) }}>
-							{{ title_case($m['name_'.locale()]) }}
-						</option>
-					@endforeach
-				</select>
-			</div>
+			@component('comps.forms.meal_field', ['meal' => $meal])
+				@slot('meal_id')
+					{{ $recipe->meal->id }}
+				@endslot
+			@endcomponent
 		</div>
 
 		{{-- Ingredients --}}

@@ -31,18 +31,11 @@
 				<input name="time" type="number" value="0" id="time">
 			</div>
 		</div>
+
+		{{-- Meal time --}}
 		<div class="col-12 col-sm-6 col-md-4">
-			{{-- Meal time --}}
-			<div class="form-group simple-group">
-				<label for="meal">@lang('recipes.meal_description')</label>
-				<select name="meal" id="meal">
-					@foreach ($meal as $m)
-						<option value="{{ $m['id'] }}">
-							{{ title_case($m['name_'.locale()]) }}
-						</option>
-					@endforeach
-				</select>
-			</div>
+			@component('comps.forms.meal_field', ['meal' => $meal])
+			@endcomponent
 		</div>
 
 		{{-- Ingredients --}}
