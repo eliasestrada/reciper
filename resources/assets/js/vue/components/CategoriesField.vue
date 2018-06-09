@@ -4,8 +4,8 @@
 			<div class="form-group simple-group">
 				<label :for="'category_id' + field">{{ label }} {{ field }}</label>
 				<select name="categories[]">
-					<option v-if="recipeCategories[i]" :value="recipeCategories[i]['id']" selected>
-						{{ recipeCategories[i]['name'] }}
+					<option v-if="recipeCategories" :value="recipeCategories[i]['id']" selected>
+						{{ recipeCategories[i]['name_' + locale] }}
 					</option>
 					<option v-for="categ in categories" :key="categ['id']" :value="categ['id']">
 						{{ categ['name_' + locale] }}
@@ -32,7 +32,6 @@
 export default {
 	data() {
 		return {
-			recipeCategories: [],
 			categories: [],
 			fields: 1,
 			visibleAddBtn: true,
@@ -40,11 +39,11 @@ export default {
 		}
 	},
 
-	props: ['label', 'locale', 'select', 'deleting', 'add', 'recipeId'],
+	props: ['label', 'locale', 'select', 'deleting', 'add', 'recipeCategories'],
 
 	created() {
 		this.fetchCategories(),
-		this.fetchFieldsFromDb()
+		this.getFieldsFromProps()
 	},
 	 
 	methods: {
@@ -55,16 +54,10 @@ export default {
 			.catch(err => console.log(err))
 		},
 
-		fetchFieldsFromDb() {
-			if (this.recipeId) {
-				fetch(`/api/recipes/recipe_categories/${this.recipeId}`)
-				.then(res => res.json())
-				.then(res => {
-					this.recipeCategories = res.data
-					this.fields = res.data.length
-					this.stableButtons()
-				})
-				.catch(err => console.log(err))
+		getFieldsFromProps() {
+			if (this.recipeCategories) {
+				this.fields = this.recipeCategories.length
+				this.stableButtons()
 			}
 		},
 

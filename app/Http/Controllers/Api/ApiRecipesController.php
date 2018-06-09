@@ -10,7 +10,6 @@ use App\Http\Resources\RecipesResource;
 use App\Http\Resources\CategoriesResource;
 use App\Http\Resources\RecipesRandomResource;
 use App\Helpers\Traits\RecipesControllerHelpers;
-use App\Http\Resources\RecipeCategoriesResource;
 
 class ApiRecipesController extends Controller
 {
@@ -34,6 +33,7 @@ class ApiRecipesController extends Controller
 		$random = Recipe
 			::inRandomOrder()
 			->where('id', '!=', $id)
+			->where('ready_'.locale(), 1)
 			->where('approved_'.locale(), 1)
 			->limit(7)
 			->get();
@@ -45,17 +45,6 @@ class ApiRecipesController extends Controller
 	public function categories()
 	{
 		return Category::get(['id', 'name_'.locale()]);
-	}
-
-
-	public function recipeCategories($id)
-	{
-		$categories = Recipe
-			::whereId($id)
-			->with('categories')
-			->first()
-			->categories;
-		return RecipeCategoriesResource::collection($categories);
 	}
 
 

@@ -87,11 +87,11 @@
 		<div class="form-group col-12">
 			<categories-field
 				locale="{{ locale() }}"
+				:recipe-categories="{{ json_encode($recipe->categories) }}"
 				label="@lang('recipes.category')"
 				select="@lang('form.select')"
 				deleting="@lang('form.deleting')"
-				add="@lang('form.add')"
-				recipe-id="{{ $recipe->id }}">
+				add="@lang('form.add')">
 			</categories-field>
 		</div>
 
