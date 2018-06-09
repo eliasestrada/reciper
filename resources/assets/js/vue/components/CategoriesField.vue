@@ -1,6 +1,12 @@
 <template>
-	<div class="row">
-		<div v-for="(field, i) in fields" :key="field" class="col-12 col-sm-6 col-md-3">
+	<div class="row py-2">
+		<h3 class="col-12 text-center mb-2">{{ categoriesTitle }} {{ fields }} / 4</h3>
+		<h3 class="col-12 text-center mb-2">
+			<a :class="classAddBtn" @click="addField" :title="add" style="color:darkgreen;" class="add-remove-field ml-2">{{ add + ' +' }}</a>
+			<a :class="classDelBtn" @click="deleteField" :title="deleting" style="color:brown;" class="add-remove-field ml-2">{{ deleting + ' -' }}</a>
+		</h3>
+
+		<div v-for="(field, i) in fields" :key="field" class="col-12 col-sm-6">
 			<div class="form-group simple-group">
 				<label :for="'category_id' + field">{{ label }} {{ field }}</label>
 				<select name="categories[]">
@@ -11,18 +17,6 @@
 						{{ categ['name_' + locale] }}
 					</option>
 				</select>
-			</div>
-		</div>
-		<div class="col-12 col-sm-6 col-md-3 row">
-			<div v-if="visibleAddBtn" class="col-6 pr-0">
-				<div class="form-group simple-group" :title="add">
-					<input @click="addField" type="button" :value="add + ' +'" class="add-remove-field" style="color:darkgreen;">
-				</div>
-			</div>
-			<div v-if="visibleDelBtn" class="col-6 pl-0" :title="deleting">
-				<div class="form-group simple-group">
-					<input @click="deleteField" type="button" :value="deleting + ' -'" class="add-remove-field" style="color:brown;">
-				</div>
 			</div>
 		</div>
 	</div>
@@ -39,7 +33,7 @@ export default {
 		}
 	},
 
-	props: ['label', 'locale', 'select', 'deleting', 'add', 'recipeCategories'],
+	props: ['label', 'locale', 'select', 'deleting', 'add', 'recipeCategories', 'categoriesTitle'],
 
 	created() {
 		this.fetchCategories(),
@@ -62,7 +56,7 @@ export default {
 		},
 
 		addField() {
-			if (this.fields <= 2 && this.fields > 0) {
+			if (this.fields <= 3 && this.fields > 0) {
 				this.fields++
 			}
 			this.stableButtons()
@@ -80,17 +74,29 @@ export default {
 				this.visibleDelBtn = true
 			}
 
-			if (this.fields === 3) {
+			if (this.fields === 4) {
 				this.visibleAddBtn = false
 				this.visibleDelBtn = true
 			}
 
-			if (this.fields < 3) {
+			if (this.fields < 4) {
 				this.visibleAddBtn = true
 			}
 
 			if (this.fields === 1) {
 				this.visibleDelBtn = false
+			}
+		}
+	},
+	computed: {
+		classDelBtn() {
+			return {
+				disable: !this.visibleDelBtn
+			}
+		},
+		classAddBtn() {
+			return {
+				disable: !this.visibleAddBtn
 			}
 		}
 	}

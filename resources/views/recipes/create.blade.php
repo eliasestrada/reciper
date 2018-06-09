@@ -60,7 +60,7 @@
 			</div>
 		</div>
 
-		<div class="col-12">
+		<div class="col-12 mb-2">
 			{{-- Text --}}
 			<div class="form-group">
 				<label for="text">@lang('recipes.text_of_recipe')</label>
@@ -68,29 +68,26 @@
 			</div>
 		</div>
 
-		<div class="form-group col-12">
+		<div class="form-group col-12 col-md-6 pb-5" style="border-bottom:solid 1px lightgray;">
 			<categories-field
 				locale="{{ locale() }}"
 				label="@lang('recipes.category')"
 				select="@lang('form.select')"
+				categories-title="@lang('recipes.categories_title')"
 				deleting="@lang('form.deleting')"
 				add="@lang('form.add')">
 			</categories-field>
 		</div>
 
 		{{-- Image --}}
-		<div class="form-group simple-group text-center col-12">
-			<div class="row">
-				<div class="col-md-4 offset-md-2">
-					<label for="src-image" class="image-label">@lang('recipes.select_file')</label>
-					<input type="file" name="image" id="src-image" class="d-none">
-				</div>
-				<div class="col-md-4">
-					<section class="preview-image">
-						<img src="{{ asset('storage/images/default.jpg') }}" alt="@lang('recipes.image')" id="target-image">
-					</section>
-				</div>
-			</div>
+		<div class="form-group simple-group text-center col-12 col-md-6 pb-5" style="border-bottom:solid 1px lightgray;">
+			<h3 class="col-12 text-center mb-2">@lang('recipes.image')</h3>
+			<label for="src-image" class="image-label" title="{{ trans('recipes.select_file') }}">@lang('recipes.select_file')</label>
+			<input type="file" name="image" id="src-image" class="d-none">
+
+			<section class="preview-image">
+				<img src="{{ asset('storage/images/default.jpg') }}" alt="@lang('recipes.image')" id="target-image">
+			</section>
 		</div>
 	</div>
 </form>

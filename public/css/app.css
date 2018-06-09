@@ -149,15 +149,6 @@ ol, ul, dl {
   color: #443c6d;
 }
 
-.hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #cccccc;
-  margin: .7em auto;
-  padding: 0;
-}
-
 .m-0 {
   margin: 0 !important;
 }
@@ -2716,19 +2707,29 @@ footer .footer-copyright {
 }
 
 .add-remove-field {
-  margin-top: 1.9em;
-  margin-right: 3px !important;
+  display: inline-block;
   cursor: pointer;
   font-weight: bold;
-  border: none !important;
   font-size: .9em;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
   outline: none;
+  padding: 5px 8px;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .add-remove-field:hover {
   background: #e1dfed;
+}
+
+.disable {
+  opacity: .4;
+}
+
+.disable:hover {
+  cursor: not-allowed;
 }
 
 @media (min-width: 420px) {
