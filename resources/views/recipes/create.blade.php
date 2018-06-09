@@ -24,12 +24,11 @@
 				<input type="text" name="title" placeholder="@lang('recipes.title')" id="title">
 			</div>
 		</div>
+
+		{{-- Time --}}
 		<div class="col-12 col-sm-6 col-md-4">
-			{{-- Time --}}
-			<div class="form-group simple-group">
-				<label for="time">@lang('recipes.time_description')</label>
-				<input name="time" type="number" value="0" id="time">
-			</div>
+			@component('comps.forms.time_field')
+			@endcomponent
 		</div>
 
 		{{-- Meal time --}}

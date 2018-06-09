@@ -40,12 +40,14 @@
 				<input type="text" name="title" id="title" placeholder="@lang('recipes.title')" value="{{ $recipe->toArray()['title_'.locale()] }}">
 			</div>
 		</div>
+
+		{{-- Time --}}
 		<div class="col-12 col-sm-6 col-md-4">
-			{{-- Time --}}
-			<div class="form-group simple-group">
-				<label for="time">@lang('recipes.time_description')</label>
-				<input type="number" name="time" id="time" value="{{ $recipe->time }}">
-			</div>
+			@component('comps.forms.time_field')
+				@slot('time')
+					{{ $recipe->time }}
+				@endslot
+			@endcomponent
 		</div>
 
 		{{-- Meal time --}}
