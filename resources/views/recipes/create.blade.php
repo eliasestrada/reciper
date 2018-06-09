@@ -9,20 +9,18 @@
 
 		@csrf
 
+		{{-- Edit button --}}
 		<div class="col-12">
 			<h1 class="headline">@lang('recipes.add_recipe')</h1>
-			{{-- Edit button --}}
 			<div class="recipe-buttons col-12">
 				<button type="submit" class="edit-recipe-icon icon-save"></button>
 			</div>
 		</div>
 	
+		{{-- Title --}}
 		<div class="col-12 col-sm-6 col-md-4">
-			{{-- Title --}}
-			<div class="form-group">
-				<label for="title">@lang('recipes.title')</label>
-				<input type="text" name="title" placeholder="@lang('recipes.title')" id="title">
-			</div>
+			@component('comps.forms.title_field')
+			@endcomponent
 		</div>
 
 		{{-- Time --}}

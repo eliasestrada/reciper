@@ -33,12 +33,13 @@
 			</div>
 		</div>
 
+		{{-- Title --}}
 		<div class="col-12 col-sm-6 col-md-4">
-			{{-- Title --}}
-			<div class="form-group">
-				<label for="title">@lang('recipes.title')</label>
-				<input type="text" name="title" id="title" placeholder="@lang('recipes.title')" value="{{ $recipe->toArray()['title_'.locale()] }}">
-			</div>
+			@component('comps.forms.title_field')
+				@slot('title')
+					{{ $recipe->toArray()['title_'.locale()] }}
+				@endslot
+			@endcomponent
 		</div>
 
 		{{-- Time --}}
