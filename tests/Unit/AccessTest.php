@@ -7,8 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AccessTest extends TestCase
 {
-	/** @test */
-    public function guestCannotGoToADashboardPage()
+    public function testGuestCannotGoToADashboardPage()
     {
 		$this->assertTrue(true);
 	}

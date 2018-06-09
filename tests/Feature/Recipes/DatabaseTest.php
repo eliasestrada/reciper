@@ -12,8 +12,7 @@ class DatabaseTest extends TestCase
 {
 	use DatabaseTransactions;
 
-	/** @test*/
-    public function checkIfRecipeCanBeCreatedInDatabase()
+    public function testCheckIfRecipeCanBeCreatedInDatabase()
     {
 		$recipe = factory(Recipe::class)->create(['title_'.locale() => 'hello']);
 
