@@ -61,11 +61,8 @@
 		</div>
 
 		<div class="col-12 mb-2">
-			{{-- Text --}}
-			<div class="form-group">
-				<label for="text">@lang('recipes.text_of_recipe')</label>
-				<textarea name="text" placeholder="@lang('recipes.text_description')" id="text"></textarea>
-			</div>
+			@component('components.forms.text_field')
+			@endcomponent
 		</div>
 
 		<div class="form-group col-12 col-md-6 pb-5" style="border-bottom:solid 1px lightgray;">
@@ -80,14 +77,16 @@
 		</div>
 
 		{{-- Image --}}
-		@component('components.forms.add_image')
-			@slot('image')
-				default.jpg
-			@endslot
-			@slot('alt')
-				@lang('recipes.image')
-			@endslot
-		@endcomponent
+		<div class="col-12 col-md-6">
+			@component('components.forms.image_field')
+				@slot('image')
+					default.jpg
+				@endslot
+				@slot('alt')
+					@lang('recipes.image')
+				@endslot
+			@endcomponent
+		</div>
 	</div>
 </form>
 

@@ -76,12 +76,13 @@
 			</div>
 		</div>
 
+		{{-- Text --}}
 		<div class="col-12 mb-2">
-			{{-- Text --}}
-			<div class="form-group">
-				<label for="text">@lang('recipes.text_of_recipe')</label>
-				<textarea name="text" id="text" placeholder="@lang('recipes.text_description')">{{ $recipe->toArray()['text_'.locale()] }}</textarea>
-			</div>
+			@component('components.forms.text_field')
+				@slot('text')
+					{{ $recipe->toArray()['text_'.locale()] }}
+				@endslot
+			@endcomponent
 		</div>
 
 		<div class="form-group col-12 col-md-6 pb-5" style="border-bottom:solid 1px lightgray;">
@@ -97,14 +98,16 @@
 		</div>
 
 		{{-- Image --}}
-		@component('components.forms.add_image')
-			@slot('image')
-				{{ $recipe->image }}
-			@endslot
-			@slot('alt')
-				{{ $recipe->title }}
-			@endslot
-		@endcomponent
+		<div class="col-12 col-md-6">
+			@component('components.forms.image_field')
+				@slot('image')
+					{{ $recipe->image }}
+				@endslot
+				@slot('alt')
+					{{ $recipe->title }}
+				@endslot
+			@endcomponent
+		</div>
 	</div>
 </form>
 
