@@ -44,7 +44,7 @@ function scriptTimestamp( $path ) {
 	{
 		$timestamp = '';
 	}
-	return '<script defer type="text/javascript" src="' . $path . $timestamp . '"></script>';
+	return '<script type="text/javascript" src="' . $path . $timestamp . '"></script>';
 }
 
 
