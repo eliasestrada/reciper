@@ -6,14 +6,14 @@ function facebookTimeAgo($date) {
     $cur_time = time();
     $diff     = $cur_time - $date;
 
-    $seconds = [ 'секунда', 'секунды', 'секунд' ];
-    $minutes = [ 'минута', 'минуты', 'минут' ];
-    $hours   = [ 'час', 'часа', 'часов' ];
-    $days    = [ 'день', 'дня', 'дней' ];
-    $weeks   = [ 'неделя', 'недели', 'недель' ];
-    $months  = [ 'месяц', 'месяца', 'месяцев' ];
-    $years   = [ 'год', 'года', 'лет' ];
-    $decades = [ 'десятилетие', 'десятилетия', 'десятилетий' ];
+    $seconds = [trans('date.second'), trans('date.seconds'), trans('date.seconds2')];
+    $minutes = [trans('date.minute'), trans('date.minutes'), trans('date.second2')];
+    $hours   = [trans('date.hour'), trans('date.hours'), trans('date.hours2')];
+    $days    = [trans('date.day'), trans('date.days'), trans('date.days2')];
+    $weeks   = [trans('date.week'), trans('date.weeks'), trans('date.weeks2')];
+    $months  = [trans('date.month'), trans('date.months'), trans('date.months2')];
+    $years   = [trans('date.year'), trans('date.years'), trans('date.years2')];
+    $decades = [trans('date.decade'), trans('date.decades'), trans('date.decades2')];
 
     $phrase = [ $seconds, $minutes, $hours, $days, $weeks, $months, $years, $decades ];
     $length = [ 1, 60, 3600, 86400, 604800, 2630880, 31570560, 315705600 ];
@@ -26,7 +26,7 @@ function facebookTimeAgo($date) {
 
     if (($stf == 1) && ($i >= 1) && (($cur_time - $_time) > 0)) $value .= time_ago( $_time );
 
-	return $value . ' назад';
+	return $value . ' ' . trans('date.ago');
 }
 
 function getPhrase( $number, $titles ) {
