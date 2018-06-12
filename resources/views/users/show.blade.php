@@ -7,7 +7,11 @@
 <div class="profile-header">
 	<h1>{{ $user->name }}</h1>
 	<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{ $user->name }}" />
-	<p class="content text-center">@lang('users.online'): {{ facebookTimeAgo($user->updated_at) }}</p>
+	<div class="content text-center">
+		<p>{{ $user->recipes->sum('likes') }} @lang('users.likes')</p>
+		<p>@lang('users.joined'): {{ facebookTimeAgo($user->created_at) }}</p>
+		<p>@lang('users.online'): {{ facebookTimeAgo($user->updated_at) }}</p>
+	</div>
 </div>
 
 {{--  All my recipes  --}}

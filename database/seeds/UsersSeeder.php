@@ -20,6 +20,7 @@ class UsersSeeder extends Seeder
 			'password' => bcrypt('111111'),
 			'notif_check' => date("Y-m-d H:i:s"),
 			'contact_check' => date("Y-m-d H:i:s"),
+			'created_at' => '2018-03-08 12:08:59',
 			'image' => 'user1.jpg'
 		]);
 
@@ -31,6 +32,7 @@ class UsersSeeder extends Seeder
 			'password' => '$2y$10$LjEPpSoZr8aJHIbruB6AfOlBNTdZIJUb6xZa31z.nYGNkxkeZI.zi',
 			'notif_check' => date("Y-m-d H:i:s"),
 			'contact_check' => date("Y-m-d H:i:s"),
+			'created_at' => '2018-03-10 21:27:35',
 			'image' => 'user2.jpg'
 		]);
 

@@ -15,6 +15,8 @@ return [
 	'checked' => 'Проверен',
 	'not_ready' => 'Не готов',
 	'not_checked' => 'Не проверен',
+	'likes' => 'лайков',
+	'joined' => 'Регистрация',
 	'go_to_recipe' => 'Перейти к рецепту',
 	'no_recipes_yet' => 'У вас пока нет рецептов',
 	'my_recipes' => 'Мои рецепты',
