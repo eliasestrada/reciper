@@ -31,8 +31,8 @@
 				<div class="arrow-bottom" id="arrow-bottom"></div>
 				<div class="categories-menu" id="categories-menu">
 					@foreach ($category_names as $name)
-						<a href="/search?for={{ str_replace(' ', '-', $name) }}" title="{{ $name }}">
-							<span>{{ $name }}</span>
+						<a href="/search?for={{ str_replace(' ', '-', $name['name_'.locale()]) }}" title="{{ $name['name_'.locale()] }}">
+							<span>{{ $name['name_'.locale()] }}</span>
 						</a>
 					@endforeach
 				</div>

@@ -11,6 +11,7 @@ class CategoriesTableSeeder extends Seeder
         Category::insert([
 			[ 'name_ru' => 'Вторые блюда', 'name_en' => 'Second course' ],
 			[ 'name_ru' => 'Выпечка', 'name_en' => 'Bakery' ],
+			[ 'name_ru' => 'Вегетарианские', 'name_en' => 'Vegetarian' ],
 			[ 'name_ru' => 'Гарниры', 'name_en' => 'Garnish' ],
 			[ 'name_ru' => 'Десерты', 'name_en' => 'Dessert' ],
 			[ 'name_ru' => 'Детские блюда', 'name_en' => 'Baby dishes' ],

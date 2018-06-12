@@ -5,8 +5,8 @@ namespace App\Providers;
 use DB;
 use Schema;
 use App\Models\User;
-use App\Models\Recipe;
 use App\Models\Title;
+use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -48,20 +48,11 @@ class AppServiceProvider extends ServiceProvider
 
 	public function showListOfCategories()
 	{
-		if (Schema::hasTable('recipes')) {
-			$all_categories = Recipe
-				::with('categories')
-				->first()
-				->categories
-				->toArray();
-				
-			$category_names = array_map(function($item) {
-				return $item['name_'.locale()];
-			}, $all_categories);
-				
+		if (Schema::hasTable('categories')) {
+			$category_names = Category::get(['name_'.locale()])->toArray();
 			view()->share(compact('category_names'));
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+			logger()->emergency(trans('logs.no_table', ['table' => 'categories']));
 		}
 	}
 }
