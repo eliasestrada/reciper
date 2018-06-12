@@ -16,8 +16,8 @@ class AdminController extends Controller
 	 */
 	public function checklist()
 	{
-		$unapproved = Recipe::whereApproved(0)
-			->whereReady(1)
+		$unapproved = Recipe::where('approved_'.locale(), 0)
+			->where('ready_'.locale(), 1)
 			->oldest()
 			->paginate(10);
 
