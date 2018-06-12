@@ -18,9 +18,3 @@ let imageUploader = {
 		})
 	}
 }
-
-// User on page where variables:
-// src and target exist, run function
-if (imageUploader.src && imageUploader.target) {
-	imageUploader.showImage()
-}

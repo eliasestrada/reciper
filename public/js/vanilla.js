@@ -63,20 +63,18 @@ var imageUploader = {
 			}
 		});
 	}
-
-	// User on page where variables:
-	// src and target exist, run function
-};if (imageUploader.src && imageUploader.target) {
-	imageUploader.showImage();
-}
-// After page has been loaded, it will
-// remove the loading animation
-window.onload = function () {
+	// After page has been loaded, it will
+	// remove the loading animation
+};window.onload = function () {
 	$('loading').classList.remove("loading");
 	$('loading-title').innerHTML = '';
 };
 if ($('ready-checkbox')) {
 	checkCheckboxThenSubmit('ready-checkbox', 'publish-btn');
+}
+
+if (imageUploader.src && imageUploader.target) {
+	imageUploader.showImage();
 }
 /**
  * These functions allows admin see edit form after clicking
