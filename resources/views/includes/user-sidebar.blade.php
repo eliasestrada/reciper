@@ -10,7 +10,7 @@
 
 		{{-- dashboard --}}
 		<li class="{{ activeIfRouteIs('dashboard') }}">
-			<a href="/dashboard" title="@lang('includes.profile')">
+			<a href="/users/{{ user()->id }}" title="@lang('includes.profile')">
 				<i style="background: url(/storage/uploads/{{ optional(user())->image }})" class="sidebar-icon user-icon"></i>
 				<span>@lang('includes.profile')</span>
 			</a>
@@ -25,8 +25,8 @@
 		</li>
 
 		{{-- my recipes --}}
-		<li class="{{ activeIfRouteIs('users/my_recipes/all') }}">
-			<a href="/users/my_recipes/all" title="@lang('includes.my_recipes')">
+		<li class="{{ activeIfRouteIs('users/other/my_recipes') }}">
+			<a href="/users/other/my_recipes" title="@lang('includes.my_recipes')">
 				<i style="background: url(/css/icons/svg/document.svg)" class="sidebar-icon"></i>
 				<span>@lang('includes.my_recipes')</span>
 			</a>
@@ -68,7 +68,7 @@
 
 		{{-- notifications --}}
 		<li class="{{ activeIfRouteIs('notifications') }}">
-			<a href="/notifications" title="@lang('includes.notifications')" {{ $notifications ?? '' }} class="small-notif-btn">
+			<a href="/users/other/notifications" title="@lang('includes.notifications')" {{ $notifications ?? '' }} class="small-notif-btn">
 				<i style="background: url(/css/icons/svg/notifications.svg)" class="sidebar-icon"></i>
 				<span>@lang('includes.notifications')</span>
 			</a>
