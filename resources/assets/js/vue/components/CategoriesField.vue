@@ -10,7 +10,7 @@
 			<div class="form-group simple-group">
 				<label :for="'category_id' + field">{{ label }} {{ field }}</label>
 				<select name="categories[]">
-					<option v-if="recipeCategories" :value="recipeCategories[i]['id']" selected>
+					<option v-if="recipeCategories.length > 0" :value="recipeCategories[i]['id']" selected>
 						{{ recipeCategories[i]['name_' + locale] }}
 					</option>
 					<option v-for="categ in categories" :key="categ['id']" :value="categ['id']">
@@ -50,7 +50,11 @@ export default {
 
 		getFieldsFromProps() {
 			if (this.recipeCategories) {
-				this.fields = this.recipeCategories.length
+				if (this.recipeCategories.length == 0) {
+					this.fields = 1
+				} else {
+					this.fields = this.recipeCategories.length
+				}
 				this.stableButtons()
 			}
 		},
