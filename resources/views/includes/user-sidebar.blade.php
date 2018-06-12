@@ -84,18 +84,10 @@
 			</li> --}}
 		@endadmin
 
-		{{-- settings --}}
-		<li class="remove-hover">
-			<a>
-				<i style="background: url(/css/icons/svg/cog.svg)" class="sidebar-icon"></i>
-				<span class="text-white">@lang('includes.settings')</span>
-			</a>
-		</li>
-
 		{{-- settings/general --}}
 		<li class="{{ activeIfRouteIs('settings/general') }}">
 			<a href="/settings/general" title="Общие" >
-				<i style="background: url(/css/icons/svg/cheveron-right.svg)" class="sidebar-icon"></i>
+				<i style="background: url(/css/icons/svg/wrench.svg)" class="sidebar-icon"></i>
 				<span>@lang('includes.general')</span>
 			</a>
 		</li>
@@ -103,7 +95,7 @@
 		{{-- settings/photo --}}
 		<li class="{{ activeIfRouteIs('settings/photo') }}">
 			<a href="/settings/photo" title="Фотография">
-				<i style="background: url(/css/icons/svg/cheveron-right.svg)" class="sidebar-icon"></i>
+				<i style="background: url(/css/icons/svg/wrench.svg)" class="sidebar-icon"></i>
 				<span>@lang('includes.photo')</span>
 			</a>
 		</li>

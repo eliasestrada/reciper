@@ -3232,10 +3232,6 @@ footer .footer-copyright {
   transition: transform .2s, -webkit-transform .2s;
 }
 
-.user-sidebar .remove-hover:hover {
-  background: none;
-}
-
 .user-sidebar .active {
   background: #484074;
 }
