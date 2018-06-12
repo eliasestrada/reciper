@@ -19,8 +19,13 @@ Route::prefix('recipes/{recipe}')->group(function () {
 Route::prefix('users')->group(function () {
 	Route::get('/', 'UsersController@index');
 	Route::get('{user}', 'UsersController@show');
-	Route::get('my_recipes/all', 'UsersController@my_recipes');
+
+	Route::prefix('other')->group(function () {
+		Route::get('my_recipes', 'UsersController@my_recipes');
+		Route::get('notifications', 'UsersController@notifications');
+	});
 });
+
 
 // New Member ========
 Route::prefix('member/{id}')->group(function () {
@@ -30,7 +35,6 @@ Route::prefix('member/{id}')->group(function () {
 
 // Dashboard ===========
 Route::get('dashboard', 'DashboardController@index');
-Route::get('notifications', 'DashboardController@notifications');
 
 // Settings ===========
 Route::prefix('settings')->group(function () {

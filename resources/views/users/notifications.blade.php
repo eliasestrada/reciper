@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', trans('dashboard.notifications'))
+@section('title', trans('includes.notifications'))
 
 @section('content')
 
 <h1 class="headline">
 	@lang('dashboard.notifications') 
-	{{ count($notifications) > 0 ? count($notifications) : '' }}
+	{{ count($notifications) > 0 ? ': '.count($notifications) : '' }}
 </h1>
 
 <div class="py-5">
@@ -17,7 +17,7 @@
 			<p class="notification-message">{{ $notification->message }}</p>
 		</div>
 	@empty
-		<p class="content text-center">@lang('dashboard.you_do_not_have_notifications')</p>
+		<p class="content text-center">@lang('dashboard.u_dont_have_notif')</p>
 	@endforelse
 </div>
 
