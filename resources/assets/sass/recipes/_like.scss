@@ -1,0 +1,68 @@
+.like-for-author-section {
+	.user-icon {
+		margin-right: -25px;
+		transition: margin-right 300ms, transform 300ms;
+
+		&:hover {
+			margin-right: 5px;
+			transition: margin-right 300ms, transform 300ms;
+			transform: scale(1.2);
+		}
+	}
+}
+
+.user-icon {
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+	border-radius: 50%;
+	display: inline-block;
+	background-position: center !important;
+	background-size: 50px !important;
+	background-repeat: no-repeat !important;
+}
+
+.like-icon {
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	margin: auto;
+	background-position: center;
+	background-size: 25px;
+	cursor: pointer;
+	animation: heart-beat 1.7s infinite both 1s, disappear 1s;
+	animation-direction: alternate, reverse;
+
+	&-empty {
+		background: url(icons/empty-heart.png);
+		transition: background .3s;
+
+		&:hover {
+			background: url(icons/full-heart.png);
+			transition: background .3s;
+		}
+	}
+	
+	&-full {
+		background: url(icons/full-heart.png);
+		transition: background .3s;
+
+		&:hover {
+			background: url(icons/empty-heart.png);
+			transition: background .3s;
+		}
+	}
+}
+
+.disappear {
+	animation: disappear .2s;
+	animation-timing-function: linear;
+}
+
+@media (min-width:640px) {
+	.user-icon {
+		width: 70px;
+		height: 70px;
+		background-size: 70px !important;
+	}
+}

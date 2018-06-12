@@ -121,32 +121,6 @@
 	}
 }
 
-.like-icon {
-	display: inline-block;
-	width: 25px;
-	height: 25px;
-	margin: auto;
-	background-position: center;
-	background-size: 25px;
-	cursor: pointer;
-	transition: .3s ease;
-	animation: heart-beat 1.7s infinite both 1s, disappear 1s;
-	animation-direction: alternate, reverse;
-
-	&-empty {
-		background: url(icons/empty-heart.png);
-	}
-	
-	&-full {
-		background: url(icons/full-heart.png);
-	}
-}
-
-.disappear {
-	animation: disappear .2s;
-	animation-timing-function: linear;
-}
-
 .category {
 	color: #fff;
 	display: inline-block;
@@ -170,11 +144,6 @@
 	font-size: .8em;
 	margin: .5em auto;
 	text-align: center;
-}
-
-#all-likes {
-	padding-left: .2em;
-	font-size: .9em;
 }
 
 @media (min-width: 640px) {

@@ -2791,6 +2791,87 @@ footer .footer-copyright {
   }
 }
 
+.like-for-author-section .user-icon {
+  margin-right: -25px;
+  -webkit-transition: margin-right 300ms, -webkit-transform 300ms;
+  transition: margin-right 300ms, -webkit-transform 300ms;
+  transition: margin-right 300ms, transform 300ms;
+  transition: margin-right 300ms, transform 300ms, -webkit-transform 300ms;
+}
+
+.like-for-author-section .user-icon:hover {
+  margin-right: 5px;
+  -webkit-transition: margin-right 300ms, -webkit-transform 300ms;
+  transition: margin-right 300ms, -webkit-transform 300ms;
+  transition: margin-right 300ms, transform 300ms;
+  transition: margin-right 300ms, transform 300ms, -webkit-transform 300ms;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.user-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  background-position: center !important;
+  background-size: 50px !important;
+  background-repeat: no-repeat !important;
+}
+
+.like-icon {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin: auto;
+  background-position: center;
+  background-size: 25px;
+  cursor: pointer;
+  -webkit-animation: heart-beat 1.7s infinite both 1s, disappear 1s;
+          animation: heart-beat 1.7s infinite both 1s, disappear 1s;
+  animation-direction: alternate, reverse;
+}
+
+.like-icon-empty {
+  background: url(icons/empty-heart.png);
+  -webkit-transition: background .3s;
+  transition: background .3s;
+}
+
+.like-icon-empty:hover {
+  background: url(icons/full-heart.png);
+  -webkit-transition: background .3s;
+  transition: background .3s;
+}
+
+.like-icon-full {
+  background: url(icons/full-heart.png);
+  -webkit-transition: background .3s;
+  transition: background .3s;
+}
+
+.like-icon-full:hover {
+  background: url(icons/empty-heart.png);
+  -webkit-transition: background .3s;
+  transition: background .3s;
+}
+
+.disappear {
+  -webkit-animation: disappear .2s;
+          animation: disappear .2s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@media (min-width: 640px) {
+  .user-icon {
+    width: 70px;
+    height: 70px;
+    background-size: 70px !important;
+  }
+}
+
 .decorated {
   overflow: hidden;
   text-transform: uppercase;
@@ -2917,36 +2998,6 @@ footer .footer-copyright {
   line-height: 1.3;
 }
 
-.like-icon {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  margin: auto;
-  background-position: center;
-  background-size: 25px;
-  cursor: pointer;
-  -webkit-transition: .3s ease;
-  transition: .3s ease;
-  -webkit-animation: heart-beat 1.7s infinite both 1s, disappear 1s;
-          animation: heart-beat 1.7s infinite both 1s, disappear 1s;
-  animation-direction: alternate, reverse;
-}
-
-.like-icon-empty {
-  background: url(icons/empty-heart.png);
-}
-
-.like-icon-full {
-  background: url(icons/full-heart.png);
-}
-
-.disappear {
-  -webkit-animation: disappear .2s;
-          animation: disappear .2s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-}
-
 .category {
   color: #fff;
   display: inline-block;
@@ -2972,11 +3023,6 @@ footer .footer-copyright {
   font-size: .8em;
   margin: .5em auto;
   text-align: center;
-}
-
-#all-likes {
-  padding-left: .2em;
-  font-size: .9em;
 }
 
 @media (min-width: 640px) {

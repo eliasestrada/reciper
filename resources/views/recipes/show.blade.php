@@ -8,7 +8,9 @@
 	<div class="recipe-content">
 
 		{{--  Likes  --}}
-		<div id="favorite-buttons" style="font-weight:bold;">
+		<div class="like-for-author-section">
+			<a href="/users/{{ $recipe->user->id }}" class="user-icon" style="background:url({{ asset('storage/uploads/'.$recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
+
 			@if (Cookie::get('liked') != $recipe->id)
 				<a href="/recipes/{{ $recipe->id }}/like" class="like-icon like-icon-empty" title="@lang('recipes.like')"></a>
 			@else
@@ -86,10 +88,12 @@
 
 		<h3 class="decorated"><span>@lang('recipes.bon_appetit')!</span></h3>
 
-		{{--  Дата и Автор  --}}
-		<div class="date">
+		{{--  Дата --}}
+		<div class="date mt-4">
 			<p>@lang('recipes.added') {{ facebookTimeAgo($recipe->created_at) }}</p>
-			<p>@lang('recipes.author'): {{ optional($recipe->user)->name }}</p>
+			<a href="/users/{{ $recipe->user->id }}" title="@lang('recipes.search_by_author')">
+				<p>@lang('recipes.author'): {{ optional($recipe->user)->name }}</p>
+			</a>
 		</div>
 	</div>
 
