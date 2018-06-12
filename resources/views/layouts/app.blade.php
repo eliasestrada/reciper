@@ -13,6 +13,8 @@
 
 	@include('includes.user-sidebar')
 
+	@yield('home-header')
+
 	<div class="wrapper pb-5" id="app">
 
 		@include('includes.messages')

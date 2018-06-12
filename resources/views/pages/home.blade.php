@@ -2,10 +2,11 @@
 
 @section('title', trans('pages.home'))
 
-@section('content')
+@section('home-header')
+	@include('includes.header')
+@endsection
 
-{{--  Home Header  --}}
-@include('includes.header')
+@section('content')
 
 <section class="home-section" style="position:relative;">
 	@isset($title_intro)

@@ -1,5 +1,4 @@
 <header class="home-header">
-	<div class="header-bg-img"></div>
 	<div class="header-content">
 
 		<h1>{{ config('app.name') }}</h1>
