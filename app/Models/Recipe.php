@@ -32,4 +32,23 @@ class Recipe extends Model
 	public function textWithListItems() {
 		return convertToListItems($this->getText());
 	}
+
+	public function ready() {
+		return $this->getReady() === 1 ? true : false;
+	}
+
+	public function approved() {
+		return $this->getApproved() === 1 ? true : false;
+	}
+
+	public function getStatus()
+	{
+		if ($this->approved() === true) {
+			return trans('users.checked');
+		} elseif ($this->ready() === false) {
+			return trans('users.not_ready');
+		} else {
+			return trans('users.not_checked');
+		}
+	}
 }

@@ -24,11 +24,13 @@ trait RecipeModelShortcuts
 		return $this->toArray()['text_' . locale()];
 	}
 
-	public function ready() {
-		return $this->toArray()['ready_' . locale()] === 1 ? true : false;
+	public function getReady()
+	{
+		return $this->toArray()['ready_' . locale()];
 	}
 
-	public function approved() {
-		return $this->toArray()['approved_' . locale()] === 1 ? true : false;
+	public function getApproved()
+	{
+		return $this->toArray()['approved_' . locale()];
 	}
 }
