@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Schema;
 use Illuminate\Database\Eloquent\Model;
+use App\Helpers\Traits\RecipeModelShortcuts;
 
 class Recipe extends Model
 {
+	use RecipeModelShortcuts;
+
 	protected $guarded = ['id'];
 
     public function user() {
@@ -28,34 +31,5 @@ class Recipe extends Model
 
 	public function textWithListItems() {
 		return convertToListItems($this->getText());
-	}
-	
-	public function ready() {
-		return $this->toArray()['ready_' . locale()] === 1 ? true : false;
-	}
-
-	public function approved() {
-		return $this->toArray()['approved_' . locale()] === 1 ? true : false;
-	}
-
-	// Functions shortcuts
-	public function getTitle()
-	{
-		return $this->toArray()['title_' . locale()];
-	}
-
-	public function getIngredients()
-	{
-		return $this->toArray()['ingredients_' . locale()];
-	}
-
-	public function getIntro()
-	{
-		return $this->toArray()['intro_' . locale()];
-	}
-
-	public function getText()
-	{
-		return $this->toArray()['text_' . locale()];
 	}
 }
