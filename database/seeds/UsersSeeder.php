@@ -33,5 +33,16 @@ class UsersSeeder extends Seeder
 			'contact_check' => date("Y-m-d H:i:s"),
 			'image' => 'user2.jpg'
 		]);
+
+		User::create([
+			'email' => '22@22.com',
+			'name' => 'Ваня',
+			'admin' => 0,
+			'author' => 1,
+			'password' => bcrypt('111111'),
+			'notif_check' => date("Y-m-d H:i:s"),
+			'contact_check' => date("Y-m-d H:i:s"),
+			'image' => 'default.jpg'
+		]);
     }
 }
