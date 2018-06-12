@@ -1,8 +1,6 @@
 <?php
 
-Route::prefix(config('custom.login_slug'))->group(function () {
-	Auth::routes();
-});
+Auth::routes();
 
 // Pages ===========
 Route::get('/', 'PagesController@home');
