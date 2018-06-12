@@ -11,7 +11,7 @@ class RecipesResource extends JsonResource
     {
         return [
 			'id' => $this->id,
-			'title' => $this->resource->toArray()['title_'.locale()],
+			'title' => $this->resource->getTitle(),
 			'image' => $this->image
 		];
     }

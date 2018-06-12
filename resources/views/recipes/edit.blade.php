@@ -37,7 +37,7 @@
 		<div class="col-12 col-sm-6 col-md-4">
 			@component('comps.forms.title_field')
 				@slot('title')
-					{{ $recipe->toArray()['title_'.locale()] }}
+					{{ $recipe->getTitle() }}
 				@endslot
 			@endcomponent
 		</div>
@@ -64,7 +64,7 @@
 		<div class="col-12 col-lg-6">
 			@component('comps.forms.ingredients_field')
 				@slot('ingredients')
-					{{ $recipe->toArray()['ingredients_'.locale()] }}
+					{{ $recipe->getIngredients() }}
 				@endslot
 			@endcomponent
 		</div>
@@ -73,7 +73,7 @@
 		<div class="col-12 col-lg-6">
 			@component('comps.forms.intro_field')
 				@slot('intro')
-					{{ $recipe->toArray()['intro_'.locale()] }}
+					{{ $recipe->getIntro() }}
 				@endslot
 			@endcomponent
 		</div>
@@ -82,7 +82,7 @@
 		<div class="col-12 mb-2">
 			@component('comps.forms.text_field')
 				@slot('text')
-					{{ $recipe->toArray()['text_'.locale()] }}
+					{{ $recipe->getText() }}
 				@endslot
 			@endcomponent
 		</div>
