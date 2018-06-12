@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Recipe;
+use App\Models\Notification;
 
 class UsersController extends Controller
 {
@@ -33,5 +34,20 @@ class UsersController extends Controller
 		$recipes = Recipe::whereUserId(user()->id)->latest()->paginate(20);
 
 		return view('users.my_recipes')->withRecipes($recipes);
+	}
+
+	public function notifications()
+	{
+        $notifications = Notification::whereUserId(user()->id)
+			->orWhere('for_admins', 1)
+			->latest()
+			->paginate(10);
+
+		User::whereId(user()->id)->update([
+			'notif_check' => NOW()
+		]);
+
+		return view('users.notifications')
+			->withNotifications($notifications);
 	}
 }
