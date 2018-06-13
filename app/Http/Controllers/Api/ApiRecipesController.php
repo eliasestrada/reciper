@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Like;
 use App\Models\Recipe;
+use App\Models\Visitor;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,7 +17,6 @@ class ApiRecipesController extends Controller
 {
 	use RecipesControllerHelpers;
 
-	// All approved recipes
 	public function index()
 	{
 		$recipes = Recipe
@@ -28,7 +29,23 @@ class ApiRecipesController extends Controller
 	}
 
 
-	public function showRandomRecipes($id)
+	public function destroy($id)
+    {
+		$recipe = Recipe::find($id);
+
+		$this->deleteOldImage($recipe->image);
+		$recipe->categories()->detach();
+
+		if ($recipe->delete()) {
+			return 'success';
+		}
+
+		logger()->error(trans('recipes.deleted_fail'));
+		return 'failed';
+	}
+
+
+	public function random($id)
 	{
 		$random = Recipe
 			::inRandomOrder()
@@ -48,18 +65,27 @@ class ApiRecipesController extends Controller
 	}
 
 
-	public function destroy($id)
+	public function checkIfLiked($id)
     {
-		$recipe = Recipe::find($id);
+		$visitor = Visitor::whereIp(request()->ip())->first();
+		$likes = $visitor->likes()->where('recipe_id', $id)->count();
 
-		$this->deleteOldImage($recipe->image);
-		$recipe->categories()->detach();
+		return $likes;
+	}
 
-		if ($recipe->delete()) {
-			return 'success';
-		}
+	public function like($id)
+	{
+		$visitor = Visitor::whereIp(request()->ip())->first();
+		Like::create(['visitor_id' => $visitor->id, 'recipe_id' => $id]);
 
-		logger()->error(trans('recipes.deleted_fail'));
-		return 'failed';
-    }
+		return response()->json(['liked' => 1]);
+	}
+
+	public function dislike($id)
+	{
+		$visitor = Visitor::whereIp(request()->ip())->first();
+		Like::where(['visitor_id' => $visitor->id, 'recipe_id' => $id])->delete();
+
+		return response()->json(['liked' => 0]);
+	}
 }
