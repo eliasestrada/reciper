@@ -2857,13 +2857,6 @@ footer .footer-copyright {
   transition: background .3s;
 }
 
-.disappear {
-  -webkit-animation: disappear .2s;
-          animation: disappear .2s;
-  -webkit-animation-timing-function: linear;
-          animation-timing-function: linear;
-}
-
 @media (min-width: 640px) {
   .user-icon {
     width: 70px;
