@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $title)
+@section('title', $recipe->getTitle())
 
 @section('content')
 
@@ -11,12 +11,7 @@
 		<div class="like-for-author-section">
 			<a href="/users/{{ $recipe->user->id }}" class="user-icon" style="background:url({{ asset('storage/uploads/'.$recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
 
-			@if (Cookie::get('liked') != $recipe->id)
-				<a href="/recipes/{{ $recipe->id }}/like" class="like-icon like-icon-empty" title="@lang('recipes.like')"></a>
-			@else
-				<a href="/recipes/{{ $recipe->id }}/dislike" class="like-icon like-icon-full" title="@lang('recipes.dislike')"></a>
-			@endif
-			<i>{{ $recipe->likes }}</i>
+			<like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}"></like>
 		</div>
 
 		@auth
@@ -57,12 +52,12 @@
 			@endif
 		@endadmin
 
-		<h1 class="headline">{{ title_case($title) }}</h1>
+		<h1 class="headline">{{ title_case($recipe->getTitle()) }}</h1>
 
-		<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $title }}" class="recipe-img">
+		<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img">
 		
 		{{--  Intro  --}}
-		<p>{{ $intro }}</p>
+		<p>{{ $recipe->getIntro() }}</p>
 
 		{{--  Category  --}}
 		@foreach ($categories as $category)
@@ -104,15 +99,4 @@
 	</div>
 </section>
 
-@endsection
-
-@section('script')
-<script defer>
-	document.querySelector(".like-icon").addEventListener('click', animateLikeButton)
-
-	function animateLikeButton() {
-		likeIcon.classList.add("disappear")
-		likeIcon.style.opacity = '0'
-	}
-</script>
 @endsection
