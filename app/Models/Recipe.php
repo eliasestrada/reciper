@@ -21,6 +21,11 @@ class Recipe extends Model
 		return $this->belongsTo(Meal::class);
 	}
 
+	public function likes()
+	{
+		return $this->hasMany(Like::class);
+	}
+
 	public function categories() {
         return $this->belongsToMany(Category::class);
 	}

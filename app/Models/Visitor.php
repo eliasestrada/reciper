@@ -13,4 +13,9 @@ class Visitor extends Model
 			? self::whereIp(request()->ip())->increment('requests')
 			: self::create(['ip' => request()->ip()]);
 	}
+
+	public function likes()
+	{
+		return $this->hasMany(Like::class);
+	}
 }
