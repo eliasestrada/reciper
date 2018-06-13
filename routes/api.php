@@ -7,9 +7,8 @@ Route::prefix('recipes')->group(function () {
 	Route::prefix('other')->group(function () {
 		Route::get('random/{id}', 'Api\ApiRecipesController@random');
 		Route::get('categories', 'Api\ApiRecipesController@categories');
-		Route::get('like', 'Api\ApiRecipesController@like');
-		Route::get('dislike', 'Api\ApiRecipesController@dislike');
+		Route::post('check-if-liked/{id}', 'Api\ApiRecipesController@checkIfLiked');
+		Route::post('like/{id}', 'Api\ApiRecipesController@like');
+		Route::post('dislike/{id}', 'Api\ApiRecipesController@dislike');
 	});
 });
-
-Route::get('visitor', 'Api\ApiVisitorController@info');
