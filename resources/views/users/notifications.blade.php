@@ -17,7 +17,7 @@
 			<p class="notification-message">{{ $notification->message }}</p>
 		</div>
 	@empty
-		<p class="content text-center">@lang('dashboard.u_dont_have_notif')</p>
+		<p class="content text-center">@lang('users.u_dont_have_notif')</p>
 	@endforelse
 </div>
 
