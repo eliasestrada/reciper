@@ -19,9 +19,7 @@ class RecipesController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => [
-			'index', 'show', 'like', 'dislike'
-		]]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     // Index, show all approved recipes
@@ -81,8 +79,6 @@ class RecipesController extends Controller
 
 		return view('recipes.show')
 			->withRecipe($recipe)
-			->withTitle($recipe_array['title_'.locale()])
-			->withIntro($recipe_array['intro_'.locale()])
 			->withCategories($recipe->categories->toArray());
     }
 
