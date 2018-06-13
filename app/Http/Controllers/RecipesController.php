@@ -126,20 +126,4 @@ class RecipesController extends Controller
 		event(new RecipeIsReady($recipe));
         return redirect('/dashboard')->withSuccess(trans('recipes.added_to_approving'));
     }
-
-
-    public function like(Recipe $recipe)
-    {
-		$recipe->increment('likes');
-        return back()->withCookie(cookie('liked', $recipe->id, 5000));
-	}
-
-    public function dislike(Recipe $recipe)
-    {
-		if ($recipe->id == Cookie::get('liked')) {
-			$recipe->decrement('likes');
-			return back()->withCookie(Cookie::forget('liked'));
-		}
-		return back();
-    }
 }
