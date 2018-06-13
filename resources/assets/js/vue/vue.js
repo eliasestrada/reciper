@@ -7,7 +7,8 @@ const components = [
 	'RandomRecipesSidebar',
 	'Message',
 	'DeleteRecipeBtn',
-	'CategoriesField'
+	'CategoriesField',
+	'Like'
 ]
 
 components.forEach(comp => {
