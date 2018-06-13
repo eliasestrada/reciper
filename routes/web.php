@@ -10,10 +10,6 @@ Route::post('contact', 'ContactController@store');
 
 // Recipes ===========
 Route::resource('recipes', 'RecipesController')->except(['destroy']);
-Route::prefix('recipes/{recipe}')->group(function () {
-	Route::get('like', 'RecipesController@like');
-	Route::get('dislike', 'RecipesController@dislike');
-});
 
 // Users ===========
 Route::prefix('users')->group(function () {

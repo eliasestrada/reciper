@@ -27,7 +27,7 @@ export default {
 	 
 	methods: {
 		fetchData() {
-			fetch('/api/show-random-recipes/' + this.resipeId)
+			fetch('/api/recipes/other/random/' + this.resipeId)
 			.then(res => res.json())
 			.then(res => this.recipes = res.data)
 			.catch(err => console.log(err))
