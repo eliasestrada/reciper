@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Like;
 use App\Models\User;
 use App\Models\Recipe;
 use App\Models\Notification;
@@ -24,7 +25,6 @@ class UsersController extends Controller
 	public function show(User $user)
     {
 		$recipes = Recipe::whereUserId($user->id)->latest()->paginate(20);
-
 		return view('users.show')->with(compact('recipes', 'user'));
 	}
 
