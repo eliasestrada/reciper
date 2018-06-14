@@ -61,7 +61,7 @@
 
 		{{--  Category  --}}
 		@foreach ($recipe->categories as $category)
-			<a href="/search?for={{ $category->id }}" title="{{ $category->getName() }}">
+			<a href="/search?for={{ $category->getName() }}" title="{{ $category->getName() }}">
 				<span class="category">{{ $category->getName() }}</span>
 			</a>
 		@endforeach
