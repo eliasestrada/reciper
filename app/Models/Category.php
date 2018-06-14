@@ -12,4 +12,9 @@ class Category extends Model
 	public function recipes() {
 		return $this->belongsToMany(Recipe::class);
 	}
+
+	public function getName()
+	{
+		return $this->toArray()['name_' . locale()];
+	}
 }
