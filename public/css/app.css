@@ -149,12 +149,17 @@ ol, ul, dl {
   color: #443c6d;
 }
 
-.icon {
+svg:not(:root) {
+  overflow: hidden;
+}
+
+svg {
+  width: 18px;
+  height: 20px;
+  fill: #484074;
   display: inline-block;
-  width: 17px;
-  height: 17px;
-  -webkit-filter: invert(0.25);
-          filter: invert(0.25);
+  vertical-align: middle;
+  margin-right: 3px;
 }
 
 .m-0 {

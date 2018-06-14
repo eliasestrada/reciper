@@ -90,9 +90,15 @@
 	color: $mainHover;
 }
 
-.icon {
-	display: inline-block;
-	width: 17px;
-	height: 17px;
-	filter: invert(.25);
+svg:not(:root) {
+    overflow: hidden;
+}
+
+svg {
+    width: 18px;
+    height: 20px;
+    fill: $main;
+    display: inline-block;
+	vertical-align: middle;
+    margin-right: 3px;
 }
