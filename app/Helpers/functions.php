@@ -77,3 +77,12 @@ function readableNumber($number) {
 
 	return $number;
 }
+
+function getOnlineIcon($date) {
+	$diff = time() - strtotime($date);
+
+	if (($diff % 100) <= 120) {
+		return '<span class="online-icon-on"></span>';
+	}
+	return '<span class="online-icon-off"></span>';
+}
