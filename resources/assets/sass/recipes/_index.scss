@@ -1,7 +1,3 @@
-.recipes {
-	padding: .5em 15%;
-}
-
 .recipe-container {
 	padding: .5rem 1rem;
 	position: relative;
@@ -28,10 +24,6 @@
 }
 
 @media (min-width: 767px) {
-	.recipes {
-		padding: .5em 1em;
-	}
-
 	.recipes-content {
 		margin: .5rem;
 		position: absolute;
