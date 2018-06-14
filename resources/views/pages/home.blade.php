@@ -49,14 +49,14 @@
 	@if (isset($random_recipes) && (count($random_recipes) > 0))
 		@foreach ($random_recipes->chunk(4) as $chunk)
 			<div class="row">
-				@foreach ($chunk->toArray() as $random)
+				@foreach ($chunk as $random)
 					<div class="recipe-container col-md-3 col-12 col-sm-6">
 						<div class="recipe">
-							<a href="/recipes/{{ $random['id'] }}">
-								<img src="{{ asset('storage/images/'.$random['image']) }}" alt="{{ $random['title_'.locale()] }}">
+							<a href="/recipes/{{ $random->id }}">
+								<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{ $random->getTitle() }}">
 							</a>
 							<div class="recipes-content">
-								<h3>{{ $random['title_'.locale()] }}</h3>
+								<h3>{{ $random->getTitle() }}</h3>
 							</div>
 						</div>
 					</div>

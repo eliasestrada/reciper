@@ -33,10 +33,10 @@
 				<div class="col-12 col-sm-6 col-md-3 text-left">
 					<ul class="unstyled-list">
 						<li><strong>@lang('includes.recipes')</strong></li>
-						@foreach ($random_chunk->toArray() as $recipe)
+						@foreach ($random_chunk as $recipe)
 							<li>
-								<a href="/recipes/{{ $recipe['id'] }}" title="{{ $recipe['title_'.locale()] }}">
-									{{ $recipe['title_'.locale()] }}
+								<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
+									{{ $recipe->getTitle() }}
 								</a>
 							</li>
 						@endforeach
@@ -50,10 +50,10 @@
 			<ul class="unstyled-list">
 				@isset($popular_recipes)
 					<li><strong>@lang('includes.popular_recipes')</strong></li>
-					@foreach ($popular_recipes->toArray() as $recipe)
+					@foreach ($popular_recipes as $recipe)
 						<li>
-							<a href="/recipes/{{ $recipe['id'] }}" title="{{ $recipe['title_'.locale()] }}">
-								{{ $recipe['title_'.locale()] }}
+							<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
+								{{ $recipe->getTitle() }}
 							</a>
 						</li>
 					@endforeach

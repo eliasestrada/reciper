@@ -60,14 +60,17 @@
 		<p>{{ $recipe->getIntro() }}</p>
 
 		{{--  Category  --}}
-		@foreach ($categories as $category)
-			<a href="/search?for={{ $category['id'] }}" title="{{ $category['name_'.locale()] }}">
-				<span class="category">{{ $category['name_'.locale()] }}</span>
+		@foreach ($recipe->categories as $category)
+			<a href="/search?for={{ $category->id }}" title="{{ $category->getName() }}">
+				<span class="category">{{ $category->getName() }}</span>
 			</a>
 		@endforeach
 
 		{{--  Time  --}}
-		<div class="date"><i class="fa fa-clock-o"></i> {{ $recipe->time }} мин.</div>
+		<div class="date my-3">
+			<i style="background:url(/css/icons/svg/timer.svg)" class="icon"></i> 
+			{{ $recipe->time }} @lang('recipes.min').
+		</div>
 
 		{{--  Items --}}
 		<h3 class="decorated"><span>@lang('recipes.ingredients')</span></h3>
