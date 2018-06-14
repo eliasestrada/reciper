@@ -90,6 +90,18 @@
 	color: $mainHover;
 }
 
+.online-icon-on,
+.online-icon-off {
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	margin-right: 2px;
+}
+
+.online-icon-on {background: darkgreen;}
+.online-icon-off {background: brown;}
+
 small {
 	font-size: .65em;
 }
