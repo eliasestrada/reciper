@@ -68,7 +68,7 @@
 
 		{{--  Time  --}}
 		<div class="date my-3">
-			<i style="background:url(/css/icons/svg/timer.svg)" class="icon"></i> 
+			@include('icons.timer')
 			{{ $recipe->time }} @lang('recipes.min').
 		</div>
 
