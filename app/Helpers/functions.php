@@ -78,10 +78,11 @@ function readableNumber($number) {
 	return $number;
 }
 
-function getOnlineIcon($date) {
-	$diff = time() - strtotime($date);
+function getOnlineIcon($value) {
+	$seconds = [trans('date.second'), trans('date.seconds'), trans('date.seconds2')];
+	$url_string = explode(' ', $value);
 
-	if (($diff % 100) <= 120) {
+	if (in_array($url_string[1], $seconds)) {
 		return '<span class="online-icon-on"></span>';
 	}
 	return '<span class="online-icon-off"></span>';

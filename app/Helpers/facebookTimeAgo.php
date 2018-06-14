@@ -7,7 +7,7 @@ function facebookTimeAgo($date, $param = null) {
 	$diff     = $cur_time - $date;
 
     $seconds = [trans('date.second'), trans('date.seconds'), trans('date.seconds2')];
-    $minutes = [trans('date.minute'), trans('date.minutes'), trans('date.second2')];
+    $minutes = [trans('date.minute'), trans('date.minutes'), trans('date.minutes2')];
     $hours   = [trans('date.hour'), trans('date.hours'), trans('date.hours2')];
     $days    = [trans('date.day'), trans('date.days'), trans('date.days2')];
     $weeks   = [trans('date.week'), trans('date.weeks'), trans('date.weeks2')];
@@ -27,16 +27,19 @@ function facebookTimeAgo($date, $param = null) {
 
 	if (($stf == 1) && ($i >= 1) && (($cur_time - $_time) > 0)) $value .= time_ago($_time);
 
+
 	/**
 	 * If second param is set and current secons less than or qual 120,
 	 * return empty string instead of telling how many seconds ago user
 	 * has been online
 	 */
 	if (isset($param) && $param == 'online') {
-		if (($diff % 100) <= 120)  return '';
+		$url_string = explode(' ', $value);
+
+		if (in_array($url_string[1], $seconds)) return;
 	}
 
-	return $value . ' ' . trans('date.ago');
+	return $value.' '.trans("date.ago");
 }
 
 function getPhrase($number, $titles) {
