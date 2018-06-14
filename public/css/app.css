@@ -149,17 +149,20 @@ ol, ul, dl {
   color: #443c6d;
 }
 
+small {
+  font-size: .65em;
+}
+
 svg:not(:root) {
   overflow: hidden;
 }
 
 svg {
-  width: 20px;
-  height: 20px;
+  height: auto;
   fill: #484074;
   display: inline-block;
   vertical-align: middle;
-  margin-right: 3px;
+  overflow: visible;
 }
 
 .m-0 {
@@ -2850,20 +2853,8 @@ footer .footer-copyright {
   transition: background .3s;
 }
 
-.like-icon-empty:hover {
-  background: url(icons/full-heart.png);
-  -webkit-transition: background .3s;
-  transition: background .3s;
-}
-
 .like-icon-full {
   background: url(icons/full-heart.png);
-  -webkit-transition: background .3s;
-  transition: background .3s;
-}
-
-.like-icon-full:hover {
-  background: url(icons/empty-heart.png);
   -webkit-transition: background .3s;
   transition: background .3s;
 }
@@ -3317,5 +3308,68 @@ footer .footer-copyright {
     height: 100%;
     overflow-y: scroll;
     opacity: .95;
+  }
+}
+
+.bubbles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 2.3em;
+}
+
+.bubbles-block {
+  margin-right: 15px;
+}
+
+.bubble {
+  display: block;
+  width: 90px;
+  height: 90px;
+  margin: auto;
+  position: relative;
+  border: solid 2px #484074;
+  border-radius: 50%;
+  line-height: .6;
+}
+
+.bubble .number, .bubble svg {
+  position: absolute;
+}
+
+.bubble .number {
+  top: 52%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  left: 50%;
+  font-size: 25px;
+  z-index: 1;
+  color: #292543;
+}
+
+.bubble .number::after {
+  content: '';
+  width: 100%;
+  border-bottom: 1px solid #484074;
+  display: block;
+  position: absolute;
+  bottom: -10px;
+}
+
+.bubble svg {
+  top: -15px;
+  left: 30%;
+}
+
+@media (max-width: 360px) {
+  .bubble {
+    width: 70px;
+    height: 70px;
+  }
+  .bubble .number {
+    font-size: 20px;
   }
 }

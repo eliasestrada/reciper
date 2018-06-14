@@ -1,0 +1,58 @@
+.bubbles {
+	display: flex;
+	justify-content: center;
+	margin-top: 2.3em;
+
+	&-block {
+		margin-right: 15px;
+	}
+}
+
+.bubble {
+	display: block;
+	width: 90px;
+	height: 90px;
+	margin: auto;
+	position: relative;
+	border: solid 2px $main;
+	border-radius: 50%;
+	line-height: .6;
+
+	.number, svg {
+		position: absolute;
+	}
+
+	.number {
+		top: 52%;
+		transform: translate(-50%, -50%);
+		left: 50%;
+		font-size: 25px;
+		z-index: 1;
+		color: $mainDark;
+
+		&::after {
+			content: '';
+			width: 100%;
+			border-bottom: 1px solid $main;
+			display: block;
+			position: absolute;
+			bottom: -10px;
+		}
+	}
+
+	svg {
+		top: -15px;
+		left: 30%;
+	}
+}
+
+@media(max-width:360px) {
+	.bubble {
+		width: 70px;
+		height: 70px;
+
+		.number {
+			font-size: 20px;
+		}
+	}
+}
