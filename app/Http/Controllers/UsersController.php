@@ -24,8 +24,19 @@ class UsersController extends Controller
 
 	public function show(User $user)
     {
-		$recipes = Recipe::whereUserId($user->id)->latest()->paginate(20);
-		return view('users.show')->with(compact('recipes', 'user'));
+		$recipes = Recipe
+			::whereUserId($user->id)
+			->withCount('likes')
+			->latest()
+			->paginate(20);
+
+		$likes = 0;
+
+		foreach ($recipes->toArray()['data'] as $recipe) {
+			$likes += $recipe['likes_count'];
+		}
+
+		return view('users.show')->with(compact('recipes', 'user', 'likes'));
 	}
 
 	// Show all my recipes
