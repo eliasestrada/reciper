@@ -15,7 +15,7 @@
 					<div class="item-content">
 						<h3 class="project-name">{{ $user->name }}</h3>
 						<p class="project-title">
-							@lang('users.online'): {{ facebookTimeAgo( $user->updated_at ) }}
+							@lang('date.was_online'): {{ facebookTimeAgo( $user->updated_at ) }}
 						</p>
 						@admin
 							@if (!$user->isAuthor() )
