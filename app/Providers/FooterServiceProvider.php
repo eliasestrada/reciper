@@ -24,9 +24,9 @@ class FooterServiceProvider extends ServiceProvider
 			view()->composer('includes.footer', function ($view) {
 				$view->with('rand_recipes',
 					Recipe::inRandomOrder()
-						->where("approved_".locale(), 1)
+						->where("approved_" . locale(), 1)
 						->limit(20)
-						->get([ 'id', "title_".locale() ]));
+						->get([ 'id', "title_" . locale() ]));
 			});
 		} else {
 			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
@@ -38,10 +38,12 @@ class FooterServiceProvider extends ServiceProvider
         if (Schema::hasTable('recipes')) {
 			view()->composer('includes.footer', function ($view) {
 				$view->with('popular_recipes',
-					Recipe::where("approved_".locale(), 1)
-						->orderBy('likes', 'desc')
+					Recipe::select('id', 'title_' . locale())
+						->withCount('likes')
+						->orderBy('likes_count', 'desc')
 						->limit(10)
-						->get([ 'id', "title_".locale() ]));
+						->get()
+				);
 			});
 		} else {
 			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
@@ -52,7 +54,7 @@ class FooterServiceProvider extends ServiceProvider
 	public function getAndComposeTitleForFooter()
 	{
 		if (Schema::hasTable('titles')) {
-			$title_footer = Title::whereName('footer')->value('text_'.locale());
+			$title_footer = Title::whereName('footer')->value('text_' . locale());
 
 			view()->composer('includes.footer', function ($view) use ($title_footer) {
 				$view->with('title_footer', $title_footer);
