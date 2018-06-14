@@ -58,3 +58,22 @@ function setNameForRecipeImage($extension = null) {
 	}
 	return 'default.jpg';
 }
+
+function getRatingNumber($recipes, $likes) {
+	$points_for_recipes = count($recipes);
+	$points_for_likes = $likes / 10;
+
+	$result = $points_for_recipes + $points_for_likes;
+
+	return number_format($result, 1);
+}
+
+function readableNumber($number) {
+	if ($number >= 1000 && $number < 1000000):
+		$number = substr($number, 0, -3) . '<br /><small>' . trans('users.thousand') . '</small>';
+	elseif ($number >= 1000000):
+		$number = substr($number, 0, -6) . '<br /><small>' . trans('users.million') . '</small>';
+	endif;
+
+	return $number;
+}
