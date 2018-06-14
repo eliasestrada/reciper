@@ -15,8 +15,11 @@
 					<div class="item-content">
 						<h3 class="project-name">{{ $user->name }}</h3>
 						<p class="project-title">
-							@lang('date.was_online'): {{ facebookTimeAgo( $user->updated_at ) }}
+							{!! getOnlineIcon(facebookTimeAgo($user->updated_at)) !!}
+							@lang('date.online') 
+							{{ facebookTimeAgo($user->updated_at, 'online') }}
 						</p>
+
 						@admin
 							@if (!$user->isAuthor() )
 								<p>
@@ -32,6 +35,7 @@
 								</a>
 							@endif
 						@endadmin
+
 					</div>
 				</li>
 			</a>
