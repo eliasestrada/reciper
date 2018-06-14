@@ -75,8 +75,8 @@
 	width: 20px;
 	height: 20px;
 	content: '';
-	top: 4px;
-	left: 4px;
+	top: 7px;
+	left: 7px;
 	margin: 0;
 }
 
@@ -88,4 +88,11 @@
 	animation: none;
 	border: none;
 	color: $mainHover;
+}
+
+.icon {
+	display: inline-block;
+	width: 17px;
+	height: 17px;
+	filter: invert(.25);
 }
