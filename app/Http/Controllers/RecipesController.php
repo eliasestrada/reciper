@@ -33,7 +33,7 @@ class RecipesController extends Controller
     public function create()
     {
 		return view('recipes.create')
-			->withMeal(Meal::get(['id', 'name_'.locale()])->toArray());	
+			->withMeal(Meal::get(['id', 'name_' . locale()])->toArray());	
     }
 
 
@@ -55,8 +55,6 @@ class RecipesController extends Controller
     // It will show the recipe on a single page
     public function show(Recipe $recipe)
     {
-		$recipe_array = $recipe->toArray();
-
         // Rules for visitors
         if (!user() && !$recipe->approved()) {
             return redirect('/recipes')->withError(trans('recipes.no_rights_to_see'));
@@ -77,9 +75,7 @@ class RecipesController extends Controller
 			}
 		}
 
-		return view('recipes.show')
-			->withRecipe($recipe)
-			->withCategories($recipe->categories->toArray());
+		return view('recipes.show')->withRecipe($recipe);
     }
 
 

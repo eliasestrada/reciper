@@ -18,17 +18,17 @@ class PagesController extends Controller
 		if (Schema::hasTable('recipes')) {
 			$random_recipes = Recipe
 				::inRandomOrder()
-				->where("ready_".locale(), 1)
-				->where("approved_".locale(), 1)
+				->where("ready_" . locale(), 1)
+				->where("approved_" . locale(), 1)
 				->limit(12)
-				->get(['id', "title_".locale(), 'image']);
+				->get(['id', "title_" . locale(), 'image']);
 		}
 
 		if (Schema::hasTable('titles')) {
 			$intro = Title::whereName("intro");
 
-			$title_intro = $intro->value("title_".locale());
-			$text_intro = $intro->value("text_".locale());
+			$title_intro = $intro->value("title_" . locale());
+			$text_intro = $intro->value("text_" . locale());
 		}
 
 		return view('pages.home')->with(compact(

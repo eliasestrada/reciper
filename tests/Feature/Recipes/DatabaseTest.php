@@ -14,10 +14,10 @@ class DatabaseTest extends TestCase
 
     public function testCheckIfRecipeCanBeCreatedInDatabase()
     {
-		$recipe = factory(Recipe::class)->create(['title_'.locale() => 'hello']);
+		$recipe = factory(Recipe::class)->create(['title_' . locale() => 'hello']);
 
 		$this->assertDatabaseHas('recipes', [
-			'title_'.locale() => 'hello'
+			'title_' . locale() => 'hello'
 		]);		
 	}
 }

@@ -49,7 +49,7 @@ class AppServiceProvider extends ServiceProvider
 	public function showListOfCategories()
 	{
 		if (Schema::hasTable('categories')) {
-			$category_names = Category::get(['name_'.locale()])->toArray();
+			$category_names = Category::get(['name_' . locale()])->toArray();
 			view()->share(compact('category_names'));
 		} else {
 			logger()->emergency(trans('logs.no_table', ['table' => 'categories']));

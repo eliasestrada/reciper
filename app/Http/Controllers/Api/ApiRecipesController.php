@@ -61,7 +61,7 @@ class ApiRecipesController extends Controller
 
 	public function categories()
 	{
-		return Category::get(['id', 'name_'.locale()]);
+		return Category::get(['id', 'name_' . locale()]);
 	}
 
 
