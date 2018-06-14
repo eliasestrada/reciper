@@ -90,15 +90,18 @@
 	color: $mainHover;
 }
 
+small {
+	font-size: .65em;
+}
+
 svg:not(:root) {
     overflow: hidden;
 }
 
 svg {
-    width: 20px;
-    height: 20px;
+	height: auto;
     fill: $main;
     display: inline-block;
 	vertical-align: middle;
-    margin-right: 3px;
+	overflow: visible;
 }
