@@ -36,21 +36,11 @@
 	&-empty {
 		background: url(icons/empty-heart.png);
 		transition: background .3s;
-
-		&:hover {
-			background: url(icons/full-heart.png);
-			transition: background .3s;
-		}
 	}
 	
 	&-full {
 		background: url(icons/full-heart.png);
 		transition: background .3s;
-
-		&:hover {
-			background: url(icons/empty-heart.png);
-			transition: background .3s;
-		}
 	}
 }
 
