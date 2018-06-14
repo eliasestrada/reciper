@@ -68,7 +68,7 @@
 
 		{{--  Time  --}}
 		<div class="date my-3">
-			@include('icons.timer')
+			@include('icons.timer', ['scale' => '20', 'style' => 'height:20px;'])
 			{{ $recipe->time }} @lang('recipes.min').
 		</div>
 
