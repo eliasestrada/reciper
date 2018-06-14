@@ -3,6 +3,7 @@
 return [
 
 	'ago' => 'назад',
+	'online' => 'В сети',
 	// Seconds
 	'second' => 'секунда',
 	'seconds' => 'секунды',
