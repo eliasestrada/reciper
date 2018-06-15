@@ -1,0 +1,195 @@
+.decorated  {
+	overflow: hidden;
+	text-transform: uppercase;
+	color: $mainDark;
+	margin: .3em 0;
+	font-weight: normal;
+
+	span {
+		display: inline-block;
+		position: relative;
+
+		&::before,
+		&::after {
+			content: "";
+			border-bottom: 2px dotted $main;
+			width: 180%;
+			margin: 0 1em;
+			position: absolute;
+			bottom: .7em;
+		}
+
+		&::before {
+			right: 100%;
+		}
+
+		&::after {
+			left: 100%;
+		}
+	}
+}
+
+.grid-recipe {
+	color: $darkGray;
+	padding: 0 .6em;
+	background: $paper;
+}
+
+.recipe-content > p {
+	margin: 1.1em .7em .4em .7em;
+	text-align: left;
+	font-size: .85em;
+	line-height: 1.5;
+}
+
+.recipe-img {
+	width: 96%;
+	margin: .6em 2%;
+	border-radius: 4px;
+	animation: appear 1s;
+}
+
+.items {
+	width: 96%;
+	padding: 1.5em 15%;
+	margin: 2em auto;
+	text-align: left;
+	border-radius: 10px;
+	border-top: dotted 2px $main;
+	border-bottom: dotted 2px $main;
+	font-size: .9em;
+	line-height: 1.4;
+}
+
+.items > ul > li {
+	list-style-image: url(../storage/other/tick.png);
+	margin: 0 .1em;
+}
+
+.instruction {
+	margin: 1.3em 2.18em;
+	text-align: left;
+	padding-bottom: 1em;
+
+	li {
+		min-height: 3em;
+		margin-top: .93em;
+		counter-increment: item;
+		position: relative;
+		left: 2.5em;
+		border-left: dotted 2px $main;
+		padding: 0 .93em;
+
+		&:before {
+			color: $gray;
+			content: counter(item);
+			font-size: 2em;
+			position: absolute;
+			left: -1.6em;
+		}
+	}
+}
+
+/* Sidebar */
+.side-bar {
+	width: 100%;
+	padding: 1.85em 2em;
+
+	img {
+		border-radius: 12px 12px 0 0;
+		transition: opacity .3s;
+	
+		&:hover {
+			opacity: .9;
+			transition: opacity .3s;
+		}
+	}
+}
+
+.side-bar-recipe {
+	margin: 1 auto;
+	padding-bottom: 1em;
+
+	.side-bar-content {
+		padding: .8em 1em;
+		border-radius: 0 0 12px 12px;
+		border-bottom: dotted 2px $gray;
+		font-size: .8em;
+		transition: opacity 350ms;
+		opacity: 1;
+		line-height: 1.3;
+	}
+}
+
+.category {
+	color: #fff;
+	display: inline-block;
+	line-height: .9em;
+	font-size: .8em;
+	background: #555;
+	transition: background-color 200ms;
+	border: 1px solid #bebebe;
+	padding: .4em 1em;
+	margin-top: .6em;
+	border-radius: 1em;
+	
+	&:hover {
+		background: #4d4d4d;
+		transition: background-color 200ms;
+	}
+}
+
+.date {
+	color: #555;
+	font-size: .9em;
+	margin: .5em auto;
+	text-align: center;
+}
+
+@media (min-width: 640px) {
+	.grid-recipe {
+		display: grid;
+		grid-template: "recipe-content side-bar" 1fr / 1fr 15.62rem;
+		grid-gap: 1.12rem;
+		padding: 1rem .6rem .93rem;
+
+		.recipe-img {
+			width: 80%;
+			max-width: 43.7rem;
+			margin: .6rem auto;
+		}
+
+		.items {
+			width: 24em;
+			padding: 1.5em 3.4em;
+		}
+	
+		.recipe-content {
+			grid-area: recipe-content;
+			margin-left: .93rem;
+		}
+
+		.side-bar {
+			grid-area: side-bar;
+			width: 12.5rem;
+			padding: 0 0 1.25rem 2rem;
+	
+			ul { padding-top: .7em; }
+			.side-bar-content { font-size: .7em; }
+		}
+	}
+}
+
+@media (min-width:1900px) {
+	.grid-recipe {
+		grid-template-columns: 12.5rem 1fr 15.62rem 12.5rem;
+		grid-template-areas: ". recipe-content side-bar .";
+	}
+}
+
+@media (min-width:1800px) {
+	.grid-recipe {
+		grid-template-columns: 25rem 1fr 15.62rem 25rem;
+		grid-template-areas: ". recipe-content side-bar .";
+	}
+}

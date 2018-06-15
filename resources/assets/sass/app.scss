@@ -8,8 +8,11 @@
 @import 'home/home';
 @import 'home/home-media';
 
+// Recipes
+@import 'recipes/single';
+@import 'recipes/like';
+
 // Other
 @import 'footer';
 @import 'animations';
-@import 'like';
 @import 'bubbles';
