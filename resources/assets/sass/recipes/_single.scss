@@ -1,9 +1,9 @@
 .decorated  {
 	overflow: hidden;
-	text-transform: uppercase;
 	color: $mainDark;
 	margin: .3em 0;
 	font-weight: normal;
+	font-size: 25px;
 }
 
 .grid-recipe {
@@ -56,31 +56,6 @@
 .side-bar {
 	width: 100%;
 	padding: 1.85em 2em;
-}
-
-.category {
-	color: #fff;
-	display: inline-block;
-	line-height: .9em;
-	font-size: .8em;
-	background: #555;
-	transition: background-color 200ms;
-	border: 1px solid #bebebe;
-	padding: .4em 1em;
-	margin-top: .6em;
-	border-radius: 1em;
-	
-	&:hover {
-		background: #4d4d4d;
-		transition: background-color 200ms;
-	}
-}
-
-.date {
-	color: #555;
-	font-size: .9em;
-	margin: .5em auto;
-	text-align: center;
 }
 
 @media (min-width: 640px) {
