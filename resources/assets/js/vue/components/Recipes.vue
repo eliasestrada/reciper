@@ -1,13 +1,28 @@
 <template>
 	<div>
 		<div class="row">
-			<div v-for="recipe in recipes" :key="recipe.id" class="recipe-container col m3 s12">
-				<div class="recipe">
-					<a :href="'/recipes/' + recipe.id" :title="recipe.title">
-						<img :src="'storage/images/' + recipe.image" :alt="recipe.title">
-					</a>
-					<div class="recipes-content">
-						<h3>{{ recipe.title }}</h3>
+			<div class="col s12 m6 l3" v-for="recipe in recipes" :key="recipe.id">
+				<div class="card">
+					<div class="card-image waves-effect waves-block waves-light">
+						<img :src="'storage/images/' + recipe.image" :alt="recipe.title" class="activator">
+					</div>
+					<div class="card-content">
+						<span class="card-title activator grey-text text-darken-4">
+							{{ recipe.title }}
+							<i class="material-icons right">more_vert</i>
+						</span>
+						<p>
+							<a :href="'/recipes/' + recipe.id" :title="recipe.title">
+								{{ go }}
+							</a>
+						</p>
+					</div>
+					<div class="card-reveal">
+						<span class="card-title grey-text text-darken-4">
+							{{ recipe.title }}
+							<i class="material-icons right">close</i>
+						</span>
+						<p>{{ recipe.intro }}</p>
 					</div>
 				</div>
 			</div>
@@ -40,6 +55,8 @@ export default {
 			pagin: {}
 		}
 	},
+
+	props: ['go'],
 
 	created() {
 		this.fetchRecipes()
