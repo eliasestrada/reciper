@@ -13,7 +13,6 @@
 	@yield('home-header')
 
 	<div id="app" class="wrapper">
-		@include('includes.messages')
 		@yield('content')
 	</div>
 
@@ -25,11 +24,14 @@
 	@yield('script')
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
+			// Dropdown
 			var elems = document.querySelectorAll('.dropdown-trigger');
 			var instances = M.Dropdown.init(elems);
+			// Navigation
 			var elems = document.querySelectorAll('.sidenav');
 			var instances = M.Sidenav.init(elems);
 		});
 	</script>
+	@include('includes.messages')
 </body>
 </html>
