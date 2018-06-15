@@ -6713,15 +6713,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 body {
   font-family: Arial, Helvetica;
-  background: #2e2d2d;
+  background-color: #f3f3f3;
   font-size: 1rem;
   line-height: 1.5;
   counter-reset: item;
 }
 
-input[type="search"] {
+.fix-input {
   margin-bottom: 0 !important;
   height: 64px !important;
+}
+
+.wrapper {
+  max-width: 1600px;
+  margin: auto;
 }
 
 .headline {
@@ -7351,6 +7356,10 @@ input[type="search"] {
   .home-header .header-content h2 {
     font-size: 1em;
   }
+}
+
+footer {
+  background: #2e2d2d;
 }
 
 footer strong {

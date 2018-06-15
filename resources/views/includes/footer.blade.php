@@ -1,5 +1,5 @@
 <footer class="px-5 pt-3 pb-5">
-	<div class="row">
+	<div class="row wrapper">
 		{{--  Navigation  --}}
 		<div class="col s12 m6 l3 left-align">
 			<ul class="unstyled-list">
