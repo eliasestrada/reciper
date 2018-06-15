@@ -1,6 +1,6 @@
 <ul id="dropdown1" class="dropdown-content">
 	@isset($category_names)		
-		<li class="categories-menu" id="categories-menu">
+		<li>
 			@foreach ($category_names as $name)
 				<a href="/search?for={{ str_replace(' ', '-', $name['name_'.locale()]) }}" title="{{ $name['name_'.locale()] }}">
 					{{ $name['name_'.locale()] }}
@@ -23,9 +23,6 @@
 				</li>
 				<li class="{{ activeIfRouteIs('recipes') }}">
 					<a href="/recipes" title="Рецепты">@lang('includes.recipes')</a>
-				</li>
-				<li class="{{ activeIfRouteIs('search') }}">
-					<a href="/search" title="Поиск">@lang('includes.search')</a>
 				</li>
 
 				<!-- Dropdown Trigger -->
@@ -59,6 +56,7 @@
 	<li class="{{ activeIfRouteIs('search') }}">
 		<a href="/search" title="Поиск">@lang('includes.search')</a>
 	</li>
+	<div class="divider"></div>
 	@foreach ($category_names as $name)
 		<li>
 			<a href="/search?for={{ str_replace(' ', '-', $name['name_'.locale()]) }}" title="{{ $name['name_'.locale()] }}">
