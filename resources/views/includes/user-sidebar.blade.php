@@ -3,8 +3,7 @@
 <nav class="user-sidebar" id="user-sidebar">
 	<ul>
 		{{-- Profile --}}
-		{{-- @TODO: class="{{ activeIfRouteIs('dashboard') }}" --}}
-		<li class="{{ activeIfRouteIs('dashboard') }}">
+		<li class="{{ activeIfRouteIs('users/*') }}">
 			<a href="/users/{{ user()->id }}" title="@lang('includes.profile')">
 				<i class="material-icons sidebar-icon">person</i>
 				<span>@lang('includes.profile')</span>
