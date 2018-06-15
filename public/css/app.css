@@ -7096,6 +7096,18 @@ body {
   margin-left: auto !important;
 }
 
+.d-inline {
+  display: inline !important;
+}
+
+.d-inline-block {
+  display: inline-block !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
 .home-section {
   background: #f3f3f3;
   color: #333;
