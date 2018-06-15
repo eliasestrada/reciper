@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="profile-header">
-	<div class="content text-center">
+	<div class="content center-align">
 		<h1>{{ $user->name }}</h1>
 		<p>@lang('users.joined'): {{ facebookTimeAgo($user->created_at) }}</p>
 		<p>

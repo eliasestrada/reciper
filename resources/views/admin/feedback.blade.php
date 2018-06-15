@@ -25,7 +25,7 @@
 			</form>
 		</div>
 	@empty
-		<p class="content text-center">@lang('admin.no_messages')</p>
+		<p class="content center-align">@lang('admin.no_messages')</p>
 	@endforelse
 </div>
 

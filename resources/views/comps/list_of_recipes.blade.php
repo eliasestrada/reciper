@@ -26,7 +26,7 @@
 				</a>
 			@empty
 				@isset($no_recipes)
-					<p class="col s12 text-center">{{ $no_recipes }}</p>
+					<p class="col s12 center-align">{{ $no_recipes }}</p>
 				@endisset
 			@endforelse
 

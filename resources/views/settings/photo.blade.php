@@ -24,7 +24,7 @@
 
 				@method('put') @csrf
 
-				<div class="form-group simple-group text-center">
+				<div class="form-group simple-group center-align">
 					<input type="hidden" name="delete" value="0">
 
 					<label for="src-image" class="image-label mb-5">

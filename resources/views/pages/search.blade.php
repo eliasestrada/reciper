@@ -40,7 +40,7 @@
 @endif
 
 <div class="content">
-	<h4 class="content text-center">{{ $message ?? '' }}</h4>
+	<h4 class="content center-align">{{ $message ?? '' }}</h4>
 </div>
 
 @endsection

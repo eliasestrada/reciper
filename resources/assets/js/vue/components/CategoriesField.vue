@@ -1,7 +1,7 @@
 <template>
 	<div class="row py-2">
-		<h3 class="col s12 text-center mb-2">{{ categoriesTitle }} {{ fields }} / 4</h3>
-		<h3 class="col s12 text-center mb-2">
+		<h3 class="col s12 center-align mb-2">{{ categoriesTitle }} {{ fields }} / 4</h3>
+		<h3 class="col s12 center-align mb-2">
 			<a :class="classAddBtn" @click="addField" :title="add" style="color:darkgreen;" class="add-remove-field ml-2">{{ add + ' +' }}</a>
 			<a :class="classDelBtn" @click="deleteField" :title="deleting" style="color:brown;" class="add-remove-field ml-2">{{ deleting + ' -' }}</a>
 		</h3>
