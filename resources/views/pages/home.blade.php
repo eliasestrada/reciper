@@ -69,7 +69,9 @@
 									<i class="material-icons right">more_vert</i>
 								</span>
 								<p>
-									<a href="/recipes/{{ $random->id }}">This is a link</a>
+									<a href="/recipes/{{ $random->id }}">
+										@lang('recipes.go')
+									</a>
 								</p>
 							</div>
 							<div class="card-reveal">
