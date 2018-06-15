@@ -61,19 +61,18 @@
 					<div class="col s12 m6 l3">
 						<div class="card">
 							<div class="card-image waves-effect waves-block waves-light">
-								<img class="activator" src="{{ asset('storage/images/'.$random->image) }}">
+								<a href="/recipes/{{ $random->id }}">
+									<img class="activator" src="{{ asset('storage/images/'.$random->image) }}">
+								</a>
 							</div>
 							<div class="card-content">
-								<span class="card-title activator grey-text text-darken-4">
+								<span class="card-title activator">
 									{{ $random->getTitle() }}
 									<i class="material-icons right">more_vert</i>
 								</span>
-								<p>
-									<a href="/recipes/{{ $random->id }}">@lang('recipes.go')</a>
-								</p>
 							</div>
 							<div class="card-reveal">
-								<span class="card-title grey-text text-darken-4">
+								<span class="card-title grey-text">
 									{{ $random->getTitle() }}
 									<i class="material-icons right">close</i>
 								</span>

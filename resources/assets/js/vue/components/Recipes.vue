@@ -4,19 +4,18 @@
 			<div class="col s12 m6 l3" v-for="recipe in recipes" :key="recipe.id">
 				<div class="card">
 					<div class="card-image waves-effect waves-block waves-light">
-						<img :src="'storage/images/' + recipe.image" :alt="recipe.title" class="activator">
+						<a :href="'/recipes/' + recipe.id" :title="recipe.title">
+							<img :src="'storage/images/' + recipe.image" :alt="recipe.title" class="activator">
+						</a>
 					</div>
 					<div class="card-content">
-						<span class="card-title activator grey-text text-darken-4">
+						<span class="card-title activator">
 							{{ recipe.title }}
 							<i class="material-icons right">more_vert</i>
 						</span>
-						<p>
-							<a :href="'/recipes/' + recipe.id" :title="recipe.title">{{ go }}</a>
-						</p>
 					</div>
 					<div class="card-reveal">
-						<span class="card-title grey-text text-darken-4">
+						<span class="card-title ">
 							{{ recipe.title }}
 							<i class="material-icons right">close</i>
 						</span>
