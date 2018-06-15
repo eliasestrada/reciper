@@ -53,20 +53,22 @@
 		@endadmin
 
 		<div class="center-align">
-			<h1 class="headline">{{ $recipe->getTitle() }}</h1>
+			<h1 class="decorated">{{ $recipe->getTitle() }}</h1>
 		</div>
 
 		<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img">
 
 		{{--  Category  --}}
-		@foreach ($recipe->categories as $category)
-			<a href="/search?for={{ $category->getName() }}" title="{{ $category->getName() }}">
-				<span class="category">{{ $category->getName() }}</span>
-			</a>
-		@endforeach
+		<div class="center-align py-3">
+			@foreach ($recipe->categories as $category)
+				<a href="/search?for={{ $category->getName() }}" title="{{ $category->getName() }}">
+					<span class="new badge p-1 px-2" style="float:none;">{{ $category->getName() }}</span>
+				</a>
+			@endforeach
+		</div>
 
 		{{--  Time  --}}
-		<div class="date my-3">
+		<div class="my-3">
 			<i class="material-icons">timer</i>
 			{{ $recipe->time }} @lang('recipes.min').
 		</div>
