@@ -1,9 +1,7 @@
 // Modules
 @import 'modules/variables';
 @import 'modules/common';
-
-// Materialize
-@import 'materialize';
+@import 'bootstrap';
 
 // Home
 @import 'home/home';
@@ -12,18 +10,5 @@
 // Other
 @import 'footer';
 @import 'animations';
-// @import 'form';
-// @import 'items';
-// @import 'buttons';
-
-// Recipes
-@import 'recipes/like';
-// @import 'recipes/create';
-// @import 'recipes/index';
-// @import 'recipes/show';
-
-// User
-@import 'user/bubbles';
-// @import 'user/notifications';
-// @import 'user/profile';
-// @import 'user/statistic';
+@import 'like';
+@import 'bubbles';
