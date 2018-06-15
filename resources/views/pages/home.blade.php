@@ -35,10 +35,16 @@
 				{{ $text_intro }}
 			@endslot
 			@slot('holder_title')
-				@lang('settings.intro_title')
+				@lang('home.intro_title')
+			@endslot
+			@slot('slug_title')
+				intro_title
 			@endslot
 			@slot('holder_text')
-				@lang('settings.intro_text')
+				@lang('home.intro_text')
+			@endslot
+			@slot('slug_text')
+				intro_text
 			@endslot
 		@endcomponent
 	@endadmin
@@ -50,13 +56,26 @@
 		@foreach ($random_recipes->chunk(4) as $chunk)
 			<div class="row">
 				@foreach ($chunk as $random)
-					<div class="recipe-container m3 col s12">
-						<div class="recipe">
-							<a href="/recipes/{{ $random->id }}">
-								<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{ $random->getTitle() }}">
-							</a>
-							<div class="recipes-content">
-								<h3>{{ $random->getTitle() }}</h3>
+					<div class="col s12 m6 l3">
+						<div class="card">
+							<div class="card-image waves-effect waves-block waves-light">
+								<img class="activator" src="{{ asset('storage/images/'.$random->image) }}">
+							</div>
+							<div class="card-content">
+								<span class="card-title activator grey-text text-darken-4">
+									{{ $random->getTitle() }}
+									<i class="material-icons right">more_vert</i>
+								</span>
+								<p>
+									<a href="/recipes/{{ $random->id }}">This is a link</a>
+								</p>
+							</div>
+							<div class="card-reveal">
+								<span class="card-title grey-text text-darken-4">
+									{{ $random->getTitle() }}
+									<i class="material-icons right">close</i>
+								</span>
+								<p>{{ $random->getIntro() }}</p>
 							</div>
 						</div>
 					</div>

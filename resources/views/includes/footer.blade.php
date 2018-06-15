@@ -87,7 +87,10 @@
 					SettingsController@updateFooterData
 				@endslot
 				@slot('holder_text')
-					@lang('settings.footer_text')
+					@lang('home.footer_text')
+				@endslot
+				@slot('slug_text')
+					footer_text
 				@endslot
 			@endcomponent
 		</div>
