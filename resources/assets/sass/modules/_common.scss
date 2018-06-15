@@ -1,14 +1,19 @@
 body {
 	font-family: $mainFont;
-	background: $darkGray;
+	background-color: $paper;
 	font-size: 1rem;
 	line-height: 1.5;
 	counter-reset: item;
 }
 
-input[type="search"] {
+.fix-input {
 	margin-bottom: 0 !important;
 	height: 64px !important;
+}
+
+.wrapper {
+	max-width: 1600px;
+	margin: auto;
 }
 
 .headline {

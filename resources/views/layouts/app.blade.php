@@ -8,9 +8,11 @@
 	</title>
 </head>
 <body>
-	<div id="app">
-		@include('includes.navbar')
-		@yield('home-header')
+
+	@include('includes.navbar')
+	@yield('home-header')
+
+	<div id="app" class="wrapper">
 		@include('includes.messages')
 		@yield('content')
 	</div>
