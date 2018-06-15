@@ -155,30 +155,6 @@ window.addEventListener('mouseup', function (e) {
 if (window.matchMedia("( max-width: 640px )").matches) {
 	document.querySelector('.categories-title').innerHTML = '';
 }
-/**
- * @param {string} input
- * @returns {boolean}
- */
-function inputValueIsInteger(input) {
-	if (Number.isInteger(parseInt($(input).value))) {
-		return true;
-	}
-	return false;
-}
-
-/**
- * @param {string} input 
- */
-function setInputValueToEmpty(input) {
-	if (input = $(input)) {
-		input.setAttribute('value', '');
-	}
-}
-
-// Run funtion
-if ($('search-input') && inputValueIsInteger('search-input')) {
-	setInputValueToEmpty('search-input');
-}
 if ($('user-sidebar')) {
 	activeAfterClickBtn('user-sidebar', 'user-sidebar-activator');
 }
