@@ -1,12 +1,12 @@
 <template>
 	<div class="row py-2">
-		<h3 class="col-12 text-center mb-2">{{ categoriesTitle }} {{ fields }} / 4</h3>
-		<h3 class="col-12 text-center mb-2">
+		<h3 class="col s12 text-center mb-2">{{ categoriesTitle }} {{ fields }} / 4</h3>
+		<h3 class="col s12 text-center mb-2">
 			<a :class="classAddBtn" @click="addField" :title="add" style="color:darkgreen;" class="add-remove-field ml-2">{{ add + ' +' }}</a>
 			<a :class="classDelBtn" @click="deleteField" :title="deleting" style="color:brown;" class="add-remove-field ml-2">{{ deleting + ' -' }}</a>
 		</h3>
 
-		<div v-for="(field, i) in fields" :key="field" class="col-12 col-sm-6">
+		<div v-for="(field, i) in fields" :key="field" class="col s12 m6">
 			<div class="form-group simple-group">
 				<label :for="'category_id' + field">{{ label }} {{ field }}</label>
 				<select name="categories[]">

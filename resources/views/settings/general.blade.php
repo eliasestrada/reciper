@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="row">
-	<div class="col-md-6">
+	<div class="col m6">
 		<form action="{{ action('SettingsController@updateUserPassword') }}" method="post" class="form">
 
 			@method('put')
@@ -37,7 +37,7 @@
 		
 		</form>
 	</div>
-	<div class="col-md-6">
+	<div class="col m6">
 		<form action="{{ action('SettingsController@updateUserData') }}" method="post" class="form">
 
 			@csrf

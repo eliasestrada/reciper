@@ -1,19 +1,9 @@
 // Modules
 @import 'modules/variables';
-@import 'modules/normalize';
 @import 'modules/common';
 
-// Bootstrap
-@import 'bootstrap/margin';
-@import 'bootstrap/grid';
-@import 'bootstrap/pagination';
-@import 'bootstrap/other';
-@import 'bootstrap/alert';
-
-// Navbar
-@import 'navbar/nav';
-@import 'navbar/nav-media';
-@import 'navbar/categories';
+// Materialize
+@import 'materialize';
 
 // Home
 @import 'home/home';
@@ -21,20 +11,19 @@
 
 // Other
 @import 'footer';
-@import 'form';
-@import 'items';
-@import 'buttons';
 @import 'animations';
+// @import 'form';
+// @import 'items';
+// @import 'buttons';
 
 // Recipes
-@import 'recipes/create';
-@import 'recipes/index';
 @import 'recipes/like';
-@import 'recipes/show';
+// @import 'recipes/create';
+// @import 'recipes/index';
+// @import 'recipes/show';
 
 // User
-@import 'user/notifications';
-@import 'user/profile';
-@import 'user/statistic';
-@import 'user/user-sidebar';
 @import 'user/bubbles';
+// @import 'user/notifications';
+// @import 'user/profile';
+// @import 'user/statistic';

@@ -10,7 +10,7 @@
 	@csrf
 
 	<div class="row">
-		<div class="col-12">
+		<div class="col s12">
 			<h1 class="headline">@lang('recipes.add_recipe')</h1>
 			<div class="recipe-buttons">
 				{{--  Save button  --}}
@@ -34,7 +34,7 @@
 		</div>
 
 		{{-- Title --}}
-		<div class="col-12 col-sm-6 col-md-4">
+		<div class="col s12 m4">
 			@component('comps.forms.title_field')
 				@slot('title')
 					{{ $recipe->getTitle() }}
@@ -43,7 +43,7 @@
 		</div>
 
 		{{-- Time --}}
-		<div class="col-12 col-sm-6 col-md-4">
+		<div class="col s12 m4">
 			@component('comps.forms.time_field')
 				@slot('time')
 					{{ $recipe->time }}
@@ -52,7 +52,7 @@
 		</div>
 
 		{{-- Meal time --}}
-		<div class="col-12 col-sm-6 col-md-4">
+		<div class="col s12 m6 m4">
 			@component('comps.forms.meal_field', ['meal' => $meal])
 				@slot('meal_id')
 					{{ $recipe->meal->id }}
@@ -61,7 +61,7 @@
 		</div>
 
 		{{-- Ingredients --}}
-		<div class="col-12 col-lg-6">
+		<div class="col s12 l6">
 			@component('comps.forms.ingredients_field')
 				@slot('ingredients')
 					{{ $recipe->getIngredients() }}
@@ -70,7 +70,7 @@
 		</div>
 
 		{{-- Advice --}}
-		<div class="col-12 col-lg-6">
+		<div class="col s12 l6">
 			@component('comps.forms.intro_field')
 				@slot('intro')
 					{{ $recipe->getIntro() }}
@@ -79,7 +79,7 @@
 		</div>
 
 		{{-- Text --}}
-		<div class="col-12 mb-2">
+		<div class="col s12 mb-2">
 			@component('comps.forms.text_field')
 				@slot('text')
 					{{ $recipe->getText() }}
@@ -87,7 +87,7 @@
 			@endcomponent
 		</div>
 
-		<div class="form-group col-12 col-md-6 pb-5" style="border-bottom:solid 1px lightgray;">
+		<div class="form-group col s12 m6" style="border-bottom:solid 1px lightgray;">
 			<categories-field
 				locale="{{ locale() }}"
 				:recipe-categories="{{ json_encode($recipe->categories) }}"
@@ -100,7 +100,7 @@
 		</div>
 
 		{{-- Image --}}
-		<div class="col-12 col-md-6">
+		<div class="col s12 m6">
 			@component('comps.forms.image_field')
 				@slot('image')
 					{{ $recipe->image }}

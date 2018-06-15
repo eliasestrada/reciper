@@ -8,23 +8,11 @@
 	</title>
 </head>
 <body>
-
-	@include('includes.navbar')
-
-	@include('includes.user-sidebar')
-
-	@yield('home-header')
-
-	<div class="wrapper pb-5" id="app">
-
+	<div id="app">
+		@include('includes.navbar')
+		@yield('home-header')
 		@include('includes.messages')
-
-		<div class="container">
-			<div class="loading" id="loading"></div>
-			<h4 class="loading-title" id="loading-title">@lang('includes.loading') ...</h4>
-	
-			@yield('content')
-		</div>
+		@yield('content')
 	</div>
 
     @include('includes.footer')
@@ -33,5 +21,13 @@
 	{!! scriptTimestamp('/js/vue.js') !!}
 	{!! scriptTimestamp('/js/vanilla.js') !!}
 	@yield('script')
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			var elems = document.querySelectorAll('.dropdown-trigger');
+			var instances = M.Dropdown.init(elems);
+			var elems = document.querySelectorAll('.sidenav');
+			var instances = M.Sidenav.init(elems);
+		});
+	</script>
 </body>
 </html>

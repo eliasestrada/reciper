@@ -50,7 +50,7 @@
 		@foreach ($random_recipes->chunk(4) as $chunk)
 			<div class="row">
 				@foreach ($chunk as $random)
-					<div class="recipe-container col-md-3 col-12 col-sm-6">
+					<div class="recipe-container m3 col s12">
 						<div class="recipe">
 							<a href="/recipes/{{ $random->id }}">
 								<img src="{{ asset('storage/images/'.$random->image) }}" alt="{{ $random->getTitle() }}">
@@ -66,4 +66,13 @@
 	@endif
 </section>
 
+@endsection
+
+@section('script')
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			var elems = document.querySelectorAll('.parallax');
+			var instances = M.Parallax.init(elems);
+		});
+	</script>
 @endsection

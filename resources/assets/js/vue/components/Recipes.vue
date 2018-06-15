@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="row">
-			<div v-for="recipe in recipes" :key="recipe.id" class="recipe-container col-md-3 col-12 col-sm-6">
+			<div v-for="recipe in recipes" :key="recipe.id" class="recipe-container col m3 s12">
 				<div class="recipe">
 					<a :href="'/recipes/' + recipe.id" :title="recipe.title">
 						<img :src="'storage/images/' + recipe.image" :alt="recipe.title">

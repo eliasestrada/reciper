@@ -14,6 +14,7 @@ let mix = require('laravel-mix');
 //  Vanilla
 var vanillaFilesToCompile = [
 	'resources/assets/js/vanilla/modules.js',
+	'resources/assets/js/vanilla/materialize.min.js',
 	'resources/assets/js/vanilla/functions/_*.js',
 	'resources/assets/js/vanilla/components/_*.js',
 ];

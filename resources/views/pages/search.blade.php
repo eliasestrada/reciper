@@ -22,7 +22,7 @@
 	<section class="recipes">
 		<div class="row">
 			@foreach ($recipes->toArray() as $recipe)
-				<div class="recipe-container col-12 col-sm-6 col-md-4 col-lg-3">
+				<div class="recipe-container col s12 m4 l3">
 					<div class="recipe">
 
 						{{--  Image  --}}

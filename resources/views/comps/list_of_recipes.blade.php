@@ -9,7 +9,7 @@
 		@isset($recipes)
 
 			@forelse ($recipes as $recipe)
-				<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}" class="col-lg-6">
+				<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}" class="col l6">
 					<li style="border-left:solid 3px #{{ $recipe->approved() && $recipe->ready() ? '65b56e' : 'ce7777' }};">
 						<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" />
 
@@ -26,7 +26,7 @@
 				</a>
 			@empty
 				@isset($no_recipes)
-					<p class="col-12 text-center">{{ $no_recipes }}</p>
+					<p class="col s12 text-center">{{ $no_recipes }}</p>
 				@endisset
 			@endforelse
 

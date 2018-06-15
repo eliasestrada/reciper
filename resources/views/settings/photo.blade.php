@@ -6,19 +6,19 @@
 
 <div class="form-group">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col m6">
 			<h2 class="form-headline">
 				<i class="title-icon" style="background: url('/css/icons/svg/camera.svg')"></i>
 				@lang('settings.settings_photo')
 			</h2>
 			<p class="content">@lang('settings.photo_should_be_square')</p>
 		</div>
-		<div class="col-md-6">
+		<div class="col m6">
 			<div class="profile-header" style="height: 11em;">
 				<img src="{{ asset('storage/uploads/' . user()->image) }}" alt="{{ user()->name }}" id="target-image" style="width: 170px; height:186px;" />
 			</div>
 		</div>
-		<div class="col-12">
+		<div class="col s12">
 			{{--  Upload image  --}}
 			<form action="{{ action('SettingsController@updatePhoto') }}" method="post" enctype="multipart/form-data" class="form">
 
