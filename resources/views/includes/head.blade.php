@@ -5,6 +5,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Styles -->
+{!! styleTimestamp('/css/materialize.min.css') !!}
 {!! styleTimestamp('/css/app.css') !!}
 
 <!-- Links -->
