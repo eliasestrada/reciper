@@ -19,7 +19,7 @@
 					<input type="text" name="for" id="header-search-input" placeholder="@lang('pages.search_details')">
 				</div>
 				<button type="submit" class="home-button" id="home-search-btn">
-					<i style="background: url('/css/icons/svg/search.svg')"></i>
+					<i class="material-icons">search</i>
 				</button>
 			</div>
 		</form>
