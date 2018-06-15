@@ -35,8 +35,8 @@ body {
 		height: 2px;
 		background: $main;
 		position: absolute;
-		left: -20px;
-		top: -4px;
+		left: -18px;
+		top: -10px;
 	}
 
 	&::after {
@@ -46,7 +46,7 @@ body {
 		background: $main;
 		position: absolute;
 		left: -10px;
-		top: -10px;
+		top: -16px;
 	}
 }
 

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<section class="grid-recipe">
+<section class="grid-recipe pt-3">
 	<div class="recipe-content center-align">
 
 		{{--  Likes  --}}
@@ -53,13 +53,10 @@
 		@endadmin
 
 		<div class="center-align">
-			<h1 class="headline">{{ title_case($recipe->getTitle()) }}</h1>
+			<h1 class="headline">{{ $recipe->getTitle() }}</h1>
 		</div>
 
 		<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img">
-		
-		{{--  Intro  --}}
-		<p>{{ $recipe->getIntro() }}</p>
 
 		{{--  Category  --}}
 		@foreach ($recipe->categories as $category)
@@ -74,19 +71,31 @@
 			{{ $recipe->time }} @lang('recipes.min').
 		</div>
 
+		{{--  Intro  --}}
+		<blockquote class="left-align">
+			{{ $recipe->getIntro() }}
+		</blockquote>
+
+		<hr />
+
 		{{--  Items --}}
-		<h5 class="decorated"><span>@lang('recipes.ingredients')</span></h5>
-		<div class="items" id="items">
-			<ul>{!! $recipe->ingredientsWithListItems() !!}</ul>
-		</div>
+		<blockquote class="items">
+			<h5 class="decorated">@lang('recipes.ingredients')</h5>
+			{!! $recipe->ingredientsWithListItems() !!}
+		</blockquote>
+
+		<hr />
 
 		{{--  Приготовление  --}}
-		<h5 class="decorated"><span>@lang('recipes.text_of_recipe')</span></h5>
-		<ol class="instruction unstyled-list">
-			{!! $recipe->textWithListItems() !!}
-		</ol>
-
-		<h5 class="decorated"><span>@lang('recipes.bon_appetit')!</span></h5>
+		<blockquote style="border:none;">
+			<h5 class="decorated py-3">@lang('recipes.text_of_recipe')</h5>
+			<ol class="instruction unstyled-list">
+				{!! $recipe->textWithListItems() !!}
+			</ol>
+		</blockquote>
+		
+		<hr />
+		<h5 class="decorated pt-3">@lang('recipes.bon_appetit')!</h5>
 
 		{{--  Дата --}}
 		<div class="date mt-4">
@@ -98,8 +107,8 @@
 	</div>
 
 	{{-- API: Еще рецепты Sidebar --}}
-	<div class="side-bar">
-		<h3 class="decorated"><span>@lang('recipes.more')</span></h3>
+	<div class="side-bar center-align">
+		<h6 class="decorated pb-3">@lang('recipes.more')</h6>
 		<random-recipes-sidebar resipe-id="{{ $recipe->id }}"></random-recipes-sidebar>
 	</div>
 </section>

@@ -1,14 +1,16 @@
 <template>
-	<ul class="unstyled-list">
-		<li v-for="recipe in recipes" :key="recipe.id" class="side-bar-recipe" style="animation:appearWithRotate 1s;">
-			<a :href="'/recipes/' + recipe.id" :title="recipe.title">
-				<img :src="'/storage/images/' + recipe.image" :alt="recipe.title">
-			</a>
-			<div class="side-bar-content">
-				<h3>{{ recipe.title }}</h3>
+	<div>
+		<div class="card" v-for="recipe in recipes" :key="recipe.id" style="animation:appearWithRotate 1s;">
+			<div class="card-image">
+				<a :href="'/recipes/' + recipe.id" :title="recipe.title">
+					<img :src="'/storage/images/' + recipe.image" :alt="recipe.title">
+				</a>
 			</div>
-		</li>
-	</ul>
+			<div class="card-content p-3">
+				<p>{{ recipe.title }}</p>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
