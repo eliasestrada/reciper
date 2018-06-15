@@ -22,7 +22,7 @@ input[type="search"] {
   text-shadow: 1px 1px 3px #b3aed2;
   display: inline-block;
   font-size: 1.4em;
-  margin: .4em;
+  margin: .4em 0;
   position: relative;
 }
 
@@ -613,13 +613,8 @@ input[type="search"] {
 }
 
 .edit-btn i {
-  width: 15px;
-  height: 15px;
   margin: auto;
-  filter: invert(100%);
-  -ms-filter: invert(100%);
-  -moz-filter: invert(100%);
-  -webkit-filter: invert(100%);
+  font-size: 20px;
 }
 
 .edit-btn:hover {

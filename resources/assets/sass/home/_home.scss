@@ -186,13 +186,8 @@
 	z-index: 120;
 
 	i {
-		width: 15px;
-		height: 15px;
 		margin: auto;
-		filter: invert(100%);
-		-ms-filter: invert(100%);
-		-moz-filter: invert(100%);
-		-webkit-filter: invert(100%);
+		font-size: 20px;
 	}
 
 	&:hover {

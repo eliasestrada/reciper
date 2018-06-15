@@ -17,7 +17,7 @@ input[type="search"] {
 	text-shadow: 1px 1px 3px $mainLight;
 	display: inline-block;
 	font-size: 1.4em;
-	margin: .4em;
+	margin: .4em 0;
 	position: relative;
 
 	&::first-letter {

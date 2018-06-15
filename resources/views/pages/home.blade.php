@@ -10,7 +10,9 @@
 
 <section class="home-section" style="position:relative;">
 	@isset($title_intro)
-		<h2 class="headline">{{ title_case($title_intro ?? '') }}</h2>
+		<div class="center-align">
+			<h2 class="headline">{{ title_case($title_intro ?? '') }}</h2>
+		</div>
 	@endisset
 	@isset($text_intro)
 		<p>{{ $text_intro ?? '' }}</p>
@@ -19,7 +21,7 @@
 	@admin
 		{{--  Настройки Интро  --}}
 		<a class="edit-btn" title="@lang('home.edit_intro')" id="btn-for-intro">
-			<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
+			<i class="material-icons">edit</i>
 		</a>
 		@component('comps.edit_form')
 			@slot('id')

@@ -74,7 +74,7 @@
 		{{--  Настройки подвала  --}}
 		<div style="position:relative;">
 			<a class="edit-btn" title="@lang('home.edit_banner')" id="btn-for-footer">
-				<i style="background: url('/css/icons/svg/edit-pencil.svg')"></i>
+				<i class="material-icons">edit</i>
 			</a>
 			@component('comps.edit_form')
 				@slot('id')
