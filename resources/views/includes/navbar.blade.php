@@ -10,8 +10,8 @@
 	@endisset
 </ul>
 <nav>
-	<div class="nav-wrapper">
-		<div class="container">
+	<div class="nav-wrapper main">
+		<div class="px-3">
 			<a href="/" title="@lang('includes.home')" class="brand-logo">
 				{{ config('app.name') }}
 			</a>
