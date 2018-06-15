@@ -69,9 +69,7 @@
 									<i class="material-icons right">more_vert</i>
 								</span>
 								<p>
-									<a href="/recipes/{{ $random->id }}">
-										@lang('recipes.go')
-									</a>
+									<a href="/recipes/{{ $random->id }}">@lang('recipes.go')</a>
 								</p>
 							</div>
 							<div class="card-reveal">
@@ -79,6 +77,9 @@
 									{{ $random->getTitle() }}
 									<i class="material-icons right">close</i>
 								</span>
+								<p>
+									<a href="/recipes/{{ $random->id }}">@lang('recipes.go')</a>
+								</p>
 								<p>{{ $random->getIntro() }}</p>
 							</div>
 						</div>

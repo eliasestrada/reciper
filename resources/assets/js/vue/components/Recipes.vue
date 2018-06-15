@@ -12,9 +12,7 @@
 							<i class="material-icons right">more_vert</i>
 						</span>
 						<p>
-							<a :href="'/recipes/' + recipe.id" :title="recipe.title">
-								{{ go }}
-							</a>
+							<a :href="'/recipes/' + recipe.id" :title="recipe.title">{{ go }}</a>
 						</p>
 					</div>
 					<div class="card-reveal">
@@ -22,6 +20,9 @@
 							{{ recipe.title }}
 							<i class="material-icons right">close</i>
 						</span>
+						<p>
+							<a :href="'/recipes/' + recipe.id" :title="recipe.title">{{ go }}</a>
+						</p>
 						<p>{{ recipe.intro }}</p>
 					</div>
 				</div>
