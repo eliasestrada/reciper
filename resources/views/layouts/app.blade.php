@@ -10,6 +10,8 @@
 <body>
 
 	@include('includes.navbar')
+	@include('includes.user-sidebar')
+
 	@yield('home-header')
 
 	<div id="app" class="wrapper">
