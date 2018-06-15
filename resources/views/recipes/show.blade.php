@@ -42,18 +42,22 @@
 
 		@admin
 			@if (!$recipe->approved() && $recipe->ready())
-				<div class="recipe-buttons">
+				<div class="py-2">
 
 					{{-- Approve --}}
-					<form action="{{ action('ApproveController@ok', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" style="width:auto" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
+					<form action="{{ action('ApproveController@ok', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
 						@csrf
-						<input type="submit" value="" class="edit-recipe-icon icon-approve">
+						<button class="btn green" type="submit">
+							<i class="material-icons">check</i>
+						</button>
 					</form>
 
 					{{-- Cancel --}}
-					<form action="{{ action('ApproveController@cancel', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" style="width:auto" onsubmit="return confirm('@lang('recipes.are_you_sure_to_cancel')')">
+					<form action="{{ action('ApproveController@cancel', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" onsubmit="return confirm('@lang('recipes.are_you_sure_to_cancel')')">
 						@csrf
-						<input type="submit" value="" class="edit-recipe-icon icon-cancel">
+						<button class="btn red" type="submit">
+							<i class="material-icons">cancel</i>
+						</button>
 					</form>
 				</div>
 			@endif
