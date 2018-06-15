@@ -149,3 +149,58 @@
 		}
 	}
 }
+
+.home-edit-form {
+	position: absolute;
+	width: 80%;
+	max-width: 35em;
+	top: 100%;
+	left: 50%;
+	z-index: 100;
+	background: $lightGray;
+	border-radius: 4px;
+	box-shadow: 3px 3px 3px rgba($color: #000000, $alpha: .4);
+	transform-origin: top;
+	transition: transform 400ms;
+	transform: translate(-50%, -50%) perspective(1000px) rotateX(-90deg);
+}
+
+.home-edit-form.active {
+	transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
+}
+
+.edit-btn {
+	display: flex;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin: .5em auto;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 50%;
+	background: $main;
+	color: #fff;
+	font-size: 1.6em;
+	cursor: pointer;
+	transition: opacity 300ms;
+	opacity: .7;
+	z-index: 120;
+
+	i {
+		width: 15px;
+		height: 15px;
+		margin: auto;
+		filter: invert(100%);
+		-ms-filter: invert(100%);
+		-moz-filter: invert(100%);
+		-webkit-filter: invert(100%);
+	}
+
+	&:hover {
+		transition: opacity 400ms;
+		opacity: 1;
+	}
+}

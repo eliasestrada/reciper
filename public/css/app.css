@@ -9255,6 +9255,73 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   transition: border 300ms;
 }
 
+.home-edit-form {
+  position: absolute;
+  width: 80%;
+  max-width: 35em;
+  top: 100%;
+  left: 50%;
+  z-index: 100;
+  background: #fafafa;
+  border-radius: 4px;
+  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transition: -webkit-transform 400ms;
+  transition: -webkit-transform 400ms;
+  transition: transform 400ms;
+  transition: transform 400ms, -webkit-transform 400ms;
+  -webkit-transform: translate(-50%, -50%) perspective(1000px) rotateX(-90deg);
+          transform: translate(-50%, -50%) perspective(1000px) rotateX(-90deg);
+}
+
+.home-edit-form.active {
+  -webkit-transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
+          transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
+}
+
+.edit-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  margin: .5em auto;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background: #484074;
+  color: #fff;
+  font-size: 1.6em;
+  cursor: pointer;
+  -webkit-transition: opacity 300ms;
+  transition: opacity 300ms;
+  opacity: .7;
+  z-index: 120;
+}
+
+.edit-btn i {
+  width: 15px;
+  height: 15px;
+  margin: auto;
+  filter: invert(100%);
+  -ms-filter: invert(100%);
+  -moz-filter: invert(100%);
+  -webkit-filter: invert(100%);
+}
+
+.edit-btn:hover {
+  -webkit-transition: opacity 400ms;
+  transition: opacity 400ms;
+  opacity: 1;
+}
+
 @media (max-width: 640px) {
   .home-section {
     padding: 1.4em;
