@@ -5,7 +5,7 @@
 @section('content')
 
 <section class="grid-recipe">
-	<div class="recipe-content">
+	<div class="recipe-content center-align">
 
 		{{--  Likes  --}}
 		<div class="like-for-author-section">
@@ -52,7 +52,9 @@
 			@endif
 		@endadmin
 
-		<h1 class="headline">{{ title_case($recipe->getTitle()) }}</h1>
+		<div class="center-align">
+			<h1 class="headline">{{ title_case($recipe->getTitle()) }}</h1>
+		</div>
 
 		<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img">
 		
@@ -68,23 +70,23 @@
 
 		{{--  Time  --}}
 		<div class="date my-3">
-			@include('icons.timer', ['scale' => '20', 'style' => 'height:20px;'])
+			<i class="material-icons">timer</i>
 			{{ $recipe->time }} @lang('recipes.min').
 		</div>
 
 		{{--  Items --}}
-		<h3 class="decorated"><span>@lang('recipes.ingredients')</span></h3>
+		<h5 class="decorated"><span>@lang('recipes.ingredients')</span></h5>
 		<div class="items" id="items">
 			<ul>{!! $recipe->ingredientsWithListItems() !!}</ul>
 		</div>
 
 		{{--  Приготовление  --}}
-		<h3 class="decorated"><span>@lang('recipes.text_of_recipe')</span></h3>
+		<h5 class="decorated"><span>@lang('recipes.text_of_recipe')</span></h5>
 		<ol class="instruction unstyled-list">
 			{!! $recipe->textWithListItems() !!}
 		</ol>
 
-		<h3 class="decorated"><span>@lang('recipes.bon_appetit')!</span></h3>
+		<h5 class="decorated"><span>@lang('recipes.bon_appetit')!</span></h5>
 
 		{{--  Дата --}}
 		<div class="date mt-4">
