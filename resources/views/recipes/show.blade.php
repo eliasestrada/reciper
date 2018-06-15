@@ -17,18 +17,25 @@
 		@auth
 		{{--  Buttons  --}}
 			@if (user()->hasRecipe($recipe->user_id))
-				<div class="recipe-buttons">
-
-					{{--  Edit button  --}}
-					<a href="/recipes/{{ $recipe->id }}/edit" title="@lang('recipes.edit_recipe')" class="edit-recipe-icon icon-edit"></a>
-
-					{{--  Delete button  --}}
-					<delete-recipe-btn
-						recipe-id="{{ $recipe->id }}"
-						deleted-fail="{{ trans('recipes.deleted_fail') }}"
-						deleting="{{ trans('recipes.deleting') }}"
-						confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
-					</delete-recipe-btn>
+				<div class="fixed-action-btn">
+					<a href="#" class="btn-floating main btn-large pulse z-depth-3"><i class="large material-icons">more_vert</i></a>
+					<ul>
+						{{--  Delete button  --}}
+						<li>
+							<delete-recipe-btn
+								recipe-id="{{ $recipe->id }}"
+								deleted-fail="{{ trans('recipes.deleted_fail') }}"
+								deleting="{{ trans('recipes.deleting') }}"
+								confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
+							</delete-recipe-btn>
+						</li>
+						{{--  Edit button  --}}
+						<li>
+							<a href="/recipes/{{ $recipe->id }}/edit" title="@lang('recipes.edit_recipe')" class="btn-floating green btn-large">
+								<i class="large material-icons">mode_edit</i>
+							</a>
+						</li>
+					</ul>
 				</div>
 			@endif
 		@endauth
@@ -115,4 +122,8 @@
 	</div>
 </section>
 
+@endsection
+
+@section('script')
+	@include('includes.js.floating_btn')
 @endsection
