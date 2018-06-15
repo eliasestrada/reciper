@@ -644,12 +644,9 @@ input[type="search"] {
   }
 }
 
-footer {
-  padding: 1em;
-}
-
 footer strong {
   color: #b3aed2;
+  font-size: 1.1em;
 }
 
 footer a {

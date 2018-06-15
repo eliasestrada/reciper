@@ -1,7 +1,7 @@
-<footer class="px-5">
+<footer class="px-5 pt-3 pb-5">
 	<div class="row">
 		{{--  Navigation  --}}
-		<div class="col s12 m6 m3 left-align">
+		<div class="col s12 m6 l3 left-align">
 			<ul class="unstyled-list">
 				<li><strong>@lang('includes.navigation')</strong></li>
 				<li>
@@ -30,7 +30,7 @@
 		{{--  Random recipes  --}}
 		@isset($rand_recipes)
 			@foreach ($rand_recipes->chunk(10) as $random_chunk)
-				<div class="col s12 m6 m3 left-align">
+				<div class="col s12 m6 l3 left-align">
 					<ul class="unstyled-list">
 						<li><strong>@lang('includes.recipes')</strong></li>
 						@foreach ($random_chunk as $recipe)
@@ -46,7 +46,7 @@
 		@endisset
 
 		{{--  Popular recipes  --}}
-		<div class="col s12 m3 left-align">
+		<div class="col s12 m6 l3 left-align">
 			<ul class="unstyled-list">
 				@isset($popular_recipes)
 					<li><strong>@lang('includes.popular_recipes')</strong></li>
@@ -62,13 +62,15 @@
 		</div>
 	</div>
 
-	<a href="/" title="@lang('includes.home')">
-		<img src="{{ asset('favicon.png') }}" alt="@lang('includes.logo')" class="footer-logo">
-	</a>
-
-	<p class="footer-copyright">
-		&copy; {{ date('Y') }} Delicious Food <br /> {{ $title_footer ?? '' }}
-	</p>
+	<div class="center-align">
+		<a href="/" title="@lang('includes.home')">
+			<img src="{{ asset('favicon.png') }}" alt="@lang('includes.logo')" class="footer-logo">
+		</a>
+	
+		<p class="footer-copyright">
+			&copy; {{ date('Y') }} Delicious Food <br /> {{ $title_footer ?? '' }}
+		</p>
+	</div>
 
 	@admin
 		{{--  Настройки подвала  --}}
