@@ -13,6 +13,7 @@ class RecipesSeeder extends Seeder
      */
     public function run()
     {
+		factory(Recipe::class, 16)->create();
         $this->first();
         $this->second();
         $this->third();
