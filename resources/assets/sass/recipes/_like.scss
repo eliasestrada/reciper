@@ -27,9 +27,21 @@
 	width: 25px;
 	height: 25px;
 	margin: auto;
+	background-position: center;
+	background-size: 25px;
 	cursor: pointer;
 	animation: heart-beat 1.7s infinite both 1s, disappear 1s;
 	animation-direction: alternate, reverse;
+
+	&-empty {
+		background: url(icons/empty-heart.png);
+		transition: background .3s;
+	}
+	
+	&-full {
+		background: url(icons/full-heart.png);
+		transition: background .3s;
+	}
 }
 
 @media (min-width:640px) {
