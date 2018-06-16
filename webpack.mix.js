@@ -20,7 +20,6 @@ var vanillaFilesToCompile = [
 ];
 
 mix.js('resources/assets/js/vue/vue.js', 'public/js')
-	.sourceMaps()
 	.babel(vanillaFilesToCompile, 'public/js/vanilla.js')
 	.sass('resources/assets/sass/app.scss', 'public/css/app.css')
 	.disableNotifications()
