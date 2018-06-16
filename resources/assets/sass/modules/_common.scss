@@ -6,13 +6,17 @@ body {
 	counter-reset: item;
 }
 
+svg {
+	fill: $main;
+}
+
 .fix-input {
 	margin-bottom: 0 !important;
 	height: 64px !important;
 }
 
 .wrapper {
-	max-width: 1600px;
+	max-width: 1100px;
 	margin: auto;
 }
 

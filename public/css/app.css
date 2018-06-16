@@ -6719,13 +6719,17 @@ body {
   counter-reset: item;
 }
 
+svg {
+  fill: #484074;
+}
+
 .fix-input {
   margin-bottom: 0 !important;
   height: 64px !important;
 }
 
 .wrapper {
-  max-width: 1600px;
+  max-width: 1100px;
   margin: auto;
 }
 
@@ -7524,6 +7528,53 @@ body {
     width: 70px;
     height: 70px;
     background-size: 70px !important;
+  }
+}
+
+.profile-header {
+  min-height: 15em;
+  padding-bottom: 1em;
+  text-align: center;
+}
+
+.profile-header img {
+  width: 10em;
+  border-radius: 2px;
+  border: solid 5px #fff;
+  border-bottom: solid 1em #fff;
+  margin: .3em auto;
+  -webkit-box-shadow: 1px 1px .5em #333;
+          box-shadow: 1px 1px .5em #333;
+  -webkit-transition: -webkit-transform 400ms;
+  transition: -webkit-transform 400ms;
+  transition: transform 400ms;
+  transition: transform 400ms, -webkit-transform 400ms;
+  -webkit-animation: appearWithRotate 1s;
+          animation: appearWithRotate 1s;
+}
+
+.profile-header h1 {
+  font-family: "Comfortaa", sans-serif;
+  font-size: 2em;
+}
+
+.list-of-recipes {
+  width: 90%;
+  margin: 1em 4%;
+  padding: .5em 1%;
+  display: inline-block;
+}
+
+.list-of-recipes h3 {
+  margin: .5em;
+  color: #444;
+}
+
+@media (min-width: 640px) {
+  .list-of-recipes {
+    width: 70%;
+    margin: 1em 10%;
+    padding: .5em 5%;
   }
 }
 
