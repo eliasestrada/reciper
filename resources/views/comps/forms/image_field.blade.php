@@ -1,17 +1,17 @@
-<div class="form-group simple-group center-align pb-5" style="border-bottom:solid 1px lightgray;">
-	<h3 class="col s12 center-align mb-2">@lang('recipes.image')</h3>
+<div class="center-align pb-5">
+	<h5 class="col s12 mb-2">@lang('recipes.image')</h5>
 
-	<label for="src-image" class="image-label mt-3" title="{{ trans('recipes.select_file') }}">
-		@lang('recipes.select_file')
-	</label>
-
-	<input type="file" name="image" id="src-image" class="d-none">
+	<div class="file-field input-field">
+		<div class="btn">
+			<span>@lang('recipes.select_file')</span>
+			<input type="file" name="image" id="src-image">
+		</div>
+		<div class="file-path-wrapper">
+			<input class="file-path validate" type="text">
+		</div>
+	</div>
 
 	<section class="preview-image">
-		<img 
-			src="{{ asset('storage/images/' . ($image ?? 'default.jpg')) }}" 
-			alt="{{ ($alt ?? trans('recipes.image')) }}" 
-			id="target-image"
-		>
+		<img src="{{ asset('storage/images/' . ($image ?? 'default.jpg')) }}" alt="{{ ($alt ?? trans('recipes.image')) }}" id="target-image">
 	</section>
 </div>
