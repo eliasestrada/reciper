@@ -8045,6 +8045,7 @@ svg {
 
 footer {
   background: #262525;
+  min-height: 50em;
 }
 
 footer strong {
