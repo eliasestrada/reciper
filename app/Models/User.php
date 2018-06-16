@@ -8,6 +8,11 @@ class User extends Authenticatable
 {
     protected $fillable = ['name', 'email', 'password',];
 	protected $hidden   = ['password', 'remember_token'];
+	protected $dates   = [
+		'created_at',
+		'updated_at',
+		'last_visit_at'
+	];
 
     public function recipes() {
         return $this->hasMany(Recipe::class);
