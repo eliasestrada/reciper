@@ -11,7 +11,7 @@
 		@isset($recipes)
 			@forelse ($recipes as $recipe)
 				<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}" class="col s12 m6 l4">
-					<li style="border-color:#{{ $recipe->done() ? '65b56e' : 'ce7777' }};">
+					<li style="border-left-color:#{{ $recipe->done() ? '65b56e' : 'ce7777' }};">
 						<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" />
 
 						<div class="item-content">

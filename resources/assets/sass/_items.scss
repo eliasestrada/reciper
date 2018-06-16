@@ -1,9 +1,8 @@
 .item-list {
 	padding: 1em 0;
 
-	a {
-		color: $darkGray;
-	}
+	a { color: $darkGray; }
+	.btn { color: #fff; }
 
 	li {
 		position: relative;
@@ -15,7 +14,7 @@
 		transition: background-color 250ms;
 		border-radius: 2px;
 		margin-bottom: 3px;
-		border-left: solid 3px;
+		border-left: solid 3px $main;
 
 		&:hover {
 			background-color: #ddd;
