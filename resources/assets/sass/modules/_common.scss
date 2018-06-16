@@ -10,6 +10,12 @@ svg {
 	fill: $main;
 }
 
+select {
+	background: none;
+	border-bottom: 1px solid #9e9e9e;
+	height: 39px;
+}
+
 .fix-input {
 	margin-bottom: 0 !important;
 	height: 64px !important;
