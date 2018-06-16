@@ -44,7 +44,7 @@ class UsersController extends Controller
 	{
 		$recipes = Recipe::whereUserId(user()->id)->latest()->paginate(20);
 
-		return view('users.my_recipes')->withRecipes($recipes);
+		return view('users.my-recipes')->withRecipes($recipes);
 	}
 
 	public function notifications()

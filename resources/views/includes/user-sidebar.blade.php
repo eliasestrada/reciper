@@ -19,8 +19,8 @@
 		</li>
 
 		{{-- my recipes --}}
-		<li class="{{ activeIfRouteIs('users/other/my_recipes') }}">
-			<a href="/users/other/my_recipes" title="@lang('includes.my_recipes')">
+		<li class="{{ activeIfRouteIs('users/other/my-recipes') }}">
+			<a href="/users/other/my-recipes" title="@lang('includes.my_recipes')">
 				<i class="material-icons sidebar-icon">insert_drive_file</i>
 				<span>@lang('includes.my_recipes')</span>
 			</a>

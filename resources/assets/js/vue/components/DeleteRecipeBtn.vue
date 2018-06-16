@@ -31,7 +31,7 @@ export default {
 				.then(res => res.text())
 				.then(data => {
 					data === 'success'
-						? window.location.href = '/users/other/my_recipes'
+						? window.location.href = '/users/other/my-recipes'
 						: this.error = this.deletedFail
 				})
 				.catch(error => console.log(error))

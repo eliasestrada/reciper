@@ -17,7 +17,7 @@ Route::prefix('users')->group(function () {
 	Route::get('{user}', 'UsersController@show');
 
 	Route::prefix('other')->group(function () {
-		Route::get('my_recipes', 'UsersController@my_recipes');
+		Route::get('my-recipes', 'UsersController@my_recipes');
 		Route::get('notifications', 'UsersController@notifications');
 	});
 });
