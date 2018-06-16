@@ -7531,6 +7531,53 @@ svg {
   }
 }
 
+.item-list {
+  padding: 1em 0;
+}
+
+.item-list a {
+  color: #2e2d2d;
+}
+
+.item-list li {
+  position: relative;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: .5em;
+  border-bottom: 1px solid #b6b6b6;
+  background-color: #e4e4e4;
+  -webkit-transition: background-color 250ms;
+  transition: background-color 250ms;
+  border-radius: 2px;
+  margin-bottom: 3px;
+}
+
+.item-list li:hover {
+  background-color: #ddd;
+  border-radius: 5px;
+  -webkit-transition: background-color 250ms;
+  transition: background-color 250ms;
+}
+
+.item-list img {
+  width: 6.3em;
+  height: 4.3em;
+  margin: .5em 1em;
+  border-radius: 3px;
+  border: solid 3px #fff;
+  border-bottom: solid 6px #fff;
+  -webkit-animation: appearWithRotate 2s;
+          animation: appearWithRotate 2s;
+}
+
+.item-content {
+  margin-top: .8em;
+  font-size: .85em;
+  text-align: left;
+}
+
 .profile-header {
   min-height: 15em;
   padding-bottom: 1em;
