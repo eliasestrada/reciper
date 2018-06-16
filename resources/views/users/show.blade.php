@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container profile-header">
+<div class="profile-header">
 	<div>
 		<h1>{{ $user->name }}</h1>
 		<p>@lang('users.joined'): {{ facebookTimeAgo($user->created_at) }}</p>
@@ -49,7 +49,7 @@
 </div>
 
 {{--  All my recipes  --}}
-@component('comps.list_of_recipes', ['recipes' => $recipes])
+@component('comps.list-of-recipes', ['recipes' => $recipes])
 	@slot('no_recipes')
 		@lang('users.this_user_does_not_have_recipes')
 	@endslot
