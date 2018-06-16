@@ -46,6 +46,12 @@ class Recipe extends Model
 		return $this->getApproved() === 1 ? true : false;
 	}
 
+	public function done() {
+		return ($this->getReady() === 1 && $this->getApproved() === 1)
+			? true
+			: false;
+	}
+
 	public function getStatus()
 	{
 		if ($this->approved() === true) {
