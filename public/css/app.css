@@ -2939,13 +2939,13 @@ small {
 
 .btn:focus, .btn-large:focus, .btn-small:focus,
 .btn-floating:focus {
-  background-color: #1d7d74;
+  background-color: #403967;
 }
 
 .btn, .btn-large, .btn-small {
   text-decoration: none;
   color: #fff;
-  background-color: #26a69a;
+  background-color: #484074;
   text-align: center;
   letter-spacing: .5px;
   -webkit-transition: background-color .2s ease-out;
@@ -2954,7 +2954,7 @@ small {
 }
 
 .btn:hover, .btn-large:hover, .btn-small:hover {
-  background-color: #2bbbad;
+  background-color: #403967;
 }
 
 .btn-floating {
@@ -7108,6 +7108,12 @@ body {
   display: block !important;
 }
 
+.d-flex {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
 .home-section {
   background: #f3f3f3;
   color: #333;
@@ -7241,7 +7247,7 @@ body {
 }
 
 .home-header .home-button:hover {
-  background: #443c6d;
+  background: #403967;
   -webkit-transition: background-color 400ms, -webkit-transform 400ms;
   transition: background-color 400ms, -webkit-transform 400ms;
   transition: transform 400ms, background-color 400ms;
