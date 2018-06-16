@@ -1,15 +1,15 @@
 <template>
 	<div class="row py-2">
-		<h3 class="col s12 center-align mb-2">{{ categoriesTitle }} {{ fields }} / 4</h3>
-		<h3 class="col s12 center-align mb-2">
+		<h5 class="col s12 center-align mb-1">{{ categoriesTitle }} {{ fields }} / 4</h5>
+		<h6 class="col s12 center-align mb-2">
 			<a :class="classAddBtn" @click="addField" :title="add" style="color:darkgreen;" class="add-remove-field ml-2">{{ add + ' +' }}</a>
 			<a :class="classDelBtn" @click="deleteField" :title="deleting" style="color:brown;" class="add-remove-field ml-2">{{ deleting + ' -' }}</a>
-		</h3>
+		</h6>
 
 		<div v-for="(field, i) in fields" :key="field" class="col s12 m6">
 			<div class="form-group simple-group">
 				<label :for="'category_id' + field">{{ label }} {{ field }}</label>
-				<select name="categories[]">
+				<select name="categories[]" class="browser-default">
 					<option v-if="recipeCategories && recipeCategories.length > 0" :value="recipeCategories[i]['id']" selected>
 						{{ recipeCategories[i]['name_' + locale] }}
 					</option>

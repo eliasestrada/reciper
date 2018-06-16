@@ -20422,11 +20422,11 @@ var render = function() {
     "div",
     { staticClass: "row py-2" },
     [
-      _c("h3", { staticClass: "col s12 center-align mb-2" }, [
+      _c("h5", { staticClass: "col s12 center-align mb-1" }, [
         _vm._v(_vm._s(_vm.categoriesTitle) + " " + _vm._s(_vm.fields) + " / 4")
       ]),
       _vm._v(" "),
-      _c("h3", { staticClass: "col s12 center-align mb-2" }, [
+      _c("h6", { staticClass: "col s12 center-align mb-2" }, [
         _c(
           "a",
           {
@@ -20461,7 +20461,10 @@ var render = function() {
             _vm._v(" "),
             _c(
               "select",
-              { attrs: { name: "categories[]" } },
+              {
+                staticClass: "browser-default",
+                attrs: { name: "categories[]" }
+              },
               [
                 _vm.recipeCategories && _vm.recipeCategories.length > 0
                   ? _c(
