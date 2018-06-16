@@ -1,14 +1,8 @@
+ <!-- Categories -->
 <ul id="dropdown1" class="dropdown-content">
-	@isset($category_names)		
-		<li>
-			@foreach ($category_names as $name)
-				<a href="/search?for={{ str_replace(' ', '-', $name['name_'.locale()]) }}" title="{{ $name['name_'.locale()] }}">
-					{{ $name['name_'.locale()] }}
-				</a>
-			@endforeach
-		</li>
-	@endisset
+	@include('includes.nav.categories')
 </ul>
+
 <nav>
 	<div class="nav-wrapper main">
 		<div class="px-3 wrapper">
@@ -18,10 +12,9 @@
 			<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
 			<ul class="right hide-on-med-and-down">
-				@include('includes.nav-menu')
+				@include('includes.nav.menu')
 
-				<!-- Dropdown Trigger -->
-				<li>
+				<li> <!-- Dropdown Trigger -->
 					<a class="dropdown-trigger" href="#!" data-target="dropdown1">
 						@lang('includes.categories')
 						<i class="material-icons right">arrow_drop_down</i>
@@ -42,16 +35,25 @@
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
-	@include('includes.nav-menu')
+	@include('includes.nav.menu')
 
 	<div class="divider"></div>
-	@foreach ($category_names as $name)
-		<li>
-			<a href="/search?for={{ str_replace(' ', '-', $name['name_'.locale()]) }}" title="{{ $name['name_'.locale()] }}">
-				{{ $name['name_'.locale()] }}
-			</a>
-		</li>
-	@endforeach
+	<li> <!-- Categories -->
+		<ul class="collapsible">
+			<li>
+				<div class="collapsible-header">
+					<i class="material-icons">arrow_drop_down</i>
+					<span>@lang('includes.categories')</span>
+				</div>
+				<div class="collapsible-body">
+					<ul>
+						@include('includes.nav.categories')
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</li>
 </ul>
+
 
 {{-- {{ request()->is('/') ? 'style="position:absolute;"' : '' }} --}}

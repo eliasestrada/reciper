@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	@include('includes.navbar')
+	@include('includes.nav.navbar')
 	@include('includes.user-sidebar')
 
 	@yield('home-header')
@@ -27,6 +27,7 @@
 	@yield('script')
 	@include('includes.js.dropdown')
 	@include('includes.js.sidenav')
+	@include('includes.js.collapsible')
 	@include('includes.messages')
 </body>
 </html>
