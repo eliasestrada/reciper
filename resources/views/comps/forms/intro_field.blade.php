@@ -1,4 +1,6 @@
-<div class="form-group">
+<div class="input-field">
+	<textarea name="intro" id="intro" class="materialize-textarea counter" data-length="{{ config('validation.intro_max') }}">{{ ($intro ?? '') }}</textarea>
 	<label for="intro">@lang('recipes.intro')</label>
-	<textarea name="intro" id="intro" placeholder="@lang('recipes.short_intro')">{{ ($intro ?? '') }}</textarea>
+
+	<span class="helper-text">@lang('recipes.short_intro')</span>
 </div>
