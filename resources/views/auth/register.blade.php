@@ -12,40 +12,29 @@
 		<div class="input-field">
 			<input type="text" id="name" name="name" value="{{ old('name') }}" class="validate" required>
 			<label for="name">@lang('form.name')</label>
-			<span class="helper-text" data-error="@lang('form.wrong')" data-success="@lang('form.right')">
-				@lang('form.name_desc')
-			</span>
+			<span class="helper-text">@lang('form.name_desc')</span>
 		</div>
 
 		<div class="input-field">
 			<input type="email" id="email" name="email" value="{{ old('email') }}" class="validate" required>
 			<label for="email">@lang('form.email')</label>
-			<span class="helper-text" data-error="@lang('form.wrong')" data-success="@lang('form.right')">
-				@lang('form.email_desc')
-			</span>
+			<span class="helper-text">@lang('form.email_desc')</span>
 		</div>
 
 		<div class="input-field">
 			<input type="password" id="password" name="password" class="validate" required>
 			<label for="password">@lang('form.pwd')</label>
-			<span class="helper-text" data-error="@lang('form.wrong')" data-success="@lang('form.right')">
-				@lang('form.pwd_desc')
-			</span>
+			<span class="helper-text">@lang('form.pwd_desc')</span>
 		</div>
 
 		<div class="input-field">
 			<input type="password" id="password_confirmation" class="validate" name="password_confirmation" required>
 			<label for="password_confirmation">@lang('form.pwd_confirm')</label>
-			<span class="helper-text" data-error="@lang('form.wrong')" data-success="@lang('form.right')">
-				@lang('form.pwd2_desc')
-			</span>
+			<span class="helper-text">@lang('form.pwd2_desc')</span>
 		</div>
 
 		<blockquote>
-			@lang('form.agree_to_terms', [
-				'btn' => trans('form.register'),
-				'terms' => '<a>dsf</a>'
-			])
+			@lang('form.agree_to_terms', ['btn' => trans('form.register'),'terms' => '<a>dsf</a>'])
 		</blockquote>
 
 		<!-- Modal Structure -->
