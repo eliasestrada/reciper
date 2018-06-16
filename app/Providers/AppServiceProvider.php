@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
 			view()->composer('*', function ($view) {
 				if (auth()->check()) {
 					User::whereId(user()->id)->update([
-						'updated_at' => NOW()
+						'last_visit_at' => NOW()
 					]);
 				}
 			}); 
