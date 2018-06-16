@@ -8,21 +8,20 @@
 		</script>
 	@endforeach
 	<script>
-		message += '<button class="btn-flat toast-action"><i class="material-icons">close</i></button>'
 		M.toast({html: message, displayLength: 7000})
 	</script>
 @endif
 
 @if (session('success'))
 	<script>
-		let message = '{{ @session('success') }}<button class="btn-flat toast-action"><i class="material-icons">close</i></button>'
+		let message = '{{ @session('success') }}'
 		M.toast({html: message, displayLength: 7000})
 	</script>
 @endif
 
 @if (session('error'))
 	<script>
-		let message = '{{ @session('error') }}<button class="btn-flat toast-action"><i class="material-icons">close</i></button>'
+		let message = '{{ @session('error') }}'
 		M.toast({html: message, displayLength: 7000})
 	</script>
 @endif
