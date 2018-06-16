@@ -9,18 +9,20 @@
 		@isset($recipes)
 
 			@forelse ($recipes as $recipe)
-				<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}" class="col l6">
+				<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}" class="col s12 m6 l4">
 					<li style="border-left:solid 3px #{{ $recipe->approved() && $recipe->ready() ? '65b56e' : 'ce7777' }};">
 						<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" />
 
 						<div class="item-content">
-							<h3 class="project-name">{{ $recipe->getTitle() }}</h3>
-							<p class="project-title">
-								@lang('users.status'): {{ $recipe->getStatus() }}
-							</p>
-							<p class="project-title">
+							<section>{{ $recipe->getTitle() }}</section>
+							<section>
 								@lang('users.date') {{ facebookTimeAgo($recipe->updated_at) }}
-							</p>
+							</section>
+							<section>
+								<span class="new badge mt-2 {{ $recipe->approved() && $recipe->ready() ? 'green' : 'red' }}">
+									@lang('users.status'): {{ $recipe->getStatus() }}
+								</span>
+							</section>
 						</div>
 					</li>
 				</a>
