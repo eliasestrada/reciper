@@ -18,12 +18,7 @@
 			<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
 			<ul class="right hide-on-med-and-down">
-				<li class="{{ activeIfRouteIs('/') }}">
-					<a href="/" title="На главную">@lang('includes.home')</a>
-				</li>
-				<li class="{{ activeIfRouteIs('recipes') }}">
-					<a href="/recipes" title="Рецепты">@lang('includes.recipes')</a>
-				</li>
+				@include('includes.nav-menu')
 
 				<!-- Dropdown Trigger -->
 				<li>
@@ -47,15 +42,8 @@
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
-	<li class="{{ activeIfRouteIs('/') }}">
-		<a href="/" title="На главную">@lang('includes.home')</a>
-	</li>
-	<li class="{{ activeIfRouteIs('recipes') }}">
-		<a href="/recipes" title="Рецепты">@lang('includes.recipes')</a>
-	</li>
-	<li class="{{ activeIfRouteIs('search') }}">
-		<a href="/search" title="Поиск">@lang('includes.search')</a>
-	</li>
+	@include('includes.nav-menu')
+
 	<div class="divider"></div>
 	@foreach ($category_names as $name)
 		<li>
