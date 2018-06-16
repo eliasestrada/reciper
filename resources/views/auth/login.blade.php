@@ -24,9 +24,7 @@
 				<input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} />
 				<span>
 					@lang('form.remember_me') 
-					<a class="tooltipped" data-tooltip="@lang('form.remember_info')">
-						@lang('form.help')
-					</a>
+					@include('includes.tip', ['tip' => trans('form.remember_info')])
 				</span>
 			</label>
 		</div>
