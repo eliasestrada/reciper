@@ -4,11 +4,11 @@
 
 @section('content')
 
-<form action="{{ action('RecipesController@store') }}" method="post" class="pt-4" enctype="multipart/form-data">
+<form action="{{ action('RecipesController@store') }}" method="post" class="pt-5" enctype="multipart/form-data">
 
 	<div class="row"> @csrf
 		<div class="center-align">
-			<h1 class="headline mb-3">@lang('recipes.add_recipe')</h1>
+			<h1 class="headline pb-4">@lang('recipes.add_recipe')</h1>
 		</div>
 
 		<div class="fixed-action-btn"> {{--  Save button  --}}

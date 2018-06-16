@@ -4,11 +4,13 @@
 
 @section('content')
 
-<form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post" class="pt-4" enctype="multipart/form-data" id="form-update-recipe">
+<form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post" class="pt-5" enctype="multipart/form-data" id="form-update-recipe">
 
 	<div class="row"> @method('put') @csrf
 		<div class="col s12">
-			<h1 class="headline">@lang('recipes.add_recipe')</h1>
+			<div class="center-align">
+				<h1 class="headline pb-4">@lang('recipes.add_recipe')</h1>
+			</div>
 
 			<div class="fixed-action-btn">
 				<a href="#" class="btn-floating main btn-large pulse z-depth-3"><i class="large material-icons">more_vert</i></a>
@@ -58,7 +60,7 @@
 				@endcomponent
 			</div>
 	
-			<div class="col s12 m6 m4"> {{-- Meal time --}}
+			<div class="col s12 m4"> {{-- Meal time --}}
 				@component('comps.forms.meal_field', ['meal' => $meal])
 					@slot('meal_id')
 						{{ $recipe->meal->id }}
