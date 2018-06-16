@@ -39,11 +39,10 @@ Route::prefix('settings')->group(function () {
 	Route::get('general', 'SettingsController@general');
 
 	Route::prefix('update')->group(function () {
-		Route::put('userData', 'SettingsController@updateUserData');
-		Route::put('userPassword', 'SettingsController@updateUserPassword');
-		Route::put('bannerData', 'SettingsController@updateBannerData');
-		Route::put('introData', 'SettingsController@updateIntroData');
-		Route::put('footerData', 'SettingsController@updateFooterData');
+		Route::put('user-data', 'SettingsController@updateUserData');
+		Route::put('user-password', 'SettingsController@updateUserPassword');
+		Route::put('intro-data', 'SettingsController@updateIntroData');
+		Route::put('footer-data', 'SettingsController@updateFooterData');
 	});
 });
 
