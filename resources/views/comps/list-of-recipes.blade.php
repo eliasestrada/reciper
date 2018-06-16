@@ -1,8 +1,10 @@
 <div>
 	@isset($title)
-		<h1 class="headline">
-			{{ $title }}{{ count($recipes) > 0 ? ': '.count($recipes) : '' }}
-		</h1>
+		<div class="center-align pt-4">
+			<h1 class="headline">
+				{{ $title }}{{ count($recipes) > 0 ? ': '.count($recipes) : '' }}
+			</h1>
+		</div>
 	@endisset
 
 	<div class="item-list unstyled-list row">
