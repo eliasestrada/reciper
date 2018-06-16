@@ -14,14 +14,12 @@
 			<like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}"></like>
 		</div>
 
-		@auth
-		{{--  Buttons  --}}
+		@auth {{--  Buttons  --}}
 			@if (user()->hasRecipe($recipe->user_id))
 				<div class="fixed-action-btn">
 					<a href="#" class="btn-floating main btn-large pulse z-depth-3"><i class="large material-icons">more_vert</i></a>
 					<ul>
-						{{--  Delete button  --}}
-						<li>
+						<li> {{--  Delete button  --}}
 							<delete-recipe-btn
 								recipe-id="{{ $recipe->id }}"
 								deleted-fail="{{ trans('recipes.deleted_fail') }}"
@@ -29,8 +27,7 @@
 								confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
 							</delete-recipe-btn>
 						</li>
-						{{--  Edit button  --}}
-						<li>
+						<li> {{--  Edit button  --}}
 							<a href="/recipes/{{ $recipe->id }}/edit" title="@lang('recipes.edit_recipe')" class="btn-floating green btn-large">
 								<i class="large material-icons">mode_edit</i>
 							</a>
