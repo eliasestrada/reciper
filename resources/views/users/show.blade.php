@@ -10,9 +10,9 @@
 		<p>@lang('users.joined'): {{ facebookTimeAgo($user->created_at) }}</p>
 		@unless ($user->id === user()->id)
 			<p>
-				{!! getOnlineIcon(facebookTimeAgo($user->updated_at)) !!}
+				{!! getOnlineIcon(facebookTimeAgo($user->last_visit_at)) !!}
 				@lang('date.online') 
-				{{ facebookTimeAgo($user->updated_at, 'online') }}
+				{{ facebookTimeAgo($user->last_visit_at, 'online') }}
 			</p>
 		@endunless
 	</div>
