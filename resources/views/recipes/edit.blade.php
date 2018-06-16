@@ -4,12 +4,9 @@
 
 @section('content')
 
-<form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post" class="form" enctype="multipart/form-data" id="form-update-recipe">
+<form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post" class="pt-4" enctype="multipart/form-data" id="form-update-recipe">
 
-	@method('put')
-	@csrf
-
-	<div class="row">
+	<div class="row"> @method('put') @csrf
 		<div class="col s12">
 			<h1 class="headline">@lang('recipes.add_recipe')</h1>
 
@@ -36,7 +33,7 @@
 						</a>
 					</li>
 					<li> {{--  Save button  --}}
-						<button type="submit" id="submit-save-recipe" title="@lang('recipes.save_recipe')" class="btn-floating green btn-large">
+						<button type="submit" id="submit-save-recipe" title="@lang('recipes.save_recipe_desc')" class="btn-floating green btn-large">
 							<i class="large material-icons">save</i>
 						</button>
 					</li>
@@ -44,53 +41,51 @@
 			</div>
 		</div>
 
-		{{-- Title --}}
-		<div class="col s12 m4">
-			@component('comps.forms.title_field')
-				@slot('title')
-					{{ $recipe->getTitle() }}
-				@endslot
-			@endcomponent
+		<div class="row">
+			<div class="col s12 m4"> {{-- Title --}}
+				@component('comps.forms.title_field')
+					@slot('title')
+						{{ $recipe->getTitle() }}
+					@endslot
+				@endcomponent
+			</div>
+	
+			<div class="col s12 m4"> {{-- Time --}}
+				@component('comps.forms.time_field')
+					@slot('time')
+						{{ $recipe->time }}
+					@endslot
+				@endcomponent
+			</div>
+	
+			<div class="col s12 m6 m4"> {{-- Meal time --}}
+				@component('comps.forms.meal_field', ['meal' => $meal])
+					@slot('meal_id')
+						{{ $recipe->meal->id }}
+					@endslot
+				@endcomponent
+			</div>
 		</div>
 
-		{{-- Time --}}
-		<div class="col s12 m4">
-			@component('comps.forms.time_field')
-				@slot('time')
-					{{ $recipe->time }}
-				@endslot
-			@endcomponent
+		<div class="row">
+			<div class="col s12 l6"> {{-- Ingredients --}}
+				@component('comps.forms.ingredients_field')
+					@slot('ingredients')
+						{{ $recipe->getIngredients() }}
+					@endslot
+				@endcomponent
+			</div>
+	
+			<div class="col s12 l6"> {{-- Advice --}}
+				@component('comps.forms.intro_field')
+					@slot('intro')
+						{{ $recipe->getIntro() }}
+					@endslot
+				@endcomponent
+			</div>
 		</div>
 
-		{{-- Meal time --}}
-		<div class="col s12 m6 m4">
-			@component('comps.forms.meal_field', ['meal' => $meal])
-				@slot('meal_id')
-					{{ $recipe->meal->id }}
-				@endslot
-			@endcomponent
-		</div>
-
-		{{-- Ingredients --}}
-		<div class="col s12 l6">
-			@component('comps.forms.ingredients_field')
-				@slot('ingredients')
-					{{ $recipe->getIngredients() }}
-				@endslot
-			@endcomponent
-		</div>
-
-		{{-- Advice --}}
-		<div class="col s12 l6">
-			@component('comps.forms.intro_field')
-				@slot('intro')
-					{{ $recipe->getIntro() }}
-				@endslot
-			@endcomponent
-		</div>
-
-		{{-- Text --}}
-		<div class="col s12 mb-2">
+		<div class="col s12 mb-2"> {{-- Text --}}
 			@component('comps.forms.text_field')
 				@slot('text')
 					{{ $recipe->getText() }}
@@ -98,28 +93,29 @@
 			@endcomponent
 		</div>
 
-		<div class="form-group col s12 m6" style="border-bottom:solid 1px lightgray;">
-			<categories-field
-				locale="{{ locale() }}"
-				:recipe-categories="{{ json_encode($recipe->categories) }}"
-				label="@lang('recipes.category')"
-				select="@lang('form.select')"
-				categories-title="@lang('recipes.categories_title')"
-				deleting="@lang('form.deleting')"
-				add="@lang('form.add')">
-			</categories-field>
-		</div>
-
-		{{-- Image --}}
-		<div class="col s12 m6">
-			@component('comps.forms.image_field')
-				@slot('image')
-					{{ $recipe->image }}
-				@endslot
-				@slot('alt')
-					{{ $recipe->title }}
-				@endslot
-			@endcomponent
+		<div class="row">
+			<div class="col s12 m6"> {{-- Categories --}}
+				<categories-field
+					locale="{{ locale() }}"
+					:recipe-categories="{{ json_encode($recipe->categories) }}"
+					label="@lang('recipes.category')"
+					select="@lang('form.select')"
+					categories-title="@lang('recipes.categories_title')"
+					deleting="@lang('form.deleting')"
+					add="@lang('form.add')">
+				</categories-field>
+			</div>
+	
+			<div class="col s12 m6"> {{-- Image --}}
+				@component('comps.forms.image_field')
+					@slot('image')
+						{{ $recipe->image }}
+					@endslot
+					@slot('alt')
+						{{ $recipe->title }}
+					@endslot
+				@endcomponent
+			</div>
 		</div>
 	</div>
 </form>
