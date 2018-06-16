@@ -129,5 +129,5 @@
 @endsection
 
 @section('script')
-	@include('includes.js.floating_btn')
+	@include('includes.js.floating-btn')
 @endsection
