@@ -5,7 +5,7 @@
 
 <nav>
 	<div class="nav-wrapper main">
-		<div class="px-3 wrapper">
+		<div class="wrapper">
 			<a href="/" title="@lang('includes.home')" class="brand-logo">
 				{{ config('app.name') }}
 			</a>
