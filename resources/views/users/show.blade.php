@@ -6,13 +6,15 @@
 
 <div class="profile-header">
 	<div>
-		<h1>{{ $user->name }}</h1>
+		<h1 class="my-4">{{ $user->name }}</h1>
 		<p>@lang('users.joined'): {{ facebookTimeAgo($user->created_at) }}</p>
-		<p>
-			{!! getOnlineIcon(facebookTimeAgo($user->updated_at)) !!}
-			@lang('date.online') 
-			{{ facebookTimeAgo($user->updated_at, 'online') }}
-		</p>
+		@unless ($user->id === user()->id)
+			<p>
+				{!! getOnlineIcon(facebookTimeAgo($user->updated_at)) !!}
+				@lang('date.online') 
+				{{ facebookTimeAgo($user->updated_at, 'online') }}
+			</p>
+		@endunless
 	</div>
 
 	<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{ $user->name }}" />
