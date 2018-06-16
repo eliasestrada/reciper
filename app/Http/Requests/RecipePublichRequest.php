@@ -22,21 +22,23 @@ class RecipePublichRequest extends FormRequest
     {
         if ($this->ready == 1) {
 			$rules = [
-				'title' => 'min:5|max:190',
-				'intro' => 'min:20|max:2000',
-				'ingredients' => 'min:20|max:5000',
-				'text' => 'min:80|max:10000',
+				'title' => 'min:5|max:'  . config('validation.title_max'),
+				'intro' => 'min:20|max:' . config('validation.intro_max'),
+				'ingredients' => 'min:20|max:' . config('validation.ingredient_max'),
+				'text' => 'min:80|max:' . config('validation.text_max'),
 				'meal' => 'numeric|digits_between:1,3',
 				'time' => 'numeric|digits_between:0,1000',
 				'image' => 'image|nullable|max:1999',
 				'categories' => [new UniqueCategory],
 			];
 
-			$db_categories = Category::count();
-			$categories = request('categories');
+			if (request('categories')) {
+				$db_categories = Category::count();
+				$categories = request('categories');
 
-			foreach(range(0, count($categories)) as $i) {
-				$rules['categories.' . $i] = "numeric|digits_between:1,{$db_categories}";
+				foreach(range(0, count($categories)) as $i) {
+					$rules['categories.' . $i] = "numeric|digits_between:1,{$db_categories}";
+				}
 			}
 			return $rules;
 		}

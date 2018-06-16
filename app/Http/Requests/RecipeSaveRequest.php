@@ -18,23 +18,25 @@ class RecipeSaveRequest extends FormRequest
     public function rules()
     {
 		$rules = [
-            'title' => 'max:190',
-            'intro' => 'max:2000',
-            'ingredients'  => 'max:5000',
-			'text' => 'max:10000',
+            'title' => 'max:' . config('validation.title_max'),
+            'intro' => 'max:' . config('validation.intro_max'),
+            'ingredients' => 'max:5000',
+			'text' => 'max:' . config('validation.text_max'),
 			'meal' => 'numeric|digits_between:1,3',
             'time' => 'numeric|digits_between:0,1999',
 			'image' => 'image|nullable|max:1999',
 			'categories' => [new UniqueCategory],
 		];
 
-		$db_categories = Category::count();
-		$categories = request('categories');
+		if (request('categories')) {
+			$db_categories = Category::count();
+			$categories = request('categories');
 
-		foreach(range(0, count($categories)) as $i) {
-			$rules['categories.' . $i] = "numeric|digits_between:1,{$db_categories}";
+			foreach(range(0, count($categories)) as $i) {
+				$rules['categories.' . $i] = "numeric|digits_between:1,{$db_categories}";
+			}
 		}
-        return $rules;
+		return $rules;
 	}
 
     public function messages()
