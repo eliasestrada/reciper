@@ -52,11 +52,11 @@
 }
 
 .grey {
-  background-color: #9e9e9e !important;
+  background-color: #727272 !important;
 }
 
 .grey-text {
-  color: #9e9e9e !important;
+  color: #727272 !important;
 }
 
 html {
@@ -7308,7 +7308,7 @@ svg {
   top: 100%;
   left: 50%;
   z-index: 100;
-  background: #fafafa;
+  background: #bfbebe;
   border-radius: 4px;
   -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
           box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
@@ -7393,7 +7393,7 @@ svg {
 }
 
 .grid-recipe {
-  color: #2e2d2d;
+  color: #262525;
   padding: 0 .6em;
   background: #f3f3f3;
 }
@@ -7536,7 +7536,7 @@ svg {
 }
 
 .item-list a {
-  color: #2e2d2d;
+  color: #262525;
 }
 
 .item-list li {
@@ -7552,6 +7552,7 @@ svg {
   transition: background-color 250ms;
   border-radius: 2px;
   margin-bottom: 3px;
+  border-left: solid 3px;
 }
 
 .item-list li:hover {
@@ -8043,7 +8044,7 @@ svg {
 }
 
 footer {
-  background: #2e2d2d;
+  background: #262525;
 }
 
 footer strong {
@@ -8070,7 +8071,7 @@ footer .footer-logo {
 
 footer .footer-copyright {
   font-size: .7em;
-  color: #adadad;
+  color: #727272;
   color: #c0bfff;
   margin: .5em;
 }
