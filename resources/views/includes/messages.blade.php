@@ -8,20 +8,20 @@
 		</script>
 	@endforeach
 	<script>
-		M.toast({html: message, displayLength: 7000})
+		M.toast({html: message, displayLength: 10000, classes: 'red'})
 	</script>
 @endif
 
 @if (session('success'))
 	<script>
 		let message = '{{ @session('success') }}'
-		M.toast({html: message, displayLength: 7000})
+		M.toast({html: message, displayLength: 10000, classes: 'green'})
 	</script>
 @endif
 
 @if (session('error'))
 	<script>
 		let message = '{{ @session('error') }}'
-		M.toast({html: message, displayLength: 7000})
+		M.toast({html: message, displayLength: 10000, classes: 'red'})
 	</script>
 @endif
