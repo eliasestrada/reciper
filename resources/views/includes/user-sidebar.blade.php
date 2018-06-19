@@ -2,19 +2,11 @@
 
 <nav class="user-sidebar" id="user-sidebar">
 	<ul>
-		{{-- Profile --}}
+		{{-- profile --}}
 		<li class="{{ activeIfRouteIs('users/*') }}">
 			<a href="/users/{{ user()->id }}" title="@lang('includes.profile')">
 				<i class="material-icons sidebar-icon">person</i>
 				<span>@lang('includes.profile')</span>
-			</a>
-		</li>
-
-		{{-- recipes/create --}}
-		<li class="{{ activeIfRouteIs('recipes/create') }}">
-			<a href="/recipes/create" title="@lang('includes.new_recipe')">
-				<i class="material-icons sidebar-icon">add</i>
-				<span>@lang('includes.new_recipe')</span>
 			</a>
 		</li>
 

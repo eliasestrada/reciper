@@ -33,7 +33,7 @@ class RecipesController extends Controller
     public function create()
     {
 		return view('recipes.create')
-			->withMeal(Meal::get(['id', 'name_' . locale()])->toArray());	
+			->withMeal(Meal::get(['id', 'name_' . locale()]));	
     }
 
 
