@@ -10,7 +10,7 @@
 			<div class="form-group simple-group">
 				<label :for="'category_id' + field">{{ label }} {{ field }}</label>
 				<select name="categories[]" class="browser-default">
-					<option v-if="recipeCategories && recipeCategories.length > 0" :value="recipeCategories[i]['id']" selected>
+					<option v-if="recipeCategories && recipeCategories[i]" :value="recipeCategories[i]['id']" selected>
 						{{ recipeCategories[i]['name_' + locale] }}
 					</option>
 					<option v-for="categ in categories" :key="categ.id" :value="categ.id">
