@@ -44,6 +44,8 @@ class RecipesController extends Controller
 	 */
     public function store(RecipeSaveRequest $request)
     {
+		$this->checkForScriptTags($request);
+
 		$image_name = $this->saveImageIfExists($request->file('image'));
 		$recipe = $this->createOrUpdateRecipe($request, $image_name);
 
@@ -99,6 +101,8 @@ class RecipesController extends Controller
 	 */
     public function update(RecipePublichRequest $request, Recipe $recipe)
     {
+		$this->checkForScriptTags($request);
+
 		// Handle image uploading
 		$image_name = $this->saveImageIfExists($request->file('image'), $recipe->image);
 
