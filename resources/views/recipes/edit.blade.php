@@ -99,7 +99,7 @@
 			<div class="col s12 m6"> {{-- Categories --}}
 				<categories-field
 					locale="{{ locale() }}"
-					:recipe-categories="{{ json_encode($recipe->categories) }}"
+					:recipe-categories="{{ json_encode($recipe->categories->toArray()) }}"
 					label="@lang('recipes.category')"
 					select="@lang('form.select')"
 					categories-title="@lang('recipes.categories_title')"
