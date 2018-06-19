@@ -49,16 +49,19 @@ class UsersController extends Controller
 
 	public function notifications()
 	{
-        $notifications = Notification::whereUserId(user()->id)
-			->orWhere('for_admins', 1)
-			->latest()
-			->paginate(10);
+		$notifications = Notification::whereUserId(user()->id);
+
+		if (user()->isAdmin()) {
+			$notifications->orWhere('for_admins', 1);
+		}
+
+		$query = $notifications->latest()->paginate(10);
 
 		User::whereId(user()->id)->update([
 			'notif_check' => NOW()
 		]);
 
 		return view('users.notifications')
-			->withNotifications($notifications);
+			->withNotifications($query);
 	}
 }
