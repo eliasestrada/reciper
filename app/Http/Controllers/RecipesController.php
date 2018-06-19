@@ -120,6 +120,7 @@ class RecipesController extends Controller
             return redirect('/recipes')->withSuccess(trans('recipes.recipe_published'));
 		}
 		event(new RecipeIsReady($recipe));
+
         return redirect('/dashboard')->withSuccess(trans('recipes.added_to_approving'));
     }
 }
