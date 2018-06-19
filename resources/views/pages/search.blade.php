@@ -52,8 +52,8 @@
 	</div>
 @endif
 
-<div class="content">
-	<h4 class="content center-align">{{ $message ?? '' }}</h4>
+<div class="py-4 center-align">
+	<h5 class="flow-text">{{ $message ?? '' }}</h5>
 </div>
 
 @endsection
