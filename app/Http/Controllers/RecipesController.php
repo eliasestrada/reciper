@@ -90,7 +90,7 @@ class RecipesController extends Controller
 
 		return view('recipes.edit')
 			->withRecipe($recipe)
-			->withMeal(Meal::get(['id', 'name_'.locale()])->toArray());
+			->withMeal(Meal::get(['id', 'name_'.locale()]));
     }
 
     /**
