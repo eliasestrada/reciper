@@ -20,7 +20,7 @@
 
 		{{-- users --}}
 		<li class="{{ activeIfRouteIs('users') }}">
-			<a href="/users" title="@lang('includes.users')" {{ $all_new_users ?? '' }} class="small-notif-btn">
+			<a href="/users" title="@lang('includes.users')">
 				<i class="material-icons sidebar-icon">people</i>
 				<span>@lang('includes.users')</span>
 			</a>
