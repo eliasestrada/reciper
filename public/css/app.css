@@ -7128,10 +7128,6 @@ select {
   padding: 1em 0;
 }
 
-.item-list a {
-  color: #262525;
-}
-
 .item-list .btn {
   color: #fff;
 }
@@ -7142,7 +7138,7 @@ select {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: .5em;
+  padding: 4px 0;
   border-bottom: 1px solid #b6b6b6;
   background-color: #e4e4e4;
   -webkit-transition: background-color 250ms;

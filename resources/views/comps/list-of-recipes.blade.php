@@ -10,23 +10,23 @@
 	<div class="item-list unstyled-list row">
 		@isset($recipes)
 			@forelse ($recipes as $recipe)
-				<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}" class="col s12 m6 l4">
-					<li style="border-left-color:#{{ $recipe->done() ? '65b56e' : 'ce7777' }};">
+				<li style="border-left-color:#{{ $recipe->done() ? '65b56e' : 'ce7777' }};" class="col s12 m6 l4" title="{{ $recipe->getTitle() }}">
+					<a href="/recipes/{{ $recipe->id }}">
 						<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" />
+					</a>
 
-						<div class="item-content">
-							<section>{{ $recipe->getTitle() }}</section>
-							<section>
-								@lang('users.date') {{ facebookTimeAgo($recipe->updated_at) }}
-							</section>
-							<section>
-								<span class="new badge mt-2 {{ $recipe->done() ? 'green' : 'red' }}">
-									@lang('users.status'): {{ $recipe->getStatus() }}
-								</span>
-							</section>
-						</div>
-					</li>
-				</a>
+					<div class="item-content">
+						<section>{{ $recipe->getTitle() }}</section>
+						<section>
+							@lang('users.date') {{ facebookTimeAgo($recipe->updated_at) }}
+						</section>
+						<section>
+							<span class="new badge mt-2 {{ $recipe->done() ? 'green' : 'red' }}">
+								@lang('users.status'): {{ $recipe->getStatus() }}
+							</span>
+						</section>
+					</div>
+				</li>
 			@empty
 				@isset($no_recipes)
 					<div class="center-align">
