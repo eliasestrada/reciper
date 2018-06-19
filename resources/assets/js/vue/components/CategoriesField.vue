@@ -13,7 +13,7 @@
 					<option v-if="recipeCategories && recipeCategories.length > 0" :value="recipeCategories[i]['id']" selected>
 						{{ recipeCategories[i]['name_' + locale] }}
 					</option>
-					<option v-for="categ in categories" :key="categ['id']" :value="categ['id']">
+					<option v-for="categ in categories" :key="categ.id" :value="categ.id">
 						{{ categ['name_' + locale] }}
 					</option>
 				</select>
