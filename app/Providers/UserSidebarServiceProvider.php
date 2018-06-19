@@ -15,7 +15,6 @@ class UserSidebarServiceProvider extends ServiceProvider
     {
 		$this->countAndComposeAllNotifications();
 		$this->countAndComposeAllFeedback();
-		$this->countAndComposeNewUsers();
 		$this->countAndComposeAllUnprovedRecipes();
     }
 
@@ -43,7 +42,7 @@ class UserSidebarServiceProvider extends ServiceProvider
 				}
 			});
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'notifications']));
+			logger()->emergency("Table notifications wasn't found while trying to count all notifications, name of the method: countAndComposeAllNotifications");
 		}
 	}
 
@@ -59,7 +58,7 @@ class UserSidebarServiceProvider extends ServiceProvider
 				}
 			});
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'feedback']));
+			logger()->emergency("Table feedback wasn't found while trying to count all feedback messages, name of the method: countAndComposeAllFeedback");
 		}
 	}
 
@@ -78,23 +77,7 @@ class UserSidebarServiceProvider extends ServiceProvider
 				}
 			});
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
-		}
-	}
-
-
-	public function countAndComposeNewUsers()
-	{
-		if (Schema::hasTable('users')) {
-			view()->composer('includes.user-sidebar', function($view) {
-				if (user()) {
-					$new_users = User::whereAuthor(0)->count();
-					$all_new_users = !empty($new_users) ? 'data-notif='.$new_users : '';
-					$view->with(compact('all_new_users'));
-				}
-			});
-		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'users']));
+			logger()->emergency("Table recipes wasn't found while trying to count all unproved recipes, name of the method: countAndComposeAllUnprovedRecipes");
 		}
 	}
 }
