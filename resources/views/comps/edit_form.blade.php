@@ -1,4 +1,4 @@
-<div class="home-edit-form" id="{{ $id }}">
+<div class="edit-form" id="{{ $id }}">
 	<form action="{{ action($action) }}" method="post" class="p-3">
 
 		@method('put')

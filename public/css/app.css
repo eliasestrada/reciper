@@ -6855,7 +6855,7 @@ select {
   transition: border 300ms;
 }
 
-.home-edit-form {
+.edit-form {
   position: absolute;
   width: 80%;
   max-width: 35em;
@@ -6876,7 +6876,7 @@ select {
           transform: translate(-50%, -50%) perspective(1000px) rotateX(-90deg);
 }
 
-.home-edit-form.active {
+.edit-form.active {
   -webkit-transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
           transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
 }

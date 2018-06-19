@@ -147,7 +147,7 @@
 	}
 }
 
-.home-edit-form {
+.edit-form {
 	position: absolute;
 	width: 80%;
 	max-width: 35em;
@@ -162,7 +162,7 @@
 	transform: translate(-50%, -50%) perspective(1000px) rotateX(-90deg);
 }
 
-.home-edit-form.active {
+.edit-form.active {
 	transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
 }
 
