@@ -14,11 +14,23 @@ class RecipesSeeder extends Seeder
     public function run()
     {
 		factory(Recipe::class, 16)->create();
+
         $this->first();
         $this->second();
         $this->third();
-        $this->forth();
+		$this->forth();
+		
+		$categories = Category::get();
+
+		Recipe::get()->each(function ($recipe) use ($categories) {
+			$recipe->categories()->attach(
+				$categories->random(rand(1, 4))
+				->pluck('id')
+				->toArray()
+			);
+		});
 	}
+	
 	
 
 	public function first()
