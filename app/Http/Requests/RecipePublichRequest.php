@@ -21,7 +21,7 @@ class RecipePublichRequest extends FormRequest
     public function rules()
     {
         if ($this->ready == 1) {
-			$rules = [
+			return [
 				'title' => 'min:5|max:'  . config('validation.title_max'),
 				'intro' => 'min:20|max:' . config('validation.intro_max'),
 				'ingredients' => 'min:20|max:' . config('validation.ingredient_max'),
@@ -29,18 +29,9 @@ class RecipePublichRequest extends FormRequest
 				'meal' => 'numeric|digits_between:1,3',
 				'time' => 'numeric|digits_between:0,1000',
 				'image' => 'image|nullable|max:1999',
-				'categories' => [new UniqueCategory],
+				'categories.0' => 'required',
+				'categories.*' => 'distinct|numeric|digits_between:1,' . Category::count(),
 			];
-
-			if (request('categories')) {
-				$db_categories = Category::count();
-				$categories = request('categories');
-
-				foreach(range(0, count($categories)) as $i) {
-					$rules['categories.' . $i] = "numeric|digits_between:1,{$db_categories}";
-				}
-			}
-			return $rules;
 		}
 		return [];
 	}
@@ -62,8 +53,10 @@ class RecipePublichRequest extends FormRequest
 				'ingredients.min' => trans('recipes.ingredients_min'),
 				'ingredients.max' => trans('recipes.ingredients_max'),
 
-				'categories.numeric' => trans('recipes.categories_numeric'),
-				'categories.digits_between' => trans('recipes.categories_numeric'),
+				'categories.0.required' => trans('recipes.categories_required'),
+				'categories.*.distinct' => trans('recipes.categories_distinct'),
+				'categories.*.numeric' => trans('recipes.categories_numeric'),
+				'categories.*.digits_between' => trans('recipes.categories_numeric'),
 
 				'text.min' => trans('recipes.text_min'),
 				'text.max' => trans('recipes.text_max'),

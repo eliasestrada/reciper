@@ -17,7 +17,7 @@ class RecipeSaveRequest extends FormRequest
     // Get the validation messages that apply to the request.
     public function rules()
     {
-		$rules = [
+		return [
             'title' => 'max:' . config('validation.title_max'),
             'intro' => 'max:' . config('validation.intro_max'),
             'ingredients' => 'max:5000',
@@ -25,18 +25,9 @@ class RecipeSaveRequest extends FormRequest
 			'meal' => 'numeric|digits_between:1,3',
             'time' => 'numeric|digits_between:0,1999',
 			'image' => 'image|nullable|max:1999',
-			'categories' => [new UniqueCategory],
+			'categories.0' => 'required',
+			'categories.*' => 'distinct|numeric|digits_between:1,' . Category::count(),
 		];
-
-		if (request('categories')) {
-			$db_categories = Category::count();
-			$categories = request('categories');
-
-			foreach(range(0, count($categories)) as $i) {
-				$rules['categories.' . $i] = "numeric|digits_between:1,{$db_categories}";
-			}
-		}
-		return $rules;
 	}
 
     public function messages()
@@ -57,8 +48,10 @@ class RecipeSaveRequest extends FormRequest
 			'meal.numeric' => trans('recipes.meal_numeric'),
 			'meal.digits_between' => trans('recipes.meal_digits_between'),
 
-			'categories.numeric' => trans('recipes.categories_numeric'),
-			'categories.digits_between' => trans('recipes.categories_numeric'),
+			'categories.0.required' => trans('recipes.categories_required'),
+			'categories.*.distinct' => trans('recipes.categories_distinct'),
+			'categories.*.numeric' => trans('recipes.categories_numeric'),
+			'categories.*.digits_between' => trans('recipes.categories_numeric'),
 			
 			'time.numeric' => trans('recipes.time_numeric'),
 			'time.digits_between' => trans('recipes.time_digits_between'),
