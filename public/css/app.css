@@ -6862,7 +6862,7 @@ select {
   top: 100%;
   left: 50%;
   z-index: 100;
-  background: #bfbebe;
+  background: #eee;
   border-radius: 4px;
   -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
           box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
