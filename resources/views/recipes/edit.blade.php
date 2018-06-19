@@ -105,6 +105,7 @@
 					categories-title="@lang('recipes.categories_title')"
 					deleting="@lang('form.deleting')"
 					add="@lang('form.add')">
+					@include('includes.preloader')
 				</categories-field>
 			</div>
 	
