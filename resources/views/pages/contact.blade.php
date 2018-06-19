@@ -7,15 +7,10 @@
 <div class="page container">
 	<div class="center-align"><h1 class="headline">@lang('pages.feedback')</h1></div>
 
-	@unless (session('success'))
+	@if (session('success'))
 		<div class="center-align mt-4">
-			<a href="/" title="@lang('contact.to_home_page')" class="btn waves-effect waves-light">
-				@lang('contact.to_home_page')
-			</a>
-			<a href="/recipes" title="@lang('contact.new_recipes')" class="btn waves-effect waves-light">
-				@lang('contact.new_recipes')
-			</a>
-			@include('includes.help-btn')
+			@include('includes.buttons.home-btn') <br />
+			@include('includes.buttons.help-btn')
 		</div>
 	@else
 		<form action="{{ action('ContactController@store') }}" method="post">
@@ -33,7 +28,7 @@
 				<button type="submit" class="btn btn-main">@lang('form.send')</button>
 			</div>
 		</form>
-	@endunless
+	@endif
 </div>
 
 @endsection
