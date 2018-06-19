@@ -33,41 +33,41 @@ class RecipePublichRequest extends FormRequest
 				'categories.*' => 'distinct|numeric|digits_between:1,' . Category::count(),
 			];
 		}
-		return [];
+		return [
+			'categories.0' => 'required',
+			'categories.*' => 'distinct|numeric|digits_between:1,' . Category::count(),
+		];
 	}
 	
 	// Get the validation messages that apply to the request.
     public function messages()
     {
-        if ($this->ready == 1) {
-			return [
-				'title.min' => trans('recipes.title_min'),
-				'title.max' => trans('recipes.title_max'),
+		return [
+			'title.min' => trans('recipes.title_min'),
+			'title.max' => trans('recipes.title_max'),
 
-				'intro.min' => trans('recipes.intro_min'),
-				'intro.max' => trans('recipes.intro_max'),
+			'intro.min' => trans('recipes.intro_min'),
+			'intro.max' => trans('recipes.intro_max'),
 
-				'meal.numeric' => trans('recipes.meal_numeric'),
-				'meal.digits_between' => trans('recipes.meal_digits_between'),
+			'meal.numeric' => trans('recipes.meal_numeric'),
+			'meal.digits_between' => trans('recipes.meal_digits_between'),
 
-				'ingredients.min' => trans('recipes.ingredients_min'),
-				'ingredients.max' => trans('recipes.ingredients_max'),
+			'ingredients.min' => trans('recipes.ingredients_min'),
+			'ingredients.max' => trans('recipes.ingredients_max'),
 
-				'categories.0.required' => trans('recipes.categories_required'),
-				'categories.*.distinct' => trans('recipes.categories_distinct'),
-				'categories.*.numeric' => trans('recipes.categories_numeric'),
-				'categories.*.digits_between' => trans('recipes.categories_numeric'),
+			'categories.0.required' => trans('recipes.categories_required'),
+			'categories.*.distinct' => trans('recipes.categories_distinct'),
+			'categories.*.numeric' => trans('recipes.categories_numeric'),
+			'categories.*.digits_between' => trans('recipes.categories_numeric'),
 
-				'text.min' => trans('recipes.text_min'),
-				'text.max' => trans('recipes.text_max'),
+			'text.min' => trans('recipes.text_min'),
+			'text.max' => trans('recipes.text_max'),
 
-				'time.numeric' => trans('recipes.time_numeric'),
-				'time.digits_between' => trans('recipes.time_digits_between'),
+			'time.numeric' => trans('recipes.time_numeric'),
+			'time.digits_between' => trans('recipes.time_digits_between'),
 
-				'image.image' => trans('recipes.image_image'),
-				'image.max' => trans('recipes.image_max')
-			];
-		}
-		return [];
+			'image.image' => trans('recipes.image_image'),
+			'image.max' => trans('recipes.image_max')
+		];
     }
 }
