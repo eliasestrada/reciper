@@ -23,6 +23,7 @@ mix.js('resources/assets/js/vue/vue.js', 'public/js')
 	.babel(vanillaFilesToCompile, 'public/js/vanilla.js')
 	.sass('resources/assets/sass/app.scss', 'public/css/app.css')
 	.disableNotifications()
+	.sourceMaps()
 	.browserSync({
 		proxy: 'localhost:8000',
 		browser: 'chrome',
