@@ -45,7 +45,7 @@
 
 		<div class="row">
 			<div class="col s12 m4"> {{-- Title --}}
-				@component('comps.forms.title_field')
+				@component('comps.forms.title-field')
 					@slot('title')
 						{{ $recipe->getTitle() }}
 					@endslot
@@ -53,7 +53,7 @@
 			</div>
 	
 			<div class="col s12 m4"> {{-- Time --}}
-				@component('comps.forms.time_field')
+				@component('comps.forms.time-field')
 					@slot('time')
 						{{ $recipe->time }}
 					@endslot
@@ -61,7 +61,7 @@
 			</div>
 	
 			<div class="col s12 m4"> {{-- Meal time --}}
-				@component('comps.forms.meal_field', ['meal' => $meal])
+				@component('comps.forms.meal-field', ['meal' => $meal])
 					@slot('meal_id')
 						{{ $recipe->meal->id }}
 					@endslot
@@ -71,7 +71,7 @@
 
 		<div class="row">
 			<div class="col s12 l6"> {{-- Ingredients --}}
-				@component('comps.forms.ingredients_field')
+				@component('comps.forms.ingredients-field')
 					@slot('ingredients')
 						{{ $recipe->getIngredients() }}
 					@endslot
@@ -79,7 +79,7 @@
 			</div>
 	
 			<div class="col s12 l6"> {{-- Advice --}}
-				@component('comps.forms.intro_field')
+				@component('comps.forms.intro-field')
 					@slot('intro')
 						{{ $recipe->getIntro() }}
 					@endslot
@@ -88,7 +88,7 @@
 		</div>
 
 		<div class="col s12 mb-2"> {{-- Text --}}
-			@component('comps.forms.text_field')
+			@component('comps.forms.text-field')
 				@slot('text')
 					{{ $recipe->getText() }}
 				@endslot
@@ -109,7 +109,7 @@
 			</div>
 	
 			<div class="col s12 m6"> {{-- Image --}}
-				@component('comps.forms.image_field')
+				@component('comps.forms.image-field')
 					@slot('image')
 						{{ $recipe->image }}
 					@endslot
