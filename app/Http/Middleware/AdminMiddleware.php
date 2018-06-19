@@ -13,7 +13,7 @@ class AdminMiddleware
         if (Auth::guard($guard)->check() && Auth::user()->admin === 1) {
 			return $next($request);
         }
-        return redirect('/recipes')->withError(
+        return redirect('/login')->withError(
 			trans('messages.only_admin_access')
 		);
     }
