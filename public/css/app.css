@@ -6266,6 +6266,7 @@ select {
 
 .page {
   padding: 2em 0;
+  min-height: 20em;
 }
 
 .fix-input {
