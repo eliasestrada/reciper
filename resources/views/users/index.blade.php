@@ -4,11 +4,11 @@
 
 @section('content')
 
-<div class="center-align pt-4">
-	<h1 class="headline">@lang('users.all_authors')</h1>
-</div>
+<div class="page">
+	<div class="center-align">
+		<h1 class="headline">@lang('users.all_authors')</h1>
+	</div>
 
-<div class="px-2">
 	<ul class="item-list unstyled-list">
 		@foreach ($users as $user)
 			<a href="/users/{{ $user->id }}" title="{{ $user->name }}" >

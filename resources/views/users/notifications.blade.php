@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="py-4 px-2">
+<div class="page">
 	<div class="center-align">
 		<h1 class="headline">
 			@lang('includes.notifications') 

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ action('RecipesController@store') }}" method="post" class="pt-5" enctype="multipart/form-data">
+<form action="{{ action('RecipesController@store') }}" method="post" class="page" enctype="multipart/form-data">
 
 	<div class="row"> @csrf
 		<div class="center-align">
