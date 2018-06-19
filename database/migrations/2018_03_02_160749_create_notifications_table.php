@@ -10,10 +10,11 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned()->nullable();
             $table->string('title');
 			$table->text('message');
 			$table->boolean('for_admins')->default(0);
+			$table->boolean('important')->default(0);
 			$table->timestamps();
         });
     }
