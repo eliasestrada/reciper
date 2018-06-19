@@ -19,6 +19,14 @@
   color: #F44336 !important;
 }
 
+.white {
+  background-color: #fff !important;
+}
+
+.text-white {
+  color: #fff !important;
+}
+
 .main {
   background-color: #484074 !important;
 }
