@@ -4,6 +4,7 @@ namespace App\Helpers\Traits;
 
 use App\Models\Like;
 use App\Models\Meal;
+use App\Models\User;
 use App\Models\Category;
 
 trait RecipeModelRelationship

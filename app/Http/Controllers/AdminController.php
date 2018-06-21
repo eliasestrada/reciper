@@ -37,10 +37,11 @@ class AdminController extends Controller
 		));
 	}
 
-
+	/**
+	 * Mark user as he saw these messages
+	 */
 	public function feedback()
     {
-		// Mark that user saw these messages
 		User::whereId(user()->id)->update([
 			'contact_check' => NOW()
 		]);

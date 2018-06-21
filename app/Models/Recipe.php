@@ -34,7 +34,7 @@ class Recipe extends Model
 	 */
 	public function ready() : bool
 	{
-		return $this->getReady() === 1 ? true : false;
+		return $this->getReady() ? true : false;
 	}
 
 	/**
@@ -42,16 +42,15 @@ class Recipe extends Model
 	 */
 	public function approved() : bool
 	{
-		return $this->getApproved() === 1 ? true : false;
+		return $this->getApproved() ? true : false;
 	}
-
 
 	/**
 	 * @return bool
 	 */
 	public function done() : bool
 	{
-		return ($this->getReady() === 1 && $this->getApproved() === 1)
+		return ($this->getReady() && $this->getApproved())
 			? true
 			: false;
 	}
