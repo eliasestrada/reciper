@@ -13,20 +13,23 @@
 	</div>
 	
 	<div class="row py-5">
-		@forelse ($notifications as $notification)
+		@forelse ($notifications as $notif)
 			<div class="col s12 m6 l4">
 				<div class="card-panel px-3">
 					<span class="white-text">
-						<h5>{{ $notification->title }}</h5>
-						<p>{{ $notification->message }}</p>
-						<span class="grey-text right">{{ facebookTimeAgo($notification->created_at) }}</span>
+						<h6>{!! $notif->getIcon() !!} {{ trans($notif->title) }}</h6>
+						<p>{{ trans($notif->message) }}</p>
+						<hr /><p>{{ $notif->data }}</p>
+						<span class="grey-text right">{{ facebookTimeAgo($notif->created_at) }}</span>
 					</span>
 				</div>
 			</div>
 		@empty
-			<div class="center-align">
-				<p class="flow-text grey-text">@lang('users.u_dont_have_notif')</p>
-			</div>
+			@component('comps.empty')
+				@slot('text')
+					@lang('users.u_dont_have_notif')
+				@endslot
+			@endcomponent
 		@endforelse
 	</div>
 		
