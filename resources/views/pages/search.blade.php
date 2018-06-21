@@ -55,7 +55,7 @@
 	
 	@component('comps.empty')
 		@slot('text')
-			{{ $message }}
+			{{ ($message ?? '') }}
 		@endslot
 	@endcomponent
 </div>
