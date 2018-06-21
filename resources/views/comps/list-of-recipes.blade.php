@@ -29,9 +29,11 @@
 				</li>
 			@empty
 				@isset($no_recipes)
-					<div class="center-align">
-						<p class="flow-text grey-text">{{ $no_recipes }}</p>
-					</div>
+					@component('comps.empty')
+						@slot('text')
+							{{ $no_recipes }}
+						@endslot
+					@endcomponent
 				@endisset
 			@endforelse
 		@endisset
