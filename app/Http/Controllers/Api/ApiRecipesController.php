@@ -17,7 +17,10 @@ class ApiRecipesController extends Controller
 {
 	use RecipesControllerHelpers;
 
-	public function index()
+	/**
+	 * @return object
+	 */
+	public function index() : ? object
 	{
 		$recipes = Recipe
 			::where('approved_'.locale(), 1)
@@ -28,8 +31,11 @@ class ApiRecipesController extends Controller
 		return RecipesResource::collection($recipes);
 	}
 
-
-	public function destroy($id)
+	/**
+	 * @param integer $id of the recipe
+	 * @return string
+	 */
+	public function destroy($id) : string
     {
 		$recipe = Recipe::find($id);
 
@@ -44,8 +50,11 @@ class ApiRecipesController extends Controller
 		return 'failed';
 	}
 
-
-	public function random($id)
+	/**
+	 * @param integer $id of the recipe
+	 * @return object
+	 */
+	public function random($id) : ? object
 	{
 		$random = Recipe
 			::inRandomOrder()
@@ -58,14 +67,19 @@ class ApiRecipesController extends Controller
 		return RecipesRandomResource::collection($random);
 	}
 
-
-	public function categories()
+	/**
+	 * @return object
+	 */
+	public function categories() : ? object
 	{
 		return Category::get(['id', 'name_' . locale()]);
 	}
 
-
-	public function checkIfLiked($id)
+	/**
+	 * @param integer $id of the recipe
+	 * @return integer
+	 */
+	public function checkIfLiked($id) : integer
     {
 		$visitor = Visitor::whereIp(request()->ip())->first();
 		$likes = $visitor->likes()->where('recipe_id', $id)->count();
@@ -73,7 +87,11 @@ class ApiRecipesController extends Controller
 		return $likes;
 	}
 
-	public function like($id)
+	/**
+	 * @param integer $id of the recipe
+	 * @return object
+	 */
+	public function like($id) : ? object
 	{
 		$visitor = Visitor::whereIp(request()->ip())->first();
 		Like::create(['visitor_id' => $visitor->id, 'recipe_id' => $id]);
@@ -81,7 +99,11 @@ class ApiRecipesController extends Controller
 		return response()->json(['liked' => 1]);
 	}
 
-	public function dislike($id)
+	/**
+	 * @param integer $id of the recipe
+	 * @return object
+	 */
+	public function dislike($id) : ? object
 	{
 		$visitor = Visitor::whereIp(request()->ip())->first();
 		Like::where(['visitor_id' => $visitor->id, 'recipe_id' => $id])->delete();
