@@ -5,55 +5,61 @@ namespace App\Models;
 use Schema;
 use Illuminate\Database\Eloquent\Model;
 use App\Helpers\Traits\RecipeModelShortcuts;
+use App\Helpers\Traits\RecipeModelRelationship;
 
 class Recipe extends Model
 {
-	use RecipeModelShortcuts;
+	use RecipeModelShortcuts, RecipeModelRelationship;
 
 	protected $guarded = ['id'];
 
-    public function user() {
-        return $this->belongsTo(User::class);
-	}
-
-
-	public function meal()
+	/**
+	 * @return string
+	 */
+	public function ingredientsWithListItems() : string
 	{
-		return $this->belongsTo(Meal::class);
-	}
-
-	public function likes()
-	{
-		return $this->hasMany(Like::class);
-	}
-
-	public function categories() {
-        return $this->belongsToMany(Category::class);
-	}
-
-	public function ingredientsWithListItems() {
 		return convertToListItems($this->getIngredients());
 	}
 
-	public function textWithListItems() {
+	/**
+	 * @return string
+	 */
+	public function textWithListItems() : string
+	{
 		return convertToListItems($this->getText());
 	}
 
-	public function ready() {
+	/**
+	 * @return bool
+	 */
+	public function ready() : bool
+	{
 		return $this->getReady() === 1 ? true : false;
 	}
 
-	public function approved() {
+	/**
+	 * @return bool
+	 */
+	public function approved() : bool
+	{
 		return $this->getApproved() === 1 ? true : false;
 	}
 
-	public function done() {
+
+	/**
+	 * @return bool
+	 */
+	public function done() : bool
+	{
 		return ($this->getReady() === 1 && $this->getApproved() === 1)
 			? true
 			: false;
 	}
 
-	public function getStatus()
+	/**
+	 * @return string
+	 */
+	public function getStatus() : string
 	{
 		if ($this->approved() === true) {
 			return trans('users.checked');
