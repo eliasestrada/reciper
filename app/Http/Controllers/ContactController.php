@@ -7,8 +7,10 @@ use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
-
-	// Store in feedback table in database
+	/**
+	 * Store in feedback table in database
+	 * @param ContactRequest $request
+	 */
 	public function store(ContactRequest $request)
 	{
 		Feedback::create($request->only('email', 'message'));
