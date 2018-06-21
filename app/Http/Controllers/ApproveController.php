@@ -7,6 +7,9 @@ use App\Models\Notification;
 
 class ApproveController extends Controller
 {
+	/**
+	 * @param Recipe $recipe
+	 */
 	public function ok(Recipe $recipe)
 	{
 		Notification::sendMessage(
@@ -23,7 +26,10 @@ class ApproveController extends Controller
 		);
 	}
 
-    // Approve the recipe (for admins)
+    /**
+	 * Approve the recipe (for admins)
+	 * @param Recipe $recipe
+	 */
     public function cancel(Recipe $recipe)
     {
 		Notification::sendMessage(

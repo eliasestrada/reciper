@@ -37,6 +37,7 @@ class AdminController extends Controller
 		));
 	}
 
+
 	public function feedback()
     {
 		// Mark that user saw these messages
@@ -47,7 +48,9 @@ class AdminController extends Controller
 		return view('admin.feedback')->withFeedback(Feedback::paginate(40));
 	}
 
-
+	/**
+	 * @param integer $id
+	 */
 	public function feedbackDestroy($id)
 	{
         // Check for correct user
