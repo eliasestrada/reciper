@@ -18,7 +18,7 @@
 					<div class="item-content">
 						<section>{{ $recipe->getTitle() }}</section>
 						<section>
-							@lang('users.date') {{ facebookTimeAgo($recipe->updated_at) }}
+							@lang('users.date') {{ timeAgo($recipe->updated_at) }}
 						</section>
 						<section>
 							<span class="new badge mt-2 {{ $recipe->done() ? 'green' : 'red' }}">

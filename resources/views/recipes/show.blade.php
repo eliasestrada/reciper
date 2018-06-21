@@ -111,7 +111,7 @@
 
 		{{--  Дата --}}
 		<div class="date mt-4">
-			<p>@lang('recipes.added') {{ facebookTimeAgo($recipe->created_at) }}</p>
+			<p>@lang('recipes.added') {{ timeAgo($recipe->created_at) }}</p>
 			<a href="/users/{{ $recipe->user->id }}" title="@lang('recipes.search_by_author')">
 				<p>@lang('recipes.author'): {{ optional($recipe->user)->name }}</p>
 			</a>

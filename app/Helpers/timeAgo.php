@@ -1,6 +1,6 @@
 <?php
 
-function facebookTimeAgo($date, $param = null) {
+function timeAgo($date, $param = null) {
 	$date 	  = strtotime($date);
     $stf      = 0;
     $cur_time = time();

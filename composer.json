@@ -31,7 +31,7 @@
             "App\\": "app/"
 		},
 		"files": [
-			"app/Helpers/facebookTimeAgo.php",
+			"app/Helpers/timeAgo.php",
 			"app/Helpers/functions.php"
 		]
     },

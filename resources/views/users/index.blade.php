@@ -18,9 +18,9 @@
 					<div class="item-content">
 						<h6 class="project-name">{{ $user->name }}</h6>
 						<p class="project-title">
-							{!! getOnlineIcon(facebookTimeAgo($user->last_visit_at)) !!}
+							{!! getOnlineIcon(timeAgo($user->last_visit_at)) !!}
 							@lang('date.online') 
-							{{ facebookTimeAgo($user->last_visit_at, 'online') }}
+							{{ timeAgo($user->last_visit_at, 'online') }}
 						</p>
 					</div>
 				</li>

@@ -7,12 +7,12 @@
 <div class="profile-header">
 	<div>
 		<h1 class="my-4">{{ $user->name }}</h1>
-		<p>@lang('users.joined'): {{ facebookTimeAgo($user->created_at) }}</p>
+		<p>@lang('users.joined'): {{ timeAgo($user->created_at) }}</p>
 		@unless ($user->id === user()->id)
 			<p>
-				{!! getOnlineIcon(facebookTimeAgo($user->last_visit_at)) !!}
+				{!! getOnlineIcon(timeAgo($user->last_visit_at)) !!}
 				@lang('date.online') 
-				{{ facebookTimeAgo($user->last_visit_at, 'online') }}
+				{{ timeAgo($user->last_visit_at, 'online') }}
 			</p>
 		@endunless
 	</div>
