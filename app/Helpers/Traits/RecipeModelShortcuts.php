@@ -4,32 +4,50 @@ namespace App\Helpers\Traits;
 
 trait RecipeModelShortcuts
 {
-	public function getTitle()
+	/**
+	 * @return string
+	 */
+	public function getTitle() : string
 	{
 		return $this->toArray()['title_' . locale()];
 	}
 
-	public function getIngredients()
+	/**
+	 * @return string
+	 */
+	public function getIngredients() : string
 	{
 		return $this->toArray()['ingredients_' . locale()];
 	}
 
-	public function getIntro()
+	/**
+	 * @return string
+	 */
+	public function getIntro() : string
 	{
 		return $this->toArray()['intro_' . locale()];
 	}
 
-	public function getText()
+	/**
+	 * @return string
+	 */
+	public function getText() : string
 	{
 		return $this->toArray()['text_' . locale()];
 	}
 
-	public function getReady()
+	/**
+	 * @return string
+	 */
+	public function getReady() : string
 	{
 		return $this->toArray()['ready_' . locale()];
 	}
 
-	public function getApproved()
+	/**
+	 * @return string
+	 */
+	public function getApproved() : string
 	{
 		return $this->toArray()['approved_' . locale()];
 	}
