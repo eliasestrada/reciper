@@ -96,7 +96,6 @@
 		transition: opacity 300ms;
 		animation-delay: 1s;
 		opacity: 0;
-		cursor: pointer;
 		position: relative;
 		border: none;
 
@@ -181,7 +180,6 @@
 	background: $main;
 	color: #fff;
 	font-size: 1.6em;
-	cursor: pointer;
 	transition: opacity 300ms;
 	opacity: .7;
 	z-index: 120;
