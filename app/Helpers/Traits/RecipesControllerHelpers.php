@@ -8,7 +8,11 @@ use App\Models\Notification;
 
 trait RecipesControllerHelpers
 {
-	public function saveImageIfExists($image)
+	/**
+	 * @return string
+	 * @param string $image
+	 */
+	public function saveImageIfExists($image) : ? string
 	{
 		if ($image) {
 			$extention = $image->getClientOriginalExtension();
@@ -22,15 +26,23 @@ trait RecipesControllerHelpers
 		return null;
 	}
 
-
-	public function deleteOldImage($image)
+	/**
+	 * @param string $image
+	 * @return void
+	 */
+	public function deleteOldImage($image) : void
 	{
 		if ($image != 'default.jpg') {
 			Storage::delete('public/images/'.$image);
 		}
 	}
 
-
+	/**
+	 * @param object $request
+	 * @param string $image_name
+	 * @param oblect|null $recipe
+	 * @return object
+	 */
 	public function createOrUpdateRecipe($request, $image_name, $recipe = null)
 	{
 		$recipe_columns = [
@@ -57,6 +69,10 @@ trait RecipesControllerHelpers
 		return $create;
 	}
 
+	/**
+	 * @param object $request
+	 * @return void
+	 */
 	public function checkForScriptTags($request) : void
 	{
 		foreach ($request->all() as $field) {
