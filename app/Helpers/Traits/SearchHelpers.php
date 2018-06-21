@@ -8,6 +8,10 @@ use App\Models\Category;
 
 trait SearchHelpers
 {
+	/**
+	 * @param string $request
+	 * @return object|array
+	 */
 	public function searchForCategories($request)
 	{
 		$request = str_replace('-', ' ', $request);
@@ -24,7 +28,10 @@ trait SearchHelpers
 			: [];
 	}
 
-
+	/**
+	 * @param string $request
+	 * @return object|array
+	 */
 	public function searchForMealTime($request)
 	{
 		$meal =  Meal
@@ -40,8 +47,11 @@ trait SearchHelpers
 			: [];
 	}
 
-
-	public function searchForRecipes($request)
+	/**
+	 * @param string $request
+	 * @return object
+	 */
+	public function searchForRecipes($request) : ? object
 	{
 		return Recipe
 			::where('title_' . locale(), 'LIKE', '%' . $request . '%')
@@ -50,10 +60,13 @@ trait SearchHelpers
 			->get()
 			->where('ready_' . locale(), 1)
 			->where('approved_' . locale(), 1);
-		}
+	}
 
-
-	public function mealTime() {
+	/**
+	 * @return array
+	 */
+	public function mealTime() : array
+	{
 		return [
 			trans('header.breakfast'),
 			trans('header.lunch'),
