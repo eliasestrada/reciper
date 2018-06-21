@@ -21,6 +21,12 @@
 						<p>{{ trans($notif->message) }}</p>
 						<hr /><p>{{ $notif->data }}</p>
 						<span class="grey-text right">{{ facebookTimeAgo($notif->created_at) }}</span>
+						@if ($notif->for_admins === 0)
+							<form action="{{ action('NotificationController@destroy', ['notification' => $notif->id]) }}" method="post" onsubmit='return confirm("@lang('notifications.sure_to_delete')")'>
+								@csrf @method('delete')
+								<button class="btn" title="@lang('form.deleting')">@lang('form.deleting')</button>
+							</form>
+						@endif
 					</span>
 				</div>
 			</div>
