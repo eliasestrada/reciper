@@ -10,7 +10,6 @@
 <body>
 
 	@include('includes.nav.navbar')
-	@include('includes.user-sidebar')
 
 	@yield('home-header')
 
