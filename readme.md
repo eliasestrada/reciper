@@ -14,5 +14,5 @@
 </ol>
 
 <p>
-	If someone looks for Laravel Log Package this one is shit: rap2hpoutre/laravel-log-viewer, don't evev try it.
+	If someone looks for Laravel Log Package this one is a piece shit: rap2hpoutre/laravel-log-viewer, don't even try it.
 </p>
