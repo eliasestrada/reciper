@@ -3263,8 +3263,7 @@ button.btn-floating {
 }
 
 .dropdown-content li > a,
-.dropdown-content li > span,
-.dropdown-content button {
+.dropdown-content li > span {
 	font-size: 16px;
 	color: #333;
 	display: block;
@@ -3280,8 +3279,7 @@ button.btn-floating {
 	height: 18px;
 }
 
-.dropdown-content li > a > i,
-.dropdown-content li button > i {
+.dropdown-content li > a > i {
 	height: inherit;
 	line-height: inherit;
 	float: left;
