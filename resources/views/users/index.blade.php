@@ -22,23 +22,6 @@
 							@lang('date.online') 
 							{{ facebookTimeAgo($user->last_visit_at, 'online') }}
 						</p>
-
-						@admin
-							@if (!$user->isAuthor() )
-								<p>
-									@lang('users.new_user', ['date' => facebookTimeAgo($user->created_at )])
-								</p>
-								
-								<a href="/member/{{ $user->id }}/add" class="btn d-inline-block green" title="@lang('users.click_to_add')" onclick='return confirm("@lang('users.sure_to_add')")'>
-									@lang('users.add_to_team')
-								</a>
-								
-								<a href="/member/{{ $user->id }}/delete" class="btn d-inline-block red" title="@lang('users.click_to_delete')" onclick='return confirm("@lang('users.sure_to_delete')")'>
-									@lang('users.delete')
-								</a>
-							@endif
-						@endadmin
-
 					</div>
 				</li>
 			</a>
