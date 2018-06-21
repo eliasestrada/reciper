@@ -84,7 +84,7 @@ trait RecipesControllerHelpers
 					'notifications.title_script_attack',
 					'notifications.message_script_attack',
 					'user_id: ' . user()->id . ', user_name: ' . user()->name,
-				1,1);
+				null, 1, 1);
 			}
 		}
 	}

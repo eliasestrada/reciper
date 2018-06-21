@@ -15,9 +15,8 @@ class ApproveController extends Controller
 		Notification::sendMessage(
 			'notifications.recipe_published',
 			'notifications.recipe_with_title_published',
-			$recipe->user_id,
 			'"' . $recipe->getTitle() . '"',
-		0, 0);
+		$recipe->user_id);
 
 		$recipe->increment('approved_' . locale());
 
@@ -35,9 +34,8 @@ class ApproveController extends Controller
 		Notification::sendMessage(
 			'notifications.recipe_not_published',
 			'notifications.recipe_with_title_not_published',
-			$recipe->user_id,
 			'"' . $recipe->getTitle() . '"',
-		0, 0);
+		$recipe->user_id);
 
 		$recipe->decrement('ready_' . locale());
 

@@ -20,7 +20,7 @@ class RecipeSaveRequest extends FormRequest
 		return [
             'title' => 'max:' . config('validation.title_max'),
             'intro' => 'max:' . config('validation.intro_max'),
-            'ingredients' => 'max:5000',
+            'ingredients' => 'max:' . config('validation.ingredients_max'),
 			'text' => 'max:' . config('validation.text_max'),
 			'meal' => 'numeric|digits_between:1,3',
             'time' => 'numeric|digits_between:0,1999',

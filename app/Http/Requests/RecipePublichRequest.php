@@ -24,7 +24,7 @@ class RecipePublichRequest extends FormRequest
 			return [
 				'title' => 'min:5|max:'  . config('validation.title_max'),
 				'intro' => 'min:20|max:' . config('validation.intro_max'),
-				'ingredients' => 'min:20|max:' . config('validation.ingredient_max'),
+				'ingredients' => 'min:20|max:' . config('validation.ingredients_max'),
 				'text' => 'min:80|max:' . config('validation.text_max'),
 				'meal' => 'numeric|digits_between:1,3',
 				'time' => 'numeric|digits_between:0,1000',

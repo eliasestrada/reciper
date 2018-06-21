@@ -26,7 +26,7 @@ class Notification extends Model
 	 * @param int $important
 	 * @param int $for_admin
 	 */
-	public static function sendMessage($title, $message, $user_id = null, $data, $important = 0, $for_admin = 0) : void
+	public static function sendMessage($title, $message, $data, $user_id = null, $important = 0, $for_admin = 0) : void
 	{
 		self::create([
 			'title' => $title,
