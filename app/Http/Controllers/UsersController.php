@@ -9,19 +9,19 @@ use App\Models\Notification;
 
 class UsersController extends Controller
 {
-
 	public function __construct()
     {
 		$this->middleware('author')->except(['show', 'index']);
 	}
-
 
 	public function index()
 	{
         return view('users.index')->withUsers(User::simplePaginate(30));
 	}
 
-
+	/**
+	 * @param User $user
+	 */
 	public function show(User $user)
     {
 		$recipes = Recipe
@@ -39,7 +39,6 @@ class UsersController extends Controller
 		return view('users.show')->with(compact('recipes', 'user', 'likes'));
 	}
 
-	// Show all my recipes
 	public function my_recipes()
 	{
 		$recipes = Recipe::whereUserId(user()->id)->latest()->paginate(20);

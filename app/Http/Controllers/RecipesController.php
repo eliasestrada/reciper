@@ -22,23 +22,20 @@ class RecipesController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-    // Index, show all approved recipes
     public function index()
     {
 		return view('recipes.index');
     }
 
-
-    // Create a new recipe in database
     public function create()
     {
 		return view('recipes.create')
 			->withMeal(Meal::get(['id', 'name_' . locale()]));	
     }
 
-
     /**
 	 * It will save the recipe to a database
+	 * @param RecipeSaveRequest $request
 	 * @see RecipeSaveRequest is validating this method
 	 * @see SaveRecipeDataContract
 	 */
@@ -54,7 +51,10 @@ class RecipesController extends Controller
 		);
     }
 
-    // It will show the recipe on a single page
+    /**
+	 * It will show the recipe on a single page
+	 * @param Recipe $recipe
+	 */
     public function show(Recipe $recipe)
     {
         // Rules for visitors
@@ -76,11 +76,12 @@ class RecipesController extends Controller
                 return redirect('/recipes')->withError(trans('recipes.not_approved'));
 			}
 		}
-
 		return view('recipes.show')->withRecipe($recipe);
     }
 
-
+	/**
+	 * @param Recipe $recipe
+	 */
     public function edit(Recipe $recipe)
     {
         // Check for correct user
@@ -97,7 +98,10 @@ class RecipesController extends Controller
 
     /**
 	 * Update single recipe
+	 * This method triggers event RecipeIsReady
 	 * @see RecipePublichRequest
+	 * @param RecipePublichRequest $request
+	 * @param Recipe $recipe
 	 */
     public function update(RecipePublichRequest $request, Recipe $recipe)
     {

@@ -15,37 +15,35 @@ use App\Http\Requests\SettingsUpdateUserPasswordRequest;
 
 class SettingsController extends Controller
 {
-
 	public function __construct()
     {
 		$this->middleware('author');
 	}
 
-	
 	public function general()
 	{
 		return view('settings.general');
 	}
-
 
 	public function photo()
 	{
 		return view('settings.photo');
 	}
 
-
+	/**
+	 * @param SettingsPhotoRequest $request
+	 */
 	public function updatePhoto(SettingsPhotoRequest $request)
     {
-		
 		$user = User::find(user()->id);
 
 		if ($request->hasFile('image')) {
 			$image = $request->file('image');
 
 			$filename = 'user' . user()->id . '.' . $image->getClientOriginalExtension();
-			
+
 			Image::make($image)->resize(300, 300)->save(storage_path('app/public/uploads/' . $filename ));
-			
+
             $user->image = $filename;
 		} elseif ($request->delete == 1) {
 			if ($request->hasFile('image') != 'default.jpg') {
@@ -54,20 +52,22 @@ class SettingsController extends Controller
 			}
 		}
 		$user->save();
-		
-		return redirect('/settings/photo')->withSuccess(
-			trans('settings.saved')
-		);
+
+		return redirect('/settings/photo')->withSuccess(trans('settings.saved'));
 	}
 
-
+	/**
+	 * @param SettingsUpdateUserDataRequest $request
+	 */
 	public function updateUserData(SettingsUpdateUserDataRequest $request)
 	{
 		user()->update([ 'name' => $request->name ]);
 		return back()->withSuccess(trans('settings.saved'));
 	}
 
-
+	/**
+	 * @param SettingsUpdateUserPasswordRequest $request
+	 */
 	public function updateUserPassword(SettingsUpdateUserPasswordRequest $request)
 	{
         if (Hash::check($request->old_password, user()->password)) {
@@ -81,7 +81,9 @@ class SettingsController extends Controller
         }
 	}
 
-
+	/**
+	 * @param SettingsUpdateHomeDataRequest $request
+	 */
 	public function updateIntroData(SettingsUpdateHomeDataRequest $request)
 	{
 		Title::whereName('intro')->update([
@@ -94,7 +96,9 @@ class SettingsController extends Controller
 		);
 	}
 
-
+	/**
+	 * @param Request $request
+	 */
 	public function updateFooterData(Request $request)
 	{
 		$data = $this->validate($request,
@@ -106,8 +110,6 @@ class SettingsController extends Controller
 			'text_' . locale() => $request->text
 		]);
 
-		return back()->withSuccess(
-			trans('settings.saved')
-		);
+		return back()->withSuccess(trans('settings.saved'));
 	}
 }

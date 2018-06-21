@@ -8,11 +8,13 @@ use App\Models\Recipe;
 use Illuminate\Http\Request;
 use App\Helpers\Traits\SearchHelpers;
 
-
 class PagesController extends Controller
 {
 	use SearchHelpers;
 
+	/**
+	 * Returns home page view
+	 */
 	public function home()
 	{
 		if (Schema::hasTable('recipes')) {
@@ -40,7 +42,9 @@ class PagesController extends Controller
 		));
 	}
 
-
+	/**
+	 * @param Request $request
+	 */
 	public function search(Request $request)
     {
 		if (request('for') && Schema::hasTable('recipes')) {
