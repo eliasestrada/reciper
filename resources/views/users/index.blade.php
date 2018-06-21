@@ -9,9 +9,9 @@
 		<h1 class="headline">@lang('users.all_authors')</h1>
 	</div>
 
-	<ul class="item-list unstyled-list">
+	<ul class="row item-list unstyled-list">
 		@foreach ($users as $user)
-			<a href="/users/{{ $user->id }}" title="{{ $user->name }}" >
+			<a href="/users/{{ $user->id }}" title="{{ $user->name }}" class="col s12 m6 l4">
 				<li>
 					<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{ $user->name }}" style="width:67px; height:71px;" />
 
