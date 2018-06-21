@@ -37,4 +37,12 @@ class Notification extends Model
 			'for_admins' => $for_admin
 		]);
 	}
+
+
+	public function getIcon() : string
+	{
+		return $this->isImportant()
+			? '<i class="material-icons left red-text">warning</i>'
+			: '<i class="material-icons left green-text">notifications_none</i>';
+	}
 }
