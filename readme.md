@@ -10,9 +10,8 @@
 <ol>
 	<li><a href="https://github.com/laravel/dusk">laravel/dusk</a></li>
 	<li><a href="http://image.intervention.io/">Intervention/image</a></li>
-	<li><a href="https://github.com/rap2hpoutre/laravel-log-viewer">rap2hpoutre/laravel-log-viewer</a></li>
 </ol>
 
 <p>
-	If someone looks for Laravel Log Package this one is a piece shit: rap2hpoutre/laravel-log-viewer, don't even try it.
+	If someone looks for Laravel Log Package this one is a piece shit: rap2hpoutre/laravel-log-viewer
 </p>
