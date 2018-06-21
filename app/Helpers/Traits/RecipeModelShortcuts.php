@@ -39,7 +39,7 @@ trait RecipeModelShortcuts
 	/**
 	 * @return string
 	 */
-	public function getReady() : string
+	public function ready() : string
 	{
 		return $this->toArray()['ready_' . locale()];
 	}
@@ -47,8 +47,30 @@ trait RecipeModelShortcuts
 	/**
 	 * @return string
 	 */
-	public function getApproved() : string
+	public function approved() : string
 	{
 		return $this->toArray()['approved_' . locale()];
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function done() : bool
+	{
+		return ($this->ready() && $this->approved()) ? true : false;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getStatus() : string
+	{
+		if ($this->approved() === true) {
+			return trans('users.checked');
+		} elseif ($this->ready() === false) {
+			return trans('users.not_ready');
+		} else {
+			return trans('users.not_checked');
+		}
 	}
 }

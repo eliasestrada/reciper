@@ -11,7 +11,9 @@
 		<div class="like-for-author-section">
 			<a href="/users/{{ $recipe->user->id }}" class="user-icon" style="background:url({{ asset('storage/uploads/'.$recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
 
-			<like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}"></like>
+			@if ($recipe->done())
+				<like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}"></like>
+			@endif
 		</div>
 
 		@auth {{--  Buttons  --}}
@@ -38,7 +40,7 @@
 		@endauth
 
 		@admin
-			@if (!$recipe->approved() && $recipe->ready())
+			@if (!$recipe->done())
 				<div class="py-2">
 
 					{{-- Approve --}}
