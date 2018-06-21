@@ -15,7 +15,7 @@ class Meal extends Model
 		return $this->hasMany(Recipe::class);
 	}
 
-	public function getName()
+	public function getName() : string
 	{
 		return $this->toArray()['name_' . locale()];
 	}
