@@ -36,12 +36,12 @@ class AppServiceProvider extends ServiceProvider
 			view()->composer('*', function ($view) {
 				if (auth()->check()) {
 					User::whereId(user()->id)->update([
-						'updated_at' => NOW()
+						'last_visit_at' => NOW()
 					]);
 				}
 			}); 
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+			logger()->emergency("Table users wasn't found while trying to update last user visit, name of the method: updateLastUserVisit");
 		}
 	}
 
@@ -52,7 +52,7 @@ class AppServiceProvider extends ServiceProvider
 			$category_names = Category::get(['name_' . locale()])->toArray();
 			view()->share(compact('category_names'));
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'categories']));
+			logger()->emergency("Table categories wasn't found while trying to show list of categories, name of the method: showListOfCategories");
 		}
 	}
 }

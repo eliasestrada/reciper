@@ -1,10 +1,13 @@
 <template>
 	<span>
 		<div v-if="error">
-			<p v-if="error" class="alert alert-danger mt-2">{{ error }}</p>
+			<!-- @TODO:-->
+			<!-- <p v-if="error" class="alert alert-danger mt-2">{{ error }}</p> -->
 		</div>
 		<span v-else>
-			<button @click="deleteRecipe" :title="deleting" type="button" class="edit-recipe-icon icon-delete"></button>
+			<button @click="deleteRecipe" :title="deleting" type="button" class="btn-floating red btn-large">
+				<i class="large material-icons">delete</i>
+			</button>
 		</span>
 	</span>
 </template>
@@ -28,7 +31,7 @@ export default {
 				.then(res => res.text())
 				.then(data => {
 					data === 'success'
-						? window.location.href = '/users/other/my_recipes'
+						? window.location.href = '/users/other/my-recipes'
 						: this.error = this.deletedFail
 				})
 				.catch(error => console.log(error))

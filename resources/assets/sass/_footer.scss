@@ -1,8 +1,10 @@
 footer {
-	padding: 1em;
+	background: $darkGray;
+	min-height: 50em;
 
 	strong {
 		color: $mainLight;
+		font-size: 1.1em;
 	}
 
 	a {

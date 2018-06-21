@@ -11,6 +11,8 @@ class CreateRecipesTable extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
 			$table->increments('id');
+			$table->integer('user_id')->unsigned()->default(1);
+			$table->integer('meal_id')->unsigned()->default(1);
 
 			// Russian language
             $table->string('title_ru')->nullable();
@@ -29,8 +31,6 @@ class CreateRecipesTable extends Migration
 			$table->boolean('approved_en')->default(0);
 
 			// Other
-			$table->integer('user_id')->unsigned()->default(1);
-			$table->integer('meal_id')->unsigned()->default(1);
             $table->integer('time')->default(0);
 			$table->string('image')->default('default.jpg');
 			$table->timestamps();

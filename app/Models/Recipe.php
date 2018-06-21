@@ -16,6 +16,7 @@ class Recipe extends Model
         return $this->belongsTo(User::class);
 	}
 
+
 	public function meal()
 	{
 		return $this->belongsTo(Meal::class);
@@ -44,6 +45,12 @@ class Recipe extends Model
 
 	public function approved() {
 		return $this->getApproved() === 1 ? true : false;
+	}
+
+	public function done() {
+		return ($this->getReady() === 1 && $this->getApproved() === 1)
+			? true
+			: false;
 	}
 
 	public function getStatus()

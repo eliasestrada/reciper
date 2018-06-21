@@ -1,0 +1,118 @@
+.user-sidebar {
+	background: darken($mainDark, 15%);
+	position: fixed;
+	top: 0;
+	height: 100%;
+	bottom: 0;
+	width: 38px;
+	overflow: hidden;
+	-webkit-transition: width 200ms, opacity 200ms;
+	transition: width 200ms, opacity 200ms;
+	opacity: .45;
+	z-index: 10;
+	padding-top: 65px;
+
+	&::-webkit-scrollbar {
+		width: 0px;
+		background: transparent;
+	}
+	
+	& > ul {
+		margin: 7px 0;
+	}
+
+	span {
+		padding-left: 10px;
+	}
+	
+	li {
+		position: relative;
+		display: block;
+		width: 200px;
+		margin: auto;
+
+		&:hover {
+			color: #fff;
+			background: $mainDark;
+		}
+
+		&:hover .sidebar-icon {
+			transform: scale(1.2);
+			transition: transform .2s;
+		}
+	}
+
+	.active {
+		background: $main;
+	}
+
+	li > a,
+	li > form > button {
+		height: 43px;
+		display: flex;
+		align-items: center;
+		padding-left: 0;
+		position: relative;
+		color: #fff;
+		background: none;
+		border: none;
+		cursor: pointer;
+		font-family: arial;
+		font-size: 14px;
+		text-decoration: none;
+		transform: translateZ(0) scale(1, 1);
+	}
+
+	li > form > button > i {
+		line-height: 30px;
+	}
+
+	.small-notif-btn[data-notif]::after {
+		content: attr(data-notif);
+		min-width: 16px;
+		height: 16px;
+		line-height: 16px;
+		text-align: center;
+		display: inline-block;
+		position: absolute;
+		left: 19px;
+		top: 5px;
+		color: $smallNotifBtnColor;
+		text-shadow: none;
+		background: $smallNotifBtnBg;
+		border: solid 1px $smallNotifBtnColor;
+		border-radius: 50%;
+	}
+
+	.sidebar-icon {
+		position: relative;
+		margin: 0 8px;
+		height: auto;
+		display: inline-block;
+		transition: transform .2s;
+	}
+}
+
+.user-sidebar.active {
+	overflow: visible;
+	width: 200px;
+	height: 100%;
+	overflow-y: scroll;
+	opacity: .95;
+}
+
+@media (min-width: 640px) {
+	.disapear-on-big-screen {
+		display: none !important;
+	}
+
+	.user-sidebar {
+		&:hover {
+			overflow: visible;
+			width: 200px;
+			height: 100%;
+			overflow-y: scroll;
+			opacity: .95;
+		}
+	}
+}

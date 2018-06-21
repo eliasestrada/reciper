@@ -21,7 +21,11 @@ class PagesController extends Controller
 				->where("ready_" . locale(), 1)
 				->where("approved_" . locale(), 1)
 				->limit(12)
-				->get(['id', "title_" . locale(), 'image']);
+				->get([
+					'id', "title_" . locale(),
+					'id', "intro_" . locale(),
+					'image'
+				]);
 		}
 
 		if (Schema::hasTable('titles')) {

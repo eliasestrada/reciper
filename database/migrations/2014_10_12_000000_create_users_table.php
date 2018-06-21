@@ -14,12 +14,13 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->boolean('admin')->default(0);
-            $table->boolean('author')->default(0);
+            $table->boolean('author')->default(1);
             $table->string('password');
 			$table->rememberToken();
 			$table->timestamp('notif_check')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->timestamp('contact_check')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->string('image')->default('default.jpg');
+			$table->dateTime('last_visit_at')->default(date("Y-m-d H:i:s"));
             $table->timestamps();
         });
     }

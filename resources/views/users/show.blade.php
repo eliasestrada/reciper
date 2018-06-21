@@ -5,14 +5,16 @@
 @section('content')
 
 <div class="profile-header">
-	<div class="content text-center">
-		<h1>{{ $user->name }}</h1>
+	<div>
+		<h1 class="my-4">{{ $user->name }}</h1>
 		<p>@lang('users.joined'): {{ facebookTimeAgo($user->created_at) }}</p>
-		<p>
-			{!! getOnlineIcon(facebookTimeAgo($user->updated_at)) !!}
-			@lang('date.online') 
-			{{ facebookTimeAgo($user->updated_at, 'online') }}
-		</p>
+		@unless ($user->id === user()->id)
+			<p>
+				{!! getOnlineIcon(facebookTimeAgo($user->last_visit_at)) !!}
+				@lang('date.online') 
+				{{ facebookTimeAgo($user->last_visit_at, 'online') }}
+			</p>
+		@endunless
 	</div>
 
 	<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{ $user->name }}" />
@@ -49,7 +51,7 @@
 </div>
 
 {{--  All my recipes  --}}
-@component('comps.list_of_recipes', ['recipes' => $recipes])
+@component('comps.list-of-recipes', ['recipes' => $recipes])
 	@slot('no_recipes')
 		@lang('users.this_user_does_not_have_recipes')
 	@endslot

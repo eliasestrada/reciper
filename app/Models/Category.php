@@ -9,11 +9,12 @@ class Category extends Model
 	protected $guarded = ['id'];
 	public $timestamps = false;
 
-	public function recipes() {
+	public function recipes()
+	{
 		return $this->belongsToMany(Recipe::class);
 	}
 
-	public function getName()
+	public function getName() : string
 	{
 		return $this->toArray()['name_' . locale()];
 	}

@@ -29,7 +29,7 @@ class FooterServiceProvider extends ServiceProvider
 						->get([ 'id', "title_" . locale() ]));
 			});
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+			logger()->emergency("Table recipes wasn't found while trying to get list of random recipes, name of the method: getAndComposeRandomRecipes");
 		}
 	}
 
@@ -41,12 +41,14 @@ class FooterServiceProvider extends ServiceProvider
 					Recipe::select('id', 'title_' . locale())
 						->withCount('likes')
 						->orderBy('likes_count', 'desc')
+						->where('ready_' . locale(), 1)
+						->where('approved_' . locale(), 1)
 						->limit(10)
 						->get()
 				);
 			});
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'recipes']));
+			logger()->emergency("Table recipes wasn't found while trying to get popular recipes from database, name of the method: getAndComposePopularRecipes");
 		}
 	}
 
@@ -60,7 +62,7 @@ class FooterServiceProvider extends ServiceProvider
 				$view->with('title_footer', $title_footer);
 			});
 		} else {
-			logger()->emergency(trans('logs.no_table', ['table' => 'titles']));
+			logger()->emergency("Table titles wasn't found while trying to get titles for footer, name of the method: getAndComposeTitleForFooter");
 		}
 	}
 }

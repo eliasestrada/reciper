@@ -1,0 +1,85 @@
+.decorated  {
+	overflow: hidden;
+	color: $mainDark;
+	margin: .3em 0;
+	font-weight: normal;
+	font-size: 25px;
+}
+
+.grid-recipe {
+	color: $darkGray;
+	padding: 0 .6em;
+	background: $paper;
+}
+
+.recipe-img {
+	width: 96%;
+	margin: .6em 2%;
+	border-radius: 4px;
+	animation: appear 1s;
+}
+
+.items {
+	text-align: left;
+	line-height: 1.4;
+	list-style-image: url(../storage/other/tick.png);
+}
+
+.instruction {
+	padding: 0 0 1em 2.6em;
+	font-size: 1.2em;
+
+	li {
+		min-height: 3em;
+		margin-top: .93em;
+		counter-increment: item;
+		position: relative;
+		left: .4em;
+		padding: 0 .7em;
+		text-align: left;
+
+		&:before {
+			width: 70px;
+			height: 50px;
+			text-align: center;
+			color: #fff;
+			content: counter(item);
+			font-size: 2em;
+			position: absolute;
+			left: -2.2em;
+			background: linear-gradient(to right, $main , transparent);
+			border-radius: 2px;
+		}
+	}
+}
+
+.side-bar {
+	width: 100%;
+	padding: 1.85em 2em;
+}
+
+@media (min-width: 640px) {
+	.grid-recipe {
+		display: grid;
+		grid-template: "recipe-content side-bar" 1fr / 1fr 15.62rem;
+		grid-gap: 1.12rem;
+		padding: 1rem .6rem .93rem;
+
+		.recipe-img {
+			width: 80%;
+			max-width: 43.7rem;
+			margin: .6rem auto;
+		}
+
+		.recipe-content {
+			grid-area: recipe-content;
+			margin-left: .93rem;
+		}
+
+		.side-bar {
+			grid-area: side-bar;
+			width: 12.5rem;
+			padding: 0 0 1.25rem 2rem;
+		}
+	}
+}

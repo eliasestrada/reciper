@@ -40,7 +40,7 @@ class ApiRecipesController extends Controller
 			return 'success';
 		}
 
-		logger()->error(trans('recipes.deleted_fail'));
+		logger()->error('An error occured while trying to delete recipe. Recipe data: ' . $recipe);
 		return 'failed';
 	}
 

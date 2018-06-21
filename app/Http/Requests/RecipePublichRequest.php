@@ -21,58 +21,53 @@ class RecipePublichRequest extends FormRequest
     public function rules()
     {
         if ($this->ready == 1) {
-			$rules = [
-				'title' => 'min:5|max:190',
-				'intro' => 'min:20|max:2000',
-				'ingredients' => 'min:20|max:5000',
-				'text' => 'min:80|max:10000',
+			return [
+				'title' => 'min:5|max:'  . config('validation.title_max'),
+				'intro' => 'min:20|max:' . config('validation.intro_max'),
+				'ingredients' => 'min:20|max:' . config('validation.ingredient_max'),
+				'text' => 'min:80|max:' . config('validation.text_max'),
 				'meal' => 'numeric|digits_between:1,3',
 				'time' => 'numeric|digits_between:0,1000',
 				'image' => 'image|nullable|max:1999',
-				'categories' => [new UniqueCategory],
+				'categories.0' => 'required',
+				'categories.*' => 'distinct|numeric|digits_between:1,' . Category::count(),
 			];
-
-			$db_categories = Category::count();
-			$categories = request('categories');
-
-			foreach(range(0, count($categories)) as $i) {
-				$rules['categories.' . $i] = "numeric|digits_between:1,{$db_categories}";
-			}
-			return $rules;
 		}
-		return [];
+		return [
+			'categories.0' => 'required',
+			'categories.*' => 'distinct|numeric|digits_between:1,' . Category::count(),
+		];
 	}
 	
 	// Get the validation messages that apply to the request.
     public function messages()
     {
-        if ($this->ready == 1) {
-			return [
-				'title.min' => trans('recipes.title_min'),
-				'title.max' => trans('recipes.title_max'),
+		return [
+			'title.min' => trans('recipes.title_min'),
+			'title.max' => trans('recipes.title_max'),
 
-				'intro.min' => trans('recipes.intro_min'),
-				'intro.max' => trans('recipes.intro_max'),
+			'intro.min' => trans('recipes.intro_min'),
+			'intro.max' => trans('recipes.intro_max'),
 
-				'meal.numeric' => trans('recipes.meal_numeric'),
-				'meal.digits_between' => trans('recipes.meal_digits_between'),
+			'meal.numeric' => trans('recipes.meal_numeric'),
+			'meal.digits_between' => trans('recipes.meal_digits_between'),
 
-				'ingredients.min' => trans('recipes.ingredients_min'),
-				'ingredients.max' => trans('recipes.ingredients_max'),
+			'ingredients.min' => trans('recipes.ingredients_min'),
+			'ingredients.max' => trans('recipes.ingredients_max'),
 
-				'categories.numeric' => trans('recipes.categories_numeric'),
-				'categories.digits_between' => trans('recipes.categories_numeric'),
+			'categories.0.required' => trans('recipes.categories_required'),
+			'categories.*.distinct' => trans('recipes.categories_distinct'),
+			'categories.*.numeric' => trans('recipes.categories_numeric'),
+			'categories.*.digits_between' => trans('recipes.categories_numeric'),
 
-				'text.min' => trans('recipes.text_min'),
-				'text.max' => trans('recipes.text_max'),
+			'text.min' => trans('recipes.text_min'),
+			'text.max' => trans('recipes.text_max'),
 
-				'time.numeric' => trans('recipes.time_numeric'),
-				'time.digits_between' => trans('recipes.time_digits_between'),
+			'time.numeric' => trans('recipes.time_numeric'),
+			'time.digits_between' => trans('recipes.time_digits_between'),
 
-				'image.image' => trans('recipes.image_image'),
-				'image.max' => trans('recipes.image_max')
-			];
-		}
-		return [];
+			'image.image' => trans('recipes.image_image'),
+			'image.max' => trans('recipes.image_max')
+		];
     }
 }

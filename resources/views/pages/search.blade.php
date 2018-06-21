@@ -4,43 +4,60 @@
 
 @section('content')
 
-{{--  Form  --}}
-<form action="{{ action('PagesController@search') }}" method="get" class="form">
-	<div class="form-group simple-group">
-		<h2 class="form-headline">
-			<i class="title-icon" style="background: url('/css/icons/svg/search.svg')"></i>
-			@lang('pages.search')
-		</h2>
-
-		<input type="text" name="for" id="search-input" placeholder="@lang('pages.search_details')">
-		<button type="submit" class="d-none"></button>
+<div class="page">
+	<div class="center-align">
+		<h1 class="headline">@lang('pages.search')</h1>
 	</div>
-</form>
-
-{{--  Results  --}}
-@if (isset($recipes) && count($recipes) > 0)
-	<section class="recipes">
+	
+	{{--  Form  --}}
+	<div class="container">
+		<form action="{{ action('PagesController@search') }}" method="get">
+			<div class="input-field">
+				<input type="text" name="for" id="search-input">
+				<label for="search-input">@lang('pages.search_details')</label>
+				<button type="submit" class="d-none"></button>
+			</div>
+		</form>
+	</div>
+	
+	{{--  Results  --}}
+	@if (isset($recipes) && count($recipes) > 0)
 		<div class="row">
-			@foreach ($recipes->toArray() as $recipe)
-				<div class="recipe-container col-12 col-sm-6 col-md-4 col-lg-3">
-					<div class="recipe">
-
-						{{--  Image  --}}
-						<a href="/recipes/{{ $recipe['id'] }}">
-							<img  src="{{ asset('storage/images/'.$recipe['image']) }}" alt="{{ $recipe['title_'.locale()] }}" title="{{ $recipe['title_'.locale()] }}">
-						</a>
-						<div class="recipes-content">
-							<h3>{{ $recipe['title_'.locale()] }}</h3>
+			@foreach ($recipes as $recipe)
+				<div class="col s12 m6 l3">
+					<div class="card">
+						<div class="card-image waves-effect waves-block waves-light">
+							<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
+								<img src="{{ asset('storage/images/'.$recipe['image']) }}" alt="{{ $recipe->getTitle() }}" class="activator">
+							</a>
+						</div>
+						<div class="card-content">
+							<span class="card-title activator">
+								{{ $recipe->getTitle() }}
+								<i class="material-icons right">more_vert</i>
+							</span>
+						</div>
+						<div class="card-reveal">
+							<span class="card-title ">
+								{{ $recipe->getTitle() }}
+								<i class="material-icons right">close</i>
+							</span>
+							<p>
+								<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">@lang('recipes.go')</a>
+							</p>
+							<p>{{ $recipe->getIntro() }}</p>
 						</div>
 					</div>
 				</div>
 			@endforeach
 		</div>
-	</section>
-@endif
-
-<div class="content">
-	<h4 class="content text-center">{{ $message ?? '' }}</h4>
+	@endif
+	
+	@component('comps.empty')
+		@slot('text')
+			{{ $message }}
+		@endslot
+	@endcomponent
 </div>
 
 @endsection

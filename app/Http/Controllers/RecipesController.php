@@ -33,7 +33,7 @@ class RecipesController extends Controller
     public function create()
     {
 		return view('recipes.create')
-			->withMeal(Meal::get(['id', 'name_' . locale()])->toArray());	
+			->withMeal(Meal::get(['id', 'name_' . locale()]));	
     }
 
 
@@ -44,6 +44,8 @@ class RecipesController extends Controller
 	 */
     public function store(RecipeSaveRequest $request)
     {
+		$this->checkForScriptTags($request);
+
 		$image_name = $this->saveImageIfExists($request->file('image'));
 		$recipe = $this->createOrUpdateRecipe($request, $image_name);
 
@@ -90,7 +92,7 @@ class RecipesController extends Controller
 
 		return view('recipes.edit')
 			->withRecipe($recipe)
-			->withMeal(Meal::get(['id', 'name_'.locale()])->toArray());
+			->withMeal(Meal::get(['id', 'name_'.locale()]));
     }
 
     /**
@@ -99,6 +101,8 @@ class RecipesController extends Controller
 	 */
     public function update(RecipePublichRequest $request, Recipe $recipe)
     {
+		$this->checkForScriptTags($request);
+
 		// Handle image uploading
 		$image_name = $this->saveImageIfExists($request->file('image'), $recipe->image);
 
@@ -116,6 +120,7 @@ class RecipesController extends Controller
             return redirect('/recipes')->withSuccess(trans('recipes.recipe_published'));
 		}
 		event(new RecipeIsReady($recipe));
+
         return redirect('/dashboard')->withSuccess(trans('recipes.added_to_approving'));
     }
 }

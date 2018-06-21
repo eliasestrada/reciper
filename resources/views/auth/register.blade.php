@@ -4,31 +4,60 @@
 
 @section('content')
 
-<form method="POST" action="{{ route('register') }}" class="form">
-	@csrf
+<div class="container py-5 px-3">
+	<form method="POST" action="{{ route('register') }}" class="form">
 
-	<div class="form-group simple-group">
-		<h2 class="form-headline">
-			<i class="title-icon" style="background: url('/css/icons/svg/user-add.svg')"></i>
-			@lang('form.register')
-		</h2>
+		@csrf <div class="center-align"><h2 class="headline">@lang('form.register')</h2></div>
+	
+		<div class="input-field">
+			<input type="text" id="name" name="name" value="{{ old('name') }}" class="validate" required>
+			<label for="name">@lang('form.name')</label>
+			<span class="helper-text">@lang('form.name_desc')</span>
+		</div>
 
-		<label for="name">@lang('form.this_name_will_be_on_every_recipe')</label>
-		<input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="@lang('form.name')" required autofocus>
+		<div class="input-field">
+			<input type="email" id="email" name="email" value="{{ old('email') }}" class="validate" required>
+			<label for="email">@lang('form.email')</label>
+			<span class="helper-text">@lang('form.email_desc')</span>
+		</div>
 
-		<label for="email">@lang('form.email')</label>
-		<input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="@lang('form.email')" required>
+		<div class="input-field">
+			<input type="password" id="password" name="password" class="validate" required>
+			<label for="password">@lang('form.pwd')</label>
+			<span class="helper-text">@lang('form.pwd_desc')</span>
+		</div>
 
-		<label for="password">@lang('form.pwd')</label>
-		<input type="password" id="password" name="password" placeholder="@lang('form.pwd')" required>
+		<div class="input-field">
+			<input type="password" id="password_confirmation" class="validate" name="password_confirmation" required>
+			<label for="password_confirmation">@lang('form.pwd_confirm')</label>
+			<span class="helper-text">@lang('form.pwd2_desc')</span>
+		</div>
 
-		<label for="password_confirmation">@lang('form.pwd_confirm')</label>
-		<input type="password" id="password_confirmation" name="password_confirmation" placeholder="@lang('form.pwd_confirm')" required>
+		<blockquote>
+			@lang('form.agree_to_terms', ['btn' => trans('form.register'),'terms' => '<a>dsf</a>'])
+		</blockquote>
+
+		<!-- Modal Structure -->
+		{{-- @TODO: --}}
+		<div id="modal1" class="modal">
+			<div class="modal-content">
+				<h4>Modal Header</h4>
+				<p>A bunch of text</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#!" class="modal-close waves-effect waves-green btn-flat left">Agree</a>
+			</div>
+		</div>
+		{{-- -- --}}
 
 		<button type="submit" id="register-btn" class="btn btn-lg btn-main mt-3">
 			@lang('form.register')
 		</button>
-	</div>
-</form>
+	</form>
+</div>
 
+@endsection
+
+@section('script')
+	@include('includes.js.modal')
 @endsection

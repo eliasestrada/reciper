@@ -12,15 +12,8 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'Illuminate\Auth\Events\Registered' => [
-            'App\Listeners\LogNewUser',
             'App\Listeners\SendEmailToAdmin',
 		],
-		'Illuminate\Auth\Events\Login' => [
-            'App\Listeners\LogLoggedInUser',
-        ],
-		'Illuminate\Auth\Events\Attempting' => [
-            'App\Listeners\LogAttemptingUser',
-        ],
 		'App\Events\RecipeIsReady' => [
             'App\Listeners\SendSms',
         ],

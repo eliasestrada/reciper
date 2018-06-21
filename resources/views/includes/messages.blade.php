@@ -1,19 +1,27 @@
 @if (count($errors) > 0)
-	<div class="container mt-3 mb-3">
-		@foreach ($errors->all() as $error)
-			<message state="error">{{ $error }}</message>
-		@endforeach
-	</div>
+	@foreach ($errors->all() as $error)
+	<script>
+		let message = ''
+	</script>
+		<script>
+			message += '{{ $error }} <br />'
+		</script>
+	@endforeach
+	<script>
+		M.toast({html: message, displayLength: 10000, classes: 'red'})
+	</script>
 @endif
 
 @if (session('success'))
-	<div class="container mt-3 mb-3">
-		<message state="success">{{ session('success') }}</message>
-	</div>
+	<script>
+		let message = '{{ @session('success') }}'
+		M.toast({html: message, displayLength: 10000, classes: 'green'})
+	</script>
 @endif
 
 @if (session('error'))
-	<div class="container mt-3 mb-3">
-		<message state="error">{{ session('error') }}</message>
-	</div>
+	<script>
+		let message = '{{ @session('error') }}'
+		M.toast({html: message, displayLength: 10000, classes: 'red'})
+	</script>
 @endif

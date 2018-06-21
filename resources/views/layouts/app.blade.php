@@ -9,22 +9,13 @@
 </head>
 <body>
 
-	@include('includes.navbar')
-
+	@include('includes.nav.navbar')
 	@include('includes.user-sidebar')
 
 	@yield('home-header')
 
-	<div class="wrapper pb-5" id="app">
-
-		@include('includes.messages')
-
-		<div class="container">
-			<div class="loading" id="loading"></div>
-			<h4 class="loading-title" id="loading-title">@lang('includes.loading') ...</h4>
-	
-			@yield('content')
-		</div>
+	<div id="app" class="wrapper">
+		@yield('content')
 	</div>
 
     @include('includes.footer')
@@ -32,6 +23,12 @@
 	<!-- Javascript -->
 	{!! scriptTimestamp('/js/vue.js') !!}
 	{!! scriptTimestamp('/js/vanilla.js') !!}
+
 	@yield('script')
+	@include('includes.js.dropdown')
+	@include('includes.js.sidenav')
+	@include('includes.js.tooltip')
+	@include('includes.js.collapsible')
+	@include('includes.messages')
 </body>
 </html>

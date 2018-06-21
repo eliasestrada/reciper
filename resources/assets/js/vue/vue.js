@@ -5,7 +5,6 @@ window.Vue = require('vue');
 const components = [
 	'Recipes',
 	'RandomRecipesSidebar',
-	'Message',
 	'DeleteRecipeBtn',
 	'CategoriesField',
 	'Like'

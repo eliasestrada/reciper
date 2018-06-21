@@ -17,7 +17,11 @@ trait SearchHelpers
 			->take(50)
 			->get();
 
-		return count($category) > 0 ? $category[0]->recipes : [];
+		return count($category) > 0
+			? $category[0]->recipes
+				->where('ready_' . locale(), 1)
+				->where('approved_' . locale(), 1)
+			: [];
 	}
 
 
@@ -29,7 +33,11 @@ trait SearchHelpers
 			->take(50)
 			->get();
 
-		return count($meal) > 0 ? $meal[0]->recipes : [];
+		return count($meal) > 0
+			? $meal[0]->recipes
+				->where('ready_' . locale(), 1)
+				->where('approved_' . locale(), 1) 
+			: [];
 	}
 
 
@@ -39,8 +47,10 @@ trait SearchHelpers
 			::where('title_' . locale(), 'LIKE', '%' . $request . '%')
 			->orWhere('ingredients_' . locale(), 'LIKE', '%' . $request . '%')
 			->take(50)
-			->get();
-	}
+			->get()
+			->where('ready_' . locale(), 1)
+			->where('approved_' . locale(), 1);
+		}
 
 
 	public function mealTime() {

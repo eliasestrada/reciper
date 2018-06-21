@@ -1,11 +1,13 @@
 <?php
 
+use App\Models\Meal;
+use App\Models\User;
 use App\Models\Recipe;
 use Faker\Generator as Faker;
 
 $factory->define(Recipe::class, function (Faker $faker) {
     return [
-		'user_id' => rand(1, 2),
+		'user_id' => rand(1, User::count()),
 		'meal_id' => rand(1, 3),
 		'time' => rand(10, 160),
 		'image' => 'default.jpg',

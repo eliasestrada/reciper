@@ -35,6 +35,7 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 		margin-top: -1em;
+		text-align: center;
 
 		h1, .home-meal {
 			animation: appearWithOpacity 2s;
@@ -100,13 +101,8 @@
 		border: none;
 
 		i {
-			width: 28px;
-			height: 28px;
 			margin: auto;
-			filter: invert(95%);
-			-ms-filter: invert(95%);
-			-moz-filter: invert(95%);
-			-webkit-filter: invert(95%);
+			font-size: 40px;
 		}
 
 		&:hover {
@@ -133,7 +129,8 @@
 	.header-search input {
 		width: 100%;
 		position: absolute;
-		top: 3.8em;
+		top: 4.6em;
+		left: 0;
 		height: 2em;
 		padding: 0 1em;
 		border-radius: 10px;
@@ -150,14 +147,14 @@
 	}
 }
 
-.home-edit-form {
+.edit-form {
 	position: absolute;
 	width: 80%;
 	max-width: 35em;
 	top: 100%;
 	left: 50%;
 	z-index: 100;
-	background: $lightGray;
+	background: #eee;
 	border-radius: 4px;
 	box-shadow: 3px 3px 3px rgba($color: #000000, $alpha: .4);
 	transform-origin: top;
@@ -165,7 +162,7 @@
 	transform: translate(-50%, -50%) perspective(1000px) rotateX(-90deg);
 }
 
-.home-edit-form.active {
+.edit-form.active {
 	transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
 }
 
@@ -190,13 +187,8 @@
 	z-index: 120;
 
 	i {
-		width: 15px;
-		height: 15px;
 		margin: auto;
-		filter: invert(100%);
-		-ms-filter: invert(100%);
-		-moz-filter: invert(100%);
-		-webkit-filter: invert(100%);
+		font-size: 20px;
 	}
 
 	&:hover {

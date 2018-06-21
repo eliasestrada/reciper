@@ -4,6 +4,7 @@ namespace App\Helpers\Traits;
 
 use Image;
 use Storage;
+use App\Models\Notification;
 
 trait RecipesControllerHelpers
 {
@@ -54,5 +55,21 @@ trait RecipesControllerHelpers
 		$create->categories()->sync($request->categories);
 
 		return $create;
+	}
+
+	public function checkForScriptTags($request) : void
+	{
+		foreach ($request->all() as $field) {
+			if (is_string($field) && preg_match("/<script>/", $field)) {
+
+				logger()->emergency('User with name "' . user()->name . '" and id "' . user()->id . '" was trying to inject javascript script tags in his recipe. User data: ' . user());
+
+				Notification::sendMessage(
+					'notifications.title_script_attack',
+					'notifications.message_script_attack',
+					'user_id: ' . user()->id . ', user_name: ' . user()->name,
+				1,1);
+			}
+		}
 	}
 }
