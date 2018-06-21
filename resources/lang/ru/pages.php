@@ -9,7 +9,7 @@ return [
 	// Views
 	'feedback' => 'Связь с нами',
 	'home' => 'Главная',
-	'search_details' => 'Введите критерии поиска...',
+	'search_details' => 'Что искать?',
 	'search' => 'Поиск',
 
 ];
