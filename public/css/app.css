@@ -15,6 +15,10 @@
   background-color: #F44336 !important;
 }
 
+.white-text {
+  color: #fff !important;
+}
+
 .red-text {
   color: #F44336 !important;
 }
@@ -6287,6 +6291,18 @@ select {
 
 .min-w {
   min-width: 220px;
+}
+
+nav .input-field input[type=search] {
+  margin-bottom: 0 !important;
+  height: 64px !important;
+  color: #fff;
+}
+
+nav .input-field input[type=search] {
+  margin-bottom: 0 !important;
+  height: 64px !important;
+  color: #fff;
 }
 
 .fix-input {
