@@ -10,4 +10,8 @@ return [
 	'home' => 'На главную',
 	'help' => 'Помощь',
 
+	// Artisan controller
+	'cache_deleted' => 'Настройки кеша удалены!',
+	'cache_saved' => 'Настройки кеша сохранены!',
+
 ];
