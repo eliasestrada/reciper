@@ -7,13 +7,20 @@ use Illuminate\Support\ServiceProvider;
 
 class EloquentEventServiceProvider extends ServiceProvider
 {
-    public function boot()
+	/**
+	 * Bootstrap services
+     * @return void
+	 * @TODO:
+     */
+    public function boot() : void
     {
 		$this->listOfAllObservers();
 	}
 
-
-	public function listOfAllObservers()
+	/**
+     * @return void
+     */
+	public function listOfAllObservers() : void
 	{
 		//Recipe::observe(\App\Observers\RecipeObserver::class);
 	}

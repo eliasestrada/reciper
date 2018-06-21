@@ -12,7 +12,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
-    // egister any authentication / authorization services
+    // register any authentication / authorization services
     public function boot()
     {
         $this->registerPolicies();

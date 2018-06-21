@@ -9,16 +9,21 @@ use Illuminate\Support\ServiceProvider;
 
 class FooterServiceProvider extends ServiceProvider
 {
-
-    public function boot()
+	/**
+     * Bootstrap services
+     * @return void
+     */
+    public function boot() : void
     {
 		$this->getAndComposeRandomRecipes();
 		$this->getAndComposePopularRecipes();
 		$this->getAndComposeTitleForFooter();
     }
 
-
-    public function getAndComposeRandomRecipes()
+	/**
+     * @return void
+     */
+    public function getAndComposeRandomRecipes() : void
     {
         if (Schema::hasTable('recipes')) {
 			view()->composer('includes.footer', function ($view) {
@@ -33,7 +38,10 @@ class FooterServiceProvider extends ServiceProvider
 		}
 	}
 
-    public function getAndComposePopularRecipes()
+	/**
+     * @return void
+     */
+    public function getAndComposePopularRecipes() : void
     {
         if (Schema::hasTable('recipes')) {
 			view()->composer('includes.footer', function ($view) {
@@ -52,8 +60,10 @@ class FooterServiceProvider extends ServiceProvider
 		}
 	}
 
-
-	public function getAndComposeTitleForFooter()
+	/**
+     * @return void
+     */
+	public function getAndComposeTitleForFooter() : void
 	{
 		if (Schema::hasTable('titles')) {
 			$title_footer = Title::whereName('footer')->value('text_' . locale());

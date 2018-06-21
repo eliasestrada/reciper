@@ -8,14 +8,19 @@ use Illuminate\Support\ServiceProvider;
 
 class VisitorProvider extends ServiceProvider
 {
-    // Bootstrap services
-    public function boot()
+	/**
+	 * Bootstrap services
+     * @return void
+     */
+    public function boot() : void
     {
 		$this->visitorVisitsTheSite();
 	}
 
-
-	public function visitorVisitsTheSite()
+	/**
+     * @return void
+     */
+	public function visitorVisitsTheSite() : void
 	{
 		if (Schema::hasTable('visitors')) {
 			Visitor::incrementRequestsOrCreate();

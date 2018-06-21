@@ -11,15 +11,21 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public function boot()
+	/**
+	 * Bootstrap services
+     * @return void
+     */
+    public function boot() : void
     {
 		$this->databaseSettings();
 		$this->showListOfCategories();
 		$this->updateLastUserVisit();
     }
 
-
-	public function databaseSettings()
+	/**
+     * @return void
+     */
+	public function databaseSettings() : void
 	{
 		Schema::defaultStringLength(191);
 		// Script that shows current executed query
@@ -29,8 +35,10 @@ class AppServiceProvider extends ServiceProvider
 		// });
 	}
 
-
-	public function updateLastUserVisit()
+	/**
+     * @return void
+     */
+	public function updateLastUserVisit() : void
 	{
 		if (Schema::hasTable('users')) {
 			view()->composer('*', function ($view) {
@@ -45,8 +53,10 @@ class AppServiceProvider extends ServiceProvider
 		}
 	}
 
-
-	public function showListOfCategories()
+	/**
+     * @return void
+     */
+	public function showListOfCategories() : void
 	{
 		if (Schema::hasTable('categories')) {
 			$category_names = Category::get(['name_' . locale()])->toArray();

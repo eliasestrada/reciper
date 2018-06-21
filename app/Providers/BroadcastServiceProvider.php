@@ -7,7 +7,11 @@ use Illuminate\Support\ServiceProvider;
 
 class BroadcastServiceProvider extends ServiceProvider
 {
-    public function boot()
+	/**
+	 * Bootstrap services
+     * @return void
+     */
+    public function boot() : void
     {
         Broadcast::routes();
 
