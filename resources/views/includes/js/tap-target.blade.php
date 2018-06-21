@@ -1,6 +1,6 @@
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
-		var elems = document.querySelectorAll('.tap-target');
-		var instances = M.TapTarget.init(elems);
+		let elems = document.querySelectorAll('.tap-target');
+		M.TapTarget.init(elems);
 	});
 </script>
