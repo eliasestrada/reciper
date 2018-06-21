@@ -9,9 +9,13 @@ class ApproveController extends Controller
 {
 	public function ok(Recipe $recipe)
 	{
-		Notification::recipeHasBeenApproved(
-			$recipe->getTitle(), $recipe->user_id
-		);
+		Notification::sendMessage(
+			'notifications.recipe_published',
+			'notifications.recipe_with_title_published',
+			$recipe->user_id,
+			'"' . $recipe->getTitle() . '"',
+		0, 0);
+
 		$recipe->increment('approved_' . locale());
 
 		return redirect('/recipes')->withSuccess(
@@ -22,9 +26,12 @@ class ApproveController extends Controller
     // Approve the recipe (for admins)
     public function cancel(Recipe $recipe)
     {
-		Notification::recipeHasNotBeenCreated(
-			$recipe->getTitle(), $recipe->user_id
-		);
+		Notification::sendMessage(
+			'notifications.recipe_not_published',
+			'notifications.recipe_with_title_not_published',
+			$recipe->user_id,
+			'"' . $recipe->getTitle() . '"',
+		0, 0);
 
 		$recipe->decrement('ready_' . locale());
 
