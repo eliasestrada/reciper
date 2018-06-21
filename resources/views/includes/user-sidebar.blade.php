@@ -54,7 +54,7 @@
 
 		{{-- notifications --}}
 		<li class="{{ activeIfRouteIs('notifications') }}">
-			<a href="/users/other/notifications" title="@lang('includes.notifications')" {{ $notifications ?? '' }} class="small-notif-btn">
+			<a href="/notifications" title="@lang('includes.notifications')" {{ $notifications ?? '' }} class="small-notif-btn">
 				<i class="material-icons sidebar-icon">notifications</i>
 				<span>@lang('includes.notifications')</span>
 			</a>
