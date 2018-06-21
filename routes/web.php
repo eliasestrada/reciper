@@ -18,8 +18,12 @@ Route::prefix('users')->group(function () {
 
 	Route::prefix('other')->group(function () {
 		Route::get('my-recipes', 'UsersController@my_recipes');
-		Route::get('notifications', 'UsersController@notifications');
 	});
+});
+
+Route::prefix('notifications')->group(function () {
+	Route::get('/', 'NotificationController@index');
+	Route::delete('{notification}', 'NotificationController@destroy');
 });
 
 
