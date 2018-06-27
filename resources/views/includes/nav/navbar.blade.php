@@ -11,7 +11,7 @@
 @endauth
 
 <nav>
-	<div class="nav-wrapper main" style="z-index:15;">
+	<div class="nav-wrapper main" style="z-index:15">
 		<div class="px-3">
 			<a href="/" title="@lang('includes.home')" class="brand-logo">{{ config('app.name') }}</a>
 			<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
