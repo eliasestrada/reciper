@@ -7,7 +7,7 @@ trait RecipeModelShortcuts
 	/**
 	 * @return string
 	 */
-	public function getTitle() : string
+	public function getTitle() : ? string
 	{
 		return $this->toArray()['title_' . locale()];
 	}
@@ -15,7 +15,7 @@ trait RecipeModelShortcuts
 	/**
 	 * @return string
 	 */
-	public function getIngredients() : string
+	public function getIngredients() : ? string
 	{
 		return $this->toArray()['ingredients_' . locale()];
 	}
@@ -23,7 +23,7 @@ trait RecipeModelShortcuts
 	/**
 	 * @return string
 	 */
-	public function getIntro() : string
+	public function getIntro() : ? string
 	{
 		return $this->toArray()['intro_' . locale()];
 	}
@@ -31,7 +31,7 @@ trait RecipeModelShortcuts
 	/**
 	 * @return string
 	 */
-	public function getText() : string
+	public function getText() : ? string
 	{
 		return $this->toArray()['text_' . locale()];
 	}

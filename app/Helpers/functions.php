@@ -1,16 +1,10 @@
 <?php
 
-function convertToListItems($string) {
+function convertToListItems($str) {
+	$string = strip_tags($str, '<li>');
+
 	// Convert from string to array
 	$array = explode("\n", preg_replace("/[\r\n]+/", "\n", $string));
-
-	$replacement = ['&', '<', '>', '"', '\''];
-	$replace_with = ['&amp', '&lt', '&gt', '&quot', '&#39'];
-
-	// Escaping cherecters
-	for ($i = 0; $i < count($replacement); $i++) {
-		$array = preg_replace('/'.$replacement[$i].'/', $replace_with[$i], $array);
-	}
 
 	// Every array item wrapping with <li> tags
 	$list_of_ingredients = array_map(function($item) {
