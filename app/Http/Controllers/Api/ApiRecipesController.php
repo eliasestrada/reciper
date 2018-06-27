@@ -79,7 +79,7 @@ class ApiRecipesController extends Controller
 	 * @param integer $id of the recipe
 	 * @return integer
 	 */
-	public function checkIfLiked($id) : integer
+	public function checkIfLiked($id)
     {
 		$visitor = Visitor::whereIp(request()->ip())->first();
 		$likes = $visitor->likes()->where('recipe_id', $id)->count();

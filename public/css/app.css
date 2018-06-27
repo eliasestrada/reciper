@@ -7090,24 +7090,24 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 
 .like-icon {
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   margin: auto;
-  background-position: center;
-  background-size: 25px;
   -webkit-animation: heart-beat 1.7s infinite both 1s, disappear 1s;
           animation: heart-beat 1.7s infinite both 1s, disappear 1s;
   animation-direction: alternate, reverse;
 }
 
 .like-icon-empty {
-  background: url(icons/empty-heart.png);
+  background-size: 30px;
+  background: url(icons/empty-heart.png) center;
   -webkit-transition: background .3s;
   transition: background .3s;
 }
 
 .like-icon-full {
-  background: url(icons/full-heart.png);
+  background-size: 30px;
+  background: url(icons/full-heart.png) center;
   -webkit-transition: background .3s;
   transition: background .3s;
 }
