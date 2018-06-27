@@ -93,23 +93,21 @@
 		{{--  Items --}}
 		<blockquote class="items">
 			<h5 class="decorated">@lang('recipes.ingredients')</h5>
-			{!! $recipe->ingredientsWithListItems() !!}
+			<ol>{!! $recipe->ingredientsWithListItems() !!}</ol>
 		</blockquote>
 
 		<hr />
 
-		{{--  Приготовление  --}}
+		{{--  Text  --}}
 		<blockquote style="border:none;">
 			<h5 class="decorated py-3">@lang('recipes.text_of_recipe')</h5>
-			<ol class="instruction unstyled-list">
-				{!! $recipe->textWithListItems() !!}
-			</ol>
+			<ol class="instruction unstyled-list">{!! $recipe->textWithListItems() !!}</ol>
 		</blockquote>
 		
 		<hr />
 		<h5 class="decorated pt-3">@lang('recipes.bon_appetit')!</h5>
 
-		{{--  Дата --}}
+		{{--  Date --}}
 		<div class="date mt-4">
 			<p>@lang('recipes.added') {{ timeAgo($recipe->created_at) }}</p>
 			<a href="/users/{{ $recipe->user->id }}" title="@lang('recipes.search_by_author')">
