@@ -57,9 +57,9 @@ function activeIfRouteIs($route) {
     return request()->is($route) ? 'active' : '';
 }
 
-function setImageName($extension = null) {
+function setImageName($extension = null, $slug = '') {
 	if ($extension) {
-		return time() . '.' . $extension;
+		return time() . '-' . $slug . '.' . $extension;
 	}
 	return 'default.jpg';
 }
