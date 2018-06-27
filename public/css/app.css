@@ -2103,9 +2103,15 @@ nav .input-field input {
   font-size: 1.2rem;
   border: none;
   padding-left: 2rem;
+  background-color: transparent;
 }
 
-nav .input-field input:focus, nav .input-field input[type=text]:valid, nav .input-field input[type=password]:valid, nav .input-field input[type=email]:valid, nav .input-field input[type=url]:valid, nav .input-field input[type=date]:valid {
+nav .input-field input:focus,
+nav .input-field input[type=text]:valid,
+nav .input-field input[type=password]:valid,
+nav .input-field input[type=email]:valid,
+nav .input-field input[type=url]:valid,
+nav .input-field input[type=date]:valid {
   border: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -2140,7 +2146,9 @@ nav .input-field label.active i {
   nav.nav-extended .nav-wrapper {
     min-height: 64px;
   }
-  nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
+  nav, nav .nav-wrapper i,
+  nav a.sidenav-trigger,
+  nav a.sidenav-trigger i {
     height: 64px;
     line-height: 64px;
   }
@@ -6299,15 +6307,13 @@ nav .input-field input[type=search] {
   color: #fff;
 }
 
-nav .input-field input[type=search] {
-  margin-bottom: 0 !important;
-  height: 64px !important;
-  color: #fff;
+nav .input-field input[type=search]:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 100px #484074 inset;
+  -webkit-text-fill-color: #000 !important;
 }
 
-.fix-input {
-  margin-bottom: 0 !important;
-  height: 64px !important;
+nav .input-field input[type=search]:-webkit-autofill:active {
+  -webkit-text-fill-color: #fff !important;
 }
 
 .wrapper {
@@ -7053,7 +7059,7 @@ nav .input-field input[type=search] {
   }
 }
 
-.like-for-author-section .user-icon {
+.like-for-author-section .user-icon-on-single-recipe {
   margin-right: -25px;
   -webkit-transition: margin-right 300ms, -webkit-transform 300ms;
   transition: margin-right 300ms, -webkit-transform 300ms;
@@ -7061,7 +7067,7 @@ nav .input-field input[type=search] {
   transition: margin-right 300ms, transform 300ms, -webkit-transform 300ms;
 }
 
-.like-for-author-section .user-icon:hover {
+.like-for-author-section .user-icon-on-single-recipe:hover {
   margin-right: 5px;
   -webkit-transition: margin-right 300ms, -webkit-transform 300ms;
   transition: margin-right 300ms, -webkit-transform 300ms;
@@ -7071,14 +7077,14 @@ nav .input-field input[type=search] {
           transform: scale(1.2);
 }
 
-.user-icon {
-  width: 50px;
-  height: 50px;
+.user-icon-on-single-recipe {
+  width: 45px;
+  height: 45px;
   margin-right: 10px;
   border-radius: 50%;
   display: inline-block;
   background-position: center !important;
-  background-size: 50px !important;
+  background-size: 45px !important;
   background-repeat: no-repeat !important;
 }
 
@@ -7107,7 +7113,7 @@ nav .input-field input[type=search] {
 }
 
 @media (min-width: 640px) {
-  .user-icon {
+  .user-icon-on-single-recipe {
     width: 70px;
     height: 70px;
     background-size: 70px !important;

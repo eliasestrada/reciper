@@ -35,15 +35,13 @@ nav .input-field input[type=search] {
 	color: #fff;
 }
 
-nav .input-field input[type=search] {
-	margin-bottom: 0 !important;
-	height: 64px !important;
-	color: #fff;
+nav .input-field input[type=search]:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0 100px $main inset;
+	-webkit-text-fill-color: #000 !important;
 }
 
-.fix-input {
-	margin-bottom: 0 !important;
-	height: 64px !important;
+nav .input-field input[type=search]:-webkit-autofill:active {
+	-webkit-text-fill-color: #fff !important;
 }
 
 .wrapper {
