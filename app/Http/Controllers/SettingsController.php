@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Hash;
-use Image;
-use Storage;
 use App\Models\User;
 use App\Models\Title;
 use Illuminate\Http\Request;
 use App\Http\Requests\SettingsPhotoRequest;
+use App\Helpers\Traits\SettingsControllerHelper;
 use App\Http\Requests\SettingsUpdateHomeDataRequest;
 use App\Http\Requests\SettingsUpdateUserDataRequest;
 use App\Http\Requests\SettingsUpdateUserPasswordRequest;
 
 class SettingsController extends Controller
 {
+	use SettingsControllerHelper;
+
 	public function __construct()
     {
 		$this->middleware('auth');
@@ -35,26 +35,19 @@ class SettingsController extends Controller
 	 */
 	public function updatePhoto(SettingsPhotoRequest $request)
     {
-		$user = User::find(user()->id);
-
 		if ($request->hasFile('image')) {
 			$image = $request->file('image');
 
-			$filename = 'user' . user()->id . '.' . $image->getClientOriginalExtension();
+			$extention = $image->getClientOriginalExtension();
+			$file_name = setImageName($extention, 'user' . user()->id);
 
-			Image::make($image)->resize(300, null, function($constrait) {
-				$constrait->aspectRatio();
-			})->save(storage_path('app/public/uploads/' . $filename));
-
-            $user->image = $filename;
+			$this->deleteOldFileFromStorage(user()->image, 'users');
+			$this->saveFileToStorage($image, $file_name);
+			$this->saveFileNameToDB($file_name);
 		} elseif ($request->delete == 1) {
-			if ($request->hasFile('image') != 'default.jpg') {
-				Storage::delete('public/uploads/'.$user->image);
-				$user->image = 'default.jpg';
-			}
+			$this->deleteOldFileFromStorage(user()->image, 'users');
+			$this->saveFileNameInDB();
 		}
-		$user->save();
-
 		return redirect('/settings/photo')->withSuccess(trans('settings.saved'));
 	}
 
@@ -72,11 +65,10 @@ class SettingsController extends Controller
 	 */
 	public function updateUserPassword(SettingsUpdateUserPasswordRequest $request)
 	{
-        if (Hash::check($request->old_password, user()->password)) {
+        if (\Hash::check($request->old_password, user()->password)) {
 			user()->update([
-				'password' => Hash::make($request->password)
+				'password' => \Hash::make($request->password)
 			]);
-
 			return back()->withSuccess(trans('settings.saved'));
         } else {           
 			return back()->withError(trans('settings.pwd_wrong'));
