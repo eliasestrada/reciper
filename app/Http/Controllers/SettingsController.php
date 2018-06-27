@@ -42,7 +42,9 @@ class SettingsController extends Controller
 
 			$filename = 'user' . user()->id . '.' . $image->getClientOriginalExtension();
 
-			Image::make($image)->resize(300, 300)->save(storage_path('app/public/uploads/' . $filename ));
+			Image::make($image)->resize(300, null, function($constrait) {
+				$constrait->aspectRatio();
+			})->save(storage_path('app/public/uploads/' . $filename));
 
             $user->image = $filename;
 		} elseif ($request->delete == 1) {

@@ -6,13 +6,15 @@
 
 <div class="page">
 	<div class="row">
-		<div class="col m6">
+		<div class="col s12 m6">
 			<h1 class="headline">@lang('settings.settings_photo')</h1>
-			<p>@lang('settings.photo_should_be_square')</p>
+			<p>@lang('settings.choose_photo', ['btn1' => trans('form.select_file'), 'btn2' => trans('form.save_changes')])</p>
 		</div>
-		<div class="col m6">
-			<div class="profile-header" style="height: 11em;">
-				<img src="{{ asset('storage/uploads/' . user()->image) }}" alt="{{ user()->name }}" id="target-image" style="width: 170px; height:180px;" />
+		<div class="col s12 m6">
+			<div class="profile-header">
+				<div class="image-wrapper">
+					<img src="{{ asset('storage/uploads/' . user()->image) }}" alt="{{ user()->name }}" id="target-image" style="width:170px" />
+				</div>
 			</div>
 		</div>
 	</div>
