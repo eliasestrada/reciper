@@ -15,7 +15,7 @@
 		</div>
 	
 		<div class="input-field">
-			<input type="password" name="password" id="password" placeholder="@lang('form.email')" class="pwd">
+			<input type="password" name="password" id="password" placeholder="@lang('form.pwd')" class="pwd">
 			<label for="password">@lang('form.pwd')</label>
 		</div>
 
