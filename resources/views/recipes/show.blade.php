@@ -9,7 +9,7 @@
 
 		{{--  Likes  --}}
 		<div class="like-for-author-section">
-			<a href="/users/{{ $recipe->user->id }}" class="user-icon" style="background:url({{ asset('storage/uploads/'.$recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
+			<a href="/users/{{ $recipe->user->id }}" class="user-icon-on-single-recipe" style="background:url({{ asset('storage/uploads/'.$recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
 
 			@if ($recipe->done())
 				<like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}"></like>
