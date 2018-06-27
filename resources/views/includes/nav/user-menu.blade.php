@@ -1,7 +1,7 @@
 <li class="{{ activeIfRouteIs('users/' . user()->id) }}"> {{-- profile --}}
 	<a href="/users/{{ user()->id }}" title="@lang('includes.profile')">
 		<i class="left user-icon">
-			<img src="{{ asset('storage/uploads/'.user()->image) }}" alt="user">
+			<img src="{{ asset('storage/users/' . user()->image) }}" alt="user">
 		</i>
 		@lang('includes.profile')
 	</a>

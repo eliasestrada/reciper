@@ -13,7 +13,7 @@
 		<div class="col s12 m6">
 			<div class="profile-header">
 				<div class="image-wrapper">
-					<img src="{{ asset('storage/uploads/' . user()->image) }}" alt="{{ user()->name }}" id="target-image" style="width:170px" />
+					<img src="{{ asset('storage/users/' . user()->image) }}" alt="{{ user()->name }}" id="target-image" style="width:170px" />
 				</div>
 			</div>
 		</div>

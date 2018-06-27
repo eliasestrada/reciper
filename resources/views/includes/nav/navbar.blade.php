@@ -30,7 +30,7 @@
 						<a class="dropdown-trigger" href="#!" data-target="dropdown2">
 							@lang('includes.profile')
 							<i class="right user-icon">
-								<img src="{{ asset('storage/uploads/'.user()->image) }}" alt="user">
+								<img src="{{ asset('storage/users/' . user()->image) }}" alt="user">
 							</i>
 						</a>
 					</li>

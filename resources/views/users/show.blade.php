@@ -17,7 +17,7 @@
 		@endunless
 	</div>
 
-	<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{ $user->name }}" />
+	<img src="{{ asset('storage/users/'.$user->image) }}" alt="{{ $user->name }}" />
 
 	<div class="bubbles">
 		<div class="mb-4 bubbles-block">
