@@ -10,7 +10,7 @@ class UsersController extends Controller
 {
 	public function __construct()
     {
-		$this->middleware('author')->except(['show', 'index']);
+		$this->middleware('auth')->except(['show', 'index']);
 	}
 
 	public function index()

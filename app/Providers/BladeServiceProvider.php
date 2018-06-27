@@ -24,9 +24,5 @@ class BladeServiceProvider extends ServiceProvider
 		Blade::if('admin', function() {
 			return auth()->check() && user()->isAdmin();
 		});
-
-		Blade::if('author', function() {
-			return auth()->check() && user()->isAuthor();
-		});
 	}
 }
