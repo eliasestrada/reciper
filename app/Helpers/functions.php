@@ -57,7 +57,7 @@ function activeIfRouteIs($route) {
     return request()->is($route) ? 'active' : '';
 }
 
-function setNameForRecipeImage($extension = null) {
+function setImageName($extension = null) {
 	if ($extension) {
 		return time() . '.' . $extension;
 	}

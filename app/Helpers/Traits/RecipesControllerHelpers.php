@@ -16,7 +16,7 @@ trait RecipesControllerHelpers
 	{
 		if ($image) {
 			$extention = $image->getClientOriginalExtension();
-			$image_name = setNameForRecipeImage($extention);
+			$image_name = setImageName($extention);
 
 			Image::make($image)->resize(600, 400)->save(
 				storage_path('app/public/images/' . $image_name
