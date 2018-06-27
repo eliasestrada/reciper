@@ -5,7 +5,7 @@
 			<!-- <p v-if="error" class="alert alert-danger mt-2">{{ error }}</p> -->
 		</div>
 		<span v-else>
-			<button @click="deleteRecipe" :title="deleting" type="button" class="btn-floating red btn-large">
+			<button @click="deleteRecipe" type="button" class="btn-floating red btn-large tooltipped" :data-tooltip="deleteRecipeTip" data-position="left">
 				<i class="large material-icons">delete</i>
 			</button>
 		</span>
@@ -20,7 +20,7 @@ export default {
 		}
 	},
 
-	props: ['confirm', 'recipeId', 'deletedFail', 'deleting'],
+	props: ['confirm', 'recipeId', 'deletedFail', 'deleteRecipeTip'],
 	 
 	methods: {
 		deleteRecipe () {
