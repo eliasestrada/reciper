@@ -26,7 +26,7 @@ mix.js('resources/assets/js/vue/vue.js', 'public/js')
 	.sourceMaps()
 	.browserSync({
 		proxy: 'localhost:8000',
-		browser: 'chrome',
+		browser: 'firefox',
 		files: ['resources/assets/sass/**/*']
 	})
 	.options({processCssUrls: false})
