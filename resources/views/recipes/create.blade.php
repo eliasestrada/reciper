@@ -20,36 +20,36 @@
 	
 		<div class="row">
 			<div class="col s12 m6 l4"> {{-- Title --}}
-				@component('comps.forms.title-field')
-				@endcomponent
+				@titleField
+				@endtitleField
 			</div>
 	
 			<div class="col s12 m6 l4"> {{-- Time --}}
-				@component('comps.forms.time-field')
-				@endcomponent
+				@timeField
+				@endtimeField
 			</div>
 	
 			<div class="col s12 m6 l4"> {{-- Meal time --}}
-				@component('comps.forms.meal-field', ['meal' => $meal])
-				@endcomponent
+				@mealField(['meal' => $meal])
+				@endmealField
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col s12 l6"> {{-- Ingredients --}}
-				@component('comps.forms.ingredients-field')
-				@endcomponent
+				@ingredientsField
+				@endingredientsField
 			</div>
 	
 			<div class="col s12 l6"> {{-- Intro --}}
-				@component('comps.forms.intro-field')
-				@endcomponent
+				@introField
+				@endintroField
 			</div>
 		</div>
 
 		<div class="col s12"> {{-- Text --}}
-			@component('comps.forms.text-field')
-			@endcomponent
+			@textField
+			@endtextField
 		</div>
 
 		<div class="row">
@@ -66,8 +66,8 @@
 			</div>
 	
 			<div class="col s12 m6"> {{-- Image --}}
-				@component('comps.forms.image-field')
-				@endcomponent
+				@imageField
+				@endimageField
 			</div>
 		</div>
 	</div>

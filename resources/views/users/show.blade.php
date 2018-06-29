@@ -51,10 +51,10 @@
 </div>
 
 {{--  All my recipes  --}}
-@component('comps.list-of-recipes', ['recipes' => $recipes])
+@listOfRecipes(['recipes' => $recipes])
 	@slot('no_recipes')
 		@lang('users.this_user_does_not_have_recipes')
 	@endslot
-@endcomponent
+@endlistOfRecipes
 
 @endsection

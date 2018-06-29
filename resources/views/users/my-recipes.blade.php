@@ -11,13 +11,13 @@
 	</a>
 </div>
 
-@component('comps.list-of-recipes', ['recipes' => $recipes])
+@listOfRecipes(['recipes' => $recipes])
 	@slot('title')
 		@lang('includes.my_recipes')
 	@endslot
 	@slot('no_recipes')
 		@lang('users.no_recipes_yet')
 	@endslot
-@endcomponent
+@endlistOfRecipes
 
 @endsection

@@ -45,54 +45,54 @@
 
 		<div class="row">
 			<div class="col s12 m4"> {{-- Title --}}
-				@component('comps.forms.title-field')
+				@titleField
 					@slot('title')
 						{{ $recipe->getTitle() }}
 					@endslot
-				@endcomponent
+				@endtitleField
 			</div>
 	
 			<div class="col s12 m4"> {{-- Time --}}
-				@component('comps.forms.time-field')
+				@timeField
 					@slot('time')
 						{{ $recipe->time }}
 					@endslot
-				@endcomponent
+				@endtimeField
 			</div>
 	
 			<div class="col s12 m4"> {{-- Meal time --}}
-				@component('comps.forms.meal-field', ['meal' => $meal])
+				@mealField(['meal' => $meal])
 					@slot('meal_id')
 						{{ $recipe->meal->id }}
 					@endslot
-				@endcomponent
+				@endmealField
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col s12 l6"> {{-- Ingredients --}}
-				@component('comps.forms.ingredients-field')
+				@ingredientsField
 					@slot('ingredients')
 						{{ $recipe->getIngredients() }}
 					@endslot
-				@endcomponent
+				@endingredientsField
 			</div>
 	
 			<div class="col s12 l6"> {{-- Advice --}}
-				@component('comps.forms.intro-field')
+				@introField
 					@slot('intro')
 						{{ $recipe->getIntro() }}
 					@endslot
-				@endcomponent
+				@endintroField
 			</div>
 		</div>
 
 		<div class="col s12 mb-2"> {{-- Text --}}
-			@component('comps.forms.text-field')
+			@textField
 				@slot('text')
 					{{ $recipe->getText() }}
 				@endslot
-			@endcomponent
+			@endtextField
 		</div>
 
 		<div class="row">
@@ -110,14 +110,14 @@
 			</div>
 	
 			<div class="col s12 m6"> {{-- Image --}}
-				@component('comps.forms.image-field')
+				@imageField
 					@slot('image')
 						{{ $recipe->image }}
 					@endslot
 					@slot('alt')
 						{{ $recipe->title }}
 					@endslot
-				@endcomponent
+				@endimageField
 			</div>
 		</div>
 	</div>

@@ -23,7 +23,7 @@
 		<a class="edit-btn" title="@lang('home.edit_intro')" id="btn-for-intro">
 			<i class="material-icons">edit</i>
 		</a>
-		@component('comps.edit_form')
+		@editForm
 			@slot('id')
 				intro-form
 			@endslot
@@ -48,7 +48,7 @@
 			@slot('slug_text')
 				intro_text
 			@endslot
-		@endcomponent
+		@endeditForm
 	@endadmin
 </section>
 

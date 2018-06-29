@@ -78,7 +78,7 @@
 			<a class="edit-btn" title="@lang('home.edit_banner')" id="btn-for-footer">
 				<i class="material-icons">edit</i>
 			</a>
-			@component('comps.edit_form')
+			@editForm
 				@slot('id')
 					footer-form
 				@endslot
@@ -94,7 +94,7 @@
 				@slot('slug_text')
 					footer_text
 				@endslot
-			@endcomponent
+			@endeditForm
 		</div>
 	@endadmin
 </footer>
