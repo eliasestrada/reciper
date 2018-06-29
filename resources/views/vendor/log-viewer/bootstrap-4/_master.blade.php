@@ -214,22 +214,24 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark p-0">
-        <a href="{{ route('log-viewer::dashboard') }}" class="navbar-brand mr-0">
-            <i class="fa fa-fw fa-book"></i> LogViewer
-        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a href="/" class="nav-link">
+						<i class="fa fa-home"></i> @lang('logs.home')
+					</a>
+				</li>
                 <li class="nav-item {{ Route::is('log-viewer::dashboard') ? 'active' : '' }}">
                     <a href="{{ route('log-viewer::dashboard') }}" class="nav-link">
-                        <i class="fa fa-dashboard"></i> Dashboard
+                        <i class="fa fa-dashboard"></i> @lang('logs.dashboard')
                     </a>
                 </li>
                 <li class="nav-item {{ Route::is('log-viewer::logs.list') ? 'active' : '' }}">
                     <a href="{{ route('log-viewer::logs.list') }}" class="nav-link">
-                        <i class="fa fa-archive"></i> Logs
+                        <i class="fa fa-archive"></i> @lang('logs.logs')
                     </a>
                 </li>
             </ul>
