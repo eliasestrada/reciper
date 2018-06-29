@@ -20,7 +20,7 @@ class UsersSeeder extends Seeder
 			'notif_check' => date("Y-m-d H:i:s"),
 			'contact_check' => date("Y-m-d H:i:s"),
 			'created_at' => '2018-03-08 12:08:59',
-			'image' => 'user1.jpg'
+			'image' => 'default.jpg'
 		]);
 
 		User::create([
@@ -31,7 +31,7 @@ class UsersSeeder extends Seeder
 			'notif_check' => date("Y-m-d H:i:s"),
 			'contact_check' => date("Y-m-d H:i:s"),
 			'created_at' => '2018-03-10 21:27:35',
-			'image' => 'user2.jpg'
+			'image' => 'default.jpg'
 		]);
 
 		User::create([
