@@ -3,8 +3,7 @@
 	@include('includes.nav.categories')
 </ul>
 
-<!-- User Dropdown menu -->
-@auth
+@auth <!-- User Dropdown menu -->
 	<ul id="dropdown2" class="dropdown-content bottom-borders">
 		@include('includes.nav.user-menu')
 	</ul>
@@ -35,7 +34,7 @@
 						</a>
 					</li>
 				@else
-					{{--  --}}
+					{{-- @TODO: --}}
 				@endauth
 				@include('includes.nav.search-form')
 			</ul>
