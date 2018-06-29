@@ -52,10 +52,18 @@
 </li>
 
 <li class="{{ activeIfRouteIs('settings/photo') }}"> {{-- settings/photo --}}
-	<a href="/settings/photo" @lang('includes.photo')>
+	<a href="/settings/photo" title="@lang('includes.photo')">
 		<i class="material-icons left">build</i>@lang('includes.photo')
 	</a>
 </li>
+
+@admin
+	<li class="{{ activeIfRouteIs('log-viewer') }}"> {{-- log-viewer --}}
+		<a href="/log-viewer" title="@lang('logs.logs')">
+			<i class="material-icons left">library_books</i>@lang('logs.logs')
+		</a>
+	</li>
+@endadmin
 
 <li> {{-- logout --}} {{-- This button submits logout-form --}}
 	<a href="#" title="@lang('includes.logout')" onclick="$('logout-form').submit()">
