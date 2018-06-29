@@ -6942,6 +6942,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   transition: opacity 300ms;
   opacity: .7;
   z-index: 120;
+  cursor: pointer;
 }
 
 .edit-btn i {
