@@ -16,6 +16,7 @@ class UsersSeeder extends Seeder
 			'email' => '11@11.com',
 			'name' => 'Серый',
 			'admin' => 1,
+			'master' => 1,
 			'password' => bcrypt('111111'),
 			'notif_check' => date("Y-m-d H:i:s"),
 			'contact_check' => date("Y-m-d H:i:s"),
@@ -26,7 +27,6 @@ class UsersSeeder extends Seeder
 		User::create([
 			'email' => 'venera23091970@gmail.com',
 			'name' => 'Ирен',
-			'admin' => 1,
 			'password' => bcrypt('111111'),
 			'notif_check' => date("Y-m-d H:i:s"),
 			'contact_check' => date("Y-m-d H:i:s"),
@@ -37,7 +37,6 @@ class UsersSeeder extends Seeder
 		User::create([
 			'email' => '22@22.com',
 			'name' => 'Ваня',
-			'admin' => 0,
 			'password' => bcrypt('111111'),
 			'notif_check' => date("Y-m-d H:i:s"),
 			'contact_check' => date("Y-m-d H:i:s"),

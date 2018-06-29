@@ -14,6 +14,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->boolean('admin')->default(0);
+            $table->boolean('master')->default(0);
             $table->string('password');
 			$table->rememberToken();
 			$table->timestamp('notif_check')->default(DB::raw('CURRENT_TIMESTAMP'));
