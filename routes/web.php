@@ -26,13 +26,6 @@ Route::prefix('notifications')->group(function () {
 	Route::delete('{notification}', 'NotificationController@destroy');
 });
 
-
-// New Member ========
-Route::prefix('member/{id}')->group(function () {
-	Route::get('add', 'NewMemberController@add');
-	Route::get('delete', 'NewMemberController@delete');
-});
-
 // Dashboard ===========
 Route::get('dashboard', 'DashboardController@index');
 
@@ -53,7 +46,6 @@ Route::prefix('settings')->group(function () {
 // Approving ======
 Route::post('answer/ok/{recipe}', 'ApproveController@ok');
 Route::post('answer/cancel/{recipe}', 'ApproveController@cancel');
-
 
 // Artisan commands =======
 Route::get('php/artisan/cache/{url_key}', 'ArtisanController@cache');
