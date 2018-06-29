@@ -57,13 +57,13 @@
 	</a>
 </li>
 
-@admin
+@master
 	<li class="{{ activeIfRouteIs('log-viewer') }}"> {{-- log-viewer --}}
 		<a href="/log-viewer" title="@lang('logs.logs')">
 			<i class="material-icons left">library_books</i>@lang('logs.logs')
 		</a>
 	</li>
-@endadmin
+@endmaster
 
 <li> {{-- logout --}} {{-- This button submits logout-form --}}
 	<a href="#" title="@lang('includes.logout')" onclick="$('logout-form').submit()">
