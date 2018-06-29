@@ -7,7 +7,7 @@ use App\Models\Recipe;
 use App\Models\Title;
 use Illuminate\Support\ServiceProvider;
 
-class FooterServiceProvider extends ServiceProvider
+class FooterProvider extends ServiceProvider
 {
 	/**
      * Bootstrap services

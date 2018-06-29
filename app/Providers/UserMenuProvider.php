@@ -9,7 +9,7 @@ use App\Models\Feedback;
 use App\Models\Notification;
 use Illuminate\Support\ServiceProvider;
 
-class UserSidebarServiceProvider extends ServiceProvider
+class UserMenuProvider extends ServiceProvider
 {
 	/**
 	 * Bootstrap services

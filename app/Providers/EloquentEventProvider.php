@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Models\Recipe;
 use Illuminate\Support\ServiceProvider;
 
-class EloquentEventServiceProvider extends ServiceProvider
+class EloquentEventProvider extends ServiceProvider
 {
 	/**
 	 * Bootstrap services

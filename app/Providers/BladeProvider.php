@@ -5,7 +5,7 @@ namespace App\Providers;
 use Blade;
 use Illuminate\Support\ServiceProvider;
 
-class BladeServiceProvider extends ServiceProvider
+class BladeProvider extends ServiceProvider
 {
 	/**
 	 * Bootstrap services
@@ -13,13 +13,15 @@ class BladeServiceProvider extends ServiceProvider
      */
     public function boot() : void
     {
-		$this->listOfAllBlade();
+		$this->other();
+		$this->componentsForForms();
+		$this->statementsForUserPermission();
 	}
 
 	/**
      * @return void
      */
-	public function listOfAllBlade() : void
+	public function statementsForUserPermission() : void
 	{
 		Blade::if('admin', function() {
 			return auth()->check() && user()->isAdmin();
@@ -28,7 +30,14 @@ class BladeServiceProvider extends ServiceProvider
 		Blade::if('master', function() {
 			return auth()->check() && user()->isMaster();
 		});
+		
+	}
 
+	/**
+	 * @return void
+	 */
+	public function componentsForForms() : void
+	{
 		Blade::component('comps.forms.title-field', 'titleField');
 		Blade::component('comps.forms.time-field', 'timeField');
 		Blade::component('comps.forms.meal-field', 'mealField');
@@ -36,7 +45,13 @@ class BladeServiceProvider extends ServiceProvider
 		Blade::component('comps.forms.intro-field', 'introField');
 		Blade::component('comps.forms.text-field', 'textField');
 		Blade::component('comps.forms.image-field', 'imageField');
+	}
 
+	/**
+	 * @return void
+	 */
+	public function other() : void
+	{
 		Blade::component('comps.list-of-recipes', 'listOfRecipes');
 		Blade::component('comps.edit_form', 'editForm');
 	}
