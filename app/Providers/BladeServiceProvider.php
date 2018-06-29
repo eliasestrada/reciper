@@ -25,6 +25,10 @@ class BladeServiceProvider extends ServiceProvider
 			return auth()->check() && user()->isAdmin();
 		});
 
+		Blade::if('master', function() {
+			return auth()->check() && user()->isMaster();
+		});
+
 		Blade::component('comps.forms.title-field', 'titleField');
 		Blade::component('comps.forms.time-field', 'timeField');
 		Blade::component('comps.forms.meal-field', 'mealField');
