@@ -2,10 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use Auth;
 use Closure;
 
-class AdminMiddleware
+class MasterMiddleware
 {
     /**
      * Handle an incoming request.
@@ -14,11 +13,12 @@ class AdminMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
-        if (Auth::guard($guard)->check() && user()->isAdmin()) {
+        if (Auth::guard($guard)->check() && user()->isMaster()) {
 			return $next($request);
         }
-        return redirect('/login')->withError(trans('messages.access_denied'));
+        return redirect('/login')->withError(trans('messages.access_denied')
+		);
     }
 }
