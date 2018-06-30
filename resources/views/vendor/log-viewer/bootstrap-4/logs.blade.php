@@ -1,8 +1,8 @@
-@extends('log-viewer::bootstrap-4._master')
+@extends('layouts.logs')
 
 @section('content')
     <div class="page-header mb-4">
-        <h1>Logs</h1>
+        <h4>@lang('logs.logs')</h4>
     </div>
 
     <div class="table-responsive">
@@ -15,7 +15,7 @@
                             <span class="badge badge-info">{{ $header }}</span>
                         @else
                             <span class="badge badge-level-{{ $key }}">
-                                {!! log_styler()->icon($key) . ' ' . $header !!}
+                                {{ $header }}
                             </span>
                         @endif
                     </th>

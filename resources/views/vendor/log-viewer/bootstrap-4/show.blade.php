@@ -1,12 +1,12 @@
-@extends('log-viewer::bootstrap-4._master')
+@extends('layouts.logs')
 
 @section('content')
     <div class="page-header mb-4">
-        <h1>Log [{{ $log->date }}]</h1>
+        <h5>Log [{{ $log->date }}]</h5>
     </div>
 
     <div class="row">
-        <div class="col-lg-2">
+        <div class="col l3">
             {{-- Log Menu --}}
             <div class="card mb-4">
                 <div class="card-header"><i class="fa fa-fw fa-flag"></i> Levels</div>
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-10">
+        <div class="col l8">
             {{-- Log Details --}}
             <div class="card mb-4">
                 <div class="card-header">
@@ -72,7 +72,7 @@
                 <div class="card-footer">
                     {{-- Search --}}
                     <form action="{{ route('log-viewer::logs.search', [$log->date, $level]) }}" method="GET">
-                        <div class=form-group">
+                        <div class="form-group">
                             <div class="input-group">
                                 <input id="query" name="query" class="form-control"  value="{!! request('query') !!}" placeholder="Type here to search">
                                 <div class="input-group-append">
@@ -92,72 +92,47 @@
             </div>
 
             {{-- Log Entries --}}
-            <div class="card mb-4">
-                @if ($entries->hasPages())
-                    <div class="card-header">
-                        <span class="badge badge-info float-right">
-                            Page {!! $entries->currentPage() !!} of {!! $entries->lastPage() !!}
-                        </span>
-                    </div>
-                @endif
+			@if ($entries->hasPages())
+				<div class="card-header">
+					<span class="badge badge-info float-right">
+						Page {!! $entries->currentPage() !!} of {!! $entries->lastPage() !!}
+					</span>
+				</div>
+			@endif
 
-                <div class="table-responsive">
-                    <table id="entries" class="table mb-0">
-                        <thead>
-                            <tr>
-                                <th>ENV</th>
-                                <th style="width: 120px;">Level</th>
-                                <th style="width: 65px;">Time</th>
-                                <th>Header</th>
-                                <th class="text-right">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($entries as $key => $entry)
-                                <tr>
-                                    <td>
-                                        <span class="badge badge-env">{{ $entry->env }}</span>
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-level-{{ $entry->level }}">
-                                            {!! $entry->level() !!}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <span class="badge badge-secondary">
-                                            {{ $entry->datetime->format('H:i:s') }}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        {{ $entry->header }}
-                                    </td>
-                                    <td class="text-right">
-                                        @if ($entry->hasStack())
-                                            <a class="btn btn-sm btn-light" role="button" data-toggle="collapse" href="#log-stack-{{ $key }}" aria-expanded="false" aria-controls="log-stack-{{ $key }}">
-                                                <i class="fa fa-toggle-on"></i> Stack
-                                            </a>
-                                        @endif
-                                    </td>
-                                </tr>
-                                @if ($entry->hasStack())
-                                    <tr>
-                                        <td colspan="5" class="stack py-0">
-                                            <div class="stack-content collapse" id="log-stack-{{ $key }}">
-                                                {!! $entry->stack() !!}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endif
-                            @empty
-                                <tr>
-                                    <td colspan="5" class="text-center">
-                                        <span class="badge badge-secondary">{{ trans('log-viewer::general.empty-logs') }}</span>
-                                    </td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
+			<div class="row">
+				@forelse($entries as $key => $entry)
+					<div class="col s12">
+						<div class="card">
+							<div class="card-content">
+								<span class="card-title activator grey-text text-darken-4">
+									{{ $entry->env }} {{ $entry->level }} {{ $entry->datetime->format('H:i:s') }} <br /><hr />
+									{{ $entry->header }}
+									<i class="material-icons right">more_vert</i>
+								</span>
+							</div>
+							<div class="card-reveal">
+								<span class="card-title grey-text text-darken-4">
+									{{ $entry->env }} {{ $entry->level }} {{ $entry->datetime->format('H:i:s') }}
+									<i class="material-icons right">close</i>
+								</span>
+								<p>
+									@if ($entry->hasStack())
+										{!! $entry->stack() !!}
+									@endif
+								</p>
+							</div>
+						</div>
+					</div>
+				@empty
+					<tr>
+						<td colspan="5" class="text-center">
+							<span class="badge badge-secondary">
+								@lang('log-viewer::general.empty-logs')
+							</span>
+						</td>
+					</tr>
+				@endforelse
             </div>
 
             {!! $entries->appends(compact('query'))->render() !!}
