@@ -31,6 +31,10 @@
   color: #fff !important;
 }
 
+.transparent {
+  background-color: transparent !important;
+}
+
 .main {
   background-color: #484074 !important;
 }
