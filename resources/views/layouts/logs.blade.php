@@ -15,9 +15,18 @@
 <body>
 
 	@include('includes.nav.navbar')
-	@include('includes.nav.logs')
 
 	<div id="app" class="wrapper">
+		<div class="log-nav-btns p-2">
+			<a href="{{ route('log-viewer::dashboard') }}" class="waves-effect waves-light btn-small {{ activeIfRouteIs('log-viewer') }}">
+				<i class="material-icons left">pie_chart</i>
+				@lang('logs.dashboard')
+			</a>
+			<a href="{{ route('log-viewer::logs.list') }}" class="waves-effect waves-light btn-small {{ activeIfRouteIs('log-viewer/logs') }}">
+				<i class="material-icons left">library_books</i>
+				@lang('logs.logs')
+			</a>
+		</div>
 		@yield('content')
 	</div>
 
