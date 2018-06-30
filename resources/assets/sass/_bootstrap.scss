@@ -317,7 +317,13 @@
 .d-none {
 	display: none !important;
 }
-  
+
+.justify-content-between {
+	-webkit-box-pack: justify !important;
+	-ms-flex-pack: justify !important;
+	justify-content: space-between !important;
+}
+
 .d-inline-block {
 	display: inline-block !important;
 }
