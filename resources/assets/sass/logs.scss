@@ -1,3 +1,5 @@
+@import 'modules/variables';
+
 .page-header {
 	border-bottom: 1px solid #8a8a8a;
 }
@@ -158,4 +160,8 @@
 	font-size: 1.1em !important;
 	line-height: 1.5 !important;
 	color: #313131 !important;
+}
+
+.log-nav-btns .active{
+	background: $mainDark;
 }
