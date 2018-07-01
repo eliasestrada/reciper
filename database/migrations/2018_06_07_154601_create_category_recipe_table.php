@@ -9,9 +9,9 @@ class CreateCategoryRecipeTable extends Migration
     public function up()
     {
         Schema::create('category_recipe', function (Blueprint $table) {
-			$table->integer('category_id')->unsigned();
+			$table->unsignedInteger('category_id');
 			$table->foreign('category_id')->references('id')->on('categories');
-			$table->integer('recipe_id')->unsigned();
+			$table->unsignedInteger('recipe_id');
 			$table->foreign('recipe_id')->references('id')->on('recipes');
         });
     }

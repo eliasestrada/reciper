@@ -10,10 +10,10 @@ class CreateLikesTable extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('visitor_id')->unsigned();
+			$table->unsignedInteger('visitor_id');
 			$table->foreign('visitor_id')->references('id')->on('visitors');
 
-			$table->integer('recipe_id')->unsigned();
+			$table->unsignedInteger('recipe_id');
 			$table->foreign('recipe_id')->references('id')->on('recipes');
         });
     }
