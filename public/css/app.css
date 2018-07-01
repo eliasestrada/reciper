@@ -458,7 +458,8 @@ video.responsive-video {
   height: 30px;
 }
 
-.pagination li a {
+.pagination li a,
+.pagination li span {
   color: #444;
   display: inline-block;
   font-size: 1.2rem;
@@ -466,7 +467,8 @@ video.responsive-video {
   line-height: 30px;
 }
 
-.pagination li.active a {
+.pagination li.active a,
+.pagination li.active span {
   color: #fff;
 }
 
