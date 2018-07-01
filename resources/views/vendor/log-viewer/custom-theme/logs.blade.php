@@ -1,7 +1,7 @@
 @extends('log-viewer::custom-theme._master')
 
 @section('content')
-    <div class="page-header mb-4">
+    <div class="mb-4">
         <h4>@lang('logs.logs')</h4>
     </div>
 

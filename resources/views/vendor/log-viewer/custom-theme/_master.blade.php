@@ -3,9 +3,6 @@
 <head>
 	@yield('head')
 	@include('includes.head')
-
-	{!! styleTimestamp('/css/logs.css') !!}
-
 	<title>@lang('logs.logs') {{ log_viewer()->version() }}</title>
 </head>
 <body>

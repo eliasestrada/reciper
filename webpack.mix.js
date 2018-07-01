@@ -1,16 +1,5 @@
 let mix = require('laravel-mix');
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
- |
- */
-
 //  Vanilla
 var vanillaFilesToCompile = [
 	'resources/assets/js/vanilla/modules.js',
@@ -20,14 +9,13 @@ var vanillaFilesToCompile = [
 ];
 
 mix.js('resources/assets/js/vue/vue.js', 'public/js')
+	.sourceMaps()
 	.babel(vanillaFilesToCompile, 'public/js/vanilla.js')
 	.sass('resources/assets/sass/app.scss', 'public/css/app.css')
-	.sass('resources/assets/sass/logs.scss', 'public/css/logs.css')
-	.disableNotifications()
-	.sourceMaps()
 	.browserSync({
 		proxy: 'localhost:8000',
 		browser: 'firefox',
 		files: ['resources/assets/sass/**/*']
 	})
-	.options({processCssUrls: false})
+	.options({ processCssUrls: false })
+	//.disableNotifications()
