@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use Cookie;
 use App\Models\Meal;
-use App\Models\Title;
 use App\Models\Recipe;
-use App\Models\Category;
-use App\Events\RecipeIsReady;
 use App\Http\Requests\RecipeSaveRequest;
 use App\Http\Requests\RecipePublichRequest;
 use App\Helpers\Traits\RecipesControllerHelpers;
 use App\Helpers\Contracts\SaveRecipeDataContract;
+use App\Http\Responses\Controllers\RecipeUpdateResponse;
 
 class RecipesController extends Controller
 {
@@ -102,6 +100,7 @@ class RecipesController extends Controller
 	 * @see RecipePublichRequest
 	 * @param RecipePublichRequest $request
 	 * @param Recipe $recipe
+	 * @return RecipeUpdateResponse
 	 */
     public function update(RecipePublichRequest $request, Recipe $recipe)
     {
@@ -116,15 +115,6 @@ class RecipesController extends Controller
 
 		$this->createOrUpdateRecipe($request, $image_name, $recipe);
 
-        if (!$recipe->ready()) {
-            return back()->withSuccess(trans('recipes.saved'));
-		}
-		
-		if ($recipe->ready() && user()->isAdmin()) {
-            return redirect('/recipes')->withSuccess(trans('recipes.recipe_published'));
-		}
-		event(new RecipeIsReady($recipe));
-
-        return redirect('/dashboard')->withSuccess(trans('recipes.added_to_approving'));
+        return new RecipeUpdateResponse($recipe);
     }
 }
