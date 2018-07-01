@@ -52,13 +52,13 @@
 					<li class="collection-item">
 						<div>
 							<span>@lang('logs.path_to_file'):</span> 
-							{{ $log->getPath() }} <i class="material-icons left">linear_scale</i>
+							{{ $log->getPath() }} <i class="material-icons left">swap_horiz</i>
 						</div>
 					</li>
 					<li class="collection-item">
 						<div>
 							<span>@lang('logs.all_files'):</span> 
-							{{ $entries->total() }} <i class="material-icons left">clear_all</i>
+							{{ $entries->total() }} <i class="material-icons left">style</i>
 						</div>
 					</li>
 					<li class="collection-item">
