@@ -57,8 +57,8 @@
 					</li>
 					<li class="collection-item">
 						<div>
-							<span>@lang('logs.all_files'):</span> 
-							{{ $entries->total() }} <i class="material-icons left">style</i>
+							<span>@lang('logs.all_errors'):</span> 
+							{{ $entries->total() }} <i class="material-icons left">error_outline</i>
 						</div>
 					</li>
 					<li class="collection-item">
