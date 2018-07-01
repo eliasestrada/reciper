@@ -58,8 +58,8 @@
 </li>
 
 @master
-	<li class="{{ activeIfRouteIs('log-viewer/logs*') }}"> {{-- log-viewer --}}
-		<a href="/log-viewer/logs" title="@lang('logs.logs')">
+	<li class="position-relative {{ activeIfRouteIs('log-viewer/logs*') }}"> {{-- log-viewer --}}
+		<a href="/log-viewer/logs" title="@lang('logs.logs')" {{ $all_logs ?? '' }} class="small-notif-btn">
 			<i class="material-icons left">library_books</i>@lang('logs.logs')
 		</a>
 	</li>

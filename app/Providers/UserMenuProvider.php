@@ -20,6 +20,7 @@ class UserMenuProvider extends ServiceProvider
 		$this->countAndComposeAllNotifications();
 		$this->countAndComposeAllFeedback();
 		$this->countAndComposeAllUnprovedRecipes();
+		$this->countAndComposeAllLogFiles();
     }
 
 	/**
@@ -85,6 +86,20 @@ class UserMenuProvider extends ServiceProvider
 		} else {
 			$this->log('recipes', 'countAndComposeAllUnprovedRecipes');
 		}
+	}
+
+	/**
+     * @return void
+     */
+	public function countAndComposeAllLogFiles() : void
+	{
+		view()->composer('includes.nav.user-menu', function($view) {
+			if (user()) {
+				$files = count(\File::files(storage_path('logs')));
+				$all_logs = $this->getDataNotifMarkup($files);
+				$view->with(compact('all_logs'));
+			}
+		});
 	}
 
 	/**
