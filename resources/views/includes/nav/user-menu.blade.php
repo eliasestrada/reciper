@@ -26,20 +26,20 @@
 		</a>
 	</li>
 
-	<li class="{{ activeIfRouteIs('admin/checklist') }}"> {{-- checklist --}}
+	<li class="position-relative {{ activeIfRouteIs('admin/checklist') }}"> {{-- checklist --}}
 		<a href="/admin/checklist" title="@lang('includes.checklist')" {{ $all_unapproved ?? '' }} class="small-notif-btn">
 			<i class="material-icons left">search</i>@lang('includes.checklist')
 		</a>
 	</li>
 
-	<li class="{{ activeIfRouteIs('admin/feedback') }}"> {{-- feedback --}}
+	<li class="position-relative {{ activeIfRouteIs('admin/feedback') }}"> {{-- feedback --}}
 		<a href="/admin/feedback" title="@lang('includes.feedback')" {{ $all_feedback ?? '' }} class="small-notif-btn">
 			<i class="material-icons left">feedback</i>@lang('includes.feedback')
 		</a>
 	</li>
 @endadmin
 
-<li class="{{ activeIfRouteIs('notifications') }}"> {{-- notifications --}}
+<li class="position-relative {{ activeIfRouteIs('notifications') }}"> {{-- notifications --}}
 	<a href="/notifications" title="@lang('includes.notifications')" {{ $notifications ?? '' }} class="small-notif-btn">
 		<i class="material-icons left">notifications</i>@lang('includes.notifications')
 	</a>

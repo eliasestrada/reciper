@@ -327,11 +327,23 @@
 .d-inline-block {
 	display: inline-block !important;
 }
-  
+
 .d-block {
 	display: block !important;
 }
 
 .d-flex {
 	display: flex !important;
+}
+
+.position-static {
+	position: static !important;
+}
+
+.position-relative {
+	position: relative !important;
+}
+
+.position-absolute {
+	position: absolute !important;
 }

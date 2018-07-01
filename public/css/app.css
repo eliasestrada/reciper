@@ -6303,6 +6303,23 @@ select {
   min-height: 20em;
 }
 
+.small-notif-btn[data-notif]::after {
+  content: attr(data-notif);
+  min-width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  left: 7px;
+  top: 7px;
+  color: #fff;
+  text-shadow: none;
+  background: #a70e0e;
+  border: solid 1px #fff;
+  border-radius: 50%;
+}
+
 .min-w {
   min-width: 190px;
 }
@@ -6314,6 +6331,7 @@ nav .input-field input[type=search] {
 }
 
 nav .input-field input[type=search]:-webkit-autofill {
+  box-shadow: 0 0 0 100px #484074 inset;
   -webkit-box-shadow: 0 0 0 100px #484074 inset;
   -webkit-text-fill-color: #000 !important;
 }
@@ -6720,6 +6738,18 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   display: -webkit-box !important;
   display: -ms-flexbox !important;
   display: flex !important;
+}
+
+.position-static {
+  position: static !important;
+}
+
+.position-relative {
+  position: relative !important;
+}
+
+.position-absolute {
+  position: absolute !important;
 }
 
 .home-section {

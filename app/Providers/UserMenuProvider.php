@@ -28,7 +28,7 @@ class UserMenuProvider extends ServiceProvider
     public function countAndComposeAllNotifications() : void
     {
         if (Schema::hasTable('notifications')) {
-			view()->composer('includes.user-sidebar', function($view) {
+			view()->composer('includes.nav.user-menu', function($view) {
 				if (user()) {
 					$notifications = Notification::where([
 						['user_id', user()->id],
@@ -56,7 +56,7 @@ class UserMenuProvider extends ServiceProvider
 	public function countAndComposeAllFeedback() : void
 	{
 		if (Schema::hasTable('feedback')) {
-			view()->composer('includes.user-sidebar', function($view) {
+			view()->composer('includes.nav.user-menu', function($view) {
 				if (user()) {
 					$feed = Feedback::where('created_at', '>', user()->contact_check)->count();
 					$view->withAllFeedback($this->getDataNotifMarkup($feed));
@@ -73,7 +73,7 @@ class UserMenuProvider extends ServiceProvider
 	public function countAndComposeAllUnprovedRecipes() : void
 	{
 		if (Schema::hasTable('recipes')) {
-			view()->composer('includes.user-sidebar', function($view) {
+			view()->composer('includes.nav.user-menu', function($view) {
 				if (user()) {
 					$recipes = Recipe::where("approved_" . locale(), 0)
 						->where("ready_" . locale(), 1)
@@ -92,7 +92,7 @@ class UserMenuProvider extends ServiceProvider
 	 * @return string
 	 * @param int $data
 	 */
-	public function getDataNotifMarkup($data) : string
+	public function getDataNotifMarkup($data)
 	{
 		return !empty($data) ? 'data-notif=' . $data : '';
 	}

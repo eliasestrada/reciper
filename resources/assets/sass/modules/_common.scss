@@ -25,6 +25,23 @@ select {
 	min-height: 20em;
 }
 
+.small-notif-btn[data-notif]::after {
+	content: attr(data-notif);
+	min-width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	display: inline-block;
+	position: absolute;
+	left: 7px;
+	top: 7px;
+	color: $smallNotifBtnColor;
+	text-shadow: none;
+	background: $smallNotifBtnBg;
+	border: solid 1px $smallNotifBtnColor;
+	border-radius: 50%;
+}
+
 .min-w {
 	min-width: 190px;
 }
@@ -36,6 +53,7 @@ nav .input-field input[type=search] {
 }
 
 nav .input-field input[type=search]:-webkit-autofill {
+	box-shadow: 0 0 0 100px $main inset;
 	-webkit-box-shadow: 0 0 0 100px $main inset;
 	-webkit-text-fill-color: #000 !important;
 }
