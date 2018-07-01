@@ -58,7 +58,7 @@
 </li>
 
 @master
-	<li class="{{ activeIfRouteIs('/log-viewer/logs') }}"> {{-- log-viewer --}}
+	<li class="{{ activeIfRouteIs('log-viewer/logs*') }}"> {{-- log-viewer --}}
 		<a href="/log-viewer/logs" title="@lang('logs.logs')">
 			<i class="material-icons left">library_books</i>@lang('logs.logs')
 		</a>
