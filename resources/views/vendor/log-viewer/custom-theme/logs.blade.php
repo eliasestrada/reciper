@@ -49,7 +49,7 @@
                                 <i class="material-icons">file_download</i>
 							</a>
 							{{-- Delete button --}}
-							<form action="{{ route('log-viewer::logs.delete') }}" method="post" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')" data-position="top" onsubmit="return confirm('@lang('logs.confirm', ['date' => $date])')">
+							<form action="{{ action('LogsController@delete') }}" method="post" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')" data-position="top" onsubmit="return confirm('@lang('logs.confirm', ['date' => $date])')">
 								<input type="hidden" name="_method" value="DELETE">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
 								<input type="hidden" name="date" value="{{ $date }}">

@@ -2,6 +2,9 @@
 
 Auth::routes();
 
+// Logs (This route overwrites delete method from log-viewer package)
+Route::delete('/log-viewer/logs/delete', 'LogsController@delete');
+
 // Pages ===========
 Route::get('/', 'PagesController@home');
 Route::get('search', 'PagesController@search');
