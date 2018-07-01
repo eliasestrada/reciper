@@ -16,7 +16,7 @@
 		@forelse ($notifications as $notif)
 			<div class="col s12 m6 l4">
 				<div class="card-panel px-3">
-					<span class="white-text">
+					<span>
 						<h6>{!! $notif->getIcon() !!} {{ trans($notif->title) }}</h6>
 						<p>{{ trans($notif->message) }}</p>
 						<hr /><p>{{ $notif->data }}</p>
