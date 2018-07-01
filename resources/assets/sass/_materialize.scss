@@ -28,6 +28,10 @@
 }
 
 // Main color
+.transparent {
+	background-color: transparent !important;
+}
+
 .main {
 	background-color: $main !important;
 }

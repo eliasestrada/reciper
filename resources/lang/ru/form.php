@@ -12,6 +12,7 @@ return [
 	'message' => 'Сообщение',
 	'new_pwd' => 'Новый пароль',
 	'select_file' => 'Выбрать файл',
+	'cancel' => 'Отмена',
 	'delete_photo' => 'Удалить фото',
 	'change_pwd' => 'Изменение пароля',
 	'current_pwd' => 'Ваш текущий пароль',

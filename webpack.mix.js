@@ -22,6 +22,7 @@ var vanillaFilesToCompile = [
 mix.js('resources/assets/js/vue/vue.js', 'public/js')
 	.babel(vanillaFilesToCompile, 'public/js/vanilla.js')
 	.sass('resources/assets/sass/app.scss', 'public/css/app.css')
+	.sass('resources/assets/sass/logs.scss', 'public/css/logs.css')
 	.disableNotifications()
 	.sourceMaps()
 	.browserSync({

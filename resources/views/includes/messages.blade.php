@@ -1,16 +1,18 @@
-@if (count($errors) > 0)
-	@foreach ($errors->all() as $error)
-	<script>
-		let message = ''
-	</script>
+@isset($errors)
+	@if (count($errors) > 0)
+		@foreach ($errors->all() as $error)
 		<script>
-			message += '{{ $error }} <br />'
+			let message = ''
 		</script>
-	@endforeach
-	<script>
-		M.toast({html: message, displayLength: 10000, classes: 'red'})
-	</script>
-@endif
+			<script>
+				message += '{{ $error }} <br />'
+			</script>
+		@endforeach
+		<script>
+			M.toast({html: message, displayLength: 10000, classes: 'red'})
+		</script>
+	@endif
+@endisset
 
 @if (session('success'))
 	<script>

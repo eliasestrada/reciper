@@ -1,8 +1,8 @@
-@extends('log-viewer::bootstrap-4._master')
+@extends('layouts.logs')
 
 @section('content')
     <div class="page-header mb-4">
-        <h1>Dashboard</h1>
+        <h4>@lang('logs.dashboard')</h4>
     </div>
 
     <div class="row">
