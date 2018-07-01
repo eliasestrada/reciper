@@ -22,11 +22,11 @@ class RecipeSaveRequest extends FormRequest
             'intro' => 'max:' . config('validation.intro_max'),
             'ingredients' => 'max:' . config('validation.ingredients_max'),
 			'text' => 'max:' . config('validation.text_max'),
-			'meal' => 'numeric|digits_between:1,3',
-            'time' => 'numeric|digits_between:0,1999',
+			'meal' => 'numeric|between:1,3',
+            'time' => 'numeric|between:0,1999',
 			'image' => 'image|nullable|max:1999',
 			'categories.0' => 'required',
-			'categories.*' => 'distinct|numeric|digits_between:1,' . Category::count(),
+			'categories.*' => 'distinct|numeric|between:1,' . Category::count(),
 		];
 	}
 
@@ -46,15 +46,15 @@ class RecipeSaveRequest extends FormRequest
 			'text.max' => trans('recipes.text_max'),
 
 			'meal.numeric' => trans('recipes.meal_numeric'),
-			'meal.digits_between' => trans('recipes.meal_digits_between'),
+			'meal.between' => trans('recipes.meal_between'),
 
 			'categories.0.required' => trans('recipes.categories_required'),
 			'categories.*.distinct' => trans('recipes.categories_distinct'),
 			'categories.*.numeric' => trans('recipes.categories_numeric'),
-			'categories.*.digits_between' => trans('recipes.categories_numeric'),
+			'categories.*.between' => trans('recipes.categories_numeric'),
 			
 			'time.numeric' => trans('recipes.time_numeric'),
-			'time.digits_between' => trans('recipes.time_digits_between'),
+			'time.between' => trans('recipes.time_between'),
 
 			'image.image' => trans('recipes.image_image'),
 			'image.max' => trans('recipes.image_max')

@@ -26,16 +26,16 @@ class RecipePublichRequest extends FormRequest
 				'intro' => 'min:20|max:' . config('validation.intro_max'),
 				'ingredients' => 'min:20|max:' . config('validation.ingredients_max'),
 				'text' => 'min:80|max:' . config('validation.text_max'),
-				'meal' => 'numeric|digits_between:1,3',
-				'time' => 'numeric|digits_between:0,1000',
+				'meal' => 'numeric|between:1,3',
+				'time' => 'numeric|between:0,1000',
 				'image' => 'image|nullable|max:1999',
 				'categories.0' => 'required',
-				'categories.*' => 'distinct|numeric|digits_between:1,' . Category::count(),
+				'categories.*' => 'distinct|numeric|between:1,' . Category::count(),
 			];
 		}
 		return [
 			'categories.0' => 'required',
-			'categories.*' => 'distinct|numeric|digits_between:1,' . Category::count(),
+			'categories.*' => 'distinct|numeric|between:1,' . Category::count(),
 		];
 	}
 	
@@ -50,7 +50,7 @@ class RecipePublichRequest extends FormRequest
 			'intro.max' => trans('recipes.intro_max'),
 
 			'meal.numeric' => trans('recipes.meal_numeric'),
-			'meal.digits_between' => trans('recipes.meal_digits_between'),
+			'meal.between' => trans('recipes.meal_between'),
 
 			'ingredients.min' => trans('recipes.ingredients_min'),
 			'ingredients.max' => trans('recipes.ingredients_max'),
@@ -58,13 +58,13 @@ class RecipePublichRequest extends FormRequest
 			'categories.0.required' => trans('recipes.categories_required'),
 			'categories.*.distinct' => trans('recipes.categories_distinct'),
 			'categories.*.numeric' => trans('recipes.categories_numeric'),
-			'categories.*.digits_between' => trans('recipes.categories_numeric'),
+			'categories.*.between' => trans('recipes.categories_numeric'),
 
 			'text.min' => trans('recipes.text_min'),
 			'text.max' => trans('recipes.text_max'),
 
 			'time.numeric' => trans('recipes.time_numeric'),
-			'time.digits_between' => trans('recipes.time_digits_between'),
+			'time.between' => trans('recipes.time_between'),
 
 			'image.image' => trans('recipes.image_image'),
 			'image.max' => trans('recipes.image_max')

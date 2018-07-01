@@ -57,7 +57,6 @@ return [
         App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
 		Intervention\Image\ImageServiceProvider::class,
-		App\Providers\EloquentEventProvider::class,
 		App\Providers\BladeProvider::class,
 		App\Providers\UserMenuProvider::class,
 		App\Providers\FooterProvider::class,
