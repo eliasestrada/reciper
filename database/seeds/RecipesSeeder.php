@@ -19,16 +19,16 @@ class RecipesSeeder extends Seeder
         $this->second();
         $this->third();
 		$this->forth();
-		
-		$categories = Category::get();
 
-		Recipe::get()->each(function ($recipe) use ($categories) {
-			$recipe->categories()->attach(
-				$categories->random(rand(1, 4))
-				->pluck('id')
-				->toArray()
-			);
-		});
+		// $categories = Category::get();
+
+		// Recipe::get()->each(function ($recipe) use ($categories) {
+		// 	$recipe->categories()->attach(
+		// 		$categories->random(rand(1, 4))
+		// 		->pluck('id')
+		// 		->toArray()
+		// 	);
+		// });
 	}
 	
 	
