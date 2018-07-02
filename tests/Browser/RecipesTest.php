@@ -19,10 +19,11 @@ class RecipesTest extends DuskTestCase
 			$first
 				->loginAs(User::find(1))
 				->visit('/recipes/' . $recipe->id)
-				->click('.edit-recipe-icon')
+				->click('.btn-floating .main .btn-large .pulse .z-depth-3')
+				->click('.btn-floating .btn-large .green .d-flex .tooltipped')
 				->assertPathIs('/recipes/'.$recipe->id.'/edit')
-				->check('ready')
-				->click('#submit-save-recipe')
+				->click('.btn-floating .main .btn-large .pulse .z-depth-3')
+				->click('.btn-floating .green .btn-large .tooltipped')
 				->assertSee('Рецепт опубликован')
 				->assertPathIs('/recipes')
 				->pause(1000);
