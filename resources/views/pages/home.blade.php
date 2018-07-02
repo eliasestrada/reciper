@@ -65,9 +65,9 @@
 									<img class="activator" src="{{ asset('storage/images/'.$random->image) }}">
 								</a>
 							</div>
-							<div class="card-content">
+							<div class="card-content min-h">
 								<span class="card-title activator">
-									{{ $random->getTitle() }}
+									{{ str_limit($random->getTitle(), 45) }}
 									<i class="material-icons right">more_vert</i>
 								</span>
 							</div>
