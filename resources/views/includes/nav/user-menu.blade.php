@@ -66,7 +66,7 @@
 @endmaster
 
 <li> {{-- logout --}} {{-- This button submits logout-form --}}
-	<a href="#" title="@lang('includes.logout')" onclick="$('logout-form').submit()">
+	<a href="#" title="@lang('includes.logout')" onclick="$('logout-form').submit()" id="_logout">
 		<i class="material-icons left">power_settings_new</i>@lang('includes.logout')
 	</a>
 </li>
