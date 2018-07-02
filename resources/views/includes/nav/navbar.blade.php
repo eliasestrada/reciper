@@ -26,7 +26,7 @@
 				</li>
 				@auth
 					<li> <!-- Dropdown Trigger 2 User -->
-						<a class="dropdown-trigger" href="#!" data-target="dropdown2">
+						<a class="dropdown-trigger" id="_user-menu" href="#!" data-target="dropdown2">
 							@lang('includes.profile')
 							<i class="right user-icon">
 								<img src="{{ asset('storage/users/' . user()->image) }}" alt="user">
