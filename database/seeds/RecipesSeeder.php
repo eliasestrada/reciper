@@ -13,10 +13,10 @@ class RecipesSeeder extends Seeder
      */
     public function run()
     {
-        $this->first();
-        $this->second();
-        $this->third();
-		$this->forth();
+        // $this->first();
+        // $this->second();
+        // $this->third();
+		// $this->forth();
 
 		// $categories = Category::get();
 
