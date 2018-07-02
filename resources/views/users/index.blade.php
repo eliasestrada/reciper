@@ -13,7 +13,7 @@
 		@foreach ($users as $user)
 			<a href="/users/{{ $user->id }}" title="{{ $user->name }}" class="col s12 m6 l4">
 				<li>
-					<img src="{{ asset('storage/uploads/'.$user->image) }}" alt="{{ $user->name }}" style="width:67px; height:71px;" />
+					<img src="{{ asset('storage/users/'.$user->image) }}" alt="{{ $user->name }}" style="width:67px; height:71px;" />
 
 					<div class="item-content">
 						<h6 class="project-name">{{ $user->name }}</h6>
