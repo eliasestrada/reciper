@@ -3,7 +3,7 @@
 return [
 
 	// Application Name
-    'name' => env('APP_NAME', 'DeliciousFood'),
+    'name' => env('APP_NAME', 'Reciper'),
 
     // Application Environment
     'env' => env('APP_ENV', 'production'),
