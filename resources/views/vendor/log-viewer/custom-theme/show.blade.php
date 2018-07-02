@@ -110,7 +110,7 @@
 				@forelse($entries as $key => $entry)
 					<div class="col s12">
 						<div class="card">
-							<div class="card-content">
+							<div class="card-content" style="min-height:230px;">
 								<span class="card-title activator grey-text text-darken-4">
 									<div class="d-inline-block">
 										{{ $entry->env }}
