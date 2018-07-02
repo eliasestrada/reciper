@@ -12,6 +12,7 @@ class RecipesResource extends JsonResource
         return [
 			'id' => $this->id,
 			'title' => $this->resource->getTitle(),
+			'title_short' => str_limit($this->resource->getTitle(), 45),
 			'intro' => $this->resource->getIntro(),
 			'image' => $this->image
 		];
