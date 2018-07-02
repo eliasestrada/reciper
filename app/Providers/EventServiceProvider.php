@@ -11,9 +11,6 @@ class EventServiceProvider extends ServiceProvider
      * The event listener mappings for the application.
      */
     protected $listen = [
-        'Illuminate\Auth\Events\Registered' => [
-            'App\Listeners\SendEmailToAdmin',
-		],
 		'App\Events\RecipeIsReady' => [
             'App\Listeners\SendSms',
         ],
