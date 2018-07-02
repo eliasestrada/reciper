@@ -46,6 +46,11 @@ select {
 	min-width: 190px;
 }
 
+.min-h {
+	height: 165px;
+	overflow-y: hidden;
+}
+
 nav .input-field input[type=search] {
 	margin-bottom: 0 !important;
 	height: 64px !important;

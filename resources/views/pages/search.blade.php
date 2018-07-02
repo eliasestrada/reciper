@@ -31,9 +31,9 @@
 								<img src="{{ asset('storage/images/'.$recipe['image']) }}" alt="{{ $recipe->getTitle() }}" class="activator">
 							</a>
 						</div>
-						<div class="card-content">
+						<div class="card-content min-h">
 							<span class="card-title activator">
-								{{ $recipe->getTitle() }}
+								{{ str_limit($recipe->getTitle(), 45) }}
 								<i class="material-icons right">more_vert</i>
 							</span>
 						</div>

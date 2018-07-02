@@ -17,7 +17,7 @@
 						</a>
 	
 						<div class="item-content">
-							<section>{{ $recipe->getTitle() }}</section>
+							<section>{{ str_limit($recipe->getTitle(), 45) }}</section>
 							<section>
 								@lang('users.date') {{ timeAgo($recipe->updated_at) }}
 							</section>

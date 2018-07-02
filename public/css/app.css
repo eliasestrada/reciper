@@ -6326,6 +6326,11 @@ select {
   min-width: 190px;
 }
 
+.min-h {
+  height: 165px;
+  overflow-y: hidden;
+}
+
 nav .input-field input[type=search] {
   margin-bottom: 0 !important;
   height: 64px !important;
@@ -7241,7 +7246,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 
 .item-list li {
   position: relative;
-  height: auto;
+  height: 105px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
