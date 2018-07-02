@@ -6,13 +6,16 @@ use App\Models\User;
 use App\Models\Recipe;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Artisan;
 
 class RecipesTest extends DuskTestCase
 {
 	/** @test */
     public function checkIfUserCanEditHisOwnRecipe()
     {
+		Artisan::call('migrate:fresh');
+		Artisan::call('db:seed');
+
 		$recipe = Recipe::where('user_id', 1)->first();
 
         $this->browse(function ($first) use ($recipe) {
