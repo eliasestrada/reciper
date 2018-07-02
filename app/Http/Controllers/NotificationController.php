@@ -20,14 +20,13 @@ class NotificationController extends Controller
 			$notifications->orWhere('for_admins', 1);
 		}
 
-		$query = $notifications->latest()->paginate(10);
-
 		User::whereId(user()->id)->update([
-			'notif_check' => NOW()
+			'notif_check' => now()
 		]);
 
-		return view('notifications.index')
-			->withNotifications($query);
+		return view('notifications.index', [
+			'notifications' => $notifications->latest()->paginate(10)
+		]);
     }
 
     /**
@@ -40,8 +39,9 @@ class NotificationController extends Controller
     {
 		if ($notification->for_admins !== 1) {
 			$notification->delete();
-			return redirect('notifications')
-				->withSuccess(trans('notifications.deleted'));
+			return redirect('notifications')->withSuccess(
+				trans('notifications.deleted')
+			);
 		}
         return redirect('notifications');
     }

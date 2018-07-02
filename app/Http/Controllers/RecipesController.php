@@ -27,8 +27,9 @@ class RecipesController extends Controller
 
     public function create()
     {
-		return view('recipes.create')
-			->withMeal(Meal::get(['id', 'name_' . locale()]));	
+		return view('recipes.create', [
+			'meal' => Meal::get(['id', 'name_' . locale()])
+		]);	
     }
 
     /**
@@ -74,7 +75,7 @@ class RecipesController extends Controller
                 return redirect('/recipes')->withError(trans('recipes.not_approved'));
 			}
 		}
-		return view('recipes.show')->withRecipe($recipe);
+		return view('recipes.show', compact('recipe'));
     }
 
 	/**
@@ -89,9 +90,10 @@ class RecipesController extends Controller
 			);
 		}
 
-		return view('recipes.edit')
-			->withRecipe($recipe)
-			->withMeal(Meal::get(['id', 'name_'.locale()]));
+		return view('recipes.edit', [
+			'recipe' => $recipe,
+			'meal' => Meal::get(['id', 'name_'.locale()])
+		]);
     }
 
     /**

@@ -15,6 +15,9 @@ class LogsController extends LogViewerController
     public function delete(Request $request)
     {
 		$this->logViewer->delete(request('date'));
-        return redirect('log-viewer/logs')->withSuccess(trans('logs.deleted'));
+
+        return redirect('log-viewer/logs')->withSuccess(
+			trans('logs.deleted')
+		);
     }
 }

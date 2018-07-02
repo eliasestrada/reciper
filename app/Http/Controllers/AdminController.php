@@ -21,7 +21,7 @@ class AdminController extends Controller
 			->oldest()
 			->paginate(10);
 
-		return view('admin.checklist')->withUnapproved($unapproved);
+		return view('admin.checklist', compact('unapproved'));
 	}
 
 
@@ -32,7 +32,7 @@ class AdminController extends Controller
         $allrecipes = Recipe::count();
         $allvisitors = Visitor::distinct('ip')->count();
 
-		return view('admin.statistic')->with(compact(
+		return view('admin.statistic', compact(
 			'sxgeo', 'visitors', 'allrecipes', 'allvisitors'
 		));
 	}
@@ -43,10 +43,12 @@ class AdminController extends Controller
 	public function feedback()
     {
 		User::whereId(user()->id)->update([
-			'contact_check' => NOW()
+			'contact_check' => now()
 		]);
 
-		return view('admin.feedback')->withFeedback(Feedback::paginate(40));
+		return view('admin.feedback', [
+			'feedback' => Feedback::paginate(40)
+		]);
 	}
 
 	/**

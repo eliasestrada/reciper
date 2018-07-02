@@ -15,7 +15,7 @@ class UsersController extends Controller
 
 	public function index()
 	{
-        return view('users.index')->withUsers(User::simplePaginate(30));
+        return view('users.index', ['users' => User::simplePaginate(30)]);
 	}
 
 	/**
@@ -35,13 +35,13 @@ class UsersController extends Controller
 			$likes += $recipe['likes_count'];
 		}
 
-		return view('users.show')->with(compact('recipes', 'user', 'likes'));
+		return view('users.show', compact('recipes', 'user', 'likes'));
 	}
 
 	public function my_recipes()
 	{
 		$recipes = Recipe::whereUserId(user()->id)->latest()->paginate(20);
 
-		return view('users.my-recipes')->withRecipes($recipes);
+		return view('users.my-recipes', compact('recipes'));
 	}
 }

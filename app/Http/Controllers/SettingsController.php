@@ -85,9 +85,7 @@ class SettingsController extends Controller
 			'text_' . locale() => $request->text
 		]);
 
-		return back()->withSuccess(
-			trans('settings.saved')
-		);
+		return back()->withSuccess(trans('settings.saved'));
 	}
 
 	/**

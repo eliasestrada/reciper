@@ -37,7 +37,7 @@ class PagesController extends Controller
 			$text_intro = $intro->value("text_" . locale());
 		}
 
-		return view('pages.home')->with(compact(
+		return view('pages.home', compact(
 			'random_recipes', 'title_intro', 'text_intro'
 		));
 	}
@@ -65,6 +65,6 @@ class PagesController extends Controller
 			$message = trans('pages.use_search');
 		}
 
-		return view('pages.search')->with(compact('recipes', 'message'));
+		return view('pages.search', compact('recipes', 'message'));
 	}
 }
