@@ -13,7 +13,10 @@
 			</div>
 
 			<div class="fixed-action-btn">
-				<a href="#" class="btn-floating main btn-large pulse z-depth-3"><i class="large material-icons">more_vert</i></a>
+				{{-- Floating button --}}
+				<a href="#" class="btn-floating main btn-large pulse z-depth-3" id="_more">
+					<i class="large material-icons">more_vert</i>
+				</a>
 				<ul>
 					<li> {{--  Delete button  --}}
 						<delete-recipe-btn

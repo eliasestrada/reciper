@@ -8,7 +8,7 @@ use Laravel\Dusk\Browser;
 class UserAccessTest extends DuskTestCase
 {
 	/** @test */
-	public function resisterNewUser()
+	public function resisterNewUserAndLogout()
 	{
 		$this->browse(function (Browser $browser) {
 			$browser
@@ -18,7 +18,11 @@ class UserAccessTest extends DuskTestCase
 				->type('password', '111111')
 				->type('password_confirmation', '111111')
 				->click('#register-btn')
-				->assertSee('Alex');
+				->assertSee('Alex')
+				->press('#_user-menu')
+				->pause(500)
+				->click('#_logout')
+				->assertPathIs('/');
 		});
 	}
 
@@ -33,10 +37,9 @@ class UserAccessTest extends DuskTestCase
 				->click('#go-to-account')
 				->waitForText('Alex')
 				->assertSee('Alex')
-				->pause(1000)
-				->click('#_user-menu')
-				->click('#_logout')
+				->press('#_user-menu')
 				->pause(500)
+				->click('#_logout')
 				->assertPathIs('/');
 		});
 	}

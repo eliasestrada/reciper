@@ -16,36 +16,35 @@ class RecipesTest extends DuskTestCase
 		Artisan::call('migrate:fresh');
 		Artisan::call('db:seed');
 
-		$recipe = Recipe::where('user_id', 1)->first();
+		$recipe = factory(Recipe::class)->create(['user_id' => 10]);
+		$user = factory(User::class)->create(['id' => 10]);
 
-        $this->browse(function ($first) use ($recipe) {
+        $this->browse(function ($first) use ($recipe, $user) {
 			$first
-				->loginAs(User::find(1))
+				->loginAs($user)
 				->visit('/recipes/' . $recipe->id)
-				->click('.btn-floating .main .btn-large .pulse .z-depth-3')
-				->click('.btn-floating .btn-large .green .d-flex .tooltipped')
+				->click('#_more')
+				->click('#_edit')
 				->assertPathIs('/recipes/'.$recipe->id.'/edit')
-				->click('.btn-floating .main .btn-large .pulse .z-depth-3')
-				->click('.btn-floating .green .btn-large .tooltipped')
-				->assertSee('Рецепт опубликован')
-				->assertPathIs('/recipes')
-				->pause(1000);
+				->click('#_more')
+				->click('#publish-btn')
+				->assertPathIs('/users/' . $user->id);
         });
 	}
 
 	/** @test */
     public function checkIfUserCantEditOtherRecipes()
     {
-		$recipe = Recipe::where('user_id', 1)->first();
+		$recipe = factory(Recipe::class)->create(['user_id' => 10]);
+		$user = factory(User::class)->create(['id' => 11]);
 
-        $this->browse(function ($first) use ($recipe) {
+        $this->browse(function ($first) use ($recipe, $user) {
 			$first
-				->loginAs(User::find(2))
+				->loginAs($user)
 				->visit('/recipes/' . $recipe->id)
-				->pause(1000)
 				->assertDontSee('.edit-recipe-icon')
 				->visit('/recipes/' . $recipe->id . '/edit')
-				->assertSee('Вы не можете редактировать');
+				->assertPathIs('/recipes');
         });
     }
 }

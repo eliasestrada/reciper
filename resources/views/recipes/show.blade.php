@@ -19,7 +19,7 @@
 		@auth {{--  Buttons  --}}
 			@if (user()->hasRecipe($recipe->user_id))
 				<div class="fixed-action-btn">
-					<a href="#" class="btn-floating main btn-large pulse z-depth-3">
+					<a href="#" class="btn-floating main btn-large pulse z-depth-3" id="_more">
 						<i class="large material-icons">more_vert</i> 
 					</a>
 					<ul>
@@ -32,7 +32,7 @@
 							</delete-recipe-btn>
 						</li>
 						<li> {{--  Edit button  --}}
-							<a href="/recipes/{{ $recipe->id }}/edit" class="btn-floating btn-large green d-flex tooltipped" data-tooltip="@lang('tips.edit_recipe')" data-position="left">
+							<a href="/recipes/{{ $recipe->id }}/edit" class="btn-floating btn-large green d-flex tooltipped" data-tooltip="@lang('tips.edit_recipe')" data-position="left" id="_edit">
 								<i class="large material-icons">mode_edit</i>
 							</a>
 						</li>
