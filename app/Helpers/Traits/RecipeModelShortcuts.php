@@ -65,9 +65,9 @@ trait RecipeModelShortcuts
 	 */
 	public function getStatus() : string
 	{
-		if ($this->approved() === true) {
+		if ($this->approved()) {
 			return trans('users.checked');
-		} elseif ($this->ready() === false) {
+		} elseif (!$this->ready()) {
 			return trans('users.not_ready');
 		} else {
 			return trans('users.not_checked');
