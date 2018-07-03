@@ -4,16 +4,12 @@ namespace Tests\Browser;
 
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
-use Illuminate\Support\Facades\Artisan;
 
 class UserAccessTest extends DuskTestCase
 {
 	/** @test */
 	public function resisterNewUserAndLogout()
 	{
-		Artisan::call('migrate:fresh');
-		Artisan::call('db:seed');
-
 		$this->browse(function (Browser $browser) {
 			$browser
 				->visit('/register')
