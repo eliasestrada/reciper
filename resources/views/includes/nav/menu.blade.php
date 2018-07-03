@@ -10,9 +10,3 @@
 		@lang('includes.recipes')
 	</a>
 </li>
-<li>
-	<a href="#" title="@lang('includes.search')">
-		<i class="material-icons left">search</i>
-		@lang('includes.search')
-	</a>
-</li>
