@@ -9,6 +9,9 @@ return [
 	'home' => 'Главная',
 	'feedback' => 'Обратная связь',
 	'search' => 'Поиск',
+	'add' => 'Добавить',
+	'enter' => 'Войти',
+	'register' => 'Регистрация',
 
 	// User sidebar
 	'profile' => 'Профиль',
