@@ -9,6 +9,7 @@
 </head>
 <body>
 
+	@include('includes.nav.sidenav')
 	@include('includes.nav.navbar')
 
 	@yield('home-header')
