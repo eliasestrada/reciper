@@ -51,6 +51,7 @@
 		{{-- -- --}}
 
 		<button type="submit" id="register-btn" class="btn btn-lg btn-main mt-3">
+			<i class="material-icons left">assignment_turned_in</i>
 			@lang('form.register')
 		</button>
 	</form>
