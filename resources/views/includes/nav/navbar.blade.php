@@ -23,6 +23,13 @@
 
 			<ul class="right hide-on-med-and-down right-borders">
 				@include('includes.nav.menu')
+				{{-- Seach trigger --}}
+				<li>
+					<a href="#" title="@lang('includes.search')" id="nav-btn-for-search-1">
+						<i class="material-icons left">search</i>
+						@lang('includes.search')
+					</a>
+				</li>
 
 				<li> {{-- Dropdown Trigger 1 Categories --}}
 					<a class="dropdown-trigger" href="#!" data-target="dropdown1">
@@ -44,6 +51,21 @@
 				@endauth
 			</ul>
 		</div>
+	</div>
+</nav>
+
+{{-- Search navigation --}}
+<nav class="main-hover nav-search-form" id="nav-search-form">
+	<div class="nav-wrapper container">
+		<form action="{{ action('PagesController@search') }}" method="get">
+			<div class="input-field">
+				<input id="search-input" type="search" name="for" placeholder="@lang('pages.search_details')" required>
+				<label class="label-icon" for="search-input">
+					<i class="material-icons">search</i>
+				</label>
+				<i class="material-icons">close</i>
+			</div>
+		</form>
 	</div>
 </nav>
 
