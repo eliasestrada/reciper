@@ -31,6 +31,7 @@
 	
 		<div class="input-field">
 			<button type="submit" id="go-to-account" class="btn btn-lg btn-main">
+				<i class="material-icons right">keyboard_arrow_right</i>
 				@lang('form.login')
 			</button>
 		</div>
@@ -38,7 +39,14 @@
 		{{-- @TODO: --}}
 		{{-- <a href="{{ route('password.request') }}">@lang('form.forgot_pwd')</a> --}}
 	</form>
-	<p class="center">У Вас нет аккаунта? Зарегистрируйтесь , это займет всего 30 секунд.</p>
+	<div class="pt-4">
+		<p>
+			@lang('messages.dont_have_account'):
+			<a href="/register">
+				<span class="new badge p-1 px-2" style="float:none">@lang('form.register')</span>
+			</a>
+		</p>
+	</div>
 </div>
 
 @endsection
