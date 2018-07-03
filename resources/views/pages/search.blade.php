@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="page">
-	<div class="center-align">
+	<div class="center">
 		<h1 class="headline">@lang('pages.search')</h1>
 	</div>
 	

@@ -31,13 +31,13 @@
 			<label for="src-image" class="image-label mb-5">
 		</div>
 
-		<div class="center-align">
+		<div class="center">
 			<button type="submit" class="btn m-1 min-w">@lang('form.save_changes')</button>
 		</div>
 	</form>
 
 	{{--  Delete image  --}}
-	<form action="{{ action('SettingsController@updatePhoto') }}" method="post" enctype="multipart/form-data" class="center-align">
+	<form action="{{ action('SettingsController@updatePhoto') }}" method="post" enctype="multipart/form-data" class="center">
 		<div> @method('put') @csrf
 			<input type="hidden" name="delete" value="1">
 			<button type="submit" class="btn red m-1 min-w">@lang('form.delete_photo')</button>

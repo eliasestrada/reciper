@@ -6,7 +6,7 @@
 
 <div class="row page">
 	<div class="col s12 m6 mb-5">
-		<div class="center-align">
+		<div class="center">
 			<h2 class="headline">@lang('form.change_pwd')</h2>
 		</div>
 
@@ -26,14 +26,14 @@
 				<input type="password" name="password_confirmation" id="password_confirmation">
 			</div>
 
-			<div class="input-field mt-4 center-align">
+			<div class="input-field mt-4 center">
 				<button class="btn" type="submit">@lang('form.save_changes')</button>
 			</div>
 		</form>
 	</div>
 
 	<div class="col s12 m6">
-		<div class="center-align">
+		<div class="center">
 			<h2 class="headline">@lang('settings.general')</h2>
 		</div>
 
@@ -43,7 +43,7 @@
 				<input type="text" name="name" id="name" value="{{ user()->name }}">
 			</div>
 
-			<div class="input-field mt-4 center-align">
+			<div class="input-field mt-4 center">
 				<button class="btn" type="submit">@lang('form.save_changes')</button>
 			</div>
 		</form>

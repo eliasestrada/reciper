@@ -1,4 +1,4 @@
-<div class="center-align pb-5">
+<div class="center pb-5">
 	<h5 class="col s12 mb-2">@lang('recipes.image')</h5>
 
 	<div class="file-field input-field">

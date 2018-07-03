@@ -7,7 +7,7 @@
 <div class="container py-5 px-3">
 	<form method="POST" action="{{ route('register') }}" class="form">
 
-		@csrf <div class="center-align"><h2 class="headline">@lang('form.register')</h2></div>
+		@csrf <div class="center"><h2 class="headline">@lang('form.register')</h2></div>
 	
 		<div class="input-field">
 			<input type="text" id="name" name="name" value="{{ old('name') }}" class="validate" required>

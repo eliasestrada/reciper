@@ -5,7 +5,7 @@
 @section('content')
 
 <section class="grid-recipe pt-3">
-	<div class="recipe-content center-align">
+	<div class="recipe-content center">
 
 		{{--  Likes  --}}
 		<div class="like-for-author-section">
@@ -64,14 +64,14 @@
 			@endif
 		@endadmin
 
-		<div class="center-align">
+		<div class="center">
 			<h1 class="decorated">{{ $recipe->getTitle() }}</h1>
 		</div>
 
 		<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img">
 
 		{{--  Category  --}}
-		<div class="center-align py-3">
+		<div class="center py-3">
 			@foreach ($recipe->categories as $category)
 				<a href="/search?for={{ $category->getName() }}" title="{{ $category->getName() }}">
 					<span class="new badge p-1 px-2" style="float:none;">{{ $category->getName() }}</span>
@@ -119,7 +119,7 @@
 	</div>
 
 	{{-- API: Еще рецепты Sidebar --}}
-	<div class="side-bar center-align">
+	<div class="side-bar center">
 		<h6 class="decorated pb-3">@lang('recipes.more')</h6>
 		<random-recipes-sidebar resipe-id="{{ $recipe->id }}">
 			@include('includes.preloader')

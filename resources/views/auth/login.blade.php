@@ -7,7 +7,7 @@
 <div class="container py-5 px-3">
 	<form method="POST" action="{{ route('login') }}" class="form">
 
-		@csrf <div class="center-align"><h3 class="headline">@lang('form.login')</h3></div>
+		@csrf <div class="center"><h3 class="headline">@lang('form.login')</h3></div>
 	
 		<div class="input-field">
 			<input id="email" type="email" name="email" placeholder="@lang('form.email')" class="validate">
@@ -38,6 +38,7 @@
 		{{-- @TODO: --}}
 		{{-- <a href="{{ route('password.request') }}">@lang('form.forgot_pwd')</a> --}}
 	</form>
+	<p class="center">У Вас нет аккаунта? Зарегистрируйтесь , это займет всего 30 секунд.</p>
 </div>
 
 @endsection

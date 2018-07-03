@@ -1,6 +1,6 @@
 <div class="page">
 	@isset($title)
-		<div class="center-align">
+		<div class="center">
 			<h1 class="headline">
 				{{ $title }}{{ count($recipes) > 0 ? ': '.count($recipes) : '' }}
 			</h1>

@@ -5,10 +5,10 @@
 @section('content')
 
 <div class="page container">
-	<div class="center-align"><h1 class="headline">@lang('pages.feedback')</h1></div>
+	<div class="center"><h1 class="headline">@lang('pages.feedback')</h1></div>
 
 	@if (session('success'))
-		<div class="center-align mt-4">
+		<div class="center mt-4">
 			@include('includes.buttons.home-btn') <br />
 			@include('includes.buttons.help-btn')
 		</div>

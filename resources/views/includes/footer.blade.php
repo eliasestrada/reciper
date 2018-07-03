@@ -62,7 +62,7 @@
 		</div>
 	</div>
 
-	<div class="center-align">
+	<div class="center">
 		<a href="/" title="@lang('includes.home')">
 			<img src="{{ asset('favicon.png') }}" alt="@lang('includes.logo')" class="footer-logo">
 		</a>

@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="page">
-	<div class="center-align">
+	<div class="center">
 		<h1 class="headline">
 			@lang('includes.feedback')
 			{{ count($feedback) > 0 ? ': ' . count($feedback) : '' }}
@@ -30,7 +30,7 @@
 				</div>
 			</div>
 		@empty
-			<div class="center-align">
+			<div class="center">
 				<p class="flow-text grey-text">@lang('admin.no_messages')</p>
 			</div>
 		@endforelse

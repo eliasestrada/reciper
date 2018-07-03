@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="page">
-	<div class="center-align">
+	<div class="center">
 		<h1 class="headline mb-3">@lang('admin.statistics')</h1>
 	</div>
 	
@@ -25,7 +25,7 @@
 			</tr>
 		</table>
 	
-		<div class="center-align pt-5">
+		<div class="center pt-5">
 			<h2 class="headline mb-3">@lang('admin.visitors')</h2>
 		</div>
 	

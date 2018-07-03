@@ -8,7 +8,7 @@
 
 	<div class="row"> @method('put') @csrf
 		<div class="col s12">
-			<div class="center-align">
+			<div class="center">
 				<h1 class="headline pb-4">@lang('recipes.add_recipe')</h1>
 			</div>
 
