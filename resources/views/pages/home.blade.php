@@ -8,7 +8,7 @@
 
 @section('content')
 
-<section class="home-section" style="position:relative;">
+<section class="home-section position-relative">
 	@isset($title_intro)
 		<div class="center">
 			<h2 class="headline">{{ title_case($title_intro ?? '') }}</h2>
