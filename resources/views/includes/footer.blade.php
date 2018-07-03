@@ -20,7 +20,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="/search" class="{{ activeIfRouteIs('search') }}">
+					<a href="#" id="nav-btn-for-search-3">
 						@lang('includes.search')
 					</a>
 				</li>
@@ -74,7 +74,7 @@
 
 	@admin
 		{{--  Настройки подвала  --}}
-		<div style="position:relative;">
+		<div class="position-relative">
 			<a class="edit-btn" title="@lang('home.edit_banner')" id="btn-for-footer">
 				<i class="material-icons">edit</i>
 			</a>
