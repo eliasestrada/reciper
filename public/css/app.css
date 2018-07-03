@@ -39,6 +39,10 @@
   background-color: #484074 !important;
 }
 
+.main-hover {
+  background-color: #403967 !important;
+}
+
 .main-text {
   color: #484074 !important;
 }
@@ -6332,8 +6336,6 @@ select {
 }
 
 nav .input-field input[type=search] {
-  margin-bottom: 0 !important;
-  height: 64px !important;
   color: #fff;
 }
 
@@ -7240,6 +7242,24 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 
 .bottom-borders > li {
   border-bottom: solid 1px #eeeeee;
+}
+
+.nav-search-form {
+  position: absolute;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transition: -webkit-transform 500ms;
+  transition: -webkit-transform 500ms;
+  transition: transform 500ms;
+  transition: transform 500ms, -webkit-transform 500ms;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  z-index: 5;
+}
+
+.nav-search-form.active {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
 }
 
 .item-list {

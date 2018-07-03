@@ -25,3 +25,15 @@
 .bottom-borders > li {
 	border-bottom: solid 1px darken($paper, 2%);
 }
+
+// Search form
+.nav-search-form {
+	position: absolute;
+	transform-origin: top;
+	transition: transform 500ms;
+	transform: translateY(-100%);
+	z-index: 5;
+}
+.nav-search-form.active {
+	transform: translateY(0%);
+}
