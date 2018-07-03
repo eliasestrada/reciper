@@ -66,12 +66,12 @@
 @endmaster
 
 <li> {{-- logout --}} {{-- This button submits logout-form --}}
-	<a href="#" title="@lang('includes.logout')" onclick="$('logout-form').submit()" id="_logout">
+	<a href="#" title="@lang('includes.logout')" onclick="$('logout-form').submit()" id="_logout_btn">
 		<i class="material-icons left">power_settings_new</i>@lang('includes.logout')
 	</a>
 </li>
 
 {{-- logout-form --}}
 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-	@csrf <button type="submit" id="logout-btn"></button>
+	@csrf <button type="submit"></button>
 </form>
