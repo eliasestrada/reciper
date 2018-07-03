@@ -5180,7 +5180,7 @@ Nav List
 
 .sidenav {
   position: fixed;
-  width: 240px;
+  width: 260px;
   left: 0;
   top: 0;
   margin: 0;
@@ -6313,7 +6313,7 @@ select {
   text-align: center;
   display: inline-block;
   position: absolute;
-  left: 7px;
+  left: 11px;
   top: 7px;
   color: #fff;
   text-shadow: none;
@@ -7222,9 +7222,15 @@ nav .input-field input[type=search]:-webkit-autofill:active {
           justify-content: center;
 }
 
-.user-icon img {
-  width: 22px;
-  height: 22px;
+.user-icon-big {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.user-icon-small {
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
 }
 
