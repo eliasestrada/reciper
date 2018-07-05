@@ -24,17 +24,15 @@
 			<ul class="right hide-on-med-and-down right-borders">
 				@include('includes.nav.menu')
 				{{-- Seach trigger --}}
-				<li>
-					<a href="#" title="@lang('includes.search')" id="nav-btn-for-search-1">
-						<i class="material-icons left">search</i>
-						@lang('includes.search')
-					</a>
-				</li>
-
 				<li> {{-- Dropdown Trigger 1 Categories --}}
 					<a class="dropdown-trigger" href="#!" data-target="dropdown1">
 						@lang('includes.categories')
-						<i class="material-icons left">arrow_drop_down</i>
+						<i class="material-icons right">arrow_drop_down</i>
+					</a>
+				</li>
+				<li>
+					<a href="#" title="@lang('includes.search')" id="nav-btn-for-search-1">
+						<i class="material-icons">search</i>
 					</a>
 				</li>
 				@auth

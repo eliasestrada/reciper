@@ -3,7 +3,6 @@
 
 	<li> {{-- Seach trigger --}}
 		<a href="#" title="@lang('includes.search')" id="nav-btn-for-search-2">
-			<i class="material-icons left">search</i>
 			@lang('includes.search')
 		</a>
 	</li>
