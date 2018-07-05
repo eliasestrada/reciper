@@ -7,6 +7,7 @@ use App\Models\Recipe;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class RecipesTest extends DuskTestCase
 {

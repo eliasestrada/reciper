@@ -3,6 +3,7 @@
 namespace Tests\Feature\Responses;
 
 use Tests\TestCase;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -16,6 +17,9 @@ class GuestPagesTest extends TestCase
 	 */
     public function testResposeRecipesPage() : void
     {
+		Artisan::call('migrate:fresh');
+		Artisan::call('db:seed');
+
 		$this->get('/recipes')
         	->assertSuccessful()
         	->assertViewIs('recipes.index');
@@ -27,7 +31,12 @@ class GuestPagesTest extends TestCase
 	 */
 	public function testResposeShowPage() : void
     {
-		$recipe = factory(\App\Models\Recipe::class)->create();
+		$recipe = factory(\App\Models\Recipe::class)->create([
+			'ready_ru' => 1,
+			'ready_en' => 1,
+			'approved_ru' => 1,
+			'approved_en' => 1
+		]);
 		$this->get("/recipes/$recipe->id")
 			->assertSuccessful()
 			->assertViewIs('recipes.show');
