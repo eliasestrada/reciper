@@ -8,7 +8,7 @@
 	<div>
 		<h1 class="my-4">{{ $user->name }}</h1>
 		<p>@lang('users.joined'): {{ timeAgo($user->created_at) }}</p>
-		@unless ($user->id === user()->id)
+		@unless (user() && $user->id === user()->id)
 			<p>
 				{!! getOnlineIcon(timeAgo($user->last_visit_at)) !!}
 				@lang('date.online') 
