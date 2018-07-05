@@ -12,8 +12,11 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ControllerTest extends TestCase
 {
 	use DatabaseTransactions;
-	
-	public function testCreateMethod()
+
+	/**
+	 * @return void
+	 */
+	public function testCreateMethod() : void
 	{
 		$array_of_meal = Meal::get(['id', 'name_en'])->toArray();
 
