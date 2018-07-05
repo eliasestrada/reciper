@@ -10,12 +10,12 @@
 		@csrf <div class="center"><h3 class="headline">@lang('form.login')</h3></div>
 	
 		<div class="input-field">
-			<input id="email" type="email" name="email" placeholder="@lang('form.email')" class="validate">
+			<input id="email" type="email" name="email" class="validate">
 			<label for="email">@lang('form.email')</label>
 		</div>
 	
 		<div class="input-field">
-			<input type="password" name="password" id="password" placeholder="@lang('form.pwd')" class="pwd">
+			<input type="password" name="password" id="password" class="pwd">
 			<label for="password">@lang('form.pwd')</label>
 		</div>
 
