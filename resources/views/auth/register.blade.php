@@ -41,14 +41,14 @@
 		{{-- @TODO: --}}
 		<div id="modal1" class="modal">
 			<div class="modal-content">
-				<h4>Modal Header</h4>
-				<p>A bunch of text</p>
+				<h5>{{ $document->getTitle() }}</h5>
+				<hr />
+				{!! $document->getText() !!}
 			</div>
 			<div class="modal-footer">
 				<a href="#!" class="modal-close waves-effect waves-green btn-flat left">Agree</a>
 			</div>
 		</div>
-		{{-- -- --}}
 
 		<button type="submit" id="register-btn" class="btn btn-lg btn-main mt-3">
 			<i class="material-icons left">assignment_turned_in</i>
