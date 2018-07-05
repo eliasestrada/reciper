@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Validator;
 use App\Models\User;
+use App\Models\Document;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -37,7 +38,14 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-    }
+	}
+	
+	public function showRegistrationForm()
+	{
+		return view('auth.register', [
+			'document' => Document::whereId(1)->first()
+		]);
+	}
 
     /**
      * Get a validator for an incoming registration request.
