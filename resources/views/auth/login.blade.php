@@ -31,7 +31,7 @@
 	
 		<div class="input-field">
 			<button type="submit" id="go-to-account" class="btn btn-lg btn-main">
-				<i class="material-icons right">keyboard_arrow_right</i>
+				<i class="material-icons right">exit_to_app</i>
 				@lang('form.login')
 			</button>
 		</div>
