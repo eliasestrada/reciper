@@ -12,6 +12,8 @@ class RecipesSeeder extends Seeder
      */
     public function run()
     {
+		// factory(Recipe::class)->create();
+
 		// $categories = Category::get();
 
 		// Recipe::get()->each(function ($recipe) use ($categories) {
