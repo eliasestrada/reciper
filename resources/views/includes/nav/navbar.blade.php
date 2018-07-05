@@ -14,7 +14,7 @@
 		<div class="px-3">
 			{{-- Logo --}}
 			<a href="/" title="@lang('includes.home')" class="brand-logo">
-				{{ config('app.name') }}
+				@lang('website.name')
 			</a>
 			{{-- Hamburger menu --}}
 			<a href="#" data-target="mobile-demo" class="sidenav-trigger">

@@ -4,7 +4,7 @@
 	@yield('head')
 	@include('includes.head')
 	<title>
-		@yield('title') - {{ config('app.name') }}
+		@yield('title') - @lang('website.name')
 	</title>
 </head>
 <body>
