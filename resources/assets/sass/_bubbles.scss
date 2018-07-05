@@ -42,15 +42,12 @@
 
 	svg {
 		top: -15px;
-		left: 30%;
+		left: 34%;
 	}
 }
 
 @media(max-width:360px) {
 	.bubble {
-		width: 70px;
-		height: 70px;
-
 		.number {
 			font-size: 20px;
 		}

@@ -27,7 +27,7 @@
 				<span class="number">
 					{!! readableNumber($likes) !!}
 				</span>
-				@include('icons.heart', ['scale' => '50'])
+				@include('includes.icons.heart')
 			</div>
 			<span>@lang('users.likes')</span>
 		</div>
@@ -36,7 +36,7 @@
 				<span class="number">
 					{!! readableNumber(getRatingNumber($recipes, $likes)) !!}
 				</span>
-				@include('icons.trophy', ['scale' => '50'])
+				@include('includes.icons.trophy')
 			</div>
 			<span>@lang('users.rating')</span>
 		</div>
@@ -45,7 +45,7 @@
 				<span class="number">
 					{!! readableNumber($recipes->count()) !!}
 				</span>
-				@include('icons.book', ['scale' => '1430'])
+				@include('includes.icons.book')
 			</div>
 			<span>@lang('includes.recipes')</span>
 		</div>
