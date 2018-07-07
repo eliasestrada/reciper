@@ -20,8 +20,8 @@
 </li>
 
 @admin
-	<li class="{{ activeIfRouteIs('admin/statistic') }}"> {{-- statistic --}}
-		<a href="/admin/statistic" title="@lang('includes.statistics')">
+	<li class="{{ activeIfRouteIs('admin/statistics') }}"> {{-- statistics --}}
+		<a href="/admin/statistics" title="@lang('includes.statistics')">
 			<i class="material-icons left">insert_chart</i>@lang('includes.statistics')
 		</a>
 	</li>
