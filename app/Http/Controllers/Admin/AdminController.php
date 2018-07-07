@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
 use App\Models\Recipe;
 use App\Models\Visitor;
 use Eseath\SxGeo\SxGeo;
-use App\Models\Feedback;
 
 class AdminController extends Controller
 {
@@ -35,37 +33,5 @@ class AdminController extends Controller
 		return view('admin.statistic', compact(
 			'sxgeo', 'visitors', 'allrecipes', 'allvisitors'
 		));
-	}
-
-	/**
-	 * Mark user as he saw these messages
-	 */
-	public function feedback()
-    {
-		User::whereId(user()->id)->update([
-			'contact_check' => now()
-		]);
-
-		return view('admin.feedback', [
-			'feedback' => Feedback::paginate(40)
-		]);
-	}
-
-	/**
-	 * @param integer $id
-	 */
-	public function feedbackDestroy($id)
-	{
-        // Check for correct user
-        if (!user()->isAdmin()) {
-            return redirect('/feedback')->withError(
-				trans('admin.only_admin_can_delete')
-			);
-        }
-		Feedback::find($id)->delete();
-
-        return redirect('/admin/feedback')->withSuccess(
-			trans('admin.feedback_has_been_deleted')
-		);
 	}
 }
