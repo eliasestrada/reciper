@@ -1,5 +1,10 @@
 <?php
 
+function custom_strip_tags($str) {
+	$allowed = '<h1><h2><h3><h4><h5><h6><p><br><br /><b><li><ol><ul><strong><span>';
+	return strip_tags($str, $allowed);
+}
+
 function convertToListItems($str) {
 	$string = strip_tags($str, '<li>');
 
