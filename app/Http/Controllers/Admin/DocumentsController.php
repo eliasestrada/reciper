@@ -38,7 +38,12 @@ class DocumentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $doc = Document::create([
+			'title_' . locale() => $request->title,
+			'text_' . locale() => $request->text
+		]);
+
+		return redirect('/admin/documents/' . $doc->id);
     }
 
     /**
@@ -75,7 +80,9 @@ class DocumentsController extends Controller
 			'text_' . locale() => $request->text
 		]);
 
-		return back()->withSuccess(trans('documents.saved'));
+		return $request->has('view')
+			? redirect('/admin/documents/' . $document->id)->withSuccess(trans('documents.saved'))
+			: back()->withSuccess(trans('documents.saved'));
     }
 
     /**
@@ -86,6 +93,16 @@ class DocumentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Check for correct user
+        if (!user()->isAdmin()) {
+            return redirect('/')->withError(
+				trans('admin.only_admin_can_delete')
+			);
+        }
+		Document::find($id)->delete();
+
+        return redirect('/admin/documents')->withSuccess(
+			trans('documents.doc_has_been_deleted')
+		);
     }
 }
