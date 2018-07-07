@@ -55,7 +55,7 @@ Route::get('php/artisan/cache/{url_key}', 'ArtisanController@cache');
 Route::get('php/artisan/clear/{url_key}', 'ArtisanController@clear');
 
 // Admin ===========
-Route::prefix('admin')->namespace('Admin')->group(function () {
+Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function() {
 	Route::resource('statistics', 'StatisticsController')->only(['index']);
 	Route::resource('checklist', 'ChecklistController')->only(['index']);
 	Route::resource('feedback', 'FeedbackController')->only(['index', 'destroy']);
