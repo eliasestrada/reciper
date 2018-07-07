@@ -61,7 +61,6 @@ return [
 		App\Providers\UserMenuProvider::class,
 		App\Providers\FooterProvider::class,
 		App\Providers\VisitorProvider::class,
-		Unisharp\Ckeditor\ServiceProvider::class,
     ],
 
     // Class Aliases
