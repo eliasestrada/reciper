@@ -37,6 +37,11 @@
 			<i class="material-icons left">feedback</i>@lang('includes.feedback')
 		</a>
 	</li>
+	<li class="position-relative {{ activeIfRouteIs('admin/documents') }}"> {{-- Documents --}}
+		<a href="/admin/documents" title="@lang('documents.docs')">
+			<i class="material-icons left">work</i>@lang('documents.docs')
+		</a>
+	</li>
 @endadmin
 
 <li class="position-relative {{ activeIfRouteIs('notifications') }}"> {{-- notifications --}}
