@@ -60,7 +60,7 @@ class UserMenuProvider extends ServiceProvider
 			view()->composer('includes.nav.user-menu', function($view) {
 				if (user()) {
 					$feed = Feedback::where('created_at', '>', user()->contact_check)->count();
-					$view->withAllFeedback($this->getDataNotifMarkup($feed));
+					$view->with('all_feedback', $this->getDataNotifMarkup($feed));
 				}
 			});
 		} else {
