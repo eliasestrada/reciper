@@ -6,6 +6,13 @@
 
 <div class="center pt-4"><h1 class="headline">@lang('documents.docs')</h1></div>
 
+{{-- Breadcrumps --}}
+@component('comps.breadcrumps', [
+	'url' => ['#'],
+	'name' => [trans('documents.docs')]
+]) @endcomponent
+            
+
 <div class="page">
 	<div class="row">
 		@foreach ($document as $doc)
@@ -25,6 +32,13 @@
 			</div>
 		@endforeach
 	</div>
+</div>
+
+<div class="fixed-action-btn">
+	<a href="/admin/documents/create" class="waves-effect waves-light btn green z-depth-3">
+		<i class="material-icons right">add</i>
+		@lang('documents.new_doc')
+	</a>
 </div>
 
 @endsection

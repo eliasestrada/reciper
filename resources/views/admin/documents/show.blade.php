@@ -6,12 +6,13 @@
 
 <div class="center pt-4">
 	<h1 class="headline">{{ $document->getTitle() }}</h1>
-	<br />
-	<a href="/admin/documents" title="@lang('help.back')" class="btn waves-effect waves-light">
-		<i class="material-icons left">arrow_left</i>
-		@lang('messages.back')
-	</a>
 </div>
+
+{{-- Breadcrumps --}}
+@component('comps.breadcrumps', [
+	'url' => ['/admin/documents', '#'],
+	'name' => [trans('documents.docs'), $document->getTitle()]
+]) @endcomponent
 
 <div class="page">
 	<span>{{ $document->getTitle() }}</span>
