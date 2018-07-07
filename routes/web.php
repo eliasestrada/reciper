@@ -55,9 +55,21 @@ Route::get('php/artisan/cache/{url_key}', 'ArtisanController@cache');
 Route::get('php/artisan/clear/{url_key}', 'ArtisanController@clear');
 
 // Admin ===========
-Route::prefix('admin')->group(function () {
-	Route::get('checklist', 'AdminController@checklist');
-	Route::get('statistic', 'AdminController@visitors');
-	Route::get('feedback', 'AdminController@feedback');
-	Route::delete('feedback/{id}', 'AdminController@feedbackDestroy');
+Route::prefix('admin')->namespace('Admin')->group(function () {
+	Route::prefix('statistics')->group(function () {
+		Route::get('/', 'StatisticsController@index');
+	});
+
+	Route::prefix('checklist')->group(function () {
+		Route::get('/', 'ChecklistController@index');
+	});
+
+	Route::prefix('documents')->group(function () {
+		Route::get('/', 'DocumentsController@index');
+	});
+
+	Route::prefix('feedback')->group(function () {
+		Route::get('/', 'FeedbackController@index');
+		Route::delete('destroy/{id}', 'FeedbackController@destroy');
+	});
 });
