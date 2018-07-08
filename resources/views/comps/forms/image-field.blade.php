@@ -4,7 +4,7 @@
 	<div class="file-field input-field">
 		<div class="btn">
 			<span>@lang('recipes.select_file')</span>
-			<input type="file" name="image" id="src-image">
+			<input type="file" name="image" id="src-image" style="overflow:hidden">
 		</div>
 		<div class="file-path-wrapper">
 			<input class="file-path validate" type="text">
