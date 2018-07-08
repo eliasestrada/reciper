@@ -7,8 +7,7 @@ use Closure;
 class MasterMiddleware
 {
     /**
-     * Handle an incoming request.
-     *
+     * Handle an incoming request
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
      * @return mixed
@@ -18,7 +17,6 @@ class MasterMiddleware
         if (Auth::guard($guard)->check() && user()->isMaster()) {
 			return $next($request);
         }
-        return redirect('/login')->withError(trans('messages.access_denied')
-		);
+        return redirect('/login')->withError(trans('messages.access_denied'));
     }
 }
