@@ -10,7 +10,7 @@ class UsersController extends Controller
 {
 	public function __construct()
     {
-		$this->middleware('auth')->except(['show', 'index']);
+		$this->middleware('auth', ['except' => 'my-recipes']);
 	}
 
 	public function index()
@@ -42,6 +42,6 @@ class UsersController extends Controller
 	{
 		$recipes = Recipe::whereUserId(user()->id)->latest()->paginate(20);
 
-		return view('users.my-recipes', compact('recipes'));
+		return view('users.other.my-recipes', compact('recipes'));
 	}
 }
