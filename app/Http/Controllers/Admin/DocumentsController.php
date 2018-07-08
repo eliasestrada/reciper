@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Document;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DocumentsRequest;
 
 class DocumentsController extends Controller
 {
@@ -36,7 +37,7 @@ class DocumentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DocumentsRequest $request)
     {
         $doc = Document::create([
 			'title_' . locale() => $request->title,
@@ -73,7 +74,7 @@ class DocumentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Document $document)
+    public function update(DocumentsRequest $request, Document $document)
     {
         $document->update([
 			'title_' . locale() => $request->title,

@@ -10,4 +10,9 @@ return [
 	
 	// Contact form
 	'contact_message' => 5000,
+	
+	// Documents
+	'docs_title_max' => 190,
+	'docs_text_max' => 10000,
+
 ];

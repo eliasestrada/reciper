@@ -22,7 +22,7 @@
 	<form action="{{ action('Admin\DocumentsController@store') }}" method="post">
 		@csrf
 		<div class="input-field"> {{-- Input field --}}
-			<input type="text" name="title" id="title" value="{{ old('title') }}" class="counter">
+			<input type="text" name="title" id="title" value="{{ old('title') }}" class="counter" data-length="{{ config('validation.docs_title_max') }}">
 			<label for="title">@lang('documents.doc_title')</label>
 		</div>
 		<div class="input-field"> {{-- Textarea --}}
