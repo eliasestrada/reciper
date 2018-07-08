@@ -8,11 +8,6 @@ use App\Models\Recipe;
 
 class UsersController extends Controller
 {
-	public function __construct()
-    {
-		$this->middleware('auth', ['except' => 'my-recipes']);
-	}
-
 	public function index()
 	{
         return view('users.index', ['users' => User::simplePaginate(30)]);

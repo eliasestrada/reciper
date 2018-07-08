@@ -19,7 +19,7 @@ Route::prefix('users')->group(function () {
 	Route::get('/', 'UsersController@index');
 	Route::get('{user}', 'UsersController@show');
 
-	Route::prefix('other')->group(function () {
+	Route::prefix('other')->middleware('auth')->group(function () {
 		Route::get('my-recipes', 'UsersController@my_recipes');
 	});
 });
