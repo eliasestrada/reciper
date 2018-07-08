@@ -2444,8 +2444,9 @@ small {
 }
 
 .card .card-title {
-  font-size: 20px;
-  font-weight: 300;
+  font-size: 1.15em;
+  font-weight: 500;
+  line-height: 1.6 !important;
 }
 
 .card .card-title.activator {
@@ -6350,6 +6351,10 @@ select {
   background: none;
   border-bottom: 1px solid #9e9e9e;
   height: 39px;
+}
+
+.break-word {
+  word-wrap: break-word;
 }
 
 .page {

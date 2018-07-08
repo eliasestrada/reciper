@@ -1,7 +1,7 @@
 @extends('log-viewer::custom-theme._master')
 
 @section('content')
-	<div class="row">
+	<div class="page row">
 		<div class="col s12 m4 l3">
 			<div class="mb-4"> {{-- Log Menu --}}
 				<ul class="collection">
@@ -111,7 +111,7 @@
 					<div class="col s12">
 						<div class="card">
 							<div class="card-content" style="min-height:230px;">
-								<span class="card-title activator grey-text text-darken-4">
+								<span class="card-title activator main-dark-text">
 									<div class="d-inline-block">
 										{{ $entry->env }}
 									</div>
@@ -122,12 +122,14 @@
 										{{ $entry->datetime->format('H:i:s') }}
 									</div>
 									<hr />
-									{{ $entry->header }}
-									<i class="material-icons right">more_vert</i>
+									<div class="break-word">
+										{{ $entry->header }}
+										<i class="material-icons right">more_vert</i>
+									</div>
 								</span>
 							</div>
 							<div class="card-reveal">
-								<span class="card-title grey-text text-darken-4">
+								<span class="card-title grey-text text-darken-4 break-word">
 									{{ $entry->env }} {{ $entry->level }} {{ $entry->datetime->format('H:i:s') }}
 									<i class="material-icons right">close</i>
 								</span>
