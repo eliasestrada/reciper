@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Settings;
 
 use App\Models\Category;
 use App\Rules\UniqueCategory;

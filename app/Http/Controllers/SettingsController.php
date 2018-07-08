@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Title;
 use Illuminate\Http\Request;
-use App\Http\Requests\SettingsPhotoRequest;
 use App\Helpers\Traits\SettingsControllerHelper;
-use App\Http\Requests\SettingsUpdateHomeDataRequest;
-use App\Http\Requests\SettingsUpdateUserDataRequest;
-use App\Http\Requests\SettingsUpdateUserPasswordRequest;
+use App\Http\Requests\Settings\SettingsPhotoRequest;
+use App\Http\Requests\Settings\SettingsUpdateHomeDataRequest;
+use App\Http\Requests\Settings\SettingsUpdateUserDataRequest;
+use App\Http\Requests\Settings\SettingsUpdateUserPasswordRequest;
 
 class SettingsController extends Controller
 {
