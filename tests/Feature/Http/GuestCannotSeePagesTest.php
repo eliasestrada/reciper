@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class GuestCanViewPagesTest extends TestCase
+class GuestCannotSeePagesTest extends TestCase
 {
 	use DatabaseTransactions;
 
@@ -14,10 +14,9 @@ class GuestCanViewPagesTest extends TestCase
 	 * Test view views/user/my-recipes
 	 * @return void
 	 */
-    public function testGuestCantSeeMyRecipesPage() : void
+    public function testGuestCannotSeeMyRecipesPage() : void
     {
 		$this->get('/users/other/my-recipes')
-        	->assertSuccessful()
-        	->assertViewIs('users.other.my-recipes');
+			->assertRedirect('/login');
 	}
 }

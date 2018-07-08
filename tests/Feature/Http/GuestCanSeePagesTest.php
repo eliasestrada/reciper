@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class GuestCanViewPagesTest extends TestCase
+class GuestCanSeePagesTest extends TestCase
 {
 	use DatabaseTransactions;
 
