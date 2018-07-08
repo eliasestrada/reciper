@@ -7,8 +7,8 @@ use App\Models\Meal;
 use App\Models\Recipe;
 use App\Helpers\Traits\RecipesControllerHelpers;
 use App\Helpers\Contracts\SaveRecipeDataContract;
-use App\Http\Requests\Settings\RecipeSaveRequest;
-use App\Http\Requests\Settings\RecipePublichRequest;
+use App\Http\Requests\Recipes\RecipeSaveRequest;
+use App\Http\Requests\Recipes\RecipePublichRequest;
 use App\Http\Responses\Controllers\RecipeUpdateResponse;
 
 class RecipesController extends Controller
