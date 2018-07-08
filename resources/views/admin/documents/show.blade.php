@@ -4,10 +4,6 @@
 
 @section('content')
 
-<div class="center pt-4">
-	<h1 class="headline">{{ $document->getTitle() }}</h1>
-</div>
-
 {{-- Breadcrumps --}}
 @component('comps.breadcrumps', [
 	'url' => ['/admin/documents', '#'],
@@ -15,7 +11,7 @@
 ]) @endcomponent
 
 <div class="page">
-	<span>{{ $document->getTitle() }}</span>
+	<h4>{{ $document->getTitle() }}</h4>
 	<div class="reset">{!! custom_strip_tags($document->getText()) !!}</div>
 	<p class="mt-3"><b>@lang('logs.created_at'):</b></p>
 

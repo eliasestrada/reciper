@@ -40,9 +40,8 @@
 		<!-- Modal Structure -->
 		{{-- @TODO: --}}
 		<div id="modal1" class="modal">
-			<div class="modal-content">
-				<h5>{{ $document->getTitle() }}</h5>
-				<hr />
+			<div class="modal-content reset">
+				<h4>{{ $document->getTitle() }}</h4>
 				{!! $document->getText() !!}
 			</div>
 			<div class="modal-footer">
