@@ -70,13 +70,13 @@
 					<li class="collection-item">
 						<div>
 							<span>@lang('logs.created_at'):</span> 
-							{{ $log->createdAt() }} <i class="material-icons left">date_range</i>
+							{{ $log->updatedAt() }} <i class="material-icons left">date_range</i>
 						</div>
 					</li>
 					<li class="collection-item">
 						<div>
 							<span>@lang('logs.updated_at'):</span> 
-							{{ $log->updatedAt() }} <i class="material-icons left">date_range</i>
+							{{ $log->createdAt() }} <i class="material-icons left">date_range</i>
 						</div>
 					</li>
 				</ul>

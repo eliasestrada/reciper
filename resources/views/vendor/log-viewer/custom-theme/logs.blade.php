@@ -24,7 +24,10 @@
 						@foreach($row as $key => $value)
 							<td class="{{ $loop->index === 0 ? 'main-light' : '' }}">
                                 @if ($key == 'date')
-                                    <span class="new badge transparent main-dark-text">{{ $value }}</span>
+                                    <span class="new badge transparent main-dark-text">
+										{{ $value }} <br />
+										{{ timeAgo($value) }}
+									</span>
                                 @elseif ($key == 'all')
 									<a href="{{ route('log-viewer::logs.filter', [$date, $key]) }}">
                                         <span class="new badge">{{ $value }}</span>
