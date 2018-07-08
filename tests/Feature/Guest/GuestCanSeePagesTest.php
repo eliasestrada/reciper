@@ -1,12 +1,10 @@
 <?php
 
-namespace Tests\Feature\Responses;
+namespace Tests\Feature\Guest;
 
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Recipe;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class GuestCanSeePagesTest extends TestCase
@@ -16,12 +14,10 @@ class GuestCanSeePagesTest extends TestCase
 	/**
 	 * Test view views/recipes/index
 	 * @return void
+	 * @test
 	 */
-    public function testGuestCanSeeRecipesPage() : void
+    public function guestCanSeeRecipesPage() : void
     {
-		Artisan::call('migrate:fresh');
-		Artisan::call('db:seed');
-
 		$this->get('/recipes')
         	->assertSuccessful()
         	->assertViewIs('recipes.index');
@@ -30,8 +26,9 @@ class GuestCanSeePagesTest extends TestCase
 	/**
 	 * Test view views/recipes/show
 	 * @return void
+	 * @test
 	 */
-	public function testGuestCanSeeShowPage() : void
+	public function guestCanSeeShowPage() : void
     {
 		$recipe = factory(Recipe::class)->create([
 			'ready_ru' => 1,
@@ -47,8 +44,9 @@ class GuestCanSeePagesTest extends TestCase
 	/**
 	 * Test view views/pages/search
 	 * @return void
+	 * @test
 	 */
-    public function testGuestCanSeeSearchPage() : void
+    public function guestCanSeeSearchPage() : void
     {
 		$this->get('/search')
 			->assertSuccessful()
@@ -58,8 +56,9 @@ class GuestCanSeePagesTest extends TestCase
 	/**
 	 * Test view views/pages/home
 	 * @return void
+	 * @test
 	 */
-    public function testGuestCanSeeHomePage() : void
+    public function guestCanSeeHomePage() : void
     {
 		$this->get('/')
 			->assertSuccessful()
@@ -69,8 +68,9 @@ class GuestCanSeePagesTest extends TestCase
 	/**
 	 * Test view views/pages/contact
 	 * @return void
+	 * @test
 	 */
-	public function testGuestCanContactPage() : void
+	public function guestCanContactPage() : void
     {
 		$this->get('/contact')
 			->assertSuccessful()
@@ -80,8 +80,9 @@ class GuestCanSeePagesTest extends TestCase
 	/**
 	 * Test view views/auth/login
 	 * @return void
+	 * @test
 	 */
-	public function testGuestCanSeeLoginPage() : void
+	public function guestCanSeeLoginPage() : void
 	{
 		$this->get('/login')
         	->assertSuccessful()
@@ -91,8 +92,9 @@ class GuestCanSeePagesTest extends TestCase
 	/**
 	 * Test view views/auth/register
 	 * @return void
+	 * @test
 	 */
-	public function testGuestCanSeeRegisterPage() : void
+	public function guestCanSeeRegisterPage() : void
 	{
 		$this->get('/register')
 			->assertSuccessful()
@@ -102,8 +104,9 @@ class GuestCanSeePagesTest extends TestCase
 	/**
 	 * Test view views/users/index
 	 * @return void
+	 * @test
 	 */
-	public function testGuestCanSeeAllRegisteredUsers() : void
+	public function guestCanSeeAllRegisteredUsers() : void
 	{
 		$this->get('/users')
 			->assertSuccessful()
@@ -113,8 +116,9 @@ class GuestCanSeePagesTest extends TestCase
 	/**
 	 * Test view views/users/show
 	 * @return void
+	 * @test
 	 */
-	public function testGuestCanSeeRegisteredUser() : void
+	public function guestCanSeeRegisteredUser() : void
 	{
 		$user = factory(User::class)->create();
 

@@ -15,8 +15,9 @@ class ControllerTest extends TestCase
 
 	/**
 	 * @return void
+	 * @test
 	 */
-	public function testCreateMethod() : void
+	public function createMethod() : void
 	{
 		$array_of_meal = Meal::get(['id', 'name_en'])->toArray();
 

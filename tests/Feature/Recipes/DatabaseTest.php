@@ -14,8 +14,9 @@ class DatabaseTest extends TestCase
 
 	/**
 	 * @return void
+	 * @test
 	 */
-    public function testCheckIfRecipeCanBeCreatedInDatabase() : void
+    public function checkIfRecipeCanBeCreatedInDatabase() : void
     {
 		$recipe = factory(Recipe::class)->create(['title_' . locale() => 'hello']);
 
