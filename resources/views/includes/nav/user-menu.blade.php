@@ -7,6 +7,12 @@
 	</a>
 </li>
 
+<li> {{-- add recipe --}}
+	<a href="/recipes/create" title="@lang('includes.new_recipe')">
+		<i class="material-icons left">add</i>@lang('includes.new_recipe')
+	</a>
+</li>
+
 <li class="{{ activeIfRouteIs('users/other/my-recipes') }}"> {{-- my recipes --}}
 	<a href="/users/other/my-recipes" title="@lang('includes.my_recipes')">
 		<i class="material-icons left">insert_drive_file</i>@lang('includes.my_recipes')
