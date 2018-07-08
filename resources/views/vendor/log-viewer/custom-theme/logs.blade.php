@@ -5,7 +5,7 @@
         <h4>@lang('logs.logs')</h4>
     </div>
 
-    <div>
+    <div style="overflow:scroll">
         <table>
             <thead class="main-light">
                 <tr>
