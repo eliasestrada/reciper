@@ -8,17 +8,17 @@
 
 @section('content')
 
-{{-- Breadcrumps --}}
-@component('comps.breadcrumps', [
-	'url' => ['/admin/documents', '#'],
-	'name' => [trans('documents.docs'), trans('documents.new_doc')]
-]) @endcomponent
-
-<div class="center pt-4">
-	<h1 class="headline">@lang('documents.new_doc')</h1>
-</div>
-
 <div class="page">
+	<div class="center">
+		<h1 class="headline">@lang('documents.new_doc')</h1>
+	</div>
+	
+	{{-- Breadcrumps --}}
+	@component('comps.breadcrumps', [
+		'url' => ['/admin/documents', '#'],
+		'name' => [trans('documents.docs'), trans('documents.new_doc')]
+	]) @endcomponent
+
 	<form action="{{ action('Admin\DocumentsController@store') }}" method="post">
 		@csrf
 		<div class="input-field"> {{-- Input field --}}
