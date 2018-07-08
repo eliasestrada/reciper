@@ -65,6 +65,8 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        return redirect()->guest('/');
+        return redirect()->guest('/login')->withError(
+			trans('messages.not_auth')
+		);
     }
 }
