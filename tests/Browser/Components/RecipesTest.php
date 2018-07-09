@@ -6,16 +6,12 @@ use App\Models\User;
 use App\Models\Recipe;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
-use Illuminate\Support\Facades\Artisan;
 
 class RecipesTest extends DuskTestCase
 {
 	/** @test */
     public function checkIfUserCanEditHisOwnRecipe()
     {
-		Artisan::call('migrate:fresh');
-		Artisan::call('db:seed');
-
 		$recipe = factory(Recipe::class)->create(['user_id' => 10]);
 		$user = factory(User::class)->create(['id' => 10]);
 
