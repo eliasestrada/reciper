@@ -97,3 +97,7 @@ function getOnlineIcon($value) {
 	}
 	return '<span class="online-icon-off"></span>';
 }
+
+function getDataNotifMarkup($data) {
+	return !empty($data) ? 'data-notif=' . $data : '';
+}

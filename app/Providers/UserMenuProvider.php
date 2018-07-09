@@ -2,11 +2,6 @@
 
 namespace App\Providers;
 
-use Schema;
-use App\Models\User;
-use App\Models\Recipe;
-use App\Models\Feedback;
-use App\Models\Notification;
 use Illuminate\Support\ServiceProvider;
 
 class UserMenuProvider extends ServiceProvider
@@ -28,27 +23,10 @@ class UserMenuProvider extends ServiceProvider
      */
     public function countAndComposeAllNotifications() : void
     {
-        if (Schema::hasTable('notifications')) {
-			view()->composer('includes.nav.user-menu', function($view) {
-				if (user()) {
-					$notifications = Notification::where([
-						['user_id', user()->id],
-						['created_at', '>', user()->notif_check]
-					])->count();
-
-					if (user()->isAdmin()) {
-						$notifications_for_admin = Notification::where([
-							[ 'for_admins', 1 ],
-							[ 'created_at', '>', user()->notif_check ]
-						])->count();
-						$notifications += $notifications_for_admin;
-					}
-					$view->withNotifications($this->getDataNotifMarkup($notifications));
-				}
-			});
-		} else {
-			$this->log('notifications', 'countAndComposeAllNotifications');
-		}
+		view()->composer(
+			'includes.nav.user-menu',
+			'App\Http\ViewComposers\UserMenu\NotificationsComposer'
+		);
 	}
 
 	/**
@@ -56,16 +34,10 @@ class UserMenuProvider extends ServiceProvider
      */
 	public function countAndComposeAllFeedback() : void
 	{
-		if (Schema::hasTable('feedback')) {
-			view()->composer('includes.nav.user-menu', function($view) {
-				if (user()) {
-					$feed = Feedback::where('created_at', '>', user()->contact_check)->count();
-					$view->with('all_feedback', $this->getDataNotifMarkup($feed));
-				}
-			});
-		} else {
-			$this->log('feedback', 'countAndComposeAllFeedback');
-		}
+		view()->composer(
+			'includes.nav.user-menu',
+			'App\Http\ViewComposers\UserMenu\FeedbackComposer'
+		);
 	}
 
 	/**
@@ -73,19 +45,10 @@ class UserMenuProvider extends ServiceProvider
      */
 	public function countAndComposeAllUnprovedRecipes() : void
 	{
-		if (Schema::hasTable('recipes')) {
-			view()->composer('includes.nav.user-menu', function($view) {
-				if (user()) {
-					$recipes = Recipe::where("approved_" . locale(), 0)
-						->where("ready_" . locale(), 1)
-						->count();
-					$all_unapproved = $this->getDataNotifMarkup($recipes);
-					$view->with(compact('all_unapproved'));
-				}
-			});
-		} else {
-			$this->log('recipes', 'countAndComposeAllUnprovedRecipes');
-		}
+		view()->composer(
+			'includes.nav.user-menu',
+			'App\Http\ViewComposers\UserMenu\UnproveRecipesComposer'
+		);
 	}
 
 	/**
@@ -93,32 +56,9 @@ class UserMenuProvider extends ServiceProvider
      */
 	public function countAndComposeAllLogFiles() : void
 	{
-		view()->composer('includes.nav.user-menu', function($view) {
-			if (user()) {
-				$files = count(\File::files(storage_path('logs')));
-				$all_logs = $this->getDataNotifMarkup($files);
-				$view->with(compact('all_logs'));
-			}
-		});
-	}
-
-	/**
-	 * Helper
-	 * @return string
-	 * @param int $data
-	 */
-	public function getDataNotifMarkup($data)
-	{
-		return !empty($data) ? 'data-notif=' . $data : '';
-	}
-
-	/**
-	 * Helper
-	 * @param string $table
-	 * @param string $method
-	 */
-	public function log($table, $method)
-	{
-		return logger()->emergency("Table $table wasn't found while trying to count all unproved recipes, name of the method: $method");
+		view()->composer(
+			'includes.nav.user-menu',
+			'App\Http\ViewComposers\UserMenu\LogsComposer'
+		);
 	}
 }
