@@ -6,8 +6,7 @@ use Illuminate\Database\Seeder;
 class UsersSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
+     * Run the database seeds
      * @return void
      */
     public function run()
@@ -21,25 +20,6 @@ class UsersSeeder extends Seeder
 			'notif_check' => date("Y-m-d H:i:s"),
 			'contact_check' => date("Y-m-d H:i:s"),
 			'created_at' => '2018-03-08 12:08:59',
-			'image' => 'default.jpg'
-		]);
-
-		User::create([
-			'email' => 'venera23091970@gmail.com',
-			'name' => 'Ирен',
-			'password' => bcrypt('111111'),
-			'notif_check' => date("Y-m-d H:i:s"),
-			'contact_check' => date("Y-m-d H:i:s"),
-			'created_at' => '2018-03-10 21:27:35',
-			'image' => 'default.jpg'
-		]);
-
-		User::create([
-			'email' => '22@22.com',
-			'name' => 'Ваня',
-			'password' => bcrypt('111111'),
-			'notif_check' => date("Y-m-d H:i:s"),
-			'contact_check' => date("Y-m-d H:i:s"),
 			'image' => 'default.jpg'
 		]);
     }
