@@ -61,6 +61,7 @@ return [
 		App\Providers\UserMenuProvider::class,
 		App\Providers\FooterProvider::class,
 		App\Providers\VisitorProvider::class,
+		App\Providers\DebugProvider::class,
     ],
 
     // Class Aliases

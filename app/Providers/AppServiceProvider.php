@@ -7,42 +7,21 @@ use Schema;
 use App\Models\User;
 use App\Models\Title;
 use App\Models\Category;
-use Laravel\Dusk\DuskServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-	/**
-	 * If set to true, you will be able to see all sql queries
-	 * @var boolean
-	 */
-	protected $show_queries = false;
-
 	/**
 	 * Bootstrap services
      * @return void
      */
     public function boot() : void
     {
-		$this->databaseSettings();
+		Schema::defaultStringLength(191);
+
 		$this->showListOfCategories();
 		$this->updateLastUserVisit();
     }
-
-	/**
-     * @return void
-     */
-	public function databaseSettings() : void
-	{
-		Schema::defaultStringLength(191);
-
-		if ($this->show_queries && app()->env != 'production') {
-			DB::listen(function ($query) {
-				dump($query->sql);
-				dump($query->bindings);
-			});
-		}
-	}
 
 	/**
      * @return void
@@ -52,9 +31,7 @@ class AppServiceProvider extends ServiceProvider
 		if (Schema::hasTable('users')) {
 			view()->composer('includes.footer', function ($view) {
 				if (auth()->check()) {
-					User::whereId(user()->id)->update([
-						'last_visit_at' => NOW()
-					]);
+					User::whereId(user()->id)->update(['last_visit_at' => NOW()]);
 				}
 			}); 
 		} else {
@@ -72,13 +49,6 @@ class AppServiceProvider extends ServiceProvider
 			view()->share(compact('category_names'));
 		} else {
 			logger()->emergency("Table categories wasn't found while trying to show list of categories, name of the method: showListOfCategories");
-		}
-	}
-
-	public function register()
-	{
-		if ($this->app->environment('local', 'testing')) {
-			$this->app->register(DuskServiceProvider::class);
 		}
 	}
 }
