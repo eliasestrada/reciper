@@ -13,7 +13,7 @@ class UnproveRecipesComposer
      * @param  View  $view
      * @return void
      */
-    public function compose(View $view)
+    public function compose(View $view) : void
     {
 		if (Schema::hasTable('recipes')) {
 			if (user()) {
