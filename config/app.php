@@ -51,16 +51,23 @@ return [
         Illuminate\Session\SessionServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
-        Illuminate\View\ViewServiceProvider::class,
+		Illuminate\View\ViewServiceProvider::class,
+		/**
+		 * Packages Providers
+		 */
+		Intervention\Image\ImageServiceProvider::class,
+		/**
+		 * App Providers
+		 */
         App\Providers\AppServiceProvider::class,
+		App\Providers\HeaderProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
-		Intervention\Image\ImageServiceProvider::class,
 		App\Providers\BladeProvider::class,
+		App\Providers\VisitorProvider::class,
 		App\Providers\UserMenuProvider::class,
 		App\Providers\FooterProvider::class,
-		App\Providers\VisitorProvider::class,
 		App\Providers\DebugProvider::class,
     ],
 
