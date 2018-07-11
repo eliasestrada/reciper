@@ -15,7 +15,7 @@ class UserCanSeeNotificationsPagesTest extends TestCase
 	 * @return void
 	 * @test
 	 */
-	public function authUserCanSeeNotificationsPage() : void
+	public function userCanSeeNotificationsPage() : void
     {
 		$user = User::find(factory(User::class)->create()->id);
 

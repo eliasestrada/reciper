@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Feature\Guest\Pages\CannotSee;
+namespace Tests\Feature\Guest\Pages\CantSee;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class GuestCannotSeeRecipesPagesTest extends TestCase
+class GuestCantSeeRecipesPagesTest extends TestCase
 {
 	use DatabaseTransactions;
 
@@ -14,7 +14,7 @@ class GuestCannotSeeRecipesPagesTest extends TestCase
 	 * @return void
 	 * @test
 	 */
-    public function guestCannotSeeMyRecipesPage() : void
+    public function guestCantSeeMyRecipesPage() : void
     {
 		$this->get('/users/other/my-recipes')
 			->assertRedirect('/login');
