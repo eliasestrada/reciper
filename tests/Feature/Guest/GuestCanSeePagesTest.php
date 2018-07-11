@@ -12,7 +12,7 @@ class GuestCanSeePagesTest extends TestCase
 	use DatabaseTransactions;
 
 	/**
-	 * Test view views/recipes/index
+	 * Test for recipes page. View: resources/views/recipes/index
 	 * @return void
 	 * @test
 	 */
@@ -24,7 +24,7 @@ class GuestCanSeePagesTest extends TestCase
 	}
 
 	/**
-	 * Test view views/recipes/show
+	 * Test for show recipe page. View: resources/views/recipes/show
 	 * @return void
 	 * @test
 	 */
@@ -42,7 +42,7 @@ class GuestCanSeePagesTest extends TestCase
 	}
 
 	/**
-	 * Test view views/pages/search
+	 * Test for search page. View: resources/views/pages/search
 	 * @return void
 	 * @test
 	 */
@@ -54,7 +54,7 @@ class GuestCanSeePagesTest extends TestCase
 	}
 
 	/**
-	 * Test view views/pages/home
+	 * Test for home page. View: resources/views/pages/home
 	 * @return void
 	 * @test
 	 */
@@ -66,7 +66,7 @@ class GuestCanSeePagesTest extends TestCase
 	}
 
 	/**
-	 * Test view views/pages/contact
+	 * Test for contact page. View: resources/views/pages/contact
 	 * @return void
 	 * @test
 	 */
@@ -78,7 +78,7 @@ class GuestCanSeePagesTest extends TestCase
 	}
 
 	/**
-	 * Test view views/auth/login
+	 * Test for login page. View: resources/views/auth/login
 	 * @return void
 	 * @test
 	 */
@@ -90,7 +90,7 @@ class GuestCanSeePagesTest extends TestCase
 	}
 
 	/**
-	 * Test view views/auth/register
+	 * Test for register page. View: resources/views/auth/register
 	 * @return void
 	 * @test
 	 */
@@ -102,7 +102,7 @@ class GuestCanSeePagesTest extends TestCase
 	}
 
 	/**
-	 * Test view views/users/index
+	 * Test for users page. View: resources/views/users/index
 	 * @return void
 	 * @test
 	 */
@@ -114,7 +114,7 @@ class GuestCanSeePagesTest extends TestCase
 	}
 
 	/**
-	 * Test view views/users/show
+	 * Test for user profile page. View: resources/views/users/show
 	 * @return void
 	 * @test
 	 */

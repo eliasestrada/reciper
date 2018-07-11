@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\User;
+namespace Tests\Feature\User\Pages;
 
 use Tests\TestCase;
 use App\Models\User;
@@ -11,7 +11,7 @@ class UserCannotSeePagesTest extends TestCase
 	use DatabaseTransactions;
 
 	/**
-	 * Test view views/auth/login
+	 * Test for login page. View: resources/views/auth/login
 	 * @return void
 	 * @test
 	 */
@@ -23,7 +23,7 @@ class UserCannotSeePagesTest extends TestCase
 	}
 
 	/**
-	 * Test view views/auth/register
+	 * Test for register page. View: resources/views/auth/register
 	 * @return void
 	 */
 	public function testAuthUserCannotSeeRegisterPage() : void

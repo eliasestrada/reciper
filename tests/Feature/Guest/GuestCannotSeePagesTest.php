@@ -10,7 +10,7 @@ class GuestCannotSeePagesTest extends TestCase
 	use DatabaseTransactions;
 
 	/**
-	 * Test view views/user/my-recipes
+	 * Test for my recipes page. View: resources/views/user/my-recipes
 	 * @return void
 	 * @test
 	 */
