@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Feature\Guest;
+namespace Tests\Feature\Guest\Pages\CannotSee;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class GuestCannotSeePagesTest extends TestCase
+class GuestCannotSeeRecipesPagesTest extends TestCase
 {
 	use DatabaseTransactions;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Guest;
+namespace Tests\Feature\Guest\Pages\CanSee;
 
 use Tests\TestCase;
 use App\Models\User;
@@ -10,36 +10,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class GuestCanSeePagesTest extends TestCase
 {
 	use DatabaseTransactions;
-
-	/**
-	 * Test for recipes page. View: resources/views/recipes/index
-	 * @return void
-	 * @test
-	 */
-    public function guestCanSeeRecipesPage() : void
-    {
-		$this->get('/recipes')
-        	->assertSuccessful()
-        	->assertViewIs('recipes.index');
-	}
-
-	/**
-	 * Test for show recipe page. View: resources/views/recipes/show
-	 * @return void
-	 * @test
-	 */
-	public function guestCanSeeShowPage() : void
-    {
-		$recipe = factory(Recipe::class)->create([
-			'ready_ru' => 1,
-			'ready_en' => 1,
-			'approved_ru' => 1,
-			'approved_en' => 1
-		]);
-		$this->get("/recipes/$recipe->id")
-			->assertSuccessful()
-			->assertViewIs('recipes.show');
-	}
 
 	/**
 	 * Test for search page. View: resources/views/pages/search
@@ -70,7 +40,7 @@ class GuestCanSeePagesTest extends TestCase
 	 * @return void
 	 * @test
 	 */
-	public function guestCanContactPage() : void
+	public function guestCanSeeContactPage() : void
     {
 		$this->get('/contact')
 			->assertSuccessful()
@@ -99,31 +69,5 @@ class GuestCanSeePagesTest extends TestCase
 		$this->get('/register')
 			->assertSuccessful()
 			->assertViewIs('auth.register');
-	}
-
-	/**
-	 * Test for users page. View: resources/views/users/index
-	 * @return void
-	 * @test
-	 */
-	public function guestCanSeeAllRegisteredUsers() : void
-	{
-		$this->get('/users')
-			->assertSuccessful()
-			->assertViewIs('users.index');
-	}
-
-	/**
-	 * Test for user profile page. View: resources/views/users/show
-	 * @return void
-	 * @test
-	 */
-	public function guestCanSeeRegisteredUser() : void
-	{
-		$user = factory(User::class)->create();
-
-		$this->get('/users/' . $user->id)
-			->assertSuccessful()
-			->assertViewIs('users.show');
 	}
 }

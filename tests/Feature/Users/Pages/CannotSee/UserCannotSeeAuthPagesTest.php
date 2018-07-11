@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature\User\Pages;
+namespace Tests\Feature\Users\Pages\CannotSee;
 
 use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class UserCannotSeePagesTest extends TestCase
+class UserCannotSeeAuthPagesTest extends TestCase
 {
 	use DatabaseTransactions;
 
