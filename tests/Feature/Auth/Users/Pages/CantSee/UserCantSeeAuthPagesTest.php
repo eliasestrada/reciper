@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Users\Pages\CantSee;
+namespace Tests\Feature\Auth\Users\Pages\CantSee;
 
 use Tests\TestCase;
 use App\Models\User;

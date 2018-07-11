@@ -1,24 +1,24 @@
 <?php
 
-namespace Tests\Feature\Users\Pages\CantSee\AdminPages;
+namespace Tests\Feature\Auth\Users\Pages\CantSee\AdminPages;
 
 use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class UserCantSeeAdminFeedbackPagesTest extends TestCase
+class UserCantSeeAdminChecklistPagesTest extends TestCase
 {
 	use DatabaseTransactions;
 
 	/**
-	 * Test for feedback page. View: resources/views/admin/feedback/index
+	 * Test for checklist page. View: resources/views/admin/checklist/index
 	 * @return void
 	 * @test
 	 */
-	public function userCantSeeAdminFeedbackIndexPage() : void
+	public function userCantSeeAdminChecklistIndexPage() : void
     {
 		$this->actingAs(factory(User::class)->make(['admin' => 0]))
-			->get('/admin/feedback')
+			->get('/admin/checklist')
         	->assertRedirect('/login');
 	}
 }
