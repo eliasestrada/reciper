@@ -124,7 +124,7 @@ function setImageName($extension = null, $slug = '') : string
 function getRatingNumber($recipes, $likes)
 {
 	$points_for_recipes = count($recipes);
-	$points_for_likes = $likes / 10;
+	$points_for_likes = ($likes > 0) ? $likes / 10 : 0;
 
 	$result = $points_for_recipes + $points_for_likes;
 
