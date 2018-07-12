@@ -1,6 +1,12 @@
 <?php
 
-function timeAgo($date, $param = null) {
+/**
+ * @param string $date
+ * @param string $param
+ * @return string
+ */
+function timeAgo($date, $param = null)
+{
 	$date 	  = strtotime($date);
     $stf      = 0;
     $cur_time = time();
