@@ -28,25 +28,25 @@ class HelperFunctionsTest extends TestCase
 		// Icon should be on ===================
 		$expected = '<span class="online-icon-on"></span>';
 
-		$current = getOnlineIcon('30 ' . trans('date.second') . ' ' . trans("date.ago"));
+		$current = getOnlineIcon('30 ' . trans('date.second').' '.trans("date.ago"));
 		$this->assertEquals($expected, $current);
 
-		$current = getOnlineIcon('30 ' . trans('date.seconds') . ' ' . trans("date.ago"));
+		$current = getOnlineIcon('30 ' . trans('date.seconds').' '.trans("date.ago"));
 		$this->assertEquals($expected, $current);
 
-		$current = getOnlineIcon('30 ' . trans('date.seconds2') . ' ' . trans("date.ago"));
+		$current = getOnlineIcon('30 ' . trans('date.seconds2').' '.trans("date.ago"));
 		$this->assertEquals($expected, $current);
 
 		// Icon should be off ===================
 		$expected = '<span class="online-icon-off"></span>';
 
-		$current = getOnlineIcon('30 ' . trans('date.minute') . ' ' . trans("date.ago"));
+		$current = getOnlineIcon('30 ' . trans('date.minute').' '.trans("date.ago"));
 		$this->assertEquals($expected, $current);
 
-		$current = getOnlineIcon('30 ' . trans('date.minutes') . ' ' . trans("date.ago"));
+		$current = getOnlineIcon('30 ' . trans('date.minutes').' '.trans("date.ago"));
 		$this->assertEquals($expected, $current);
 
-		$current = getOnlineIcon('30 ' . trans('date.minutes2') . ' ' . trans("date.ago"));
+		$current = getOnlineIcon('30 ' . trans('date.minutes2').' '.trans("date.ago"));
 		$this->assertEquals($expected, $current);
 	}
 
