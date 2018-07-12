@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="profile-header">
+<div class="page profile-header">
 	<div>
 		<h1 class="my-4">{{ $user->name }}</h1>
 		<p>@lang('users.joined'): {{ timeAgo($user->created_at) }}</p>

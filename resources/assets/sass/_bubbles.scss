@@ -8,6 +8,10 @@
 	}
 }
 
+.bubbles-block {
+	text-align: center;
+}
+
 .bubble {
 	display: block;
 	width: 90px;
@@ -18,10 +22,6 @@
 	border-radius: 50%;
 	line-height: .6;
 
-	.number, svg {
-		position: absolute;
-	}
-
 	.number {
 		top: 52%;
 		transform: translate(-50%, -50%);
@@ -29,6 +29,7 @@
 		font-size: 25px;
 		z-index: 1;
 		color: $mainDark;
+		position: absolute;
 
 		&::after {
 			content: '';
@@ -41,13 +42,18 @@
 	}
 
 	svg {
+		position: absolute;
 		top: -15px;
-		left: 34%;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 }
 
 @media(max-width:360px) {
 	.bubble {
+		width: 70px;
+		height: 70px;
+
 		.number {
 			font-size: 20px;
 		}

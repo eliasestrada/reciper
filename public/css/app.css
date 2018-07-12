@@ -7657,6 +7657,10 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   margin-right: 15px;
 }
 
+.bubbles-block {
+  text-align: center;
+}
+
 .bubble {
   display: block;
   width: 90px;
@@ -7668,10 +7672,6 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   line-height: .6;
 }
 
-.bubble .number, .bubble svg {
-  position: absolute;
-}
-
 .bubble .number {
   top: 52%;
   -webkit-transform: translate(-50%, -50%);
@@ -7680,6 +7680,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   font-size: 25px;
   z-index: 1;
   color: #292543;
+  position: absolute;
 }
 
 .bubble .number::after {
@@ -7692,11 +7693,18 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 }
 
 .bubble svg {
+  position: absolute;
   top: -15px;
-  left: 34%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 
 @media (max-width: 360px) {
+  .bubble {
+    width: 70px;
+    height: 70px;
+  }
   .bubble .number {
     font-size: 20px;
   }
