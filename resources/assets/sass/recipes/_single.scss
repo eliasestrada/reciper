@@ -1,4 +1,4 @@
-.decorated  {
+.decorated {
 	overflow: hidden;
 	color: $mainDark;
 	margin: .3em 0;
@@ -28,7 +28,6 @@
 .instruction {
 	padding: 0 0 1em 2.6em;
 	font-size: 1.2em;
-
 	li {
 		min-height: 3em;
 		margin-top: .93em;
@@ -37,7 +36,6 @@
 		left: .4em;
 		padding: 0 .7em;
 		text-align: left;
-
 		&:before {
 			width: 70px;
 			height: 50px;
@@ -47,7 +45,7 @@
 			font-size: 2em;
 			position: absolute;
 			left: -2.2em;
-			background: linear-gradient(to right, $main , transparent);
+			background: linear-gradient(to right, $main, transparent);
 			border-radius: 2px;
 		}
 	}
@@ -64,18 +62,15 @@
 		grid-template: "recipe-content side-bar" 1fr / 1fr 15.62rem;
 		grid-gap: 1.12rem;
 		padding: 1rem .6rem .93rem;
-
 		.recipe-img {
 			width: 80%;
 			max-width: 43.7rem;
 			margin: .6rem auto;
 		}
-
 		.recipe-content {
 			grid-area: recipe-content;
 			margin-left: .93rem;
 		}
-
 		.side-bar {
 			grid-area: side-bar;
 			width: 12.5rem;

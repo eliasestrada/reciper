@@ -10561,7 +10561,6 @@ function activeAfterClickBtn(element, button) {
 		}
 	});
 }
-
 /**
  * The function will check the given checkbox after clicking given
  * button, then it will submit the closest form to checkbox

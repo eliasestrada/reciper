@@ -4,16 +4,13 @@
 @import 'modules/reset';
 @import 'modules/common';
 @import 'bootstrap';
-
 // Home
 @import 'home/home';
 @import 'home/home-media';
-
 // Recipes
 @import 'recipes/single';
 @import 'recipes/like';
 @import 'recipes/create';
-
 // Other
 @import 'nav';
 @import 'items';

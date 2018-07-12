@@ -1,4 +1,3 @@
-
 /**
  * Show certain element by adding active class and
  * removing after another click event

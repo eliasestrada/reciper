@@ -1,7 +1,6 @@
 @media (max-width: 640px) {
 	.home-section {
 		padding: 1.4em;
-	
 		.headline {
 			font-size: 1.3em;
 		}
@@ -9,13 +8,15 @@
 			font-size: 1em;
 		}
 	}
-
 	.home-header {
 		.header-content {
 			width: 90%;
-
-			h1 { font-size: 2em; }
-			h2 { font-size: 1em; }
+			h1 {
+				font-size: 2em;
+			}
+			h2 {
+				font-size: 1em;
+			}
 		}
 	}
 }

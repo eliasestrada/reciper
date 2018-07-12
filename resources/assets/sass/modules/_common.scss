@@ -82,11 +82,9 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 	font-size: 1.4em;
 	margin: .4em 0;
 	position: relative;
-
 	&::first-letter {
 		text-transform: uppercase;
 	}
-
 	&::before {
 		content: '';
 		width: 80px;
@@ -96,7 +94,6 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 		left: -18px;
 		top: -10px;
 	}
-
 	&::after {
 		content: '';
 		width: 3px;
@@ -117,8 +114,13 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 	margin-right: 2px;
 }
 
-.online-icon-on {background: darkgreen;}
-.online-icon-off {background: brown;}
+.online-icon-on {
+	background: darkgreen;
+}
+
+.online-icon-off {
+	background: brown;
+}
 
 .unstyled-list {
 	list-style: none;

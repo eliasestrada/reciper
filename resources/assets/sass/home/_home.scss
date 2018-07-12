@@ -2,13 +2,11 @@
 	background: $paper;
 	color: #333;
 	padding: 1.5em 1.8em;
-
 	.headline {
 		margin-bottom: 1em;
 		font-size: 1.9em;
 		font-family: $headerFont;
 	}
-
 	p {
 		font-size: 1.1em;
 		text-align: left;
@@ -27,7 +25,6 @@
 	background-size: cover;
 	background-attachment: fixed;
 	overflow: hidden;
-
 	.header-content {
 		width: 94%;
 		position: absolute;
@@ -36,8 +33,8 @@
 		transform: translate(-50%, -50%);
 		margin-top: -1em;
 		text-align: center;
-
-		h1, .home-meal {
+		h1,
+		.home-meal {
 			animation: appearWithOpacity 2s;
 			animation-fill-mode: forwards;
 			transition: opacity 300ms;
@@ -45,7 +42,6 @@
 			font-family: $headerFont;
 			opacity: 0;
 		}
-
 		h1 {
 			z-index: 30;
 			line-height: 1.2;
@@ -54,19 +50,16 @@
 			font-size: 2.5em;
 			animation-delay: .5s;
 		}
-
 		.home-meal {
 			font-size: 1.2em;
 			animation-delay: .7s;
 			position: relative;
-
 			a {
 				display: inline-block;
 				color: #fff;
 				transition: padding .3s, transform .2s, background-color .5s;
 				transform: scale(1);
 				border-radius: 20px;
-
 				&:hover {
 					transform: scale(1.2);
 					transition: padding .3s, transform .2s, background-color .5s;
@@ -77,11 +70,9 @@
 			}
 		}
 	}
-	
 	.header-bg-content {
 		padding: 1em;
 	}
-	
 	.home-button {
 		display: flex;
 		margin: .6em auto;
@@ -98,18 +89,15 @@
 		opacity: 0;
 		position: relative;
 		border: none;
-
 		i {
 			margin: auto;
 			font-size: 40px;
 		}
-
 		&:hover {
 			background: $mainHover;
 			transition: transform 400ms, background-color 400ms;
 		}
 	}
-
 	.home-search {
 		width: 80%;
 		max-width: 30em;
@@ -120,11 +108,9 @@
 		transition: transform 400ms;
 		transform: translateX(-50%) perspective(1000px) rotateX(-90deg);
 	}
-
 	.home-search.active {
 		transform: translateX(-50%) perspective(1000px) rotateX(0deg);
 	}
-	
 	.header-search input {
 		width: 100%;
 		position: absolute;
@@ -138,7 +124,6 @@
 		color: #ffffff;
 		transition: border 300ms, opacity 400ms;
 		outline: 0;
-
 		&:focus {
 			border: 2px solid #861b50;
 			transition: border 300ms;
@@ -184,12 +169,10 @@
 	opacity: .7;
 	z-index: 120;
 	cursor: pointer;
-
 	i {
 		margin: auto;
 		font-size: 20px;
 	}
-
 	&:hover {
 		transition: opacity 400ms;
 		opacity: 1;

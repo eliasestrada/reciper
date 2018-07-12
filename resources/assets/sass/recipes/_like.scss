@@ -2,7 +2,6 @@
 	.user-icon-on-single-recipe {
 		margin-right: -25px;
 		transition: margin-right 300ms, transform 300ms;
-
 		&:hover {
 			margin-right: 5px;
 			transition: margin-right 300ms, transform 300ms;
@@ -29,13 +28,11 @@
 	margin: auto;
 	animation: heart-beat 1.7s infinite both 1s, disappear 1s;
 	animation-direction: alternate, reverse;
-
 	&-empty {
 		background-size: 30px;
 		background: url(icons/empty-heart.png) center;
 		transition: background .3s;
 	}
-	
 	&-full {
 		background-size: 30px;
 		background: url(icons/full-heart.png) center;

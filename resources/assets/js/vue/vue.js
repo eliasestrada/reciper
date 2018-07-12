@@ -1,4 +1,6 @@
-import { setInterval } from 'core-js';
+import {
+	setInterval
+} from 'core-js';
 
 window.Vue = require('vue');
 

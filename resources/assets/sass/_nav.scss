@@ -18,11 +18,11 @@
 	border-radius: 50%;
 }
 
-.right-borders > li {
+.right-borders>li {
 	border-left: solid 1px darken($main, 6%);
 }
 
-.bottom-borders > li {
+.bottom-borders>li {
 	border-bottom: solid 1px darken($paper, 2%);
 }
 
@@ -34,6 +34,7 @@
 	transform: translateY(-100%);
 	z-index: 5;
 }
+
 .nav-search-form.active {
 	transform: translateY(0%);
 }
