@@ -26,7 +26,7 @@
 			<label for="title">@lang('documents.doc_title')</label>
 		</div>
 		<div class="input-field"> {{-- Textarea --}}
-			<textarea name="text" id="text" class="materialize-textarea">{!! custom_strip_tags($document->getText()) !!}</textarea>
+			<textarea name="text" id="text" class="materialize-textarea">{!! customStripTags($document->getText()) !!}</textarea>
 			<span class="helper-text">@lang('documents.doc_text')</span>
 		</div>
 

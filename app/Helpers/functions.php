@@ -1,6 +1,6 @@
 <?php
 
-function custom_strip_tags($str) {
+function customStripTags($str) {
 	$allowed = '<h1><h2><h3><h4><h5><h6><p><br><br /><b><li><ol><ul><strong><span>';
 	return strip_tags($str, $allowed);
 }
