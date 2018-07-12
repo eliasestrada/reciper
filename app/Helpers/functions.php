@@ -174,5 +174,5 @@ function getOnlineIcon($value) : string
  */
 function getDataNotifMarkup($data) : string
 {
-	return !empty($data) ? 'data-notif=' . $data : '';
+	return (!empty($data) && $data > 0) ? 'data-notif=' . $data : '';
 }
