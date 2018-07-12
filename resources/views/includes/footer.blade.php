@@ -68,7 +68,7 @@
 		</a>
 	
 		<p class="footer-copyright">
-			&copy; {{ date('Y') }} Delicious Food <br /> {{ $title_footer ?? '' }}
+			&copy; {{ date('Y') }} {{ config('app.name') }} <br /> {{ $title_footer ?? '' }}
 		</p>
 	</div>
 

@@ -20,7 +20,7 @@ class TitleSeeder extends Seeder
 		Title::create([
 			'name'  => 'footer',
 			'title_ru' => '',
-			'text_ru'  => 'При копировании любых материалов с сайта активная ссылка на сайт deliciousfood.gq обязательна.'
+			'text_ru'  => 'При копировании любых материалов с сайта активная ссылка на сайт reciper.tk обязательна.'
 		]);
     }
 }
