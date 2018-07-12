@@ -27,8 +27,8 @@
 			</a>
 		@endforeach
 	</ul>
+	{{ $users->links() }}
 </div>
 
-{{ $users->links() }}
 
 @endsection

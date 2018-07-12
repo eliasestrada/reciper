@@ -10,7 +10,7 @@ class UsersController extends Controller
 {
 	public function index()
 	{
-        return view('users.index', ['users' => User::simplePaginate(30)]);
+        return view('users.index', ['users' => User::paginate(50)]);
 	}
 
 	/**
