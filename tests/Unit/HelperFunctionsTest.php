@@ -3,6 +3,10 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
+use App\Models\Like;
+use App\Models\User;
+use App\Models\Recipe;
+use App\Models\Visitor;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -64,5 +68,21 @@ class HelperFunctionsTest extends TestCase
 			'99<br /><small>' . trans('users.thousand') . '</small>');
 		$this->assertEquals(readableNumber(1000000),
 			'1<br /><small>' . trans('users.million') . '</small>');
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function checkGetRatingNumberHelper() : void
+	{
+		$recipes = [
+			factory(Recipe::class)->make([
+				'user_id' => factory(User::class)->make()->id
+			])
+		];
+
+		$this->assertEquals(getRatingNumber($recipes, $likes = 11), 2.1);
+		$this->assertEquals(getRatingNumber($recipes, $likes = -11), 1);
 	}
 }
