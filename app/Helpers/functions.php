@@ -1,11 +1,23 @@
 <?php
 
-function customStripTags($str) {
+/**
+ * @param string $string
+ * @return string
+ */
+function customStripTags($string) : string
+{
 	$allowed = '<h1><h2><h3><h4><h5><h6><p><br><br /><b><li><ol><ul><strong><span>';
-	return strip_tags($str, $allowed);
+	return strip_tags($string, $allowed);
 }
 
-function convertToListItems($str) {
+/**
+ * Takes string, adds li tags to every line separeted by "\n"
+ * 
+ * @param string $str
+ * @return string
+ */
+function convertToListItems($str) : string
+{
 	$string = strip_tags($str, '<li>');
 
 	// Convert from string to array
@@ -20,21 +32,34 @@ function convertToListItems($str) {
 	return implode('', array_values($list_of_ingredients));
 }
 
-
+// Shortcut
 function user() {
 	return auth()->user();
 }
 
-
+// Shortcut
 function locale() {
 	return app()->getLocale();
 }
 
-function selectedIfEqual($number1, $number2) {
-	return $number1 === $number2 ? 'selected' : '';
+/**
+ * @param integer $num1
+ * @param integer $num2
+ * @return string
+ */
+function selectedIfEqual($num1, $num2) : string
+{
+	return $num1 === $num2 ? 'selected' : '';
 }
 
-function styleTimestamp($path) {
+/**
+ * Adds version to link href if it was modified
+ * 
+ * @param string
+ * @return
+ */
+function styleTimestamp($path) : string
+{
 	try {
 		$timestamp = '?v=' . File::lastModified(public_path() . $path);
 	}
@@ -45,8 +70,14 @@ function styleTimestamp($path) {
 	return '<link rel="stylesheet" href="' . $path . $timestamp . '">';
 }
 
-
-function scriptTimestamp( $path ) {
+/**
+ * Adds version to script src if it was modified
+ * 
+ * @param string
+ * @return
+ */
+function scriptTimestamp($path) : string
+{
 	try {
 		$timestamp = '?v=' . File::lastModified(public_path() . $path);
 	}
@@ -57,19 +88,41 @@ function scriptTimestamp( $path ) {
 	return '<script type="text/javascript" src="' . $path . $timestamp . '"></script>';
 }
 
-
-function activeIfRouteIs($route) {
+/**
+ * @param string $route
+ * @return string
+ */
+function activeIfRouteIs($route) : string
+{
     return request()->is($route) ? 'active' : '';
 }
 
-function setImageName($extension = null, $slug = '') {
+/**
+ * Converts given parameters into a file name
+ * 
+ * @param string $extention
+ * @param string $slug
+ * @return string
+ */
+function setImageName($extension = null, $slug = '') : string
+{
 	if ($extension) {
 		return time() . '-' . $slug . '.' . $extension;
 	}
 	return 'default.jpg';
 }
 
-function getRatingNumber($recipes, $likes) {
+/**
+ * This function is simply creates rating for user
+ * --- For one recipe 1 point
+ * --- For one like 0.1 point
+ * 
+ * @param object $recipes
+ * @param int $likes
+ * @return float
+ */
+function getRatingNumber($recipes, $likes)
+{
 	$points_for_recipes = count($recipes);
 	$points_for_likes = $likes / 10;
 
@@ -78,7 +131,16 @@ function getRatingNumber($recipes, $likes) {
 	return number_format($result, 1);
 }
 
-function readableNumber($number) {
+/**
+ * Takes number and looks at it, if this number is between 1 thousand and 1 million
+ * function returns this number with "тыс." after number, if its bigger it will
+ * return this number with 'мил.' after.
+ * 
+ * @param int $number
+ * @return mixed
+ */
+function readableNumber($number)
+{
 	if ($number >= 1000 && $number < 1000000):
 		$number = substr($number, 0, -3) . '<br /><small>' . trans('users.thousand') . '</small>';
 	elseif ($number >= 1000000):
@@ -88,7 +150,15 @@ function readableNumber($number) {
 	return $number;
 }
 
-function getOnlineIcon($value) {
+/**
+ * It takes date converted with timeAgo() function, and checks if second word after number
+ * is "seconds". If yes it will return html green icon, otherwise red icon
+ * 
+ * @param string $value
+ * @return string
+ */
+function getOnlineIcon($value) : string
+{
 	$seconds = [trans('date.second'), trans('date.seconds'), trans('date.seconds2')];
 	$url_string = explode(' ', $value);
 
@@ -98,6 +168,11 @@ function getOnlineIcon($value) {
 	return '<span class="online-icon-off"></span>';
 }
 
-function getDataNotifMarkup($data) {
+/**
+ * @param integer $data
+ * @return string
+ */
+function getDataNotifMarkup($data) : string
+{
 	return !empty($data) ? 'data-notif=' . $data : '';
 }
