@@ -9,60 +9,50 @@
 
 <script>
 export default {
-	data() {
-		return {
-			liked: false,
-			allLikes: this.likes
-		}
-	},
+  data() {
+    return {
+      liked: false,
+      allLikes: this.likes
+    };
+  },
 
-	props: ['likes', 'recipeId'],
+  props: ["likes", "recipeId"],
 
-	created() {
-		this.fetchVisitorLikes()
-	},
+  created() {
+    this.fetchVisitorLikes();
+  },
 
-	methods: {
-		iconState() {
-			return this.liked
-				? 'like-icon-full'
-				: 'like-icon-empty'
-		},
-		fetchVisitorLikes() {
-			fetch('/api/recipes/other/check-if-liked/' + this.recipeId, {
-				method: 'post'
-			})
-			.then(res => res.json())
-			.then(data => this.changeLikeButton(data))
-			.catch(err => console.log(err))
-		},
-		changeLikeButton(value) {
-			this.liked
-				= value == 0
-				? false
-				: true
-		},
-		changeLikeNumber(value) {
-			value == 0
-				? this.allLikes--
-				: this.allLikes++
-		},
-		giveLikeOrDislike() {
-			var state
-				= this.liked == false
-				? 'like'
-				: 'dislike'
+  methods: {
+    iconState() {
+      return this.liked ? "like-icon-full" : "like-icon-empty";
+    },
+    fetchVisitorLikes() {
+      fetch("/api/recipes/other/check-if-liked/" + this.recipeId, {
+        method: "post"
+      })
+        .then(res => res.json())
+        .then(data => this.changeLikeButton(data))
+        .catch(err => console.log(err));
+    },
+    changeLikeButton(value) {
+      this.liked = value == 0 ? false : true;
+    },
+    changeLikeNumber(value) {
+      value == 0 ? this.allLikes-- : this.allLikes++;
+    },
+    giveLikeOrDislike() {
+      var state = this.liked == false ? "like" : "dislike";
 
-			fetch('/api/recipes/other/' + state + '/' + this.recipeId, {
-				method: 'post'
-			})
-			.then(res => res.json())
-			.then(data => {
-				this.changeLikeButton(data.liked)
-				this.changeLikeNumber(data.liked)
-			})
-			.catch(err => console.log(err))
-		}
-	}
-}
+      fetch("/api/recipes/other/" + state + "/" + this.recipeId, {
+        method: "post"
+      })
+        .then(res => res.json())
+        .then(data => {
+          this.changeLikeButton(data.liked);
+          this.changeLikeNumber(data.liked);
+        })
+        .catch(err => console.log(err));
+    }
+  }
+};
 </script>

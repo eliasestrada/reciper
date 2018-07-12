@@ -15,25 +15,25 @@
 
 <script>
 export default {
-	data() {
-		return {
-			recipes: []
-		}
-	},
+  data() {
+    return {
+      recipes: []
+    };
+  },
 
-	created() {
-		this.fetchData()
-	},
+  created() {
+    this.fetchData();
+  },
 
-	props: ['resipeId'],
-	 
-	methods: {
-		fetchData() {
-			fetch('/api/recipes/other/random/' + this.resipeId)
-			.then(res => res.json())
-			.then(res => this.recipes = res.data)
-			.catch(err => console.log(err))
-		}
-	}
-}
+  props: ["resipeId"],
+
+  methods: {
+    fetchData() {
+      fetch("/api/recipes/other/random/" + this.resipeId)
+        .then(res => res.json())
+        .then(res => (this.recipes = res.data))
+        .catch(err => console.log(err));
+    }
+  }
+};
 </script>

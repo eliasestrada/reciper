@@ -24,85 +24,92 @@
 
 <script>
 export default {
-	data() {
-		return {
-			categories: [],
-			fields: 1,
-			visibleAddBtn: true,
-			visibleDelBtn: false
-		}
-	},
+  data() {
+    return {
+      categories: [],
+      fields: 1,
+      visibleAddBtn: true,
+      visibleDelBtn: false
+    };
+  },
 
-	props: ['label', 'locale', 'select', 'deleting', 'add', 'recipeCategories', 'categoriesTitle'],
+  props: [
+    "label",
+    "locale",
+    "select",
+    "deleting",
+    "add",
+    "recipeCategories",
+    "categoriesTitle"
+  ],
 
-	created() {
-		this.fetchCategories(),
-		this.getFieldsFromProps()
-	},
-	 
-	methods: {
-		fetchCategories() {
-			fetch('/api/recipes/other/categories')
-			.then(res => res.json())
-			.then(data => this.categories = data)
-			.catch(err => console.log(err))
-		},
+  created() {
+    this.fetchCategories(), this.getFieldsFromProps();
+  },
 
-		getFieldsFromProps() {
-			if (this.recipeCategories) {
-				if (this.recipeCategories.length == 0) {
-					this.fields = 1
-				} else {
-					this.fields = this.recipeCategories.length
-				}
-				this.stableButtons()
-			}
-		},
+  methods: {
+    fetchCategories() {
+      fetch("/api/recipes/other/categories")
+        .then(res => res.json())
+        .then(data => (this.categories = data))
+        .catch(err => console.log(err));
+    },
 
-		addField() {
-			if (this.fields <= 3 && this.fields > 0) {
-				this.fields++
-			}
-			this.stableButtons()
-		},
+    getFieldsFromProps() {
+      if (this.recipeCategories) {
+        if (this.recipeCategories.length == 0) {
+          this.fields = 1;
+        } else {
+          this.fields = this.recipeCategories.length;
+        }
+        this.stableButtons();
+      }
+    },
 
-		deleteField() {
-			if (this.fields > 1) {
-				this.fields--
-			}
-			this.stableButtons()
-		},
+    addField() {
+      if (this.fields <= 3 && this.fields > 0) {
+        this.fields++;
+      }
+      this.stableButtons();
+    },
 
-		stableButtons() {
-			if (this.fields > 1) {
-				this.visibleDelBtn = true
-			}
+    deleteField() {
+      if (this.fields > 1) {
+        this.fields--;
+      }
+      this.stableButtons();
+    },
 
-			if (this.fields === 4) {
-				this.visibleAddBtn = false
-				this.visibleDelBtn = true
-			}
+    stableButtons() {
+      if (this.fields > 1) {
+        this.visibleDelBtn = true;
+      }
 
-			if (this.fields < 4) {
-				this.visibleAddBtn = true
-			}
+      if (this.fields === 4) {
+        this.visibleAddBtn = false;
+        this.visibleDelBtn = true;
+      }
 
-			if (this.fields === 1) {
-				this.visibleDelBtn = false
-			}
-		}
-	},
-	computed: {
-		classDelBtn() {
-			return {
-				disable: !this.visibleDelBtn
-			}
-		},
-		classAddBtn() {
-			return {
-				disable: !this.visibleAddBtn
-			}
-		}
-	}
-}
+      if (this.fields < 4) {
+        this.visibleAddBtn = true;
+      }
+
+      if (this.fields === 1) {
+        this.visibleDelBtn = false;
+      }
+    }
+  },
+  computed: {
+    classDelBtn() {
+      return {
+        disable: !this.visibleDelBtn
+      };
+    },
+    classAddBtn() {
+      return {
+        disable: !this.visibleAddBtn
+      };
+    }
+  }
+};
 </script>

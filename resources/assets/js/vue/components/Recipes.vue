@@ -49,42 +49,42 @@
 
 <script>
 export default {
-	data() {
-		return {
-			recipes: [],
-			pagin: {}
-		}
-	},
+  data() {
+    return {
+      recipes: [],
+      pagin: {}
+    };
+  },
 
-	props: ['go'],
+  props: ["go"],
 
-	created() {
-		this.fetchRecipes()
-	},
-	 
-	methods: {
-		fetchRecipes(page_url) {
-			let vm = this
-			page_url = page_url || '/api/recipes'
+  created() {
+    this.fetchRecipes();
+  },
 
-			fetch(page_url)
-			.then(res => res.json())
-			.then(res => {
-				this.recipes = res.data
-				vm.makePagination(res.meta, res.links)
-			})
-			.catch(err => console.log(err))
-		},
+  methods: {
+    fetchRecipes(page_url) {
+      let vm = this;
+      page_url = page_url || "/api/recipes";
 
-		makePagination(meta, links) {
-			let pagin = {
-				current_page: meta.current_page,
-				last_page: meta.last_page,
-				next_page_url: links.next,
-				prev_page_url: links.prev
-			}
-			this.pagin = pagin
-		}
-	}
-}
+      fetch(page_url)
+        .then(res => res.json())
+        .then(res => {
+          this.recipes = res.data;
+          vm.makePagination(res.meta, res.links);
+        })
+        .catch(err => console.log(err));
+    },
+
+    makePagination(meta, links) {
+      let pagin = {
+        current_page: meta.current_page,
+        last_page: meta.last_page,
+        next_page_url: links.next,
+        prev_page_url: links.prev
+      };
+      this.pagin = pagin;
+    }
+  }
+};
 </script>
