@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use DB;
-use Schema;
 use App\Models\User;
 use App\Models\Title;
 use App\Models\Category;
@@ -17,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot() : void
     {
-		Schema::defaultStringLength(191);
+		\Schema::defaultStringLength(191);
 
 		$this->showListOfCategories();
 		$this->updateLastUserVisit();
@@ -28,15 +26,11 @@ class AppServiceProvider extends ServiceProvider
      */
 	public function updateLastUserVisit() : void
 	{
-		if (Schema::hasTable('users')) {
-			view()->composer('includes.footer', function ($view) {
-				if (auth()->check()) {
-					User::whereId(user()->id)->update(['last_visit_at' => NOW()]);
-				}
-			}); 
-		} else {
-			logger()->emergency("Table users wasn't found while trying to update last user visit, name of the method: updateLastUserVisit");
-		}
+		view()->composer('includes.footer', function ($view) {
+			if (auth()->check()) {
+				User::whereId(user()->id)->update(['last_visit_at' => NOW()]);
+			}
+		});
 	}
 
 	/**
@@ -44,11 +38,7 @@ class AppServiceProvider extends ServiceProvider
      */
 	public function showListOfCategories() : void
 	{
-		if (Schema::hasTable('categories')) {
-			$category_names = Category::get(['name_' . locale()])->toArray();
-			view()->share(compact('category_names'));
-		} else {
-			logger()->emergency("Table categories wasn't found while trying to show list of categories, name of the method: showListOfCategories");
-		}
+		$category_names = Category::get(['name_' . locale()])->toArray();
+		view()->share(compact('category_names'));
 	}
 }

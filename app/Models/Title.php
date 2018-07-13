@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Schema;
 use Illuminate\Database\Eloquent\Model;
 
 class Title extends Model

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Schema;
 use Illuminate\Database\Eloquent\Model;
 use App\Helpers\Traits\RecipeModelShortcuts;
 use App\Helpers\Traits\RecipeModelRelationship;

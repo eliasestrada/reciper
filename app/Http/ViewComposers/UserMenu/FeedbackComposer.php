@@ -2,7 +2,6 @@
 
 namespace App\Http\ViewComposers\UserMenu;
 
-use Schema;
 use App\Models\Feedback;
 use Illuminate\View\View;
 
@@ -15,14 +14,10 @@ class FeedbackComposer
      */
     public function compose(View $view) : void
     {
-		if (Schema::hasTable('feedback')) {
-			if (user()) {
-				$view->with('all_feedback', getDataNotifMarkup(
-					Feedback::where('created_at', '>', user()->contact_check)->count())
-				);
-			}
-		} else {
-			logger()->emergency("Table feedback wasn't found while trying to count all unproved recipes, name of the method: countAndComposeAllFeedback");
+		if (user()) {
+			$view->with('all_feedback', getDataNotifMarkup(
+				Feedback::where('created_at', '>', user()->contact_check)->count())
+			);
 		}
     }
 }

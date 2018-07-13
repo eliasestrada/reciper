@@ -2,7 +2,6 @@
 
 namespace App\Http\ViewComposers\Footer;
 
-use Schema;
 use App\Models\Recipe;
 use Illuminate\View\View;
 
@@ -24,10 +23,6 @@ class PopularRecipesComposer
 			->limit(10)
 			->get();
 
-		if (Schema::hasTable('recipes')) {
-			$view->with(compact('popular_recipes'));
-		} else {
-			logger()->emergency("Table recipes wasn't found while trying to get popular recipes from database, name of the method: getAndComposePopularRecipes");
-		}
+		$view->with(compact('popular_recipes'));
     }
 }

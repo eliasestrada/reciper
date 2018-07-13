@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Schema;
 use App\Models\Recipe;
 use App\Models\Title;
 use Illuminate\Support\ServiceProvider;

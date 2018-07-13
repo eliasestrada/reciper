@@ -11,7 +11,7 @@ class DebugProvider extends ServiceProvider
 	 * If set to true, you will be able to see all sql queries
 	 * @var boolean
 	 */
-	protected $show_queries = false;
+	protected $show_queries = true;
 
     /**
      * Bootstrap services
@@ -28,7 +28,7 @@ class DebugProvider extends ServiceProvider
 	public function databaseSettings() : void
 	{
 		if ($this->show_queries && app()->env != 'production') {
-			DB::listen(function ($query) {
+			\DB::listen(function ($query) {
 				dump($query->sql);
 				dump($query->bindings);
 			});
