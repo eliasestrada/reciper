@@ -94,7 +94,11 @@ function scriptTimestamp($path) : string
  */
 function activeIfRouteIs($route) : string
 {
-    return request()->is($route) ? 'active' : '';
+	if ($route[0] == '/') {
+		return request()->is(substr($route, 1)) ? 'active' : '';
+	} else {
+		return request()->is($route) ? 'active' : '';
+	}
 }
 
 /**
