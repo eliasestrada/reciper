@@ -29,10 +29,10 @@
 				SettingsController@updateIntroData
 			@endslot
 			@slot('title')
-				{{ $title_intro }}
+				{{ $intro->getTitle() }}
 			@endslot
 			@slot('text')
-				{{ $text_intro }}
+				{{ $intro->getText() }}
 			@endslot
 			@slot('holder_title')
 				@lang('home.intro_title')
