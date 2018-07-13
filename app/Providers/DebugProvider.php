@@ -11,7 +11,7 @@ class DebugProvider extends ServiceProvider
 	 * If set to true, you will be able to see all sql queries
 	 * @var boolean
 	 */
-	protected $show_sql = true;
+	protected $show_sql = false;
 	protected $show_bindings = false;
 
     /**
