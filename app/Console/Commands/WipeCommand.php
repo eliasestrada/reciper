@@ -4,13 +4,13 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class ICommand extends Command
+class WipeCommand extends Command
 {
     /**
      * The name and signature of the console command
      * @var string
      */
-    protected $signature = 't';
+    protected $signature = 'wipe';
 
     /**
      * The console command description
@@ -38,8 +38,6 @@ class ICommand extends Command
 		$this->call('view:clear');
 		$this->call('migrate:fresh');
 		$this->call('db:seed');
-
-		$this->info('===============================');
 		$this->info('Cache and database data had been cleared');
     }
 }
