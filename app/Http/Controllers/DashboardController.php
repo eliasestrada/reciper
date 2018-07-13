@@ -6,6 +6,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-		return redirect('users/' . user()->id);
+		return auth()->check()
+			? redirect('users/' . user()->id)
+			: redirect('/');
     }
 }
