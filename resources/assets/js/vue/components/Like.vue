@@ -1,7 +1,7 @@
 <template>
 	<span>
 		<template>
-			<a href="#" @click="giveLikeOrDislike()" class="like-icon" :class="iconState()" title=""></a>
+			<a href="#" @click="giveLikeOrDislike()" class="like-icon" :class="iconState()"></a>
 			<i>{{ allLikes }}</i>
 		</template>
 	</span>
