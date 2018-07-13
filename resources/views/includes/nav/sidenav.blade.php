@@ -1,12 +1,6 @@
 <ul class="sidenav" id="mobile-demo">
 	@include('includes.nav.menu')
 
-	<li> {{-- Seach trigger --}}
-		<a href="#" title="@lang('includes.search')" id="nav-btn-for-search-2">
-			@lang('includes.search')
-		</a>
-	</li>
-
 	<div class="divider"></div>
 
 	@auth 

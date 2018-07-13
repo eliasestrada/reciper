@@ -30,11 +30,6 @@
 						<i class="material-icons right">arrow_drop_down</i>
 					</a>
 				</li>
-				<li>
-					<a href="#" title="@lang('includes.search')" id="nav-btn-for-search-1">
-						<i class="material-icons">search</i>
-					</a>
-				</li>
 				@auth
 					<li> {{-- Dropdown Trigger 2 User --}}
 						<a id="_user-menu-trigger" class="dropdown-trigger" href="#!" data-target="dropdown2" title="@lang('includes.profile')">
@@ -48,6 +43,10 @@
 					@include('includes.nav.guest-menu')
 				@endauth
 			</ul>
+			{{-- Search button --}}
+			<a href="#" data-target="mobile-demo" class="right px-4" title="@lang('includes.search')" id="nav-btn-for-search">
+				<i class="material-icons">search</i>
+			</a>
 		</div>
 	</div>
 </nav>

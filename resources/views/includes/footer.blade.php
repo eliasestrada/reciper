@@ -20,7 +20,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#" id="nav-btn-for-search-3">
+					<a href="#" id="nav-btn-for-search-footer">
 						@lang('includes.search')
 					</a>
 				</li>
