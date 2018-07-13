@@ -85,4 +85,15 @@ class HelperFunctionsTest extends TestCase
 		$this->assertEquals(getRatingNumber($recipes, $likes = 11), 2.1);
 		$this->assertEquals(getRatingNumber($recipes, $likes = -11), 1);
 	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function checkActiveIfRouteIsHelper() : void
+	{
+		$this->get('/recipes');
+		$this->assertEquals(activeIfRouteIs('/recipes'), 'active');
+		$this->assertEquals(activeIfRouteIs('recipes'), 'active');
+	}
 }
