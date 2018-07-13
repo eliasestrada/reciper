@@ -1,17 +1,17 @@
 <?php
 
-namespace Tests\Feature\API;
+namespace Tests\Feature\Http\Rest;
 
 use Tests\TestCase;
 use App\Models\Recipe;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class SeeRecipesJsonTest extends TestCase
+class ShowJsonRecipesTest extends TestCase
 {
 	use DatabaseTransactions;
 
 	/**
-	 * Try to see recipes json
+	 * Try to see json api/recipes
 	 * We expect 3 json: data, links, meta
 	 * @return void
 	 * @test
@@ -29,7 +29,7 @@ class SeeRecipesJsonTest extends TestCase
 	}
 
 	/**
-	 * Try to see random recipes json
+	 * Try to see json api/recipes/other/random
 	 * @return void
 	 * @test
 	 */
@@ -43,5 +43,21 @@ class SeeRecipesJsonTest extends TestCase
 			->assertJsonCount(1)
 			->assertJsonMissing(['title' => 'Test 1'])
 			->assertJsonFragment(['title' => 'Test 2']);
+	}
+
+	/**
+	 * Try to see json api/recipes/other/categories
+	 * @test
+	 * @return void
+	 */
+	public function seeCategoriesJson() : void
+	{
+		app()->setLocale('ru');
+		$this->get('/api/recipes/other/categories')
+			->assertJsonFragment(['id' => 2, 'name_ru' => 'Выпечка']);
+
+		app()->setLocale('en');
+		$this->get('/api/recipes/other/categories')
+			->assertJsonFragment(['id' => 2, 'name_en' => 'Bakery']);
 	}
 }
