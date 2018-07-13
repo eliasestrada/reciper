@@ -4,9 +4,12 @@ namespace Tests\Browser\Components;
 
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UserAccessTest extends DuskTestCase
 {
+	use DatabaseMigrations;
+
 	/** @test */
 	public function resisterNewUserAndLogout()
 	{

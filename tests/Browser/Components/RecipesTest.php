@@ -6,9 +6,12 @@ use App\Models\User;
 use App\Models\Recipe;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class RecipesTest extends DuskTestCase
 {
+	use DatabaseMigrations;
+
 	/** @test */
     public function checkIfUserCanEditHisOwnRecipe()
     {
