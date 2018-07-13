@@ -18,15 +18,21 @@ class PagesController extends Controller
 	{
 		$random_recipes = Recipe::inRandomOrder()
 			->where("ready_" . locale(), 1)
-			->where("approved_" . locale(), 1)->limit(12)
-			->get(['id', 'title_' . locale(), "intro_" . locale(), 'image']);
+			->where("approved_" . locale(), 1)
+			->limit(12)
+			->get([
+				'id', 'title_' . locale(),
+				"intro_" . locale(), 'image'
+			]);
 
-		$intro = Title::whereName("intro");
+		$intro = Title::whereName("intro")->first([
+			'title_' . locale(),
+			'text_' . locale()
+		]);
 
 		return view('pages.home', [
 			'random_recipes' => $random_recipes,
-			'title_intro' => $intro->value("title_" . locale()),
-			'text_intro' => $intro->value("text_" . locale())
+			'intro' => $intro
 		]);
 	}
 
