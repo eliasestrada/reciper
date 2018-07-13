@@ -13,21 +13,23 @@
 <div class="page">
 	<h4>{{ $document->getTitle() }}</h4>
 	<div class="reset">{!! customStripTags($document->getText()) !!}</div>
-	<p class="mt-3"><b>@lang('logs.created_at'):</b></p>
 
-	{{-- Created at --}}
-	<p>{{ timeAgo($document->created_at) }}</p>
+	<p class="mt-5"> {{-- Created at --}}
+		<b>@lang('logs.created_at'):</b> 
+		{{ timeAgo($document->created_at) }}
+	</p>
 
-	{{-- Updated At --}}
-	<p class="mt-3"><b>@lang('documents.last_update'):</b></p>
-	<p>{{ timeAgo($document->updated_at) }}</p>
+	<p> {{-- Updated At --}}
+		<b>@lang('documents.last_update'):</b> 
+		{{ timeAgo($document->updated_at) }}
+	</p>
 </div>
 
-<div class="fixed-action-btn">
-	<a href="/admin/documents/{{ $document->id }}/edit" class="waves-effect waves-light btn green z-depth-3">
-		<i class="material-icons right">edit</i>
-		@lang('documents.edit')
-	</a>
-</div>
+{{-- Edit button --}}
+@component('comps.btns.fixed-btn')
+	@slot('icon') edit @endslot
+	@slot('link') /admin/documents/{{ $document->id }}/edit @endslot
+	@slot('tip') @lang('tips.edit_doc') @endslot
+@endcomponent
 
 @endsection

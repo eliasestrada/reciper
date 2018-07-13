@@ -12,9 +12,8 @@
 		</div>
 
 		<div class="fixed-action-btn"> {{--  Save button  --}}
-			<button type="submit" title="@lang('recipes.save_recipe_desc')" class="waves-effect waves-light btn green z-depth-3 pulse d-flex">
-				<i class="large material-icons mr-2">save</i> 
-				@lang('recipes.save') 
+			<button type="submit" class="waves-effect waves-light btn-floating btn-large z-depth-2 tooltipped pulse" data-tooltip="@lang('tips.save_recipe')" data-position="left">
+				<i class="large material-icons mr-2">save</i>
 			</button>
 		</div>
 	

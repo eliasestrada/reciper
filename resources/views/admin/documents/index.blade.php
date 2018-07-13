@@ -34,11 +34,10 @@
 	</div>
 </div>
 
-<div class="fixed-action-btn">
-	<a href="/admin/documents/create" class="waves-effect waves-light btn green z-depth-3">
-		<i class="material-icons right">add</i>
-		@lang('documents.new_doc')
-	</a>
-</div>
+@component('comps.btns.fixed-btn')
+	@slot('icon') add @endslot
+	@slot('link') /admin/documents/create @endslot
+	@slot('tip') @lang('documents.new_doc') @endslot
+@endcomponent
 
 @endsection

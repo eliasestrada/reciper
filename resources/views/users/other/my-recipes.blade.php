@@ -4,12 +4,13 @@
 
 @section('content')
 
-<div class="fixed-action-btn">
-	<a href="/recipes/create" title="@lang('includes.new_recipe')" class="waves-effect waves-light btn green z-depth-3 pulse d-flex">
-		<i class="large material-icons mr-2">add</i> 
-		@lang('includes.new_recipe')
-	</a>
-</div>
+{{-- Add recipe button --}}
+@component('comps.btns.fixed-btn')
+	@slot('icon') add @endslot
+	@slot('color') green @endslot
+	@slot('link') /recipes/create @endslot
+	@slot('tip') @lang('includes.new_recipe') @endslot
+@endcomponent
 
 @listOfRecipes(['recipes' => $recipes])
 	@slot('title')
