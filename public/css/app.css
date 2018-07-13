@@ -7091,7 +7091,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 }
 
 .home-header .home-search {
-  width: 80%;
+  width: 100%;
   max-width: 30em;
   position: absolute;
   top: 1em;
@@ -7112,7 +7112,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 }
 
 .home-header .header-search input {
-  width: 100%;
+  width: 88%;
   position: absolute;
   top: 4.6em;
   left: 0;
