@@ -29,9 +29,11 @@ class RecipeUpdateResponse implements Responsable
 
 		if ($this->recipe->ready()) {
 			return redirect('/users/' . user()->id)->withSuccess(trans('recipes.added_to_approving'));
+
+			// @TODO: turned off
+			//event(new RecipeIsReady($this->recipe));
 		}
 
-		event(new RecipeIsReady($recipe));
 		return back()->withSuccess(trans('recipes.saved'));
 	}
 }
