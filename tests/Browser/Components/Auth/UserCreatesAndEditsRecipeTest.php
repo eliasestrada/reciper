@@ -1,19 +1,19 @@
 <?php
 
-namespace Tests\Browser\Components;
+namespace Tests\Browser\Components\Auth;
 
 use App\Models\User;
 use App\Models\Recipe;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class RecipesTest extends DuskTestCase
+class UserCreatesAndEditsRecipeTest extends DuskTestCase
 {
-	use DatabaseMigrations;
-
-	/** @test */
-    public function checkIfUserCanEditHisOwnRecipe()
+	/**
+	 * @test
+	 * @return void
+	 * */
+    public function checkIfUserCanEditHisOwnRecipe() : void
     {
 		$recipe = factory(Recipe::class)->create(['user_id' => 10]);
 		$user = factory(User::class)->create(['id' => 10]);
@@ -31,8 +31,11 @@ class RecipesTest extends DuskTestCase
         });
 	}
 
-	/** @test */
-    public function checkIfUserCantEditOtherRecipes()
+	/**
+	 * @test
+	 * @return void
+	 * */
+    public function checkIfUserCantEditOtherRecipes() : void
     {
 		$recipe = factory(Recipe::class)->create(['user_id' => 10]);
 		$user = factory(User::class)->create(['id' => 11]);
@@ -44,6 +47,9 @@ class RecipesTest extends DuskTestCase
 				->assertDontSee('.edit-recipe-icon')
 				->visit('/recipes/' . $recipe->id . '/edit')
 				->assertPathIs('/recipes');
-        });
+		});
+
+		\Artisan::call('migrate:fresh');
+		\Artisan::call('db:seed');
     }
 }

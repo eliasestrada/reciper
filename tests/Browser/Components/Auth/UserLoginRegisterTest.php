@@ -1,17 +1,17 @@
 <?php
 
-namespace Tests\Browser\Components;
+namespace Tests\Browser\Components\Auth;
 
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class UserAccessTest extends DuskTestCase
+class UserLoginRegisterTest extends DuskTestCase
 {
-	use DatabaseMigrations;
-
-	/** @test */
-	public function resisterNewUserAndLogout()
+	/**
+	 * @test
+	 * @return void
+	 * */
+	public function resisterNewUserAndLogout() : void
 	{
 		$this->browse(function (Browser $browser) {
 			$browser
@@ -29,8 +29,11 @@ class UserAccessTest extends DuskTestCase
 		});
 	}
 
-    /** @test */
-    public function loginUserAndLogout()
+    /**
+	 * @test
+	 * @return void
+	 * */
+    public function loginUserAndLogout() : void
     {
         $this->browse(function (Browser $browser) {
 			$browser
@@ -45,5 +48,8 @@ class UserAccessTest extends DuskTestCase
 				->click('#dropdown2 #_logout_btn')
 				->assertPathIs('/');
 		});
+
+		\Artisan::call('migrate:fresh');
+		\Artisan::call('db:seed');
 	}
 }
