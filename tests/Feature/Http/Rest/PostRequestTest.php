@@ -49,7 +49,7 @@ class PostRequestTest extends TestCase
 			'ip' => $visitor->ip
 		]);
 
-		$response->assertSuccessful();
+		$response->assertOk();
 		$this->assertEquals(0, $response->original);
 	}
 }

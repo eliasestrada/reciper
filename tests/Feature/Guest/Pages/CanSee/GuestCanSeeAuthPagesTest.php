@@ -19,7 +19,7 @@ class GuestCanSeeAuthPagesTest extends TestCase
 	public function guestCanSeeLoginPage() : void
 	{
 		$this->get('/login')
-        	->assertSuccessful()
+        	->assertOk()
         	->assertViewIs('auth.login');
 	}
 
@@ -31,7 +31,7 @@ class GuestCanSeeAuthPagesTest extends TestCase
 	public function guestCanSeeRegisterPage() : void
 	{
 		$this->get('/register')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('auth.register');
 	}
 }

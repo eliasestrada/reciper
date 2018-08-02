@@ -22,7 +22,7 @@ class UserCanSeeRecipesPages extends TestCase
 	
 		$this->actingAs($user)
 			->get('/recipes/create')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('recipes.create');
 	}
 
@@ -38,7 +38,7 @@ class UserCanSeeRecipesPages extends TestCase
 
 		$this->actingAs($user)
 			->get("/recipes/$recipe->id/edit")
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('recipes.edit');
 	}
 
@@ -56,12 +56,12 @@ class UserCanSeeRecipesPages extends TestCase
 
 		$this->actingAs($user)
 			->get("/recipes/$recipe->id")
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('recipes.show');
 
 		$this->actingAs($user2)
 			->get("/recipes/$recipe->id")
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('recipes.show');
 	}
 
@@ -76,7 +76,7 @@ class UserCanSeeRecipesPages extends TestCase
 
 		$this->actingAs($user)
 			->get("/recipes")
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('recipes.index');
 	}
 }

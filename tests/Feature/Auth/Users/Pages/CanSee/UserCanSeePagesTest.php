@@ -21,7 +21,7 @@ class UserCanSeePages extends TestCase
 
 		$this->actingAs($user)
 			->get('/')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('pages.home');
 	}
 
@@ -36,7 +36,7 @@ class UserCanSeePages extends TestCase
 
 		$this->actingAs($user)
 			->get('/search')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('pages.search');
 	}
 
@@ -51,7 +51,7 @@ class UserCanSeePages extends TestCase
 
 		$this->actingAs($user)
 			->get('/contact')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('pages.contact');
 	}
 }

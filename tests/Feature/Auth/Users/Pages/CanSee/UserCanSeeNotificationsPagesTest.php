@@ -21,7 +21,7 @@ class UserCanSeeNotificationsPagesTest extends TestCase
 
 		$this->actingAs($user)
 			->get('/notifications')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('notifications.index');
 	}
 }

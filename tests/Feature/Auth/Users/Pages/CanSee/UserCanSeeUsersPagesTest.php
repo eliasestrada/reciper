@@ -22,7 +22,7 @@ class UserCanSeeUsersPagesTest extends TestCase
 
 		$this->actingAs($user)
 			->get('/users/other/my-recipes')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('users.other.my-recipes');
 	}
 
@@ -37,7 +37,7 @@ class UserCanSeeUsersPagesTest extends TestCase
 
 		$this->actingAs($user)
 			->get('/users/' . $user->id)
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('users.show');
 	}
 
@@ -52,7 +52,7 @@ class UserCanSeeUsersPagesTest extends TestCase
 
 		$this->actingAs($user)
 			->get('/users')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('users.index');
 	}
 }

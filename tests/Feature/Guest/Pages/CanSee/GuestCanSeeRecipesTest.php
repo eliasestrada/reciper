@@ -18,7 +18,7 @@ class GuestCanSeeRecipesTest extends TestCase
     public function guestCanSeeRecipesPage() : void
     {
 		$this->get('/recipes')
-        	->assertSuccessful()
+        	->assertOk()
         	->assertViewIs('recipes.index');
 	}
 
@@ -37,7 +37,7 @@ class GuestCanSeeRecipesTest extends TestCase
 		]);
 
 		$this->get("/recipes/$recipe->id")
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('recipes.show');
 	}
 }

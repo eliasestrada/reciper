@@ -19,7 +19,7 @@ class GuestCanSeeUsersPagesTest extends TestCase
 	public function guestCanSeeAllRegisteredUsers() : void
 	{
 		$this->get('/users')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('users.index');
 	}
 
@@ -33,7 +33,7 @@ class GuestCanSeeUsersPagesTest extends TestCase
 		$user = factory(User::class)->create();
 
 		$this->get('/users/' . $user->id)
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('users.show');
 	}
 }

@@ -19,7 +19,7 @@ class GuestCanSeePagesTest extends TestCase
     public function guestCanSeeSearchPage() : void
     {
 		$this->get('/search')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('pages.search');
 	}
 
@@ -31,7 +31,7 @@ class GuestCanSeePagesTest extends TestCase
     public function guestCanSeeHomePage() : void
     {
 		$this->get('/')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('pages.home');
 	}
 
@@ -43,7 +43,7 @@ class GuestCanSeePagesTest extends TestCase
 	public function guestCanSeeContactPage() : void
     {
 		$this->get('/contact')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('pages.contact');
 	}
 
@@ -55,7 +55,7 @@ class GuestCanSeePagesTest extends TestCase
 	public function guestCanSeeLoginPage() : void
 	{
 		$this->get('/login')
-        	->assertSuccessful()
+        	->assertOk()
         	->assertViewIs('auth.login');
 	}
 
@@ -67,7 +67,7 @@ class GuestCanSeePagesTest extends TestCase
 	public function guestCanSeeRegisterPage() : void
 	{
 		$this->get('/register')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('auth.register');
 	}
 }

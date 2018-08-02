@@ -21,7 +21,7 @@ class UserCanSeeSettingsPagesTest extends TestCase
 
 		$this->actingAs($user)
 			->get('/settings/general')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('settings.general');
 	}
 
@@ -36,7 +36,7 @@ class UserCanSeeSettingsPagesTest extends TestCase
 
 		$this->actingAs($user)
 			->get('/settings/photo')
-			->assertSuccessful()
+			->assertOk()
 			->assertViewIs('settings.photo');
 	}
 }
