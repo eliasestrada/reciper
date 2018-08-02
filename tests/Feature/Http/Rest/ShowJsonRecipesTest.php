@@ -37,9 +37,9 @@ class ShowJsonRecipesTest extends TestCase
     {
 		$recipe1 = factory(Recipe::class)->create(['title_' . locale() => 'Test 1']);
 		$recipe2 = factory(Recipe::class)->create(['title_' . locale() => 'Test 2']);
-
-		$this->json("GET", "/api/recipes/other/random/$recipe1->id")
-			->assertStatus(200)
+	
+		$this->json('GET', '/api/recipes/other/random/' . $recipe1->id)
+			->assertOk()
 			->assertJsonCount(1)
 			->assertJsonMissing(['title' => 'Test 1'])
 			->assertJsonFragment(['title' => 'Test 2']);
