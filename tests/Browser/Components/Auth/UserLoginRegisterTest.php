@@ -49,7 +49,7 @@ class UserLoginRegisterTest extends DuskTestCase
 				->assertPathIs('/');
 		});
 
-		\Artisan::call('migrate:fresh');
-		\Artisan::call('db:seed');
+		$this->artisan('migrate:fresh');
+		$this->artisan('db:seed');
 	}
 }
