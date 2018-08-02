@@ -13,7 +13,7 @@ $factory->define(Recipe::class, function (Faker $faker) {
 		'image' => 'default.jpg',
 
 		// Russian language
-        'title_ru' => $faker->title,
+        'title_ru' => $faker->sentence,
 		'intro_ru' => $faker->paragraph,
 		'ingredients_ru' => $faker->paragraph,
 		'text_ru' => $faker->paragraph,
@@ -21,7 +21,7 @@ $factory->define(Recipe::class, function (Faker $faker) {
 		'approved_ru' => 1,
 
 		// English language
-        'title_en' => $faker->title,
+        'title_en' => $faker->sentence,
 		'intro_en' => $faker->paragraph,
 		'ingredients_en' => $faker->paragraph,
 		'text_en' => $faker->paragraph,
