@@ -21,7 +21,7 @@
 	</div>
 	
 	{{--  Results  --}}
-	@if (isset($recipes) && count($recipes) > 0)
+	@if (isset($recipes) && !empty($recipes))
 		<div class="row">
 			@foreach ($recipes as $recipe)
 				<div class="col s12 m6 l3">

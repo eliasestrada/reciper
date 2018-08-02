@@ -5,7 +5,7 @@
 		<div class="center">
 			<h1 class="headline pb-4">@lang('logs.logs')</h1>
 		</div>
-	
+
 		<div style="overflow:scroll">
 			<table>
 				<thead class="main-light">
@@ -19,7 +19,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					@if ($rows->count() > 0)
+					@if (!empty($rows))
 						@foreach($rows as $date => $row)
 						<tr>
 							@foreach($row as $key => $value)

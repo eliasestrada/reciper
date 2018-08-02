@@ -52,7 +52,7 @@
 
 {{--  Cards  --}}
 <section class="home-section">
-	@if (isset($random_recipes) && (count($random_recipes) > 0))
+	@if (isset($random_recipes) && !empty($random_recipes))
 		@foreach ($random_recipes->chunk(4) as $chunk)
 			<div class="row">
 				@foreach ($chunk as $random)

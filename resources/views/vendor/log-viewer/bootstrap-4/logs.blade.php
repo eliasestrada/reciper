@@ -24,7 +24,7 @@
                 </tr>
             </thead>
             <tbody>
-                @if ($rows->count() > 0)
+                @if (!empty($rows))
                     @foreach($rows as $date => $row)
                     <tr>
                         @foreach($row as $key => $value)
