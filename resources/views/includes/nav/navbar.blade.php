@@ -65,5 +65,3 @@
 		</form>
 	</div>
 </nav>
-
-{{-- {{ request()->is('/') ? 'style="position:absolute;"' : '' }} --}}
