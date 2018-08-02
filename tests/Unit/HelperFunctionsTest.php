@@ -16,7 +16,7 @@ class HelperFunctionsTest extends TestCase
 	 * @test
      * @return void
      */
-    public function check_get_data_notif_markup_helper() : void
+    public function checkGetDataNotifMarkupHelper() : void
     {
 		$this->assertEquals(getDataNotifMarkup(0), '');
 		$this->assertEquals(getDataNotifMarkup(-1), '');
@@ -27,7 +27,7 @@ class HelperFunctionsTest extends TestCase
 	 * @test
 	 * @return void
 	 */
-	public function check_get_online_icon_helper() : void
+	public function checkGetOnlineIconHelper() : void
 	{
 		// Icon should be on ===================
 		$expected = '<span class="online-icon-on"></span>';
@@ -58,7 +58,7 @@ class HelperFunctionsTest extends TestCase
 	 * @test
 	 * @return void
 	 */
-	public function check_readable_number_helper() : void
+	public function checkReadableNumberHelper() : void
 	{
 		$this->assertEquals(readableNumber(999),
 			999);
@@ -74,7 +74,7 @@ class HelperFunctionsTest extends TestCase
 	 * @test
 	 * @return void
 	 */
-	public function check_get_rating_number_helper() : void
+	public function checkGetRatingNumberHelper() : void
 	{
 		$recipes = [
 			factory(Recipe::class)->make([
@@ -90,8 +90,7 @@ class HelperFunctionsTest extends TestCase
 	 * @test
 	 * @return void
 	 */
-	public function check_active_if_route_is_helper() : void
-	{
+	public function checkActiveIfRouteIsHelper() : void	{
 		$this->get('/recipes');
 		$this->assertEquals(activeIfRouteIs('/recipes'), 'active');
 		$this->assertEquals(activeIfRouteIs('recipes'), 'active');
