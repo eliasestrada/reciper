@@ -6,7 +6,6 @@ use App\Models\Recipe;
 use Faker\Generator as Faker;
 
 $factory->define(Recipe::class, function (Faker $faker) {
-	$faker_ru = \Faker\Factory::create('ru_RU');
     return [
 		'user_id' => rand(1, User::count()),
 		'meal_id' => rand(1, 3),
@@ -14,10 +13,10 @@ $factory->define(Recipe::class, function (Faker $faker) {
 		'image' => 'default.jpg',
 
 		// Russian language
-        'title_ru' => $faker_ru->realText(50),
-		'intro_ru' => $faker_ru->realText(300),
-		'ingredients_ru' => $faker_ru->realText(300),
-		'text_ru' => $faker_ru->realText(100),
+        'title_ru' => $faker->title,
+		'intro_ru' => $faker->paragraph,
+		'ingredients_ru' => $faker->paragraph,
+		'text_ru' => $faker->paragraph,
 		'ready_ru' => 1,
 		'approved_ru' => 1,
 
