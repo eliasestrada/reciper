@@ -1,9 +1,6 @@
 <template>
 	<span>
-		<div v-if="error">
-			<!-- <p v-if="error" class="alert alert-danger mt-2">{{ error }}</p> -->
-		</div>
-		<span v-else>
+		<span v-if="!error">
 			<button @click="deleteRecipe" type="button" class="btn-floating red btn-large tooltipped" :data-tooltip="deleteRecipeTip" data-position="left">
 				<i class="large material-icons">delete</i>
 			</button>
