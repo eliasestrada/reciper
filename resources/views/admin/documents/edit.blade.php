@@ -20,11 +20,14 @@
 	]) @endcomponent
 
 	<form action="{{ action('Admin\DocumentsController@update', ['id' => $document->id]) }}" method="post">
+
 		@csrf @method('put')
+
 		<div class="input-field"> {{-- Input field --}}
 			<input type="text" name="title" id="title" value="{{ $document->getTitle() }}" class="counter" data-length="{{ config('validation.docs_title_max') }}">
 			<label for="title">@lang('documents.doc_title')</label>
 		</div>
+
 		<div class="input-field"> {{-- Textarea --}}
 			<textarea name="text" id="text" class="materialize-textarea">{!! customStripTags($document->getText()) !!}</textarea>
 			<span class="helper-text">@lang('documents.doc_text')</span>
@@ -40,11 +43,13 @@
 						<i class="material-icons large">delete</i>
 					</a>
 				</li>
+
 				<li> {{-- Save button --}}
 					<button class="btn-floating green btn-large tooltipped" data-tooltip="@lang('tips.save_doc')" data-position="left">
 						<i class="large material-icons">save</i>
 					</button>
 				</li>
+				
 				<li> {{-- View button --}}
 					<button class="btn-floating green btn-large tooltipped" data-tooltip="@lang('tips.view_doc')" data-position="left" name="view">
 						<i class="large material-icons">remove_red_eye</i>
