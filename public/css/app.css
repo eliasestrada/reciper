@@ -7320,13 +7320,13 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 }
 
 .user-icon-on-single-recipe {
-  width: 45px;
-  height: 45px;
+  width: 70px;
+  height: 70px;
   margin-right: 10px;
   border-radius: 50%;
   display: inline-block;
   background-position: center !important;
-  background-size: 45px !important;
+  background-size: 70px !important;
   background-repeat: no-repeat !important;
 }
 
@@ -7340,26 +7340,58 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   animation-direction: alternate, reverse;
 }
 
-.like-icon-empty {
-  background-size: 30px;
-  background: url(icons/empty-heart.png) center;
-  -webkit-transition: background .3s;
-  transition: background .3s;
+.btn__icon {
+  width: 30px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.like-icon-full {
-  background-size: 30px;
-  background: url(icons/full-heart.png) center;
-  -webkit-transition: background .3s;
-  transition: background .3s;
+.btn__fill {
+  fill: #ef7da8;
 }
 
-@media (min-width: 640px) {
-  .user-icon-on-single-recipe {
-    width: 70px;
-    height: 70px;
-    background-size: 70px !important;
-  }
+.btn__border {
+  fill: #fff;
+}
+
+.btn-like,
+.btn-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateY(-50%) translateX(-50%);
+          transform: translateY(-50%) translateX(-50%);
+}
+
+.btn-like {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -user-select: none;
+  -ms-user-select: none;
+}
+
+.btn-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.btn--liked-small {
+  background-color: #ef7da8;
+}
+
+.btn--liked-small .btn__fill {
+  fill: #fff;
+}
+
+.btn--liked-small {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
+  -o-transition: all 0.25s;
 }
 
 .preview-image img {
