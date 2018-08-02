@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container py-5 px-3">
+<div class="page">
 	<form method="POST" action="{{ route('register') }}" class="form">
 
 		@csrf <div class="center"><h2 class="headline">@lang('form.register')</h2></div>
@@ -48,7 +48,7 @@
 			</div>
 		</div>
 
-		<button type="submit" id="register-btn" class="btn btn-lg btn-main mt-3">
+		<button type="submit" id="register-btn" class="waves-effect waves-light btn mt-3">
 			<i class="material-icons left">assignment_turned_in</i>
 			@lang('form.register')
 		</button>

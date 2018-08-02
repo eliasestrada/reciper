@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container py-5 px-3">
+<div class="page">
 	<form method="POST" action="{{ route('login') }}" class="form">
 
 		@csrf <div class="center"><h3 class="headline">@lang('form.login')</h3></div>
@@ -30,13 +30,13 @@
 		</div>
 	
 		<div class="input-field">
-			<button type="submit" id="go-to-account" class="btn btn-lg btn-main">
+			<button type="submit" id="go-to-account" class="waves-effect waves-light btn">
 				<i class="material-icons right">exit_to_app</i>
 				@lang('form.login')
 			</button>
 		</div>
 
-		{{-- <a href="{{ route('password.request') }}">@lang('form.forgot_pwd')</a> --}}
+		<a href="{{ route('password.request') }}">@lang('form.forgot_pwd')</a>
 	</form>
 	<div class="pt-4">
 		<p>
