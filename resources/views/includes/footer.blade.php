@@ -36,7 +36,7 @@
 						@foreach ($random_chunk as $recipe)
 							<li>
 								<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
-									{{ $recipe->getTitle() }}
+									# {{ $recipe->getTitle() }}
 								</a>
 							</li>
 						@endforeach
@@ -53,7 +53,7 @@
 					@foreach ($popular_recipes as $recipe)
 						<li>
 							<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
-								{{ $recipe->getTitle() }}
+								# {{ $recipe->getTitle() }}
 							</a>
 						</li>
 					@endforeach
