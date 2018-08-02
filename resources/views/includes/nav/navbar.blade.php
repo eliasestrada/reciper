@@ -66,5 +66,4 @@
 	</div>
 </nav>
 
-{{-- @TODO: --}}
 {{-- {{ request()->is('/') ? 'style="position:absolute;"' : '' }} --}}

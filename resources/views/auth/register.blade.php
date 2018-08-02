@@ -38,7 +38,6 @@
 		</blockquote>
 
 		<!-- Modal Structure -->
-		{{-- @TODO: --}}
 		<div id="modal1" class="modal">
 			<div class="modal-content reset">
 				<h4>{{ $document->getTitle() }}</h4>

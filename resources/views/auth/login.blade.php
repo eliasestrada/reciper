@@ -36,7 +36,6 @@
 			</button>
 		</div>
 
-		{{-- @TODO: --}}
 		{{-- <a href="{{ route('password.request') }}">@lang('form.forgot_pwd')</a> --}}
 	</form>
 	<div class="pt-4">

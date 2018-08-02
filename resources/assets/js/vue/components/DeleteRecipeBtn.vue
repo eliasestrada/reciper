@@ -1,7 +1,6 @@
 <template>
 	<span>
 		<div v-if="error">
-			<!-- @TODO:-->
 			<!-- <p v-if="error" class="alert alert-danger mt-2">{{ error }}</p> -->
 		</div>
 		<span v-else>
