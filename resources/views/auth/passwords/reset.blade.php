@@ -1,54 +1,36 @@
 @extends('layouts.app')
 
-@section('title', 'Сброс пароля')
+@section('title', trans('passwords.reset_pwd'))
 
 @section('content')
 
-<div class="wrapper">
-	<h2 class="headline">Сброс пароля</h2>
+<div class="page">
+	<div class="center"><h3 class="headline">@lang('passwords.reset_pwd')</h3></div>
 
-	<form method="POST" action="{{ route('password.request') }}" class="form">
-		@csrf
+	<form method="POST" action="{{ route('password.request') }}">
 
-		<input type="hidden" name="token" value="{{ $token }}">
+		@csrf <input type="hidden" name="token" value="{{ $token }}">
 
-		<div class="form-group">
-			<label for="email">Эл. адрес</label>
-
-			<input id="email" type="email" name="email" value="{{ $email or old('email') }}" placeholder="Эл. адрес" required autofocus>
-
-			@if ($errors->has('email'))
-				<span class="message error" style="background:none;">
-					{{ $errors->first('email') }}
-				</span>
-			@endif
+		<div class="input-field">
+			<label for="email">@lang('form.email')</label>
+			<input id="email" type="email" name="email" value="{{ ($email ?? old('email')) }}" required autofocus>
 		</div>
 
-		<div class="form-group">
-			<label for="password">Новый пароль</label>
-
-			<input id="password" type="password" placeholder="Новый пароль" name="password" required>
-
-			@if ($errors->has('password'))
-				<span class="message error" style="background:none;">
-					{{ $errors->first('password') }}
-				</span>
-			@endif
+		<div class="input-field">
+			<label for="password">@lang('passwords.new_pwd')</label>
+			<input id="password" type="password" name="password" required>
 		</div>
 
-		<div class="form-group">
-			<label for="password-confirm">Повторите новый пароль</label>
-			<input id="password-confirm" type="password" name="password_confirmation" placeholder="Повторите новый пароль" required>
-
-			@if ($errors->has('password_confirmation'))
-				<span class="message error" style="background:none;">
-					{{ $errors->first('password_confirmation') }}
-				</span>
-			@endif
+		<div class="input-field">
+			<label for="password-confirm">@lang('passwords.repeat_new_pwd')</label>
+			<input id="password-confirm" type="password" name="password_confirmation" required>
 		</div>
 
-		<div class="form-group">
-			<input type="submit" value="Сбросить пароль">
+		<div class="input-field">
+			<button type="submit" class="waves-effect waves-light btn">
+				<i class="material-icons right">settings_backup_restore</i>
+				@lang('passwords.reset_pwd')
+			</button>
 		</div>
 	</form>
 </div>

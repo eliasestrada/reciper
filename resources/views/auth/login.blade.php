@@ -36,7 +36,7 @@
 			</button>
 		</div>
 
-		<a href="{{ route('password.request') }}">@lang('form.forgot_pwd')</a>
+		{{-- <a href="{{ route('password.request') }}">@lang('form.forgot_pwd')</a> --}}
 	</form>
 	<div class="pt-4">
 		<p>
