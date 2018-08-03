@@ -24,7 +24,7 @@ class RecipeUpdateResponse implements Responsable
 	public function toResponse($request)
 	{
 		if ($this->recipe->ready() && user()->isAdmin()) {
-			return redirect('/recipes')->withSuccess(trans('recipes.recipe_published'));
+			return redirect('/users/' . user()->id)->withSuccess(trans('recipes.recipe_published'));
 		}
 
 		if ($this->recipe->ready()) {

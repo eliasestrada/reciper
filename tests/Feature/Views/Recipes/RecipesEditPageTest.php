@@ -36,10 +36,10 @@ class RecipesEditPageTest extends TestCase
 	 */
 	public function authUserCanSeeRecipesEditPage() : void
     {
-		$user = User::find(factory(User::class)->create()->id);
+		$user = factory(User::class)->create();
 		$recipe = factory(Recipe::class)->create(['user_id' => $user->id]);
 
-		$this->actingAs($user)
+		$this->actingAs(User::find($user->id))
 			->get("/recipes/$recipe->id/edit")
 			->assertOk()
 			->assertViewIs('recipes.edit');
@@ -49,16 +49,50 @@ class RecipesEditPageTest extends TestCase
 	 * @test
 	 * @return void
 	 */
-	public function recipeIsReadyAfterPublishing() : void
+	public function recipeIsReadyButNotApprovedAfterPublishingByUser() : void
 	{
-		$user = User::find(factory(User::class)->create()->id);
-		$old_recipe = factory(Recipe::class)->create(['user_id' => $user->id]);
-		$new_recipe = $this->newRecipe('New title');
+		$user = factory(User::class)->create();
+
+		$old_recipe = factory(Recipe::class)->create([
+			'user_id' => $user->id,
+			'ready_' . locale() => 0,
+			'approved_' . locale() => 0
+		]);
+		$new_recipe = $this->newRecipe('New title by user');
 
 		$this->actingAs($user)
 			->put(action('RecipesController@update', $old_recipe->id), $new_recipe)
 			->assertRedirect("/users/$user->id");
 
-		$this->assertDatabaseHas('recipes', ['title_' . locale() => 'New title']);
+		$this->assertDatabaseHas('recipes', [
+			'title_' . locale() => 'New title by user',
+			'ready_' . locale() => 1,
+			'approved_' . locale() => 0
+		]);
+	}
+
+	/**
+	 * @test
+	 * @return void
+	 */
+	public function recipeIsReadyAndApprovedAfterPublishingByAdmin() : void
+	{
+		$user = factory(User::class)->create(['admin' => 1]);
+		$old_recipe = factory(Recipe::class)->create([
+			'user_id' => $user->id,
+			'ready_' . locale() => 0,
+			'approved_' . locale() => 0
+		]);
+		$new_recipe = $this->newRecipe('Some title by admin');
+
+		$this->actingAs($user)
+			->put(action('RecipesController@update', $old_recipe->id), $new_recipe)
+			->assertRedirect("/users/$user->id");
+
+		$this->assertDatabaseHas('recipes', [
+			'title_' . locale() => 'Some title by admin',
+			'ready_' . locale() => 1,
+			'approved_' . locale() => 1
+		]);
 	}
 }
