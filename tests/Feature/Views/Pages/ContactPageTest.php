@@ -17,9 +17,7 @@ class ContactPageTest extends TestCase
      */
     public function authUserCanSeeContactPage(): void
     {
-        $user = User::find(factory(User::class)->create()->id);
-
-        $this->actingAs($user)
+        $this->actingAs(factory(User::class)->create())
             ->get('/contact')
             ->assertOk()
             ->assertViewIs('pages.contact');

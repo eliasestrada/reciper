@@ -17,9 +17,7 @@ class LogsIndexPageTest extends TestCase
      */
     public function masterCanSeeLogsPage(): void
     {
-        $master = User::find(factory(User::class)->create(['master' => 1])->id);
-
-        $this->actingAs($master)
+        $this->actingAs(factory(User::class)->create(['master' => 1]))
             ->get('/log-viewer/logs')
             ->assertSeeText(trans('logs.logs'))
             ->assertDontSeeText(trans('logs.page_is_not_avail'));

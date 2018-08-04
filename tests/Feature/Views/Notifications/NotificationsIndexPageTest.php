@@ -17,9 +17,7 @@ class NotificationsIndexPageTest extends TestCase
      */
     public function userCanSeeNotificationsIndexPage(): void
     {
-        $user = User::find(factory(User::class)->create()->id);
-
-        $this->actingAs($user)
+        $this->actingAs(factory(User::class)->create())
             ->get('/notifications')
             ->assertOk()
             ->assertViewIs('notifications.index');

@@ -12,21 +12,19 @@ class RecipesEditPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @param string $title
-     * @return array
+     * @test
+     * @return void
      */
-    public function newRecipe(string $title): array
+    public function viewHasData(): void
     {
-        return [
-            'title' => $title,
-            'time' => 120,
-            'meal' => 1,
-            'ready' => 1,
-            'ingredients' => 'Minimum 20 Lorem ipsum, dolor sit amet consectetur adipisdgfgsicing',
-            'intro' => 'Minimum 20, dolor sit amet consectetur adipisdgfgdsgdsicing elit',
-            'text' => 'Minimum 80 chars dolor sit amet adipisicing elit adipisicing amet lorefana more text to fill the field',
-            'categories' => [0 => 1, 1 => 2],
-        ];
+        $user = factory(User::class)->create();
+        $recipe = factory(Recipe::class)->create(['user_id' => $user->id]);
+
+        $this->actingAs($user)
+            ->get("/recipes/$recipe->id/edit")
+            ->assertOk()
+            ->assertViewIs('recipes.edit')
+            ->assertViewHasAll(['meal', 'recipe']);
     }
 
     /**
@@ -39,7 +37,7 @@ class RecipesEditPageTest extends TestCase
         $user = factory(User::class)->create();
         $recipe = factory(Recipe::class)->create(['user_id' => $user->id]);
 
-        $this->actingAs(User::find($user->id))
+        $this->actingAs($user)
             ->get("/recipes/$recipe->id/edit")
             ->assertOk()
             ->assertViewIs('recipes.edit');
@@ -94,5 +92,23 @@ class RecipesEditPageTest extends TestCase
             'ready_' . locale() => 1,
             'approved_' . locale() => 1,
         ]);
+    }
+
+    /**
+     * @param string $title
+     * @return array
+     */
+    public function newRecipe(string $title): array
+    {
+        return [
+            'title' => $title,
+            'time' => 120,
+            'meal' => 1,
+            'ready' => 1,
+            'ingredients' => 'Minimum 20 Lorem ipsum, dolor sit amet consectetur adipisdgfgsicing',
+            'intro' => 'Minimum 20, dolor sit amet consectetur adipisdgfgdsgdsicing elit',
+            'text' => 'Minimum 80 chars dolor sit amet adipisicing elit adipisicing amet lorefana more text to fill the field',
+            'categories' => [0 => 1, 1 => 2],
+        ];
     }
 }

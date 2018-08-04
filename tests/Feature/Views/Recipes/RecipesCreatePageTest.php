@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Views\Recipes;
 
+use App\Models\Meal;
 use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -12,20 +13,18 @@ class RecipesCreatePageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @param string $title
-     * @return array
+     * @test
+     * @return void
      */
-    public function newRecipe(string $title): array
+    public function viewHasData(): void
     {
-        return [
-            'title' => $title,
-            'time' => 120,
-            'meal' => 1,
-            'ingredients' => '',
-            'intro' => '',
-            'text' => '',
-            'categories' => [0 => 1],
-        ];
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user)
+            ->get('/recipes/create')
+            ->assertOk()
+            ->assertViewIs('recipes.create')
+            ->assertViewHas('meal', Meal::get(['id', 'name_' . locale()]));
     }
 
     /**
@@ -35,7 +34,7 @@ class RecipesCreatePageTest extends TestCase
      */
     public function authUserCanSeeRecipesCreatePage(): void
     {
-        $this->actingAs(User::find(factory(User::class)->create()->id))
+        $this->actingAs(factory(User::class)->create())
             ->get('/recipes/create')
             ->assertOk()
             ->assertViewIs('recipes.create');
@@ -49,7 +48,7 @@ class RecipesCreatePageTest extends TestCase
     {
         $recipe = $this->newRecipe('Hello world');
 
-        $this->actingAs(User::find(factory(User::class)->create()->id))
+        $this->actingAs(factory(User::class)->create())
             ->post(action('RecipesController@store'), $recipe)
             ->assertRedirect();
         $this->assertDatabaseHas('recipes', [
@@ -67,7 +66,7 @@ class RecipesCreatePageTest extends TestCase
     {
         $recipe = $this->newRecipe('Hello people');
 
-        $this->actingAs(User::find(factory(User::class)->create(['admin' => 1])->id))
+        $this->actingAs(factory(User::class)->create(['admin' => 1]))
             ->post(action('RecipesController@store'), $recipe)
             ->assertRedirect();
 
@@ -76,5 +75,22 @@ class RecipesCreatePageTest extends TestCase
             'approved_' . locale() => 1,
             'ready_' . locale() => 0,
         ]);
+    }
+
+    /**
+     * @param string $title
+     * @return array
+     */
+    public function newRecipe(string $title): array
+    {
+        return [
+            'title' => $title,
+            'time' => 120,
+            'meal' => 1,
+            'ingredients' => '',
+            'intro' => '',
+            'text' => '',
+            'categories' => [0 => 1],
+        ];
     }
 }

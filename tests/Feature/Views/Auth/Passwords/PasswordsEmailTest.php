@@ -27,7 +27,7 @@ class PasswordsEmailTest extends TestCase
      */
     public function authUserCantSeePasswordEmailPage(): void
     {
-        $this->actingAs(User::find(factory(User::class)->create()->id))
+        $this->actingAs(factory(User::class)->create())
             ->get('/password/reset')
             ->assertRedirect('/dashboard');
     }

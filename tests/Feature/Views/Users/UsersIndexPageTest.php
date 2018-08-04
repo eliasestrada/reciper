@@ -17,9 +17,7 @@ class UsersIndexPageTest extends TestCase
      */
     public function authUserCanSeeUsersIndexPage(): void
     {
-        $user = User::find(factory(User::class)->create()->id);
-
-        $this->actingAs($user)
+        $this->actingAs(factory(User::class)->create())
             ->get('/users')
             ->assertOk()
             ->assertViewIs('users.index');

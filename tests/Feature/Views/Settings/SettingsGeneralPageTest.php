@@ -17,9 +17,7 @@ class SettingsGeneralPageTest extends TestCase
      */
     public function authUserCanSeeSettingsGeneralPage(): void
     {
-        $user = User::find(factory(User::class)->create()->id);
-
-        $this->actingAs($user)
+        $this->actingAs(factory(User::class)->create())
             ->get('/settings/general')
             ->assertOk()
             ->assertViewIs('settings.general');

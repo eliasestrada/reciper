@@ -17,7 +17,7 @@ class UsersShowPageTest extends TestCase
      */
     public function authUserCanSeeUsersShowPage(): void
     {
-        $user = User::find(factory(User::class)->create()->id);
+        $user = factory(User::class)->create();
 
         $this->actingAs($user)
             ->get('/users/' . $user->id)

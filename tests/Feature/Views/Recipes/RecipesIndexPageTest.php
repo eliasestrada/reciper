@@ -12,18 +12,25 @@ class RecipesIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * @test
+     * @return void
+     */
+    public function viewIsCorrect(): void
+    {
+        $this->get('/recipes')
+            ->assertViewIs('recipes.index');
+    }
+
+    /**
      * Test for recipes page. View: resources/views/recipes/index
      * @return void
      * @test
      */
     public function authUserCanSeeRecipesIndexPage(): void
     {
-        $user = User::find(factory(User::class)->create()->id);
-
-        $this->actingAs($user)
+        $this->actingAs(factory(User::class)->create())
             ->get("/recipes")
-            ->assertOk()
-            ->assertViewIs('recipes.index');
+            ->assertOk();
     }
 
     /**
@@ -34,7 +41,6 @@ class RecipesIndexPageTest extends TestCase
     public function guestCanSeeRecipesIndexPage(): void
     {
         $this->get('/recipes')
-            ->assertOk()
-            ->assertViewIs('recipes.index');
+            ->assertOk();
     }
 }

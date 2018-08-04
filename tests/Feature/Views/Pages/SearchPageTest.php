@@ -43,9 +43,7 @@ class SearchPageTest extends TestCase
      */
     public function authUserCanSeeSearchPage(): void
     {
-        $user = User::find(factory(User::class)->create()->id);
-
-        $this->actingAs($user)
+        $this->actingAs(factory(User::class)->create())
             ->get('/search')
             ->assertOk()
             ->assertViewIs('pages.search');

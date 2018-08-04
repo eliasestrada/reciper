@@ -28,9 +28,7 @@ class MyRecipesPageTest extends TestCase
      */
     public function authUserCanSeeMyRecipesPage(): void
     {
-        $user = User::find(factory(User::class)->create()->id);
-
-        $this->actingAs($user)
+        $this->actingAs(factory(User::class)->create())
             ->get('/users/other/my-recipes')
             ->assertOk()
             ->assertViewIs('users.other.my-recipes');

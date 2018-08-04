@@ -17,9 +17,7 @@ class HomePageTest extends TestCase
      */
     public function authUserCanSeeHomePage(): void
     {
-        $user = User::find(factory(User::class)->create()->id);
-
-        $this->actingAs($user)
+        $this->actingAs(factory(User::class)->create())
             ->get('/')
             ->assertOk()
             ->assertViewIs('pages.home');

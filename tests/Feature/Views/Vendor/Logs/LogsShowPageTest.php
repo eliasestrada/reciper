@@ -17,11 +17,10 @@ class LogsShowPageTest extends TestCase
      */
     public function masterCanSeeLogsShowsPage(): void
     {
-        $master = User::find(factory(User::class)->create(['master' => 1])->id);
         info('test');
         $file_name = date('Y-m-d');
 
-        $this->actingAs($master)
+        $this->actingAs(factory(User::class)->create(['master' => 1]))
             ->get("/log-viewer/logs/$file_name/info")
             ->assertSeeText($file_name);
     }

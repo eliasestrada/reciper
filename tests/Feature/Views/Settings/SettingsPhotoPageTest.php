@@ -17,9 +17,7 @@ class SettingsPhotoPageTest extends TestCase
      */
     public function authUserCanSeeSettingsPhotoPage(): void
     {
-        $user = User::find(factory(User::class)->create()->id);
-
-        $this->actingAs($user)
+        $this->actingAs(factory(User::class)->create())
             ->get('/settings/photo')
             ->assertOk()
             ->assertViewIs('settings.photo');
