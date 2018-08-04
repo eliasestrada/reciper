@@ -11,13 +11,13 @@ class UsersOtherMyRecipesPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/other/my-recipes
+     * resources/views/users/other/my-recipes
      * @test
      * @return void
      */
     public function viewUsersOtherMyRecipesHasData(): void
     {
-        $user = factory(User::class)->create();
+        $user = factory(User::class)->make();
 
         $this->actingAs($user)
             ->get('/users/other/my-recipes')
@@ -26,7 +26,7 @@ class UsersOtherMyRecipesPageTest extends TestCase
     }
 
     /**
-     * resources/views/other/my-recipes
+     * resources/views/users/other/my-recipes
      * @test
      * @return void
      */
@@ -36,13 +36,13 @@ class UsersOtherMyRecipesPageTest extends TestCase
     }
 
     /**
-     * resources/views/other/my-recipes
+     * resources/views/users/other/my-recipes
      * @test
      * @return void
      */
     public function authUserCanSeeMyRecipesPage(): void
     {
-        $user = factory(User::class)->create();
+        $user = factory(User::class)->make();
         $this->actingAs($user)->get('/users/other/my-recipes')->assertOk();
     }
 }
