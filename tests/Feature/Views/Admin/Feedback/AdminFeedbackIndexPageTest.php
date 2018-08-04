@@ -11,14 +11,43 @@ class AdminFeedbackPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * @test
+     * @return void
+     */
+    public function viewAdminFeedbackIndexHasACorrectPath(): void
+    {
+        $admin = factory(User::class)->make(['admin' => 1]);
+
+        $this->actingAs($admin)
+            ->get('/admin/feedback')
+            ->assertViewIs('admin.feedback.index');
+    }
+
+    /**
      * Test for feedback page. View: resources/views/admin/feedback/index
      * @return void
      * @test
      */
     public function userCantSeeAdminFeedbackIndexPage(): void
     {
-        $this->actingAs(factory(User::class)->make(['admin' => 0]))
+        $user = factory(User::class)->make();
+
+        $this->actingAs($user)
             ->get('/admin/feedback')
             ->assertRedirect('/login');
+    }
+
+    /**
+     * Test for feedback page. View: resources/views/admin/feedback/index
+     * @return void
+     * @test
+     */
+    public function adminCanSeeAdminFeedbackIndexPage(): void
+    {
+        $admin = factory(User::class)->make(['admin' => 1]);
+
+        $this->actingAs($admin)
+            ->get('/admin/feedback')
+            ->assertOk();
     }
 }
