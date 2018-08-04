@@ -14,7 +14,7 @@ class AdminChecklistIndexPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewHasData(): void
+    public function viewAdminChecklistIndexHasData(): void
     {
         $this->actingAs(factory(User::class)->create(['admin' => 1]))
             ->get('/admin/checklist')
