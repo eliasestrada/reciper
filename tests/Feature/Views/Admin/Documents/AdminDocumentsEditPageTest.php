@@ -15,7 +15,7 @@ class AdminDocumentsEditPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewDocumentsEditHasData(): void
+    public function viewAdminDocumentsEditHasData(): void
     {
         $document = factory(Document::class)->create();
         $admin = factory(User::class)->make(['admin' => 1]);

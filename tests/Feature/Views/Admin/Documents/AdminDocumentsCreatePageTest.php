@@ -15,7 +15,7 @@ class AdminDocumentsCreatePageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewDocumentsCreateHasACorrectPath(): void
+    public function viewAdminDocumentsCreateHasACorrectPath(): void
     {
         $admin = factory(User::class)->make(['admin' => 1]);
 

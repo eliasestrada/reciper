@@ -15,7 +15,7 @@ class AdminDocumentsIndexPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewDocumentsIndexIsCorrect(): void
+    public function viewAdminDocumentsIndexIsCorrect(): void
     {
         $admin = factory(User::class)->make(['admin' => 1]);
 

@@ -15,7 +15,7 @@ class AdminDocumentsPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewDocumentsShowHasData(): void
+    public function viewAdminDocumentsShowHasData(): void
     {
         $document = factory(Document::class)->create();
 
