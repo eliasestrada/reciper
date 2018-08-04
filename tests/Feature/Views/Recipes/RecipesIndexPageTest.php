@@ -12,6 +12,7 @@ class RecipesIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/recipes/index
      * @test
      * @return void
      */
@@ -21,9 +22,9 @@ class RecipesIndexPageTest extends TestCase
     }
 
     /**
-     * Test for recipes page. View: resources/views/recipes/index
-     * @return void
+     * resources/views/recipes/index
      * @test
+     * @return void
      */
     public function authUserCanSeeRecipesIndexPage(): void
     {
@@ -32,9 +33,9 @@ class RecipesIndexPageTest extends TestCase
     }
 
     /**
-     * Test for recipes page. View: resources/views/recipes/index
-     * @return void
+     * resources/views/recipes/index
      * @test
+     * @return void
      */
     public function guestCanSeeRecipesIndexPage(): void
     {

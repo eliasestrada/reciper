@@ -11,6 +11,7 @@ class AdminChecklistIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/admin/checklist/index
      * @test
      * @return void
      */
@@ -26,9 +27,9 @@ class AdminChecklistIndexPageTest extends TestCase
     }
 
     /**
-     * Test for checklist page. View: resources/views/admin/checklist/index
-     * @return void
+     * resources/views/admin/checklist/index
      * @test
+     * @return void
      */
     public function userCantSeeAdminChecklistIndexPage(): void
     {

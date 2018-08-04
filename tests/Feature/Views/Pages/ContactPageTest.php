@@ -11,6 +11,7 @@ class ContactPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/pages/contact
      * @test
      * @return void
      */
@@ -20,9 +21,9 @@ class ContactPageTest extends TestCase
     }
 
     /**
-     * Test for contact page. View: resources/views/pages/contact
-     * @return void
+     * resources/views/pages/contact
      * @test
+     * @return void
      */
     public function authUserCanSeeContactPage(): void
     {
@@ -31,9 +32,9 @@ class ContactPageTest extends TestCase
     }
 
     /**
-     * Test for contact page. View: resources/views/pages/contact
-     * @return void
+     * resources/views/pages/contact
      * @test
+     * @return void
      */
     public function guestCanSeeContactPage(): void
     {

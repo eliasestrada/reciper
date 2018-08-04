@@ -12,6 +12,7 @@ class RecipesShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/recipes/show
      * @test
      * @return void
      */
@@ -25,9 +26,9 @@ class RecipesShowPageTest extends TestCase
     }
 
     /**
-     * Test for show recipe page. View: resources/views/recipes/show
-     * @return void
+     * resources/views/recipes/show
      * @test
+     * @return void
      */
     public function authUserCanSeeRecipeShowPage(): void
     {
@@ -41,9 +42,9 @@ class RecipesShowPageTest extends TestCase
     }
 
     /**
-     * Test for show recipe page. View: resources/views/recipes/show
-     * @return void
+     * resources/views/recipes/show
      * @test
+     * @return void
      */
     public function guestCanSeeRecipesShowPage(): void
     {

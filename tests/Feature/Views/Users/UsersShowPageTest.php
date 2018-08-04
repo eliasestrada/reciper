@@ -11,9 +11,9 @@ class UsersShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * Test for profile page. View: resources/view views/users/show
-     * @return void
+     * resources/view views/users/show
      * @test
+     * @return void
      */
     public function authUserCanSeeUsersShowPage(): void
     {
@@ -26,9 +26,9 @@ class UsersShowPageTest extends TestCase
     }
 
     /**
-     * Test for user profile page. View: resources/views/users/show
-     * @return void
+     * resources/views/users/show
      * @test
+     * @return void
      */
     public function guestCanSeeUsersShowPage(): void
     {

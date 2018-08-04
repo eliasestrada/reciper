@@ -11,9 +11,9 @@ class UsersIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * Test for users page. View: resources/views/users/index
-     * @return void
+     * resources/views/users/index
      * @test
+     * @return void
      */
     public function authUserCanSeeUsersIndexPage(): void
     {
@@ -24,9 +24,9 @@ class UsersIndexPageTest extends TestCase
     }
 
     /**
-     * Test for users page. View: resources/views/users/index
-     * @return void
+     * resources/views/users/index
      * @test
+     * @return void
      */
     public function guestCanSeeUsersIndexPage(): void
     {

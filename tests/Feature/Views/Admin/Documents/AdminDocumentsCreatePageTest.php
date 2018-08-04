@@ -12,6 +12,7 @@ class AdminDocumentsCreatePageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/admin/documents/create
      * @test
      * @return void
      */
@@ -26,9 +27,9 @@ class AdminDocumentsCreatePageTest extends TestCase
     }
 
     /**
-     * Test for documents create page. View: resources/views/admin/documents/create
-     * @return void
+     * resources/views/admin/documents/create
      * @test
+     * @return void
      */
     public function userCantSeeAdminDocumentsCreatePage(): void
     {

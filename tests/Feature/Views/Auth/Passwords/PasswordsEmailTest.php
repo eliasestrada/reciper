@@ -11,6 +11,7 @@ class PasswordsEmailTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/auth/passwords/email
      * @test
      * @return void
      */
@@ -22,6 +23,7 @@ class PasswordsEmailTest extends TestCase
     }
 
     /**
+     * resources/views/auth/passwords/email
      * @test
      * @return void
      */

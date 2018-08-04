@@ -12,6 +12,7 @@ class AdminDocumentsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/admin/documents/index
      * @test
      * @return void
      */
@@ -26,9 +27,9 @@ class AdminDocumentsIndexPageTest extends TestCase
     }
 
     /**
-     * Test for documents page. View: resources/views/admin/documents/index
-     * @return void
+     * resources/views/admin/documents/index
      * @test
+     * @return void
      */
     public function userCantSeeAdminDocumentsIndexPage(): void
     {
@@ -40,9 +41,9 @@ class AdminDocumentsIndexPageTest extends TestCase
     }
 
     /**
-     * Test for documents page. View: resources/views/admin/documents/index
-     * @return void
+     * resources/views/admin/documents/index
      * @test
+     * @return void
      */
     public function adminCanSeeAdminDocumentsIndexPage(): void
     {

@@ -12,6 +12,7 @@ class AdminDocumentsPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/admin/documents/show
      * @test
      * @return void
      */
@@ -26,9 +27,9 @@ class AdminDocumentsPageTest extends TestCase
     }
 
     /**
-     * Test for documents show page. View: resources/views/admin/documents/show
-     * @return void
+     * resources/views/admin/documents/show
      * @test
+     * @return void
      */
     public function userCantSeeAdminDocumentsShowPage(): void
     {
@@ -40,9 +41,9 @@ class AdminDocumentsPageTest extends TestCase
     }
 
     /**
-     * Test for documents show page. View: resources/views/admin/documents/show
-     * @return void
+     * resources/views/admin/documents/show
      * @test
+     * @return void
      */
     public function adminCanSeeAdminDocumentsShowPage(): void
     {

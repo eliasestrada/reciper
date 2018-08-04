@@ -11,6 +11,7 @@ class HomePageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/pages/home
      * @test
      * @return void
      */
@@ -22,9 +23,9 @@ class HomePageTest extends TestCase
     }
 
     /**
-     * Test for home page. View: resources/views/pages/home
-     * @return void
+     * resources/views/pages/home
      * @test
+     * @return void
      */
     public function authUserCanSeeHomePage(): void
     {
@@ -33,9 +34,9 @@ class HomePageTest extends TestCase
     }
 
     /**
-     * Test for home page. View: resources/views/pages/home
-     * @return void
+     * resources/views/pages/home
      * @test
+     * @return void
      */
     public function guestCanSeeHomePage(): void
     {

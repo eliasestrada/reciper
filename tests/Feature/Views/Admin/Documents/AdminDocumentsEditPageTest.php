@@ -12,6 +12,7 @@ class AdminDocumentsEditPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/admin/documents/edit
      * @test
      * @return void
      */
@@ -28,9 +29,9 @@ class AdminDocumentsEditPageTest extends TestCase
     }
 
     /**
-     * Test for documents edit page. View: resources/views/admin/documents/edit
-     * @return void
+     * resources/views/admin/documents/edit
      * @test
+     * @return void
      */
     public function userCannotSeeAdminDocumentsEditPage(): void
     {

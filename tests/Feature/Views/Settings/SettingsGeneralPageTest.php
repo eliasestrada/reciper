@@ -11,6 +11,7 @@ class SettingsGeneralPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/settings/general
      * @test
      * @return void
      */
@@ -24,10 +25,9 @@ class SettingsGeneralPageTest extends TestCase
     }
 
     /**
-     * Test for settigs general page
-     * View: resources/views/settings/general
-     * @return void
+     * resources/views/settings/general
      * @test
+     * @return void
      */
     public function authUserCanSeeSettingsGeneralPage(): void
     {
@@ -36,10 +36,9 @@ class SettingsGeneralPageTest extends TestCase
     }
 
     /**
-     * Test for settigs general page
-     * View: resources/views/settings/general
-     * @return void
+     * resources/views/settings/general
      * @test
+     * @return void
      */
     public function guestCantSeeSettingsGeneralPage(): void
     {

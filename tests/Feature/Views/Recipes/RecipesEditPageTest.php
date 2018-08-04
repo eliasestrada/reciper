@@ -12,6 +12,7 @@ class RecipesEditPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/recipes/edit
      * @test
      * @return void
      */
@@ -27,9 +28,9 @@ class RecipesEditPageTest extends TestCase
     }
 
     /**
-     * Test for edit recipe page. View: resources/views/recipes/edit
-     * @return void
+     * resources/views/recipes/edit
      * @test
+     * @return void
      */
     public function authUserCanSeeRecipesEditPage(): void
     {
@@ -42,6 +43,7 @@ class RecipesEditPageTest extends TestCase
     }
 
     /**
+     * resources/views/recipes/edit
      * @test
      * @return void
      */
@@ -68,6 +70,7 @@ class RecipesEditPageTest extends TestCase
     }
 
     /**
+     * resources/views/recipes/edit
      * @test
      * @return void
      */

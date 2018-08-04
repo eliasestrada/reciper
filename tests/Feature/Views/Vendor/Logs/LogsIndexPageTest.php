@@ -11,9 +11,9 @@ class LogsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * Test for logs page. View: resources/vendor/log-viewer/custom-theme/logs
-     * @return void
+     * resources/vendor/log-viewer/custom-theme/logs
      * @test
+     * @return void
      */
     public function masterCanSeeLogsPage(): void
     {

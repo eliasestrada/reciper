@@ -11,6 +11,7 @@ class AdminFeedbackPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/admin/feedback/index
      * @test
      * @return void
      */
@@ -25,9 +26,9 @@ class AdminFeedbackPageTest extends TestCase
     }
 
     /**
-     * Test for feedback page. View: resources/views/admin/feedback/index
-     * @return void
+     * resources/views/admin/feedback/index
      * @test
+     * @return void
      */
     public function userCantSeeAdminFeedbackIndexPage(): void
     {
@@ -39,9 +40,9 @@ class AdminFeedbackPageTest extends TestCase
     }
 
     /**
-     * Test for feedback page. View: resources/views/admin/feedback/index
-     * @return void
+     * resources/views/admin/feedback/index
      * @test
+     * @return void
      */
     public function adminCanSeeAdminFeedbackIndexPage(): void
     {

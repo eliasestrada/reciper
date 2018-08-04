@@ -11,8 +11,9 @@ class AdminStatisticsPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @test
+     * resources/views/admin/statistics/index
      * @return void
+     * @test
      */
     public function viewAdminStatisticsIndexHasData(): void
     {
@@ -25,7 +26,7 @@ class AdminStatisticsPageTest extends TestCase
     }
 
     /**
-     * Test for statistic page. View: resources/views/admin/statistics/index
+     * resources/views/admin/statistics/index
      * @return void
      * @test
      */

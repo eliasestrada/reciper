@@ -11,6 +11,7 @@ class NotificationsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/notificatons/index
      * @test
      * @return void
      */
@@ -25,9 +26,9 @@ class NotificationsIndexPageTest extends TestCase
     }
 
     /**
-     * Test for notifications page. View: resources/views/notifications/index
-     * @return void
+     * resources/views/notificatons/index
      * @test
+     * @return void
      */
     public function userCanSeeNotificationsIndexPage(): void
     {
@@ -39,9 +40,9 @@ class NotificationsIndexPageTest extends TestCase
     }
 
     /**
-     * Test for notifications page. View: resources/views/notifications/index
-     * @return void
+     * resources/views/notificatons/index
      * @test
+     * @return void
      */
     public function guestCantSeeNotificationsIndexPage(): void
     {

@@ -12,6 +12,7 @@ class SearchPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/pages/search
      * @test
      * @return void
      */
@@ -27,6 +28,7 @@ class SearchPageTest extends TestCase
     }
 
     /**
+     * resources/views/pages/search
      * @test
      * @return void
      */
@@ -40,9 +42,9 @@ class SearchPageTest extends TestCase
     }
 
     /**
-     * Test for search page. View: resources/views/pages/search
-     * @return void
+     * resources/views/pages/search
      * @test
+     * @return void
      */
     public function guestCanSeeSearchPage(): void
     {
@@ -50,9 +52,9 @@ class SearchPageTest extends TestCase
     }
 
     /**
-     * Test for search page. View: resources/views/pages/search
-     * @return void
+     * resources/views/pages/search
      * @test
+     * @return void
      */
     public function authUserCanSeeSearchPage(): void
     {

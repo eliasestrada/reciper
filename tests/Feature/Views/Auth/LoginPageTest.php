@@ -12,8 +12,9 @@ class LoginPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @return void
+     * resources/views/auth/login
      * @test
+     * @return void
      */
     public function userCanLoginWithCorrectCredentials(): void
     {
@@ -27,8 +28,9 @@ class LoginPageTest extends TestCase
     }
 
     /**
-     * @return void
+     * resources/views/auth/login
      * @test
+     * @return void
      */
     public function userCannotLoginWithIncorrectPassword(): void
     {
@@ -49,8 +51,9 @@ class LoginPageTest extends TestCase
 
     /**
      * We will login user and create cookie to check them
-     * @return void
+     * resources/views/auth/login
      * @test
+     * @return void
      */
     public function rememberMeFunctionality(): void
     {
@@ -78,9 +81,9 @@ class LoginPageTest extends TestCase
     }
 
     /**
-     * Test for login page. View: resources/views/auth/login
-     * @return void
+     * resources/views/auth/login
      * @test
+     * @return void
      */
     public function userCantSeeLoginPage(): void
     {
@@ -91,9 +94,9 @@ class LoginPageTest extends TestCase
     }
 
     /**
-     * Test for login page. View: resources/views/auth/login
-     * @return void
+     * resources/views/auth/login
      * @test
+     * @return void
      */
     public function guestCanSeeLoginPage(): void
     {

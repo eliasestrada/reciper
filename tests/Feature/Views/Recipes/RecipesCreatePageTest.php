@@ -13,6 +13,7 @@ class RecipesCreatePageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/recipes/create
      * @test
      * @return void
      */
@@ -27,9 +28,9 @@ class RecipesCreatePageTest extends TestCase
     }
 
     /**
-     * Test for create recipe page. View: resources/views/recipes/create
-     * @return void
+     * resources/views/recipes/create
      * @test
+     * @return void
      */
     public function authUserCanSeeRecipesCreatePage(): void
     {
@@ -39,6 +40,7 @@ class RecipesCreatePageTest extends TestCase
     }
 
     /**
+     * resources/views/recipes/create
      * @test
      * @return void
      */
@@ -57,6 +59,7 @@ class RecipesCreatePageTest extends TestCase
     }
 
     /**
+     * resources/views/recipes/create
      * @test
      * @return void
      */

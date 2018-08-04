@@ -10,6 +10,7 @@ class Errors404PageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/errors/404.blade.php
      * @test
      * @return void
      */
@@ -20,6 +21,7 @@ class Errors404PageTest extends TestCase
     }
 
     /**
+     * resources/views/errors/503.blade.php
      * @test
      * @return void
      */

@@ -11,6 +11,7 @@ class SettingsPhotoPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/settings/photo
      * @test
      * @return void
      */
@@ -24,10 +25,9 @@ class SettingsPhotoPageTest extends TestCase
     }
 
     /**
-     * Test for settings photo page
-     * View: resources/views/settings/photo
-     * @return void
+     * resources/views/settings/photo
      * @test
+     * @return void
      */
     public function authUserCanSeeSettingsPhotoPage(): void
     {
@@ -38,10 +38,9 @@ class SettingsPhotoPageTest extends TestCase
     }
 
     /**
-     * Test for settigs general page
-     * View: resources/views/settings/photo
-     * @return void
+     * resources/views/settings/photo
      * @test
+     * @return void
      */
     public function guestCantSeeSettingsPhotoPage(): void
     {

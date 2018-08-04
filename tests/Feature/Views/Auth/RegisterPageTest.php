@@ -11,9 +11,9 @@ class RegisterPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * Test for register page. View: resources/views/auth/register
-     * @return void
+     * resources/views/auth/register
      * @test
+     * @return void
      */
     public function userCannotSeeRegisterPage(): void
     {
@@ -24,9 +24,9 @@ class RegisterPageTest extends TestCase
     }
 
     /**
-     * Test for register page. View: resources/views/auth/register
-     * @return void
+     * resources/views/auth/register
      * @test
+     * @return void
      */
     public function guestCanSeeRegisterPage(): void
     {
