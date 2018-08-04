@@ -33,11 +33,11 @@ class WipeCommand extends Command
      */
     public function handle()
     {
-		$this->call('cache:clear');
-		$this->call('route:clear');
-		$this->call('view:clear');
-		$this->call('migrate:fresh');
-		$this->call('db:seed');
-		$this->info('Cache and database data had been cleared');
+        $this->call('cache:clear');
+        $this->call('route:clear');
+        $this->call('view:clear');
+        $this->call('migrate:fresh');
+        $this->call('db:seed');
+        $this->info('Cache and database data had been cleared');
     }
 }

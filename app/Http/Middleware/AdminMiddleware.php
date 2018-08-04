@@ -17,7 +17,7 @@ class AdminMiddleware
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check() && user()->isAdmin()) {
-			return $next($request);
+            return $next($request);
         }
         return redirect('/login')->withError(trans('messages.access_denied'));
     }

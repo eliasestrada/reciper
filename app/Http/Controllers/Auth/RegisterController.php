@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Validator;
-use App\Models\User;
-use App\Models\Document;
 use App\Http\Controllers\Controller;
+use App\Models\Document;
+use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Validator;
 
 class RegisterController extends Controller
 {
@@ -19,7 +19,7 @@ class RegisterController extends Controller
     | validation and creation. By default this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
-    */
+     */
 
     use RegistersUsers;
 
@@ -38,14 +38,14 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-	}
-	
-	public function showRegistrationForm()
-	{
-		return view('auth.register', [
-			'document' => Document::whereId(1)->first()
-		]);
-	}
+    }
+
+    public function showRegistrationForm()
+    {
+        return view('auth.register', [
+            'document' => Document::whereId(1)->first(),
+        ]);
+    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -59,8 +59,8 @@ class RegisterController extends Controller
             'name' => 'required|string|min:3|max:199',
             'email' => 'required|string|email|max:199|unique:users',
             'password' => 'required|string|min:6|confirmed',
-		]);
-	}
+        ]);
+    }
 
     // Create a new user instance after a valid registration.
     protected function create(array $data)
@@ -68,7 +68,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password'])
+            'password' => bcrypt($data['password']),
         ]);
     }
 }

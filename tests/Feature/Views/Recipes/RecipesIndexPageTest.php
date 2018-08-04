@@ -2,39 +2,39 @@
 
 namespace Tests\Feature\Views\Recipes;
 
-use Tests\TestCase;
-use App\Models\User;
 use App\Models\Recipe;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\TestCase;
 
 class RecipesIndexPageTest extends TestCase
 {
-	use DatabaseTransactions;
+    use DatabaseTransactions;
 
-	/**
-	 * Test for recipes page. View: resources/views/recipes/index
-	 * @return void
-	 * @test
-	 */
-	public function authUserCanSeeRecipesIndexPage() : void
+    /**
+     * Test for recipes page. View: resources/views/recipes/index
+     * @return void
+     * @test
+     */
+    public function authUserCanSeeRecipesIndexPage(): void
     {
-		$user = User::find(factory(User::class)->create()->id);
+        $user = User::find(factory(User::class)->create()->id);
 
-		$this->actingAs($user)
-			->get("/recipes")
-			->assertOk()
-			->assertViewIs('recipes.index');
-	}
+        $this->actingAs($user)
+            ->get("/recipes")
+            ->assertOk()
+            ->assertViewIs('recipes.index');
+    }
 
-	/**
-	 * Test for recipes page. View: resources/views/recipes/index
-	 * @return void
-	 * @test
-	 */
-    public function guestCanSeeRecipesIndexPage() : void
+    /**
+     * Test for recipes page. View: resources/views/recipes/index
+     * @return void
+     * @test
+     */
+    public function guestCanSeeRecipesIndexPage(): void
     {
-		$this->get('/recipes')
-        	->assertOk()
-        	->assertViewIs('recipes.index');
-	}
+        $this->get('/recipes')
+            ->assertOk()
+            ->assertViewIs('recipes.index');
+    }
 }

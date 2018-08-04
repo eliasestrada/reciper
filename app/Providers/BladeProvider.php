@@ -7,52 +7,52 @@ use Illuminate\Support\ServiceProvider;
 
 class BladeProvider extends ServiceProvider
 {
-	/**
-	 * Bootstrap services
+    /**
+     * Bootstrap services
      * @return void
      */
-    public function boot() : void
+    public function boot(): void
     {
-		$this->other();
-		$this->componentsForForms();
-		$this->statementsForUserPermission();
-	}
+        $this->other();
+        $this->componentsForForms();
+        $this->statementsForUserPermission();
+    }
 
-	/**
+    /**
      * @return void
      */
-	public function statementsForUserPermission() : void
-	{
-		Blade::if('admin', function() {
-			return auth()->check() && user()->isAdmin();
-		});
+    public function statementsForUserPermission(): void
+    {
+        Blade::if('admin', function () {
+            return auth()->check() && user()->isAdmin();
+        });
 
-		Blade::if('master', function() {
-			return auth()->check() && user()->isMaster();
-		});
-		
-	}
+        Blade::if('master', function () {
+            return auth()->check() && user()->isMaster();
+        });
 
-	/**
-	 * @return void
-	 */
-	public function componentsForForms() : void
-	{
-		Blade::component('comps.forms.title-field', 'titleField');
-		Blade::component('comps.forms.time-field', 'timeField');
-		Blade::component('comps.forms.meal-field', 'mealField');
-		Blade::component('comps.forms.ingredients-field', 'ingredientsField');
-		Blade::component('comps.forms.intro-field', 'introField');
-		Blade::component('comps.forms.text-field', 'textField');
-		Blade::component('comps.forms.image-field', 'imageField');
-	}
+    }
 
-	/**
-	 * @return void
-	 */
-	public function other() : void
-	{
-		Blade::component('comps.list-of-recipes', 'listOfRecipes');
-		Blade::component('comps.edit_form', 'editForm');
-	}
+    /**
+     * @return void
+     */
+    public function componentsForForms(): void
+    {
+        Blade::component('comps.forms.title-field', 'titleField');
+        Blade::component('comps.forms.time-field', 'timeField');
+        Blade::component('comps.forms.meal-field', 'mealField');
+        Blade::component('comps.forms.ingredients-field', 'ingredientsField');
+        Blade::component('comps.forms.intro-field', 'introField');
+        Blade::component('comps.forms.text-field', 'textField');
+        Blade::component('comps.forms.image-field', 'imageField');
+    }
+
+    /**
+     * @return void
+     */
+    public function other(): void
+    {
+        Blade::component('comps.list-of-recipes', 'listOfRecipes');
+        Blade::component('comps.edit_form', 'editForm');
+    }
 }

@@ -3,8 +3,8 @@
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
@@ -66,7 +66,7 @@ class Handler extends ExceptionHandler
         }
 
         return redirect()->guest('/login')->withError(
-			trans('messages.not_auth')
-		);
+            trans('messages.not_auth')
+        );
     }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Document;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DocumentsRequest;
+use App\Models\Document;
+use Illuminate\Http\Request;
 
 class DocumentsController extends Controller
 {
@@ -14,12 +14,12 @@ class DocumentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-	public function index()
-	{
-		return view('admin.documents.index', [
-			'document' => Document::get()
-		]);
-	}
+    public function index()
+    {
+        return view('admin.documents.index', [
+            'document' => Document::get(),
+        ]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -40,11 +40,11 @@ class DocumentsController extends Controller
     public function store(DocumentsRequest $request)
     {
         $doc = Document::create([
-			'title_' . locale() => $request->title,
-			'text_' . locale() => $request->text
-		]);
+            'title_' . locale() => $request->title,
+            'text_' . locale() => $request->text,
+        ]);
 
-		return redirect('/admin/documents/' . $doc->id);
+        return redirect('/admin/documents/' . $doc->id);
     }
 
     /**
@@ -77,13 +77,13 @@ class DocumentsController extends Controller
     public function update(DocumentsRequest $request, Document $document)
     {
         $document->update([
-			'title_' . locale() => $request->title,
-			'text_' . locale() => $request->text
-		]);
+            'title_' . locale() => $request->title,
+            'text_' . locale() => $request->text,
+        ]);
 
-		return $request->has('view')
-			? redirect('/admin/documents/' . $document->id)->withSuccess(trans('documents.saved'))
-			: back()->withSuccess(trans('documents.saved'));
+        return $request->has('view')
+        ? redirect('/admin/documents/' . $document->id)->withSuccess(trans('documents.saved'))
+        : back()->withSuccess(trans('documents.saved'));
     }
 
     /**
@@ -97,13 +97,13 @@ class DocumentsController extends Controller
         // Check for correct user
         if (!user()->isAdmin()) {
             return redirect('/')->withError(
-				trans('admin.only_admin_can_delete')
-			);
+                trans('admin.only_admin_can_delete')
+            );
         }
-		Document::find($id)->delete();
+        Document::find($id)->delete();
 
         return redirect('/admin/documents')->withSuccess(
-			trans('documents.doc_has_been_deleted')
-		);
+            trans('documents.doc_has_been_deleted')
+        );
     }
 }

@@ -2,7 +2,7 @@
 
 return [
 
-	// Application Name
+    // Application Name
     'name' => env('APP_NAME', 'Reciper'),
 
     // Application Environment
@@ -18,7 +18,7 @@ return [
     'timezone' => 'Europe/Kiev',
 
     // Application Locale Configuration
-	'locale' => 'ru',
+    'locale' => 'ru',
 
     // Application Fallback Locale
     'fallback_locale' => 'ru',
@@ -27,7 +27,7 @@ return [
     'key' => env('APP_KEY'),
     'cipher' => 'AES-256-CBC',
 
-	// Autoloaded Service Providers
+    // Autoloaded Service Providers
     'providers' => [
 
         Illuminate\Auth\AuthServiceProvider::class,
@@ -51,23 +51,23 @@ return [
         Illuminate\Session\SessionServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
-		Illuminate\View\ViewServiceProvider::class,
-		/**
-		 * Packages Providers
-		 */
-		Intervention\Image\ImageServiceProvider::class,
-		/**
-		 * App Providers
-		 */
+        Illuminate\View\ViewServiceProvider::class,
+        /**
+         * Packages Providers
+         */
+        Intervention\Image\ImageServiceProvider::class,
+        /**
+         * App Providers
+         */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-		App\Providers\RouteServiceProvider::class,
-		App\Providers\BladeProvider::class,
-		App\Providers\VisitorProvider::class,
-		App\Providers\UserMenuProvider::class,
-		App\Providers\FooterProvider::class,
-		App\Providers\DebugProvider::class,
+        App\Providers\RouteServiceProvider::class,
+        App\Providers\BladeProvider::class,
+        App\Providers\VisitorProvider::class,
+        App\Providers\UserMenuProvider::class,
+        App\Providers\FooterProvider::class,
+        App\Providers\DebugProvider::class,
     ],
 
     // Class Aliases
@@ -106,6 +106,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-		'Image' => Intervention\Image\Facades\Image::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 ];

@@ -7,20 +7,20 @@ use Illuminate\Support\ServiceProvider;
 
 class VisitorProvider extends ServiceProvider
 {
-	/**
-	 * Bootstrap services
+    /**
+     * Bootstrap services
      * @return void
      */
-    public function boot() : void
+    public function boot(): void
     {
-		$this->visitorVisitsTheSite();
-	}
+        $this->visitorVisitsTheSite();
+    }
 
-	/**
+    /**
      * @return void
      */
-	public function visitorVisitsTheSite() : void
-	{
-		Visitor::incrementRequestsOrCreate();
-	}
+    public function visitorVisitsTheSite(): void
+    {
+        Visitor::incrementRequestsOrCreate();
+    }
 }

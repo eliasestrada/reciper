@@ -2,38 +2,38 @@
 
 namespace Tests\Feature\Views\Pages;
 
-use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\TestCase;
 
 class ContactPageTest extends TestCase
 {
-	use DatabaseTransactions;
+    use DatabaseTransactions;
 
-	/**
-	 * Test for contact page. View: resources/views/pages/contact
-	 * @return void
-	 * @test
-	 */
-	public function authUserCanSeeContactPage() : void
+    /**
+     * Test for contact page. View: resources/views/pages/contact
+     * @return void
+     * @test
+     */
+    public function authUserCanSeeContactPage(): void
     {
-		$user = User::find(factory(User::class)->create()->id);
+        $user = User::find(factory(User::class)->create()->id);
 
-		$this->actingAs($user)
-			->get('/contact')
-			->assertOk()
-			->assertViewIs('pages.contact');
-	}
+        $this->actingAs($user)
+            ->get('/contact')
+            ->assertOk()
+            ->assertViewIs('pages.contact');
+    }
 
-	/**
-	 * Test for contact page. View: resources/views/pages/contact
-	 * @return void
-	 * @test
-	 */
-	public function guestCanSeeContactPage() : void
+    /**
+     * Test for contact page. View: resources/views/pages/contact
+     * @return void
+     * @test
+     */
+    public function guestCanSeeContactPage(): void
     {
-		$this->get('/contact')
-			->assertOk()
-			->assertViewIs('pages.contact');
-	}
+        $this->get('/contact')
+            ->assertOk()
+            ->assertViewIs('pages.contact');
+    }
 }

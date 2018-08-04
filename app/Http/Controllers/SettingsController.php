@@ -2,106 +2,106 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Title;
-use Illuminate\Http\Request;
 use App\Helpers\Traits\SettingsControllerHelper;
 use App\Http\Requests\Settings\SettingsPhotoRequest;
 use App\Http\Requests\Settings\SettingsUpdateHomeDataRequest;
 use App\Http\Requests\Settings\SettingsUpdateUserDataRequest;
 use App\Http\Requests\Settings\SettingsUpdateUserPasswordRequest;
+use App\Models\Title;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
-	use SettingsControllerHelper;
+    use SettingsControllerHelper;
 
-	public function __construct()
+    public function __construct()
     {
-		$this->middleware('auth');
-	}
+        $this->middleware('auth');
+    }
 
-	public function general()
-	{
-		return view('settings.general');
-	}
-
-	public function photo()
-	{
-		return view('settings.photo');
-	}
-
-	/**
-	 * @param SettingsPhotoRequest $request
-	 */
-	public function updatePhoto(SettingsPhotoRequest $request)
+    public function general()
     {
-		if ($request->hasFile('image')) {
-			$image = $request->file('image');
+        return view('settings.general');
+    }
 
-			$extention = $image->getClientOriginalExtension();
-			$file_name = setImageName($extention, 'user' . user()->id);
+    public function photo()
+    {
+        return view('settings.photo');
+    }
 
-			$this->deleteOldFileFromStorage(user()->image, 'users');
-			$this->saveFileToStorage($image, $file_name);
-			$this->saveFileNameToDB($file_name);
-		} elseif ($request->delete == 1) {
-			$this->deleteOldFileFromStorage(user()->image, 'users');
-			$this->saveFileNameInDB();
-		}
-		return redirect('/settings/photo')->withSuccess(trans('settings.saved'));
-	}
+    /**
+     * @param SettingsPhotoRequest $request
+     */
+    public function updatePhoto(SettingsPhotoRequest $request)
+    {
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
 
-	/**
-	 * @param SettingsUpdateUserDataRequest $request
-	 */
-	public function updateUserData(SettingsUpdateUserDataRequest $request)
-	{
-		user()->update([ 'name' => $request->name ]);
-		return back()->withSuccess(trans('settings.saved'));
-	}
+            $extention = $image->getClientOriginalExtension();
+            $file_name = setImageName($extention, 'user' . user()->id);
 
-	/**
-	 * @param SettingsUpdateUserPasswordRequest $request
-	 */
-	public function updateUserPassword(SettingsUpdateUserPasswordRequest $request)
-	{
-        if (\Hash::check($request->old_password, user()->password)) {
-			user()->update([
-				'password' => \Hash::make($request->password)
-			]);
-			return back()->withSuccess(trans('settings.saved'));
-        } else {           
-			return back()->withError(trans('settings.pwd_wrong'));
+            $this->deleteOldFileFromStorage(user()->image, 'users');
+            $this->saveFileToStorage($image, $file_name);
+            $this->saveFileNameToDB($file_name);
+        } elseif ($request->delete == 1) {
+            $this->deleteOldFileFromStorage(user()->image, 'users');
+            $this->saveFileNameInDB();
         }
-	}
+        return redirect('/settings/photo')->withSuccess(trans('settings.saved'));
+    }
 
-	/**
-	 * @param SettingsUpdateHomeDataRequest $request
-	 */
-	public function updateIntroData(SettingsUpdateHomeDataRequest $request)
-	{
-		Title::whereName('intro')->update([
-			'title_' . locale() => $request->title,
-			'text_' . locale() => $request->text
-		]);
+    /**
+     * @param SettingsUpdateUserDataRequest $request
+     */
+    public function updateUserData(SettingsUpdateUserDataRequest $request)
+    {
+        user()->update(['name' => $request->name]);
+        return back()->withSuccess(trans('settings.saved'));
+    }
 
-		return back()->withSuccess(trans('settings.saved'));
-	}
+    /**
+     * @param SettingsUpdateUserPasswordRequest $request
+     */
+    public function updateUserPassword(SettingsUpdateUserPasswordRequest $request)
+    {
+        if (\Hash::check($request->old_password, user()->password)) {
+            user()->update([
+                'password' => \Hash::make($request->password),
+            ]);
+            return back()->withSuccess(trans('settings.saved'));
+        } else {
+            return back()->withError(trans('settings.pwd_wrong'));
+        }
+    }
 
-	/**
-	 * @param Request $request
-	 */
-	public function updateFooterData(Request $request)
-	{
-		$data = $this->validate($request,
-			['text'     => 'max:190'],
-			['text.max' => trans('settings.footer_text_max')]
-		);
+    /**
+     * @param SettingsUpdateHomeDataRequest $request
+     */
+    public function updateIntroData(SettingsUpdateHomeDataRequest $request)
+    {
+        Title::whereName('intro')->update([
+            'title_' . locale() => $request->title,
+            'text_' . locale() => $request->text,
+        ]);
 
-		Title::whereName('footer')->update([
-			'text_' . locale() => $request->text
-		]);
+        return back()->withSuccess(trans('settings.saved'));
+    }
 
-		return back()->withSuccess(trans('settings.saved'));
-	}
+    /**
+     * @param Request $request
+     */
+    public function updateFooterData(Request $request)
+    {
+        $data = $this->validate($request,
+            ['text' => 'max:190'],
+            ['text.max' => trans('settings.footer_text_max')]
+        );
+
+        Title::whereName('footer')->update([
+            'text_' . locale() => $request->text,
+        ]);
+
+        return back()->withSuccess(trans('settings.saved'));
+    }
 }
