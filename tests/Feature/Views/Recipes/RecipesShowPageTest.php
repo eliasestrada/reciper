@@ -52,12 +52,7 @@ class RecipesShowPageTest extends TestCase
      */
     public function guestCanSeeRecipesShowPage(): void
     {
-        $recipe = factory(Recipe::class)->create([
-            'ready_ru' => 1,
-            'ready_en' => 1,
-            'approved_ru' => 1,
-            'approved_en' => 1,
-        ]);
+        $recipe = factory(Recipe::class)->create();
 
         $this->get("/recipes/$recipe->id")
             ->assertOk();
