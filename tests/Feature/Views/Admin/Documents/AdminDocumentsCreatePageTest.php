@@ -12,13 +12,29 @@ class AdminDocumentsCreatePageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * @test
+     * @return void
+     */
+    public function viewDocumentsCreateHasACorrectPath(): void
+    {
+        $admin = factory(User::class)->make(['admin' => 1]);
+
+        $this->actingAs($admin)
+            ->get('/admin/documents/create')
+            ->assertOk()
+            ->assertViewIs('admin.documents.create');
+    }
+
+    /**
      * Test for documents create page. View: resources/views/admin/documents/create
      * @return void
      * @test
      */
     public function userCantSeeAdminDocumentsCreatePage(): void
     {
-        $this->actingAs(factory(User::class)->make(['admin' => 0]))
+        $user = factory(User::class)->make(['admin' => 0]);
+
+        $this->actingAs($user)
             ->get("/admin/documents/create")
             ->assertRedirect('/login');
     }

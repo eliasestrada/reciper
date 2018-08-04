@@ -12,6 +12,22 @@ class AdminDocumentsEditPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * @test
+     * @return void
+     */
+    public function viewDocumentsEditHasData(): void
+    {
+        $document = factory(Document::class)->create();
+        $admin = factory(User::class)->make(['admin' => 1]);
+
+        $this->actingAs($admin)
+            ->get("/admin/documents/$document->id/edit")
+            ->assertOk()
+            ->assertViewIs('admin.documents.edit')
+            ->assertViewHas('document');
+    }
+
+    /**
      * Test for documents edit page. View: resources/views/admin/documents/edit
      * @return void
      * @test

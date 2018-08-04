@@ -12,14 +12,44 @@ class AdminDocumentsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * @test
+     * @return void
+     */
+    public function viewDocumentsIndexIsCorrect(): void
+    {
+        $admin = factory(User::class)->make(['admin' => 1]);
+
+        $this->actingAs($admin)
+            ->get("/admin/documents")
+            ->assertViewIs('admin.documents.index')
+            ->assertViewHas('document');
+    }
+
+    /**
      * Test for documents page. View: resources/views/admin/documents/index
      * @return void
      * @test
      */
     public function userCantSeeAdminDocumentsIndexPage(): void
     {
-        $this->actingAs(factory(User::class)->make(['admin' => 0]))
+        $user = factory(User::class)->make(['admin' => 0]);
+
+        $this->actingAs($user)
             ->get('/admin/documents')
             ->assertRedirect('/login');
+    }
+
+    /**
+     * Test for documents page. View: resources/views/admin/documents/index
+     * @return void
+     * @test
+     */
+    public function adminCanSeeAdminDocumentsIndexPage(): void
+    {
+        $admin = factory(User::class)->make(['admin' => 1]);
+
+        $this->actingAs($admin)
+            ->get('/admin/documents')
+            ->assertOk();
     }
 }
