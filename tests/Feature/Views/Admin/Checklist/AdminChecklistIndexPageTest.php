@@ -16,7 +16,9 @@ class AdminChecklistIndexPageTest extends TestCase
      */
     public function viewAdminChecklistIndexHasData(): void
     {
-        $this->actingAs(factory(User::class)->create(['admin' => 1]))
+        $admin = factory(User::class)->make(['admin' => 1]);
+
+        $this->actingAs($admin)
             ->get('/admin/checklist')
             ->assertOk()
             ->assertViewIs('admin.checklist.index')
@@ -30,7 +32,9 @@ class AdminChecklistIndexPageTest extends TestCase
      */
     public function userCantSeeAdminChecklistIndexPage(): void
     {
-        $this->actingAs(factory(User::class)->make(['admin' => 0]))
+        $user = factory(User::class)->make(['admin' => 0]);
+
+        $this->actingAs($user)
             ->get('/admin/checklist')
             ->assertRedirect('/login');
     }
