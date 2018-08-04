@@ -14,13 +14,14 @@ class AdminFeedbackPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewAdminFeedbackIndexHasACorrectPath(): void
+    public function viewAdminFeedbackIndexHasData(): void
     {
         $admin = factory(User::class)->make(['admin' => 1]);
 
         $this->actingAs($admin)
             ->get('/admin/feedback')
-            ->assertViewIs('admin.feedback.index');
+            ->assertViewIs('admin.feedback.index')
+            ->assertViewHas('feedback');
     }
 
     /**

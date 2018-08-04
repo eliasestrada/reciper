@@ -11,6 +11,20 @@ class AdminStatisticsPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * @test
+     * @return void
+     */
+    public function viewAdminStatisticsIndexHasData(): void
+    {
+        $admin = factory(User::class)->make(['admin' => 1]);
+
+        $this->actingAs($admin)
+            ->get('/admin/statistics')
+            ->assertViewIs('admin.statistics.index')
+            ->assertViewHasAll(['sxgeo', 'visitors', 'allrecipes', 'allvisitors']);
+    }
+
+    /**
      * Test for statistic page. View: resources/views/admin/statistics/index
      * @return void
      * @test
