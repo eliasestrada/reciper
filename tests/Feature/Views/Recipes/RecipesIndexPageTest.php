@@ -15,10 +15,9 @@ class RecipesIndexPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewIsCorrect(): void
+    public function viewRecipesIndexIsCorrect(): void
     {
-        $this->get('/recipes')
-            ->assertViewIs('recipes.index');
+        $this->get('/recipes')->assertViewIs('recipes.index');
     }
 
     /**
@@ -28,9 +27,8 @@ class RecipesIndexPageTest extends TestCase
      */
     public function authUserCanSeeRecipesIndexPage(): void
     {
-        $this->actingAs(factory(User::class)->create())
-            ->get("/recipes")
-            ->assertOk();
+        $user = factory(User::class)->create();
+        $this->actingAs($user)->get("/recipes")->assertOk();
     }
 
     /**
@@ -40,7 +38,6 @@ class RecipesIndexPageTest extends TestCase
      */
     public function guestCanSeeRecipesIndexPage(): void
     {
-        $this->get('/recipes')
-            ->assertOk();
+        $this->get('/recipes')->assertOk();
     }
 }

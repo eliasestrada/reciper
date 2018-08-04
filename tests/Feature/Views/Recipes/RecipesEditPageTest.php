@@ -15,14 +15,13 @@ class RecipesEditPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewHasData(): void
+    public function viewRecipesEditHasData(): void
     {
         $user = factory(User::class)->create();
         $recipe = factory(Recipe::class)->create(['user_id' => $user->id]);
 
         $this->actingAs($user)
             ->get("/recipes/$recipe->id/edit")
-            ->assertOk()
             ->assertViewIs('recipes.edit')
             ->assertViewHasAll(['meal', 'recipe']);
     }
@@ -39,8 +38,7 @@ class RecipesEditPageTest extends TestCase
 
         $this->actingAs($user)
             ->get("/recipes/$recipe->id/edit")
-            ->assertOk()
-            ->assertViewIs('recipes.edit');
+            ->assertOk();
     }
 
     /**

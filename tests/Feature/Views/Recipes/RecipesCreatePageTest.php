@@ -16,13 +16,12 @@ class RecipesCreatePageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewHasData(): void
+    public function viewRecipesCreateHasData(): void
     {
         $user = factory(User::class)->create();
 
         $this->actingAs($user)
             ->get('/recipes/create')
-            ->assertOk()
             ->assertViewIs('recipes.create')
             ->assertViewHas('meal', Meal::get(['id', 'name_' . locale()]));
     }
