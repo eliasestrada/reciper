@@ -36,8 +36,7 @@ class RecipesCreatePageTest extends TestCase
     {
         $this->actingAs(factory(User::class)->create())
             ->get('/recipes/create')
-            ->assertOk()
-            ->assertViewIs('recipes.create');
+            ->assertOk();
     }
 
     /**

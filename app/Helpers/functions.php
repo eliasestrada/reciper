@@ -12,7 +12,6 @@ function customStripTags($string): string
 
 /**
  * Takes string, adds li tags to every line separeted by "\n"
- *
  * @param string $str
  * @return string
  */

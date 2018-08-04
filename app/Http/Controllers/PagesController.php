@@ -12,7 +12,7 @@ class PagesController extends Controller
     use SearchHelpers;
 
     /**
-     * Returns home page view
+     * @return \Illuminate\View\View
      */
     public function home()
     {
@@ -38,6 +38,7 @@ class PagesController extends Controller
 
     /**
      * @param Request $request
+     * @return \Illuminate\View\View
      */
     public function search(Request $request)
     {

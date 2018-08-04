@@ -11,6 +11,19 @@ class AdminChecklistIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * @test
+     * @return void
+     */
+    public function viewHasData(): void
+    {
+        $this->actingAs(factory(User::class)->create(['admin' => 1]))
+            ->get('/admin/checklist')
+            ->assertOk()
+            ->assertViewIs('admin.checklist.index')
+            ->assertViewHas('unapproved');
+    }
+
+    /**
      * Test for checklist page. View: resources/views/admin/checklist/index
      * @return void
      * @test

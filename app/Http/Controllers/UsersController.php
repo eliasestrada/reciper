@@ -7,6 +7,9 @@ use App\Models\User;
 
 class UsersController extends Controller
 {
+    /**
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         return view('users.index', ['users' => User::paginate(50)]);
@@ -14,6 +17,7 @@ class UsersController extends Controller
 
     /**
      * @param User $user
+     * @return \Illuminate\View\View
      */
     public function show(User $user)
     {
@@ -32,6 +36,9 @@ class UsersController extends Controller
         return view('users.show', compact('recipes', 'user', 'likes'));
     }
 
+    /**
+     * @return \Illuminate\View\View
+     */
     public function my_recipes()
     {
         $recipes = Recipe::whereUserId(user()->id)->latest()->paginate(20);

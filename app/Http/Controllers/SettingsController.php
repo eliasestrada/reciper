@@ -20,11 +20,17 @@ class SettingsController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * @return \Illuminate\View\View
+     */
     public function general()
     {
         return view('settings.general');
     }
 
+    /**
+     * @return \Illuminate\View\View
+     */
     public function photo()
     {
         return view('settings.photo');

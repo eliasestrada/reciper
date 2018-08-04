@@ -19,11 +19,17 @@ class RecipesController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
+    /**
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         return view('recipes.index');
     }
 
+    /**
+     * @return \Illuminate\View\View
+     */
     public function create()
     {
         return view('recipes.create', [
@@ -52,6 +58,7 @@ class RecipesController extends Controller
     /**
      * It will show the recipe on a single page
      * @param Recipe $recipe
+     * @return \Illuminate\View\View
      */
     public function show(Recipe $recipe)
     {
@@ -79,6 +86,7 @@ class RecipesController extends Controller
 
     /**
      * @param Recipe $recipe
+     * @return \Illuminate\View\View
      */
     public function edit(Recipe $recipe)
     {
