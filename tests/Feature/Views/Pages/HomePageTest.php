@@ -11,16 +11,25 @@ class HomePageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * @test
+     * @return void
+     */
+    public function viewPagesHomeHasData(): void
+    {
+        $this->get('/')
+            ->assertViewIs('pages.home')
+            ->assertViewHasAll(['random_recipes', 'intro']);
+    }
+
+    /**
      * Test for home page. View: resources/views/pages/home
      * @return void
      * @test
      */
     public function authUserCanSeeHomePage(): void
     {
-        $this->actingAs(factory(User::class)->create())
-            ->get('/')
-            ->assertOk()
-            ->assertViewIs('pages.home');
+        $user = factory(User::class)->create();
+        $this->actingAs($user)->get('/')->assertOk();
     }
 
     /**
@@ -30,8 +39,6 @@ class HomePageTest extends TestCase
      */
     public function guestCanSeeHomePage(): void
     {
-        $this->get('/')
-            ->assertOk()
-            ->assertViewIs('pages.home');
+        $this->get('/')->assertOk();
     }
 }
