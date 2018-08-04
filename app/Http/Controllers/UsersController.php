@@ -21,8 +21,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        $recipes = Recipe
-            ::whereUserId($user->id)
+        $recipes = Recipe::whereUserId($user->id)
             ->withCount('likes')
             ->latest()
             ->paginate(20);
