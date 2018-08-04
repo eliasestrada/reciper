@@ -34,10 +34,10 @@ Route::prefix('notifications')->middleware('auth')->group(function () {
 Route::get('dashboard', 'DashboardController@index');
 
 // Settings ===========
-Route::prefix('settings')->group(function () {
-    Route::get('photo', 'SettingsController@photo');
+Route::prefix('settings')->middleware('auth')->group(function () {
+    Route::view('general', 'settings.general');
+    Route::view('photo', 'settings.photo');
     Route::put('photo', 'SettingsController@updatePhoto');
-    Route::get('general', 'SettingsController@general');
 
     Route::prefix('update')->group(function () {
         Route::put('user-data', 'SettingsController@updateUserData');

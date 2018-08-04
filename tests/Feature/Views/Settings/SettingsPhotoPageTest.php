@@ -11,7 +11,21 @@ class SettingsPhotoPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * Test for settings photo page. View: resources/views/settings/photo
+     * @test
+     * @return void
+     */
+    public function viewSettingsPhotoHasACorrectPath(): void
+    {
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user)
+            ->get('/settings/photo')
+            ->assertViewIs('settings.photo');
+    }
+
+    /**
+     * Test for settings photo page
+     * View: resources/views/settings/photo
      * @return void
      * @test
      */
@@ -21,5 +35,16 @@ class SettingsPhotoPageTest extends TestCase
             ->get('/settings/photo')
             ->assertOk()
             ->assertViewIs('settings.photo');
+    }
+
+    /**
+     * Test for settigs general page
+     * View: resources/views/settings/photo
+     * @return void
+     * @test
+     */
+    public function guestCantSeeSettingsPhotoPage(): void
+    {
+        $this->get('/settings/photo')->assertRedirect('/login');
     }
 }

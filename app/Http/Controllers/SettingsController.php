@@ -15,27 +15,6 @@ class SettingsController extends Controller
 {
     use SettingsControllerHelper;
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * @return \Illuminate\View\View
-     */
-    public function general()
-    {
-        return view('settings.general');
-    }
-
-    /**
-     * @return \Illuminate\View\View
-     */
-    public function photo()
-    {
-        return view('settings.photo');
-    }
-
     /**
      * @param SettingsPhotoRequest $request
      */
