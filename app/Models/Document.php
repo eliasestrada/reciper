@@ -12,9 +12,4 @@ class Document extends Model
     {
         return $this->toArray()['title_' . locale()];
     }
-
-    public function getText()
-    {
-        return $this->toArray()['text_' . locale()];
-    }
 }
