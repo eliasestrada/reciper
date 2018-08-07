@@ -17,7 +17,7 @@
 	<div class="row">
 		@foreach ($document as $doc)
 			<div class="col s12 l6">
-				<div class="card">
+				<div class="card" style="min-height:320px">
 				<div class="card-content">
 					<span class="card-title">{{ $doc->getTitle() }}</span>
 					<p>{{ str_limit(strip_tags($doc->getText()), 250) }}</p>
