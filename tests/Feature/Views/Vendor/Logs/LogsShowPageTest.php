@@ -15,7 +15,7 @@ class LogsShowPageTest extends TestCase
      * @test
      * @return void
      */
-    public function masterCanSeeLogsShowsPage(): void
+    public function master_can_see_logs_shows_page(): void
     {
         info('test');
         $file_name = date('Y-m-d');

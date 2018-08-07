@@ -15,7 +15,7 @@ class UsersIndexPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewUsersIndexHasData(): void
+    public function view_users_index_has_data(): void
     {
         $user = factory(User::class)->make();
 
@@ -30,7 +30,7 @@ class UsersIndexPageTest extends TestCase
      * @test
      * @return void
      */
-    public function authUserCanSeeUsersIndexPage(): void
+    public function auth_user_can_see_users_index_page(): void
     {
         $user = factory(User::class)->make();
         $this->actingAs($user)->get('/users')->assertOk();
@@ -41,7 +41,7 @@ class UsersIndexPageTest extends TestCase
      * @test
      * @return void
      */
-    public function guestCanSeeUsersIndexPage(): void
+    public function guest_can_see_users_index_page(): void
     {
         $this->get('/users')->assertOk();
     }

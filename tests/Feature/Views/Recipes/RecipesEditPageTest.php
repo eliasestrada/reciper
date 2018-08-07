@@ -16,7 +16,7 @@ class RecipesEditPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewRecipesEditHasData(): void
+    public function view_recipes_edit_has_data(): void
     {
         $user = factory(User::class)->create();
         $recipe = factory(Recipe::class)->create(['user_id' => $user->id]);
@@ -32,7 +32,7 @@ class RecipesEditPageTest extends TestCase
      * @test
      * @return void
      */
-    public function authUserCanSeeRecipesEditPage(): void
+    public function auth_user_can_see_recipes_edit_page(): void
     {
         $user = factory(User::class)->create();
         $recipe = factory(Recipe::class)->create(['user_id' => $user->id]);
@@ -47,7 +47,7 @@ class RecipesEditPageTest extends TestCase
      * @test
      * @return void
      */
-    public function recipeIsReadyButNotApprovedAfterPublishingByUser(): void
+    public function recipe_is_ready_but_not_approved_after_publishing_by_user(): void
     {
         $user = factory(User::class)->create();
 
@@ -56,7 +56,7 @@ class RecipesEditPageTest extends TestCase
             'ready_' . locale() => 0,
             'approved_' . locale() => 0,
         ]);
-        $new_recipe = $this->newRecipe('New title by user');
+        $new_recipe = $this->new_recipe('New title by user');
 
         $this->actingAs($user)
             ->put(action('RecipesController@update', $old_recipe->id), $new_recipe)
@@ -74,7 +74,7 @@ class RecipesEditPageTest extends TestCase
      * @test
      * @return void
      */
-    public function recipeIsReadyAndApprovedAfterPublishingByAdmin(): void
+    public function recipe_is_ready_and_approved_after_publishing_by_admin(): void
     {
         $user = factory(User::class)->create(['admin' => 1]);
         $old_recipe = factory(Recipe::class)->create([
@@ -82,7 +82,7 @@ class RecipesEditPageTest extends TestCase
             'ready_' . locale() => 0,
             'approved_' . locale() => 0,
         ]);
-        $new_recipe = $this->newRecipe('Some title by admin');
+        $new_recipe = $this->new_recipe('Some title by admin');
 
         $this->actingAs($user)
             ->put(action('RecipesController@update', $old_recipe->id), $new_recipe)
@@ -99,7 +99,7 @@ class RecipesEditPageTest extends TestCase
      * @param string $title
      * @return array
      */
-    public function newRecipe(string $title): array
+    public function new_recipe(string $title): array
     {
         return [
             'title' => $title,

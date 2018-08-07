@@ -16,7 +16,7 @@ class ShowJsonRecipesTest extends TestCase
      * @return void
      * @test
      */
-    public function seeRecipesJson(): void
+    public function see_recipes_json(): void
     {
         factory(Recipe::class)->create([
             'intro_' . locale() => 'Hello world',
@@ -33,7 +33,7 @@ class ShowJsonRecipesTest extends TestCase
      * @return void
      * @test
      */
-    public function seeRandomRecipesJson(): void
+    public function see_random_recipes_json(): void
     {
         $recipe1 = factory(Recipe::class)->create(['title_' . locale() => 'Test 1']);
         $recipe2 = factory(Recipe::class)->create(['title_' . locale() => 'Test 2']);
@@ -50,7 +50,7 @@ class ShowJsonRecipesTest extends TestCase
      * @test
      * @return void
      */
-    public function seeCategoriesJson(): void
+    public function see_categories_json(): void
     {
         app()->setLocale('ru');
         $this->get('/api/recipes/other/categories')

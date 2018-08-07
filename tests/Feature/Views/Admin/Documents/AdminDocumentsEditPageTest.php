@@ -16,7 +16,7 @@ class AdminDocumentsEditPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewAdminDocumentsEditHasData(): void
+    public function view_admin_documents_edit_has_data(): void
     {
         $document = factory(Document::class)->create();
         $admin = factory(User::class)->make(['admin' => 1]);
@@ -33,7 +33,7 @@ class AdminDocumentsEditPageTest extends TestCase
      * @test
      * @return void
      */
-    public function userCannotSeeAdminDocumentsEditPage(): void
+    public function user_cannot_see_admin_documents_edit_page(): void
     {
         $document = factory(Document::class)->create();
 

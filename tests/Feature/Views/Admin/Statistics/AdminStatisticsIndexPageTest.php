@@ -15,7 +15,7 @@ class AdminStatisticsPageTest extends TestCase
      * @return void
      * @test
      */
-    public function viewAdminStatisticsIndexHasData(): void
+    public function view_admin_statistics_index_has_data(): void
     {
         $admin = factory(User::class)->make(['admin' => 1]);
 
@@ -30,7 +30,7 @@ class AdminStatisticsPageTest extends TestCase
      * @return void
      * @test
      */
-    public function userCantSeeAdminStatisticsIndexPage(): void
+    public function user_cant_see_admin_statistics_index_page(): void
     {
         $this->actingAs(factory(User::class)->make(['admin' => 0]))
             ->get('/admin/statistics')

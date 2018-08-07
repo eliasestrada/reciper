@@ -17,7 +17,7 @@ class RecipesCreatePageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewRecipesCreateHasData(): void
+    public function view_recipes_create_has_data(): void
     {
         $user = factory(User::class)->create();
 
@@ -32,7 +32,7 @@ class RecipesCreatePageTest extends TestCase
      * @test
      * @return void
      */
-    public function authUserCanSeeRecipesCreatePage(): void
+    public function auth_user_can_see_recipes_create_page(): void
     {
         $this->actingAs(factory(User::class)->create())
             ->get('/recipes/create')
@@ -44,9 +44,9 @@ class RecipesCreatePageTest extends TestCase
      * @test
      * @return void
      */
-    public function createdRecipeByUserIsNotApproved(): void
+    public function created_recipe_by_user_is_not_approved(): void
     {
-        $recipe = $this->newRecipe('Hello world');
+        $recipe = $this->new_recipe('Hello world');
 
         $this->actingAs(factory(User::class)->create())
             ->post(action('RecipesController@store'), $recipe)
@@ -63,9 +63,9 @@ class RecipesCreatePageTest extends TestCase
      * @test
      * @return void
      */
-    public function createdRecipeByAdminApproved(): void
+    public function created_recipe_by_admin_approved(): void
     {
-        $recipe = $this->newRecipe('Hello people');
+        $recipe = $this->new_recipe('Hello people');
 
         $this->actingAs(factory(User::class)->create(['admin' => 1]))
             ->post(action('RecipesController@store'), $recipe)
@@ -82,7 +82,7 @@ class RecipesCreatePageTest extends TestCase
      * @param string $title
      * @return array
      */
-    public function newRecipe(string $title): array
+    public function new_recipe(string $title): array
     {
         return [
             'title' => $title,

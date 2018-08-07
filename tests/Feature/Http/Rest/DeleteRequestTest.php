@@ -14,7 +14,7 @@ class DeleteRequestTest extends TestCase
      * @return void
      * @test
      */
-    public function deleteRecipeRequest(): void
+    public function delete_recipe_request(): void
     {
         $recipe = factory(Recipe::class)->create();
         $this->assertDatabaseHas('recipes', $recipe->toArray());

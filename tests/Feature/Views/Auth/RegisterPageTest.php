@@ -15,7 +15,7 @@ class RegisterPageTest extends TestCase
      * @test
      * @return void
      */
-    public function userCannotSeeRegisterPage(): void
+    public function user_cannot_see_register_page(): void
     {
         $this->actingAs(factory(User::class)->make())
             ->get('/register')
@@ -28,7 +28,7 @@ class RegisterPageTest extends TestCase
      * @test
      * @return void
      */
-    public function guestCanSeeRegisterPage(): void
+    public function guest_can_see_register_page(): void
     {
         $this->get('/register')
             ->assertOk()

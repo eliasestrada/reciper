@@ -15,7 +15,7 @@ class HomePageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewPagesHomeHasData(): void
+    public function view_pages_home_has_data(): void
     {
         $this->get('/')
             ->assertViewIs('pages.home')
@@ -27,7 +27,7 @@ class HomePageTest extends TestCase
      * @test
      * @return void
      */
-    public function authUserCanSeeHomePage(): void
+    public function auth_user_can_see_home_page(): void
     {
         $user = factory(User::class)->create();
         $this->actingAs($user)->get('/')->assertOk();
@@ -38,7 +38,7 @@ class HomePageTest extends TestCase
      * @test
      * @return void
      */
-    public function guestCanSeeHomePage(): void
+    public function guest_can_see_home_page(): void
     {
         $this->get('/')->assertOk();
     }

@@ -16,7 +16,7 @@ class SearchPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewPagesSearchHasData(): void
+    public function view_pages_search_has_data(): void
     {
         $this->get('/search')
             ->assertViewIs('pages.search')
@@ -32,7 +32,7 @@ class SearchPageTest extends TestCase
      * @test
      * @return void
      */
-    public function serchFormShowsResultsAfterSubmitting(): void
+    public function serch_form_shows_results_after_submitting(): void
     {
         factory(Recipe::class)->create(['title_' . locale() => 'Recipe for test']);
 
@@ -46,7 +46,7 @@ class SearchPageTest extends TestCase
      * @test
      * @return void
      */
-    public function guestCanSeeSearchPage(): void
+    public function guest_can_see_search_page(): void
     {
         $this->get('/search')->assertOk();
     }
@@ -56,7 +56,7 @@ class SearchPageTest extends TestCase
      * @test
      * @return void
      */
-    public function authUserCanSeeSearchPage(): void
+    public function auth_user_can_see_search_page(): void
     {
         $user = factory(User::class)->create();
         $this->actingAs($user)->get('/search')->assertOk();

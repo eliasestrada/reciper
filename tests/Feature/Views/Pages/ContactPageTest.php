@@ -15,7 +15,7 @@ class ContactPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewPagesContactHasACorrectPath(): void
+    public function view_pages_contact_has_a_correct_path(): void
     {
         $this->get('/contact')->assertViewIs('pages.contact');
     }
@@ -25,7 +25,7 @@ class ContactPageTest extends TestCase
      * @test
      * @return void
      */
-    public function authUserCanSeeContactPage(): void
+    public function auth_user_can_see_contact_page(): void
     {
         $user = factory(User::class)->create();
         $this->actingAs($user)->get('/contact')->assertOk();
@@ -36,7 +36,7 @@ class ContactPageTest extends TestCase
      * @test
      * @return void
      */
-    public function guestCanSeeContactPage(): void
+    public function guest_can_see_contact_page(): void
     {
         $this->get('/contact')->assertOk();
     }

@@ -16,7 +16,7 @@ class RecipesShowPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewRecipesShowHasData(): void
+    public function view_recipes_show_has_data(): void
     {
         $recipe = factory(Recipe::class)->create();
 
@@ -30,7 +30,7 @@ class RecipesShowPageTest extends TestCase
      * @test
      * @return void
      */
-    public function authUserCanSeeRecipeShowPage(): void
+    public function auth_user_can_see_recipe_show_page(): void
     {
         $user = factory(User::class)->create();
         $user2 = factory(User::class)->create();
@@ -46,7 +46,7 @@ class RecipesShowPageTest extends TestCase
      * @test
      * @return void
      */
-    public function guestCanSeeRecipesShowPage(): void
+    public function guest_xan_see_recipes_show_page(): void
     {
         $recipe = factory(Recipe::class)->create();
         $this->get("/recipes/$recipe->id")->assertOk();

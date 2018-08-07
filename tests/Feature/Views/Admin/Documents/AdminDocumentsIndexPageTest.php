@@ -16,7 +16,7 @@ class AdminDocumentsIndexPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewAdminDocumentsIndexIsCorrect(): void
+    public function view_admin_documents_index_is_correct(): void
     {
         $admin = factory(User::class)->make(['admin' => 1]);
 
@@ -31,7 +31,7 @@ class AdminDocumentsIndexPageTest extends TestCase
      * @test
      * @return void
      */
-    public function userCantSeeAdminDocumentsIndexPage(): void
+    public function user_cant_see_admin_documents_index_page(): void
     {
         $user = factory(User::class)->make(['admin' => 0]);
 
@@ -45,7 +45,7 @@ class AdminDocumentsIndexPageTest extends TestCase
      * @test
      * @return void
      */
-    public function adminCanSeeAdminDocumentsIndexPage(): void
+    public function admin_can_see_admin_documents_index_page(): void
     {
         $admin = factory(User::class)->make(['admin' => 1]);
 

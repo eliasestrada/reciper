@@ -15,7 +15,7 @@ class SettingsGeneralPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewSettingsGeneralHasACorrectPath(): void
+    public function view_settings_general_has_a_correct_path(): void
     {
         $user = factory(User::class)->create();
 
@@ -29,7 +29,7 @@ class SettingsGeneralPageTest extends TestCase
      * @test
      * @return void
      */
-    public function authUserCanSeeSettingsGeneralPage(): void
+    public function auth_user_can_see_settings_general_page(): void
     {
         $user = factory(User::class)->create();
         $this->actingAs($user)->get('/settings/general')->assertOk();
@@ -40,7 +40,7 @@ class SettingsGeneralPageTest extends TestCase
      * @test
      * @return void
      */
-    public function guestCantSeeSettingsGeneralPage(): void
+    public function guest_cant_see_settings_general_page(): void
     {
         $this->get('/settings/general')->assertRedirect('/login');
     }

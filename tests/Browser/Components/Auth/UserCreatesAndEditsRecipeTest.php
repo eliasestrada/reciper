@@ -13,7 +13,7 @@ class UserCreatesAndEditsRecipeTest extends DuskTestCase
      * @test
      * @return void
      * */
-    public function checkIfUserCanEditHisOwnRecipe(): void
+    public function user_can_edit_his_own_recipe(): void
     {
         $recipe = factory(Recipe::class)->create(['user_id' => 10]);
         $user = factory(User::class)->create(['id' => 10]);
@@ -35,7 +35,7 @@ class UserCreatesAndEditsRecipeTest extends DuskTestCase
      * @test
      * @return void
      * */
-    public function checkIfUserCantEditOtherRecipes(): void
+    public function user_cant_edit_other_recipes(): void
     {
         $recipe = factory(Recipe::class)->create(['user_id' => 10]);
         $user = factory(User::class)->create(['id' => 11]);

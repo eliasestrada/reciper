@@ -15,7 +15,7 @@ class PasswordsEmailTest extends TestCase
      * @test
      * @return void
      */
-    public function guestCanSeePasswordEmailPage(): void
+    public function guest_can_see_password_email_page(): void
     {
         $this->get('/password/reset')
             ->assertOk()
@@ -27,7 +27,7 @@ class PasswordsEmailTest extends TestCase
      * @test
      * @return void
      */
-    public function authUserCantSeePasswordEmailPage(): void
+    public function auth_user_cant_see_password_email_page(): void
     {
         $this->actingAs(factory(User::class)->create())
             ->get('/password/reset')

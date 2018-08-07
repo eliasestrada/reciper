@@ -16,7 +16,7 @@ class AdminDocumentsCreatePageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewAdminDocumentsCreateHasACorrectPath(): void
+    public function view_admin_documents_create_has_a_correct_path(): void
     {
         $admin = factory(User::class)->make(['admin' => 1]);
 
@@ -31,7 +31,7 @@ class AdminDocumentsCreatePageTest extends TestCase
      * @test
      * @return void
      */
-    public function userCantSeeAdminDocumentsCreatePage(): void
+    public function user_cant_see_admin_documents_create_page(): void
     {
         $user = factory(User::class)->make(['admin' => 0]);
 

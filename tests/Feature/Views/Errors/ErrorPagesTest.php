@@ -14,7 +14,7 @@ class Errors404PageTest extends TestCase
      * @test
      * @return void
      */
-    public function page404NotFoundShowsUp(): void
+    public function page_404_not_found_shows_up(): void
     {
         $this->get('/random-address')
             ->assertSee(trans('errors.404_title'));
@@ -25,7 +25,7 @@ class Errors404PageTest extends TestCase
      * @test
      * @return void
      */
-    public function page503BeRightBackShowsUp(): void
+    public function page_503_be_right_back_shows_up(): void
     {
         $this->artisan('down');
         $this->get('/')->assertSee(trans('errors.503_title'));

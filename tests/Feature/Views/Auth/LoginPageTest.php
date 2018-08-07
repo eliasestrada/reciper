@@ -16,7 +16,7 @@ class LoginPageTest extends TestCase
      * @test
      * @return void
      */
-    public function userCanLoginWithCorrectCredentials(): void
+    public function user_can_login_with_correct_credentials(): void
     {
         $user = factory(User::class)->create(['password' => bcrypt('test')]);
 
@@ -32,7 +32,7 @@ class LoginPageTest extends TestCase
      * @test
      * @return void
      */
-    public function userCannotLoginWithIncorrectPassword(): void
+    public function user_cannot_login_with_incorrect_password(): void
     {
         $user = factory(User::class)->create(['password' => bcrypt('test')]);
 
@@ -55,7 +55,7 @@ class LoginPageTest extends TestCase
      * @test
      * @return void
      */
-    public function rememberMeFunctionality(): void
+    public function remember_me_functionality(): void
     {
         $user = factory(User::class)->create([
             'id' => random_int(10, 100),
@@ -85,7 +85,7 @@ class LoginPageTest extends TestCase
      * @test
      * @return void
      */
-    public function userCantSeeLoginPage(): void
+    public function user_cant_see_login_page(): void
     {
         $this->actingAs(factory(User::class)->make())
             ->get('/login')
@@ -98,7 +98,7 @@ class LoginPageTest extends TestCase
      * @test
      * @return void
      */
-    public function guestCanSeeLoginPage(): void
+    public function guest_can_see_login_page(): void
     {
         $this->get('/login')
             ->assertOk()

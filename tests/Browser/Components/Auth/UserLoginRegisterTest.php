@@ -11,7 +11,7 @@ class UserLoginRegisterTest extends DuskTestCase
      * @test
      * @return void
      * */
-    public function resisterNewUserAndLogout(): void
+    public function registering_a_new_user_and_logout(): void
     {
         $this->browse(function (Browser $browser) {
             $browser
@@ -33,7 +33,7 @@ class UserLoginRegisterTest extends DuskTestCase
      * @test
      * @return void
      * */
-    public function loginUserAndLogout(): void
+    public function loging_in_user_and_logout(): void
     {
         $this->browse(function (Browser $browser) {
             $browser

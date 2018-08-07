@@ -16,7 +16,7 @@ class AdminDocumentsPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewAdminDocumentsShowHasData(): void
+    public function view_admin_documents_show_has_data(): void
     {
         $document = factory(Document::class)->create();
 
@@ -31,7 +31,7 @@ class AdminDocumentsPageTest extends TestCase
      * @test
      * @return void
      */
-    public function userCantSeeAdminDocumentsShowPage(): void
+    public function user_cant_see_admin_documents_show_page(): void
     {
         $document = factory(Document::class)->create();
 
@@ -45,7 +45,7 @@ class AdminDocumentsPageTest extends TestCase
      * @test
      * @return void
      */
-    public function adminCanSeeAdminDocumentsShowPage(): void
+    public function admin_can_see_admin_documents_show_page(): void
     {
         $document = factory(Document::class)->create();
 

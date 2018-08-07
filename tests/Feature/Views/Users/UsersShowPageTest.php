@@ -15,7 +15,7 @@ class UsersShowPageTest extends TestCase
      * @test
      * @return void
      */
-    public function viewUsersShowHasData(): void
+    public function view_users_show_has_data(): void
     {
         $user = factory(User::class)->create();
 
@@ -30,7 +30,7 @@ class UsersShowPageTest extends TestCase
      * @test
      * @return void
      */
-    public function authUserCanSeeUsersShowPage(): void
+    public function auth_user_can_see_users_show_page(): void
     {
         $user = factory(User::class)->make();
         $this->actingAs($user)->get('/users/' . $user->id)->assertOk();
@@ -41,7 +41,7 @@ class UsersShowPageTest extends TestCase
      * @test
      * @return void
      */
-    public function guestCanSeeUsersShowPage(): void
+    public function guest_can_see_users_show_page(): void
     {
         $user = factory(User::class)->make();
         $this->get("/users/$user->id")->assertOk();
