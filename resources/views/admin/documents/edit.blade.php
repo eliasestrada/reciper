@@ -29,7 +29,7 @@
 		</div>
 
 		<div class="input-field"> {{-- Textarea --}}
-			<textarea name="text" id="text" class="materialize-textarea">{!! customStripTags($document->getText()) !!}</textarea>
+			<textarea name="text" id="text" class="materialize-textarea">{!! customStripTags($document->text) !!}</textarea>
 			<span class="helper-text">@lang('documents.doc_text')</span>
 		</div>
 

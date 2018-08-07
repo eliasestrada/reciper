@@ -41,10 +41,12 @@
 		<div id="modal1" class="modal">
 			<div class="modal-content reset">
 				<h4>{{ $document->getTitle() }}</h4>
-				{!! $document->getText() !!}
+				{!! $document->text !!}
 			</div>
 			<div class="modal-footer">
-				<a href="#!" class="modal-close waves-effect waves-green btn-flat left">Agree</a>
+				<a href="#!" class="modal-close waves-effect waves-green btn-flat left">
+					@lang('messages.agree')
+				</a>
 			</div>
 		</div>
 
