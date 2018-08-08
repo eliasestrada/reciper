@@ -9,4 +9,3 @@
 
 <!-- Links -->
 <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
-{{-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> --}}
