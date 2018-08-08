@@ -11,6 +11,23 @@ class LogsShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * resources/views/vendor/log-viewer/custom-theme/show
+     * @test
+     * @return void
+     */
+    public function view_vendor_logs_show_has_correct_path(): void
+    {
+        info('test');
+        $file_name = date('Y-m-d');
+        $master = factory(User::class)->make(['master' => 1]);
+
+        $this->actingAs($master)
+            ->get("/log-viewer/logs/$file_name/info")
+            ->assertViewIs('log-viewer::custom-theme.show')
+            ->assertOk();
+    }
+
+    /**
      * resources/vendor/log-viewer/custom-theme/show
      * @test
      * @return void
@@ -19,8 +36,9 @@ class LogsShowPageTest extends TestCase
     {
         info('test');
         $file_name = date('Y-m-d');
+        $master = factory(User::class)->make(['master' => 1]);
 
-        $this->actingAs(factory(User::class)->create(['master' => 1]))
+        $this->actingAs($master)
             ->get("/log-viewer/logs/$file_name/info")
             ->assertSeeText($file_name);
     }

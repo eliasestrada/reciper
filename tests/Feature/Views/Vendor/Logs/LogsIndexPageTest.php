@@ -11,17 +11,18 @@ class LogsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/users/index
+     * resources/views/vendor/log-viewer/custom-theme/logs
      * @test
      * @return void
      */
-    public function view_users_index_has_data(): void
+    public function view_vendor_logs_index_has_correct_path(): void
     {
         $master = factory(User::class)->make(['master' => 1]);
 
         $this->actingAs($master)
             ->get('/log-viewer/logs')
-            ->assertViewIs('log-viewer::custom-theme.logs');
+            ->assertViewIs('log-viewer::custom-theme.logs')
+            ->assertOk();
     }
 
     /**
