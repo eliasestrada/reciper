@@ -21,8 +21,7 @@
     @include('includes.footer')
 
 	<!-- Javascript -->
-	{!! scriptTimestamp('/js/vue.js') !!}
-	{!! scriptTimestamp('/js/vanilla.js') !!}
+	{!! scriptTimestamp('/js/app.js') !!}
 
 	@yield('script')
 	@include('includes.js.dropdown')
