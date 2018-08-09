@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Views\Recipes;
 
+use App\Models\Meal;
 use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -21,10 +22,16 @@ class RecipesEditPageTest extends TestCase
         $user = factory(User::class)->create();
         $recipe = factory(Recipe::class)->create(['user_id' => $user->id]);
 
-        $this->actingAs($user)
-            ->get("/recipes/$recipe->id/edit")
-            ->assertViewIs('recipes.edit')
-            ->assertViewHasAll(['meal', 'recipe']);
+        $response = $this->actingAs($user)->get("/recipes/$recipe->id/edit");
+
+        $expected_recipe = Recipe::with('categories', 'meal')->whereId($recipe->id)->first();
+        $meal = Meal::get(['id', 'name_' . locale()]);
+
+        $response->assertViewIs('recipes.edit')
+            ->assertViewHasAll([
+                'meal' => $meal,
+                'recipe' => $expected_recipe,
+            ]);
     }
 
     /**

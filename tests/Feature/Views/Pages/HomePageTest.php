@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Views\Pages;
 
+use App\Models\Title;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -17,9 +18,16 @@ class HomePageTest extends TestCase
      */
     public function view_pages_home_has_data(): void
     {
-        $this->get('/')
-            ->assertViewIs('pages.home')
-            ->assertViewHasAll(['random_recipes', 'intro']);
+        $responce = $this->get('/');
+
+        $intro = Title::whereName("intro")->first([
+            'title_' . locale(),
+            'text_' . locale(),
+        ]);
+
+        $responce->assertViewIs('pages.home')
+            ->assertViewHas('random_recipes')
+            ->assertViewHas('intro', $intro);
     }
 
     /**

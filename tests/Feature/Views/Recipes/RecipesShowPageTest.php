@@ -22,7 +22,11 @@ class RecipesShowPageTest extends TestCase
 
         $this->get("/recipes/$recipe->id")
             ->assertViewIs('recipes.show')
-            ->assertViewHas('recipe');
+            ->assertViewHas('recipe',
+                Recipe::with('likes', 'categories', 'user')
+                    ->whereId($recipe->id)
+                    ->first()
+            );
     }
 
     /**
