@@ -17,11 +17,11 @@
 			</tr>
 			<tr>
 				<td scope="row">@lang('admin.recipes')</td>
-				<td>{{ $allrecipes }}</td>
+				<td>{{ $all_recipes }}</td>
 			</tr>
 			<tr>
 				<td scope="row">@lang('admin.visitors')</td>
-				<td>{{ $allvisitors }}</td>
+				<td>{{ $all_visitors }}</td>
 			</tr>
 		</table>
 	

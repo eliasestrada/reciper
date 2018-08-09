@@ -17,12 +17,12 @@ class StatisticsController extends Controller
     public function index()
     {
         $visitors = Visitor::latest()->simplePaginate(40);
-        $sxgeo = new SxGeo(storage_path() . '/geo/SxGeoCity.dat');
-        $allrecipes = Recipe::count();
-        $allvisitors = Visitor::distinct('ip')->count();
+        $sxgeo = new SxGeo(storage_path('/geo/SxGeoCity.dat'));
+        $all_recipes = Recipe::count();
+        $all_visitors = Visitor::distinct('ip')->count();
 
         return view('admin.statistics.index', compact(
-            'sxgeo', 'visitors', 'allrecipes', 'allvisitors'
+            'sxgeo', 'visitors', 'all_recipes', 'all_visitors'
         ));
     }
 }

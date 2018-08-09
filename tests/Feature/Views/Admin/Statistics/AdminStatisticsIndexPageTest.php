@@ -2,7 +2,9 @@
 
 namespace Tests\Feature\Views\Admin\Statistics;
 
+use App\Models\Recipe;
 use App\Models\User;
+use App\Models\Visitor;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -22,7 +24,12 @@ class AdminStatisticsPageTest extends TestCase
         $this->actingAs($admin)
             ->get('/admin/statistics')
             ->assertViewIs('admin.statistics.index')
-            ->assertViewHasAll(['sxgeo', 'visitors', 'allrecipes', 'allvisitors']);
+            ->assertViewHas('sxgeo')
+            ->assertViewHasAll([
+                'visitors' => Visitor::latest()->simplePaginate(40),
+                'all_recipes' => Recipe::count(),
+                'all_visitors' => Visitor::distinct('ip')->count(),
+            ]);
     }
 
     /**
