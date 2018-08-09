@@ -17,7 +17,7 @@ class DocumentsController extends Controller
     public function index()
     {
         return view('admin.documents.index', [
-            'document' => Document::get(),
+            'documents' => Document::get(),
         ]);
     }
 

@@ -23,7 +23,7 @@ class AdminDocumentsIndexPageTest extends TestCase
         $this->actingAs($admin)
             ->get("/admin/documents")
             ->assertViewIs('admin.documents.index')
-            ->assertViewHas('document');
+            ->assertViewHas('documents', Document::get());
     }
 
     /**

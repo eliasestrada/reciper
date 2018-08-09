@@ -23,7 +23,7 @@ class AdminDocumentsPageTest extends TestCase
         $this->actingAs(factory(User::class)->create(['admin' => 1]))
             ->get("/admin/documents/$document->id")
             ->assertViewIs('admin.documents.show')
-            ->assertViewHas('document');
+            ->assertViewHas('document', Document::find($document->id));
     }
 
     /**

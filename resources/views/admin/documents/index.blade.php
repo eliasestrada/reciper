@@ -15,7 +15,7 @@
 
 <div class="page">
 	<div class="row">
-		@foreach ($document as $doc)
+		@foreach ($documents as $doc)
 			<div class="col s12 l6">
 				<div class="card" style="min-height:320px">
 				<div class="card-content">
