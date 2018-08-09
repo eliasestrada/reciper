@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Views\Notifications;
 
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -22,7 +23,9 @@ class NotificationsIndexPageTest extends TestCase
         $this->actingAs($user)
             ->get('/notifications')
             ->assertViewIs('notifications.index')
-            ->assertViewHas('notifications');
+            ->assertViewHas('notifications',
+                Notification::whereUserId(user()->id)->latest()->paginate(10)
+            );
     }
 
     /**
