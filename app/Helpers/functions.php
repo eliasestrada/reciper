@@ -4,7 +4,7 @@
  * @param string $string
  * @return string
  */
-function customStripTags($string): string
+function customStripTags(string $string): string
 {
     $allowed = '<h1><h2><h3><h4><h5><h6><p><br><br /><b><li><ol><ul><strong><span>';
     return strip_tags($string, $allowed);
@@ -15,7 +15,7 @@ function customStripTags($string): string
  * @param string $str
  * @return string
  */
-function convertToListItems($str): string
+function convertToListItems(string $str): string
 {
     $string = strip_tags($str, '<li>');
 
@@ -59,7 +59,7 @@ function selectedIfEqual($num1, $num2): string
  * @param string
  * @return
  */
-function styleTimestamp($path): string
+function styleTimestamp(string $path): string
 {
     try {
         $timestamp = '?v=' . File::lastModified(public_path() . $path);
@@ -75,7 +75,7 @@ function styleTimestamp($path): string
  * @param string
  * @return
  */
-function scriptTimestamp($path): string
+function scriptTimestamp(string $path): string
 {
     try {
         $timestamp = '?v=' . File::lastModified(public_path() . $path);
@@ -89,7 +89,7 @@ function scriptTimestamp($path): string
  * @param string $route
  * @return string
  */
-function activeIfRouteIs($route): string
+function activeIfRouteIs(string $route): string
 {
     if ($route[0] == '/') {
         return request()->is(substr($route, 1)) ? 'active' : '';
@@ -105,7 +105,7 @@ function activeIfRouteIs($route): string
  * @param string $slug
  * @return string
  */
-function setImageName($extension = null, $slug = ''): string
+function setImageName(string $extension = null, string $slug = ''): string
 {
     if ($extension) {
         return time() . '-' . $slug . '.' . $extension;
@@ -122,7 +122,7 @@ function setImageName($extension = null, $slug = ''): string
  * @param int $likes
  * @return float
  */
-function getRatingNumber($recipes, $likes)
+function getRatingNumber($recipes, int $likes)
 {
     $points_for_recipes = count($recipes);
     $points_for_likes = ($likes > 0) ? $likes / 10 : 0;
@@ -140,7 +140,7 @@ function getRatingNumber($recipes, $likes)
  * @param int $number
  * @return mixed
  */
-function readableNumber($number)
+function readableNumber(int $number)
 {
     if ($number >= 1000 && $number < 1000000):
         $number = substr($number, 0, -3) . '<br /><small>' . trans('users.thousand') . '</small>';
@@ -158,7 +158,7 @@ function readableNumber($number)
  * @param string $value
  * @return string
  */
-function getOnlineIcon($value): string
+function getOnlineIcon(string $value): string
 {
     $seconds = [trans('date.second'), trans('date.seconds'), trans('date.seconds2')];
     $url_string = explode(' ', $value);
@@ -170,10 +170,10 @@ function getOnlineIcon($value): string
 }
 
 /**
- * @param integer $data
+ * @param int $data
  * @return string
  */
-function getDataNotifMarkup($data): string
+function getDataNotifMarkup(int $data): string
 {
     return (!empty($data) && $data > 0) ? 'data-notif=' . $data : '';
 }
