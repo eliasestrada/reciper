@@ -15,10 +15,10 @@ class ChecklistController extends Controller
      */
     public function index()
     {
-        $unapproved = Recipe::where('approved_' . locale(), 0)
-            ->where('ready_' . locale(), 1)
-            ->oldest()
-            ->paginate(10);
+        $unapproved = Recipe::where([
+            'approved_' . locale() => 0,
+            'ready_' . locale() => 1,
+        ])->oldest()->paginate(10);
 
         return view('admin.checklist.index', compact('unapproved'));
     }
