@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Views\Admin\Checklist;
 
+use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -23,7 +24,11 @@ class AdminChecklistIndexPageTest extends TestCase
             ->get('/admin/checklist')
             ->assertOk()
             ->assertViewIs('admin.checklist.index')
-            ->assertViewHas('unapproved');
+            ->assertViewHas('unapproved',
+                Recipe::where([
+                    'approved_' . locale() => 0,
+                    'ready_' . locale() => 1,
+                ])->oldest()->paginate(10));
     }
 
     /**
