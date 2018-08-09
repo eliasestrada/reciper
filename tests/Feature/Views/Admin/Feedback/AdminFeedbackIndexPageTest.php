@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Views\Admin\Feedback;
 
+use App\Models\Feedback;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -22,7 +23,7 @@ class AdminFeedbackPageTest extends TestCase
         $this->actingAs($admin)
             ->get('/admin/feedback')
             ->assertViewIs('admin.feedback.index')
-            ->assertViewHas('feedback');
+            ->assertViewHas('feedback', Feedback::paginate(40));
     }
 
     /**
