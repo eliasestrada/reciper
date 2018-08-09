@@ -22,7 +22,7 @@ class UsersIndexPageTest extends TestCase
         $this->actingAs($user)
             ->get('/users')
             ->assertViewIs('users.index')
-            ->assertViewHas('users');
+            ->assertViewHas('users', User::paginate(50));
     }
 
     /**

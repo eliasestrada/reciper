@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Views\Users;
 
+use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -19,10 +20,25 @@ class UsersShowPageTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $this->actingAs($user)
-            ->get("/users/$user->id")
-            ->assertViewIs('users.show')
-            ->assertViewHasAll(['recipes', 'user', 'likes']);
+        $response = $this->actingAs($user)->get("/users/$user->id");
+
+        $recipes = Recipe::whereUserId($user->id)
+            ->withCount('likes')
+            ->latest()
+            ->paginate(20);
+
+        $likes = 0;
+
+        foreach ($recipes as $recipe) {
+            $likes += $recipe->likes_count;
+        }
+
+        $response->assertViewIs('users.show');
+        $response->assertViewHasAll([
+            'recipes' => $recipes,
+            'user' => User::find($user->id),
+            'likes' => $likes,
+        ]);
     }
 
     /**

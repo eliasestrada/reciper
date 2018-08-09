@@ -28,8 +28,8 @@ class UsersController extends Controller
 
         $likes = 0;
 
-        foreach ($recipes->toArray()['data'] as $recipe) {
-            $likes += $recipe['likes_count'];
+        foreach ($recipes as $recipe) {
+            $likes += $recipe->likes_count;
         }
 
         return view('users.show', compact('recipes', 'user', 'likes'));
