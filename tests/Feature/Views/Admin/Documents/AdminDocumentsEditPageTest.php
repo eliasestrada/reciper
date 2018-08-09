@@ -25,7 +25,7 @@ class AdminDocumentsEditPageTest extends TestCase
             ->get("/admin/documents/$document->id/edit")
             ->assertOk()
             ->assertViewIs('admin.documents.edit')
-            ->assertViewHas('document');
+            ->assertViewHas('document', Document::find($document->id));
     }
 
     /**
