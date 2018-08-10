@@ -16,7 +16,7 @@ class UserLoginRegisterTest extends DuskTestCase
         $this->artisan('wipe');
 
         $this->browse(function (Browser $browser) {
-            $browser->maximize()
+            $browser
                 ->visit('/register')
                 ->type('name', 'Alex')
                 ->type('email', 'alex@gmail.com')
@@ -35,10 +35,10 @@ class UserLoginRegisterTest extends DuskTestCase
      * @test
      * @return void
      * */
-    public function loging_in_user_and_logout(): void
+    public function logining_in_user_and_logout(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->maximize()
+            $browser
                 ->visit('/login')
                 ->type('email', 'alex@gmail.com')
                 ->type('password', '111111')

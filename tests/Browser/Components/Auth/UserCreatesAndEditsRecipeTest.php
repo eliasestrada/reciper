@@ -24,7 +24,6 @@ class UserCreatesAndEditsRecipeTest extends DuskTestCase
             ]);
 
             $browser
-                ->maximize()
                 ->loginAs($user)
                 ->visit("/recipes/$recipe->id")
                 ->click('#_more')
@@ -32,7 +31,8 @@ class UserCreatesAndEditsRecipeTest extends DuskTestCase
                 ->assertPathIs("/recipes/$recipe->id/edit")
                 ->click('#_more')
                 ->click('#publish-btn')
-                ->assertPathIs("/users/$user->id");
+                ->assertPathIs("/users/$user->id")
+                ->logout();
         });
     }
 
@@ -50,7 +50,6 @@ class UserCreatesAndEditsRecipeTest extends DuskTestCase
             ]);
 
             $browser
-                ->maximize()
                 ->loginAs($user)
                 ->visit("/recipes/$recipe->id")
                 ->assertDontSee('.edit-recipe-icon')
