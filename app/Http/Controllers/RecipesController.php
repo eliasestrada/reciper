@@ -91,7 +91,7 @@ class RecipesController extends Controller
     public function edit(Recipe $recipe)
     {
         // Check for correct user
-        if (!user()->hasRecipe($recipe->user_id) && !user()->isAdmin()) {
+        if (!user()->hasRecipe($recipe->user_id)) {
             return redirect('/recipes')->withError(
                 trans('recipes.no_rights_to_edit')
             );

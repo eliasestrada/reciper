@@ -11,16 +11,16 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-		User::create([
-			'email' => '11@11.com',
-			'name' => 'Серый',
-			'admin' => 1,
-			'master' => 1,
-			'password' => bcrypt('111111'),
-			'notif_check' => date("Y-m-d H:i:s"),
-			'contact_check' => date("Y-m-d H:i:s"),
-			'created_at' => '2018-03-08 12:08:59',
-			'image' => '2018/7/1531471849-user1.jpg'
-		]);
+        User::create([
+            'email' => '11@11.com',
+            'name' => 'Серый',
+            'admin' => 1,
+            'master' => 1,
+            'password' => bcrypt('111111'),
+            'notif_check' => date("Y-m-d H:i:s"),
+            'contact_check' => date("Y-m-d H:i:s"),
+            'created_at' => '2018-03-08 12:08:59',
+            'image' => '2018/7/1531471849-user1.jpg',
+        ]);
     }
 }

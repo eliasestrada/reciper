@@ -13,8 +13,10 @@ class UserLoginRegisterTest extends DuskTestCase
      * */
     public function registering_a_new_user_and_logout(): void
     {
+        $this->artisan('wipe');
+
         $this->browse(function (Browser $browser) {
-            $browser
+            $browser->maximize()
                 ->visit('/register')
                 ->type('name', 'Alex')
                 ->type('email', 'alex@gmail.com')
@@ -36,7 +38,7 @@ class UserLoginRegisterTest extends DuskTestCase
     public function loging_in_user_and_logout(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser
+            $browser->maximize()
                 ->visit('/login')
                 ->type('email', 'alex@gmail.com')
                 ->type('password', '111111')
@@ -48,8 +50,5 @@ class UserLoginRegisterTest extends DuskTestCase
                 ->click('#dropdown2 #_logout_btn')
                 ->assertPathIs('/');
         });
-
-        $this->artisan('migrate:fresh');
-        $this->artisan('db:seed');
     }
 }
