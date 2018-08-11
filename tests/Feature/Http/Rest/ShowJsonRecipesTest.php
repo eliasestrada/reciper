@@ -35,10 +35,15 @@ class ShowJsonRecipesTest extends TestCase
      */
     public function see_random_recipes_json(): void
     {
-        $recipe1 = factory(Recipe::class)->create(['title_' . locale() => 'Test 1']);
-        $recipe2 = factory(Recipe::class)->create(['title_' . locale() => 'Test 2']);
+        $recipe1 = factory(Recipe::class)->create([
+            'title_' . locale() => 'Test 1',
+        ]);
 
-        $this->json('GET', '/api/recipes/other/random/' . $recipe1->id)
+        $recipe2 = factory(Recipe::class)->create([
+            'title_' . locale() => 'Test 2',
+        ]);
+
+        $this->json('GET', "/api/recipes/other/random/$recipe1->id")
             ->assertOk()
             ->assertJsonCount(1)
             ->assertJsonMissing(['title' => 'Test 1'])
