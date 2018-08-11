@@ -1,8 +1,4 @@
-import {
-	setInterval
-} from 'core-js';
-
-window.Vue = require('vue');
+import './bootstrap'
 
 const components = [
 	'Recipes',
