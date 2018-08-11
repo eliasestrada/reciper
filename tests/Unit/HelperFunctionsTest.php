@@ -4,10 +4,13 @@ namespace Tests\Unit;
 
 use App\Models\Recipe;
 use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class HelperFunctionsTest extends TestCase
 {
+    use DatabaseTransactions;
+
     /**
      * @test
      * @return void
