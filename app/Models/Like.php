@@ -14,8 +14,8 @@ class Like extends Model
         return $this->belongsTo(Visitor::class);
     }
 
-    public function likes()
+    public function recipe()
     {
-        return $this->hasOne(Recipe::class);
+        return $this->belongsTo(Recipe::class);
     }
 }
