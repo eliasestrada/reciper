@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page">
+<div class="page container">
 	<form method="POST" action="{{ route('register') }}" class="form">
 
 		@csrf <div class="center"><h2 class="headline">@lang('form.register')</h2></div>
@@ -21,17 +21,15 @@
 			<span class="helper-text">@lang('form.email_desc')</span>
 		</div>
 
-		<div class="input-field">
-			<input type="password" id="password" name="password" class="validate" required>
+		<visibility name-attr="password" id-attr="password">
 			<label for="password">@lang('form.pwd')</label>
 			<span class="helper-text">@lang('form.pwd_desc')</span>
-		</div>
+		</visibility>
 
-		<div class="input-field">
-			<input type="password" id="password_confirmation" class="validate" name="password_confirmation" required>
+		<visibility name-attr="password_confirmation" id-attr="password_confirmation">
 			<label for="password_confirmation">@lang('form.pwd_confirm')</label>
 			<span class="helper-text">@lang('form.pwd2_desc')</span>
-		</div>
+		</visibility>
 
 		<blockquote>
 			@lang('form.agree_to_terms', ['btn' => trans('form.register'),'terms' => '<a>dsf</a>'])

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page">
+<div class="page container">
 	<form method="POST" action="{{ route('login') }}" class="form">
 
 		@csrf <div class="center"><h3 class="headline">@lang('form.login')</h3></div>
@@ -14,10 +14,9 @@
 			<label for="email">@lang('form.email')</label>
 		</div>
 	
-		<div class="input-field">
-			<input type="password" name="password" id="password" class="pwd">
+		<visibility name-attr="password" id-attr="password" class-attr="pwd">
 			<label for="password">@lang('form.pwd')</label>
-		</div>
+		</visibility>
 
 		<div class="mt-3">
 			<label>
