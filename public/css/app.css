@@ -7385,7 +7385,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 }
 
 .btn__fill {
-  fill: #ef7da8;
+  fill: #cf4545;
 }
 
 .btn__border {
@@ -7414,7 +7414,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 }
 
 .btn--liked-small {
-  background-color: #ef7da8;
+  background-color: #cf4545;
 }
 
 .btn--liked-small .btn__fill {
