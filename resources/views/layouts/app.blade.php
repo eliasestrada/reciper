@@ -3,9 +3,7 @@
 <head>
 	@yield('head')
 	@include('includes.head')
-	<title>
-		@yield('title') - @lang('website.name')
-	</title>
+	<title>@yield('title') - @lang('website.name')</title>
 </head>
 <body>
 
@@ -20,7 +18,6 @@
 
     @include('includes.footer')
 
-	<!-- Javascript -->
 	{!! scriptTimestamp('/js/app.js') !!}
 
 	@yield('script')
