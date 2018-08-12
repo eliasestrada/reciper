@@ -77,14 +77,17 @@ trait RecipesControllerHelpers
     {
         foreach ($request->all() as $field) {
             if (is_string($field) && preg_match("/<script>/", $field)) {
+                $user_id = user()->id;
+                $user_name = user()->name;
 
-                logger()->emergency('User with name "' . user()->name . '" and id "' . user()->id . '" was trying to inject javascript script tags in his recipe. User data: ' . user());
+                logger()->emergency("User with name $user_name and id $user_id was trying to inject javascript script tags in his recipe. User data:" . user());
 
                 Notification::sendMessage(
-                    'notifications.title_script_attack',
-                    'notifications.message_script_attack',
-                    'user_id: ' . user()->id . ', user_name: ' . user()->name,
-                    null, 1, 1);
+                    'title_script_attack',
+                    'message_script_attack',
+                    "user_id:  $user_id, user_name: $user_name",
+                    null, 1, 1
+                );
             }
         }
     }

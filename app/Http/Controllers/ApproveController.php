@@ -13,10 +13,11 @@ class ApproveController extends Controller
     public function ok(Recipe $recipe)
     {
         Notification::sendMessage(
-            'notifications.recipe_published',
-            'notifications.recipe_with_title_published',
-            '"' . $recipe->getTitle() . '"',
-            $recipe->user_id);
+            'recipe_published',
+            'recipe_with_title_published',
+            $recipe->getTitle(),
+            $recipe->user_id
+        );
 
         $recipe->increment('approved_' . locale());
 
@@ -32,10 +33,11 @@ class ApproveController extends Controller
     public function cancel(Recipe $recipe)
     {
         Notification::sendMessage(
-            'notifications.recipe_not_published',
-            'notifications.recipe_with_title_not_published',
-            '"' . $recipe->getTitle() . '"',
-            $recipe->user_id);
+            'recipe_not_published',
+            'recipe_with_title_not_published',
+            $recipe->getTitle(),
+            $recipe->user_id
+        );
 
         $recipe->decrement('ready_' . locale());
 
