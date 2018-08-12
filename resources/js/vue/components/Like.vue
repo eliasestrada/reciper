@@ -1,12 +1,12 @@
 <template>
 	<span>
-		<template>
-			<a href="#" @click="toggleButton()" class="like-icon" :class="iconState()">
-				<slot></slot>
-			</a>
-			<audio ref="audio" src="/storage/audio/like-effect.mp3" type="audio/mpeg"></audio>
-			<i>{{ allLikes }}</i>
-		</template>
+		<a href="#" @click="toggleButton()" class="like-icon" :class="iconState()">
+			<div class="btn-wrapper">
+				<a class="btn-like"><slot></slot></a>
+			</div>
+		</a>
+		<audio ref="audio" src="/storage/audio/like-effect.mp3" type="audio/mpeg"></audio>
+		<i>{{ allLikes }}</i>
 	</span>
 </template>
 
