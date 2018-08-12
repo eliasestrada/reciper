@@ -15,7 +15,7 @@ function customStripTags(string $string): string
  * @param string $str
  * @return string
  */
-function convertToListItems(string $str): string
+function convertToListItems(?string $str): string
 {
     $string = strip_tags($str, '<li>');
 
