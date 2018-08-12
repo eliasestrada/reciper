@@ -9,7 +9,11 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'user_id' => factory(User::class)->create()->id,
         'meal_id' => rand(1, 3),
         'time' => rand(10, 160),
-        'image' => 'default.jpg',
+        'image' => $faker->file(
+            base_path('../tools/food'),
+            storage_path('/app/public/images'),
+            false
+        ),
 
         // Russian language
         'title_ru' => $faker->sentence,
