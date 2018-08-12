@@ -19,6 +19,7 @@ class UsersShowPageTest extends TestCase
     public function view_users_show_has_data(): void
     {
         $user = factory(User::class)->create();
+        $user->wasRecentlyCreated = false;
 
         $response = $this->actingAs($user)->get("/users/$user->id");
 
@@ -36,7 +37,7 @@ class UsersShowPageTest extends TestCase
         $response->assertViewIs('users.show');
         $response->assertViewHasAll([
             'recipes' => $recipes,
-            'user' => User::find($user->id),
+            'user' => $user,
             'likes' => $likes,
         ]);
     }
