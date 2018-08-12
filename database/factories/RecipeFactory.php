@@ -19,7 +19,7 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'title_ru' => $faker->sentence,
         'intro_ru' => $faker->paragraph,
         'ingredients_ru' => $faker->paragraph,
-        'text_ru' => $faker->paragraph,
+        'text_ru' => $faker->realText(200),
         'ready_ru' => 1,
         'approved_ru' => 1,
 
@@ -27,7 +27,7 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'title_en' => $faker->sentence,
         'intro_en' => $faker->paragraph,
         'ingredients_en' => $faker->paragraph,
-        'text_en' => $faker->paragraph,
+        'text_en' => $faker->realText(200),
         'ready_en' => 1,
         'approved_en' => 1,
     ];
