@@ -6,7 +6,7 @@ use App\Models\User;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class AuthRegisterTest extends DuskTestCase
+class AuthRegisterPageTest extends DuskTestCase
 {
     /**
      * @test

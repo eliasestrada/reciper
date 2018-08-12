@@ -7,7 +7,7 @@ use App\Models\User;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class RecipesEditTest extends DuskTestCase
+class RecipesEditPageTest extends DuskTestCase
 {
     /**
      * @test
