@@ -15,7 +15,7 @@ class CategoryTest extends TestCase
      * @test
      * @return void
      */
-    public function category_has_relationship_with_recipes(): void
+    public function model_has_relationship_with_recipes(): void
     {
         $recipe = factory(Recipe::class)->create();
         $recipe->categories()->sync(Category::find(1));
