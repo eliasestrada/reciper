@@ -36,7 +36,7 @@ class MealTest extends TestCase
         ]);
 
         $this->assertTrue($meal->recipes()->exists());
-        $this->assertCount(2, $meal->recipes);
+        $this->assertGreaterThanOrEqual(2, $meal->recipes->count());
     }
 
     /**
