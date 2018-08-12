@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Browser\Components\Auth;
+namespace Tests\Browser\Components\Recipes;
 
 use App\Models\Recipe;
 use App\Models\User;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class UserCreatesAndEditsRecipeTest extends DuskTestCase
+class RecipesEditTest extends DuskTestCase
 {
     /**
      * @test
