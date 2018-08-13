@@ -31,7 +31,7 @@ class SettingsController extends Controller
             $this->saveFileNameToDB($file_name);
         } elseif ($request->delete == 1) {
             $this->deleteOldFileFromStorage(user()->image, 'users');
-            $this->saveFileNameInDB();
+            $this->saveFileNameToDB();
         }
         return redirect('/settings/photo')->withSuccess(trans('settings.saved'));
     }
