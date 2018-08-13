@@ -18,9 +18,13 @@ trait RecipesControllerHelpers
             $extention = $image->getClientOriginalExtension();
             $image_name = setImageName($extention);
 
-            Image::make($image)->resize(600, 400)->save(
-                storage_path('app/public/images/' . $image_name
-                ));
+            $img = Image::make($image);
+            $img->resize(600, 400)
+                ->insert(storage_path('app/public/other/watermark.png'))
+                ->save(storage_path("app/public/images/$image_name"))
+                ->resize(300, 200)
+                ->save(storage_path("app/public/images/small/$image_name"));
+
             return $image_name;
         }
         return null;
@@ -33,7 +37,7 @@ trait RecipesControllerHelpers
     public function deleteOldImage($image): void
     {
         if ($image != 'default.jpg') {
-            Storage::delete('public/images/' . $image);
+            Storage::delete("public/images/$image");
         }
     }
 

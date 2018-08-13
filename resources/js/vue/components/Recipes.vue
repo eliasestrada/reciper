@@ -5,13 +5,12 @@
 				<div class="card">
 					<div class="card-image waves-effect waves-block waves-light">
 						<a :href="'/recipes/' + recipe.id" :title="recipe.title">
-							<img :src="'storage/images/' + recipe.image" :alt="recipe.title" class="activator">
+							<img :src="'storage/images/small/' + recipe.image" :alt="recipe.title" class="activator">
 						</a>
 					</div>
 					<div class="card-content min-h">
 						<span class="card-title activator">
 							{{ recipe.title_short }}
-							<i class="material-icons right">more_vert</i>
 						</span>
 					</div>
 					<div class="card-reveal">
