@@ -5,10 +5,13 @@ namespace Tests\Unit\Models;
 use App\Models\Like;
 use App\Models\Recipe;
 use App\Models\Visitor;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class LikeTest extends TestCase
 {
+    use DatabaseTransactions;
+
     private $visitor;
     private $recipe;
     private $like;
