@@ -50,7 +50,7 @@ class RecipesController extends Controller
         $image_name = $this->saveImageIfExists($request->file('image'));
         $recipe = $this->createOrUpdateRecipe($request, $image_name);
 
-        return redirect('/recipes/' . $recipe->id . '/edit')->withSuccess(
+        return redirect("/recipes/$recipe->id/edit")->withSuccess(
             trans('recipes.saved')
         );
     }

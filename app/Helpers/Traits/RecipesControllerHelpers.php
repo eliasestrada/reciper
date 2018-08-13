@@ -18,11 +18,16 @@ trait RecipesControllerHelpers
             $extention = $image->getClientOriginalExtension();
             $image_name = setImageName($extention);
 
-            $img = Image::make($image);
-            $img->resize(600, 400)
+            // Big image
+            Image::make($image)
+                ->resize(600, 400)
                 ->insert(storage_path('app/public/other/watermark.png'))
-                ->save(storage_path("app/public/images/$image_name"))
+                ->save(storage_path("app/public/images/$image_name"));
+
+            // Small image
+            Image::make($image)
                 ->resize(300, 200)
+                ->insert(storage_path('app/public/other/watermark.png'))
                 ->save(storage_path("app/public/images/small/$image_name"));
 
             return $image_name;
