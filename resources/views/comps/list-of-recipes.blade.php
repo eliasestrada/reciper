@@ -13,7 +13,7 @@
 				<ul>
 					<li style="border-left-color:#{{ $recipe->done() ? '65b56e' : 'ce7777' }};" class="col s12 m6 l4" title="{{ $recipe->getTitle() }}">
 						<a href="/recipes/{{ $recipe->id }}">
-							<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" />
+							<img src="{{ asset('storage/images/small/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" />
 						</a>
 	
 						<div class="item-content">

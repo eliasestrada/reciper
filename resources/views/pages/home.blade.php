@@ -21,6 +21,7 @@
 		<a class="edit-btn" title="@lang('home.edit_intro')" id="btn-for-intro">
 			<i class="material-icons">edit</i>
 		</a>
+
 		@editForm
 			@slot('id')
 				intro-form
@@ -60,13 +61,12 @@
 						<div class="card">
 							<div class="card-image waves-effect waves-block waves-light">
 								<a href="/recipes/{{ $random->id }}">
-									<img class="activator" src="{{ asset('storage/images/'.$random->image) }}">
+									<img class="activator" src="{{ asset('storage/images/small/'.$random->image) }}">
 								</a>
 							</div>
 							<div class="card-content min-h">
 								<span class="card-title activator">
-									{{ str_limit($random->getTitle(), 45) }}
-									<i class="material-icons right">more_vert</i>
+									{{ $random->getTitle() }}
 								</span>
 							</div>
 							<div class="card-reveal">

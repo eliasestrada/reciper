@@ -19,7 +19,7 @@
 			</div>
 		</form>
 	</div>
-	
+
 	{{--  Results  --}}
 	@if (isset($recipes) && !empty($recipes))
 		<div class="row">
@@ -28,13 +28,12 @@
 					<div class="card">
 						<div class="card-image waves-effect waves-block waves-light">
 							<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
-								<img src="{{ asset('storage/images/'.$recipe['image']) }}" alt="{{ $recipe->getTitle() }}" class="activator">
+								<img src="{{ asset('storage/images/small/'.$recipe['image']) }}" alt="{{ $recipe->getTitle() }}" class="activator">
 							</a>
 						</div>
 						<div class="card-content min-h">
 							<span class="card-title activator">
-								{{ str_limit($recipe->getTitle(), 45) }}
-								<i class="material-icons right">more_vert</i>
+								{{ $recipe->getTitle() }}
 							</span>
 						</div>
 						<div class="card-reveal">
