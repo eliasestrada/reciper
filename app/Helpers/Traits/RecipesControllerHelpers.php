@@ -37,7 +37,10 @@ trait RecipesControllerHelpers
     public function deleteOldImage($image): void
     {
         if ($image != 'default.jpg') {
-            Storage::delete("public/images/$image");
+            Storage::delete([
+                "public/images/$image",
+                "public/images/small/$image",
+            ]);
         }
     }
 
