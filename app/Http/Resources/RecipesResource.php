@@ -10,11 +10,11 @@ class RecipesResource extends JsonResource
     public function toArray($request)
     {
         return [
-			'id' => $this->id,
-			'title' => $this->resource->getTitle(),
-			'title_short' => str_limit($this->resource->getTitle(), 45),
-			'intro' => $this->resource->getIntro(),
-			'image' => $this->image
-		];
+            'id' => $this->id,
+            'title' => $this->resource->getTitle(),
+            'title_short' => $this->resource->getTitle(),
+            'intro' => $this->resource->getIntro(),
+            'image' => $this->image,
+        ];
     }
 }
