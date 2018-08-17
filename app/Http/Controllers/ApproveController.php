@@ -19,7 +19,7 @@ class ApproveController extends Controller
             $recipe->user_id
         );
 
-        $recipe->increment('approved_' . locale());
+        $recipe->increment('approved_' . lang());
 
         return redirect('/recipes')->withSuccess(
             trans('recipes.recipe_published')
@@ -39,7 +39,7 @@ class ApproveController extends Controller
             $recipe->user_id
         );
 
-        $recipe->decrement('ready_' . locale());
+        $recipe->decrement('ready_' . lang());
 
         return redirect('/recipes')->withSuccess(
             trans('recipes.you_gave_recipe_back_on_editing')

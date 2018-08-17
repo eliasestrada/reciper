@@ -25,7 +25,7 @@ class RecipesEditPageTest extends TestCase
         $response = $this->actingAs($user)->get("/recipes/$recipe->id/edit");
 
         $expected_recipe = Recipe::with('categories', 'meal')->whereId($recipe->id)->first();
-        $meal = Meal::get(['id', 'name_' . locale()]);
+        $meal = Meal::get(['id', 'name_' . lang()]);
 
         $response->assertViewIs('recipes.edit')
             ->assertViewHasAll([
@@ -60,8 +60,8 @@ class RecipesEditPageTest extends TestCase
 
         $old_recipe = factory(Recipe::class)->create([
             'user_id' => $user->id,
-            'ready_' . locale() => 0,
-            'approved_' . locale() => 0,
+            'ready_' . lang() => 0,
+            'approved_' . lang() => 0,
         ]);
         $new_recipe = $this->new_recipe('New title by user');
 
@@ -70,9 +70,9 @@ class RecipesEditPageTest extends TestCase
             ->assertRedirect("/users/$user->id");
 
         $this->assertDatabaseHas('recipes', [
-            'title_' . locale() => 'New title by user',
-            'ready_' . locale() => 1,
-            'approved_' . locale() => 0,
+            'title_' . lang() => 'New title by user',
+            'ready_' . lang() => 1,
+            'approved_' . lang() => 0,
         ]);
     }
 
@@ -86,8 +86,8 @@ class RecipesEditPageTest extends TestCase
         $user = factory(User::class)->create(['admin' => 1]);
         $old_recipe = factory(Recipe::class)->create([
             'user_id' => $user->id,
-            'ready_' . locale() => 0,
-            'approved_' . locale() => 0,
+            'ready_' . lang() => 0,
+            'approved_' . lang() => 0,
         ]);
         $new_recipe = $this->new_recipe('Some title by admin');
 
@@ -96,9 +96,9 @@ class RecipesEditPageTest extends TestCase
             ->assertRedirect("/users/$user->id");
 
         $this->assertDatabaseHas('recipes', [
-            'title_' . locale() => 'Some title by admin',
-            'ready_' . locale() => 1,
-            'approved_' . locale() => 1,
+            'title_' . lang() => 'Some title by admin',
+            'ready_' . lang() => 1,
+            'approved_' . lang() => 1,
         ]);
     }
 

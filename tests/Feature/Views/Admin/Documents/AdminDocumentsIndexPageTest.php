@@ -37,7 +37,7 @@ class AdminDocumentsIndexPageTest extends TestCase
 
         $this->actingAs($user)
             ->get('/admin/documents')
-            ->assertRedirect('/login');
+            ->assertRedirect('/');
     }
 
     /**

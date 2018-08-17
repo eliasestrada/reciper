@@ -14,7 +14,7 @@ class DocumentTest extends TestCase
     public function method_get_title_return_title(): void
     {
         $document = factory(Document::class)->make([
-            'title_' . locale() => 'Название документа',
+            'title_' . lang() => 'Название документа',
         ]);
 
         $this->assertEquals('Название документа', $document->getTitle());

@@ -10,6 +10,6 @@ class Document extends Model
 
     public function getTitle()
     {
-        return $this->toArray()['title_' . locale()];
+        return $this->toArray()['title_' . lang()];
     }
 }

@@ -22,7 +22,7 @@ class UsersOtherMyRecipesPageTest extends TestCase
 
         $recipe = factory(Recipe::class)->create([
             'user_id' => $user->id,
-            'title_' . locale() => 'Nice test',
+            'title_' . lang() => 'Nice test',
         ]);
 
         $this->actingAs($user)

@@ -39,6 +39,6 @@ class AdminDocumentsEditPageTest extends TestCase
 
         $this->actingAs(factory(User::class)->make(['admin' => 0]))
             ->get("/admin/documents/$document->id/edit")
-            ->assertRedirect('/login');
+            ->assertRedirect('/');
     }
 }

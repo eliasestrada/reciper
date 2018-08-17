@@ -16,9 +16,9 @@ class RandomRecipesComposer
     {
 		$rand_recipes = Recipe
 			::inRandomOrder()
-			->where("approved_" . locale(), 1)
+			->where("approved_" . lang(), 1)
 			->limit(20)
-			->get([ 'id', "title_" . locale() ]);
+			->get([ 'id', "title_" . lang() ]);
 
 			$view->with(compact('rand_recipes'));
     }

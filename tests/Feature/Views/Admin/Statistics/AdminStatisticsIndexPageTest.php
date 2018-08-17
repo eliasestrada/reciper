@@ -41,6 +41,6 @@ class AdminStatisticsPageTest extends TestCase
     {
         $this->actingAs(factory(User::class)->make(['admin' => 0]))
             ->get('/admin/statistics')
-            ->assertRedirect('/login');
+            ->assertRedirect('/');
     }
 }

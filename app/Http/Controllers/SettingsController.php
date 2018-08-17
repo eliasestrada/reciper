@@ -66,8 +66,8 @@ class SettingsController extends Controller
     public function updateIntroData(SettingsUpdateHomeDataRequest $request)
     {
         Title::whereName('intro')->update([
-            'title_' . locale() => $request->title,
-            'text_' . locale() => $request->text,
+            'title_' . lang() => $request->title,
+            'text_' . lang() => $request->text,
         ]);
 
         return back()->withSuccess(trans('settings.saved'));
@@ -84,7 +84,7 @@ class SettingsController extends Controller
         );
 
         Title::whereName('footer')->update([
-            'text_' . locale() => $request->text,
+            'text_' . lang() => $request->text,
         ]);
 
         return back()->withSuccess(trans('settings.saved'));

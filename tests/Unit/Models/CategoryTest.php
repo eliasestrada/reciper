@@ -31,7 +31,7 @@ class CategoryTest extends TestCase
     public function method_get_name_returns_name(): void
     {
         $category = Category::make([
-            'name_' . locale() => 'Some name',
+            'name_' . lang() => 'Some name',
         ]);
 
         $this->assertEquals($category->getName(), 'Some name');

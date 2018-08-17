@@ -24,7 +24,7 @@ class RecipesCreatePageTest extends TestCase
         $this->actingAs($user)
             ->get('/recipes/create')
             ->assertViewIs('recipes.create')
-            ->assertViewHas('meal', Meal::get(['id', 'name_' . locale()]));
+            ->assertViewHas('meal', Meal::get(['id', 'name_' . lang()]));
     }
 
     /**
@@ -52,9 +52,9 @@ class RecipesCreatePageTest extends TestCase
             ->post(action('RecipesController@store'), $recipe)
             ->assertRedirect();
         $this->assertDatabaseHas('recipes', [
-            'title_' . locale() => 'Hello world',
-            'approved_' . locale() => 0,
-            'ready_' . locale() => 0,
+            'title_' . lang() => 'Hello world',
+            'approved_' . lang() => 0,
+            'ready_' . lang() => 0,
         ]);
     }
 
@@ -72,9 +72,9 @@ class RecipesCreatePageTest extends TestCase
             ->assertRedirect();
 
         $this->assertDatabaseHas('recipes', [
-            'title_' . locale() => 'Hello people',
-            'approved_' . locale() => 1,
-            'ready_' . locale() => 0,
+            'title_' . lang() => 'Hello people',
+            'approved_' . lang() => 1,
+            'ready_' . lang() => 0,
         ]);
     }
 

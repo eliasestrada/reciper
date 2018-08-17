@@ -14,7 +14,7 @@ class Title extends Model
      */
     public function getTitle(): ?string
     {
-        return $this->toArray()['title_' . locale()];
+        return $this->toArray()['title_' . lang()];
     }
 
     /**
@@ -22,6 +22,6 @@ class Title extends Model
      */
     public function getText(): ?string
     {
-        return $this->toArray()['text_' . locale()];
+        return $this->toArray()['text_' . lang()];
     }
 }

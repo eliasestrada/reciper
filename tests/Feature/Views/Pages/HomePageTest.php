@@ -21,8 +21,8 @@ class HomePageTest extends TestCase
         $responce = $this->get('/');
 
         $intro = Title::whereName("intro")->first([
-            'title_' . locale(),
-            'text_' . locale(),
+            'title_' . lang(),
+            'text_' . lang(),
         ]);
 
         $responce->assertViewIs('pages.home')

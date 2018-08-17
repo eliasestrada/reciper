@@ -15,11 +15,11 @@ class PopularRecipesComposer
     public function compose(View $view) : void
     {
 		$popular_recipes = Recipe
-			::select('id', 'title_' . locale())
+			::select('id', 'title_' . lang())
 			->withCount('likes')
 			->orderBy('likes_count', 'desc')
-			->where('ready_' . locale(), 1)
-			->where('approved_' . locale(), 1)
+			->where('ready_' . lang(), 1)
+			->where('approved_' . lang(), 1)
 			->limit(10)
 			->get();
 

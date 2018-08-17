@@ -54,7 +54,7 @@
 		<div class="row">
 			<div class="col s12 m6"> {{-- Categories --}}
 				<categories-field
-					locale="{{ locale() }}"
+					locale="{{ lang() }}"
 					label="@lang('recipes.category')"
 					select="@lang('form.select')"
 					categories-title="@lang('recipes.categories_title')"

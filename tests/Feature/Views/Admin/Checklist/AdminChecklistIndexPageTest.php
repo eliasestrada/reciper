@@ -26,8 +26,8 @@ class AdminChecklistIndexPageTest extends TestCase
             ->assertViewIs('admin.checklist.index')
             ->assertViewHas('unapproved',
                 Recipe::where([
-                    'approved_' . locale() => 0,
-                    'ready_' . locale() => 1,
+                    'approved_' . lang() => 0,
+                    'ready_' . lang() => 1,
                 ])->oldest()->paginate(10));
     }
 
@@ -42,6 +42,6 @@ class AdminChecklistIndexPageTest extends TestCase
 
         $this->actingAs($user)
             ->get('/admin/checklist')
-            ->assertRedirect('/login');
+            ->assertRedirect('/');
     }
 }

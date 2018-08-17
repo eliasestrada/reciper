@@ -22,8 +22,8 @@ class ApiRecipesController extends Controller
     public function index(): ?object
     {
         $recipes = Recipe
-            ::where('approved_' . locale(), 1)
-            ->where('ready_' . locale(), 1)
+            ::where('approved_' . lang(), 1)
+            ->where('ready_' . lang(), 1)
             ->latest()
             ->paginate(32);
 
@@ -58,8 +58,8 @@ class ApiRecipesController extends Controller
         $random = Recipe
             ::inRandomOrder()
             ->where('id', '!=', $id)
-            ->where('ready_' . locale(), 1)
-            ->where('approved_' . locale(), 1)
+            ->where('ready_' . lang(), 1)
+            ->where('approved_' . lang(), 1)
             ->limit(7)
             ->get();
 
@@ -71,7 +71,7 @@ class ApiRecipesController extends Controller
      */
     public function categories(): ?object
     {
-        return Category::get(['id', 'name_' . locale()]);
+        return Category::get(['id', 'name_' . lang()]);
     }
 
     /**

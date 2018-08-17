@@ -9,7 +9,7 @@ trait RecipeModelShortcuts
      */
     public function getTitle(): ?string
     {
-        return $this->toArray()['title_' . locale()];
+        return $this->toArray()['title_' . lang()];
     }
 
     /**
@@ -17,7 +17,7 @@ trait RecipeModelShortcuts
      */
     public function getIngredients(): ?string
     {
-        return $this->toArray()['ingredients_' . locale()];
+        return $this->toArray()['ingredients_' . lang()];
     }
 
     /**
@@ -25,7 +25,7 @@ trait RecipeModelShortcuts
      */
     public function getIntro(): ?string
     {
-        return $this->toArray()['intro_' . locale()];
+        return $this->toArray()['intro_' . lang()];
     }
 
     /**
@@ -33,7 +33,7 @@ trait RecipeModelShortcuts
      */
     public function getText(): ?string
     {
-        return $this->toArray()['text_' . locale()];
+        return $this->toArray()['text_' . lang()];
     }
 
     /**
@@ -41,7 +41,7 @@ trait RecipeModelShortcuts
      */
     public function ready(): string
     {
-        return $this->toArray()['ready_' . locale()];
+        return $this->toArray()['ready_' . lang()];
     }
 
     /**
@@ -49,7 +49,7 @@ trait RecipeModelShortcuts
      */
     public function approved(): string
     {
-        return $this->toArray()['approved_' . locale()];
+        return $this->toArray()['approved_' . lang()];
     }
 
     /**

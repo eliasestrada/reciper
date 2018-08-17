@@ -17,6 +17,6 @@ class Meal extends Model
 
     public function getName(): string
     {
-        return $this->toArray()['name_' . locale()];
+        return $this->toArray()['name_' . lang()];
     }
 }

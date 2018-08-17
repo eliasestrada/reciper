@@ -45,7 +45,7 @@ class MealTest extends TestCase
      */
     public function method_get_name_returns_name(): void
     {
-        $actual = Meal::get(['name_' . locale()]);
+        $actual = Meal::get(['name_' . lang()]);
         $expected = [
             trans('header.breakfast'),
             trans('header.lunch'),

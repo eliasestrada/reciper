@@ -15,8 +15,8 @@ class UnproveRecipesComposer
     public function compose(View $view) : void
     {
 		if (user()) {
-			$recipes = Recipe::where("approved_" . locale(), 0)
-				->where("ready_" . locale(), 1)
+			$recipes = Recipe::where("approved_" . lang(), 0)
+				->where("ready_" . lang(), 1)
 				->count();
 
 			$view->with('all_unapproved', getDataNotifMarkup($recipes));

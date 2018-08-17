@@ -37,7 +37,7 @@ class AdminFeedbackPageTest extends TestCase
 
         $this->actingAs($user)
             ->get('/admin/feedback')
-            ->assertRedirect('/login');
+            ->assertRedirect('/');
     }
 
     /**

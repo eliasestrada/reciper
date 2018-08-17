@@ -14,7 +14,7 @@ class TitleFooterComposer
      */
     public function compose(View $view) : void
     {
-		$title_footer = Title::whereName('footer')->value('text_' . locale());
+		$title_footer = Title::whereName('footer')->value('text_' . lang());
 		$view->with(compact('title_footer'));
     }
 }

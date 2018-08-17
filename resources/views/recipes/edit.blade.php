@@ -101,7 +101,7 @@
 		<div class="row">
 			<div class="col s12 m6"> {{-- Categories --}}
 				<categories-field
-					locale="{{ locale() }}"
+					locale="{{ lang() }}"
 					:recipe-categories="{{ json_encode($recipe->categories->toArray()) }}"
 					label="@lang('recipes.category')"
 					select="@lang('form.select')"

@@ -62,12 +62,12 @@ trait RecipesControllerHelpers
             'meal_id' => $request->meal,
             'time' => $request->time,
 
-            'title_' . locale() => $request->title,
-            'intro_' . locale() => $request->intro,
-            'text_' . locale() => $request->text,
-            'ingredients_' . locale() => $request->ingredients,
-            'ready_' . locale() => isset($request->ready) ? 1 : 0,
-            'approved_' . locale() => user()->isAdmin() ? 1 : 0,
+            'title_' . lang() => $request->title,
+            'intro_' . lang() => $request->intro,
+            'text_' . lang() => $request->text,
+            'ingredients_' . lang() => $request->ingredients,
+            'ready_' . lang() => isset($request->ready) ? 1 : 0,
+            'approved_' . lang() => user()->isAdmin() ? 1 : 0,
         ];
 
         if ($recipe) {

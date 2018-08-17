@@ -17,17 +17,17 @@ class PagesController extends Controller
     public function home()
     {
         $random_recipes = Recipe::inRandomOrder()
-            ->where("ready_" . locale(), 1)
-            ->where("approved_" . locale(), 1)
+            ->where("ready_" . lang(), 1)
+            ->where("approved_" . lang(), 1)
             ->limit(12)
             ->get([
-                'id', 'title_' . locale(),
-                "intro_" . locale(), 'image',
+                'id', 'title_' . lang(),
+                "intro_" . lang(), 'image',
             ]);
 
         $intro = Title::whereName("intro")->first([
-            'title_' . locale(),
-            'text_' . locale(),
+            'title_' . lang(),
+            'text_' . lang(),
         ]);
 
         return view('pages.home', [

@@ -40,8 +40,8 @@ class DocumentsController extends Controller
     public function store(DocumentsRequest $request)
     {
         $doc = Document::create([
-            'title_' . locale() => $request->title,
-            'text_' . locale() => $request->text,
+            'title_' . lang() => $request->title,
+            'text_' . lang() => $request->text,
         ]);
 
         return redirect('/admin/documents/' . $doc->id);
@@ -77,8 +77,8 @@ class DocumentsController extends Controller
     public function update(DocumentsRequest $request, Document $document)
     {
         $document->update([
-            'title_' . locale() => $request->title,
-            'text_' . locale() => $request->text,
+            'title_' . lang() => $request->title,
+            'text_' . lang() => $request->text,
         ]);
 
         return $request->has('view')

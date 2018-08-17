@@ -37,6 +37,6 @@ class AdminDocumentsCreatePageTest extends TestCase
 
         $this->actingAs($user)
             ->get("/admin/documents/create")
-            ->assertRedirect('/login');
+            ->assertRedirect('/');
     }
 }

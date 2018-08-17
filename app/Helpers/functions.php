@@ -38,7 +38,7 @@ function user()
 }
 
 // Shortcut
-function locale()
+function lang()
 {
     return app()->getLocale();
 }

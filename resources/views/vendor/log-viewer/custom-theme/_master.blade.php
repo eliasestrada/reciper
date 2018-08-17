@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ locale() }}">
+<html lang="{{ lang() }}">
 <head>
 	@yield('head')
 	@include('includes.head')
