@@ -31,22 +31,24 @@
 			<span class="helper-text">@lang('form.pwd2_desc')</span>
 		</visibility>
 
-		<blockquote>
-			@lang('form.agree_to_terms', ['btn' => trans('form.register'),'terms' => '<a>dsf</a>'])
-		</blockquote>
+		@if(!empty($document))
+			<blockquote>
+				@lang('form.agree_to_terms', ['btn' => trans('form.register'),'terms' => '<a>dsf</a>'])
+			</blockquote>
 
-		<!-- Modal Structure -->
-		<div id="modal1" class="modal">
-			<div class="modal-content reset">
-				<h4>{{ $document->getTitle() }}</h4>
-				{!! $document->text !!}
+			<!-- Modal Structure -->
+			<div id="modal1" class="modal">
+				<div class="modal-content reset">
+					<h4>{{ $document->getTitle() }}</h4>
+					{!! $document->text !!}
+				</div>
+				<div class="modal-footer">
+					<a href="#!" class="modal-close waves-effect waves-green btn-flat left">
+						@lang('messages.agree')
+					</a>
+				</div>
 			</div>
-			<div class="modal-footer">
-				<a href="#!" class="modal-close waves-effect waves-green btn-flat left">
-					@lang('messages.agree')
-				</a>
-			</div>
-		</div>
+		@endif
 
 		<button type="submit" id="register-btn" class="waves-effect waves-light btn mt-3">
 			<i class="material-icons left">assignment_turned_in</i>
