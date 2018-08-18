@@ -13,7 +13,7 @@ class DocumentTest extends TestCase
      */
     public function method_get_title_return_title(): void
     {
-        $document = factory(Document::class)->make([
+        $document = make(Document::class, [
             'title_' . lang() => 'Название документа',
         ]);
 

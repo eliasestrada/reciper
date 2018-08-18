@@ -19,7 +19,7 @@ class LogsShowPageTest extends TestCase
     {
         info('test');
         $file_name = date('Y-m-d');
-        $master = factory(User::class)->make(['master' => 1]);
+        $master = make(User::class, ['master' => 1]);
 
         $this->actingAs($master)
             ->get("/log-viewer/logs/$file_name/info")
@@ -36,7 +36,7 @@ class LogsShowPageTest extends TestCase
     {
         info('test');
         $file_name = date('Y-m-d');
-        $master = factory(User::class)->make(['master' => 1]);
+        $master = make(User::class, ['master' => 1]);
 
         $this->actingAs($master)
             ->get("/log-viewer/logs/$file_name/info")

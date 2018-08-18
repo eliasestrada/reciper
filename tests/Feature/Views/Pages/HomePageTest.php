@@ -37,7 +37,7 @@ class HomePageTest extends TestCase
      */
     public function auth_user_can_see_home_page(): void
     {
-        $user = factory(User::class)->create();
+        $user = create(User::class);
         $this->actingAs($user)->get('/')->assertOk();
     }
 

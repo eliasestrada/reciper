@@ -18,7 +18,7 @@ class UsersShowPageTest extends TestCase
      */
     public function view_users_show_has_data(): void
     {
-        $user = factory(User::class)->create();
+        $user = create(User::class);
         $user->wasRecentlyCreated = false;
 
         $response = $this->actingAs($user)->get("/users/$user->id");
@@ -49,7 +49,7 @@ class UsersShowPageTest extends TestCase
      */
     public function auth_user_can_see_users_show_page(): void
     {
-        $user = factory(User::class)->make();
+        $user = make(User::class);
         $this->actingAs($user)->get('/users/' . $user->id)->assertOk();
     }
 
@@ -60,7 +60,7 @@ class UsersShowPageTest extends TestCase
      */
     public function guest_can_see_users_show_page(): void
     {
-        $user = factory(User::class)->make();
+        $user = make(User::class);
         $this->get("/users/$user->id")->assertOk();
     }
 }

@@ -18,8 +18,8 @@ class RecipesEditPageTest extends DuskTestCase
         $this->artisan('wipe');
 
         $this->browse(function (Browser $browser) {
-            $user = factory(User::class)->create();
-            $recipe = factory(Recipe::class)->create([
+            $user = create(User::class);
+            $recipe = create(Recipe::class, [
                 'user_id' => $user->id,
             ]);
 
@@ -43,10 +43,10 @@ class RecipesEditPageTest extends DuskTestCase
     public function user_cant_edit_other_recipes(): void
     {
         $this->browse(function (Browser $browser) {
-            $user = factory(User::class)->create();
+            $user = create(User::class);
 
-            $recipe = factory(Recipe::class)->create([
-                'user_id' => factory(User::class)->create()->id,
+            $recipe = create(Recipe::class, [
+                'user_id' => create(User::class)->id,
             ]);
 
             $browser

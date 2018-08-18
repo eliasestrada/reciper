@@ -19,7 +19,7 @@ class AdminStatisticsPageTest extends TestCase
      */
     public function view_admin_statistics_index_has_data(): void
     {
-        $admin = factory(User::class)->make(['admin' => 1]);
+        $admin = make(User::class, ['admin' => 1]);
 
         $this->actingAs($admin)
             ->get('/admin/statistics')
@@ -39,7 +39,7 @@ class AdminStatisticsPageTest extends TestCase
      */
     public function user_cant_see_admin_statistics_index_page(): void
     {
-        $this->actingAs(factory(User::class)->make(['admin' => 0]))
+        $this->actingAs(make(User::class, ['admin' => 0]))
             ->get('/admin/statistics')
             ->assertRedirect('/');
     }

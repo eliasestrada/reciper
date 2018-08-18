@@ -18,8 +18,8 @@ class AdminDocumentsEditPageTest extends TestCase
      */
     public function view_admin_documents_edit_has_data(): void
     {
-        $document = factory(Document::class)->create();
-        $admin = factory(User::class)->make(['admin' => 1]);
+        $document = create(Document::class);
+        $admin = make(User::class, ['admin' => 1]);
 
         $this->actingAs($admin)
             ->get("/admin/documents/$document->id/edit")
@@ -35,10 +35,10 @@ class AdminDocumentsEditPageTest extends TestCase
      */
     public function user_cannot_see_admin_documents_edit_page(): void
     {
-        $document = factory(Document::class)->create();
+        $document_id = create(Document::class)->id;
 
-        $this->actingAs(factory(User::class)->make(['admin' => 0]))
-            ->get("/admin/documents/$document->id/edit")
+        $this->actingAs(make(User::class, ['admin' => 0]))
+            ->get("/admin/documents/$document_id/edit")
             ->assertRedirect('/');
     }
 }

@@ -18,7 +18,7 @@ class NotificationsIndexPageTest extends TestCase
      */
     public function view_notifications_index_has_data(): void
     {
-        $user = factory(User::class)->make();
+        $user = make(User::class);
 
         $this->actingAs($user)
             ->get('/notifications')
@@ -35,7 +35,7 @@ class NotificationsIndexPageTest extends TestCase
      */
     public function user_can_see_notifications_index_page(): void
     {
-        $user = factory(User::class)->make();
+        $user = make(User::class);
 
         $this->actingAs($user)
             ->get('/notifications')

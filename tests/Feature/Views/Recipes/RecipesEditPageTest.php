@@ -19,12 +19,15 @@ class RecipesEditPageTest extends TestCase
      */
     public function view_recipes_edit_has_data(): void
     {
-        $user = factory(User::class)->create();
-        $recipe = factory(Recipe::class)->create(['user_id' => $user->id]);
+        $user = create(User::class);
+        $recipe = create(Recipe::class, ['user_id' => $user->id]);
 
         $response = $this->actingAs($user)->get("/recipes/$recipe->id/edit");
 
-        $expected_recipe = Recipe::with('categories', 'meal')->whereId($recipe->id)->first();
+        $expected_recipe = Recipe::with('categories', 'meal')
+            ->whereId($recipe->id)
+            ->first();
+
         $meal = Meal::get(['id', 'name_' . lang()]);
 
         $response->assertViewIs('recipes.edit')
@@ -41,8 +44,8 @@ class RecipesEditPageTest extends TestCase
      */
     public function auth_user_can_see_recipes_edit_page(): void
     {
-        $user = factory(User::class)->create();
-        $recipe = factory(Recipe::class)->create(['user_id' => $user->id]);
+        $user = create(User::class);
+        $recipe = create(Recipe::class, ['user_id' => $user->id]);
 
         $this->actingAs($user)
             ->get("/recipes/$recipe->id/edit")
@@ -56,9 +59,9 @@ class RecipesEditPageTest extends TestCase
      */
     public function recipe_is_ready_but_not_approved_after_publishing_by_user(): void
     {
-        $user = factory(User::class)->create();
+        $user = create(User::class);
 
-        $old_recipe = factory(Recipe::class)->create([
+        $old_recipe = create(Recipe::class, [
             'user_id' => $user->id,
             'ready_' . lang() => 0,
             'approved_' . lang() => 0,
@@ -83,8 +86,8 @@ class RecipesEditPageTest extends TestCase
      */
     public function recipe_is_ready_and_approved_after_publishing_by_admin(): void
     {
-        $user = factory(User::class)->create(['admin' => 1]);
-        $old_recipe = factory(Recipe::class)->create([
+        $user = create(User::class, ['admin' => 1]);
+        $old_recipe = create(Recipe::class, [
             'user_id' => $user->id,
             'ready_' . lang() => 0,
             'approved_' . lang() => 0,

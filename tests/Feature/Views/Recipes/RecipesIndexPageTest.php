@@ -28,7 +28,7 @@ class RecipesIndexPageTest extends TestCase
      */
     public function auth_user_can_see_recipes_index_page(): void
     {
-        $user = factory(User::class)->create();
+        $user = create(User::class);
         $this->actingAs($user)->get("/recipes")->assertOk();
     }
 

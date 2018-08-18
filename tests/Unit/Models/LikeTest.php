@@ -20,7 +20,7 @@ class LikeTest extends TestCase
     {
         parent::setUp();
 
-        $this->recipe = factory(Recipe::class)->create();
+        $this->recipe = create(Recipe::class);
 
         $this->visitor = Visitor::create([
             'ip' => '122.12.12.12',

@@ -17,7 +17,7 @@ class AuthRegisterPageTest extends DuskTestCase
         $this->artisan('wipe');
 
         $this->browse(function (Browser $browser) {
-            $user = factory(User::class)->make();
+            $user = make(User::class);
 
             $browser
                 ->visit('/register')

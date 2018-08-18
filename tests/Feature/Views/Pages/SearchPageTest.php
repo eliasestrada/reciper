@@ -34,7 +34,7 @@ class SearchPageTest extends TestCase
      */
     public function serch_form_shows_results_after_submitting(): void
     {
-        factory(Recipe::class)->create(['title_' . lang() => 'Recipe for test']);
+        create(Recipe::class, ['title_' . lang() => 'Recipe for test']);
 
         $this->get('/search?for=Recipe+for+test')
             ->assertOk()
@@ -58,7 +58,8 @@ class SearchPageTest extends TestCase
      */
     public function auth_user_can_see_search_page(): void
     {
-        $user = factory(User::class)->create();
-        $this->actingAs($user)->get('/search')->assertOk();
+        $this->actingAs(create(User::class))
+            ->get('/search')
+            ->assertOk();
     }
 }

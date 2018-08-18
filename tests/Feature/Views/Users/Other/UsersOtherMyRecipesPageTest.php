@@ -18,9 +18,9 @@ class UsersOtherMyRecipesPageTest extends TestCase
      */
     public function view_users_other_my_recipes_has_data(): void
     {
-        $user = factory(User::class)->create();
+        $user = create(User::class);
 
-        $recipe = factory(Recipe::class)->create([
+        $recipe = create(Recipe::class, [
             'user_id' => $user->id,
             'title_' . lang() => 'Nice test',
         ]);
@@ -49,7 +49,8 @@ class UsersOtherMyRecipesPageTest extends TestCase
      */
     public function auth_user_can_see_my_recipes_page(): void
     {
-        $user = factory(User::class)->make();
-        $this->actingAs($user)->get('/users/other/my-recipes')->assertOk();
+        $this->actingAs(make(User::class))
+            ->get('/users/other/my-recipes')
+            ->assertOk();
     }
 }

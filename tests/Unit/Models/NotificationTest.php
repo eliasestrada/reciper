@@ -26,7 +26,7 @@ class NotificationTest extends TestCase
      */
     public function model_has_relationship_with_user(): void
     {
-        $user = factory(User::class)->create();
+        $user = create(User::class);
         $notif = Notification::create([
             'user_id' => $user->id,
             'title' => 'hello_world',

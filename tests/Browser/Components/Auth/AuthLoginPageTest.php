@@ -17,7 +17,7 @@ class AuthLoginPageTest extends DuskTestCase
         $this->artisan('wipe');
 
         $this->browse(function (Browser $browser) {
-            $user = factory(User::class)->create();
+            $user = create(User::class);
 
             $browser
                 ->visit('/login')

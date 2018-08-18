@@ -17,7 +17,7 @@ class CategoryTest extends TestCase
      */
     public function model_has_relationship_with_recipes(): void
     {
-        $recipe = factory(Recipe::class)->create();
+        $recipe = create(Recipe::class);
         $recipe->categories()->sync(Category::find(1));
 
         $this->assertTrue($recipe->categories()->exists());

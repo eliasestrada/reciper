@@ -29,7 +29,7 @@ class PasswordsEmailTest extends TestCase
      */
     public function auth_user_cant_see_password_email_page(): void
     {
-        $this->actingAs(factory(User::class)->create())
+        $this->actingAs(create(User::class))
             ->get('/password/reset')
             ->assertRedirect('/dashboard');
     }

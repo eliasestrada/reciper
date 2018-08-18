@@ -17,7 +17,7 @@ class LogsIndexPageTest extends TestCase
      */
     public function view_vendor_logs_index_has_correct_path(): void
     {
-        $master = factory(User::class)->make(['master' => 1]);
+        $master = make(User::class, ['master' => 1]);
 
         $this->actingAs($master)
             ->get('/log-viewer/logs')
@@ -32,7 +32,7 @@ class LogsIndexPageTest extends TestCase
      */
     public function master_can_see_logs_page(): void
     {
-        $master = factory(User::class)->make(['master' => 1]);
+        $master = make(User::class, ['master' => 1]);
 
         $this->actingAs($master)
             ->get('/log-viewer/logs')

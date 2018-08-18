@@ -18,7 +18,7 @@ class PostRequestTest extends TestCase
     public function like_and_dislike_recipe_post_request(): void
     {
         // Like recipe request ======
-        $recipe = factory(Recipe::class)->create();
+        $recipe = create(Recipe::class);
         $visitor = Visitor::create(['ip' => '777.777.7.7']);
 
         $this->assertEquals(0, count($recipe->likes));
@@ -42,7 +42,7 @@ class PostRequestTest extends TestCase
      */
     public function check_if_liked_post_request(): void
     {
-        $recipe = factory(Recipe::class)->create();
+        $recipe = create(Recipe::class);
         $visitor = Visitor::create(['ip' => '777.777.7.7']);
 
         $response = $this->post("/api/recipes/other/check-if-liked/$recipe->id", [

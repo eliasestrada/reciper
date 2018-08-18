@@ -18,7 +18,7 @@ class AdminDocumentsIndexPageTest extends TestCase
      */
     public function view_admin_documents_index_is_correct(): void
     {
-        $admin = factory(User::class)->make(['admin' => 1]);
+        $admin = make(User::class, ['admin' => 1]);
 
         $this->actingAs($admin)
             ->get("/admin/documents")
@@ -33,7 +33,7 @@ class AdminDocumentsIndexPageTest extends TestCase
      */
     public function user_cant_see_admin_documents_index_page(): void
     {
-        $user = factory(User::class)->make(['admin' => 0]);
+        $user = make(User::class, ['admin' => 0]);
 
         $this->actingAs($user)
             ->get('/admin/documents')
@@ -47,7 +47,7 @@ class AdminDocumentsIndexPageTest extends TestCase
      */
     public function admin_can_see_admin_documents_index_page(): void
     {
-        $admin = factory(User::class)->make(['admin' => 1]);
+        $admin = make(User::class, ['admin' => 1]);
 
         $this->actingAs($admin)
             ->get('/admin/documents')

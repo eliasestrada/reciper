@@ -17,9 +17,7 @@ class SettingsPhotoPageTest extends TestCase
      */
     public function view_settings_photo_has_a_correct_path(): void
     {
-        $user = factory(User::class)->create();
-
-        $this->actingAs($user)
+        $this->actingAs(create(User::class))
             ->get('/settings/photo')
             ->assertViewIs('settings.photo');
     }
@@ -31,7 +29,7 @@ class SettingsPhotoPageTest extends TestCase
      */
     public function auth_user_can_see_settings_photo_page(): void
     {
-        $this->actingAs(factory(User::class)->create())
+        $this->actingAs(create(User::class))
             ->get('/settings/photo')
             ->assertOk()
             ->assertViewIs('settings.photo');

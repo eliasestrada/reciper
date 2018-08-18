@@ -18,7 +18,7 @@ class RecipesShowPageTest extends TestCase
      */
     public function view_recipes_show_has_data(): void
     {
-        $recipe = factory(Recipe::class)->create();
+        $recipe = create(Recipe::class);
 
         $this->get("/recipes/$recipe->id")
             ->assertViewIs('recipes.show')
@@ -36,10 +36,10 @@ class RecipesShowPageTest extends TestCase
      */
     public function auth_user_can_see_recipe_show_page(): void
     {
-        $user = factory(User::class)->create();
-        $user2 = factory(User::class)->create();
-        $recipe = factory(Recipe::class)->create(['user_id' => $user->id]);
-        $recipe2 = factory(Recipe::class)->create(['user_id' => $user2->id]);
+        $user = create(User::class);
+        $user2 = create(User::class);
+        $recipe = create(Recipe::class, ['user_id' => $user->id]);
+        $recipe2 = create(Recipe::class, ['user_id' => $user2->id]);
 
         $this->actingAs($user)->get("/recipes/$recipe->id")->assertOk();
         $this->actingAs($user2)->get("/recipes/$recipe->id")->assertOk();
@@ -52,7 +52,7 @@ class RecipesShowPageTest extends TestCase
      */
     public function guest_xan_see_recipes_show_page(): void
     {
-        $recipe = factory(Recipe::class)->create();
+        $recipe = create(Recipe::class);
         $this->get("/recipes/$recipe->id")->assertOk();
     }
 }

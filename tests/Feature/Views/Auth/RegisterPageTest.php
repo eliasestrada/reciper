@@ -17,7 +17,7 @@ class RegisterPageTest extends TestCase
      */
     public function user_cannot_see_register_page(): void
     {
-        $this->actingAs(factory(User::class)->make())
+        $this->actingAs(make(User::class))
             ->get('/register')
             ->assertRedirect('/dashboard')
             ->assertRedirect(action('DashboardController@index'));

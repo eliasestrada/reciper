@@ -18,7 +18,7 @@ class LoginPageTest extends TestCase
      */
     public function user_can_login_with_correct_credentials(): void
     {
-        $user = factory(User::class)->create(['password' => bcrypt('test')]);
+        $user = create(User::class, ['password' => bcrypt('test')]);
 
         $response = $this->post('/login', [
             'email' => $user->email,
@@ -34,7 +34,7 @@ class LoginPageTest extends TestCase
      */
     public function user_cannot_login_with_incorrect_password(): void
     {
-        $user = factory(User::class)->create(['password' => bcrypt('test')]);
+        $user = create(User::class, ['password' => bcrypt('test')]);
 
         $response = $this->from('/login')->post('/login', [
             'email' => $user->email,
@@ -57,7 +57,7 @@ class LoginPageTest extends TestCase
      */
     public function remember_me_functionality(): void
     {
-        $user = factory(User::class)->create([
+        $user = create(User::class, [
             'id' => random_int(10, 100),
             'password' => bcrypt('test'),
         ]);
@@ -87,7 +87,7 @@ class LoginPageTest extends TestCase
      */
     public function user_cant_see_login_page(): void
     {
-        $this->actingAs(factory(User::class)->make())
+        $this->actingAs(make(User::class))
             ->get('/login')
             ->assertRedirect('/dashboard')
             ->assertRedirect(action('DashboardController@index'));

@@ -58,8 +58,8 @@ class HelperFunctionsTest extends TestCase
      */
     public function check_get_rating_number_helper(): void
     {
-        $user = factory(User::class)->make();
-        $recipes = [factory(Recipe::class)->make(['user_id' => $user->id])];
+        $user = make(User::class);
+        $recipes = [make(Recipe::class, ['user_id' => $user->id])];
 
         $this->assertEquals(getRatingNumber($recipes, $likes = 11), 2.1);
         $this->assertEquals(getRatingNumber($recipes, $likes = -11), 1);

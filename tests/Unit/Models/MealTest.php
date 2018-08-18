@@ -31,9 +31,9 @@ class MealTest extends TestCase
     public function model_has_relationship_with_recipes(): void
     {
         $meal = Meal::find(1);
-        $recipe = factory(Recipe::class, 2)->create([
+        $recipe = create(Recipe::class, [
             'meal_id' => 1,
-        ]);
+        ], 2);
 
         $this->assertTrue($meal->recipes()->exists());
         $this->assertGreaterThanOrEqual(2, $meal->recipes->count());

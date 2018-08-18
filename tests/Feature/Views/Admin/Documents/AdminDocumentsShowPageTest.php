@@ -18,9 +18,9 @@ class AdminDocumentsPageTest extends TestCase
      */
     public function view_admin_documents_show_has_data(): void
     {
-        $document = factory(Document::class)->create();
+        $document = create(Document::class);
 
-        $this->actingAs(factory(User::class)->create(['admin' => 1]))
+        $this->actingAs(create(User::class, ['admin' => 1]))
             ->get("/admin/documents/$document->id")
             ->assertViewIs('admin.documents.show')
             ->assertViewHas('document', Document::find($document->id));
@@ -33,9 +33,9 @@ class AdminDocumentsPageTest extends TestCase
      */
     public function user_cant_see_admin_documents_show_page(): void
     {
-        $document = factory(Document::class)->create();
+        $document = create(Document::class);
 
-        $this->actingAs(factory(User::class)->make(['admin' => 0]))
+        $this->actingAs(make(User::class, ['admin' => 0]))
             ->get("/admin/documents/$document->id")
             ->assertRedirect('/');
     }
@@ -47,9 +47,9 @@ class AdminDocumentsPageTest extends TestCase
      */
     public function admin_can_see_admin_documents_show_page(): void
     {
-        $document = factory(Document::class)->create();
+        $document = create(Document::class);
 
-        $this->actingAs(factory(User::class)->make(['admin' => 1]))
+        $this->actingAs(make(User::class, ['admin' => 1]))
             ->get("/admin/documents/$document->id")
             ->assertOk();
     }

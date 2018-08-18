@@ -19,9 +19,7 @@ class RecipesCreatePageTest extends TestCase
      */
     public function view_recipes_create_has_data(): void
     {
-        $user = factory(User::class)->create();
-
-        $this->actingAs($user)
+        $this->actingAs(create(User::class))
             ->get('/recipes/create')
             ->assertViewIs('recipes.create')
             ->assertViewHas('meal', Meal::get(['id', 'name_' . lang()]));
@@ -34,7 +32,7 @@ class RecipesCreatePageTest extends TestCase
      */
     public function auth_user_can_see_recipes_create_page(): void
     {
-        $this->actingAs(factory(User::class)->create())
+        $this->actingAs(create(User::class))
             ->get('/recipes/create')
             ->assertOk();
     }
@@ -48,7 +46,7 @@ class RecipesCreatePageTest extends TestCase
     {
         $recipe = $this->new_recipe('Hello world');
 
-        $this->actingAs(factory(User::class)->create())
+        $this->actingAs(create(User::class))
             ->post(action('RecipesController@store'), $recipe)
             ->assertRedirect();
         $this->assertDatabaseHas('recipes', [
@@ -67,7 +65,7 @@ class RecipesCreatePageTest extends TestCase
     {
         $recipe = $this->new_recipe('Hello people');
 
-        $this->actingAs(factory(User::class)->create(['admin' => 1]))
+        $this->actingAs(create(User::class, ['admin' => 1]))
             ->post(action('RecipesController@store'), $recipe)
             ->assertRedirect();
 
