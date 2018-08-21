@@ -12,37 +12,30 @@
 				<h1 class="headline pb-4">@lang('recipes.add_recipe')</h1>
 			</div>
 
-			<div class="fixed-action-btn">
-				{{-- Floating button --}}
-				<a href="#" class="btn-floating main btn-large pulse z-depth-3" id="_more">
-					<i class="large material-icons">more_vert</i>
+			<div class="center pb-4">
+				{{--  View button  --}}
+				<a href="/recipes/{{ $recipe->id }}" class="btn green tooltipped" data-tooltip="@lang('tips.view_recipe')" data-position="top">
+					<i class="material-icons">remove_red_eye</i>
 				</a>
-				<ul>
-					<li> {{--  Delete button  --}}
-						<delete-recipe-btn
-							recipe-id="{{ $recipe->id }}"
-							deleted-fail="{{ trans('recipes.deleted_fail') }}"
-							delete-recipe-tip="{{ trans('tips.delete_recipe') }}"
-							confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
-						</delete-recipe-btn>
-					</li>
-					<li> {{--  Publish button  --}}
-						<a href="#" class="btn-floating green btn-large tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish_recipe')" data-position="left">
-							<i class="large material-icons">send</i>
-						</a>
-						<input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
-					</li>
-					<li> {{--  View button  --}}
-						<a href="/recipes/{{ $recipe->id }}" class="btn-floating green btn-large tooltipped" data-tooltip="@lang('tips.view_recipe')" data-position="left">
-							<i class="large material-icons">remove_red_eye</i>
-						</a>
-					</li>
-					<li> {{--  Save button  --}}
-						<button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save_recipe')" data-position="left" class="btn-floating green btn-large tooltipped">
-							<i class="large material-icons">save</i>
-						</button>
-					</li>
-				</ul>
+
+				{{--  Save button  --}}
+				<button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save_recipe')" data-position="top" class="btn green tooltipped">
+					<i class="material-icons">save</i>
+				</button>
+
+				{{--  Delete button  --}}
+				<delete-recipe-btn
+					recipe-id="{{ $recipe->id }}"
+					deleted-fail="{{ trans('recipes.deleted_fail') }}"
+					delete-recipe-tip="{{ trans('tips.delete_recipe') }}"
+					confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
+				</delete-recipe-btn>
+
+				{{--  Publish button  --}}
+				<a href="#" class="btn green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish_recipe')" data-position="top">
+					<i class="large material-icons">send</i>
+				</a>
+				<input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
 			</div>
 		</div>
 
@@ -126,8 +119,4 @@
 	</div>
 </form>
 
-@endsection
-
-@section('script')
-	@include('includes.js.floating-btn')
 @endsection

@@ -13,11 +13,11 @@
 	<div class="nav-wrapper main" style="z-index:15">
 		<div class="px-3">
 			{{-- Logo --}}
-			<a href="/" title="@lang('includes.home')" class="brand-logo">
+			<a href="/" title="@lang('includes.home')" class="brand-logo noselect">
 				@lang('website.name')
 			</a>
 			{{-- Hamburger menu --}}
-			<a href="#" data-target="mobile-demo" class="sidenav-trigger">
+			<a href="#" data-target="mobile-demo" class="sidenav-trigger noselect">
 				<i class="material-icons">menu</i>
 			</a>
 

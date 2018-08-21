@@ -1,8 +1,8 @@
 <template>
 	<span>
 		<span v-if="!error">
-			<button @click="deleteRecipe" type="button" class="btn-floating red btn-large tooltipped" :data-tooltip="deleteRecipeTip" data-position="left">
-				<i class="large material-icons">delete</i>
+			<button @click="deleteRecipe" type="button" class="btn red tooltipped" :data-tooltip="deleteRecipeTip" data-position="top">
+				<i class="material-icons">delete</i>
 			</button>
 		</span>
 	</span>
