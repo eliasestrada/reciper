@@ -26,10 +26,9 @@ class RecipesEditPageTest extends DuskTestCase
             $browser
                 ->loginAs($user)
                 ->visit("/recipes/$recipe->id")
-                ->click('#_more')
                 ->click('#_edit')
                 ->assertPathIs("/recipes/$recipe->id/edit")
-                ->click('#_more')
+                ->waitFor('#publish-btn')
                 ->click('#publish-btn')
                 ->assertPathIs("/users/$user->id")
                 ->logout();
