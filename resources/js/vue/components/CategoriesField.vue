@@ -2,15 +2,23 @@
 	<div class="row py-2">
 		<h5 class="col s12 center mb-1">{{ categoriesTitle }} {{ fields }} / 4</h5>
 		<h6 class="col s12 center mb-2">
-			<a :class="classAddBtn" @click="addField" :title="add" style="color:darkgreen;" class="add-remove-field ml-2">{{ add + ' +' }}</a>
-			<a :class="classDelBtn" @click="deleteField" :title="deleting" style="color:brown;" class="add-remove-field ml-2">{{ deleting + ' -' }}</a>
+			<a class="add-remove-field ml-2" style="color:darkgreen;"
+				:class="classAddBtn"
+				@click="addField"
+				:title="add">{{ add + ' +' }}</a>
+			<a style="color:brown;" class="add-remove-field ml-2"
+				:class="classDelBtn"
+				:title="deleting"
+				@click="deleteField">{{ deleting + ' -' }}</a>
 		</h6>
 
 		<div v-for="(field, i) in fields" :key="field" class="col s12 m6">
 			<div class="form-group simple-group">
 				<label :for="'category_id' + field">{{ label }} {{ field }}</label>
 				<select name="categories[]" class="browser-default">
-					<option v-if="recipeCategories && recipeCategories[i]" :value="recipeCategories[i]['id']" selected>
+					<option :value="recipeCategories[i]['id']"
+						v-if="recipeCategories && recipeCategories[i]"
+						selected>
 						{{ recipeCategories[i]['name_' + locale] }}
 					</option>
 					<option v-for="categ in categories" :key="categ.id" :value="categ.id">

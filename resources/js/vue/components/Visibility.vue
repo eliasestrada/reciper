@@ -1,9 +1,14 @@
 <template>
 	<div class="input-field">
-		<input :type="type" :name="nameAttr" :id="idAttr" :class="classAttr" class="validate" required>
-		<i class="material-icons noselect position-absolute visibility-icon" @click="changeType">
-			{{ icon }}
-		</i>
+		<input class="validate"
+			:type="type"
+			:name="nameAttr"
+			:id="idAttr"
+			:class="classAttr"
+			required>
+				<i class="material-icons noselect position-absolute visibility-icon" @click="changeType">
+					{{ icon }}
+				</i>
 		<slot></slot>
 	</div>
 </template>
