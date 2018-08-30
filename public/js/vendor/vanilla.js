@@ -10596,6 +10596,14 @@ var imageUploader = {
 		});
 	}
 };
+if ($('input-message')) {
+	(function () {
+		$('input-message').addEventListener('input', function () {
+			$('output-message1').value = $('input-message').value;
+			$('output-message2').value = $('input-message').value;
+		});
+	})();
+}
 if ($('ready-checkbox')) {
 	checkCheckboxThenSubmit('ready-checkbox', 'publish-btn');
 }
