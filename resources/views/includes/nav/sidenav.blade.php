@@ -8,7 +8,12 @@
 		<li><ul>@include('includes.nav.user-menu')</ul></li>
 	@else
 		{{-- Guest menu --}}
-		@include('includes.nav.guest-menu')
+		<li>
+			<a href="/login" data-target="dropdown3" title="@lang('includes.enter')">
+				@lang('includes.enter')
+				<i class="material-icons right">exit_to_app</i>
+			</a>
+		</li>
 	@endauth
 
 	<div class="divider"></div>

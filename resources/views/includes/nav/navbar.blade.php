@@ -40,7 +40,12 @@
 					</li>
 				@else
 					{{-- Guest menu --}}
-					@include('includes.nav.guest-menu')
+					<li>
+						<a href="/login" data-target="dropdown3" title="@lang('includes.enter')">
+							@lang('includes.enter')
+							<i class="material-icons right">exit_to_app</i>
+						</a>
+					</li>
 				@endauth
 			</ul>
 			{{-- Search button --}}
