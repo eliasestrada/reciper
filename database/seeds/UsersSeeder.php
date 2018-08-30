@@ -22,5 +22,17 @@ class UsersSeeder extends Seeder
             'created_at' => '2018-03-08 12:08:59',
             'image' => 'default.jpg',
         ]);
+
+        User::create([
+            'email' => '22@22.com',
+            'name' => 'Серый',
+            'admin' => 0,
+            'master' => 0,
+            'password' => bcrypt('111111'),
+            'notif_check' => date("Y-m-d H:i:s"),
+            'contact_check' => date("Y-m-d H:i:s"),
+            'created_at' => '2018-03-08 12:08:59',
+            'image' => 'default.jpg',
+        ]);
     }
 }
