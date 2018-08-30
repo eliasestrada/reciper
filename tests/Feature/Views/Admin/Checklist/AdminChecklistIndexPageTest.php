@@ -12,7 +12,6 @@ class AdminChecklistIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/admin/checklist/index
      * @test
      * @return void
      */
@@ -32,7 +31,6 @@ class AdminChecklistIndexPageTest extends TestCase
     }
 
     /**
-     * resources/views/admin/checklist/index
      * @test
      * @return void
      */

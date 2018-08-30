@@ -11,7 +11,6 @@ class UsersIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/users/index
      * @test
      * @return void
      */
@@ -24,7 +23,6 @@ class UsersIndexPageTest extends TestCase
     }
 
     /**
-     * resources/views/users/index
      * @test
      * @return void
      */
@@ -36,7 +34,6 @@ class UsersIndexPageTest extends TestCase
     }
 
     /**
-     * resources/views/users/index
      * @test
      * @return void
      */

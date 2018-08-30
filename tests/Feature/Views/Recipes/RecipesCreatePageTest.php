@@ -13,7 +13,6 @@ class RecipesCreatePageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/recipes/create
      * @test
      * @return void
      */
@@ -26,7 +25,6 @@ class RecipesCreatePageTest extends TestCase
     }
 
     /**
-     * resources/views/recipes/create
      * @test
      * @return void
      */
@@ -38,7 +36,6 @@ class RecipesCreatePageTest extends TestCase
     }
 
     /**
-     * resources/views/recipes/create
      * @test
      * @return void
      */
@@ -57,7 +54,6 @@ class RecipesCreatePageTest extends TestCase
     }
 
     /**
-     * resources/views/recipes/create
      * @test
      * @return void
      */

@@ -12,7 +12,6 @@ class NotificationsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/notificatons/index
      * @test
      * @return void
      */
@@ -29,7 +28,6 @@ class NotificationsIndexPageTest extends TestCase
     }
 
     /**
-     * resources/views/notificatons/index
      * @test
      * @return void
      */
@@ -43,7 +41,6 @@ class NotificationsIndexPageTest extends TestCase
     }
 
     /**
-     * resources/views/notificatons/index
      * @test
      * @return void
      */

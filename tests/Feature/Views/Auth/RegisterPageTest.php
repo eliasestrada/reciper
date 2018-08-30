@@ -11,7 +11,6 @@ class RegisterPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/auth/register
      * @test
      * @return void
      */
@@ -24,7 +23,6 @@ class RegisterPageTest extends TestCase
     }
 
     /**
-     * resources/views/auth/register
      * @test
      * @return void
      */

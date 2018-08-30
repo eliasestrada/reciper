@@ -12,7 +12,6 @@ class AdminDocumentsPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/admin/documents/show
      * @test
      * @return void
      */
@@ -27,7 +26,6 @@ class AdminDocumentsPageTest extends TestCase
     }
 
     /**
-     * resources/views/admin/documents/show
      * @test
      * @return void
      */
@@ -41,7 +39,6 @@ class AdminDocumentsPageTest extends TestCase
     }
 
     /**
-     * resources/views/admin/documents/show
      * @test
      * @return void
      */

@@ -11,7 +11,6 @@ class ContactPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/pages/contact
      * @test
      * @return void
      */
@@ -21,7 +20,6 @@ class ContactPageTest extends TestCase
     }
 
     /**
-     * resources/views/pages/contact
      * @test
      * @return void
      */
@@ -33,7 +31,6 @@ class ContactPageTest extends TestCase
     }
 
     /**
-     * resources/views/pages/contact
      * @test
      * @return void
      */

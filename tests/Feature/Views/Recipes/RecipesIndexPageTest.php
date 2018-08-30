@@ -12,7 +12,6 @@ class RecipesIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/recipes/index
      * @test
      * @return void
      */
@@ -22,7 +21,6 @@ class RecipesIndexPageTest extends TestCase
     }
 
     /**
-     * resources/views/recipes/index
      * @test
      * @return void
      */
@@ -33,7 +31,6 @@ class RecipesIndexPageTest extends TestCase
     }
 
     /**
-     * resources/views/recipes/index
      * @test
      * @return void
      */

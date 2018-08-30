@@ -12,7 +12,6 @@ class LoginPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/auth/login
      * @test
      * @return void
      */
@@ -28,7 +27,6 @@ class LoginPageTest extends TestCase
     }
 
     /**
-     * resources/views/auth/login
      * @test
      * @return void
      */
@@ -51,7 +49,6 @@ class LoginPageTest extends TestCase
 
     /**
      * We will login user and create cookie to check them
-     * resources/views/auth/login
      * @test
      * @return void
      */
@@ -81,7 +78,6 @@ class LoginPageTest extends TestCase
     }
 
     /**
-     * resources/views/auth/login
      * @test
      * @return void
      */
@@ -94,7 +90,6 @@ class LoginPageTest extends TestCase
     }
 
     /**
-     * resources/views/auth/login
      * @test
      * @return void
      */

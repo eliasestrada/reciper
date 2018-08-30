@@ -12,7 +12,6 @@ class AdminFeedbackPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/admin/feedback/index
      * @test
      * @return void
      */
@@ -27,7 +26,6 @@ class AdminFeedbackPageTest extends TestCase
     }
 
     /**
-     * resources/views/admin/feedback/index
      * @test
      * @return void
      */
@@ -41,7 +39,6 @@ class AdminFeedbackPageTest extends TestCase
     }
 
     /**
-     * resources/views/admin/feedback/index
      * @test
      * @return void
      */

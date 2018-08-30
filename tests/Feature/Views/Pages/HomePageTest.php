@@ -12,7 +12,6 @@ class HomePageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/pages/home
      * @test
      * @return void
      */
@@ -31,7 +30,6 @@ class HomePageTest extends TestCase
     }
 
     /**
-     * resources/views/pages/home
      * @test
      * @return void
      */
@@ -42,7 +40,6 @@ class HomePageTest extends TestCase
     }
 
     /**
-     * resources/views/pages/home
      * @test
      * @return void
      */

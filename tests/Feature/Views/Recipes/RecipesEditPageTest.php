@@ -13,7 +13,6 @@ class RecipesEditPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/recipes/edit
      * @test
      * @return void
      */
@@ -38,7 +37,6 @@ class RecipesEditPageTest extends TestCase
     }
 
     /**
-     * resources/views/recipes/edit
      * @test
      * @return void
      */
@@ -53,7 +51,6 @@ class RecipesEditPageTest extends TestCase
     }
 
     /**
-     * resources/views/recipes/edit
      * @test
      * @return void
      */
@@ -80,7 +77,6 @@ class RecipesEditPageTest extends TestCase
     }
 
     /**
-     * resources/views/recipes/edit
      * @test
      * @return void
      */

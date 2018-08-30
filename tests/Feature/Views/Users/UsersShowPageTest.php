@@ -12,7 +12,6 @@ class UsersShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/users/show
      * @test
      * @return void
      */
@@ -43,7 +42,6 @@ class UsersShowPageTest extends TestCase
     }
 
     /**
-     * resources/view views/users/show
      * @test
      * @return void
      */
@@ -54,7 +52,6 @@ class UsersShowPageTest extends TestCase
     }
 
     /**
-     * resources/views/users/show
      * @test
      * @return void
      */

@@ -11,7 +11,6 @@ class LogsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/vendor/log-viewer/custom-theme/logs
      * @test
      * @return void
      */
@@ -26,7 +25,6 @@ class LogsIndexPageTest extends TestCase
     }
 
     /**
-     * resources/vendor/log-viewer/custom-theme/logs
      * @test
      * @return void
      */

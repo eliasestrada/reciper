@@ -12,7 +12,6 @@ class UsersOtherMyRecipesPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/users/other/my-recipes
      * @test
      * @return void
      */
@@ -33,7 +32,6 @@ class UsersOtherMyRecipesPageTest extends TestCase
     }
 
     /**
-     * resources/views/users/other/my-recipes
      * @test
      * @return void
      */
@@ -43,7 +41,6 @@ class UsersOtherMyRecipesPageTest extends TestCase
     }
 
     /**
-     * resources/views/users/other/my-recipes
      * @test
      * @return void
      */

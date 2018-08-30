@@ -11,7 +11,6 @@ class SettingsGeneralPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/settings/general
      * @test
      * @return void
      */
@@ -23,7 +22,6 @@ class SettingsGeneralPageTest extends TestCase
     }
 
     /**
-     * resources/views/settings/general
      * @test
      * @return void
      */
@@ -35,7 +33,6 @@ class SettingsGeneralPageTest extends TestCase
     }
 
     /**
-     * resources/views/settings/general
      * @test
      * @return void
      */

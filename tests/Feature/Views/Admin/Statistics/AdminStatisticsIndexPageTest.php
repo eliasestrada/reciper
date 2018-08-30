@@ -33,7 +33,6 @@ class AdminStatisticsPageTest extends TestCase
     }
 
     /**
-     * resources/views/admin/statistics/index
      * @return void
      * @test
      */

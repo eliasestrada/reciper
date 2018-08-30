@@ -11,7 +11,6 @@ class SettingsPhotoPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/settings/photo
      * @test
      * @return void
      */
@@ -23,7 +22,6 @@ class SettingsPhotoPageTest extends TestCase
     }
 
     /**
-     * resources/views/settings/photo
      * @test
      * @return void
      */
@@ -36,7 +34,6 @@ class SettingsPhotoPageTest extends TestCase
     }
 
     /**
-     * resources/views/settings/photo
      * @test
      * @return void
      */

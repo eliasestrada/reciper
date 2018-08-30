@@ -12,7 +12,6 @@ class SearchPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/pages/search
      * @test
      * @return void
      */
@@ -28,7 +27,6 @@ class SearchPageTest extends TestCase
     }
 
     /**
-     * resources/views/pages/search
      * @test
      * @return void
      */
@@ -42,7 +40,6 @@ class SearchPageTest extends TestCase
     }
 
     /**
-     * resources/views/pages/search
      * @test
      * @return void
      */
@@ -52,7 +49,6 @@ class SearchPageTest extends TestCase
     }
 
     /**
-     * resources/views/pages/search
      * @test
      * @return void
      */

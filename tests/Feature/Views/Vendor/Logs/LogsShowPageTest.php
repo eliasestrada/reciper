@@ -11,7 +11,6 @@ class LogsShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * resources/views/vendor/log-viewer/custom-theme/show
      * @test
      * @return void
      */
@@ -28,7 +27,6 @@ class LogsShowPageTest extends TestCase
     }
 
     /**
-     * resources/vendor/log-viewer/custom-theme/show
      * @test
      * @return void
      */
