@@ -40,23 +40,20 @@
 		@admin
 			@if (!$recipe->done() && user()->id !== $recipe->user_id)
 				<div class="py-2">
+					<p>@lang('recipes.approve_or_not')</p>
 
 					{{-- Approve --}}
 					<form action="{{ action('ApproveController@ok', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
 						@csrf
 						<input type="hidden" name="message" id="output-message1">
-						<button class="btn green" type="submit">
-							<i class="material-icons">check</i>
-						</button>
+						<button class="btn green" type="submit">@lang('messages.yes')</button>
 					</form>
 
 					{{-- Cancel --}}
 					<form action="{{ action('ApproveController@cancel', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" onsubmit="return confirm('@lang('recipes.are_you_sure_to_cancel')')">
 						@csrf
 						<input type="hidden" name="message" id="output-message2">
-						<button class="btn red" type="submit">
-							<i class="material-icons">cancel</i>
-						</button>
+						<button class="btn red" type="submit">@lang('messages.no')</button>
 					</form>
 				</div>
 				<div class="input-field">
