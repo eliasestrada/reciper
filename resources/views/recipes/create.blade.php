@@ -21,6 +21,9 @@
 		<div class="row">
 			<div class="col s12 m6 l4"> {{-- Title --}}
 				@titleField
+					@slot('title')
+						{{ old('title') }}
+					@endslot
 				@endtitleField
 			</div>
 	
@@ -31,6 +34,9 @@
 	
 			<div class="col s12 m6 l4"> {{-- Meal time --}}
 				@mealField(['meal' => $meal])
+					@slot('meal_id')
+						{{ old('meal') }}
+					@endslot
 				@endmealField
 			</div>
 		</div>
@@ -38,17 +44,26 @@
 		<div class="row">
 			<div class="col s12 l6"> {{-- Ingredients --}}
 				@ingredientsField
+					@slot('ingredients')
+						{{ old('ingredients') }}
+					@endslot
 				@endingredientsField
 			</div>
 	
 			<div class="col s12 l6"> {{-- Intro --}}
 				@introField
+					@slot('intro')
+						{{ old('intro') }}
+					@endslot
 				@endintroField
 			</div>
 		</div>
 
 		<div class="col s12"> {{-- Text --}}
 			@textField
+				@slot('text')
+					{{ old('text') }}
+				@endslot
 			@endtextField
 		</div>
 
