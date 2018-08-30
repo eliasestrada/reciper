@@ -26,8 +26,7 @@ trait RecipesControllerHelpers
 
             // Small image
             Image::make($image)
-                ->resize(300, 200)
-                ->insert(storage_path('app/public/other/watermark.png'))
+                ->resize(240, 160)
                 ->save(storage_path("app/public/images/small/$image_name"));
 
             return $image_name;
