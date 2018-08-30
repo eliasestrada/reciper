@@ -15,12 +15,8 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        $this->app['config']->set('database.connections.mysql', [
-            'database' => 'reciper_testing',
-        ]);
-
         if ($this->migrate === true && !static::$migrationsRun) {
-            \Artisan::call('wipe');
+            \Artisan::call('wipe', ['test']);
             static::$migrationsRun = true;
         }
     }
