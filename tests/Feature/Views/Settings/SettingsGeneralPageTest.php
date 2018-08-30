@@ -43,4 +43,22 @@ class SettingsGeneralPageTest extends TestCase
     {
         $this->get('/settings/general')->assertRedirect('/login');
     }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function user_can_update_his_general_data(): void
+    {
+        $user = create(User::class, ['name' => 'Andr']);
+
+        $this->actingAs($user)
+            ->get('/settings/general');
+
+        $this->actingAs($user)
+            ->put('/settings/update/user-data', ['name' => 'Andrej'])
+            ->assertRedirect('/settings/general');
+
+        $this->assertTrue($user->name === 'Andrej');
+    }
 }
