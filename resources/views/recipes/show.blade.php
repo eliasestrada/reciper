@@ -44,6 +44,7 @@
 					{{-- Approve --}}
 					<form action="{{ action('ApproveController@ok', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
 						@csrf
+						<input type="hidden" name="message" id="output-message1">
 						<button class="btn green" type="submit">
 							<i class="material-icons">check</i>
 						</button>
@@ -52,10 +53,15 @@
 					{{-- Cancel --}}
 					<form action="{{ action('ApproveController@cancel', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" onsubmit="return confirm('@lang('recipes.are_you_sure_to_cancel')')">
 						@csrf
+						<input type="hidden" name="message" id="output-message2">
 						<button class="btn red" type="submit">
 							<i class="material-icons">cancel</i>
 						</button>
 					</form>
+				</div>
+				<div class="input-field">
+					<textarea id="input-message" class="materialize-textarea counter" data-length="{{ config('validation.approve_message') }}"></textarea>
+					<label for="textarea1">* @lang('notifications.set_message')</label>
 				</div>
 			@endif
 		@endadmin
@@ -123,4 +129,8 @@
 	</div>
 </section>
 
+@endsection
+
+@section('script')
+	@include('includes.js.counter')
 @endsection
