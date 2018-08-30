@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ApproveMessageRequest;
 use App\Models\Notification;
 use App\Models\Recipe;
 
@@ -10,11 +11,11 @@ class ApproveController extends Controller
     /**
      * @param Recipe $recipe
      */
-    public function ok(Recipe $recipe)
+    public function ok(Recipe $recipe, ApproveMessageRequest $request)
     {
         Notification::sendMessage(
             'recipe_published',
-            'recipe_with_title_published',
+            $request->message,
             $recipe->getTitle(),
             $recipe->user_id
         );
@@ -22,7 +23,7 @@ class ApproveController extends Controller
         $recipe->increment('approved_' . lang());
 
         return redirect('/recipes')->withSuccess(
-            trans('recipes.recipe_published')
+            trans("recipes.recipe_published")
         );
     }
 
@@ -30,11 +31,11 @@ class ApproveController extends Controller
      * Approve the recipe (for admins)
      * @param Recipe $recipe
      */
-    public function cancel(Recipe $recipe)
+    public function cancel(Recipe $recipe, ApproveMessageRequest $request)
     {
         Notification::sendMessage(
             'recipe_not_published',
-            'recipe_with_title_not_published',
+            $request->message,
             $recipe->getTitle(),
             $recipe->user_id
         );
