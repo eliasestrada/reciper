@@ -3955,6 +3955,7 @@ textarea.materialize-textarea {
 	transition: border .3s, -webkit-box-shadow .3s;
 	transition: box-shadow .3s, border .3s;
 	transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
+	color: #666;
 }
 
 input:not([type]):disabled,
@@ -4032,6 +4033,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 	border-bottom: 1px solid #26a69a;
 	-webkit-box-shadow: 0 1px 0 0 #26a69a;
 	box-shadow: 0 1px 0 0 #26a69a;
+	color: #444;
 }
 
 input:not([type]):focus:not([readonly])+label,
