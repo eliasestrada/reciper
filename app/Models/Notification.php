@@ -30,7 +30,7 @@ class Notification extends Model
     {
         self::create([
             'title' => "notifications.$title",
-            'message' => "notifications.$message",
+            'message' => $message,
             'user_id' => $user_id,
             'data' => $data,
             'important' => $important,
