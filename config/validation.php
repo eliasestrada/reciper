@@ -3,16 +3,15 @@
 return [
 
     // Recipes
-    'title_max' => 85,
-    'intro_max' => 2000,
-    'ingredients_max' => 5000,
-    'text_max' => 10000,
+    'recipe_title_max' => 85,
+    'recipe_intro_max' => 2000,
+    'recipe_ingredients_max' => 5000,
+    'recipe_text_max' => 10000,
 
-    // Contact form
-    'contact_message' => 5000,
-
-    // Documents
+    // Other
     'docs_title_max' => 190,
     'docs_text_max' => 10000,
+    'contact_message' => 5000,
+    'approve_message' => 10000,
 
 ];

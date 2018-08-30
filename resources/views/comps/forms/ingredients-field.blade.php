@@ -1,5 +1,5 @@
 <div class="input-field">
-	<textarea name="ingredients" id="ingredients" class="materialize-textarea counter" data-length="{{ config('validation.ingredients_max') }}">{{ ($ingredients ?? '') }}</textarea>
+	<textarea name="ingredients" id="ingredients" class="materialize-textarea counter" data-length="{{ config('validation.recipe_ingredients_max') }}">{{ ($ingredients ?? '') }}</textarea>
 
 	<label for="ingredients">
 		@lang('recipes.ingredients') 
