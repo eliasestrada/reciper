@@ -108,7 +108,7 @@
 			<div class="col s12 m6"> {{-- Image --}}
 				@imageField
 					@slot('image')
-						{{ $recipe->image }}
+						{{ 'small/' . $recipe->image }}
 					@endslot
 					@slot('alt')
 						{{ $recipe->title }}
