@@ -18,7 +18,7 @@
 				<div class="card-panel px-3">
 					<span>
 						<h6>{!! $notif->getIcon() !!} {{ trans($notif->title) }}</h6>
-						<p>{{ trans($notif->message) }}</p>
+						<p>{{ $notif->message }}</p>
 						<hr /><p>{{ $notif->data }}</p>
 						<span class="grey-text right">{{ timeAgo($notif->created_at) }}</span>
 
