@@ -39,10 +39,12 @@ class WipeCommand extends Command
             config()->set('database.connections.mysql', [
                 'database' => 'reciper_testing',
             ]);
-            $this->call('migrate', ['fresh --seed']);
+            $this->call('migrate:fresh');
+            $this->call('db:seed');
             $this->info('Database ' . config('database.connections.mysql.database') . ' had been cleared');
         } else {
-            $this->call('migrate', ['fresh --seed']);
+            $this->call('migrate:fresh');
+            $this->call('db:seed');
             $this->info('Database ' . config('database.connections.mysql.database') . ' had been cleared');
         }
 
