@@ -1,31 +1,30 @@
 <?php
 
-namespace Tests\Browser\Components\Auth;
+namespace Tests\Browser\Views\Auth;
 
 use App\Models\User;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class AuthRegisterPageTest extends DuskTestCase
+class AuthLoginPageTest extends DuskTestCase
 {
     /**
      * @test
      * @return void
      * */
-    public function registering_a_new_user_and_logout(): void
+    public function logining_in_user_and_logout(): void
     {
         $this->artisan('wipe');
 
         $this->browse(function (Browser $browser) {
-            $user = make(User::class);
+            $user = create(User::class);
 
             $browser
-                ->visit('/register')
-                ->type('name', $user->name)
+                ->visit('/login')
                 ->type('email', $user->email)
                 ->type('password', '111111')
-                ->type('password_confirmation', '111111')
-                ->click('#register-btn')
+                ->click('#go-to-account')
+                ->waitForText($user->name)
                 ->assertSee($user->name)
                 ->click('#_user-menu-trigger')
                 ->waitFor('#dropdown2 #_logout_btn')
