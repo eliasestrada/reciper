@@ -6,7 +6,7 @@
 			</div>
 		</a>
 		<audio ref="audio" src="/storage/audio/like-effect.mp3" type="audio/mpeg"></audio>
-		<i>{{ allLikes }}</i>
+		<i id="_all-likes">{{ allLikes }}</i>
 	</span>
 </template>
 
