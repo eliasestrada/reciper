@@ -18,6 +18,11 @@
 	@endslot
 	@slot('no_recipes')
 		@lang('users.no_recipes_yet')
+		@include('includes.buttons.btn', [
+			'title' => trans('includes.add_recipe'),
+			'icon' => 'add',
+			'link' => '/recipes/create'
+		])
 	@endslot
 @endlistOfRecipes
 
