@@ -12,17 +12,18 @@ class PopularRecipesComposer
      * @param  View  $view
      * @return void
      */
-    public function compose(View $view) : void
+    public function compose(View $view): void
     {
-		$popular_recipes = Recipe
-			::select('id', 'title_' . lang())
-			->withCount('likes')
-			->orderBy('likes_count', 'desc')
-			->where('ready_' . lang(), 1)
-			->where('approved_' . lang(), 1)
-			->limit(10)
-			->get();
+        $popular_recipes = cache()->remember('popular_recipes', 3600, function () {
+            return Recipe::select('id', 'title_' . lang())
+                ->withCount('likes')
+                ->orderBy('likes_count', 'desc')
+                ->where('ready_' . lang(), 1)
+                ->where('approved_' . lang(), 1)
+                ->limit(10)
+                ->get();
+        });
 
-		$view->with(compact('popular_recipes'));
+        $view->with(compact('popular_recipes'));
     }
 }
