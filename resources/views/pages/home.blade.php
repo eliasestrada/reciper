@@ -61,7 +61,7 @@
 						<div class="card">
 							<div class="card-image waves-effect waves-block waves-light">
 								<a href="/recipes/{{ $random->id }}">
-									<img class="activator" src="{{ asset('storage/images/small/'.$random->image) }}">
+									<img class="activator" alt="{{ $random->getTitle() }}" src="{{ asset('storage/images/small/'.$random->image) }}">
 								</a>
 							</div>
 							<div class="card-content min-h">
