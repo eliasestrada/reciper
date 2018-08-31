@@ -4945,6 +4945,7 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::before {
 ========================================================================== */
 select {
   display: none;
+  color: #444;
 }
 
 select.browser-default {
