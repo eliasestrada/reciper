@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Views\Recipes;
 
-use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -26,7 +25,7 @@ class RecipesIndexPageTest extends TestCase
      */
     public function auth_user_can_see_recipes_index_page(): void
     {
-        $user = create(User::class);
+        $user = make(User::class);
         $this->actingAs($user)->get("/recipes")->assertOk();
     }
 

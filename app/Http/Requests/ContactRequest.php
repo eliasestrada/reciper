@@ -23,7 +23,9 @@ class ContactRequest extends FormRequest
     {
         return [
             'email' => 'required|email',
-            'message' => 'required|min:20|max:' . config('validation.contact_message'),
+            'message' => 'required|
+				min:' . config('validation.contact_message_min') . '|
+				max:' . config('validation.contact_message_max'),
         ];
     }
 

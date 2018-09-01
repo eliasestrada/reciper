@@ -11,15 +11,22 @@ class AdminFeedbackPageTest extends TestCase
 {
     use DatabaseTransactions;
 
+    private $admin;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->admin = make(User::class, ['admin' => 1]);
+    }
+
     /**
      * @test
      * @return void
      */
     public function view_admin_feedback_index_has_data(): void
     {
-        $admin = make(User::class, ['admin' => 1]);
-
-        $this->actingAs($admin)
+        $this->actingAs($this->admin)
             ->get('/admin/feedback')
             ->assertViewIs('admin.feedback.index')
             ->assertViewHas('feedback', Feedback::paginate(40));
@@ -44,10 +51,37 @@ class AdminFeedbackPageTest extends TestCase
      */
     public function admin_can_see_admin_feedback_index_page(): void
     {
-        $admin = make(User::class, ['admin' => 1]);
-
-        $this->actingAs($admin)
+        $this->actingAs($this->admin)
             ->get('/admin/feedback')
             ->assertOk();
+    }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function feedback_message_can_be_deleted_by_admin(): void
+    {
+        $message = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae facere ex animi quis!';
+
+        $feed = Feedback::create([
+            'email' => 'johndoe@gmail.com',
+            'message' => $message,
+        ]);
+
+        // Go to admin's feedback page
+        $this->actingAs($this->admin)
+            ->get('/admin/feedback')
+            ->assertSeeText($message);
+
+        // Delete the feed message
+        $this->actingAs($this->admin)
+            ->followingRedirects()
+            ->delete(action('Admin\FeedbackController@destroy', [
+                'id' => $feed->id,
+            ]))
+            ->assertSeeText(trans('admin.feedback_has_been_deleted'));
+
+        $this->assertDatabaseMissing('feedback', $feed->toArray());
     }
 }

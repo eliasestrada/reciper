@@ -16,7 +16,7 @@ class SettingsGeneralPageTest extends TestCase
      */
     public function view_settings_general_has_a_correct_path(): void
     {
-        $this->actingAs(create(User::class))
+        $this->actingAs(make(User::class))
             ->get('/settings/general')
             ->assertViewIs('settings.general');
     }
@@ -27,7 +27,7 @@ class SettingsGeneralPageTest extends TestCase
      */
     public function auth_user_can_see_settings_general_page(): void
     {
-        $this->actingAs(create(User::class))
+        $this->actingAs(make(User::class))
             ->get('/settings/general')
             ->assertOk();
     }

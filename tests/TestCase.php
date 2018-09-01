@@ -16,7 +16,7 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         if ($this->migrate === true && !static::$migrationsRun) {
-            \Artisan::call('wipe', ['test']);
+            \Artisan::call('wipe');
             static::$migrationsRun = true;
         }
     }

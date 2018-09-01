@@ -3,7 +3,6 @@
 namespace Tests\Feature\Views\Recipes;
 
 use App\Models\Meal;
-use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -18,7 +17,7 @@ class RecipesCreatePageTest extends TestCase
      */
     public function view_recipes_create_has_data(): void
     {
-        $this->actingAs(create(User::class))
+        $this->actingAs(make(User::class))
             ->get('/recipes/create')
             ->assertViewIs('recipes.create')
             ->assertViewHas('meal', Meal::get(['id', 'name_' . lang()]));
@@ -30,7 +29,7 @@ class RecipesCreatePageTest extends TestCase
      */
     public function auth_user_can_see_recipes_create_page(): void
     {
-        $this->actingAs(create(User::class))
+        $this->actingAs(make(User::class))
             ->get('/recipes/create')
             ->assertOk();
     }

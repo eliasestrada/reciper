@@ -49,4 +49,36 @@ class NotificationsIndexPageTest extends TestCase
         $this->get('/notifications')
             ->assertRedirect('/login');
     }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function user_can_delete_his_notification_message(): void
+    {
+        $user = make(User::class);
+        $text_message = 'This is a test notification to user';
+
+        $notif = Notification::create([
+            'user_id' => $user->id,
+            'title' => 'Hello world',
+            'message' => $text_message,
+        ]);
+
+        $this->actingAs($user)
+            ->get('/notifications')
+            ->assertSeeText($text_message);
+
+        // Let's delete the notif
+        $this->actingAs($user)
+            ->delete(action('NotificationController@destroy', [
+                'notification' => $notif->id,
+            ]))
+            ->assertRedirect('/notifications');
+
+        // Notif should not be in DB
+        $this->assertDatabaseMissing('notifications', [
+            'message' => $text_message,
+        ]);
+    }
 }

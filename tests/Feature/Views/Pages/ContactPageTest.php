@@ -25,7 +25,7 @@ class ContactPageTest extends TestCase
      */
     public function auth_user_can_see_contact_page(): void
     {
-        $this->actingAs(create(User::class))
+        $this->actingAs(make(User::class))
             ->get('/contact')
             ->assertOk();
     }
@@ -37,5 +37,23 @@ class ContactPageTest extends TestCase
     public function guest_can_see_contact_page(): void
     {
         $this->get('/contact')->assertOk();
+    }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function anyone_can_send_feedback_message(): void
+    {
+        $data = [
+            'email' => 'johndoe@gmail.com',
+            'message' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, ipsa puhrar? Lorem ipsum dolor sit amet ahmet.',
+        ];
+
+        $this->followingRedirects()
+            ->post(action('ContactController@store'), $data)
+            ->assertSeeText(trans('admin.thanks_for_feedback'));
+
+        $this->assertDatabaseHas('feedback', $data);
     }
 }

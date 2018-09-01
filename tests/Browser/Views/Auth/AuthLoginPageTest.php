@@ -23,6 +23,7 @@ class AuthLoginPageTest extends DuskTestCase
                 ->visit('/login')
                 ->type('email', $user->email)
                 ->type('password', '111111')
+                ->click('.visibility-icon')
                 ->click('#go-to-account')
                 ->waitForText($user->name)
                 ->assertSee($user->name)
