@@ -25,8 +25,7 @@ class LogsShowPageTest extends TestCase
      */
     public function view_vendor_logs_show_has_correct_path(): void
     {
-        info('test');
-        $file_name = date('Y-m-d');
+        $file_name = $this->createLogFile();
 
         $this->actingAs($this->master)
             ->get("/log-viewer/logs/$file_name/info")
@@ -40,11 +39,19 @@ class LogsShowPageTest extends TestCase
      */
     public function master_can_see_logs_shows_page(): void
     {
-        info('test');
-        $file_name = date('Y-m-d');
+        $file_name = $this->createLogFile();
 
         $this->actingAs($this->master)
             ->get("/log-viewer/logs/$file_name/info")
             ->assertSeeText($file_name);
+    }
+
+    /**
+     * @return string
+     */
+    private function createLogFile(): string
+    {
+        info('test');
+        return date('Y-m-d');
     }
 }

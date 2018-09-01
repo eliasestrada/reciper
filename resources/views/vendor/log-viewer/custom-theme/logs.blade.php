@@ -11,9 +11,9 @@
 				<thead class="main-light">
 					<tr>
 						@foreach($headers as $key => $header)
-						<th scope="col" class="{{ $key == 'date' ? 'text-left' : 'text-center' }}">
-							<span class="new badge transparent main-dark-text">{{ $header }}</span>
-						</th>
+							<th scope="col" class="{{ $key == 'date' ? 'text-left' : 'text-center' }}">
+								<span class="new badge transparent main-dark-text">{{ $header }}</span>
+							</th>
 						@endforeach
 						<th></th>
 					</tr>
@@ -54,8 +54,10 @@
 								</a>
 								{{-- Delete button --}}
 								<form action="{{ action('LogsController@delete') }}" method="post" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')" data-position="top" onsubmit="return confirm('@lang('logs.confirm', ['date' => $date])')">
-									<input type="hidden" name="_method" value="DELETE">
-									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+									
+									@csrf
+									@method('delete')
+
 									<input type="hidden" name="date" value="{{ $date }}">
 									<button type="submit" class="btn btn-small red"><i class="material-icons">delete</i></button>
 								</form>

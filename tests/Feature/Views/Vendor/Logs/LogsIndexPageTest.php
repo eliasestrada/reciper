@@ -43,4 +43,38 @@ class LogsIndexPageTest extends TestCase
             ->assertSeeText(trans('logs.logs'))
             ->assertDontSeeText(trans('logs.page_is_not_avail'));
     }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function master_can_delete_log_file(): void
+    {
+        $file_name = $this->createLogFile();
+
+        $this->assertFileExists(storage_path("logs/laravel-{$file_name}.log"));
+
+        // Navigate to logs
+        $this->actingAs($this->master)
+            ->get('/log-viewer/logs');
+
+        // Delete file
+        $this->actingAs($this->master)
+            ->followingRedirects()
+            ->delete(action('LogsController@delete'), [
+                'date' => $file_name,
+            ])
+            ->assertSeeText(trans('logs.deleted'));
+
+        $this->assertFileNotExists(storage_path("logs/laravel-{$file_name}.log"));
+    }
+
+    /**
+     * @return string
+     */
+    private function createLogFile(): string
+    {
+        info('test');
+        return date('Y-m-d');
+    }
 }
