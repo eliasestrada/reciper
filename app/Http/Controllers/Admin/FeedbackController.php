@@ -38,7 +38,8 @@ class FeedbackController extends Controller
                 trans('admin.only_admin_can_delete')
             );
         }
-        Feedback::find($id)->delete();
+
+        Feedback::findOrFail($id)->delete();
 
         return redirect('/admin/feedback')->withSuccess(
             trans('admin.feedback_has_been_deleted')
