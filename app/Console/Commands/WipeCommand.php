@@ -10,7 +10,7 @@ class WipeCommand extends Command
      * The name and signature of the console command
      * @var string
      */
-    protected $signature = 'wipe {--test} {--all}';
+    protected $signature = 'wipe {--main} {--all}';
 
     /**
      * The console command description
@@ -33,14 +33,14 @@ class WipeCommand extends Command
      */
     public function handle()
     {
-        if ($this->option('test')) {
-            $this->changeToTestingDbTable();
+        if ($this->option('main')) {
             $this->wipeDatabase();
         } else if ($this->option('all')) {
             $this->wipeDatabase();
             $this->changeToTestingDbTable();
             $this->wipeDatabase();
         } else {
+            $this->changeToTestingDbTable();
             $this->wipeDatabase();
         }
 
