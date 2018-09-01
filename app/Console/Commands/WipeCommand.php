@@ -10,9 +10,7 @@ class WipeCommand extends Command
      * The name and signature of the console command
      * @var string
      */
-    protected $signature = '
-		wipe {--test : Clean testing database}
-	';
+    protected $signature = 'wipe {--test} {--all}';
 
     /**
      * The console command description
@@ -36,17 +34,36 @@ class WipeCommand extends Command
     public function handle()
     {
         if ($this->option('test')) {
-            config()->set('database.connections.mysql', [
-                'database' => 'reciper_testing',
-            ]);
-            $this->call('migrate:fresh');
-            $this->call('db:seed');
-            $this->info('Database ' . config('database.connections.mysql.database') . ' had been cleared');
+            $this->changeToTestingDbTable();
+            $this->wipeDatabase();
+        } else if ($this->option('all')) {
+            $this->wipeDatabase();
+            $this->changeToTestingDbTable();
+            $this->wipeDatabase();
         } else {
-            $this->call('migrate:fresh');
-            $this->call('db:seed');
-            $this->info('Database ' . config('database.connections.mysql.database') . ' had been cleared');
+            $this->wipeDatabase();
         }
 
+    }
+
+    /**
+     * @return void
+     */
+    public function wipeDatabase(): void
+    {
+        $this->info('Chosen database is ' . config('database.connections.mysql.database'));
+        $this->call('migrate:fresh');
+        $this->call('db:seed');
+        $this->info('Database ' . config('database.connections.mysql.database') . ' had been cleared');
+    }
+
+    /**
+     * @return void
+     */
+    public function changeToTestingDbTable()
+    {
+        config()->set('database.connections.mysql', [
+            'database' => 'reciper_testing',
+        ]);
     }
 }
