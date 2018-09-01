@@ -38,4 +38,22 @@ class ContactPageTest extends TestCase
     {
         $this->get('/contact')->assertOk();
     }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function anyone_can_send_feedback_message(): void
+    {
+        $data = [
+            'email' => 'johndoe@gmail.com',
+            'message' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, ipsa puhrar? Lorem ipsum dolor sit amet ahmet.',
+        ];
+
+        $this->followingRedirects()
+            ->post(action('ContactController@store'), $data)
+            ->assertSeeText(trans('admin.thanks_for_feedback'));
+
+        $this->assertDatabaseHas('feedback', $data);
+    }
 }

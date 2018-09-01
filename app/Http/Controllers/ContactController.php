@@ -15,7 +15,7 @@ class ContactController extends Controller
     {
         Feedback::create($request->only('email', 'message'));
 
-        return back()->withSuccess(
+        return redirect('/contact')->withSuccess(
             trans('admin.thanks_for_feedback')
         );
     }
