@@ -19,8 +19,8 @@ class RecipesShowPageTest extends TestCase
     {
         parent::setUp();
 
-        $this->admin = create(User::class, ['admin' => 1]);
-        $this->recipe = create(Recipe::class);
+        $this->admin = make(User::class, ['admin' => 1]);
+        $this->recipe = make(Recipe::class);
         $this->unapproved_recipe = create(Recipe::class, [
             'approved_' . lang() => 0,
         ]);
@@ -32,11 +32,13 @@ class RecipesShowPageTest extends TestCase
      */
     public function view_recipes_show_has_data(): void
     {
-        $this->get('/recipes/' . $this->recipe->id)
+        $recipe = create(Recipe::class);
+
+        $this->get("/recipes/$recipe->id")
             ->assertViewIs('recipes.show')
             ->assertViewHas('recipe',
                 Recipe::with('likes', 'categories', 'user')
-                    ->whereId($this->recipe->id)
+                    ->whereId($recipe->id)
                     ->first()
             );
     }
@@ -47,8 +49,8 @@ class RecipesShowPageTest extends TestCase
      */
     public function auth_user_can_see_recipe_show_page(): void
     {
-        $user = create(User::class);
-        $user2 = create(User::class);
+        $user = make(User::class);
+        $user2 = make(User::class);
         $recipe = make(Recipe::class, ['user_id' => $user->id]);
         $recipe2 = make(Recipe::class, ['user_id' => $user2->id]);
 
