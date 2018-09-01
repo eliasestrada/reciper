@@ -10,7 +10,7 @@ class WipeCommand extends Command
      * The name and signature of the console command
      * @var string
      */
-    protected $signature = 'wipe {--main} {--all}';
+    protected $signature = 'wipe';
 
     /**
      * The console command description
@@ -33,37 +33,8 @@ class WipeCommand extends Command
      */
     public function handle()
     {
-        if ($this->option('main')) {
-            $this->wipeDatabase();
-        } else if ($this->option('all')) {
-            $this->wipeDatabase();
-            $this->changeToTestingDbTable();
-            $this->wipeDatabase();
-        } else {
-            $this->changeToTestingDbTable();
-            $this->wipeDatabase();
-        }
-
-    }
-
-    /**
-     * @return void
-     */
-    public function wipeDatabase(): void
-    {
-        $this->info('Chosen database is ' . config('database.connections.mysql.database'));
         $this->call('migrate:fresh');
         $this->call('db:seed');
-        $this->info('Database ' . config('database.connections.mysql.database') . ' had been cleared');
-    }
-
-    /**
-     * @return void
-     */
-    public function changeToTestingDbTable()
-    {
-        config()->set('database.connections.mysql', [
-            'database' => 'reciper_testing',
-        ]);
+        $this->info('Database had been cleared');
     }
 }
