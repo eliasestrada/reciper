@@ -62,7 +62,7 @@ class RecipesShowPageTest extends TestCase
      */
     public function guest_can_see_recipes_show_page(): void
     {
-        $this->get('/recipes/' . $this->recipe->id)->assertOk();
+        $this->get("/recipes/{$this->recipe->id}")->assertOk();
     }
 
     /**
@@ -72,7 +72,7 @@ class RecipesShowPageTest extends TestCase
     public function admin_can_approve_recipe_with_message(): void
     {
         $this->actingAs($this->admin)
-            ->get('/recipes/' . $this->unapproved_recipe->id);
+            ->get("/recipes/{$this->unapproved_recipe->id}");
 
         // Make request to approve a recipe with message
         $this->actingAs($this->admin)
@@ -95,14 +95,14 @@ class RecipesShowPageTest extends TestCase
     public function admin_cant_approve_recipe_without_message(): void
     {
         $this->actingAs($this->admin)
-            ->get('/recipes/' . $this->unapproved_recipe->id);
+            ->get("/recipes/{$this->unapproved_recipe->id}");
 
         // Make request to approve a recipe without message
         $this->actingAs($this->admin)
             ->post(action('ApproveController@ok', [
                 'recipe' => $this->unapproved_recipe->id,
             ]))
-            ->assertRedirect('/recipes/' . $this->unapproved_recipe->id);
+            ->assertRedirect("/recipes/{$this->unapproved_recipe->id}");
 
         // Recipe should be still unapproved
         $this->assertDatabaseHas('recipes', [
@@ -118,7 +118,7 @@ class RecipesShowPageTest extends TestCase
     public function admin_can_cancel_recipe_with_message(): void
     {
         $this->actingAs($this->admin)
-            ->get('/recipes/' . $this->unapproved_recipe->id);
+            ->get("/recipes/{$this->unapproved_recipe->id}");
 
         // Make request to cancel a recipe with message
         $this->actingAs($this->admin)
@@ -141,17 +141,46 @@ class RecipesShowPageTest extends TestCase
     public function admin_cant_cancel_recipe_without_message(): void
     {
         $this->actingAs($this->admin)
-            ->get('/recipes/' . $this->unapproved_recipe->id);
+            ->get("/recipes/{$this->unapproved_recipe->id}");
 
         // Make request to cancel a recipe with message
         $this->actingAs($this->admin)
             ->post(action('ApproveController@cancel', ['recipe' => $this->unapproved_recipe->id]))
-            ->assertRedirect('/recipes/' . $this->unapproved_recipe->id);
+            ->assertRedirect("/recipes/{$this->unapproved_recipe->id}");
 
         // Recipe should be still unapproved
         $this->assertDatabaseHas('recipes', [
             'id' => $this->unapproved_recipe->id,
             'approved_' . lang() => 0,
         ]);
+    }
+
+    /**
+     * @test
+     * @return void
+     */
+    public function user_gets_notified_when_approved_his_recipe(): void
+    {
+        $user = create(User::class);
+        $recipe = create(Recipe::class, [
+            'user_id' => $user->id,
+            'approved_' . lang() => 0,
+        ]);
+        $text_message = 'Lorem ipsum dolor sit amet consectetur han';
+
+        $this->actingAs($this->admin)
+            ->get("/recipes/$recipe->id");
+
+        // Make request to approve a recipe with message
+        $this->actingAs($this->admin)
+            ->post(action('ApproveController@ok',
+                ['recipe' => $recipe->id]),
+                ['message' => $text_message])
+            ->assertRedirect('/recipes');
+
+        // Now from user side
+        $this->actingAs($user)
+            ->get('/notifications')
+            ->assertSeeText($text_message);
     }
 }
