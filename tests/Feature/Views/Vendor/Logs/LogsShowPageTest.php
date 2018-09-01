@@ -10,6 +10,15 @@ class LogsShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 
+    private $master;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->master = make(User::class, ['master' => 1]);
+    }
+
     /**
      * @test
      * @return void
@@ -18,9 +27,8 @@ class LogsShowPageTest extends TestCase
     {
         info('test');
         $file_name = date('Y-m-d');
-        $master = make(User::class, ['master' => 1]);
 
-        $this->actingAs($master)
+        $this->actingAs($this->master)
             ->get("/log-viewer/logs/$file_name/info")
             ->assertViewIs('log-viewer::custom-theme.show')
             ->assertOk();
@@ -34,9 +42,8 @@ class LogsShowPageTest extends TestCase
     {
         info('test');
         $file_name = date('Y-m-d');
-        $master = make(User::class, ['master' => 1]);
 
-        $this->actingAs($master)
+        $this->actingAs($this->master)
             ->get("/log-viewer/logs/$file_name/info")
             ->assertSeeText($file_name);
     }

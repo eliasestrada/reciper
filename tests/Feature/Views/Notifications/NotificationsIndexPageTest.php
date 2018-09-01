@@ -56,7 +56,7 @@ class NotificationsIndexPageTest extends TestCase
      */
     public function user_can_delete_his_notification_message(): void
     {
-        $user = create(User::class);
+        $user = make(User::class);
         $text_message = 'This is a test notification to user';
 
         $notif = Notification::create([

@@ -49,8 +49,8 @@ class RecipesShowPageTest extends TestCase
     {
         $user = create(User::class);
         $user2 = create(User::class);
-        $recipe = create(Recipe::class, ['user_id' => $user->id]);
-        $recipe2 = create(Recipe::class, ['user_id' => $user2->id]);
+        $recipe = make(Recipe::class, ['user_id' => $user->id]);
+        $recipe2 = make(Recipe::class, ['user_id' => $user2->id]);
 
         $this->actingAs($user)->get("/recipes/$recipe->id")->assertOk();
         $this->actingAs($user2)->get("/recipes/$recipe->id")->assertOk();

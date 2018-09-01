@@ -25,7 +25,7 @@ class ContactPageTest extends TestCase
      */
     public function auth_user_can_see_contact_page(): void
     {
-        $this->actingAs(create(User::class))
+        $this->actingAs(make(User::class))
             ->get('/contact')
             ->assertOk();
     }
