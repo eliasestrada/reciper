@@ -28,8 +28,8 @@
 		</div>
 
 		{{--  Random recipes  --}}
-		@isset($rand_recipes)
-			@foreach ($rand_recipes->chunk(10) as $random_chunk)
+		@isset($random_recipes)
+			@foreach ($random_recipes->chunk(10) as $random_chunk)
 				<div class="col s12 m6 l3 left-align">
 					<ul class="unstyled-list">
 						<li><strong>@lang('includes.recipes')</strong></li>
