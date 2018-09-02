@@ -5,9 +5,7 @@
 				<div class="card">
 					<div class="card-image waves-effect waves-block waves-light">
 						<a :href="'/recipes/' + recipe.id" :title="recipe.title">
-							<img class="activator"
-								:src="'storage/images/small/' + recipe.image"
-								:alt="recipe.title">
+							<img class="activator" :src="'storage/images/small/' + recipe.image" :alt="recipe.title">
 						</a>
 					</div>
 					<div class="card-content min-h">
@@ -28,64 +26,75 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- Pagination -->
-		<ul v-if="pagin.prev_page_url || pagin.next_page_url" class="pagination">
-			<li v-if="pagin.prev_page_url" class="page-item">
-				<a @click="fetchRecipes(pagin.prev_page_url)" href="#" class="page-link">
-					&laquo;
-				</a>
-			</li>
-			<li class="page-item disabled">
-				<a class="page-link">{{ pagin.current_page }} / {{ pagin.last_page }}</a>
-			</li>
-			<li v-if="pagin.next_page_url" class="page-item">
-				<a @click="fetchRecipes(pagin.next_page_url)" href="#" class="page-link">
-					&raquo;
-				</a>
-			</li>
-		</ul>
+	
+		<infinite-loading v-if="!theEnd" @infinite="infiniteHandler"></infinite-loading>
 	</div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      recipes: [],
-      pagin: {}
-    };
-  },
+	import InfiniteLoading from 'vue-infinite-loading';
 
-  props: ["go"],
+	export default {
+		
+		data() {
+			return {
+				recipes: [],
+				newRecipes: [],
+				next: '',
+				theEnd: false
+			};
+		},
+	
+		props: ["go"],
 
-  created() {
-    this.fetchRecipes();
-  },
+		created() {
+			fetch('/api/recipes')
+			.then(res => res.json())
+			.then(res => {
+				this.recipes = res.data
+				this.next = res.links.next
+			})
+			.catch(err => console.log(err));
+		},
+	
+		methods: {
+			fetchRecipes(page_url) {
+				page_url = page_url || "/api/recipes";
+	
+				fetch(page_url)
+					.then(res => res.json())
+					.then(res => {
+						if (res.links.next != null) {
+							this.newRecipes = res.data
+							this.next = res.links.next
+						} else {
+							this.theEnd = true
+						}
+					})
+					.catch(err => console.log(err));
+				},
 
-  methods: {
-    fetchRecipes(page_url) {
-      let vm = this;
-      page_url = page_url || "/api/recipes";
-
-      fetch(page_url)
-        .then(res => res.json())
-        .then(res => {
-          this.recipes = res.data;
-          vm.makePagination(res.meta, res.links);
-        })
-        .catch(err => console.log(err));
-    },
-
-    makePagination(meta, links) {
-      let pagin = {
-        current_page: meta.current_page,
-        last_page: meta.last_page,
-        next_page_url: links.next,
-        prev_page_url: links.prev
-      };
-      this.pagin = pagin;
-    }
-  }
-};
+			infiniteHandler($state) {
+				setTimeout(() => {
+					fetch(this.next)
+						.then(res => res.json())
+						.then(res => {
+							if (res.links.next != null) {
+								this.recipes = this.recipes.concat(res.data)
+								this.next = res.links.next	
+								console.log(this.next)
+							} else {
+								console.log('no')
+								this.theEnd = true
+							}
+						})
+						.catch(err => console.log(err));
+					$state.loaded()
+				}, 1000);
+			},
+		},
+		components: {
+			InfiniteLoading,
+		},
+	};
 </script>
