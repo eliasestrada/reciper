@@ -27,7 +27,7 @@
 			</div>
 		</div>
 	
-		<infinite-loading v-if="!theEnd" @infinite="infiniteHandler"></infinite-loading>
+		<infinite-loading v-show="!theEnd" @infinite="infiniteHandler"></infinite-loading>
 	</div>
 </template>
 
@@ -49,42 +49,29 @@
 
 		created() {
 			fetch('/api/recipes')
-			.then(res => res.json())
-			.then(res => {
-				this.recipes = res.data
-				this.next = res.links.next
-			})
-			.catch(err => console.log(err));
+				.then(res => res.json())
+				.then(res => {
+					this.recipes = res.data
+
+					if (res.links.next != null) {
+						this.next = res.links.next
+					} else {
+						this.theEnd = true
+					}
+				})
+				.catch(err => console.log(err));
 		},
 	
 		methods: {
-			fetchRecipes(page_url) {
-				page_url = page_url || "/api/recipes";
-	
-				fetch(page_url)
-					.then(res => res.json())
-					.then(res => {
-						if (res.links.next != null) {
-							this.newRecipes = res.data
-							this.next = res.links.next
-						} else {
-							this.theEnd = true
-						}
-					})
-					.catch(err => console.log(err));
-				},
-
 			infiniteHandler($state) {
 				setTimeout(() => {
 					fetch(this.next)
 						.then(res => res.json())
 						.then(res => {
-							if (res.links.next != null) {
+							if (this.next != res.links.next && res.links.next != null) {
 								this.recipes = this.recipes.concat(res.data)
 								this.next = res.links.next	
-								console.log(this.next)
 							} else {
-								console.log('no')
 								this.theEnd = true
 							}
 						})

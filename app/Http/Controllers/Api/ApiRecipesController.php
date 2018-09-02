@@ -25,7 +25,7 @@ class ApiRecipesController extends Controller
             ::where('approved_' . lang(), 1)
             ->where('ready_' . lang(), 1)
             ->latest()
-            ->paginate(20);
+            ->paginate(8);
 
         return RecipesResource::collection($recipes);
     }
