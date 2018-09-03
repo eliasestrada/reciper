@@ -21,8 +21,8 @@ class ApiRecipesController extends Controller
      */
     public function index(): ?object
     {
-        $recipes = Recipe
-            ::approved(1)
+        $recipes = Recipe::query()
+            ->approved(1)
             ->ready(1)
             ->latest()
             ->paginate(8);
@@ -55,8 +55,7 @@ class ApiRecipesController extends Controller
      */
     public function random($id): ?object
     {
-        $random = Recipe
-            ::inRandomOrder()
+        $random = Recipe::inRandomOrder()
             ->where('id', '!=', $id)
             ->ready(1)
             ->approved(1)
