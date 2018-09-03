@@ -28,7 +28,7 @@ class DebugProvider extends ServiceProvider
      */
     public function databaseSettings(): void
     {
-        if (app()->env != 'production') {
+        if ($this->app->environment('local')) {
             \DB::listen(function ($query) {
                 if ($this->show_sql) {
                     dump($query->sql);
