@@ -28,11 +28,19 @@ class Recipe extends Model
         return convertToListItems($this->getText());
     }
 
+    /**
+     * @param $query
+     * @param integer $value
+     */
     public function scopeReady($query, int $value)
     {
         return $query->where('ready_' . lang(), $value);
     }
 
+    /**
+     * @param $query
+     * @param integer $value
+     */
     public function scopeApproved($query, int $value)
     {
         return $query->where('approved_' . lang(), $value);
