@@ -23,8 +23,8 @@ trait SearchHelpers
 
         return count($category) > 0
         ? $category[0]->recipes
-            ->where('ready_' . lang(), 1)
-            ->where('approved_' . lang(), 1)
+            ->ready(1)
+            ->approved(1)
         : [];
     }
 
@@ -42,8 +42,8 @@ trait SearchHelpers
 
         return count($meal) > 0
         ? $meal[0]->recipes
-            ->where('ready_' . lang(), 1)
-            ->where('approved_' . lang(), 1)
+            ->ready(1)
+            ->approved(1)
         : [];
     }
 
@@ -58,8 +58,8 @@ trait SearchHelpers
             ->orWhere('ingredients_' . lang(), 'LIKE', '%' . $request . '%')
             ->take(50)
             ->get()
-            ->where('ready_' . lang(), 1)
-            ->where('approved_' . lang(), 1);
+            ->ready(1)
+            ->approved(1);
     }
 
     /**
