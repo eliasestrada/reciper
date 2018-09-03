@@ -19,7 +19,7 @@ class PopularRecipesComposer
                 ->withCount('likes')
                 ->orderBy('likes_count', 'desc')
                 ->ready(1)
-                ->appeoved(1)
+                ->approved(1)
                 ->limit(10)
                 ->get();
         });
