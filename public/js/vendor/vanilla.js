@@ -10644,6 +10644,13 @@ if ($('search-form')) {
 }
 if ($('nav-btn-for-search')) {
 	activeAfterClickBtn('nav-search-form', 'nav-btn-for-search');
+
+	$('nav-btn-for-search').addEventListener('click', function () {
+		return $('search-input').focus();
+	});
+	$('nav-btn-for-search-footer').addEventListener('click', function () {
+		return $('search-input').focus();
+	});
 }
 
 if ($('nav-btn-for-search-footer')) {
