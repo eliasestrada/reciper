@@ -12,6 +12,20 @@ class HelperFunctionsTest extends TestCase
      * @test
      * @return void
      */
+    public function convert_to_array_of_list_items_helper_returns_array(): void
+    {
+        $string = 'First line
+            Second line';
+
+        $result = convertToArrayOfListItems($string);
+
+        $this->assertCount(2, $result);
+        $this->assertEquals('<li>First line</li>', $result[0]);
+    }
+    /**
+     * @test
+     * @return void
+     */
     public function check_get_data_notif_markup_helper(): void
     {
         $this->assertEquals(getDataNotifMarkup(0), '');
@@ -23,7 +37,7 @@ class HelperFunctionsTest extends TestCase
      * @test
      * @return void
      */
-    public function check_get_online_icon_helper(): void
+    public function get_online_icon_helper_should_return_correct_state(): void
     {
         // Icon should be on ===================
         array_map(function ($second) {
@@ -42,7 +56,7 @@ class HelperFunctionsTest extends TestCase
      * @test
      * @return void
      */
-    public function check_readable_number_helper(): void
+    public function readable_number_helper_converts_data_correctly(): void
     {
         $thousand = trans('users.thousand');
         $million = trans('users.million');
@@ -56,7 +70,7 @@ class HelperFunctionsTest extends TestCase
      * @test
      * @return void
      */
-    public function check_get_rating_number_helper(): void
+    public function get_rating_number_helper_returns_correct_rating(): void
     {
         $user = make(User::class);
         $recipes = [make(Recipe::class, ['user_id' => $user->id])];
@@ -69,7 +83,7 @@ class HelperFunctionsTest extends TestCase
      * @test
      * @return void
      */
-    public function check_active_if_route_is_helper(): void
+    public function active_if_route_is_helper_returns_active_string(): void
     {
         $this->get('/recipes');
         $this->assertEquals(activeIfRouteIs('/recipes'), 'active');
