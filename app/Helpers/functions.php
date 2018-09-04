@@ -13,9 +13,9 @@ function customStripTags(string $string): string
 /**
  * Takes string, adds li tags to every line separeted by "\n"
  * @param string $str
- * @return string
+ * @return array
  */
-function convertToListItems(?string $str): string
+function convertToArrayOfListItems(?string $str): array
 {
     $string = strip_tags($str, '<li>');
 
@@ -27,8 +27,7 @@ function convertToListItems(?string $str): string
         return '<li>' . $item . '</li>';
     }, $array);
 
-    // Converting array back to string
-    return implode('', array_values($list_of_ingredients));
+    return array_values($list_of_ingredients);
 }
 
 // Shortcut
