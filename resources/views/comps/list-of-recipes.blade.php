@@ -22,8 +22,8 @@
 								@lang('users.date') {{ timeAgo($recipe->updated_at) }}
 							</section>
 							<section>
-								<span class="new badge mt-2 {{ $recipe->done() ? 'green' : 'red' }}">
-									@lang('users.status'): {{ $recipe->getStatus() }}
+								<span class="new badge mt-3 {{ $recipe->done() ? 'green' : 'red' }}" title="@lang('users.status'): {{ $recipe->getStatus() }}" style="min-width:auto">
+									<i class="material-icons" style="font-size:21px">{{ $recipe->getStatus('icon') }}</i>
 								</span>
 							</section>
 						</div>

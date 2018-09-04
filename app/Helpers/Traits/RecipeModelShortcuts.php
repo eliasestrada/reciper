@@ -63,14 +63,14 @@ trait RecipeModelShortcuts
     /**
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(string $icon = null): string
     {
-        if ($this->approved()) {
-            return trans('users.checked');
+        if ($this->approved() && $this->ready()) {
+            return $icon ? 'check' : trans('users.checked');
         } elseif (!$this->ready()) {
-            return trans('users.not_ready');
+            return $icon ? 'create' : trans('users.not_ready');
         } else {
-            return trans('users.not_checked');
+            return $icon ? 'cancel' : trans('users.not_checked');
         }
     }
 }
