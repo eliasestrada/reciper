@@ -11,10 +11,7 @@ class MealTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function model_has_attributes(): void
     {
         $attributes = ['table', 'guarded', 'timestamps'];
@@ -24,10 +21,7 @@ class MealTest extends TestCase
         }, $attributes);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function model_has_relationship_with_recipes(): void
     {
         $meal = Meal::find(1);
@@ -39,10 +33,7 @@ class MealTest extends TestCase
         $this->assertGreaterThanOrEqual(2, $meal->recipes->count());
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function method_get_name_returns_name(): void
     {
         $actual = Meal::get(['name_' . lang()]);

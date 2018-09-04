@@ -26,10 +26,7 @@ class RecipesShowPageTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_recipes_show_has_data(): void
     {
         $recipe = create(Recipe::class);
@@ -43,10 +40,7 @@ class RecipesShowPageTest extends TestCase
             );
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function auth_user_can_see_recipe_show_page(): void
     {
         $user = make(User::class);
@@ -58,19 +52,13 @@ class RecipesShowPageTest extends TestCase
         $this->actingAs($user2)->get("/recipes/$recipe->id")->assertOk();
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function guest_can_see_recipes_show_page(): void
     {
         $this->get("/recipes/{$this->recipe->id}")->assertOk();
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function admin_can_approve_recipe_with_message(): void
     {
         $this->actingAs($this->admin)
@@ -90,10 +78,7 @@ class RecipesShowPageTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function admin_cant_approve_recipe_without_message(): void
     {
         $this->actingAs($this->admin)
@@ -113,10 +98,7 @@ class RecipesShowPageTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function admin_can_cancel_recipe_with_message(): void
     {
         $this->actingAs($this->admin)
@@ -136,10 +118,7 @@ class RecipesShowPageTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function admin_cant_cancel_recipe_without_message(): void
     {
         $this->actingAs($this->admin)
@@ -157,10 +136,7 @@ class RecipesShowPageTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_gets_notified_when_approved_his_recipe(): void
     {
         $user = create(User::class);

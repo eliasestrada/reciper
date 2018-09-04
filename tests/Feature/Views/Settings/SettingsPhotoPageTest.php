@@ -10,10 +10,7 @@ class SettingsPhotoPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_settings_photo_has_a_correct_path(): void
     {
         $this->actingAs(make(User::class))
@@ -21,10 +18,7 @@ class SettingsPhotoPageTest extends TestCase
             ->assertViewIs('settings.photo');
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function auth_user_can_see_settings_photo_page(): void
     {
         $this->actingAs(make(User::class))
@@ -33,10 +27,7 @@ class SettingsPhotoPageTest extends TestCase
             ->assertViewIs('settings.photo');
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function guest_cant_see_settings_photo_page(): void
     {
         $this->get('/settings/photo')->assertRedirect('/login');

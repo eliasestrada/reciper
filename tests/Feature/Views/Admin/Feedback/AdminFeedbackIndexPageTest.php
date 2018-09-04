@@ -20,10 +20,7 @@ class AdminFeedbackPageTest extends TestCase
         $this->admin = make(User::class, ['admin' => 1]);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_admin_feedback_index_has_data(): void
     {
         $this->actingAs($this->admin)
@@ -32,10 +29,7 @@ class AdminFeedbackPageTest extends TestCase
             ->assertViewHas('feedback', Feedback::paginate(40));
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_cant_see_admin_feedback_index_page(): void
     {
         $user = make(User::class);
@@ -45,10 +39,7 @@ class AdminFeedbackPageTest extends TestCase
             ->assertRedirect('/');
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function admin_can_see_admin_feedback_index_page(): void
     {
         $this->actingAs($this->admin)
@@ -56,10 +47,7 @@ class AdminFeedbackPageTest extends TestCase
             ->assertOk();
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function feedback_message_can_be_deleted_by_admin(): void
     {
         $message = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae facere ex animi quis!';

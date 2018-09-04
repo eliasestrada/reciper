@@ -11,10 +11,7 @@ class LoginPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_can_login_with_correct_credentials(): void
     {
         $user = create(User::class, ['password' => bcrypt('test')]);
@@ -26,10 +23,7 @@ class LoginPageTest extends TestCase
         $response->assertRedirect('/dashboard');
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_cannot_login_with_incorrect_password(): void
     {
         $user = create(User::class, ['password' => bcrypt('test')]);
@@ -77,10 +71,7 @@ class LoginPageTest extends TestCase
         $response->assertCookie(Auth::guard()->getRecallerName(), $cookie);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_cant_see_login_page(): void
     {
         $this->actingAs(make(User::class))
@@ -89,10 +80,7 @@ class LoginPageTest extends TestCase
             ->assertRedirect(action('DashboardController@index'));
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function guest_can_see_login_page(): void
     {
         $this->get('/login')

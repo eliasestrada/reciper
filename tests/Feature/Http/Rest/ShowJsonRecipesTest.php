@@ -13,7 +13,6 @@ class ShowJsonRecipesTest extends TestCase
     /**
      * Try to see json api/recipes
      * We expect 3 json: data, links, meta
-     * @return void
      * @test
      */
     public function see_recipes_json(): void
@@ -30,7 +29,6 @@ class ShowJsonRecipesTest extends TestCase
 
     /**
      * Try to see json api/recipes/other/random
-     * @return void
      * @test
      */
     public function see_random_recipes_json(): void
@@ -53,7 +51,6 @@ class ShowJsonRecipesTest extends TestCase
     /**
      * Try to see json api/recipes/other/categories
      * @test
-     * @return void
      */
     public function see_categories_json(): void
     {

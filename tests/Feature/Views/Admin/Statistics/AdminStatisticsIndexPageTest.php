@@ -12,11 +12,7 @@ class AdminStatisticsPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * resources/views/admin/statistics/index
-     * @return void
-     * @test
-     */
+    /** @test */
     public function view_admin_statistics_index_has_data(): void
     {
         $admin = make(User::class, ['admin' => 1]);
@@ -32,10 +28,7 @@ class AdminStatisticsPageTest extends TestCase
             ]);
     }
 
-    /**
-     * @return void
-     * @test
-     */
+    /** @test */
     public function user_cant_see_admin_statistics_index_page(): void
     {
         $this->actingAs(make(User::class, ['admin' => 0]))

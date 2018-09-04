@@ -11,10 +11,7 @@ class SearchPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_pages_search_has_data(): void
     {
         $this->get('/search')
@@ -26,10 +23,7 @@ class SearchPageTest extends TestCase
             ->assertViewHasAll(['recipes', 'message']);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function serch_form_shows_results_after_submitting(): void
     {
         create(Recipe::class, ['title_' . lang() => 'Recipe for test']);
@@ -39,19 +33,13 @@ class SearchPageTest extends TestCase
             ->assertSeeText('Recipe for test');
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function guest_can_see_search_page(): void
     {
         $this->get('/search')->assertOk();
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function auth_user_can_see_search_page(): void
     {
         $this->actingAs(create(User::class))

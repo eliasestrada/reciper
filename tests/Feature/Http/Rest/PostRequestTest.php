@@ -11,10 +11,7 @@ class PostRequestTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @return void
-     * @test
-     */
+    /** @test */
     public function like_and_dislike_recipe_post_request(): void
     {
         // Like recipe request ======
@@ -36,10 +33,7 @@ class PostRequestTest extends TestCase
         $this->assertEquals(0, count($recipe->likes));
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function check_if_liked_post_request(): void
     {
         $recipe = create(Recipe::class);

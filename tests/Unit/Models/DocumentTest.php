@@ -7,10 +7,7 @@ use Tests\TestCase;
 
 class DocumentTest extends TestCase
 {
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function method_get_title_return_title(): void
     {
         $document = make(Document::class, [
@@ -20,10 +17,7 @@ class DocumentTest extends TestCase
         $this->assertEquals('Название документа', $document->getTitle());
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function model_has_attributes(): void
     {
         $this->assertClassHasAttribute('guarded', Document::class);

@@ -10,10 +10,7 @@ class UsersIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_users_index_has_data(): void
     {
         $this->actingAs(make(User::class))
@@ -22,10 +19,7 @@ class UsersIndexPageTest extends TestCase
             ->assertViewHas('users', User::paginate(50));
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function auth_user_can_see_users_index_page(): void
     {
         $this->actingAs(make(User::class))
@@ -33,10 +27,7 @@ class UsersIndexPageTest extends TestCase
             ->assertOk();
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function guest_can_see_users_index_page(): void
     {
         $this->get('/users')->assertOk();

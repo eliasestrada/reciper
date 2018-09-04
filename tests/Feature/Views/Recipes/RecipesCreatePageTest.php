@@ -11,10 +11,7 @@ class RecipesCreatePageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_recipes_create_has_data(): void
     {
         $this->actingAs(make(User::class))
@@ -23,10 +20,7 @@ class RecipesCreatePageTest extends TestCase
             ->assertViewHas('meal', Meal::get(['id', 'name_' . lang()]));
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function auth_user_can_see_recipes_create_page(): void
     {
         $this->actingAs(make(User::class))
@@ -34,10 +28,7 @@ class RecipesCreatePageTest extends TestCase
             ->assertOk();
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function created_recipe_by_user_is_not_approved(): void
     {
         $recipe = $this->new_recipe('Hello world');
@@ -52,10 +43,7 @@ class RecipesCreatePageTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function created_recipe_by_admin_approved(): void
     {
         $recipe = $this->new_recipe('Hello people');

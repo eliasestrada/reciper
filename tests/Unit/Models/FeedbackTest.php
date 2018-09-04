@@ -7,10 +7,7 @@ use Tests\TestCase;
 
 class FeedbackTest extends TestCase
 {
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function model_has_attributes(): void
     {
         $this->assertClassHasAttribute('guarded', Feedback::class);

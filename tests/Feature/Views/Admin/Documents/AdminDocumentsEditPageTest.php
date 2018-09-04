@@ -11,10 +11,7 @@ class AdminDocumentsEditPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_admin_documents_edit_has_data(): void
     {
         $document = create(Document::class);
@@ -27,10 +24,7 @@ class AdminDocumentsEditPageTest extends TestCase
             ->assertViewHas('document', Document::find($document->id));
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_cannot_see_admin_documents_edit_page(): void
     {
         $document_id = create(Document::class)->id;

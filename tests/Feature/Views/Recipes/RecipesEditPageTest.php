@@ -12,10 +12,7 @@ class RecipesEditPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_recipes_edit_has_data(): void
     {
         $user = create(User::class);
@@ -36,10 +33,7 @@ class RecipesEditPageTest extends TestCase
             ]);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function auth_user_can_see_recipes_edit_page(): void
     {
         $user = create(User::class);
@@ -50,10 +44,7 @@ class RecipesEditPageTest extends TestCase
             ->assertOk();
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function recipe_is_ready_but_not_approved_after_publishing_by_user(): void
     {
         $user = create(User::class);
@@ -76,10 +67,7 @@ class RecipesEditPageTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function recipe_is_ready_and_approved_after_publishing_by_admin(): void
     {
         $user = create(User::class, ['admin' => 1]);

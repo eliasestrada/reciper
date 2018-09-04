@@ -11,10 +11,7 @@ class HomePageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_pages_home_has_data(): void
     {
         $responce = $this->get('/');
@@ -29,20 +26,14 @@ class HomePageTest extends TestCase
             ->assertViewHas('intro', $intro);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function auth_user_can_see_home_page(): void
     {
         $user = make(User::class);
         $this->actingAs($user)->get('/')->assertOk();
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function guest_can_see_home_page(): void
     {
         $this->get('/')->assertOk();

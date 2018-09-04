@@ -11,10 +11,7 @@ class UsersShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_users_show_has_data(): void
     {
         $user = create(User::class);
@@ -41,20 +38,14 @@ class UsersShowPageTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function auth_user_can_see_users_show_page(): void
     {
         $user = make(User::class);
         $this->actingAs($user)->get('/users/' . $user->id)->assertOk();
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function guest_can_see_users_show_page(): void
     {
         $user = make(User::class);

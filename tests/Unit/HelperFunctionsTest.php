@@ -8,10 +8,7 @@ use Tests\TestCase;
 
 class HelperFunctionsTest extends TestCase
 {
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function convert_to_array_of_list_items_helper_returns_array(): void
     {
         $string = 'First line
@@ -21,11 +18,9 @@ class HelperFunctionsTest extends TestCase
 
         $this->assertCount(2, $result);
         $this->assertEquals('<li>First line</li>', $result[0]);
-    }
-    /**
-     * @test
-     * @return void
-     */
+	}
+
+    /** @test */
     public function check_get_data_notif_markup_helper(): void
     {
         $this->assertEquals(getDataNotifMarkup(0), '');
@@ -33,10 +28,7 @@ class HelperFunctionsTest extends TestCase
         $this->assertEquals(getDataNotifMarkup(1), 'data-notif=1');
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function get_online_icon_helper_should_return_correct_state(): void
     {
         // Icon should be on ===================
@@ -52,10 +44,7 @@ class HelperFunctionsTest extends TestCase
         }, [trans('date.minute'), trans('date.minutes'), trans('date.minutes2')]);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function readable_number_helper_converts_data_correctly(): void
     {
         $thousand = trans('users.thousand');
@@ -66,10 +55,7 @@ class HelperFunctionsTest extends TestCase
         $this->assertEquals(readableNumber(1000000), "1<br /><small>$million</small>");
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function get_rating_number_helper_returns_correct_rating(): void
     {
         $user = make(User::class);
@@ -79,10 +65,7 @@ class HelperFunctionsTest extends TestCase
         $this->assertEquals(getRatingNumber($recipes, $likes = -11), 1);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function active_if_route_is_helper_returns_active_string(): void
     {
         $this->get('/recipes');

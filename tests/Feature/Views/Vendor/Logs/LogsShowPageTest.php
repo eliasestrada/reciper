@@ -19,10 +19,7 @@ class LogsShowPageTest extends TestCase
         $this->master = make(User::class, ['master' => 1]);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_vendor_logs_show_has_correct_path(): void
     {
         $file_name = $this->createLogFile();
@@ -33,10 +30,7 @@ class LogsShowPageTest extends TestCase
             ->assertOk();
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function master_can_see_logs_shows_page(): void
     {
         $file_name = $this->createLogFile();

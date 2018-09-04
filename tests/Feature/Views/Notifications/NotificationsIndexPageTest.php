@@ -11,10 +11,7 @@ class NotificationsIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_notifications_index_has_data(): void
     {
         $user = make(User::class);
@@ -27,10 +24,7 @@ class NotificationsIndexPageTest extends TestCase
             );
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_can_see_notifications_index_page(): void
     {
         $user = make(User::class);
@@ -40,20 +34,14 @@ class NotificationsIndexPageTest extends TestCase
             ->assertOk();
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function guest_cant_see_notifications_index_page(): void
     {
         $this->get('/notifications')
             ->assertRedirect('/login');
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_can_delete_his_notification_message(): void
     {
         $user = make(User::class);

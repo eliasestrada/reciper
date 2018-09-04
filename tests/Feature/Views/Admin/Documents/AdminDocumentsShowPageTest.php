@@ -11,10 +11,7 @@ class AdminDocumentsPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_admin_documents_show_has_data(): void
     {
         $document = create(Document::class);
@@ -25,10 +22,7 @@ class AdminDocumentsPageTest extends TestCase
             ->assertViewHas('document', Document::find($document->id));
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_cant_see_admin_documents_show_page(): void
     {
         $document = create(Document::class);
@@ -38,10 +32,7 @@ class AdminDocumentsPageTest extends TestCase
             ->assertRedirect('/');
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function admin_can_see_admin_documents_show_page(): void
     {
         $document = create(Document::class);

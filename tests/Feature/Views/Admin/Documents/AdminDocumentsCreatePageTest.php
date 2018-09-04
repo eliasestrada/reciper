@@ -11,10 +11,7 @@ class AdminDocumentsCreatePageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_admin_documents_create_has_a_correct_path(): void
     {
         $admin = make(User::class, ['admin' => 1]);
@@ -25,10 +22,7 @@ class AdminDocumentsCreatePageTest extends TestCase
             ->assertViewIs('admin.documents.create');
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_cant_see_admin_documents_create_page(): void
     {
         $user = make(User::class, ['admin' => 0]);

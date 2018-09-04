@@ -19,10 +19,7 @@ class LogsIndexPageTest extends TestCase
         $this->master = make(User::class, ['master' => 1]);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_vendor_logs_index_has_correct_path(): void
     {
         $this->actingAs($this->master)
@@ -31,10 +28,7 @@ class LogsIndexPageTest extends TestCase
             ->assertOk();
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function master_can_see_logs_page(): void
     {
         $this->actingAs($this->master)
@@ -44,10 +38,7 @@ class LogsIndexPageTest extends TestCase
             ->assertDontSeeText(trans('logs.page_is_not_avail'));
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function master_can_delete_log_file(): void
     {
         $file_name = $this->createLogFile();

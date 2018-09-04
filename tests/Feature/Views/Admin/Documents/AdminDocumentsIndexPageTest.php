@@ -11,10 +11,7 @@ class AdminDocumentsIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_admin_documents_index_is_correct(): void
     {
         $admin = make(User::class, ['admin' => 1]);
@@ -25,10 +22,7 @@ class AdminDocumentsIndexPageTest extends TestCase
             ->assertViewHas('documents', Document::get());
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_cant_see_admin_documents_index_page(): void
     {
         $user = make(User::class, ['admin' => 0]);
@@ -38,10 +32,7 @@ class AdminDocumentsIndexPageTest extends TestCase
             ->assertRedirect('/');
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function admin_can_see_admin_documents_index_page(): void
     {
         $admin = make(User::class, ['admin' => 1]);

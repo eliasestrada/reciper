@@ -10,10 +10,7 @@ class RegisterPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_cannot_see_register_page(): void
     {
         $this->actingAs(make(User::class))
@@ -22,10 +19,7 @@ class RegisterPageTest extends TestCase
             ->assertRedirect(action('DashboardController@index'));
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function guest_can_see_register_page(): void
     {
         $this->get('/register')

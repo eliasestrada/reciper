@@ -10,10 +10,7 @@ class DeleteRequestTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @return void
-     * @test
-     */
+    /** @test */
     public function delete_recipe_request(): void
     {
         $recipe = create(Recipe::class);

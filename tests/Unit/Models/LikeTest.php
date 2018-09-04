@@ -32,30 +32,21 @@ class LikeTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function model_has_attributes(): void
     {
         $this->assertClassHasAttribute('guarded', Like::class);
         $this->assertClassHasAttribute('timestamps', Like::class);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function model_has_relationship_with_visitor(): void
     {
         $this->assertTrue($this->like->visitor()->exists());
         $this->assertEquals(1, $this->like->visitor()->count());
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function model_has_relationship_with_recipes(): void
     {
         $this->assertTrue($this->like->recipe()->exists());

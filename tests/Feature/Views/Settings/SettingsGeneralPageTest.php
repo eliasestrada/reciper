@@ -10,10 +10,7 @@ class SettingsGeneralPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_settings_general_has_a_correct_path(): void
     {
         $this->actingAs(make(User::class))
@@ -21,10 +18,7 @@ class SettingsGeneralPageTest extends TestCase
             ->assertViewIs('settings.general');
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function auth_user_can_see_settings_general_page(): void
     {
         $this->actingAs(make(User::class))
@@ -32,19 +26,13 @@ class SettingsGeneralPageTest extends TestCase
             ->assertOk();
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function guest_cant_see_settings_general_page(): void
     {
         $this->get('/settings/general')->assertRedirect('/login');
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_can_update_his_general_data(): void
     {
         $user = create(User::class, ['name' => 'Andr']);
@@ -59,10 +47,7 @@ class SettingsGeneralPageTest extends TestCase
         $this->assertEquals($user->name, 'Andrej');
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_can_change_his_pwd_with_correct_pwd(): void
     {
         $user = create(User::class, ['password' => bcrypt('test')]);
@@ -79,10 +64,7 @@ class SettingsGeneralPageTest extends TestCase
         $this->assertTrue(\Hash::check('new_password', $user->password));
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_cant_change_his_pwd_with_incorrect_pwd(): void
     {
         $user = create(User::class, ['password' => bcrypt('test')]);
@@ -99,10 +81,7 @@ class SettingsGeneralPageTest extends TestCase
         $this->assertFalse(\Hash::check('new_password', $user->password));
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_cant_change_his_pwd_with_incorrect_confirm_pwd(): void
     {
         $user = create(User::class, ['password' => bcrypt('test')]);

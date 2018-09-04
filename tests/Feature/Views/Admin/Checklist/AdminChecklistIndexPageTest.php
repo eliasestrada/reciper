@@ -11,10 +11,7 @@ class AdminChecklistIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_admin_checklist_index_has_data(): void
     {
         $admin = make(User::class, ['admin' => 1]);
@@ -30,10 +27,7 @@ class AdminChecklistIndexPageTest extends TestCase
                 ])->oldest()->paginate(10));
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function user_cant_see_admin_checklist_index_page(): void
     {
         $user = make(User::class, ['admin' => 0]);

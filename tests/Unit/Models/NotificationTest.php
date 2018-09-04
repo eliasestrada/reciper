@@ -11,19 +11,13 @@ class NotificationTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function model_has_properies(): void
     {
         $this->assertClassHasAttribute('guarded', Notification::class);
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function model_has_relationship_with_user(): void
     {
         $user = create(User::class);

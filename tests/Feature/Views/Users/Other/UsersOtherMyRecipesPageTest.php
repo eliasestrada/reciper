@@ -11,10 +11,7 @@ class UsersOtherMyRecipesPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function view_users_other_my_recipes_has_data(): void
     {
         $user = create(User::class);
@@ -31,19 +28,13 @@ class UsersOtherMyRecipesPageTest extends TestCase
             ->assertViewHas('recipes', Recipe::whereUserId($user->id)->latest()->paginate(20));
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function guest_cant_see_my_recipes_page(): void
     {
         $this->get('/users/other/my-recipes')->assertRedirect('/login');
     }
 
-    /**
-     * @test
-     * @return void
-     */
+    /** @test */
     public function auth_user_can_see_my_recipes_page(): void
     {
         $this->actingAs(make(User::class))
