@@ -1,6 +1,6 @@
 <li class="{{ activeIfRouteIs('users/' . user()->id) }}"> {{-- home --}}
-	<a href="/users/{{ user()->id }}" title="@lang('includes.home')">
-		<i class="material-icons left">home</i>@lang('includes.home')
+	<a href="/users/{{ user()->id }}" title="@lang('includes.user_home')">
+		<i class="material-icons left">home</i>@lang('includes.user_home')
 	</a>
 </li>
 

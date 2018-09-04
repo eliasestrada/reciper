@@ -14,7 +14,7 @@ return [
     'register' => 'Регистрация',
 
     // User sidebar
-    'home' => 'Домой',
+    'user_home' => 'Домой',
     'new_recipe' => 'Новый рецепт',
     'my_recipes' => 'Мои рецепты',
     'users' => 'Пользователи',
