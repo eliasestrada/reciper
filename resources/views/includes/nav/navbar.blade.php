@@ -42,9 +42,9 @@
 
 				@auth
 					<li> {{-- Dropdown Trigger 2 User --}}
-						<a id="_user-menu-trigger" class="dropdown-trigger" href="#!" data-target="dropdown2" title="@lang('includes.profile')">
+						<a id="_user-menu-trigger" class="dropdown-trigger" href="#!" data-target="dropdown2" title="@lang('includes.home')">
 							<i class="right user-icon">
-								<img class="user-icon-big" src="{{ asset('storage/users/' . user()->image) }}" alt="user">
+								<img class="user-icon-big" src="{{ asset('storage/users/' . user()->image) }}">
 							</i>
 						</a>
 					</li>

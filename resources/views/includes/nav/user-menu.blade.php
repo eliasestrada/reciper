@@ -1,9 +1,6 @@
-<li class="{{ activeIfRouteIs('users/' . user()->id) }}"> {{-- profile --}}
-	<a href="/users/{{ user()->id }}" title="@lang('includes.profile')">
-		<i class="left user-icon">
-			<img class="user-icon-small" src="{{ asset('storage/users/' . user()->image) }}" alt="user">
-		</i>
-		@lang('includes.profile')
+<li class="{{ activeIfRouteIs('users/' . user()->id) }}"> {{-- home --}}
+	<a href="/users/{{ user()->id }}" title="@lang('includes.home')">
+		<i class="material-icons left">home</i>@lang('includes.home')
 	</a>
 </li>
 
