@@ -29,7 +29,7 @@
 
 			{{--  Publish button  --}}
 			<a href="#" class="btn green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish_recipe')" data-position="top">
-				<i class="large material-icons">send</i>
+				<i class="large material-icons">check_circle</i>
 			</a>
 			<input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
 		</div>
