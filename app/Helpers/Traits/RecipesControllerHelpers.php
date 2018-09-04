@@ -65,6 +65,7 @@ trait RecipesControllerHelpers
             'intro_' . lang() => $request->intro,
             'text_' . lang() => $request->text,
             'ingredients_' . lang() => $request->ingredients,
+            'simple' => $this->isSimple($request),
             'ready_' . lang() => isset($request->ready) ? 1 : 0,
             'approved_' . lang() => user()->isAdmin() ? 1 : 0,
         ];
@@ -101,5 +102,16 @@ trait RecipesControllerHelpers
                 );
             }
         }
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isSimple($request): bool
+    {
+        $ingredients = count(convertToArrayOfListItems($request->ingredients));
+        $text = count(convertToArrayOfListItems($request->text));
+
+        return $ingredients + $text <= 10 ? true : false;
     }
 }

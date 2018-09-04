@@ -94,7 +94,9 @@
 		{{--  Items --}}
 		<blockquote class="items">
 			<h5 class="decorated">@lang('recipes.ingredients')</h5>
-			<ol>{!! $recipe->ingredientsWithListItems() !!}</ol>
+			@foreach ($recipe->ingredientsWithListItems() as $item)
+				<ol>{!! $item !!}</ol>
+			@endforeach
 		</blockquote>
 
 		<hr />
@@ -102,7 +104,9 @@
 		{{--  Text  --}}
 		<blockquote style="border:none;">
 			<h5 class="decorated py-3">@lang('recipes.text_of_recipe')</h5>
-			<ol class="instruction unstyled-list">{!! $recipe->textWithListItems() !!}</ol>
+			@foreach ($recipe->textWithListItems() as $item)
+				<ol class="instruction unstyled-list">{!! $item !!}</ol>
+			@endforeach
 		</blockquote>
 		
 		<hr />

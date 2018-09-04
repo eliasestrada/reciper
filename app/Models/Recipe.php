@@ -13,19 +13,19 @@ class Recipe extends Model
     protected $guarded = ['id'];
 
     /**
-     * @return string
+     * @return array
      */
-    public function ingredientsWithListItems(): string
+    public function ingredientsWithListItems(): array
     {
-        return convertToListItems($this->getIngredients());
+        return convertToArrayOfListItems($this->getIngredients());
     }
 
     /**
-     * @return string
+     * @return array
      */
-    public function textWithListItems(): string
+    public function textWithListItems(): array
     {
-        return convertToListItems($this->getText());
+        return convertToArrayOfListItems($this->getText());
     }
 
     /**
