@@ -22,14 +22,24 @@
 			</a>
 
 			<ul class="right hide-on-med-and-down right-borders">
-				@include('includes.nav.menu')
-				{{-- Seach trigger --}}
+				<li class="{{ activeIfRouteIs('/') }}">
+					<a href="/" title="@lang('includes.home')">
+						@lang('includes.home')
+					</a>
+				</li>
+				<li class="{{ activeIfRouteIs('recipes') }}">
+					<a href="/recipes" title="@lang('includes.recipes')">
+						@lang('includes.recipes')
+					</a>
+				</li>
+
 				<li> {{-- Dropdown Trigger 1 Categories --}}
 					<a class="dropdown-trigger" href="#!" data-target="dropdown1">
 						@lang('includes.categories')
 						<i class="material-icons right">arrow_drop_down</i>
 					</a>
 				</li>
+
 				@auth
 					<li> {{-- Dropdown Trigger 2 User --}}
 						<a id="_user-menu-trigger" class="dropdown-trigger" href="#!" data-target="dropdown2" title="@lang('includes.profile')">
@@ -39,8 +49,7 @@
 						</a>
 					</li>
 				@else
-					{{-- Guest menu --}}
-					<li>
+					<li> {{-- Guest menu --}}
 						<a href="/login" data-target="dropdown3" title="@lang('includes.enter')">
 							@lang('includes.enter')
 							<i class="material-icons right">exit_to_app</i>
@@ -48,6 +57,7 @@
 					</li>
 				@endauth
 			</ul>
+					
 			{{-- Search button --}}
 			<a href="#" data-target="mobile-demo" class="right px-4" title="@lang('includes.search')" id="nav-btn-for-search">
 				<i class="material-icons">search</i>
