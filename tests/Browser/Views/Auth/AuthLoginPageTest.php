@@ -8,10 +8,7 @@ use Tests\DuskTestCase;
 
 class AuthLoginPageTest extends DuskTestCase
 {
-    /**
-     * @test
-     * @return void
-     * */
+    /** @test */
     public function logining_in_user_and_logout(): void
     {
         $this->artisan('wipe');
