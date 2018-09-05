@@ -9,6 +9,7 @@ function $(e) {
 }
 
 var i = void 0;
+
 /*!
 * Materialize v1.0.0-beta (http://materializecss.com)
 * Copyright 2014-2017 Materialize
@@ -10544,36 +10545,38 @@ $jscomp.polyfill = function (e, r, p, m) {
 /**
  * Show certain element by adding active class and
  * removing after another click event
- * 
+ *
  * @param {string} element that u want to show
  * @param {string} button that u want to click
  */
 function activeAfterClickBtn(element, button) {
 	var visible = false;
 
-	$(button).addEventListener('click', function () {
+	$(button).addEventListener("click", function () {
 		if (visible === false) {
-			$(element).classList.add('active');
+			$(element).classList.add("active");
 			visible = true;
 		} else if (visible === true) {
-			$(element).classList.remove('active');
+			$(element).classList.remove("active");
 			visible = false;
 		}
 	});
 }
+
 /**
  * The function will check the given checkbox after clicking given
  * button, then it will submit the closest form to checkbox
- * @param {string} checkbox 
- * @param {string} button 
+ * @param {string} checkbox
+ * @param {string} button
  */
 function checkCheckboxThenSubmit(checkbox, button) {
-	$(button).addEventListener('click', function () {
+	$(button).addEventListener("click", function () {
 		if ($(checkbox).checked = true) {
-			$(checkbox).closest('form').submit();
+			$(checkbox).closest("form").submit();
 		}
 	});
 }
+
 // This object auto updates pictures after
 // selecting them via file input
 var imageUploader = {
@@ -10591,35 +10594,38 @@ var imageUploader = {
 					that.target.src = this.result;
 				};
 			} else {
-				_this20.target.src = '/storage/images/default.jpg';
+				_this20.target.src = "/storage/images/default.jpg";
 			}
 		});
 	}
 };
-if ($('input-message')) {
+
+if ($("input-message")) {
 	(function () {
-		$('input-message').addEventListener('input', function () {
-			$('output-message1').value = $('input-message').value;
-			$('output-message2').value = $('input-message').value;
+		$("input-message").addEventListener("input", function () {
+			$("output-message1").value = $("input-message").value;
+			$("output-message2").value = $("input-message").value;
 		});
 	})();
 }
-if ($('ready-checkbox')) {
-	checkCheckboxThenSubmit('ready-checkbox', 'publish-btn');
+
+if ($("ready-checkbox")) {
+	checkCheckboxThenSubmit("ready-checkbox", "publish-btn");
 }
 
 if (imageUploader.src && imageUploader.target) {
 	imageUploader.showImage();
 }
+
 /**
  * These functions allows admin see edit form after clicking
  * edit button
  */
-if ($('btn-for-intro')) {
-	activeAfterClickBtn('intro-form', 'btn-for-intro');
+if ($("btn-for-intro")) {
+	activeAfterClickBtn("intro-form", "btn-for-intro");
 }
-if ($('btn-for-footer')) {
-	activeAfterClickBtn('footer-form', 'btn-for-footer');
+if ($("btn-for-footer")) {
+	activeAfterClickBtn("footer-form", "btn-for-footer");
 }
 
 /**
@@ -10628,13 +10634,13 @@ if ($('btn-for-footer')) {
  * it will set @var preventing to false, now after second click, it
  * will submit the search form
  */
-if ($('search-form')) {
+if ($("search-form")) {
 	(function () {
 		var preventing = true;
-		var button = $('home-search-btn');
-		activeAfterClickBtn('search-form', 'home-search-btn');
+		var button = $("home-search-btn");
+		activeAfterClickBtn("search-form", "home-search-btn");
 
-		button.addEventListener('click', function (e) {
+		button.addEventListener("click", function (e) {
 			if (preventing === true) {
 				e.preventDefault();
 				preventing = false;
@@ -10642,17 +10648,18 @@ if ($('search-form')) {
 		});
 	})();
 }
-if ($('nav-btn-for-search')) {
-	activeAfterClickBtn('nav-search-form', 'nav-btn-for-search');
 
-	$('nav-btn-for-search').addEventListener('click', function () {
-		return $('search-input').focus();
+if ($("nav-btn-for-search")) {
+	activeAfterClickBtn("nav-search-form", "nav-btn-for-search");
+
+	$("nav-btn-for-search").addEventListener("click", function () {
+		return $("search-input").focus();
 	});
-	$('nav-btn-for-search-footer').addEventListener('click', function () {
-		return $('search-input').focus();
+	$("nav-btn-for-search-footer").addEventListener("click", function () {
+		return $("search-input").focus();
 	});
 }
 
-if ($('nav-btn-for-search-footer')) {
-	activeAfterClickBtn('nav-search-form', 'nav-btn-for-search-footer');
+if ($("nav-btn-for-search-footer")) {
+	activeAfterClickBtn("nav-search-form", "nav-btn-for-search-footer");
 }

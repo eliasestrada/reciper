@@ -3,7 +3,7 @@
  * @param {string} e
  */
 function $(e) {
-	return document.getElementById(e)
+    return document.getElementById(e);
 }
 
-let i
+let i;
