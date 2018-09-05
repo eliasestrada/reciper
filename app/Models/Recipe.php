@@ -17,7 +17,7 @@ class Recipe extends Model
      */
     public function ingredientsWithListItems(): array
     {
-        return convertToArrayOfListItems($this->getIngredients());
+        return convert_to_array_of_list_items($this->getIngredients());
     }
 
     /**
@@ -25,7 +25,7 @@ class Recipe extends Model
      */
     public function textWithListItems(): array
     {
-        return convertToArrayOfListItems($this->getText());
+        return convert_to_array_of_list_items($this->getText());
     }
 
     /**

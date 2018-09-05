@@ -24,7 +24,7 @@ class SettingsController extends Controller
             $image = $request->file('image');
 
             $extention = $image->getClientOriginalExtension();
-            $file_name = setImageName($extention, 'user' . user()->id);
+            $file_name = set_image_name($extention, 'user' . user()->id);
 
             $this->deleteOldFileFromStorage(user()->image, 'users');
             $this->saveFileToStorage($image, $file_name);

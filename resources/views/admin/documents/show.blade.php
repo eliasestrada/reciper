@@ -12,7 +12,7 @@
 
 <div class="page">
 	<h4>{{ $document->getTitle() }}</h4>
-	<div class="reset">{!! customStripTags($document->text) !!}</div>
+	<div class="reset">{!! custom_strip_tags($document->text) !!}</div>
 
 	<p class="mt-5"> {{-- Created at --}}
 		<b>@lang('logs.created_at'):</b> 

@@ -4,7 +4,7 @@
  * @param string $string
  * @return string
  */
-function customStripTags(string $string): string
+function custom_strip_tags(string $string): string
 {
     $allowed = '<h1><h2><h3><h4><h5><h6><p><br><br /><b><li><ol><ul><strong><span>';
     return strip_tags($string, $allowed);
@@ -15,7 +15,7 @@ function customStripTags(string $string): string
  * @param string $str
  * @return array
  */
-function convertToArrayOfListItems(?string $str): array
+function convert_to_array_of_list_items(?string $str): array
 {
     $string = strip_tags($str, '<li>');
 
@@ -47,7 +47,7 @@ function lang()
  * @param integer $num2
  * @return string
  */
-function selectedIfEqual($num1, $num2): string
+function set_as_selected_if_equal($num1, $num2): string
 {
     return $num1 === $num2 ? 'selected' : '';
 }
@@ -58,7 +58,7 @@ function selectedIfEqual($num1, $num2): string
  * @param string
  * @return
  */
-function styleTimestamp(string $path): string
+function style_timestamp(string $path): string
 {
     try {
         $timestamp = '?v=' . File::lastModified(public_path() . $path);
@@ -74,7 +74,7 @@ function styleTimestamp(string $path): string
  * @param string
  * @return
  */
-function scriptTimestamp(string $path): string
+function script_timestamp(string $path): string
 {
     try {
         $timestamp = '?v=' . File::lastModified(public_path() . $path);
@@ -88,7 +88,7 @@ function scriptTimestamp(string $path): string
  * @param string $route
  * @return string
  */
-function activeIfRouteIs(string $route): string
+function active_if_route_is(string $route): string
 {
     if ($route[0] == '/') {
         return request()->is(substr($route, 1)) ? 'active' : '';
@@ -104,7 +104,7 @@ function activeIfRouteIs(string $route): string
  * @param string $slug
  * @return string
  */
-function setImageName(string $extension = null, string $slug = ''): string
+function set_image_name(string $extension = null, string $slug = ''): string
 {
     if ($extension) {
         return time() . '-' . $slug . '.' . $extension;
@@ -121,7 +121,7 @@ function setImageName(string $extension = null, string $slug = ''): string
  * @param int $likes
  * @return float
  */
-function getRatingNumber($recipes, int $likes)
+function get_rating_number($recipes, int $likes)
 {
     $points_for_recipes = count($recipes);
     $points_for_likes = ($likes > 0) ? $likes / 10 : 0;
@@ -139,7 +139,7 @@ function getRatingNumber($recipes, int $likes)
  * @param int $number
  * @return mixed
  */
-function readableNumber(int $number)
+function readable_number(int $number)
 {
     if ($number >= 1000 && $number < 1000000):
         $number = substr($number, 0, -3) . '<br /><small>' . trans('users.thousand') . '</small>';
@@ -157,7 +157,7 @@ function readableNumber(int $number)
  * @param string $value
  * @return string
  */
-function getOnlineIcon(string $value): string
+function get_online_icon(string $value): string
 {
     $seconds = [trans('date.second'), trans('date.seconds'), trans('date.seconds2')];
     $url_string = explode(' ', $value);
@@ -166,4 +166,9 @@ function getOnlineIcon(string $value): string
         return '<span class="online-icon-on"></span>';
     }
     return '<span class="online-icon-off"></span>';
+}
+
+function get_sum_of_all_array_values()
+{
+    #
 }

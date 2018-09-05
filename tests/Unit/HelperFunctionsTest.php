@@ -14,11 +14,11 @@ class HelperFunctionsTest extends TestCase
         $string = 'First line
             Second line';
 
-        $result = convertToArrayOfListItems($string);
+        $result = convert_to_array_of_list_items($string);
 
         $this->assertCount(2, $result);
         $this->assertEquals('<li>First line</li>', $result[0]);
-	}
+    }
 
     /** @test */
     public function check_get_data_notif_markup_helper(): void
@@ -33,13 +33,13 @@ class HelperFunctionsTest extends TestCase
     {
         // Icon should be on ===================
         array_map(function ($second) {
-            $current = getOnlineIcon("30 $second " . trans("date.ago"));
+            $current = get_online_icon("30 $second " . trans("date.ago"));
             $this->assertEquals('<span class="online-icon-on"></span>', $current);
         }, [trans('date.second'), trans('date.seconds'), trans('date.seconds2')]);
 
         // Icon should be off ===================
         array_map(function ($minute) {
-            $current = getOnlineIcon("30 $minute " . trans("date.ago"));
+            $current = get_online_icon("30 $minute " . trans("date.ago"));
             $this->assertEquals('<span class="online-icon-off"></span>', $current);
         }, [trans('date.minute'), trans('date.minutes'), trans('date.minutes2')]);
     }
@@ -50,9 +50,9 @@ class HelperFunctionsTest extends TestCase
         $thousand = trans('users.thousand');
         $million = trans('users.million');
 
-        $this->assertEquals(readableNumber(999), 999);
-        $this->assertEquals(readableNumber(1000), "1<br /><small>$thousand</small>");
-        $this->assertEquals(readableNumber(1000000), "1<br /><small>$million</small>");
+        $this->assertEquals(readable_number(999), 999);
+        $this->assertEquals(readable_number(1000), "1<br /><small>$thousand</small>");
+        $this->assertEquals(readable_number(1000000), "1<br /><small>$million</small>");
     }
 
     /** @test */
@@ -61,15 +61,15 @@ class HelperFunctionsTest extends TestCase
         $user = make(User::class);
         $recipes = [make(Recipe::class, ['user_id' => $user->id])];
 
-        $this->assertEquals(getRatingNumber($recipes, $likes = 11), 2.1);
-        $this->assertEquals(getRatingNumber($recipes, $likes = -11), 1);
+        $this->assertEquals(get_rating_number($recipes, $likes = 11), 2.1);
+        $this->assertEquals(get_rating_number($recipes, $likes = -11), 1);
     }
 
     /** @test */
     public function active_if_route_is_helper_returns_active_string(): void
     {
         $this->get('/recipes');
-        $this->assertEquals(activeIfRouteIs('/recipes'), 'active');
-        $this->assertEquals(activeIfRouteIs('recipes'), 'active');
+        $this->assertEquals(active_if_route_is('/recipes'), 'active');
+        $this->assertEquals(active_if_route_is('recipes'), 'active');
     }
 }

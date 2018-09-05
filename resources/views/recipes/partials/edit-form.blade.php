@@ -56,7 +56,7 @@
 				<label for="meal">@lang('recipes.meal_description')</label>
 				<select name="meal" id="meal" class="browser-default">
 					@foreach ($meal as $m)
-						<option value="{{ $m->id }}" {{ selectedIfEqual($m->id, ($recipe->meal->id ?? '')) }}>
+						<option value="{{ $m->id }}" {{ set_as_selected_if_equal($m->id, ($recipe->meal->id ?? '')) }}>
 							{{ title_case($m->getName()) }}
 						</option>
 					@endforeach

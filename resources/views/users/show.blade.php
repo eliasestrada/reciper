@@ -10,7 +10,7 @@
 		<p>@lang('users.joined'): {{ timeAgo($user->created_at) }}</p>
 		@unless (user() && $user->id === user()->id)
 			<p>
-				{!! getOnlineIcon(timeAgo($user->last_visit_at)) !!}
+				{!! get_online_icon(timeAgo($user->last_visit_at)) !!}
 				@lang('date.online') 
 				{{ timeAgo($user->last_visit_at, 'online') }}
 			</p>
@@ -25,7 +25,7 @@
 		<div class="mb-4 bubbles-block">
 			<div class="bubble">
 				<span class="number">
-					{!! readableNumber($likes) !!}
+					{!! readable_number($likes) !!}
 				</span>
 				@include('includes.icons.heart')
 			</div>
@@ -34,7 +34,7 @@
 		<div class="mb-4 bubbles-block">
 			<div class="bubble">
 				<span class="number">
-					{!! readableNumber(getRatingNumber($recipes, $likes)) !!}
+					{!! readable_number(get_rating_number($recipes, $likes)) !!}
 				</span>
 				@include('includes.icons.trophy')
 			</div>
@@ -43,7 +43,7 @@
 		<div class="bubbles-block">
 			<div class="bubble">
 				<span class="number">
-					{!! readableNumber($recipes->count()) !!}
+					{!! readable_number($recipes->count()) !!}
 				</span>
 				@include('includes.icons.book')
 			</div>

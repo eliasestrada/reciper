@@ -1,10 +1,10 @@
 <ul class="sidenav" id="mobile-demo">
-	<li class="{{ activeIfRouteIs('/') }}">
+	<li class="{{ active_if_route_is('/') }}">
 		<a href="/" title="@lang('includes.home')">
 			@lang('includes.home')
 		</a>
 	</li>
-	<li class="{{ activeIfRouteIs('recipes') }}">
+	<li class="{{ active_if_route_is('recipes') }}">
 		<a href="/recipes" title="@lang('includes.recipes')">
 			@lang('includes.recipes')
 		</a>

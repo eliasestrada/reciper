@@ -24,7 +24,7 @@
 
 	@include('includes.footer')
 
-	{!! scriptTimestamp('/js/app.js') !!}
+	{!! script_timestamp('/js/app.js') !!}
 
 	@include('includes.js.dropdown')
 	@include('includes.js.sidenav')

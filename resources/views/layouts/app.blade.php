@@ -18,7 +18,7 @@
 
     @include('includes.footer')
 
-	{!! scriptTimestamp('/js/app.js') !!}
+	{!! script_timestamp('/js/app.js') !!}
 
 	@yield('script')
 	@include('includes.js.dropdown')

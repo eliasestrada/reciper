@@ -5,17 +5,17 @@
 			<ul class="unstyled-list">
 				<li><strong>@lang('includes.navigation')</strong></li>
 				<li>
-					<a href="/" class="{{ activeIfRouteIs('/') }}">
+					<a href="/" class="{{ active_if_route_is('/') }}">
 						@lang('includes.home')
 					</a>
 				</li>
 				<li>
-					<a href="/recipes" class="{{ activeIfRouteIs('recipes') }}">
+					<a href="/recipes" class="{{ active_if_route_is('recipes') }}">
 						@lang('includes.recipes')
 					</a>
 				</li>
 				<li>
-					<a href="/contact" class="{{ activeIfRouteIs('contact') }}">
+					<a href="/contact" class="{{ active_if_route_is('contact') }}">
 						@lang('includes.feedback')
 					</a>
 				</li>

@@ -16,7 +16,7 @@ trait RecipesControllerHelpers
     {
         if ($image) {
             $extention = $image->getClientOriginalExtension();
-            $image_name = setImageName($extention);
+            $image_name = set_image_name($extention);
 
             // Big image
             Image::make($image)
@@ -109,8 +109,8 @@ trait RecipesControllerHelpers
      */
     public function isSimple($request): bool
     {
-        $ingredients = count(convertToArrayOfListItems($request->ingredients));
-        $text = count(convertToArrayOfListItems($request->text));
+        $ingredients = count(convert_to_array_of_list_items($request->ingredients));
+        $text = count(convert_to_array_of_list_items($request->text));
 
         return $ingredients + $text <= 10 ? true : false;
     }
