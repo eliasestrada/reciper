@@ -10,16 +10,16 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "browser-sync": "^2.24.7",
-        "browser-sync-webpack-plugin": "^2.2.2",
-        "cross-env": "^5.2.0",
-        "laravel-mix": "^2.1.14",
-        "vue": "^2.5.17"
+        "browser-sync": "^2.24.1",
+        "browser-sync-webpack-plugin": "^2.0.1",
+        "cross-env": "^5.1",
+        "laravel-mix": "^2.0",
+        "vue": "^2.5.16"
     },
     "dependencies": {
-        "npm": "^6.4.1",
+        "npm": "^6.1.0",
         "vue-infinite-loading": "^2.3.3",
-        "yarn": "^1.9.4",
+        "yarn": "^1.6.0",
         "yarn-install": "^1.0.0"
     }
 }
