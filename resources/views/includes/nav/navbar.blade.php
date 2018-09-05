@@ -40,9 +40,13 @@
 					</a>
 				</li>
 
+				@php
+					$all_notif = ($all_unapproved ?? 0) + ($all_feedback ?? 0) + ($notifications ?? 0) + ($all_logs ?? 0);
+				@endphp
+
 				@auth
 					<li> {{-- Dropdown Trigger 2 User --}}
-						<a id="_user-menu-trigger" class="dropdown-trigger" href="#!" data-target="dropdown2" title="@lang('includes.user_home')">
+						<a id="_user-menu-trigger" class="dropdown-trigger small-notif-btn position-relative" href="#!" data-target="dropdown2" title="@lang('includes.user_home')" {{ $all_notif ? 'data-notif='.$all_notif : '' }}>
 							<i class="right user-icon">
 								<img class="user-icon-big" src="{{ asset('storage/users/' . user()->image) }}">
 							</i>

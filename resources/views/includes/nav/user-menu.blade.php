@@ -30,13 +30,13 @@
 	</li>
 
 	<li class="position-relative {{ activeIfRouteIs('admin/checklist') }}"> {{-- checklist --}}
-		<a href="/admin/checklist" title="@lang('includes.checklist')" {{ $all_unapproved ?? '' }} class="small-notif-btn">
+		<a href="/admin/checklist" title="@lang('includes.checklist')" {{ $all_unapproved ? 'data-notif='.$all_unapproved : '' }} class="small-notif-btn">
 			<i class="material-icons left">search</i>@lang('includes.checklist')
 		</a>
 	</li>
 
 	<li class="position-relative {{ activeIfRouteIs('admin/feedback') }}"> {{-- feedback --}}
-		<a href="/admin/feedback" title="@lang('includes.feedback')" {{ $all_feedback ?? '' }} class="small-notif-btn">
+		<a href="/admin/feedback" title="@lang('includes.feedback')" {{ $all_feedback ? 'data-notif='.$all_feedback : '' }} class="small-notif-btn">
 			<i class="material-icons left">feedback</i>@lang('includes.feedback')
 		</a>
 	</li>
@@ -48,7 +48,7 @@
 @endadmin
 
 <li class="position-relative {{ activeIfRouteIs('notifications') }}"> {{-- notifications --}}
-	<a href="/notifications" title="@lang('includes.notifications')" {{ $notifications ?? '' }} class="small-notif-btn">
+	<a href="/notifications" title="@lang('includes.notifications')" {{ $notifications ? 'data-notif='.$notifications : '' }} class="small-notif-btn">
 		<i class="material-icons left">notifications</i>@lang('includes.notifications')
 	</a>
 </li>
@@ -67,7 +67,7 @@
 
 @master
 	<li class="position-relative {{ activeIfRouteIs('log-viewer/logs*') }}"> {{-- log-viewer --}}
-		<a href="/log-viewer/logs" title="@lang('logs.logs')" {{ $all_logs ?? '' }} class="small-notif-btn">
+		<a href="/log-viewer/logs" title="@lang('logs.logs')" {{ $all_logs ? 'data-notif='.$all_logs : '' }} class="small-notif-btn">
 			<i class="material-icons left">library_books</i>@lang('logs.logs')
 		</a>
 	</li>

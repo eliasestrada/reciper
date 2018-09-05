@@ -167,12 +167,3 @@ function getOnlineIcon(string $value): string
     }
     return '<span class="online-icon-off"></span>';
 }
-
-/**
- * @param int $data
- * @return string
- */
-function getDataNotifMarkup(int $data): string
-{
-    return (!empty($data) && $data > 0) ? 'data-notif=' . $data : '';
-}

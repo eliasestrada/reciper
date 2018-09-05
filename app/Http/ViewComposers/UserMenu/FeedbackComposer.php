@@ -12,12 +12,10 @@ class FeedbackComposer
      * @param  View  $view
      * @return void
      */
-    public function compose(View $view) : void
+    public function compose(View $view): void
     {
-		if (user()) {
-			$view->with('all_feedback', getDataNotifMarkup(
-				Feedback::where('created_at', '>', user()->contact_check)->count())
-			);
-		}
+        if (user() && user()->isAdmin()) {
+            $view->with('all_feedback', Feedback::where('created_at', '>', user()->contact_check)->count());
+        }
     }
 }

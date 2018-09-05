@@ -12,14 +12,11 @@ class UnproveRecipesComposer
      * @param  View  $view
      * @return void
      */
-    public function compose(View $view) : void
+    public function compose(View $view): void
     {
-		if (user()) {
-			$recipes = Recipe::where("approved_" . lang(), 0)
-				->where("ready_" . lang(), 1)
-				->count();
-
-			$view->with('all_unapproved', getDataNotifMarkup($recipes));
-		}
+        if (user() && user()->isAdmin()) {
+            $recipes = Recipe::query()->approved(0)->ready(1)->count();
+            $view->with('all_unapproved', $recipes);
+        }
     }
 }

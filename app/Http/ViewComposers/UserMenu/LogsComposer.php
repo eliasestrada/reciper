@@ -11,12 +11,10 @@ class LogsComposer
      * @param  View  $view
      * @return void
      */
-    public function compose(View $view) : void
+    public function compose(View $view): void
     {
-		if (user()) {
-			$files = count(\File::files(storage_path('logs')));
-			$all_logs = getDataNotifMarkup($files);
-			$view->with(compact('all_logs'));
-		}
+        if (user() && user()->isMaster()) {
+            $view->with('all_logs', count(\File::files(storage_path('logs'))));
+        }
     }
 }
