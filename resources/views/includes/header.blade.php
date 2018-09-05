@@ -7,6 +7,7 @@
 			<a href="search?for={{ trans('header.breakfast') }}">{{ title_case(trans('header.breakfast')) }}</a>, 
 			<a href="search?for={{ trans('header.lunch') }}">@lang('header.lunch')</a> @lang('header.or') 
 			<a href="search?for={{ trans('header.dinner') }}">@lang('header.dinner')</a>?
+			Lorem ipsum dolor sit.
 		</div>
 
 		{{--  Form  --}}
