@@ -20,7 +20,7 @@
 
 		@auth {{--  Buttons  --}}
 			@if (user()->hasRecipe($recipe->user_id))
-				<div class="center py-3">
+				<div class="center py-3 _action-buttons">
 					{{--  Edit button  --}}
 					<a href="/recipes/{{ $recipe->id }}/edit" class="btn green tooltipped" data-tooltip="@lang('tips.edit_recipe')" data-position="top" id="_edit">
 						<i class="large material-icons">mode_edit</i>

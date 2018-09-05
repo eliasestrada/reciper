@@ -161,4 +161,26 @@ class RecipesShowPageTest extends TestCase
             ->get('/notifications')
             ->assertSeeText($text_message);
     }
+
+    /** @test */
+    public function only_owner_of_the_recipe_can_see_action_buttons(): void
+    {
+        $owner = create(User::class);
+        $recipe = create(Recipe::class, ['user_id' => $owner->id]);
+        $link = "/recipes/{$recipe->id}";
+
+        // Guest dont see buttons
+        $this->get($link)
+            ->assertDontSee('_action-buttons');
+
+        // Authenticated user can't see buttons
+        $this->actingAs(make(User::class))
+            ->get($link)
+            ->assertDontSee('_action-buttons');
+
+        // Owner of the recipe can see action buttons
+        $this->actingAs($owner)
+            ->get($link)
+            ->assertSee('_action-buttons');
+    }
 }
