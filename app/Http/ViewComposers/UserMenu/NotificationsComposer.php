@@ -28,6 +28,8 @@ class NotificationsComposer
                 $notifications += $notifications_for_admin;
             }
             $view->with(compact('notifications'));
+        } else {
+            $view->with('notifications', 0);
         }
     }
 }

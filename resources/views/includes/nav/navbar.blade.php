@@ -41,7 +41,9 @@
 				</li>
 
 				@php
-					$all_notif = ($all_unapproved ?? 0) + ($all_feedback ?? 0) + ($notifications ?? 0) + ($all_logs ?? 0);
+					$all_notif = array_sum([
+						$all_unapproved, $all_feedback, $notifications, $all_logs
+					]);
 				@endphp
 
 				@auth

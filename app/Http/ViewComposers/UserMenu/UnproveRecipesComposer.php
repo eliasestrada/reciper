@@ -17,6 +17,8 @@ class UnproveRecipesComposer
         if (user() && user()->isAdmin()) {
             $recipes = Recipe::query()->approved(0)->ready(1)->count();
             $view->with('all_unapproved', $recipes);
+        } else {
+            $view->with('all_unapproved', 0);
         }
     }
 }

@@ -16,6 +16,8 @@ class FeedbackComposer
     {
         if (user() && user()->isAdmin()) {
             $view->with('all_feedback', Feedback::where('created_at', '>', user()->contact_check)->count());
+        } else {
+            $view->with('all_feedback', 0);
         }
     }
 }
