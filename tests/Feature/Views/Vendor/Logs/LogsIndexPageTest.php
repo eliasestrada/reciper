@@ -45,10 +45,6 @@ class LogsIndexPageTest extends TestCase
 
         $this->assertFileExists(storage_path("logs/laravel-{$file_name}.log"));
 
-        // Navigate to logs
-        $this->actingAs($this->master)
-            ->get('/log-viewer/logs');
-
         // Delete file
         $this->actingAs($this->master)
             ->followingRedirects()
