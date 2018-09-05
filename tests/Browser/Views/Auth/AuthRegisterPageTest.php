@@ -8,10 +8,7 @@ use Tests\DuskTestCase;
 
 class AuthRegisterPageTest extends DuskTestCase
 {
-    /**
-     * @test
-     * @return void
-     * */
+    /** @test */
     public function registering_a_new_user_and_logout(): void
     {
         $this->artisan('wipe');

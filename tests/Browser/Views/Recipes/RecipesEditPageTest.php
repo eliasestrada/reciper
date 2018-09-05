@@ -9,10 +9,7 @@ use Tests\DuskTestCase;
 
 class RecipesEditPageTest extends DuskTestCase
 {
-    /**
-     * @test
-     * @return void
-     * */
+    /** @test */
     public function user_can_edit_his_own_recipe(): void
     {
         $this->artisan('wipe');
@@ -35,10 +32,7 @@ class RecipesEditPageTest extends DuskTestCase
         });
     }
 
-    /**
-     * @test
-     * @return void
-     * */
+    /** @test */
     public function user_cant_edit_other_recipes(): void
     {
         $this->browse(function (Browser $browser) {

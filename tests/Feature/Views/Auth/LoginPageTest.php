@@ -44,7 +44,6 @@ class LoginPageTest extends TestCase
     /**
      * We will login user and create cookie to check them
      * @test
-     * @return void
      */
     public function remember_me_functionality(): void
     {
