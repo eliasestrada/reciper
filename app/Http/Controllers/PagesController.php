@@ -47,6 +47,8 @@ class PagesController extends Controller
 
             if (in_array($request, $this->mealTime())) {
                 $recipes = $this->searchForMealTime($request);
+			} else if ($request === 'simple') {
+				$recipes = $this->searchForSimpleRecipes();
             } else {
                 $recipes = $this->searchForCategories($request);
             }

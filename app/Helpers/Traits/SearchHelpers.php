@@ -52,6 +52,17 @@ trait SearchHelpers
     }
 
     /**
+     * @return object|null
+     */
+    public function searchForSimpleRecipes(): ?object
+    {
+        return Recipe::whereSimple(1)
+            ->ready(1)
+            ->approved(1)
+            ->get();
+    }
+
+    /**
      * @return array
      */
     public function mealTime(): array

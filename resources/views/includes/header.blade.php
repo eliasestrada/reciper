@@ -3,11 +3,15 @@
 
 		<h1>{{ config('app.name') }}</h1>
 		<div class="home-meal">
-			@lang('header.what_u_like')<br />
+			@lang('header.what_u_like')
+			<br />
 			<a href="search?for={{ trans('header.breakfast') }}">{{ title_case(trans('header.breakfast')) }}</a>, 
-			<a href="search?for={{ trans('header.lunch') }}">@lang('header.lunch')</a> @lang('header.or') 
+			<a href="search?for={{ trans('header.lunch') }}">@lang('header.lunch')</a>
+			@lang('header.or') 
 			<a href="search?for={{ trans('header.dinner') }}">@lang('header.dinner')</a>?
-			Lorem ipsum dolor sit.
+			<br />
+			@lang('header.or_maybe') 
+			<a href="search?for=simple">@lang('header.sth_new')</a>
 		</div>
 
 		{{--  Form  --}}

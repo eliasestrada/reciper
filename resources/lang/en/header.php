@@ -7,5 +7,7 @@ return [
     'lunch' => 'lunch',
     'dinner' => 'dinner',
     'or' => 'or',
+    'or_maybe' => 'Or maybe',
+    'sth_new' => 'something simple?',
 
 ];
