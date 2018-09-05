@@ -107,7 +107,8 @@ function active_if_route_is(string $route): string
 function set_image_name(string $extension = null, string $slug = ''): string
 {
     if ($extension) {
-        return time() . '-' . $slug . '.' . $extension;
+        $time = time();
+        return "{$time}-{$slug}.{$extension}";
     }
     return 'default.jpg';
 }
@@ -166,9 +167,4 @@ function get_online_icon(string $value): string
         return '<span class="online-icon-on"></span>';
     }
     return '<span class="online-icon-off"></span>';
-}
-
-function get_sum_of_all_array_values()
-{
-    #
 }
