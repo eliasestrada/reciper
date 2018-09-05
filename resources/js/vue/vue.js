@@ -1,18 +1,18 @@
-import './bootstrap'
+import "./bootstrap";
 
 const components = [
-	'Recipes',
-	'RandomRecipesSidebar',
-	'DeleteRecipeBtn',
-	'CategoriesField',
-	'Like',
-	'Visibility',
-]
+    "Recipes",
+    "RandomRecipesSidebar",
+    "DeleteRecipeBtn",
+    "CategoriesField",
+    "Like",
+    "Visibility"
+];
 
 components.forEach(comp => {
-	Vue.component(comp, require('./components/' + comp + '.vue'))
-})
+    Vue.component(comp, require("./components/" + comp + ".vue"));
+});
 
 const app = new Vue({
-	el: '#app'
+    el: "#app"
 });

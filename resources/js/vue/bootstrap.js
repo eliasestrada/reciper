@@ -1,3 +1,3 @@
-import Vue from 'vue'
+import Vue from "vue";
 
-window.Vue = Vue
+window.Vue = Vue;
