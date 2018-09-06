@@ -28,10 +28,17 @@
 			</delete-recipe-btn>
 
 			{{--  Publish button  --}}
-			<a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top">
-				<i class="large material-icons">publish</i>
-			</a>
-			<input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
+			@if ($recipe->isReady())
+				<a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.add_to_drafts')" data-position="top">
+					<i class="large material-icons">drafts</i>
+				</a>
+				<input type="checkbox" name="ready" value="0" class="d-none" id="ready-checkbox">
+			@else
+				<a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top">
+					<i class="large material-icons">publish</i>
+				</a>
+				<input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
+			@endif
 		</div>
 	
 		<div class="row">
