@@ -66,15 +66,22 @@ trait RecipesControllerHelpers
             'text_' . lang() => $request->text,
             'ingredients_' . lang() => $request->ingredients,
             'simple' => $this->isSimple($request),
-            'ready_' . lang() => isset($request->ready) ? 1 : 0,
-            'approved_' . lang() => user()->isAdmin() ? 1 : 0,
+            'ready_' . lang() => ($request->ready == 1) ? 1 : 0,
+            'approved_' . lang() => ($request->ready == 1 && user()->isAdmin()) ? 1 : 0,
         ];
 
+        // If recipe is not new, if it is an existing recipe
         if ($recipe) {
+            // If recipe moved from being ready to not ready
+            if ($recipe->isReady() && $request->ready == 0) {
+                cache()->forget('popular_recipes');
+                cache()->forget('random_recipes');
+            }
             $recipe->categories()->sync($request->categories);
             return $recipe->update($recipe_columns);
         }
 
+        // Create recipe coz $recipe is null
         $create = user()->recipes()->create($recipe_columns);
         $create->categories()->sync($request->categories);
 

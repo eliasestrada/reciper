@@ -40,8 +40,12 @@ class ApiRecipesController extends Controller
 
         $this->deleteOldImage($recipe->image);
         $recipe->categories()->detach();
+        $recipe->likes()->delete();
 
         if ($recipe->delete()) {
+            cache()->forget('popular_recipes');
+            cache()->forget('random_recipes');
+
             return 'success';
         }
 
