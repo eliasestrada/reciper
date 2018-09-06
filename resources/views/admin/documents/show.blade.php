@@ -29,7 +29,7 @@
 @component('comps.btns.fixed-btn')
 	@slot('icon') edit @endslot
 	@slot('link') /admin/documents/{{ $document->id }}/edit @endslot
-	@slot('tip') @lang('tips.edit_doc') @endslot
+	@slot('tip') @lang('tips.edit') @endslot
 @endcomponent
 
 @endsection
