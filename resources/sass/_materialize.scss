@@ -32,6 +32,10 @@
 	background-color: transparent !important;
 }
 
+.paper-dark {
+	background-color: $paperDark !important;
+}
+
 .main {
 	background-color: $main !important;
 }
@@ -2809,42 +2813,10 @@ small {
 	overflow-y: hidden;
 	height: 48px;
 	width: 100%;
-	background-color: #fff;
+	border-radius: 5px;
+	background-color: $paper;
 	margin: 0 auto;
 	white-space: nowrap;
-}
-
-.tabs.tabs-transparent {
-	background-color: transparent;
-}
-
-.tabs.tabs-transparent .tab a,
-.tabs.tabs-transparent .tab.disabled a,
-.tabs.tabs-transparent .tab.disabled a:hover {
-	color: rgba(255, 255, 255, 0.7);
-}
-
-.tabs.tabs-transparent .tab a:hover,
-.tabs.tabs-transparent .tab a.active {
-	color: #fff;
-}
-
-.tabs.tabs-transparent .indicator {
-	background-color: #fff;
-}
-
-.tabs.tabs-fixed-width {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-}
-
-.tabs.tabs-fixed-width .tab {
-	-webkit-box-flex: 1;
-	-webkit-flex-grow: 1;
-	-ms-flex-positive: 1;
-	flex-grow: 1;
 }
 
 .tabs .tab {
@@ -2858,7 +2830,7 @@ small {
 }
 
 .tabs .tab a {
-	color: rgba(238, 110, 115, 0.7);
+	color: $main;
 	display: block;
 	width: 100%;
 	height: 100%;
@@ -2872,19 +2844,19 @@ small {
 
 .tabs .tab a:focus,
 .tabs .tab a:focus.active {
-	background-color: rgba(246, 178, 181, 0.2);
+	background-color: $paperDark;
 	outline: none;
 }
 
 .tabs .tab a:hover,
 .tabs .tab a.active {
-	background-color: transparent;
-	color: #ee6e73;
+	background-color: $paperDark;
+	color: $mainDark;
 }
 
 .tabs .tab.disabled a,
 .tabs .tab.disabled a:hover {
-	color: rgba(238, 110, 115, 0.4);
+	color: $mainDark;
 	cursor: default;
 }
 
@@ -2892,7 +2864,7 @@ small {
 	position: absolute;
 	bottom: 0;
 	height: 2px;
-	background-color: #f6b2b5;
+	background-color: lighten($main, 20);
 	will-change: left, right;
 }
 
