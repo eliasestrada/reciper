@@ -11,7 +11,7 @@
 		<div class="center pb-4">
 			<button type="submit" class="btn green">
 				<i class="material-icons left">save</i>
-				@lang('recipes.save')
+				@lang('tips.save')
 			</button>
 		</div>
 	
