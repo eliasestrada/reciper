@@ -10,12 +10,12 @@
 
 		<div class="center pb-4">
 			{{--  View button  --}}
-			<a href="/recipes/{{ $recipe->id }}" class="btn green tooltipped" data-tooltip="@lang('tips.view_recipe')" data-position="top">
+			<a href="/recipes/{{ $recipe->id }}" class="btn-floating green tooltipped" data-tooltip="@lang('tips.view_recipe')" data-position="top">
 				<i class="material-icons">remove_red_eye</i>
 			</a>
 
 			{{--  Save button  --}}
-			<button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save_recipe')" data-position="top" class="btn green tooltipped">
+			<button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save_recipe')" data-position="top" class="btn-floating green tooltipped">
 				<i class="material-icons">save</i>
 			</button>
 
@@ -28,7 +28,7 @@
 			</delete-recipe-btn>
 
 			{{--  Publish button  --}}
-			<a href="#" class="btn green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish_recipe')" data-position="top">
+			<a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish_recipe')" data-position="top">
 				<i class="large material-icons">check_circle</i>
 			</a>
 			<input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
