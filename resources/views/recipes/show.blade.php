@@ -22,7 +22,7 @@
 			@if (user()->hasRecipe($recipe->user_id))
 				<div class="center py-3 _action-buttons">
 					{{--  Edit button  --}}
-					<a href="/recipes/{{ $recipe->id }}/edit" class="btn green tooltipped" data-tooltip="@lang('tips.edit_recipe')" data-position="top" id="_edit">
+					<a href="/recipes/{{ $recipe->id }}/edit" class="btn-floating green tooltipped" data-tooltip="@lang('tips.edit')" data-position="top" id="_edit">
 						<i class="large material-icons">mode_edit</i>
 					</a>
 
@@ -30,7 +30,7 @@
 					<delete-recipe-btn
 						recipe-id="{{ $recipe->id }}"
 						deleted-fail="{{ trans('recipes.deleted_fail') }}"
-						delete-recipe-tip="{{ trans('tips.delete_recipe') }}"
+						delete-recipe-tip="{{ trans('tips.delete') }}"
 						confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
 					</delete-recipe-btn>
 				</div>
