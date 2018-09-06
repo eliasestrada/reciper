@@ -46,11 +46,11 @@
 
 	@admin
 		{{--  Настройки Интро  --}}
-		<a class="edit-btn" title="@lang('home.edit_intro')" id="btn-for-intro">
+		<a class="magic-btn" title="@lang('home.edit_intro')" id="btn-for-intro">
 			<i class="material-icons">edit</i>
 		</a>
 
-		@editForm
+		@magicForm
 			@slot('id')
 				intro-form
 			@endslot

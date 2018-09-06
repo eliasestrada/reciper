@@ -7153,7 +7153,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   transition: border 300ms;
 }
 
-.edit-form {
+.magic-form {
   position: absolute;
   width: 80%;
   max-width: 35em;
@@ -7174,12 +7174,12 @@ nav .input-field input[type=search]:-webkit-autofill:active {
           transform: translate(-50%, -50%) perspective(1000px) rotateX(-90deg);
 }
 
-.edit-form.active {
+.magic-form.active {
   -webkit-transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
           transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
 }
 
-.edit-btn {
+.magic-btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7204,12 +7204,12 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   cursor: pointer;
 }
 
-.edit-btn i {
+.magic-btn i {
   margin: auto;
   font-size: 20px;
 }
 
-.edit-btn:hover {
+.magic-btn:hover {
   -webkit-transition: opacity 400ms;
   transition: opacity 400ms;
   opacity: 1;

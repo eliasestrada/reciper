@@ -1,4 +1,5 @@
-<div class="edit-form" id="{{ $id }}">
+{{-- For footer and home page forms --}}
+<div class="magic-form" id="{{ $id }}">
 	<form action="{{ action($action) }}" method="post" class="p-3">
 
 		@method('put')

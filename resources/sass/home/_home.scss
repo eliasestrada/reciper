@@ -131,7 +131,7 @@
 	}
 }
 
-.edit-form {
+.magic-form {
 	position: absolute;
 	width: 80%;
 	max-width: 35em;
@@ -146,11 +146,11 @@
 	transform: translate(-50%, -50%) perspective(1000px) rotateX(-90deg);
 }
 
-.edit-form.active {
+.magic-form.active {
 	transform: translate(-50%, -50%) perspective(1000px) rotateX(0deg);
 }
 
-.edit-btn {
+.magic-btn {
 	display: flex;
 	position: absolute;
 	top: 50%;

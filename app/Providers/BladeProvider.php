@@ -53,6 +53,6 @@ class BladeProvider extends ServiceProvider
     public function other(): void
     {
         Blade::component('comps.list-of-recipes', 'listOfRecipes');
-        Blade::component('comps.edit_form', 'editForm');
+        Blade::component('comps.magic-form', 'magicForm');
     }
 }
