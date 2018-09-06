@@ -12,7 +12,7 @@
 	<div class="center">
 		<h1 class="headline">@lang('documents.new_doc')</h1>
 	</div>
-	
+
 	{{-- Breadcrumps --}}
 	@component('comps.breadcrumps', [
 		'url' => ['/admin/documents', '#'],
@@ -21,26 +21,22 @@
 
 	<form action="{{ action('Admin\DocumentsController@store') }}" method="post">
 		@csrf
+
+		<div class="center pb-4"> {{--  Save button  --}}
+			<button type="submit" class="btn green">
+				<i class="material-icons left">save</i>
+				@lang('recipes.save')
+			</button>
+		</div>
+
 		<div class="input-field"> {{-- Input field --}}
 			<input type="text" name="title" id="title" value="{{ old('title') }}" class="counter" data-length="{{ config('validation.docs_title_max') }}">
 			<label for="title">@lang('documents.doc_title')</label>
 		</div>
+
 		<div class="input-field"> {{-- Textarea --}}
 			<textarea name="text" id="text" class="materialize-textarea"></textarea>
 			<span class="helper-text">@lang('documents.doc_text')</span>
-		</div>
-
-		<div class="fixed-action-btn"> {{-- Floating buttons --}}
-			<a href="#" class="btn-floating main btn-large pulse z-depth-3" id="_more">
-				<i class="large material-icons">more_vert</i>
-			</a>
-			<ul>
-				<li> {{-- Save button --}}
-					<button class="btn-floating green btn-large tooltipped" data-tooltip="@lang('tips.save_doc')" data-position="left">
-						<i class="large material-icons">save</i>
-					</button>
-				</li>
-			</ul>
 		</div>
 	</form>
 </div>
@@ -50,5 +46,4 @@
 @section('script')
 	@include('includes.js.counter')
 	@include('includes.js.tinymse')
-	@include('includes.js.floating-btn')
 @endsection
