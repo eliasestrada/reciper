@@ -94,7 +94,7 @@
 				@slot('slug_text')
 					footer_text
 				@endslot
-			@endeditForm
+			@endmagicForm
 		</div>
 	@endadmin
 </footer>

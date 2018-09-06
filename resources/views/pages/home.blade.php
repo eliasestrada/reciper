@@ -75,7 +75,7 @@
 			@slot('slug_text')
 				intro_text
 			@endslot
-		@endeditForm
+		@endmagicForm
 	@endadmin
 </section>
 
