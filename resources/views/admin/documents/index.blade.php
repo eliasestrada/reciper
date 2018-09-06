@@ -14,8 +14,8 @@
 
 <div class="page">
 	<ul class="tabs">
-		<li class="tab"><a href="#tab-1" class="active">@lang('messages.ready')</a></li>
-		<li class="tab"><a href="#tab-2">@lang('messages.not_ready')</a></li>
+		<li class="tab"><a href="#tab-1" class="active">@lang('messages.published')</a></li>
+		<li class="tab"><a href="#tab-2">@lang('messages.drafts')</a></li>
 	</ul>
 
 	{{-- To prevent repeating all markup 2 times for unready and ready docs

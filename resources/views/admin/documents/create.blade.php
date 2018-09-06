@@ -22,10 +22,10 @@
 	<form action="{{ action('Admin\DocumentsController@store') }}" method="post">
 		@csrf
 
-		<div class="center pb-4"> {{--  Save button  --}}
+		<div class="center pb-2 pt-3"> {{--  Save button  --}}
 			<button type="submit" class="btn green">
 				<i class="material-icons left">save</i>
-				@lang('recipes.save')
+				@lang('tips.save')
 			</button>
 		</div>
 

@@ -10,20 +10,17 @@ use Illuminate\Http\Request;
 class DocumentsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         return view('admin.documents.index', [
-            'documents' => Document::get(),
+            'ready_docs' => Document::query()->ready(1)->paginate(20),
+            'unready_docs' => Document::query()->ready(0)->paginate(20),
         ]);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -32,8 +29,6 @@ class DocumentsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -41,15 +36,13 @@ class DocumentsController extends Controller
     {
         $doc = Document::create([
             'title_' . lang() => $request->title,
-            'text_' . lang() => $request->text,
+            'text' => $request->text,
         ]);
 
-        return redirect('/admin/documents/' . $doc->id);
+        return redirect("/admin/documents/$doc->id");
     }
 
     /**
-     * Display the specified resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function show(Document $document)
@@ -58,8 +51,6 @@ class DocumentsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Document $document)
@@ -68,27 +59,25 @@ class DocumentsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(DocumentsRequest $request, Document $document)
     {
         $document->update([
             'title_' . lang() => $request->title,
-            'text_' . lang() => $request->text,
+            'text' => $request->text,
+            'ready_' . lang() => $request->ready == 1 ? 1 : 0,
         ]);
 
-        return $request->has('view')
-        ? redirect('/admin/documents/' . $document->id)->withSuccess(trans('documents.saved'))
-        : back()->withSuccess(trans('documents.saved'));
+        if ($request->has('view')) {
+            return redirect("/admin/documents/$document->id")->withSuccess(trans('documents.saved'));
+        }
+        return $request->ready == 0
+        ? back()->withSuccess(trans('documents.saved'))
+        : redirect("/admin/documents/$document->id")->withSuccess(trans('documents.published'));
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
