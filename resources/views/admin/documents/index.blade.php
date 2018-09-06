@@ -11,27 +11,49 @@
 	'url' => ['#'],
 	'name' => [trans('documents.docs')]
 ]) @endcomponent
-            
 
 <div class="page">
-	<div class="row">
-		@foreach ($documents as $doc)
-			<div class="col s12 l6">
-				<div class="card" style="min-height:320px">
-				<div class="card-content">
-					<span class="card-title">{{ $doc->getTitle() }}</span>
-					<p>{{ str_limit(strip_tags($doc->text), 250) }}</p>
-					<p class="mt-3"><b>@lang('documents.last_update'):</b></p>
-					<p>{{ timeAgo($doc->updated_at) }}</p>
+	<ul class="tabs">
+		<li class="tab"><a href="#tab-1" class="active">@lang('messages.ready')</a></li>
+		<li class="tab"><a href="#tab-2">@lang('messages.not_ready')</a></li>
+	</ul>
+
+	{{-- To prevent repeating all markup 2 times for unready and ready docs
+		I put this loop that is gonna repeat code for both types of docs --}}
+	@for ($i = 1; $i <= 2; $i++)
+		<div class="row paper-dark pt-3" id="tab-{{ $i }}">
+			{{-- This is regulat loop that loops through docs collection --}}
+			@forelse ($i == 1 ? $ready_docs : $unready_docs as $doc)
+				<div class="col s12 l6">
+					<div class="card" style="min-height:320px">
+					<div class="card-content">
+						<span class="card-title">{{ $doc->getTitle() }}</span>
+						<p>{{ str_limit(strip_tags($doc->text), 250) }}</p>
+						<p class="mt-3"><b>@lang('documents.last_update'):</b></p>
+						<p>{{ timeAgo($doc->updated_at) }}</p>
+					</div>
+					<div class="card-action">
+						<a href="/admin/documents/{{ $doc->id }}" class="main-dark-text">@lang('documents.open')</a>
+						<a href="/admin/documents/{{ $doc->id }}/edit" class="main-dark-text">@lang('documents.edit')</a>
+					</div>
+					</div>
 				</div>
-				<div class="card-action">
-					<a href="/admin/documents/{{ $doc->id }}" class="main-dark-text">@lang('documents.open')</a>
-					<a href="/admin/documents/{{ $doc->id }}/edit" class="main-dark-text">@lang('documents.edit')</a>
-				</div>
-				</div>
-			</div>
-		@endforeach
-	</div>
+			@empty
+				@component('comps.empty')
+					@slot('text')
+						@lang('documents.no_docs')
+						@include('includes.buttons.btn', [
+							'title' => trans('documents.new_doc'),
+							'icon' => 'add',
+							'link' => '/admin/documents/create'
+						])
+					@endslot
+				@endcomponent
+			@endforelse
+
+			{{ $i == 1 ? $ready_docs->links() : $unready_docs->links() }}
+		</div>	
+	@endfor
 </div>
 
 @component('comps.btns.fixed-btn')
@@ -40,4 +62,8 @@
 	@slot('tip') @lang('documents.new_doc') @endslot
 @endcomponent
 
+@endsection
+
+@section('script')
+	@include('includes.js.tabs')
 @endsection
