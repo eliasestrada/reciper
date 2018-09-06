@@ -19,7 +19,8 @@ class AdminDocumentsIndexPageTest extends TestCase
         $this->actingAs($admin)
             ->get("/admin/documents")
             ->assertViewIs('admin.documents.index')
-            ->assertViewHas('documents', Document::get());
+            ->assertViewHas('ready_docs', Document::query()->ready(1)->paginate(20))
+            ->assertViewHas('unready_docs', Document::query()->ready(0)->paginate(20));
     }
 
     /** @test */
