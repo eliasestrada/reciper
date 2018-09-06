@@ -18,15 +18,7 @@ class HelperFunctionsTest extends TestCase
 
         $this->assertCount(2, $result);
         $this->assertEquals('<li>First line</li>', $result[0]);
-    }
-
-    /** @test */
-    public function check_get_data_notif_markup_helper(): void
-    {
-        $this->assertEquals(getDataNotifMarkup(0), '');
-        $this->assertEquals(getDataNotifMarkup(-1), '');
-        $this->assertEquals(getDataNotifMarkup(1), 'data-notif=1');
-    }
+	}
 
     /** @test */
     public function get_online_icon_helper_should_return_correct_state(): void
