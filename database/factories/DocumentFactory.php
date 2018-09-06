@@ -8,5 +8,7 @@ $factory->define(Document::class, function (Faker $faker) {
         'title_ru' => $faker->sentence,
         'title_en' => $faker->sentence,
         'text' => $faker->paragraph,
+        'ready_ru' => 1,
+        'ready_en' => 1,
     ];
 });

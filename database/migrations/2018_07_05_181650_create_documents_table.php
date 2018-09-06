@@ -17,6 +17,8 @@ class CreateDocumentsTable extends Migration
             $table->string('title_ru')->nullable();
             $table->string('title_en')->nullable();
             $table->text('text')->nullable();
+            $table->boolean('ready_ru')->default(0);
+            $table->boolean('ready_en')->default(0);
             $table->timestamps();
         });
     }
