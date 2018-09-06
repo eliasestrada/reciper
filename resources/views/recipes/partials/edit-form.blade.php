@@ -10,12 +10,12 @@
 
 		<div class="center pb-4">
 			{{--  View button  --}}
-			<a href="/recipes/{{ $recipe->id }}" class="btn-floating green tooltipped" data-tooltip="@lang('tips.view_recipe')" data-position="top">
+			<a href="/recipes/{{ $recipe->id }}" class="btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top">
 				<i class="material-icons">remove_red_eye</i>
 			</a>
 
 			{{--  Save button  --}}
-			<button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save_recipe')" data-position="top" class="btn-floating green tooltipped">
+			<button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save')" data-position="top" class="btn-floating green tooltipped">
 				<i class="material-icons">save</i>
 			</button>
 
@@ -23,13 +23,13 @@
 			<delete-recipe-btn
 				recipe-id="{{ $recipe->id }}"
 				deleted-fail="{{ trans('recipes.deleted_fail') }}"
-				delete-recipe-tip="{{ trans('tips.delete_recipe') }}"
+				delete-recipe-tip="{{ trans('tips.delete') }}"
 				confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
 			</delete-recipe-btn>
 
 			{{--  Publish button  --}}
-			<a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish_recipe')" data-position="top">
-				<i class="large material-icons">check_circle</i>
+			<a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top">
+				<i class="large material-icons">publish</i>
 			</a>
 			<input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
 		</div>
