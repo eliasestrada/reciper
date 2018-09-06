@@ -28,27 +28,25 @@
 		</div>
 
 		{{--  Random recipes  --}}
-		@isset($random_recipes)
-			@foreach ($random_recipes->chunk(10) as $random_chunk)
-				<div class="col s12 m6 l3 left-align">
-					<ul class="unstyled-list">
-						<li><strong>@lang('includes.recipes')</strong></li>
-						@foreach ($random_chunk as $recipe)
-							<li>
-								<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
-									# {{ $recipe->getTitle() }}
-								</a>
-							</li>
-						@endforeach
-					</ul>
-				</div>
-			@endforeach
-		@endisset
+		@forelse ($random_recipes->chunk(10) as $random_chunk)
+			<div class="col s12 m6 l3 left-align">
+				<ul class="unstyled-list">
+					<li><strong>@lang('includes.recipes')</strong></li>
+					@foreach ($random_chunk as $recipe)
+						<li>
+							<a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
+								# {{ $recipe->getTitle() }}
+							</a>
+						</li>
+					@endforeach
+				</ul>
+			</div>
+		@empty @endforelse
 
 		{{--  Popular recipes  --}}
 		<div class="col s12 m6 l3 left-align">
 			<ul class="unstyled-list">
-				@isset($popular_recipes)
+				@if ($popular_recipes->count() > 0)
 					<li><strong>@lang('includes.popular_recipes')</strong></li>
 					@foreach ($popular_recipes as $recipe)
 						<li>
@@ -57,7 +55,7 @@
 							</a>
 						</li>
 					@endforeach
-				@endisset
+				@endif
 			<ul>
 		</div>
 	</div>
