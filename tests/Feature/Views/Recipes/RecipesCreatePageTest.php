@@ -39,7 +39,7 @@ class RecipesCreatePageTest extends TestCase
         $this->assertDatabaseHas('recipes', [
             'title_' . lang() => 'Hello world',
             'approved_' . lang() => 0,
-            'ready_' . lang() => 0,
+            'ready_' . lang() => 1,
         ]);
     }
 
@@ -55,7 +55,7 @@ class RecipesCreatePageTest extends TestCase
         $this->assertDatabaseHas('recipes', [
             'title_' . lang() => 'Hello people',
             'approved_' . lang() => 1,
-            'ready_' . lang() => 0,
+            'ready_' . lang() => 1,
         ]);
     }
 
@@ -72,6 +72,7 @@ class RecipesCreatePageTest extends TestCase
             'ingredients' => '',
             'intro' => '',
             'text' => '',
+            'ready' => 1,
             'categories' => [0 => 1],
         ];
     }
