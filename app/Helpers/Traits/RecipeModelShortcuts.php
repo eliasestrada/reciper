@@ -39,7 +39,7 @@ trait RecipeModelShortcuts
     /**
      * @return string
      */
-    public function ready(): string
+    public function isReady(): string
     {
         return $this->toArray()['ready_' . lang()];
     }
@@ -47,7 +47,7 @@ trait RecipeModelShortcuts
     /**
      * @return string
      */
-    public function approved(): string
+    public function isApproved(): string
     {
         return $this->toArray()['approved_' . lang()];
     }
@@ -55,9 +55,9 @@ trait RecipeModelShortcuts
     /**
      * @return bool
      */
-    public function done(): bool
+    public function isDone(): bool
     {
-        return ($this->ready() && $this->approved()) ? true : false;
+        return ($this->isReady() && $this->isApproved()) ? true : false;
     }
 
     /**
@@ -65,9 +65,9 @@ trait RecipeModelShortcuts
      */
     public function getStatus(string $icon = null): string
     {
-        if ($this->approved() && $this->ready()) {
+        if ($this->isApproved() && $this->isReady()) {
             return $icon ? 'check' : trans('users.checked');
-        } elseif (!$this->ready()) {
+        } elseif (!$this->isReady()) {
             return $icon ? 'create' : trans('users.not_ready');
         } else {
             return $icon ? 'cancel' : trans('users.not_checked');

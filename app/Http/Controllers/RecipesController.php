@@ -63,21 +63,21 @@ class RecipesController extends Controller
     public function show(Recipe $recipe)
     {
         // Rules for visitors
-        if (!user() && !$recipe->approved()) {
+        if (!user() && !$recipe->isApproved()) {
             return redirect('/recipes')->withError(trans('recipes.no_rights_to_see'));
         }
 
         // Rules for auth users
         if (user()) {
-            if (!user()->isAdmin() && !user()->hasRecipe($recipe->user_id) && !$recipe->ready()) {
+            if (!user()->isAdmin() && !user()->hasRecipe($recipe->user_id) && !$recipe->isReady()) {
                 return redirect('/recipes')->withError(trans('recipes.no_rights_to_see'));
             }
 
-            if (!user()->hasRecipe($recipe->user_id) && !$recipe->ready()) {
+            if (!user()->hasRecipe($recipe->user_id) && !$recipe->isReady()) {
                 return redirect('/recipes')->withError(trans('recipes.not_written'));
             }
 
-            if (!user()->isAdmin() && !user()->hasRecipe($recipe->user_id) && !$recipe->approved()) {
+            if (!user()->isAdmin() && !user()->hasRecipe($recipe->user_id) && !$recipe->isApproved()) {
                 return redirect('/recipes')->withError(trans('recipes.not_approved'));
             }
         }

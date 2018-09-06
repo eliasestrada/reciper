@@ -11,7 +11,7 @@
 		@isset($recipes)
 			@forelse ($recipes as $recipe)
 				<ul>
-					<li style="border-left-color:#{{ $recipe->done() ? '65b56e' : 'ce7777' }};" class="col s12 m6 l4">
+					<li style="border-left-color:#{{ $recipe->isDone() ? '65b56e' : 'ce7777' }};" class="col s12 m6 l4">
 						<a href="/recipes/{{ $recipe->id }}">
 							<img src="{{ asset('storage/images/small/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" />
 						</a>
@@ -22,7 +22,7 @@
 								@lang('users.date') {{ timeAgo($recipe->updated_at) }}
 							</section>
 							<section>
-								<span class="new badge mt-3 tooltipped {{ $recipe->done() ? 'green' : 'red' }}" style="min-width:auto" data-tooltip="@lang('users.status'): {{ $recipe->getStatus() }}">
+								<span class="new badge mt-3 tooltipped {{ $recipe->isDone() ? 'green' : 'red' }}" style="min-width:auto" data-tooltip="@lang('users.status'): {{ $recipe->getStatus() }}">
 									<i class="material-icons" style="font-size:21px">{{ $recipe->getStatus('icon') }}</i>
 								</span>
 							</section>

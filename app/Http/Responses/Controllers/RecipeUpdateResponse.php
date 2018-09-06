@@ -23,11 +23,11 @@ class RecipeUpdateResponse implements Responsable
 	 */
 	public function toResponse($request)
 	{
-		if ($this->recipe->ready() && user()->isAdmin()) {
+		if ($this->recipe->isReady() && user()->isAdmin()) {
 			return redirect('/users/' . user()->id)->withSuccess(trans('recipes.recipe_published'));
 		}
 
-		if ($this->recipe->ready()) {
+		if ($this->recipe->isReady()) {
 			return redirect('/users/' . user()->id)->withSuccess(trans('recipes.added_to_approving'));
 
 			// turned off
