@@ -41,6 +41,6 @@
 	</div>
 
 	@isset($recipes)
-		{{ optional($recipes)->onEachSide(3)->links() }}
+		{{ optional($recipes)->links() }}
 	@endisset
 </div>
