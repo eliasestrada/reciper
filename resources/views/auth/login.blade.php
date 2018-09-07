@@ -15,7 +15,8 @@
 		</div>
 	
 		<visibility name-attr="password" id-attr="password" class-attr="pwd">
-			<label for="password">@lang('form.pwd')</label>
+			<label for="password" slot="content">@lang('form.pwd')</label>
+			@include('includes.preloader2')
 		</visibility>
 
 		<div class="mt-3">

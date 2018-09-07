@@ -26,16 +26,19 @@
 		</div>
 
 		<visibility name-attr="password" id-attr="password">
-			<label for="password">
+			<label for="password" slot="content">
 				@lang('form.pwd')
 				@include('includes.tip', ['tip' => trans('form.pwd_desc')])
 			</label>
+			@include('includes.preloader2')
 		</visibility>
 
 		<visibility name-attr="password_confirmation" id-attr="password_confirmation">
-			<label for="password_confirmation">
+			<label for="password_confirmation" slot="content">
 				@lang('form.pwd_confirm')
 				@include('includes.tip', ['tip' => trans('form.pwd2_desc')])
+			</label>
+			@include('includes.preloader2')
 		</visibility>
 
 		@if(!empty($document))

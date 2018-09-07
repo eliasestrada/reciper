@@ -4,7 +4,7 @@
 				<i class="material-icons noselect position-absolute visibility-icon" @click="changeType">
 					{{ icon }}
 				</i>
-		<slot></slot>
+		<slot name="content"></slot>
 	</div>
 </template>
 
