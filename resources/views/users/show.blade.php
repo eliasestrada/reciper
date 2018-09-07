@@ -53,10 +53,12 @@
 </div>
 
 {{--  All my recipes  --}}
-@listOfRecipes(['recipes' => $recipes])
-	@slot('no_recipes')
-		@lang('users.this_user_does_not_have_recipes')
-	@endslot
-@endlistOfRecipes
+<div class="page">
+	@listOfRecipes(['recipes' => $recipes])
+		@slot('no_recipes')
+			@lang('users.this_user_does_not_have_recipes')
+		@endslot
+	@endlistOfRecipes
+</div>
 
 @endsection

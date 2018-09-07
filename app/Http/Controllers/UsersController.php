@@ -23,6 +23,8 @@ class UsersController extends Controller
     {
         $recipes = Recipe::whereUserId($user->id)
             ->withCount('likes')
+            ->approved(1)
+            ->ready(1)
             ->latest()
             ->paginate(20)
             ->onEachSide(1);
@@ -41,11 +43,22 @@ class UsersController extends Controller
      */
     public function my_recipes()
     {
-        $recipes = Recipe::whereUserId(user()->id)
+        $recipes_ready = Recipe::whereUserId(user()->id)
+            ->ready(1)
             ->latest()
             ->paginate(20)
             ->onEachSide(1);
 
-        return view('users.other.my-recipes', compact('recipes'));
+        $recipes_unready = Recipe::whereUserId(user()->id)
+            ->ready(0)
+            ->latest()
+            ->paginate(20)
+            ->onEachSide(1);
+
+        $count_all = $recipes_ready->count() + $recipes_unready->count();
+
+        return view('users.other.my-recipes', compact(
+            'recipes_ready', 'recipes_unready', 'count_all'
+        ));
     }
 }

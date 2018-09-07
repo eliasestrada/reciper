@@ -16,18 +16,28 @@ class UsersOtherMyRecipesPageTest extends TestCase
     {
         $user = create(User::class);
 
-        $recipe = create(Recipe::class, [
+        create(Recipe::class, [
             'user_id' => $user->id,
-            'title_' . lang() => 'Nice test',
+            'title_' . lang() => 'My recipe',
         ]);
 
         $this->actingAs($user)
             ->get('/users/other/my-recipes')
-            ->assertSeeText('Nice test')
+            ->assertSeeText('My recipe')
             ->assertViewIs('users.other.my-recipes')
-            ->assertViewHas('recipes',
-                Recipe::whereUserId($user->id)->latest()->paginate(20)->onEachSide(1)
-            );
+            ->assertViewHasAll([
+                'recipes_ready' => $a = Recipe::whereUserId($user->id)
+                    ->ready(1)
+                    ->latest()
+                    ->paginate(20)
+                    ->onEachSide(1),
+                'recipes_unready' => $b = Recipe::whereUserId($user->id)
+                    ->ready(0)
+                    ->latest()
+                    ->paginate(20)
+                    ->onEachSide(1),
+                'count_all' => $a->count() + $b->count(),
+            ]);
     }
 
     /** @test */
