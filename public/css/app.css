@@ -3365,7 +3365,7 @@ button.btn-floating {
   color: #333;
   display: block;
   line-height: 20px;
-  padding: 14px 16px;
+  padding: 10px 15px;
   border: none;
   background: none;
 }
@@ -7377,8 +7377,8 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   }
 }
 
-.user-icon {
-  width: 53px;
+.user-icon-navbar {
+  width: 43px;
   height: 53px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7391,7 +7391,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
           justify-content: center;
 }
 
-.user-icon-navbar {
+.user-icon-navbar img {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -7424,7 +7424,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 }
 
 .sidebar-hat-auth, .sidebar-hat-guest {
-  height: 100px;
+  height: 130px;
   background-position: center;
   background-size: cover;
 }
@@ -7435,7 +7435,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 
 .sidebar-hat-guest a {
   opacity: 7;
-  margin-top: 8px;
+  margin-top: 15px;
 }
 
 .item-list {
