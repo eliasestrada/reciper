@@ -23,7 +23,7 @@ class NotificationController extends Controller
         ]);
 
         return view('notifications.index', [
-            'notifications' => $notifications->latest()->paginate(10),
+            'notifications' => $notifications->latest()->paginate(10)->onEachSide(1),
         ]);
     }
 

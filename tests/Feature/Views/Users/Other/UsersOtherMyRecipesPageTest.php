@@ -25,7 +25,9 @@ class UsersOtherMyRecipesPageTest extends TestCase
             ->get('/users/other/my-recipes')
             ->assertSeeText('Nice test')
             ->assertViewIs('users.other.my-recipes')
-            ->assertViewHas('recipes', Recipe::whereUserId($user->id)->latest()->paginate(20));
+            ->assertViewHas('recipes',
+                Recipe::whereUserId($user->id)->latest()->paginate(20)->onEachSide(1)
+            );
     }
 
     /** @test */

@@ -19,7 +19,8 @@ class ChecklistController extends Controller
             ->approved(0)
             ->ready(1)
             ->oldest()
-            ->paginate(1);
+            ->paginate(30)
+            ->onEachSide(1);
 
         return view('admin.checklist.index', compact('unapproved'));
     }

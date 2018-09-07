@@ -16,7 +16,7 @@ class StatisticsController extends Controller
      */
     public function index()
     {
-        $visitors = Visitor::latest()->simplePaginate(40);
+        $visitors = Visitor::latest()->paginate(40)->onEachSide(1);
         $sxgeo = new SxGeo(storage_path('/geo/SxGeoCity.dat'));
         $all_recipes = Recipe::count();
         $all_visitors = Visitor::distinct('ip')->count();

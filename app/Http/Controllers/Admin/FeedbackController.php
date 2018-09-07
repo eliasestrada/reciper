@@ -20,7 +20,7 @@ class FeedbackController extends Controller
         ]);
 
         return view('admin.feedback.index', [
-            'feedback' => Feedback::paginate(40),
+            'feedback' => Feedback::paginate(40)->onEachSide(1),
         ]);
     }
 

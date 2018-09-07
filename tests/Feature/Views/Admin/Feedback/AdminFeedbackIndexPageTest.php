@@ -26,7 +26,7 @@ class AdminFeedbackPageTest extends TestCase
         $this->actingAs($this->admin)
             ->get('/admin/feedback')
             ->assertViewIs('admin.feedback.index')
-            ->assertViewHas('feedback', Feedback::paginate(40));
+            ->assertViewHas('feedback', Feedback::paginate(40)->onEachSide(1));
     }
 
     /** @test */

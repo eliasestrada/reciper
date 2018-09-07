@@ -24,7 +24,7 @@ class AdminChecklistIndexPageTest extends TestCase
                 Recipe::where([
                     'approved_' . lang() => 0,
                     'ready_' . lang() => 1,
-                ])->oldest()->paginate(10));
+                ])->oldest()->paginate(30)->onEachSide(1));
     }
 
     /** @test */

@@ -22,7 +22,8 @@ class UsersShowPageTest extends TestCase
         $recipes = Recipe::whereUserId($user->id)
             ->withCount('likes')
             ->latest()
-            ->paginate(20);
+            ->paginate(20)
+            ->onEachSide(1);
 
         $likes = 0;
 

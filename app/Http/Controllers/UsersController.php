@@ -12,7 +12,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.index', ['users' => User::paginate(50)]);
+        return view('users.index', ['users' => User::paginate(36)->onEachSide(1)]);
     }
 
     /**
@@ -24,7 +24,8 @@ class UsersController extends Controller
         $recipes = Recipe::whereUserId($user->id)
             ->withCount('likes')
             ->latest()
-            ->paginate(20);
+            ->paginate(20)
+            ->onEachSide(1);
 
         $likes = 0;
 
@@ -40,7 +41,10 @@ class UsersController extends Controller
      */
     public function my_recipes()
     {
-        $recipes = Recipe::whereUserId(user()->id)->latest()->paginate(20);
+        $recipes = Recipe::whereUserId(user()->id)
+            ->latest()
+            ->paginate(20)
+            ->onEachSide(1);
 
         return view('users.other.my-recipes', compact('recipes'));
     }

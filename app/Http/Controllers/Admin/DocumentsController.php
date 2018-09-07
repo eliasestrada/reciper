@@ -15,8 +15,8 @@ class DocumentsController extends Controller
     public function index()
     {
         return view('admin.documents.index', [
-            'ready_docs' => Document::query()->ready(1)->paginate(20),
-            'unready_docs' => Document::query()->ready(0)->paginate(20),
+            'ready_docs' => Document::query()->ready(1)->paginate(20)->onEachSide(1),
+            'unready_docs' => Document::query()->ready(0)->paginate(20)->onEachSide(1),
         ]);
     }
 
