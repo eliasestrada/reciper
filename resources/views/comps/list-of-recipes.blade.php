@@ -11,21 +11,20 @@
 		@isset($recipes)
 			@forelse ($recipes as $recipe)
 				<ul>
-					<li style="border-left-color:#{{ $recipe->isDone() ? '65b56e' : 'ce7777' }};" class="col s12 m6 l4">
-						<a href="/recipes/{{ $recipe->id }}">
+					<li style="border-left-color:#{{ $recipe->isDone() ? '65b56e' : 'ce7777' }};" class="col s12 m6 l4 row">
+						<a href="/recipes/{{ $recipe->id }}" style="width:11em">
 							<img src="{{ asset('storage/images/small/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" />
 						</a>
 	
 						<div class="item-content">
 							<section>{{ str_limit($recipe->getTitle(), 45) }}</section>
-							<section>
-								@lang('users.date') {{ timeAgo($recipe->updated_at) }}
-							</section>
-							<section>
-								<span class="new badge mt-3 tooltipped {{ $recipe->isDone() ? 'green' : 'red' }}" style="min-width:auto" data-tooltip="@lang('users.status'): {{ $recipe->getStatus() }}">
-									<i class="material-icons" style="font-size:21px">{{ $recipe->getStatus('icon') }}</i>
-								</span>
-							</section>
+							<section>{{ timeAgo($recipe->updated_at) }}</section>
+						</div>
+
+						<div class="mt-3" style="width:35px">
+							<span class="new badge tooltipped {{ $recipe->isDone() ? 'green' : 'red' }}" style="min-width:auto; height:28px; padding:3px;" data-tooltip="@lang('users.status'): {{ $recipe->getStatus() }}">
+							<i class="material-icons" style="font-size:23px">{{ $recipe->getStatus('icon') }}</i>
+							</span>
 						</div>
 					</li>
 				</ul>
@@ -39,9 +38,9 @@
 				@endisset
 			@endforelse
 		@endisset
-
-		@isset($recipes)
-			{{ optional($recipes)->links() }}
-		@endisset
 	</div>
+
+	@isset($recipes)
+		{{ optional($recipes)->onEachSide(3)->links() }}
+	@endisset
 </div>

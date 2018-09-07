@@ -1,13 +1,15 @@
 .item-list {
 	padding: 1em 0;
+
 	.btn {
 		color: #fff;
 	}
-	li {
+	
+	> ul > li.col {
 		position: relative;
-		height: 105px;
+		height: 115px;
 		display: flex;
-		padding: 4px 0;
+		padding: 4px 10px;
 		border-bottom: 1px solid #b6b6b6;
 		background-color: #e4e4e4;
 		transition: background-color 250ms;
@@ -20,10 +22,11 @@
 			transition: background-color 250ms;
 		}
 	}
+
 	img {
-		width: 6.3em;
-		height: 4.3em;
-		margin: .5em 1em;
+		width: 6em;
+		height: 4em;
+		margin: .5em 0;
 		border-radius: 3px;
 		border: solid 3px #fff;
 		border-bottom: solid 6px #fff;
@@ -32,6 +35,7 @@
 }
 
 .item-content {
+	width: 100%;
 	margin-top: .8em;
 	font-size: .85em;
 	text-align: left;
