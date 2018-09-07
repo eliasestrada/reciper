@@ -10649,17 +10649,20 @@ if ($("search-form")) {
 	})();
 }
 
-if ($("nav-btn-for-search")) {
+var opened = false;
+var navBtnForSearch = $("nav-btn-for-search");
+var searchInput = $("search-input");
+
+if (navBtnForSearch) {
 	activeAfterClickBtn("nav-search-form", "nav-btn-for-search");
 
-	$("nav-btn-for-search").addEventListener("click", function () {
-		return $("search-input").focus();
+	navBtnForSearch.addEventListener("click", function () {
+		if (opened == false) {
+			searchInput.focus();
+			opened = true;
+		} else {
+			searchInput.blur();
+			opened = false;
+		}
 	});
-	$("nav-btn-for-search-footer").addEventListener("click", function () {
-		return $("search-input").focus();
-	});
-}
-
-if ($("nav-btn-for-search-footer")) {
-	activeAfterClickBtn("nav-search-form", "nav-btn-for-search-footer");
 }

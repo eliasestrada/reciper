@@ -20,7 +20,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#" id="nav-btn-for-search-footer">
+					<a href="/search" class="{{ active_if_route_is('search') }}">
 						@lang('includes.search')
 					</a>
 				</li>

@@ -1,14 +1,17 @@
-if ($("nav-btn-for-search")) {
+let opened = false;
+let navBtnForSearch = $("nav-btn-for-search");
+let searchInput = $("search-input");
+
+if (navBtnForSearch) {
     activeAfterClickBtn("nav-search-form", "nav-btn-for-search");
 
-    $("nav-btn-for-search").addEventListener("click", () =>
-        $("search-input").focus()
-    );
-    $("nav-btn-for-search-footer").addEventListener("click", () =>
-        $("search-input").focus()
-    );
-}
-
-if ($("nav-btn-for-search-footer")) {
-    activeAfterClickBtn("nav-search-form", "nav-btn-for-search-footer");
+    navBtnForSearch.addEventListener("click", () => {
+        if (opened == false) {
+            searchInput.focus();
+            opened = true;
+        } else {
+            searchInput.blur();
+            opened = false;
+        }
+    });
 }
