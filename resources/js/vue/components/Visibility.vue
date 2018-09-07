@@ -1,11 +1,6 @@
 <template>
 	<div class="input-field">
-		<input class="validate"
-			:type="type"
-			:name="nameAttr"
-			:id="idAttr"
-			:class="classAttr"
-			required>
+		<input class="validate" :type="type" :name="nameAttr" :id="idAttr" :class="classAttr" autocomplete="off" required>
 				<i class="material-icons noselect position-absolute visibility-icon" @click="changeType">
 					{{ icon }}
 				</i>
