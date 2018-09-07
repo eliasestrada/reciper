@@ -1,3 +1,9 @@
+@php
+	$all_notif = array_sum([
+		$all_unapproved, $all_feedback, $notifications, $all_logs
+	]);
+@endphp
+
 {{-- Categories Dropdown menu --}}
 <ul id="dropdown1" class="dropdown-content bottom-borders">
 	@include('includes.nav.categories')
@@ -21,6 +27,25 @@
 				<i class="material-icons">menu</i>
 			</a>
 
+
+
+			<div class="right">
+				@auth
+					{{-- Dropdown Trigger 2 User --}}
+					<a id="_user-menu-trigger" class="right dropdown-trigger small-notif-btn position-relative" href="#!" data-target="dropdown2" title="@lang('includes.user_home')" {{ $all_notif ? 'data-notif='.$all_notif : '' }}>
+						<i class="user-icon">
+							<img class="user-icon-navbar small-notif-btn" src="{{ asset('storage/users/' . user()->image) }}">
+						</i>
+					</a>
+				@endauth
+						
+				{{-- Search button --}}
+				<a href="#" data-target="mobile-demo" class="right px-3" title="@lang('includes.search')" id="nav-btn-for-search">
+					<i class="material-icons">search</i>
+				</a>
+			</div>
+
+			{{-- Regular menu --}}
 			<ul class="right hide-on-med-and-down right-borders">
 				<li class="{{ active_if_route_is('/') }}">
 					<a href="/" title="@lang('includes.home')">
@@ -40,34 +65,18 @@
 					</a>
 				</li>
 
-				@php
-					$all_notif = array_sum([
-						$all_unapproved, $all_feedback, $notifications, $all_logs
-					]);
-				@endphp
 
-				@auth
-					<li> {{-- Dropdown Trigger 2 User --}}
-						<a id="_user-menu-trigger" class="dropdown-trigger small-notif-btn position-relative" href="#!" data-target="dropdown2" title="@lang('includes.user_home')" {{ $all_notif ? 'data-notif='.$all_notif : '' }}>
-							<i class="right user-icon">
-								<img class="user-icon-big" src="{{ asset('storage/users/' . user()->image) }}">
-							</i>
-						</a>
-					</li>
-				@else
-					<li> {{-- Guest menu --}}
+				@guest
+					<li>
 						<a href="/login" data-target="dropdown3" title="@lang('includes.enter')">
 							@lang('includes.enter')
 							<i class="material-icons right">exit_to_app</i>
 						</a>
 					</li>
-				@endauth
+				@endguest
 			</ul>
-					
-			{{-- Search button --}}
-			<a href="#" data-target="mobile-demo" class="right px-4" title="@lang('includes.search')" id="nav-btn-for-search">
-				<i class="material-icons">search</i>
-			</a>
+			
+			
 		</div>
 	</div>
 </nav>

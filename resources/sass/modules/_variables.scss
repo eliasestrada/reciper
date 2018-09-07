@@ -10,6 +10,8 @@ $gray: #727272;
 $paper: #f3f3f3;
 $paperDark: darken($paper, 3);
 $fontColor: #535353;
+$red:#cf4545; 
+$green: #2ca030;
 // Shades
 $mainLight: lighten($main, 53%);
 $mainHover: darken($main, 4%);
@@ -21,9 +23,6 @@ $navBorderBottom: solid 2px $mainLight;
 // Home header
 $homeHeaderImage: url(../storage/other/img.jpg);
 $homeHeaderBg: rgba($main, .5);
-// Small notification button
-$smallNotifBtnBg: #a70e0e;
-$smallNotifBtnColor: #fff;
 // Forms
 $inputColor: #f5f5f5;
 $inputRadius: 4px;

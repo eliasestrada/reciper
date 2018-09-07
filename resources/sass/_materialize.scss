@@ -1,14 +1,6 @@
 // Materialize v1.0.0-beta http://materializecss.com
-.materialize-red {
-	background-color: #e51c23 !important;
-}
-
-.materialize-red-text {
-	color: #e51c23 !important;
-}
-
 .red {
-	background-color: #F44336 !important;
+	background-color: $red !important;
 }
 
 .white-text {
@@ -16,7 +8,7 @@
 }
 
 .red-text {
-	color: #F44336 !important;
+	color: $red !important;
 }
 
 .white {
@@ -67,11 +59,11 @@
 }
 
 .green {
-	background-color: #4CAF50 !important;
+	background-color: $green !important;
 }
 
 .green-text {
-	color: #4CAF50 !important;
+	color: $green !important;
 }
 
 .grey {
@@ -3446,7 +3438,7 @@ button.btn-floating {
 }
 
 .waves-effect.waves-red .waves-ripple {
-	background-color: rgba(244, 67, 54, 0.7);
+	background-color: $red;
 }
 
 .waves-effect.waves-yellow .waves-ripple {
@@ -5658,7 +5650,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 .spinner-red,
 .spinner-red-only {
-	border-color: #db4437;
+	border-color: #a5655f;
 }
 
 .spinner-yellow,

@@ -54,10 +54,10 @@ select {
 	position: absolute;
 	left: 23px;
 	top: 6px;
-	color: $smallNotifBtnColor;
+	color: #fff;
 	text-shadow: none;
-	background: $smallNotifBtnBg;
-	border: solid 1px $smallNotifBtnColor;
+	background: $red;
+	border: solid 1px #fff;
 	border-radius: 50%;
 }
 

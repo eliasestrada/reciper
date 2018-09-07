@@ -28,16 +28,8 @@
   src: url(fonts/Comfortaa/Comfortaa-Regular.ttf);
 }
 
-.materialize-red {
-  background-color: #e51c23 !important;
-}
-
-.materialize-red-text {
-  color: #e51c23 !important;
-}
-
 .red {
-  background-color: #F44336 !important;
+  background-color: #cf4545 !important;
 }
 
 .white-text {
@@ -45,7 +37,7 @@
 }
 
 .red-text {
-  color: #F44336 !important;
+  color: #cf4545 !important;
 }
 
 .white {
@@ -93,11 +85,11 @@
 }
 
 .green {
-  background-color: #4CAF50 !important;
+  background-color: #2ca030 !important;
 }
 
 .green-text {
-  color: #4CAF50 !important;
+  color: #2ca030 !important;
 }
 
 .grey {
@@ -3444,7 +3436,7 @@ button.btn-floating {
 }
 
 .waves-effect.waves-red .waves-ripple {
-  background-color: rgba(244, 67, 54, 0.7);
+  background-color: #cf4545;
 }
 
 .waves-effect.waves-yellow .waves-ripple {
@@ -5626,7 +5618,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 .spinner-red,
 .spinner-red-only {
-  border-color: #db4437;
+  border-color: #a5655f;
 }
 
 .spinner-yellow,
@@ -6530,7 +6522,7 @@ select {
   top: 6px;
   color: #fff;
   text-shadow: none;
-  background: #a70e0e;
+  background: #cf4545;
   border: solid 1px #fff;
   border-radius: 50%;
 }
@@ -7466,24 +7458,14 @@ nav .input-field input[type=search]:-webkit-autofill:active {
           justify-content: center;
 }
 
-.user-icon-big {
+.user-icon-navbar {
   width: 35px;
   height: 35px;
   border-radius: 50%;
 }
 
-.user-icon-small {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-}
-
 .right-borders > li {
   border-left: solid 1px #3c3560;
-}
-
-.bottom-borders > li {
-  border-bottom: solid 1px #eeeeee;
 }
 
 .nav-search-form {
@@ -7502,6 +7484,25 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 .nav-search-form.active {
   -webkit-transform: translateY(0%);
           transform: translateY(0%);
+}
+
+.bottom-borders > li {
+  border-bottom: solid 1px #eeeeee;
+}
+
+.sidebar-hat-auth, .sidebar-hat-guest {
+  height: 100px;
+  background-position: center;
+  background-size: cover;
+}
+
+.sidebar-hat-guest {
+  background-image: url(../storage/other/sidebar-hat.jpg);
+}
+
+.sidebar-hat-guest a {
+  opacity: 7;
+  margin-top: 8px;
 }
 
 .item-list {
