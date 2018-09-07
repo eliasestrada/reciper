@@ -500,8 +500,8 @@ video.responsive-video {
 	color: #444;
 	display: inline-block;
 	font-size: 1.2rem;
-	padding: 0 10px;
-	line-height: 30px;
+	padding: 0 7px;
+	line-height: 32px;
 }
 
 .pagination li.active a,
@@ -510,7 +510,7 @@ video.responsive-video {
 }
 
 .pagination li.active {
-	background-color: #ee6e73;
+	background-color: $main;
 }
 
 .pagination li.disabled a {
