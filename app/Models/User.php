@@ -34,8 +34,8 @@ class User extends Authenticatable
         return $this->master === 1 ? true : false;
     }
 
-    public function hasRecipe($recipe_user_id)
+    public function hasRecipe($recipe_id)
     {
-        return $this->id === $recipe_user_id ? true : false;
+        return Recipe::where(['id' => $recipe_id, 'user_id' => $this->id])->exists();
     }
 }
