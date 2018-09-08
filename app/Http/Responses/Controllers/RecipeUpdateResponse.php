@@ -23,12 +23,12 @@ class RecipeUpdateResponse implements Responsable
     public function toResponse($request)
     {
         if ($this->recipe->isReady() && user()->isAdmin()) {
-            return redirect('/users/' . user()->id)->withSuccess(trans('recipes.recipe_published'));
+            return redirect('/users/other/my-recipes')->withSuccess(trans('recipes.recipe_published'));
         }
 
         if ($this->recipe->isReady()) {
             cache()->forget('all_unapproved');
-            return redirect('/users/' . user()->id)->withSuccess(trans('recipes.added_to_approving'));
+            return redirect('/users/other/my-recipes')->withSuccess(trans('recipes.added_to_approving'));
 
             // turned off
             //event(new RecipeIsReady($this->recipe));
