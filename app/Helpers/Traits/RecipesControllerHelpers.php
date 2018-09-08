@@ -76,6 +76,7 @@ trait RecipesControllerHelpers
             if ($recipe->isReady() && $request->ready == 0) {
                 cache()->forget('popular_recipes');
                 cache()->forget('random_recipes');
+                cache()->forget('all_unapproved');
             }
             $recipe->categories()->sync($request->categories);
             return $recipe->update($recipe_columns);

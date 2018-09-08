@@ -14,7 +14,7 @@ class UserMenuProvider extends ServiceProvider
     {
         $this->countAndComposeAllNotifications();
         $this->countAndComposeAllFeedback();
-        $this->countAndComposeAllUnprovedRecipes();
+        $this->countAndComposeAllUnapprovedRecipes();
         $this->countAndComposeAllLogFiles();
     }
 
@@ -39,10 +39,10 @@ class UserMenuProvider extends ServiceProvider
     /**
      * @return void
      */
-    public function countAndComposeAllUnprovedRecipes(): void
+    public function countAndComposeAllUnapprovedRecipes(): void
     {
         view()->composer('includes.nav.navbar',
-            'App\Http\ViewComposers\UserMenu\UnproveRecipesComposer');
+            'App\Http\ViewComposers\UserMenu\UnapprovedRecipesComposer');
     }
 
     /**
