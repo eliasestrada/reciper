@@ -3,6 +3,8 @@
 use App\Models\Document;
 use Faker\Generator as Faker;
 
+cache()->flush();
+
 $factory->define(Document::class, function (Faker $faker) {
     return [
         'title_ru' => $faker->sentence,
