@@ -15,10 +15,9 @@ class ChecklistController extends Controller
      */
     public function index()
     {
-        $unapproved = Recipe::query()
+        $unapproved = Recipe::oldest()
             ->approved(0)
             ->ready(1)
-            ->oldest()
             ->paginate(30)
             ->onEachSide(1);
 
