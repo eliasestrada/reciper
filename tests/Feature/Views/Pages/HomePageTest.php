@@ -16,14 +16,14 @@ class HomePageTest extends TestCase
     {
         $responce = $this->get('/');
 
-        $intro = Title::whereName("intro")->first([
+        $title_intro = Title::whereName("intro")->first([
             'title_' . lang(),
             'text_' . lang(),
         ]);
 
         $responce->assertViewIs('pages.home')
             ->assertViewHas('random_recipes')
-            ->assertViewHas('intro', $intro);
+            ->assertViewHas('title_intro', $title_intro);
     }
 
     /** @test */
