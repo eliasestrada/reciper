@@ -63,14 +63,42 @@ trait RecipeModelShortcuts
     /**
      * @return string
      */
-    public function getStatus(string $icon = null): string
+    public function getStatusText(): string
     {
-        if ($this->isApproved() && $this->isReady()) {
-            return $icon ? 'check' : trans('users.checked');
+        if ($this->isDone()) {
+            return trans('users.checked');
         } elseif (!$this->isReady()) {
-            return $icon ? 'create' : trans('users.not_ready');
+            return trans('users.not_ready');
         } else {
-            return $icon ? 'cancel' : trans('users.not_checked');
+            return trans('users.is_checking');
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatusIcon(): string
+    {
+        if ($this->isDone()) {
+            return 'check';
+        } elseif (!$this->isReady()) {
+            return 'create';
+        } else {
+            return 'timelapse';
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatusColor(): string
+    {
+        if ($this->isDone()) {
+            return '#65b56e';
+        } elseif (!$this->isReady()) {
+            return '#ce7777';
+        } else {
+            return '#e2bd18';
         }
     }
 }
