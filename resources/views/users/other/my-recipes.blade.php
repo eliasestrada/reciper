@@ -14,14 +14,22 @@
 
 <div class="page">
 	<div class="center">
-		<h1 class="headline">
-			@lang('includes.my_recipes') {{ $count_all > 0 ? ": $count_all" : '' }}
-		</h1>
+		<h1 class="headline">@lang('includes.my_recipes')</h1>
 	</div>
 
-	<ul class="tabs">
-		<li class="tab"><a href="#tab-1" class="active">@lang('messages.published')</a></li>
-		<li class="tab"><a href="#tab-2">@lang('messages.drafts')</a></li>
+	<ul class="tabs"> {{-- Tab 2 --}}
+		<li class="tab">
+			<a href="#tab-1" class="active">
+				@lang('messages.published') 
+				<span class="red-text">({{ $recipes_ready->count() }})</span>
+			</a> 
+		</li>
+		<li class="tab"> {{-- Tab 2 --}}
+			<a href="#tab-2">
+				@lang('messages.drafts') 
+				<span class="red-text">({{ $recipes_unready->count() }})</span>
+			</a>
+		</li>
 	</ul>
 
 	@for ($i = 1; $i <= 2; $i++)

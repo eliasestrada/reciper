@@ -36,7 +36,6 @@ class UsersOtherMyRecipesPageTest extends TestCase
                     ->latest()
                     ->paginate(20)
                     ->onEachSide(1),
-                'count_all' => $a->count() + $b->count(),
             ]);
     }
 

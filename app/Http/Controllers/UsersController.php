@@ -45,20 +45,19 @@ class UsersController extends Controller
     {
         $recipes_ready = Recipe::whereUserId(user()->id)
             ->ready(1)
+            ->approved(1)
             ->latest()
             ->paginate(20)
             ->onEachSide(1);
 
         $recipes_unready = Recipe::whereUserId(user()->id)
-            ->ready(0)
+            ->approved(0)
             ->latest()
             ->paginate(20)
             ->onEachSide(1);
 
-        $count_all = $recipes_ready->count() + $recipes_unready->count();
-
         return view('users.other.my-recipes', compact(
-            'recipes_ready', 'recipes_unready', 'count_all'
+            'recipes_ready', 'recipes_unready'
         ));
     }
 }
