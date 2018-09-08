@@ -14,22 +14,18 @@ class NotificationsComposer
      */
     public function compose(View $view): void
     {
-        if (user()) {
-            $notifications = Notification::where([
-                ['user_id', user()->id],
+        $notifications = notification::where([
+            ['user_id', user()->id],
+            ['created_at', '>', user()->notif_check],
+        ])->count();
+
+        if (user()->isadmin()) {
+            $notifications_for_admin = notification::where([
+                ['for_admins', 1],
                 ['created_at', '>', user()->notif_check],
             ])->count();
-
-            if (user()->isAdmin()) {
-                $notifications_for_admin = Notification::where([
-                    ['for_admins', 1],
-                    ['created_at', '>', user()->notif_check],
-                ])->count();
-                $notifications += $notifications_for_admin;
-            }
-            $view->with(compact('notifications'));
-        } else {
-            $view->with('notifications', 0);
+            $notifications += $notifications_for_admin;
         }
+        $view->with(compact('notifications'));
     }
 }

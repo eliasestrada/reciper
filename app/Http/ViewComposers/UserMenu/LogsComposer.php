@@ -13,10 +13,8 @@ class LogsComposer
      */
     public function compose(View $view): void
     {
-        if (user() && user()->isMaster()) {
+        if (user()->isMaster()) {
             $view->with('all_logs', count(\File::files(storage_path('logs'))));
-        } else {
-            $view->with('all_logs', 0);
         }
     }
 }
