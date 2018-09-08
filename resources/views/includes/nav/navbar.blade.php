@@ -1,9 +1,9 @@
 @php
 	$all_notif = array_sum([
-		$all_unapproved ?? 0,
-		$all_feedback ?? 0,
-		$notifications ?? 0,
-		$all_logs ?? 0
+		$all_unapproved ?? '',
+		$all_feedback ?? '',
+		$notifications ?? '',
+		$all_logs ?? ''
 	]);
 @endphp
 
@@ -46,13 +46,13 @@
 			</li>
 
 			<li class="position-relative {{ active_if_route_is('admin/checklist') }}"> {{-- checklist --}}
-				<a href="/admin/checklist" title="@lang('includes.checklist')" {{ isset($all_unapproved) ? 'data-notif='.$all_unapproved : '' }} class="small-notif-btn">
+				<a href="/admin/checklist" title="@lang('includes.checklist')" {{ empty($all_unapproved) ? '' : "data-notif=$all_unapproved" }} class="small-notif-btn">
 					<i class="material-icons left">search</i>@lang('includes.checklist')
 				</a>
 			</li>
 
 			<li class="position-relative {{ active_if_route_is('admin/feedback') }}"> {{-- feedback --}}
-				<a href="/admin/feedback" title="@lang('includes.feedback')" {{ isset($all_feedback) ? 'data-notif='.$all_feedback : '' }} class="small-notif-btn">
+				<a href="/admin/feedback" title="@lang('includes.feedback')" {{ empty($all_feedback) ? '' : "data-notif=$all_feedback" }} class="small-notif-btn">
 					<i class="material-icons left">feedback</i>@lang('includes.feedback')
 				</a>
 			</li>
@@ -64,7 +64,7 @@
 		@endadmin
 
 		<li class="position-relative {{ active_if_route_is('notifications') }}"> {{-- notifications --}}
-			<a href="/notifications" title="@lang('includes.notifications')" {{ isset($notifications) ? 'data-notif='.$notifications : '' }} class="small-notif-btn">
+			<a href="/notifications" title="@lang('includes.notifications')" {{ empty($notifications) ? '' : "data-notif=$notifications" }} class="small-notif-btn">
 				<i class="material-icons left">notifications</i>@lang('includes.notifications')
 			</a>
 		</li>
@@ -83,7 +83,7 @@
 
 		@master
 			<li class="position-relative {{ active_if_route_is('log-viewer/logs*') }}"> {{-- log-viewer --}}
-				<a href="/log-viewer/logs" title="@lang('logs.logs')" {{ isset($all_logs) ? 'data-notif='.$all_logs : '' }} class="small-notif-btn">
+				<a href="/log-viewer/logs" title="@lang('logs.logs')" {{ empty($all_logs) ? '' : "data-notif=$all_logs" }} class="small-notif-btn">
 					<i class="material-icons left">library_books</i>@lang('logs.logs')
 				</a>
 			</li>
