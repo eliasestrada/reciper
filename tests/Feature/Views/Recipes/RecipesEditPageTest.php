@@ -58,7 +58,7 @@ class RecipesEditPageTest extends TestCase
 
         $this->actingAs($user)
             ->put(action('RecipesController@update', $old_recipe->id), $new_recipe)
-            ->assertRedirect("/users/$user->id");
+            ->assertRedirect('/users/other/my-recipes');
 
         $this->assertDatabaseHas('recipes', [
             'title_' . lang() => 'New title by user',
@@ -80,7 +80,7 @@ class RecipesEditPageTest extends TestCase
 
         $this->actingAs($user)
             ->put(action('RecipesController@update', $old_recipe->id), $new_recipe)
-            ->assertRedirect("/users/$user->id");
+            ->assertRedirect('/users/other/my-recipes');
 
         $this->assertDatabaseHas('recipes', [
             'title_' . lang() => 'Some title by admin',
