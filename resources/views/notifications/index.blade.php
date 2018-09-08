@@ -17,15 +17,20 @@
 			<div class="col s12 m6 l4">
 				<div class="card-panel px-3">
 					<span>
-						<h6>{!! $notif->getIcon() !!} {{ trans($notif->title) }}</h6>
+						<h6>
+							<i class="material-icons left main-text">notifications_none</i>
+							{{ trans($notif->title) }}
+						</h6>
 						<p>{{ $notif->message }}</p>
-						<hr /><p>{{ $notif->data }}</p>
+						<hr />
+						<p>{{ $notif->data }}</p>
 						<span class="grey-text right">{{ timeAgo($notif->created_at) }}</span>
 
 						@if ($notif->for_admins === 0)
 							<form action="{{ action('NotificationController@destroy', ['notification' => $notif->id]) }}" method="post" onsubmit='return confirm("@lang('notifications.sure_to_delete')")'>
 
-								@csrf @method('delete')
+								@csrf
+								@method('delete')
 
 								<button class="btn" title="@lang('form.deleting')">
 									@lang('form.deleting')

@@ -13,35 +13,36 @@ class Notification extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function isImportant(): bool
-    {
-        return $this->important === 1 ? true : false;
-    }
-
     /**
      * @param string $title
      * @param string $message
-     * @param int $iser_id
-     * @param string $data
-     * @param int $important
-     * @param int $for_admin
+     * @param string|null $data
+     * @param integer $user_id
+     * @return void
      */
-    public static function sendMessage($title, $message, $data, $user_id = null, $important = 0, $for_admin = 0): void
+    public static function sendToUser(string $title, string $message, ?string $data, int $user_id): void
     {
         self::create([
             'title' => "notifications.$title",
             'message' => $message,
             'user_id' => $user_id,
             'data' => $data,
-            'important' => $important,
-            'for_admins' => $for_admin,
         ]);
     }
 
-    public function getIcon(): string
+    /**
+     * @param string $title
+     * @param string $message
+     * @param string|null $data
+     * @return void
+     */
+    public static function sendToAdmin(string $title, string $message, ?string $data): void
     {
-        return $this->isImportant()
-        ? '<i class="material-icons left red-text">warning</i>'
-        : '<i class="material-icons left green-text">notifications_none</i>';
+        self::create([
+            'title' => "notifications.$title",
+            'message' => $message,
+            'data' => $data,
+            'for_admins' => 1,
+        ]);
     }
 }

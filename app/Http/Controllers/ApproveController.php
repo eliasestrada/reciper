@@ -14,8 +14,9 @@ class ApproveController extends Controller
     public function ok(Recipe $recipe, ApproveMessageRequest $request)
     {
         cache()->forget('all_unapproved');
+        cache()->forget('all_notifs');
 
-        Notification::sendMessage(
+        Notification::sendToUser(
             'recipe_published',
             $request->message,
             $recipe->getTitle(),
@@ -36,8 +37,9 @@ class ApproveController extends Controller
     public function cancel(Recipe $recipe, ApproveMessageRequest $request)
     {
         cache()->forget('all_unapproved');
+        cache()->forget('all_notifs');
 
-        Notification::sendMessage(
+        Notification::sendToUser(
             'recipe_not_published',
             $request->message,
             $recipe->getTitle(),

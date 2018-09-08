@@ -18,18 +18,22 @@ class NotificationsComposer
             return;
         }
 
-        $notifications = notification::where([
-            ['user_id', user()->id],
-            ['created_at', '>', user()->notif_check],
-        ])->count();
-
-        if (user()->isadmin()) {
-            $notifications_for_admin = notification::where([
-                ['for_admins', 1],
+        $all_notifs = cache()->rememberForever('all_notifs', function () {
+            return Notification::where([
+                ['user_id', user()->id],
                 ['created_at', '>', user()->notif_check],
             ])->count();
-            $notifications += $notifications_for_admin;
+        });
+
+        if (user()->isAdmin()) {
+            $admin_notifs = cache()->rememberForever('admin_notifs', function () {
+                return Notification::where([
+                    ['for_admins', 1],
+                    ['created_at', '>', user()->notif_check],
+                ])->count();
+            });
+            $all_notifs += $admin_notifs;
         }
-        $view->with(compact('notifications'));
+        $view->with(compact('all_notifs'));
     }
 }

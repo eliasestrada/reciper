@@ -64,7 +64,7 @@
 		@endadmin
 
 		<li class="position-relative {{ active_if_route_is('notifications') }}"> {{-- notifications --}}
-			<a href="/notifications" title="@lang('includes.notifications')" {{ empty($notifications) ? '' : "data-notif=$notifications" }} class="small-notif-btn">
+			<a href="/notifications" title="@lang('includes.notifications')" {{ empty($all_notifs) ? '' : "data-notif=$all_notifs" }} class="small-notif-btn">
 				<i class="material-icons left">notifications</i>@lang('includes.notifications')
 			</a>
 		</li>
