@@ -25,15 +25,14 @@ class PagesController extends Controller
                 "intro_" . lang(), 'image',
             ]);
 
-        $intro = Title::whereName("intro")->first([
-            'title_' . lang(),
-            'text_' . lang(),
-        ]);
+        $title_intro = cache()->rememberForever('title_intro', function () {
+            return Title::whereName("intro")->first([
+                'title_' . lang(),
+                'text_' . lang(),
+            ]);
+        });
 
-        return view('pages.home', [
-            'random_recipes' => $random_recipes,
-            'intro' => $intro,
-        ]);
+        return view('pages.home', compact('random_recipes', 'title_intro'));
     }
 
     /**
@@ -47,8 +46,8 @@ class PagesController extends Controller
 
             if (in_array($request, $this->mealTime())) {
                 $recipes = $this->searchForMealTime($request);
-			} else if ($request === 'simple') {
-				$recipes = $this->searchForSimpleRecipes();
+            } else if ($request === 'simple') {
+                $recipes = $this->searchForSimpleRecipes();
             } else {
                 $recipes = $this->searchForCategories($request);
             }

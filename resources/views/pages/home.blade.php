@@ -37,11 +37,11 @@
 @section('content')
 
 <section class="home-section position-relative">
-	@isset($intro)
+	@isset($title_intro)
 		<div class="center">
-			<h2 class="headline">{{ ($intro->getTitle() ?? '') }}</h2>
+			<h2 class="headline">{{ ($title_intro->getTitle() ?? '') }}</h2>
 		</div>
-		<p>{{ ($intro->getText() ?? '') }}</p>
+		<p>{{ ($title_intro->getText() ?? '') }}</p>
 	@endisset
 
 	@admin
@@ -58,10 +58,10 @@
 				TitleController@intro
 			@endslot
 			@slot('title')
-				{{ $intro->getTitle() }}
+				{{ $title_intro->getTitle() }}
 			@endslot
 			@slot('text')
-				{{ $intro->getText() }}
+				{{ $title_intro->getText() }}
 			@endslot
 			@slot('holder_title')
 				@lang('home.intro_title')

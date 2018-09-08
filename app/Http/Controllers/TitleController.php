@@ -37,6 +37,8 @@ class TitleController extends Controller
             'text_' . lang() => $request->text,
         ]);
 
+        cache()->forget('title_intro');
+
         return back()->withSuccess(trans('settings.saved'));
     }
 }
