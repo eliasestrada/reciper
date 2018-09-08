@@ -15,7 +15,10 @@ class FeedbackComposer
     public function compose(View $view): void
     {
         if (user() && user()->isAdmin()) {
-            $all_feedback = Feedback::where('created_at', '>', user()->contact_check)->count();
+            $all_feedback = cache()->rememberForever('all_feedback', function () {
+                return Feedback::where('created_at', '>', user()->contact_check)->count();
+            });
+
             $view->with(compact('all_feedback'));
         }
     }

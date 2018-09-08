@@ -15,6 +15,8 @@ class FeedbackController extends Controller
      */
     public function index()
     {
+        cache()->forget('all_feedback');
+
         User::whereId(user()->id)->update([
             'contact_check' => now(),
         ]);
@@ -40,6 +42,8 @@ class FeedbackController extends Controller
         }
 
         Feedback::findOrFail($id)->delete();
+
+        cache()->forget('all_feedback');
 
         return redirect('/admin/feedback')->withSuccess(
             trans('admin.feedback_has_been_deleted')
