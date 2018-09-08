@@ -39,12 +39,12 @@
 			{{--  Publish button  --}}
 			@if ($document->isReady())
 				<a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.add_to_drafts')" data-position="top">
-					<i class="material-icons">drafts</i>
+					<i class="material-icons">library_books</i>
 				</a>
 				<input type="checkbox" name="ready" value="0" class="d-none" id="ready-checkbox">
 			@else
 				<a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top">
-					<i class="material-icons">publish</i>
+					<i class="material-icons">send</i>
 				</a>
 				<input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
 			@endif

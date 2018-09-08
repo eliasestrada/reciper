@@ -82,7 +82,7 @@ trait RecipeModelShortcuts
         if ($this->isDone()) {
             return 'check';
         } elseif (!$this->isReady()) {
-            return 'create';
+            return 'edit';
         } else {
             return 'timelapse';
         }
