@@ -12,9 +12,12 @@ class TitleFooterComposer
      * @param  View  $view
      * @return void
      */
-    public function compose(View $view) : void
+    public function compose(View $view): void
     {
-		$title_footer = Title::whereName('footer')->value('text_' . lang());
-		$view->with(compact('title_footer'));
+        $title_footer = cache()->rememberForever('title_footer', function () {
+            return Title::whereName('footer')->value('text_' . lang());
+        });
+
+        $view->with(compact('title_footer'));
     }
 }

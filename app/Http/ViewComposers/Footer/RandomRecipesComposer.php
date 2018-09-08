@@ -14,7 +14,7 @@ class RandomRecipesComposer
      */
     public function compose(View $view): void
     {
-        $random_recipes = cache()->remember('random_recipes', 1, function () {
+        $random_recipes = cache()->remember('random_recipes', config('cache.timing.random_recipes'), function () {
             return Recipe::inRandomOrder()
                 ->ready(1)
                 ->approved(1)
