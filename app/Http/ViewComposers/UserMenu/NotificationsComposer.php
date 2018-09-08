@@ -14,6 +14,10 @@ class NotificationsComposer
      */
     public function compose(View $view): void
     {
+        if (!user()) {
+            return;
+        }
+
         $notifications = notification::where([
             ['user_id', user()->id],
             ['created_at', '>', user()->notif_check],
