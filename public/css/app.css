@@ -7458,7 +7458,6 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   -webkit-transition: background-color 250ms;
   transition: background-color 250ms;
   border-radius: 2px;
-  margin-bottom: 3px;
   border-left: solid 3px #484074;
 }
 
