@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Like;
 use App\Models\Meal;
 use App\Models\User;
+use App\Models\View;
 
 trait RecipeModelRelationship
 {
@@ -22,6 +23,11 @@ trait RecipeModelRelationship
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function views()
+    {
+        return $this->hasMany(View::class);
     }
 
     public function categories()
