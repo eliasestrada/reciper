@@ -45,6 +45,7 @@ class ApiRecipesController extends Controller
         if ($recipe->delete()) {
             cache()->forget('popular_recipes');
             cache()->forget('random_recipes');
+            cache()->forget('all_unapproved');
 
             return 'success';
         }
