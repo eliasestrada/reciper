@@ -42,9 +42,13 @@ Route::prefix('settings')->middleware('auth')->group(function () {
     Route::prefix('update')->group(function () {
         Route::put('user-data', 'SettingsController@updateUserData');
         Route::put('user-password', 'SettingsController@updateUserPassword');
-        Route::put('intro-data', 'SettingsController@updateIntroData');
-        Route::put('footer-data', 'SettingsController@updateFooterData');
     });
+});
+
+// Title
+Route::prefix('titles')->middleware('admin')->group(function () {
+    Route::put('intro', 'TitleController@intro');
+    Route::put('footer', 'TitleController@footer');
 });
 
 // Approving ======

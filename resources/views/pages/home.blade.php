@@ -55,7 +55,7 @@
 				intro-form
 			@endslot
 			@slot('action')
-				SettingsController@updateIntroData
+				TitleController@intro
 			@endslot
 			@slot('title')
 				{{ $intro->getTitle() }}

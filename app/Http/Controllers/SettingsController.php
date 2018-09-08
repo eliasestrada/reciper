@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Traits\SettingsControllerHelper;
 use App\Http\Requests\Settings\SettingsPhotoRequest;
-use App\Http\Requests\Settings\SettingsUpdateHomeDataRequest;
 use App\Http\Requests\Settings\SettingsUpdateUserDataRequest;
 use App\Http\Requests\Settings\SettingsUpdateUserPasswordRequest;
-use App\Models\Title;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -58,35 +56,5 @@ class SettingsController extends Controller
         } else {
             return back()->withError(trans('settings.pwd_wrong'));
         }
-    }
-
-    /**
-     * @param SettingsUpdateHomeDataRequest $request
-     */
-    public function updateIntroData(SettingsUpdateHomeDataRequest $request)
-    {
-        Title::whereName('intro')->update([
-            'title_' . lang() => $request->title,
-            'text_' . lang() => $request->text,
-        ]);
-
-        return back()->withSuccess(trans('settings.saved'));
-    }
-
-    /**
-     * @param Request $request
-     */
-    public function updateFooterData(Request $request)
-    {
-        $data = $this->validate($request,
-            ['text' => 'max:190'],
-            ['text.max' => trans('settings.footer_text_max')]
-        );
-
-        Title::whereName('footer')->update([
-            'text_' . lang() => $request->text,
-        ]);
-
-        return back()->withSuccess(trans('settings.saved'));
     }
 }

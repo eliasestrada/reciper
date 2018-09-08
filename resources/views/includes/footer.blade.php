@@ -84,7 +84,7 @@
 					{{ $title_footer }}
 				@endslot
 				@slot('action')
-					SettingsController@updateFooterData
+					TitleController@footer
 				@endslot
 				@slot('holder_text')
 					@lang('home.footer_text')
