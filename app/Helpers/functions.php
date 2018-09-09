@@ -168,3 +168,15 @@ function get_online_icon(string $value): string
     }
     return '<span class="online-icon-off"></span>';
 }
+
+/**
+ * Function for debuging queries
+ * @return void
+ */
+function dump_sql(): void
+{
+    \DB::listen(function ($query) {
+        dump($query->sql);
+        dump($query->bindings);
+    });
+}
