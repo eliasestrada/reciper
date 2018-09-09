@@ -17,7 +17,7 @@ class VisitorProvider extends ServiceProvider
 
         // If visitor doesn't have a cookie it will set it
         if (!request()->cookie('visitor_id')) {
-            \Cookie::queue('visitor', Visitor::whereIp(request()->ip())->value('id'), 218400);
+            \Cookie::queue('visitor_id', Visitor::whereIp(request()->ip())->value('id'), 218400);
         }
     }
 }
