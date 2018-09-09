@@ -21,6 +21,11 @@ select {
 	height: 39px;
 }
 
+// Custom tag color
+red {
+	color: $red;
+}
+
 .visibility-icon{
 	cursor: pointer;
 	margin-left: -20px;

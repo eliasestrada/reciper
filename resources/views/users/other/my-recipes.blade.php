@@ -21,13 +21,13 @@
 		<li class="tab">
 			<a href="#tab-1" class="active">
 				@lang('messages.published') 
-				<span class="red-text">({{ $recipes_ready->count() }})</span>
+				<red>({{ $recipes_ready->count() }})</red>
 			</a> 
 		</li>
 		<li class="tab"> {{-- Tab 2 --}}
 			<a href="#tab-2">
 				@lang('messages.drafts') 
-				<span class="red-text">({{ $recipes_unready->count() }})</span>
+				<red>({{ $recipes_unready->count() }})</red>
 			</a>
 		</li>
 	</ul>

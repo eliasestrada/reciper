@@ -118,13 +118,23 @@
 		<hr />
 		<h5 class="decorated pt-3">@lang('recipes.bon_appetit')!</h5>
 
-		{{--  Date --}}
-		<div class="date mt-4">
-			<p>@lang('recipes.added') {{ timeAgo($recipe->created_at) }}</p>
-			<a href="/users/{{ $recipe->user->id }}" title="@lang('recipes.search_by_author')">
-				<p>@lang('recipes.author'): {{ optional($recipe->user)->name }}</p>
-			</a>
-		</div>
+		{{--  Date, views, author --}}
+		<ul class="mt-4 grey-text">
+			<li>
+				@lang('recipes.added') 
+				<red>{{ timeAgo($recipe->created_at) }}</red>
+			</li>
+			<li>
+				@lang('recipes.views') 
+				<red>{{ $recipe->views->count() }}</red>
+			</li>
+			<li>
+				<a href="/users/{{ $recipe->user->id }}" title="@lang('recipes.search_by_author')" class="grey-text">
+					@lang('recipes.author') 
+					<red>{{ optional($recipe->user)->name }}</red>
+				</a>
+			</li>
+		</ul>
 	</div>
 
 	{{-- API: Еще рецепты Sidebar --}}

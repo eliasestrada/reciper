@@ -6421,6 +6421,10 @@ select {
   height: 39px;
 }
 
+red {
+  color: #cf4545;
+}
+
 .visibility-icon {
   cursor: pointer;
   margin-left: -20px;
