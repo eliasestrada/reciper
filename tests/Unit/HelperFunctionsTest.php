@@ -56,8 +56,8 @@ class HelperFunctionsTest extends TestCase
         $user = make(User::class);
         $recipes = [make(Recipe::class, ['user_id' => $user->id])];
 
-        $this->assertEquals(get_rating_number($recipes, $likes = 11), 2.1);
-        $this->assertEquals(get_rating_number($recipes, $likes = -11), 1);
+        $this->assertEquals(get_rating_number($recipes, 2, 10), 3);
+        $this->assertEquals(get_rating_number($recipes, -11, -10), 1);
     }
 
     /** @test */

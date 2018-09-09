@@ -118,18 +118,20 @@ function set_image_name(string $extension = null, string $slug = ''): string
 /**
  * This function is simply creates rating for user
  * --- For one recipe 1 point
- * --- For one like 0.1 point
+ * --- For one like 0.5 point
+ * --- For one view 0.1 point
  *
  * @param object $recipes
  * @param int $likes
  * @return float
  */
-function get_rating_number($recipes, int $likes)
+function get_rating_number($recipes, int $likes, int $views)
 {
-    $points_for_recipes = count($recipes);
-    $points_for_likes = ($likes > 0) ? $likes / 10 : 0;
+    $for_recipes = count($recipes);
+    $for_likes = ($likes > 0) ? $likes / 2 : 0;
+    $for_views = ($views > 0) ? $views / 10 : 0;
 
-    $result = $points_for_recipes + $points_for_likes;
+    $result = $for_recipes + $for_likes + $for_views;
 
     return number_format($result, 1);
 }
