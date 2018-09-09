@@ -10,9 +10,10 @@ class Visitor extends Model
 
     public static function incrementRequestsOrCreate()
     {
-        if (self::whereIp(request()->ip())->doesntExist()) {
-            self::create(['ip' => request()->ip()]);
-        }
+        self::updateOrCreate(
+            ['ip' => request()->ip()],
+            ['updated_at' => now()]
+        );
     }
 
     public function likes()

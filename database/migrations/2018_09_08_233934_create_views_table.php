@@ -19,8 +19,6 @@ class CreateViewsTable extends Migration
 
             $table->unsignedInteger('recipe_id');
             $table->foreign('recipe_id')->references('id')->on('recipes');
-
-            $table->integer('views')->default(0);
         });
     }
 
