@@ -13,14 +13,6 @@ class VisitorProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->visitorVisitsTheSite();
-    }
-
-    /**
-     * @return void
-     */
-    public function visitorVisitsTheSite(): void
-    {
         Visitor::incrementRequestsOrCreate();
     }
 }

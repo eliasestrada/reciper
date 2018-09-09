@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateVisitorsTable extends Migration
 {
@@ -11,13 +11,10 @@ class CreateVisitorsTable extends Migration
     {
         Schema::create('visitors', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedSmallInteger('recipes')->default(0);
-            $table->unsignedInteger('requests')->default(0);
             $table->ipAddress('ip');
             $table->timestamps();
         });
     }
-
 
     public function down()
     {
