@@ -30,7 +30,7 @@
 						<span class="card-title">{{ $doc->getTitle() }}</span>
 						<p>{{ str_limit(strip_tags($doc->text), 250) }}</p>
 						<p class="mt-3"><b>@lang('documents.last_update'):</b></p>
-						<p>{{ timeAgo($doc->updated_at) }}</p>
+						<p>{{ time_ago($doc->updated_at) }}</p>
 					</div>
 					<div class="card-action">
 						<a href="/admin/documents/{{ $doc->id }}" class="main-dark-text">@lang('documents.open')</a>

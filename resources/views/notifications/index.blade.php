@@ -24,7 +24,7 @@
 						<p>{{ $notif->message }}</p>
 						<hr />
 						<p>{{ $notif->data }}</p>
-						<span class="grey-text right">{{ timeAgo($notif->created_at) }}</span>
+						<span class="grey-text right">{{ time_ago($notif->created_at) }}</span>
 
 						@if ($notif->for_admins === 0)
 							<form action="{{ action('NotificationController@destroy', ['notification' => $notif->id]) }}" method="post" onsubmit='return confirm("@lang('notifications.sure_to_delete')")'>

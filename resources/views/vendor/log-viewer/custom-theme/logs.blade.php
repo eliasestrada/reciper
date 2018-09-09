@@ -27,7 +27,7 @@
 									@if ($key == 'date')
 										<span class="new badge transparent main-dark-text">
 											{{ $value }} <br />
-											{{ timeAgo($value) }}
+											{{ time_ago($value) }}
 										</span>
 									@elseif ($key == 'all')
 										<a href="{{ route('log-viewer::logs.filter', [$date, $key]) }}">

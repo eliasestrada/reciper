@@ -7,12 +7,12 @@
 <div class="page profile-header">
 	<div>
 		<h1 class="my-4">{{ $user->name }}</h1>
-		<p>@lang('users.joined'): {{ timeAgo($user->created_at) }}</p>
+		<p>@lang('users.joined'): {{ time_ago($user->created_at) }}</p>
 		@unless (user() && $user->id === user()->id)
 			<p>
-				{!! get_online_icon(timeAgo($user->last_visit_at)) !!}
+				{!! get_online_icon(time_ago($user->last_visit_at)) !!}
 				@lang('date.online') 
-				{{ timeAgo($user->last_visit_at, 'online') }}
+				{{ time_ago($user->last_visit_at, 'online') }}
 			</p>
 		@endunless
 	</div>

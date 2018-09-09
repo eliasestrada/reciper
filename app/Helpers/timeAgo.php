@@ -5,7 +5,7 @@
  * @param string $param
  * @return string
  */
-function timeAgo($date, $param = null)
+function time_ago($date, $param = null)
 {
     $date = strtotime($date);
     $stf = 0;

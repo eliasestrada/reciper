@@ -19,7 +19,7 @@
 					<span>
 						<h6>{{ $feed->email }}</h6>
 						<p>{{ $feed->message }}</p>
-						<span class="grey-text right">{{ timeAgo($feed->created_at) }}</span>
+						<span class="grey-text right">{{ time_ago($feed->created_at) }}</span>
 					</span>
 
 					{{-- Delete button --}}

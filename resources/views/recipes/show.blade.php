@@ -122,7 +122,7 @@
 		<ul class="mt-4 grey-text">
 			<li>
 				@lang('recipes.added') 
-				<red>{{ timeAgo($recipe->created_at) }}</red>
+				<red>{{ time_ago($recipe->created_at) }}</red>
 			</li>
 			<li>
 				@lang('recipes.views') 

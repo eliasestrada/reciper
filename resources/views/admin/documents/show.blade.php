@@ -16,12 +16,12 @@
 
 	<p class="mt-5"> {{-- Created at --}}
 		<b>@lang('logs.created_at'):</b> 
-		{{ timeAgo($document->created_at) }}
+		{{ time_ago($document->created_at) }}
 	</p>
 
 	<p> {{-- Updated At --}}
 		<b>@lang('documents.last_update'):</b> 
-		{{ timeAgo($document->updated_at) }}
+		{{ time_ago($document->updated_at) }}
 	</p>
 </div>
 

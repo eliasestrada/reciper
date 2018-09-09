@@ -154,7 +154,7 @@ function readable_number(int $number)
 }
 
 /**
- * It takes date converted with timeAgo() function, and checks if second word after number
+ * It takes date converted with time_ago() function, and checks if second word after number
  * is "seconds". If yes it will return html green icon, otherwise red icon
  *
  * @param string $value
