@@ -43,11 +43,11 @@
 		<div class="bubbles-block">
 			<div class="bubble">
 				<span class="number">
-					{!! readable_number($recipes->count()) !!}
+					{!! readable_number($views) !!}
 				</span>
-				@include('includes.icons.book')
+				@include('includes.icons.eye')
 			</div>
-			<span>@lang('includes.recipes')</span>
+			<span>@lang('recipes.views')</span>
 		</div>
 	</div>
 </div>

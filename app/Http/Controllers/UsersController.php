@@ -23,6 +23,7 @@ class UsersController extends Controller
     {
         $recipes = Recipe::whereUserId($user->id)
             ->withCount('likes')
+            ->withCount('views')
             ->approved(1)
             ->ready(1)
             ->latest()
@@ -30,12 +31,14 @@ class UsersController extends Controller
             ->onEachSide(1);
 
         $likes = 0;
+        $views = 0;
 
         foreach ($recipes as $recipe) {
             $likes += $recipe->likes_count;
+            $views += $recipe->views_count;
         }
 
-        return view('users.show', compact('recipes', 'user', 'likes'));
+        return view('users.show', compact('recipes', 'user', 'likes', 'views'));
     }
 
     /**
