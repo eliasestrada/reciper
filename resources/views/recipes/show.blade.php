@@ -140,7 +140,7 @@
 	{{-- API: Еще рецепты Sidebar --}}
 	<div class="side-bar center">
 		<h6 class="decorated pb-3">@lang('recipes.more')</h6>
-		<random-recipes-sidebar resipe-id="{{ $recipe->id }}">
+		<random-recipes-sidebar visitor-id="{{ visitor_id() }}">
 			@include('includes.preloader')
 		</random-recipes-sidebar>
 	</div>
