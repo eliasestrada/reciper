@@ -38,7 +38,9 @@ class UsersController extends Controller
             $views += $recipe->views_count;
         }
 
-        return view('users.show', compact('recipes', 'user', 'likes', 'views'));
+        $rating = get_rating_number($recipes, $likes, $views);
+
+        return view('users.show', compact('recipes', 'user', 'likes', 'views', 'rating'));
     }
 
     /**

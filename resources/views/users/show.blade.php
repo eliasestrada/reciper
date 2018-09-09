@@ -22,32 +22,32 @@
 	</div>
 
 	<div class="bubbles">
+
+		{{-- Likes Bubble --}}
 		<div class="mb-4 bubbles-block">
 			<div class="bubble">
-				<span class="number">
-					{!! readable_number($likes) !!}
-				</span>
+				<span class="number">{!! readable_number($likes) !!}</span>
 				@include('includes.icons.heart')
 			</div>
 			<span>@lang('users.likes')</span>
 		</div>
+
+		{{-- Rating Bubble --}}
 		<div class="mb-4 bubbles-block">
 			<div class="bubble">
-				<span class="number">
-					{!! readable_number(get_rating_number($recipes, $likes)) !!}
-				</span>
+				<span class="number">{!! readable_number($rating) !!}</span>
 				@include('includes.icons.trophy')
 			</div>
 			<span>@lang('users.rating')</span>
 		</div>
+
+		{{-- Views Bubble --}}
 		<div class="bubbles-block">
 			<div class="bubble">
-				<span class="number">
-					{!! readable_number($views) !!}
-				</span>
+				<span class="number">{!! readable_number($views) !!}</span>
 				@include('includes.icons.eye')
 			</div>
-			<span>@lang('recipes.views')</span>
+			<span>@lang('users.views')</span>
 		</div>
 	</div>
 </div>
