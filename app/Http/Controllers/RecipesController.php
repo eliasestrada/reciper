@@ -9,6 +9,7 @@ use App\Http\Requests\Recipes\RecipeSaveRequest;
 use App\Http\Responses\Controllers\RecipeUpdateResponse;
 use App\Models\Meal;
 use App\Models\Recipe;
+use App\Models\View;
 
 class RecipesController extends Controller
 {
@@ -81,6 +82,15 @@ class RecipesController extends Controller
                 return redirect('/recipes')->withError(trans('recipes.not_approved'));
             }
         }
+
+        // Mark that visitor saw the recipe if he didn't
+        // Else increment visits column by one
+        if ($recipe->views()->whereVisitorId(visitor_id())->doesntExist()) {
+            $recipe->views()->create(['visitor_id' => visitor_id()]);
+        } else {
+            $recipe->views()->whereVisitorId(visitor_id())->increment('visits');
+        }
+
         return view('recipes.show', compact('recipe'));
     }
 
