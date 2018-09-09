@@ -121,7 +121,7 @@
 		{{--  Date, views, author --}}
 		<ul class="mt-4 grey-text">
 			<li>
-				@lang('recipes.views'): 
+				@lang('users.views'): 
 				<red>{{ $recipe->views->count() }}</red>
 			</li>
 			<li>

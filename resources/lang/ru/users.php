@@ -11,10 +11,6 @@ return [
     'status' => 'Статус',
     'checked' => 'Проверен',
     'not_ready' => 'Не готов',
-    'likes' => 'Лайки',
-    'thousand' => 'тыс.',
-    'million' => 'мил.',
-    'rating' => 'Рейтинг',
     'is_checking' => 'Проверяется',
     'joined' => 'Регистрация',
     'go_to_recipe' => 'Перейти к рецепту',
@@ -22,5 +18,12 @@ return [
     'all_recipes' => 'Всего рецептов',
     'this_user_does_not_have_recipes' => 'У этого автора нет пока рецептов',
     'u_dont_have_notif' => 'У вас пока нет оповещений',
+
+    // Bubbles
+    'likes' => 'Лайки',
+    'thousand' => 'тыс.',
+    'million' => 'мил.',
+    'rating' => 'Рейтинг',
+    'views' => 'Просмотров',
 
 ];
