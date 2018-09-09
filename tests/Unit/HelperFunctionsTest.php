@@ -4,10 +4,13 @@ namespace Tests\Unit;
 
 use App\Models\Recipe;
 use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class HelperFunctionsTest extends TestCase
 {
+    use DatabaseTransactions;
+
     /** @test */
     public function convert_to_array_of_list_items_helper_returns_array(): void
     {
@@ -18,7 +21,7 @@ class HelperFunctionsTest extends TestCase
 
         $this->assertCount(2, $result);
         $this->assertEquals('<li>First line</li>', $result[0]);
-	}
+    }
 
     /** @test */
     public function get_online_icon_helper_should_return_correct_state(): void
@@ -63,5 +66,12 @@ class HelperFunctionsTest extends TestCase
         $this->get('/recipes');
         $this->assertEquals(active_if_route_is('/recipes'), 'active');
         $this->assertEquals(active_if_route_is('recipes'), 'active');
+    }
+
+    /** @test */
+    public function visitor_id_function_returns_correct_data(): void
+    {
+        $expected = \App\Models\Visitor::whereIp(request()->ip())->value('id');
+        $this->assertEquals($expected, visitor_id());
     }
 }
