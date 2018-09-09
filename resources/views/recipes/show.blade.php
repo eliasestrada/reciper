@@ -121,16 +121,16 @@
 		{{--  Date, views, author --}}
 		<ul class="mt-4 grey-text">
 			<li>
+				@lang('recipes.views'): 
+				<red>{{ $recipe->views->count() }}</red>
+			</li>
+			<li>
 				@lang('recipes.added') 
 				<red>{{ time_ago($recipe->created_at) }}</red>
 			</li>
 			<li>
-				@lang('recipes.views') 
-				<red>{{ $recipe->views->count() }}</red>
-			</li>
-			<li>
 				<a href="/users/{{ $recipe->user->id }}" title="@lang('recipes.search_by_author')" class="grey-text">
-					@lang('recipes.author') 
+					@lang('recipes.author'): 
 					<red>{{ optional($recipe->user)->name }}</red>
 				</a>
 			</li>
