@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('includes.footer', function ($view) {
             if (auth()->check()) {
-                User::whereId(user()->id)->update(['last_visit_at' => NOW()]);
+                User::whereId(user()->id)->update(['online_at' => NOW()]);
             }
         });
     }

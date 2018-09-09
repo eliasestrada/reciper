@@ -10,9 +10,9 @@
 		<p>@lang('users.joined'): {{ time_ago($user->created_at) }}</p>
 		@unless (user() && $user->id === user()->id)
 			<p>
-				{!! get_online_icon(time_ago($user->last_visit_at)) !!}
+				{!! get_online_icon(time_ago($user->online_at)) !!}
 				@lang('date.online') 
-				{{ time_ago($user->last_visit_at, 'online') }}
+				{{ time_ago($user->online_at, 'online') }}
 			</p>
 		@endunless
 	</div>

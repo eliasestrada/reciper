@@ -16,6 +16,6 @@ $factory->define(User::class, function (Faker $faker) {
         'image' => 'default.jpg',
         "notif_check" => now(),
         "contact_check" => now(),
-        "last_visit_at" => now(),
+        "online_at" => now(),
     ];
 });

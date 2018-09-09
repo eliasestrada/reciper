@@ -11,7 +11,7 @@ class User extends Authenticatable
     protected $dates = [
         'created_at',
         'updated_at',
-        'last_visit_at',
+        'online_at',
     ];
 
     public function recipes()

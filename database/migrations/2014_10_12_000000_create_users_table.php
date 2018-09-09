@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
 			$table->timestamp('notif_check')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->timestamp('contact_check')->default(DB::raw('CURRENT_TIMESTAMP'));
 			$table->string('image')->default('default.jpg');
-			$table->dateTime('last_visit_at')->default(date("Y-m-d H:i:s"));
+			$table->dateTime('online_at')->default(date("Y-m-d H:i:s"));
             $table->timestamps();
         });
     }
