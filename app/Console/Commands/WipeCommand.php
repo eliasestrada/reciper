@@ -33,6 +33,7 @@ class WipeCommand extends Command
      */
     public function handle()
     {
+        cache()->flush();
         $this->call('cache:clear');
         $this->call('route:clear');
         $this->call('migrate:fresh');
