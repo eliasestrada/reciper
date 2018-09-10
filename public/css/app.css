@@ -7165,6 +7165,19 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   }
 }
 
+.btn-sort {
+  padding: 0 10px;
+  margin: 6px 4px;
+  height: 30px;
+  line-height: 33px;
+  text-transform: capitalize;
+  font-weight: bold;
+  border-radius: 20px 0 0 20px;
+  background: transparent;
+  background: -webkit-gradient(linear, left top, right top, from(#d5cee0), color-stop(72%, #ffffff));
+  background: linear-gradient(to right, #d5cee0 0%, #ffffff 72%);
+}
+
 .decorated {
   overflow: hidden;
   color: #292543;
