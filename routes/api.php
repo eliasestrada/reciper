@@ -3,12 +3,13 @@
 Route::prefix('recipes')->group(function () {
     Route::get('{hash?}', 'Api\ApiRecipesController@index');
     Route::delete('{id}', 'Api\ApiRecipesController@destroy');
-
-    Route::prefix('other')->group(function () {
-        Route::get('random/{visitor_id}', 'Api\ApiRecipesController@random');
-        Route::get('categories', 'Api\ApiRecipesController@categories');
-        Route::post('check-if-liked/{id}', 'Api\ApiRecipesController@checkIfLiked');
-        Route::post('like/{id}', 'Api\ApiRecipesController@like');
-        Route::post('dislike/{id}', 'Api\ApiRecipesController@dislike');
-    });
 });
+
+Route::prefix('like')->group(function () {
+    Route::post('check/{id}', 'Api\ApiLikeController@check');
+    Route::post('like/{id}', 'Api\ApiLikeController@like');
+    Route::post('dislike/{id}', 'Api\ApiLikeController@dislike');
+});
+
+Route::get('recipes-category', 'Api\ApiRecipesController@categories');
+Route::get('recipes-random/{visitor_id}', 'Api\ApiRandomRecipesController@boot');

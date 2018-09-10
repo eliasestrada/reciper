@@ -32,7 +32,7 @@ export default {
 
     methods: {
         fetchData() {
-            fetch("/api/recipes/other/random/" + this.visitorId)
+            fetch(`/api/recipes-random/${this.visitorId}`)
                 .then(res => res.json())
                 .then(res => (this.recipes = res.data))
                 .catch(err => console.log(err));

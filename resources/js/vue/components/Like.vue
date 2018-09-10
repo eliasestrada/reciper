@@ -32,7 +32,7 @@ export default {
         },
         
         fetchVisitorLikes() {
-            fetch("/api/recipes/other/check-if-liked/" + this.recipeId, {
+            fetch(`/api/like/check/${this.recipeId}`, {
                 method: "post"
             })
                 .then(res => res.json())
@@ -58,7 +58,7 @@ export default {
                 this.processed = false
                 var state = this.liked == false ? "like" : "dislike"
 
-                fetch("/api/recipes/other/" + state + "/" + this.recipeId, {method: "post"})
+                fetch(`/api/like/${state}/${this.recipeId}`, {method: "post"})
                     .then(res => res.json())
                     .then(data => {
                         this.playSound()

@@ -58,7 +58,7 @@ export default {
 
     methods: {
         fetchCategories() {
-            fetch("/api/recipes/other/categories")
+            fetch("/api/recipes-category")
                 .then(res => res.json())
                 .then(data => (this.categories = data))
                 .catch(err => console.log(err));
