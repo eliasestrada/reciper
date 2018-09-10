@@ -2,7 +2,7 @@
 
 return [
 
-	// Views
-	'edit_item' => 'Изменить :item',
+    // Views
+    'edit_item' => 'Изменить :item',
 
 ];
