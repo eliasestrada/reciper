@@ -21,7 +21,7 @@
 
 			{{--  Form  --}}
 			<form action="{{ action('PagesController@search') }}" method="get" class="header-search">
-				<div style="position:relative;">
+				<div class="position-relative">
 					<div class="home-search" id="search-form">
 						<input type="search" name="for" id="header-search-input" placeholder="@lang('pages.search_details')">
 					</div>
