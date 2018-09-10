@@ -22,7 +22,7 @@ export default {
                 {
                     title: this.watchedBtn,
                     icon: 'remove_red_eye',
-                    link: 'watched',
+                    link: 'viewed',
                     isActive: false
                 },
                 {

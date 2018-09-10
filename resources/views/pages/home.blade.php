@@ -10,13 +10,13 @@
 			<div class="home-meal">
 				@lang('header.what_u_like')
 				<br />
-				<a href="search?for={{ trans('header.breakfast') }}">{{ title_case(trans('header.breakfast')) }}</a>, 
-				<a href="search?for={{ trans('header.lunch') }}">@lang('header.lunch')</a>
+				<a href="/recipes#breakfast">{{ title_case(trans('header.breakfast')) }}</a>, 
+				<a href="/recipes#lunch">@lang('header.lunch')</a>
 				@lang('header.or') 
-				<a href="search?for={{ trans('header.dinner') }}">@lang('header.dinner')</a>?
+				<a href="/recipes#dinner">@lang('header.dinner')</a>?
 				<br />
 				@lang('header.or_maybe') 
-				<a href="search?for=simple">@lang('header.sth_new')</a>
+				<a href="/recipes#simple">@lang('header.sth_new')</a>
 			</div>
 
 			{{--  Form  --}}

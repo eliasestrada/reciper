@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Traits\SearchHelpers;
 use App\Models\Recipe;
 use App\Models\Title;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    use SearchHelpers;
-
     /**
      * @return \Illuminate\View\View
      */
@@ -44,19 +41,14 @@ class PagesController extends Controller
         if (request('for')) {
             $request = mb_strtolower(request('for'));
 
-            if (in_array($request, $this->mealTime())) {
-                $recipes = $this->searchForMealTime($request);
-            } else if ($request === 'simple') {
-                $recipes = $this->searchForSimpleRecipes();
-            } else {
-                $recipes = $this->searchForCategories($request);
-            }
+            // If no recipes found, search for recipe title or intro
+            $recipes = Recipe::where('title_' . lang(), 'LIKE', "%$request%")
+                ->orWhere('ingredients_' . lang(), 'LIKE', "%$request%")
+                ->take(50)
+                ->done(1)
+                ->get();
 
-            if (count($recipes) === 0) {
-                // If no recipes found, search for recipe title or intro
-                $recipes = $this->searchForRecipes($request);
-                $message = count($recipes) > 0 ? '' : trans('pages.nothing_found');
-            }
+            $message = count($recipes) > 0 ? '' : trans('pages.nothing_found');
         } else {
             $message = trans('pages.use_search');
         }

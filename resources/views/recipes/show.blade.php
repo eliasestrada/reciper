@@ -78,7 +78,7 @@
 		{{--  Category  --}}
 		<div class="center py-3">
 			@foreach ($recipe->categories as $category)
-				<a href="/search?for={{ $category->getName() }}" title="{{ $category->getName() }}">
+				<a href="/recipes#category={{ $category->id }}" title="{{ $category->getName() }}">
 					<span class="new badge p-1 px-2" style="float:none;">{{ $category->getName() }}</span>
 				</a>
 			@endforeach

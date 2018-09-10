@@ -126,21 +126,45 @@ class ApiRecipesController extends Controller
      */
     public function makeQueryWithCriteria($hash, $sql)
     {
-        switch ($hash) {
-            case 'new':
-                $sql->latest();
-                break;
-            case 'liked':
-                $sql->withCount('likes');
-                $sql->orderBy('likes_count', 'desc');
-            case 'viewed':
-                $sql->withCount('views');
-                $sql->orderBy('views_count', 'desc');
-                break;
-            default:
-                $sql->inRandomOrder();
+        if ($hash == 'new') {
+            $sql->latest();
+            return $sql->done(1);
         }
-        return $sql->done(1);
+
+        if ($hash == 'liked') {
+            $sql->withCount('likes');
+            $sql->orderBy('likes_count', 'desc');
+            return $sql->done(1);
+        }
+
+        if ($hash == 'viewed') {
+            $sql->withCount('views');
+            $sql->orderBy('views_count', 'desc');
+            return $sql->done(1);
+        }
+
+        if ($hash == 'simple') {
+            $sql->whereSimple(1);
+            return $sql->done(1);
+        }
+
+        // Searching for recipes with category
+        if (str_contains($hash, 'category=')) {
+            $sql->with('categories')->whereHas('categories', function ($query) use ($hash) {
+                $query->whereId(str_replace('category=', '', $hash));
+            });
+            return $sql->done(1);
+        }
+
+        // Searching for recipes with meal time
+        if ($hash == 'breakfast' || $hash == 'lunch' || $hash == 'dinner') {
+            $sql->with('meal')->whereHas('meal', function ($query) use ($hash) {
+                $query->whereNameEn($hash);
+            });
+            return $sql->done(1);
+        }
+
+        return $sql->inRandomOrder()->done(1);
     }
 
     /**

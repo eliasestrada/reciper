@@ -1,8 +1,8 @@
-@isset($category_names)
-	@foreach ($category_names as $name)
+@isset($categories)
+	@foreach ($categories as $category)
 			<li>
-				<a href="/search?for={{ str_replace(' ', '-', $name['name_'.lang()]) }}" title="{{ $name['name_'.lang()] }}">
-					{{ $name['name_'.lang()] }}
+				<a href="/recipes#category={{ $category->id }}" title="{{ $category->getName() }}">
+					{{ $category->getName() }}
 				</a>
 			</li>
 	@endforeach

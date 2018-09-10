@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function showListOfCategories(): void
     {
-        $category_names = Category::get(['name_' . lang()])->toArray();
-        view()->share(compact('category_names'));
+        $categories = Category::get(['id', 'name_' . lang()]);
+        view()->share(compact('categories'));
     }
 }
