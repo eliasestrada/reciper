@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="pt-3">
 		<div class="row">
 			<div class="col s12 m6 l3" v-for="recipe in recipes" :key="recipe.id">
 				<div class="card">
@@ -50,12 +50,14 @@
 		created() {
 			this.makeFirstRequest()
 			window.onhashchange = () => {
-				this.makeFirstRequest()
-			}
+                this.makeFirstRequest()
+            }
 		},
 	
 		methods: {
 			makeFirstRequest() {
+                Event.$emit('hash-changed', this.hash())
+
 				fetch('/api/recipes/' + this.hash())
 					.then(res => res.json())
 					.then(res => {

@@ -1,7 +1,10 @@
 import "./bootstrap";
 
+window.Event = new Vue();
+
 const components = [
     "Recipes",
+    "SortButtons",
     "RandomRecipesSidebar",
     "DeleteRecipeBtn",
     "CategoriesField",
