@@ -6,30 +6,30 @@
 
 {{-- Breadcrumps --}}
 @component('comps.breadcrumps', [
-	'url' => ['/admin/documents', '#'],
-	'name' => [trans('documents.docs'), $document->getTitle()]
+    'url' => ['/admin/documents', '#'],
+    'name' => [trans('documents.docs'), $document->getTitle()]
 ]) @endcomponent
 
 <div class="page">
-	<h4>{{ $document->getTitle() }}</h4>
-	<div class="reset">{!! custom_strip_tags($document->text) !!}</div>
+    <h4>{{ $document->getTitle() }}</h4>
+    <div class="reset">{!! custom_strip_tags($document->text) !!}</div>
 
-	<p class="mt-5"> {{-- Created at --}}
-		<b>@lang('logs.created_at'):</b> 
-		{{ time_ago($document->created_at) }}
-	</p>
+    <p class="mt-5"> {{-- Created at --}}
+        <b>@lang('logs.created_at'):</b> 
+        {{ time_ago($document->created_at) }}
+    </p>
 
-	<p> {{-- Updated At --}}
-		<b>@lang('documents.last_update'):</b> 
-		{{ time_ago($document->updated_at) }}
-	</p>
+    <p> {{-- Updated At --}}
+        <b>@lang('documents.last_update'):</b> 
+        {{ time_ago($document->updated_at) }}
+    </p>
 </div>
 
 {{-- Edit button --}}
 @component('comps.btns.fixed-btn')
-	@slot('icon') edit @endslot
-	@slot('link') /admin/documents/{{ $document->id }}/edit @endslot
-	@slot('tip') @lang('tips.edit') @endslot
+    @slot('icon') edit @endslot
+    @slot('link') /admin/documents/{{ $document->id }}/edit @endslot
+    @slot('tip') @lang('tips.edit') @endslot
 @endcomponent
 
 @endsection
