@@ -77,6 +77,7 @@ trait RecipesControllerHelpers
                 cache()->forget('popular_recipes');
                 cache()->forget('random_recipes');
                 cache()->forget('all_unapproved');
+                cache()->forget('search_suggest');
             }
             $recipe->categories()->sync($request->categories);
             return $recipe->update($recipe_columns);

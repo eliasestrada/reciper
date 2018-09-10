@@ -64,7 +64,7 @@
 @section('script')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var titles = {!! json_encode($all_titles) !!}
+        var titles = {!! json_encode($search_suggest) !!}
         var converted = {}
 
         titles.forEach(function (title) {

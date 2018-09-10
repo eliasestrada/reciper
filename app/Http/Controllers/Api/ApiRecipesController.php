@@ -41,6 +41,7 @@ class ApiRecipesController extends Controller
             cache()->forget('popular_recipes');
             cache()->forget('random_recipes');
             cache()->forget('all_unapproved');
+            cache()->forget('search_suggest');
 
             return 'success';
         }

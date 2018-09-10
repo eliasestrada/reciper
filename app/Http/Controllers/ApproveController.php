@@ -13,8 +13,7 @@ class ApproveController extends Controller
      */
     public function ok(Recipe $recipe, ApproveMessageRequest $request)
     {
-        cache()->forget('all_unapproved');
-        cache()->forget('all_notifs');
+        $this->forgetCache();
 
         Notification::sendToUser(
             'recipe_published',
@@ -36,8 +35,7 @@ class ApproveController extends Controller
      */
     public function cancel(Recipe $recipe, ApproveMessageRequest $request)
     {
-        cache()->forget('all_unapproved');
-        cache()->forget('all_notifs');
+        $this->forgetCache();
 
         Notification::sendToUser(
             'recipe_not_published',
@@ -51,5 +49,15 @@ class ApproveController extends Controller
         return redirect('/recipes')->withSuccess(
             trans('recipes.you_gave_recipe_back_on_editing')
         );
+    }
+
+    /**
+     * @return void
+     */
+    public function forgetCache(): void
+    {
+        cache()->forget('all_unapproved');
+        cache()->forget('all_notifs');
+        cache()->forget('search_suggest');
     }
 }
