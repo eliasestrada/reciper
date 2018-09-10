@@ -13,11 +13,10 @@
     <div class="container">
         <form action="{{ action('PagesController@search') }}" method="get">
             <div class="input-field">
-                <i class="material-icons prefix">search</i>
-                <input type="text" name="for" id="autocomplete-input" class="autocomplete">
-                <label for="autocomplete-input">@lang('pages.search_details')</label>
+                <button type="submit" class="prefix btn-floating"><i class="material-icons">search</i></button>
+                <input type="text" name="for" id="autocomplete-input" class="autocomplete" style="margin-left:4em" autocomplete="off">
+                <label for="autocomplete-input" style="margin-left:4em">@lang('pages.search_details')</label>
 
-                <button type="submit" class="d-none"></button>
             </div>
         </form>
     </div>
@@ -61,4 +60,23 @@
     @endcomponent
 </div>
 
+@endsection
+
+@section('script')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var titles = {!! json_encode($all_titles) !!}
+        var converted = {}
+
+        titles.forEach(function (title) {
+            converted[title] = null
+        })
+
+        var elems = document.querySelectorAll('.autocomplete');
+        M.Autocomplete.init(elems, {
+            data: converted,
+            limit: 20
+        });
+    });
+</script>
 @endsection

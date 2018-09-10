@@ -53,6 +53,10 @@ class PagesController extends Controller
             $message = trans('pages.use_search');
         }
 
-        return view('pages.search', compact('recipes', 'message'));
+        $all_titles = cache()->remember('all_titles', 10, function () {
+            return Recipe::query()->done(1)->pluck('title_' . lang())->toArray();
+        });
+
+        return view('pages.search', compact('recipes', 'all_titles', 'message'));
     }
 }
