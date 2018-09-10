@@ -133,10 +133,6 @@ class ApiRecipesController extends Controller
             case 'liked':
                 $sql->withCount('likes');
                 $sql->orderBy('likes_count', 'desc');
-                break;
-            case 'old':
-                $sql->oldest();
-                break;
             case 'viewed':
                 $sql->withCount('views');
                 $sql->orderBy('views_count', 'desc');
