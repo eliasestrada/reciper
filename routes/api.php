@@ -1,7 +1,7 @@
 <?php
 
 Route::prefix('recipes')->group(function () {
-    Route::get('/', 'Api\ApiRecipesController@index');
+    Route::get('{hash?}', 'Api\ApiRecipesController@index');
     Route::delete('{id}', 'Api\ApiRecipesController@destroy');
 
     Route::prefix('other')->group(function () {

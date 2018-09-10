@@ -18,30 +18,29 @@ class ApiRecipesController extends Controller
     use RecipesControllerHelpers;
 
     /**
-     * @return object
+     * @param null|string $hash
+     * @return null|object
      */
-    public function index(): ?object
+    public function index(?string $hash = null): ?object
     {
-        $recipes = Recipe::query()
-            ->approved(1)
-            ->ready(1)
-            ->latest()
-            ->paginate(8);
-
-        return RecipesResource::collection($recipes);
+        return RecipesResource::collection(
+            $this->makeQueryWithCriteria($hash, Recipe::query())->paginate(8)
+        );
     }
 
     /**
-     * @param integer $id of the recipe
+     * @param int $id of the recipe
      * @return string
      */
-    public function destroy($id): string
+    public function destroy(int $id): string
     {
         $recipe = Recipe::find($id);
 
         $this->deleteOldImage($recipe->image);
+
         $recipe->categories()->detach();
         $recipe->likes()->delete();
+        $recipe->views()->delete();
 
         if ($recipe->delete()) {
             cache()->forget('popular_recipes');
@@ -56,37 +55,24 @@ class ApiRecipesController extends Controller
     }
 
     /**
-     * @param integer $id of the recipe
-     * @return object
+     * @param int $visitor_id
+     * @return object|null
      */
-    public function random($visitor_id): ?object
+    public function random(int $visitor_id): ?object
     {
-        // Find recipes that visitor saw
-        $except_visited = View::whereVisitorId($visitor_id)
-            ->pluck('recipe_id')
-            ->map(function ($id) {
-                return ['id', '!=', $id];
-            })->toArray();
+        $array_of_visited_recipes = View::whereVisitorId($visitor_id)
+            ->pluck('recipe_id');
 
         // Get recipes all except those that visitor saw
-        $not_seen_recipes = Recipe::inRandomOrder()
-            ->where($except_visited)
-            ->ready(1)
-            ->approved(1)
-            ->limit(7)
-            ->get();
+        $not_visited_recipes = $this->getRecipesExcept($array_of_visited_recipes);
 
         // If not enough recipes to display, show just random recipes
         // with those that has been seen by visitor
-        if ($not_seen_recipes->count() < 7) {
-            $not_seen_recipes = Recipe::inRandomOrder()
-                ->ready(1)
-                ->approved(1)
-                ->limit(7)
-                ->get();
+        if ($not_visited_recipes->count() < 3) {
+            $not_visited_recipes = $this->getRandomRecipes();
         }
 
-        return RecipesRandomResource::collection($not_seen_recipes);
+        return RecipesRandomResource::collection($not_visited_recipes);
     }
 
     /**
@@ -131,5 +117,57 @@ class ApiRecipesController extends Controller
         Like::where(['visitor_id' => $visitor->id, 'recipe_id' => $id])->delete();
 
         return response()->json(['liked' => 0]);
+    }
+
+    /**
+     * @param [type] $hash
+     * @param [type] $sql
+     * @return void
+     */
+    public function makeQueryWithCriteria($hash, $sql)
+    {
+        switch ($hash) {
+            case 'new':
+                $sql->latest();
+                break;
+            case 'liked':
+                $sql->withCount('likes');
+                $sql->orderBy('likes_count', 'desc');
+                break;
+            case 'old':
+                $sql->oldest();
+                break;
+            case 'viewed':
+                $sql->withCount('views');
+                $sql->orderBy('views_count', 'desc');
+                break;
+            default:
+                $sql->inRandomOrder();
+        }
+        return $sql->done(1);
+    }
+
+    /**
+     * @param object|null $except
+     */
+    public function getRecipesExcept(?object $except)
+    {
+        $except = $except->map(function ($id) {
+            return ['id', '!=', $id];
+        })->toArray();
+
+        return Recipe::inRandomOrder()
+            ->where($except)
+            ->done(1)
+            ->limit(7)
+            ->get();
+    }
+
+    public function getRandomRecipes()
+    {
+        return Recipe::inRandomOrder()
+            ->done(1)
+            ->limit(7)
+            ->get();
     }
 }

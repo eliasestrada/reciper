@@ -41,28 +41,34 @@
 				recipes: [],
 				newRecipes: [],
 				next: '',
-				theEnd: false
+				theEnd: false,
 			};
 		},
 	
 		props: ["go"],
 
 		created() {
-			fetch('/api/recipes')
-				.then(res => res.json())
-				.then(res => {
-					this.recipes = res.data
-
-					if (res.links.next != null) {
-						this.next = res.links.next
-					} else {
-						this.theEnd = true
-					}
-				})
-				.catch(err => console.log(err));
+			this.makeFirstRequest()
+			window.onhashchange = () => {
+				this.makeFirstRequest()
+			}
 		},
 	
 		methods: {
+			makeFirstRequest() {
+				fetch('/api/recipes/' + this.hash())
+					.then(res => res.json())
+					.then(res => {
+						this.recipes = res.data
+
+						if (res.links.next != null) {
+							this.next = res.links.next
+						} else {
+							this.theEnd = true
+						}
+					})
+					.catch(err => console.log(err));
+			},
 			infiniteHandler($state) {
 				setTimeout(() => {
 					fetch(this.next)
@@ -79,9 +85,12 @@
 					$state.loaded()
 				}, 1000);
 			},
+			hash() {
+				return window.location.hash.substring(1)
+			}
 		},
 		components: {
 			InfiniteLoading,
-		},
+		}
 	};
 </script>
