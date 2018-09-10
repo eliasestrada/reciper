@@ -20,7 +20,7 @@ trait SearchHelpers
             ->take(50)
             ->get();
 
-        return count($category) > 0 ? $category[0]->recipes->ready(1)->approved(1) : [];
+        return count($category) > 0 ? $category[0]->recipes->done(1) : [];
     }
 
     /**
@@ -34,7 +34,7 @@ trait SearchHelpers
             ->take(50)
             ->get();
 
-        return count($meal) > 0 ? $meal[0]->recipes->ready(1)->approved(1) : [];
+        return count($meal) > 0 ? $meal[0]->recipes->done(1) : [];
     }
 
     /**
@@ -46,8 +46,7 @@ trait SearchHelpers
         return Recipe::where('title_' . lang(), 'LIKE', "%$request%")
             ->orWhere('ingredients_' . lang(), 'LIKE', "%$request%")
             ->take(50)
-            ->ready(1)
-            ->approved(1)
+            ->done(1)
             ->get();
     }
 
@@ -56,10 +55,7 @@ trait SearchHelpers
      */
     public function searchForSimpleRecipes(): ?object
     {
-        return Recipe::whereSimple(1)
-            ->ready(1)
-            ->approved(1)
-            ->get();
+        return Recipe::whereSimple(1)->done(1)->get();
     }
 
     /**

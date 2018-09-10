@@ -24,8 +24,7 @@ class UsersController extends Controller
         $recipes = Recipe::whereUserId($user->id)
             ->withCount('likes')
             ->withCount('views')
-            ->approved(1)
-            ->ready(1)
+            ->done(1)
             ->latest()
             ->paginate(20)
             ->onEachSide(1);
@@ -49,8 +48,7 @@ class UsersController extends Controller
     public function my_recipes()
     {
         $recipes_ready = Recipe::whereUserId(user()->id)
-            ->ready(1)
-            ->approved(1)
+            ->done(1)
             ->latest()
             ->paginate(20)
             ->onEachSide(1);

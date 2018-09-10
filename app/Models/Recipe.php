@@ -45,4 +45,15 @@ class Recipe extends Model
     {
         return $query->where('approved_' . lang(), $value);
     }
+
+    /**
+     * @param $query
+     * @param integer $value
+     */
+    public function scopeDone($query, int $value)
+    {
+        return $query
+            ->where('ready_' . lang(), $value)
+            ->where('approved_' . lang(), $value);
+    }
 }

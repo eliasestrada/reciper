@@ -18,8 +18,7 @@ class PopularRecipesComposer
             return Recipe::select('id', 'title_' . lang())
                 ->withCount('likes')
                 ->orderBy('likes_count', 'desc')
-                ->ready(1)
-                ->approved(1)
+                ->done(1)
                 ->limit(10)
                 ->get();
         });
