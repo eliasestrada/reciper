@@ -7166,26 +7166,24 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 }
 
 .btn-sort {
-  padding: 0 10px;
+  padding: 0 7px;
   margin: 6px 8px;
-  height: 30px;
-  line-height: 33px;
+  height: 27px;
+  line-height: 28px;
   text-transform: capitalize;
   font-weight: bold;
-  border-radius: 20px;
+  border-radius: 20px 0 0 20px;
   background: #d5cee0;
-  background: -webkit-gradient(linear, left top, right top, from(#d5cee0), color-stop(72%, #ffffff));
-  background: linear-gradient(to right, #d5cee0 0%, #ffffff 72%);
-  border-bottom: 2px solid #d5cee0;
+  background: -webkit-gradient(linear, left top, right top, from(#d5cee0), color-stop(72%, #f2eaf3));
+  background: linear-gradient(to right, #d5cee0 0%, #f2eaf3 72%);
 }
 
 .btn-sort.active {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   background: #e9c4c4;
-  background: -webkit-gradient(linear, left top, right top, from(#e9c4c4), color-stop(72%, #ffffff));
-  background: linear-gradient(to right, #e9c4c4 0%, #ffffff 72%);
-  border-bottom: 2px solid #e9c4c4;
+  background: -webkit-gradient(linear, left top, right top, from(#e9c4c4), color-stop(72%, #f3e9e9));
+  background: linear-gradient(to right, #e9c4c4 0%, #f3e9e9 72%);
 }
 
 .decorated {
