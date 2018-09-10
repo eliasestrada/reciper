@@ -50,6 +50,7 @@
                 </div>
             @endforeach
         </div>
+        {{ $recipes->appends(request()->input())->links() }}
     @endif
     
     @component('comps.empty')

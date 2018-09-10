@@ -46,7 +46,7 @@ class PagesController extends Controller
                 ->orWhere('ingredients_' . lang(), 'LIKE', "%$request%")
                 ->take(50)
                 ->done(1)
-                ->get();
+                ->paginate(12);
 
             $message = count($recipes) > 0 ? '' : trans('pages.nothing_found');
         } else {
