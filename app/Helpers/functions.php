@@ -125,6 +125,8 @@ function set_image_name(string $extension = null, string $slug = ''): string
  */
 function readable_number($number)
 {
+    $number = round($number);
+
     if ($number >= 1000 && $number < 1000000):
         $number = substr($number, 0, -3) . '<br /><small>' . trans('users.thousand') . '</small>';
     elseif ($number >= 1000000):
