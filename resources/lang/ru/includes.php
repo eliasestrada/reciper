@@ -32,5 +32,6 @@ return [
 
     // Footer
     'popular_recipes' => 'Популярное',
+    'top_recipers' => 'Топ ресиперов',
 
 ];

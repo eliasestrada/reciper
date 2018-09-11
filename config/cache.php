@@ -30,6 +30,6 @@ return [
     'timing' => [
         'popular_recipes' => 10,
         'random_recipes' => 2,
-        # 'title_footer' set to remember forever
+        'top_recipers' => 10,
     ],
 ];

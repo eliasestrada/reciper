@@ -15,6 +15,7 @@ class FooterProvider extends ServiceProvider
         $this->getAndComposeRandomRecipes();
         $this->getAndComposePopularRecipes();
         $this->getAndComposeTitleForFooter();
+        $this->getAndComposeTopRecipersForFooter();
     }
 
     /**
@@ -42,5 +43,14 @@ class FooterProvider extends ServiceProvider
     {
         view()->composer('includes.footer',
             'App\Http\ViewComposers\Footer\TitleFooterComposer');
+    }
+
+    /**
+     * @return void
+     */
+    public function getAndComposeTopRecipersForFooter(): void
+    {
+        view()->composer('includes.footer',
+            'App\Http\ViewComposers\Footer\TopRecipersComposer');
     }
 }

@@ -56,18 +56,19 @@
         </div>
 
         {{--  Top recipers  --}}
-        {{-- <div class="col s12 m6 l3 left-align">
+        <div class="col s12 m6 l3 left-align">
             <ul class="unstyled-list">
                 <li><strong>@lang('includes.top_recipers')</strong></li>
-                @foreach ($top_recipers as $reciper)
+                @foreach ($top_recipers as $i => $reciper)
                     <li>
-                        <a href="/recipes/{{ $reciper->id }}" title="{{ $reciper->name }}">
-                            <red>#</red> {{ $reciper->name }}
+                        <a href="/users/{{ $reciper->id }}" title="{{ $reciper->name }}">
+                            <i class="material-icons tiny" style="font-size:0.8em;color:orange">star</i> 
+                            {{ $reciper->name }} ({{ $reciper->points }})
                         </a>
                     </li>
                 @endforeach
             </ul>
-        </div> --}}
+        </div>
     </div>
 
     <div class="center">
