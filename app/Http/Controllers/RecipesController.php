@@ -87,6 +87,7 @@ class RecipesController extends Controller
         // Else increment visits column by one
         if ($recipe->views()->whereVisitorId(visitor_id())->doesntExist()) {
             $recipe->views()->create(['visitor_id' => visitor_id()]);
+            event(new \App\Events\RecipeGotViewed($recipe));
         } else {
             $recipe->views()->whereVisitorId(visitor_id())->increment('visits');
         }

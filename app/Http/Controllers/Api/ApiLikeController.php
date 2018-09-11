@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Like;
+use App\Models\Recipe;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
 
@@ -30,6 +31,8 @@ class ApiLikeController extends Controller
         $visitor = Visitor::whereIp(request()->ip())->first();
         Like::create(['visitor_id' => $visitor->id, 'recipe_id' => $id]);
 
+        event(new \App\Events\RecipeGotLiked(Recipe::find($id)));
+
         return response()->json(['liked' => 1]);
     }
 
@@ -41,6 +44,8 @@ class ApiLikeController extends Controller
     {
         $visitor = Visitor::whereIp(request()->ip())->first();
         Like::where(['visitor_id' => $visitor->id, 'recipe_id' => $id])->delete();
+
+        event(new \App\Events\RecipeGotDisliked(Recipe::find($id)));
 
         return response()->json(['liked' => 0]);
     }
