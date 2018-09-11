@@ -19,13 +19,13 @@ class PostRequestTest extends TestCase
         $visitor = Visitor::create(['ip' => '777.777.7.7']);
 
         $this->assertEquals(0, count($recipe->likes));
-        $this->post("/api/recipes/other/like/$recipe->id", ['ip' => $visitor->ip]);
+        $this->post("/api/like/like/$recipe->id", ['ip' => $visitor->ip]);
 
         $recipe = Recipe::find($recipe->id);
         $this->assertEquals(1, count($recipe->likes));
 
         // Dislike recipe request ======
-        $this->post("/api/recipes/other/dislike/$recipe->id", [
+        $this->post("/api/like/dislike/$recipe->id", [
             'ip' => $visitor->ip,
         ]);
 
@@ -39,7 +39,7 @@ class PostRequestTest extends TestCase
         $recipe = create(Recipe::class);
         $visitor = Visitor::create(['ip' => '777.777.7.7']);
 
-        $response = $this->post("/api/recipes/other/check-if-liked/$recipe->id", [
+        $response = $this->post("/api/like/check/$recipe->id", [
             'ip' => $visitor->ip,
         ]);
 

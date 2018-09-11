@@ -2,8 +2,6 @@
 
 namespace Tests\Unit;
 
-use App\Models\Recipe;
-use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -48,16 +46,6 @@ class HelperFunctionsTest extends TestCase
         $this->assertEquals(readable_number(999), 999);
         $this->assertEquals(readable_number(1000), "1<br /><small>$thousand</small>");
         $this->assertEquals(readable_number(1000000), "1<br /><small>$million</small>");
-    }
-
-    /** @test */
-    public function get_rating_number_helper_returns_correct_rating(): void
-    {
-        $user = make(User::class);
-        $recipes = [make(Recipe::class, ['user_id' => $user->id])];
-
-        $this->assertEquals(get_rating_number($recipes, 2, 10), 3);
-        $this->assertEquals(get_rating_number($recipes, -11, -10), 1);
     }
 
     /** @test */

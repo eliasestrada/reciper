@@ -16,19 +16,21 @@ class UsersShowPageTest extends TestCase
     {
         $user = create(User::class);
         $user->wasRecentlyCreated = false;
-
         $response = $this->actingAs($user)->get("/users/$user->id");
 
         $recipes = Recipe::whereUserId($user->id)
             ->withCount('likes')
+            ->withCount('views')
             ->latest()
             ->paginate(20)
             ->onEachSide(1);
 
         $likes = 0;
+        $views = 0;
 
         foreach ($recipes as $recipe) {
             $likes += $recipe->likes_count;
+            $views += $recipe->views_count;
         }
 
         $response->assertViewIs('users.show');
@@ -36,6 +38,7 @@ class UsersShowPageTest extends TestCase
             'recipes' => $recipes,
             'user' => $user,
             'likes' => $likes,
+            'views' => $views,
         ]);
     }
 

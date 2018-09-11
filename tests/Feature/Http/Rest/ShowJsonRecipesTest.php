@@ -37,7 +37,7 @@ class ShowJsonRecipesTest extends TestCase
             'title_' . lang() => 'Test 1',
         ]);
 
-        $this->json('GET', "/api/recipes/other/random/1")
+        $this->json('GET', "/api/recipes-random/1")
             ->assertOk()
             ->assertJsonCount(1)
             ->assertJsonFragment(['title' => 'Test 1']);
@@ -51,11 +51,11 @@ class ShowJsonRecipesTest extends TestCase
     {
         app()->setLocale('ru');
 
-        $this->get('/api/recipes/other/categories')
+        $this->get('/api/recipes-category')
             ->assertJsonFragment(['id' => 2, 'name_ru' => 'Выпечка']);
 
         app()->setLocale('en');
-        $this->get('/api/recipes/other/categories')
+        $this->get('/api/recipes-category')
             ->assertJsonFragment(['id' => 2, 'name_en' => 'Bakery']);
     }
 }
