@@ -7471,7 +7471,8 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   color: #fff;
 }
 
-.item-list > ul > li.col {
+.item-list > ul > li.col,
+.item-list > ul > a > li.col {
   position: relative;
   height: 115px;
   display: -webkit-box;
@@ -7479,14 +7480,15 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   display: flex;
   padding: 4px 10px;
   border-bottom: 1px solid #b6b6b6;
-  background-color: #e4e4e4;
+  background-color: #e0e0e0;
   -webkit-transition: background-color 250ms;
   transition: background-color 250ms;
   border-radius: 2px;
   border-left: solid 3px #484074;
 }
 
-.item-list > ul > li.col:hover {
+.item-list > ul > li.col:hover,
+.item-list > ul > a > li.col:hover {
   background-color: #ddd;
   border-radius: 5px;
   -webkit-transition: background-color 250ms;
@@ -7509,6 +7511,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   margin-top: .8em;
   font-size: .85em;
   text-align: left;
+  padding-left: 10px;
 }
 
 .profile-header {

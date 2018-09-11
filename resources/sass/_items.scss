@@ -5,13 +5,14 @@
 		color: #fff;
 	}
 	
-	> ul > li.col {
+    > ul > li.col,
+    > ul > a > li.col {
 		position: relative;
 		height: 115px;
 		display: flex;
 		padding: 4px 10px;
 		border-bottom: 1px solid #b6b6b6;
-		background-color: #e4e4e4;
+		background-color: #e0e0e0;
 		transition: background-color 250ms;
 		border-radius: 2px;
 		border-left: solid 3px $main;
@@ -38,5 +39,6 @@
 	width: 100%;
 	margin-top: .8em;
 	font-size: .85em;
-	text-align: left;
+    text-align: left;
+    padding-left: 10px;
 }
