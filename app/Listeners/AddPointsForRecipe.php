@@ -13,6 +13,6 @@ class AddPointsForRecipe
      */
     public function handle(RecipeGotApproved $event)
     {
-        User:addPoints(1, $event->recipe->user_id);
+        User::addPoints(1, $event->recipe->user_id);
     }
 }

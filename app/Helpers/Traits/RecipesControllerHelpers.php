@@ -74,6 +74,7 @@ trait RecipesControllerHelpers
         if ($recipe) {
             // If recipe moved from being ready to not ready
             if ($recipe->isReady() && $request->ready == 0) {
+                event(new \App\Events\RecipeGotDrafted($recipe));
                 cache()->forget('popular_recipes');
                 cache()->forget('random_recipes');
                 cache()->forget('all_unapproved');

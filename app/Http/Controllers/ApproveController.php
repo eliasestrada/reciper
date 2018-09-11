@@ -15,7 +15,7 @@ class ApproveController extends Controller
     {
         $this->forgetCache();
 
-        event(new \App\Events\RecipeIsApproved($recipe));
+        event(new \App\Events\RecipeGotApproved($recipe));
 
         Notification::sendToUser(
             'recipe_published',
