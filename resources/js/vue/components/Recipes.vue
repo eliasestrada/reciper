@@ -50,6 +50,7 @@
         created() {
             this.makeFirstRequest()
             window.onhashchange = () => {
+                this.theEnd = false
                 this.makeFirstRequest()
             }
         },
