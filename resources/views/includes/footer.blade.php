@@ -28,36 +28,46 @@
         </div>
 
         {{--  Random recipes  --}}
-        @forelse ($random_recipes->chunk(10) as $random_chunk)
-            <div class="col s12 m6 l3 left-align">
-                <ul class="unstyled-list">
-                    <li><strong>@lang('includes.recipes')</strong></li>
-                    @foreach ($random_chunk as $recipe)
-                        <li>
-                            <a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
-                                <red>#</red> {{ $recipe->getTitle() }}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        @empty @endforelse
+        <div class="col s12 m6 l3 left-align">
+            <ul class="unstyled-list">
+                <li><strong>@lang('includes.recipes')</strong></li>
+                @foreach ($random_recipes as $recipe)
+                    <li>
+                        <a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
+                            <red>#</red> {{ $recipe->getTitle() }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
 
         {{--  Popular recipes  --}}
         <div class="col s12 m6 l3 left-align">
             <ul class="unstyled-list">
-                @if ($popular_recipes->count() > 0)
-                    <li><strong>@lang('includes.popular_recipes')</strong></li>
-                    @foreach ($popular_recipes as $recipe)
-                        <li>
-                            <a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
-                                <red>#</red> {{ $recipe->getTitle() }}
-                            </a>
-                        </li>
-                    @endforeach
-                @endif
+                <li><strong>@lang('includes.popular_recipes')</strong></li>
+                @foreach ($popular_recipes as $recipe)
+                    <li>
+                        <a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
+                            <red>#</red> {{ $recipe->getTitle() }}
+                        </a>
+                    </li>
+                @endforeach
             <ul>
         </div>
+
+        {{--  Top recipers  --}}
+        {{-- <div class="col s12 m6 l3 left-align">
+            <ul class="unstyled-list">
+                <li><strong>@lang('includes.top_recipers')</strong></li>
+                @foreach ($top_recipers as $reciper)
+                    <li>
+                        <a href="/recipes/{{ $reciper->id }}" title="{{ $reciper->name }}">
+                            <red>#</red> {{ $reciper->name }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div> --}}
     </div>
 
     <div class="center">
