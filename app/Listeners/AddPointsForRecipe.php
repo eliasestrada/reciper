@@ -2,17 +2,17 @@
 
 namespace App\Listeners;
 
-use App\Events\RecipeIsApproved;
+use App\Events\RecipeGotApproved;
 use App\Models\User;
 
 class AddPointsForRecipe
 {
     /**
-     * @param  RecipeIsApproved  $event
+     * @param  RecipeGotApproved  $event
      * @return void
      */
-    public function handle(RecipeIsApproved $event)
+    public function handle(RecipeGotApproved $event)
     {
-        user()->addPoints(1.0, $event->recipe->user_id);
+        User:addPoints(1, $event->recipe->user_id);
     }
 }
