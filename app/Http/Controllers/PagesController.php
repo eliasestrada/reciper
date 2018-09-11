@@ -38,19 +38,16 @@ class PagesController extends Controller
      */
     public function search(Request $request)
     {
+        $recipes = collect();
+
         if (request('for')) {
             $request = mb_strtolower(request('for'));
 
-            // If no recipes found, search for recipe title or intro
             $recipes = Recipe::where('title_' . lang(), 'LIKE', "%$request%")
                 ->orWhere('ingredients_' . lang(), 'LIKE', "%$request%")
                 ->take(50)
                 ->done(1)
                 ->paginate(12);
-
-            $message = count($recipes) > 0 ? '' : trans('pages.nothing_found');
-        } else {
-            $message = trans('pages.use_search');
         }
 
         $search_suggest = cache()->rememberForever('search_suggest', function () {
@@ -58,7 +55,7 @@ class PagesController extends Controller
         });
 
         return view('pages.search', compact(
-            'recipes', 'search_suggest', 'message'
+            'recipes', 'search_suggest'
         ));
     }
 }
