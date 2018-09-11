@@ -2,7 +2,7 @@
     @isset($recipes)
         @forelse ($recipes as $recipe)
             <ul>
-                <li style="border-left-color:{{ $recipe->getStatusColor() }};" class="col s12 m6 l4 row">
+                <li style="margin-bottom:5px;border-left-color:{{ $recipe->getStatusColor() }};" class="col s12 m6 l4 row">
                     <a href="/recipes/{{ $recipe->id }}" style="width:11em">
                         <img src="{{ asset('storage/images/small/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" />
                     </a>

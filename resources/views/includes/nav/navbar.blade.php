@@ -140,7 +140,7 @@
                     </a>
                 </li>
                 <li class="{{ active_if_route_is('recipes') }}">
-                    <a href="/recipes#new" title="@lang('includes.recipes')">
+                    <a href="/recipes" title="@lang('includes.recipes')">
                         @lang('includes.recipes')
                     </a>
                 </li>
