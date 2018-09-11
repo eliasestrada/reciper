@@ -7,7 +7,6 @@
 <div class="page">
     <div class="center">
         <h1 class="headline">@lang('pages.search')</h1>
-        <p>Lorem, ipsum dolor.</p>
     </div>
     
     {{--  Form  --}}
