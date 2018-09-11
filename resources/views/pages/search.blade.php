@@ -7,6 +7,7 @@
 <div class="page">
     <div class="center">
         <h1 class="headline">@lang('pages.search')</h1>
+        <p>Lorem, ipsum dolor.</p>
     </div>
     
     {{--  Form  --}}
@@ -21,43 +22,44 @@
     </div>
 
     {{--  Results  --}}
-    @if (isset($recipes) && !empty($recipes))
-        <div class="row">
-            @foreach ($recipes as $recipe)
-                <div class="col s12 m6 l3">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
-                                <img src="{{ asset('storage/images/small/'.$recipe['image']) }}" alt="{{ $recipe->getTitle() }}" class="activator">
-                            </a>
-                        </div>
-                        <div class="card-content min-h">
-                            <span class="card-title activator">
-                                {{ $recipe->getTitle() }}
-                            </span>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title ">
-                                {{ $recipe->getTitle() }}
-                                <i class="material-icons right">close</i>
-                            </span>
-                            <p>
-                                <a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">@lang('recipes.go')</a>
-                            </p>
-                            <p>{{ $recipe->getIntro() }}</p>
-                        </div>
+    <div class="row">
+        @forelse ($recipes as $recipe)
+            <div class="col s12 m6 l3">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
+                            <img src="{{ asset('storage/images/small/'.$recipe['image']) }}" alt="{{ $recipe->getTitle() }}" class="activator">
+                        </a>
+                    </div>
+                    <div class="card-content min-h">
+                        <span class="card-title activator">
+                            {{ $recipe->getTitle() }}
+                        </span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title ">
+                            {{ $recipe->getTitle() }}
+                            <i class="material-icons right">close</i>
+                        </span>
+                        <p>
+                            <a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">@lang('recipes.go')</a>
+                        </p>
+                        <p>{{ $recipe->getIntro() }}</p>
                     </div>
                 </div>
-            @endforeach
-        </div>
+            </div>
+        @empty
+            @component('comps.empty')
+                @slot('text')
+                    @lang('pages.use_search')
+                @endslot
+            @endcomponent
+        @endforelse
+    </div>
+
+    @if ($recipes->count() > 0)
         {{ $recipes->appends(request()->input())->links() }}
     @endif
-    
-    @component('comps.empty')
-        @slot('text')
-            {{ ($message ?? '') }}
-        @endslot
-    @endcomponent
 </div>
 
 @endsection
