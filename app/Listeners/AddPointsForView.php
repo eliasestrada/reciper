@@ -13,6 +13,6 @@ class AddPointsForView
      */
     public function handle(RecipeGotViewed $event)
     {
-        User:addPoints(0.1, $event->recipe->user_id);
+        User::addPoints(0.1, $event->recipe->user_id);
     }
 }
