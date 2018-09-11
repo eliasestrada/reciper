@@ -70,7 +70,7 @@ class ApiRecipesController extends Controller
             return $sql->done(1);
         }
 
-        if ($hash == 'liked') {
+        if ($hash == 'popular') {
             $sql->withCount('likes');
             $sql->orderBy('likes_count', 'desc');
             return $sql->done(1);
