@@ -54,10 +54,22 @@ class User extends Authenticatable
      * @param float $points
      * @return void
      */
-    public function addPoints(float $points, int $user_id)
+    public static function addPoints(float $points, int $user_id)
     {
         $user = User::find($user_id);
         $user->points = $user->points + $points;
+        $user->save();
+    }
+
+    /**
+     * @param int $user_id
+     * @param float $points
+     * @return void
+     */
+    public static function removePoints(float $points, int $user_id)
+    {
+        $user = User::find($user_id);
+        $user->points = $user->points - $points;
         $user->save();
     }
 }
