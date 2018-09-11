@@ -14,13 +14,19 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\RecipeIsReady' => [
             'App\Listeners\SendSms',
         ],
-        'App\Events\RecipeIsApproved' => [
+        'App\Events\RecipeGotApproved' => [
             'App\Listeners\AddPointsForRecipe',
+        ],
+        'App\Events\RecipeGotDrafted' => [
+            'App\Listeners\RemovePointsForDrafting',
         ],
         'App\Events\RecipeGotLiked' => [
             'App\Listeners\AddPointsForLike',
         ],
-        'App\Events\RecipeHasBeenSeen' => [
+        'App\Events\RecipeGotDisliked' => [
+            'App\Listeners\RemovePointsForDislike',
+        ],
+        'App\Events\RecipeGotViewed' => [
             'App\Listeners\AddPointsForView',
         ],
     ];
