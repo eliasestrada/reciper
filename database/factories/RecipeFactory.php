@@ -8,7 +8,7 @@ cache()->flush();
 
 $factory->define(Recipe::class, function (Faker $faker) {
     return [
-        'user_id' => factory(User::class)->create()->id,
+        'user_id' => factory(User::class)->create(['points' => 1])->id,
         'meal_id' => rand(1, 3),
         'time' => rand(10, 160),
         'image' => 'default.jpg',
