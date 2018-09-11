@@ -37,13 +37,16 @@ export default {
 
     created() {
         Event.$on('hash-changed', (hash) => {
-            this.btns.forEach((btn) => {
-                if (btn.link == hash) {
-                    btn.isActive = true
-                } else {
-                    btn.isActive = false
-                }
-            })
+            this.btns[0].isActive = true
+            if (hash != '') {
+                this.btns.forEach((btn) => {
+                    if (btn.link == hash) {
+                        btn.isActive = true
+                    } else {
+                        btn.isActive = false
+                    }
+                })
+            }
         })
     }
 }
