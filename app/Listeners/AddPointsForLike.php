@@ -13,6 +13,6 @@ class AddPointsForLike
      */
     public function handle(RecipeGotLiked $event)
     {
-        User:addPoints(0.5, $event->recipe->user_id);
+        User::addPoints(0.5, $event->recipe->user_id);
     }
 }
