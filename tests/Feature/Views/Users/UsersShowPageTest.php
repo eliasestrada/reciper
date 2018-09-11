@@ -16,11 +16,13 @@ class UsersShowPageTest extends TestCase
     {
         $user = create(User::class);
         $user->wasRecentlyCreated = false;
+
         $response = $this->actingAs($user)->get("/users/$user->id");
 
         $recipes = Recipe::whereUserId($user->id)
             ->withCount('likes')
             ->withCount('views')
+            ->done(1)
             ->latest()
             ->paginate(20)
             ->onEachSide(1);

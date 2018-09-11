@@ -14,8 +14,9 @@ $factory->define(User::class, function (Faker $faker) {
         'admin' => 0,
         'master' => 0,
         'image' => 'default.jpg',
-        "notif_check" => now(),
-        "contact_check" => now(),
-        "online_at" => now(),
+        'points' => 0,
+        "notif_check" => date('Y-m-d H:i:s'),
+        "contact_check" => date('Y-m-d H:i:s'),
+        "online_at" => date('Y-m-d H:i:s'),
     ];
 });
