@@ -19,6 +19,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\RecipeGotDrafted' => [
             'App\Listeners\RemovePointsForDrafting',
+            'App\Listeners\ForgetCacheAfterDrafting',
         ],
         'App\Events\RecipeGotLiked' => [
             'App\Listeners\AddPointsForLike',
