@@ -24,18 +24,40 @@ class User extends Authenticatable
         return $this->hasMany(Notification::class);
     }
 
-    public function isAdmin()
+    /**
+     * @return boolean
+     */
+    public function isAdmin(): bool
     {
         return $this->admin === 1 ? true : false;
     }
 
-    public function isMaster()
+    /**
+     * @return boolean
+     */
+    public function isMaster(): bool
     {
         return $this->master === 1 ? true : false;
     }
 
-    public function hasRecipe($recipe_id)
+    /**
+     * @param integer $recipe_id
+     * @return boolean
+     */
+    public function hasRecipe(int $recipe_id): bool
     {
-        return Recipe::where(['id' => $recipe_id, 'user_id' => $this->id])->exists();
+        return Recipe::whereId($recipe_id)->whereUserId($this->id)->exists();
+    }
+
+    /**
+     * @param int $user_id
+     * @param float $points
+     * @return void
+     */
+    public function addPoints(float $points, int $user_id)
+    {
+        $user = User::find($user_id);
+        $user->points = $user->points + $points;
+        $user->save();
     }
 }
