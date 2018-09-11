@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RecipeIsApproved;
 use App\Http\Requests\ApproveMessageRequest;
 use App\Models\Notification;
 use App\Models\Recipe;
@@ -14,6 +15,8 @@ class ApproveController extends Controller
     public function ok(Recipe $recipe, ApproveMessageRequest $request)
     {
         $this->forgetCache();
+
+        event(new RecipeIsApproved($recipe));
 
         Notification::sendToUser(
             'recipe_published',
