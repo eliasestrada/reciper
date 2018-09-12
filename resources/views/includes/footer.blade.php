@@ -81,7 +81,7 @@
         </p>
     </div>
 
-    @admin
+    @hasRole('admin')
         {{--  Настройки подвала  --}}
         <div class="position-relative">
             <a class="magic-btn" title="@lang('home.edit_banner')" id="btn-for-footer">
@@ -105,5 +105,5 @@
                 @endslot
             @endmagicForm
         </div>
-    @endadmin
+    @endhasRole
 </footer>

@@ -37,7 +37,7 @@
             @endif
         @endauth
 
-        @admin
+        @hasRole('admin')
             @if (!$recipe->isDone() && user()->id !== $recipe->user_id)
                 <div class="py-2">
                     <p>@lang('recipes.approve_or_not')</p>
@@ -67,7 +67,7 @@
                     <label for="textarea1">* @lang('notifications.set_message')</label>
                 </div>
             @endif
-        @endadmin
+        @endhasRole
 
         <div class="center">
             <h1 class="decorated">{{ $recipe->getTitle() }}</h1>

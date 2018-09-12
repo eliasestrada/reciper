@@ -44,7 +44,7 @@
         <p>{{ ($title_intro->getText() ?? '') }}</p>
     @endisset
 
-    @admin
+    @hasRole('admin')
         {{--  Настройки Интро  --}}
         <a class="magic-btn" title="@lang('home.edit_intro')" id="btn-for-intro">
             <i class="material-icons">edit</i>
@@ -76,7 +76,7 @@
                 intro_text
             @endslot
         @endmagicForm
-    @endadmin
+    @endhasRole
 </section>
 
 {{--  Cards  --}}

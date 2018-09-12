@@ -38,7 +38,7 @@
             </a>
         </li>
 
-        @admin
+        @hasRole('admin')
             <li class="{{ active_if_route_is('admin/statistics') }}"> {{-- statistics --}}
                 <a href="/admin/statistics" title="@lang('includes.statistics')">
                     <i class="material-icons left">insert_chart</i>@lang('includes.statistics')
@@ -61,7 +61,7 @@
                     <i class="material-icons left">work</i>@lang('documents.docs')
                 </a>
             </li>
-        @endadmin
+        @endhasRole
 
         <li class="position-relative {{ active_if_route_is('notifications') }}"> {{-- notifications --}}
             <a href="/notifications" title="@lang('includes.notifications')" {{ empty($all_notifs) ? '' : "data-notif=$all_notifs" }} class="small-notif-btn">
@@ -81,13 +81,13 @@
             </a>
         </li>
 
-        @master
+        @hasRole('master')
             <li class="position-relative {{ active_if_route_is('log-viewer/logs*') }}"> {{-- log-viewer --}}
                 <a href="/log-viewer/logs" title="@lang('logs.logs')" {{ empty($all_logs) ? '' : "data-notif=$all_logs" }} class="small-notif-btn">
                     <i class="material-icons left">library_books</i>@lang('logs.logs')
                 </a>
             </li>
-        @endmaster
+        @endhasRole
 
         <li> {{-- logout --}} {{-- This button submits logout-form --}}
             <a href="#" title="@lang('includes.logout')" onclick="$('logout-form').submit()" id="_logout_btn">

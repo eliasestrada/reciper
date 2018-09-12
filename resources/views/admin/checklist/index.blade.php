@@ -4,7 +4,7 @@
 
 @section('content')
 
-@admin
+@hasRole('admin')
     <div class="page">
         <div class="center">
             <h1 class="headline">
@@ -18,6 +18,6 @@
             @endslot
         @endlistOfRecipes
     </div>
-@endadmin
+@endhasRole
 
 @endsection

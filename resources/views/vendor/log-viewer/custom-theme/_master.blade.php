@@ -10,7 +10,7 @@
     @include('includes.nav.sidenav')
     @include('includes.nav.navbar')
 
-    @master
+    @hasRole('master')
         <div id="app" class="wrapper">
             @yield('content')
         </div>
@@ -20,7 +20,7 @@
             @include('includes.buttons.home-btn')
             @include('includes.buttons.help-btn')
         </div>
-    @endmaster
+    @endhasRole
 
     @include('includes.footer')
 
