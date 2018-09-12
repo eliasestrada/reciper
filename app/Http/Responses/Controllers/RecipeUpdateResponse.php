@@ -23,6 +23,9 @@ class RecipeUpdateResponse implements Responsable
     public function toResponse($request)
     {
         if ($this->recipe->isReady() && user()->hasRole('admin')) {
+            cache()->forget('search_suggest');
+            event(new \App\Events\RecipeGotApproved($this->recipe));
+
             return redirect('/users/other/my-recipes')->withSuccess(trans('recipes.recipe_published'));
         }
 
