@@ -14,7 +14,7 @@ class NotificationController extends Controller
     {
         $notifications = Notification::whereUserId(user()->id);
 
-        if (user()->isAdmin()) {
+        if (user()->hasRole('admin')) {
             $notifications->orWhere('for_admins', 1);
             cache()->forget('admin_notifs');
         }

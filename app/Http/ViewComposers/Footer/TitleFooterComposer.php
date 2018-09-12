@@ -14,7 +14,7 @@ class TitleFooterComposer
      */
     public function compose(View $view): void
     {
-        if (user() && user()->isAdmin()) {
+        if (user() && user()->hasRole('admin')) {
             $title_footer = cache()->rememberForever('title_footer', function () {
                 return Title::whereName('footer')->value('text_' . lang());
             });

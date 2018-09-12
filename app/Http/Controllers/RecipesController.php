@@ -70,7 +70,7 @@ class RecipesController extends Controller
 
         // Rules for auth users
         if (user()) {
-            if (!user()->isAdmin() && !user()->hasRecipe($recipe->id) && !$recipe->isReady()) {
+            if (!user()->hasRole('admin') && !user()->hasRecipe($recipe->id) && !$recipe->isReady()) {
                 return redirect('/recipes')->withError(trans('recipes.no_rights_to_see'));
             }
 
@@ -78,7 +78,7 @@ class RecipesController extends Controller
                 return redirect('/recipes')->withError(trans('recipes.not_written'));
             }
 
-            if (!user()->isAdmin() && !user()->hasRecipe($recipe->id) && !$recipe->isApproved()) {
+            if (!user()->hasRole('admin') && !user()->hasRecipe($recipe->id) && !$recipe->isApproved()) {
                 return redirect('/recipes')->withError(trans('recipes.not_approved'));
             }
         }

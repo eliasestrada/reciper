@@ -25,7 +25,7 @@ class NotificationsComposer
             ])->count();
         });
 
-        if (user()->isAdmin()) {
+        if (user()->hasRole('admin')) {
             $admin_notifs = cache()->rememberForever('admin_notifs', function () {
                 return Notification::where([
                     ['for_admins', 1],

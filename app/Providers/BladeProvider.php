@@ -24,11 +24,11 @@ class BladeProvider extends ServiceProvider
     public function statementsForUserPermission(): void
     {
         Blade::if('admin', function () {
-            return auth()->check() && user()->isAdmin();
+            return auth()->check() && user()->hasRole('admin');
         });
 
         Blade::if('master', function () {
-            return auth()->check() && user()->isMaster();
+            return auth()->check() && user()->hasRole('master');
         });
 
     }

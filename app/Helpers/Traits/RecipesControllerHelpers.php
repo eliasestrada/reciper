@@ -67,7 +67,7 @@ trait RecipesControllerHelpers
             'ingredients_' . lang() => $request->ingredients,
             'simple' => $this->isSimple($request),
             'ready_' . lang() => ($request->ready == 1) ? 1 : 0,
-            'approved_' . lang() => ($request->ready == 1 && user()->isAdmin()) ? 1 : 0,
+            'approved_' . lang() => ($request->ready == 1 && user()->hasRole('admin')) ? 1 : 0,
         ];
 
         // If recipe is not new, if it is an existing recipe

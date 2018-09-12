@@ -22,7 +22,7 @@ class RecipeUpdateResponse implements Responsable
      */
     public function toResponse($request)
     {
-        if ($this->recipe->isReady() && user()->isAdmin()) {
+        if ($this->recipe->isReady() && user()->hasRole('admin')) {
             return redirect('/users/other/my-recipes')->withSuccess(trans('recipes.recipe_published'));
         }
 

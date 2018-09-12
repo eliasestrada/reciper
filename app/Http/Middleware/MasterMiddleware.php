@@ -14,8 +14,8 @@ class MasterMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::guard($guard)->check() && user()->isMaster()) {
-			return $next($request);
+        if (Auth::guard($guard)->check() && user()->hasRole('master')) {
+            return $next($request);
         }
         return redirect('/login')->withError(trans('messages.access_denied'));
     }
