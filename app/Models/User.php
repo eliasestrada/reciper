@@ -21,7 +21,7 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->hasMany(Role::class);
+        return $this->belongsToMany(Role::class);
     }
 
     public function notifications()
@@ -30,19 +30,29 @@ class User extends Authenticatable
     }
 
     /**
+     * Find out if user has a specific role
+     * @param string $check
      * @return boolean
      */
-    public function isAdmin(): bool
+    public function hasRole(string $check): bool
     {
-        return $this->admin === 1 ? true : false;
+        foreach ($this->roles as $role) {
+            if ($role->name == $check) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    /**
-     * @return boolean
-     */
-    public function isMaster(): bool
+    public function addRole(string $check)
     {
-        return $this->master === 1 ? true : false;
+        $roles = Role::get();
+
+        foreach ($roles as $role) {
+            if ($check === $role->name) {
+                $this->roles()->attach($role);
+            }
+        }
     }
 
     /**
