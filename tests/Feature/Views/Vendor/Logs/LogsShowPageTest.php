@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Views\Vendor\Logs;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -16,7 +15,7 @@ class LogsShowPageTest extends TestCase
     {
         parent::setUp();
 
-        $this->master = make(User::class, ['master' => 1]);
+        $this->master = create_user('master');
     }
 
     /** @test */

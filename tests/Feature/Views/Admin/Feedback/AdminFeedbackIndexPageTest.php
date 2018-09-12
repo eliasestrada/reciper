@@ -17,7 +17,7 @@ class AdminFeedbackPageTest extends TestCase
     {
         parent::setUp();
 
-        $this->admin = make(User::class, ['admin' => 1]);
+        $this->admin = create_user('admin');
     }
 
     /** @test */

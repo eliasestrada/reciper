@@ -16,7 +16,7 @@ class AdminDocumentsPageTest extends TestCase
     {
         $document = create(Document::class);
 
-        $this->actingAs(create(User::class, ['admin' => 1]))
+        $this->actingAs(create_user('admin'))
             ->get("/admin/documents/$document->id")
             ->assertViewIs('admin.documents.show')
             ->assertViewHas('document', Document::find($document->id));
@@ -27,7 +27,7 @@ class AdminDocumentsPageTest extends TestCase
     {
         $document = create(Document::class);
 
-        $this->actingAs(make(User::class, ['admin' => 0]))
+        $this->actingAs(make(User::class))
             ->get("/admin/documents/$document->id")
             ->assertRedirect('/');
     }
@@ -37,7 +37,7 @@ class AdminDocumentsPageTest extends TestCase
     {
         $document = create(Document::class);
 
-        $this->actingAs(make(User::class, ['admin' => 1]))
+        $this->actingAs(create_user('admin'))
             ->get("/admin/documents/$document->id")
             ->assertOk();
     }

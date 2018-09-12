@@ -48,7 +48,7 @@ class RecipesCreatePageTest extends TestCase
     {
         $recipe = $this->new_recipe('Hello people');
 
-        $this->actingAs(create(User::class, ['admin' => 1]))
+        $this->actingAs(create_user('admin'))
             ->post(action('RecipesController@store'), $recipe)
             ->assertRedirect();
 

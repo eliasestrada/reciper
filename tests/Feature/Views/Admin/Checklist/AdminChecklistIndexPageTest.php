@@ -14,7 +14,7 @@ class AdminChecklistIndexPageTest extends TestCase
     /** @test */
     public function view_admin_checklist_index_has_data(): void
     {
-        $admin = make(User::class, ['admin' => 1]);
+        $admin = create_user('admin');
 
         $this->actingAs($admin)
             ->get('/admin/checklist')
@@ -30,7 +30,7 @@ class AdminChecklistIndexPageTest extends TestCase
     /** @test */
     public function user_cant_see_admin_checklist_index_page(): void
     {
-        $user = make(User::class, ['admin' => 0]);
+        $user = make(User::class);
 
         $this->actingAs($user)
             ->get('/admin/checklist')

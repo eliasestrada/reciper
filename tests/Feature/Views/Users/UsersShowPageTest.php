@@ -14,7 +14,7 @@ class UsersShowPageTest extends TestCase
     /** @test */
     public function view_users_show_has_data(): void
     {
-        $user = create(User::class);
+        $user = create_user();
         $user->wasRecentlyCreated = false;
 
         $response = $this->actingAs($user)->get("/users/$user->id");
@@ -38,7 +38,7 @@ class UsersShowPageTest extends TestCase
         $response->assertViewIs('users.show');
         $response->assertViewHasAll([
             'recipes' => $recipes,
-            'user' => $user,
+            'user' => User::find($user->id),
             'likes' => $likes,
             'views' => $views,
         ]);
@@ -47,14 +47,14 @@ class UsersShowPageTest extends TestCase
     /** @test */
     public function auth_user_can_see_users_show_page(): void
     {
-        $user = make(User::class);
-        $this->actingAs($user)->get('/users/' . $user->id)->assertOk();
+        $user = create_user();
+        $this->actingAs($user)->get("/users/$user->id")->assertOk();
     }
 
     /** @test */
     public function guest_can_see_users_show_page(): void
     {
-        $user = make(User::class);
+        $user = create_user();
         $this->get("/users/$user->id")->assertOk();
     }
 }

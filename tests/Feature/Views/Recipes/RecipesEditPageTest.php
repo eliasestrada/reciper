@@ -70,15 +70,17 @@ class RecipesEditPageTest extends TestCase
     /** @test */
     public function recipe_is_ready_and_approved_after_publishing_by_admin(): void
     {
-        $user = create(User::class, ['admin' => 1]);
+        $admin = create_user('admin');
+
         $old_recipe = create(Recipe::class, [
-            'user_id' => $user->id,
+            'user_id' => $admin->id,
             'ready_' . lang() => 0,
             'approved_' . lang() => 0,
         ]);
+
         $new_recipe = $this->new_recipe('Some title by admin');
 
-        $this->actingAs($user)
+        $this->actingAs($admin)
             ->put(action('RecipesController@update', $old_recipe->id), $new_recipe)
             ->assertRedirect('/users/other/my-recipes');
 

@@ -19,7 +19,7 @@ class RecipesShowPageTest extends TestCase
     {
         parent::setUp();
 
-        $this->admin = make(User::class, ['admin' => 1]);
+        $this->admin = create_user('admin');
         $this->recipe = make(Recipe::class);
         $this->unapproved_recipe = create(Recipe::class, [
             'approved_' . lang() => 0,

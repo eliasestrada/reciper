@@ -15,7 +15,7 @@ class AdminDocumentsEditPageTest extends TestCase
     public function view_admin_documents_edit_has_data(): void
     {
         $document = create(Document::class);
-        $admin = make(User::class, ['admin' => 1]);
+        $admin = create_user('admin');
 
         $this->actingAs($admin)
             ->get("/admin/documents/$document->id/edit")
@@ -29,7 +29,7 @@ class AdminDocumentsEditPageTest extends TestCase
     {
         $document_id = create(Document::class)->id;
 
-        $this->actingAs(make(User::class, ['admin' => 0]))
+        $this->actingAs(make(User::class))
             ->get("/admin/documents/$document_id/edit")
             ->assertRedirect('/');
     }

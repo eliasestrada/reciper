@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Views\Admin\Documents;
 
-use App\Models\Document;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -14,7 +13,7 @@ class AdminDocumentsCreatePageTest extends TestCase
     /** @test */
     public function view_admin_documents_create_has_a_correct_path(): void
     {
-        $admin = make(User::class, ['admin' => 1]);
+        $admin = create_user('admin');
 
         $this->actingAs($admin)
             ->get('/admin/documents/create')
@@ -25,7 +24,7 @@ class AdminDocumentsCreatePageTest extends TestCase
     /** @test */
     public function user_cant_see_admin_documents_create_page(): void
     {
-        $user = make(User::class, ['admin' => 0]);
+        $user = make(User::class);
 
         $this->actingAs($user)
             ->get("/admin/documents/create")
