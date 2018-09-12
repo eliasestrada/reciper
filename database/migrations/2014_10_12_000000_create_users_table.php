@@ -14,8 +14,6 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->float('points')->unsigned()->default(0);
-            $table->boolean('admin')->default(0);
-            $table->boolean('master')->default(0);
             $table->timestamp('notif_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('contact_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('online_at')->default(\DB::raw('CURRENT_TIMESTAMP'));

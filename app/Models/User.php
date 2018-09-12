@@ -19,6 +19,11 @@ class User extends Authenticatable
         return $this->hasMany(Recipe::class);
     }
 
+    public function roles()
+    {
+        return $this->hasMany(Role::class);
+    }
+
     public function notifications()
     {
         return $this->hasMany(Notification::class);
