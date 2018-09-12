@@ -8,14 +8,12 @@ class AuthServiceProvider extends ServiceProvider
 {
     // The policy mappings for the application
     protected $policies = [
-        'App\Models\Document' => 'App\Policies\DocumentPolicy',
+        'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
     // register any authentication / authorization services
     public function boot()
     {
         $this->registerPolicies();
-
-        \Gate::resource('documents', 'App\Policies\DocumentPolicy');
     }
 }
