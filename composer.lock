@@ -130,16 +130,16 @@
         },
         {
             "name": "ckeditor/ckeditor",
-            "version": "4.10.0",
+            "version": "4.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ckeditor/ckeditor-releases.git",
-                "reference": "485918a01ecac5bd286f169e831eddcc895f5132"
+                "reference": "e5999810955383eb4f72c03a5af7f2dfd59390a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/485918a01ecac5bd286f169e831eddcc895f5132",
-                "reference": "485918a01ecac5bd286f169e831eddcc895f5132",
+                "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/e5999810955383eb4f72c03a5af7f2dfd59390a0",
+                "reference": "e5999810955383eb4f72c03a5af7f2dfd59390a0",
                 "shasum": ""
             },
             "type": "library",
@@ -167,7 +167,7 @@
                 "text",
                 "wysiwyg"
             ],
-            "time": "2018-07-03T13:41:31+00:00"
+            "time": "2018-09-11T18:33:38+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
