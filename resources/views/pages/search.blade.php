@@ -66,11 +66,12 @@
 @section('script')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var titles = {!! json_encode($search_suggest) !!}
-        var converted = {}
+        var titles = {!! json_encode($titles) !!}
+        var images = {!! json_encode($images) !!}
+        var converted = {};
 
-        titles.forEach(function (title) {
-            converted[title] = null
+        titles.forEach(function (title, i) {
+            converted[title] = 'storage/images/tiny/' + images[i];
         })
 
         var elems = document.querySelectorAll('.autocomplete');

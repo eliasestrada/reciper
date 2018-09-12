@@ -29,6 +29,11 @@ trait RecipesControllerHelpers
                 ->resize(240, 160)
                 ->save(storage_path("app/public/images/small/$image_name"));
 
+            // Tiny image
+            Image::make($image)
+                ->resize(50, 30)
+                ->save(storage_path("app/public/images/tiny/$image_name"));
+
             return $image_name;
         }
         return null;
@@ -44,6 +49,7 @@ trait RecipesControllerHelpers
             Storage::delete([
                 "public/images/$image",
                 "public/images/small/$image",
+                "public/images/tiny/$image",
             ]);
         }
     }

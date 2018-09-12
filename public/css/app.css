@@ -4479,9 +4479,10 @@ textarea.materialize-textarea {
 }
 
 .autocomplete-content li img {
-  height: 40px;
-  width: 40px;
-  margin: 5px 15px;
+  height: 30px;
+  width: 50px;
+  margin: 4px 15px;
+  border-radius: 1px;
 }
 
 /* Character Counter */

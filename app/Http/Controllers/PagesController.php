@@ -51,11 +51,14 @@ class PagesController extends Controller
         }
 
         $search_suggest = cache()->rememberForever('search_suggest', function () {
-            return Recipe::query()->done(1)->pluck('title_' . lang())->toArray();
+            return Recipe::query()->done(1)->pluck('title_' . lang(), 'image')->toArray();
         });
 
+        $titles = array_values($search_suggest);
+        $images = array_keys($search_suggest);
+
         return view('pages.search', compact(
-            'recipes', 'search_suggest'
+            'recipes', 'titles', 'images'
         ));
     }
 }
