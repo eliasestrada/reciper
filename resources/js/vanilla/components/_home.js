@@ -15,11 +15,11 @@ if ($("btn-for-footer")) {
  * it will set @var preventing to false, now after second click, it
  * will submit the search form
  */
-if ($("search-form")) {
+if ($("home-search-form")) {
     (function() {
         let preventing = true;
         let button = $("home-search-btn");
-        activeAfterClickBtn("search-form", "home-search-btn");
+        activeAfterClickBtn("home-search-form", "home-search-btn");
 
         button.addEventListener("click", e => {
             if (preventing === true) {
