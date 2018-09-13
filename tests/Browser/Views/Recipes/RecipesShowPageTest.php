@@ -21,6 +21,7 @@ class RecipesShowPageTest extends DuskTestCase
                 ->waitFor('.like-icon')
                 ->assertSeeIn('#_all-likes', 0)
                 ->click('.like-icon')
+                ->waitFor('#_all-likes')
                 ->assertSeeIn('#_all-likes', 1);
         });
     }

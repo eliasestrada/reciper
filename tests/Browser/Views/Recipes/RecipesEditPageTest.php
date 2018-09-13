@@ -27,7 +27,13 @@ class RecipesEditPageTest extends DuskTestCase
                 ->assertPathIs("/recipes/$recipe->id/edit")
                 ->waitFor('#publish-btn')
                 ->click('#publish-btn')
-                ->assertPathIs("/users/$user->id")
+                ->assertDialogOpened(trans('recipes.are_you_sure_to_draft'))
+                ->acceptDialog()
+                ->waitFor('#publish-btn')
+                ->click('#publish-btn')
+                ->assertDialogOpened(trans('recipes.are_you_sure_to_publish'))
+                ->acceptDialog()
+                ->assertPathIs('/users/other/my-recipes')
                 ->logout();
         });
     }
