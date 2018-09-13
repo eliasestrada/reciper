@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Recipe;
 use App\Models\Visitor;
-use Eseath\SxGeo\SxGeo;
 
 class StatisticsController extends Controller
 {
@@ -17,12 +16,11 @@ class StatisticsController extends Controller
     public function index()
     {
         $visitors = Visitor::latest()->paginate(40)->onEachSide(1);
-        $sxgeo = new SxGeo(storage_path('/geo/SxGeoCity.dat'));
         $all_recipes = Recipe::count();
         $all_visitors = Visitor::distinct('ip')->count();
 
         return view('admin.statistics.index', compact(
-            'sxgeo', 'visitors', 'all_recipes', 'all_visitors'
+            'visitors', 'all_recipes', 'all_visitors'
         ));
     }
 }
