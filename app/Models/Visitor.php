@@ -8,14 +8,6 @@ class Visitor extends Model
 {
     protected $guarded = ['id'];
 
-    public static function incrementRequestsOrCreate()
-    {
-        self::updateOrCreate(
-            ['ip' => request()->ip()],
-            ['updated_at' => now()]
-        );
-    }
-
     public function likes()
     {
         return $this->hasMany(Like::class);
@@ -25,4 +17,18 @@ class Visitor extends Model
     {
         return $this->hasMany(View::class);
     }
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
+
+    public static function incrementRequestsOrCreate()
+    {
+        self::updateOrCreate(
+            ['ip' => request()->ip()],
+            ['updated_at' => now()]
+        );
+    }
+
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\Visitor;
 use Illuminate\Database\Seeder;
 
 class UsersSeeder extends Seeder
@@ -12,6 +13,7 @@ class UsersSeeder extends Seeder
     public function run()
     {
         $user = User::create([
+            'visitor_id' => factory(Visitor::class)->create(['ip' => '127.0.0.1'])->id,
             'email' => '11@11.com',
             'name' => 'Серый',
             'password' => bcrypt('111111'),
@@ -24,6 +26,7 @@ class UsersSeeder extends Seeder
         $user->addRole('master');
 
         User::create([
+            'visitor_id' => factory(Visitor::class)->create(['ip' => '127.0.0.2'])->id,
             'email' => '22@22.com',
             'name' => 'Антон',
             'password' => bcrypt('111111'),

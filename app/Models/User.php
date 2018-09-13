@@ -9,7 +9,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'visitor_id'];
     protected $hidden = ['password', 'remember_token'];
     protected $dates = [
         'created_at',
@@ -30,6 +30,11 @@ class User extends Authenticatable
     public function notifications()
     {
         return $this->hasMany(Notification::class);
+    }
+
+    public function visitor()
+    {
+        return $this->belongsTo(Visitor::class);
     }
 
     /**
