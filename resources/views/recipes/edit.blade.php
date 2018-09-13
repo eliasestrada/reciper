@@ -61,7 +61,7 @@
             {{-- Time --}}
             <div class="col s12 m6 l4">
                 <div class="input-field">
-                    <input type="number" name="time" id="time" value="{{ $recipe->time }}">
+                    <input type="number" name="time" id="time" value="{{ $recipe->time ?? old('time') }}">
                     <label for="time">@lang('recipes.time_description')</label>
                 </div>
             </div>
@@ -83,7 +83,7 @@
             {{-- Ingredients --}}
             <div class="col s12 l6">
                 <div class="input-field">
-                    <textarea name="ingredients" id="ingredients" class="materialize-textarea counter" data-length="{{ config('validation.recipe_ingredients_max') }}">{{ $recipe->getIngredients() }}</textarea>
+                    <textarea name="ingredients" id="ingredients" class="materialize-textarea counter" data-length="{{ config('validation.recipe_ingredients_max') }}">{{ $recipe->getIngredients() ?? old('ingredients') }}</textarea>
                 
                     <label for="ingredients">
                         @lang('recipes.ingredients') 
@@ -95,7 +95,7 @@
             {{-- Intro --}}
             <div class="col s12 l6">
                 <div class="input-field">
-                    <textarea name="intro" id="intro" class="materialize-textarea counter" data-length="{{ config('validation.recipe_intro_max') }}">{{ $recipe->getIntro() }}</textarea>
+                    <textarea name="intro" id="intro" class="materialize-textarea counter" data-length="{{ config('validation.recipe_intro_max') }}">{{ $recipe->getIntro() ?? old('intro') }}</textarea>
 
                     <label for="intro">
                         @lang('recipes.short_intro') 
@@ -108,7 +108,7 @@
         {{-- Text --}}
         <div class="col s12">
             <div class="input-field">
-                <textarea name="text" id="text" class="materialize-textarea counter" data-length="{{ config('validation.recipe_text_max') }}">{{ $recipe->getText() }}</textarea>
+                <textarea name="text" id="text" class="materialize-textarea counter" data-length="{{ config('validation.recipe_text_max') }}">{{ $recipe->getText() ?? old('text') }}</textarea>
 
                 <label for="text">
                     @lang('recipes.text_of_recipe') 
