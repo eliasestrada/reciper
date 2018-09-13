@@ -12,18 +12,13 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        $notifications = Notification::whereUserId(user()->id);
+        $notifications = user()->notifications();
 
         if (user()->hasRole('admin')) {
             $notifications->orWhere('for_admins', 1);
-            cache()->forget('admin_notifs');
         }
 
-        User::whereId(user()->id)->update([
-            'notif_check' => now(),
-        ]);
-
-        cache()->forget('all_notifs');
+        User::whereId(user()->id)->update(['notif_check' => now()]);
 
         return view('notifications.index', [
             'notifications' => $notifications->latest()->paginate(10)->onEachSide(1),

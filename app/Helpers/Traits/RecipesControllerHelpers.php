@@ -113,7 +113,6 @@ trait RecipesControllerHelpers
                     'message_script_attack',
                     "user_id:  $user_id, user_name: $user_name"
                 );
-                cache()->forget('admin_notifs');
             }
         }
     }

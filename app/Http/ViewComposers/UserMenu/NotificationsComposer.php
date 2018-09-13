@@ -18,20 +18,16 @@ class NotificationsComposer
             return;
         }
 
-        $all_notifs = cache()->rememberForever('all_notifs', function () {
-            return Notification::where([
-                ['user_id', user()->id],
-                ['created_at', '>', user()->notif_check],
-            ])->count();
-        });
+        $all_notifs = Notification::where([
+            ['user_id', user()->id],
+            ['created_at', '>', user()->notif_check],
+        ])->count();
 
         if (user()->hasRole('admin')) {
-            $admin_notifs = cache()->rememberForever('admin_notifs', function () {
-                return Notification::where([
-                    ['for_admins', 1],
-                    ['created_at', '>', user()->notif_check],
-                ])->count();
-            });
+            $admin_notifs = Notification::where([
+                ['for_admins', 1],
+                ['created_at', '>', user()->notif_check],
+            ])->count();
             $all_notifs += $admin_notifs;
         }
         $view->with(compact('all_notifs'));
