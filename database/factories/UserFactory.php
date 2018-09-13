@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\Visitor;
 use Faker\Generator as Faker;
 
 cache()->flush();
@@ -8,8 +9,9 @@ cache()->flush();
 $factory->define(User::class, function (Faker $faker) {
     return [
         'id' => User::orderBy('id', 'desc')->latest()->value('id') + 1,
-        'name' => $faker->name,
-        'email' => rand() . '@gmail.com',
+        'visitor_id' => factory(Visitor::class)->create()->id,
+        'name' => $faker->firstName,
+        'email' => $faker->freeEmail,
         'password' => bcrypt('111111'),
         'remember_token' => str_random(10),
         'image' => 'default.jpg',
