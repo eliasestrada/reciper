@@ -15,9 +15,11 @@
             </a>
 
             {{--  Save button  --}}
-            <button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save')" data-position="top" class="btn-floating green tooltipped">
-                <i class="material-icons">save</i>
-            </button>
+            @unless ($recipe->isReady())
+                <button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save')" data-position="top" class="btn-floating green tooltipped">
+                    <i class="material-icons">save</i>
+                </button>
+            @endunless
 
             {{--  Delete button  --}}
             <delete-recipe-btn
@@ -29,12 +31,12 @@
 
             {{--  Publish button  --}}
             @if ($recipe->isReady())
-                <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.add_to_drafts')" data-position="top">
+                <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.add_to_drafts')" data-position="top" data-alert="@lang('recipes.are_you_sure_to_draft')">
                     <i class="large material-icons">library_books</i>
                 </a>
                 <input type="checkbox" name="ready" value="0" class="d-none" id="ready-checkbox">
             @else
-                <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top">
+                <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top" data-alert="@lang('recipes.are_you_sure_to_publish')">
                     <i class="large material-icons">send</i>
                 </a>
                 <input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">

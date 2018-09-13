@@ -21,16 +21,18 @@
 
     <form action="{{ action('Admin\DocumentsController@update', ['id' => $document->id]) }}" method="post">
         <div class="center p-3">
-            {{-- Save button --}}
-            <button class="btn-floating green tooltipped" data-tooltip="@lang('tips.save')" data-position="top">
-                <i class="material-icons">save</i>
-            </button>
-            
             {{-- View button --}}
             <button class="btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top" name="view">
                 <i class="material-icons">remove_red_eye</i>
             </button>
 
+            {{-- Save button --}}
+            @unless ($document->isReady())
+                <button class="btn-floating green tooltipped" data-tooltip="@lang('tips.save')" data-position="top">
+                    <i class="material-icons">save</i>
+                </button>
+            @endunless
+            
             {{-- Delete button --}}
             <a onclick="if(confirm('@lang('documents.sure_del_doc')')) $('delete-doc').submit()" class="btn-floating red tooltipped" data-tooltip="@lang('tips.delete')" data-position="top">
                 <i class="material-icons">delete</i>
@@ -38,12 +40,12 @@
 
             {{--  Publish button  --}}
             @if ($document->isReady())
-                <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.add_to_drafts')" data-position="top">
+                <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.add_to_drafts')" data-position="top" data-alert="@lang('documents.sure_draft_doc')">
                     <i class="material-icons">library_books</i>
                 </a>
                 <input type="checkbox" name="ready" value="0" class="d-none" id="ready-checkbox">
             @else
-                <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top">
+                <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top" data-alert="@lang('documents.sure_publich_doc')">
                     <i class="material-icons">send</i>
                 </a>
                 <input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
