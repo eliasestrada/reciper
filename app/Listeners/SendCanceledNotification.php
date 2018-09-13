@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\RecipeGotCanceled;
+use App\Models\Notification;
 
 class SendCanceledNotification
 {

@@ -72,16 +72,16 @@ class RecipesEditPageTest extends TestCase
     {
         $admin = create_user('admin');
 
-        $old_recipe = create(Recipe::class, [
+        $recipe_before = create(Recipe::class, [
             'user_id' => $admin->id,
             'ready_' . lang() => 0,
             'approved_' . lang() => 0,
         ]);
 
-        $new_recipe = $this->new_recipe('Some title by admin');
+        $recipe_after = $this->new_recipe('Some title by admin');
 
         $this->actingAs($admin)
-            ->put(action('RecipesController@update', $old_recipe->id), $new_recipe)
+            ->put(action('RecipesController@update', $recipe_before->id), $recipe_after)
             ->assertRedirect('/users/other/my-recipes');
 
         $this->assertDatabaseHas('recipes', [

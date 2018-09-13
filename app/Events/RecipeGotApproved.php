@@ -21,7 +21,7 @@ class RecipeGotApproved
      * @param string $message
      * @return void
      */
-    public function __construct(Recipe $recipe, string $message)
+    public function __construct(Recipe $recipe, string $message = '')
     {
         $this->recipe = $recipe;
         $this->message = $message;
