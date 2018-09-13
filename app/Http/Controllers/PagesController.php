@@ -39,6 +39,7 @@ class PagesController extends Controller
     public function search(Request $request)
     {
         $recipes = collect();
+        $message = trans('pages.use_search');
 
         if (request('for')) {
             $request = mb_strtolower(request('for'));
@@ -48,6 +49,8 @@ class PagesController extends Controller
                 ->take(50)
                 ->done(1)
                 ->paginate(12);
+
+            $message = $recipes->count() == 0 ? trans('pages.nothing_found') : '';
         }
 
         $search_suggest = cache()->rememberForever('search_suggest', function () {
@@ -58,7 +61,7 @@ class PagesController extends Controller
         $images = array_keys($search_suggest);
 
         return view('pages.search', compact(
-            'recipes', 'titles', 'images'
+            'recipes', 'titles', 'images', 'message'
         ));
     }
 }

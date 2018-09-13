@@ -50,7 +50,7 @@
         @empty
             @component('comps.empty')
                 @slot('text')
-                    @lang('pages.use_search')
+                    {{ $message }}
                 @endslot
             @endcomponent
         @endforelse
