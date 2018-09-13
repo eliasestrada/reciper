@@ -24,7 +24,7 @@ class UserMenuProvider extends ServiceProvider
     public function countAndComposeAllNotifications(): void
     {
         view()->composer('includes.nav.navbar',
-            'App\Http\ViewComposers\UserMenu\NotificationsComposer');
+            \App\Http\ViewComposers\UserMenu\NotificationsComposer::class);
     }
 
     /**
@@ -33,7 +33,7 @@ class UserMenuProvider extends ServiceProvider
     public function countAndComposeAllFeedback(): void
     {
         view()->composer('includes.nav.navbar',
-            'App\Http\ViewComposers\UserMenu\FeedbackComposer');
+            \App\Http\ViewComposers\UserMenu\FeedbackComposer::class);
     }
 
     /**
@@ -42,7 +42,7 @@ class UserMenuProvider extends ServiceProvider
     public function countAndComposeAllUnapprovedRecipes(): void
     {
         view()->composer('includes.nav.navbar',
-            'App\Http\ViewComposers\UserMenu\UnapprovedRecipesComposer');
+            \App\Http\ViewComposers\UserMenu\UnapprovedRecipesComposer::class);
     }
 
     /**
@@ -51,6 +51,6 @@ class UserMenuProvider extends ServiceProvider
     public function countAndComposeAllLogFiles(): void
     {
         view()->composer('includes.nav.navbar',
-            'App\Http\ViewComposers\UserMenu\LogsComposer');
+            \App\Http\ViewComposers\UserMenu\LogsComposer::class);
     }
 }

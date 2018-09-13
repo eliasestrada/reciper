@@ -2,7 +2,7 @@
     $all_notif = array_sum([
         $all_unapproved ?? '',
         $all_feedback ?? '',
-        $notifications ?? '',
+        $all_notifs ?? '',
         $all_logs ?? ''
     ]);
 @endphp
@@ -113,8 +113,6 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger noselect">
                 <i class="material-icons">menu</i>
             </a>
-
-
 
             <div class="right">
                 @auth

@@ -11,24 +11,28 @@ class EventServiceProvider extends ServiceProvider
      * The event listener mappings for the application.
      */
     protected $listen = [
-        'App\Events\RecipeIsReady' => [
-            'App\Listeners\SendSms',
+        \App\Events\RecipeIsReady::class => [
+            \App\Listeners\SendSms::class,
         ],
-        'App\Events\RecipeGotApproved' => [
-            'App\Listeners\AddPointsForRecipe',
+        \App\Events\RecipeGotCanceled::class => [
+            \App\Listeners\SendCanceledNotification::class,
         ],
-        'App\Events\RecipeGotDrafted' => [
-            'App\Listeners\RemovePointsForDrafting',
-            'App\Listeners\ForgetCacheAfterDrafting',
+        \App\Events\RecipeGotApproved::class => [
+            \App\Listeners\AddPointsForRecipe::class,
+            \App\Listeners\SendApprovedNotification::class,
         ],
-        'App\Events\RecipeGotLiked' => [
-            'App\Listeners\AddPointsForLike',
+        \App\Events\RecipeGotDrafted::class => [
+            \App\Listeners\RemovePointsForDrafting::class,
+            \App\Listeners\ForgetCacheAfterDrafting::class,
         ],
-        'App\Events\RecipeGotDisliked' => [
-            'App\Listeners\RemovePointsForDislike',
+        \App\Events\RecipeGotLiked::class => [
+            \App\Listeners\AddPointsForLike::class,
         ],
-        'App\Events\RecipeGotViewed' => [
-            'App\Listeners\AddPointsForView',
+        \App\Events\RecipeGotDisliked::class => [
+            \App\Listeners\RemovePointsForDislike::class,
+        ],
+        \App\Events\RecipeGotViewed::class => [
+            \App\Listeners\AddPointsForView::class,
         ],
     ];
 }
