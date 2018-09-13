@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use Auth;
 use Closure;
 
 class AdminMiddleware
@@ -16,7 +15,7 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check() && user()->hasRole('admin')) {
+        if (\Auth::guard($guard)->check() && user()->hasRole('admin')) {
             return $next($request);
         }
         return redirect('/')->withError(trans('messages.access_denied'));

@@ -8,7 +8,6 @@ return [
     'thanks_for_feedback' => 'Спасибо за ваш отзыв.',
 
     // Views
-    'visitors' => 'Посетители',
     'recipes' => 'Рецепты',
     'no_name' => 'Имя не указано',
     'requests' => 'Запросов',

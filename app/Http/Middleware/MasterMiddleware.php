@@ -8,15 +8,16 @@ class MasterMiddleware
 {
     /**
      * Handle an incoming request
+     *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check() && user()->hasRole('master')) {
+        if (\Auth::guard($guard)->check() && user()->hasRole('master')) {
             return $next($request);
         }
-        return redirect('/login')->withError(trans('messages.access_denied'));
+        return redirect('/')->withError(trans('messages.access_denied'));
     }
 }

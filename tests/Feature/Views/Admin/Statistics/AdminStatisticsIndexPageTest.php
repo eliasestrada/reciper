@@ -20,7 +20,6 @@ class AdminStatisticsPageTest extends TestCase
         $this->actingAs($admin)
             ->get('/admin/statistics')
             ->assertViewIs('admin.statistics.index')
-            ->assertViewHas('sxgeo')
             ->assertViewHasAll([
                 'visitors' => Visitor::latest()->paginate(40)->onEachSide(1),
                 'all_recipes' => Recipe::count(),

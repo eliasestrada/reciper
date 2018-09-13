@@ -47,7 +47,7 @@ class LogsIndexPageTest extends TestCase
         // Delete file
         $this->actingAs($this->master)
             ->followingRedirects()
-            ->delete(action('LogsController@delete'), [
+            ->delete(action('Master\LogsController@delete'), [
                 'date' => $file_name,
             ])
             ->assertSeeText(trans('logs.deleted'));
