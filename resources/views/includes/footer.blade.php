@@ -34,7 +34,7 @@
                 @foreach ($random_recipes as $recipe)
                     <li>
                         <a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
-                            <red>#</red> {{ $recipe->getTitle() }}
+                            <span class="red-text">#</span> {{ $recipe->getTitle() }}
                         </a>
                     </li>
                 @endforeach
@@ -48,7 +48,7 @@
                 @foreach ($popular_recipes as $recipe)
                     <li>
                         <a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
-                            <red>#</red> {{ $recipe->getTitle() }}
+                            <span class="red-text" >#</span> {{ $recipe->getTitle() }}
                         </a>
                     </li>
                 @endforeach
