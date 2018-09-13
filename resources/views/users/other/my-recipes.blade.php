@@ -7,8 +7,8 @@
 {{-- Add recipe button --}}
 @component('comps.btns.fixed-btn')
     @slot('icon') add @endslot
-    @slot('color') green @endslot
-    @slot('link') /recipes/create @endslot
+    @slot('class') modal-trigger @endslot
+    @slot('link') #modal2 @endslot
     @slot('tip') @lang('includes.new_recipe') @endslot
 @endcomponent
 

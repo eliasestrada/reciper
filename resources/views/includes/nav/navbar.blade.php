@@ -21,7 +21,7 @@
         </li>
 
         <li> {{-- add recipe --}}
-            <a href="/recipes/create" title="@lang('includes.new_recipe')">
+            <a href="#modal2" title="@lang('includes.new_recipe')" class="modal-trigger">
                 <i class="material-icons left">add</i>@lang('includes.new_recipe')
             </a>
         </li>

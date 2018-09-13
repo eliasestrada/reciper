@@ -5,7 +5,3 @@
 @section('content')
     @include('recipes.partials.create-form')
 @endsection
-
-@section('script')
-    @include('includes.js.counter')
-@endsection

@@ -68,7 +68,3 @@
 </div>
 
 @endsection
-
-@section('script')
-    @include('includes.js.modal')
-@endsection
