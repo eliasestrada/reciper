@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Listeners;
+
+use App\Events\RecipeGotCanceled;
+
+class SendCanceledNotification
+{
+    /**
+     * @param  RecipeGotCanceled  $event
+     * @return void
+     */
+    public function handle(RecipeGotCanceled $event)
+    {
+        Notification::sendToUser(
+            'recipe_not_published',
+            $event->message,
+            $event->recipe->getTitle(),
+            $event->recipe->user_id
+        );
+    }
+}
