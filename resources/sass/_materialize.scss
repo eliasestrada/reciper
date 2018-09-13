@@ -3054,7 +3054,7 @@ small {
 }
 
 .btn-floating:hover {
-	background-color: #26a69a;
+	background-color: $mainHover;
 }
 
 .btn-floating:before {
@@ -5421,11 +5421,11 @@ Nav List
 .sidenav li>a.btn-large:hover,
 .sidenav li>a.btn-small:hover,
 .sidenav li>a.btn-large:hover {
-	background-color: #2bbbad;
+	background-color: $mainHover;
 }
 
 .sidenav li>a.btn-floating:hover {
-	background-color: #26a69a;
+	background-color: $mainHover;
 }
 
 .sidenav li>a>i,
