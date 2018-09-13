@@ -19,19 +19,25 @@
     <!-- Modal for creating recipe -->
     <div id="modal2" class="modal">
         <div class="modal-content reset">
-            <form action="{{ action('RecipesController@store') }}" method="post" class="page" enctype="multipart/form-data">
+            <form action="{{ action('RecipesController@store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                {{--  Save button  --}}
-                <div class="center pb-4">
-                    <button type="submit" class="btn green">
-                        <i class="material-icons left">save</i>
-                        @lang('tips.save')
-                    </button>
+
+                <div class="center">
+                    <p class="flow-text main-text">@lang('recipes.name_for_recipe')</p>
                 </div>
+
                 {{-- Title --}}
                 <div class="input-field">
-                    <input type="text" name="title" id="title" value="{{ old('title') }}" class="counter" data-length="{{ config('validation.recipe_title_max') }}">
+                    <input type="text" name="title" id="title" value="{{ old('title') }}" class="counter" data-length="{{ config('validation.recipe_title_max') }}" minlength="5" required>
                     <label for="title">@lang('recipes.title')</label>
+                </div>
+
+                {{--  Save button  --}}
+                <div class="center pb-2">
+                    <button type="submit" class="btn waves-effect waves-light">
+                        <i class="material-icons right">keyboard_arrow_right</i>
+                        @lang('recipes.next')
+                    </button>
                 </div>
             </form>
         </div>
