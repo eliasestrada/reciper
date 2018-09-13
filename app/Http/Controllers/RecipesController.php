@@ -48,12 +48,9 @@ class RecipesController extends Controller
     {
         $this->checkForScriptTags($request);
 
-        $image_name = $this->saveImageIfExists($request->file('image'));
-        $recipe = $this->createOrUpdateRecipe($request, $image_name);
+        $recipe = $this->createRecipe($request);
 
-        return redirect("/recipes/$recipe->id/edit")->withSuccess(
-            trans('recipes.saved')
-        );
+        return redirect("/recipes/$recipe->id/edit");
     }
 
     /**
@@ -133,7 +130,7 @@ class RecipesController extends Controller
             $this->deleteOldImage($recipe->image);
         }
 
-        $this->createOrUpdateRecipe($request, $image_name, $recipe);
+        $this->updateRecipe($request, $image_name, $recipe);
 
         return new RecipeUpdateResponse($recipe);
     }

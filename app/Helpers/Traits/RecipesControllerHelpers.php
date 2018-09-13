@@ -56,16 +56,25 @@ trait RecipesControllerHelpers
 
     /**
      * @param object $request
-     * @param string $image_name
-     * @param oblect|null $recipe
      * @return object
      */
-    public function createOrUpdateRecipe($request, $image_name, $recipe = null)
+    public function createRecipe($request)
+    {
+        return user()->recipes()->create(['title_' . lang() => $request->title]);
+    }
+
+    /**
+     * @param object $request
+     * @param string $image_name
+     * @param oblect $recipe
+     * @return object
+     */
+    public function updateRecipe($request, $image_name, $recipe)
     {
         $recipe_columns = [
             'image' => $image_name ? $image_name : $recipe->image ?? 'default.jpg',
-            'meal_id' => $request->meal,
-            'time' => $request->time,
+            'meal_id' => $request->meal ?? 0,
+            'time' => $request->time ?? 0,
 
             'title_' . lang() => $request->title,
             'intro_' . lang() => $request->intro,
@@ -76,21 +85,14 @@ trait RecipesControllerHelpers
             'approved_' . lang() => ($request->ready == 1 && user()->hasRole('admin')) ? 1 : 0,
         ];
 
-        // If recipe is not new, if it is an existing recipe
-        if ($recipe) {
-            // If recipe moved from being ready to not ready
-            if ($recipe->isReady() && $request->ready == 0) {
-                event(new \App\Events\RecipeGotDrafted($recipe));
-            }
-            $recipe->categories()->sync($request->categories);
-            return $recipe->update($recipe_columns);
+        // If recipe moved from being ready to not ready
+        if ($recipe->isReady() && $request->ready == 0) {
+            event(new \App\Events\RecipeGotDrafted($recipe));
         }
 
-        // Create recipe coz $recipe is null
-        $create = user()->recipes()->create($recipe_columns);
-        $create->categories()->sync($request->categories);
+        $recipe->categories()->sync($request->categories);
 
-        return $create;
+        return $recipe->update($recipe_columns);
     }
 
     /**

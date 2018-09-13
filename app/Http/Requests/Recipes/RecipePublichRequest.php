@@ -26,7 +26,7 @@ class RecipePublichRequest extends FormRequest
                 'ingredients' => 'min:20|max:' . config('validation.recipe_ingredients_max'),
                 'text' => 'min:80|max:' . config('validation.recipe_text_max'),
                 'meal' => 'numeric|between:1,3',
-                'time' => 'numeric|between:0,1000',
+                'time' => 'numeric|between:1,1000',
                 'image' => 'image|nullable|max:1999',
                 'categories.0' => 'required',
                 'categories.*' => 'distinct|numeric|between:1,' . Category::count(),
