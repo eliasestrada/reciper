@@ -6,7 +6,7 @@
 
 {{-- Breadcrumps --}}
 @component('comps.breadcrumps', [
-    'url' => ['/admin/documents', '#'],
+    'url' => ['/master/documents', '#'],
     'name' => [trans('documents.docs'), $document->getTitle()]
 ]) @endcomponent
 
@@ -28,7 +28,7 @@
 {{-- Edit button --}}
 @component('comps.btns.fixed-btn')
     @slot('icon') edit @endslot
-    @slot('link') /admin/documents/{{ $document->id }}/edit @endslot
+    @slot('link') /master/documents/{{ $document->id }}/edit @endslot
     @slot('tip') @lang('tips.edit') @endslot
 @endcomponent
 

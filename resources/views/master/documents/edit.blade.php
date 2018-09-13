@@ -15,11 +15,11 @@
 
     {{-- Breadcrumps --}}
     @component('comps.breadcrumps', [
-        'url' => ['/admin/documents', '#'],
+        'url' => ['/master/documents', '#'],
         'name' => [trans('documents.docs'), $document->getTitle(), 20]
     ]) @endcomponent
 
-    <form action="{{ action('Admin\DocumentsController@update', ['id' => $document->id]) }}" method="post">
+    <form action="{{ action('Master\DocumentsController@update', ['id' => $document->id]) }}" method="post">
         <div class="center p-3">
             {{-- View button --}}
             <button class="btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top" name="view">
@@ -67,7 +67,7 @@
     </form>
 </div>
 
-<form action="{{ action('Admin\DocumentsController@destroy', ['id' => $document->id]) }}" method="post" id="delete-doc" class="d-none">
+<form action="{{ action('Master\DocumentsController@destroy', ['id' => $document->id]) }}" method="post" id="delete-doc" class="d-none">
     @method('delete') @csrf
     <button type="submit"></button>
 </form>
@@ -75,6 +75,5 @@
 @endsection
 
 @section('script')
-    @include('includes.js.counter')
     @include('includes.js.tinymse')
 @endsection

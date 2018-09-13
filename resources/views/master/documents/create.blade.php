@@ -15,11 +15,11 @@
 
     {{-- Breadcrumps --}}
     @component('comps.breadcrumps', [
-        'url' => ['/admin/documents', '#'],
+        'url' => ['/master/documents', '#'],
         'name' => [trans('documents.docs'), trans('documents.new_doc')]
     ]) @endcomponent
 
-    <form action="{{ action('Admin\DocumentsController@store') }}" method="post">
+    <form action="{{ action('Master\DocumentsController@store') }}" method="post">
         @csrf
 
         <div class="center pb-2 pt-3"> {{--  Save button  --}}
@@ -44,6 +44,5 @@
 @endsection
 
 @section('script')
-    @include('includes.js.counter')
     @include('includes.js.tinymse')
 @endsection

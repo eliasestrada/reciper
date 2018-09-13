@@ -38,7 +38,3 @@
 </div>
 
 @endsection
-
-@section('script')
-    @include('includes.js.counter')
-@endsection

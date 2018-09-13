@@ -57,7 +57,8 @@ class Kernel extends HttpKernel
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-		'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-		'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'master' => \App\Http\Middleware\MasterMiddleware::class,
     ];
 }

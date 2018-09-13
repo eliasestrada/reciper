@@ -2,9 +2,6 @@
 
 Auth::routes();
 
-// Logs (This route overwrites delete method from log-viewer package)
-Route::delete('/log-viewer/logs/delete', 'LogsController@delete');
-
 // Pages ===========
 Route::get('/', 'PagesController@home');
 Route::get('search', 'PagesController@search');
@@ -52,8 +49,10 @@ Route::prefix('titles')->middleware('admin')->group(function () {
 });
 
 // Approving ======
-Route::post('answer/ok/{recipe}', 'ApproveController@ok');
-Route::post('answer/cancel/{recipe}', 'ApproveController@cancel');
+Route::prefix('answer')->middleware('admin')->group(function () {
+    Route::post('ok/{recipe}', 'ApproveController@ok');
+    Route::post('cancel/{recipe}', 'ApproveController@cancel');
+});
 
 // Artisan commands =======
 Route::get('php/artisan/cache/{url_key}', 'ArtisanController@cache');
@@ -64,5 +63,10 @@ Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function 
     Route::resource('statistics', 'StatisticsController')->only(['index']);
     Route::resource('checklist', 'ChecklistController')->only(['index']);
     Route::resource('feedback', 'FeedbackController')->only(['index', 'destroy']);
+});
+
+// Master ==========
+Route::prefix('master')->namespace('Master')->middleware('master')->group(function () {
     Route::resource('documents', 'DocumentsController');
+    Route::delete('/log-viewer/logs/delete', 'LogsController@delete');
 });

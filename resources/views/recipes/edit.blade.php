@@ -157,7 +157,3 @@
 </form>
 
 @endsection
-
-@section('script')
-    @include('includes.js.counter')
-@endsection

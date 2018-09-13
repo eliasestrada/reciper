@@ -53,7 +53,7 @@
                                     <i class="material-icons">file_download</i>
                                 </a>
                                 {{-- Delete button --}}
-                                <form action="{{ action('LogsController@delete') }}" method="post" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')" data-position="top" onsubmit="return confirm('@lang('logs.confirm', ['date' => $date])')">
+                                <form action="{{ action('Master\LogsController@delete') }}" method="post" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')" data-position="top" onsubmit="return confirm('@lang('logs.confirm', ['date' => $date])')">
                                     
                                     @csrf
                                     @method('delete')

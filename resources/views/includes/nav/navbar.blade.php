@@ -56,11 +56,6 @@
                     <i class="material-icons left">feedback</i>@lang('includes.feedback')
                 </a>
             </li>
-            <li class="position-relative {{ active_if_route_is('admin/documents') }}"> {{-- Documents --}}
-                <a href="/admin/documents" title="@lang('documents.docs')">
-                    <i class="material-icons left">work</i>@lang('documents.docs')
-                </a>
-            </li>
         @endhasRole
 
         <li class="position-relative {{ active_if_route_is('notifications') }}"> {{-- notifications --}}
@@ -82,6 +77,11 @@
         </li>
 
         @hasRole('master')
+            <li class="position-relative {{ active_if_route_is('master/documents') }}"> {{-- Documents --}}
+                <a href="/master/documents" title="@lang('documents.docs')">
+                    <i class="material-icons left">work</i>@lang('documents.docs')
+                </a>
+            </li>
             <li class="position-relative {{ active_if_route_is('log-viewer/logs*') }}"> {{-- log-viewer --}}
                 <a href="/log-viewer/logs" title="@lang('logs.logs')" {{ empty($all_logs) ? '' : "data-notif=$all_logs" }} class="small-notif-btn">
                     <i class="material-icons left">library_books</i>@lang('logs.logs')

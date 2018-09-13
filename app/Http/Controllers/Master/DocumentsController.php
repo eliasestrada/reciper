@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DocumentsRequest;
@@ -14,7 +14,7 @@ class DocumentsController extends Controller
      */
     public function index()
     {
-        return view('admin.documents.index', [
+        return view('master.documents.index', [
             'ready_docs' => Document::query()->ready(1)->paginate(20)->onEachSide(1),
             'unready_docs' => Document::query()->ready(0)->paginate(20)->onEachSide(1),
         ]);
@@ -25,7 +25,7 @@ class DocumentsController extends Controller
      */
     public function create()
     {
-        return view('admin.documents.create');
+        return view('master.documents.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class DocumentsController extends Controller
             'text' => $request->text,
         ]);
 
-        return redirect("/admin/documents/$doc->id");
+        return redirect("/master/documents/$doc->id");
     }
 
     /**
@@ -47,7 +47,7 @@ class DocumentsController extends Controller
      */
     public function show(Document $document)
     {
-        return view('admin.documents.show', compact('document'));
+        return view('master.documents.show', compact('document'));
     }
 
     /**
@@ -55,7 +55,7 @@ class DocumentsController extends Controller
      */
     public function edit(Document $document)
     {
-        return view('admin.documents.edit', compact('document'));
+        return view('master.documents.edit', compact('document'));
     }
 
     /**
@@ -70,11 +70,11 @@ class DocumentsController extends Controller
         ]);
 
         if ($request->has('view')) {
-            return redirect("/admin/documents/$document->id")->withSuccess(trans('documents.saved'));
+            return redirect("/master/documents/$document->id")->withSuccess(trans('documents.saved'));
         }
         return $request->ready == 0
         ? back()->withSuccess(trans('documents.saved'))
-        : redirect("/admin/documents/$document->id")->withSuccess(trans('documents.published'));
+        : redirect("/master/documents/$document->id")->withSuccess(trans('documents.published'));
     }
 
     /**
@@ -84,14 +84,14 @@ class DocumentsController extends Controller
     public function destroy($id)
     {
         // Check for correct user
-        if (!user()->hasRole('admin')) {
+        if (!user()->hasRole('master')) {
             return redirect('/')->withError(
-                trans('admin.only_admin_can_delete')
+                trans('master.only_master_can_delete')
             );
         }
         Document::find($id)->delete();
 
-        return redirect('/admin/documents')->withSuccess(
+        return redirect('/master/documents')->withSuccess(
             trans('documents.doc_has_been_deleted')
         );
     }

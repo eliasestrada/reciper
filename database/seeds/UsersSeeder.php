@@ -11,7 +11,7 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        $user = User::create([
             'email' => '11@11.com',
             'name' => 'Серый',
             'password' => bcrypt('111111'),
@@ -19,7 +19,9 @@ class UsersSeeder extends Seeder
             'contact_check' => date("Y-m-d H:i:s"),
             'created_at' => '2018-03-08 12:08:59',
             'image' => 'default.jpg',
-        ])->addRole('admin');
+        ]);
+        $user->addRole('admin');
+        $user->addRole('master');
 
         User::create([
             'email' => '22@22.com',

@@ -147,7 +147,3 @@
 </section>
 
 @endsection
-
-@section('script')
-    @include('includes.js.counter')
-@endsection

@@ -33,8 +33,8 @@
                         <p>{{ time_ago($doc->updated_at) }}</p>
                     </div>
                     <div class="card-action">
-                        <a href="/admin/documents/{{ $doc->id }}" class="main-dark-text">@lang('documents.open')</a>
-                        <a href="/admin/documents/{{ $doc->id }}/edit" class="main-dark-text">@lang('documents.edit')</a>
+                        <a href="/master/documents/{{ $doc->id }}" class="main-dark-text">@lang('documents.open')</a>
+                        <a href="/master/documents/{{ $doc->id }}/edit" class="main-dark-text">@lang('documents.edit')</a>
                     </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                         @include('includes.buttons.btn', [
                             'title' => trans('documents.new_doc'),
                             'icon' => 'add',
-                            'link' => '/admin/documents/create'
+                            'link' => '/master/documents/create'
                         ])
                     @endslot
                 @endcomponent
@@ -58,7 +58,7 @@
 
 @component('comps.btns.fixed-btn')
     @slot('icon') add @endslot
-    @slot('link') /admin/documents/create @endslot
+    @slot('link') /master/documents/create @endslot
     @slot('tip') @lang('documents.new_doc') @endslot
 @endcomponent
 
