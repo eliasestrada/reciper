@@ -10847,9 +10847,13 @@ function activeAfterClickBtn(element, button) {
  * @param {string} button
  */
 function checkCheckboxThenSubmit(checkbox, button) {
+	var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
 	$(button).addEventListener("click", function () {
-		if ($(checkbox).checked = true) {
-			$(checkbox).closest("form").submit();
+		if (callback() == true) {
+			if ($(checkbox).checked = true) {
+				$(checkbox).closest("form").submit();
+			}
 		}
 	});
 }
@@ -10887,7 +10891,9 @@ if ($("input-message")) {
 }
 
 if ($("ready-checkbox")) {
-	checkCheckboxThenSubmit("ready-checkbox", "publish-btn");
+	checkCheckboxThenSubmit("ready-checkbox", "publish-btn", function () {
+		return confirm($("publish-btn").getAttribute("data-alert")) ? true : false;
+	});
 }
 
 if (imageUploader.src && imageUploader.target) {

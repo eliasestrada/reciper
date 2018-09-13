@@ -4,12 +4,14 @@
  * @param {string} checkbox
  * @param {string} button
  */
-function checkCheckboxThenSubmit(checkbox, button) {
+function checkCheckboxThenSubmit(checkbox, button, callback = true) {
     $(button).addEventListener("click", () => {
-        if (($(checkbox).checked = true)) {
-            $(checkbox)
-                .closest("form")
-                .submit();
+        if (callback() == true) {
+            if (($(checkbox).checked = true)) {
+                $(checkbox)
+                    .closest("form")
+                    .submit();
+            }
         }
     });
 }
