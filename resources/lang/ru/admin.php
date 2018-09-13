@@ -9,6 +9,7 @@ return [
 
     // Views
     'recipes' => 'Рецепты',
+    'message_for_admin' => 'Сообщение админу',
     'no_name' => 'Имя не указано',
     'requests' => 'Запросов',
     'feedback' => 'Обратная связь',

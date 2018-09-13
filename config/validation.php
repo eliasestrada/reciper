@@ -13,6 +13,6 @@ return [
     'docs_text_max' => 10000,
     'contact_message_min' => 80,
     'contact_message_max' => 2000,
-    'approve_message' => 10000,
+    'approve_message' => 2000,
 
 ];

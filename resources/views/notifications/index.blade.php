@@ -15,10 +15,10 @@
     <div class="row py-5">
         @forelse ($notifications as $notif)
             <div class="col s12 m6 l4">
-                <div class="card-panel px-3">
+                <div class="card-panel px-3 {{ $notif->for_admins === 1 ? 'main-light' : '' }}">
                     <span>
                         <h6>
-                            <i class="material-icons left main-text">notifications_none</i>
+                            <i class="material-icons left main-text">message</i>
                             {{ trans($notif->title) }}
                         </h6>
                         <p>{{ $notif->message }}</p>
@@ -36,6 +36,8 @@
                                     @lang('form.deleting')
                                 </button>
                             </form>
+                        @else
+                            @lang('admin.message_for_admin')
                         @endif
                     </span>
                 </div>
