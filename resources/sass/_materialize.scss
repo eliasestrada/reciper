@@ -3529,7 +3529,7 @@ button.btn-floating {
 	position: fixed;
 	left: 0;
 	right: 0;
-	background-color: #fafafa;
+	background-color: $paper;
 	padding: 0;
 	max-height: 70%;
 	width: 55%;
@@ -3553,7 +3553,7 @@ button.btn-floating {
 }
 
 .modal .modal-content {
-	padding: 24px;
+	padding: 17px;
 }
 
 .modal .modal-close {
