@@ -23,13 +23,13 @@ class AdminApprovesIndexPageTest extends TestCase
             ->assertViewIs('admin.approves.index')
             ->assertViewHas([
                 'unapproved_waiting' => Recipe::oldest()
-                    ->whereApproverId(0)
+                    ->where(lang() . '_approver_id', 0)
                     ->approved(0)
                     ->ready(1)
                     ->paginate(30)
                     ->onEachSide(1),
                 'unapproved_checking' => Recipe::oldest()
-                    ->where('approver_id', '!=', 0)
+                    ->where(lang() . '_approver_id', '!=', 0)
                     ->approved(0)
                     ->ready(1)
                     ->paginate(30)

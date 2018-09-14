@@ -14,7 +14,8 @@ $factory->define(Recipe::class, function (Faker $faker) {
     return [
         'user_id' => $author->id,
         'meal_id' => rand(1, 3),
-        'approver_id' => $admin->id,
+        'ru_approver_id' => $admin->id,
+        'en_approver_id' => $admin->id,
         'time' => rand(10, 160),
         'image' => 'default.jpg',
 

@@ -39,6 +39,14 @@ trait RecipeModelShortcuts
     /**
      * @return string
      */
+    public function getApproverId(): ?string
+    {
+        return $this->toArray()[lang() . '_approver_id'];
+    }
+
+    /**
+     * @return string
+     */
     public function isReady(): string
     {
         return $this->toArray()['ready_' . lang()];
