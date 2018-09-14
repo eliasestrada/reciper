@@ -11,8 +11,9 @@ class CreateRecipesTable extends Migration
     {
         Schema::create('recipes', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id')->default(1);
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('meal_id')->default(1);
+            $table->unsignedInteger('approver_id')->nullable();
 
             // Russian language
             $table->string('title_ru')->nullable();
