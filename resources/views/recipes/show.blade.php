@@ -43,7 +43,7 @@
                     <p>@lang('recipes.approve_or_not')</p>
 
                     {{-- Approve --}}
-                    <form action="{{ action('ApproveController@ok', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
+                    <form action="{{ action('Admin\ApprovesController@ok', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
                         @csrf
                         <input type="hidden" name="message" value="ok">
                         <button class="btn green" type="submit">
@@ -61,7 +61,7 @@
                     <!-- Modal Structure -->
                     <div id="modal3" class="modal">
                         <div class="modal-content reset">
-                            <form action="{{ action('ApproveController@cancel', ['recipe' => $recipe->id]) }}" method="post" onsubmit="return confirm('@lang('recipes.are_you_sure_to_cancel')')">
+                            <form action="{{ action('Admin\ApprovesController@cancel', ['recipe' => $recipe->id]) }}" method="post" onsubmit="return confirm('@lang('recipes.are_you_sure_to_cancel')')">
                                 @csrf
                                 <p>@lang('notifications.set_message_desc')</p>
                                 <div class="input-field">

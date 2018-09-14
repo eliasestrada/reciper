@@ -45,8 +45,8 @@
                 </a>
             </li>
 
-            <li class="position-relative {{ active_if_route_is('admin/checklist') }}"> {{-- checklist --}}
-                <a href="/admin/checklist" title="@lang('includes.checklist')" {{ empty($all_unapproved) ? '' : "data-notif=$all_unapproved" }} class="small-notif-btn">
+            <li class="position-relative {{ active_if_route_is('admin/approves') }}"> {{-- checklist --}}
+                <a href="/admin/approves" title="@lang('includes.checklist')" {{ empty($all_unapproved) ? '' : "data-notif=$all_unapproved" }} class="small-notif-btn">
                     <i class="material-icons left">search</i>@lang('includes.checklist')
                 </a>
             </li>

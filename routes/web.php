@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Auth::routes();
 
 // Pages ===========
@@ -48,20 +50,16 @@ Route::prefix('titles')->middleware('admin')->group(function () {
     Route::put('footer', 'TitleController@footer');
 });
 
-// Approving ======
-Route::prefix('answer')->middleware('admin')->group(function () {
-    Route::post('ok/{recipe}', 'ApproveController@ok');
-    Route::post('cancel/{recipe}', 'ApproveController@cancel');
-});
-
 // Artisan commands =======
 Route::get('php/artisan/cache/{url_key}', 'ArtisanController@cache');
 Route::get('php/artisan/clear/{url_key}', 'ArtisanController@clear');
 
 // Admin ===========
 Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function () {
+    Route::post('answer/ok/{recipe}', 'ApprovesController@ok');
+    Route::post('answer/cancel/{recipe}', 'ApprovesController@cancel');
+    Route::get('approves', 'ApprovesController@index');
     Route::resource('statistics', 'StatisticsController')->only(['index']);
-    Route::resource('checklist', 'ChecklistController')->only(['index']);
     Route::resource('feedback', 'FeedbackController')->only(['index', 'destroy']);
 });
 

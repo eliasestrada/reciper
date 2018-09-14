@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('admin.checklist'))
+@section('title', trans('includes.checklist'))
 
 @section('content')
 

@@ -62,7 +62,7 @@ class RecipesShowPageTest extends TestCase
 
         // Make request to approve a recipe with message
         $this->actingAs($this->admin)
-            ->post(action('ApproveController@ok',
+            ->post(action('Admin\ApprovesController@ok',
                 ['recipe' => $this->unapproved_recipe->id]),
                 ['message' => 'Lorem ipsum dolor sit amet consectetur han'])
             ->assertRedirect('/recipes');
@@ -82,7 +82,7 @@ class RecipesShowPageTest extends TestCase
 
         // Make request to approve a recipe without message
         $this->actingAs($this->admin)
-            ->post(action('ApproveController@ok', [
+            ->post(action('Admin\ApprovesController@ok', [
                 'recipe' => $this->unapproved_recipe->id,
             ]))
             ->assertRedirect("/recipes/{$this->unapproved_recipe->id}");
@@ -102,7 +102,7 @@ class RecipesShowPageTest extends TestCase
 
         // Make request to cancel a recipe with message
         $this->actingAs($this->admin)
-            ->post(action('ApproveController@cancel',
+            ->post(action('Admin\ApprovesController@cancel',
                 ['recipe' => $this->unapproved_recipe->id]),
                 ['message' => 'Lorem ipsum dolor sit amet consectetur'])
             ->assertRedirect('/recipes');
@@ -122,7 +122,7 @@ class RecipesShowPageTest extends TestCase
 
         // Make request to cancel a recipe with message
         $this->actingAs($this->admin)
-            ->post(action('ApproveController@cancel', ['recipe' => $this->unapproved_recipe->id]))
+            ->post(action('Admin\ApprovesController@cancel', ['recipe' => $this->unapproved_recipe->id]))
             ->assertRedirect("/recipes/{$this->unapproved_recipe->id}");
 
         // Recipe should be still unapproved
@@ -147,7 +147,7 @@ class RecipesShowPageTest extends TestCase
 
         // Make request to approve a recipe with message
         $this->actingAs($this->admin)
-            ->post(action('ApproveController@ok',
+            ->post(action('Admin\ApprovesController@ok',
                 ['recipe' => $recipe->id]),
                 ['message' => $text_message])
             ->assertRedirect('/recipes');

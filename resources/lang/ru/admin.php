@@ -16,7 +16,6 @@ return [
     'no_messages' => 'Нет сообщений',
     'country_and_city' => 'Страна / Город',
     'unapproved' => 'Рецепты на рассмотрении',
-    'checklist' => 'Проверочная',
     'to_recipe' => 'Перейти к рецепту',
     'author' => 'Автор',
     'statistics' => 'Статистика',
