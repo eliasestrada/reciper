@@ -13,7 +13,7 @@ class CreateRecipesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('meal_id')->default(1);
-            $table->unsignedInteger('approver_id')->nullable();
+            $table->unsignedInteger('approver_id')->default(0);
 
             // Russian language
             $table->string('title_ru')->nullable();

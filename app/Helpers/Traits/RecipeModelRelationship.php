@@ -34,4 +34,9 @@ trait RecipeModelRelationship
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public function approver()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

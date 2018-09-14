@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ApproveMessageRequest;
 use App\Models\Recipe;
+use App\Models\User;
 
 class ApprovesController extends Controller
 {
@@ -17,13 +18,49 @@ class ApprovesController extends Controller
      */
     public function index()
     {
-        $unapproved = Recipe::oldest()
+        $unapproved_waiting = Recipe::oldest()
+            ->whereApproverId(0)
             ->approved(0)
             ->ready(1)
             ->paginate(30)
             ->onEachSide(1);
 
-        return view('admin.approves.index', compact('unapproved'));
+        $unapproved_checking = Recipe::oldest()
+            ->where('approver_id', '!=', 0)
+            ->approved(0)
+            ->ready(1)
+            ->paginate(30)
+            ->onEachSide(1);
+
+        // Check if admin is already has recipe that he didnt approved
+        $already_checking = Recipe::whereApproverId(user()->id)->approved(0)->ready(1)->value('id');
+
+        if ($already_checking) {
+            return redirect("/admin/approves/$already_checking")->withSuccess(
+                trans('approves.finish_checking')
+            );
+        }
+
+        return view('admin.approves.index', compact(
+            'unapproved_waiting', 'unapproved_checking'
+        ));
+    }
+
+    /**
+     * @param Recipe $recipe
+     */
+    public function show(Recipe $recipe)
+    {
+        // Check if u can work with the recipe
+        if (($error = $this->hasErrors($recipe)) !== false) {
+            return redirect("/admin/approves")->withError($error);
+        }
+
+        if (!$recipe->approver_id) {
+            $recipe->update(['approver_id' => user()->id]);
+        }
+
+        return view('admin.approves.show', compact('recipe'));
     }
 
     /**
@@ -31,12 +68,9 @@ class ApprovesController extends Controller
      */
     public function ok(Recipe $recipe, ApproveMessageRequest $request)
     {
-        if ($recipe->isDone()) {
-            return back()->withError(trans('approves.already_approved'));
-        }
-
-        if (!$recipe->isReady() && !$recipe->isApproved()) {
-            return back()->withError(trans('approves.recipe_in_drafts'));
+        // Check if u can work with the recipe
+        if (($error = $this->hasErrors($recipe)) !== false) {
+            return redirect("/admin/approves")->withError($error);
         }
 
         cache()->forget('all_unapproved');
@@ -60,6 +94,11 @@ class ApprovesController extends Controller
      */
     public function cancel(Recipe $recipe, ApproveMessageRequest $request)
     {
+        // Check if u can work with the recipe
+        if (($error = $this->hasErrors($recipe)) !== false) {
+            return redirect("/admin/approves")->withError($error);
+        }
+
         cache()->forget('all_unapproved');
         cache()->forget('search_suggest');
 
@@ -70,5 +109,21 @@ class ApprovesController extends Controller
         return redirect('/recipes')->withSuccess(
             trans('recipes.you_gave_recipe_back_on_editing')
         );
+    }
+
+    /**
+     * Checks if recipe not approved and ready
+     * @param $recipe
+     */
+    public function hasErrors($recipe)
+    {
+        if ($recipe->isDone()) {
+            return trans('approves.already_approved');
+        }
+
+        if (!$recipe->isReady() && !$recipe->isApproved()) {
+            return trans('recipes.not_written');
+        }
+        return false;
     }
 }
