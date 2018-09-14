@@ -7,9 +7,14 @@ use Faker\Generator as Faker;
 cache()->flush();
 
 $factory->define(Recipe::class, function (Faker $faker) {
+    $author = factory(User::class)->create(['points' => 1]);
+    $admin = factory(User::class)->create();
+    $admin->addRole('admin');
+
     return [
-        'user_id' => factory(User::class)->create(['points' => 1])->id,
+        'user_id' => $author->id,
         'meal_id' => rand(1, 3),
+        'approver_id' => $admin->id,
         'time' => rand(10, 160),
         'image' => 'default.jpg',
 
