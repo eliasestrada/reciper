@@ -21,7 +21,7 @@ class ApproveMessageRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        return request()->message == 'ok' ? [] : [
             'message' => 'required|min:30|max:' . config('validation.approve_message'),
         ];
     }

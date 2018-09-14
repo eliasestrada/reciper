@@ -43,7 +43,7 @@
 
         @if(!empty($document))
             <blockquote class="mt-5">
-                {!! trans('form.agree_to_terms', ['btn' => trans('form.register'),'terms' => '<a>dsf</a>']) !!}
+                {!! trans('form.agree_to_terms', ['btn' => trans('form.register')]) !!}
             </blockquote>
 
             <!-- Modal Structure -->

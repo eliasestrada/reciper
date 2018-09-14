@@ -15,7 +15,10 @@ class ApproveController extends Controller
         cache()->forget('all_unapproved');
         cache()->forget('search_suggest');
 
-        event(new \App\Events\RecipeGotApproved($recipe, $request->message));
+        $rand = rand(1, 5);
+        $message = $request->message == 'ok' ? trans("notifications.approved_$rand") : $request->message;
+
+        event(new \App\Events\RecipeGotApproved($recipe, $message));
 
         $recipe->increment('approved_' . lang());
 
