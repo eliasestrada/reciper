@@ -17,7 +17,7 @@
         <h1 class="headline">@lang('includes.my_recipes')</h1>
     </div>
 
-    <ul class="tabs"> {{-- Tab 2 --}}
+    <ul class="tabs"> {{-- Tab 1 --}}
         <li class="tab">
             <a href="#tab-1" class="active">
                 @lang('messages.published') 
