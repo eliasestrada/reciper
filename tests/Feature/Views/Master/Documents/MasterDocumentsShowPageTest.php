@@ -12,7 +12,7 @@ class MasterDocumentsShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_show_page_has_data(): void
+    public function view_has_data(): void
     {
         $document = create(Document::class);
 
@@ -23,7 +23,7 @@ class MasterDocumentsShowPageTest extends TestCase
     }
 
     /** @test */
-    public function user_cant_see_show_page(): void
+    public function user_cant_see_the_page(): void
     {
         $document = create(Document::class);
 
@@ -33,7 +33,7 @@ class MasterDocumentsShowPageTest extends TestCase
     }
 
     /** @test */
-    public function master_can_see_show_page(): void
+    public function master_can_see_the_page(): void
     {
         $document = create(Document::class);
 

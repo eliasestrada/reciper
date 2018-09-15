@@ -11,7 +11,7 @@ class RegisterPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function user_cannot_see_register_page(): void
+    public function user_cannot_see_the_page(): void
     {
         $this->actingAs(make(User::class))
             ->get('/register')
@@ -20,7 +20,7 @@ class RegisterPageTest extends TestCase
     }
 
     /** @test */
-    public function guest_can_see_register_page(): void
+    public function guest_can_see_the_page(): void
     {
         $this->get('/register')
             ->assertOk()

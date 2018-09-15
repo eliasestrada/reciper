@@ -12,7 +12,7 @@ class UsersShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_users_show_has_data(): void
+    public function view_has_data(): void
     {
         $user = create_user();
         $user->wasRecentlyCreated = false;
@@ -45,7 +45,7 @@ class UsersShowPageTest extends TestCase
     }
 
     /** @test */
-    public function auth_user_can_see_users_show_page(): void
+    public function auth_user_can_see_the_page(): void
     {
         $user = create_user();
         $this->actingAs($user)->get("/users/$user->id")->assertOk();

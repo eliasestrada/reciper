@@ -21,7 +21,7 @@ class AdminFeedbackPageTest extends TestCase
     }
 
     /** @test */
-    public function view_admin_feedback_index_has_data(): void
+    public function view_has_data(): void
     {
         $this->actingAs($this->admin)
             ->get('/admin/feedback')
@@ -30,7 +30,7 @@ class AdminFeedbackPageTest extends TestCase
     }
 
     /** @test */
-    public function user_cant_see_admin_feedback_index_page(): void
+    public function user_cant_see_the_page(): void
     {
         $user = make(User::class);
 
@@ -40,7 +40,7 @@ class AdminFeedbackPageTest extends TestCase
     }
 
     /** @test */
-    public function admin_can_see_admin_feedback_index_page(): void
+    public function admin_can_see_the_page(): void
     {
         $this->actingAs($this->admin)
             ->get('/admin/feedback')

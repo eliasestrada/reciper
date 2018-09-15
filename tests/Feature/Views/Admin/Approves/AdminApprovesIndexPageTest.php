@@ -12,7 +12,7 @@ class AdminApprovesIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_index_has_data(): void
+    public function view_has_data(): void
     {
         $admin = create_user('admin');
         $user = create_user();
@@ -38,7 +38,7 @@ class AdminApprovesIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function user_cant_see_index_page(): void
+    public function user_cant_see_the_page(): void
     {
         $user = make(User::class);
 

@@ -19,7 +19,7 @@ class LogsIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function view_vendor_logs_index_has_correct_path(): void
+    public function view_has_a_correct_path(): void
     {
         $this->actingAs($this->master)
             ->get('/log-viewer/logs')
@@ -28,7 +28,7 @@ class LogsIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function master_can_see_logs_page(): void
+    public function master_can_see_the_page(): void
     {
         $this->actingAs($this->master)
             ->get('/log-viewer/logs')

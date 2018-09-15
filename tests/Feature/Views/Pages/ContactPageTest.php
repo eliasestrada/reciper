@@ -11,13 +11,13 @@ class ContactPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_pages_contact_has_a_correct_path(): void
+    public function view_has_a_correct_path(): void
     {
         $this->get('/contact')->assertViewIs('pages.contact');
     }
 
     /** @test */
-    public function auth_user_can_see_contact_page(): void
+    public function auth_user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
             ->get('/contact')
@@ -25,7 +25,7 @@ class ContactPageTest extends TestCase
     }
 
     /** @test */
-    public function guest_can_see_contact_page(): void
+    public function guest_can_see_the_page(): void
     {
         $this->get('/contact')->assertOk();
     }

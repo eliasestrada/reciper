@@ -72,7 +72,7 @@ class LoginPageTest extends TestCase
     }
 
     /** @test */
-    public function user_cant_see_login_page(): void
+    public function user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))
             ->get('/login')
@@ -81,7 +81,7 @@ class LoginPageTest extends TestCase
     }
 
     /** @test */
-    public function guest_can_see_login_page(): void
+    public function guest_can_see_the_page(): void
     {
         $this->get('/login')
             ->assertOk()

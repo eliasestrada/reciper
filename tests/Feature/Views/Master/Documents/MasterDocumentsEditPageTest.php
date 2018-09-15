@@ -12,7 +12,7 @@ class MasterDocumentsEditPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_edit_page_has_data(): void
+    public function view_has_data(): void
     {
         $document = create(Document::class);
         $admin = create_user('master');
@@ -25,7 +25,7 @@ class MasterDocumentsEditPageTest extends TestCase
     }
 
     /** @test */
-    public function user_cannot_see_edit_page(): void
+    public function user_cannot_see_the_page(): void
     {
         $document_id = create(Document::class)->id;
 

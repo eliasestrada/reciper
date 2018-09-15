@@ -27,7 +27,7 @@ class RecipesShowPageTest extends TestCase
     }
 
     /** @test */
-    public function view_recipes_show_has_data(): void
+    public function view_has_data(): void
     {
         $recipe = create(Recipe::class);
 
@@ -37,7 +37,7 @@ class RecipesShowPageTest extends TestCase
     }
 
     /** @test */
-    public function auth_user_can_see_recipe_show_page(): void
+    public function auth_user_can_see_the_page(): void
     {
         $user = make(User::class);
         $user2 = make(User::class);
@@ -49,7 +49,7 @@ class RecipesShowPageTest extends TestCase
     }
 
     /** @test */
-    public function guest_can_see_recipes_show_page(): void
+    public function guest_can_see_the_page(): void
     {
         $this->get("/recipes/{$this->recipe->id}")->assertOk();
     }

@@ -13,7 +13,7 @@ class RecipesEditPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_recipes_edit_has_data(): void
+    public function view_has_data(): void
     {
         $user = create(User::class);
         $recipe = create(Recipe::class, ['user_id' => $user->id]);
@@ -34,7 +34,7 @@ class RecipesEditPageTest extends TestCase
     }
 
     /** @test */
-    public function auth_user_can_see_recipes_edit_page(): void
+    public function auth_user_can_see_the_page(): void
     {
         $user = create(User::class);
         $recipe = create(Recipe::class, ['user_id' => $user->id]);

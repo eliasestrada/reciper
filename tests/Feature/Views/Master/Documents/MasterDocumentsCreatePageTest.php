@@ -11,7 +11,7 @@ class MasterDocumentsCreatePageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_create_page_has_a_correct_path(): void
+    public function view_has_a_correct_path(): void
     {
         $master = create_user('master');
 
@@ -22,7 +22,7 @@ class MasterDocumentsCreatePageTest extends TestCase
     }
 
     /** @test */
-    public function user_cant_see_create_page(): void
+    public function user_cant_see_the_page(): void
     {
         $user = make(User::class);
 

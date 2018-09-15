@@ -12,7 +12,7 @@ class MasterDocumentsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_index_page_is_correct(): void
+    public function view_is_correct(): void
     {
         $master = create_user('master');
 
@@ -24,7 +24,7 @@ class MasterDocumentsIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function user_cant_see_index_page(): void
+    public function user_cant_see_the_page(): void
     {
         $user = make(User::class);
 
@@ -34,7 +34,7 @@ class MasterDocumentsIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function master_can_see_index_page(): void
+    public function master_can_see_the_page(): void
     {
         $this->actingAs(create_user('master'))
             ->get('/master/documents')

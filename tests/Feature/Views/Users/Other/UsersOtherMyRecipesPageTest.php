@@ -12,7 +12,7 @@ class UsersOtherMyRecipesPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_users_other_my_recipes_has_data(): void
+    public function view_has_data(): void
     {
         $user = create(User::class);
 
@@ -40,13 +40,13 @@ class UsersOtherMyRecipesPageTest extends TestCase
     }
 
     /** @test */
-    public function guest_cant_see_my_recipes_page(): void
+    public function guest_cant_see_the_page(): void
     {
         $this->get('/users/other/my-recipes')->assertRedirect('/login');
     }
 
     /** @test */
-    public function auth_user_can_see_my_recipes_page(): void
+    public function auth_user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
             ->get('/users/other/my-recipes')

@@ -11,7 +11,7 @@ class SettingsGeneralPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_settings_general_has_a_correct_path(): void
+    public function view_has_a_correct_path(): void
     {
         $this->actingAs(make(User::class))
             ->get('/settings/general')
@@ -19,7 +19,7 @@ class SettingsGeneralPageTest extends TestCase
     }
 
     /** @test */
-    public function auth_user_can_see_settings_general_page(): void
+    public function auth_user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
             ->get('/settings/general')
@@ -27,7 +27,7 @@ class SettingsGeneralPageTest extends TestCase
     }
 
     /** @test */
-    public function guest_cant_see_settings_general_page(): void
+    public function guest_cant_see_the_page(): void
     {
         $this->get('/settings/general')->assertRedirect('/login');
     }

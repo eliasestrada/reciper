@@ -19,7 +19,7 @@ class LogsShowPageTest extends TestCase
     }
 
     /** @test */
-    public function view_vendor_logs_show_has_correct_path(): void
+    public function view_has_a_correct_path(): void
     {
         $file_name = $this->createLogFile();
 
@@ -30,7 +30,7 @@ class LogsShowPageTest extends TestCase
     }
 
     /** @test */
-    public function master_can_see_logs_shows_page(): void
+    public function master_can_see_the_page(): void
     {
         $file_name = $this->createLogFile();
 
