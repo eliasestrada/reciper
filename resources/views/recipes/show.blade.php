@@ -9,7 +9,7 @@
 
         {{-- Show menu button --}}
         <a href="#" title="@lang('recipes.show_menu')" id="popup-window-trigger">
-            <i class="material-icons small main-text right">more_vert</i>
+            <i class="material-icons small main-text right mr-5">more_vert</i>
         </a>
 
         <div class="popup-window z-depth-2 p-3 position-absolute paper" id="popup-window">
@@ -64,13 +64,18 @@
 <!-- report-recipe-modal structure -->
 <div id="report-recipe-modal" class="modal">
     <div class="modal-content reset">
-        <form>
-            <div class="input-field">
-                <i class="material-icons prefix">comment</i>
-                <textarea name="message" id="message" class="materialize-textarea counter" data-length="{{ config('validation.contact_message') }}">{{ old('message') }}</textarea>
+        <form action="{{ action('Admin\ReportsController@store') }}" method="post">
+            @csrf
+
+            <h5>@lang('recipes.report_recipe')</h5>
+            <p>@lang('report.report_message_desc')</p>
+
+            <div class="input-field mt-4">
+                <input type="hidden" name="recipe" value="{{ $recipe->id }}">
+                <textarea name="message" minlength="{{ config('validation.report_message_min') }}" id="message" class="materialize-textarea counter" data-length="{{ config('validation.report_message_max') }}" required>{{ old('message') }}</textarea>
                 <label for="message">@lang('form.message')</label>
-                <span class="helper-text">@lang('form.message_desc')</span>
             </div>
+            <button type="submit" class="btn">@lang('form.send')</button>
         </form>
     </div>
 </div>
