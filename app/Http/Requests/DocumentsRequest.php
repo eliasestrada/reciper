@@ -21,11 +21,14 @@ class DocumentsRequest extends FormRequest
      */
     public function rules()
     {
+        $title_max = config('validation.docs_title_max');
+        $text_max = config('validation.docs_text_max');
+
         return [
-			'title' => 'required|min:5|max:' . config('validation.docs_title_max'),
-			'text' => 'required|min:50|max:' . config('validation.docs_text_max')
+            'title' => "required|min:5|max:$title_max",
+            'text' => "required|min:50|max:$text_max",
         ];
-	}
+    }
 
     /**
      * Get the validation messages
@@ -34,12 +37,12 @@ class DocumentsRequest extends FormRequest
     public function messages()
     {
         return [
-			'title.required' => trans('documents.title_required'),
-			'title.min' => trans('documents.title_min'),
-			'title.max' => trans('documents.title_max'),
-			'text.required' => trans('documents.text_required'),
-			'text.min' => trans('documents.text_min'),
-			'text.max' => trans('documents.text_max')
+            'title.required' => trans('documents.title_required'),
+            'title.min' => trans('documents.title_min'),
+            'title.max' => trans('documents.title_max'),
+            'text.required' => trans('documents.text_required'),
+            'text.min' => trans('documents.text_min'),
+            'text.max' => trans('documents.text_max'),
         ];
     }
 }

@@ -21,11 +21,12 @@ class ContactRequest extends FormRequest
      */
     public function rules()
     {
+        $min = config('validation.contact_message_min');
+        $max = config('validation.contact_message_max');
+
         return [
             'email' => 'required|email',
-            'message' => 'required|
-				min:' . config('validation.contact_message_min') . '|
-				max:' . config('validation.contact_message_max'),
+            'message' => "required|min:$min|max:$max",
         ];
     }
 

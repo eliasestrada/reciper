@@ -19,12 +19,17 @@ class RecipePublichRequest extends FormRequest
      */
     public function rules()
     {
+        $title_max = config('validation.recipe_title_max');
+        $intro_max = config('validation.recipe_intro_max');
+        $ingredients_max = config('validation.recipe_ingredients_max');
+        $text_max = config('validation.recipe_text_max');
+
         if ($this->ready == 1) {
             return [
-                'title' => 'min:5|max:' . config('validation.recipe_title_max'),
-                'intro' => 'min:20|max:' . config('validation.recipe_intro_max'),
-                'ingredients' => 'min:20|max:' . config('validation.recipe_ingredients_max'),
-                'text' => 'min:80|max:' . config('validation.recipe_text_max'),
+                'title' => "min:5|max:$title_max",
+                'intro' => "min:20|max:$intro_max",
+                'ingredients' => "min:20|max:$ingredients_max",
+                'text' => "min:80|max:$text_max",
                 'meal' => 'numeric|between:1,3',
                 'time' => 'numeric|between:1,1000',
                 'image' => 'image|nullable|max:1999',
