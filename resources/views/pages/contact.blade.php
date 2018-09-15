@@ -23,7 +23,7 @@
             </div>
             <div class="input-field">
                 <i class="material-icons prefix">comment</i>
-            <textarea name="message" id="message" class="materialize-textarea counter" data-length="{{ config('validation.contact_message') }}">{{ old('message') }}</textarea>
+                <textarea name="message" id="message" class="materialize-textarea counter" data-length="{{ config('validation.contact_message') }}">{{ old('message') }}</textarea>
                 <label for="message">@lang('form.message')</label>
                 <span class="helper-text">@lang('form.message_desc')</span>
             </div>

@@ -7205,6 +7205,27 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   background: #f3f3f3;
 }
 
+.grid-recipe .popup-window {
+  width: 260px;
+  right: -100px;
+  top: -20px;
+  z-index: 1;
+  border-radius: 7px 0 7px 7px;
+  -webkit-transition: right 300ms, top 300ms, -webkit-transform 300ms;
+  transition: right 300ms, top 300ms, -webkit-transform 300ms;
+  transition: transform 300ms, right 300ms, top 300ms;
+  transition: transform 300ms, right 300ms, top 300ms, -webkit-transform 300ms;
+  -webkit-transform: scale(0, 0);
+          transform: scale(0, 0);
+}
+
+.grid-recipe .popup-window.active {
+  right: 30px;
+  top: 35px;
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+}
+
 .recipe-img {
   width: 96%;
   margin: .6em 2%;

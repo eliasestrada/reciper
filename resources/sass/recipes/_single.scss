@@ -9,7 +9,23 @@
 .grid-recipe {
 	color: $darkGray;
 	padding: 0 .6em;
-	background: $paper;
+    background: $paper;
+
+    .popup-window {
+        width: 260px;
+        right: -100px;
+        top: -20px;
+        z-index: 1;
+        border-radius: 7px 0 7px 7px;
+        transition: transform 300ms, right 300ms, top 300ms;
+        transform: scale(0, 0);
+    }
+
+    .popup-window.active {
+        right: 30px;
+        top: 35px;
+        transform: scale(1, 1);
+    }
 }
 
 .recipe-img {

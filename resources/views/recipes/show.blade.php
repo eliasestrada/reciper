@@ -5,7 +5,18 @@
 @section('content')
 
 <section class="grid-recipe pt-3">
-    <div class="recipe-content center">
+    <div class="recipe-content center position-relative">
+
+        {{-- Show menu button --}}
+        <a href="#" title="@lang('recipes.show_menu')" id="popup-window-trigger">
+            <i class="material-icons small main-text right">more_vert</i>
+        </a>
+
+        <div class="popup-window z-depth-2 p-3 position-absolute paper" id="popup-window">
+            <a href="#report-recipe-modal" class="btn modal-trigger">
+                @lang('recipes.report_recipe')
+            </a>
+        </div>
 
         {{--  Likes  --}}
         <div class="like-for-author-section">
@@ -48,5 +59,20 @@
         </random-recipes-sidebar>
     </div>
 </section>
+
+
+<!-- report-recipe-modal structure -->
+<div id="report-recipe-modal" class="modal">
+    <div class="modal-content reset">
+        <form>
+            <div class="input-field">
+                <i class="material-icons prefix">comment</i>
+                <textarea name="message" id="message" class="materialize-textarea counter" data-length="{{ config('validation.contact_message') }}">{{ old('message') }}</textarea>
+                <label for="message">@lang('form.message')</label>
+                <span class="helper-text">@lang('form.message_desc')</span>
+            </div>
+        </form>
+    </div>
+</div>
 
 @endsection
