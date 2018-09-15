@@ -52,6 +52,10 @@
   background-color: transparent !important;
 }
 
+.paper {
+  background-color: #f3f3f3 !important;
+}
+
 .paper-dark {
   background-color: #ebebeb !important;
 }
