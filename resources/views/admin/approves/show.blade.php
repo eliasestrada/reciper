@@ -22,13 +22,13 @@
                 </form>
 
                 {{-- Cancel --}}
-                <a href="#modal3" class="btn red modal-trigger">
+                <a href="#cancel-publishing-modal" class="btn red modal-trigger">
                     @lang('messages.no')
                     <i class="material-icons right">thumb_down</i>
                 </a>
 
-                <!-- Modal Structure -->
-                <div id="modal3" class="modal">
+                <!--  cancel-publishing-modal structure -->
+                <div id="cancel-publishing-modal" class="modal">
                     <div class="modal-content reset">
                         <form action="{{ action('Admin\ApprovesController@cancel', ['recipe' => $recipe->id]) }}" method="post" onsubmit="return confirm('@lang('recipes.are_you_sure_to_cancel')')">
                             @csrf

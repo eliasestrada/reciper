@@ -46,8 +46,8 @@
                 {!! trans('form.agree_to_terms', ['btn' => trans('form.register')]) !!}
             </blockquote>
 
-            <!-- Modal Structure -->
-            <div id="modal1" class="modal">
+            <!-- show-document-modal structure -->
+            <div id="show-document-modal" class="modal">
                 <div class="modal-content reset">
                     <h4>{{ $document->getTitle() }}</h4>
                     {!! $document->text !!}

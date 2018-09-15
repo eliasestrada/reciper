@@ -8,7 +8,7 @@
 @component('comps.btns.fixed-btn')
     @slot('icon') add @endslot
     @slot('class') modal-trigger @endslot
-    @slot('link') #modal2 @endslot
+    @slot('link') #add-recipe-modal @endslot
     @slot('tip') @lang('includes.new_recipe') @endslot
 @endcomponent
 

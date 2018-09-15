@@ -16,8 +16,8 @@
         @yield('content')
     </div>
 
-    <!-- Modal for creating recipe -->
-    <div id="modal2" class="modal">
+    <!-- add-recipe-modal structure -->
+    <div id="add-recipe-modal" class="modal">
         <div class="modal-content reset">
             <form action="{{ action('RecipesController@store') }}" method="post" enctype="multipart/form-data">
                 @csrf
