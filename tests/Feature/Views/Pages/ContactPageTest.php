@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Views\Pages;
 
+use App\Models\Feedback;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -46,19 +47,17 @@ class ContactPageTest extends TestCase
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
             ->assertSeeText(trans('feedback.success_message'));
-
         $this->assertDatabaseHas('feedback', $data);
     }
 
     /** @test */
-    public function user_can_send_feedback_message_only_once_per_day(): void
+    public function user_cant_send_feedback_message_more_then_once_per_day(): void
     {
         // First attempt to send a message, should be successful
         $first_data = ['email' => $this->faker->safeEmail, 'message' => $this->faker->text];
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $first_data)
             ->assertSeeText(trans('feedback.success_message'));
-
         $this->assertDatabaseHas('feedback', $first_data);
 
         // Second attempt to send a message, should be denied
@@ -66,7 +65,28 @@ class ContactPageTest extends TestCase
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $second_data)
             ->assertSeeText(trans('feedback.operation_denied'));
-
         $this->assertDatabaseMissing('feedback', $second_data);
+    }
+
+    /** @test */
+    public function user_can_send_message_after_a_day_since_the_last_message(): void
+    {
+        $first_data = ['email' => $this->faker->safeEmail, 'message' => $this->faker->text];
+        $second_data = ['email' => $this->faker->safeEmail, 'message' => $this->faker->text];
+
+        // Make first request
+        $this->followingRedirects()
+            ->post(action('Admin\FeedbackController@store'), $first_data)
+            ->assertSeeText(trans('feedback.success_message'));
+        $this->assertDatabaseHas('feedback', $first_data);
+
+        // Change data to minus day
+        Feedback::latest()->first()->update(['created_at' => now()->subDay()]);
+
+        // Make second request
+        $this->followingRedirects()
+            ->post(action('Admin\FeedbackController@store'), $second_data)
+            ->assertSeeText(trans('feedback.success_message'));
+        $this->assertDatabaseHas('feedback', $second_data);
     }
 }
