@@ -40,6 +40,13 @@ class FeedbackController extends Controller
     {
         cache()->forget('all_feedback');
 
+        // If already send feedback today, return with error message
+        if (is_null($request->recipe)) {
+            if (Feedback::whereVisitorId(visitor_id())->where('created_at', '>', now()->subDay())->exists()) {
+                return back()->withError(trans('feedback.operation_denied'));
+            }
+        }
+
         Feedback::create([
             'is_report' => is_null($request->recipe) ? 0 : 1,
             'lang' => lang(),
