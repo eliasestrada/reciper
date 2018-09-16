@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Notification extends Model
 {
     protected $guarded = ['id'];
+    const UPDATED_AT = null;
 
     public function user()
     {

@@ -7,4 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 class Feedback extends Model
 {
     protected $guarded = ['id'];
+    const UPDATED_AT = null;
+
+    public function recipe()
+    {
+        return $this->belongsTo(Recipe::class);
+    }
+
+    public function visitor()
+    {
+        return $this->belongsTo(Visitor::class);
+    }
+
+    /**
+     * @param integer $value
+     * @return boolean
+     */
+    public function isReport(int $value)
+    {
+        return $this->is_report == $value;
+    }
 }
