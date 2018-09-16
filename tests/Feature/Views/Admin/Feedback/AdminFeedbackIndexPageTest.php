@@ -4,10 +4,11 @@ namespace Tests\Feature\Views\Admin\Feedback;
 
 use App\Models\Feedback;
 use App\Models\User;
+use App\Models\Visitor;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class AdminFeedbackPageTest extends TestCase
+class AdminFeedbackIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -25,8 +26,12 @@ class AdminFeedbackPageTest extends TestCase
     {
         $this->actingAs($this->admin)
             ->get('/admin/feedback')
+            ->assertOk()
             ->assertViewIs('admin.feedback.index')
-            ->assertViewHas('feedback', Feedback::paginate(40)->onEachSide(1));
+            ->assertViewHasAll([
+                'feedback_ru' => Feedback::whereLang('ru')->latest()->paginate(20)->onEachSide(1),
+                'feedback_en' => Feedback::whereLang('en')->latest()->paginate(20)->onEachSide(1),
+            ]);
     }
 
     /** @test */
@@ -40,19 +45,13 @@ class AdminFeedbackPageTest extends TestCase
     }
 
     /** @test */
-    public function admin_can_see_the_page(): void
-    {
-        $this->actingAs($this->admin)
-            ->get('/admin/feedback')
-            ->assertOk();
-    }
-
-    /** @test */
     public function feedback_message_can_be_deleted_by_admin(): void
     {
         $message = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae facere ex animi quis!';
 
         $feed = Feedback::create([
+            'visitor_id' => create(Visitor::class)->id,
+            'lang' => lang(),
             'email' => 'johndoe@gmail.com',
             'message' => $message,
         ]);
