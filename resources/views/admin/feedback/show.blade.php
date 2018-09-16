@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $feedback->recipe->getTitle())
+@section('title', optional($feedback->recipe)->getTitle() ?? trans('feedback.feedback'))
 
 @section('content')
 
@@ -13,6 +13,12 @@
                 @lang('feedback.feedback')
             @endif
         </h1>
+
+        <div class="mt-3"> {{-- Delete button --}}
+            <a onclick="if (confirm('@lang('contact.sure_del_feed')')) $('delete-').submit()" class="btn-floating red tooltipped" data-tooltip="@lang('tips.delete')" data-position="top">
+                <i class="material-icons">delete</i>
+            </a>
+        </div>
     </div>
 
     <table class="mt-2">
@@ -27,23 +33,27 @@
                     </td>
                 </tr>
             @endif
-            <tr>
+            <tr> {{-- Sender --}}
                 <td>
                     <b>@lang('messages.sender'):</b> 
                     <a href="#">{{ $feedback->visitor->id }}</a>
                 </td>
             </tr>
-            <tr>
+            <tr> {{-- Time ago --}}
                 <td><b>@lang('messages.sent'):</b> {{ time_ago($feedback->created_at) }}</td>
             </tr>
-            <tr>
+            <tr> {{-- Message --}}
                 <td>
                     <b>@lang('messages.message'):</b> 
-                    aef af faf Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, ab?
+                    {{ $feedback->message }}
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<form action="{{ action('Admin\FeedbackController@destroy', ['id' => $feedback->id]) }}" method="post" id="delete-feed" class="d-none">
+    @method('delete') @csrf
+</form>
 
 @endsection

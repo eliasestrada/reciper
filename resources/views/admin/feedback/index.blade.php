@@ -9,7 +9,7 @@
         <h1 class="headline">@lang('includes.feedback')</h1>
     </div>
 
-
+    {{-- Tabs --}}
     <ul class="tabs mt-4">
         <li class="tab">
             <a href="#tab-1" class="active">
@@ -25,11 +25,10 @@
         </li>
     </ul>
 
-    {{-- To prevent repeating all markup 2 times for unready and ready docs
-        I put this loop that is gonna repeat code for both types of docs --}}
     @for ($i = 1; $i <= 2; $i++)
         <div class="row paper-dark pt-3" id="tab-{{ $i }}">
-            {{-- This is regulat loop that loops through docs collection --}}
+
+            {{-- This is regulat loop that loops through messages collection --}}
             @forelse ($i == 1 ? $feedback_ru : $feedback_en as $feed)
                 <div class="col s12 l6">
                     <div class="card" style="min-height:200px;border-left:4px solid;border-color:{{ $feed->isReport(1) ? 'red' : 'green' }};">
@@ -47,10 +46,17 @@
                             <p class="mt-3"><b>@lang('documents.last_update'):</b></p>
                             <p>{{ time_ago($feed->created_at) }}</p>
                         </div>
+
                         <div class="card-action">
-                            <a href="/admin/feedback/{{ $feed->id }}" class="main-dark-text">
-                                @lang('messages.open')
+                            {{-- Open button --}}
+                            <a href="/admin/feedback/{{ $feed->id }}">@lang('messages.open')</a>
+                            {{-- Delete button --}}
+                            <a onclick="if (confirm('@lang('contact.sure_del_feed')')) $('delete-feed-{{$loop->index}}').submit()" class="red-text">
+                                @lang('tips.delete')
                             </a>
+                            <form action="{{ action('Admin\FeedbackController@destroy', ['id' => $feed->id]) }}" method="post" id="delete-feed-{{$loop->index}}" class="d-none">
+                                @method('delete') @csrf
+                            </form>
                         </div>
                     </div>
                 </div>
