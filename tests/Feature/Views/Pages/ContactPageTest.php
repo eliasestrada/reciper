@@ -39,8 +39,8 @@ class ContactPageTest extends TestCase
         ];
 
         $this->followingRedirects()
-            ->post(action('ContactController@store'), $data)
-            ->assertSeeText(trans('admin.thanks_for_feedback'));
+            ->post(action('Admin\FeedbackController@store'), $data)
+            ->assertSeeText(trans('feedback.success_message'));
 
         $this->assertDatabaseHas('feedback', $data);
     }

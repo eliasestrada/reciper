@@ -8,7 +8,6 @@ Auth::routes();
 Route::get('/', 'PagesController@home');
 Route::get('search', 'PagesController@search');
 Route::view('contact', 'pages.contact');
-Route::post('contact', 'ContactController@store');
 Route::post('admin/feedback', 'Admin\FeedbackController@store');
 
 // Recipes ===========

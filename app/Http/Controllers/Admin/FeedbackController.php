@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
+use App\Http\Requests\FeedbackRequest;
 use App\Models\Feedback;
 use App\Models\User;
 
@@ -24,8 +25,8 @@ class FeedbackController extends Controller
         ]);
 
         return view('admin.feedback.index', [
-            'feedback_ru' => Feedback::whereLang('ru')->paginate(20)->onEachSide(1),
-            'feedback_en' => Feedback::whereLang('en')->paginate(20)->onEachSide(1),
+            'feedback_ru' => Feedback::whereLang('ru')->latest()->paginate(20)->onEachSide(1),
+            'feedback_en' => Feedback::whereLang('en')->latest()->paginate(20)->onEachSide(1),
         ]);
     }
 
@@ -35,7 +36,7 @@ class FeedbackController extends Controller
      * @param ContactRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ContactRequest $request)
+    public function store(FeedbackRequest $request)
     {
         cache()->forget('all_feedback');
 
@@ -43,6 +44,7 @@ class FeedbackController extends Controller
             'is_report' => is_null($request->recipe) ? 0 : 1,
             'lang' => lang(),
             'visitor_id' => visitor_id(),
+            'email' => $request->email ?? null,
             'recipe_id' => $request->recipe,
             'message' => $request->message,
         ]);

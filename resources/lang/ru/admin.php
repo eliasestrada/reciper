@@ -5,7 +5,6 @@ return [
     // Controller
     'only_admin_can_delete' => 'Только админ может удалять эти сообщения!',
     'feedback_has_been_deleted' => 'Отзыв успешно удален',
-    'thanks_for_feedback' => 'Спасибо за ваш отзыв.',
 
     // Views
     'recipes' => 'Рецепты',
