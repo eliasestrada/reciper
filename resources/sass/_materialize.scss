@@ -2702,7 +2702,9 @@ small {
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
-	color: #ffab40;
+    cursor: pointer;
+    color: $mainDark;
+    font-weight: bold;
 	margin-right: 24px;
 	-webkit-transition: color .3s ease;
 	transition: color .3s ease;
@@ -2710,7 +2712,7 @@ small {
 }
 
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating):hover {
-	color: #ffd8a6;
+	color: $main;
 }
 
 .card .card-reveal {
