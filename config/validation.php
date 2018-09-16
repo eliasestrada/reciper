@@ -14,7 +14,5 @@ return [
     'contact_message_min' => 20,
     'contact_message_max' => 2000,
     'approve_message' => 2000,
-    'report_message_min' => 10,
-    'report_message_max' => 1000,
 
 ];
