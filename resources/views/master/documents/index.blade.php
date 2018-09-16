@@ -26,8 +26,8 @@
                             <p>{{ time_ago($doc->updated_at) }}</p>
                         </div>
                         <div class="card-action">
-                            <a href="/master/documents/{{ $doc->id }}" class="main-dark-text">@lang('messages.open')</a>
-                            <a href="/master/documents/{{ $doc->id }}/edit" class="main-dark-text">@lang('messages.edit')</a>
+                            <a href="/master/documents/{{ $doc->id }}">@lang('messages.open')</a>
+                            <a href="/master/documents/{{ $doc->id }}/edit">@lang('messages.edit')</a>
                         </div>
                     </div>
                 </div>

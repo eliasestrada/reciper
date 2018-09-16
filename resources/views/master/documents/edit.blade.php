@@ -63,7 +63,6 @@
 
 <form action="{{ action('Master\DocumentsController@destroy', ['id' => $document->id]) }}" method="post" id="delete-doc" class="d-none">
     @method('delete') @csrf
-    <button type="submit"></button>
 </form>
 
 @endsection
