@@ -80,10 +80,10 @@ class ContactPageTest extends TestCase
             ->assertSeeText(trans('feedback.success_message'));
         $this->assertDatabaseHas('feedback', $first_data);
 
-        // Change data to minus day
+        // Change created_at to minus day
         Feedback::latest()->first()->update(['created_at' => now()->subDay()]);
 
-        // Make second request
+        // Make second request (imitating the next day)
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $second_data)
             ->assertSeeText(trans('feedback.success_message'));
