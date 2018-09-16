@@ -53,7 +53,7 @@
 
             <li class="position-relative {{ active_if_route_is('admin/feedback') }}"> {{-- feedback --}}
                 <a href="/admin/feedback" title="@lang('includes.feedback')" {{ empty($all_feedback) ? '' : "data-notif=$all_feedback" }} class="small-notif-btn">
-                    <i class="material-icons left">feedback</i>@lang('includes.feedback')
+                    <i class="material-icons left">message</i>@lang('includes.feedback')
                 </a>
             </li>
         @endhasRole
