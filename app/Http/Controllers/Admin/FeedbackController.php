@@ -71,13 +71,6 @@ class FeedbackController extends Controller
      */
     public function destroy($id)
     {
-        // Check for correct user
-        if (!user()->hasRole('admin')) {
-            return redirect('/feedback')->withError(
-                trans('admin.only_admin_can_delete')
-            );
-        }
-
         Feedback::findOrFail($id)->delete();
 
         cache()->forget('all_feedback');

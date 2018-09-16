@@ -22,10 +22,10 @@ class FeedbackRequest extends FormRequest
     public function rules()
     {
         $min = config('validation.contact_message_min');
-        $max = config('validation.contact_message_max');
+        $max = config('validation.contact_message_max') + 6;
 
         return [
-            'email' => 'nullable|email',
+            'email' => request()->has('email') ? 'required|email' : 'nullable',
             'message' => "required|min:$min|max:$max",
             'recipe' => 'nullable|numeric',
         ];
