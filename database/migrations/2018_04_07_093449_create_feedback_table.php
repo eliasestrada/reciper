@@ -11,7 +11,11 @@ class CreateFeedbackTable extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email');
+            $table->boolean('is_report')->default(0);
+            $table->string('email')->nullable();
+            $table->integer('visitor_id');
+            $table->integer('recipe_id')->nullable();
+            $table->string('lang', 2);
             $table->text('message');
             $table->timestamps();
         });
