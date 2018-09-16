@@ -9,10 +9,10 @@ Route::get('/', 'PagesController@home');
 Route::get('search', 'PagesController@search');
 Route::view('contact', 'pages.contact');
 Route::post('contact', 'ContactController@store');
+Route::post('admin/feedback', 'Admin\FeedbackController@store');
 
 // Recipes ===========
 Route::resource('recipes', 'RecipesController')->except(['destroy']);
-Route::post('admin/reports', 'Admin\ReportsController@store');
 
 // Users ===========
 Route::prefix('users')->group(function () {
@@ -62,8 +62,7 @@ Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function 
     Route::post('answer/ok/{recipe}', 'ApprovesController@ok');
     Route::post('answer/cancel/{recipe}', 'ApprovesController@cancel');
     Route::resource('statistics', 'StatisticsController')->only(['index']);
-    Route::resource('feedback', 'FeedbackController')->only(['index', 'destroy']);
-    Route::resource('reports', 'ReportsController')->except(['store']);
+    Route::resource('feedback', 'FeedbackController')->only(['index', 'show', 'destroy']);
 });
 
 // Master ==========
