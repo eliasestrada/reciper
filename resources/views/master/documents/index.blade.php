@@ -5,13 +5,6 @@
 @section('content')
 
 <div class="center pt-4"><h1 class="headline">@lang('documents.docs')</h1></div>
-
-{{-- Breadcrumps --}}
-@component('comps.breadcrumps', [
-    'url' => ['#'],
-    'name' => [trans('documents.docs')]
-]) @endcomponent
-
 <div class="page">
     <ul class="tabs">
         <li class="tab"><a href="#tab-1" class="active">@lang('messages.published')</a></li>
@@ -26,16 +19,16 @@
             @forelse ($i == 1 ? $ready_docs : $unready_docs as $doc)
                 <div class="col s12 l6">
                     <div class="card" style="min-height:320px">
-                    <div class="card-content">
-                        <span class="card-title">{{ $doc->getTitle() }}</span>
-                        <p>{{ str_limit(strip_tags($doc->text), 250) }}</p>
-                        <p class="mt-3"><b>@lang('documents.last_update'):</b></p>
-                        <p>{{ time_ago($doc->updated_at) }}</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="/master/documents/{{ $doc->id }}" class="main-dark-text">@lang('documents.open')</a>
-                        <a href="/master/documents/{{ $doc->id }}/edit" class="main-dark-text">@lang('documents.edit')</a>
-                    </div>
+                        <div class="card-content">
+                            <span class="card-title">{{ $doc->getTitle() }}</span>
+                            <p>{{ str_limit(strip_tags($doc->text), 250) }}</p>
+                            <p class="mt-3"><b>@lang('documents.last_update'):</b></p>
+                            <p>{{ time_ago($doc->updated_at) }}</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="/master/documents/{{ $doc->id }}" class="main-dark-text">@lang('messages.open')</a>
+                            <a href="/master/documents/{{ $doc->id }}/edit" class="main-dark-text">@lang('messages.edit')</a>
+                        </div>
                     </div>
                 </div>
             @empty

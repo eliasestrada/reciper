@@ -4,12 +4,6 @@
 
 @section('content')
 
-{{-- Breadcrumps --}}
-@component('comps.breadcrumps', [
-    'url' => ['/master/documents', '#'],
-    'name' => [trans('documents.docs'), $document->getTitle()]
-]) @endcomponent
-
 <div class="page">
     <h4>{{ $document->getTitle() }}</h4>
     <div class="reset">{!! custom_strip_tags($document->text) !!}</div>

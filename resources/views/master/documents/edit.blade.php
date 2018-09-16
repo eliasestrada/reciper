@@ -13,12 +13,6 @@
         <h1 class="headline">@lang('common.edit_item', ['item' => $document->getTitle()])</h1>
     </div>
 
-    {{-- Breadcrumps --}}
-    @component('comps.breadcrumps', [
-        'url' => ['/master/documents', '#'],
-        'name' => [trans('documents.docs'), $document->getTitle(), 20]
-    ]) @endcomponent
-
     <form action="{{ action('Master\DocumentsController@update', ['id' => $document->id]) }}" method="post">
         <div class="center p-3">
             {{-- View button --}}

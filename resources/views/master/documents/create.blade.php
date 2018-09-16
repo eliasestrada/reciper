@@ -13,12 +13,6 @@
         <h1 class="headline">@lang('documents.new_doc')</h1>
     </div>
 
-    {{-- Breadcrumps --}}
-    @component('comps.breadcrumps', [
-        'url' => ['/master/documents', '#'],
-        'name' => [trans('documents.docs'), trans('documents.new_doc')]
-    ]) @endcomponent
-
     <form action="{{ action('Master\DocumentsController@store') }}" method="post">
         @csrf
 
