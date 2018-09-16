@@ -25,8 +25,9 @@ class ContactRequest extends FormRequest
         $max = config('validation.contact_message_max');
 
         return [
-            'email' => 'required|email',
+            'email' => 'nullable|email',
             'message' => "required|min:$min|max:$max",
+            'recipe' => 'required|numeric',
         ];
     }
 
@@ -36,7 +37,6 @@ class ContactRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.required' => trans('contact.contact_email_required'),
             'message.required' => trans('contact.contact_message_required'),
             'email.email' => trans('contact.contact_email_email'),
             'message.min' => trans('contact.contact_message_min'),
