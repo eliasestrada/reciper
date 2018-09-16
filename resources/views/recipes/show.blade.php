@@ -64,15 +64,15 @@
 <!-- report-recipe-modal structure -->
 <div id="report-recipe-modal" class="modal">
     <div class="modal-content reset">
-        <form action="{{ action('Admin\ReportsController@store') }}" method="post">
+        <form action="{{ action('Admin\FeedbackController@store') }}" method="post">
             @csrf
 
             <h5>@lang('recipes.report_recipe')</h5>
-            <p>@lang('report.report_message_desc')</p>
+            <p>@lang('feedback.report_message_desc')</p>
 
             <div class="input-field mt-4">
                 <input type="hidden" name="recipe" value="{{ $recipe->id }}">
-                <textarea name="message" minlength="{{ config('validation.report_message_min') }}" id="message" class="materialize-textarea counter" data-length="{{ config('validation.report_message_max') }}" required>{{ old('message') }}</textarea>
+                <textarea name="message" minlength="{{ config('validation.contact_message_min') }}" id="message" class="materialize-textarea counter" data-length="{{ config('validation.contact_message_max') }}" required>{{ old('message') }}</textarea>
                 <label for="message">@lang('form.message')</label>
             </div>
             <button type="submit" class="btn">@lang('form.send')</button>
