@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Views\Recipes;
 
+use App\Models\Feedback;
 use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -122,7 +123,9 @@ class RecipesShowPageTest extends TestCase
 
         // Make request to cancel a recipe with message
         $this->actingAs($this->admin)
-            ->post(action('Admin\ApprovesController@cancel', ['recipe' => $this->unapproved_recipe->id]))
+            ->post(action('Admin\ApprovesController@cancel', [
+                'recipe' => $this->unapproved_recipe->id,
+            ]))
             ->assertRedirect("/recipes/{$this->unapproved_recipe->id}");
 
         // Recipe should be still unapproved
@@ -140,7 +143,8 @@ class RecipesShowPageTest extends TestCase
             'user_id' => $user->id,
             'approved_' . lang() => 0,
         ]);
-        $text_message = 'Lorem ipsum dolor sit amet consectetur han';
+
+        $text_message = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, quos?';
 
         $this->actingAs($this->admin)
             ->get("/recipes/$recipe->id");
@@ -178,5 +182,57 @@ class RecipesShowPageTest extends TestCase
         $this->actingAs($owner)
             ->get($link)
             ->assertSee('_action-buttons');
+    }
+
+    /** @test */
+    public function user_can_report_recipe_by_sending_message(): void
+    {
+        $this->followingRedirects()
+            ->post(action('Admin\FeedbackController@store'), [
+                'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.',
+                'recipe' => $this->recipe->id,
+            ])
+            ->assertSee(lang('feedback.success_message'));
+    }
+
+    /** @test */
+    public function user_cant_report_same_recipe_twice_per_day(): void
+    {
+        $this->followingRedirects()
+            ->post(action('Admin\FeedbackController@store'), [
+                'message' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+                'recipe' => $this->recipe->id,
+            ])
+            ->assertSee(lang('feedback.success_message'));
+
+        $this->followingRedirects()
+            ->post(action('Admin\FeedbackController@store'), [
+                'message' => 'Lorem ipsum dolor sit amet consectetur adipisicing elitic same',
+                'recipe' => $this->recipe->id,
+            ])
+            ->assertSee(lang('feedback.already_reported_today'));
+    }
+
+    /** @test */
+    public function user_can_report_same_recipe_once_per_day(): void
+    {
+        // First request
+        $this->followingRedirects()
+            ->post(action('Admin\FeedbackController@store'), [
+                'message' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit!!',
+                'recipe' => $this->recipe->id,
+            ])
+            ->assertSee(lang('feedback.success_message'));
+
+        // Changing created_at field to minus day
+        Feedback::latest()->first()->update(['created_at' => now()->subDay()]);
+
+        // Making another request (imitating the next day)
+        $this->followingRedirects()
+            ->post(action('Admin\FeedbackController@store'), [
+                'message' => 'Lorem ipsum dolor, sit amet consectetur adipisicing price',
+                'recipe' => $this->recipe->id,
+            ])
+            ->assertSee(lang('feedback.success_message'));
     }
 }
