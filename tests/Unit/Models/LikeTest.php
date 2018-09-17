@@ -38,12 +38,12 @@ class LikeTest extends TestCase
     /** @test */
     public function model_has_relationship_with_visitor(): void
     {
-        $this->assertEquals(1, $this->like->visitor()->count());
+        $this->assertTrue($this->like->visitor()->exists());
     }
 
     /** @test */
     public function model_has_relationship_with_recipe(): void
     {
-        $this->assertEquals(1, $this->like->recipe()->count());
+        $this->assertTrue($this->like->recipe()->exists());
     }
 }
