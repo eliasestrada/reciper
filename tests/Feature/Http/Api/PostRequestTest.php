@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Http\Rest;
+namespace Tests\Feature\Http\Api;
 
 use App\Models\Recipe;
 use App\Models\Visitor;
