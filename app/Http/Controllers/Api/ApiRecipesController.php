@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipesResource;
 use App\Models\Category;
 use App\Models\Recipe;
+use App\Models\Visitor;
 
 class ApiRecipesController extends Controller
 {
@@ -70,20 +71,28 @@ class ApiRecipesController extends Controller
             return $sql->done(1);
         }
 
-        if ($hash == 'popular') {
+        if ($hash == 'most_liked') {
             $sql->withCount('likes');
             $sql->orderBy('likes_count', 'desc');
             return $sql->done(1);
         }
 
-        if ($hash == 'viewed') {
-            $sql->withCount('views');
-            $sql->orderBy('views_count', 'desc');
+        if ($hash == 'my_viewes') {
+            $sql->with('views')->whereHas('views', function ($query) {
+                $query->whereVisitorId(Visitor::whereIp(request()->ip())->value('id'));
+            });
             return $sql->done(1);
         }
 
         if ($hash == 'simple') {
             $sql->whereSimple(1);
+            return $sql->done(1);
+        }
+
+        if ($hash == 'my_likes') {
+            $sql->with('likes')->whereHas('likes', function ($query) {
+                $query->whereVisitorId(Visitor::whereIp(request()->ip())->value('id'));
+            });
             return $sql->done(1);
         }
 

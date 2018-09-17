@@ -10,8 +10,9 @@
 <div class="px-2 pt-4">
     <sort-buttons
         new-btn="@lang('recipes.new')"
-        watched-btn="@lang('recipes.watched')"
-        popular-btn="@lang('recipes.popular')">
+        my-viewes-btn="@lang('recipes.watched')"
+        most-liked-btn="@lang('recipes.popular')"
+        my-likes-btn="@lang('recipes.loved')">
     </sort-buttons>
     <recipes go="@lang('recipes.go')">
         @include('includes.preloader')
