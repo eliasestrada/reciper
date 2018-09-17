@@ -10,43 +10,29 @@ class ShowJsonRecipesTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * Try to see json api/recipes
-     * We expect 3 json: data, links, meta
-     * @test
-     */
-    public function see_recipes_json(): void
+    /** @test */
+    public function see_latest_recipes_json_if_no_hash(): void
     {
-        create(Recipe::class, [
-            'intro_' . lang() => 'Hello world',
-        ]);
+        $recipe = create(Recipe::class);
 
         $this->json('GET', '/api/recipes')
             ->assertStatus(200)
             ->assertJsonCount(3)
-            ->assertJsonFragment(['intro' => 'Hello world']);
+            ->assertJsonFragment(['intro' => $recipe->getIntro()]);
     }
 
-    /**
-     * Try to see json api/recipes/other/random
-     * @test
-     */
+    /** @test */
     public function see_random_recipes_json(): void
     {
-        create(Recipe::class, [
-            'title_' . lang() => 'Test 1',
-        ]);
+        $recipe = create(Recipe::class);
 
         $this->json('GET', "/api/recipes-random/1")
             ->assertOk()
             ->assertJsonCount(1)
-            ->assertJsonFragment(['title' => 'Test 1']);
+            ->assertJsonFragment(['title' => $recipe->getTitle()]);
     }
 
-    /**
-     * Try to see json api/recipes/other/categories
-     * @test
-     */
+    /** @test */
     public function see_categories_json(): void
     {
         app()->setLocale('ru');
