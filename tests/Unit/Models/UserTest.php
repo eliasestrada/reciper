@@ -23,7 +23,7 @@ class UserTest extends TestCase
     /** @test */
     public function model_has_relationship_with_recipe(): void
     {
-        $this->assertNotNull(make(User::class)->recipe);
+        $this->assertCount(0, make(User::class)->recipes);
     }
 
     /** @test */
