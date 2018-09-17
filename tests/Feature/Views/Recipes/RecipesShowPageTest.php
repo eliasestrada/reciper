@@ -230,8 +230,28 @@ class RecipesShowPageTest extends TestCase
         // Making another request (imitating the next day)
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), [
-                'message' => 'Lorem ipsum dolor, sit amet consectetur adipisicing price',
+                'message' => 'Lorem ipsum dolor, sit amet consectetur price',
                 'recipe' => $this->recipe->id,
+            ])
+            ->assertSee(lang('feedback.success_message'));
+    }
+
+    /** @test */
+    public function user_can_report_2_recipes_in_the_same_day(): void
+    {
+        // First report
+        $this->followingRedirects()
+            ->post(action('Admin\FeedbackController@store'), [
+                'message' => 'Lorem ipsum dolor, sit amet consectetur',
+                'recipe' => $this->recipe->id,
+            ])
+            ->assertSee(lang('feedback.success_message'));
+
+        // Second report
+        $this->followingRedirects()
+            ->post(action('Admin\FeedbackController@store'), [
+                'message' => 'Lorem ipsum dolor, sit amet consectetur',
+                'recipe' => create(Recipe::class)->id,
             ])
             ->assertSee(lang('feedback.success_message'));
     }

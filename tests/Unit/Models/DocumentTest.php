@@ -8,18 +8,22 @@ use Tests\TestCase;
 class DocumentTest extends TestCase
 {
     /** @test */
-    public function method_get_title_return_title(): void
+    public function model_has_attributes(): void
     {
-        $document = make(Document::class, [
-            'title_' . lang() => 'Название документа',
-        ]);
+        $this->assertClassHasAttribute('guarded', Document::class);
+    }
 
+    /** @test */
+    public function get_title_method_returns_title(): void
+    {
+        $document = make(Document::class, ['title_' . lang() => 'Название документа']);
         $this->assertEquals('Название документа', $document->getTitle());
     }
 
     /** @test */
-    public function model_has_attributes(): void
+    public function is_ready_method_returns_true_when_doc_is_ready(): void
     {
-        $this->assertClassHasAttribute('guarded', Document::class);
+        $document = make(Document::class, ['ready_' . lang() => 1]);
+        $this->assertTrue($document->isReady());
     }
 }

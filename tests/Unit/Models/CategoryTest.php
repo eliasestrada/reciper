@@ -12,6 +12,13 @@ class CategoryTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
+    public function model_has_attributes(): void
+    {
+        $this->assertClassHasAttribute('guarded', Category::class);
+        $this->assertClassHasAttribute('timestamps', Category::class);
+    }
+
+    /** @test */
     public function model_has_relationship_with_recipes(): void
     {
         $recipe = create(Recipe::class);
@@ -29,12 +36,5 @@ class CategoryTest extends TestCase
         ]);
 
         $this->assertEquals($category->getName(), 'Some name');
-    }
-
-    /** @test */
-    public function model_has_attributes(): void
-    {
-        $this->assertClassHasAttribute('guarded', Category::class);
-        $this->assertClassHasAttribute('timestamps', Category::class);
     }
 }
