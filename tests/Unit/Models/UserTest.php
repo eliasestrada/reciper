@@ -21,6 +21,24 @@ class UserTest extends TestCase
     }
 
     /** @test */
+    public function model_has_relationship_with_recipe(): void
+    {
+        $this->assertNotNull(make(User::class)->recipe);
+    }
+
+    /** @test */
+    public function model_has_relationship_with_role(): void
+    {
+        $this->assertNotNull(create_user('admin')->roles);
+    }
+
+    /** @test */
+    public function model_has_relationship_with_notification(): void
+    {
+        $this->assertNotNull(make(User::class)->notifications);
+    }
+
+    /** @test */
     public function model_has_relationship_with_visitor(): void
     {
         $this->assertNotNull(make(User::class)->visitor);
