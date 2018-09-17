@@ -24,7 +24,6 @@ class CategoryTest extends TestCase
         $recipe = create(Recipe::class);
         $recipe->categories()->sync(Category::find(1));
 
-        $this->assertTrue($recipe->categories()->exists());
         $this->assertCount(1, $recipe->categories);
     }
 
