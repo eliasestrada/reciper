@@ -11,11 +11,7 @@ class User extends Authenticatable
 
     protected $fillable = ['name', 'email', 'password', 'visitor_id'];
     protected $hidden = ['password', 'remember_token'];
-    protected $dates = [
-        'created_at',
-        'updated_at',
-        'online_at',
-    ];
+    protected $dates = ['created_at', 'updated_at', 'online_at'];
 
     public function recipes()
     {
