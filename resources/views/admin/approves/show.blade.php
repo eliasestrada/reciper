@@ -8,7 +8,7 @@
     <div class="recipe-content center">
 
         <div class="py-2">
-            @if ($recipe->getApproverId() == user()->id)
+            @if ($recipe->approver->id == user()->id)
                 <p>@lang('recipes.approve_or_not')</p>
 
                 {{-- Approve --}}

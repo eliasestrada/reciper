@@ -56,7 +56,7 @@ class ApprovesController extends Controller
             return redirect("/admin/approves")->withError($error);
         }
 
-        if (!$recipe->getApproverId()) {
+        if (!$recipe->approver->id) {
             $recipe->update([lang() . '_approver_id' => user()->id]);
         }
 

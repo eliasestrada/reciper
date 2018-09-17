@@ -37,27 +37,19 @@ trait RecipeModelShortcuts
     }
 
     /**
-     * @return string
+     * @return bool
      */
-    public function getApproverId(): ?string
+    public function isReady(): bool
     {
-        return $this->toArray()[lang() . '_approver_id'];
+        return $this->toArray()['ready_' . lang()] == 1 ? true : false;
     }
 
     /**
-     * @return string
+     * @return bool
      */
-    public function isReady(): string
+    public function isApproved(): bool
     {
-        return $this->toArray()['ready_' . lang()];
-    }
-
-    /**
-     * @return string
-     */
-    public function isApproved(): string
-    {
-        return $this->toArray()['approved_' . lang()];
+        return $this->toArray()['approved_' . lang()] == 1 ? true : false;
     }
 
     /**
