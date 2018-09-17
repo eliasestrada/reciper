@@ -21,11 +21,7 @@ class LikeTest extends TestCase
         parent::setUp();
 
         $this->recipe = create(Recipe::class);
-
-        $this->visitor = Visitor::create([
-            'ip' => '122.12.12.12',
-        ]);
-
+        $this->visitor = create(Visitor::class);
         $this->like = Like::create([
             'visitor_id' => $this->visitor->id,
             'recipe_id' => $this->recipe->id,
@@ -42,14 +38,12 @@ class LikeTest extends TestCase
     /** @test */
     public function model_has_relationship_with_visitor(): void
     {
-        $this->assertTrue($this->like->visitor()->exists());
         $this->assertEquals(1, $this->like->visitor()->count());
     }
 
     /** @test */
-    public function model_has_relationship_with_recipes(): void
+    public function model_has_relationship_with_recipe(): void
     {
-        $this->assertTrue($this->like->recipe()->exists());
         $this->assertEquals(1, $this->like->recipe()->count());
     }
 }

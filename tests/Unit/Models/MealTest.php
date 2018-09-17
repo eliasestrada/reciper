@@ -14,11 +14,9 @@ class MealTest extends TestCase
     /** @test */
     public function model_has_attributes(): void
     {
-        $attributes = ['table', 'guarded', 'timestamps'];
-
         array_map(function ($attr) {
             $this->assertClassHasAttribute($attr, Meal::class);
-        }, $attributes);
+        }, ['table', 'guarded', 'timestamps']);
     }
 
     /** @test */
@@ -34,7 +32,7 @@ class MealTest extends TestCase
     }
 
     /** @test */
-    public function method_get_name_returns_name(): void
+    public function get_name_method_returns_name(): void
     {
         $actual = Meal::get(['name_' . lang()]);
         $expected = [

@@ -12,9 +12,10 @@ class NotificationTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function model_has_properies(): void
+    public function model_has_attributes(): void
     {
         $this->assertClassHasAttribute('guarded', Notification::class);
+        $this->assertNull(Notification::UPDATED_AT);
     }
 
     /** @test */
@@ -30,5 +31,4 @@ class NotificationTest extends TestCase
         $this->assertTrue($notif->user()->exists());
         $this->assertEquals($user->id, $notif->user->id);
     }
-
 }
