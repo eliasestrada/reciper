@@ -32,7 +32,7 @@ class MealTest extends TestCase
     }
 
     /** @test */
-    public function get_name_method_returns_name(): void
+    public function get_name_method_returns_name_row(): void
     {
         $actual = Meal::get(['name_' . lang()]);
         $expected = [

@@ -28,7 +28,7 @@ class CategoryTest extends TestCase
     }
 
     /** @test */
-    public function method_get_name_returns_name(): void
+    public function get_name_method_returns_name_row(): void
     {
         $category = Category::make([
             'name_' . lang() => 'Some name',
