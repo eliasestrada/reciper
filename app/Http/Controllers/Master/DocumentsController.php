@@ -86,7 +86,7 @@ class DocumentsController extends Controller
         // Check for correct user
         if (!user()->hasRole('master')) {
             return redirect('/')->withError(
-                trans('master.only_master_can_delete')
+                trans('documents.only_master_can_delete')
             );
         }
         Document::find($id)->delete();

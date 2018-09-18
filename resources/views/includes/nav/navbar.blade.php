@@ -78,8 +78,8 @@
 
         @hasRole('master')
             <li class="position-relative {{ active_if_route_is('master/visitors') }}"> {{-- log-viewer --}}
-                <a href="/master/visitors" title="@lang('master.visitors')">
-                    <i class="material-icons left">people</i>@lang('master.visitors')
+                <a href="/master/visitors" title="@lang('visitors.visitors')">
+                    <i class="material-icons left">people</i>@lang('visitors.visitors')
                 </a>
             </li>
             <li class="position-relative {{ active_if_route_is('master/documents') }}"> {{-- Documents --}}

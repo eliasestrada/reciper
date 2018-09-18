@@ -1,26 +1,26 @@
 @extends('layouts.app')
 
-@section('title', trans('master.visitors'))
+@section('title', trans('visitors.visitors'))
 
 @section('content')
 
 <div class="page">
     <div class="center mb-3">
         <h1 class="headline mb-4">
-            @lang('master.visitors'): <span class="red-text">{{ $visitors->count() }}</span>
+            @lang('visitors.visitors'): <span class="red-text">{{ $visitors->count() }}</span>
         </h1>
         <div class="divider"></div>
     </div>
     <div class="row container">
         <ul class="col s12 m6">
-            <li><i class="main-text material-icons tiny">remove_red_eye</i> - @lang('master.all_views')</li>
-            <li><i class="main-text material-icons tiny">favorite</i> - @lang('master.gave_likes')</li>
-            <li><i class="main-text material-icons tiny">library_books</i> - @lang('master.recipes_viewed')</li>
+            <li><i class="main-text material-icons tiny">remove_red_eye</i> - @lang('visitors.all_views')</li>
+            <li><i class="main-text material-icons tiny">favorite</i> - @lang('visitors.gave_likes')</li>
+            <li><i class="main-text material-icons tiny">library_books</i> - @lang('visitors.recipes_viewed')</li>
         </ul>
         <ul class="col s12 m6">
-            <li><i class="green-text material-icons tiny">lens</i> - @lang('master.registered_users')</li>
-            <li><i class="main-text material-icons tiny">lens</i> - @lang('master.not_registered_users')</li>
-            <li><i class="red-text material-icons tiny">lens</i> - @lang('master.banned_users')</li>
+            <li><i class="green-text material-icons tiny">lens</i> - @lang('visitors.registered_users')</li>
+            <li><i class="main-text material-icons tiny">lens</i> - @lang('visitors.not_registered_users')</li>
+            <li><i class="red-text material-icons tiny">lens</i> - @lang('visitors.banned_users')</li>
         </ul>
     </div>
 
@@ -29,9 +29,9 @@
         <thead>
             <tr>
                 <th class="main-text pl-3">#</th>
-                <th><i class="material-icons main-text" title="@lang('master.recipes_viewed')">library_books</i></th>
-                <th><i class="material-icons main-text" title="@lang('master.gave_likes')">favorite</i></th>
-                <th><i class="material-icons main-text" title="@lang('master.all_views')">remove_red_eye</i></th>
+                <th><i class="material-icons main-text" title="@lang('visitors.recipes_viewed')">library_books</i></th>
+                <th><i class="material-icons main-text" title="@lang('visitors.gave_likes')">favorite</i></th>
+                <th><i class="material-icons main-text" title="@lang('visitors.all_views')">remove_red_eye</i></th>
             </tr>
         </thead>
         <tbody>
