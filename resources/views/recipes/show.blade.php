@@ -48,7 +48,7 @@
             @endif
         @endauth
 
-        @include('includes.recipe')
+        @include('includes.parts.recipes-show')
     </div>
 
     {{-- API: Еще рецепты Sidebar --}}

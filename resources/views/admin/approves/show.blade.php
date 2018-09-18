@@ -49,7 +49,7 @@
             @endif
         </div>
 
-        @include('includes.recipe')
+        @include('includes.parts.recipes-show')
     </div>
 </section>
 
