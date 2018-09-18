@@ -28,7 +28,7 @@
 
         <li class="{{ active_if_route_is('users/other/my-recipes') }}"> {{-- my recipes --}}
             <a href="/users/other/my-recipes" title="@lang('includes.my_recipes')">
-                <i class="material-icons left">insert_drive_file</i>@lang('includes.my_recipes')
+                <i class="material-icons left">library_books</i>@lang('includes.my_recipes')
             </a>
         </li>
 
@@ -77,6 +77,11 @@
         </li>
 
         @hasRole('master')
+            <li class="position-relative {{ active_if_route_is('master/visitors') }}"> {{-- log-viewer --}}
+                <a href="/master/visitors" title="@lang('master.visitors')">
+                    <i class="material-icons left">people</i>@lang('master.visitors')
+                </a>
+            </li>
             <li class="position-relative {{ active_if_route_is('master/documents') }}"> {{-- Documents --}}
                 <a href="/master/documents" title="@lang('documents.docs')">
                     <i class="material-icons left">work</i>@lang('documents.docs')
@@ -84,7 +89,7 @@
             </li>
             <li class="position-relative {{ active_if_route_is('log-viewer/logs*') }}"> {{-- log-viewer --}}
                 <a href="/log-viewer/logs" title="@lang('logs.logs')" {{ empty($all_logs) ? '' : "data-notif=$all_logs" }} class="small-notif-btn">
-                    <i class="material-icons left">library_books</i>@lang('logs.logs')
+                    <i class="material-icons left">insert_drive_file</i>@lang('logs.logs')
                 </a>
             </li>
         @endhasRole

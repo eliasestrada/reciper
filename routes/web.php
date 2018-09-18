@@ -66,6 +66,7 @@ Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function 
 
 // Master ==========
 Route::prefix('master')->namespace('Master')->middleware('master')->group(function () {
+    Route::delete('log-viewer/logs/delete', 'LogsController@delete');
     Route::resource('documents', 'DocumentsController');
-    Route::delete('/log-viewer/logs/delete', 'LogsController@delete');
+    Route::resource('visitors', 'VisitorsController')->only(['index', 'show']);
 });
