@@ -8,7 +8,6 @@ return [
     'edit' => 'Редактировать',
     'publish' => 'Опубликовать',
     'save' => 'Сохранить',
-    'ban' => 'Забанить',
     'add_to_drafts' => 'В черновики',
 
     // User bubbles
