@@ -20,7 +20,7 @@
                 <td>{{ $all_recipes }}</td>
             </tr>
             <tr>
-                <td scope="row">@lang('master.visitors')</td>
+                <td scope="row">@lang('visitors.visitors')</td>
                 <td>{{ $all_visitors }}</td>
             </tr>
         </table>
