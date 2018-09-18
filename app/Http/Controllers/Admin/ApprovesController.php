@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ApproveMessageRequest;
+use App\Http\Requests\CancelMessageRequest;
 use App\Models\Recipe;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class ApprovesController extends Controller
 {
@@ -56,7 +57,7 @@ class ApprovesController extends Controller
             return redirect("/admin/approves")->withError($error);
         }
 
-        if (!$recipe->approver->id) {
+        if (!optional($recipe->approver)->id) {
             $recipe->update([lang() . '_approver_id' => user()->id]);
         }
 
@@ -66,7 +67,7 @@ class ApprovesController extends Controller
     /**
      * @param Recipe $recipe
      */
-    public function ok(Recipe $recipe, ApproveMessageRequest $request)
+    public function ok(Recipe $recipe, Request $request)
     {
         // Check if u can work with the recipe
         if (($error = $this->hasErrors($recipe)) !== false) {
@@ -75,24 +76,20 @@ class ApprovesController extends Controller
 
         cache()->forget('all_unapproved');
         cache()->forget('search_suggest');
-
-        $rand = rand(1, 5);
-        $message = $request->message == 'ok' ? trans("approves.approved_$rand") : $request->message;
-
-        event(new \App\Events\RecipeGotApproved($recipe, $message));
+        event(new \App\Events\RecipeGotApproved($recipe, trans('approves.approved_' . rand(1, 5))));
 
         $recipe->increment('approved_' . lang());
 
         return redirect('/recipes')->withSuccess(
-            trans("recipes.recipe_published")
+            trans('recipes.recipe_published')
         );
     }
 
     /**
-     * Approve the recipe (for admins)
      * @param Recipe $recipe
+     * @param CancelMessageRequest $request
      */
-    public function cancel(Recipe $recipe, ApproveMessageRequest $request)
+    public function cancel(Recipe $recipe, CancelMessageRequest $request)
     {
         // Check if u can work with the recipe
         if (($error = $this->hasErrors($recipe)) !== false) {

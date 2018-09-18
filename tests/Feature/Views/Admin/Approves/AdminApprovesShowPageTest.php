@@ -71,4 +71,27 @@ class AdminApprovesShowPageTest extends TestCase
             ->get("/admin/approves/{$this->unapproved_recipe->id}")
             ->assertRedirect('/');
     }
+
+    /** @test */
+    public function admin_approves_recipe(): void
+    {
+        $this->actingAs($this->admin)
+            ->followingRedirects()
+            ->post(action('Admin\ApprovesController@ok', [
+                'recipe' => $this->unapproved_recipe->id,
+            ]))
+            ->assertSee(trans('recipes.recipe_published'));
+    }
+
+    /** @test */
+    public function admin_cant_cancel_publishing_recipe_with_short_message(): void
+    {
+        $this->actingAs($this->admin)
+            ->followingRedirects()
+            ->post(action('Admin\ApprovesController@cancel', [
+                'recipe' => $this->unapproved_recipe->id,
+                'message' => 'No message',
+            ]))
+            ->assertDontSee(trans('recipes.recipe_published'));
+    }
 }

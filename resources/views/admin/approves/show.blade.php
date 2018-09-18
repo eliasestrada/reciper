@@ -8,23 +8,20 @@
     <div class="recipe-content center">
 
         <div class="py-2">
-            @if ($recipe->approver->id == user()->id)
+            @if (optional($recipe->approver)->id == user()->id)
                 <p>@lang('recipes.approve_or_not')</p>
 
                 {{-- Approve --}}
                 <form action="{{ action('Admin\ApprovesController@ok', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
                     @csrf
-                    <input type="hidden" name="message" value="ok">
                     <button class="btn green" type="submit">
-                        @lang('messages.yes')
-                        <i class="material-icons right">thumb_up</i>
+                        @lang('messages.yes') <i class="material-icons right">thumb_up</i>
                     </button>
                 </form>
 
                 {{-- Cancel --}}
                 <a href="#cancel-publishing-modal" class="btn red modal-trigger">
-                    @lang('messages.no')
-                    <i class="material-icons right">thumb_down</i>
+                    @lang('messages.no') <i class="material-icons right">thumb_down</i>
                 </a>
 
                 <!--  cancel-publishing-modal structure -->
@@ -44,7 +41,7 @@
             @else
                 <h6 class="green-text">
                     <i class="material-icons small">search</i><br />
-                    @lang('approves.currently_approving', ['user' => $recipe->approver->name])
+                    @lang('approves.currently_approving', ['user' => optional($recipe->approver)->name])
                 </h6>
             @endif
         </div>
