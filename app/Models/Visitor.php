@@ -31,4 +31,11 @@ class Visitor extends Model
         );
     }
 
+    /**
+     * @return int
+     */
+    public function daysWithUs(): int
+    {
+        return \Carbon\Carbon::parse($this->created_at)->diffInDays(now());
+    }
 }
