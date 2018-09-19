@@ -100,10 +100,10 @@
             </a>
         </li>
 
-{{-- logout-form --}}
-<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-    @csrf <button type="submit"></button>
-</form>
+        {{-- logout-form --}}
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf <button type="submit"></button>
+        </form>
     </ul>
 @endauth
 
@@ -145,6 +145,11 @@
                 <li class="{{ active_if_route_is('recipes') }}">
                     <a href="/recipes" title="@lang('includes.recipes')">
                         @lang('includes.recipes')
+                    </a>
+                </li>
+                <li class="{{ active_if_route_is('help') }}">
+                    <a href="/help" title="@lang('help.help')">
+                        @lang('help.help')
                     </a>
                 </li>
 
