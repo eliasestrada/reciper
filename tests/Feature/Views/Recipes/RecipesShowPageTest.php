@@ -66,32 +66,12 @@ class RecipesShowPageTest extends TestCase
             ->post(action('Admin\ApprovesController@ok',
                 ['recipe' => $this->unapproved_recipe->id]),
                 ['message' => 'Lorem ipsum dolor sit amet consectetur han'])
-            ->assertRedirect('/recipes');
+            ->assertRedirect("/recipes/{$this->unapproved_recipe->id}");
 
         // Now recipe should be approved
         $this->assertDatabaseHas('recipes', [
             'id' => $this->unapproved_recipe->id,
             'approved_' . lang() => 1,
-        ]);
-    }
-
-    /** @test */
-    public function admin_cant_approve_recipe_without_message(): void
-    {
-        $this->actingAs($this->admin)
-            ->get("/recipes/{$this->unapproved_recipe->id}");
-
-        // Make request to approve a recipe without message
-        $this->actingAs($this->admin)
-            ->post(action('Admin\ApprovesController@ok', [
-                'recipe' => $this->unapproved_recipe->id,
-            ]))
-            ->assertRedirect("/recipes/{$this->unapproved_recipe->id}");
-
-        // Recipe should be still unapproved
-        $this->assertDatabaseHas('recipes', [
-            'id' => $this->unapproved_recipe->id,
-            'approved_' . lang() => 0,
         ]);
     }
 
