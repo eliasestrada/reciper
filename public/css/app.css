@@ -7188,9 +7188,7 @@ Nav List
 .btn-sort.active {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
-  background: #e9c4c4;
-  background: -webkit-gradient(linear, left top, right top, from(#e9c4c4), color-stop(72%, #f3e9e9));
-  background: linear-gradient(to right, #e9c4c4 0%, #f3e9e9 72%);
+  background: #ebbebe;
 }
 
 .decorated {

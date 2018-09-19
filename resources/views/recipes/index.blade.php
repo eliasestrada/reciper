@@ -12,7 +12,11 @@
         new-btn="@lang('recipes.new')"
         my-viewes-btn="@lang('recipes.watched')"
         most-liked-btn="@lang('recipes.popular')"
-        my-likes-btn="@lang('recipes.loved')">
+        my-likes-btn="@lang('recipes.loved')"
+        breakfast-btn="@lang('home.breakfast')"
+        lunch-btn="@lang('home.lunch')"
+        dinner-btn="@lang('home.dinner')"
+        >
     </sort-buttons>
     <recipes go="@lang('recipes.go')">
         @include('includes.preloader')

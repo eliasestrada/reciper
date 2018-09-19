@@ -9,7 +9,7 @@
 
 <script>
 export default {
-    props: ['newBtn', 'myViewesBtn', 'mostLikedBtn', 'myLikesBtn'],
+    props: ['newBtn', 'myViewesBtn', 'mostLikedBtn', 'myLikesBtn', 'breakfastBtn', 'lunchBtn', 'dinnerBtn'],
     data() {
         return {
             btns: [
@@ -35,6 +35,24 @@ export default {
                     title: this.myLikesBtn,
                     icon: 'favorite',
                     link: 'my_likes',
+                    isActive: false
+                },
+                {
+                    title: this.breakfastBtn,
+                    icon: 'restaurant',
+                    link: 'breakfast',
+                    isActive: false
+                },
+                {
+                    title: this.lunchBtn,
+                    icon: 'restaurant',
+                    link: 'lunch',
+                    isActive: false
+                },
+                {
+                    title: this.dinnerBtn,
+                    icon: 'restaurant',
+                    link: 'dinner',
                     isActive: false
                 },
             ]
