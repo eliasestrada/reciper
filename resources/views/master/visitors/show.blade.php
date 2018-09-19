@@ -64,7 +64,7 @@
                         <label for="ban-input">@lang('visitors.days')</label>
                     </div>
                     <div class="input-field col s12 m9">
-                        <textarea name="message" id="ban-textarea" class="materialize-textarea counter" data-length="{{ config('validation.ban_message') }}" minlength="30" required>{{ old('message') }}</textarea>
+                        <textarea name="message" id="ban-textarea" class="materialize-textarea counter" data-length="{{ config('validation.ban_message_max') }}" maxlength="{{ config('validation.ban_message_max') }}" minlength="{{ config('validation.ban_message_min') }}" required>{{ old('message') }}</textarea>
                         <label for="ban-textarea">@lang('form.message')</label>
                     </div>
                     <button class="btn red" type="submit">@lang('visitors.ban')</button>

@@ -14,6 +14,7 @@ return [
     'contact_message_min' => 20,
     'contact_message_max' => 2000,
     'approve_message' => 2000,
-    'ban_message' => 255,
+    'ban_message_min' => 20,
+    'ban_message_max' => 255,
 
 ];

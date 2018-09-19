@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\VisitorsRequest;
 use App\Models\Ban;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
@@ -33,11 +34,12 @@ class VisitorsController extends Controller
     }
 
     /**
+     * Ban visitor
      * @param Request $request
      * @param Visitor $visitor
      * @return void
      */
-    public function update(Request $request, Visitor $visitor)
+    public function update(VisitorsRequest $request, Visitor $visitor)
     {
         // Check if visitor is already banned
         if (Ban::whereVisitorId($visitor->id)->exists()) {
@@ -49,6 +51,7 @@ class VisitorsController extends Controller
     }
 
     /**
+     * Unban visitor
      * @param Visitor $visitor
      */
     public function destroy(Visitor $visitor)
