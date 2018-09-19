@@ -80,7 +80,7 @@ class ApprovesController extends Controller
 
         $recipe->increment('approved_' . lang());
 
-        return redirect('/recipes')->withSuccess(
+        return redirect("/recipes/$recipe->id")->withSuccess(
             trans('recipes.recipe_published')
         );
     }

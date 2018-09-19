@@ -144,22 +144,18 @@ class RecipesShowPageTest extends TestCase
             'approved_' . lang() => 0,
         ]);
 
-        $text_message = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, quos?';
-
         $this->actingAs($this->admin)
             ->get("/recipes/$recipe->id");
 
         // Make request to approve a recipe with message
         $this->actingAs($this->admin)
-            ->post(action('Admin\ApprovesController@ok',
-                ['recipe' => $recipe->id]),
-                ['message' => $text_message])
-            ->assertRedirect('/recipes');
+            ->post(action('Admin\ApprovesController@ok', ['id' => $recipe->id]))
+            ->assertRedirect("/recipes/$recipe->id");
 
         // Now from user side
         $this->actingAs($user)
             ->get('/notifications')
-            ->assertSeeText($text_message);
+            ->assertSeeText(trans('notifications.recipe_published'));
     }
 
     /** @test */
