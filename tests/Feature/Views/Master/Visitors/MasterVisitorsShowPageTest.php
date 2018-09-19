@@ -95,4 +95,20 @@ class MasterVisitorsShowPageTest extends TestCase
             ->assertDontSee('<i class="material-icons left">lock_outline</i> ' . trans('visitors.ban'))
             ->assertSee('<i class="material-icons left">lock_open</i> ' . trans('visitors.unban'));
     }
+
+    /** @test */
+    public function master_cant_ban_visitor_without_message(): void
+    {
+        $this->actingAs($this->master)
+            ->followingRedirects()
+            ->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), [
+                'days' => 2,
+            ])
+            ->assertDontSee(trans('visitors.visitor_banned', ['days' => 1]));
+
+        $this->assertDatabaseMissing('ban', [
+            'visitor_id' => $this->visitor->id,
+            'days' => 2,
+        ]);
+    }
 }
