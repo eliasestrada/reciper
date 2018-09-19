@@ -17,10 +17,7 @@
             <div class="col s12 m6 l4">
                 <div class="card-panel px-3 {{ $notif->for_admins === 1 ? 'main-light' : '' }}">
                     <span>
-                        <h6>
-                            <i class="material-icons left main-text">message</i>
-                            {{ trans($notif->title) }}
-                        </h6>
+                        <h6><i class="material-icons left main-text">message</i> {{ $notif->title }}</h6>
                         <p>{{ $notif->message }}</p><hr />
                         <p>{{ $notif->data }}</p>
                         <span class="grey-text right">{{ time_ago($notif->created_at) }}</span>

@@ -3,8 +3,6 @@
 return [
 
     // Controllers
-    'recipe_published' => 'Рецепт опубликован!',
-    'recipe_not_published' => 'Рецепт не опубликован!',
     'title_script_attack' => 'Скрипт аттака',
     'message_script_attack' => 'Один из пользователь использовал Javascript тэг <script> в одном из своих рецептов. Срочно проверьте журнал',
     'deleted' => 'Сообщение было успешно удалено',

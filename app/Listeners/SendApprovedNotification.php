@@ -14,7 +14,7 @@ class SendApprovedNotification
     public function handle(RecipeGotApproved $event)
     {
         Notification::sendToUser(
-            'recipe_published',
+            trans('notifications.recipe_published'),
             $event->message,
             $event->recipe->getTitle(),
             $event->recipe->user_id

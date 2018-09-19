@@ -109,8 +109,8 @@ trait RecipesControllerHelpers
                 logger()->emergency("User with name $user_name and id $user_id was trying to inject javascript script tags in his recipe. User data:" . user());
 
                 Notification::sendToAdmin(
-                    'title_script_attack',
-                    'message_script_attack',
+                    trans('notifications.title_script_attack'),
+                    trans('notifications.message_script_attack'),
                     "user_id:  $user_id, user_name: $user_name"
                 );
             }

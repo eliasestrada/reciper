@@ -24,7 +24,7 @@ class Notification extends Model
     public static function sendToUser(string $title, string $message, ?string $data, int $user_id): void
     {
         self::create([
-            'title' => "notifications.$title",
+            'title' => $title,
             'message' => $message,
             'user_id' => $user_id,
             'data' => $data,
@@ -40,7 +40,7 @@ class Notification extends Model
     public static function sendToAdmin(string $title, string $message, ?string $data): void
     {
         self::create([
-            'title' => "notifications.$title",
+            'title' => $title,
             'message' => $message,
             'data' => $data,
             'for_admins' => 1,
