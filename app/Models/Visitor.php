@@ -48,4 +48,17 @@ class Visitor extends Model
     {
         return \Carbon\Carbon::parse($this->created_at)->diffInDays(now());
     }
+
+    /**
+     * @return string
+     */
+    public function getStatusColor(): string
+    {
+        if ($this->isBanned()) {
+            return 'red';
+        } elseif ($this->user) {
+            return 'green';
+        }
+        return 'main';
+    }
 }

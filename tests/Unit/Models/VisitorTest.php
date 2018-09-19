@@ -47,4 +47,17 @@ class VisitorTest extends TestCase
         Ban::banVisitor($this->visitor->id, 1, '');
         $this->assertTrue($this->visitor->isBanned());
     }
+
+    /** @test */
+    public function get_status_color_method_returns_correct_color(): void
+    {
+        $this->assertEquals('main', $this->visitor->getStatusColor());
+
+        $user = create(User::class, ['visitor_id' => $this->visitor->id]);
+        $this->assertEquals('green', $user->visitor->getStatusColor());
+
+        $banned_visitor = $this->visitor;
+        Ban::banVisitor($banned_visitor->id, 1, 'some message');
+        $this->assertEquals('red', $banned_visitor->getStatusColor());
+    }
 }
