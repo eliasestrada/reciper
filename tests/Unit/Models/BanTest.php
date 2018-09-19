@@ -15,6 +15,7 @@ class BanTest extends TestCase
     public function model_has_attributes(): void
     {
         $this->assertClassHasAttribute('guarded', Ban::class);
+        $this->assertClassHasAttribute('table', Ban::class);
         $this->assertNull(Ban::UPDATED_AT);
     }
 
@@ -31,10 +32,11 @@ class BanTest extends TestCase
     public function ban_visitor_method_adds_visitor_to_ban_list(): void
     {
         $visitor = create(Visitor::class);
-        Ban::banVisitor($visitor->id, 1);
+        Ban::banVisitor($visitor->id, 1, 'some message');
 
-        $this->assertDatabaseHas('bans', [
+        $this->assertDatabaseHas('ban', [
             'visitor_id' => $visitor->id,
+            'message' => 'some message',
             'days' => 1,
         ]);
     }

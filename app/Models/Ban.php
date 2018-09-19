@@ -20,7 +20,7 @@ class Ban extends Model
      * @param integer $days
      * @param string $message
      */
-    public static function visitorOnDays(int $visitor_id, int $days, string $message)
+    public static function banVisitor(int $visitor_id, int $days, string $message)
     {
         return self::create(compact('visitor_id', 'days', 'message'));
     }
