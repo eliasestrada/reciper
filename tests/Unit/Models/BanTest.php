@@ -11,6 +11,14 @@ class BanTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public $visitor;
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->visitor = create(Visitor::class);
+    }
+
     /** @test */
     public function model_has_attributes(): void
     {
@@ -22,20 +30,16 @@ class BanTest extends TestCase
     /** @test */
     public function model_has_relationship_with_visitor(): void
     {
-        $visitor = create(Visitor::class);
-        $ban = Ban::make(['days' => 2, 'visitor_id' => $visitor->id]);
-
-        $this->assertEquals($ban->visitor->id, $visitor->id);
+        $ban = Ban::make(['days' => 2, 'visitor_id' => $this->visitor->id]);
+        $this->assertEquals($ban->visitor->id, $this->visitor->id);
     }
 
     /** @test */
     public function ban_visitor_method_adds_visitor_to_ban_list(): void
     {
-        $visitor = create(Visitor::class);
-        Ban::banVisitor($visitor->id, 1, 'some message');
-
+        Ban::banVisitor($this->visitor->id, 1, 'some message');
         $this->assertDatabaseHas('ban', [
-            'visitor_id' => $visitor->id,
+            'visitor_id' => $this->visitor->id,
             'message' => 'some message',
             'days' => 1,
         ]);

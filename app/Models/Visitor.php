@@ -30,12 +30,20 @@ class Visitor extends Model
 
     public function isBanned(): bool
     {
-        return $this->ban()->exists();
+        if ($this->ban()->exists()) {
+            // If ban time is passed delete visitor from banlist
+            if ($this->ban->created_at <= now()->subDays($this->ban->days)) {
+                $this->ban()->delete();
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 
-    public static function incrementRequestsOrCreate()
+    public static function updateOrCreateNewVisitor()
     {
-        self::updateOrCreate(
+        return self::updateOrCreate(
             ['ip' => request()->ip()],
             ['updated_at' => now()]
         );

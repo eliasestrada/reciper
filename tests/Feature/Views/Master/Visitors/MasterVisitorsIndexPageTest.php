@@ -51,6 +51,7 @@ class MasterVisitorsIndexPageTest extends TestCase
                     ->with('likes')
                     ->with('views')
                     ->with('user')
+                    ->with('ban')
                     ->orderBy('views_count', 'desc')
                     ->paginate(50)
                     ->onEachSide(1)

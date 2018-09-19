@@ -41,6 +41,27 @@ class VisitorTest extends TestCase
     }
 
     /** @test */
+    public function is_banned_method_returns_true_if_user_in_banlist(): void
+    {
+        $this->assertFalse($this->visitor->isBanned());
+        Ban::banVisitor($this->visitor->id, 1, '');
+        $this->assertTrue($this->visitor->isBanned());
+    }
+
+    /** @test */
+    public function is_banned_method_removes_visitor_from_banlist_after_a_term(): void
+    {
+        Ban::create([
+            'visitor_id' => $this->visitor->id,
+            'days' => 3,
+            'message' => 'some message',
+            'created_at' => now()->subDays(3),
+        ]);
+
+        $this->assertFalse($this->visitor->isBanned());
+    }
+
+    /** @test */
     public function is_banned_returns_true_if_user_in_banlist(): void
     {
         $this->assertFalse($this->visitor->isBanned());
