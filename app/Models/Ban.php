@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ban extends Model
 {
     protected $guarded = ['id'];
+    protected $table = 'ban';
     const UPDATED_AT = null;
 
     public function visitor()
@@ -17,9 +18,10 @@ class Ban extends Model
     /**
      * @param integer $visitor_id
      * @param integer $days
+     * @param string $message
      */
-    public static function banVisitor(int $visitor_id, int $days)
+    public static function visitorOnDays(int $visitor_id, int $days, string $message)
     {
-        return self::create(compact('visitor_id', 'days'));
+        return self::create(compact('visitor_id', 'days', 'message'));
     }
 }

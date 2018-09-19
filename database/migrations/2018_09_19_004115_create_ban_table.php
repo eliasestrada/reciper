@@ -13,10 +13,11 @@ class CreateBanTable extends Migration
      */
     public function up()
     {
-        Schema::create('bans', function (Blueprint $table) {
+        Schema::create('ban', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('visitor_id');
             $table->unsignedMediumInteger('days');
+            $table->string('message', 255);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateBanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bans');
+        Schema::dropIfExists('ban');
     }
 }
