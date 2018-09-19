@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ban;
 use App\Models\Visitor;
+use Illuminate\Http\Request;
 
 class VisitorsController extends Controller
 {
@@ -22,11 +24,36 @@ class VisitorsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Visitor  $visitor
      * @return \Illuminate\Http\Response
      */
     public function show(Visitor $visitor)
     {
         return view('master.visitors.show', compact('visitor'));
+    }
+
+    /**
+     * @param Request $request
+     * @param Visitor $visitor
+     * @return void
+     */
+    public function update(Request $request, Visitor $visitor)
+    {
+        // Check if visitor is already banned
+        if (Ban::whereVisitorId($visitor->id)->exists()) {
+            return back()->withError(trans('visitors.visitor_already_banned'));
+        }
+
+        Ban::banVisitor($visitor->id, $request->days, $request->message);
+        return back()->withSuccess(trans('visitors.visitor_banned', ['days' => $request->days]));
+    }
+
+    /**
+     * @param Visitor $visitor
+     */
+    public function destroy(Visitor $visitor)
+    {
+        $visitor->ban()->delete();
+        return back()->withSuccess(trans('visitors.visitor_unbanned'));
     }
 }
