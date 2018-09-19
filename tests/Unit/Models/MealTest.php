@@ -36,9 +36,9 @@ class MealTest extends TestCase
     {
         $actual = Meal::get(['name_' . lang()]);
         $expected = [
-            trans('header.breakfast'),
-            trans('header.lunch'),
-            trans('header.dinner'),
+            trans('home.breakfast'),
+            trans('home.lunch'),
+            trans('home.dinner'),
         ];
 
         foreach ($actual as $i => $meal) {

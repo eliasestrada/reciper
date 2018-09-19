@@ -8,15 +8,15 @@
 
             <h1>{{ config('app.name') }}</h1>
             <div class="home-meal">
-                @lang('header.what_u_like')
+                @lang('home.what_u_like')
                 <br />
-                <a href="/recipes#breakfast">{{ title_case(trans('header.breakfast')) }}</a>, 
-                <a href="/recipes#lunch">@lang('header.lunch')</a>
-                @lang('header.or') 
-                <a href="/recipes#dinner">@lang('header.dinner')</a>?
+                <a href="/recipes#breakfast">{{ title_case(trans('home.breakfast')) }}</a>, 
+                <a href="/recipes#lunch">@lang('home.lunch')</a>
+                @lang('home.or') 
+                <a href="/recipes#dinner">@lang('home.dinner')</a>?
                 <br />
-                @lang('header.or_maybe') 
-                <a href="/recipes#simple">@lang('header.sth_new')</a>
+                @lang('home.or_maybe') 
+                <a href="/recipes#simple">@lang('home.sth_new')</a>
             </div>
 
             {{--  Form  --}}
