@@ -23,6 +23,16 @@ class Visitor extends Model
         return $this->hasOne(User::class);
     }
 
+    public function ban()
+    {
+        return $this->hasOne(Ban::class);
+    }
+
+    public function isBanned(): bool
+    {
+        return $this->ban()->exists();
+    }
+
     public static function incrementRequestsOrCreate()
     {
         self::updateOrCreate(
