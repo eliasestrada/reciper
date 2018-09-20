@@ -7,7 +7,6 @@ return [
     'categories' => 'Категории',
     'navigation' => 'Навигация',
     'home' => 'Главная',
-    'feedback' => 'Обратная связь',
     'search' => 'Поиск',
     'add_recipe' => 'Добавить рецепт',
     'enter' => 'Войти',

@@ -52,8 +52,8 @@
             </li>
 
             <li class="position-relative {{ active_if_route_is('admin/feedback') }}"> {{-- feedback --}}
-                <a href="/admin/feedback" title="@lang('includes.feedback')" {{ empty($all_feedback) ? '' : "data-notif=$all_feedback" }} class="small-notif-btn">
-                    <i class="material-icons left">message</i>@lang('includes.feedback')
+                <a href="/admin/feedback" title="@lang('feedback.contact_us')" {{ empty($all_feedback) ? '' : "data-notif=$all_feedback" }} class="small-notif-btn">
+                    <i class="material-icons left">message</i>@lang('feedback.contact_us')
                 </a>
             </li>
         @endhasRole
@@ -122,7 +122,7 @@
             <div class="right">
                 @auth
                     {{-- Dropdown Trigger 2 User --}}
-                    <a id="_user-menu-trigger" class="right dropdown-trigger small-notif-btn position-relative" href="#!" data-target="dropdown2" title="@lang('includes.user_home')" {{ $all_notif ? 'data-notif='.$all_notif : '' }}>
+                    <a id="_user-menu-trigger" class="right dropdown-trigger small-notif-btn position-relative" href="#!" data-target="dropdown2" {{ $all_notif ? 'data-notif='.$all_notif : '' }}>
                         <i class="user-icon-navbar">
                             <img class="small-notif-btn" src="{{ asset('storage/users/' . user()->image) }}">
                         </i>
