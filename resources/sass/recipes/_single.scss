@@ -19,6 +19,10 @@
         border-radius: 7px 0 7px 7px;
         transition: transform 300ms, right 300ms, top 300ms;
         transform: scale(0, 0);
+
+        a {
+            margin-bottom: 10px;
+        }
     }
 
     .popup-window.active {

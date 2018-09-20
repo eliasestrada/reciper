@@ -2523,13 +2523,14 @@ small {
 }
 
 .card .card-title {
-	font-size: 1.1em;
+	font-size: 1.05em;
     font-weight: bold;
     color: #313131;
-	line-height: 1.6 !important;
+	line-height: 1.15 !important;
 }
 
-.card .card-title.activator {
+.card .card-title.activator,
+.card .activator {
 	cursor: pointer;
 }
 
@@ -2674,13 +2675,12 @@ small {
 }
 
 .card .card-content p {
-	margin: 0;
+	margin: 7px auto;
 }
 
 .card .card-content .card-title {
 	display: block;
 	line-height: 32px;
-	margin-bottom: 8px;
 }
 
 .card .card-content .card-title i {
