@@ -22,9 +22,11 @@
             </a>
 
             {{-- View button --}}
-            <button class="btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top" name="view">
-                <i class="material-icons">remove_red_eye</i>
-            </button>
+            @if ($document->id != 1)
+                <button class="btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top" name="view">
+                    <i class="material-icons">remove_red_eye</i>
+                </button>
+            @endif
 
             {{-- Save button --}}
             @unless ($document->isReady())
@@ -34,9 +36,11 @@
             @endunless
             
             {{-- Delete button --}}
-            <a onclick="if(confirm('@lang('documents.sure_del_doc')')) $('delete-doc').submit()" class="btn-floating red tooltipped" data-tooltip="@lang('tips.delete')" data-position="top">
-                <i class="material-icons">delete</i>
-            </a>
+            @if ($document->id != 1)
+                <a onclick="if(confirm('@lang('documents.sure_del_doc')')) $('delete-doc').submit()" class="btn-floating red tooltipped" data-tooltip="@lang('tips.delete')" data-position="top">
+                    <i class="material-icons">delete</i>
+                </a>
+            @endif
 
             {{-- Move to draft --}}
             @if ($document->id !== 1 && $document->isReady())
