@@ -1,29 +1,16 @@
 <footer class="px-5 pt-3 pb-5">
     <div class="row wrapper">
-        {{--  Navigation  --}}
+        {{--  Documents  --}}
         <div class="col s12 m6 l3 left-align">
             <ul class="unstyled-list">
-                <li><strong>@lang('includes.navigation')</strong></li>
-                <li>
-                    <a href="/" class="{{ active_if_route_is('/') }}">
-                        @lang('includes.home')
-                    </a>
-                </li>
-                <li>
-                    <a href="/recipes" class="{{ active_if_route_is('recipes') }}">
-                        @lang('includes.recipes')
-                    </a>
-                </li>
-                <li>
-                    <a href="/contact" class="{{ active_if_route_is('contact') }}">
-                        @lang('includes.feedback')
-                    </a>
-                </li>
-                <li>
-                    <a href="/search" class="{{ active_if_route_is('search') }}">
-                        @lang('includes.search')
-                    </a>
-                </li>
+                <li><strong>@lang('documents.documents')</strong></li>
+                @foreach ($documents_footer as $doc)
+                    <li>
+                        <a href="/documents/{{ $doc->id }}">
+                            <span class="red-text">#</span> {{ $doc->getTitle() }}
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </div>
 
@@ -33,7 +20,7 @@
                 <li><strong>@lang('includes.recipes')</strong></li>
                 @foreach ($random_recipes as $recipe)
                     <li>
-                        <a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
+                        <a href="/recipes/{{ $recipe->id }}">
                             <span class="red-text">#</span> {{ $recipe->getTitle() }}
                         </a>
                     </li>
@@ -47,7 +34,7 @@
                 <li><strong>@lang('includes.popular_recipes')</strong></li>
                 @foreach ($popular_recipes as $recipe)
                     <li>
-                        <a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
+                        <a href="/recipes/{{ $recipe->id }}">
                             <span class="red-text" >#</span> {{ $recipe->getTitle() }}
                         </a>
                     </li>
@@ -61,7 +48,7 @@
                 <li><strong>@lang('includes.top_recipers')</strong></li>
                 @foreach ($top_recipers as $i => $reciper)
                     <li>
-                        <a href="/users/{{ $reciper->id }}" title="{{ $reciper->name }}">
+                        <a href="/users/{{ $reciper->id }}">
                             <i class="material-icons tiny" style="font-size:0.8em;color:orange">star</i> 
                             {{ $reciper->name }} ({{ $reciper->points }})
                         </a>

@@ -12,16 +12,17 @@ class FooterProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->getAndComposeRandomRecipes();
-        $this->getAndComposePopularRecipes();
-        $this->getAndComposeTitleForFooter();
-        $this->getAndComposeTopRecipersForFooter();
+        $this->composerRandomRecipes();
+        $this->composerPopularRecipes();
+        $this->composerTitle();
+        $this->composerDocuments();
+        $this->composerTopRecipers();
     }
 
     /**
      * @return void
      */
-    public function getAndComposeRandomRecipes(): void
+    public function composerRandomRecipes(): void
     {
         view()->composer('includes.footer',
             'App\Http\ViewComposers\Footer\RandomRecipesComposer');
@@ -30,7 +31,7 @@ class FooterProvider extends ServiceProvider
     /**
      * @return void
      */
-    public function getAndComposePopularRecipes(): void
+    public function composerPopularRecipes(): void
     {
         view()->composer('includes.footer',
             'App\Http\ViewComposers\Footer\PopularRecipesComposer');
@@ -39,7 +40,7 @@ class FooterProvider extends ServiceProvider
     /**
      * @return void
      */
-    public function getAndComposeTitleForFooter(): void
+    public function composerTitle(): void
     {
         view()->composer('includes.footer',
             'App\Http\ViewComposers\Footer\TitleFooterComposer');
@@ -48,9 +49,18 @@ class FooterProvider extends ServiceProvider
     /**
      * @return void
      */
-    public function getAndComposeTopRecipersForFooter(): void
+    public function composerTopRecipers(): void
     {
         view()->composer('includes.footer',
             'App\Http\ViewComposers\Footer\TopRecipersComposer');
+    }
+
+    /**
+     * @return void
+     */
+    public function composerDocuments(): void
+    {
+        view()->composer('includes.footer',
+            'App\Http\ViewComposers\Footer\DocumentsComposer');
     }
 }
