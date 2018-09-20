@@ -44,8 +44,8 @@ class HelperFunctionsTest extends TestCase
         $million = trans('users.million');
 
         $this->assertEquals(readable_number(999), 999);
-        $this->assertEquals(readable_number(1000), "1<br /><small>$thousand</small>");
-        $this->assertEquals(readable_number(1000000), "1<br /><small>$million</small>");
+        $this->assertEquals(readable_number(1000), "1<br><small>$thousand</small>");
+        $this->assertEquals(readable_number(1000000), "1<br><small>$million</small>");
     }
 
     /** @test */

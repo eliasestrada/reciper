@@ -4,7 +4,7 @@
         let message = ''
     </script>
         <script>
-            message += '{{ $error }} <br />'
+            message += '{{ $error }} <br>'
         </script>
     @endforeach
     <script>

@@ -9,12 +9,12 @@
             <h1>{{ config('app.name') }}</h1>
             <div class="home-meal">
                 @lang('home.what_u_like')
-                <br />
+                <br>
                 <a href="/recipes#breakfast">{{ title_case(trans('home.breakfast')) }}</a>, 
                 <a href="/recipes#lunch">@lang('home.lunch')</a>
                 @lang('home.or') 
                 <a href="/recipes#dinner">@lang('home.dinner')</a>?
-                <br />
+                <br>
                 @lang('home.or_maybe') 
                 <a href="/recipes#simple">@lang('home.sth_new')</a>
             </div>

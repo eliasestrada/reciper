@@ -8,7 +8,7 @@ use App\Models\Visitor;
  */
 function custom_strip_tags(string $string): string
 {
-    $allowed = '<h1><h2><h3><h4><h5><h6><p><br><br /><b><li><ol><ul><strong><span>';
+    $allowed = '<h1><h2><h3><h4><h5><h6><p><br><br><b><li><ol><ul><strong><span>';
     return strip_tags($string, $allowed);
 }
 
@@ -128,9 +128,9 @@ function readable_number($number)
     $number = round($number);
 
     if ($number >= 1000 && $number < 1000000):
-        $number = substr($number, 0, -3) . '<br /><small>' . trans('users.thousand') . '</small>';
+        $number = substr($number, 0, -3) . '<br><small>' . trans('users.thousand') . '</small>';
     elseif ($number >= 1000000):
-        $number = substr($number, 0, -6) . '<br /><small>' . trans('users.million') . '</small>';
+        $number = substr($number, 0, -6) . '<br><small>' . trans('users.million') . '</small>';
     endif;
 
     return $number;

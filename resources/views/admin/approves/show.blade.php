@@ -40,7 +40,7 @@
                 </div>
             @else
                 <h6 class="green-text">
-                    <i class="material-icons small">search</i><br />
+                    <i class="material-icons small">search</i><br>
                     @lang('approves.currently_approving', ['user' => optional($recipe->approver)->name])
                 </h6>
             @endif

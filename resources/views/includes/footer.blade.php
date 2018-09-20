@@ -65,7 +65,7 @@
     
         <div><a href="/contact">@lang('includes.feedback')</a></div>
         <p class="footer-copyright">
-            &copy; {{ date('Y') }} {{ config('app.name') }} <br /> {{ $title_footer ?? '' }}
+            &copy; {{ date('Y') }} {{ config('app.name') }} <br> {{ $title_footer ?? '' }}
         </p>
     </div>
 

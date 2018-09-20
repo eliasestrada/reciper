@@ -26,7 +26,7 @@
                                 <td class="{{ $loop->index === 0 ? 'main-light' : '' }}">
                                     @if ($key == 'date')
                                         <span class="new badge transparent main-dark-text">
-                                            {{ $value }} <br />
+                                            {{ $value }} <br>
                                             {{ time_ago($value) }}
                                         </span>
                                     @elseif ($key == 'all')

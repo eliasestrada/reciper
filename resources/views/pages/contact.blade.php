@@ -9,7 +9,7 @@
 
     @if (session('success'))
         <div class="center mt-4">
-            @include('includes.buttons.home-btn') <br />
+            @include('includes.buttons.home-btn') <br>
             @include('includes.buttons.help-btn')
         </div>
     @else
