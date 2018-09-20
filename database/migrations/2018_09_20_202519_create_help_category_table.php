@@ -17,6 +17,7 @@ class CreateHelpCategoryTable extends Migration
             $table->increments('id');
             $table->string('title_ru', 50);
             $table->string('title_en', 50);
+            $table->string('icon', 30)->default('help');
         });
     }
 
