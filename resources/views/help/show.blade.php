@@ -7,7 +7,7 @@
 <div class="page">
     <p><b>{{ $help->getTitle() }}</b></p>
     <div class="divider"></div>
-    <p>{{ $help->getText() }}</p>
+    <p>{!! $help->getText() !!}</p>
 </div>
 
 @endsection
