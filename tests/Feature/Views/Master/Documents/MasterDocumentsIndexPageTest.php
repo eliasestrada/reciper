@@ -19,8 +19,8 @@ class MasterDocumentsIndexPageTest extends TestCase
         $this->actingAs($master)
             ->get("/master/documents")
             ->assertViewIs('master.documents.index')
-            ->assertViewHas('ready_docs', Document::query()->ready(1)->paginate(20)->onEachSide(1))
-            ->assertViewHas('unready_docs', Document::query()->ready(0)->paginate(20)->onEachSide(1));
+            ->assertViewHas('ready_docs', Document::query()->isReady(1)->paginate(20)->onEachSide(1))
+            ->assertViewHas('unready_docs', Document::query()->isReady(0)->paginate(20)->onEachSide(1));
     }
 
     /** @test */

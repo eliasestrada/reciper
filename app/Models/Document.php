@@ -29,7 +29,7 @@ class Document extends Model
      * @param integer $value
      * @return void
      */
-    public function scopeReady($query, int $value)
+    public function scopeIsReady($query, int $value)
     {
         return $query->where('ready_' . lang(), $value);
     }
