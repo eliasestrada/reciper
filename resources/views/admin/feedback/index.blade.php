@@ -33,7 +33,7 @@
                 <div class="col s12 l6">
                     <div class="card" style="min-height:200px;border-left:4px solid;border-color:{{ $feed->isReport(1) ? 'red' : 'green' }};">
                         <div class="card-content">
-                            <span class="card-title">
+                            <span class="card-title" style="line-height:32px!important">
                                 @if ($feed->isReport(1))
                                     <b>@lang('feedback.report_recipe'):</b> 
                                     <a href="/recipes/{{ $feed->recipe->id }}">{{ $feed->recipe->getTitle() }}</a>

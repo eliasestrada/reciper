@@ -16,6 +16,12 @@
             <a href="#report-recipe-modal" class="btn modal-trigger">
                 @lang('recipes.report_recipe')
             </a>
+            {{--  Edit button  --}}
+            @if (optional(user())->hasRecipe($recipe->id))
+                <a href="/recipes/{{ $recipe->id }}/edit" class="btn" id="_edit">
+                    @lang('tips.edit')
+                </a>
+            @endif
         </div>
 
         {{--  Likes  --}}
@@ -28,25 +34,6 @@
                 </like>
             @endif
         </div>
-
-        @auth {{--  Buttons  --}}
-            @if (user()->hasRecipe($recipe->id))
-                <div class="center py-3 _action-buttons">
-                    {{--  Edit button  --}}
-                    <a href="/recipes/{{ $recipe->id }}/edit" class="btn-floating green tooltipped" data-tooltip="@lang('tips.edit')" data-position="top" id="_edit">
-                        <i class="large material-icons">mode_edit</i>
-                    </a>
-
-                    {{--  Delete button  --}}
-                    <delete-recipe-btn
-                        recipe-id="{{ $recipe->id }}"
-                        deleted-fail="{{ trans('recipes.deleted_fail') }}"
-                        delete-recipe-tip="{{ trans('tips.delete') }}"
-                        confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
-                    </delete-recipe-btn>
-                </div>
-            @endif
-        @endauth
 
         @include('includes.parts.recipes-show')
     </div>

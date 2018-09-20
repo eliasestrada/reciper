@@ -9,18 +9,17 @@
                         </a>
                     </div>
                     <div class="card-content min-h">
-                        <span class="card-title activator">
+                        <span style="height:75%" class="card-title activator">
                             {{ recipe.title_short }}
                         </span>
+                        <div style="height:25%">
+                            <i class="material-icons right small red-text activator">more_horiz</i>
+                        </div>
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title ">
-                            {{ recipe.title }}
-                            <i class="material-icons right">close</i>
-                        </span>
-                        <p>
-                            <a :href="'/recipes/' + recipe.id" :title="recipe.title">{{ go }}</a>
-                        </p>
+                        <span class="card-title">{{ recipe.title }}</span>
+                        <div><i class="material-icons right red-text card-title">close</i></div>
+                        <a class="btn-small mt-3" :href="'/recipes/' + recipe.id">{{ go }}</a>
                         <p>{{ recipe.intro }}</p>
                     </div>
                 </div>

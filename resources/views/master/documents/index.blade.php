@@ -20,7 +20,8 @@
                 <div class="col s12 l6">
                     <div class="card" style="min-height:320px">
                         <div class="card-content">
-                            <span class="card-title">{{ $doc->getTitle() }}</span>
+                            <span class="card-title" style="line-height:32px!important">{{ $doc->getTitle() }}</span>
+                            <div class="divider"></div>
                             <p>{{ str_limit(strip_tags($doc->text), 250) }}</p>
                             <p class="mt-3"><b>@lang('documents.last_update'):</b></p>
                             <p>{{ time_ago($doc->updated_at) }}</p>
