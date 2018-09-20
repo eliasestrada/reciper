@@ -29,8 +29,8 @@ class AdminFeedbackIndexPageTest extends TestCase
             ->assertOk()
             ->assertViewIs('admin.feedback.index')
             ->assertViewHasAll([
-                'feedback_ru' => Feedback::whereLang('ru')->latest()->paginate(20)->onEachSide(1),
-                'feedback_en' => Feedback::whereLang('en')->latest()->paginate(20)->onEachSide(1),
+                'feedback_ru' => Feedback::with('recipe')->whereLang('ru')->latest()->paginate(20)->onEachSide(1),
+                'feedback_en' => Feedback::with('recipe')->whereLang('en')->latest()->paginate(20)->onEachSide(1),
             ]);
     }
 
