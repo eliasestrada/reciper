@@ -17,7 +17,11 @@
 
                 <ul>
                     @foreach ($help->where('help_category_id', $category->id) as $h)
-                        <li><a href="/help/{{ $h->id }}" class="main-dark-text" style="font-size:1.05em"># {{ $h->getTitle() }}</a></li>
+                        <li>
+                            <a href="/help/{{ $h->id }}" class="main-dark-text" style="font-size:1.05em">
+                                <span class="red-text">#</span> {{ $h->getTitle() }}
+                            </a>
+                        </li>
                     @endforeach
                 </ul>
             </div>
