@@ -71,3 +71,6 @@ Route::prefix('master')->namespace('Master')->middleware('master')->group(functi
     Route::delete('log-viewer/logs/delete', 'LogsController@delete');
     Route::resource('visitors', 'VisitorsController')->except(['edit']);
 });
+
+// Help =========
+Route::resource('help', 'HelpController')->only(['index', 'show']);
