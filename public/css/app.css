@@ -166,6 +166,14 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   margin: auto;
 }
 
+.header {
+  font-family: "Comfortaa", sans-serif;
+  text-shadow: 1px 1px 3px #dbd9ea;
+  display: inline-block;
+  font-size: 1.4em;
+  margin: .4em 0;
+}
+
 .headline {
   color: #292543;
   font-family: "Comfortaa", sans-serif;
@@ -237,7 +245,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   background-color: #fff !important;
 }
 
-.text-white {
+.white-text {
   color: #fff !important;
 }
 
@@ -293,8 +301,16 @@ nav .input-field input[type=search]:-webkit-autofill:active {
   background-color: #727272 !important;
 }
 
+.grey-dark {
+  background-color: #262525 !important;
+}
+
 .grey-text {
   color: #727272 !important;
+}
+
+.grey-dark-text {
+  color: #262525 !important;
 }
 
 html {

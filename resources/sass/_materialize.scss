@@ -16,7 +16,7 @@
 	background-color: #fff !important;
 }
 
-.text-white {
+.white-text {
 	color: #fff !important;
 }
 
@@ -72,11 +72,19 @@
 }
 
 .grey {
-	background-color: $gray !important;
+	background-color: $grey !important;
+}
+
+.grey-dark {
+	background-color: $greyDark !important;
 }
 
 .grey-text {
-	color: $gray !important;
+	color: $grey !important;
+}
+
+.grey-dark-text {
+	color: $greyDark !important;
 }
 
 html {

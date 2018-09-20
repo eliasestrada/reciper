@@ -6,7 +6,7 @@
 
 // Main Colors
 $main: #484074;
-$gray: #727272;
+$grey: #727272;
 $paper: #f3f3f3;
 $paperDark: darken($paper, 3);
 $fontColor: #535353;
@@ -16,8 +16,8 @@ $green: #2ca030;
 $mainLight: lighten($main, 53%);
 $mainHover: darken($main, 4%);
 $mainDark: darken($main, 15%);
-$lightGray: lighten($gray, 30%);
-$darkGray: darken($gray, 30%);
+$greyLight: lighten($grey, 30%);
+$greyDark: darken($grey, 30%);
 // Navigation
 $navBorderBottom: solid 2px $mainLight;
 // Home header
