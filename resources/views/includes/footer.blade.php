@@ -63,6 +63,7 @@
             <img src="{{ asset('favicon.png') }}" alt="@lang('includes.logo')" class="footer-logo">
         </a>
     
+        <div><a href="/contact">@lang('includes.feedback')</a></div>
         <p class="footer-copyright">
             &copy; {{ date('Y') }} {{ config('app.name') }} <br /> {{ $title_footer ?? '' }}
         </p>
