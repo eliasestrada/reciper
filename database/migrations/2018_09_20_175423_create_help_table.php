@@ -15,11 +15,11 @@ class CreateHelpTable extends Migration
     {
         Schema::create('help', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedSmallInteger('help_category_id')->nullable();
             $table->string('title_ru', 255)->nullable();
             $table->string('title_en', 255)->nullable();
             $table->text('text_ru')->nullable();
             $table->text('text_en')->nullable();
-            $table->timestamps();
         });
     }
 

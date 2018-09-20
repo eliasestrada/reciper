@@ -8,6 +8,7 @@ class Help extends Model
 {
     protected $table = 'help';
     protected $guarded = ['id'];
+    public $timestamps = false;
 
     /**
      * @return string

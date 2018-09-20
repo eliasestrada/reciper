@@ -20,6 +20,7 @@ class HelpTest extends TestCase
     {
         $this->assertClassHasAttribute('table', Help::class);
         $this->assertClassHasAttribute('guarded', Help::class);
+        $this->assertClassHasAttribute('timestamps', Help::class);
     }
 
     /** @test */
