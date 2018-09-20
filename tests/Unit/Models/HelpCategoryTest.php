@@ -29,10 +29,4 @@ class HelpCategoryTest extends TestCase
     {
         $this->assertEquals($this->help_category->getTitle(), $this->help_category->toArray()['title_' . lang()]);
     }
-
-    /** @test */
-    public function get_text_method_returns_text_from_database(): void
-    {
-        $this->assertEquals($this->help->getText(), $this->help->toArray()['text_' . lang()]);
-    }
 }

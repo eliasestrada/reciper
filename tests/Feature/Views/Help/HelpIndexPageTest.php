@@ -3,6 +3,7 @@
 namespace Tests\Feature\Views\Help;
 
 use App\Models\Help;
+use App\Models\HelpCategory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -16,6 +17,9 @@ class HelpIndexPageTest extends TestCase
         $this->get('/help')
             ->assertOk()
             ->assertViewIs('help.index')
-            ->assertViewHas('help', Help::get(['id', 'title_' . lang()]));
+            ->assertViewHasAll([
+                'help' => Help::get(['id', 'help_category_id', 'title_' . lang()]),
+                'help_categories' => HelpCategory::get(),
+            ]);
     }
 }
