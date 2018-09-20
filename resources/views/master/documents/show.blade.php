@@ -5,6 +5,17 @@
 @section('content')
 
 <div class="page">
+    <div class="center pb-2 pt-3">
+        {{-- Back button --}}
+        <a href="/master/documents" class="btn-floating green tooltipped" data-tooltip="@lang('messages.back')" data-position="top">
+            <i class="material-icons">keyboard_backspace</i>
+        </a>
+        {{--  edit button  --}}
+        <a href="/master/documents/{{ $document->id }}/edit" class="btn-floating green tooltipped" data-tooltip="@lang('tips.edit')" data-position="top">
+            <i class="material-icons left">edit</i>
+        </a>
+    </div>
+
     <h4>{{ $document->getTitle() }}</h4>
     <div class="reset">{!! custom_strip_tags($document->text) !!}</div>
 
@@ -18,12 +29,5 @@
         {{ time_ago($document->updated_at) }}
     </p>
 </div>
-
-{{-- Edit button --}}
-@component('comps.btns.fixed-btn')
-    @slot('icon') edit @endslot
-    @slot('link') /master/documents/{{ $document->id }}/edit @endslot
-    @slot('tip') @lang('tips.edit') @endslot
-@endcomponent
 
 @endsection

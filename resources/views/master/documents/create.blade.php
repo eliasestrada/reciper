@@ -16,10 +16,14 @@
     <form action="{{ action('Master\DocumentsController@store') }}" method="post">
         @csrf
 
-        <div class="center pb-2 pt-3"> {{--  Save button  --}}
-            <button type="submit" class="btn green">
+        <div class="center pb-2 pt-3">
+            {{-- Back button --}}
+            <a href="/master/documents" class="btn-floating green tooltipped" data-tooltip="@lang('messages.back')" data-position="top">
+                <i class="material-icons">keyboard_backspace</i>
+            </a>
+            {{--  Save button  --}}
+            <button type="submit" class="btn-floating green tooltipped" data-tooltip="@lang('tips.save')" data-position="top">
                 <i class="material-icons left">save</i>
-                @lang('tips.save')
             </button>
         </div>
 

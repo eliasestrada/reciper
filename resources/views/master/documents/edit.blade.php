@@ -15,6 +15,12 @@
 
     <form action="{{ action('Master\DocumentsController@update', ['id' => $document->id]) }}" method="post">
         <div class="center p-3">
+
+            {{-- Back button --}}
+            <a href="/master/documents" class="btn-floating green tooltipped" data-tooltip="@lang('messages.back')" data-position="top">
+                <i class="material-icons">keyboard_backspace</i>
+            </a>
+
             {{-- View button --}}
             <button class="btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top" name="view">
                 <i class="material-icons">remove_red_eye</i>
@@ -32,13 +38,16 @@
                 <i class="material-icons">delete</i>
             </a>
 
-            {{--  Publish button  --}}
-            @if ($document->isReady())
+            {{-- Move to draft --}}
+            @if ($document->id !== 1 && $document->isReady())
                 <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.add_to_drafts')" data-position="top" data-alert="@lang('documents.sure_draft_doc')">
                     <i class="material-icons">library_books</i>
                 </a>
                 <input type="checkbox" name="ready" value="0" class="d-none" id="ready-checkbox">
-            @else
+            @endif
+
+            {{--  Publish button  --}}
+            @if ($document->id == 1 || !$document->isReady())
                 <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top" data-alert="@lang('documents.sure_publich_doc')">
                     <i class="material-icons">send</i>
                 </a>

@@ -39,7 +39,7 @@ class DocumentsController extends Controller
             'text' => $request->text,
         ]);
 
-        return redirect("/master/documents/$doc->id");
+        return redirect("/master/documents/$doc->id/edit");
     }
 
     /**
@@ -74,7 +74,7 @@ class DocumentsController extends Controller
         }
         return $request->ready == 0
         ? back()->withSuccess(trans('documents.saved'))
-        : redirect("/master/documents/$document->id")->withSuccess(trans('documents.published'));
+        : back()->withSuccess(trans('documents.published'));
     }
 
     /**
