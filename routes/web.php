@@ -4,11 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Pages ===========
+// For all visitors ===========
 Route::get('/', 'PagesController@home');
 Route::get('search', 'PagesController@search');
 Route::view('contact', 'pages.contact');
 Route::post('admin/feedback', 'Admin\FeedbackController@store');
+Route::get('documents/{document}', 'Master\DocumentsController@show');
 
 // Recipes ===========
 Route::resource('recipes', 'RecipesController')->except(['destroy']);
@@ -66,7 +67,7 @@ Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function 
 
 // Master ==========
 Route::prefix('master')->namespace('Master')->middleware('master')->group(function () {
+    Route::resource('documents', 'DocumentsController')->except('show');
     Route::delete('log-viewer/logs/delete', 'LogsController@delete');
-    Route::resource('documents', 'DocumentsController');
     Route::resource('visitors', 'VisitorsController')->except(['edit']);
 });

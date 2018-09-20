@@ -16,29 +16,38 @@ class MasterDocumentsShowPageTest extends TestCase
     {
         $document = create(Document::class);
 
-        $this->actingAs(create_user('master'))
-            ->get("/master/documents/$document->id")
+        $this->get("/documents/$document->id")
             ->assertViewIs('master.documents.show')
             ->assertViewHas('document', Document::find($document->id));
     }
 
     /** @test */
-    public function user_cant_see_the_page(): void
+    public function user_can_see_the_page_if_document_is_ready(): void
     {
         $document = create(Document::class);
 
         $this->actingAs(make(User::class))
-            ->get("/master/documents/$document->id")
-            ->assertRedirect('/');
+            ->get("/documents/$document->id")
+            ->assertOk();
     }
 
     /** @test */
-    public function master_can_see_the_page(): void
+    public function user_cant_see_the_page_if_document_is_not_ready(): void
     {
-        $document = create(Document::class);
+        $document = create(Document::class, ['ready_' . lang() => 0]);
+
+        $this->actingAs(make(User::class))
+            ->get("/documents/$document->id")
+            ->assertRedirect();
+    }
+
+    /** @test */
+    public function master_can_see_the_page_if_document_is_not_ready(): void
+    {
+        $document = create(Document::class, ['ready_' . lang() => 0]);
 
         $this->actingAs(create_user('master'))
-            ->get("/master/documents/$document->id")
+            ->get("/documents/$document->id")
             ->assertOk();
     }
 }

@@ -47,6 +47,9 @@ class DocumentsController extends Controller
      */
     public function show(Document $document)
     {
+        if (!$document->isReady() && !optional(user())->hasRole('master')) {
+            return redirect('/')->withError(trans('documents.not_ready'));
+        }
         return view('master.documents.show', compact('document'));
     }
 
@@ -70,7 +73,7 @@ class DocumentsController extends Controller
         ]);
 
         if ($request->has('view')) {
-            return redirect("/master/documents/$document->id")->withSuccess(trans('documents.saved'));
+            return redirect("/documents/$document->id")->withSuccess(trans('documents.saved'));
         }
         return $request->ready == 0
         ? back()->withSuccess(trans('documents.saved'))

@@ -83,8 +83,8 @@
                 </a>
             </li>
             <li class="position-relative {{ active_if_route_is('master/documents') }}"> {{-- Documents --}}
-                <a href="/master/documents" title="@lang('documents.docs')">
-                    <i class="material-icons left">work</i>@lang('documents.docs')
+                <a href="/master/documents" title="@lang('documents.documents')">
+                    <i class="material-icons left">work</i>@lang('documents.documents')
                 </a>
             </li>
             <li class="position-relative {{ active_if_route_is('log-viewer/logs*') }}"> {{-- log-viewer --}}

@@ -30,7 +30,7 @@ class MasterDocumentsEditPageTest extends TestCase
         $document_id = create(Document::class)->id;
 
         $this->actingAs(make(User::class))
-            ->get("/master/documents/$document_id/edit")
+            ->get("/documents/$document_id/edit")
             ->assertRedirect('/');
     }
 }

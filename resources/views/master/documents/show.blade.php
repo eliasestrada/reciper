@@ -5,16 +5,18 @@
 @section('content')
 
 <div class="page">
-    <div class="center pb-2 pt-3">
-        {{-- Back button --}}
-        <a href="/master/documents" class="btn-floating green tooltipped" data-tooltip="@lang('messages.back')" data-position="top">
-            <i class="material-icons">keyboard_backspace</i>
-        </a>
-        {{--  edit button  --}}
-        <a href="/master/documents/{{ $document->id }}/edit" class="btn-floating green tooltipped" data-tooltip="@lang('tips.edit')" data-position="top">
-            <i class="material-icons left">edit</i>
-        </a>
-    </div>
+    @hasRole('mester')
+        <div class="center pb-2 pt-3">
+            {{-- Back button --}}
+            <a href="/master/documents" class="btn-floating green tooltipped" data-tooltip="@lang('messages.back')" data-position="top">
+                <i class="material-icons">keyboard_backspace</i>
+            </a>
+            {{--  edit button  --}}
+            <a href="/master/documents/{{ $document->id }}/edit" class="btn-floating green tooltipped" data-tooltip="@lang('tips.edit')" data-position="top">
+                <i class="material-icons left">edit</i>
+            </a>
+        </div>
+    @endhasRole
 
     <div class="center">
         <h5>{{ $document->getTitle() }}</h5>

@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', trans('documents.docs'))
+@section('title', trans('documents.documents'))
 
 @section('content')
 
-<div class="center pt-4"><h1 class="headline">@lang('documents.docs')</h1></div>
+<div class="center pt-4"><h1 class="headline">@lang('documents.documents')</h1></div>
 <div class="page">
     <ul class="tabs">
         <li class="tab"><a href="#tab-1" class="active">@lang('messages.published')</a></li>
@@ -27,8 +27,8 @@
                             <p>{{ time_ago($doc->updated_at) }}</p>
                         </div>
                         <div class="card-action">
-                            <a href="/master/documents/{{ $doc->id }}">@lang('messages.open')</a>
-                            <a href="/master/documents/{{ $doc->id }}/edit">@lang('messages.edit')</a>
+                            <a href="/documents/{{ $doc->id }}">@lang('messages.open')</a>
+                            <a href="/documents/{{ $doc->id }}/edit">@lang('messages.edit')</a>
                         </div>
                     </div>
                 </div>
