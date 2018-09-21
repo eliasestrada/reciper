@@ -4,10 +4,13 @@ namespace Tests\Unit\Models;
 
 use App\Models\Help;
 use App\Models\HelpCategory;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class HelpCategoryTest extends TestCase
 {
+    use DatabaseTransactions;
+
     public $help_category;
 
     public function setUp()
