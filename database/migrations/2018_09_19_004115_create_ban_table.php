@@ -17,7 +17,7 @@ class CreateBanTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('visitor_id');
             $table->unsignedMediumInteger('days');
-            $table->string('message', 255);
+            $table->string('message', config('validation.ban_message_max'));
             $table->timestamps();
         });
     }

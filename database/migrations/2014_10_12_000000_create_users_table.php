@@ -12,7 +12,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('visitor_id');
-            $table->string('name');
+            $table->string('name', config('validation.settings_name_max'));
+            $table->string('about_me', config('validation.settings_about_me'))->nullable();
             $table->string('email')->unique();
             $table->float('points')->unsigned()->default(0);
             $table->timestamp('notif_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
