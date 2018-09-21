@@ -34,15 +34,16 @@ Route::prefix('notifications')->middleware('auth')->group(function () {
 Route::get('dashboard', 'DashboardController@index');
 
 // Settings ===========
-Route::prefix('settings')->middleware('auth')->group(function () {
-    Route::get('photo/edit', 'Settings\SettingsPhotoController@edit');
-    Route::put('photo', 'Settings\SettingsPhotoController@update');
+Route::prefix('settings')->middleware('auth')->namespace('Settings')->group(function () {
+    Route::get('photo/edit', 'SettingsPhotoController@edit');
+    Route::put('photo', 'SettingsPhotoController@update');
+    Route::delete('photo', 'SettingsPhotoController@destroy');
 
-    Route::get('password/edit', 'Settings\SettingsPasswordController@edit');
-    Route::put('password', 'Settings\SettingsPasswordController@update');
+    Route::get('password/edit', 'SettingsPasswordController@edit');
+    Route::put('password', 'SettingsPasswordController@update');
 
-    Route::get('general/edit', 'Settings\SettingsGeneralController@edit');
-    Route::put('general', 'Settings\SettingsGeneralController@update');
+    Route::get('general/edit', 'SettingsGeneralController@edit');
+    Route::put('general', 'SettingsGeneralController@update');
 });
 
 // Title

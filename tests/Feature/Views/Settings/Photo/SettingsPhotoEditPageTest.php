@@ -31,4 +31,15 @@ class SettingsPhotoEditPageTest extends TestCase
     {
         $this->get('/settings/photo/edit')->assertRedirect('/login');
     }
+
+    /** @test */
+    public function user_can_delete_his_photo(): void
+    {
+        $user = create_user('', ['image' => 'some/image.jpg']);
+
+        $this->actingAs($user)
+            ->delete(action('Settings\SettingsPhotoController@destroy'));
+
+        $this->assertEquals('default.jpg', $user->image);
+    }
 }

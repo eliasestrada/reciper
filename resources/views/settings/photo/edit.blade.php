@@ -19,7 +19,8 @@
         </div>
     </div>
 
-    <form action="{{ action('Settings\SettingsPhotoController@update') }}" method="post" enctype="multipart/form-data"> @method('put') @csrf
+    <form action="{{ action('Settings\SettingsPhotoController@update') }}" method="post" enctype="multipart/form-data"> 
+        @method('put') @csrf
         <div class="file-field input-field">
             <div class="btn">
                 <span>@lang('form.select_file')</span>
@@ -32,17 +33,17 @@
         </div>
 
         <div class="center">
-            <button type="submit" class="btn m-1 min-w">@lang('form.save_changes')</button>
+            <button type="submit" class="btn m-1 min-w">@lang('form.save')</button>
         </div>
     </form>
 
     {{--  Delete image  --}}
-    <form action="{{ action('Settings\SettingsPhotoController@update') }}" method="post" enctype="multipart/form-data" class="center">
-        <div> @method('put') @csrf
-            <input type="hidden" name="delete" value="1">
-            <button type="submit" class="btn red m-1 min-w">@lang('form.delete_photo')</button>
-        </div>
-    </form>
+    @if (user()->image != 'default.jpg')
+        <form action="{{ action('Settings\SettingsPhotoController@destroy') }}" method="post" enctype="multipart/form-data" class="center">
+            @method('delete') @csrf
+            <div><button type="submit" class="btn red m-1 min-w">@lang('form.delete_photo')</button></div>
+        </form>
+    @endif
 </div>
 
 @endsection

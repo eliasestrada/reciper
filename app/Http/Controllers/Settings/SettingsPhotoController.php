@@ -22,19 +22,23 @@ class SettingsPhotoController extends Controller
      */
     public function update(SettingsPhotoRequest $request)
     {
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
+        $image = $request->file('image');
 
-            $extention = $image->getClientOriginalExtension();
-            $file_name = set_image_name($extention, 'user' . user()->id);
+        $extention = $image->getClientOriginalExtension();
+        $file_name = set_image_name($extention, 'user' . user()->id);
 
-            $this->deleteOldFileFromStorage(user()->image, 'users');
-            $this->saveFileToStorage($image, $file_name);
-            $this->saveFileNameToDB($file_name);
-        } elseif ($request->delete == 1) {
-            $this->deleteOldFileFromStorage(user()->image, 'users');
-            $this->saveFileNameToDB();
-        }
-        return redirect('/settings/photo/edit')->withSuccess(trans('settings.saved'));
+        $this->deleteOldFileFromStorage(user()->image, 'users');
+        $this->saveFileToStorage($image, $file_name);
+        $this->saveFileNameToDB($file_name);
+
+        return back()->withSuccess(trans('settings.saved'));
+    }
+
+    public function destroy()
+    {
+        $this->deleteOldFileFromStorage(user()->image, 'users');
+        user()->update(['image' => 'default.jpg']);
+
+        return back()->withSuccess(trans('settings.photo_deleted'));
     }
 }
