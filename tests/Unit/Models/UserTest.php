@@ -15,7 +15,7 @@ class UserTest extends TestCase
     /** @test */
     public function model_has_attributes(): void
     {
-        $this->assertClassHasAttribute('fillable', User::class);
+        $this->assertClassHasAttribute('guarded', User::class);
         $this->assertClassHasAttribute('hidden', User::class);
         $this->assertClassHasAttribute('dates', User::class);
     }

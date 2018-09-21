@@ -15,7 +15,6 @@ class UsersShowPageTest extends TestCase
     public function view_has_data(): void
     {
         $user = create_user();
-        $user->wasRecentlyCreated = false;
 
         $response = $this->actingAs($user)->get("/users/$user->id");
 
