@@ -5,7 +5,7 @@
     <title>@yield('title') - @lang('website.name')</title>
 </head>
 <body>
-    <div style="background:#eee;">
+    <div class="paper page">
         @yield('content')
     </div>
 </body>
