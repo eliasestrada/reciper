@@ -1,0 +1,9 @@
+@component('comps.error')
+    @slot('error')
+        @lang('errors.419')
+    @endslot
+    @slot('title')
+        @lang('errors.419_title')
+    @endslot
+    @lang('errors.419_description')
+@endcomponent

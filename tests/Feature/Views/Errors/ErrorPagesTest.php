@@ -12,8 +12,7 @@ class Errors404PageTest extends TestCase
     /** @test */
     public function page_404_not_found_shows_up(): void
     {
-        $this->get('/random-address')
-            ->assertSee(trans('errors.404_title'));
+        $this->get('/random-address')->assertSee(trans('errors.404_title'));
     }
 
     /** @test */
