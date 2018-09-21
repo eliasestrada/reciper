@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col s12 m6">
             <h1 class="headline">@lang('settings.settings_photo')</h1>
-            <p>@lang('settings.choose_photo', ['btn1' => trans('form.select_file'), 'btn2' => trans('form.save_changes')])</p>
+            <p>@lang('settings.choose_photo', ['btn1' => trans('form.select_file'), 'btn2' => trans('form.save')])</p>
         </div>
         <div class="col s12 m6">
             <div class="profile-header">

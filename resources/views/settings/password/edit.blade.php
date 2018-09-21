@@ -28,7 +28,7 @@
             </div>
 
             <div class="input-field mt-4 center">
-                <button class="btn" type="submit">@lang('form.save_changes')</button>
+                <button class="btn" type="submit">@lang('form.save')</button>
             </div>
         </form>
     </div>
