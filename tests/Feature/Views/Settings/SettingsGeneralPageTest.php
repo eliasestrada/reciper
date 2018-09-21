@@ -35,7 +35,7 @@ class SettingsGeneralPageTest extends TestCase
     /** @test */
     public function user_can_update_his_name(): void
     {
-        $user = create(User::class);
+        $user = create_user();
 
         $this->actingAs($user)
             ->put(action('SettingsController@updateUserData'), ['name' => 'new name']);
@@ -43,9 +43,18 @@ class SettingsGeneralPageTest extends TestCase
     }
 
     /** @test */
+    public function user_cant_update_his_name_to_empty(): void
+    {
+        $user = create_user('', ['name' => 'Mike']);
+
+        $this->actingAs($user)->put(action('SettingsController@updateUserData'), ['name' => '']);
+        $this->assertEquals($user->name, 'Mike');
+    }
+
+    /** @test */
     public function user_can_change_his_pwd_with_correct_pwd(): void
     {
-        $user = create(User::class, ['password' => bcrypt('test')]);
+        $user = create_user('', ['password' => bcrypt('test')]);
 
         $this->actingAs($user)
             ->put(action('SettingsController@updateUserPassword'), [
@@ -70,6 +79,21 @@ class SettingsGeneralPageTest extends TestCase
             ]);
 
         $this->assertFalse(\Hash::check('new_password', $user->password));
+    }
+
+    /** @test */
+    public function user_cant_change_his_pwd_to_empty_field(): void
+    {
+        $user = create(User::class, ['password' => bcrypt('testing')]);
+
+        $this->actingAs($user)
+            ->put(action('SettingsController@updateUserPassword'), [
+                'old_password' => 'testing',
+                'password' => '',
+                'password_confirmation' => '',
+            ]);
+
+        $this->assertTrue(\Hash::check('testing', $user->password));
     }
 
     /** @test */
