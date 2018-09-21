@@ -14,6 +14,7 @@ return [
 
     // User sidebar
     'my_account' => 'Моя страница',
+    'password' => 'Пароль',
     'new_recipe' => 'Новый рецепт',
     'my_recipes' => 'Мои рецепты',
     'users' => 'Пользователи',
