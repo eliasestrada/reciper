@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature\Views\Settings;
+namespace Tests\Feature\Views\Settings\General;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class SettingsGeneralPageTest extends TestCase
+class SettingsPasswordEditPageTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -14,41 +14,22 @@ class SettingsGeneralPageTest extends TestCase
     public function view_has_a_correct_path(): void
     {
         $this->actingAs(make(User::class))
-            ->get('/settings/general')
-            ->assertViewIs('settings.general');
+            ->get('/settings/password/edit')
+            ->assertViewIs('settings.password.edit');
     }
 
     /** @test */
     public function auth_user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
-            ->get('/settings/general')
+            ->get('/settings/password/edit')
             ->assertOk();
     }
 
     /** @test */
     public function guest_cant_see_the_page(): void
     {
-        $this->get('/settings/general')->assertRedirect('/login');
-    }
-
-    /** @test */
-    public function user_can_update_his_name(): void
-    {
-        $user = create_user();
-
-        $this->actingAs($user)
-            ->put(action('SettingsController@updateUserData'), ['name' => 'new name']);
-        $this->assertEquals($user->name, 'new name');
-    }
-
-    /** @test */
-    public function user_cant_update_his_name_to_empty(): void
-    {
-        $user = create_user('', ['name' => 'Mike']);
-
-        $this->actingAs($user)->put(action('SettingsController@updateUserData'), ['name' => '']);
-        $this->assertEquals($user->name, 'Mike');
+        $this->get('/settings/password/edit')->assertRedirect('/login');
     }
 
     /** @test */
@@ -57,7 +38,7 @@ class SettingsGeneralPageTest extends TestCase
         $user = create_user('', ['password' => bcrypt('test')]);
 
         $this->actingAs($user)
-            ->put(action('SettingsController@updateUserPassword'), [
+            ->put(action('Settings\SettingsPasswordController@update'), [
                 'old_password' => 'test',
                 'password' => 'new_password',
                 'password_confirmation' => 'new_password',
@@ -69,10 +50,10 @@ class SettingsGeneralPageTest extends TestCase
     /** @test */
     public function user_cant_change_his_pwd_with_incorrect_pwd(): void
     {
-        $user = create(User::class, ['password' => bcrypt('test')]);
+        $user = create_user('', ['password' => bcrypt('test')]);
 
         $this->actingAs($user)
-            ->put(action('SettingsController@updateUserPassword'), [
+            ->put(action('Settings\SettingsGeneralController@update'), [
                 'old_password' => 'other_test',
                 'password' => 'new_password',
                 'password_confirmation' => 'new_password',
@@ -84,10 +65,10 @@ class SettingsGeneralPageTest extends TestCase
     /** @test */
     public function user_cant_change_his_pwd_to_empty_field(): void
     {
-        $user = create(User::class, ['password' => bcrypt('testing')]);
+        $user = create_user('', ['password' => bcrypt('testing')]);
 
         $this->actingAs($user)
-            ->put(action('SettingsController@updateUserPassword'), [
+            ->put(action('Settings\SettingsGeneralController@update'), [
                 'old_password' => 'testing',
                 'password' => '',
                 'password_confirmation' => '',
@@ -99,10 +80,10 @@ class SettingsGeneralPageTest extends TestCase
     /** @test */
     public function user_cant_change_his_pwd_with_incorrect_confirm_pwd(): void
     {
-        $user = create(User::class, ['password' => bcrypt('test')]);
+        $user = create_user('', ['password' => bcrypt('test')]);
 
         $this->actingAs($user)
-            ->put(action('SettingsController@updateUserPassword'), [
+            ->put(action('Settings\SettingsGeneralController@update'), [
                 'old_password' => 'test',
                 'password' => 'new_password',
                 'password_confirmation' => 'other_new_password',
@@ -110,4 +91,14 @@ class SettingsGeneralPageTest extends TestCase
 
         $this->assertFalse(\Hash::check('new_password', $user->password));
     }
+
+    /** @test */
+    // public function user_can_change_about_me_section(): void
+    // {
+    //     $user = create_user();
+    //     $about_me = 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis, eum.';
+
+    //     $this->actingAs($user)->put(action('Settings\SettingsGeneralController@updateAboutMe'), compact('about_me'));
+    //     $this->assertEquals($user->about_me, $about_me);
+    // }
 }
