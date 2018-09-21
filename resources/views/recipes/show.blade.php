@@ -8,8 +8,8 @@
     <div class="recipe-content center position-relative">
 
         {{-- Show menu button --}}
-        <a href="#" title="@lang('recipes.show_menu')" id="popup-window-trigger">
-            <i class="material-icons small main-text right mr-5">more_vert</i>
+        <a href="#" title="@lang('recipes.show_menu')">
+            <i class="material-icons small main-text right mr-5" id="popup-window-trigger">more_vert</i>
         </a>
 
         <div class="popup-window z-depth-2 p-3 position-absolute paper" id="popup-window">

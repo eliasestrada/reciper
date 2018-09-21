@@ -34,7 +34,7 @@ class RecipesShowPageTest extends DuskTestCase
             $recipe = create(Recipe::class, ['user_id' => $user->id]);
 
             $borwser->loginAs($user)
-                ->visit("/recipes/$recipe->id")
+                ->visit("/recipes/$recipe->id/edit")
                 ->waitFor('#_delete-recipe')
                 ->click('#_delete-recipe')
                 ->assertDialogOpened(trans('recipes.are_you_sure_to_delete'))

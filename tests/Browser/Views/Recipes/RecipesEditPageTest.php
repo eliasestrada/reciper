@@ -20,9 +20,9 @@ class RecipesEditPageTest extends DuskTestCase
                 'user_id' => $user->id,
             ]);
 
-            $browser
-                ->loginAs($user)
+            $browser->loginAs($user)
                 ->visit("/recipes/$recipe->id")
+                ->click('#popup-window-trigger')
                 ->click('#_edit')
                 ->assertPathIs("/recipes/$recipe->id/edit")
                 ->waitFor('#publish-btn')
