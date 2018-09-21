@@ -9,25 +9,21 @@
         <h1 class="headline">@lang('users.all_authors')</h1>
     </div>
 
-    <div class="item-list">
-        <ul class="row unstyled-list">
-            @foreach ($users as $user)
-                <a href="/users/{{ $user->id }}" title="{{ $user->name }}" class="grey-text">
-                    <li class="col s12 m6 l4">
-                        <img src="{{ asset('storage/users/'.$user->image) }}" alt="{{ $user->name }}" style="width:67px; height:71px;" />
-
-                        <div class="item-content">
-                            <h6 class="project-name">{{ $user->name }}</h6>
-                            <p class="project-title">
-                                {!! get_online_icon(time_ago($user->online_at)) !!}
-                                @lang('date.online') 
-                                {{ time_ago($user->online_at, 'online') }}
-                            </p>
-                        </div>
+    <div class="row">
+        @foreach ($users as $user)
+            <div class="col s12 m6 l4">
+                <ul class="collection my-2">
+                    <li class="collection-item avatar">
+                        <a href="/users/{{ $user->id }}">
+                            <img src="{{ asset('storage/users/'.$user->image) }}" alt="{{ $user->name }}" class="circle">
+                        </a>
+                        <span class="title">{!! get_online_icon(time_ago($user->online_at)) !!} {{ $user->name }}</span>
+                        <p>@lang('date.online') {{ time_ago($user->online_at, 'online') }}</p>
+                        <p>@lang('users.exp'): {{ user()->points }}</p>
                     </li>
-                </a>
-            @endforeach
-        </ul>
+                </ul>
+            </div>
+        @endforeach
     </div>
     {{ $users->links() }}
 </div>
