@@ -35,14 +35,14 @@ Route::get('dashboard', 'DashboardController@index');
 
 // Settings ===========
 Route::prefix('settings')->middleware('auth')->group(function () {
-    Route::view('general', 'settings.general');
-    Route::view('photo', 'settings.photo');
-    Route::put('photo', 'SettingsController@updatePhoto');
+    Route::get('photo/edit', 'Settings\SettingsPhotoController@edit');
+    Route::put('photo', 'Settings\SettingsPhotoController@update');
 
-    Route::prefix('update')->group(function () {
-        Route::put('user-data', 'SettingsController@updateUserData');
-        Route::put('user-password', 'SettingsController@updateUserPassword');
-    });
+    Route::get('password/edit', 'Settings\SettingsPasswordController@edit');
+    Route::put('password', 'Settings\SettingsPasswordController@update');
+
+    Route::get('general/edit', 'Settings\SettingsGeneralController@edit');
+    Route::put('general', 'Settings\SettingsGeneralController@update');
 });
 
 // Title
