@@ -3533,7 +3533,7 @@ button.btn-floating {
 }
 
 .dropdown-content {
-  background-color: #fff;
+  background-color: #f3f3f3;
   margin: 0;
   display: none;
   min-width: 200px;
@@ -3542,6 +3542,8 @@ button.btn-floating {
   position: absolute;
   left: 0;
   top: 0;
+  border-radius: 4px;
+  border: solid 1px #dbd9ea;
   z-index: 9999;
   -webkit-transform-origin: 0 0;
   transform-origin: 0 0;
@@ -3553,7 +3555,7 @@ button.btn-floating {
 
 .dropdown-content li {
   clear: both;
-  color: rgba(0, 0, 0, 0.87);
+  color: #292543;
   cursor: pointer;
   min-height: 40px;
   line-height: 1.5rem;
@@ -3579,10 +3581,10 @@ button.btn-floating {
 .dropdown-content li > a,
 .dropdown-content li > span {
   font-size: 16px;
-  color: #333;
+  color: #292543;
   display: block;
   line-height: 20px;
-  padding: 10px 15px;
+  padding: 12px;
   border: none;
   background: none;
 }
