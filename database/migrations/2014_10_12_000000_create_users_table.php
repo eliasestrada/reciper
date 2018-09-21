@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
             $table->string('name', config('validation.settings_name_max'));
             $table->string('about_me', config('validation.settings_about_me'))->nullable();
             $table->string('email')->unique();
-            $table->float('points')->unsigned()->default(0);
+            $table->float('exp')->unsigned()->default(0);
             $table->timestamp('notif_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('contact_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('online_at')->default(\DB::raw('CURRENT_TIMESTAMP'));

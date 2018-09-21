@@ -35,7 +35,7 @@
         {{-- Rating Bubble --}}
         <div class="mb-4 bubbles-block">
             <div class="bubble">
-                <span class="number">{!! readable_number($user->points) !!}</span>
+                <span class="number">{!! readable_number($user->exp) !!}</span>
                 @include('includes.icons.trophy')
             </div>
             <span>@lang('users.exp')</span>

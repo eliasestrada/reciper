@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 cache()->flush();
 
 $factory->define(Recipe::class, function (Faker $faker) {
-    $author = factory(User::class)->create(['points' => 1]);
+    $author = factory(User::class)->create(['exp' => 1]);
     $admin = factory(User::class)->create();
     $admin->addRole('admin');
 

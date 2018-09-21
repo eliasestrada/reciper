@@ -16,7 +16,7 @@ $factory->define(User::class, function (Faker $faker) {
         'password' => bcrypt('111111'),
         'remember_token' => str_random(10),
         'image' => 'default.jpg',
-        'points' => 5,
+        'exp' => 5,
         "notif_check" => date('Y-m-d H:i:s'),
         "contact_check" => date('Y-m-d H:i:s'),
         "online_at" => date('Y-m-d H:i:s'),

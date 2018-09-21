@@ -15,9 +15,9 @@ class TopRecipersComposer
     public function compose(View $view): void
     {
         $top_recipers = cache()->remember('top_recipers', config('cache.timing.top_recipers'), function () {
-            return User::orderBy('points', 'desc')
+            return User::orderBy('exp', 'desc')
                 ->limit(10)
-                ->get(['id', 'name', 'points']);
+                ->get(['id', 'name', 'exp']);
         });
 
         $view->with(compact('top_recipers'));

@@ -50,7 +50,7 @@
                     <li>
                         <a href="/users/{{ $reciper->id }}">
                             <i class="material-icons tiny" style="font-size:0.8em;color:orange">star</i> 
-                            {{ $reciper->name }} ({{ $reciper->points }})
+                            {{ $reciper->name }} ({{ $reciper->exp }})
                         </a>
                     </li>
                 @endforeach
