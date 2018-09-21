@@ -15,8 +15,8 @@
 @auth {{-- User Dropdown menu --}}
     <ul id="dropdown2" class="dropdown-content bottom-borders">
         <li class="{{ active_if_route_is('users/' . user()->id) }}"> {{-- home --}}
-            <a href="/users/{{ user()->id }}" title="@lang('includes.user_home')">
-                <i class="material-icons left">home</i>@lang('includes.user_home')
+            <a href="/users/{{ user()->id }}" title="@lang('includes.my_account')">
+                <i class="material-icons left">portrait</i>@lang('includes.my_account')
             </a>
         </li>
 
@@ -159,7 +159,6 @@
                         <i class="material-icons right">arrow_drop_down</i>
                     </a>
                 </li>
-
 
                 @guest
                     <li>

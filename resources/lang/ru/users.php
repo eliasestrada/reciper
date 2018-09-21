@@ -23,7 +23,7 @@ return [
     'likes' => 'Лайки',
     'thousand' => 'тыс.',
     'million' => 'мил.',
-    'rating' => 'Рейтинг',
+    'rating' => 'Опыт',
     'views' => 'Просмотров',
 
 ];
