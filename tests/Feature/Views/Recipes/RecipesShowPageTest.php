@@ -78,15 +78,12 @@ class RecipesShowPageTest extends TestCase
     /** @test */
     public function admin_can_cancel_recipe_with_message(): void
     {
-        $this->actingAs($this->admin)
-            ->get("/recipes/{$this->unapproved_recipe->id}");
-
         // Make request to cancel a recipe with message
         $this->actingAs($this->admin)
             ->post(action('Admin\ApprovesController@cancel',
                 ['recipe' => $this->unapproved_recipe->id]),
-                ['message' => 'Lorem ipsum dolor sit amet consectetur'])
-            ->assertRedirect('/recipes');
+                ['message' => 'Lorem ipsum dolor sit amet consectetur']
+            );
 
         // Recipe should be still unapproved
         $this->assertDatabaseHas('recipes', [

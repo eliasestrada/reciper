@@ -33,18 +33,13 @@ class SettingsGeneralPageTest extends TestCase
     }
 
     /** @test */
-    public function user_can_update_his_general_data(): void
+    public function user_can_update_his_name(): void
     {
-        $user = create(User::class, ['name' => 'Andr']);
-
-        $this->actingAs($user)->get('/settings/general');
+        $user = create(User::class);
 
         $this->actingAs($user)
-            ->put(action('SettingsController@updateUserData'), [
-                'name' => 'Andrej',
-            ])->assertRedirect('/settings/general');
-
-        $this->assertEquals($user->name, 'Andrej');
+            ->put(action('SettingsController@updateUserData'), ['name' => 'new name']);
+        $this->assertEquals($user->name, 'new name');
     }
 
     /** @test */
@@ -52,14 +47,12 @@ class SettingsGeneralPageTest extends TestCase
     {
         $user = create(User::class, ['password' => bcrypt('test')]);
 
-        $this->actingAs($user)->get('/settings/general');
-
         $this->actingAs($user)
             ->put(action('SettingsController@updateUserPassword'), [
                 'old_password' => 'test',
                 'password' => 'new_password',
                 'password_confirmation' => 'new_password',
-            ])->assertRedirect('/settings/general');
+            ]);
 
         $this->assertTrue(\Hash::check('new_password', $user->password));
     }
@@ -69,14 +62,12 @@ class SettingsGeneralPageTest extends TestCase
     {
         $user = create(User::class, ['password' => bcrypt('test')]);
 
-        $this->actingAs($user)->get('/settings/general');
-
         $this->actingAs($user)
             ->put(action('SettingsController@updateUserPassword'), [
                 'old_password' => 'other_test',
                 'password' => 'new_password',
                 'password_confirmation' => 'new_password',
-            ])->assertRedirect('/settings/general');
+            ]);
 
         $this->assertFalse(\Hash::check('new_password', $user->password));
     }
@@ -86,15 +77,12 @@ class SettingsGeneralPageTest extends TestCase
     {
         $user = create(User::class, ['password' => bcrypt('test')]);
 
-        $this->actingAs($user)->get('/settings/general');
-
         $this->actingAs($user)
             ->put(action('SettingsController@updateUserPassword'), [
                 'old_password' => 'test',
                 'password' => 'new_password',
                 'password_confirmation' => 'other_new_password',
-            ])
-            ->assertRedirect('/settings/general');
+            ]);
 
         $this->assertFalse(\Hash::check('new_password', $user->password));
     }

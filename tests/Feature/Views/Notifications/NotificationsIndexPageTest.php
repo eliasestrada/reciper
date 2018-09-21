@@ -59,14 +59,9 @@ class NotificationsIndexPageTest extends TestCase
 
         // Let's delete the notif
         $this->actingAs($user)
-            ->delete(action('NotificationController@destroy', [
-                'notification' => $notif->id,
-            ]))
-            ->assertRedirect('/notifications');
+            ->delete(action('NotificationController@destroy', ['notification' => $notif->id]));
 
         // Notif should not be in DB
-        $this->assertDatabaseMissing('notifications', [
-            'message' => $text_message,
-        ]);
+        $this->assertDatabaseMissing('notifications', ['message' => $text_message]);
     }
 }
