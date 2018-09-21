@@ -16,6 +16,7 @@ class UsersSeeder extends Seeder
             'visitor_id' => factory(Visitor::class)->create(['ip' => '127.0.0.1'])->id,
             'email' => '11@11.com',
             'name' => 'Серый',
+            'about_me' => 'Self-discipline is something that we all missing, once we get that, life becomes amazing',
             'password' => bcrypt('111111'),
             'notif_check' => date("Y-m-d H:i:s"),
             'contact_check' => date("Y-m-d H:i:s"),

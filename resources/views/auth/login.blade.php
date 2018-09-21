@@ -25,7 +25,7 @@
                     <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} />
                     <span>
                         @lang('form.remember_me') 
-                        @include('includes.tip', ['tip' => trans('form.remember_info')])
+                        @include('includes.tip', ['tip' => trans('tips.remember_info')])
                     </span>
                 </label>
             </div>

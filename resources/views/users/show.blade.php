@@ -52,6 +52,16 @@
     </div>
 </div>
 
+<div class="divider mb-3"></div>
+
+@if ($user->about_me)
+    <div class="center pb-3">
+        <h6 class="header">@lang('settings.about_me')</h6>
+        <h6>{{ $user->about_me }}</h6>
+    </div>
+    <div class="divider"></div>
+@endif
+
 {{--  All my recipes  --}}
 <div class="page">
     @listOfRecipes(['recipes' => $recipes])

@@ -11,6 +11,7 @@ $factory->define(User::class, function (Faker $faker) {
         'id' => User::orderBy('id', 'desc')->latest()->value('id') + 1,
         'visitor_id' => factory(Visitor::class)->create()->id,
         'name' => $faker->firstName,
+        'about_me' => $faker->sentence(1),
         'email' => $faker->freeEmail,
         'password' => bcrypt('111111'),
         'remember_token' => str_random(10),
