@@ -64,21 +64,9 @@
             </a>
         </li>
 
-        <li class="{{ active_if_route_is('settings/general/edit') }}"> {{-- settings/general --}}
-            <a href="/settings/general/edit" title="@lang('includes.general')" >
-                <i class="material-icons left">build</i>@lang('includes.general')
-            </a>
-        </li>
-
-        <li class="{{ active_if_route_is('settings/photo/edit') }}"> {{-- settings/photo --}}
-            <a href="/settings/photo/edit" title="@lang('includes.photo')">
-                <i class="material-icons left">build</i>@lang('includes.photo')
-            </a>
-        </li>
-
-        <li class="{{ active_if_route_is('settings/password/edit') }}"> {{-- settings/password --}}
-            <a href="/settings/password/edit" title="@lang('includes.password')">
-                <i class="material-icons left">build</i>@lang('includes.password')
+        <li class="{{ active_if_route_is('settings') }}"> {{-- settings --}}
+            <a href="/settings" title="@lang('settings.settings')">
+                <i class="material-icons left">build</i>@lang('settings.settings')
             </a>
         </li>
         @hasRole('master')

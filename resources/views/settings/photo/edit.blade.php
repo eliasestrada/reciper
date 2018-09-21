@@ -19,31 +19,33 @@
         </div>
     </div>
 
-    <form action="{{ action('Settings\SettingsPhotoController@update') }}" method="post" enctype="multipart/form-data"> 
-        @method('put') @csrf
-        <div class="file-field input-field">
-            <div class="btn">
-                <span>@lang('form.select_file')</span>
-                <input type="file" name="image" id="src-image">
+    <div class="container">
+        <form action="{{ action('Settings\SettingsPhotoController@update') }}" method="post" enctype="multipart/form-data"> 
+            @method('put') @csrf
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>@lang('form.select_file')</span>
+                    <input type="file" name="image" id="src-image">
+                </div>
+                <div class="file-path-wrapper">
+                    <input type="text" class="file-path validate" name="delete">
+                </div>
+                <label for="src-image" class="image-label mb-5">
             </div>
-            <div class="file-path-wrapper">
-                <input type="text" class="file-path validate" name="delete">
+
+            <div class="center">
+                <button type="submit" class="btn m-1 min-w">@lang('form.save')</button>
             </div>
-            <label for="src-image" class="image-label mb-5">
-        </div>
-
-        <div class="center">
-            <button type="submit" class="btn m-1 min-w">@lang('form.save')</button>
-        </div>
-    </form>
-
-    {{--  Delete image  --}}
-    @if (user()->image != 'default.jpg')
-        <form action="{{ action('Settings\SettingsPhotoController@destroy') }}" method="post" enctype="multipart/form-data" class="center">
-            @method('delete') @csrf
-            <div><button type="submit" class="btn red m-1 min-w">@lang('form.delete_photo')</button></div>
         </form>
-    @endif
+
+        {{--  Delete image  --}}
+        @if (user()->image != 'default.jpg')
+            <form action="{{ action('Settings\SettingsPhotoController@destroy') }}" method="post" enctype="multipart/form-data" class="center">
+                @method('delete') @csrf
+                <div><button type="submit" class="btn red m-1 min-w">@lang('form.delete_photo')</button></div>
+            </form>
+        @endif
+    </div>
 </div>
 
 @endsection

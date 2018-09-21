@@ -35,6 +35,8 @@ Route::get('dashboard', 'DashboardController@index');
 
 // Settings ===========
 Route::prefix('settings')->middleware('auth')->namespace('Settings')->group(function () {
+    Route::view('/', 'settings.index');
+
     Route::get('photo/edit', 'SettingsPhotoController@edit');
     Route::put('photo', 'SettingsPhotoController@update');
     Route::delete('photo', 'SettingsPhotoController@destroy');
