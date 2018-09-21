@@ -816,18 +816,18 @@ th {
 
 .collection {
 	margin: 0.5rem 0 1rem 0;
-	border: 1px solid #e0e0e0;
+	border: 1px solid $mainLight;
 	border-radius: 2px;
 	overflow: hidden;
 	position: relative;
 }
 
 .collection .collection-item {
-	background-color: #fff;
+	background-color: $paper;
 	line-height: 1.5rem;
 	padding: 10px 20px;
 	margin: 0;
-	border-bottom: 1px solid #e0e0e0;
+	border-bottom: 1px solid $mainLight;
 }
 
 .collection .collection-item.avatar {
@@ -874,7 +874,7 @@ th {
 }
 
 .collection .collection-item.active {
-	background-color: #26a69a;
+	background-color: $main;
 	color: #eafaf9;
 }
 
@@ -885,8 +885,9 @@ th {
 .collection a.collection-item {
 	display: block;
 	-webkit-transition: .25s;
-	transition: .25s;
-	color: #26a69a;
+    transition: .25s;
+    font-size: 1.1em;
+	color: $mainDark;
 }
 
 .collection a.collection-item:not(.active):hover {
@@ -894,8 +895,8 @@ th {
 }
 
 .collection.with-header .collection-header {
-	background-color: #fff;
-	border-bottom: 1px solid #e0e0e0;
+	background-color: $paper;
+	border-bottom: 1px solid $mainLight;
 	padding: 10px 20px;
 }
 
