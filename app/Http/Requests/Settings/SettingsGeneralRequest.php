@@ -15,8 +15,13 @@ class SettingsGeneralRequest extends FormRequest
     // Get the validation rules that apply to the request.
     public function rules()
     {
+        $min_name = config('validation.settings_name_min');
+        $max_name = config('validation.settings_name_max');
+        $max_about_me = config('validation.settings_about_me');
+
         return [
-            'name' => 'required|min:3|max:190',
+            'name' => "required|min:$min_name|max:$max_name",
+            'about_me' => "max:$max_about_me",
         ];
     }
 

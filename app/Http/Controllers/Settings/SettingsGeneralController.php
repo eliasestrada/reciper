@@ -19,7 +19,11 @@ class SettingsGeneralController extends Controller
      */
     public function update(SettingsGeneralRequest $request)
     {
-        user()->update(['name' => $request->name]);
+        user()->update([
+            'name' => $request->name,
+            'about_me' => $request->about_me,
+        ]);
+
         return back()->withSuccess(trans('settings.saved'));
     }
 }

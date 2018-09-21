@@ -43,21 +43,23 @@ class SettingsGeneralEditPageTest extends TestCase
     }
 
     /** @test */
-    public function user_cant_update_his_name_to_empty(): void
+    public function user_cant_update_his_name_to_short_one(): void
     {
-        $user = create_user('', ['name' => 'Mike']);
+        $name = str_random(10);
+        $user = create_user('', compact('name'));
 
-        $this->actingAs($user)->put(action('Settings\SettingsGeneralController@update'), ['name' => '']);
-        $this->assertEquals($user->name, 'Mike');
+        $this->actingAs($user)->put(action('Settings\SettingsGeneralController@update'), ['name' => 'ja']);
+        $this->assertEquals($user->name, $name);
     }
 
     /** @test */
-    // public function user_can_change_about_me_section(): void
-    // {
-    //     $user = create_user();
-    //     $about_me = 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis, eum.';
+    public function user_can_change_about_me_information(): void
+    {
+        $user = create_user();
+        $name = str_random(10);
+        $about_me = str_random(30);
 
-    //     $this->actingAs($user)->put(action('Settings\SettingsGeneralController@updateAboutMe'), compact('about_me'));
-    //     $this->assertEquals($user->about_me, $about_me);
-    // }
+        $this->actingAs($user)->put(action('Settings\SettingsGeneralController@update'), compact('name', 'about_me'));
+        $this->assertEquals($user->about_me, $about_me);
+    }
 }
