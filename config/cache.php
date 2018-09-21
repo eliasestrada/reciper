@@ -30,6 +30,6 @@ return [
     'timing' => [
         'popular_recipes' => 10,
         'random_recipes' => 2,
-        'top_recipers' => 10,
+        'top_recipers' => 60,
     ],
 ];
