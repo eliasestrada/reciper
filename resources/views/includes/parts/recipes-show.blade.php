@@ -24,27 +24,28 @@
     {{ $recipe->getIntro() }}
 </blockquote>
 
-<hr />
+<div class="divider my-4"></div>
 
 {{--  Items --}}
 <blockquote class="items">
     <h5 class="decorated">@lang('recipes.ingredients')</h5>
-    @foreach ($recipe->ingredientsWithListItems() as $item)
-        <ol>{!! $item !!}</ol>
-    @endforeach
+    <ol>
+        @foreach ($recipe->ingredientsWithListItems() as $item)
+            {!! $item !!}
+        @endforeach
+    </ol>
 </blockquote>
-
-<hr />
 
 {{--  Text  --}}
-<blockquote style="border:none;">
-    <h5 class="decorated py-3">@lang('recipes.text_of_recipe')</h5>
-    @foreach ($recipe->textWithListItems() as $item)
-        <ol class="instruction unstyled-list">{!! $item !!}</ol>
-    @endforeach
+<blockquote class="pt-3" style="border:none;">
+    <ol class="instruction unstyled-list">
+        @foreach ($recipe->textWithListItems() as $item)
+            {!! $item !!}
+        @endforeach
+    </ol>
 </blockquote>
 
-<hr />
+<div class="divider"></div>
 <h5 class="decorated pt-3">@lang('recipes.bon_appetit')!</h5>
 
 {{--  Date, views, author --}}

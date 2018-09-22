@@ -7269,6 +7269,11 @@ Nav List
   list-style-image: url(../storage/other/tick.png);
 }
 
+.items li {
+  font-size: 1.1em;
+  border-bottom: 1px solid #c3c3c3;
+}
+
 .instruction {
   padding: 0 0 1em 2.6em;
   font-size: 1.2em;
@@ -7282,10 +7287,11 @@ Nav List
   left: .4em;
   padding: 0 .7em;
   text-align: left;
+  border-bottom: 1px solid #c3c3c3;
 }
 
 .instruction li:before {
-  width: 70px;
+  width: 50px;
   height: 50px;
   text-align: center;
   color: #fff;
@@ -7293,9 +7299,8 @@ Nav List
   font-size: 2em;
   position: absolute;
   left: -2.2em;
-  background: -webkit-gradient(linear, left top, right top, from(#484074), to(transparent));
-  background: linear-gradient(to right, #484074, transparent);
-  border-radius: 2px;
+  background: #484074;
+  border-radius: 5px;
 }
 
 .side-bar {

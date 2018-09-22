@@ -1,5 +1,7 @@
 <?php
 
+
+
 use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Database\Seeder;
