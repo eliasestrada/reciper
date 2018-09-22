@@ -48,12 +48,6 @@
     {!! script_timestamp('/js/app.js') !!}
 
     @yield('script')
-    @include('includes.js.dropdown')
-    @include('includes.js.sidenav')
-    @include('includes.js.tooltip')
-    @include('includes.js.collapsible')
     @include('includes.messages')
-    @include('includes.js.modal')
-    @include('includes.js.counter')
 </body>
 </html>

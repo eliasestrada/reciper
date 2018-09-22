@@ -10525,3 +10525,23 @@ ia = function () {
 	
 	Range.init($('input[type=range]'));
 })(cash, M.anime);
+
+document.addEventListener('DOMContentLoaded', function() {
+    let dropdown = document.querySelectorAll('.dropdown-trigger');
+    M.Dropdown.init(dropdown);
+
+    let tooltip = document.querySelectorAll('.tooltipped');
+    M.Tooltip.init(tooltip);
+
+    let sidenav = document.querySelectorAll('.sidenav');
+    M.Sidenav.init(sidenav);
+
+    let collapsible = document.querySelectorAll('.collapsible');
+    M.Collapsible.init(collapsible);
+
+    let characterCounter = document.querySelectorAll('.counter')
+    M.CharacterCounter.init(characterCounter)
+
+    let modal = document.querySelectorAll('.modal');
+    M.Modal.init(modal);
+});

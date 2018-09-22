@@ -10542,6 +10542,26 @@ $jscomp.polyfill = function (e, r, p, m) {
 	Range.init($('input[type=range]'));
 })(cash, M.anime);
 
+document.addEventListener('DOMContentLoaded', function () {
+	var dropdown = document.querySelectorAll('.dropdown-trigger');
+	M.Dropdown.init(dropdown);
+
+	var tooltip = document.querySelectorAll('.tooltipped');
+	M.Tooltip.init(tooltip);
+
+	var sidenav = document.querySelectorAll('.sidenav');
+	M.Sidenav.init(sidenav);
+
+	var collapsible = document.querySelectorAll('.collapsible');
+	M.Collapsible.init(collapsible);
+
+	var characterCounter = document.querySelectorAll('.counter');
+	M.CharacterCounter.init(characterCounter);
+
+	var modal = document.querySelectorAll('.modal');
+	M.Modal.init(modal);
+});
+
 /**
  * Show certain element by adding active class and
  * removing after another click event

@@ -26,10 +26,6 @@
 
     {!! script_timestamp('/js/app.js') !!}
 
-    @include('includes.js.dropdown')
-    @include('includes.js.sidenav')
-    @include('includes.js.tooltip')
-    @include('includes.js.collapsible')
     @include('includes.messages')
 </body>
 </html>
