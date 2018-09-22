@@ -20,18 +20,18 @@ trait RecipesControllerHelpers
 
             // Big image
             Image::make($image)
-                ->resize(600, 400)
+                ->fit(600, 400)
                 ->insert(storage_path('app/public/other/watermark.png'))
                 ->save(storage_path("app/public/images/$image_name"));
 
             // Small image
             Image::make($image)
-                ->resize(240, 160)
+                ->fit(240, 160)
                 ->save(storage_path("app/public/images/small/$image_name"));
 
             // Tiny image
             Image::make($image)
-                ->resize(50, 30)
+                ->fit(50, 30)
                 ->save(storage_path("app/public/images/tiny/$image_name"));
 
             return $image_name;

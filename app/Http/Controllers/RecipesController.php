@@ -120,7 +120,7 @@ class RecipesController extends Controller
         $this->checkForScriptTags($request);
 
         // Handle image uploading
-        $image_name = $this->saveImageIfExists($request->file('image'), $recipe->image);
+        $image_name = $this->saveImageIfExists($request->file('image'));
 
         if ($request->file('image')) {
             $this->deleteOldImage($recipe->image);
