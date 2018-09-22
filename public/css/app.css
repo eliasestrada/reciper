@@ -1056,7 +1056,8 @@ th {
 .collection .collection-item.avatar :not(.circle-clipper) > .circle {
   position: absolute;
   width: 42px;
-  height: 42px;
+  max-height: 66px;
+  border-radius: 5px;
   overflow: hidden;
   left: 15px;
   display: inline-block;
@@ -7595,11 +7596,6 @@ Nav List
 
 .image-wrapper img {
   max-width: 100%;
-}
-
-.profile-header h1 {
-  font-family: "Comfortaa", sans-serif;
-  font-size: 2em;
 }
 
 .list-of-recipes {

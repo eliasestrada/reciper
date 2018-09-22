@@ -5,15 +5,18 @@
 @section('content')
 
 <div class="page profile-header">
-    <div>
-        <h1 class="my-4">{{ $user->name }}</h1>
-        <p>@lang('users.joined'): {{ time_ago($user->created_at) }}</p>
-        @unless (user() && $user->id === user()->id)
-            <p>
+    <div class="pb-3">
+        <h1 class="header m-0">{{ $user->name }}</h1>
+
+        <span class="d-block py-2 grey-dark-text">
+            @lang('users.joined'): {{ time_ago($user->created_at) }}
+        </span>
+        @unless ($user->id === optional(user())->id)
+            <span class="d-block py-2">
                 {!! get_online_icon(time_ago($user->online_at)) !!}
                 @lang('date.online') 
                 {{ time_ago($user->online_at, 'online') }}
-            </p>
+            </span>
         @endunless
     </div>
 
