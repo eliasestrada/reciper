@@ -110,44 +110,49 @@
                 @forelse($entries as $key => $entry)
                     <div class="col s12">
                         <div class="card">
-                            <div class="card-content" style="min-height:230px;">
+                            <div class="card-content">
                                 <span class="card-title activator main-dark-text">
+                                    <div class="d-inline-block">{{ $entry->env }}</div>
                                     <div class="d-inline-block">
-                                        {{ $entry->env }}
+                                        <span class="red-text">({{ $entry->level }})</span>
                                     </div>
                                     <div class="d-inline-block">
-                                        {{ $entry->level }}
+                                        <span class="main-text"> - {{ time_ago($entry->datetime) }}</span>
                                     </div>
-                                    <div class="d-inline-block right">
-                                        {{ $entry->datetime->format('H:i:s') }}
-                                    </div>
-                                    <hr />
+                                    <div class="d-inline-block right">{{ $entry->datetime->format('H:i:s') }}</div>
+                                    <div class="divider my-2"></div>
                                     <div class="break-word">
-                                        {{ $entry->header }}
-                                        <i class="material-icons right">more_vert</i>
+                                        <div>{{ $entry->header }}</div>
+                                        <div class="py-3 position-relative">
+                                            <i class="material-icons position-absolute red-text small" style="right:5px;top:5px">
+                                                more_horiz
+                                            </i>
+                                        </div>
                                     </div>
                                 </span>
                             </div>
                             <div class="card-reveal">
-                                <span class="card-title grey-text text-darken-4 break-word">
-                                    {{ $entry->env }} {{ $entry->level }} {{ $entry->datetime->format('H:i:s') }}
-                                    <i class="material-icons right">close</i>
-                                </span>
-                                <p>
-                                    @if ($entry->hasStack())
-                                        {!! $entry->stack() !!}
-                                    @endif
-                                </p>
+                                <div class="py-1 position-relative">
+                                    <span>{{ $entry->env }}</span> 
+                                    <span class="red-text">({{ $entry->level }})</span> 
+                                    {{ $entry->datetime->format('H:i:s') }}
+                                    <div class="d-inline-block">
+                                        <span class="main-text"> - {{ time_ago($entry->datetime) }}</span>
+                                    </div>
+                                    <i class="material-icons card-title position-absolute red-text small" style="right:5px;top:0">close</i>
+                                </div>
+                                <div class="divider"></div>
+                                <p>@if ($entry->hasStack()) {!! $entry->stack() !!} @endif</p>
                             </div>
                         </div>
                     </div>
                 @empty
                     <tr>
-                        <td class="text-center">
-                            <span class="badge badge-secondary">
+                        @component('comps.empty')
+                            @slot('text')
                                 @lang('log-viewer::general.empty-logs')
-                            </span>
-                        </td>
+                            @endslot
+                        @endcomponent
                     </tr>
                 @endforelse
             </div>
