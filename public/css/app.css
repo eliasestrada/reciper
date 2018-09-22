@@ -7337,6 +7337,13 @@ Nav List
   transition: margin-right 300ms, -webkit-transform 300ms;
   transition: margin-right 300ms, transform 300ms;
   transition: margin-right 300ms, transform 300ms, -webkit-transform 300ms;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: inline-block;
+  background-position: top !important;
+  background-size: 70px !important;
+  background-repeat: no-repeat !important;
 }
 
 .like-for-author-section .user-icon-on-single-recipe:hover {
@@ -7349,18 +7356,7 @@ Nav List
           transform: scale(1.2);
 }
 
-.user-icon-on-single-recipe {
-  width: 70px;
-  height: 70px;
-  margin-right: 10px;
-  border-radius: 50%;
-  display: inline-block;
-  background-position: center !important;
-  background-size: 70px !important;
-  background-repeat: no-repeat !important;
-}
-
-.like-icon {
+.like-for-author-section .like-icon {
   display: inline-block;
   width: 30px;
   height: 30px;
@@ -7370,22 +7366,22 @@ Nav List
   animation-direction: alternate, reverse;
 }
 
-.btn__icon {
+.like-for-author-section .btn__icon {
   width: 30px;
   display: inline-block;
   vertical-align: middle;
 }
 
-.btn__fill {
+.like-for-author-section .btn__fill {
   fill: #cf4545;
 }
 
-.btn__border {
+.like-for-author-section .btn__border {
   fill: #fff;
 }
 
-.btn-like,
-.btn-wrapper {
+.like-for-author-section .btn-like,
+.like-for-author-section .btn-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -7393,27 +7389,27 @@ Nav List
           transform: translateY(-50%) translateX(-50%);
 }
 
-.btn-like {
+.like-for-author-section .btn-like {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -user-select: none;
   -ms-user-select: none;
 }
 
-.btn-wrapper {
+.like-for-author-section .btn-wrapper {
   width: 100%;
   height: 100%;
 }
 
-.btn--liked-small {
+.like-for-author-section .btn--liked-small {
   background-color: #cf4545;
 }
 
-.btn--liked-small .btn__fill {
+.like-for-author-section .btn--liked-small .btn__fill {
   fill: #fff;
 }
 
-.btn--liked-small {
+.like-for-author-section .btn--liked-small {
   width: 50px;
   height: 50px;
   border-radius: 50%;
