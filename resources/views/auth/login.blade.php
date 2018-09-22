@@ -5,10 +5,15 @@
 @section('content')
 
 <div class="page row">
-    <div class="center"><h3 class="headline">@lang('form.login')</h3></div>
-
     <div class="col s12 m8 offset-m2 l6 offset-l3">
-        <form method="POST" action="{{ route('login') }}" class="form">
+        <div class="paper">
+            <div class="register-tabs">
+                <a href="/register">@lang('form.register')</a>
+                <a href="#" class="active">@lang('form.login')</a>
+            </div>
+        </div>
+
+        <form method="POST" action="{{ route('login') }}" class="pt-5">
             @csrf
             <div class="input-field">
                 <input id="email" value="{{ old('email') }}" type="email" name="email" class="validate">
@@ -39,15 +44,6 @@
 
             {{-- <a href="{{ route('password.request') }}">@lang('form.forgot_pwd')</a> --}}
         </form>
-    </div>
-
-    <div class="col s12 m8 offset-m2 pt-4">
-        <p>
-            @lang('messages.dont_have_account'):
-            <a href="/register">
-                <span class="new badge p-1 px-2" style="float:none">@lang('form.register')</span>
-            </a>
-        </p>
     </div>
 </div>
 

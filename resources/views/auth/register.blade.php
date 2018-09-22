@@ -5,10 +5,15 @@
 @section('content')
 
 <div class="page row">
-    <div class="center"><h2 class="headline">@lang('form.register')</h2></div>
-
     <div class="col s12 m8 offset-m2 l6 offset-l3">
-        <form method="POST" action="{{ route('register') }}" class="form">
+        <div class="paper">
+            <div class="register-tabs">
+                <a href="#" class="active">@lang('form.register')</a>
+                <a href="/login">@lang('form.login')</a>
+            </div>
+        </div>
+
+        <form method="POST" action="{{ route('register') }}" class="pt-5">
             @csrf
             <div class="input-field">
                 <input type="text" id="name" name="name" value="{{ old('name') }}" class="validate" required>

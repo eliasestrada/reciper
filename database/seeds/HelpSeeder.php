@@ -44,9 +44,9 @@ class HelpSeeder extends Seeder
                 'id' => 5,
                 'help_category_id' => 2,
                 'title_ru' => 'Как зарегистрироваться?',
-                'text_ru' => 'Зарегистрироваться можно по этой ссылке: <a href="' . \URL::to('/register') . '">reciper.tk/register</a>, либо в меню навигации нажать на кнопку "Войти <i class="material-icons tiny">exit_to_app</i>" затем под формой нажмите на "Регистрация".<br> Заполните форму регистрации и нажмите кнопку "Регистрация" для завершения процесса.',
+                'text_ru' => 'Зарегистрироваться можно по этой ссылке: <a href="' . \URL::to('/register') . '">reciper.tk/register</a>, либо в меню навигации нажать на кнопку "Войти <i class="material-icons tiny">exit_to_app</i>" затем закладку "Регистрация".<br> Заполните форму регистрации и нажмите кнопку "Регистрация" для завершения процесса.',
                 'title_en' => 'How to register?',
-                'text_en' => 'You can register going by this link: <a href="' . \URL::to('/register') . '">reciper.tk/register</a>, or you can press button "Sign in <i class="material-icons tiny">exit_to_app</i>" on navigation bar, and under the form press "Register".<br> Fill in register form and press "Register" button to finish the process.',
+                'text_en' => 'You can register going by this link: <a href="' . \URL::to('/register') . '">reciper.tk/register</a>, or you can press button "Sign in <i class="material-icons tiny">exit_to_app</i>" on navigation bar, then "Register" tab.<br> Fill in register form and press "Register" button to finish the process.',
             ],
             [
                 'id' => 6,

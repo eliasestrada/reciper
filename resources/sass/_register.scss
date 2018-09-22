@@ -1,0 +1,20 @@
+.register-tabs {
+    height: 50px;
+    border-bottom: solid 1px lighten($red, 25%);
+
+
+    a {
+        width: 50%;
+        height: 100%;
+        line-height: 50px;
+        float: left;
+        text-align: center;
+        font-weight: bold;
+        color: lighten($red, 15%);
+        font-size: 1.1em;
+    }
+    a.active {
+        color: $red;
+        border-bottom: solid 3px lighten($red, 10%);
+    }
+}
