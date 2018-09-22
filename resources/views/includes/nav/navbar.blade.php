@@ -115,7 +115,7 @@
             <div class="right">
                 @auth
                     {{-- Dropdown Trigger 2 User --}}
-                    <a id="_user-menu-trigger" class="right dropdown-trigger small-notif-btn position-relative" href="#!" data-target="dropdown2" {{ $all_notif ? 'data-notif='.$all_notif : '' }}>
+                    <a id="_user-menu-trigger" class="mt-2 right dropdown-trigger small-notif-btn position-relative" href="#!" data-target="dropdown2" {{ $all_notif ? 'data-notif='.$all_notif : '' }}>
                         <i class="user-icon-navbar">
                             <img class="small-notif-btn" src="{{ asset('storage/users/' . user()->image) }}">
                         </i>
@@ -123,7 +123,7 @@
                 @endauth
                         
                 {{-- Search button --}}
-                <a href="#" data-target="mobile-demo" class="right px-1" title="@lang('includes.search')" id="nav-btn-for-search">
+                <a href="#" data-target="mobile-demo" class="right px-3" title="@lang('includes.search')" id="nav-btn-for-search">
                     <i class="material-icons">search</i>
                 </a>
             </div>

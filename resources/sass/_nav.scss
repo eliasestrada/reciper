@@ -1,14 +1,14 @@
 .user-icon-navbar {
-	width: 43px;
-	height: 53px;
-	display: flex;
+	width: 39px;
+    height: 39px !important;
 	align-items: center;
-	justify-content: center;
+    justify-content: center;
+    overflow: hidden;
+	border-radius: 50%;
 	
 	img {
-		width: 35px;
-		height: 35px;
-		border-radius: 50%;
+		width: 39px;
+		height: auto;
 	}
 }
 
