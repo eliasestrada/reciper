@@ -16,10 +16,10 @@ mix.js("resources/js/vue/vue.js", "public/js/vendor")
         "public/js/app.js"
     )
     .sass("resources/sass/app.scss", "public/css/app.css")
-    .browserSync({
-        proxy: "localhost:8000",
-        files: ["resources/sass/**/*", "resources/js/**/*"]
-    })
+    // .browserSync({
+    //     proxy: "localhost:8000",
+    //     files: ["resources/sass/**/*", "resources/js/**/*"]
+    // })
     .options({
         processCssUrls: false
     });

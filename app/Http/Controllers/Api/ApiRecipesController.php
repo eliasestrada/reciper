@@ -78,9 +78,10 @@ class ApiRecipesController extends Controller
         }
 
         if ($hash == 'my_viewes') {
-            $sql->with('views')->whereHas('views', function ($query) {
-                $query->whereVisitorId(Visitor::whereIp(request()->ip())->value('id'));
-            });
+            $sql->join('views', 'views.recipe_id', '=', 'recipes.id')
+                ->where('views.visitor_id', Visitor::whereIp(request()->ip())->value('id'))
+                ->orderBy('views.id', 'asc');
+
             return $sql->done(1);
         }
 
@@ -90,9 +91,10 @@ class ApiRecipesController extends Controller
         }
 
         if ($hash == 'my_likes') {
-            $sql->with('likes')->whereHas('likes', function ($query) {
-                $query->whereVisitorId(Visitor::whereIp(request()->ip())->value('id'));
-            });
+            $sql->join('likes', 'likes.recipe_id', '=', 'recipes.id')
+                ->where('likes.visitor_id', Visitor::whereIp(request()->ip())->value('id'))
+                ->orderBy('likes.id', 'asc');
+
             return $sql->done(1);
         }
 
@@ -112,6 +114,6 @@ class ApiRecipesController extends Controller
             return $sql->done(1);
         }
 
-        return $sql->inRandomOrder()->done(1);
+        return $sql->latest()->done(1);
     }
 }
