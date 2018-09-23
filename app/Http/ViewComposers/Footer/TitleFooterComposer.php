@@ -14,12 +14,10 @@ class TitleFooterComposer
      */
     public function compose(View $view): void
     {
-        if (user() && user()->hasRole('admin')) {
-            $title_footer = cache()->rememberForever('title_footer', function () {
-                return Title::whereName('footer')->value('text_' . lang());
-            });
+        $title_footer = cache()->rememberForever('title_footer', function () {
+            return Title::whereName('footer')->value('text_' . lang());
+        });
 
-            $view->with(compact('title_footer'));
-        }
+        $view->with(compact('title_footer'));
     }
 }

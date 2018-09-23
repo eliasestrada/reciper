@@ -7927,7 +7927,7 @@ Nav List
 
 .register-tabs {
   height: 50px;
-  border-bottom: solid 1px #e9aaaa;
+  border-bottom: solid 1px #867db7;
 }
 
 .register-tabs a {
@@ -7937,13 +7937,13 @@ Nav List
   float: left;
   text-align: center;
   font-weight: bold;
-  color: #df8282;
+  color: #675ca5;
   font-size: 1.1em;
 }
 
 .register-tabs a.active {
-  color: #cf4545;
-  border-bottom: solid 3px #d96e6e;
+  color: #484074;
+  border-bottom: solid 3px #5c5295;
 }
 
 footer {
