@@ -29,15 +29,7 @@ class UsersController extends Controller
             ->paginate(20)
             ->onEachSide(1);
 
-        $likes = 0;
-        $views = 0;
-
-        foreach ($recipes as $recipe) {
-            $likes += $recipe->likes_count;
-            $views += $recipe->views_count;
-        }
-
-        return view('users.show', compact('recipes', 'user', 'likes', 'views'));
+        return view('users.show', compact('recipes', 'user'));
     }
 
     /**

@@ -29,7 +29,7 @@
         {{-- Likes Bubble --}}
         <div class="mb-4 bubbles-block">
             <div class="bubble">
-                <span class="number">{!! readable_number($likes) !!}</span>
+                <span class="number">{!! readable_number($recipes->sum('likes_count')) !!}</span>
                 @include('includes.icons.heart')
             </div>
             <span>@lang('users.likes')</span>
@@ -47,7 +47,7 @@
         {{-- Views Bubble --}}
         <div class="bubbles-block">
             <div class="bubble">
-                <span class="number">{!! readable_number($views) !!}</span>
+                <span class="number">{!! readable_number($recipes->sum('views_count')) !!}</span>
                 @include('includes.icons.eye')
             </div>
             <span>@lang('users.views')</span>

@@ -26,20 +26,10 @@ class UsersShowPageTest extends TestCase
             ->paginate(20)
             ->onEachSide(1);
 
-        $likes = 0;
-        $views = 0;
-
-        foreach ($recipes as $recipe) {
-            $likes += $recipe->likes_count;
-            $views += $recipe->views_count;
-        }
-
         $response->assertViewIs('users.show');
         $response->assertViewHasAll([
             'recipes' => $recipes,
             'user' => User::find($user->id),
-            'likes' => $likes,
-            'views' => $views,
         ]);
     }
 
