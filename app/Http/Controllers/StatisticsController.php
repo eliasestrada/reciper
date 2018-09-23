@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Recipe;
 use App\Models\Visitor;
 
 class StatisticsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -19,7 +16,7 @@ class StatisticsController extends Controller
         $all_recipes = Recipe::count();
         $all_visitors = Visitor::distinct('ip')->count();
 
-        return view('admin.statistics.index', compact(
+        return view('statistics.index', compact(
             'visitors', 'all_recipes', 'all_visitors'
         ));
     }

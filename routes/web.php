@@ -2,7 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 
+// For auth users
 Auth::routes();
+Route::middleware('auth')->group(function () {
+    Route::resource('statistics', 'StatisticsController')->only(['index']);
+});
+
+Route::prefix('users')->group(function () {
+    Route::get('/', 'UsersController@index');
+    Route::get('{user}', 'UsersController@show');
+
+    Route::prefix('other')->middleware('auth')->group(function () {
+        Route::get('my-recipes', 'UsersController@my_recipes');
+    });
+});
 
 // For all visitors ===========
 Route::get('/', 'PagesController@home');
@@ -13,16 +26,6 @@ Route::get('documents/{document}', 'Master\DocumentsController@show');
 
 // Recipes ===========
 Route::resource('recipes', 'RecipesController')->except(['destroy']);
-
-// Users ===========
-Route::prefix('users')->group(function () {
-    Route::get('/', 'UsersController@index');
-    Route::get('{user}', 'UsersController@show');
-
-    Route::prefix('other')->middleware('auth')->group(function () {
-        Route::get('my-recipes', 'UsersController@my_recipes');
-    });
-});
 
 // Notifications ===========
 Route::prefix('notifications')->middleware('auth')->group(function () {
@@ -64,7 +67,6 @@ Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function 
     Route::get('approves/{recipe}', 'ApprovesController@show');
     Route::post('answer/ok/{recipe}', 'ApprovesController@ok');
     Route::post('answer/cancel/{recipe}', 'ApprovesController@cancel');
-    Route::resource('statistics', 'StatisticsController')->only(['index']);
     Route::resource('feedback', 'FeedbackController')->only(['index', 'show', 'destroy']);
 });
 

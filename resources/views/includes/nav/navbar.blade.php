@@ -38,13 +38,13 @@
             </a>
         </li>
 
-        @hasRole('admin')
-            <li class="{{ active_if_route_is('admin/statistics') }}"> {{-- statistics --}}
-                <a href="/admin/statistics" title="@lang('includes.statistics')">
-                    <i class="material-icons left">insert_chart</i>@lang('includes.statistics')
-                </a>
-            </li>
+        <li class="{{ active_if_route_is('statistics') }}"> {{-- statistics --}}
+            <a href="/statistics" title="@lang('includes.statistics')">
+                <i class="material-icons left">insert_chart</i>@lang('includes.statistics')
+            </a>
+        </li>
 
+        @hasRole('admin')
             <li class="position-relative {{ active_if_route_is('admin/approves') }}"> {{-- checklist --}}
                 <a href="/admin/approves" title="@lang('includes.checklist')" {{ empty($all_unapproved) ? '' : "data-notif=$all_unapproved" }} class="small-notif-btn">
                     <i class="material-icons left">search</i>@lang('includes.checklist')
