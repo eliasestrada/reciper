@@ -8,6 +8,8 @@ return [
     'click_to_delete' => 'Нажмите чтобы удалить этого пользователя',
     'add_to_team' => 'Добавить к команде',
     'date' => 'Дата написания',
+    'most_viewed_recipe' => 'Самый просматриваемый рецепт',
+    'most_liked_recipe' => 'Самый популярный рецепт',
     'status' => 'Статус',
     'checked' => 'Проверен',
     'not_ready' => 'Не готов',
@@ -18,6 +20,9 @@ return [
     'all_recipes' => 'Всего рецептов',
     'this_user_does_not_have_recipes' => 'У этого автора нет пока рецептов',
     'u_dont_have_notif' => 'У вас пока нет оповещений',
+    'amount_of_views' => 'Кол-во просмотров',
+    'amount_of_likes' => 'Кол-во лайков',
+    'exp_of_reciper' => 'Опыт ресипёра',
 
     // Bubbles
     'likes' => 'Лайки',

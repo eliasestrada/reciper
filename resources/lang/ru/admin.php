@@ -6,7 +6,6 @@ return [
     'feedback_has_been_deleted' => 'Отзыв успешно удален',
 
     // Views
-    'recipes' => 'Рецепты',
     'message_for_admin' => 'Сообщение админу',
     'no_name' => 'Имя не указано',
     'requests' => 'Запросов',

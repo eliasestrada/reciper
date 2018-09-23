@@ -41,6 +41,8 @@ return [
     'image' => 'Изображение',
     'select_file' => 'Выбрать файл',
     'recipes' => 'Рецепты',
+    'all_recipes' => 'Все рецепты',
+    'amount_of_recipes' => 'Кол-во рецептов',
     'like' => 'Нравится',
     'dislike' => 'Не нравится',
     'bon_appetit' => 'Приятного аппетита',
