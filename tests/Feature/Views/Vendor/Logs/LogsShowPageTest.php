@@ -14,7 +14,6 @@ class LogsShowPageTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-
         $this->master = create_user('master');
     }
 
@@ -37,6 +36,10 @@ class LogsShowPageTest extends TestCase
         $this->actingAs($this->master)
             ->get("/log-viewer/logs/$file_name/info")
             ->assertSeeText($file_name);
+
+        $this->delete(action('Master\LogsController@delete'), [
+            'date' => $file_name,
+        ]);
     }
 
     /**

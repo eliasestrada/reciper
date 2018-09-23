@@ -14,7 +14,6 @@ class LogsIndexPageTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-
         $this->master = create_user('master');
     }
 
