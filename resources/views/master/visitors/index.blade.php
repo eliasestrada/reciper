@@ -24,7 +24,7 @@
         </ul>
     </div>
 
-    <table class="responsive striped">
+    <table class="responsive striped highlight">
         <div class="divider"></div>
         <thead>
             <tr>
