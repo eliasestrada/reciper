@@ -12,28 +12,45 @@
     <div class=" pb-5">
         <table class="mt-4 responsive highlight">
             <tr>
-                <td scope="row">@lang('recipes.amount_of_recipes')</td>
+                <td>@lang('recipes.amount_of_recipes')</td>
                 <td class="right-align">{{ user()->recipes->count() }}</td>
             </tr>
             <tr>
-                <td scope="row">@lang('users.amount_of_likes')</td>
+                <td>@lang('users.amount_of_likes')</td>
                 <td class="right-align">{{ $recipes->sum('likes_count') }}</td>
             </tr>
             <tr>
-                <td scope="row">@lang('users.amount_of_views')</td>
+                <td>@lang('users.amount_of_views')</td>
                 <td class="right-align">{{ $recipes->sum('views_count') }}</td>
             </tr>
             <tr>
-                <td scope="row">@lang('users.exp_of_reciper')</td>
+                <td>@lang('users.exp_of_reciper')</td>
                 <td class="right-align">{{ user()->exp }}</td>
             </tr>
             <tr>
-                <td scope="row">@lang('users.most_viewed_recipe')</td>
-                <td class="right-align">{{ $most_viewed }}</td>
+                <td>@lang('users.most_viewed_recipe')</td>
+                <td class="right-align">
+                    @if ($most_viewed)
+                        <a href="{{ "/recipes/$most_viewed->id" }}">
+                            {{ $most_viewed->getTitle() }}
+                        </a>
+                        <span class="red-text">
+                            <i class='material-icons tiny'>remove_red_eye</i> 
+                            {{ $most_viewed->views_count }}
+                        </span>
+                    @else - @endif
+                </td>
             </tr>
             <tr>
-                <td scope="row">@lang('users.most_liked_recipe')</td>
-                <td class="right-align">{{ $most_liked }}</td>
+                <td>@lang('users.most_liked_recipe')</td>
+                <td class="right-align">
+                    @if ($most_liked)
+                        <a href="{{ "/recipes/$most_liked->id" }}">{{ $most_liked->getTitle() }}</a>
+                        <span class="red-text">
+                            <i class='material-icons tiny'>favorite</i> {{ $most_liked->likes_count }}
+                        </span>
+                    @else - @endif
+                </td>
             </tr>
         </table>
     </div>

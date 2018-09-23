@@ -16,15 +16,13 @@ class StatisticsPageTest extends TestCase
         $user = create_user();
 
         $recipes = Recipe::whereUserId($user->id)
+            ->select('id', 'title_' . lang())
             ->withCount('likes')
             ->withCount('views')
             ->get();
 
-        $views = $recipes->where('views_count', $recipes->max('views_count'))->first();
-        $likes = $recipes->where('likes_count', $recipes->max('likes_count'))->first();
-
-        $most_viewed = $views ? $views->getTitle() : '-';
-        $most_liked = $likes ? $likes->getTitle() : '-';
+        $most_viewed = $recipes->where('views_count', $recipes->max('views_count'))->first();
+        $most_liked = $recipes->where('likes_count', $recipes->max('likes_count'))->first();
 
         $this->actingAs($user)
             ->get('/statistics')
