@@ -3,7 +3,6 @@
 namespace Tests\Feature\Views\Statistics;
 
 use App\Models\Recipe;
-use App\Models\Visitor;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -16,14 +15,21 @@ class StatisticsPageTest extends TestCase
     {
         $user = create_user();
 
+        $recipes = Recipe::whereUserId($user->id)
+            ->withCount('likes')
+            ->withCount('views')
+            ->get();
+
+        $views = $recipes->where('views_count', $recipes->max('views_count'))->first();
+        $likes = $recipes->where('likes_count', $recipes->max('likes_count'))->first();
+
+        $most_viewed = $views ? $views->getTitle() : '-';
+        $most_liked = $likes ? $likes->getTitle() : '-';
+
         $this->actingAs($user)
             ->get('/statistics')
             ->assertViewIs('statistics.index')
-            ->assertViewHasAll([
-                'visitors' => Visitor::latest()->paginate(40)->onEachSide(1),
-                'all_recipes' => Recipe::count(),
-                'all_visitors' => Visitor::distinct('ip')->count(),
-            ]);
+            ->assertViewHasAll(compact('recipes', 'most_viewed', 'most_liked'));
     }
 
     /** @test */
