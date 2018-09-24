@@ -37,10 +37,7 @@ class RecipePublichRequest extends FormRequest
                 'categories.*' => 'distinct|numeric|between:1,' . Category::count(),
             ];
         }
-        return [
-            'categories.0' => 'required',
-            'categories.*' => 'distinct|numeric|between:1,' . Category::count(),
-        ];
+        return [];
     }
 
     // Get the validation messages that apply to the request.

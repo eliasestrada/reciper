@@ -13,12 +13,22 @@
         </a>
 
         <div class="popup-window z-depth-2 p-3 position-absolute paper" id="popup-window">
-            <a href="#report-recipe-modal" class="btn modal-trigger">
-                @lang('recipes.report_recipe')
-            </a>
-            {{--  Edit button  --}}
-            @if (optional(user())->hasRecipe($recipe->id))
-                <a href="/recipes/{{ $recipe->id }}/edit" class="btn" id="_edit">
+            @if (!optional(user())->hasRecipe($recipe->id))
+                <a href="#report-recipe-modal" class="btn modal-trigger min-w">
+                    @lang('recipes.report_recipe')
+                </a>
+            @endif
+            {{--  To drafts button  --}}
+            @if (optional(user())->hasRecipe($recipe->id) && $recipe->isReady() && $recipe->isApproved())
+                <form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post">
+                    @method('put')
+                    @csrf
+                    <button class="btn min-w" id="_to_drafts">@lang('tips.add_to_drafts')</button>
+                </form>
+            @endif
+            {{-- Edit button --}}
+            @if (!$recipe->isReady())
+                <a href="/recipes/{{ $recipe->id }}/edit" class="btn min-w">
                     @lang('tips.edit')
                 </a>
             @endif

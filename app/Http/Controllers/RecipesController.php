@@ -95,9 +95,9 @@ class RecipesController extends Controller
     public function edit(Recipe $recipe)
     {
         // Check for correct user
-        if (!user()->hasRecipe($recipe->id)) {
+        if (!user()->hasRecipe($recipe->id) || $recipe->isReady()) {
             return redirect('/recipes')->withError(
-                trans('recipes.no_rights_to_edit')
+                trans('recipes.cant_edit_ready_recipe')
             );
         }
 
@@ -117,16 +117,32 @@ class RecipesController extends Controller
      */
     public function update(RecipePublichRequest $request, Recipe $recipe)
     {
+        // if (!user()->hasRecipe($recipe)) {
+        //     return back()->with
+        // }
+
+        // Move to drafts
+        if ($recipe->isReady()) {
+            $recipe->update([
+                'ready_' . lang() => 0,
+                lang() . '_approver_id' => 0,
+            ]);
+            event(new \App\Events\RecipeGotDrafted($recipe));
+
+            return redirect("/recipes/$recipe->id/edit")
+                ->withSuccess(trans('recipes.saved'));
+        }
+
         $this->checkForScriptTags($request);
 
         // Handle image uploading
         $image_name = $this->saveImageIfExists($request->file('image'));
 
+        $this->updateRecipe($request, $image_name, $recipe);
+
         if ($request->file('image')) {
             $this->deleteOldImage($recipe->image);
         }
-
-        $this->updateRecipe($request, $image_name, $recipe);
 
         return new RecipeUpdateResponse($recipe);
     }
