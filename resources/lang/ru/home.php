@@ -11,7 +11,7 @@ return [
     'footer_text' => 'Содержание подвала',
 
     // Header
-    'breakfast' => 'Завтрак',
+    'breakfast' => 'завтрак',
     'lunch' => 'обед',
     'dinner' => 'ужин',
     'or' => 'или',

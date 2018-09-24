@@ -10,7 +10,7 @@
             <div class="home-meal">
                 <div><a href="/recipes#simple">@lang('home.show_simple_recipes')</a></div>
                 <div>
-                    <a href="/recipes#breakfast">{{ trans('home.breakfast') }}</a>, 
+                    <a href="/recipes#breakfast">{{ title_case(trans('home.breakfast')) }}</a>, 
                     <a href="/recipes#lunch">@lang('home.lunch')</a>
                     @lang('home.or') 
                     <a href="/recipes#dinner">@lang('home.dinner')</a>
