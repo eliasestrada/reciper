@@ -59,9 +59,12 @@ class ApprovesController extends Controller
 
         if (!optional($recipe->approver)->id) {
             $recipe->update([lang() . '_approver_id' => user()->id]);
+            $approver_id = user()->id;
+        } else {
+            $approver_id = $recipe->approver->id;
         }
 
-        return view('admin.approves.show', compact('recipe'));
+        return view('admin.approves.show', compact('recipe', 'approver_id'));
     }
 
     /**
