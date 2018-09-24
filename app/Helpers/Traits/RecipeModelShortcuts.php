@@ -101,4 +101,13 @@ trait RecipeModelShortcuts
             return '#e2bd18';
         }
     }
+
+    public function moveToDrafts()
+    {
+        return $this->update([
+            'ready_' . lang() => 0,
+            'approved_' . lang() => 0,
+            lang() . '_approver_id' => 0,
+        ]);
+    }
 }
