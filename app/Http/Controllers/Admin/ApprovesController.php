@@ -77,11 +77,7 @@ class ApprovesController extends Controller
             return redirect("/admin/approves")->withError($error);
         }
 
-        cache()->forget('all_unapproved');
-        cache()->forget('search_suggest');
         event(new \App\Events\RecipeGotApproved($recipe, trans('approves.approved_' . rand(1, 5))));
-
-        $recipe->increment('approved_' . lang());
 
         return redirect("/recipes/$recipe->id")->withSuccess(
             trans('recipes.recipe_published')
@@ -99,12 +95,7 @@ class ApprovesController extends Controller
             return redirect("/admin/approves")->withError($error);
         }
 
-        cache()->forget('all_unapproved');
-        cache()->forget('search_suggest');
-
         event(new \App\Events\RecipeGotCanceled($recipe, $request->message));
-
-        $recipe->decrement('ready_' . lang());
 
         return redirect('/recipes')->withSuccess(
             trans('recipes.you_gave_recipe_back_on_editing')

@@ -16,10 +16,14 @@ class EventServiceProvider extends ServiceProvider
         ],
         \App\Events\RecipeGotCanceled::class => [
             \App\Listeners\SendCanceledNotification::class,
+            \App\Listeners\ClearCacheAfterCanceling::class,
+            \App\Listeners\UpdateRecipeAfterCanceling::class,
         ],
         \App\Events\RecipeGotApproved::class => [
             \App\Listeners\AddExpForRecipe::class,
             \App\Listeners\SendApprovedNotification::class,
+            \App\Listeners\ClearCacheAfterApproving::class,
+            \App\Listeners\UpdateRecipeAfterApproving::class,
         ],
         \App\Events\RecipeGotDrafted::class => [
             \App\Listeners\RemoveExpForDrafting::class,
