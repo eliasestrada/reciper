@@ -13,6 +13,6 @@ class RemoveExpForDislike
      */
     public function handle(RecipeGotDisliked $event)
     {
-        User::removeExp(0.5, $event->recipe->user_id);
+        User::removeExp(config('custom.exp_for_like'), $event->recipe->user_id);
     }
 }

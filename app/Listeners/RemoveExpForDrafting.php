@@ -13,6 +13,6 @@ class RemoveExpForDrafting
      */
     public function handle(RecipeGotDrafted $event)
     {
-        User::removeExp(5, $event->recipe->user_id);
+        User::removeExp(config('custom.exp_for_approve'), $event->recipe->user_id);
     }
 }

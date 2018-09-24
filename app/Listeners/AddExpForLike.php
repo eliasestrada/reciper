@@ -13,6 +13,6 @@ class AddExpForLike
      */
     public function handle(RecipeGotLiked $event)
     {
-        User::addExp(0.5, $event->recipe->user_id);
+        User::addExp(config('custom.exp_for_like'), $event->recipe->user_id);
     }
 }

@@ -13,6 +13,6 @@ class AddExpForView
      */
     public function handle(RecipeGotViewed $event)
     {
-        User::addExp(0.1, $event->recipe->user_id);
+        User::addExp(config('custom.exp_for_view'), $event->recipe->user_id);
     }
 }

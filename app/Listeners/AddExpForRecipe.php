@@ -13,6 +13,6 @@ class AddExpForRecipe
      */
     public function handle(RecipeGotApproved $event)
     {
-        User::addExp(5, $event->recipe->user_id);
+        User::addExp(config('custom.exp_for_approve'), $event->recipe->user_id);
     }
 }
