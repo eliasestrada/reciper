@@ -13,11 +13,11 @@
         </a>
 
         <div class="popup-window z-depth-2 p-3 position-absolute paper" id="popup-window">
-            @if (!optional(user())->hasRecipe($recipe->id))
-                <a href="#report-recipe-modal" class="btn modal-trigger min-w">
-                    @lang('recipes.report_recipe')
-                </a>
-            @endif
+            {{-- Report button --}}
+            <a href="#report-recipe-modal" class="btn modal-trigger min-w"{{ visitor_id() == $recipe->user_id ? ' disabled' : '' }}>
+                @lang('recipes.report_recipe')
+            </a>
+
             {{--  To drafts button  --}}
             @if (optional(user())->hasRecipe($recipe->id) && $recipe->isReady() && $recipe->isApproved())
                 <form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post">
@@ -27,11 +27,9 @@
                 </form>
             @endif
             {{-- Edit button --}}
-            @if (!$recipe->isReady())
-                <a href="/recipes/{{ $recipe->id }}/edit" class="btn min-w">
-                    @lang('tips.edit')
-                </a>
-            @endif
+            <a href="/recipes/{{ $recipe->id }}/edit" class="btn min-w" {{ $recipe->isReady() ? 'disabled' : '' }}>
+                @lang('tips.edit')
+            </a>
         </div>
 
         {{--  Likes  --}}
@@ -59,22 +57,24 @@
 
 
 <!-- report-recipe-modal structure -->
-<div id="report-recipe-modal" class="modal">
-    <div class="modal-content reset">
-        <form action="{{ action('Admin\FeedbackController@store') }}" method="post">
-            @csrf
+@if (visitor_id() != $recipe->user_id)
+    <div id="report-recipe-modal" class="modal">
+        <div class="modal-content reset">
+            <form action="{{ action('Admin\FeedbackController@store') }}" method="post">
+                @csrf
 
-            <h5>@lang('recipes.report_recipe')</h5>
-            <p>@lang('feedback.report_message_desc')</p>
+                <h5>@lang('recipes.report_recipe')</h5>
+                <p>@lang('feedback.report_message_desc')</p>
 
-            <div class="input-field mt-4">
-                <input type="hidden" name="recipe" value="{{ $recipe->id }}">
-                <textarea name="message" minlength="{{ config('validation.contact_message_min') }}" id="message" class="materialize-textarea counter" data-length="{{ config('validation.contact_message_max') }}" required>{{ old('message') }}</textarea>
-                <label for="message">@lang('form.message')</label>
-            </div>
-            <button type="submit" class="btn">@lang('form.send')</button>
-        </form>
+                <div class="input-field mt-4">
+                    <input type="hidden" name="recipe" value="{{ $recipe->id }}">
+                    <textarea name="message" minlength="{{ config('validation.contact_message_min') }}" id="message" class="materialize-textarea counter" data-length="{{ config('validation.contact_message_max') }}" required>{{ old('message') }}</textarea>
+                    <label for="message">@lang('form.message')</label>
+                </div>
+                <button type="submit" class="btn">@lang('form.send')</button>
+            </form>
+        </div>
     </div>
-</div>
+@endif
 
 @endsection

@@ -12,21 +12,6 @@ class RecipesShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    protected $admin;
-    protected $recipe;
-    protected $unapproved_recipe;
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->admin = create_user('admin');
-        $this->recipe = make(Recipe::class);
-        $this->unapproved_recipe = create(Recipe::class, [
-            'approved_' . lang() => 0,
-        ]);
-    }
-
     /** @test */
     public function view_has_data(): void
     {
@@ -52,25 +37,29 @@ class RecipesShowPageTest extends TestCase
     /** @test */
     public function guest_can_see_the_page(): void
     {
-        $this->get("/recipes/{$this->recipe->id}")->assertOk();
+        $recipe = make(Recipe::class);
+        $this->get("/recipes/$recipe->id")->assertOk();
     }
 
     /** @test */
     public function admin_can_approve_recipe_with_message(): void
     {
-        $this->actingAs($this->admin)
-            ->get("/recipes/{$this->unapproved_recipe->id}");
+        $admin = create_user('admin');
+        $unapproved_recipe = create(Recipe::class, ['approved_' . lang() => 0]);
+
+        $this->actingAs($admin)
+            ->get("/recipes/$unapproved_recipe->id");
 
         // Make request to approve a recipe with message
-        $this->actingAs($this->admin)
+        $this->actingAs($admin)
             ->post(action('Admin\ApprovesController@ok',
-                ['recipe' => $this->unapproved_recipe->id]),
+                ['recipe' => $unapproved_recipe->id]),
                 ['message' => 'Lorem ipsum dolor sit amet consectetur han'])
-            ->assertRedirect("/recipes/{$this->unapproved_recipe->id}");
+            ->assertRedirect("/recipes/$unapproved_recipe->id");
 
         // Now recipe should be approved
         $this->assertDatabaseHas('recipes', [
-            'id' => $this->unapproved_recipe->id,
+            'id' => $unapproved_recipe->id,
             'approved_' . lang() => 1,
         ]);
     }
@@ -78,16 +67,19 @@ class RecipesShowPageTest extends TestCase
     /** @test */
     public function admin_can_cancel_recipe_with_message(): void
     {
+        $admin = create_user('admin');
+        $unapproved_recipe = create(Recipe::class, ['approved_' . lang() => 0]);
+
         // Make request to cancel a recipe with message
-        $this->actingAs($this->admin)
+        $this->actingAs($admin)
             ->post(action('Admin\ApprovesController@cancel',
-                ['recipe' => $this->unapproved_recipe->id]),
+                ['recipe' => $unapproved_recipe->id]),
                 ['message' => 'Lorem ipsum dolor sit amet consectetur']
             );
 
         // Recipe should be still unapproved
         $this->assertDatabaseHas('recipes', [
-            'id' => $this->unapproved_recipe->id,
+            'id' => $unapproved_recipe->id,
             'approved_' . lang() => 0,
         ]);
     }
@@ -95,19 +87,22 @@ class RecipesShowPageTest extends TestCase
     /** @test */
     public function admin_cant_cancel_recipe_without_message(): void
     {
-        $this->actingAs($this->admin)
-            ->get("/recipes/{$this->unapproved_recipe->id}");
+        $admin = create_user('admin');
+        $unapproved_recipe = create(Recipe::class, ['approved_' . lang() => 0]);
+
+        $this->actingAs($admin)
+            ->get("/recipes/$unapproved_recipe->id");
 
         // Make request to cancel a recipe with message
-        $this->actingAs($this->admin)
+        $this->actingAs($admin)
             ->post(action('Admin\ApprovesController@cancel', [
-                'recipe' => $this->unapproved_recipe->id,
+                'recipe' => $unapproved_recipe->id,
             ]))
-            ->assertRedirect("/recipes/{$this->unapproved_recipe->id}");
+            ->assertRedirect("/recipes/$unapproved_recipe->id");
 
         // Recipe should be still unapproved
         $this->assertDatabaseHas('recipes', [
-            'id' => $this->unapproved_recipe->id,
+            'id' => $unapproved_recipe->id,
             'approved_' . lang() => 0,
         ]);
     }
@@ -115,17 +110,18 @@ class RecipesShowPageTest extends TestCase
     /** @test */
     public function user_gets_notified_when_approved_his_recipe(): void
     {
+        $admin = create_user('admin');
         $user = create(User::class);
         $recipe = create(Recipe::class, [
             'user_id' => $user->id,
             'approved_' . lang() => 0,
         ]);
 
-        $this->actingAs($this->admin)
+        $this->actingAs($admin)
             ->get("/recipes/$recipe->id");
 
         // Make request to approve a recipe with message
-        $this->actingAs($this->admin)
+        $this->actingAs($admin)
             ->post(action('Admin\ApprovesController@ok', ['id' => $recipe->id]))
             ->assertRedirect("/recipes/$recipe->id");
 
@@ -138,10 +134,12 @@ class RecipesShowPageTest extends TestCase
     /** @test */
     public function user_can_report_recipe_by_sending_message(): void
     {
+        $recipe = make(Recipe::class);
+
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), [
                 'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.',
-                'recipe' => $this->recipe->id,
+                'recipe' => $recipe->id,
             ])
             ->assertSee(lang('feedback.success_message'));
     }
@@ -149,17 +147,19 @@ class RecipesShowPageTest extends TestCase
     /** @test */
     public function user_cant_report_same_recipe_twice_per_day(): void
     {
+        $recipe = make(Recipe::class);
+
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), [
                 'message' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-                'recipe' => $this->recipe->id,
+                'recipe' => $recipe->id,
             ])
             ->assertSee(lang('feedback.success_message'));
 
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), [
                 'message' => 'Lorem ipsum dolor sit amet consectetur adipisicing elitic same',
-                'recipe' => $this->recipe->id,
+                'recipe' => $recipe->id,
             ])
             ->assertSee(lang('feedback.already_reported_today'));
     }
@@ -167,11 +167,13 @@ class RecipesShowPageTest extends TestCase
     /** @test */
     public function user_can_report_same_recipe_once_per_day(): void
     {
+        $recipe = make(Recipe::class);
+
         // First request
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), [
                 'message' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit!!',
-                'recipe' => $this->recipe->id,
+                'recipe' => $recipe->id,
             ])
             ->assertSee(lang('feedback.success_message'));
 
@@ -182,7 +184,7 @@ class RecipesShowPageTest extends TestCase
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), [
                 'message' => 'Lorem ipsum dolor, sit amet consectetur price',
-                'recipe' => $this->recipe->id,
+                'recipe' => $recipe->id,
             ])
             ->assertSee(lang('feedback.success_message'));
     }
@@ -190,11 +192,13 @@ class RecipesShowPageTest extends TestCase
     /** @test */
     public function user_can_report_2_recipes_in_the_same_day(): void
     {
+        $recipe = make(Recipe::class);
+
         // First report
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), [
                 'message' => 'Lorem ipsum dolor, sit amet consectetur',
-                'recipe' => $this->recipe->id,
+                'recipe' => $recipe->id,
             ])
             ->assertSee(lang('feedback.success_message'));
 
@@ -205,5 +209,12 @@ class RecipesShowPageTest extends TestCase
                 'recipe' => create(Recipe::class)->id,
             ])
             ->assertSee(lang('feedback.success_message'));
+    }
+
+    /** @test */
+    public function visitors_see_report_button_not_disabled(): void
+    {
+        $this->get('/recipes/' . create(Recipe::class)->id)
+            ->assertSee('<a href="#report-recipe-modal" class="btn modal-trigger min-w">');
     }
 }

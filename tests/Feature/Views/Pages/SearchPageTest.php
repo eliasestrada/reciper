@@ -34,14 +34,9 @@ class SearchPageTest extends TestCase
     }
 
     /** @test */
-    public function guest_can_see_the_page(): void
+    public function anyone_can_see_the_page(): void
     {
         $this->get('/search')->assertOk();
-    }
-
-    /** @test */
-    public function auth_user_can_see_the_page(): void
-    {
         $this->actingAs(create(User::class))
             ->get('/search')
             ->assertOk();
