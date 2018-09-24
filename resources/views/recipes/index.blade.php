@@ -13,6 +13,7 @@
             my-viewes-btn="@lang('recipes.watched')"
             most-liked-btn="@lang('recipes.popular')"
             my-likes-btn="@lang('recipes.loved')"
+            simple-btn="@lang('recipes.simple')"
             breakfast-btn="@lang('home.breakfast')"
             lunch-btn="@lang('home.lunch')"
             dinner-btn="@lang('home.dinner')"

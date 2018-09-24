@@ -8,15 +8,20 @@
 
             <h1>{{ config('app.name') }}</h1>
             <div class="home-meal">
-                @lang('home.what_u_like')
-                <br>
-                <a href="/recipes#breakfast">{{ title_case(trans('home.breakfast')) }}</a>, 
-                <a href="/recipes#lunch">@lang('home.lunch')</a>
-                @lang('home.or') 
-                <a href="/recipes#dinner">@lang('home.dinner')</a>?
-                <br>
-                @lang('home.or_maybe') 
-                <a href="/recipes#simple">@lang('home.sth_new')</a>
+                <div><a href="/recipes#simple">@lang('home.show_simple_recipes')</a></div>
+                <div>
+                    <a href="/recipes#breakfast">{{ trans('home.breakfast') }}</a>, 
+                    <a href="/recipes#lunch">@lang('home.lunch')</a>
+                    @lang('home.or') 
+                    <a href="/recipes#dinner">@lang('home.dinner')</a>
+                </div>
+                <div>
+                    @auth
+                        <a href="#add-recipe-modal" class="modal-trigger main-dark px-3">@lang('home.add_your_recipe')</a>
+                    @else
+                        <a href="/login" class="main-dark px-3">@lang('home.add_your_recipe')</a>
+                    @endauth
+                </div>
             </div>
 
             {{--  Form  --}}

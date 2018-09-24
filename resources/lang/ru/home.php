@@ -11,12 +11,11 @@ return [
     'footer_text' => 'Содержание подвала',
 
     // Header
-    'what_u_like' => 'Что пожелаете?',
-    'breakfast' => 'завтрак',
+    'breakfast' => 'Завтрак',
     'lunch' => 'обед',
     'dinner' => 'ужин',
     'or' => 'или',
-    'or_maybe' => 'Или может быть',
-    'sth_new' => 'что-нибудь простенькое?',
+    'show_simple_recipes' => 'Показать простые рецепты',
+    'add_your_recipe' => 'Написать свой рецепт',
 
 ];
