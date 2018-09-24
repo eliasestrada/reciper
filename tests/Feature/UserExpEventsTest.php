@@ -54,6 +54,16 @@ class UserExpEventsTest extends TestCase
     }
 
     /** @test */
+    public function user_looses_exp_for_dislike(): void
+    {
+        $user = create_user('', ['exp' => $this->exp_for_like]);
+        $recipe = make(Recipe::class, ['user_id' => $user->id]);
+
+        event(new \App\Events\RecipeGotDisliked($recipe));
+        $this->assertEquals(0, User::whereId($user->id)->value('exp'));
+    }
+
+    /** @test */
     public function user_gets_exp_for_view(): void
     {
         $user = create_user('', ['exp' => 0]);
