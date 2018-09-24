@@ -132,7 +132,7 @@ class RecipesShowPageTest extends TestCase
         // Now from user side
         $this->actingAs($user)
             ->get('/notifications')
-            ->assertSeeText(trans('notifications.recipe_published'));
+            ->assertSeeText(trans('approves.recipe_published'));
     }
 
     /** @test */
