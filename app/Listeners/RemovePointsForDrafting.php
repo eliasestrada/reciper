@@ -13,6 +13,6 @@ class RemovePointsForDrafting
      */
     public function handle(RecipeGotDrafted $event)
     {
-        User::removePoints(1, $event->recipe->user_id);
+        User::removePoints(5, $event->recipe->user_id);
     }
 }
