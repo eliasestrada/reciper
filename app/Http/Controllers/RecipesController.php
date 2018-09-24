@@ -39,7 +39,7 @@ class RecipesController extends Controller
     }
 
     /**
-     * It will save the recipe to a database
+     * It will save the recipe to a database with title only
      * @param RecipeSaveRequest $request
      * @see RecipeSaveRequest is validating this method
      * @see SaveRecipeDataContract
