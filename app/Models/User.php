@@ -73,7 +73,7 @@ class User extends Authenticatable
      * @param float $exp
      * @return void
      */
-    public static function addPoints(float $exp, int $user_id)
+    public static function addExp(float $exp, int $user_id)
     {
         $user = User::find($user_id);
         $user->exp = $user->exp + $exp;
@@ -85,7 +85,7 @@ class User extends Authenticatable
      * @param float $exp
      * @return void
      */
-    public static function removePoints(float $exp, int $user_id)
+    public static function removeExp(float $exp, int $user_id)
     {
         $user = User::find($user_id);
         $user->exp = $user->exp - $exp;

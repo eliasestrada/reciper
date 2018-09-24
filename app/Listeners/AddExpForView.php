@@ -5,7 +5,7 @@ namespace App\Listeners;
 use App\Events\RecipeGotViewed;
 use App\Models\User;
 
-class AddPointsForView
+class AddExpForView
 {
     /**
      * @param  RecipeGotViewed  $event
@@ -13,6 +13,6 @@ class AddPointsForView
      */
     public function handle(RecipeGotViewed $event)
     {
-        User::addPoints(0.1, $event->recipe->user_id);
+        User::addExp(0.1, $event->recipe->user_id);
     }
 }

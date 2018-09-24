@@ -5,7 +5,7 @@ namespace App\Listeners;
 use App\Events\RecipeGotDrafted;
 use App\Models\User;
 
-class RemovePointsForDrafting
+class RemoveExpForDrafting
 {
     /**
      * @param  RecipeGotDrafted  $event
@@ -13,6 +13,6 @@ class RemovePointsForDrafting
      */
     public function handle(RecipeGotDrafted $event)
     {
-        User::removePoints(5, $event->recipe->user_id);
+        User::removeExp(5, $event->recipe->user_id);
     }
 }

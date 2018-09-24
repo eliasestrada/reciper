@@ -5,7 +5,7 @@ namespace App\Listeners;
 use App\Events\RecipeGotLiked;
 use App\Models\User;
 
-class AddPointsForLike
+class AddExpForLike
 {
     /**
      * @param  RecipeGotLiked  $event
@@ -13,6 +13,6 @@ class AddPointsForLike
      */
     public function handle(RecipeGotLiked $event)
     {
-        User::addPoints(0.5, $event->recipe->user_id);
+        User::addExp(0.5, $event->recipe->user_id);
     }
 }

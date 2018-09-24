@@ -18,21 +18,21 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\SendCanceledNotification::class,
         ],
         \App\Events\RecipeGotApproved::class => [
-            \App\Listeners\AddPointsForRecipe::class,
+            \App\Listeners\AddExpForRecipe::class,
             \App\Listeners\SendApprovedNotification::class,
         ],
         \App\Events\RecipeGotDrafted::class => [
-            \App\Listeners\RemovePointsForDrafting::class,
+            \App\Listeners\RemoveExpForDrafting::class,
             \App\Listeners\ForgetCacheAfterDrafting::class,
         ],
         \App\Events\RecipeGotLiked::class => [
-            \App\Listeners\AddPointsForLike::class,
+            \App\Listeners\AddExpForLike::class,
         ],
         \App\Events\RecipeGotDisliked::class => [
-            \App\Listeners\RemovePointsForDislike::class,
+            \App\Listeners\RemoveExpForDislike::class,
         ],
         \App\Events\RecipeGotViewed::class => [
-            \App\Listeners\AddPointsForView::class,
+            \App\Listeners\AddExpForView::class,
         ],
     ];
 }
