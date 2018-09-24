@@ -7,6 +7,7 @@ use Faker\Generator as Faker;
 cache()->flush();
 
 $factory->define(Recipe::class, function (Faker $faker) {
+    $admin = factory(User::class)->create();
     $admin->addRole('admin');
 
     return [
