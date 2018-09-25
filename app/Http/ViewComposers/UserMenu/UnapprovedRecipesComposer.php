@@ -15,8 +15,8 @@ class UnapprovedRecipesComposer
     public function compose(View $view): void
     {
         if (user() && user()->hasRole('admin')) {
-            $view->with('all_unapproved', cache()->rememberForever('all_unapproved', function () {
-                return Recipe::query()->approved(0)->ready(1)->count();
+            $view->with('unapproved_notif', cache()->rememberForever('unapproved_notif', function () {
+                return Recipe::query()->approved(0)->ready(1)->exists();
             }));
         }
     }

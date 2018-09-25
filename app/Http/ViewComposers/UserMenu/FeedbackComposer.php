@@ -15,11 +15,11 @@ class FeedbackComposer
     public function compose(View $view): void
     {
         if (user() && user()->hasRole('admin')) {
-            $all_feedback = cache()->rememberForever('all_feedback', function () {
-                return Feedback::where('created_at', '>', user()->contact_check)->count();
+            $feedback_notif = cache()->rememberForever('feedback_notif', function () {
+                return Feedback::where('created_at', '>', user()->contact_check)->exists();
             });
 
-            $view->with(compact('all_feedback'));
+            $view->with(compact('feedback_notif'));
         }
     }
 }

@@ -14,7 +14,7 @@ class LogsComposer
     public function compose(View $view): void
     {
         if (user() && user()->hasRole('master')) {
-            $view->with('all_logs', count(\File::files(storage_path('logs'))));
+            $view->with('logs_notif', count(\File::files(storage_path('logs'))) > 0 ? true : false);
         }
     }
 }

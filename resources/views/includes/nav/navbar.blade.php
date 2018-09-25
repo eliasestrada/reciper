@@ -1,12 +1,3 @@
-@php
-    $all_notif = array_sum([
-        $all_unapproved ?? '',
-        $all_feedback ?? '',
-        $all_notifs ?? '',
-        $all_logs ?? ''
-    ]);
-@endphp
-
 {{-- Categories Dropdown menu --}}
 <ul id="dropdown1" class="dropdown-content bottom-borders">
     @include('includes.nav.categories')
@@ -46,20 +37,20 @@
 
         @hasRole('admin')
             <li class="position-relative {{ active_if_route_is('admin/approves') }}"> {{-- checklist --}}
-                <a href="/admin/approves" title="@lang('includes.checklist')" {{ empty($all_unapproved) ? '' : "data-notif=$all_unapproved" }} class="small-notif-btn">
+                <a href="/admin/approves" title="@lang('includes.checklist')" class="{{ $unapproved_notif ? 'small-notif' : '' }}">
                     <i class="fas fa-search fa-15x left"></i>@lang('includes.checklist')
                 </a>
             </li>
 
             <li class="position-relative {{ active_if_route_is('admin/feedback') }}"> {{-- feedback --}}
-                <a href="/admin/feedback" title="@lang('feedback.contact_us')" {{ empty($all_feedback) ? '' : "data-notif=$all_feedback" }} class="small-notif-btn">
+                <a href="/admin/feedback" title="@lang('feedback.contact_us')" class=" {{ $feedback_notif ? 'small-notif' : '' }}">
                     <i class="fas fa-comment-dots fa-15x left"></i>@lang('feedback.contact_us')
                 </a>
             </li>
         @endhasRole
 
         <li class="position-relative {{ active_if_route_is('notifications') }}"> {{-- notifications --}}
-            <a href="/notifications" title="@lang('includes.notifications')" {{ empty($all_notifs) ? '' : "data-notif=$all_notifs" }} class="small-notif-btn">
+            <a href="/notifications" title="@lang('includes.notifications')" class="{{ $notifs_notif ? 'small-notif' : '' }} ">
                 <i class="fas fa-bell fa-15x left"></i>@lang('includes.notifications')
             </a>
         </li>
@@ -81,7 +72,7 @@
                 </a>
             </li>
             <li class="position-relative {{ active_if_route_is('log-viewer/logs*') }}"> {{-- log-viewer --}}
-                <a href="/log-viewer/logs" title="@lang('logs.logs')" {{ empty($all_logs) ? '' : "data-notif=$all_logs" }} class="small-notif-btn">
+                <a href="/log-viewer/logs" title="@lang('logs.logs')" class=" {{ $logs_notif ? 'small-notif' : '' }}">
                     <i class="fas fa-file-code fa-15x left"></i>@lang('logs.logs')
                 </a>
             </li>
@@ -115,9 +106,9 @@
             <div class="right">
                 @auth
                     {{-- Dropdown Trigger 2 User --}}
-                    <a id="_user-menu-trigger" class="mt-2 right dropdown-trigger small-notif-btn position-relative" href="#!" data-target="dropdown2" {{ $all_notif ? 'data-notif='.$all_notif : '' }}>
-                        <i class="user-icon-navbar">
-                            <img class="small-notif-btn" src="{{ asset('storage/users/' . user()->image) }}">
+                    <a id="_user-menu-trigger" class="mt-2 right dropdown-trigger position-relative" href="#!" data-target="dropdown2">
+                        <i class="user-icon-navbar {{ $unapproved_notif || $feedback_notif || $notifs_notif || $logs_notif ? 'small-notif' : '' }}">
+                            <img src="{{ asset('storage/users/' . user()->image) }}">
                         </i>
                     </a>
                 @endauth
