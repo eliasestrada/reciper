@@ -53,13 +53,13 @@
                                     <i class="fas fa-file-download"></i>
                                 </a>
                                 {{-- Delete button --}}
-                                <form action="{{ action('Master\LogsController@delete') }}" method="post" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')" data-position="top" onsubmit="return confirm('@lang('logs.confirm', ['date' => $date])')">
+                                <form action="{{ action('Master\LogsController@delete') }}" method="post" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')" data-position="top">
                                     
                                     @csrf
                                     @method('delete')
 
                                     <input type="hidden" name="date" value="{{ $date }}">
-                                    <button type="submit" class="btn-floating red"><i class="fas fa-trash"></i></button>
+                                    <button type="submit" class="btn-floating red" onclick="if (!confirm('@lang('logs.confirm', ['date' => $date])')) event.preventDefault()"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

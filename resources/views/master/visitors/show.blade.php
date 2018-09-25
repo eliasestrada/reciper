@@ -54,7 +54,7 @@
     @if ($visitor->id != 1 || !$visitor->isBanned())
         <div id="ban-visitor-modal" class="modal">
             <div class="modal-content reset">
-                <form class="row" action="{{ action('Master\VisitorsController@update', ['visitor' => $visitor->id]) }}" method="post" onsubmit="return confirm('@lang('visitors.are_you_sure_to_ban')')">
+                <form class="row" action="{{ action('Master\VisitorsController@update', ['visitor' => $visitor->id]) }}" method="post">
 
                     @csrf @method('put')
 
@@ -67,7 +67,7 @@
                         <textarea name="message" id="ban-textarea" class="materialize-textarea counter" data-length="{{ config('validation.ban_message_max') }}" maxlength="{{ config('validation.ban_message_max') }}" minlength="{{ config('validation.ban_message_min') }}" required>{{ old('message') }}</textarea>
                         <label for="ban-textarea">@lang('form.message')</label>
                     </div>
-                    <button class="btn red" type="submit">@lang('visitors.ban')</button>
+                    <button class="btn red" type="submit" onclick="if (!confirm('@lang('visitors.are_you_sure_to_ban')')) event.preventDefault()">@lang('visitors.ban')</button>
                 </form>
             </div>
         </div>

@@ -20,14 +20,14 @@
 
             {{--  To drafts button  --}}
             @if (optional(user())->hasRecipe($recipe->id) && $recipe->isReady() && $recipe->isApproved())
-                <form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post" onsubmit="return confirm('@lang('recipes.are_you_sure_to_draft')');">
+                <form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post">
                     @method('put')
                     @csrf
-                    <button class="btn min-w" id="_to_drafts">@lang('tips.add_to_drafts')</button>
+                    <button class="btn min-w" id="_to_drafts" onclick="if (!confirm('@lang('recipes.are_you_sure_to_draft')')) event.preventDefault()">@lang('tips.add_to_drafts')</button>
                 </form>
             @endif
             {{-- Edit button --}}
-            <a href="/recipes/{{ $recipe->id }}/edit" class="btn min-w" {{ $recipe->isReady() ? 'disabled' : '' }}>
+            <a href="/recipes/{{ $recipe->id }}/edit" class="btn mt-2 min-w" {{ $recipe->isReady() ? 'disabled' : '' }}>
                 @lang('tips.edit')
             </a>
         </div>

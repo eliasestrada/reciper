@@ -27,13 +27,13 @@
                 <!--  cancel-publishing-modal structure -->
                 <div id="cancel-publishing-modal" class="modal">
                     <div class="modal-content reset">
-                        <form action="{{ action('Admin\ApprovesController@cancel', ['recipe' => $recipe->id]) }}" method="post" onsubmit="return confirm('@lang('recipes.are_you_sure_to_cancel')')">
+                        <form action="{{ action('Admin\ApprovesController@cancel', ['recipe' => $recipe->id]) }}" method="post">
                             @csrf
                             <p>@lang('notifications.set_message_desc')</p>
                             <div class="input-field">
                                 <textarea name="message" id="textarea1" class="materialize-textarea counter" data-length="{{ config('validation.approve_message') }}" minlength="30" required></textarea>
                                 <label for="textarea1">* @lang('notifications.set_message')</label>
-                                <button class="btn red" type="submit">@lang('form.send')</button>
+                                <button class="btn red" type="submit" onclick="if (!confirm('@lang('recipes.are_you_sure_to_cancel')')) event.preventDefault()">@lang('form.send')</button>
                             </div>
                         </form>
                     </div>

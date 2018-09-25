@@ -121,7 +121,6 @@ class RecipesController extends Controller
             return back()->withError(trans('recipes.cant_draft'));
         }
 
-        dd($recipe);
         // Move to drafts
         if ($recipe->isReady()) {
             $recipe->moveToDrafts();

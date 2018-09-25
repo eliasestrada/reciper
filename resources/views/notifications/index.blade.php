@@ -23,9 +23,9 @@
                         <span class="grey-text right">{{ time_ago($notif->created_at) }}</span>
 
                         @if ($notif->for_admins === 0)
-                            <form action="{{ action('NotificationController@destroy', ['notification' => $notif->id]) }}" method="post" onsubmit="return confirm('@lang('notifications.sure_to_delete')')">
+                            <form action="{{ action('NotificationController@destroy', ['notification' => $notif->id]) }}" method="post">
                                 @csrf @method('delete')
-                                <button class="btn-small red">@lang('form.deleting')</button>
+                                <button class="btn-small red" onclick="if (!confirm('@lang('notifications.sure_to_delete')')) event.preventDefault()">@lang('form.deleting')</button>
                             </form>
                         @else
                             @lang('admin.message_for_admin')
