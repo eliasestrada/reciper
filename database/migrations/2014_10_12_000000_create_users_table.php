@@ -18,7 +18,6 @@ class CreateUsersTable extends Migration
             $table->float('exp')->unsigned()->default(0);
             $table->timestamp('notif_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('contact_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('online_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->string('image')->default('default.jpg');
             $table->string('password');
             $table->rememberToken();

@@ -19,7 +19,6 @@ $factory->define(User::class, function (Faker $faker) {
         'exp' => 5,
         "notif_check" => date('Y-m-d H:i:s'),
         "contact_check" => date('Y-m-d H:i:s'),
-        "online_at" => date('Y-m-d H:i:s'),
     ];
 });
 

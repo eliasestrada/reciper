@@ -17,8 +17,8 @@
                         <a href="/users/{{ $user->id }}">
                             <img src="{{ asset('storage/users/'.$user->image) }}" alt="{{ $user->name }}" class="circle">
                         </a>
-                        <span class="title">{!! get_online_icon(time_ago($user->online_at)) !!} {{ $user->name }}</span>
-                        <p>@lang('date.online') {{ time_ago($user->online_at, 'online') }}</p>
+                        <span class="title">{!! get_online_icon(time_ago($user->updated_at)) !!} {{ $user->name }}</span>
+                        <p>@lang('date.online') {{ time_ago($user->updated_at, 'online') }}</p>
                         <p>@lang('users.exp'): {{ $user->exp }}</p>
                     </li>
                 </ul>

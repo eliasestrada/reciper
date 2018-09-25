@@ -11,7 +11,6 @@ class User extends Authenticatable
 
     protected $guarded = ['id'];
     protected $hidden = ['password', 'remember_token'];
-    protected $dates = ['created_at', 'updated_at', 'online_at'];
 
     public function recipes()
     {
