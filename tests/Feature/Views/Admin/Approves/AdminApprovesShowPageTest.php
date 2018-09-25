@@ -66,8 +66,8 @@ class AdminApprovesShowPageTest extends TestCase
     {
         $this->actingAs($this->admin)
             ->get("/admin/approves/{$this->unapproved_recipe->id}")
-            ->assertSee('<i class="material-icons right">thumb_up')
-            ->assertSee('<i class="material-icons right">thumb_down');
+            ->assertSee('<i class="fas fa-thumbs-up right"></i>')
+            ->assertSee('<i class="fas fa-thumbs-down right"></i>');
     }
 
     /** @test */
@@ -77,8 +77,8 @@ class AdminApprovesShowPageTest extends TestCase
 
         $this->actingAs($other_admin)
             ->get("/admin/approves/{$this->unapproved_recipe->id}")
-            ->assertDontSee('<i class="material-icons right">thumb_up')
-            ->assertDontSee('<i class="material-icons right">thumb_down');
+            ->assertDontSee('<i class="fas fa-thumbs-up right"></i>')
+            ->assertDontSee('<i class="fas fa-thumbs-down right"></i>');
     }
 
     /** @test */
