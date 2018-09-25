@@ -21,7 +21,7 @@
 
                 {{-- Cancel --}}
                 <a href="#cancel-publishing-modal" class="btn red modal-trigger">
-                    @lang('messages.no') <i class="fas fa-thumbs-up right"></i>
+                    @lang('messages.no') <i class="fas fa-thumbs-down right"></i>
                 </a>
 
                 <!--  cancel-publishing-modal structure -->

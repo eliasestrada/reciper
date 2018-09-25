@@ -35,7 +35,7 @@
                             {{ $most_viewed->getTitle() }}
                         </a>
                         <span class="red-text">
-                            <i class='material-icons tiny'>remove_red_eye</i> 
+                            <i class='fas fa-eye tiny'></i> 
                             {{ $most_viewed->views_count }}
                         </span>
                     @else - @endif
@@ -47,7 +47,7 @@
                     @if ($most_liked)
                         <a href="{{ "/recipes/$most_liked->id" }}">{{ $most_liked->getTitle() }}</a>
                         <span class="red-text">
-                            <i class='material-icons tiny'>favorite</i> {{ $most_liked->likes_count }}
+                            <i class='fas fa-heart tiny'></i> {{ $most_liked->likes_count }}
                         </span>
                     @else - @endif
                 </td>

@@ -9,11 +9,11 @@
         <div class="center pb-2 pt-3">
             {{-- Back button --}}
             <a href="/master/documents" class="btn-floating green tooltipped" data-tooltip="@lang('messages.back')" data-position="top">
-                <i class="material-icons">keyboard_backspace</i>
+                <i class="fas fa-angle-left"></i>
             </a>
             {{--  edit button  --}}
             <a href="/master/documents/{{ $document->id }}/edit" class="btn-floating green tooltipped" data-tooltip="@lang('tips.edit')" data-position="top">
-                <i class="material-icons left">edit</i>
+                <i class="fas fa-pen"></i>
             </a>
         </div>
     @endhasRole

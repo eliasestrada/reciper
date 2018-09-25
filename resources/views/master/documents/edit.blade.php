@@ -45,7 +45,7 @@
             {{-- Move to draft --}}
             @if ($document->id !== 1 && $document->isReady())
                 <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.add_to_drafts')" data-position="top" data-alert="@lang('documents.sure_draft_doc')">
-                    <i class="material-icons">library_books</i>
+                    <i class="fas fa-file-upload"></i>
                 </a>
                 <input type="checkbox" name="ready" value="0" class="d-none" id="ready-checkbox">
             @endif
