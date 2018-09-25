@@ -34,7 +34,7 @@
             <visibility inline-template>
                 <div class="input-field">
                     <input class="validate" :type="type" name="password" id="password" autocomplete="off" required>
-                    <i class="material-icons main-text noselect position-absolute visibility-icon" v-on:click="changeType" v-text="icon"></i>
+                    <i class="fas fa-15x main-text noselect position-absolute visibility-icon" v-on:click="changeType" :class="icon"></i>
                     <label for="password">
                         @lang('form.pwd')
                         @include('includes.tip', ['tip' => trans('form.pwd_desc')])
@@ -45,7 +45,7 @@
             <visibility inline-template>
                 <div class="input-field">
                     <input class="validate" :type="type" name="password_confirmation" id="password_confirmation" autocomplete="off" required>
-                    <i class="material-icons main-text noselect position-absolute visibility-icon" v-on:click="changeType" v-text="icon"></i>
+                    <i class="fas fa-15x main-text noselect position-absolute visibility-icon" v-on:click="changeType" :class="icon"></i>
                     <label for="password_confirmation">
                         @lang('form.pwd_confirm')
                         @include('includes.tip', ['tip' => trans('form.pwd2_desc')])
@@ -73,7 +73,6 @@
             @endif
 
             <button type="submit" id="register-btn" class="waves-effect waves-light btn mt-3">
-                <i class="material-icons left">assignment_turned_in</i>
                 @lang('form.register')
             </button>
         </form>
