@@ -16,80 +16,80 @@
     <ul id="dropdown2" class="dropdown-content bottom-borders">
         <li class="{{ active_if_route_is('users/' . user()->id) }}"> {{-- home --}}
             <a href="/users/{{ user()->id }}" title="@lang('includes.my_account')">
-                <i class="material-icons left">portrait</i>@lang('includes.my_account')
+                <i class="fas fa-user-circle fa-15x left"></i>@lang('includes.my_account')
             </a>
         </li>
 
         <li> {{-- add recipe --}}
             <a href="#add-recipe-modal" title="@lang('includes.new_recipe')" class="modal-trigger">
-                <i class="material-icons left">add</i>@lang('includes.new_recipe')
+                <i class="fas fa-plus-circle fa-15x left"></i>@lang('includes.new_recipe')
             </a>
         </li>
 
         <li class="{{ active_if_route_is('users/other/my-recipes') }}"> {{-- my recipes --}}
             <a href="/users/other/my-recipes" title="@lang('includes.my_recipes')">
-                <i class="material-icons left">library_books</i>@lang('includes.my_recipes')
+                <i class="fas fa-book-open fa-15x left"></i>@lang('includes.my_recipes')
             </a>
         </li>
 
         <li class="{{ active_if_route_is('users') }}"> {{-- users --}}
             <a href="/users" title="@lang('includes.users')">
-                <i class="material-icons left">people</i>@lang('includes.users')
+                <i class="fas fa-user-friends fa-15x left"></i>@lang('includes.users')
             </a>
         </li>
 
         <li class="{{ active_if_route_is('statistics') }}"> {{-- statistics --}}
             <a href="/statistics" title="@lang('includes.statistics')">
-                <i class="material-icons left">insert_chart</i>@lang('includes.statistics')
+                <i class="fas fa-chart-pie fa-15x left"></i>@lang('includes.statistics')
             </a>
         </li>
 
         @hasRole('admin')
             <li class="position-relative {{ active_if_route_is('admin/approves') }}"> {{-- checklist --}}
                 <a href="/admin/approves" title="@lang('includes.checklist')" {{ empty($all_unapproved) ? '' : "data-notif=$all_unapproved" }} class="small-notif-btn">
-                    <i class="material-icons left">search</i>@lang('includes.checklist')
+                    <i class="fas fa-search fa-15x left"></i>@lang('includes.checklist')
                 </a>
             </li>
 
             <li class="position-relative {{ active_if_route_is('admin/feedback') }}"> {{-- feedback --}}
                 <a href="/admin/feedback" title="@lang('feedback.contact_us')" {{ empty($all_feedback) ? '' : "data-notif=$all_feedback" }} class="small-notif-btn">
-                    <i class="material-icons left">message</i>@lang('feedback.contact_us')
+                    <i class="fas fa-comment-dots fa-15x left"></i>@lang('feedback.contact_us')
                 </a>
             </li>
         @endhasRole
 
         <li class="position-relative {{ active_if_route_is('notifications') }}"> {{-- notifications --}}
             <a href="/notifications" title="@lang('includes.notifications')" {{ empty($all_notifs) ? '' : "data-notif=$all_notifs" }} class="small-notif-btn">
-                <i class="material-icons left">notifications</i>@lang('includes.notifications')
+                <i class="fas fa-bell fa-15x left"></i>@lang('includes.notifications')
             </a>
         </li>
 
         <li class="{{ active_if_route_is('settings') }}"> {{-- settings --}}
             <a href="/settings" title="@lang('settings.settings')">
-                <i class="material-icons left">build</i>@lang('settings.settings')
+                <i class="fas fa-cog fa-15x left"></i>@lang('settings.settings')
             </a>
         </li>
         @hasRole('master')
-            <li class="position-relative {{ active_if_route_is('master/visitors') }}"> {{-- log-viewer --}}
+            <li class="position-relative {{ active_if_route_is('master/visitors') }}"> {{-- visitors --}}
                 <a href="/master/visitors" title="@lang('visitors.visitors')">
-                    <i class="material-icons left">people</i>@lang('visitors.visitors')
+                    <i class="fas fa-users fa-15x left"></i>@lang('visitors.visitors')
                 </a>
             </li>
             <li class="position-relative {{ active_if_route_is('master/documents') }}"> {{-- Documents --}}
                 <a href="/master/documents" title="@lang('documents.documents')">
-                    <i class="material-icons left">work</i>@lang('documents.documents')
+                    <i class="fas fa-copy fa-15x left"></i>@lang('documents.documents')
                 </a>
             </li>
             <li class="position-relative {{ active_if_route_is('log-viewer/logs*') }}"> {{-- log-viewer --}}
                 <a href="/log-viewer/logs" title="@lang('logs.logs')" {{ empty($all_logs) ? '' : "data-notif=$all_logs" }} class="small-notif-btn">
-                    <i class="material-icons left">insert_drive_file</i>@lang('logs.logs')
+                    <i class="fas fa-file-code fa-15x left"></i>@lang('logs.logs')
                 </a>
             </li>
         @endhasRole
 
         <li> {{-- logout --}} {{-- This button submits logout-form --}}
             <a href="#" title="@lang('includes.logout')" onclick="$('logout-form').submit()" id="_logout_btn">
-                <i class="material-icons left">power_settings_new</i>@lang('includes.logout')
+                <i class="fas fa-sign-out-alt fa-15x left"></i>@lang('includes.logout')
             </a>
         </li>
 
@@ -124,7 +124,7 @@
                         
                 {{-- Search button --}}
                 <a href="#" data-target="mobile-demo" class="right px-3" title="@lang('includes.search')" id="nav-btn-for-search">
-                    <i class="fas fa-search"></i>
+                    <i class="fas fa-search fa-15x"></i>
                 </a>
             </div>
 
@@ -149,15 +149,15 @@
                 <li> {{-- Dropdown Trigger 1 Categories --}}
                     <a class="dropdown-trigger" href="#!" data-target="dropdown1">
                         @lang('includes.categories')
-                        <i class="fas fa-caret-down right"></i>
+                        <i class="fas fa-caret-down fa-15x right"></i>
                     </a>
                 </li>
 
                 @guest
                     <li>
-                        <a href="/login" data-target="dropdown3" title="@lang('includes.enter')">
+                        <a href="/login" title="@lang('includes.enter')">
                             @lang('includes.enter')
-                            <i class="fas fa-sign-in-alt right"></i>
+                            <i class="fas fa-sign-in-alt fa-15x right"></i>
                         </a>
                     </li>
                 @endguest

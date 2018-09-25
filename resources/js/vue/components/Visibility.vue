@@ -3,7 +3,7 @@ export default {
     data() {
         return {
             type: 'password',
-            icon: 'visibility'
+            icon: 'fa-eye'
         }
     },
     
@@ -11,10 +11,10 @@ export default {
         changeType() {
             if (this.type === 'password') {
                 this.type = 'text'
-                this.icon = 'visibility_off'
+                this.icon = 'fa-eye-slash'
             } else {
                 this.type = 'password'
-                this.icon = 'visibility'
+                this.icon = 'fa-eye'
             }
         }
     }
