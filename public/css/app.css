@@ -100,21 +100,31 @@ select {
   min-height: 20em;
 }
 
-.small-notif-btn[data-notif]::after {
-  content: attr(data-notif);
-  min-width: 20px;
-  height: 20px;
-  line-height: 20px;
-  text-align: center;
-  display: inline-block;
+.small-notif::after,
+.small-notif::before {
+  content: '';
   position: absolute;
-  left: 23px;
-  top: 6px;
-  color: #fff;
-  text-shadow: none;
   background: #cf4545;
   border: solid 1px #fff;
   border-radius: 50%;
+}
+
+.small-notif::before {
+  width: 13px;
+  height: 13px;
+  left: 24px;
+  top: 7px;
+}
+
+.small-notif::after {
+  width: 15px;
+  height: 15px;
+  left: 23px;
+  top: 6px;
+  -webkit-animation: pulse-animation 1.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  animation: pulse-animation 1.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  -webkit-transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
+  transition: opacity .3s, visibility 0s 1s, -webkit-transform .3s;
 }
 
 .min-w {
