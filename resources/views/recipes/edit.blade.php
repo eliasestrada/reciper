@@ -17,13 +17,13 @@
         <div class="center pb-4">
             {{--  View button  --}}
             <a href="/recipes/{{ $recipe->id }}" class="btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top">
-                <i class="material-icons">remove_red_eye</i>
+                <i class="fas fa-eye"></i>
             </a>
 
             {{--  Save button  --}}
             @unless ($recipe->isReady())
                 <button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save')" data-position="top" class="btn-floating green tooltipped">
-                    <i class="material-icons">save</i>
+                    <i class="fas fa-save"></i>
                 </button>
             @endunless
 
@@ -37,7 +37,7 @@
 
             {{--  Publish button  --}}
             <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top" data-alert="@lang('recipes.are_you_sure_to_publish')">
-                <i class="large material-icons">send</i>
+                <i class="fas fa-clipboard-check"></i>
             </a>
             <input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
         </div>

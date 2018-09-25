@@ -124,7 +124,7 @@
                         
                 {{-- Search button --}}
                 <a href="#" data-target="mobile-demo" class="right px-3" title="@lang('includes.search')" id="nav-btn-for-search">
-                    <i class="fas fa-search fa-15x"></i>
+                    <i class="fas fa-search fa-15x d-block"></i>
                 </a>
             </div>
 
@@ -173,7 +173,7 @@
             <div class="input-field">
                 <input id="search-input" type="search" name="for" placeholder="@lang('pages.search_details')" required>
                 <label class="label-icon" for="search-input">
-                    <i class="fas fa-search"></i>
+                    <i class="fas fa-search grey-text"></i>
                 </label>
             </div>
         </form>

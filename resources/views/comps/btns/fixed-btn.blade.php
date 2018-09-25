@@ -1,5 +1,5 @@
 <div class="fixed-action-btn">
     <a href="{{ $link }}" class="waves-effect waves-light btn-floating btn-large {{ ($class ?? '') }} z-depth-2 tooltipped" data-tooltip="{{ ($tip ?? '') }}" data-position="left">
-        <i class="material-icons right">{{ ($icon ?? '') }}</i>
+        <i class="fas {{ ($icon ?? '') }} right"></i>
     </a>
 </div>

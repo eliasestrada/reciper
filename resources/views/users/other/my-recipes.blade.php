@@ -6,7 +6,7 @@
 
 {{-- Add recipe button --}}
 @component('comps.btns.fixed-btn')
-    @slot('icon') add @endslot
+    @slot('icon') fa-plus @endslot
     @slot('class') modal-trigger @endslot
     @slot('link') #add-recipe-modal @endslot
     @slot('tip') @lang('includes.new_recipe') @endslot

@@ -28,7 +28,7 @@
                         </div>
                         <div class="card-action">
                             <a href="/documents/{{ $doc->id }}">@lang('messages.open')</a>
-                            <a href="/documents/{{ $doc->id }}/edit">@lang('messages.edit')</a>
+                            <a href="/master/documents/{{ $doc->id }}/edit">@lang('messages.edit')</a>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
 </div>
 
 @component('comps.btns.fixed-btn')
-    @slot('icon') add @endslot
+    @slot('icon') fa-plus @endslot
     @slot('link') /master/documents/create @endslot
     @slot('tip') @lang('documents.new_doc') @endslot
 @endcomponent

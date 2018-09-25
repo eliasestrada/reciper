@@ -18,27 +18,27 @@
 
             {{-- Back button --}}
             <a href="/master/documents" class="btn-floating green tooltipped" data-tooltip="@lang('messages.back')" data-position="top">
-                <i class="material-icons">keyboard_backspace</i>
+                <i class="fas fa-angle-left"></i>
             </a>
 
             {{-- View button --}}
             @if ($document->id != 1)
                 <button class="btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top" name="view">
-                    <i class="material-icons">remove_red_eye</i>
+                    <i class="fas fa-eye"></i>
                 </button>
             @endif
 
             {{-- Save button --}}
             @unless ($document->isReady())
                 <button class="btn-floating green tooltipped" data-tooltip="@lang('tips.save')" data-position="top">
-                    <i class="material-icons">save</i>
+                    <i class="fas fa-save"></i>
                 </button>
             @endunless
             
             {{-- Delete button --}}
             @if ($document->id != 1)
                 <a onclick="if(confirm('@lang('documents.sure_del_doc')')) $('delete-doc').submit()" class="btn-floating red tooltipped" data-tooltip="@lang('tips.delete')" data-position="top">
-                    <i class="material-icons">delete</i>
+                    <i class="fas fa-trash-alt"></i>
                 </a>
             @endif
 
@@ -53,7 +53,7 @@
             {{--  Publish button  --}}
             @if ($document->id == 1 || !$document->isReady())
                 <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top" data-alert="@lang('documents.sure_publich_doc')">
-                    <i class="material-icons">send</i>
+                    <i class="fas fa-share"></i>
                 </a>
                 <input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
             @endif

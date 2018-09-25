@@ -7,7 +7,7 @@
                 @foreach ($documents_footer as $doc)
                     <li>
                         <a href="/documents/{{ $doc->id }}">
-                            <span class="red-text">#</span> {{ $doc->getTitle() }}
+                            <i class="fas fa-angle-right red-text"></i> {{ $doc->getTitle() }}
                         </a>
                     </li>
                 @endforeach
@@ -21,7 +21,7 @@
                 @foreach ($random_recipes as $recipe)
                     <li>
                         <a href="/recipes/{{ $recipe->id }}">
-                            <span class="red-text">#</span> {{ $recipe->getTitle() }}
+                            <i class="fas fa-angle-right red-text"></i> {{ $recipe->getTitle() }}
                         </a>
                     </li>
                 @endforeach
@@ -35,7 +35,7 @@
                 @foreach ($popular_recipes as $recipe)
                     <li>
                         <a href="/recipes/{{ $recipe->id }}">
-                            <span class="red-text" >#</span> {{ $recipe->getTitle() }}
+                            <i class="fas fa-angle-right red-text"></i> {{ $recipe->getTitle() }}
                         </a>
                     </li>
                 @endforeach
@@ -49,7 +49,7 @@
                 @foreach ($top_recipers as $i => $reciper)
                     <li>
                         <a href="/users/{{ $reciper->id }}">
-                            <i class="material-icons tiny" style="font-size:0.8em;color:orange">star</i> 
+                            <i class="fas fa-star" style="font-size:0.8em;color:orange"></i> 
                             {{ $reciper->name }} ({{ $reciper->exp }})
                         </a>
                     </li>
@@ -69,7 +69,7 @@
         {{--  Настройки подвала  --}}
         <div class="position-relative">
             <a class="magic-btn" title="@lang('home.edit_banner')" id="btn-for-footer">
-                <i class="material-icons">edit</i>
+                <i class="fa fa-pen"></i>
             </a>
             @magicForm
                 @slot('id')

@@ -35,7 +35,7 @@
                 {{--  Save button  --}}
                 <div class="center pb-2">
                     <button type="submit" class="btn waves-effect waves-light">
-                        <i class="material-icons right">keyboard_arrow_right</i>
+                        <i class="fas fa-angle-right right"></i>
                         @lang('recipes.next')
                     </button>
                 </div>

@@ -31,7 +31,7 @@
                         <input type="search" name="for" id="header-search-input" placeholder="@lang('pages.search_details')">
                     </div>
                     <button type="submit" class="home-button" id="home-search-btn">
-                        <i class="material-icons">search</i>
+                        <i class="fas fa-search"></i>
                     </button>
                 </div>
             </form>
@@ -52,7 +52,7 @@
     @hasRole('admin')
         {{--  Настройки Интро  --}}
         <a class="magic-btn" title="@lang('home.edit_intro')" id="btn-for-intro">
-            <i class="material-icons">edit</i>
+            <i class="fa fa-pen"></i>
         </a>
 
         @magicForm
@@ -102,12 +102,12 @@
                                     {{ $random->getTitle() }}
                                 </span>
                                 <div style="height:25%">
-                                    <i class="material-icons right small red-text activator">more_horiz</i>
+                                    <i class="fas fa-ellipsis-h fa-15x right red-text activator"></i>
                                 </div>
                             </div>
                             <div class="card-reveal">
                                 <span class="card-title">{{ $random->getTitle() }}</span>
-                                <div><i class="material-icons right red-text card-title">close</i></div>
+                                <div><i class="fas fa-times right red-text card-title"></i></div>
                                 <a class="btn-small mt-3" href="/recipes/{{ $random->id }}">
                                     @lang('recipes.go')
                                 </a>
