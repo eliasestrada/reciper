@@ -28,27 +28,27 @@
 
         {{-- Likes Bubble --}}
         <div class="mb-4 bubbles-block">
+            <i class="fas fa-heart main-text fa-2x tooltipped" data-tooltip="@lang('tips.likes_tip', ['value' => $recipes->sum('likes_count')])" data-position="top"></i>
             <div class="bubble">
                 <span class="number">{!! readable_number($recipes->sum('likes_count')) !!}</span>
-                @include('includes.icons.heart')
             </div>
             <span>@lang('users.likes')</span>
         </div>
 
         {{-- Rating Bubble --}}
         <div class="mb-4 bubbles-block">
+            <i class="fas fa-award fa-2x main-text tooltipped" data-tooltip="@lang('tips.rating_tip', ['value' => $user->exp])" data-position="top"></i>
             <div class="bubble">
                 <span class="number">{!! readable_number($user->exp) !!}</span>
-                @include('includes.icons.trophy')
             </div>
             <span>@lang('users.exp')</span>
         </div>
 
         {{-- Views Bubble --}}
         <div class="bubbles-block">
+            <i class="fas fa-eye fa-2x main-text tooltipped" data-tooltip="@lang('tips.views_tip', ['value' => $recipes->sum('views_count')])" data-position="top"></i>
             <div class="bubble">
                 <span class="number">{!! readable_number($recipes->sum('views_count')) !!}</span>
-                @include('includes.icons.eye')
             </div>
             <span>@lang('users.views')</span>
         </div>

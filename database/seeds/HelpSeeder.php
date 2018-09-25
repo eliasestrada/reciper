@@ -52,7 +52,7 @@ class HelpSeeder extends Seeder
                 'id' => 6,
                 'help_category_id' => 3,
                 'title_ru' => 'Как распределяются очки опыта?',
-                'text_ru' => 'Информацию о распределении очков опыта можно увидеть наведя курсором на иконку трофея под фотографией на вашей странице.<br>Опыт составляется с нижеперечесленных данных:<br>1 лайк = ' . config('custom.exp_for_like') . ' очков опыта<br>1 просмотр = ' . config('custom.exp_for_like') . ' очков опыта<br>1 опубликованный рецепт = ' . config('custom.exp_for_like') . ' очков опыта',
+                'text_ru' => 'Информацию о распределении очков опыта можно увидеть наведя курсором на иконку награды <i class="fas fa-award red-text"></i> под фотографией на вашей странице.<br>Опыт составляется с нижеперечесленных данных:<br>1 лайк = ' . config('custom.exp_for_like') . ' очков опыта<br>1 просмотр = ' . config('custom.exp_for_like') . ' очков опыта<br>1 опубликованный рецепт = ' . config('custom.exp_for_like') . ' очков опыта',
                 'title_en' => 'How are experience points distributed?',
                 'text_en' => 'Information about distributing experience points can be seen by hovering over the trophy icon under the profile image on your page.<br> That is how experience points are distributed:<br>1 like = ' . config('custom.exp_for_like') . ' experience points<br>1 view = ' . config('custom.exp_for_like') . ' experience points<br>1 published recipe = ' . config('custom.exp_for_like') . ' experience points',
             ],
