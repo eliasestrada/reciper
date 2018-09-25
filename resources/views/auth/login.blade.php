@@ -20,9 +20,12 @@
                 <label for="email">@lang('form.email')</label>
             </div>
         
-            <visibility name-attr="password" id-attr="password" class-attr="pwd">
-                <label for="password" slot="content">@lang('form.pwd')</label>
-                @include('includes.preloader2')
+            <visibility inline-template>
+                <div class="input-field">
+                    <input class="validate" :type="type" name="password" id="password" autocomplete="off" required>
+                    <i class="material-icons main-text noselect position-absolute visibility-icon" v-on:click="changeType" v-text="icon"></i>
+                    <label for="password">@lang('form.pwd')</label>
+                </div>
             </visibility>
 
             <div class="mt-3">

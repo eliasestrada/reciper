@@ -31,20 +31,26 @@
                 </label>
             </div>
 
-            <visibility name-attr="password" id-attr="password">
-                <label for="password" slot="content">
-                    @lang('form.pwd')
-                    @include('includes.tip', ['tip' => trans('form.pwd_desc')])
-                </label>
-                @include('includes.preloader2')
+            <visibility inline-template>
+                <div class="input-field">
+                    <input class="validate" :type="type" name="password" id="password" autocomplete="off" required>
+                    <i class="material-icons main-text noselect position-absolute visibility-icon" v-on:click="changeType" v-text="icon"></i>
+                    <label for="password">
+                        @lang('form.pwd')
+                        @include('includes.tip', ['tip' => trans('form.pwd_desc')])
+                    </label>
+                </div>
             </visibility>
 
-            <visibility name-attr="password_confirmation" id-attr="password_confirmation">
-                <label for="password_confirmation" slot="content">
-                    @lang('form.pwd_confirm')
-                    @include('includes.tip', ['tip' => trans('form.pwd2_desc')])
-                </label>
-                @include('includes.preloader2')
+            <visibility inline-template>
+                <div class="input-field">
+                    <input class="validate" :type="type" name="password_confirmation" id="password_confirmation" autocomplete="off" required>
+                    <i class="material-icons main-text noselect position-absolute visibility-icon" v-on:click="changeType" v-text="icon"></i>
+                    <label for="password_confirmation">
+                        @lang('form.pwd_confirm')
+                        @include('includes.tip', ['tip' => trans('form.pwd2_desc')])
+                    </label>
+                </div>
             </visibility>
 
             @if(!empty($document))
