@@ -40,8 +40,8 @@
         
             <div class="input-field">
                 <button type="submit" id="go-to-account" class="waves-effect waves-light btn">
-                    <i class="material-icons right">exit_to_app</i>
                     @lang('form.login')
+                    <i class="fas fa-sign-in-alt right"></i>
                 </button>
             </div>
 

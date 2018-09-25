@@ -109,7 +109,7 @@
             </a>
             {{-- Hamburger menu --}}
             <a href="#" data-target="mobile-demo" class="sidenav-trigger noselect">
-                <i class="material-icons">menu</i>
+                <i class="fas fa-bars"></i>
             </a>
 
             <div class="right">
@@ -124,7 +124,7 @@
                         
                 {{-- Search button --}}
                 <a href="#" data-target="mobile-demo" class="right px-3" title="@lang('includes.search')" id="nav-btn-for-search">
-                    <i class="material-icons">search</i>
+                    <i class="fas fa-search"></i>
                 </a>
             </div>
 
@@ -149,7 +149,7 @@
                 <li> {{-- Dropdown Trigger 1 Categories --}}
                     <a class="dropdown-trigger" href="#!" data-target="dropdown1">
                         @lang('includes.categories')
-                        <i class="material-icons right">arrow_drop_down</i>
+                        <i class="fas fa-caret-down right"></i>
                     </a>
                 </li>
 
@@ -157,13 +157,11 @@
                     <li>
                         <a href="/login" data-target="dropdown3" title="@lang('includes.enter')">
                             @lang('includes.enter')
-                            <i class="material-icons right">exit_to_app</i>
+                            <i class="fas fa-sign-in-alt right"></i>
                         </a>
                     </li>
                 @endguest
             </ul>
-            
-            
         </div>
     </div>
 </nav>
@@ -175,9 +173,8 @@
             <div class="input-field">
                 <input id="search-input" type="search" name="for" placeholder="@lang('pages.search_details')" required>
                 <label class="label-icon" for="search-input">
-                    <i class="material-icons">search</i>
+                    <i class="fas fa-search"></i>
                 </label>
-                <i class="material-icons">close</i>
             </div>
         </form>
     </div>

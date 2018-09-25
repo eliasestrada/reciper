@@ -3,11 +3,9 @@
         <div class="sidebar-hat-guest center">
             <a href="/login" class="btn waves-effect waves-light min-w" title="@lang('includes.enter')">
                 @lang('includes.enter')
-                <i class="material-icons right">exit_to_app</i>
             </a><br>
             <a href="/register" class="btn waves-effect waves-light min-w" title="@lang('includes.register')">
                 @lang('includes.register')
-                <i class="material-icons right">exit_to_app</i>
             </a>
         </div>
     @else
