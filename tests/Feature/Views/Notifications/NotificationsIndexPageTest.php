@@ -20,7 +20,7 @@ class NotificationsIndexPageTest extends TestCase
             ->get('/notifications')
             ->assertViewIs('notifications.index')
             ->assertViewHas('notifications',
-                Notification::whereUserId(user()->id)->latest()->paginate(10)->onEachSide(1)
+                Notification::whereUserId(user()->id)->latest()->paginate(18)->onEachSide(1)
             );
     }
 

@@ -21,7 +21,7 @@ class NotificationController extends Controller
         User::whereId(user()->id)->update(['notif_check' => now()]);
 
         return view('notifications.index', [
-            'notifications' => $notifications->latest()->paginate(10)->onEachSide(1),
+            'notifications' => $notifications->latest()->paginate(18)->onEachSide(1),
         ]);
     }
 
