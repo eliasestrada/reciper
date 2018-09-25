@@ -6,4 +6,21 @@ function $(e) {
     return document.getElementById(e);
 }
 
+// Script that prevents mulltiple forms submitting
+document.querySelectorAll("form").forEach(function(form) {
+    form.addEventListener(
+        "submit",
+        function() {
+            var buttons = this.querySelectorAll("button");
+            buttons.forEach(function(button) {
+                button.setAttribute("disabled", "disabled");
+                button.innerHTML =
+                    '<i class="fas fa-circle-notch fa-1x fa-spin"></i>';
+            });
+            console.log("nice");
+        },
+        false
+    );
+});
+
 let i;
