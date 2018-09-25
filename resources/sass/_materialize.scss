@@ -910,7 +910,7 @@ th {
 
 .secondary-content {
 	float: right;
-	color: #26a69a;
+	color: $main;
 }
 
 .collapsible .collection {
@@ -951,7 +951,7 @@ th {
 	top: 0;
 	left: 0;
 	bottom: 0;
-	background-color: #26a69a;
+	background-color: $main;
 	-webkit-transition: width .3s linear;
 	transition: width .3s linear;
 }
@@ -3256,7 +3256,7 @@ button.btn-floating {
 	z-index: -1;
 	width: 40px;
 	height: 40px;
-	background-color: #26a69a;
+	background-color: $main;
 	border-radius: 50%;
 	-webkit-transform: scale(0);
 	transform: scale(0);
@@ -3731,7 +3731,7 @@ button.btn-floating {
 
 .chip:focus {
 	outline: none;
-	background-color: #26a69a;
+	background-color: $main;
 	color: #fff;
 }
 
@@ -3764,9 +3764,9 @@ button.btn-floating {
 }
 
 .chips.focus {
-	border-bottom: 1px solid #26a69a;
-	-webkit-box-shadow: 0 1px 0 0 #26a69a;
-	box-shadow: 0 1px 0 0 #26a69a;
+	border-bottom: 1px solid $main;
+	-webkit-box-shadow: 0 1px 0 0 $main;
+	box-shadow: 0 1px 0 0 $main;
 }
 
 .chips:hover {
@@ -3998,9 +3998,9 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-	border-bottom: 1px solid #26a69a;
-	-webkit-box-shadow: 0 1px 0 0 #26a69a;
-	box-shadow: 0 1px 0 0 #26a69a;
+	border-bottom: 1px solid $main;
+	-webkit-box-shadow: 0 1px 0 0 $main;
+	box-shadow: 0 1px 0 0 $main;
 	color: #444;
 }
 
@@ -4017,7 +4017,7 @@ input[type=tel]:not(.browser-default):focus:not([readonly])+label,
 input[type=number]:not(.browser-default):focus:not([readonly])+label,
 input[type=search]:not(.browser-default):focus:not([readonly])+label,
 textarea.materialize-textarea:focus:not([readonly])+label {
-	color: #26a69a;
+	color: $main;
 }
 
 input:not([type]):focus.valid~label,
@@ -4367,7 +4367,7 @@ textarea.materialize-textarea+label:after,
 }
 
 .input-field .prefix.active {
-	color: #26a69a;
+	color: $main;
 }
 
 .input-field .prefix~input,
@@ -4570,12 +4570,12 @@ textarea.materialize-textarea {
 [type="radio"]:checked+span:after,
 [type="radio"].with-gap:checked+span:before,
 [type="radio"].with-gap:checked+span:after {
-	border: 2px solid #26a69a;
+	border: 2px solid $main;
 }
 
 [type="radio"]:checked+span:after,
 [type="radio"].with-gap:checked+span:after {
-	background-color: #26a69a;
+	background-color: $main;
 }
 
 [type="radio"]:checked+span:after {
@@ -4703,8 +4703,8 @@ textarea.materialize-textarea {
 	height: 22px;
 	border-top: 2px solid transparent;
 	border-left: 2px solid transparent;
-	border-right: 2px solid #26a69a;
-	border-bottom: 2px solid #26a69a;
+	border-right: 2px solid $main;
+	border-bottom: 2px solid $main;
 	-webkit-transform: rotate(40deg);
 	transform: rotate(40deg);
 	-webkit-backface-visibility: hidden;
@@ -4727,7 +4727,7 @@ textarea.materialize-textarea {
 	height: 22px;
 	border-top: none;
 	border-left: none;
-	border-right: 2px solid #26a69a;
+	border-right: 2px solid $main;
 	border-bottom: none;
 	-webkit-transform: rotate(90deg);
 	transform: rotate(90deg);
@@ -4797,8 +4797,8 @@ textarea.materialize-textarea {
 	top: 0;
 	width: 20px;
 	height: 20px;
-	border: 2px solid #26a69a;
-	background-color: #26a69a;
+	border: 2px solid $main;
+	background-color: $main;
 	z-index: 0;
 }
 
@@ -4810,8 +4810,8 @@ textarea.materialize-textarea {
 
 [type="checkbox"].filled-in.tabbed:checked:focus+span:not(.lever):after {
 	border-radius: 2px;
-	background-color: #26a69a;
-	border-color: #26a69a;
+	background-color: $main;
+	border-color: $main;
 }
 
 [type="checkbox"].filled-in:disabled:not(:checked)+span:not(.lever):before {
@@ -4865,7 +4865,7 @@ textarea.materialize-textarea {
 }
 
 .switch label input[type=checkbox]:checked+.lever:after {
-	background-color: #26a69a;
+	background-color: $main;
 }
 
 .switch label .lever {
@@ -4990,7 +4990,7 @@ select {
 }
 
 .select-wrapper input.select-dropdown:focus {
-	border-bottom: 1px solid #26a69a;
+	border-bottom: 1px solid $main;
 }
 
 .select-wrapper .caret {
@@ -5167,7 +5167,7 @@ input[type=range]+.thumb {
 	height: 0;
 	width: 0;
 	border-radius: 50%;
-	background-color: #26a69a;
+	background-color: $main;
 	margin-left: 7px;
 	-webkit-transform-origin: 50% 50%;
 	transform-origin: 50% 50%;
@@ -5179,7 +5179,7 @@ input[type=range]+.thumb .value {
 	display: block;
 	width: 30px;
 	text-align: center;
-	color: #26a69a;
+	color: $main;
 	font-size: 0;
 	-webkit-transform: rotate(45deg);
 	transform: rotate(45deg);
@@ -5211,13 +5211,13 @@ input[type=range]::-webkit-slider-thumb {
 	height: 14px;
 	width: 14px;
 	border-radius: 50%;
-	background: #26a69a;
+	background: $main;
 	-webkit-transition: -webkit-box-shadow .3s;
 	transition: -webkit-box-shadow .3s;
 	transition: box-shadow .3s;
 	transition: box-shadow .3s, -webkit-box-shadow .3s;
 	-webkit-appearance: none;
-	background-color: #26a69a;
+	background-color: $main;
 	-webkit-transform-origin: 50% 50%;
 	transform-origin: 50% 50%;
 	margin: -5px 0 0 0;
@@ -5249,7 +5249,7 @@ input[type=range]::-moz-range-thumb {
 	height: 14px;
 	width: 14px;
 	border-radius: 50%;
-	background: #26a69a;
+	background: $main;
 	-webkit-transition: -webkit-box-shadow .3s;
 	transition: -webkit-box-shadow .3s;
 	transition: box-shadow .3s;
@@ -5288,7 +5288,7 @@ input[type=range]::-ms-thumb {
 	height: 14px;
 	width: 14px;
 	border-radius: 50%;
-	background: #26a69a;
+	background: $main;
 	-webkit-transition: -webkit-box-shadow .3s;
 	transition: -webkit-box-shadow .3s;
 	transition: box-shadow .3s;
