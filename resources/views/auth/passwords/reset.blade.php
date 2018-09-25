@@ -28,7 +28,7 @@
 
         <div class="input-field">
             <button type="submit" class="waves-effect waves-light btn">
-                <i class="material-icons right">settings_backup_restore</i>
+                <i class="fas fa-retweet right"></i>
                 @lang('passwords.reset_pwd')
             </button>
         </div>

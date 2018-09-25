@@ -6,7 +6,7 @@
 
 {{-- Back button --}}
 <a href="/help" class="btn-floating mt-3 ml-3 paper-dark tooltipped" data-tooltip="@lang('messages.back')" data-position="top">
-    <i class="material-icons red-text">keyboard_backspace</i>
+    <i class="fas fa-angle-left red-text"></i>
 </a>
 
 <div class="page">

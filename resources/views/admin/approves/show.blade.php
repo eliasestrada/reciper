@@ -15,13 +15,13 @@
                 <form action="{{ action('Admin\ApprovesController@ok', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
                     @csrf
                     <button class="btn green" type="submit">
-                        @lang('messages.yes') <i class="material-icons right">thumb_up</i>
+                        @lang('messages.yes') <i class="fas fa-thumbs-up right"></i>
                     </button>
                 </form>
 
                 {{-- Cancel --}}
                 <a href="#cancel-publishing-modal" class="btn red modal-trigger">
-                    @lang('messages.no') <i class="material-icons right">thumb_down</i>
+                    @lang('messages.no') <i class="fas fa-thumbs-up right"></i>
                 </a>
 
                 <!--  cancel-publishing-modal structure -->
@@ -40,7 +40,7 @@
                 </div>
             @else
                 <h6 class="green-text">
-                    <i class="material-icons small">search</i><br>
+                    <i class="fas fa-search small"></i><br>
                     @lang('approves.currently_approving', ['user' => optional($recipe->approver)->name])
                 </h6>
             @endif

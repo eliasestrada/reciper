@@ -17,7 +17,7 @@
 
         <div class="input-field">
             <button type="submit" class="waves-effect waves-light btn">
-                <i class="material-icons right">send</i>
+                <i class="fas fa-share right"></i>
                 @lang('passwords.sent_code')
             </button>
         </div>

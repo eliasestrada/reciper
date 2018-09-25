@@ -10,7 +10,7 @@
     <div class="row mt-4">
         @foreach ($help_categories as $category)
             <div class="col s12 m6 l4">
-                <h5 class="grey-dark-text header"> <i class="material-icons left red-text">{{ $category->icon }}</i>
+                <h5 class="grey-dark-text header"> <i class="fas {{ $category->icon }} left red-text"></i>
                     {{ $category->getTitle() }}
                 </h5>
                 <div class="divider"></div>

@@ -42,7 +42,7 @@
                 @lang('users.no_recipes_yet')
                 @include('includes.buttons.btn', [
                     'title' => trans('includes.add_recipe'),
-                    'icon' => 'add',
+                    'icon' => 'fa-plus',
                     'link' => '/recipes/create'
                 ])
             @endslot

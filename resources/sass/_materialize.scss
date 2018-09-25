@@ -567,8 +567,7 @@ video.responsive-video {
 
 .breadcrumb i,
 .breadcrumb [class^="mdi-"],
-.breadcrumb [class*="mdi-"],
-.breadcrumb i.material-icons {
+.breadcrumb [class*="mdi-"] {
 	display: inline-block;
 	float: left;
 	font-size: 24px;
@@ -1161,15 +1160,6 @@ table span.badge {
 	display: inline-block;
 	float: none;
 	margin-left: auto;
-}
-
-/* This is needed for some mobile phones to display the Google Icon font properly */
-
-.material-icons {
-	text-rendering: optimizeLegibility;
-	-webkit-font-feature-settings: 'liga';
-	-moz-font-feature-settings: 'liga';
-	font-feature-settings: 'liga';
 }
 
 .container {
@@ -2044,8 +2034,7 @@ nav a {
 
 nav i,
 nav [class^="mdi-"],
-nav [class*="mdi-"],
-nav i.material-icons {
+nav [class*="mdi-"] {
 	display: block;
 	font-size: 24px;
 	height: 56px;
@@ -2118,8 +2107,7 @@ nav .brand-logo.right {
 
 nav .brand-logo i,
 nav .brand-logo [class^="mdi-"],
-nav .brand-logo [class*="mdi-"],
-nav .brand-logo i.material-icons {
+nav .brand-logo [class*="mdi-"] {
 	float: left;
 	margin-right: 15px;
 }
@@ -2166,15 +2154,6 @@ nav ul a.btn-floating {
 	margin-right: 15px;
 }
 
-nav ul a.btn>.material-icons,
-nav ul a.btn-large>.material-icons,
-nav ul a.btn-small>.material-icons,
-nav ul a.btn-large>.material-icons,
-nav ul a.btn-flat>.material-icons,
-nav ul a.btn-floating>.material-icons {
-	height: inherit;
-	line-height: inherit;
-}
 
 nav ul a:hover {
 	background-color: rgba(0, 0, 0, 0.1);
@@ -4447,8 +4426,7 @@ textarea.materialize-textarea+label:after,
 }
 
 .input-field input[type=search]:focus:not(.browser-default)+label i,
-.input-field input[type=search]:focus:not(.browser-default)~.mdi-navigation-close,
-.input-field input[type=search]:focus:not(.browser-default)~.material-icons {
+.input-field input[type=search]:focus:not(.browser-default)~.mdi-navigation-close {
 	color: #444;
 }
 
@@ -4458,8 +4436,7 @@ textarea.materialize-textarea+label:after,
 	left: 1rem;
 }
 
-.input-field input[type=search]~.mdi-navigation-close,
-.input-field input[type=search]~.material-icons {
+.input-field input[type=search]~.mdi-navigation-close {
 	position: absolute;
 	top: 0;
 	right: 1rem;
@@ -5449,8 +5426,7 @@ Nav List
 
 .sidenav li>a>i,
 .sidenav li>a>[class^="mdi-"],
-.sidenav li>a li>a>[class*="mdi-"],
-.sidenav li>a>i.material-icons {
+.sidenav li>a li>a>[class*="mdi-"] {
 	float: left;
 	height: 48px;
 	line-height: 48px;

@@ -38,7 +38,7 @@
                         @lang('documents.no_docs')
                         @include('includes.buttons.btn', [
                             'title' => trans('documents.new_doc'),
-                            'icon' => 'add',
+                            'icon' => 'fa-plus',
                             'link' => '/master/documents/create'
                         ])
                     @endslot

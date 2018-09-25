@@ -15,19 +15,19 @@ class HelpCategoriesSeeder extends Seeder
         HelpCategory::insert([
             [
                 'id' => 1,
-                'icon' => 'portrait',
+                'icon' => 'fa-user-circle',
                 'title_ru' => 'Страница',
                 'title_en' => 'Profile',
             ],
             [
                 'id' => 2,
-                'icon' => 'star',
+                'icon' => 'fa-comment-dots',
                 'title_ru' => 'Общие вопросы',
                 'title_en' => 'General Questions',
             ],
             [
                 'id' => 3,
-                'icon' => 'library_books',
+                'icon' => 'fa-book-open',
                 'title_ru' => 'Рецепты',
                 'title_en' => 'Recipes',
             ],

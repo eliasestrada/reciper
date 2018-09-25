@@ -16,7 +16,7 @@
 
         <div class="mt-3"> {{-- Delete button --}}
             <a onclick="if (confirm('@lang('contact.sure_del_feed')')) $('delete-feed').submit()" class="btn-floating red tooltipped" data-tooltip="@lang('tips.delete')" data-position="top">
-                <i class="material-icons">delete</i>
+                <i class="fas fa-trash"></i>
             </a>
         </div>
     </div>
