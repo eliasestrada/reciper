@@ -6,9 +6,7 @@
             <div class="mb-4"> {{-- Log Menu --}}
                 <ul class="collection">
                     <li class="collection-header px-2">
-                        <h5>
-                            <i class="material-icons right">equalizer</i> {{ $log->date }}
-                        </h5>
+                        <h5>{{ $log->date }}</h5>
                     </li>
 
                     @foreach($log->menu() as $levelKey => $item)
@@ -32,19 +30,19 @@
                 <div class="p-2">
                     {{-- Back button --}}
                     <a href="/log-viewer/logs" class="btn right">
-                        <i class="material-icons right">keyboard_arrow_right</i> @lang('messages.back')
+                        <i class="fas fa-angle-right right"></i> @lang('messages.back')
                     </a>
                     {{-- Download button --}}
-                    <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn tooltipped" data-tooltip="@lang('logs.download_file')" data-position="top">
-                        <i class="material-icons">file_download</i>
+                    <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn-floating tooltipped" data-tooltip="@lang('logs.download_file')" data-position="top">
+                        <i class="fas fa-file-download"></i>
                     </a>
                     {{-- Delete button --}}
                     <form action="{{ action('Master\LogsController@delete') }}" method="POST" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')" data-position="top" onsubmit="return confirm('@lang('logs.confirm', ['date' => $log->date])')">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="date" value="{{ $log->date }}">
-                        <button type="submit" class="btn red" title="@lang('form.deleting')">
-                            <i class="material-icons">delete</i>
+                        <button type="submit" class="btn-floating red" title="@lang('form.deleting')">
+                            <i class="fas fa-trash"></i>
                         </button>
                     </form>
                 </div>
@@ -52,38 +50,38 @@
                     <li class="collection-item">
                         <div>
                             <span>@lang('logs.path_to_file'):</span> 
-                            {{ $log->getPath() }} <i class="material-icons left">swap_horiz</i>
+                            {{ $log->getPath() }} <i class="fas fa-link left"></i>
                         </div>
                     </li>
                     <li class="collection-item">
                         <div>
                             <span>@lang('logs.all_errors'):</span> 
-                            {{ $entries->total() }} <i class="material-icons left">error_outline</i>
+                            {{ $entries->total() }} <i class="fas fa-exclamation-triangle left"></i>
                         </div>
                     </li>
                     <li class="collection-item">
                         <div>
                             <span>@lang('logs.file_size'):</span> 
-                            {{ $log->size() }} <i class="material-icons left">memory</i>
+                            {{ $log->size() }} <i class="fas fa-memory left"></i>
                         </div>
                     </li>
                     <li class="collection-item">
                         <div>
                             <span>@lang('logs.created_at'):</span> 
-                            {{ $log->updatedAt() }} <i class="material-icons left">date_range</i>
+                            {{ $log->updatedAt() }} <i class="fas fa-calendar left"></i>
                         </div>
                     </li>
                     <li class="collection-item">
                         <div>
                             <span>@lang('logs.updated_at'):</span> 
-                            {{ $log->createdAt() }} <i class="material-icons left">date_range</i>
+                            {{ $log->createdAt() }} <i class="fas fa-calendar left"></i>
                         </div>
                     </li>
                 </ul>
                 {{-- Search --}}
                 <form action="{{ route('log-viewer::logs.search', [$log->date, $level]) }}" method="GET">
                     <div class="input-field">
-                        <i class="material-icons prefix">search</i>
+                        <i class="fas fa-search prefix"></i>
                         <input id="search-input" name="query" value="{!! request('query') !!}" placeholder="@lang('pages.search_details')">
                     </div>
                     <button id="search-btn" class="btn">@lang('includes.search')</button>
@@ -124,9 +122,7 @@
                                     <div class="break-word">
                                         <div>{{ $entry->header }}</div>
                                         <div class="py-3 position-relative">
-                                            <i class="material-icons position-absolute red-text small" style="right:5px;top:5px">
-                                                more_horiz
-                                            </i>
+                                            <i class="fas fa-ellipsis-h fa-15x position-absolute red-text" style="right:5px;top:5px"></i>
                                         </div>
                                     </div>
                                 </span>
@@ -139,7 +135,7 @@
                                     <div class="d-inline-block">
                                         <span class="main-text"> - {{ time_ago($entry->datetime) }}</span>
                                     </div>
-                                    <i class="material-icons card-title position-absolute red-text small" style="right:5px;top:0">close</i>
+                                    <i class="fas fa-times fa-15x card-title position-absolute red-text" style="right:5px;top:0"></i>
                                 </div>
                                 <div class="divider"></div>
                                 <p>@if ($entry->hasStack()) {!! $entry->stack() !!} @endif</p>

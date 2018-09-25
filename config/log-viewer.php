@@ -15,17 +15,17 @@ return [
     ],
 
     /**
-	 * Supported locales:
-	 * auto', 'ar', 'bg', 'de', 'en', 'es', 'et', 'fa', 'fr', 'hu', 'hy', 'id', 'it',
-	 * 'ja', 'ko', 'nl', pl', 'pt-BR', 'ro', 'ru', 'sv', 'th', 'tr', 'zh-TW', 'zh'
-	 */
+     * Supported locales:
+     * auto', 'ar', 'bg', 'de', 'en', 'es', 'et', 'fa', 'fr', 'hu', 'hy', 'id', 'it',
+     * 'ja', 'ko', 'nl', pl', 'pt-BR', 'ro', 'ru', 'sv', 'th', 'tr', 'zh-TW', 'zh'
+     */
 
     'locale' => 'auto',
 
     /**
-	 * Supported themes: 'bootstrap-3', 'bootstrap-4', 'custom-theme'
-	 * Make your own theme by adding a folder to the views directory and specifying it here.
-	 */
+     * Supported themes: 'bootstrap-3', 'bootstrap-4', 'custom-theme'
+     * Make your own theme by adding a folder to the views directory and specifying it here.
+     */
     'theme' => 'custom-theme',
 
     /** Route settings */
@@ -39,10 +39,10 @@ return [
         ],
     ],
 
-	/**
-	 * Log entries per page
-	 * This defines how many logs & entries are displayed per page
-	 */
+    /**
+     * Log entries per page
+     * This defines how many logs & entries are displayed per page
+     */
     'per-page' => 30,
 
     /** LogViewer's Facade */
@@ -55,19 +55,19 @@ return [
     ],
 
     /** Menu settings */
-    'menu'  => [
+    'menu' => [
         'filter-route' => 'log-viewer::logs.filter',
         'icons-enabled' => true,
     ],
 
     /** Colors */
-    'colors' =>  [
-        'levels'    => [
+    'colors' => [
+        'levels' => [
             'empty' => '#D1D1D1',
             'all' => '#8A8A8A',
             'emergency' => '#B71C1C',
             'alert' => '#D32F2F',
-            'critical'  => '#F44336',
+            'critical' => '#F44336',
             'error' => '#FF5722',
             'warning' => '#FF9100',
             'notice' => '#4CAF50',

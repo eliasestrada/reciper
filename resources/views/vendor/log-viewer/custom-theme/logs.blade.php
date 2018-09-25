@@ -45,12 +45,12 @@
     
                             <td class="align-right">
                                 {{-- Open button --}}
-                                <a href="{{ route('log-viewer::logs.show', [$date]) }}" class="btn btn-small tooltipped" data-tooltip="@lang('logs.open_file')" data-position="top">
-                                    <i class="material-icons">insert_drive_file</i>
+                                <a href="{{ route('log-viewer::logs.show', [$date]) }}" class="btn-floating tooltipped" data-tooltip="@lang('logs.open_file')" data-position="top">
+                                    <i class="fas fa-envelope-open-text"></i>
                                 </a>
                                 {{-- Download button --}}
-                                <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn btn-small tooltipped" data-tooltip="@lang('logs.download_file')" data-position="top">
-                                    <i class="material-icons">file_download</i>
+                                <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn-floating tooltipped" data-tooltip="@lang('logs.download_file')" data-position="top">
+                                    <i class="fas fa-file-download"></i>
                                 </a>
                                 {{-- Delete button --}}
                                 <form action="{{ action('Master\LogsController@delete') }}" method="post" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')" data-position="top" onsubmit="return confirm('@lang('logs.confirm', ['date' => $date])')">
@@ -59,7 +59,7 @@
                                     @method('delete')
 
                                     <input type="hidden" name="date" value="{{ $date }}">
-                                    <button type="submit" class="btn btn-small red"><i class="material-icons">delete</i></button>
+                                    <button type="submit" class="btn-floating red"><i class="fas fa-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

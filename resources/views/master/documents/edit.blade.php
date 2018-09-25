@@ -38,7 +38,7 @@
             {{-- Delete button --}}
             @if ($document->id != 1)
                 <a onclick="if(confirm('@lang('documents.sure_del_doc')')) $('delete-doc').submit()" class="btn-floating red tooltipped" data-tooltip="@lang('tips.delete')" data-position="top">
-                    <i class="fas fa-trash-alt"></i>
+                    <i class="fas fa-trash"></i>
                 </a>
             @endif
 

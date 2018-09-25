@@ -4,7 +4,7 @@
             <button type="button" class="btn-floating red tooltipped" id="_delete-recipe" data-position="top"
                 :data-tooltip="deleteRecipeTip"
                 @click="deleteRecipe">
-                    <i class="fas fa-trash-alt"></i>
+                    <i class="fas fa-trash"></i>
             </button>
         </span>
     </span>

@@ -17,15 +17,15 @@
             <div class="col s12 m6 l4">
                 <div class="card-panel px-3 {{ $notif->for_admins === 1 ? 'main-light' : '' }}">
                     <span>
-                        <h6><i class="material-icons left main-text">message</i> {{ $notif->title }}</h6>
+                        <h6><i class="fas fa-bell fa-15x left main-text"></i> {{ $notif->title }}</h6>
                         <p>{{ $notif->message }}</p><hr />
                         <p>{{ $notif->data }}</p>
                         <span class="grey-text right">{{ time_ago($notif->created_at) }}</span>
 
                         @if ($notif->for_admins === 0)
-                            <form action="{{ action('NotificationController@destroy', ['notification' => $notif->id]) }}" method="post" onsubmit='return confirm("@lang('notifications.sure_to_delete')")'>
+                            <form action="{{ action('NotificationController@destroy', ['notification' => $notif->id]) }}" method="post" onsubmit="return confirm('@lang('notifications.sure_to_delete')')">
                                 @csrf @method('delete')
-                                <button class="btn" title="@lang('form.deleting')">@lang('form.deleting')</button>
+                                <button class="btn-small red">@lang('form.deleting')</button>
                             </form>
                         @else
                             @lang('admin.message_for_admin')
