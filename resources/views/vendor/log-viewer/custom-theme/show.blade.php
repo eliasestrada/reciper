@@ -38,8 +38,7 @@
                     </a>
                     {{-- Delete button --}}
                     <form action="{{ action('Master\LogsController@delete') }}" method="POST" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')" data-position="top">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        @method('delete') @csrf
                         <input type="hidden" name="date" value="{{ $log->date }}">
                         <button type="submit" class="btn-floating red" title="@lang('form.deleting')" onclick="if (!confirm('@lang('logs.confirm', ['date' => $log->date])')) event.preventDefault()">
                             <i class="fas fa-trash"></i>
