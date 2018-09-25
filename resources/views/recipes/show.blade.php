@@ -20,7 +20,7 @@
 
             {{--  To drafts button  --}}
             @if (optional(user())->hasRecipe($recipe->id) && $recipe->isReady() && $recipe->isApproved())
-                <form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post">
+                <form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post" onsubmit="return confirm('@lang('recipes.are_you_sure_to_draft')');">
                     @method('put')
                     @csrf
                     <button class="btn min-w" id="_to_drafts">@lang('tips.add_to_drafts')</button>
