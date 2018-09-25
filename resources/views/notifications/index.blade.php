@@ -8,7 +8,7 @@
     <div class="center">
         <h1 class="headline">
             @lang('includes.notifications') 
-            {{ $notifications->count() > 0 ? ": $notifications" : '' }}
+            {{ $notifications->count() > 0 ? ': ' . $notifications->count() : '' }}
         </h1>
     </div>
     
