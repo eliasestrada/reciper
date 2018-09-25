@@ -12,7 +12,7 @@ class ClearCacheAfterApproving
      */
     public function handle(RecipeGotApproved $event)
     {
-        cache()->forget('all_unapproved');
+        cache()->forget('unapproved_notif');
         cache()->forget('search_suggest');
     }
 }

@@ -30,7 +30,7 @@ class RecipeUpdateResponse implements Responsable
         }
 
         if ($this->recipe->isReady()) {
-            cache()->forget('all_unapproved');
+            cache()->forget('unapproved_notif');
             return redirect('/users/other/my-recipes')->withSuccess(trans('recipes.added_to_approving'));
 
             // turned off

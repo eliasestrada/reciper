@@ -18,7 +18,7 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        cache()->forget('all_feedback');
+        cache()->forget('feedback_notif');
 
         User::whereId(user()->id)->update([
             'contact_check' => now(),
@@ -38,7 +38,7 @@ class FeedbackController extends Controller
      */
     public function store(FeedbackRequest $request)
     {
-        cache()->forget('all_feedback');
+        cache()->forget('feedback_notif');
 
         // If already send feedback today, return with error message
         if (is_null($request->recipe)) {
@@ -92,7 +92,7 @@ class FeedbackController extends Controller
     {
         Feedback::findOrFail($id)->delete();
 
-        cache()->forget('all_feedback');
+        cache()->forget('feedback_notif');
 
         return redirect('/admin/feedback')->withSuccess(
             trans('admin.feedback_has_been_deleted')
