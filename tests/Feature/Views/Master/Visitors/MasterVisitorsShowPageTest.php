@@ -81,8 +81,8 @@ class MasterVisitorsShowPageTest extends TestCase
     {
         $this->actingAs($this->master)
             ->get("/master/visitors/{$this->visitor->id}")
-            ->assertSee('<i class="material-icons left">lock_outline</i> ' . trans('visitors.ban'))
-            ->assertDontSee('<i class="material-icons left">lock_open</i> ' . trans('visitors.unban'));
+            ->assertSee('<i class="fas fa-lock left"></i> ' . trans('visitors.ban'))
+            ->assertDontSee('<i class="fas fa-lock-open left"></i> ' . trans('visitors.unban'));
     }
 
     /** @test */
@@ -92,8 +92,8 @@ class MasterVisitorsShowPageTest extends TestCase
 
         $this->actingAs($this->master)
             ->get("/master/visitors/{$this->visitor->id}")
-            ->assertDontSee('<i class="material-icons left">lock_outline</i> ' . trans('visitors.ban'))
-            ->assertSee('<i class="material-icons left">lock_open</i> ' . trans('visitors.unban'));
+            ->assertDontSee('<i class="fas fa-lock left"></i> ' . trans('visitors.ban'))
+            ->assertSee('<i class="fas fa-lock-open left"></i> ' . trans('visitors.unban'));
     }
 
     /** @test */

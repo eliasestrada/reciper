@@ -46,8 +46,11 @@ class VisitorsController extends Controller
             return back()->withError(trans('visitors.visitor_already_banned'));
         }
 
-        Ban::banVisitor($visitor->id, $request->days, $request->message);
-        return back()->withSuccess(trans('visitors.visitor_banned', ['days' => $request->days]));
+        if ($visitor->id != 1) {
+            Ban::banVisitor($visitor->id, $request->days, $request->message);
+            return back()->withSuccess(trans('visitors.visitor_banned', ['days' => $request->days]));
+        }
+        return back();
     }
 
     /**

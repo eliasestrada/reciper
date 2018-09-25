@@ -8,7 +8,7 @@
     <div class="center">
         <div>
             <h1 class="headline mb-4">
-                <i class="material-icons tiny {{ $visitor->getStatusColor() }}-text">lens</i>
+                <i class="fas fa-circle tiny {{ $visitor->getStatusColor() }}-text"></i>
                 @lang('visitors.visitor'): <span class="red-text">{{ $visitor->id }}</span>
             </h1>
         </div>
@@ -36,14 +36,14 @@
                     <form class="row" action="{{ action('Master\VisitorsController@destroy', ['id' => $visitor->id]) }}" method="post" onsubmit="return confirm('@lang('visitors.are_you_sure_to_unban')')">
                         @csrf @method('delete')
                         <button class="btn red" type="submit">
-                            <i class="material-icons left">lock_open</i> @lang('visitors.unban')
+                            <i class="fas fa-lock-open left"></i> @lang('visitors.unban')
                         </button>
                     </form>
                 </div>
             @else
                 <div> {{-- Ban button trigger --}}
                     <a href="#ban-visitor-modal" class="btn-small mt-3 red modal-trigger">
-                        <i class="material-icons left">lock_outline</i> @lang('visitors.ban')
+                        <i class="fas fa-lock left"></i> @lang('visitors.ban')
                     </a>
                 </div>
             @endif

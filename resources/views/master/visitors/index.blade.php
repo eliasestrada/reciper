@@ -13,14 +13,14 @@
     </div>
     <div class="row container">
         <ul class="col s12 m6">
-            <li><i class="main-text material-icons tiny">remove_red_eye</i> - @lang('visitors.all_views')</li>
-            <li><i class="main-text material-icons tiny">favorite</i> - @lang('visitors.gave_likes')</li>
-            <li><i class="main-text material-icons tiny">library_books</i> - @lang('visitors.recipes_viewed')</li>
+            <li><i class="main-text fas fa-eye tiny"></i> - @lang('visitors.all_views')</li>
+            <li><i class="main-text fas fa-heart tiny"></i> - @lang('visitors.gave_likes')</li>
+            <li><i class="main-text fas fa-book-reader tiny"></i> - @lang('visitors.recipes_viewed')</li>
         </ul>
         <ul class="col s12 m6">
-            <li><i class="green-text material-icons tiny">lens</i> - @lang('visitors.registered_users')</li>
-            <li><i class="main-text material-icons tiny">lens</i> - @lang('visitors.not_registered_users')</li>
-            <li><i class="red-text material-icons tiny">lens</i> - @lang('visitors.banned_users')</li>
+            <li><i class="green-text fas fa-circle tiny"></i> - @lang('visitors.registered_users')</li>
+            <li><i class="main-text fas fa-circle tiny"></i> - @lang('visitors.not_registered_users')</li>
+            <li><i class="red-text fas fa-circle tiny"></i> - @lang('visitors.banned_users')</li>
         </ul>
     </div>
 
@@ -29,9 +29,9 @@
         <thead>
             <tr>
                 <th class="main-text pl-3">#</th>
-                <th><i class="material-icons main-text" title="@lang('visitors.recipes_viewed')">library_books</i></th>
-                <th><i class="material-icons main-text" title="@lang('visitors.gave_likes')">favorite</i></th>
-                <th><i class="material-icons main-text" title="@lang('visitors.all_views')">remove_red_eye</i></th>
+                <th><i class="fas fa-book-reader main-text" title="@lang('visitors.recipes_viewed')"></i></th>
+                <th><i class="fas fa-heart main-text" title="@lang('visitors.gave_likes')"></i></th>
+                <th><i class="fas fa-eye main-text" title="@lang('visitors.all_views')"></i></th>
             </tr>
         </thead>
         <tbody>
