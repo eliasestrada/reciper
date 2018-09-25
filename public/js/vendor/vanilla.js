@@ -14,6 +14,7 @@ document.querySelectorAll("form").forEach(function (form) {
 		var buttons = this.querySelectorAll("button");
 		buttons.forEach(function (button) {
 			button.setAttribute("disabled", "disabled");
+			button.classList.add("disabled");
 			button.innerHTML = '<i class="fas fa-circle-notch fa-1x fa-spin"></i>';
 		});
 		console.log("nice");
