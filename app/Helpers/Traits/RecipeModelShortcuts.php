@@ -80,11 +80,11 @@ trait RecipeModelShortcuts
     public function getStatusIcon(): string
     {
         if ($this->isDone()) {
-            return 'check';
+            return 'fa-check';
         } elseif (!$this->isReady()) {
-            return 'edit';
+            return 'fa-edit';
         } else {
-            return 'timelapse';
+            return 'fa-clock';
         }
     }
 

@@ -1,7 +1,7 @@
 <template>
     <div>
         <a :href="'/recipes#' + btn.link" v-for="btn in btns" :key="btn.link" :class="{ 'active': btn.isActive }" class="btn btn-sort main-text">
-            <i class="material-icons red-text left">{{ btn.icon }}</i>
+            <i class="fas red-text left" :class="btn.icon"></i>
             {{ btn.title }}
         </a>
     </div>
@@ -15,49 +15,49 @@ export default {
             btns: [
                 {
                     title: this.newBtn,
-                    icon: 'watch_later',
+                    icon: 'fa-clock',
                     link: 'new',
                     isActive: false
                 },
                 {
                     title: this.mostLikedBtn,
-                    icon: 'star',
+                    icon: 'fa-star',
                     link: 'most_liked',
                     isActive: false
                 },
                 {
                     title: this.simpleBtn,
-                    icon: 'library_books',
+                    icon: 'fa-concierge-bell',
                     link: 'simple',
                     isActive: false
                 },
                 {
                     title: this.breakfastBtn,
-                    icon: 'restaurant',
+                    icon: 'fa-utensils',
                     link: 'breakfast',
                     isActive: false
                 },
                 {
                     title: this.lunchBtn,
-                    icon: 'restaurant',
+                    icon: 'fa-utensils',
                     link: 'lunch',
                     isActive: false
                 },
                 {
                     title: this.dinnerBtn,
-                    icon: 'restaurant',
+                    icon: 'fa-utensils',
                     link: 'dinner',
                     isActive: false
                 },
                 {
                     title: this.myViewesBtn,
-                    icon: 'remove_red_eye',
+                    icon: 'fa-eye',
                     link: 'my_viewes',
                     isActive: false
                 },
                 {
                     title: this.myLikesBtn,
-                    icon: 'favorite',
+                    icon: 'fa-heart',
                     link: 'my_likes',
                     isActive: false
                 },

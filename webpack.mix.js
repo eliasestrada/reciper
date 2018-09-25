@@ -20,6 +20,7 @@ mix.js("resources/js/vue/vue.js", "public/js/vendor")
         proxy: "localhost:8000",
         files: ["resources/sass/**/*", "resources/js/**/*"]
     })
+    .disableNotifications()
     .options({
         processCssUrls: false
     });

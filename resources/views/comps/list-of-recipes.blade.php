@@ -14,7 +14,7 @@
 
                     <div class="mt-3" style="width:35px">
                         <span class="new badge tooltipped" style="min-width:auto; height:28px; padding:3px; background-color:{{ $recipe->getStatusColor() }}" data-tooltip="@lang('users.status'): {{ $recipe->getStatusText() }}">
-                            <i class="material-icons" style="font-size:23px">{{ $recipe->getStatusIcon() }}</i>
+                            <i class="fas {{ $recipe->getStatusIcon() }}" style="font-size:21px"></i>
                         </span>
                     </div>
                 </li>

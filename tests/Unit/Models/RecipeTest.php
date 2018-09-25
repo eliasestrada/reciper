@@ -123,9 +123,9 @@ class RecipeTest extends TestCase
         $not_ready = make(Recipe::class, ['ready_' . lang() => 0]);
         $not_approved = make(Recipe::class, ['approved_' . lang() => 0]);
 
-        $this->assertEquals('check', $done->getStatusIcon());
-        $this->assertEquals('edit', $not_ready->getStatusIcon());
-        $this->assertEquals('timelapse', $not_approved->getStatusIcon());
+        $this->assertEquals('fa-check', $done->getStatusIcon());
+        $this->assertEquals('fa-edit', $not_ready->getStatusIcon());
+        $this->assertEquals('fa-clock', $not_approved->getStatusIcon());
     }
 
     /** @test */
