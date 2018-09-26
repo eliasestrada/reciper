@@ -14,7 +14,7 @@
 
         <div class="popup-window z-depth-2 p-3 position-absolute paper" id="popup-window">
             {{-- Report button --}}
-            <a href="#report-recipe-modal" class="btn modal-trigger min-w"{{ visitor_id() == $recipe->user_id ? ' disabled' : '' }}>
+            <a href="#report-recipe-modal" class="btn modal-trigger min-w"{{ visitor_id() == $recipe->user_id || optional(user())->hasRecipe($recipe->id) ? ' disabled' : '' }}>
                 @lang('recipes.report_recipe')
             </a>
 

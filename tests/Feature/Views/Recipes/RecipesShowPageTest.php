@@ -53,8 +53,8 @@ class RecipesShowPageTest extends TestCase
         // Make request to approve a recipe with message
         $this->actingAs($admin)
             ->post(action('Admin\ApprovesController@ok',
-                ['recipe' => $unapproved_recipe->id]),
-                ['message' => 'Lorem ipsum dolor sit amet consectetur han'])
+                ['recipe_id' => $unapproved_recipe->id]),
+                ['message' => str_random(30)])
             ->assertRedirect("/recipes/$unapproved_recipe->id");
 
         // Now recipe should be approved
@@ -72,10 +72,9 @@ class RecipesShowPageTest extends TestCase
 
         // Make request to cancel a recipe with message
         $this->actingAs($admin)
-            ->post(action('Admin\ApprovesController@cancel',
-                ['recipe' => $unapproved_recipe->id]),
-                ['message' => 'Lorem ipsum dolor sit amet consectetur']
-            );
+            ->post(action('Admin\ApprovesController@cancel', ['id' => $unapproved_recipe->id]), [
+                'message' => str_random(40),
+            ]);
 
         // Recipe should be still unapproved
         $this->assertDatabaseHas('recipes', [
@@ -90,14 +89,11 @@ class RecipesShowPageTest extends TestCase
         $admin = create_user('admin');
         $unapproved_recipe = create(Recipe::class, ['approved_' . lang() => 0]);
 
-        $this->actingAs($admin)
-            ->get("/recipes/$unapproved_recipe->id");
+        $this->actingAs($admin)->get("/recipes/$unapproved_recipe->id");
 
         // Make request to cancel a recipe with message
         $this->actingAs($admin)
-            ->post(action('Admin\ApprovesController@cancel', [
-                'recipe' => $unapproved_recipe->id,
-            ]))
+            ->post(action('Admin\ApprovesController@cancel', ['id' => $unapproved_recipe->id]))
             ->assertRedirect("/recipes/$unapproved_recipe->id");
 
         // Recipe should be still unapproved
@@ -112,13 +108,9 @@ class RecipesShowPageTest extends TestCase
     {
         $admin = create_user('admin');
         $user = create(User::class);
-        $recipe = create(Recipe::class, [
-            'user_id' => $user->id,
-            'approved_' . lang() => 0,
-        ]);
+        $recipe = create(Recipe::class, ['user_id' => $user->id, 'approved_' . lang() => 0]);
 
-        $this->actingAs($admin)
-            ->get("/recipes/$recipe->id");
+        $this->actingAs($admin)->get("/recipes/$recipe->id");
 
         // Make request to approve a recipe with message
         $this->actingAs($admin)
@@ -134,81 +126,76 @@ class RecipesShowPageTest extends TestCase
     /** @test */
     public function user_can_report_recipe_by_sending_message(): void
     {
-        $recipe = make(Recipe::class);
+        $data = [
+            'message' => str_random(40),
+            'recipe_id' => make(Recipe::class)->id,
+        ];
 
         $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), [
-                'message' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit.',
-                'recipe' => $recipe->id,
-            ])
+            ->post(action('Admin\FeedbackController@store'), $data)
             ->assertSee(lang('feedback.success_message'));
+
+        $this->assertDatabaseHas('feedback', $data);
     }
 
     /** @test */
     public function user_cant_report_same_recipe_twice_per_day(): void
     {
-        $recipe = make(Recipe::class);
+        $data = ['message' => str_random(40), 'recipe_id' => make(Recipe::class)->id];
 
         $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), [
-                'message' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-                'recipe' => $recipe->id,
-            ])
+            ->post(action('Admin\FeedbackController@store'), $data)
             ->assertSee(lang('feedback.success_message'));
+        $this->assertDatabaseHas('feedback', $data);
+
+        // Changin message but recipe is the same
+        $data['message'] = str_random(45);
 
         $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), [
-                'message' => 'Lorem ipsum dolor sit amet consectetur adipisicing elitic same',
-                'recipe' => $recipe->id,
-            ])
+            ->post(action('Admin\FeedbackController@store'), $data)
             ->assertSee(lang('feedback.already_reported_today'));
+        $this->assertDatabaseMissing('feedback', $data);
     }
 
     /** @test */
     public function user_can_report_same_recipe_once_per_day(): void
     {
-        $recipe = make(Recipe::class);
+        $data = ['message' => str_random(40), 'recipe_id' => make(Recipe::class)->id];
 
         // First request
         $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), [
-                'message' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit!!',
-                'recipe' => $recipe->id,
-            ])
+            ->post(action('Admin\FeedbackController@store'), $data)
             ->assertSee(lang('feedback.success_message'));
+        $this->assertDatabaseHas('feedback', $data);
 
-        // Changing created_at field to minus day
+        // Changing created_at field to minus day and changing message
         Feedback::latest()->first()->update(['created_at' => now()->subDay()]);
+        $data['message'] = str_random(45);
 
         // Making another request (imitating the next day)
         $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), [
-                'message' => 'Lorem ipsum dolor, sit amet consectetur price',
-                'recipe' => $recipe->id,
-            ])
+            ->post(action('Admin\FeedbackController@store'), $data)
             ->assertSee(lang('feedback.success_message'));
+        $this->assertDatabaseHas('feedback', $data);
     }
 
     /** @test */
     public function user_can_report_2_recipes_in_the_same_day(): void
     {
-        $recipe = make(Recipe::class);
+        $data1 = ['message' => str_random(40), 'recipe_id' => create(Recipe::class)->id];
+        $data2 = ['message' => str_random(45), 'recipe_id' => create(Recipe::class)->id];
 
         // First report
         $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), [
-                'message' => 'Lorem ipsum dolor, sit amet consectetur',
-                'recipe' => $recipe->id,
-            ])
+            ->post(action('Admin\FeedbackController@store'), $data1)
             ->assertSee(lang('feedback.success_message'));
+        $this->assertDatabaseHas('feedback', $data1);
 
         // Second report
         $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), [
-                'message' => 'Lorem ipsum dolor, sit amet consectetur',
-                'recipe' => create(Recipe::class)->id,
-            ])
+            ->post(action('Admin\FeedbackController@store'), $data2)
             ->assertSee(lang('feedback.success_message'));
+        $this->assertDatabaseHas('feedback', $data2);
     }
 
     /** @test */
@@ -216,5 +203,16 @@ class RecipesShowPageTest extends TestCase
     {
         $this->get('/recipes/' . create(Recipe::class)->id)
             ->assertSee('<a href="#report-recipe-modal" class="btn modal-trigger min-w">');
+    }
+
+    /** @test */
+    public function owner_of_the_recipe_sees_report_button_disabled(): void
+    {
+        $user = create_user();
+        $recipe = create(Recipe::class, ['user_id' => $user->id]);
+
+        $this->actingAs($user)
+            ->get("/recipes/$recipe->id")
+            ->assertSee('<a href="#report-recipe-modal" class="btn modal-trigger min-w" disabled>');
     }
 }
