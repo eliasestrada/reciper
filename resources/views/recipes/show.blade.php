@@ -57,8 +57,20 @@
     {{-- API: Еще рецепты Sidebar --}}
     <div class="side-bar center">
         <h6 class="decorated pb-3">@lang('recipes.more')</h6>
-        <random-recipes-sidebar visitor-id="{{ visitor_id() }}">
-            @include('includes.preloader')
+        <random-recipes-sidebar visitor-id="{{ visitor_id() }}" inline-template>
+            <div>
+                <div class="card" style="animation:appearWithRotate 1s;"
+                    v-for="recipe in recipes"
+                    :key="recipe.id">
+
+                    <div class="card-image">
+                        <a :href="'/recipes/' + recipe.id" :title="recipe.title">
+                            <img :src="'/storage/images/' + recipe.image" :alt="recipe.title">
+                        </a>
+                    </div>
+                    <div class="card-content p-3" v-text="recipe.title">@include('includes.preloader')</div>
+                </div>
+            </div>
         </random-recipes-sidebar>
     </div>
 </section>
