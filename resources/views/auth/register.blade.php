@@ -62,7 +62,7 @@
                 <div id="show-document-modal" class="modal">
                     <div class="modal-content reset">
                         <h4>{{ $document->getTitle() }}</h4>
-                        {!! $document->text !!}
+                        {!! $document->getText() !!}
                     </div>
                     <div class="modal-footer">
                         <a href="#!" class="modal-close waves-effect waves-green btn-flat left">

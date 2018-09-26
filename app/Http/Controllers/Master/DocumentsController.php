@@ -36,7 +36,7 @@ class DocumentsController extends Controller
     {
         $doc = Document::create([
             'title_' . lang() => $request->title,
-            'text' => $request->text,
+            'text_' . lang() => $request->text,
         ]);
 
         return redirect("/master/documents/$doc->id/edit");
@@ -68,7 +68,7 @@ class DocumentsController extends Controller
     {
         $document->update([
             'title_' . lang() => $request->title,
-            'text' => $request->text,
+            'text_' . lang() => $request->text,
             'ready_' . lang() => $request->ready == 1 ? 1 : 0,
         ]);
 

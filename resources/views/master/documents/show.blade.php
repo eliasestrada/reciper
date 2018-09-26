@@ -22,7 +22,7 @@
         <h5>{{ $document->getTitle() }}</h5>
         <div class="divider"></div>
     </div>
-    <div class="reset">{!! custom_strip_tags($document->text) !!}</div>
+    <div class="reset">{!! custom_strip_tags($document->getText()) !!}</div>
 
     <p class="mt-5"> {{-- Created at --}}
         <b>@lang('logs.created_at'):</b> 

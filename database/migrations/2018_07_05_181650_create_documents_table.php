@@ -16,7 +16,8 @@ class CreateDocumentsTable extends Migration
             $table->increments('id');
             $table->string('title_ru', config('validation.docs_title_max'))->nullable();
             $table->string('title_en', config('validation.docs_title_max'))->nullable();
-            $table->text('text')->nullable();
+            $table->text('text_ru')->nullable();
+            $table->text('text_en')->nullable();
             $table->boolean('ready_ru')->default(0);
             $table->boolean('ready_en')->default(0);
             $table->timestamps();

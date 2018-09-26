@@ -17,6 +17,14 @@ class Document extends Model
     }
 
     /**
+     * @return string
+     */
+    public function getText(): string
+    {
+        return $this->toArray()['text_' . lang()];
+    }
+
+    /**
      * @return boolean
      */
     public function isReady(): bool
