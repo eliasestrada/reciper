@@ -28,7 +28,7 @@
         </div>
 
         <div class="input-field"> {{-- Input field --}}
-            <input type="text" name="title" id="title" value="{{ old('title') }}" class="counter" data-length="{{ config('validation.docs_title_max') }}">
+            <input type="text" name="title" id="title" value="{{ old('title') }}" class="counter" data-length="{{ config('validation.docs_title_max') }}" maxlength="{{ config('validation.docs_title_max') }}" minlength="{{ config('validation.docs_title_min') }}">
             <label for="title">@lang('documents.doc_title')</label>
         </div>
 
