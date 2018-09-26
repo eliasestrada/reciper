@@ -73,8 +73,9 @@ class DocumentsController extends Controller
         ]);
 
         if ($request->has('view')) {
-            return redirect("/documents/$document->id")->withSuccess(trans('documents.saved'));
+            return redirect("/documents/$document->id");
         }
+
         return $request->ready == 0
         ? back()->withSuccess(trans('documents.saved'))
         : back()->withSuccess(trans('documents.published'));

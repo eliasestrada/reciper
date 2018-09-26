@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="page">
-    @hasRole('mester')
+    @hasRole('master')
         <div class="center pb-2 pt-3">
             {{-- Back button --}}
             <a href="/master/documents" class="btn-floating green tooltipped" data-tooltip="@lang('messages.back')" data-position="top">

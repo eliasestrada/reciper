@@ -23,9 +23,7 @@
 
             {{-- View button --}}
             @if ($document->id != 1)
-                <button class="btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top" name="view">
-                    <i class="fas fa-eye"></i>
-                </button>
+                <input type="submit" value="&#xf06e" name="view" class="fas btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top">
             @endif
 
             {{-- Save button --}}
