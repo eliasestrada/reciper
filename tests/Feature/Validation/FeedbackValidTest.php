@@ -10,14 +10,14 @@ class FeedbackValidTest extends TestCase
 {
     use DatabaseTransactions;
 
-    private $message_min;
-    private $message_max;
+    private $msg_min;
+    private $msg_max;
 
     public function setUp()
     {
         parent::setUp();
-        $this->message_min = config('validation.contact_message_min');
-        $this->message_max = config('validation.contact_message_max');
+        $this->msg_min = config('validation.contact_message_min');
+        $this->msg_max = config('validation.contact_message_max');
     }
 
     /** @test */
@@ -61,12 +61,12 @@ class FeedbackValidTest extends TestCase
     {
         $data = [
             'email' => 'other@email.com',
-            'message' => str_random($this->message_min - 1),
+            'message' => str_random($this->msg_min - 1),
         ];
 
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
-            ->assertSee(preg_replace('/:min/', $this->message_min, trans('contact.contact_message_min')));
+            ->assertSeeText(preg_replace('/:min/', $this->msg_min, trans('contact.contact_message_min')));
 
         $this->assertDatabaseMissing('feedback', $data);
     }
@@ -76,12 +76,12 @@ class FeedbackValidTest extends TestCase
     {
         $data = [
             'email' => 'somerandom@gmail.com',
-            'message' => str_random($this->message_max + 1),
+            'message' => str_random($this->msg_max + 1),
         ];
 
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
-            ->assertSee(preg_replace('/:max/', $this->message_max, trans('contact.contact_message_max')));
+            ->assertSeeText(preg_replace('/:max/', $this->msg_max, trans('contact.contact_message_max')));
 
         $this->assertDatabaseMissing('feedback', $data);
     }
@@ -96,7 +96,7 @@ class FeedbackValidTest extends TestCase
 
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
-            ->assertSee(trans('feedback.success_message'));
+            ->assertSeeText(trans('feedback.success_message'));
 
         $this->assertDatabaseHas('feedback', $data);
     }

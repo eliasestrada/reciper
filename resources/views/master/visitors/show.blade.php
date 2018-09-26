@@ -54,7 +54,7 @@
     @if ($visitor->id != 1 || !$visitor->isBanned())
         <div id="ban-visitor-modal" class="modal">
             <div class="modal-content reset">
-                <form class="row" action="{{ action('Master\VisitorsController@update', ['visitor' => $visitor->id]) }}" method="post">
+                <form class="row" action="{{ action('Master\VisitorsController@update', ['id' => $visitor->id]) }}" method="post">
 
                     @csrf @method('put')
 
