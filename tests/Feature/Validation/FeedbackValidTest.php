@@ -28,8 +28,6 @@ class FeedbackValidTest extends TestCase
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
             ->assertSeeText(trans('contact.contact_message_required'));
-
-        $this->assertDatabaseMissing('feedback', $data);
     }
 
     /** @test */
@@ -40,8 +38,6 @@ class FeedbackValidTest extends TestCase
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
             ->assertSeeText(trans('contact.contact_email_required'));
-
-        $this->assertDatabaseMissing('feedback', $data);
     }
 
     /** @test */
@@ -52,8 +48,6 @@ class FeedbackValidTest extends TestCase
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
             ->assertSeeText(trans('contact.contact_email_email'));
-
-        $this->assertDatabaseMissing('feedback', $data);
     }
 
     /** @test */
@@ -67,8 +61,6 @@ class FeedbackValidTest extends TestCase
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
             ->assertSeeText(preg_replace('/:min/', $this->msg_min, trans('contact.contact_message_min')));
-
-        $this->assertDatabaseMissing('feedback', $data);
     }
 
     /** @test */
@@ -82,8 +74,6 @@ class FeedbackValidTest extends TestCase
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
             ->assertSeeText(preg_replace('/:max/', $this->msg_max, trans('contact.contact_message_max')));
-
-        $this->assertDatabaseMissing('feedback', $data);
     }
 
     /** @test */
@@ -97,8 +87,6 @@ class FeedbackValidTest extends TestCase
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
             ->assertSeeText(trans('feedback.success_message'));
-
-        $this->assertDatabaseHas('feedback', $data);
     }
 
     /** @test */
@@ -116,7 +104,5 @@ class FeedbackValidTest extends TestCase
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
             ->assertSeeText(trans('contact.contact_message_required'));
-
-        $this->assertDatabaseMissing('feedback', $data);
     }
 }

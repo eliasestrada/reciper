@@ -65,7 +65,6 @@ class ContactPageTest extends TestCase
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $second_data)
             ->assertSeeText(trans('feedback.operation_denied'));
-        $this->assertDatabaseMissing('feedback', $second_data);
     }
 
     /** @test */

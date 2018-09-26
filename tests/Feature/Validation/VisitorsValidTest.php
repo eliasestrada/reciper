@@ -32,8 +32,6 @@ class VisitorsValidTest extends TestCase
         $this->request
             ->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), $data)
             ->assertSeeText(trans('visitors.days_required'));
-
-        $this->assertDatabaseMissing('ban', $data);
     }
 
     /** @test */
@@ -44,8 +42,6 @@ class VisitorsValidTest extends TestCase
         $this->request
             ->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), $data)
             ->assertSeeText(trans('visitors.message_required'));
-
-        $this->assertDatabaseMissing('ban', $data);
     }
 
     /** @test */
@@ -56,8 +52,6 @@ class VisitorsValidTest extends TestCase
         $this->request
             ->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), $data)
             ->assertSeeText(trans('visitors.days_numeric'));
-
-        $this->assertDatabaseMissing('ban', $data);
     }
 
     /** @test */
@@ -68,8 +62,6 @@ class VisitorsValidTest extends TestCase
         $this->request
             ->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), $data)
             ->assertSeeText(preg_replace('/:min/', $this->msg_min, trans('visitors.message_min')));
-
-        $this->assertDatabaseMissing('ban', $data);
     }
 
     /** @test */
@@ -80,7 +72,5 @@ class VisitorsValidTest extends TestCase
         $this->request
             ->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), $data)
             ->assertSeeText(preg_replace('/:max/', $this->msg_max, trans('visitors.message_max')));
-
-        $this->assertDatabaseMissing('ban', $data);
     }
 }
