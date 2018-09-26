@@ -17,7 +17,6 @@ class AdminFeedbackIndexPageTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-
         $this->admin = create_user('admin');
     }
 
@@ -37,29 +36,25 @@ class AdminFeedbackIndexPageTest extends TestCase
     /** @test */
     public function user_cant_see_the_page(): void
     {
-        $user = make(User::class);
-
-        $this->actingAs($user)
-            ->get('/admin/feedback')
-            ->assertRedirect('/');
+        $this->actingAs(make(User::class))->get('/admin/feedback')->assertRedirect('/');
     }
 
     /** @test */
     public function feedback_message_can_be_deleted_by_admin(): void
     {
-        $message = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae facere ex animi quis!';
+        $msg = str_random(40);
 
         $feed = Feedback::create([
             'visitor_id' => create(Visitor::class)->id,
             'lang' => lang(),
             'email' => 'johndoe@gmail.com',
-            'message' => $message,
+            'message' => $msg,
         ]);
 
         // Go to admin's feedback page
         $this->actingAs($this->admin)
             ->get('/admin/feedback')
-            ->assertSeeText($message);
+            ->assertSeeText($msg);
 
         // Delete the feed message
         $this->actingAs($this->admin)

@@ -41,7 +41,7 @@ class FeedbackController extends Controller
         cache()->forget('feedback_notif');
 
         // If already send feedback today, return with error message
-        if (is_null($request->recipe)) {
+        if (is_null($request->recipe_id)) {
             $alredy_send = Feedback::whereVisitorId(visitor_id())->where('created_at', '>', now()->subDay());
 
             if ($alredy_send->exists()) {
