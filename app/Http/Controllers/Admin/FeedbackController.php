@@ -50,7 +50,7 @@ class FeedbackController extends Controller
         } else {
             $report_on_the_same_recipe = Feedback::where([
                 ['visitor_id', '=', visitor_id()],
-                ['recipe_id', '=', $request->recipe],
+                ['recipe_id', '=', $request->recipe_id],
                 ['created_at', '>', now()->subDay()],
             ]);
 
@@ -64,7 +64,7 @@ class FeedbackController extends Controller
             'lang' => lang(),
             'visitor_id' => visitor_id(),
             'email' => $request->email ?? null,
-            'recipe_id' => $request->recipe,
+            'recipe_id' => $request->recipe_id,
             'message' => $request->message,
         ]);
 

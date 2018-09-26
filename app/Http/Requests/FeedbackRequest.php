@@ -27,7 +27,7 @@ class FeedbackRequest extends FormRequest
         return [
             'email' => request()->has('email') ? 'required|email' : 'nullable',
             'message' => "required|min:$min|max:$max",
-            'recipe' => 'nullable|numeric',
+            'recipe_id' => 'nullable|numeric',
         ];
     }
 
