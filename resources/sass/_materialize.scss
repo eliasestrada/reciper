@@ -2546,7 +2546,7 @@ small {
 .card.medium .card-content,
 .card.large .card-content {
 	max-height: 100%;
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .card.small .card-action,
@@ -2992,6 +2992,11 @@ small {
 .btn-flat {
 	font-size: 14px;
 	outline: 0;
+}
+
+input.btn-floating {
+    font-size: 22px;
+    border: none;
 }
 
 .btn i,

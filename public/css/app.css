@@ -49,6 +49,7 @@
 
 body {
   font-family: Arial, Helvetica;
+  word-break: break-all;
   background-color: #f3f3f3;
   font-size: 1rem;
   color: #000;
@@ -3185,6 +3186,11 @@ small {
 .btn-flat {
   font-size: 14px;
   outline: 0;
+}
+
+input.btn-floating {
+  font-size: 22px;
+  border: none;
 }
 
 .btn i,
