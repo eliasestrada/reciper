@@ -22,7 +22,7 @@ class FeedbackRequest extends FormRequest
     public function rules()
     {
         $min = config('validation.contact_message_min');
-        $max = config('validation.contact_message_max') + 6;
+        $max = config('validation.contact_message_max');
 
         return [
             'email' => request()->has('email') ? 'required|email' : 'nullable',
@@ -38,6 +38,7 @@ class FeedbackRequest extends FormRequest
     {
         return [
             'message.required' => trans('contact.contact_message_required'),
+            'email.required' => trans('contact.contact_email_required'),
             'email.email' => trans('contact.contact_email_email'),
             'message.min' => trans('contact.contact_message_min'),
             'message.max' => trans('contact.contact_message_max'),
