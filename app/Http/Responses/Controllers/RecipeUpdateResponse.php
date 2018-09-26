@@ -37,6 +37,10 @@ class RecipeUpdateResponse implements Responsable
             //event(new RecipeIsReady($this->recipe));
         }
 
+        if (request()->has('view')) {
+            return redirect("/recipes/{$this->recipe->id}");
+        }
+
         return redirect("/recipes/{$this->recipe->id}/edit")->withSuccess(trans('recipes.saved'));
     }
 }

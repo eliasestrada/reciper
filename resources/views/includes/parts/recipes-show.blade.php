@@ -37,7 +37,7 @@
 </blockquote>
 
 {{--  Text  --}}
-<blockquote class="pt-3" style="border:none;">
+<blockquote class="pt-3" style="border:none">
     <ol class="instruction unstyled-list">
         @foreach ($recipe->textWithListItems() as $item)
             {!! $item !!}

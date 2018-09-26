@@ -16,9 +16,7 @@
 
         <div class="center pb-4">
             {{--  View button  --}}
-            <a href="/recipes/{{ $recipe->id }}" class="btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top">
-                <i class="fas fa-eye"></i>
-            </a>
+            <input type="submit" value="&#xf06e" name="view" class="fas btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top">
 
             {{--  Save button  --}}
             @unless ($recipe->isReady())
