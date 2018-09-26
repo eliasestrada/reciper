@@ -39,7 +39,7 @@ class SettingsGeneralEditPageTest extends TestCase
 
         $this->actingAs($user)
             ->put(action('Settings\SettingsGeneralController@update'), ['name' => 'new name']);
-        $this->assertEquals($user->name, 'new name');
+        $this->assertEquals('new_name', $user->name);
     }
 
     /** @test */
@@ -49,7 +49,7 @@ class SettingsGeneralEditPageTest extends TestCase
         $user = create_user('', compact('name'));
 
         $this->actingAs($user)->put(action('Settings\SettingsGeneralController@update'), ['name' => 'ja']);
-        $this->assertEquals($user->name, $name);
+        $this->assertEquals($name, $user->name);
     }
 
     /** @test */
@@ -60,6 +60,6 @@ class SettingsGeneralEditPageTest extends TestCase
         $about_me = str_random(30);
 
         $this->actingAs($user)->put(action('Settings\SettingsGeneralController@update'), compact('name', 'about_me'));
-        $this->assertEquals($user->about_me, $about_me);
+        $this->assertEquals($about_me, $user->about_me);
     }
 }
