@@ -28,11 +28,17 @@
             @endunless
 
             {{--  Delete button  --}}
-            <delete-recipe-btn
+            <delete-recipe-btn inline-template
                 recipe-id="{{ $recipe->id }}"
                 deleted-fail="{{ trans('recipes.deleted_fail') }}"
-                delete-recipe-tip="{{ trans('tips.delete') }}"
                 confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
+                <span v-if="!error">
+                    <button type="button" class="btn-floating red tooltipped" id="_delete-recipe" data-position="top"
+                        data-tooltip="@lang('tips.delete')"
+                        v-on:click="deleteRecipe">
+                            <i class="fas fa-trash"></i>
+                    </button>
+                </span>
             </delete-recipe-btn>
 
             {{--  Publish button  --}}

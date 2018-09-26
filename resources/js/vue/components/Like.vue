@@ -1,15 +1,3 @@
-<template>
-    <span>
-        <a href="#" @click="toggleButton()" class="like-icon" :class="iconState()">
-            <div class="btn-wrapper">
-                <a class="btn-like"><slot></slot></a>
-            </div>
-        </a>
-        <audio ref="audio" src="/storage/audio/like-effect.mp3" type="audio/mpeg"></audio>
-        <i id="_all-likes">{{ allLikes }}</i>
-    </span>
-</template>
-
 <script>
 export default {
     data() {

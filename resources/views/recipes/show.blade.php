@@ -37,8 +37,16 @@
             <a href="/users/{{ $recipe->user->id }}" class="user-icon-on-single-recipe" style="background:#484074 url({{ asset('storage/users/' . $recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
 
             @if ($recipe->isDone())
-                <like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}">
-                    @include('includes.icons.like-btn')
+                <like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}" inline-template>
+                    <span>
+                        <a href="#" v-on:click="toggleButton()" class="like-icon" :class="iconState()">
+                            <div class="btn-wrapper">
+                                <span class="btn-like">@include('includes.icons.like-btn')</span>
+                            </div>
+                        </a>
+                        <audio ref="audio" src="/storage/audio/like-effect.mp3" type="audio/mpeg"></audio>
+                        <i id="_all-likes" v-text="allLikes"></i>
+                    </span>
                 </like>
             @endif
         </div>
