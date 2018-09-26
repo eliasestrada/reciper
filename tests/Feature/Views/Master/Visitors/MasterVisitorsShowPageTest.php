@@ -61,18 +61,17 @@ class MasterVisitorsShowPageTest extends TestCase
     /** @test */
     public function master_can_ban_visitor(): void
     {
+        $data = ['days' => 1, 'message' => str_random(40)];
+
         $this->actingAs($this->master)
             ->followingRedirects()
-            ->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), [
-                'days' => 1,
-                'message' => 'Lorem ipsum dolor sit amet consectetur adipisicing simalunus ago',
-            ])
-            ->assertSee(trans('visitors.visitor_banned', ['days' => 1]));
+            ->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), $data)
+            ->assertSee(trans('visitors.visitor_banned', ['days' => $data['days']]));
 
         $this->assertDatabaseHas('ban', [
             'visitor_id' => $this->visitor->id,
-            'days' => 1,
-            'message' => 'Lorem ipsum dolor sit amet consectetur adipisicing simalunus ago',
+            'days' => $data['days'],
+            'message' => $data['message'],
         ]);
     }
 
