@@ -24,30 +24,41 @@ class MasterDocumentsShowPageTest extends TestCase
     /** @test */
     public function user_can_see_the_page_if_document_is_ready(): void
     {
-        $document = create(Document::class);
-
         $this->actingAs(make(User::class))
-            ->get("/documents/$document->id")
+            ->get('/documents/' . create(Document::class)->id)
             ->assertOk();
     }
 
     /** @test */
     public function user_cant_see_the_page_if_document_is_not_ready(): void
     {
-        $document = create(Document::class, ['ready_' . lang() => 0]);
-
         $this->actingAs(make(User::class))
-            ->get("/documents/$document->id")
+            ->get('/documents/' . create(Document::class, ['ready_' . lang() => 0])->id)
             ->assertRedirect();
     }
 
     /** @test */
     public function master_can_see_the_page_if_document_is_not_ready(): void
     {
-        $document = create(Document::class, ['ready_' . lang() => 0]);
-
         $this->actingAs(create_user('master'))
-            ->get("/documents/$document->id")
+            ->get('/documents/' . create(Document::class, ['ready_' . lang() => 0])->id)
             ->assertOk();
+    }
+
+    /** @test */
+    public function master_can_see_action_button(): void
+    {
+        $this->actingAs(create_user('master'))
+            ->get('/documents/' . create(Document::class)->id)
+            ->assertSee('<i class="fas fa-angle-left"></i>')
+            ->assertSee('<i class="fas fa-pen"></i>');
+    }
+
+    /** @test */
+    public function user_cant_see_action_button(): void
+    {
+        $this->get('/documents/' . create(Document::class)->id)
+            ->assertDontSee('<i class="fas fa-angle-left"></i>')
+            ->assertDontSee('<i class="fas fa-pen"></i>');
     }
 }

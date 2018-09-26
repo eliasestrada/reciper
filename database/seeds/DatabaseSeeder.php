@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
         if (app()->env !== 'testing') {
             $this->call(UsersSeeder::class);
             $this->call(TitleSeeder::class);
-            $this->call(DocumentsSeeder::class);
             $this->call(HelpCategoriesSeeder::class);
             $this->call(HelpSeeder::class);
         }
 
+        $this->call(DocumentsSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(MealSeeder::class);
     }

@@ -69,7 +69,7 @@ class DocumentsController extends Controller
         $document->update([
             'title_' . lang() => $request->title,
             'text_' . lang() => $request->text,
-            'ready_' . lang() => $request->ready == 1 ? 1 : 0,
+            'ready_' . lang() => $request->ready == 1 || $document->id == 1 ? 1 : 0,
         ]);
 
         if ($request->has('view')) {
@@ -93,6 +93,11 @@ class DocumentsController extends Controller
                 trans('documents.only_master_can_delete')
             );
         }
+
+        if ($id == 1) {
+            return back()->withError(trans('documents.cant_delete_first_doc'));
+        }
+
         Document::find($id)->delete();
 
         return redirect('/master/documents')->withSuccess(
