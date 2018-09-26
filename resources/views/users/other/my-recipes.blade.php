@@ -43,7 +43,8 @@
                 @include('includes.buttons.btn', [
                     'title' => trans('includes.add_recipe'),
                     'icon' => 'fa-plus',
-                    'link' => '/recipes/create'
+                    'class' => 'modal-trigger',
+                    'link' => '#add-recipe-modal'
                 ])
             @endslot
         @endlistOfRecipes
