@@ -10,7 +10,7 @@ class HelpShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public $help;
+    private $help;
 
     public function setUp()
     {

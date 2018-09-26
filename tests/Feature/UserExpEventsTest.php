@@ -11,9 +11,9 @@ class UserExpEventsTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public $exp_for_approve;
-    public $exp_for_like;
-    public $exp_for_view;
+    private $exp_for_approve;
+    private $exp_for_like;
+    private $exp_for_view;
 
     public function setUp()
     {

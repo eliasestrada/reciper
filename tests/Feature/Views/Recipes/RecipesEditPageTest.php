@@ -12,8 +12,8 @@ class RecipesEditPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public $user;
-    public $users_recipe;
+    private $user;
+    private $users_recipe;
 
     public function setUp()
     {

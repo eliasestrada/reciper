@@ -12,8 +12,8 @@ class MasterVisitorsShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public $master;
-    public $visitor;
+    private $master;
+    private $visitor;
 
     public function setUp()
     {

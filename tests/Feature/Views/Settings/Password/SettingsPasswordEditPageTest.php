@@ -91,14 +91,4 @@ class SettingsPasswordEditPageTest extends TestCase
 
         $this->assertFalse(\Hash::check('new_password', $user->password));
     }
-
-    /** @test */
-    // public function user_can_change_about_me_section(): void
-    // {
-    //     $user = create_user();
-    //     $about_me = 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis, eum.';
-
-    //     $this->actingAs($user)->put(action('Settings\SettingsGeneralController@updateAboutMe'), compact('about_me'));
-    //     $this->assertEquals($user->about_me, $about_me);
-    // }
 }

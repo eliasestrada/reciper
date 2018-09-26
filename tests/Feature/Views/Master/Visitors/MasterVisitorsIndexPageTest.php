@@ -11,7 +11,7 @@ class MasterVisitorsIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public $master;
+    private $master;
 
     public function setUp()
     {

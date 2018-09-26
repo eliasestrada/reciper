@@ -11,8 +11,8 @@ class AdminApprovesShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public $unapproved_recipe;
-    public $admin;
+    private $unapproved_recipe;
+    private $admin;
 
     /**
      * Creating admin and recipe with his id in approver_id column

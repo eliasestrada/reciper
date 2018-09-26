@@ -11,7 +11,7 @@ class ContactPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public $faker;
+    private $faker;
 
     public function setUp()
     {
