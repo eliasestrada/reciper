@@ -1,12 +1,3 @@
-<template>
-    <div>
-        <a :href="'/recipes#' + btn.link" v-for="btn in btns" :key="btn.link" :class="{ 'active': btn.isActive }" class="btn btn-sort main-text">
-            <i class="fas red-text left" :class="btn.icon"></i>
-            {{ btn.title }}
-        </a>
-    </div>
-</template>
-
 <script>
 export default {
     props: ['newBtn', 'simpleBtn', 'myViewesBtn', 'mostLikedBtn', 'myLikesBtn', 'breakfastBtn', 'lunchBtn', 'dinnerBtn'],

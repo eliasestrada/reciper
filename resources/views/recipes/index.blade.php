@@ -16,8 +16,13 @@
             simple-btn="@lang('recipes.simple')"
             breakfast-btn="@lang('home.breakfast')"
             lunch-btn="@lang('home.lunch')"
-            dinner-btn="@lang('home.dinner')"
-            >
+            dinner-btn="@lang('home.dinner')" inline-template>
+            <div>
+                <a :href="'/recipes#' + btn.link" v-for="btn in btns" :key="btn.link" :class="{ 'active': btn.isActive }" class="btn btn-sort main-text">
+                    <i class="fas red-text left" :class="btn.icon"></i>
+                    <span v-text="btn.title"></span>
+                </a>
+            </div>
         </sort-buttons>
     </div>
     <recipes go="@lang('recipes.go')">
