@@ -99,16 +99,4 @@ class AdminApprovesShowPageTest extends TestCase
             ]))
             ->assertSee(trans('recipes.recipe_published'));
     }
-
-    /** @test */
-    public function admin_cant_cancel_publishing_recipe_with_short_message(): void
-    {
-        $this->actingAs($this->admin)
-            ->followingRedirects()
-            ->post(action('Admin\ApprovesController@disapprove', [
-                'recipe' => $this->unapproved_recipe->id,
-                'message' => 'No message',
-            ]))
-            ->assertDontSee(trans('recipes.recipe_published'));
-    }
 }

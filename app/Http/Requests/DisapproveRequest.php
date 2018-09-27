@@ -21,11 +21,10 @@ class DisapproveRequest extends FormRequest
      */
     public function rules()
     {
+        $min = config('validation.disapprove_message_min');
         $max = config('validation.disapprove_message_max');
 
-        return [
-            'message' => "required|min:30|max:$max",
-        ];
+        return ['message' => "required|min:$min|max:$max"];
     }
 
     /**
@@ -34,9 +33,9 @@ class DisapproveRequest extends FormRequest
     public function messages()
     {
         return [
-            'message.required' => trans('notifications.message_required'),
-            'message.min' => trans('notifications.message_min'),
-            'message.max' => trans('notifications.message_max'),
+            'message.required' => trans('approves.message_required'),
+            'message.min' => trans('approves.message_min'),
+            'message.max' => trans('approves.message_max'),
         ];
     }
 }
