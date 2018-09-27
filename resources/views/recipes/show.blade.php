@@ -88,7 +88,7 @@
 
                 <div class="input-field mt-4">
                     <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
-                    <textarea name="message" minlength="{{ config('validation.contact_message_min') }}" id="message" class="materialize-textarea counter" data-length="{{ config('validation.contact_message_max') }}" required>{{ old('message') }}</textarea>
+                    <textarea name="message" minlength="{{ config('validation.feedback.contact.message.min') }}" id="message" class="materialize-textarea counter" data-length="{{ config('validation.feedback.contact.message.max') }}" required>{{ old('message') }}</textarea>
                     <label for="message">@lang('form.message')</label>
                 </div>
                 <button type="submit" class="btn">@lang('form.send')</button>

@@ -18,8 +18,8 @@ class DisapproveRequestTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->message_min = config('validation.disapprove_message_min');
-        $this->message_max = config('validation.disapprove_message_max');
+        $this->message_min = config('validation.approves.disapprove.message.min');
+        $this->message_max = config('validation.approves.disapprove.message.max');
         $this->request = $this->actingAs($admin = create_user('admin'))->followingRedirects();
 
         $this->recipe = create(Recipe::class, [

@@ -19,10 +19,10 @@ class DocumentsRuqusetTest extends TestCase
     {
         parent::setUp();
         $this->request = $this->actingAs(create_user('master'))->followingRedirects();
-        $this->title_max = config('validation.docs_title_max');
-        $this->title_min = config('validation.docs_title_min');
-        $this->text_max = config('validation.docs_text_max');
-        $this->text_min = config('validation.docs_text_min');
+        $this->title_max = config('validation.docs.title.max');
+        $this->title_min = config('validation.docs.title.min');
+        $this->text_max = config('validation.docs.text.max');
+        $this->text_min = config('validation.docs.text.min');
     }
 
     /** @test */

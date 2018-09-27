@@ -21,10 +21,10 @@ class DocumentsRequest extends FormRequest
      */
     public function rules()
     {
-        $title_max = config('validation.docs_title_max');
-        $title_min = config('validation.docs_title_min');
-        $text_max = config('validation.docs_text_max');
-        $text_min = config('validation.docs_text_min');
+        $title_max = config('validation.docs.title.max');
+        $title_min = config('validation.docs.title.min');
+        $text_max = config('validation.docs.text.max');
+        $text_min = config('validation.docs.text.min');
 
         return [
             'title' => "required|min:$title_min|max:$title_max",

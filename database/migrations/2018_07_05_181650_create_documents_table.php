@@ -14,8 +14,8 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title_ru', config('validation.docs_title_max'))->nullable();
-            $table->string('title_en', config('validation.docs_title_max'))->nullable();
+            $table->string('title_ru', config('validation.docs.title.max'))->nullable();
+            $table->string('title_en', config('validation.docs.title.max'))->nullable();
             $table->text('text_ru')->nullable();
             $table->text('text_en')->nullable();
             $table->boolean('ready_ru')->default(0);

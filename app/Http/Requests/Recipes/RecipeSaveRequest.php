@@ -15,7 +15,7 @@ class RecipeSaveRequest extends FormRequest
     // Get the validation messages that apply to the request.
     public function rules()
     {
-        $max = config('validation.recipe_title_max');
+        $max = config('validation.recipes.title.max');
 
         return [
             'title' => "min:5|max:$max",

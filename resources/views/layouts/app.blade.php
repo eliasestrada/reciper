@@ -28,7 +28,7 @@
 
                 {{-- Title --}}
                 <div class="input-field">
-                    <input type="text" name="title" id="title" value="{{ old('title') }}" class="counter" data-length="{{ config('validation.recipe_title_max') }}" minlength="5" required>
+                    <input type="text" name="title" id="title" value="{{ old('title') }}" class="counter" data-length="{{ config('validation.recipes.title.max') }}" minlength="5" required>
                     <label for="title">@lang('recipes.title')</label>
                 </div>
 

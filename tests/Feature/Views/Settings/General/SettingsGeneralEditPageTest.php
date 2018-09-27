@@ -37,8 +37,9 @@ class SettingsGeneralEditPageTest extends TestCase
     {
         $user = create_user();
 
-        $this->actingAs($user)
-            ->put(action('Settings\GeneralController@update'), ['name' => 'new name']);
+        $this->actingAs($user)->put(action('Settings\GeneralController@update'), [
+            'name' => 'new name',
+        ]);
         $this->assertEquals('new name', $user->name);
     }
 

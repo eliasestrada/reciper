@@ -19,10 +19,10 @@ class RecipePublichRequest extends FormRequest
      */
     public function rules()
     {
-        $title_max = config('validation.recipe_title_max');
-        $intro_max = config('validation.recipe_intro_max');
-        $ingredients_max = config('validation.recipe_ingredients_max');
-        $text_max = config('validation.recipe_text_max');
+        $title_max = config('validation.recipes.title.max');
+        $intro_max = config('validation.recipes.intro.max');
+        $ingredients_max = config('validation.recipes.ingredients.max');
+        $text_max = config('validation.recipes.text.max');
 
         if ($this->ready == 1) {
             return [
