@@ -66,7 +66,7 @@ class Handler extends ExceptionHandler
         }
 
         return redirect()->guest('/login')->withError(
-            trans('messages.not_auth')
+            trans('messages.access_denied_only_auth')
         );
     }
 }

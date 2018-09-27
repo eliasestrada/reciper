@@ -18,6 +18,6 @@ class MasterMiddleware
         if (\Auth::guard($guard)->check() && user()->hasRole('master')) {
             return $next($request);
         }
-        return redirect('/')->withError(trans('messages.access_denied'));
+        return redirect('/')->withError(trans('messages.access_denied_only_master'));
     }
 }
