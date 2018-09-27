@@ -14,7 +14,7 @@
             @method('put') @csrf
             <div class="input-field">
                 <label for="old_password">@lang('form.current_pwd')</label>
-                <input type="password" name="old_password" id="old_password">
+                <input type="password" name="old_password" id="old_password" minlength="{{ config('validation.settings') }}">
             </div>
         
             <div class="input-field">

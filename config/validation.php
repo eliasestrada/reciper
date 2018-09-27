@@ -15,8 +15,13 @@ return [
     ],
 
     'settings' => [
-        'about_me' => ['max' => 250],
-        'name' => ['min' => 3, 'max' => 50],
+        'general' => [
+            'about_me' => ['max' => 250],
+            'name' => ['min' => 3, 'max' => 50],
+        ],
+        'password' => [
+            '',
+        ],
     ],
 
     'feedback' => [
