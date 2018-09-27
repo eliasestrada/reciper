@@ -25,8 +25,8 @@ class TitleRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.max' => trans('settings.settings_title_max'),
-            'text.max' => trans('settings.settings_text_max'),
+            'title.max' => trans('titles.title_max'),
+            'text.max' => trans('titles.text_max'),
         ];
     }
 }

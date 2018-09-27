@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Feature\Validation;
+namespace Tests\Feature\Requests;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class DocumentsValidTest extends TestCase
+class DocumentsRuqusetTest extends TestCase
 {
     use DatabaseTransactions;
 

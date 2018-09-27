@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature\Validation;
+namespace Tests\Feature\Requests;
 
 use App\Models\Visitor;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class VisitorsValidTest extends TestCase
+class VisitorsRequestTest extends TestCase
 {
     use DatabaseTransactions;
 

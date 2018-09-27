@@ -24,9 +24,9 @@ class PhotoRequest extends FormRequest
     public function messages()
     {
         return [
-            'image.image' => trans('settings.settings_image_image'),
-            'image.max' => trans('settings.settings_image_max'),
-            'image.uploaded' => trans('settings.settings_image_uploaded'),
+            'image.image' => trans('settings.image_image'),
+            'image.max' => trans('settings.image_max'),
+            'image.uploaded' => trans('settings.image_uploaded'),
         ];
     }
 }

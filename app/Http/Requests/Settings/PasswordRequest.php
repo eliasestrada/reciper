@@ -25,10 +25,10 @@ class PasswordRequest extends FormRequest
     public function messages()
     {
         return [
-            'old_password.required' => trans('settings.settings_pwd_required'),
-            'password.required' => trans('settings.settings_new_pwd_required'),
-            'password.min' => trans('settings.settings_pwd_min'),
-            'password.confirmed' => trans('settings.settings_pwd_confirmed'),
+            'old_password.required' => trans('settings.pwd_required'),
+            'password.required' => trans('settings.new_pwd_required'),
+            'password.min' => trans('settings.pwd_min'),
+            'password.confirmed' => trans('settings.pwd_confirmed'),
         ];
     }
 }

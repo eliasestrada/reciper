@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature\Validation;
+namespace Tests\Feature\Requests;
 
 use App\Models\Recipe;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class DisapproveValidTest extends TestCase
+class DisapproveRequestTest extends TestCase
 {
     use DatabaseTransactions;
 

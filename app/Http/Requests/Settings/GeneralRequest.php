@@ -15,13 +15,13 @@ class GeneralRequest extends FormRequest
     // Get the validation rules that apply to the request.
     public function rules()
     {
-        $min_name = config('validation.settings_name_min');
-        $max_name = config('validation.settings_name_max');
-        $max_about_me = config('validation.settings_about_me');
+        $name_min = config('validation.settings_name_min');
+        $name_max = config('validation.settings_name_max');
+        $about_me_max = config('validation.settings_about_me');
 
         return [
-            'name' => "required|min:$min_name|max:$max_name",
-            'about_me' => "max:$max_about_me",
+            'name' => "required|min:$name_min|max:$name_max",
+            'about_me' => "max:$about_me_max",
         ];
     }
 
@@ -29,9 +29,10 @@ class GeneralRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => trans('settings.settings_name_required'),
-            'name.min' => trans('settings.settings_name_min'),
-            'name.max' => trans('settings.settings_name_max'),
+            'name.required' => trans('settings.name_required'),
+            'name.min' => trans('settings.name_min'),
+            'name.max' => trans('settings.name_max'),
+            'about_me.max' => trans('settings.about_me_max'),
         ];
     }
 }
