@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="page row">
-    <form action="{{ action('Settings\SettingsGeneralController@update') }}" method="post" class="form">
+    <form action="{{ action('Settings\GeneralController@update') }}" method="post" class="form">
         @csrf @method('put')
 
         {{-- Reciper's name --}}

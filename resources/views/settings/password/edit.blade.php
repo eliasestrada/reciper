@@ -10,7 +10,7 @@
             <h2 class="headline">@lang('form.change_pwd')</h2>
         </div>
 
-        <form action="{{ action('Settings\SettingsPasswordController@update') }}" method="post">
+        <form action="{{ action('Settings\PasswordController@update') }}" method="post">
             @method('put') @csrf
             <div class="input-field">
                 <label for="old_password">@lang('form.current_pwd')</label>

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Settings\PasswordRequest;
 use App\Http\Requests\Settings\SettingsPasswordRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class SettingsPasswordController extends Controller
+class PasswordController extends Controller
 {
     public function edit()
     {
@@ -17,7 +18,7 @@ class SettingsPasswordController extends Controller
     /**
      * @param SettingsPasswordRequest $request
      */
-    public function update(SettingsPasswordRequest $request)
+    public function update(PasswordRequest $request)
     {
         if (\Hash::check($request->old_password, user()->password)) {
             user()->update([

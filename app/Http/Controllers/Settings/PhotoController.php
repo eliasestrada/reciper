@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Settings;
 
-use App\Helpers\Traits\SettingsPhotoControllerHelper;
+use App\Helpers\Traits\PhotoControllerHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Settings\PhotoRequest;
 use App\Http\Requests\Settings\SettingsPhotoRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class SettingsPhotoController extends Controller
+class PhotoController extends Controller
 {
-    use SettingsPhotoControllerHelper;
+    use PhotoControllerHelper;
 
     public function edit()
     {
@@ -20,7 +21,7 @@ class SettingsPhotoController extends Controller
     /**
      * @param SettingsPhotoRequest $request
      */
-    public function update(SettingsPhotoRequest $request)
+    public function update(PhotoRequest $request)
     {
         $image = $request->file('image');
 

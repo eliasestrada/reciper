@@ -40,15 +40,15 @@ Route::get('dashboard', 'DashboardController@index');
 Route::prefix('settings')->middleware('auth')->namespace('Settings')->group(function () {
     Route::view('/', 'settings.index');
 
-    Route::get('photo/edit', 'SettingsPhotoController@edit');
-    Route::put('photo', 'SettingsPhotoController@update');
-    Route::delete('photo', 'SettingsPhotoController@destroy');
+    Route::get('photo/edit', 'PhotoController@edit');
+    Route::put('photo', 'PhotoController@update');
+    Route::delete('photo', 'PhotoController@destroy');
 
-    Route::get('password/edit', 'SettingsPasswordController@edit');
-    Route::put('password', 'SettingsPasswordController@update');
+    Route::get('password/edit', 'PasswordController@edit');
+    Route::put('password', 'PasswordController@update');
 
-    Route::get('general/edit', 'SettingsGeneralController@edit');
-    Route::put('general', 'SettingsGeneralController@update');
+    Route::get('general/edit', 'GeneralController@edit');
+    Route::put('general', 'GeneralController@update');
 });
 
 // Title

@@ -20,7 +20,7 @@
     </div>
 
     <div class="container">
-        <form action="{{ action('Settings\SettingsPhotoController@update') }}" method="post" enctype="multipart/form-data"> 
+        <form action="{{ action('Settings\PhotoController@update') }}" method="post" enctype="multipart/form-data"> 
             @method('put') @csrf
             <div class="file-field input-field">
                 <div class="btn">
@@ -40,7 +40,7 @@
 
         {{--  Delete image  --}}
         @if (user()->image != 'default.jpg')
-            <form action="{{ action('Settings\SettingsPhotoController@destroy') }}" method="post" enctype="multipart/form-data" class="center">
+            <form action="{{ action('Settings\PhotoController@destroy') }}" method="post" enctype="multipart/form-data" class="center">
                 @method('delete') @csrf
                 <div><button type="submit" class="btn red m-1 min-w">@lang('form.delete_photo')</button></div>
             </form>

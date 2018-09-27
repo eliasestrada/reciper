@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Settings\SettingsUpdateHomeDataRequest;
+use App\Http\Requests\Settings\TitleRequest;
 use App\Models\Title;
 use Illuminate\Http\Request;
 
@@ -28,9 +28,9 @@ class TitleController extends Controller
     }
 
     /**
-     * @param SettingsUpdateHomeDataRequest $request
+     * @param TitleRequest $request
      */
-    public function intro(SettingsUpdateHomeDataRequest $request)
+    public function intro(TitleRequest $request)
     {
         Title::whereName('intro')->update([
             'title_' . lang() => $request->title,

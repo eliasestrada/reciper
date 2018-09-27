@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Settings\GeneralRequest;
 use App\Http\Requests\Settings\SettingsGeneralRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class SettingsGeneralController extends Controller
+class GeneralController extends Controller
 {
     public function edit()
     {
@@ -17,7 +18,7 @@ class SettingsGeneralController extends Controller
     /**
      * @param SettingsGeneralRequest $request
      */
-    public function update(SettingsGeneralRequest $request)
+    public function update(GeneralRequest $request)
     {
         user()->update([
             'name' => $request->name,

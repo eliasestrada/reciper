@@ -4,7 +4,7 @@ namespace App\Helpers\Traits;
 
 use App\Models\User;
 
-trait SettingsPhotoControllerHelper
+trait PhotoControllerHelper
 {
     /**
      * @param string $image

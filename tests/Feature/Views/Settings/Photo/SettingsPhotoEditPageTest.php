@@ -38,7 +38,7 @@ class SettingsPhotoEditPageTest extends TestCase
         $user = create_user('', ['image' => 'some/image.jpg']);
 
         $this->actingAs($user)
-            ->delete(action('Settings\SettingsPhotoController@destroy'));
+            ->delete(action('Settings\PhotoController@destroy'));
 
         $this->assertEquals('default.jpg', $user->image);
     }
