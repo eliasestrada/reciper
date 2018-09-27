@@ -24,24 +24,24 @@ class RecipesStoreRequestTest extends TestCase
     /** @test */
     public function title_is_required(): void
     {
-        $this->request->post(action('RecipesController@store', [
+        $this->request->post(action('RecipesController@store'), [
             'title' => '',
-        ]))->assertSeeText(trans('recipes.title_required'));
+        ])->assertSeeText(trans('recipes.title_required'));
     }
 
     /** @test */
     public function title_must_be_not_short(): void
     {
-        $this->request->post(action('RecipesController@store', [
+        $this->request->post(action('RecipesController@store'), [
             'title' => str_random($this->title_min - 1),
-        ]))->assertSeeText(preg_replace('/:min/', $this->title_min, trans('recipes.title_min')));
+        ])->assertSeeText(preg_replace('/:min/', $this->title_min, trans('recipes.title_min')));
     }
 
     /** @test */
     public function title_must_be_not_long(): void
     {
-        $this->request->post(action('RecipesController@store', [
+        $this->request->post(action('RecipesController@store'), [
             'title' => str_random($this->title_max + 1),
-        ]))->assertSeeText(preg_replace('/:max/', $this->title_max, trans('recipes.title_max')));
+        ])->assertSeeText(preg_replace('/:max/', $this->title_max, trans('recipes.title_max')));
     }
 }
