@@ -61,34 +61,4 @@ class SettingsPasswordEditPageTest extends TestCase
 
         $this->assertFalse(\Hash::check('new_password', $user->password));
     }
-
-    /** @test */
-    public function user_cant_change_his_pwd_to_empty_field(): void
-    {
-        $user = create_user('', ['password' => bcrypt('testing')]);
-
-        $this->actingAs($user)
-            ->put(action('Settings\GeneralController@update'), [
-                'old_password' => 'testing',
-                'password' => '',
-                'password_confirmation' => '',
-            ]);
-
-        $this->assertTrue(\Hash::check('testing', $user->password));
-    }
-
-    /** @test */
-    public function user_cant_change_his_pwd_with_incorrect_confirm_pwd(): void
-    {
-        $user = create_user('', ['password' => bcrypt('test')]);
-
-        $this->actingAs($user)
-            ->put(action('Settings\GeneralController@update'), [
-                'old_password' => 'test',
-                'password' => 'new_password',
-                'password_confirmation' => 'other_new_password',
-            ]);
-
-        $this->assertFalse(\Hash::check('new_password', $user->password));
-    }
 }

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Contracts\SaveRecipeDataContract;
 use App\Helpers\Traits\RecipesControllerHelpers;
-use App\Http\Requests\Recipes\RecipePublichRequest;
-use App\Http\Requests\Recipes\RecipeSaveRequest;
+use App\Http\Requests\Recipes\RecipeStoreRequest;
+use App\Http\Requests\Recipes\RecipeUpdateRequest;
 use App\Http\Responses\Controllers\RecipeUpdateResponse;
 use App\Models\Meal;
 use App\Models\Recipe;
@@ -40,11 +39,9 @@ class RecipesController extends Controller
 
     /**
      * It will save the recipe to a database with title only
-     * @param RecipeSaveRequest $request
-     * @see RecipeSaveRequest is validating this method
-     * @see SaveRecipeDataContract
+     * @param RecipeStoreRequest $request
      */
-    public function store(RecipeSaveRequest $request)
+    public function store(RecipeStoreRequest $request)
     {
         $this->checkForScriptTags($request);
 
@@ -110,12 +107,11 @@ class RecipesController extends Controller
     /**
      * Update single recipe
      * This method triggers event RecipeIsReady
-     * @see RecipePublichRequest
-     * @param RecipePublichRequest $request
+     * @param RecipeUpdateRequest $request
      * @param Recipe $recipe
      * @return RecipeUpdateResponse
      */
-    public function update(RecipePublichRequest $request, Recipe $recipe)
+    public function update(RecipeUpdateRequest $request, Recipe $recipe)
     {
         if (!user()->hasRecipe($recipe->id)) {
             return back()->withError(trans('recipes.cant_draft'));

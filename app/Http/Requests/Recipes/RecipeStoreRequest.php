@@ -4,7 +4,7 @@ namespace App\Http\Requests\Recipes;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RecipeSaveRequest extends FormRequest
+class RecipeStoreRequest extends FormRequest
 {
     // Determine if the user is authorized to make this request.
     public function authorize()
@@ -15,16 +15,15 @@ class RecipeSaveRequest extends FormRequest
     // Get the validation messages that apply to the request.
     public function rules()
     {
+        $min = config('validation.recipes.title.min');
         $max = config('validation.recipes.title.max');
-
-        return [
-            'title' => "min:5|max:$max",
-        ];
+        return ['title' => "required|min:$min|max:$max"];
     }
 
     public function messages()
     {
         return [
+            'title.required' => trans('recipes.title_required'),
             'title.min' => trans('recipes.title_min'),
             'title.max' => trans('recipes.title_max'),
         ];

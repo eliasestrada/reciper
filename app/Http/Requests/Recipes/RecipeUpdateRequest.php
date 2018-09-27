@@ -5,7 +5,7 @@ namespace App\Http\Requests\Recipes;
 use App\Models\Category;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RecipePublichRequest extends FormRequest
+class RecipeUpdateRequest extends FormRequest
 {
     // Determine if the user is authorized to make this request.
     public function authorize()
@@ -19,17 +19,21 @@ class RecipePublichRequest extends FormRequest
      */
     public function rules()
     {
+        $title_min = config('validation.recipes.title.min');
         $title_max = config('validation.recipes.title.max');
+        $intro_min = config('validation.recipes.intro.min');
         $intro_max = config('validation.recipes.intro.max');
+        $ingredients_min = config('validation.recipes.ingredients.min');
         $ingredients_max = config('validation.recipes.ingredients.max');
+        $text_min = config('validation.recipes.text.min');
         $text_max = config('validation.recipes.text.max');
 
         if ($this->ready == 1) {
             return [
-                'title' => "min:5|max:$title_max",
-                'intro' => "min:20|max:$intro_max",
-                'ingredients' => "min:20|max:$ingredients_max",
-                'text' => "min:80|max:$text_max",
+                'title' => "min:$title_min|max:$title_max",
+                'intro' => "min:$intro_min|max:$intro_max",
+                'ingredients' => "min:$ingredients_min|max:$ingredients_max",
+                'text' => "min:$text_min|max:$text_max",
                 'meal' => 'numeric|between:1,3',
                 'time' => 'numeric|between:1,1000',
                 'image' => 'image|nullable|max:1999',
