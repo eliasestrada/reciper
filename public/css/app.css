@@ -2274,7 +2274,7 @@ nav .brand-logo {
   position: absolute;
   color: #fff;
   display: inline-block;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   padding: 0;
 }
 
@@ -6930,7 +6930,6 @@ Nav List
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  overflow: hidden;
 }
 
 .home-header .header-content {
