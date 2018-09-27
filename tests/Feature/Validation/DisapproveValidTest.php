@@ -29,11 +29,29 @@ class DisapproveValidTest extends TestCase
     }
 
     /** @test */
+    public function message_is_required(): void
+    {
+        $this->request->post(action('Admin\ApprovesController@disapprove', [
+            'recipe' => $this->recipe->id,
+            'message' => '',
+        ]))->assertSeeText(trans('approves.message_required'));
+    }
+
+    /** @test */
     public function message_must_be_not_short(): void
     {
         $this->request->post(action('Admin\ApprovesController@disapprove', [
             'recipe' => $this->recipe->id,
             'message' => str_random($this->message_min - 1),
         ]))->assertSeeText(preg_replace('/:min/', $this->message_min, trans('approves.message_min')));
+    }
+
+    /** @test */
+    public function message_must_be_not_long(): void
+    {
+        $this->request->post(action('Admin\ApprovesController@disapprove', [
+            'recipe' => $this->recipe->id,
+            'message' => str_random($this->message_max + 1),
+        ]))->assertSeeText(preg_replace('/:max/', $this->message_max, trans('approves.message_max')));
     }
 }
