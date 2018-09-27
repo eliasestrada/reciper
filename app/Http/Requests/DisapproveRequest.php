@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CancelMessageRequest extends FormRequest
+class DisapproveRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,7 +21,7 @@ class CancelMessageRequest extends FormRequest
      */
     public function rules()
     {
-        $max = config('validation.approve_message');
+        $max = config('validation.disapprove_message_max');
 
         return [
             'message' => "required|min:30|max:$max",

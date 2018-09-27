@@ -12,26 +12,26 @@
                 <p>@lang('recipes.approve_or_not')</p>
 
                 {{-- Approve --}}
-                <form action="{{ action('Admin\ApprovesController@ok', ['recipe' => $recipe->id]) }}" method="post" class="d-inline-block" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
+                <form action="{{ action('Admin\ApprovesController@approve', ['id' => $recipe->id]) }}" method="post" class="d-inline-block" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
                     @csrf
                     <button class="btn green" type="submit">
                         @lang('messages.yes') <i class="fas fa-thumbs-up right"></i>
                     </button>
                 </form>
 
-                {{-- Cancel --}}
-                <a href="#cancel-publishing-modal" class="btn red modal-trigger">
+                {{-- Disapprove --}}
+                <a href="#disapprove-modal" class="btn red modal-trigger">
                     @lang('messages.no') <i class="fas fa-thumbs-down right"></i>
                 </a>
 
-                <!--  cancel-publishing-modal structure -->
-                <div id="cancel-publishing-modal" class="modal">
+                <!--  disapprove-publishing-modal structure -->
+                <div id="disapprove-modal" class="modal">
                     <div class="modal-content reset">
-                        <form action="{{ action('Admin\ApprovesController@cancel', ['recipe' => $recipe->id]) }}" method="post">
+                        <form action="{{ action('Admin\ApprovesController@disapprove', ['recipe' => $recipe->id]) }}" method="post">
                             @csrf
                             <p>@lang('notifications.set_message_desc')</p>
                             <div class="input-field">
-                                <textarea name="message" id="textarea1" class="materialize-textarea counter" data-length="{{ config('validation.approve_message') }}" minlength="30" required></textarea>
+                                <textarea name="message" id="textarea1" class="materialize-textarea counter" data-length="{{ config('validation.disapprove_message_max') }}" required></textarea>
                                 <label for="textarea1">* @lang('notifications.set_message')</label>
                                 <button class="btn red" type="submit" onclick="if (!confirm('@lang('recipes.are_you_sure_to_cancel')')) event.preventDefault()">@lang('form.send')</button>
                             </div>

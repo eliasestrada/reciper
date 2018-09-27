@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CancelMessageRequest;
+use App\Http\Requests\DisapproveRequest;
 use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -70,7 +71,7 @@ class ApprovesController extends Controller
     /**
      * @param Recipe $recipe
      */
-    public function ok(Recipe $recipe, Request $request)
+    public function approve(Recipe $recipe, Request $request)
     {
         // Check if u can work with the recipe
         if (($error = $this->hasErrors($recipe)) !== false) {
@@ -88,7 +89,7 @@ class ApprovesController extends Controller
      * @param Recipe $recipe
      * @param CancelMessageRequest $request
      */
-    public function cancel(Recipe $recipe, CancelMessageRequest $request)
+    public function disapprove(Recipe $recipe, DisapproveRequest $request)
     {
         // Check if u can work with the recipe
         if (($error = $this->hasErrors($recipe)) !== false) {

@@ -71,7 +71,7 @@ class AdminApprovesShowPageTest extends TestCase
     }
 
     /** @test */
-    public function second_checker_cant_see_approve_and_cancel_buttons(): void
+    public function second_checker_cant_see_approve_and_disapprove_buttons(): void
     {
         $other_admin = create_user('admin');
 
@@ -94,7 +94,7 @@ class AdminApprovesShowPageTest extends TestCase
     {
         $this->actingAs($this->admin)
             ->followingRedirects()
-            ->post(action('Admin\ApprovesController@ok', [
+            ->post(action('Admin\ApprovesController@approve', [
                 'recipe' => $this->unapproved_recipe->id,
             ]))
             ->assertSee(trans('recipes.recipe_published'));
@@ -105,7 +105,7 @@ class AdminApprovesShowPageTest extends TestCase
     {
         $this->actingAs($this->admin)
             ->followingRedirects()
-            ->post(action('Admin\ApprovesController@cancel', [
+            ->post(action('Admin\ApprovesController@disapprove', [
                 'recipe' => $this->unapproved_recipe->id,
                 'message' => 'No message',
             ]))

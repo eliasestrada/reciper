@@ -65,8 +65,8 @@ Route::get('php/artisan/clear/{url_key}', 'ArtisanController@clear');
 Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function () {
     Route::get('approves', 'ApprovesController@index');
     Route::get('approves/{recipe}', 'ApprovesController@show');
-    Route::post('answer/ok/{recipe}', 'ApprovesController@ok');
-    Route::post('answer/cancel/{recipe}', 'ApprovesController@cancel');
+    Route::post('answer/approve/{recipe}', 'ApprovesController@approve');
+    Route::post('answer/disapprove/{recipe}', 'ApprovesController@disapprove');
     Route::resource('feedback', 'FeedbackController')->only(['index', 'show', 'destroy']);
 });
 
