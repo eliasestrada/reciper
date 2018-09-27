@@ -10,6 +10,11 @@ return [
     'already_approved' => 'Рецепт уже опубликован',
     'recipe_published' => 'Рецепт опубликован',
 
+    // Validations
+    'message_required' => 'Поле для ввода сообщения обязательно к заполнению',
+    'message_min' => 'Сообщение должно быть не менее :min символов',
+    'message_max' => 'Сообщение должно быть не более :max символов',
+
     // Views
     'unapproved_waiting' => 'Не проверенные',
     'unapproved_checking' => 'Проверяются',
