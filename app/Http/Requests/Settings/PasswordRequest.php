@@ -15,9 +15,12 @@ class PasswordRequest extends FormRequest
     // Get the validation rules that apply to the request.
     public function rules()
     {
+        $pwd_min = config('validation.settings.password.min');
+        $pwd_max = config('validation.settings.password.max');
+
         return [
             'old_password' => 'required|string',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => "required|string|min:$pwd_min|max:$pwd_max|confirmed",
         ];
     }
 
@@ -28,6 +31,7 @@ class PasswordRequest extends FormRequest
             'old_password.required' => trans('settings.pwd_required'),
             'password.required' => trans('settings.new_pwd_required'),
             'password.min' => trans('settings.pwd_min'),
+            'password.max' => trans('settings.pwd_max'),
             'password.confirmed' => trans('settings.pwd_confirmed'),
         ];
     }

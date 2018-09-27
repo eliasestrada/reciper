@@ -14,17 +14,17 @@
             @method('put') @csrf
             <div class="input-field">
                 <label for="old_password">@lang('form.current_pwd')</label>
-                <input type="password" name="old_password" id="old_password" minlength="{{ config('validation.settings') }}">
+                <input type="password" name="old_password" id="old_password" minlength="{{ config('validation.settings.password.min') }}" maxlength="{{ config('validation.settings.password.max') }}">
             </div>
         
             <div class="input-field">
                 <label for="password">@lang('form.new_pwd')</label>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password" id="password" minlength="{{ config('validation.settings.password.min') }}" maxlength="{{ config('validation.settings.password.max') }}">
             </div>
         
             <div class="input-field">
                 <label for="password_confirmation">@lang('form.repeat_new_pwd')</label>
-                <input type="password" name="password_confirmation" id="password_confirmation">
+                <input type="password" name="password_confirmation" id="password_confirmation" minlength="{{ config('validation.settings.password.min') }}" maxlength="{{ config('validation.settings.password.max') }}">
             </div>
 
             <div class="input-field mt-4 center">

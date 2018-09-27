@@ -19,9 +19,7 @@ return [
             'about_me' => ['max' => 250],
             'name' => ['min' => 3, 'max' => 50],
         ],
-        'password' => [
-            '',
-        ],
+        'password' => ['min' => 6, 'max' => 250],
     ],
 
     'feedback' => [
