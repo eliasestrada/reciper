@@ -58,8 +58,17 @@
         </div>
     </div>
 
-    <div class="center">
-        <div><a href="/contact">@lang('feedback.contact_us')</a></div>
+    <div class="center pt-4">
+        <a href="/contact" title="@lang('feedback.contact_us')">
+            <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="40" class="pt-2">
+        </a>
+        
+        <div>
+            <i class="fas fa-angle-right red-text"></i> 
+            <a href="/contact">@lang('feedback.contact_us')</a> 
+            <i class="fas fa-angle-left red-text"></i>
+        </div>
+
         <p class="footer-copyright">
             &copy; {{ date('Y') }} {{ config('app.name') }} <br> {{ $title_footer ?? '' }}
         </p>
