@@ -52,7 +52,7 @@ class RecipesShowPageTest extends TestCase
 
         // Make request to approve a recipe with message
         $this->actingAs($admin)
-            ->post(action('Admin\ApprovesController@ok',
+            ->post(action('Admin\ApprovesController@approve',
                 ['recipe_id' => $unapproved_recipe->id]),
                 ['message' => str_random(30)])
             ->assertRedirect("/recipes/$unapproved_recipe->id");
@@ -65,14 +65,14 @@ class RecipesShowPageTest extends TestCase
     }
 
     /** @test */
-    public function admin_can_cancel_recipe_with_message(): void
+    public function admin_can_disapprove_recipe_with_message(): void
     {
         $admin = create_user('admin');
         $unapproved_recipe = create(Recipe::class, ['approved_' . lang() => 0]);
 
-        // Make request to cancel a recipe with message
+        // Make request to disapprove a recipe with message
         $this->actingAs($admin)
-            ->post(action('Admin\ApprovesController@cancel', ['id' => $unapproved_recipe->id]), [
+            ->post(action('Admin\ApprovesController@disapprove', ['id' => $unapproved_recipe->id]), [
                 'message' => str_random(40),
             ]);
 
@@ -84,16 +84,16 @@ class RecipesShowPageTest extends TestCase
     }
 
     /** @test */
-    public function admin_cant_cancel_recipe_without_message(): void
+    public function admin_cant_disapprove_recipe_without_message(): void
     {
         $admin = create_user('admin');
         $unapproved_recipe = create(Recipe::class, ['approved_' . lang() => 0]);
 
         $this->actingAs($admin)->get("/recipes/$unapproved_recipe->id");
 
-        // Make request to cancel a recipe with message
+        // Make request to disapprove a recipe with message
         $this->actingAs($admin)
-            ->post(action('Admin\ApprovesController@cancel', ['id' => $unapproved_recipe->id]))
+            ->post(action('Admin\ApprovesController@disapprove', ['id' => $unapproved_recipe->id]))
             ->assertRedirect("/recipes/$unapproved_recipe->id");
 
         // Recipe should be still unapproved
@@ -114,7 +114,7 @@ class RecipesShowPageTest extends TestCase
 
         // Make request to approve a recipe with message
         $this->actingAs($admin)
-            ->post(action('Admin\ApprovesController@ok', ['id' => $recipe->id]))
+            ->post(action('Admin\ApprovesController@approve', ['id' => $recipe->id]))
             ->assertRedirect("/recipes/$recipe->id");
 
         // Now from user side

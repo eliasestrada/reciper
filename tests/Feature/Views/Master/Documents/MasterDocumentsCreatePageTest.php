@@ -64,7 +64,7 @@ class MasterDocumentsCreatePageTest extends TestCase
             ->delete(action('Master\DocumentsController@destroy', [
                 'id' => $document_id = create(Document::class)->id,
             ]))
-            ->assertSeeText(trans('messages.access_denied_only_auth'));
+            ->assertSeeText(trans('messages.access_denied_only_master'));
     }
 
     /** @test */
