@@ -27,7 +27,9 @@ return [
     // Bubbles
     'likes' => 'Лайки',
     'thousand' => 'тыс.',
-    'million' => 'мил.',
+    'million' => 'млн.',
+    'billion' => 'млд.',
+    'trillion' => 'трн.',
     'exp' => 'Опыт',
     'views' => 'Просмотров',
 

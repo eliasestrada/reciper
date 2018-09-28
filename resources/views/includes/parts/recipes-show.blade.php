@@ -15,7 +15,7 @@
 
 {{--  Time  --}}
 <div class="my-3">
-    <i class="fas fa-clock"></i>
+    <i class="fas fa-clock fa-2x main-text"></i>
     {{ $recipe->time }} @lang('recipes.min').
 </div>
 
