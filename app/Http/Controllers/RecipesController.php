@@ -131,9 +131,10 @@ class RecipesController extends Controller
 
         if ($request->file('image')) {
             $this->deleteOldImage($recipe->image);
-            $image_name = $this->saveImageIfExists($request->file('image'));
-            $this->updateRecipe($request, $image_name, $recipe);
         }
+
+        $image_name = $this->saveImageIfExists($request->file('image'));
+        $this->updateRecipe($request, $image_name, $recipe);
 
         return new RecipeUpdateResponse($recipe);
     }
