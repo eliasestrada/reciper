@@ -12,6 +12,7 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         Category::insert([
+            ['name_ru' => 'Нет категории', 'name_en' => 'No category'],
             ['name_ru' => 'Вторые блюда', 'name_en' => 'Second course'],
             ['name_ru' => 'Выпечка', 'name_en' => 'Bakery'],
             ['name_ru' => 'Вегетарианские', 'name_en' => 'Vegetarian'],
