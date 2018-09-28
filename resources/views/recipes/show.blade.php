@@ -19,7 +19,7 @@
             </a>
 
             {{--  To drafts button  --}}
-            @if (optional(user())->hasRecipe($recipe->id) && $recipe->isReady() && $recipe->isApproved())
+            @if (optional(user())->hasRecipe($recipe->id) && $recipe->isDone())
                 <form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post">
                     @method('put')
                     @csrf
@@ -27,9 +27,11 @@
                 </form>
             @endif
             {{-- Edit button --}}
-            <a href="/recipes/{{ $recipe->id }}/edit" class="btn mt-2 min-w" {{ $recipe->isReady() ? 'disabled' : '' }}>
-                @lang('tips.edit')
-            </a>
+            @if (optional(user())->hasRecipe($recipe->id))
+                <a href="/recipes/{{ $recipe->id }}/edit" class="btn mt-2 min-w" {{ $recipe->isReady() ? 'disabled' : '' }}>
+                    @lang('tips.edit')
+                </a>
+            @endif
         </div>
 
         {{--  Likes  --}}

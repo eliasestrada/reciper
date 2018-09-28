@@ -19,11 +19,9 @@
             <input type="submit" value="&#xf06e" name="view" class="fas btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top">
 
             {{--  Save button  --}}
-            @unless ($recipe->isReady())
-                <button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save')" data-position="top" class="btn-floating green tooltipped">
-                    <i class="fas fa-save"></i>
-                </button>
-            @endunless
+            <button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save')" data-position="top" class="btn-floating green tooltipped">
+                <i class="fas fa-save"></i>
+            </button>
 
             {{--  Delete button  --}}
             <delete-recipe-btn inline-template

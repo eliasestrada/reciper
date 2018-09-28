@@ -3,8 +3,6 @@
 namespace App\Helpers\Traits;
 
 use App\Models\Notification;
-use Image;
-use Storage;
 
 trait RecipesControllerHelpers
 {
@@ -15,22 +13,21 @@ trait RecipesControllerHelpers
     public function saveImageIfExists($image): ?string
     {
         if ($image) {
-            $extention = $image->getClientOriginalExtension();
-            $image_name = set_image_name($extention);
+            $image_name = set_image_name($image->getClientOriginalExtension());
 
             // Big image
-            Image::make($image)
+            \Image::make($image)
                 ->fit(600, 400)
                 ->insert(storage_path('app/public/other/watermark.png'))
                 ->save(storage_path("app/public/images/$image_name"));
 
             // Small image
-            Image::make($image)
+            \Image::make($image)
                 ->fit(240, 160)
                 ->save(storage_path("app/public/images/small/$image_name"));
 
             // Tiny image
-            Image::make($image)
+            \Image::make($image)
                 ->fit(50, 30)
                 ->save(storage_path("app/public/images/tiny/$image_name"));
 
@@ -46,7 +43,7 @@ trait RecipesControllerHelpers
     public function deleteOldImage($image): void
     {
         if ($image != 'default.jpg') {
-            Storage::delete([
+            \Storage::delete([
                 "public/images/$image",
                 "public/images/small/$image",
                 "public/images/tiny/$image",
