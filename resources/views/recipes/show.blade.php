@@ -6,6 +6,14 @@
 
 <section class="grid-recipe pt-3">
     <div class="recipe-content center position-relative">
+        {{-- Edit button --}}
+        @if (!$recipe->isReady())
+            @component('comps.btns.fixed-btn')
+                @slot('icon') fa-pen @endslot
+                @slot('link') /recipes/{{ $recipe->id }}/edit @endslot
+                @slot('tip') @lang('tips.edit') @endslot
+            @endcomponent
+        @endif
 
         {{-- Show menu button --}}
         <a href="#" title="@lang('recipes.show_menu')">
@@ -33,6 +41,7 @@
                 </a>
             @endif
         </div>
+
 
         {{--  Likes  --}}
         <div class="like-for-author-section">

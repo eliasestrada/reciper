@@ -96,7 +96,7 @@
         <div class="px-3">
             {{-- Logo --}}
             <a href="/" title="@lang('includes.home')" class="brand-logo noselect">
-                <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="46" class="mt-1 left">
+                <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="37" class="mt-2 left">
                 <span class="left pl-2">@lang('website.name')</span>
             </a>
             {{-- Hamburger menu --}}

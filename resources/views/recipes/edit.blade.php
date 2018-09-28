@@ -19,7 +19,7 @@
             <input type="submit" value="&#xf06e" name="view" class="fas btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top">
 
             {{--  Save button  --}}
-            <button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save')" data-position="top" class="btn-floating green tooltipped">
+            <button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save')" data-position="top" class="btn-floating green tooltipped waves-effect waves-light">
                 <i class="fas fa-save"></i>
             </button>
 
@@ -29,7 +29,7 @@
                 deleted-fail="{{ trans('recipes.deleted_fail') }}"
                 confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
                 <span v-if="!error">
-                    <button type="button" class="btn-floating red tooltipped" id="_delete-recipe" data-position="top"
+                    <button type="button" class="btn-floating red tooltipped waves-effect waves-light" id="_delete-recipe" data-position="top"
                         data-tooltip="@lang('tips.delete')"
                         v-on:click="deleteRecipe">
                             <i class="fas fa-trash"></i>
@@ -38,7 +38,7 @@
             </delete-recipe-btn>
 
             {{--  Publish button  --}}
-            <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top" data-alert="@lang('recipes.are_you_sure_to_publish')">
+            <a href="#" class="btn-floating green tooltipped waves-effect waves-light" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top" data-alert="@lang('recipes.are_you_sure_to_publish')">
                 <i class="fas fa-clipboard-check"></i>
             </a>
             <input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
