@@ -125,15 +125,34 @@ function set_image_name(string $extension = null, string $slug = ''): string
  */
 function readable_number($number)
 {
-    $number = round($number);
+    if ($number < 900) {
+        // 0 - 900
+        $new_number = number_format($number);
+        $suffix = '';
+    } else if ($number < 900000) {
+        // 0.9k-850k
+        $new_number = number_format($number / 1000);
+        $suffix = trans('users.thousand');
+    } else if ($number < 900000000) {
+        // 0.9m-850m
+        $new_number = number_format($number / 1000000);
+        $suffix = trans('users.million');
+    } else if ($number < 900000000000) {
+        // 0.9b-850b
+        $new_number = number_format($number / 1000000000);
+        $suffix = trans('users.billion');
+    } else {
+        // 0.9t+
+        $new_number = number_format($number / 1000000000000);
+        $suffix = trans('users.trillion');
+    }
 
-    if ($number >= 1000 && $number < 1000000):
-        $number = substr($number, 0, -3) . '<br><small>' . trans('users.thousand') . '</small>';
-    elseif ($number >= 1000000):
-        $number = substr($number, 0, -6) . '<br><small>' . trans('users.million') . '</small>';
-    endif;
+    // Remove unecessary zeroes after decimal. "1.0" -> "1"; "1.00" -> "1"
+    // Intentionally does not affect partials, eg "1.50" -> "1.50"
+    $dotzero = '.' . str_repeat('0', 1);
+    $new_number = str_replace($dotzero, '', $new_number);
 
-    return $number;
+    return "$new_number<br><small>$suffix</small>";
 }
 
 /**

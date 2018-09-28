@@ -40,12 +40,22 @@ class HelperFunctionsTest extends TestCase
     /** @test */
     public function readable_number_helper_converts_data_correctly(): void
     {
-        $thousand = trans('users.thousand');
-        $million = trans('users.million');
+        $data = [
+            ['num_before' => 899, 'num_after' => 899, 'prefix' => ''], // 1
+            ['num_before' => 900, 'num_after' => 1, 'prefix' => trans('users.thousand')], // 2
+            ['num_before' => 899499, 'num_after' => 899, 'prefix' => trans('users.thousand')], // 3
+            ['num_before' => 900000, 'num_after' => 1, 'prefix' => trans('users.million')], // 4
+            ['num_before' => 899999999, 'num_after' => 900, 'prefix' => trans('users.million')], // 5
+            ['num_before' => 900000000, 'num_after' => 1, 'prefix' => trans('users.billion')], // 6
+            ['num_before' => 899999999999, 'num_after' => 900, 'prefix' => trans('users.billion')], // 7
+            ['num_before' => 900000000000, 'num_after' => 1, 'prefix' => trans('users.trillion')], // 8
+            ['num_before' => 899999999999999, 'num_after' => 900, 'prefix' => trans('users.trillion')], // 9
+        ];
 
-        $this->assertEquals(readable_number(999), 999);
-        $this->assertEquals(readable_number(1000), "1<br><small>$thousand</small>");
-        $this->assertEquals(readable_number(1000000), "1<br><small>$million</small>");
+        foreach ($data as $i => $d) {
+            $expect = $d['num_after'] . '<br><small>' . $d['prefix'] . '</small>';
+            $this->assertEquals($expect, readable_number($d['num_before']), 'array number ' . ($i + 1));
+        }
     }
 
     /** @test */

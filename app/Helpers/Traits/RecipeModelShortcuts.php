@@ -82,7 +82,7 @@ trait RecipeModelShortcuts
         if ($this->isDone()) {
             return 'fa-check';
         } elseif (!$this->isReady()) {
-            return 'fa-edit';
+            return 'fa-pen';
         } else {
             return 'fa-clock';
         }
