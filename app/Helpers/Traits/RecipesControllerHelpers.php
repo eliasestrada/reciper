@@ -17,18 +17,24 @@ trait RecipesControllerHelpers
 
             // Big image
             \Image::make($image)
-                ->fit(600, 400)
+                ->fit(600, 400, function ($constraint) {
+                    $constraint->upsize();
+                }, 'top')
                 ->insert(storage_path('app/public/other/watermark.png'))
                 ->save(storage_path("app/public/images/$image_name"));
 
             // Small image
             \Image::make($image)
-                ->fit(240, 160)
+                ->fit(240, 160, function ($constraint) {
+                    $constraint->upsize();
+                }, 'top')
                 ->save(storage_path("app/public/images/small/$image_name"));
 
             // Tiny image
             \Image::make($image)
-                ->fit(50, 30)
+                ->fit(50, 30, function ($constraint) {
+                    $constraint->upsize();
+                }, 'top')
                 ->save(storage_path("app/public/images/tiny/$image_name"));
 
             return $image_name;

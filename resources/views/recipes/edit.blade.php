@@ -130,21 +130,13 @@
             {{-- Image --}}
             <div class="col s12 m6">
                 <div class="center pb-5">
-                    <h5 class="col s12 mb-2">@lang('recipes.image')</h5>
-
-                    <div class="file-field input-field">
-                        <div class="btn">
-                            <span>@lang('recipes.select_file')</span>
-                            <input type="file" name="image" id="src-image" style="overflow:hidden">
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text">
-                        </div>
+                    <h5 class="col s12 mb-3">@lang('recipes.image')</h5>
+                    <div class="preview-image position-relative">
+                        <img src="{{ asset("storage/images/$recipe->image") }}" alt="{{ $recipe->title }}" id="target-image">
+                        <input type="file" name="image" id="src-image" class="d-none" style="overflow:hidden">
+                        <label for="src-image" class="btn waves-effect waves-light">@lang('recipes.select_file')</label>
+                        <div class="preview-overlay"></div>
                     </div>
-
-                    <section class="preview-image">
-                        <img src="{{ asset("storage/images/small/$recipe->image") }}" alt="{{ $recipe->title }}" id="target-image">
-                    </section>
                 </div>
             </div>
         </div>

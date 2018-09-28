@@ -7392,10 +7392,44 @@ Nav List
   -o-transition: all 0.25s;
 }
 
+.preview-image {
+  width: 450px;
+  height: 300px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.preview-image:hover label {
+  opacity: 1;
+}
+
+.preview-image:hover .preview-overlay {
+  opacity: .6;
+}
+
 .preview-image img {
-  width: 230px;
-  height: 160px;
-  margin: 1em auto 0 auto;
+  width: 450px !important;
+  height: auto !important;
+}
+
+.preview-image .preview-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background: #000;
+  opacity: 0;
+  -webkit-transition: opacity 200ms;
+  transition: opacity 200ms;
+}
+
+.preview-image label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 0;
 }
 
 .add-remove-field {
