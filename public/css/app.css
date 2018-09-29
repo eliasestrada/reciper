@@ -49,7 +49,6 @@
 
 body {
   font-family: Arial, Helvetica;
-  word-break: break-all;
   background-color: #f3f3f3;
   font-size: 1rem;
   color: #000;
@@ -7200,14 +7199,15 @@ Nav List
 
 .grid-recipe .popup-window {
   width: 260px;
-  right: -50px;
+  right: -80px;
   top: -20px;
+  opacity: 0;
   z-index: 1;
   border-radius: 7px 0 7px 7px;
-  -webkit-transition: right 300ms, top 300ms, -webkit-transform 300ms;
-  transition: right 300ms, top 300ms, -webkit-transform 300ms;
-  transition: transform 300ms, right 300ms, top 300ms;
-  transition: transform 300ms, right 300ms, top 300ms, -webkit-transform 300ms;
+  -webkit-transition: right 300ms, top 300ms, opacity 500ms, -webkit-transform 300ms;
+  transition: right 300ms, top 300ms, opacity 500ms, -webkit-transform 300ms;
+  transition: transform 300ms, right 300ms, top 300ms, opacity 500ms;
+  transition: transform 300ms, right 300ms, top 300ms, opacity 500ms, -webkit-transform 300ms;
   -webkit-transform: scale(0, 0);
           transform: scale(0, 0);
 }
@@ -7217,12 +7217,13 @@ Nav List
 }
 
 .grid-recipe .popup-window.active {
-  right: 70px;
-  top: 35px;
-  -webkit-transition: right 300ms, top 300ms, -webkit-transform 300ms;
-  transition: right 300ms, top 300ms, -webkit-transform 300ms;
-  transition: transform 300ms, right 300ms, top 300ms;
-  transition: transform 300ms, right 300ms, top 300ms, -webkit-transform 300ms;
+  right: 25px;
+  opacity: 1;
+  top: 30px;
+  -webkit-transition: right 300ms, 300ms, opacity 500ms, -webkit-transform 300ms;
+  transition: right 300ms, 300ms, opacity 500ms, -webkit-transform 300ms;
+  transition: transform 300ms, right 300ms, 300ms, opacity 500ms;
+  transition: transform 300ms, right 300ms, 300ms, opacity 500ms, -webkit-transform 300ms;
   -webkit-transform: scale(1, 1);
           transform: scale(1, 1);
 }

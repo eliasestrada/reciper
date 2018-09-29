@@ -30,13 +30,6 @@ trait RecipesControllerHelpers
                 }, 'top')
                 ->save(storage_path("app/public/images/small/$image_name"));
 
-            // Tiny image
-            \Image::make($image)
-                ->fit(50, 30, function ($constraint) {
-                    $constraint->upsize();
-                }, 'top')
-                ->save(storage_path("app/public/images/tiny/$image_name"));
-
             return $image_name;
         }
         return null;
@@ -52,7 +45,6 @@ trait RecipesControllerHelpers
             \Storage::delete([
                 "public/images/$image",
                 "public/images/small/$image",
-                "public/images/tiny/$image",
             ]);
         }
     }

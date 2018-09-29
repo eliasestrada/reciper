@@ -13,11 +13,12 @@
 
     .popup-window {
         width: 260px;
-        right: -50px;
+        right: -80px;
         top: -20px;
+        opacity: 0;
         z-index: 1;
         border-radius: 7px 0 7px 7px;
-        transition: transform 300ms, right 300ms, top 300ms;
+        transition: transform 300ms, right 300ms, top 300ms, opacity 500ms;
         transform: scale(0, 0);
 
         a {
@@ -26,9 +27,10 @@
     }
 
     .popup-window.active {
-        right: 70px;
-        top: 35px;
-        transition: transform 300ms, right 300ms, top 300ms;
+        right: 25px;
+        opacity: 1;
+        top: 30px;
+        transition: transform 300ms, right 300ms, 300ms, opacity 500ms;
         transform: scale(1, 1);
     }
 }

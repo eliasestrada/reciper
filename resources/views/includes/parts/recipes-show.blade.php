@@ -5,7 +5,7 @@
 <img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img">
 
 {{--  Category  --}}
-<div class="center py-3">
+<div class="center py-2">
     @foreach ($recipe->categories as $category)
         <a href="/recipes#category={{ $category->id }}" title="{{ $category->getName() }}">
             <span class="new badge p-1 px-2" style="float:none;">{{ $category->getName() }}</span>

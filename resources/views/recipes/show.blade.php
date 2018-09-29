@@ -17,7 +17,7 @@
 
         {{-- Show menu button --}}
         <a href="#" title="@lang('recipes.show_menu')">
-            <i class="fas fa-ellipsis-v fa-15x main-text right mr-5" id="popup-window-trigger"></i>
+            <i class="fas fa-ellipsis-v fa-15x main-text right" id="popup-window-trigger" style="transform:translateX(-15px)"></i>
         </a>
 
         <div class="popup-window z-depth-2 p-3 position-absolute paper" id="popup-window">
