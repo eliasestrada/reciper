@@ -91,7 +91,7 @@
             <div class="row">
                 @foreach ($chunk as $random)
                     <div class="col s12 m6 l3">
-                        <div class="card">
+                        <div class="card hoverable">
                             <div class="card-image waves-effect waves-block waves-light">
                                 <a href="/recipes/{{ $random->id }}">
                                     <img class="activator" alt="{{ $random->getTitle() }}" src="{{ asset('storage/images/small/'.$random->image) }}">

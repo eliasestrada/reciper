@@ -12,7 +12,7 @@
     <div class="row">
         @foreach ($users as $user)
             <div class="col s12 m6 l4">
-                <ul class="collection my-2">
+                <ul class="collection my-2 z-depth-1 hoverable">
                     <li class="collection-item avatar">
                         <a href="/users/{{ $user->id }}">
                             <img src="{{ asset('storage/users/'.$user->image) }}" alt="{{ $user->name }}" class="circle">

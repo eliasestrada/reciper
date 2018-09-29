@@ -10,8 +10,7 @@
     <p class="mb-3">{{ $slot }}</p>
 
     @if (! isset($btn))
-        @include('includes.buttons.home-btn')
-        @include('includes.buttons.help-btn')
+        @include('includes.buttons.btns')
     @endif
 </div>
 

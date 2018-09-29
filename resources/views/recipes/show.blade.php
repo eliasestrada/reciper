@@ -22,7 +22,7 @@
 
         <div class="popup-window z-depth-2 p-3 position-absolute paper" id="popup-window">
             {{-- Report button --}}
-            <a href="#report-recipe-modal" class="btn modal-trigger min-w"{{ visitor_id() == $recipe->user_id || optional(user())->hasRecipe($recipe->id) ? ' disabled' : '' }}>
+            <a href="#report-recipe-modal" class="btn waves-effect waves-light modal-trigger min-w"{{ visitor_id() == $recipe->user_id || optional(user())->hasRecipe($recipe->id) ? ' disabled' : '' }}>
                 @lang('recipes.report_recipe')
             </a>
 
@@ -45,7 +45,7 @@
 
         {{--  Likes  --}}
         <div class="like-for-author-section">
-            <a href="/users/{{ $recipe->user->id }}" class="user-icon-on-single-recipe" style="background:#484074 url({{ asset('storage/users/' . $recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
+            <a href="/users/{{ $recipe->user->id }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/users/' . $recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
 
             @if ($recipe->isDone())
                 <like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}" inline-template>
@@ -70,12 +70,12 @@
         <h6 class="decorated pb-3">@lang('recipes.more')</h6>
         <random-recipes-sidebar visitor-id="{{ visitor_id() }}" inline-template>
             <div>
-                <div class="card" style="animation:appearWithRotate 1s;"
+                <div class="card hoverable" style="animation:appearWithRotate 1s;"
                     v-for="recipe in recipes"
                     :key="recipe.id">
 
                     <div class="card-image">
-                        <a :href="'/recipes/' + recipe.id" :title="recipe.title">
+                        <a :href="'/recipes/' + recipe.id" :title="recipe.title" class="waves-effect waves-light">
                             <img :src="'/storage/images/' + recipe.image" :alt="recipe.title">
                         </a>
                     </div>

@@ -24,7 +24,7 @@
     <div class="row">
         @forelse ($recipes as $recipe)
             <div class="col s12 m6 l3">
-                <div class="card">
+                <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
                         <a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
                             <img src="{{ asset('storage/images/small/'.$recipe['image']) }}" alt="{{ $recipe->getTitle() }}" class="activator">
