@@ -3,8 +3,8 @@
 return [
 
     // Controllers
-    'title_script_attack' => 'Скрипт аттака',
-    'message_script_attack' => 'Один из пользователь использовал Javascript тэг <script> в одном из своих рецептов. Срочно проверьте журнал',
+    'title_script_attack' => 'Скрипт атака',
+    'message_script_attack' => 'Один из пользователь использовал Javascript тег <script> в одном из своих рецептов. Срочно проверьте журнал',
     'deleted' => 'Сообщение было успешно удалено',
 
     // View
