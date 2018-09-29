@@ -120,6 +120,6 @@ trait RecipesControllerHelpers
         $ingredients = count(convert_to_array_of_list_items($request->ingredients));
         $text = count(convert_to_array_of_list_items($request->text));
 
-        return $ingredients + $text <= 10 ? true : false;
+        return $ingredients + $text <= 10 ? ($request->time < 60 ? true : false) : false;
     }
 }
