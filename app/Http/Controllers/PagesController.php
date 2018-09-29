@@ -53,7 +53,7 @@ class PagesController extends Controller
             $message = $recipes->count() == 0 ? trans('pages.nothing_found') : '';
         }
 
-        $search_suggest = cache()->rememberForever('search_suggest', function () {
+        $search_suggest = cache()->remember('search_suggest', config('cache.search_suggest'), function () {
             return Recipe::query()->done(1)->pluck('title_' . lang())->toArray();
         });
 

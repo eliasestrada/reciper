@@ -31,5 +31,6 @@ return [
         'popular_recipes' => 10,
         'random_recipes' => 2,
         'top_recipers' => 60,
+        'search_suggest' => 60,
     ],
 ];
