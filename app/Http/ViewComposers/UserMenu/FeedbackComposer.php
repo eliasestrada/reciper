@@ -15,6 +15,9 @@ class FeedbackComposer
     public function compose(View $view): void
     {
         if (user() && user()->hasRole('admin')) {
+            if (user()->contact_check == null) {
+                user()->update(['contact_check' => now()]);
+            }
             $feedback_notif = cache()->rememberForever('feedback_notif', function () {
                 return Feedback::where('created_at', '>', user()->contact_check)->exists();
             });

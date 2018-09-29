@@ -190,11 +190,11 @@ function dump_sql(): void
  */
 function visitor_id()
 {
-    if (request()->cookie('visitor_id')) {
-        return request()->cookie('visitor_id');
+    if (request()->cookie('rotsiv')) {
+        return request()->cookie('rotsiv');
     }
     $visitor_id = Visitor::whereIp(request()->ip())->value('id');
-    \Cookie::queue('visitor_id', $visitor_id, 218400);
+    \Cookie::queue('rotsiv', $visitor_id, 218400);
 
     return $visitor_id;
 }

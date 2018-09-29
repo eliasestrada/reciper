@@ -1,7 +1,5 @@
 <?php
 
-
-
 use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Database\Seeder;
@@ -35,7 +33,6 @@ class UsersSeeder extends Seeder
             'name' => 'Антон',
             'exp' => 20,
             'password' => bcrypt('111111'),
-            'notif_check' => date("Y-m-d H:i:s"),
             'contact_check' => date("Y-m-d H:i:s"),
             'created_at' => '2018-03-08 12:08:59',
             'image' => 'default.jpg',
