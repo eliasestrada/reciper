@@ -95,9 +95,9 @@
     <div class="nav-wrapper main" style="z-index:15">
         <div class="px-3">
             {{-- Logo --}}
-            <a href="/" title="@lang('includes.home')" class="brand-logo noselect">
-                <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="37" class="mt-2 left">
-                <span class="left pl-2">@lang('website.name')</span>
+            <a href="/" title="@lang('includes.home')" class="brand-logo noselect" style="margin-left:-13px">
+                <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="40" class="mt-2 left">
+                <span class="left pl-1">@lang('website.name')</span>
             </a>
             {{-- Hamburger menu --}}
             <a href="#" data-target="mobile-demo" class="sidenav-trigger noselect">
@@ -115,7 +115,7 @@
                 @endauth
 
                 {{-- Search button --}}
-                <a href="#" data-target="mobile-demo" class="right pr-4 pl-3" title="@lang('includes.search')" id="nav-btn-for-search">
+                <a href="#" data-target="mobile-demo" class="right" style="margin:2px 17px;" title="@lang('includes.search')" id="nav-btn-for-search">
                     <i class="fas fa-search fa-15x d-inline"></i>
                 </a>
             </div>

@@ -10564,7 +10564,7 @@ document.addEventListener('DOMContentLoaded', function () {
     M.Tooltip.init(tooltip);
 
     var sidenav = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(sidenav);
+    M.Sidenav.init(sidenav, { draggable: false });
 
     var collapsible = document.querySelectorAll('.collapsible');
     M.Collapsible.init(collapsible);
