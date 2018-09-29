@@ -3,7 +3,7 @@
         {{--  Documents  --}}
         <div class="col s12 m6 l3 left-align">
             <ul class="unstyled-list">
-                <li><strong>@lang('documents.documents')</strong></li>
+                <li><strong>@lang('documents.rights_info')</strong></li>
                 @foreach ($documents_footer as $doc)
                     <li>
                         <a href="/documents/{{ $doc->id }}">
