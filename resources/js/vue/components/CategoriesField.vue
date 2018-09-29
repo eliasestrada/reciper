@@ -4,11 +4,9 @@
         <h6 class="col s12 center mb-2">
             <a class="add-remove-field ml-2" style="color:darkgreen;"
                 :class="classAddBtn"
-                @click="addField"
-                :title="add">{{ add + ' +' }}</a>
+                @click="addField">{{ add + ' +' }}</a>
             <a style="color:brown;" class="add-remove-field ml-2"
                 :class="classDelBtn"
-                :title="deleting"
                 @click="deleteField">{{ deleting + ' -' }}</a>
         </h6>
 
