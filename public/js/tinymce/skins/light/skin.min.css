@@ -47,8 +47,11 @@
 	border: 0 solid #ddd;
 	border-width: 1px !important;
 }
-
-/*
-remove this CSS from content.min.css and content.inline.min.css
-.mce-content-body p,.mce-content-body div,.mce-content-body h1,.mce-content-body h2,.mce-content-body h3,.mce-content-body h4,.mce-content-body h5,.mce-content-body h6{line-height:1.2em}
-*/
+#mceu_22 {
+    position:fixed;
+    bottom: 1%;
+    left: 1%;
+    right: 1%;
+    z-index: 50;
+    border: solid 2px darkslategray;
+}
