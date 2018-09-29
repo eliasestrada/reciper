@@ -16,11 +16,7 @@
                     <a href="/recipes#dinner">@lang('home.dinner')</a>
                 </div>
                 <div>
-                    @auth
-                        <a href="#add-recipe-modal" class="modal-trigger main-dark px-3">@lang('home.add_your_recipe')</a>
-                    @else
-                        <a href="/login" class="main-dark px-3">@lang('home.add_your_recipe')</a>
-                    @endauth
+                    <a href="#add-recipe-modal" class="modal-trigger main-dark px-3">@lang('home.add_your_recipe')</a>
                 </div>
             </div>
 
