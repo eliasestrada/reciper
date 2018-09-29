@@ -43,17 +43,17 @@ class MasterVisitorsIndexPageTest extends TestCase
     /** @test */
     public function view_has_data(): void
     {
-        $this->actingAs($this->master)
-            ->get('/master/visitors')
-            ->assertViewIs('master.visitors.index')
-            ->assertViewHas('visitors',
-                Visitor::withCount('views')
-                    ->with('likes')
-                    ->with('views')
-                    ->with('user')
-                    ->orderBy('views_count', 'desc')
-                    ->paginate(50)
-                    ->onEachSide(1)
-            );
+        $response = $this->actingAs($this->master)->get('/master/visitors');
+
+        $visitors = Visitor::withCount('views')
+            ->with('likes')
+            ->with('views')
+            ->with('user')
+            ->orderBy('views_count', 'desc')
+            ->paginate(50)
+            ->onEachSide(1);
+
+        $response->assertViewIs('master.visitors.index')
+            ->assertViewHas('visitors', $visitors);
     }
 }
