@@ -46,9 +46,7 @@ class MasterVisitorsIndexPageTest extends TestCase
         $response = $this->actingAs($this->master)->get('/master/visitors');
 
         $visitors = Visitor::withCount('views')
-            ->with('likes')
-            ->with('views')
-            ->with('user')
+            ->with('likes', 'views', 'user')
             ->orderBy('views_count', 'desc')
             ->paginate(50)
             ->onEachSide(1);
