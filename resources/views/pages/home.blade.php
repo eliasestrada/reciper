@@ -3,82 +3,41 @@
 @section('title', trans('pages.home'))
 
 @section('home-header')
-    <header class="home-header">
-        <div class="header-content">
 
-            <h1>{{ config('app.name') }}</h1>
-            <div class="home-meal">
-                <div><a href="/recipes#simple">@lang('home.show_simple_recipes')</a></div>
-                <div>
-                    <a href="/recipes#breakfast">{{ title_case(trans('home.breakfast')) }}</a>, 
-                    <a href="/recipes#lunch">@lang('home.lunch')</a>
-                    @lang('home.or') 
-                    <a href="/recipes#dinner">@lang('home.dinner')</a>
-                </div>
-                <div>
-                    <a href="#add-recipe-modal" class="modal-trigger main-dark px-3">@lang('home.add_your_recipe')</a>
-                </div>
+<header class="home-header">
+    <div class="header-content">
+
+        <h1>@lang('messages.app_name')</h1>
+        <div class="home-meal">
+            <div><a href="/recipes#simple">@lang('home.show_simple_recipes')</a></div>
+            <div>
+                <a href="/recipes#breakfast">{{ title_case(trans('home.breakfast')) }}</a>, 
+                <a href="/recipes#lunch">@lang('home.lunch')</a>
+                @lang('home.or') 
+                <a href="/recipes#dinner">@lang('home.dinner')</a>
             </div>
-
-            {{--  Form  --}}
-            <form action="{{ action('PagesController@search') }}" method="get" class="header-search">
-                <div class="position-relative">
-                    <div class="home-search" id="home-search-form">
-                        <input type="search" name="for" id="header-search-input" placeholder="@lang('pages.search_details')">
-                    </div>
-                    <button type="submit" class="home-button" id="home-search-btn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </form>
+            <div>
+                <a href="#add-recipe-modal" class="modal-trigger main-dark px-3">@lang('home.add_your_recipe')</a>
+            </div>
         </div>
-    </header>
+
+        {{--  Form  --}}
+        <form action="{{ action('PagesController@search') }}" method="get" class="header-search">
+            <div class="position-relative">
+                <div class="home-search" id="home-search-form">
+                    <input type="search" name="for" id="header-search-input" placeholder="@lang('pages.search_details')">
+                </div>
+                <button type="submit" class="home-button" id="home-search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</header>
+
 @endsection
 
 @section('content')
-
-<section class="home-section position-relative">
-    @isset($title_intro)
-        <div class="center">
-            <h2 class="headline">{{ ($title_intro->getTitle() ?? '') }}</h2>
-        </div>
-        <p>{{ ($title_intro->getText() ?? '') }}</p>
-    @endisset
-
-    @hasRole('admin')
-        {{--  Настройки Интро  --}}
-        <a class="magic-btn" title="@lang('home.edit_intro')" id="btn-for-intro">
-            <i class="fa fa-pen"></i>
-        </a>
-
-        @magicForm
-            @slot('id')
-                intro-form
-            @endslot
-            @slot('action')
-                TitleController@intro
-            @endslot
-            @slot('title')
-                {{ $title_intro->getTitle() }}
-            @endslot
-            @slot('text')
-                {{ $title_intro->getText() }}
-            @endslot
-            @slot('holder_title')
-                @lang('home.intro_title')
-            @endslot
-            @slot('slug_title')
-                intro_title
-            @endslot
-            @slot('holder_text')
-                @lang('home.intro_text')
-            @endslot
-            @slot('slug_text')
-                intro_text
-            @endslot
-        @endmagicForm
-    @endhasRole
-</section>
 
 {{--  Cards  --}}
 <section class="home-section">

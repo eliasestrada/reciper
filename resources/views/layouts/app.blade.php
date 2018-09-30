@@ -3,7 +3,7 @@
 <head>
     @yield('head')
     @include('includes.head')
-    <title>@yield('title') - @lang('website.name')</title>
+    <title>@yield('title') - @lang('messages.app_name')</title>
 </head>
 <body>
 

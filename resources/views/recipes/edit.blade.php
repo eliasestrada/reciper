@@ -57,13 +57,13 @@
             <div class="col s12 m6 l4">
                 <div class="input-field">
                     <input type="number" name="time" id="time" value="{{ $recipe->time ?? old('time') }}">
-                    <label for="time">@lang('recipes.time_description')</label>
+                    <label for="time">@lang('recipes.time_desc')</label>
                 </div>
             </div>
     
             {{-- Meal --}}
             <div class="col s12 m6 l4">
-                <label for="meal">@lang('recipes.meal_description')</label>
+                <label for="meal">@lang('recipes.meal_desc')</label>
                 <select name="meal" id="meal" class="browser-default">
                     @foreach ($meal as $m)
                         <option value="{{ $m->id }}" {{ set_as_selected_if_equal($m->id, ($recipe->meal->id ?? '')) }}>
@@ -82,7 +82,7 @@
                 
                     <label for="ingredients">
                         @lang('recipes.ingredients') 
-                        @include('includes.tip', ['tip' => trans('recipes.ingredients_desc')])
+                        @include('includes.tip', ['tip' => trans('tips.recipes_ingredients')])
                     </label>
                 </div>
             </div>
@@ -94,7 +94,7 @@
 
                     <label for="intro">
                         @lang('recipes.short_intro') 
-                        @include('includes.tip', ['tip' => trans('recipes.text_description')])
+                        @include('includes.tip', ['tip' => trans('tips.recipes_intro')])
                     </label>
                 </div>
             </div>
@@ -107,7 +107,7 @@
 
                 <label for="text">
                     @lang('recipes.text_of_recipe') 
-                    @include('includes.tip', ['tip' => trans('recipes.text_description')])
+                    @include('includes.tip', ['tip' => trans('tips.recipes_text')])
                 </label>
             </div>
         </div>

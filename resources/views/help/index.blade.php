@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', trans('help.help'))
+@section('title', trans('messages.help'))
 
 @section('content')
 
 <div class="page">
-    <div class="center"><h1 class="headline">@lang('help.help')</h1></div>
+    <div class="center"><h1 class="headline">@lang('messages.help')</h1></div>
 
     <div class="row mt-4">
         @foreach ($help_categories as $category)

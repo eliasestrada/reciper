@@ -97,7 +97,7 @@
             {{-- Logo --}}
             <a href="/" title="@lang('includes.home')" class="brand-logo noselect" style="margin-left:-13px">
                 <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="40" class="mt-2 left">
-                <span class="left pl-1">@lang('website.name')</span>
+                <span class="left pl-1">@lang('messages.app_name')</span>
             </a>
             {{-- Hamburger menu --}}
             <a href="#" data-target="mobile-demo" class="sidenav-trigger noselect">
@@ -133,8 +133,8 @@
                     </a>
                 </li>
                 <li class="{{ active_if_route_is('help') }}">
-                    <a href="/help" title="@lang('help.help')">
-                        @lang('help.help')
+                    <a href="/help" title="@lang('messages.help')">
+                        @lang('messages.help')
                     </a>
                 </li>
 
