@@ -100,9 +100,9 @@
                 <div class="input-field mt-4">
                     <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
                     <textarea name="message" minlength="{{ config('validation.feedback.contact.message.min') }}" id="message" class="materialize-textarea counter" data-length="{{ config('validation.feedback.contact.message.max') }}" required>{{ old('message') }}</textarea>
-                    <label for="message">@lang('form.message')</label>
+                    <label for="message">@lang('forms.message')</label>
                 </div>
-                <button type="submit" class="btn">@lang('form.send')</button>
+                <button type="submit" class="btn">@lang('forms.send')</button>
             </form>
         </div>
     </div>

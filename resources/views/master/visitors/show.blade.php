@@ -65,7 +65,7 @@
                     </div>
                     <div class="input-field col s12 m9">
                         <textarea name="message" id="ban-textarea" class="materialize-textarea counter" data-length="{{ config('validation.feedback.ban.message.max') }}" maxlength="{{ config('validation.feedback.ban.message.max') }}" minlength="{{ config('validation.feedback.ban.message.min') }}" required>{{ old('message') }}</textarea>
-                        <label for="ban-textarea">@lang('form.message')</label>
+                        <label for="ban-textarea">@lang('forms.message')</label>
                     </div>
                     <button class="btn red" type="submit" onclick="if (!confirm('@lang('visitors.are_you_sure_to_ban')')) event.preventDefault()">@lang('visitors.ban')</button>
                 </form>

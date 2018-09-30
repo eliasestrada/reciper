@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col s12 m6">
             <h1 class="headline">@lang('settings.settings_photo')</h1>
-            <p>@lang('settings.choose_photo', ['btn1' => trans('form.select_file'), 'btn2' => trans('form.save')])</p>
+            <p>@lang('settings.choose_photo', ['btn1' => trans('forms.select_file'), 'btn2' => trans('forms.save')])</p>
         </div>
         <div class="col s12 m6">
             <div class="profile-header">
@@ -24,7 +24,7 @@
             @method('put') @csrf
             <div class="file-field input-field">
                 <div class="btn">
-                    <span>@lang('form.select_file')</span>
+                    <span>@lang('forms.select_file')</span>
                     <input type="file" name="image" id="src-image">
                 </div>
                 <div class="file-path-wrapper">
@@ -34,7 +34,7 @@
             </div>
 
             <div class="center">
-                <button type="submit" class="btn m-1 min-w">@lang('form.save')</button>
+                <button type="submit" class="btn m-1 min-w">@lang('forms.save')</button>
             </div>
         </form>
 
@@ -42,7 +42,7 @@
         @if (user()->image != 'default.jpg')
             <form action="{{ action('Settings\PhotoController@destroy') }}" method="post" enctype="multipart/form-data" class="center">
                 @method('delete') @csrf
-                <div><button type="submit" class="btn red m-1 min-w">@lang('form.delete_photo')</button></div>
+                <div><button type="submit" class="btn red m-1 min-w">@lang('forms.delete_photo')</button></div>
             </form>
         @endif
     </div>

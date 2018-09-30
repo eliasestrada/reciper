@@ -7,28 +7,28 @@
 <div class="page row">
     <div class="col s12 m6 offset-m3">
         <div class="center">
-            <h2 class="headline">@lang('form.change_pwd')</h2>
+            <h2 class="headline">@lang('forms.change_pwd')</h2>
         </div>
 
         <form action="{{ action('Settings\PasswordController@update') }}" method="post">
             @method('put') @csrf
             <div class="input-field">
-                <label for="old_password">@lang('form.current_pwd')</label>
+                <label for="old_password">@lang('forms.current_pwd')</label>
                 <input type="password" name="old_password" id="old_password" minlength="{{ config('validation.settings.password.min') }}" maxlength="{{ config('validation.settings.password.max') }}">
             </div>
         
             <div class="input-field">
-                <label for="password">@lang('form.new_pwd')</label>
+                <label for="password">@lang('forms.new_pwd')</label>
                 <input type="password" name="password" id="password" minlength="{{ config('validation.settings.password.min') }}" maxlength="{{ config('validation.settings.password.max') }}">
             </div>
         
             <div class="input-field">
-                <label for="password_confirmation">@lang('form.repeat_new_pwd')</label>
+                <label for="password_confirmation">@lang('forms.repeat_new_pwd')</label>
                 <input type="password" name="password_confirmation" id="password_confirmation" minlength="{{ config('validation.settings.password.min') }}" maxlength="{{ config('validation.settings.password.max') }}">
             </div>
 
             <div class="input-field mt-4 center">
-                <button class="btn" type="submit">@lang('form.save')</button>
+                <button class="btn" type="submit">@lang('forms.save')</button>
             </div>
         </form>
     </div>

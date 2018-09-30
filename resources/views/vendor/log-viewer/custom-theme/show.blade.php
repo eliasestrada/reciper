@@ -40,7 +40,7 @@
                     <form action="{{ action('Master\LogsController@delete') }}" method="POST" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')" data-position="top">
                         @method('delete') @csrf
                         <input type="hidden" name="date" value="{{ $log->date }}">
-                        <button type="submit" class="btn-floating red" title="@lang('form.deleting')" onclick="if (!confirm('@lang('logs.confirm', ['date' => $log->date])')) event.preventDefault()">
+                        <button type="submit" class="btn-floating red" title="@lang('forms.deleting')" onclick="if (!confirm('@lang('logs.confirm', ['date' => $log->date])')) event.preventDefault()">
                             <i class="fas fa-trash"></i>
                         </button>
                     </form>
@@ -86,7 +86,7 @@
                     <button id="search-btn" class="btn">@lang('includes.search')</button>
                     @if (request()->has('query'))
                         <a href="{{ route('log-viewer::logs.show', [$log->date]) }}" class="btn">
-                            @lang('form.cancel')
+                            @lang('forms.cancel')
                         </a>
                     @endif
                 </form>

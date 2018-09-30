@@ -12,7 +12,7 @@
         <div class="col s12 m6">
             <div class="center"><h2 class="headline">@lang('settings.reciper_name')</h2></div>
             <div class="input-field">
-                <label for="name">@lang('form.name')</label>
+                <label for="name">@lang('forms.name')</label>
                 <input type="text" name="name" id="name" value="{{ user()->name }}" data-length="{{ config('validation.settings.general.name.max') }}" class="counter" maxlength="{{ config('validation.settings.general.name.max') }}" minlength="{{ config('validation.settings.general.name.min') }}">
             </div>
         </div>
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="center"><button class="btn" type="submit">@lang('form.save')</button></div>
+        <div class="center"><button class="btn" type="submit">@lang('forms.save')</button></div>
     </form>
 </div>
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('form.login'))
+@section('title', trans('forms.login'))
 
 @section('content')
 
@@ -8,8 +8,8 @@
     <div class="col s12 m8 offset-m2 l6 offset-l3">
         <div class="paper">
             <div class="register-tabs">
-                <a href="/register">@lang('form.register')</a>
-                <a href="#" class="active">@lang('form.login')</a>
+                <a href="/register">@lang('forms.register')</a>
+                <a href="#" class="active">@lang('forms.login')</a>
             </div>
         </div>
 
@@ -17,14 +17,14 @@
             @csrf
             <div class="input-field">
                 <input id="email" value="{{ old('email') }}" type="email" name="email" class="validate">
-                <label for="email">@lang('form.email')</label>
+                <label for="email">@lang('forms.email')</label>
             </div>
         
             <visibility inline-template>
                 <div class="input-field">
                     <input class="validate" :type="type" name="password" id="password" autocomplete="off" required>
                     <i :class="icon" class="fas fa-15x main-text noselect position-absolute visibility-icon" v-on:click="changeType"></i>
-                    <label for="password">@lang('form.pwd')</label>
+                    <label for="password">@lang('forms.pwd')</label>
                 </div>
             </visibility>
 
@@ -32,7 +32,7 @@
                 <label>
                     <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} />
                     <span>
-                        @lang('form.remember_me') 
+                        @lang('forms.remember_me') 
                         @include('includes.tip', ['tip' => trans('tips.remember_info')])
                     </span>
                 </label>
@@ -40,12 +40,12 @@
         
             <div class="input-field">
                 <button type="submit" id="go-to-account" class="waves-effect waves-light btn">
-                    @lang('form.login')
+                    @lang('forms.login')
                     <i class="fas fa-sign-in-alt right"></i>
                 </button>
             </div>
 
-            {{-- <a href="{{ route('password.request') }}">@lang('form.forgot_pwd')</a> --}}
+            {{-- <a href="{{ route('password.request') }}">@lang('forms.forgot_pwd')</a> --}}
         </form>
     </div>
 </div>

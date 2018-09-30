@@ -119,10 +119,10 @@
                     locale="{{ lang() }}"
                     :recipe-categories="{{ json_encode($recipe->categories->toArray()) }}"
                     label="@lang('recipes.category')"
-                    select="@lang('form.select')"
+                    select="@lang('forms.select')"
                     categories-title="@lang('recipes.categories_title')"
-                    deleting="@lang('form.deleting')"
-                    add="@lang('form.add')">
+                    deleting="@lang('forms.deleting')"
+                    add="@lang('forms.add')">
                     @include('includes.preloader')
                 </categories-field>
             </div>

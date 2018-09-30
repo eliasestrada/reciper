@@ -11,7 +11,7 @@
     <form method="POST" action="{{ route('password.email') }}">
 
         @csrf <div class="input-field">
-            <label for="email">@lang('form.email')</label>
+            <label for="email">@lang('forms.email')</label>
             <input id="email" type="email" name="email" value="{{ old('email') }}" required>
         </div>
 

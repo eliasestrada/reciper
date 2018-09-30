@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('form.register'))
+@section('title', trans('forms.register'))
 
 @section('content')
 
@@ -8,8 +8,8 @@
     <div class="col s12 m8 offset-m2 l6 offset-l3">
         <div class="paper">
             <div class="register-tabs">
-                <a href="#" class="active">@lang('form.register')</a>
-                <a href="/login">@lang('form.login')</a>
+                <a href="#" class="active">@lang('forms.register')</a>
+                <a href="/login">@lang('forms.login')</a>
             </div>
         </div>
 
@@ -19,15 +19,15 @@
                 <input type="text" id="name" name="name" value="{{ old('name') }}" class="validate" required>
                 <label for="name">
                     @lang('settings.reciper_name') 
-                    @include('includes.tip', ['tip' => trans('form.name_desc')])
+                    @include('includes.tip', ['tip' => trans('forms.name_desc')])
                 </label>
             </div>
 
             <div class="input-field">
                 <input type="email" id="email" name="email" value="{{ old('email') }}" class="validate" required>
                 <label for="email">
-                    @lang('form.email')
-                    @include('includes.tip', ['tip' => trans('form.email_desc')])
+                    @lang('forms.email')
+                    @include('includes.tip', ['tip' => trans('forms.email_desc')])
                 </label>
             </div>
 
@@ -36,8 +36,8 @@
                     <input class="validate" :type="type" name="password" id="password" autocomplete="off" required>
                     <i class="fas fa-15x main-text noselect position-absolute visibility-icon" v-on:click="changeType" :class="icon"></i>
                     <label for="password">
-                        @lang('form.pwd')
-                        @include('includes.tip', ['tip' => trans('form.pwd_desc')])
+                        @lang('forms.pwd')
+                        @include('includes.tip', ['tip' => trans('forms.pwd_desc')])
                     </label>
                 </div>
             </visibility>
@@ -47,15 +47,15 @@
                     <input class="validate" :type="type" name="password_confirmation" id="password_confirmation" autocomplete="off" required>
                     <i class="fas fa-15x main-text noselect position-absolute visibility-icon" v-on:click="changeType" :class="icon"></i>
                     <label for="password_confirmation">
-                        @lang('form.pwd_confirm')
-                        @include('includes.tip', ['tip' => trans('form.pwd2_desc')])
+                        @lang('forms.pwd_confirm')
+                        @include('includes.tip', ['tip' => trans('forms.pwd2_desc')])
                     </label>
                 </div>
             </visibility>
 
             @if(!empty($document))
                 <blockquote class="mt-5">
-                    {!! trans('form.agree_to_terms', ['btn' => trans('form.register')]) !!}
+                    {!! trans('forms.agree_to_terms', ['btn' => trans('forms.register')]) !!}
                 </blockquote>
 
                 <!-- show-document-modal structure -->
@@ -73,7 +73,7 @@
             @endif
 
             <button type="submit" id="register-btn" class="waves-effect waves-light btn mt-3">
-                @lang('form.register')
+                @lang('forms.register')
             </button>
         </form>
     </div>

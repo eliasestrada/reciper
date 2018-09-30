@@ -26,7 +26,7 @@
                             @if ($notif->for_admins === 0)
                                 <form action="{{ action('NotificationController@destroy', ['notification' => $notif->id]) }}" method="post">
                                     @csrf @method('delete')
-                                    <button class="btn-small red" onclick="if (!confirm('@lang('notifications.sure_to_delete')')) event.preventDefault()">@lang('form.deleting')</button>
+                                    <button class="btn-small red" onclick="if (!confirm('@lang('notifications.sure_to_delete')')) event.preventDefault()">@lang('forms.deleting')</button>
                                 </form>
                             @else
                                 @lang('admin.message_for_admin')

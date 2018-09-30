@@ -12,7 +12,7 @@
         @csrf <input type="hidden" name="token" value="{{ $token }}">
 
         <div class="input-field">
-            <label for="email">@lang('form.email')</label>
+            <label for="email">@lang('forms.email')</label>
             <input id="email" type="email" name="email" value="{{ ($email ?? old('email')) }}" required autofocus>
         </div>
 

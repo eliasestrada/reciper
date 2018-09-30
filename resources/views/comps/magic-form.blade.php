@@ -20,7 +20,7 @@
         @endif
 
         <div class="input-field">
-            <button type="submit" class="btn">@lang('form.save')</button>
+            <button type="submit" class="btn">@lang('forms.save')</button>
         </div>
 
     </form>
