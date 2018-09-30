@@ -2711,7 +2711,7 @@ small {
   transition: -webkit-box-shadow .25s;
   transition: box-shadow .25s;
   transition: box-shadow .25s, -webkit-box-shadow .25s;
-  border-radius: 2px;
+  border-radius: 6px;
 }
 
 .card .card-title {
@@ -2838,7 +2838,7 @@ small {
 
 .card .card-image img {
   display: block;
-  border-radius: 2px 2px 0 0;
+  border-radius: 6px 6px 0 0;
   position: relative;
   left: 0;
   right: 0;
@@ -3112,7 +3112,7 @@ small {
 .btn-small,
 .btn-flat {
   border: none;
-  border-radius: 2px;
+  border-radius: 3px;
   display: inline-block;
   height: 36px;
   line-height: 36px;
@@ -7148,6 +7148,14 @@ Nav List
   -webkit-transition: opacity 400ms;
   transition: opacity 400ms;
   opacity: 1;
+}
+
+.section-headline {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: bold;
+  letter-spacing: 4px;
 }
 
 @media (max-width: 640px) {
