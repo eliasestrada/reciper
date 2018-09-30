@@ -41,6 +41,8 @@
 
 {{--  Cards  --}}
 <section class="home-section">
+    <div class="center"><h4 class="section-headline mt-3 mb-4">@lang('home.random_choice')</h4></div>
+
     @foreach ($random_recipes->chunk(4) as $chunk)
         <div class="row">
             @foreach ($chunk as $random)
@@ -72,6 +74,17 @@
             @endforeach
         </div>
     @endforeach
+
+    <div class="center">
+        <a href="/recipes#new" class="btn-large hoverable my-1 waves-effect waves-light">
+            <i class="fas fa-clock left"></i>
+            @lang('home.last_recipes')
+        </a>
+        <a href="/recipes#simple" class="btn-large hoverable my-1 waves-effect waves-light">
+            <i class="fas fa-concierge-bell left"></i>
+            @lang('recipes.simple')
+        </a>
+    </div>
 </section>
 
 @endsection
@@ -80,6 +93,8 @@
 
 <div class="main-dark home-bg-section">
     <section class="p-4">
+        <div class="center pb-3"><h2 class="section-headline white-text">@lang('home.last_liked')</h2></div>
+
         @foreach ($last_liked->chunk(4) as $chunk)
             <div class="row">
                 @foreach ($chunk as $liked)
@@ -111,6 +126,21 @@
                 @endforeach
             </div>
         @endforeach
+
+        <div class="center">
+            <a href="/recipes#breakfast" class="btn-large hoverable my-1 waves-effect waves-light">
+                <i class="fas fa-utensils left"></i>
+                @lang('home.breakfast')
+            </a>
+            <a href="/recipes#lunch" class="btn-large hoverable my-1 waves-effect waves-light">
+                <i class="fas fa-utensils left"></i>
+                @lang('home.lunch')
+            </a>
+            <a href="/recipes#dinner" class="btn-large hoverable my-1 waves-effect waves-light">
+                <i class="fas fa-utensils left"></i>
+                @lang('home.dinner')
+            </a>
+        </div>
     </section>
 </div>
 

@@ -9,7 +9,7 @@
 
     <div class="my-3">
         <sort-buttons
-            new-btn="@lang('recipes.new')"
+            new-btn="@lang('recipes.last')"
             my-viewes-btn="@lang('recipes.watched')"
             most-liked-btn="@lang('recipes.popular')"
             my-likes-btn="@lang('recipes.loved')"
