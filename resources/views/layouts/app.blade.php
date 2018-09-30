@@ -16,6 +16,8 @@
         @yield('content')
     </div>
 
+    @yield('home-last-liked')
+
     <!-- add-recipe-modal structure -->
     <div id="add-recipe-modal" class="modal">
         <div class="modal-content reset">

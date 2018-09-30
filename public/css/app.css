@@ -6916,6 +6916,13 @@ Nav List
   text-align: left;
 }
 
+.home-bg-section {
+  background: rgba(72, 64, 116, 0.5) url(../storage/other/img.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-blend-mode: overlay;
+}
+
 .home-header {
   width: 100%;
   height: 100vh;

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
-use App\Models\Title;
+use App\Models\View;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -13,23 +13,21 @@ class PagesController extends Controller
      */
     public function home()
     {
-        $random_recipes = Recipe::inRandomOrder()
-            ->where("ready_" . lang(), 1)
-            ->where("approved_" . lang(), 1)
-            ->limit(12)
-            ->get([
-                'id', 'title_' . lang(),
-                "intro_" . lang(), 'image',
-            ]);
+        $visited = View::whereVisitorId(visitor_id())->pluck('recipe_id');
+        $random_recipes = $this->getRandomRecipes($visited);
 
-        $title_intro = cache()->rememberForever('title_intro', function () {
-            return Title::whereName("intro")->first([
-                'title_' . lang(),
-                'text_' . lang(),
-            ]);
-        });
+        // If not enough recipes to display, show just random recipes
+        if ($random_recipes->count() < 12) {
+            $random_recipes = $this->getRandomRecipes();
+        }
 
-        return view('pages.home', compact('random_recipes', 'title_intro'));
+        $last_liked = Recipe::query()->join('likes', 'likes.recipe_id', '=', 'recipes.id')
+            ->orderBy('likes.id', 'desc')
+            ->limit(8)
+            ->done(1)
+            ->get(['recipe_id', 'image', 'intro_' . lang(), 'title_' . lang()]);
+
+        return view('pages.home', compact('random_recipes', 'last_liked'));
     }
 
     /**
@@ -60,5 +58,20 @@ class PagesController extends Controller
         return view('pages.search', compact(
             'recipes', 'search_suggest', 'message'
         ));
+    }
+
+    /**
+     * @param object|null $except
+     */
+    public function getRandomRecipes(?object $except = null)
+    {
+        $query = Recipe::inRandomOrder();
+
+        if ($except) {
+            $query->where($except->map(function ($id) {
+                return ['id', '!=', $id];
+            })->toArray());
+        }
+        return $query->done(1)->limit(12)->get(['id', 'image', 'title_' . lang(), 'intro_' . lang()]);
     }
 }

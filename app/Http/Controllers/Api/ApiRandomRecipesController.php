@@ -15,42 +15,29 @@ class ApiRandomRecipesController extends Controller
      */
     public function boot(int $visitor_id): ?object
     {
-        $array_of_visited_recipes = View::whereVisitorId($visitor_id)
-            ->pluck('recipe_id');
-
-        // Get recipes all except those that visitor saw
-        $not_visited_recipes = $this->getRecipesExcept($array_of_visited_recipes);
+        $visited = View::whereVisitorId($visitor_id)->pluck('recipe_id');
+        $not_visited = $this->getRandomRecipes($visited);
 
         // If not enough recipes to display, show just random recipes
-        // with those that has been seen by visitor
-        if ($not_visited_recipes->count() < 3) {
-            $not_visited_recipes = $this->getRandomRecipes();
+        if ($not_visited->count() < 3) {
+            $not_visited = $this->getRandomRecipes();
         }
 
-        return RecipesRandomResource::collection($not_visited_recipes);
+        return RecipesRandomResource::collection($not_visited);
     }
 
     /**
      * @param object|null $except
      */
-    public function getRecipesExcept(?object $except)
+    public function getRandomRecipes(?object $except = null)
     {
-        $except = $except->map(function ($id) {
-            return ['id', '!=', $id];
-        })->toArray();
+        $query = Recipe::inRandomOrder();
 
-        return Recipe::inRandomOrder()
-            ->where($except)
-            ->done(1)
-            ->limit(7)
-            ->get();
-    }
-
-    public function getRandomRecipes()
-    {
-        return Recipe::inRandomOrder()
-            ->done(1)
-            ->limit(7)
-            ->get();
+        if ($except) {
+            $query->where($except->map(function ($id) {
+                return ['id', '!=', $id];
+            })->toArray());
+        }
+        return $query->done(1)->limit(7)->get(['id', 'image', 'title_' . lang()]);
     }
 }
