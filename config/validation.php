@@ -4,7 +4,7 @@ return [
 
     'recipes' => [
         'title' => ['min' => 3, 'max' => 85],
-        'intro' => ['min' => 20, 'max' => 1000],
+        'intro' => ['min' => 20, 'max' => 500],
         'ingredients' => ['min' => 20, 'max' => 5000],
         'text' => ['min' => 150, 'max' => 10000],
     ],
