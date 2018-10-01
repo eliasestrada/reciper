@@ -12,9 +12,9 @@
         </h1>
     </div>
     
-    @foreach ($notifications->chunk(3) as $chunk)
+    @forelse ($notifications->chunk(3) as $chunk)
         <div class="row">
-            @forelse ($chunk as $notif)
+            @foreach ($chunk as $notif)
                 <div class="col s12 m6 l4">
                     <div class="card-panel px-3 {{ $notif->for_admins === 1 ? 'main-light' : '' }}">
                         <span>
@@ -33,15 +33,15 @@
                         </span>
                     </div>
                 </div>
-            @empty
-                @component('comps.empty')
-                    @slot('text')
-                        @lang('users.u_dont_have_notif')
-                    @endslot
-                @endcomponent
-            @endforelse
+            @endforeach
         </div>
-    @endforeach
+    @empty
+        @component('comps.empty')
+            @slot('text')
+                @lang('messages.no_messages')
+            @endslot
+        @endcomponent
+    @endforelse
         
     {{ $notifications->links() }}
 </div>
