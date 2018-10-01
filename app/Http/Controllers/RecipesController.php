@@ -43,7 +43,9 @@ class RecipesController extends Controller
      */
     public function store(RecipeStoreRequest $request)
     {
-        $this->checkForScriptTags($request);
+        if ($this->checkForScriptTags($request)) {
+            return back()->withError(trans('notifications.cant_use_script_tags'));
+        }
 
         $recipe = $this->createRecipe($request);
 
@@ -127,7 +129,9 @@ class RecipesController extends Controller
             );
         }
 
-        $this->checkForScriptTags($request);
+        if ($this->checkForScriptTags($request)) {
+            return back()->withError(trans('notifications.cant_use_script_tags'));
+        }
 
         if ($request->file('image')) {
             $this->deleteOldImage($recipe->image);

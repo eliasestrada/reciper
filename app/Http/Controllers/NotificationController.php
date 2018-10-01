@@ -33,7 +33,7 @@ class NotificationController extends Controller
      */
     public function destroy(Notification $notification)
     {
-        if ($notification->for_admins !== 1) {
+        if ($notification->for_admins === 0 || user()->hasRole('master')) {
             $notification->delete();
             return redirect('notifications')->withSuccess(
                 trans('notifications.deleted')

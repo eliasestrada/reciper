@@ -92,11 +92,11 @@ trait RecipesControllerHelpers
 
     /**
      * @param object $request
-     * @return void
+     * @return boolean
      */
-    public function checkForScriptTags($request): void
+    public function checkForScriptTags($request): bool
     {
-        foreach ($request->all() as $field) {
+        foreach ($request->except(['_method', '_token']) as $field) {
             if (is_string($field) && preg_match("/<script>/", $field)) {
                 $user_id = user()->id;
                 $user_name = user()->name;
@@ -105,11 +105,12 @@ trait RecipesControllerHelpers
 
                 Notification::sendToAdmin(
                     trans('notifications.title_script_attack'),
-                    trans('notifications.message_script_attack'),
-                    "user_id:  $user_id, user_name: $user_name"
+                    trans('notifications.message_script_attack', compact('user_id', 'user_name'))
                 );
+                return true;
             }
         }
+        return false;
     }
 
     /**
