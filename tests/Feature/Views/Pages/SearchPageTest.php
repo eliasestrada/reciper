@@ -26,7 +26,7 @@ class SearchPageTest extends TestCase
     /** @test */
     public function serch_form_shows_results_after_submitting(): void
     {
-        create(Recipe::class, ['title_' . lang() => 'Recipe for test']);
+        $recipe = create(Recipe::class, ['title_' . lang() => 'Recipe for test']);
 
         $this->get('/search?for=Recipe+for+test')
             ->assertOk()
@@ -40,5 +40,21 @@ class SearchPageTest extends TestCase
         $this->actingAs(create(User::class))
             ->get('/search')
             ->assertOk();
+    }
+
+    /** @test */
+    public function admin_can_search_for_user_by_id(): void
+    {
+        $this->actingAs($admin = create_user('admin'))
+            ->get("/search?for=$admin->id")
+            ->assertRedirect("/users/$admin->id");
+    }
+
+    /** @test */
+    public function user_cant_search_for_user_by_id(): void
+    {
+        $this->get('/search?for=' . user_create()->id)
+            ->assertViewIs('pages.search')
+            ->assertSeeText(trans('pages.nothing_found'));
     }
 }
