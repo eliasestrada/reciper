@@ -32,4 +32,8 @@ return [
     'exp' => 'Опыт',
     'views' => 'Просмотров',
 
+    // Controllers
+    'user_found' => 'Пользователь найден',
+    'user_not_found' => 'Пользователь не найден',
+
 ];
