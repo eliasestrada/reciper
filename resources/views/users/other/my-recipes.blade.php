@@ -19,38 +19,33 @@
 
     <div v-cloak>
         <tabs>
-            <tab name="@lang('messages.published')" :selected="true">
-                @listOfRecipes([
-                    'recipes' => $recipes_ready,
-                    'class' => 'paper-dark',
-                ])
-                    @slot('no_recipes')
-                        @lang('users.no_recipes_yet')
-                        @include('includes.buttons.btn', [
-                            'title' => trans('includes.add_recipe'),
-                            'icon' => 'fa-plus',
-                            'class' => 'modal-trigger',
-                            'link' => '#add-recipe-modal'
-                        ])
-                    @endslot
-                @endlistOfRecipes
-            </tab>
-            <tab name="@lang('messages.drafts')">
-                @listOfRecipes([
-                    'recipes' => $recipes_unready,
-                    'class' => 'paper-dark',
-                ])
-                    @slot('no_recipes')
-                        @lang('users.no_recipes_yet')
-                        @include('includes.buttons.btn', [
-                            'title' => trans('includes.add_recipe'),
-                            'icon' => 'fa-plus',
-                            'class' => 'modal-trigger',
-                            'link' => '#add-recipe-modal'
-                        ])
-                    @endslot
-                @endlistOfRecipes
-            </tab>
+            @for ($i = 1; $i <= 2; $i++)
+                <tab 
+                    @if ($i == 1)
+                        name="@lang('messages.published') 
+                        <span class='red-text'>({{ $recipes_ready->count() }})</span>"
+                        :selected="true"
+                    @else
+                        name="@lang('messages.drafts') 
+                        <span class='red-text'>({{ $recipes_unready->count() }})</span>"
+                    @endif
+                >
+                    @listOfRecipes([
+                        'recipes' => $i == 1 ? $recipes_ready : $recipes_unready,
+                        'class' => 'paper-dark',
+                    ])
+                        @slot('no_recipes')
+                            @lang('users.no_recipes_yet')
+                            @include('includes.buttons.btn', [
+                                'title' => trans('includes.add_recipe'),
+                                'icon' => 'fa-plus',
+                                'class' => 'modal-trigger',
+                                'link' => '#add-recipe-modal'
+                            ])
+                        @endslot
+                    @endlistOfRecipes
+                </tab>
+            @endfor
         </tabs>
     </div>
 </div>
