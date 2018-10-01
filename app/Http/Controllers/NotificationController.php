@@ -35,10 +35,8 @@ class NotificationController extends Controller
     {
         if ($notification->for_admins === 0 || user()->hasRole('master')) {
             $notification->delete();
-            return redirect('notifications')->withSuccess(
-                trans('notifications.deleted')
-            );
+            return redirect('notifications')->withSuccess(trans('notifications.deleted'));
         }
-        return redirect('notifications');
+        return redirect('notifications')->withError(trans('notifications.cant_delete'));
     }
 }

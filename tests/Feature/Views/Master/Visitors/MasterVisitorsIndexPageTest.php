@@ -3,7 +3,6 @@
 namespace Tests\Feature\Views\Master\Visitors;
 
 use App\Models\User;
-use App\Models\Visitor;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -43,15 +42,9 @@ class MasterVisitorsIndexPageTest extends TestCase
     /** @test */
     public function view_has_data(): void
     {
-        $response = $this->actingAs($this->master)->get('/master/visitors');
-
-        $visitors = Visitor::withCount('views')
-            ->with('likes', 'views', 'user')
-            ->orderBy('views_count', 'desc')
-            ->paginate(50)
-            ->onEachSide(1);
-
-        $response->assertViewIs('master.visitors.index')
-            ->assertViewHas('visitors', $visitors);
+        $this->actingAs($this->master)
+            ->get('/master/visitors')
+            ->assertViewIs('master.visitors.index')
+            ->assertViewHas('visitors');
     }
 }
