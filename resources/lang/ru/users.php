@@ -19,7 +19,6 @@ return [
     'no_recipes_yet' => 'У вас пока нет рецептов',
     'all_recipes' => 'Всего рецептов',
     'this_user_does_not_have_recipes' => 'У этого автора нет пока рецептов',
-    'u_dont_have_notif' => 'У вас пока нет оповещений',
     'amount_of_views' => 'Кол-во просмотров',
     'amount_of_likes' => 'Кол-во лайков',
     'exp_of_reciper' => 'Опыт ресипёра',
