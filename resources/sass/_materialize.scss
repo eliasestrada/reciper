@@ -2069,8 +2069,11 @@ nav .brand-logo {
 	position: absolute;
 	color: #fff;
 	display: inline-block;
-	font-size: 1.6rem;
-	padding: 0;
+	font-size: 1.4rem;
+    padding: 0;
+    font-family: $headerFont;
+    margin-left: -10px;
+    margin-top: 1.6px;
 }
 
 nav .brand-logo.center {
