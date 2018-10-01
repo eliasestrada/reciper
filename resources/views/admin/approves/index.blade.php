@@ -63,7 +63,3 @@
 @endhasRole
 
 @endsection
-
-@section('script')
-    @include('includes.js.tabs')
-@endsection
