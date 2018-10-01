@@ -11,6 +11,11 @@
         <span class="d-block py-2 grey-dark-text">
             @lang('users.joined'): {{ time_ago($user->created_at) }}
         </span>
+        @if (optional(user())->hasRole('master'))
+            <a href="/master/visitors/{{ $user->visitor_id }}" class="d-block py-1">
+                @lang('visitors.visitor') #{{ $user->visitor_id }}
+            </a>
+        @endif
         @unless ($user->id === optional(user())->id)
             <span class="d-block py-2">
                 {!! get_online_icon(time_ago($user->updated_at)) !!}
