@@ -7412,8 +7412,6 @@ Nav List
 }
 
 .preview-image {
-  width: 450px;
-  height: 300px;
   display: inline-block;
   overflow: hidden;
 }
@@ -7426,8 +7424,23 @@ Nav List
   opacity: .6;
 }
 
-.preview-image img {
+.preview-image-recipe {
+  width: 450px;
+  height: 300px;
+}
+
+.preview-image-recipe img {
   width: 450px !important;
+  height: auto !important;
+}
+
+.preview-image-profile {
+  width: 270px;
+  height: 270px;
+}
+
+.preview-image-profile img {
+  width: 270px !important;
   height: auto !important;
 }
 
@@ -7576,7 +7589,7 @@ Nav List
 
 .item-list img {
   width: 6em;
-  height: 4em;
+  height: 4.3em;
   margin: .5em 0;
   border-radius: 3px;
   border: solid 3px #fff;

@@ -20,11 +20,11 @@ trait PhotoControllerHelper
             \File::makeDirectory($path, 0777, true);
         }
 
-        $img = \Image::make($image);
-        $img->resize(300, null, function ($constrait) {
-            $constrait->aspectRatio();
-        });
-        $img->save("$path/$file_name");
+        \Image::make($image)
+            ->fit(300, 300, function ($constraint) {
+                $constraint->upsize();
+            }, 'top')
+            ->save("$path/$file_name");
     }
 
     /**

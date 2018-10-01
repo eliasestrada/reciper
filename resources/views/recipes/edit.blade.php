@@ -131,10 +131,13 @@
             <div class="col s12 m6">
                 <div class="center pb-5">
                     <h5 class="col s12 mb-3">@lang('recipes.image')</h5>
-                    <div class="preview-image position-relative">
+                    <div class="preview-image preview-image-recipe position-relative">
                         <img src="{{ asset("storage/images/$recipe->image") }}" alt="{{ $recipe->title }}" id="target-image">
                         <input type="file" name="image" id="src-image" class="d-none" style="overflow:hidden">
-                        <label for="src-image" class="btn waves-effect waves-light">@lang('recipes.select_file')</label>
+                        <label for="src-image" class="btn waves-effect waves-light min-w">
+                            <i class="fas fa-upload left"></i>
+                            @lang('forms.select_file')
+                        </label>
                         <div class="preview-overlay"></div>
                     </div>
                 </div>

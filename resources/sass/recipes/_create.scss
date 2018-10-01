@@ -1,19 +1,31 @@
 .preview-image {
-    width: 450px;
-    height: 300px;
     display: inline-block;
     overflow: hidden;
 
     &:hover label {
         opacity: 1;
     }
+
     &:hover .preview-overlay {
         opacity: .6;
     }
 
-    img {
-        width: 450px !important;
-        height: auto !important;
+    &-recipe {
+        width: 450px;
+        height: 300px;
+        img {
+            width: 450px !important;
+            height: auto !important;
+        }
+    }
+
+    &-profile {
+        width: 270px;
+        height: 270px;
+        img {
+            width: 270px !important;
+            height: auto !important;
+        }
     }
 
     .preview-overlay {

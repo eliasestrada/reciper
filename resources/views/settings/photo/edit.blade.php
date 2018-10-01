@@ -6,35 +6,29 @@
 
 <div class="page">
     <div class="row">
-        <div class="col s12 m6">
+        <div class="col s12 m6 l7">
             <h1 class="headline">@lang('settings.settings_photo')</h1>
-            <p>@lang('settings.choose_photo', ['btn1' => trans('forms.select_file'), 'btn2' => trans('forms.save')])</p>
+            <p>@lang('settings.choose_photo', ['btn1' => trans('forms.select'), 'btn2' => trans('forms.save')])</p>
         </div>
-        <div class="col s12 m6">
-            <div class="profile-header">
-                <div class="image-wrapper">
-                    <img src="{{ asset('storage/users/' . user()->image) }}" alt="{{ user()->name }}" id="target-image" style="width:170px" />
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="container">
         <form action="{{ action('Settings\PhotoController@update') }}" method="post" enctype="multipart/form-data"> 
             @method('put') @csrf
-            <div class="file-field input-field">
-                <div class="btn">
-                    <span>@lang('forms.select_file')</span>
-                    <input type="file" name="image" id="src-image">
+            <div class="col s12 m6 l5 center">
+                <div class="preview-image preview-image-profile position-relative">
+                    <img src="{{ asset('storage/users/' . user()->image) }}" alt="{{ user()->name }}" id="target-image">
+                    <input type="file" name="image" id="src-image" class="d-none" style="overflow:hidden">
+                    <label for="src-image" class="btn min-w waves-effect waves-light">
+                        <i class="fas fa-upload left"></i>
+                        @lang('forms.select_file')
+                    </label>
+                    <div class="preview-overlay"></div>
                 </div>
-                <div class="file-path-wrapper">
-                    <input type="text" class="file-path validate" name="delete">
-                </div>
-                <label for="src-image" class="image-label mb-5">
             </div>
-
-            <div class="center">
-                <button type="submit" class="btn m-1 min-w">@lang('forms.save')</button>
+            <div class="col s12 center pt-4">
+                <button class="min-w btn waves-effect hoverable">
+                    <i class="fas fa-save left"></i>
+                    @lang('forms.save')
+                </button>
             </div>
         </form>
 
@@ -42,7 +36,10 @@
         @if (user()->image != 'default.jpg')
             <form action="{{ action('Settings\PhotoController@destroy') }}" method="post" enctype="multipart/form-data" class="center">
                 @method('delete') @csrf
-                <div><button type="submit" class="btn red m-1 min-w">@lang('forms.delete_photo')</button></div>
+                <button type="submit" class="btn red m-1 min-w">
+                    <i class="fas fa-trash left"></i>
+                    @lang('forms.deleting')
+                </button>
             </form>
         @endif
     </div>

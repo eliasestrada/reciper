@@ -95,7 +95,7 @@
     <div class="nav-wrapper main" style="z-index:15">
         <div class="px-3">
             {{-- Logo --}}
-            <a href="/" title="@lang('includes.home')" class="brand-logo noselect" style="margin-left:-13px">
+            <a href="/" title="@lang('includes.home')" class="brand-logo noselect">
                 <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="40" class="mt-2 left">
                 <span class="left pl-1">@lang('messages.app_name')</span>
             </a>

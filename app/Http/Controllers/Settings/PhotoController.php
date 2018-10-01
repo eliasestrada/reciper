@@ -23,7 +23,9 @@ class PhotoController extends Controller
      */
     public function update(PhotoRequest $request)
     {
-        $image = $request->file('image');
+        if (!$image = $request->file('image')) {
+            return back()->withError(trans('settings.there_are_no_file'));
+        }
 
         $extention = $image->getClientOriginalExtension();
         $file_name = set_image_name($extention, 'user' . user()->id);
