@@ -247,7 +247,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 }
 
 .paper-dark {
-  background-color: #ebebeb !important;
+  background-color: #e6e6e6 !important;
 }
 
 .main {
@@ -923,7 +923,7 @@ table.striped tr {
 }
 
 table.striped > tbody > tr:nth-child(odd) {
-  background-color: #ebebeb;
+  background-color: #e6e6e6;
 }
 
 table.striped > tbody > tr > td {
@@ -3035,13 +3035,13 @@ small {
 
 .tabs .tab a:focus,
 .tabs .tab a:focus.active {
-  background-color: #ebebeb;
+  background-color: #e6e6e6;
   outline: none;
 }
 
 .tabs .tab a:hover,
 .tabs .tab a.active {
-  background-color: #ebebeb;
+  background-color: #e6e6e6;
   color: #292543;
 }
 

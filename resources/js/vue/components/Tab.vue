@@ -17,11 +17,6 @@ export default {
      
     mounted() {
         this.active = this.selected
-    },
-    computed: {
-        href() {
-            return '#' + this.name.toLowerCase().replace(/ /g, '-')
-        }
     }
 }
 </script>
