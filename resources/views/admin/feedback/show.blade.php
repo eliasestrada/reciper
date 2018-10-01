@@ -52,7 +52,7 @@
     </table>
 </div>
 
-<form action="{{ action('Admin\FeedbackController@destroy', ['id' => $feedback->id]) }}" method="post" id="delete-feed" class="d-none">
+<form action="{{ action('Admin\FeedbackController@destroy', ['id' => $feedback->id]) }}" method="post" id="delete-feed" class="hide">
     @method('delete') @csrf
 </form>
 

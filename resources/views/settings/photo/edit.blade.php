@@ -16,7 +16,7 @@
             <div class="col s12 m6 l5 center">
                 <div class="preview-image preview-image-profile position-relative">
                     <img src="{{ asset('storage/users/' . user()->image) }}" alt="{{ user()->name }}" id="target-image">
-                    <input type="file" name="image" id="src-image" class="d-none" style="overflow:hidden">
+                    <input type="file" name="image" id="src-image" class="hide" style="overflow:hidden">
                     <label for="src-image" class="btn min-w waves-effect waves-light">
                         <i class="fas fa-upload left"></i>
                         @lang('forms.select_file')

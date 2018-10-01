@@ -8,7 +8,7 @@
 <div class="center py-2">
     @foreach ($recipe->categories as $category)
         <a href="/recipes#category={{ $category->id }}" title="{{ $category->getName() }}">
-            <span class="new badge p-1 px-2" style="float:none;">{{ $category->getName() }}</span>
+            <span class="new badge p-1 px-2 float-none">{{ $category->getName() }}</span>
         </a>
     @endforeach
 </div>

@@ -49,7 +49,7 @@
                                         <a onclick="if (confirm('@lang('contact.sure_del_feed')')) $('delete-feed-{{$loop->index}}').submit()" class="red-text">
                                             @lang('tips.delete')
                                         </a>
-                                        <form action="{{ action('Admin\FeedbackController@destroy', ['id' => $feed->id]) }}" method="post" id="delete-feed-{{$loop->index}}" class="d-none">
+                                        <form action="{{ action('Admin\FeedbackController@destroy', ['id' => $feed->id]) }}" method="post" id="delete-feed-{{$loop->index}}" class="hide">
                                             @method('delete') @csrf
                                         </form>
                                     </div>

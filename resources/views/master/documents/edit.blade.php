@@ -45,7 +45,7 @@
                 <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.add_to_drafts')" data-position="top" data-alert="@lang('documents.sure_draft_doc')">
                     <i class="fas fa-file-upload"></i>
                 </a>
-                <input type="checkbox" name="ready" value="0" class="d-none" id="ready-checkbox">
+                <input type="checkbox" name="ready" value="0" class="hide" id="ready-checkbox">
             @endif
 
             {{--  Publish button  --}}
@@ -53,7 +53,7 @@
                 <a href="#" class="btn-floating green tooltipped" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top" data-alert="@lang('documents.sure_publich_doc')">
                     <i class="fas fa-share"></i>
                 </a>
-                <input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
+                <input type="checkbox" name="ready" value="1" class="hide" id="ready-checkbox">
             @endif
         </div>
 
@@ -72,7 +72,7 @@
     </form>
 </div>
 
-<form action="{{ action('Master\DocumentsController@destroy', ['id' => $document->id]) }}" method="post" id="delete-doc" class="d-none">
+<form action="{{ action('Master\DocumentsController@destroy', ['id' => $document->id]) }}" method="post" id="delete-doc" class="hide">
     @method('delete') @csrf
 </form>
 

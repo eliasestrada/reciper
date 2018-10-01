@@ -41,7 +41,7 @@
             <a href="#" class="btn-floating green tooltipped waves-effect waves-light" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top" data-alert="@lang('recipes.are_you_sure_to_publish')">
                 <i class="fas fa-clipboard-check"></i>
             </a>
-            <input type="checkbox" name="ready" value="1" class="d-none" id="ready-checkbox">
+            <input type="checkbox" name="ready" value="1" class="hide" id="ready-checkbox">
         </div>
     
         <div class="row">
@@ -133,7 +133,7 @@
                     <h5 class="col s12 mb-3">@lang('recipes.image')</h5>
                     <div class="preview-image preview-image-recipe position-relative">
                         <img src="{{ asset("storage/images/$recipe->image") }}" alt="{{ $recipe->title }}" id="target-image">
-                        <input type="file" name="image" id="src-image" class="d-none" style="overflow:hidden">
+                        <input type="file" name="image" id="src-image" class="hide" style="overflow:hidden">
                         <label for="src-image" class="btn waves-effect waves-light min-w">
                             <i class="fas fa-upload left"></i>
                             @lang('forms.select_file')
