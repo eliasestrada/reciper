@@ -78,7 +78,8 @@ class ApprovesController extends Controller
             return redirect("/admin/approves")->withError($error);
         }
 
-        event(new \App\Events\RecipeGotApproved($recipe, trans('approves.approved_' . rand(1, 5))));
+        $message = trans('approves.approved_' . rand(1, 5), ['title' => $recipe->getTitle()]);
+        event(new \App\Events\RecipeGotApproved($recipe, $message));
 
         return redirect("/recipes/$recipe->id")->withSuccess(
             trans('recipes.recipe_published')

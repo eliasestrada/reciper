@@ -19,11 +19,10 @@
                     <div class="card-panel px-3 {{ $notif->for_admins === 1 ? 'main-light' : '' }}">
                         <span>
                             <h6><i class="fas fa-bell fa-15x left main-text"></i> {{ $notif->title }}</h6>
-                            <p>{{ $notif->message }}</p><hr />
-                            <p>{{ $notif->data }}</p>
+                            <p>{{ $notif->message }}</p>
                             <span class="grey-text right">{{ time_ago($notif->created_at) }}</span>
 
-                            @if ($notif->for_admins === 0)
+                            @if ($notif->for_admins === 0 || user()->hasRole('master'))
                                 <form action="{{ action('NotificationController@destroy', ['notification' => $notif->id]) }}" method="post">
                                     @csrf @method('delete')
                                     <button class="btn-small red" onclick="if (!confirm('@lang('notifications.sure_to_delete')')) event.preventDefault()">@lang('forms.deleting')</button>

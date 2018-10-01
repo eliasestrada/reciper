@@ -17,32 +17,28 @@ class Notification extends Model
     /**
      * @param string $title
      * @param string $message
-     * @param string|null $data
      * @param integer $user_id
      * @return void
      */
-    public static function sendToUser(string $title, string $message, ?string $data, int $user_id): void
+    public static function sendToUser(string $title, string $message, int $user_id): void
     {
         self::create([
             'title' => $title,
             'message' => $message,
             'user_id' => $user_id,
-            'data' => $data,
         ]);
     }
 
     /**
      * @param string $title
      * @param string $message
-     * @param string|null $data
      * @return void
      */
-    public static function sendToAdmin(string $title, string $message, ?string $data): void
+    public static function sendToAdmin(string $title, string $message): void
     {
         self::create([
             'title' => $title,
             'message' => $message,
-            'data' => $data,
             'for_admins' => 1,
         ]);
     }

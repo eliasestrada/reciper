@@ -16,7 +16,6 @@ class SendApprovedNotification
         Notification::sendToUser(
             trans('approves.recipe_published'),
             $event->message,
-            $event->recipe->getTitle(),
             $event->recipe->user_id
         );
     }
