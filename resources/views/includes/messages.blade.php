@@ -1,7 +1,7 @@
 @if (count($errors) > 0)
     @foreach ($errors->all() as $error)
     <script>
-        let message = ''
+        let message = '<i class="fas fa-exclamation left"></i>'
     </script>
         <script>
             message += '{{ $error }} <br>'
@@ -14,14 +14,14 @@
 
 @if (session('success'))
     <script>
-        let message = '{{ @session('success') }}'
+        let message = '<i class="fas fa-check left"></i>{{ @session('success') }}'
         M.toast({html: message, displayLength: 10000, classes: 'green z-depth-2'})
     </script>
 @endif
 
 @if (session('error'))
     <script>
-        let message = '{{ @session('error') }}'
+        let message = '<i class="fas fa-exclamation left"></i>{{ @session('error') }}'
         M.toast({html: message, displayLength: 10000, classes: 'red z-depth-2'})
     </script>
 @endif
