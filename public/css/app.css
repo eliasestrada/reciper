@@ -74,6 +74,10 @@ select {
   height: 39px;
 }
 
+.float-none {
+  float: none !important;
+}
+
 .visibility-icon {
   cursor: pointer;
   margin-left: -20px;
@@ -6865,10 +6869,6 @@ Nav List
   display: inline !important;
 }
 
-.d-none {
-  display: none !important;
-}
-
 .justify-content-between {
   -webkit-box-pack: justify !important;
   -ms-flex-pack: justify !important;
@@ -7611,27 +7611,16 @@ Nav List
   text-align: center;
 }
 
-.image-wrapper {
-  display: inline-block;
-  width: 160px;
+.profile-image {
+  width: 200px;
   border: solid 5px #fff;
   border-bottom: solid 1em #fff;
-  margin: .3em auto;
-  -webkit-box-shadow: 1px 1px .5em #333;
-          box-shadow: 1px 1px .5em #333;
-  overflow: hidden;
-  max-height: 250px;
-  text-align: center;
   -webkit-transition: -webkit-transform 400ms;
   transition: -webkit-transform 400ms;
   transition: transform 400ms;
   transition: transform 400ms, -webkit-transform 400ms;
   -webkit-animation: appearWithRotate 1s;
           animation: appearWithRotate 1s;
-}
-
-.image-wrapper img {
-  max-width: 100%;
 }
 
 .list-of-recipes {

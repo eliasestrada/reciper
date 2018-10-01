@@ -4,22 +4,12 @@
 	text-align: center;
 }
 
-.image-wrapper {
-	display: inline-block;
-	width: 160px;
-	border: solid 5px #fff;
-	border-bottom: solid 1em #fff;
-	margin: .3em auto;
-	box-shadow: 1px 1px .5em #333;
-	overflow: hidden;
-	max-height: 250px;
-	text-align: center;
-	transition: transform 400ms;
-	animation: appearWithRotate 1s;
-}
-
-.image-wrapper img {
-	max-width: 100%;
+.profile-image {
+    width: 200px;
+    border: solid 5px #fff;
+    border-bottom: solid 1em #fff;
+    transition: transform 400ms;
+    animation: appearWithRotate 1s;
 }
 
 .list-of-recipes {
