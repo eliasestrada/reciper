@@ -8,14 +8,12 @@
     <div class="pb-3">
         <h1 class="header m-0">{{ $user->name }}</h1>
 
+        {{-- Registered --}}
         <span class="d-block py-2 grey-dark-text">
             @lang('users.joined'): {{ time_ago($user->created_at) }}
         </span>
-        @if (optional(user())->hasRole('master'))
-            <a href="/master/visitors/{{ $user->visitor_id }}" class="d-block py-1">
-                @lang('visitors.visitor') #{{ $user->visitor_id }}
-            </a>
-        @endif
+
+        {{-- Last visit --}}
         @unless ($user->id === optional(user())->id)
             <span class="d-block py-2">
                 {!! get_online_icon(time_ago($user->updated_at)) !!}
@@ -25,9 +23,16 @@
         @endunless
     </div>
 
-    <div class="image-wrapper">
-        <img src="{{ asset('storage/users/'.$user->image) }}" alt="{{ $user->name }}" />
+    <div>
+        <img src="{{ asset('storage/users/'.$user->image) }}" class="profile-image" alt="{{ $user->name }}" />
     </div>
+
+    {{-- Visitor id --}}
+    @if (optional(user())->hasRole('master'))
+        <a href="/master/visitors/{{ $user->visitor_id }}" class="btn-small mt-3">
+            @lang('visitors.visitor') #{{ $user->visitor_id }}
+        </a>
+    @endif
 
     <div class="bubbles">
 

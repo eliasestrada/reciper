@@ -14,18 +14,16 @@
         </div>
 
         @if ($visitor->user)
-            <div class="image-wrapper">
-                <img src="{{ asset('storage/users/'.$visitor->user->image) }}" alt="{{ $visitor->user->name }}" />
-            </div>
+            <img src="{{ asset('storage/users/'.$visitor->user->image) }}" class="profile-image mb-2" alt="{{ $visitor->user->name }}" />
             <div class="my-2">
-                <a href="/users/{{ $visitor->user->id }}">
-                    @lang('messages.go_to_profile') 
+                <a href="/users/{{ $visitor->user->id }}" class="btn-small min-w">
+                    @lang('messages.go_to_profile')
                 </a>
             </div>
         @endif
 
         <div class="my-2">
-            <a href="/master/visitors">
+            <a href="/master/visitors" class="btn-small min-w">
                 @lang('messages.back') 
             </a>
         </div>
