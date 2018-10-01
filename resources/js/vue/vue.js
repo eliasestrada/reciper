@@ -9,6 +9,8 @@ const components = [
     "DeleteRecipeBtn",
     "CategoriesField",
     "Like",
+    "Tabs",
+    "Tab",
     "Visibility"
 ];
 
