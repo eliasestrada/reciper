@@ -39,7 +39,12 @@
                 <tr>
                     <td class="py-1">
                         <a href="/master/visitors/{{ $visitor->id }}">
-                            <span class="z-depth-1 new badge {{ $visitor->getStatusColor() }}">{{ $visitor->id }}</span>
+                            <span class="z-depth-1 new badge {{ $visitor->getStatusColor() }}">
+                                {{ $visitor->id }} 
+                                @if ($visitor->user)
+                                    ({{ $visitor->user->id }})
+                                @endif
+                            </span>
                         </a>
                     </td>
                     <td class="py-1 pl-2">{{ $visitor->likes->count() }}</td>

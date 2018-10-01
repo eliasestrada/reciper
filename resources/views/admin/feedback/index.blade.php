@@ -63,7 +63,7 @@
             @empty
                 @component('comps.empty')
                     @slot('text')
-                        @lang('admin.no_messages')
+                        @lang('messages.no_messages')
                     @endslot
                 @endcomponent
             @endforelse
