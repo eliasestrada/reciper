@@ -17,6 +17,7 @@ return [
     'joined' => 'Регистрация',
     'go_to_recipe' => 'Перейти к рецепту',
     'no_recipes_yet' => 'У вас пока нет рецептов',
+    'no_recipes' => 'Нет рецептов',
     'all_recipes' => 'Всего рецептов',
     'this_user_does_not_have_recipes' => 'У этого автора нет пока рецептов',
     'amount_of_views' => 'Кол-во просмотров',

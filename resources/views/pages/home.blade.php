@@ -43,37 +43,7 @@
 <section class="home-section">
     <div class="center"><h4 class="section-headline mt-3 mb-4">@lang('home.random_choice')</h4></div>
 
-    @foreach ($random_recipes->chunk(4) as $chunk)
-        <div class="row">
-            @foreach ($chunk as $random)
-                <div class="col s12 m6 l3">
-                    <div class="card hoverable">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <a href="/recipes/{{ $random->id }}">
-                                <img class="activator" alt="{{ $random->getTitle() }}" src="{{ asset('storage/images/small/'.$random->image) }}">
-                            </a>
-                        </div>
-                        <div class="card-content min-h">
-                            <span style="height:75%" class="card-title activator">
-                                {{ $random->getTitle() }}
-                            </span>
-                            <div style="height:25%">
-                                <i class="fas fa-ellipsis-h fa-15x right red-text activator"></i>
-                            </div>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title">{{ $random->getTitle() }}</span>
-                            <div><i class="fas fa-times right red-text card-title"></i></div>
-                            <a class="btn-small mt-3" href="/recipes/{{ $random->id }}">
-                                @lang('recipes.go')
-                            </a>
-                            <p>{{ $random->getIntro() }}</p>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    @endforeach
+    @component('comps.card', ['recipes' => $random_recipes]) @endcomponent
 
     <div class="center">
         <a href="/recipes#new" class="btn-large hoverable my-1 waves-effect waves-light">
@@ -95,37 +65,7 @@
     <section class="p-4">
         <div class="center pb-3"><h2 class="section-headline white-text">@lang('home.last_liked')</h2></div>
 
-        @foreach ($last_liked->chunk(4) as $chunk)
-            <div class="row">
-                @foreach ($chunk as $liked)
-                    <div class="col s12 m6 l3">
-                        <div class="card hoverable">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <a href="/recipes/{{ $liked->recipe_id }}">
-                                    <img class="activator" alt="{{ $liked->getTitle() }}" src="{{ asset('storage/images/small/'.$liked->image) }}">
-                                </a>
-                            </div>
-                            <div class="card-content min-h">
-                                <span style="height:75%" class="card-title activator">
-                                    {{ $liked->getTitle() }}
-                                </span>
-                                <div style="height:25%">
-                                    <i class="fas fa-ellipsis-h fa-15x right red-text activator"></i>
-                                </div>
-                            </div>
-                            <div class="card-reveal">
-                                <span class="card-title">{{ $liked->getTitle() }}</span>
-                                <div><i class="fas fa-times right red-text card-title"></i></div>
-                                <a class="btn-small mt-3" href="/recipes/{{ $liked->id }}">
-                                    @lang('recipes.go')
-                                </a>
-                                <p>{{ $liked->getIntro() }}</p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        @endforeach
+        @component('comps.card', ['recipes' => $last_liked]) @endcomponent
 
         <div class="center">
             <a href="/recipes#breakfast" class="btn-large hoverable my-1 waves-effect waves-light">

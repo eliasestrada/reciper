@@ -13,7 +13,9 @@
     <div class="container">
         <form action="{{ action('PagesController@search') }}" method="get" id="search-form">
             <div class="input-field">
-                <button type="submit" class="prefix btn-floating"><i class="fas fa-search"></i></button>
+                <button type="submit" class="prefix btn-floating">
+                    <i class="fas fa-search"></i>
+                </button>
                 <input type="text" name="for" id="autocomplete-input" class="autocomplete" style="margin-left:4em" autocomplete="off">
                 <label for="autocomplete-input" style="margin-left:4em">@lang('pages.search_details')</label>
             </div>
@@ -21,41 +23,11 @@
     </div>
 
     {{--  Results  --}}
-    <div class="row">
-        @forelse ($recipes as $recipe)
-            <div class="col s12 m6 l3">
-                <div class="card hoverable">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <a href="/recipes/{{ $recipe->id }}" title="{{ $recipe->getTitle() }}">
-                            <img src="{{ asset('storage/images/small/'.$recipe['image']) }}" alt="{{ $recipe->getTitle() }}" class="activator">
-                        </a>
-                    </div>
-                    <div class="card-content min-h">
-                        <span style="height:75%" class="card-title activator">
-                            {{ $recipe->getTitle() }}
-                        </span>
-                        <div style="height:25%">
-                            <i class="fas fa-ellipsis-h fa-15x right red-text activator"></i>
-                        </div>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title">{{ $recipe->getTitle() }}</span>
-                        <div><i class="fas fa-times right red-text card-title"></i></div>
-                        <a class="btn-small mt-3" href="/recipes/{{ $recipe->id }}">
-                            @lang('recipes.go')
-                        </a>
-                        <p>{{ $recipe->getIntro() }}</p>
-                    </div>
-                </div>
-            </div>
-        @empty
-            @component('comps.empty')
-                @slot('text')
-                    {{ $message }}
-                @endslot
-            @endcomponent
-        @endforelse
-    </div>
+    @component('comps.card', ['recipes' => $recipes])
+        @slot('no_recipes')
+            {{ $message }} 
+        @endslot
+    @endcomponent
 
     @if ($recipes->count() > 0)
         {{ $recipes->appends(request()->input())->links() }}
