@@ -30,6 +30,8 @@ class PasswordRequest extends FormRequest
         return [
             'old_password.required' => trans('settings.pwd_required'),
             'password.required' => trans('settings.new_pwd_required'),
+            'old_password.string' => trans('settings.new_pwd_string'),
+            'password.string' => trans('settings.pwd_string'),
             'password.min' => trans('settings.pwd_min'),
             'password.max' => trans('settings.pwd_max'),
             'password.confirmed' => trans('settings.pwd_confirmed'),
