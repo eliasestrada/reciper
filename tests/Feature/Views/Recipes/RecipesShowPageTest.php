@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Views\Recipes;
 
+use App\Models\Fav;
 use App\Models\Feedback;
 use App\Models\Recipe;
 use App\Models\User;
@@ -214,5 +215,40 @@ class RecipesShowPageTest extends TestCase
         $this->actingAs($user)
             ->get("/recipes/$recipe->id")
             ->assertSee('<a href="#report-recipe-modal" class="btn waves-effect waves-light modal-trigger min-w" disabled>');
+    }
+
+    /** @test */
+    public function auth_user_can_add_recipe_to_favs(): void
+    {
+        $user = create_user();
+        $recipe = create(Recipe::class);
+
+        $this->actingAs($user)
+            ->followingRedirects()
+            ->post(action('FavsController@store'), ['recipe_id' => $recipe->id])
+            ->assertSeeText(trans('recipes.added_to_favs'));
+
+        $this->assertDatabaseHas('favs', [
+            'recipe_id' => $recipe->id,
+            'user_id' => $user->id,
+        ]);
+    }
+
+    /** @test */
+    public function auth_user_can_delete_recipe_from_favs(): void
+    {
+        $user = create_user();
+        $recipe = create(Recipe::class);
+        Fav::create(['user_id' => $user->id, 'recipe_id' => $recipe->id]);
+
+        $this->actingAs($user)
+            ->followingRedirects()
+            ->post(action('FavsController@store'), ['recipe_id' => $recipe->id])
+            ->assertSeeText(trans('recipes.deleted_from_favs'));
+
+        $this->assertDatabaseMissing('favs', [
+            'recipe_id' => $recipe->id,
+            'user_id' => $user->id,
+        ]);
     }
 }
