@@ -53,7 +53,7 @@ class SearchPageTest extends TestCase
     /** @test */
     public function user_cant_search_for_user_by_id(): void
     {
-        $this->get('/search?for=' . user_create()->id)
+        $this->get('/search?for=' . create_user()->id)
             ->assertViewIs('pages.search')
             ->assertSeeText(trans('pages.nothing_found'));
     }

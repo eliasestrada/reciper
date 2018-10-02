@@ -18,7 +18,7 @@ class HelpIndexPageTest extends TestCase
             ->assertOk()
             ->assertViewIs('help.index')
             ->assertViewHasAll([
-                'help' => Help::get(['id', 'help_category_id', 'title_' . lang()]),
+                'help' => Help::orderBy('title_' . lang())->get(['id', 'help_category_id', 'title_' . lang()]),
                 'help_categories' => HelpCategory::get(),
             ]);
     }

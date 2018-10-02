@@ -29,7 +29,7 @@ class RecipesEditPageTest extends TestCase
             'intro' => str_random(100),
             'text' => str_random(200),
             'image' => '',
-            'categories' => [0 => 1, 1 => 2],
+            'categories' => [0 => 2, 1 => 3],
         ];
     }
 
@@ -68,7 +68,7 @@ class RecipesEditPageTest extends TestCase
     {
         $old_recipe = create(Recipe::class, [
             'approved_' . lang() => 0,
-            'ready_ru' => 0,
+            'ready_' . lang() => 0,
             'user_id' => $this->user->id,
         ]);
 
