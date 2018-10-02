@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Requests\Recipes;
 
+use App\Models\Category;
 use App\Models\Meal;
 use App\Models\Recipe;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -24,7 +25,7 @@ class RecipesUpdateRequestTest extends TestCase
             'text' => str_random(400),
             'meal' => rand(1, 3),
             'time' => rand(1, 200),
-            'categories' => [0 => 1, 1 => 2],
+            'categories' => [0 => 2, 1 => 3],
             'ready' => 1,
         ];
     }
@@ -131,6 +132,30 @@ class RecipesUpdateRequestTest extends TestCase
         $this->response()->assertSeeText(trans('recipes.categories_numeric'));
     }
 
+    /** @test */
+    public function categories_must_not_have_id_of_one(): void
+    {
+        $this->data['categories'] = [0 => 1];
+        $this->response()->assertSeeText(trans('recipes.categories_between'));
+    }
+
+    /** @test */
+    public function categories_must_be_between_numbers(): void
+    {
+        $this->data['categories'] = [0 => 1, 1 => 2];
+        $this->response()->assertSeeText(trans('recipes.categories_between'));
+
+        $this->data['categories'] = [0 => 3, 1 => Category::count() + 1];
+        $this->response()->assertSeeText(trans('recipes.categories_between'));
+    }
+
+    /** @test */
+    public function categories_correct_data(): void
+    {
+        $this->data['categories'] = [0 => 2, 1 => Category::count()];
+        $this->response()->assertSeeText(trans('recipes.added_to_approving'));
+    }
+
     /**
      * Helper
      * @param string $before
@@ -153,6 +178,7 @@ class RecipesUpdateRequestTest extends TestCase
 
         $recipe = create(Recipe::class, [
             'approved_' . lang() => 0,
+            'ready_' . lang() => 0,
             'user_id' => $user->id,
         ]);
 

@@ -38,7 +38,7 @@ class RecipeUpdateRequest extends FormRequest
                 'time' => 'numeric|between:1,1000',
                 'image' => 'image|nullable|max:1999',
                 'categories.0' => 'required',
-                'categories.*' => 'distinct|numeric|between:1,' . Category::count(),
+                'categories.*' => 'distinct|numeric|between:2,' . Category::count(),
             ];
         }
         return [];
@@ -50,21 +50,16 @@ class RecipeUpdateRequest extends FormRequest
         return [
             'title.min' => trans('recipes.title_min'),
             'title.max' => trans('recipes.title_max'),
-
             'intro.min' => trans('recipes.intro_min'),
             'intro.max' => trans('recipes.intro_max'),
-
             'meal.numeric' => trans('recipes.meal_numeric'),
             'meal.between' => trans('recipes.meal_between'),
-
             'ingredients.min' => trans('recipes.ingredients_min'),
             'ingredients.max' => trans('recipes.ingredients_max'),
-
             'categories.0.required' => trans('recipes.categories_required'),
             'categories.*.distinct' => trans('recipes.categories_distinct'),
             'categories.*.numeric' => trans('recipes.categories_numeric'),
-            'categories.*.between' => trans('recipes.categories_numeric'),
-
+            'categories.*.between' => trans('recipes.categories_between'),
             'text.min' => trans('recipes.text_min'),
             'text.max' => trans('recipes.text_max'),
 
