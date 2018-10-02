@@ -16,10 +16,13 @@ class ApiLikeController extends Controller
      */
     public function check($id)
     {
-        $visitor = Visitor::whereIp(request()->ip())->first();
-        $likes = $visitor->likes()->where('recipe_id', $id)->count();
+        if (request()->cookie('ekilx') != $id) {
+            $visitor = Visitor::whereIp(request()->ip())->first();
+            $likes = $visitor->likes()->where('recipe_id', $id)->count();
 
-        return $likes;
+            return $likes;
+        }
+        return 1;
     }
 
     /**
@@ -29,11 +32,14 @@ class ApiLikeController extends Controller
     public function like($id): ?object
     {
         $visitor = Visitor::whereIp(request()->ip())->first();
-        Like::create(['visitor_id' => $visitor->id, 'recipe_id' => $id]);
 
-        event(new \App\Events\RecipeGotLiked(Recipe::find($id)));
+        if (request()->cookie('ekilx') != $id) {
+            Like::create(['visitor_id' => $visitor->id, 'recipe_id' => $id]);
+            event(new \App\Events\RecipeGotLiked(Recipe::find($id)));
 
-        return response()->json(['liked' => 1]);
+            return response()->json(['liked' => 1])->withCookie('ekilx', \Crypt::encrypt($id), 5555);
+        }
+        return response()->json(['liked' => 0])->withCookie('ekilx', $id, -5);
     }
 
     /**
@@ -47,6 +53,6 @@ class ApiLikeController extends Controller
 
         event(new \App\Events\RecipeGotDisliked(Recipe::find($id)));
 
-        return response()->json(['liked' => 0]);
+        return response()->json(['liked' => 0])->withCookie('ekilx', $id, -1);
     }
 }
