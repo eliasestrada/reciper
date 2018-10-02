@@ -45,8 +45,18 @@
 
         {{--  Likes  --}}
         <div class="like-for-author-section">
-            <a href="#" class="like-icon"><i class="fas fa-star fa-15x star p-1"></i></a>
-            <span><i>23</i></span>
+            @auth
+                <form action="{{ action('FavsController@store') }}" method="post" class="d-inline-block">
+                    @csrf <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
+                    <button type="submit" style="background:none;border:none;">
+                        <i class="fas fa-star fa-15x star p-1 {{ user()->hasFav($recipe->id) ? 'active' : '' }}"></i>
+                    </button>
+                </form>
+            @else
+                <i class="fas fa-star fa-15x star p-1"></i>
+            @endauth
+            <span class="noselect"><i>{{ $recipe->favs->count() }}</i></span>
+
             <a href="/users/{{ $recipe->user->id }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/users/' . $recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
 
             @if ($recipe->isDone())
@@ -58,7 +68,7 @@
                             </div>
                         </a>
                         <audio ref="audio" src="/storage/audio/like-effect.mp3" type="audio/mpeg"></audio>
-                        <i id="_all-likes" v-text="allLikes"></i>
+                        <i id="_all-likes" v-text="allLikes" class="noselect"></i>
                     </span>
                 </like>
             @endif
