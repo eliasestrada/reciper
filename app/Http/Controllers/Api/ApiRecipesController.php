@@ -67,51 +67,43 @@ class ApiRecipesController extends Controller
     public function makeQueryWithCriteria($hash, $sql)
     {
         if ($hash == 'new') {
-            $sql->latest();
-            return $sql->done(1);
+            return $sql->latest()->done(1);
         }
 
         if ($hash == 'most_liked') {
-            $sql->withCount('likes');
-            $sql->orderBy('likes_count', 'desc');
-            return $sql->done(1);
+            return $sql->withCount('likes')->orderBy('likes_count', 'desc')->done(1);
         }
 
         if ($hash == 'my_viewes') {
-            $sql->join('views', 'views.recipe_id', '=', 'recipes.id')
+            return $sql->join('views', 'views.recipe_id', '=', 'recipes.id')
                 ->where('views.visitor_id', Visitor::whereIp(request()->ip())->value('id'))
-                ->orderBy('views.id', 'asc');
-
-            return $sql->done(1);
+                ->orderBy('views.id', 'asc')
+                ->done(1);
         }
 
         if ($hash == 'simple') {
-            $sql->whereSimple(1);
-            return $sql->done(1);
+            return $sql->whereSimple(1)->selectBasic()->done(11);
         }
 
         if ($hash == 'my_likes') {
-            $sql->join('likes', 'likes.recipe_id', '=', 'recipes.id')
+            return $sql->join('likes', 'likes.recipe_id', '=', 'recipes.id')
                 ->where('likes.visitor_id', Visitor::whereIp(request()->ip())->value('id'))
-                ->orderBy('likes.id', 'asc');
-
-            return $sql->done(1);
+                ->orderBy('likes.id', 'asc')
+                ->done(1);
         }
 
         // Searching for recipes with category
         if (str_contains($hash, 'category=')) {
-            $sql->with('categories')->whereHas('categories', function ($query) use ($hash) {
+            return $sql->with('categories')->whereHas('categories', function ($query) use ($hash) {
                 $query->whereId(str_replace('category=', '', $hash));
-            });
-            return $sql->done(1);
+            })->done(1);
         }
 
         // Searching for recipes with meal time
         if ($hash == 'breakfast' || $hash == 'lunch' || $hash == 'dinner') {
-            $sql->with('meal')->whereHas('meal', function ($query) use ($hash) {
+            return $sql->with('meal')->whereHas('meal', function ($query) use ($hash) {
                 $query->whereNameEn($hash);
-            });
-            return $sql->done(1);
+            })->done(1);
         }
 
         return $sql->latest()->done(1);

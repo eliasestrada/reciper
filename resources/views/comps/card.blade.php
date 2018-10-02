@@ -4,7 +4,7 @@
             <div class="col s12 m6 l3">
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <a href="/recipes/{{ ($recipe->recipe_id ?? $recipe->id) }}">
+                        <a href="/recipes/{{ $recipe->id }}">
                             <img class="activator" alt="{{ $recipe->getTitle() }}" src="{{ asset('storage/images/small/'.$recipe->image) }}">
                         </a>
                     </div>

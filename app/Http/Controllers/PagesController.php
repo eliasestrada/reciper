@@ -22,11 +22,17 @@ class PagesController extends Controller
             $random_recipes = $this->getRandomRecipes();
         }
 
-        $last_liked = Recipe::query()->join('likes', 'likes.recipe_id', '=', 'recipes.id')
+        $last_liked = Recipe::query()
+            ->join('likes', 'likes.recipe_id', '=', 'recipes.id')
+            ->selectBasic(['recipe_id'], ['id'])
             ->orderBy('likes.id', 'desc')
             ->limit(8)
             ->done(1)
-            ->get(['recipe_id', 'image', 'intro_' . lang(), 'title_' . lang()]);
+            ->get();
+
+        $last_liked->map(function ($liked) {
+            $liked->id = $liked->recipe_id;
+        });
 
         return view('pages.home', compact('random_recipes', 'last_liked'));
     }
@@ -73,7 +79,7 @@ class PagesController extends Controller
                 return ['id', '!=', $id];
             })->toArray());
         }
-        return $query->done(1)->limit(12)->get(['id', 'image', 'title_' . lang(), 'intro_' . lang()]);
+        return $query->selectBasic()->done(1)->limit(12)->get();
     }
 
     /**
@@ -83,6 +89,7 @@ class PagesController extends Controller
     {
         return Recipe::where('title_' . lang(), 'LIKE', "%$request%")
             ->orWhere('ingredients_' . lang(), 'LIKE', "%$request%")
+            ->selectBasic()
             ->take(50)
             ->done(1)
             ->paginate(12);
