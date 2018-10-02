@@ -21,22 +21,37 @@ class UsersOtherMyRecipesPageTest extends TestCase
             'title_' . lang() => 'My recipe',
         ]);
 
-        $this->actingAs($user)
-            ->get('/users/other/my-recipes')
-            ->assertSeeText('My recipe')
+        $response = $this->actingAs($user)->get('/users/other/my-recipes');
+
+        $recipes_ready = Recipe::whereUserId($user->id)
+            ->selectBasic()
+            ->done(1)
+            ->latest()
+            ->paginate(20)
+            ->onEachSide(1);
+
+        $recipes_unready = Recipe::whereUserId($user->id)
+            ->selectBasic()
+            ->approved(0)
+            ->latest()
+            ->paginate(20)
+            ->onEachSide(1);
+
+        $favs = Recipe::query()
+            ->join('favs', 'favs.recipe_id', '=', 'recipes.id')
+            ->selectBasic(['recipe_id'], ['id'])
+            ->where('favs.user_id', $user->id)
+            ->orderBy('favs.id', 'desc')
+            ->paginate(20)
+            ->onEachSide(1);
+
+        $favs->map(function ($recipe) {
+            $recipe->id = $recipe->recipe_id;
+        });
+
+        $response->assertSeeText('My recipe')
             ->assertViewIs('users.other.my-recipes')
-            ->assertViewHasAll([
-                'recipes_ready' => $a = Recipe::whereUserId($user->id)
-                    ->ready(1)
-                    ->latest()
-                    ->paginate(20)
-                    ->onEachSide(1),
-                'recipes_unready' => $b = Recipe::whereUserId($user->id)
-                    ->ready(0)
-                    ->latest()
-                    ->paginate(20)
-                    ->onEachSide(1),
-            ]);
+            ->assertViewHasAll(compact('recipes_ready', 'recipes_unready', 'favs'));
     }
 
     /** @test */

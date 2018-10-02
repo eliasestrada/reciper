@@ -19,29 +19,34 @@
 
     <div v-cloak>
         <tabs>
-            @for ($i = 1; $i <= 2; $i++)
+            @for ($i = 1; $i <= 3; $i++)
                 <tab 
                     @if ($i == 1)
                         name="@lang('messages.published') 
                         <span class='red-text'>({{ $recipes_ready->count() }})</span>"
                         :selected="true"
-                    @else
+                    @elseif ($i == 2)
                         name="@lang('messages.drafts') 
                         <span class='red-text'>({{ $recipes_unready->count() }})</span>"
+                    @elseif ($i == 3)
+                        name="@lang('messages.favs') 
+                        <span class='red-text'>({{ user()->favs->count() }})</span>"
                     @endif
                 >
                     @listOfRecipes([
-                        'recipes' => $i == 1 ? $recipes_ready : $recipes_unready,
+                        'recipes' => $i == 1 ? $recipes_ready : ($i == 2 ? $recipes_unready : $favs),
                         'class' => 'paper-dark',
                     ])
                         @slot('no_recipes')
                             @lang('users.no_recipes_yet')
-                            @include('includes.buttons.btn', [
-                                'title' => trans('includes.add_recipe'),
-                                'icon' => 'fa-plus',
-                                'class' => 'modal-trigger',
-                                'link' => '#add-recipe-modal'
-                            ])
+                            @if ($i !== 3)
+                                @include('includes.buttons.btn', [
+                                    'title' => trans('includes.add_recipe'),
+                                    'icon' => 'fa-plus',
+                                    'class' => 'modal-trigger',
+                                    'link' => '#add-recipe-modal'
+                                ])
+                            @endif
                         @endslot
                     @endlistOfRecipes
                 </tab>

@@ -39,6 +39,29 @@ class Recipe extends Model
 
     /**
      * @param $query
+     * @param array $aditional
+     * @param array $mute
+     */
+    public function scopeSelectBasic($query, array $aditional = [], array $mute = [])
+    {
+        $sql = array_collapse([[
+            'id',
+            'title_' . lang(),
+            'ready_' . lang(),
+            'approved_' . lang(),
+            'image',
+            'updated_at',
+        ], $aditional]);
+
+        $sql = array_where($sql, function ($value, $key) use ($mute) {
+            return !array_has($mute, $key);
+        });
+
+        return $query->select($sql);
+    }
+
+    /**
+     * @param $query
      * @param integer $value
      */
     public function scopeApproved($query, int $value)
