@@ -35,6 +35,12 @@ class RecipeTest extends TestCase
     }
 
     /** @test */
+    public function model_has_relationship_with_fav(): void
+    {
+        $this->assertCount(0, make(Recipe::class)->favs);
+    }
+
+    /** @test */
     public function model_has_relationship_with_view(): void
     {
         $this->assertCount(0, make(Recipe::class)->views);

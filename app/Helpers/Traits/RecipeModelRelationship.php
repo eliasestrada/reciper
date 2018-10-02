@@ -3,6 +3,7 @@
 namespace App\Helpers\Traits;
 
 use App\Models\Category;
+use App\Models\Fav;
 use App\Models\Like;
 use App\Models\Meal;
 use App\Models\User;
@@ -23,6 +24,11 @@ trait RecipeModelRelationship
     public function likes()
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function favs()
+    {
+        return $this->hasMany(Fav::class);
     }
 
     public function views()

@@ -22,6 +22,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function favs()
+    {
+        return $this->hasMany(Fav::class);
+    }
+
     public function notifications()
     {
         return $this->hasMany(Notification::class);
@@ -65,6 +70,15 @@ class User extends Authenticatable
     public function hasRecipe(int $recipe_id): bool
     {
         return Recipe::whereId($recipe_id)->whereUserId($this->id)->exists();
+    }
+
+    /**
+     * @param integer $recipe_id
+     * @return boolean
+     */
+    public function hasFav(int $recipe_id): bool
+    {
+        return Fav::where([['user_id', $this->id], ['recipe_id', $recipe_id]])->exists();
     }
 
     /**

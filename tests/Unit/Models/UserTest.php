@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Fav;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Models\Visitor;
@@ -30,6 +31,12 @@ class UserTest extends TestCase
     public function model_has_relationship_with_role(): void
     {
         $this->assertNotNull(create_user('admin')->roles);
+    }
+
+    /** @test */
+    public function model_has_relationship_with_favs(): void
+    {
+        $this->assertNotNull(create_user()->favs);
     }
 
     /** @test */
@@ -65,5 +72,14 @@ class UserTest extends TestCase
         $user = make(User::class);
         $recipe = create(Recipe::class, ['user_id' => $user->id]);
         $this->assertTrue($user->hasRecipe($recipe->id));
+    }
+
+    /** @test */
+    public function has_fav_method_returns_bool_if_user_has_this_recipe_in_favs(): void
+    {
+        $user = make(User::class);
+        $recipe = create(Recipe::class);
+        Fav::create(['user_id' => $user->id, 'recipe_id' => $recipe->id]);
+        $this->assertTrue($user->hasFav($recipe->id));
     }
 }
