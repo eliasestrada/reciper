@@ -17,6 +17,15 @@
         }
     }
 
+    .star {
+        color: darkgoldenrod;
+    }
+    .star.active {
+        background: darkgoldenrod;
+        border-radius:50%;
+        color: #fff;
+    }
+
     .like-icon {
         display: inline-block;
         width: 30px;

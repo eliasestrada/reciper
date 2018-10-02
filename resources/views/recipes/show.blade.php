@@ -45,6 +45,8 @@
 
         {{--  Likes  --}}
         <div class="like-for-author-section">
+            <a href="#" class="like-icon"><i class="fas fa-star fa-15x star p-1"></i></a>
+            <span><i>23</i></span>
             <a href="/users/{{ $recipe->user->id }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/users/' . $recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
 
             @if ($recipe->isDone())
