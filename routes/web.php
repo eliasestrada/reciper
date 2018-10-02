@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::resource('statistics', 'StatisticsController')->only(['index']);
-    Route::resource('favs', 'FavsController')->only(['index', 'store']);
+    Route::resource('favs', 'FavsController')->only(['store']);
 });
 
 Route::prefix('users')->group(function () {
