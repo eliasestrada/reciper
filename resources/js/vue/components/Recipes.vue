@@ -5,7 +5,7 @@
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
                         <a :href="'/recipes/' + recipe.id" :title="recipe.title">
-                            <img class="activator" :src="'storage/images/small/' + recipe.image" :alt="recipe.title">
+                            <img class="activator" :src="'storage/small/images/' + recipe.image" :alt="recipe.title">
                         </a>
                     </div>
                     <div class="card-content min-h">

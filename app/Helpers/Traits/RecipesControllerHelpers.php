@@ -28,7 +28,7 @@ trait RecipesControllerHelpers
                 ->fit(240, 160, function ($constraint) {
                     $constraint->upsize();
                 }, 'top')
-                ->save(storage_path("app/public/images/small/$image_name"));
+                ->save(storage_path("app/public/small/images/$image_name"));
 
             return $image_name;
         }
