@@ -10408,14 +10408,16 @@ document.addEventListener('DOMContentLoaded', function () {
  * @param {string} button that u want to click
  */
 function activeAfterClickBtn(element, button) {
+    var customClass = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "active";
+
     var visible = false;
 
     $(button).addEventListener("click", function () {
         if (visible === false) {
-            $(element).classList.add("active");
+            $(element).classList.add(customClass);
             visible = true;
         } else if (visible === true) {
-            $(element).classList.remove("active");
+            $(element).classList.remove(customClass);
             visible = false;
         }
     });
@@ -10470,6 +10472,10 @@ if ($("ready-checkbox")) {
 
 if (imageUploader.src && imageUploader.target) {
     imageUploader.showImage();
+}
+
+if ($("register-btns") && $("show-register-btns")) {
+    activeAfterClickBtn("register-btns", "show-register-btns", "d-inline-block");
 }
 
 /**

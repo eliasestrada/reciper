@@ -42,20 +42,23 @@
             @endif
         </div>
 
-
         {{--  Likes  --}}
-        <div class="like-for-author-section">
+        <div class="like-for-author-section noselect position-relative">
             @auth
-                <form action="{{ action('FavsController@store') }}" method="post" class="d-inline-block">
+                <form action="{{ action('FavsController@store') }}" method="post" class="d-inline-block" onsubmit="$('audio').volume = 0.2; $('audio').play()">
                     @csrf <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
-                    <button type="submit" style="background:none;border:none;">
+                    <button type="submit" class="p-0" style="background:none;border:none;">
                         <i class="fas fa-star fa-15x star p-1 {{ user()->hasFav($recipe->id) ? 'active' : '' }}"></i>
                     </button>
                 </form>
             @else
-                <i class="fas fa-star fa-15x star p-1"></i>
+                <div class="position-absolute hide" style="left:20%;top:107%;z-index:5;" id="register-btns">
+                    <a href="/login" class="btn-small hoverable waves-effect waves-light">@lang('forms.login')</a>
+                    <a href="/register" class="btn-small hoverable waves-effect waves-light">@lang('forms.register')</a>
+                </div>
+                <i class="fas fa-star fa-15x star" id="show-register-btns"></i>
             @endauth
-            <span class="noselect"><i>{{ $recipe->favs->count() }}</i></span>
+            <i>{{ $recipe->favs->count() }}</i>
 
             <a href="/users/{{ $recipe->user->id }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/users/' . $recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
 
@@ -67,8 +70,8 @@
                                 <span class="btn-like">@include('includes.icons.like-btn')</span>
                             </div>
                         </a>
-                        <audio ref="audio" src="/storage/audio/like-effect.mp3" type="audio/mpeg"></audio>
-                        <i id="_all-likes" v-text="allLikes" class="noselect"></i>
+                        <audio ref="audio" id="audio" src="/storage/audio/like-effect.mp3" type="audio/mpeg"></audio>
+                        <i id="_all-likes" v-text="allLikes"></i>
                     </span>
                 </like>
             @endif

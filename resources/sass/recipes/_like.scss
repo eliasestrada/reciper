@@ -19,11 +19,21 @@
 
     .star {
         color: darkgoldenrod;
+        transition: color 200ms, transform 200ms;
+        &:hover {
+            color: lighten(darkgoldenrod, 5%);
+            transform: scale(1.15);
+        }
     }
     .star.active {
         background: darkgoldenrod;
         border-radius:50%;
         color: #fff;
+        transition: color 200ms, transform 200ms;
+        &:hover {
+            background: lighten(darkgoldenrod, 5%);
+            transform: scale(1.15);
+        }
     }
 
     .like-icon {
