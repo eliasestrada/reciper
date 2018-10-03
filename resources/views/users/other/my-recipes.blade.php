@@ -30,7 +30,7 @@
                         <span class='red-text'><b>{{ $recipes_unready->count() }}</b></span>"
                     @elseif ($i == 3)
                         name="@lang('messages.favs') 
-                        <span class='red-text'><b>{{ user()->favs->count() }}</b></span>"
+                        <span class='red-text'><b>{{ $favs->count() }}</b></span>"
                     @endif
                 >
                     @listOfRecipes([

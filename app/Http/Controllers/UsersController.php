@@ -56,6 +56,7 @@ class UsersController extends Controller
             ->selectBasic(['recipe_id'], ['id'])
             ->where('favs.user_id', user()->id)
             ->orderBy('favs.id', 'desc')
+            ->done(1)
             ->paginate(20)
             ->onEachSide(1);
 
