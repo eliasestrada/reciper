@@ -82,7 +82,7 @@ class ApiRecipesController extends Controller
         }
 
         if ($hash == 'simple') {
-            return $sql->whereSimple(1)->selectBasic()->done(11);
+            return $sql->whereSimple(1)->selectBasic()->done(1);
         }
 
         if ($hash == 'my_likes') {

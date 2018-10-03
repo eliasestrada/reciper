@@ -17,6 +17,7 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'en_approver_id' => $admin->id,
         'time' => rand(10, 160),
         'image' => 'default.jpg',
+        'simple' => rand(0, 1),
 
         // Russian language
         'title_ru' => $faker->sentence(5),
