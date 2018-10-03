@@ -34,7 +34,7 @@
             <visibility inline-template>
                 <div class="input-field">
                     <input class="validate" :type="type" name="password" id="password" autocomplete="off" required>
-                    <i class="fas fa-15x main-text noselect position-absolute visibility-icon" v-on:click="changeType" :class="icon"></i>
+                    <i class="fas fa-15x main-text no-select position-absolute visibility-icon" v-on:click="changeType" :class="icon"></i>
                     <label for="password">
                         @lang('forms.pwd')
                         @include('includes.tip', ['tip' => trans('forms.pwd_desc')])
@@ -45,7 +45,7 @@
             <visibility inline-template>
                 <div class="input-field">
                     <input class="validate" :type="type" name="password_confirmation" id="password_confirmation" autocomplete="off" required>
-                    <i class="fas fa-15x main-text noselect position-absolute visibility-icon" v-on:click="changeType" :class="icon"></i>
+                    <i class="fas fa-15x main-text no-select position-absolute visibility-icon" v-on:click="changeType" :class="icon"></i>
                     <label for="password_confirmation">
                         @lang('forms.pwd_confirm')
                         @include('includes.tip', ['tip' => trans('forms.pwd2_desc')])

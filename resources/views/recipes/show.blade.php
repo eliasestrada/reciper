@@ -43,7 +43,7 @@
         </div>
 
         {{--  Likes  --}}
-        <div class="like-for-author-section noselect position-relative">
+        <div class="like-for-author-section no-select position-relative">
             @auth
                 <form action="{{ action('FavsController@store') }}" method="post" class="d-inline-block" onsubmit="$('audio').volume = 0.2; $('audio').play()">
                     @csrf <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
@@ -60,7 +60,7 @@
             @endauth
             <i>{{ $recipe->favs->count() }}</i>
 
-            <a href="/users/{{ $recipe->user->id }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/users/' . $recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
+            <a href="/users/{{ $recipe->user->id }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
 
             @if ($recipe->isDone())
                 <like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}" inline-template>
