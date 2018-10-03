@@ -12,8 +12,8 @@
                         <span style="height:75%" class="card-title activator">
                             {{ $recipe->getTitle() }}
                         </span>
-                        <div style="height:25%;position:relative">
-                            <div class="position-absolute" style="z-index:10">
+                        <div style="height:25%">
+                            <div class="left" style="transform:translateY(-3px)">
                                 @include('includes.buttons.btn-favs')
                             </div>
                             <i class="fas fa-ellipsis-h fa-15x right red-text activator"></i>

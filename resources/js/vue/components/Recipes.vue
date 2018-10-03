@@ -13,7 +13,7 @@
                             {{ recipe.title_short }}
                         </span>
                         <div style="height:25%">
-                            <div class="position-absolute" style="z-index:10">
+                            <div class="left" style="transform:translateY(-3px)">
                                 <form v-if="favs" action="/favs" method="post" class="d-inline-block">
                                     <input type="hidden" name="_token" :value="csrf">
                                     <input type="hidden" name="recipe_id" :value="recipe.id">
