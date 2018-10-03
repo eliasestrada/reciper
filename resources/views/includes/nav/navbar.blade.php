@@ -91,16 +91,16 @@
     </ul>
 @endauth
 
-<nav>
+<nav class="no-select">
     <div class="nav-wrapper main" style="z-index:15">
         <div class="px-3">
             {{-- Logo --}}
-            <a href="/" title="@lang('includes.home')" class="brand-logo noselect">
+            <a href="/" title="@lang('includes.home')" class="brand-logo no-select">
                 <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="40" class="mt-2 left">
                 <span class="left pl-1">@lang('messages.app_name')</span>
             </a>
             {{-- Hamburger menu --}}
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger noselect">
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger no-select">
                 <i class="fas fa-bars"></i>
             </a>
 
@@ -108,8 +108,8 @@
                 @auth
                     {{-- Dropdown Trigger 2 User --}}
                     <a id="_user-menu-trigger" class="mt-2 right dropdown-trigger position-relative" href="#!" data-target="dropdown2">
-                        <i class="user-icon-navbar {{ $unapproved_notif || $feedback_notif || $notifs_notif || $logs_notif ? 'small-notif' : '' }}">
-                            <img src="{{ asset('storage/users/' . user()->image) }}">
+                        <i class="user-icon-navbar z-depth-1 hoverable waves-effect waves-light d-block {{ $unapproved_notif || $feedback_notif || $notifs_notif || $logs_notif ? 'small-notif' : '' }}">
+                            <img src="{{ asset('storage/small/users/' . user()->image) }}">
                         </i>
                     </a>
                 @endauth
