@@ -15,9 +15,14 @@ trait PhotoControllerHelper
     {
         $path_slug = date('Y') . '/' . date('n');
         $path = storage_path("app/public/users/$path_slug");
+        $path_small = storage_path("app/public/small/users/$path_slug");
 
         if (!\File::exists($path)) {
             \File::makeDirectory($path, 0777, true);
+        }
+
+        if (!\File::exists($path_small)) {
+            \File::makeDirectory($path_small, 0777, true);
         }
 
         \Image::make($image)
@@ -25,6 +30,12 @@ trait PhotoControllerHelper
                 $constraint->upsize();
             }, 'top')
             ->save("$path/$file_name");
+
+        \Image::make($image)
+            ->fit(60, 60, function ($constraint) {
+                $constraint->upsize();
+            }, 'top')
+            ->save("$path_small/$file_name");
     }
 
     /**
@@ -53,6 +64,7 @@ trait PhotoControllerHelper
     {
         if ($file !== 'default.jpg') {
             \Storage::delete("public/$folder/$file");
+            \Storage::delete("public/small/$folder/$file");
         }
     }
 }
