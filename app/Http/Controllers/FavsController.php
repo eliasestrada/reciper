@@ -19,10 +19,10 @@ class FavsController extends Controller
 
         if (Fav::where([['user_id', user()->id], ['recipe_id', $request->recipe_id]])->exists()) {
             Fav::where([['user_id', user()->id], ['recipe_id', $request->recipe_id]])->delete();
-            return redirect("/recipes/$request->recipe_id")->withSuccess(trans('recipes.deleted_from_favs'));
+            return back()->withSuccess(trans('recipes.deleted_from_favs'));
         }
 
         Fav::create(['user_id' => user()->id, 'recipe_id' => $request->recipe_id]);
-        return redirect("/recipes/$request->recipe_id")->withSuccess(trans('recipes.added_to_favs'));
+        return back()->withSuccess(trans('recipes.added_to_favs'));
     }
 }

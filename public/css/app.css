@@ -7356,6 +7356,37 @@ Nav List
   }
 }
 
+.star {
+  color: #6d6d6d;
+  -webkit-transition: color 400ms, -webkit-transform 200ms;
+  transition: color 400ms, -webkit-transform 200ms;
+  transition: color 400ms, transform 200ms;
+  transition: color 400ms, transform 200ms, -webkit-transform 200ms;
+  cursor: pointer;
+}
+
+.star:hover {
+  color: #d49d10;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.star.active {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  color: #d49d10;
+  -webkit-transition: color 400ms, -webkit-transform 200ms;
+  transition: color 400ms, -webkit-transform 200ms;
+  transition: color 400ms, transform 200ms;
+  transition: color 400ms, transform 200ms, -webkit-transform 200ms;
+}
+
+.star.active:hover {
+  color: #6d6d6d;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
 .like-for-author-section .user-icon-on-single-recipe {
   margin-right: -25px;
   -webkit-transition: margin-right 300ms, -webkit-transform 300ms;
@@ -7379,36 +7410,6 @@ Nav List
   transition: margin-right 300ms, transform 300ms, -webkit-transform 300ms;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
-}
-
-.like-for-author-section .star {
-  color: #6d6d6d;
-  -webkit-transition: color 400ms, -webkit-transform 200ms;
-  transition: color 400ms, -webkit-transform 200ms;
-  transition: color 400ms, transform 200ms;
-  transition: color 400ms, transform 200ms, -webkit-transform 200ms;
-}
-
-.like-for-author-section .star:hover {
-  color: #d49d10;
-  -webkit-transform: scale(1.15);
-          transform: scale(1.15);
-}
-
-.like-for-author-section .star.active {
-  -webkit-transform: scale(1.15);
-          transform: scale(1.15);
-  color: #d49d10;
-  -webkit-transition: color 400ms, -webkit-transform 200ms;
-  transition: color 400ms, -webkit-transform 200ms;
-  transition: color 400ms, transform 200ms;
-  transition: color 400ms, transform 200ms, -webkit-transform 200ms;
-}
-
-.like-for-author-section .star.active:hover {
-  color: #6d6d6d;
-  -webkit-transform: scale(1);
-          transform: scale(1);
 }
 
 .like-for-author-section .like-icon {
