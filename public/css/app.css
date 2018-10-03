@@ -7382,33 +7382,33 @@ Nav List
 }
 
 .like-for-author-section .star {
-  color: darkgoldenrod;
-  -webkit-transition: color 200ms, -webkit-transform 200ms;
-  transition: color 200ms, -webkit-transform 200ms;
-  transition: color 200ms, transform 200ms;
-  transition: color 200ms, transform 200ms, -webkit-transform 200ms;
+  color: #6d6d6d;
+  -webkit-transition: color 400ms, -webkit-transform 200ms;
+  transition: color 400ms, -webkit-transform 200ms;
+  transition: color 400ms, transform 200ms;
+  transition: color 400ms, transform 200ms, -webkit-transform 200ms;
 }
 
 .like-for-author-section .star:hover {
-  color: #d0980c;
+  color: #d49d10;
   -webkit-transform: scale(1.15);
           transform: scale(1.15);
 }
 
 .like-for-author-section .star.active {
-  background: darkgoldenrod;
-  border-radius: 50%;
-  color: #fff;
-  -webkit-transition: color 200ms, -webkit-transform 200ms;
-  transition: color 200ms, -webkit-transform 200ms;
-  transition: color 200ms, transform 200ms;
-  transition: color 200ms, transform 200ms, -webkit-transform 200ms;
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+  color: #d49d10;
+  -webkit-transition: color 400ms, -webkit-transform 200ms;
+  transition: color 400ms, -webkit-transform 200ms;
+  transition: color 400ms, transform 200ms;
+  transition: color 400ms, transform 200ms, -webkit-transform 200ms;
 }
 
 .like-for-author-section .star.active:hover {
-  background: #d0980c;
-  -webkit-transform: scale(1.15);
-          transform: scale(1.15);
+  color: #6d6d6d;
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 
 .like-for-author-section .like-icon {

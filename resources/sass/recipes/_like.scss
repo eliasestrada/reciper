@@ -18,21 +18,20 @@
     }
 
     .star {
-        color: darkgoldenrod;
-        transition: color 200ms, transform 200ms;
+        color: #6d6d6d;
+        transition: color 400ms, transform 200ms;
         &:hover {
-            color: lighten(darkgoldenrod, 5%);
+            color: #d49d10;
             transform: scale(1.15);
         }
     }
     .star.active {
-        background: darkgoldenrod;
-        border-radius:50%;
-        color: #fff;
-        transition: color 200ms, transform 200ms;
+        transform: scale(1.15);
+        color: #d49d10;
+        transition: color 400ms, transform 200ms;
         &:hover {
-            background: lighten(darkgoldenrod, 5%);
-            transform: scale(1.15);
+            color: #6d6d6d;
+            transform: scale(1);
         }
     }
 
