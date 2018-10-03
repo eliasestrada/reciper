@@ -22,6 +22,7 @@ class ApprovesController extends Controller
     {
         $unapproved_waiting = Recipe::oldest()
             ->where(lang() . '_approver_id', 0)
+            ->selectBasic()
             ->approved(0)
             ->ready(1)
             ->paginate(30)
@@ -29,8 +30,15 @@ class ApprovesController extends Controller
 
         $unapproved_checking = Recipe::oldest()
             ->where(lang() . '_approver_id', '!=', 0)
+            ->selectBasic()
             ->approved(0)
             ->ready(1)
+            ->paginate(30)
+            ->onEachSide(1);
+
+        $my_approves = Recipe::oldest()
+            ->where(lang() . '_approver_id', user()->id)
+            ->done(1)
             ->paginate(30)
             ->onEachSide(1);
 
@@ -44,7 +52,7 @@ class ApprovesController extends Controller
         }
 
         return view('admin.approves.index', compact(
-            'unapproved_waiting', 'unapproved_checking'
+            'unapproved_waiting', 'unapproved_checking', 'my_approves'
         ));
     }
 

@@ -7659,8 +7659,8 @@ Nav List
   border-radius: 3px;
   border: solid 3px #fff;
   border-bottom: solid 6px #fff;
-  -webkit-animation: appearWithRotate 2s;
-          animation: appearWithRotate 2s;
+  -webkit-animation: appearWithRotate 1s;
+          animation: appearWithRotate 1s;
 }
 
 .item-content {

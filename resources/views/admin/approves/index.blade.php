@@ -6,25 +6,28 @@
 
 @hasRole('admin')
     <div class="page">
-        <div class="center">
+        <div class="center mb-3">
             <h1 class="headline">@lang('includes.checklist')</h1>
         </div>
 
         <div v-cloak>
             <tabs>
-                @for ($i = 1; $i <= 2; $i++)
+                @for ($i = 1; $i <= 3; $i++)
                     <tab 
                         @if ($i == 1)
                             name="@lang('approves.unapproved_waiting') 
-                            <span class='red-text'>({{ $unapproved_waiting->count() }})</span>"
+                            <span class='red-text'><b>{{ $unapproved_waiting->count() }}</b></span>"
                             :selected="true"
-                        @else
+                        @elseif($i == 2)
                             name="@lang('approves.unapproved_checking') 
-                            <span class='red-text'>({{ $unapproved_checking->count() }})</span>"
+                            <span class='red-text'><b>{{ $unapproved_checking->count() }}</b></span>"
+                        @elseif($i == 3)
+                            name="@lang('approves.my_approves') 
+                            <span class='red-text'><b>{{ $my_approves->count() }}</b></span>"
                         @endif
                     >
-                        <div class="item-list unstyled-list row paper-dark" id="tab-{{ $i }}">
-                            @forelse ($i == 1 ? $unapproved_waiting : $unapproved_checking as $recipe)
+                        <div class="item-list unstyled-list row px-2 paper-dark" id="tab-{{ $i }}">
+                            @forelse ($i == 1 ? $unapproved_waiting : ($i == 2 ? $unapproved_checking : $my_approves) as $recipe)
                                 <ul>
                                     <li style="margin-bottom:5px" class="col s12 m6 l4 row">
                                         <a href="/admin/approves/{{ $recipe->id }}" style="width:11em">
@@ -37,7 +40,7 @@
                                                 <span class="main-text">
                                                     @if ($i == 1)
                                                         @lang('approves.waiting_for_approves')
-                                                    @else
+                                                    @elseif ($i == 2)
                                                         @lang('approves.user_is_checking', ['user' => $recipe->approver->name])
                                                     @endif
                                                 </span>
@@ -46,11 +49,13 @@
                                     </li>
                                 </ul>
                             @empty
-                                @component('comps.empty')
-                                    @slot('text')
-                                        @lang('admin.no_unapproved')
-                                    @endslot
-                                @endcomponent
+                                @if ($i !== 3)
+                                    @component('comps.empty')
+                                        @slot('text')
+                                            @lang('admin.no_unapproved')
+                                        @endslot
+                                    @endcomponent
+                                @endif
                             @endforelse
                         </div>
 
