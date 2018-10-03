@@ -44,8 +44,10 @@
 
         {{--  Likes  --}}
         <div class="like-for-author-section no-select position-relative" style="width:90%">
-            @include('includes.buttons.btn-favs')
-            <i>{{ $recipe->favs->count() }}</i>
+            @if ($recipe->isDone())
+                @include('includes.buttons.btn-favs')
+                <i>{{ $recipe->favs->count() }}</i>
+            @endif
 
             <a href="/users/{{ $recipe->user->id }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
 

@@ -13,8 +13,8 @@
                     </div>
 
                     <div class="mt-3" style="width:35px">
-                        <span class="new badge tooltipped" style="min-width:auto; height:28px; padding:3px; background-color:{{ $recipe->getStatusColor() }}" data-tooltip="@lang('users.status'): {{ $recipe->getStatusText() }}">
-                            <i class="fas {{ $recipe->getStatusIcon() }}" style="font-size:21px"></i>
+                        <span class="tooltipped" data-tooltip="@lang('users.status'): {{ $recipe->getStatusText() }}">
+                            <i class="fas {{ $recipe->getStatusIcon() }} circle p-1" style="color:{{ $recipe->getStatusColor() }};border:solid 2px {{ $recipe->getStatusColor() }};"></i>
                         </span>
                     </div>
                 </li>
