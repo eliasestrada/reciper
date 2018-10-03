@@ -24,7 +24,7 @@
     </div>
 
     <div>
-        <img src="{{ asset('storage/users/'.$user->image) }}" class="profile-image" alt="{{ $user->name }}" />
+        <img src="{{ asset('storage/users/'.$user->image) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->name }}" />
     </div>
 
     {{-- Visitor id --}}

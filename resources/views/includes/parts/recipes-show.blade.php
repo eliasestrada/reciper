@@ -2,7 +2,7 @@
     <h1 class="decorated">{{ $recipe->getTitle() }}</h1>
 </div>
 
-<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img">
+<img src="{{ asset('storage/images/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img corner z-depth-1">
 
 {{--  Category  --}}
 <div class="center py-2">

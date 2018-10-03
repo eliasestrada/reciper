@@ -87,7 +87,7 @@ select {
   font-size: 1.35em;
 }
 
-.noselect {
+.no-select {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -7248,9 +7248,44 @@ Nav List
 .recipe-img {
   width: 96%;
   margin: .6em 2%;
-  border-radius: 4px;
   -webkit-animation: appear 1s;
           animation: appear 1s;
+}
+
+.corner {
+  width: 80%;
+  max-width: 550px;
+  position: relative;
+  padding: .7em;
+  border: 1px solid #ccc;
+  border-radius: 60px 60px 0 0 / 5px 5px 0 0;
+  background-image: linear-gradient(102deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.07) 10px, rgba(0, 0, 0, 0) 20px), linear-gradient(-102deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.07) 10px, rgba(0, 0, 0, 0) 20px);
+  background-color: #fff;
+}
+
+.corner:before, .corner:after {
+  content: '';
+  position: absolute;
+  top: 25px;
+  z-index: -1;
+  width: 100px;
+  height: 100px;
+}
+
+.corner:before {
+  right: 20px;
+  -webkit-box-shadow: 10px -10px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 10px -10px 10px rgba(0, 0, 0, 0.5);
+  -webkit-transform: rotate(-2deg) skew(-20deg);
+          transform: rotate(-2deg) skew(-20deg);
+}
+
+.corner:after {
+  left: 20px;
+  -webkit-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.5);
+  -webkit-transform: rotate(2deg) skew(20deg);
+  transform: rotate(2deg) skew(20deg);
 }
 
 .items {
@@ -7643,8 +7678,6 @@ Nav List
 
 .profile-image {
   width: 200px;
-  border: solid 5px #fff;
-  border-bottom: solid 1em #fff;
   -webkit-transition: -webkit-transform 400ms;
   transition: -webkit-transform 400ms;
   transition: transform 400ms;
