@@ -16,11 +16,11 @@
                 <tab 
                     @if ($i == 1)
                         name="@lang('messages.in_russian') 
-                        <span class='red-text'>({{ $feedback_ru->count() }})</span>"
+                        <span class='red-text'><b>{{ $feedback_ru->count() }}</b></span>"
                         :selected="true"
                     @else
                         name="@lang('messages.in_english') 
-                        <span class='red-text'>({{ $feedback_en->count() }})</span>"
+                        <span class='red-text'><b>{{ $feedback_en->count() }}</b></span>"
                     @endif
                 >
                     <div class="row paper-dark pt-3" id="tab-{{ $i }}">

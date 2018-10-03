@@ -11,10 +11,12 @@
             @for ($i = 1; $i <= 2; $i++)
                 <tab 
                     @if ($i == 1)
-                        name="@lang('messages.published')"
+                        name="@lang('messages.published') 
+                        <span class='red-text'><b>{{ $ready_docs->count() }}</b></span>"
                         :selected="true"
                     @else
-                        name="@lang('messages.drafts')"
+                        name="@lang('messages.drafts') 
+                        <span class='red-text'><b>{{ $unready_docs->count() }}</b></span>"
                     @endif
                 >
                     <div class="row paper-dark pt-3" id="tab-{{ $i }}">

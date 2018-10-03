@@ -23,14 +23,14 @@
                 <tab 
                     @if ($i == 1)
                         name="@lang('messages.published') 
-                        <span class='red-text'>({{ $recipes_ready->count() }})</span>"
+                        <span class='red-text'><b>{{ $recipes_ready->count() }}</b></span>"
                         :selected="true"
                     @elseif ($i == 2)
                         name="@lang('messages.drafts') 
-                        <span class='red-text'>({{ $recipes_unready->count() }})</span>"
+                        <span class='red-text'><b>{{ $recipes_unready->count() }}</b></span>"
                     @elseif ($i == 3)
                         name="@lang('messages.favs') 
-                        <span class='red-text'>({{ user()->favs->count() }})</span>"
+                        <span class='red-text'><b>{{ user()->favs->count() }}</b></span>"
                     @endif
                 >
                     @listOfRecipes([
