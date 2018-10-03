@@ -43,7 +43,7 @@
         </div>
 
         {{--  Likes  --}}
-        <div class="like-for-author-section no-select position-relative">
+        <div class="like-for-author-section no-select position-relative" style="width:90%">
             @include('includes.buttons.btn-favs')
             <i>{{ $recipe->favs->count() }}</i>
 
