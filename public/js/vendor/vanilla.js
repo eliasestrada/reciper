@@ -10189,10 +10189,6 @@ if (imageUploader.src && imageUploader.target) {
     imageUploader.showImage();
 }
 
-if ($("register-btns") && $("show-register-btns")) {
-    activeAfterClickBtn("register-btns", "show-register-btns", "d-inline-block");
-}
-
 /**
  * These functions allows admin see edit form after clicking
  * edit button

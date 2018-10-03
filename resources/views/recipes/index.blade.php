@@ -25,7 +25,9 @@
             </div>
         </sort-buttons>
     </div>
-    <recipes go="@lang('recipes.go')">
+    <recipes go="@lang('recipes.go')"
+            :favs="{{ auth()->check() ? user()->favs->pluck('recipe_id') : 'null' }}"
+            csrf="{{ csrf_token() }}">
         @include('includes.preloader')
     </recipes>
 </div>

@@ -13,6 +13,18 @@
                             {{ recipe.title_short }}
                         </span>
                         <div style="height:25%">
+                            <div class="position-absolute" style="z-index:10">
+                                <form v-if="favs" action="/favs" method="post" class="d-inline-block">
+                                    <input type="hidden" name="_token" :value="csrf">
+                                    <input type="hidden" name="recipe_id" :value="recipe.id">
+                                    <button type="submit" class="p-0" style="background:none;border:none;">
+                                        <i class="fas fa-star fa-15x star p-1" :class="userHasFav(recipe.id)"></i>
+                                    </button>
+                                </form>
+                                <a v-else href="/login">
+                                    <i class="fas fa-star fa-15x star"></i>
+                                </a>
+                            </div>
                             <i class="fas fa-ellipsis-h right fa-15x red-text activator"></i>
                         </div>
                     </div>
@@ -44,7 +56,11 @@
             };
         },
     
-        props: ["go"],
+        props: {
+            "go": { required: true },
+            "favs": { default: null },
+            "csrf": { required: true },
+        },
 
         created() {
             this.makeFirstRequest()
@@ -89,6 +105,14 @@
             },
             hash() {
                 return window.location.hash.substring(1)
+            },
+            userHasFav(recipe) {
+                if (this.favs) {
+                    var result = this.favs.map(fav => {
+                        return recipe == fav ? 'active' : '';
+                    });
+                    return result;
+                }
             }
         },
         components: {

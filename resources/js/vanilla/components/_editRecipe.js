@@ -9,11 +9,3 @@ if ($("ready-checkbox")) {
 if (imageUploader.src && imageUploader.target) {
     imageUploader.showImage();
 }
-
-if ($("register-btns") && $("show-register-btns")) {
-    activeAfterClickBtn(
-        "register-btns",
-        "show-register-btns",
-        "d-inline-block"
-    );
-}
