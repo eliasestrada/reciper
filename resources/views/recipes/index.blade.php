@@ -7,7 +7,7 @@
 <div class="page">
     <div class="center"><h1 class="headline">@lang('recipes.recipes')</h1></div>
 
-    <div class="my-3">
+    <div class="my-3" v-cloak>
         <sort-buttons
             new-btn="@lang('recipes.last')"
             my-viewes-btn="@lang('recipes.watched')"

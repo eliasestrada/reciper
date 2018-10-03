@@ -13,7 +13,7 @@
 @endcomponent
 
 <div class="page">
-    <div class="center">
+    <div class="center mb-4">
         <h1 class="headline">@lang('includes.my_recipes')</h1>
     </div>
 
