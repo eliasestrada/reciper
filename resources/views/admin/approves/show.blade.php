@@ -39,10 +39,25 @@
                     </div>
                 </div>
             @else
-                <h6 class="green-text">
-                    <i class="fas fa-search small"></i><br>
-                    @lang('approves.currently_approving', ['user' => optional($recipe->approver)->name])
-                </h6>
+                <div class="no-select">
+                    {{-- Approver icon --}}
+                    <a href="/users/{{ $recipe->approver->id }}" title="@lang('users.go_to_profile')">
+                        <img src="{{ asset('storage/small/users/' . $recipe->approver->image) }}" class="circle" style="border:3px solid green" alt="{{ $recipe->approver->name }}">
+                        <i class="fas fa-search fa-15x paper circle p-1" style="color:green;transform:translateX(-20px)"></i>
+                    </a>
+                    <i class="fas fa-arrow-right fa-3x green-text mr-4"></i>
+                    {{-- Author icon --}}
+                    <a href="/users/{{ $recipe->user_id }}" title="@lang('users.go_to_profile')">
+                        <img src="{{ asset('storage/small/users/' . $recipe->user->image) }}" class="circle" style="border:3px solid green" alt="{{ $recipe->approver->name }}">
+                        <i class="fas fa-file-alt fa-15x paper p-1" style="color:green;transform:translateX(-20px)"></i><br>
+                    </a>
+                    <p class="main-text my-1">
+                        {!! trans('approves.currently_approving', [
+                            'admin' => $recipe->approver->name,
+                            'user' => $recipe->user->name,
+                        ]) !!}
+                    </p>
+                </div>
             @endif
         </div>
 
