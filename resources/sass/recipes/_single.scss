@@ -1,14 +1,14 @@
 .decorated {
-	overflow: hidden;
-	color: $mainDark;
-	margin: .3em 0;
-	font-weight: normal;
-	font-size: 25px;
+    overflow: hidden;
+    color: $mainDark;
+    margin: .3em 0;
+    font-weight: normal;
+    font-size: 25px;
 }
 
 .grid-recipe {
-	color: $greyDark;
-	padding: 0 .6em;
+    color: $greyDark;
+    padding: 0 .6em;
     background: $paper;
 
     .popup-window {
@@ -36,48 +36,47 @@
 }
 
 .recipe-img {
-	width: 96%;
-	margin: .6em 2%;
+    width: 96%;
+    margin: .6em 2%;
     animation: appear 1s;
 }
 
 .corner {
-  width: 80%;
-  max-width: 550px;
-  position: relative;
-  padding: .7em;
-  border: 1px solid #ccc;
-  border-radius: 60px 60px 0 0 / 5px 5px 0 0;
-  background-image:
+width: 80%;
+max-width: 550px;
+position: relative;
+padding: .7em;
+border: 1px solid #ccc;
+border-radius: 60px 60px 0 0 / 5px 5px 0 0;
+background-image:
     linear-gradient(102deg, rgba(0,0,0,.15), rgba(0,0,0,.07) 10px, rgba(0,0,0,0) 20px),
     linear-gradient(-102deg, rgba(0,0,0,.15), rgba(0,0,0,.07) 10px, rgba(0,0,0,0) 20px);
-  background-color: #fff;
-}
-.corner:before, .corner:after {
-  content: '';
-  position:absolute;
-  top: 25px;
-  z-index:-1;
-  width: 100px;
-  height: 100px;
-}
+background-color: #fff;
 
-.corner:before {
-  right: 20px;
-  box-shadow: 10px -10px 10px rgba(0,0,0,.5);
-  transform: rotate(-2deg) skew(-20deg);
-}
-
-.corner:after{
- left: 20px;
- box-shadow: -10px -10px 10px rgba(0,0,0,.5);
- -webkit-transform: rotate(2deg) skew(20deg);
- transform: rotate(2deg) skew(20deg);
+    &:before, &:after {
+        content: '';
+        position:absolute;
+        top: 25px;
+        z-index:-1;
+        width: 100px;
+        height: 100px;
+    }
+    &:before {
+        right: 20px;
+        box-shadow: 10px -10px 10px rgba(0,0,0,.5);
+        transform: rotate(-2deg) skew(-20deg);
+    }
+    &:after {
+        left: 20px;
+        box-shadow: -10px -10px 10px rgba(0,0,0,.5);
+        -webkit-transform: rotate(2deg) skew(20deg);
+        transform: rotate(2deg) skew(20deg);
+    }
 }
 
 .items {
-	text-align: left;
-	line-height: 1.4;
+    text-align: left;
+    line-height: 1.4;
     list-style-image: url(../storage/other/tick.png);
     li {
         font-size: 1.1em;
@@ -86,57 +85,57 @@
 }
 
 .instruction {
-	padding: 0 0 1em 2.6em;
-	font-size: 1.2em;
-	li {
-		min-height: 3em;
-		margin-top: .93em;
-		counter-increment: item;
-		position: relative;
-		left: .4em;
-		padding: 0 .7em;
+    padding: 0 0 1em 2.6em;
+    font-size: 1.2em;
+    li {
+        min-height: 3em;
+        margin-top: .93em;
+        counter-increment: item;
+        position: relative;
+        left: .4em;
+        padding: 0 .7em;
         text-align: left;
         border-bottom: 1px solid #c3c3c3;
 
-		&:before {
-			width: 50px;
-			height: 50px;
-			text-align: center;
-			color: #fff;
-			content: counter(item);
-			font-size: 2em;
-			position: absolute;
-			left: -2.2em;
-			background: $main;
-			border-radius: 5px;
-		}
-	}
+        &:before {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            color: #fff;
+            content: counter(item);
+            font-size: 2em;
+            position: absolute;
+            left: -2.2em;
+            background: $main;
+            border-radius: 5px;
+        }
+    }
 }
 
 .side-bar {
-	width: 100%;
-	padding: 1.85em 2em;
+    width: 100%;
+    padding: 1.85em 2em;
 }
 
 @media (min-width: 640px) {
-	.grid-recipe {
-		display: grid;
-		grid-template: "recipe-content side-bar" 1fr / 1fr 15.62rem;
-		grid-gap: 1.12rem;
-		padding: 1rem .6rem .93rem;
-		.recipe-img {
-			width: 80%;
-			max-width: 43.7rem;
-			margin: .6rem auto;
-		}
-		.recipe-content {
-			grid-area: recipe-content;
-			margin-left: .93rem;
-		}
-		.side-bar {
-			grid-area: side-bar;
-			width: 12.5rem;
-			padding: 0 0 1.25rem 2rem;
-		}
-	}
+    .grid-recipe {
+        display: grid;
+        grid-template: "recipe-content side-bar" 1fr / 1fr 15.62rem;
+        grid-gap: 1.12rem;
+        padding: 1rem .6rem .93rem;
+        .recipe-img {
+            width: 80%;
+            max-width: 43.7rem;
+            margin: .6rem auto;
+        }
+        .recipe-content {
+            grid-area: recipe-content;
+            margin-left: .93rem;
+        }
+        .side-bar {
+            grid-area: side-bar;
+            width: 12.5rem;
+            padding: 0 0 1.25rem 2rem;
+        }
+    }
 }
