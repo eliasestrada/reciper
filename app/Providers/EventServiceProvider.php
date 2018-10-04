@@ -38,5 +38,8 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\RecipeGotViewed::class => [
             \App\Listeners\AddExpForView::class,
         ],
+        \App\Events\UserVisitedPage::class => [
+            \App\Listeners\UpdateUpdatedAt::class,
+        ],
     ];
 }
