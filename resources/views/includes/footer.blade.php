@@ -64,12 +64,13 @@
         </a>
         
         <div>
-            <i class="fas fa-angle-right red-text"></i> 
-            <a href="/contact">@lang('feedback.contact_us')</a> 
-            <i class="fas fa-angle-left red-text"></i>
+            <a href="/contact">
+                <i class="fas fa-headset red-text"></i> 
+                @lang('feedback.contact_us')
+            </a>
         </div>
 
-        <p class="footer-copyright">
+        <p class="footer-copyright mt-3">
             &copy; {{ date('Y') }} {{ config('app.name') }} <br> {{ $title_footer ?? '' }}
         </p>
     </div>

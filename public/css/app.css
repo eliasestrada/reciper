@@ -6912,11 +6912,6 @@ Nav List
   font-family: "Comfortaa", sans-serif;
 }
 
-.home-section p {
-  font-size: 1.1em;
-  text-align: left;
-}
-
 .home-bg-section {
   background: rgba(72, 64, 116, 0.5) url(../storage/other/img.jpg);
   background-attachment: fixed;

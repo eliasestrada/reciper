@@ -25,7 +25,7 @@ class FooterProvider extends ServiceProvider
     public function composerRandomRecipes(): void
     {
         view()->composer('includes.footer',
-            'App\Http\ViewComposers\Footer\RandomRecipesComposer');
+            \App\Http\ViewComposers\Footer\RandomRecipesComposer::class);
     }
 
     /**
@@ -34,7 +34,7 @@ class FooterProvider extends ServiceProvider
     public function composerPopularRecipes(): void
     {
         view()->composer('includes.footer',
-            'App\Http\ViewComposers\Footer\PopularRecipesComposer');
+            \App\Http\ViewComposers\Footer\PopularRecipesComposer::class);
     }
 
     /**
@@ -43,7 +43,7 @@ class FooterProvider extends ServiceProvider
     public function composerTitle(): void
     {
         view()->composer('includes.footer',
-            'App\Http\ViewComposers\Footer\TitleFooterComposer');
+            \App\Http\ViewComposers\Footer\TitleFooterComposer::class);
     }
 
     /**
@@ -52,7 +52,7 @@ class FooterProvider extends ServiceProvider
     public function composerTopRecipers(): void
     {
         view()->composer('includes.footer',
-            'App\Http\ViewComposers\Footer\TopRecipersComposer');
+            \App\Http\ViewComposers\Footer\TopRecipersComposer::class);
     }
 
     /**
@@ -61,6 +61,6 @@ class FooterProvider extends ServiceProvider
     public function composerDocuments(): void
     {
         view()->composer('includes.footer',
-            'App\Http\ViewComposers\Footer\DocumentsComposer');
+            \App\Http\ViewComposers\Footer\DocumentsComposer::class);
     }
 }
