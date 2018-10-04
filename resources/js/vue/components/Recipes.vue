@@ -13,7 +13,7 @@
                             {{ recipe.title_short }}
                         </span>
                         <div style="height:25%">
-                            <div class="left" style="transform:translateY(-3px)">
+                            <div class="left">
                                 <btn-favs :recipe-id="recipe.id" :favs="returnFavs(recipe.id)" :user-id="userId"></btn-favs>
                             </div>
                             <i class="fas fa-ellipsis-h right fa-15x red-text activator"></i>
