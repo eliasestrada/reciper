@@ -15,7 +15,7 @@
 
 {{--  Time  --}}
 <div class="my-3">
-    <i class="fas fa-clock fa-2x main-text"></i>
+    <i class="fas fa-clock fa-15x z-depth-2 main-light circle red-text mr-1 tooltipped" data-tooltip="@lang('recipes.time')" data-position="top"></i>
     {{ $recipe->time }} @lang('recipes.min').
 </div>
 
