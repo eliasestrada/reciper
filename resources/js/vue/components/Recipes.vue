@@ -14,13 +14,7 @@
                         </span>
                         <div style="height:25%">
                             <div class="left" style="transform:translateY(-3px)">
-                                <form v-if="favs" action="/favs" method="post" class="d-inline-block">
-                                    <input type="hidden" name="_token" :value="csrf">
-                                    <input type="hidden" name="recipe_id" :value="recipe.id">
-                                    <button type="submit" class="p-0" style="background:none;border:none;">
-                                        <i class="fas fa-star fa-15x star p-1" :class="userHasFav(recipe.id)"></i>
-                                    </button>
-                                </form>
+                                <btn-favs v-if="favs" :recipe-id="recipe.id" :favs="favs"></btn-favs>
                                 <a v-else href="/login">
                                     <i class="fas fa-star fa-15x star"></i>
                                 </a>
@@ -53,13 +47,13 @@
                 newRecipes: [],
                 next: '',
                 theEnd: false,
+                _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             };
         },
     
         props: {
             "go": { required: true },
             "favs": { default: null },
-            "csrf": { required: true },
         },
 
         created() {
@@ -94,7 +88,7 @@
                         .then(res => {
                             if (this.next != res.links.next && res.links.next != null) {
                                 this.recipes = this.recipes.concat(res.data)
-                                this.next = res.links.next	
+                                this.next = res.links.next
                             } else {
                                 this.theEnd = true
                             }

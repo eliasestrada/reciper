@@ -11,7 +11,8 @@ const components = [
     "Like",
     "Tabs",
     "Tab",
-    "Visibility"
+    "Visibility",
+    "BtnFavs"
 ];
 
 components.forEach(comp => {

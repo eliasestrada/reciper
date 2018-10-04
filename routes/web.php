@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 // For auth users
 Auth::routes();
 Route::middleware('auth')->group(function () {
-    Route::resource('statistics', 'StatisticsController')->only(['index']);
-    Route::resource('favs', 'FavsController')->only(['store']);
+    Route::get('statistics', 'StatisticsController@index');
+    Route::post('favs/{recipe_id}', 'FavsController@store');
 });
 
 Route::prefix('users')->group(function () {
