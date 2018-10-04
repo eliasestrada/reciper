@@ -1,8 +1,17 @@
 <footer class="px-5 pt-3 pb-5">
     <div class="row wrapper">
-        {{--  Documents  --}}
-        <div class="col s12 m6 l3 left-align">
-            <ul class="unstyled-list">
+        <div class="col s12 m6 l3 left-align row">
+            {{-- Navigation --}}
+            <ul class="unstyled-list col s12">
+                <li><strong>@lang('pages.navigation')</strong></li>
+                <li>
+                    <a href="/" title="@lang('messages.go')">
+                        <i class="fas fa-angle-right red-text"></i> @lang('home.home')
+                    </a>
+                </li>
+            </ul>
+            {{-- Documents --}}
+            <ul class="unstyled-list col s12">
                 <li><strong>@lang('documents.rights_info')</strong></li>
                 @foreach ($documents_footer as $doc)
                     <li>
@@ -17,7 +26,7 @@
         {{--  Random recipes  --}}
         <div class="col s12 m6 l3 left-align">
             <ul class="unstyled-list">
-                <li><strong>@lang('includes.recipes')</strong></li>
+                <li><strong>@lang('recipes.recipes')</strong></li>
                 @foreach ($random_recipes as $recipe)
                     <li>
                         <a href="/recipes/{{ $recipe->id }}">
@@ -31,7 +40,7 @@
         {{--  Popular recipes  --}}
         <div class="col s12 m6 l3 left-align">
             <ul class="unstyled-list">
-                <li><strong>@lang('includes.popular_recipes')</strong></li>
+                <li><strong>@lang('recipes.popular')</strong></li>
                 @foreach ($popular_recipes as $recipe)
                     <li>
                         <a href="/recipes/{{ $recipe->id }}">
@@ -45,7 +54,7 @@
         {{--  Top recipers  --}}
         <div class="col s12 m6 l3 left-align">
             <ul class="unstyled-list">
-                <li><strong>@lang('includes.top_recipers')</strong></li>
+                <li><strong>@lang('pages.top_recipers')</strong></li>
                 @foreach ($top_recipers as $i => $reciper)
                     <li>
                         <a href="/users/{{ $reciper->id }}">

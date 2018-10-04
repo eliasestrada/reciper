@@ -20,7 +20,7 @@ class SendSms
             'type' => 'unicode',
             'from' => config('services.nexmo.sms_from'),
             'to' => config('services.nexmo.sms_to'),
-            'text' => trans('recipes.new_recipe'),
+            'text' => trans('recipes.new_recipe_waiting'),
         ]);
     }
 }

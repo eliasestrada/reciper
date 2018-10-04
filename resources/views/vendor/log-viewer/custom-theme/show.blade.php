@@ -83,7 +83,7 @@
                         <i class="fas fa-search prefix"></i>
                         <input id="search-input" name="query" value="{!! request('query') !!}" placeholder="@lang('pages.search_details')">
                     </div>
-                    <button id="search-btn" class="btn">@lang('includes.search')</button>
+                    <button id="search-btn" class="btn">@lang('pages.search')</button>
                     @if (request()->has('query'))
                         <a href="{{ route('log-viewer::logs.show', [$log->date]) }}" class="btn">
                             @lang('forms.cancel')

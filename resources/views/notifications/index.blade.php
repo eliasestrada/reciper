@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', trans('includes.notifications'))
+@section('title', trans('notifications.notifications'))
 
 @section('content')
 
 <div class="page">
     <div class="center pb-4">
         <h1 class="headline">
-            @lang('includes.notifications') 
+            @lang('notifications.notifications') 
             {{ $notifications->count() > 0 ? ': ' . $notifications->count() : '' }}
         </h1>
     </div>

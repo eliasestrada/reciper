@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('includes.my_recipes'))
+@section('title', trans('recipes.my_recipes'))
 
 @section('content')
 
@@ -9,12 +9,12 @@
     @slot('icon') fa-plus @endslot
     @slot('class') modal-trigger @endslot
     @slot('link') #add-recipe-modal @endslot
-    @slot('tip') @lang('includes.new_recipe') @endslot
+    @slot('tip') @lang('recipes.new_recipe') @endslot
 @endcomponent
 
 <div class="page">
     <div class="center mb-4">
-        <h1 class="headline">@lang('includes.my_recipes')</h1>
+        <h1 class="headline">@lang('recipes.my_recipes')</h1>
     </div>
 
     <div v-cloak>
@@ -41,7 +41,7 @@
                             @lang('users.no_recipes_yet')
                             @if ($i !== 3)
                                 @include('includes.buttons.btn', [
-                                    'title' => trans('includes.add_recipe'),
+                                    'title' => trans('recipes.add_recipe'),
                                     'icon' => 'fa-plus',
                                     'class' => 'modal-trigger',
                                     'link' => '#add-recipe-modal'

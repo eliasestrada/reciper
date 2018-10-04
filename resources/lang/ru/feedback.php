@@ -2,7 +2,7 @@
 
 return [
     // View
-    'feedback' => 'Отзыв',
+    'feedback' => 'Обратная связь',
     'report' => 'Жалоба',
     'contact_us' => 'Связь с нами',
     'report_recipe' => 'Жалоба на рецепт',

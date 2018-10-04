@@ -25,7 +25,7 @@
                         <span class="card-title">{{ $recipe->getTitle() }}</span>
                         <div><i class="fas fa-times right red-text card-title"></i></div>
                         <a class="btn-small mt-3" href="/recipes/{{ $recipe->id }}">
-                            @lang('recipes.go')
+                            @lang('messages.go')
                         </a>
                         <p>{{ $recipe->getIntro() }}</p>
                     </div>

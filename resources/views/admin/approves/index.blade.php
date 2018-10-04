@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', trans('includes.checklist'))
+@section('title', trans('approves.checklist'))
 
 @section('content')
 
 @hasRole('admin')
     <div class="page">
         <div class="center mb-3">
-            <h1 class="headline">@lang('includes.checklist')</h1>
+            <h1 class="headline">@lang('approves.checklist')</h1>
         </div>
 
         <div v-cloak>

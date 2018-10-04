@@ -6,39 +6,39 @@
 @auth {{-- User Dropdown menu --}}
     <ul id="dropdown2" class="dropdown-content bottom-borders">
         <li class="{{ active_if_route_is('users/' . user()->id) }}"> {{-- home --}}
-            <a href="/users/{{ user()->id }}" title="@lang('includes.my_account')">
-                <i class="fas fa-user-circle fa-15x left"></i>@lang('includes.my_account')
+            <a href="/users/{{ user()->id }}" title="@lang('users.my_account')">
+                <i class="fas fa-user-circle fa-15x left"></i>@lang('users.my_account')
             </a>
         </li>
 
         <li> {{-- add recipe --}}
-            <a href="#add-recipe-modal" title="@lang('includes.new_recipe')" class="modal-trigger">
-                <i class="fas fa-plus-circle fa-15x left"></i>@lang('includes.new_recipe')
+            <a href="#add-recipe-modal" title="@lang('recipes.new_recipe')" class="modal-trigger">
+                <i class="fas fa-plus-circle fa-15x left"></i>@lang('recipes.new_recipe')
             </a>
         </li>
 
         <li class="{{ active_if_route_is('users/other/my-recipes') }}"> {{-- my recipes --}}
-            <a href="/users/other/my-recipes" title="@lang('includes.my_recipes')">
-                <i class="fas fa-book-open fa-15x left"></i>@lang('includes.my_recipes')
+            <a href="/users/other/my-recipes" title="@lang('recipes.my_recipes')">
+                <i class="fas fa-book-open fa-15x left"></i>@lang('recipes.my_recipes')
             </a>
         </li>
 
         <li class="{{ active_if_route_is('users') }}"> {{-- users --}}
-            <a href="/users" title="@lang('includes.users')">
-                <i class="fas fa-user-friends fa-15x left"></i>@lang('includes.users')
+            <a href="/users" title="@lang('users.users')">
+                <i class="fas fa-user-friends fa-15x left"></i>@lang('users.users')
             </a>
         </li>
 
         <li class="{{ active_if_route_is('statistics') }}"> {{-- statistics --}}
-            <a href="/statistics" title="@lang('includes.statistics')">
-                <i class="fas fa-chart-pie fa-15x left"></i>@lang('includes.statistics')
+            <a href="/statistics" title="@lang('pages.statistics')">
+                <i class="fas fa-chart-pie fa-15x left"></i>@lang('pages.statistics')
             </a>
         </li>
 
         @hasRole('admin')
             <li class="position-relative {{ active_if_route_is('admin/approves') }}"> {{-- checklist --}}
-                <a href="/admin/approves" title="@lang('includes.checklist')" class="{{ $unapproved_notif ? 'small-notif' : '' }}">
-                    <i class="fas fa-search fa-15x left"></i>@lang('includes.checklist')
+                <a href="/admin/approves" title="@lang('approves.checklist')" class="{{ $unapproved_notif ? 'small-notif' : '' }}">
+                    <i class="fas fa-search fa-15x left"></i>@lang('approves.checklist')
                 </a>
             </li>
 
@@ -50,8 +50,8 @@
         @endhasRole
 
         <li class="position-relative {{ active_if_route_is('notifications') }}"> {{-- notifications --}}
-            <a href="/notifications" title="@lang('includes.notifications')" class="{{ $notifs_notif ? 'small-notif' : '' }} ">
-                <i class="fas fa-bell fa-15x left"></i>@lang('includes.notifications')
+            <a href="/notifications" title="@lang('notifications.notifications')" class="{{ $notifs_notif ? 'small-notif' : '' }} ">
+                <i class="fas fa-bell fa-15x left"></i>@lang('notifications.notifications')
             </a>
         </li>
 
@@ -79,8 +79,8 @@
         @endhasRole
 
         <li> {{-- logout --}} {{-- This button submits logout-form --}}
-            <a href="#" title="@lang('includes.logout')" onclick="$('logout-form').submit()" id="_logout_btn">
-                <i class="fas fa-sign-out-alt fa-15x left"></i>@lang('includes.logout')
+            <a href="#" title="@lang('auth.logout')" onclick="$('logout-form').submit()" id="_logout_btn">
+                <i class="fas fa-sign-out-alt fa-15x left"></i>@lang('auth.logout')
             </a>
         </li>
 
@@ -95,7 +95,7 @@
     <div class="nav-wrapper main" style="z-index:15">
         <div class="px-3">
             {{-- Logo --}}
-            <a href="/" title="@lang('includes.home')" class="brand-logo no-select">
+            <a href="/" title="@lang('home.home')" class="brand-logo no-select">
                 <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="40" class="mt-2 left">
                 <span class="left pl-1">@lang('messages.app_name')</span>
             </a>
@@ -115,7 +115,7 @@
                 @endauth
 
                 {{-- Search button --}}
-                <a href="#" data-target="mobile-demo" class="right" style="margin:2px 17px;" title="@lang('includes.search')" id="nav-btn-for-search">
+                <a href="#" data-target="mobile-demo" class="right" style="margin:2px 17px;" title="@lang('pages.search')" id="nav-btn-for-search">
                     <i class="fas fa-search fa-15x d-inline"></i>
                 </a>
             </div>
@@ -123,13 +123,13 @@
             {{-- Regular menu --}}
             <ul class="right hide-on-med-and-down right-borders">
                 <li class="{{ active_if_route_is('/') }}">
-                    <a href="/" title="@lang('includes.home')">
-                        @lang('includes.home')
+                    <a href="/" title="@lang('home.home')">
+                        @lang('home.home')
                     </a>
                 </li>
                 <li class="{{ active_if_route_is('recipes') }}">
-                    <a href="/recipes" title="@lang('includes.recipes')">
-                        @lang('includes.recipes')
+                    <a href="/recipes" title="@lang('recipes.recipes')">
+                        @lang('recipes.recipes')
                     </a>
                 </li>
                 <li class="{{ active_if_route_is('help') }}">
@@ -140,15 +140,15 @@
 
                 <li> {{-- Dropdown Trigger 1 Categories --}}
                     <a class="dropdown-trigger" href="#!" data-target="dropdown1">
-                        @lang('includes.categories')
+                        @lang('pages.categories')
                         <i class="fas fa-caret-down fa-15x right"></i>
                     </a>
                 </li>
 
                 @guest
                     <li>
-                        <a href="/login" title="@lang('includes.enter')">
-                            @lang('includes.enter')
+                        <a href="/login" title="@lang('auth.enter')">
+                            @lang('auth.enter')
                             <i class="fas fa-sign-in-alt fa-15x right"></i>
                         </a>
                     </li>

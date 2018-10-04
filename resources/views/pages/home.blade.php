@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('pages.home'))
+@section('title', trans('home.home'))
 
 @section('home-header')
 
@@ -75,7 +75,7 @@
                                 <span class="card-title">{{ $recipe->getTitle() }}</span>
                                 <div><i class="fas fa-times right red-text card-title"></i></div>
                                 <a class="btn-small mt-3" href="/recipes/{{ $recipe->id }}">
-                                    @lang('recipes.go')
+                                    @lang('messages.go')
                                 </a>
                                 <p>{{ $recipe->getIntro() }}</p>
                             </div>
@@ -87,33 +87,33 @@
 
         <div class="center">
             @if ($loop->first)
-                <a href="/recipes#new" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('recipes.go')">
+                <a href="/recipes#new" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
                     <i class="fas fa-clock left"></i>
                     @lang('home.last_recipes')
                 </a>
-                <a href="/recipes#simple" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('recipes.go')">
+                <a href="/recipes#simple" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
                     <i class="fas fa-concierge-bell left"></i>
                     @lang('recipes.simple')
                 </a>
             @elseif ($loop->iteration == 2)
-                <a href="/recipes#breakfast" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('recipes.go')">
+                <a href="/recipes#breakfast" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
                     <i class="fas fa-utensils left"></i>
                     @lang('home.breakfast')
                 </a>
-                <a href="/recipes#lunch" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('recipes.go')">
+                <a href="/recipes#lunch" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
                     <i class="fas fa-utensils left"></i>
                     @lang('home.lunch')
                 </a>
-                <a href="/recipes#dinner" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('recipes.go')">
+                <a href="/recipes#dinner" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
                     <i class="fas fa-utensils left"></i>
                     @lang('home.dinner')
                 </a>
             @elseif ($loop->last)
-                <a href="/recipes#my_viewes" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('recipes.go')">
+                <a href="/recipes#my_viewes" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
                     <i class="fas fa-eye left"></i>
                     @lang('recipes.watched')
                 </a>
-                <a href="/recipes#my_liked" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('recipes.go')">
+                <a href="/recipes#my_liked" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
                     <i class="fas fa-heart left"></i>
                     @lang('recipes.loved')
                 </a>

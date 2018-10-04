@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('forms.register'))
+@section('title', trans('auth.register'))
 
 @section('content')
 
@@ -8,8 +8,8 @@
     <div class="col s12 m8 offset-m2 l6 offset-l3">
         <div class="paper">
             <div class="register-tabs">
-                <a href="#" class="active">@lang('forms.register')</a>
-                <a href="/login">@lang('forms.login')</a>
+                <a href="#" class="active">@lang('auth.register')</a>
+                <a href="/login">@lang('auth.enter')</a>
             </div>
         </div>
 
@@ -55,7 +55,7 @@
 
             @if(!empty($document))
                 <blockquote class="mt-5">
-                    {!! trans('forms.agree_to_terms', ['btn' => trans('forms.register')]) !!}
+                    {!! trans('forms.agree_to_terms', ['btn' => trans('auth.register')]) !!}
                 </blockquote>
 
                 <!-- show-document-modal structure -->
@@ -73,7 +73,7 @@
             @endif
 
             <button type="submit" id="register-btn" class="waves-effect waves-light btn mt-3">
-                @lang('forms.register')
+                @lang('auth.register')
             </button>
         </form>
     </div>

@@ -14,7 +14,7 @@ class PagesController extends Controller
      */
     public function home()
     {
-        return view('pages.home', ['recipes' => Recipe::getRandomUnseen(24, 12)]);
+        return view('home.home', ['recipes' => Recipe::getRandomUnseen(24, 12)]);
     }
 
     /**

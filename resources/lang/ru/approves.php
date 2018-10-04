@@ -20,6 +20,7 @@ return [
     'unapproved_checking' => 'Проверяются',
     'finish_checking' => 'Закончите проверку рецепта',
     'my_approves' => 'Мои проверки',
+    'checklist' => 'Проверочная',
     'currently_approving' => 'Админ <u><b>:admin</b></u> проверяет рецепт автора <u><b>:user</b></u>',
     'waiting_for_approves' => 'Ожидает проверки...',
     'user_is_checking' => ':user проверяет...',

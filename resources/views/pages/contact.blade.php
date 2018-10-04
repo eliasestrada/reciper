@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', trans('pages.feedback'))
+@section('title', trans('feedback.feedback'))
 
 @section('content')
 
 <div class="page container">
-    <div class="center"><h1 class="headline">@lang('pages.feedback')</h1></div>
+    <div class="center"><h1 class="headline">@lang('feedback.feedback')</h1></div>
 
     @if (session('success'))
         <div class="mt-4">
