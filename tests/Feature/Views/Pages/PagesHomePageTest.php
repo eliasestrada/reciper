@@ -3,12 +3,11 @@
 namespace Tests\Feature\Views\Pages;
 
 use App\Models\Recipe;
-use App\Models\Title;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class HomePageTest extends TestCase
+class PagesHomePageTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -17,20 +16,21 @@ class HomePageTest extends TestCase
     {
         $responce = $this->get('/');
 
-        $title_intro = Title::whereName("intro")->first([
-            'title_' . lang(),
-            'text_' . lang(),
-        ]);
-
-        $last_liked = Recipe::query()->join('likes', 'likes.recipe_id', '=', 'recipes.id')
+        $last_liked = Recipe::query()
+            ->join('likes', 'likes.recipe_id', '=', 'recipes.id')
             ->orderBy('likes.id', 'desc')
-            ->limit(4)
+            ->selectBasic(['recipe_id'], ['id'])
+            ->limit(8)
             ->done(1)
             ->get(['recipe_id', 'image', 'intro_' . lang(), 'title_' . lang()]);
 
+        $last_liked->map(function ($liked) {
+            $liked->id = $liked->recipe_id;
+        });
+
         $responce->assertViewIs('pages.home')
             ->assertViewHas('random_recipes')
-            ->assertViewHas('last_liked', $last_liked);
+            ->assertViewHasAll(['last_liked' => $last_liked]);
     }
 
     /** @test */

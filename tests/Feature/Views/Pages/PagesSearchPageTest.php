@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class SearchPageTest extends TestCase
+class PagesSearchPageTest extends TestCase
 {
     use DatabaseTransactions;
 
