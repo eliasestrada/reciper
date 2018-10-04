@@ -12,11 +12,9 @@
 
     @yield('home-header')
 
-    <div id="app" class="wrapper">
+    <div id="app" class="{{ request()->is('/') ? '' : 'wrapper' }}">
         @yield('content')
     </div>
-
-    @yield('home-last-liked')
 
     <!-- add-recipe-modal structure -->
     <div id="add-recipe-modal" class="modal">
