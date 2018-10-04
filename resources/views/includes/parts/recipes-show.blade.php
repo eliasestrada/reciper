@@ -27,9 +27,9 @@
 <div class="divider my-4"></div>
 
 {{--  Items --}}
+<h5 class="decorated">@lang('recipes.ingredients')</h5>
 <blockquote class="items">
-    <h5 class="decorated">@lang('recipes.ingredients')</h5>
-    <ol>
+    <ol class="m-0">
         @foreach ($recipe->ingredientsWithListItems() as $item)
             {!! $item !!}
         @endforeach

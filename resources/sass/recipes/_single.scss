@@ -78,6 +78,9 @@ background-color: #fff;
     text-align: left;
     line-height: 1.4;
     list-style-image: url(../storage/other/tick.png);
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
     li {
         font-size: 1.1em;
         border-bottom: 1px solid #c3c3c3;
@@ -117,7 +120,15 @@ background-color: #fff;
     padding: 1.85em 2em;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1000px) {
+    .items {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media (min-width: 540px) {
     .grid-recipe {
         display: grid;
         grid-template: "recipe-content side-bar" 1fr / 1fr 15.62rem;
