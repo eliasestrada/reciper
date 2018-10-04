@@ -2,11 +2,11 @@
     <section>
         <a v-if="userId" class="p-0" @click="fetchFavs">
             <i class="fas fa-star fa-15x star" :class="icon"></i> 
-            <span v-text="amount"></span>
+            <span v-text="amount" style="transform:translate(-2px, 5px);color:#6b6b6b" class="d-inline-block"></span>
         </a>
         <a v-else href="/login" class="p-0">
             <i class="fas fa-star fa-15x star"></i> 
-            <span v-text="amount"></span>
+            <span v-text="amount" style="transform:translate(-4px, 5px);color:#6b6b6b" class="d-inline-block"></span>
         </a>
     </section>
 </template>

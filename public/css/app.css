@@ -7356,18 +7356,20 @@ Nav List
   transition: color 400ms, -webkit-transform 200ms;
   transition: color 400ms, transform 200ms;
   transition: color 400ms, transform 200ms, -webkit-transform 200ms;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
   cursor: pointer;
 }
 
 .star:hover {
-  color: #d49d10;
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  color: #7f7f7f;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .star.active {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
   color: #d49d10;
   -webkit-transition: color 400ms, -webkit-transform 200ms;
   transition: color 400ms, -webkit-transform 200ms;
@@ -7376,9 +7378,9 @@ Nav List
 }
 
 .star.active:hover {
-  color: #6d6d6d;
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  color: #eeb21a;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 }
 
 .like-for-author-section .user-icon-on-single-recipe {

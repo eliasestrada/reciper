@@ -15,11 +15,7 @@
                         <div style="height:25%">
                             <div>
                                 <div class="left">
-                                    <btn-favs
-                                        recipe-id="{{ $recipe->id }}"
-                                        :favs="{{ $recipe->favs }}"
-                                        :user-id="{{ auth()->check() ? user()->id : 'null' }}">
-                                    </btn-favs>
+                                    <btn-favs recipe-id="{{ $recipe->id }}" :favs="{{ $recipe->favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}"></btn-favs>
                                 </div>
                             </div>
                             <i class="fas fa-ellipsis-h fa-15x right red-text activator"></i>

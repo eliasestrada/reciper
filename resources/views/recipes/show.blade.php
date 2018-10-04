@@ -34,6 +34,7 @@
                     <button class="btn min-w" id="_to_drafts" onclick="if (!confirm('@lang('recipes.are_you_sure_to_draft')')) event.preventDefault()">@lang('tips.add_to_drafts')</button>
                 </form>
             @endif
+
             {{-- Edit button --}}
             @if (optional(user())->hasRecipe($recipe->id))
                 <a href="/recipes/{{ $recipe->id }}/edit" class="btn mt-2 min-w" {{ $recipe->isReady() ? 'disabled' : '' }}>
@@ -43,15 +44,17 @@
         </div>
 
         {{--  Likes  --}}
-        <div class="like-for-author-section no-select position-relative" style="width:90%">
+        <div class="like-for-author-section no-select" style="width:90%">
             @if ($recipe->isDone())
-                @include('includes.buttons.btn-favs')
-                <i>{{ $recipe->favs->count() }}</i>
-            @endif
+                {{-- Favs button --}}
+                <div class="d-inline-block" style="transform:translateX(13px)">
+                    <btn-favs recipe-id="{{ $recipe->id }}" :favs="{{ $recipe->favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}"></btn-favs>
+                </div>
 
-            <a href="/users/{{ $recipe->user->id }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
+                {{-- User icon --}}
+                <a href="/users/{{ $recipe->user->id }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
 
-            @if ($recipe->isDone())
+                {{-- Like button --}}
                 <like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}" inline-template>
                     <span>
                         <a href="#" v-on:click="toggleButton()" class="like-icon" :class="iconState()">
@@ -59,7 +62,7 @@
                                 <span class="btn-like">@include('includes.icons.like-btn')</span>
                             </div>
                         </a>
-                        <audio ref="audio" id="audio" src="/storage/audio/like-effect.mp3" type="audio/mpeg"></audio>
+                        <audio ref="audio" src="/storage/audio/like-effect.mp3" type="audio/mpeg"></audio>
                         <i id="_all-likes" v-text="allLikes"></i>
                     </span>
                 </like>
