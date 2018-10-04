@@ -4,7 +4,6 @@
             <i class="fas fa-star fa-15x star" :class="icon"></i>
             <span v-text="amount"></span>
         </a>
-        <audio ref="audio" src="/storage/audio/favs-effect.mp3" class="hide" type="audio/mpeg"></audio>
     </div>
 </template>
 
@@ -55,8 +54,8 @@ export default {
             }
         },
         playSound() {
-            this.$refs.audio.volume = 0.2
-            this.$refs.audio.play()
+            $('favs-effect').volume = 0.2
+            $('favs-effect').play()
         },
     },
 }
