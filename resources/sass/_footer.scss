@@ -3,14 +3,16 @@ footer {
 	min-height: 50em;
 	
 	strong {
-		color: $mainLight;
-		font-size: 1.1em;
+		color: #fff;
+        font-size: 1.1em;
+        text-transform: uppercase;
 	}
 
 	a {
 		color: #cfcfcf;
 		&:hover {
-			color: #a5a5a5;
+            color: #a5a5a5;
+            text-decoration: underline;
 		}
 	}
 

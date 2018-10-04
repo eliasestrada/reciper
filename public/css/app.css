@@ -8037,8 +8037,9 @@ footer {
 }
 
 footer strong {
-  color: #dbd9ea;
+  color: #fff;
   font-size: 1.1em;
+  text-transform: uppercase;
 }
 
 footer a {
@@ -8047,6 +8048,7 @@ footer a {
 
 footer a:hover {
   color: #a5a5a5;
+  text-decoration: underline;
 }
 
 footer .active {

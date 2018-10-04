@@ -28,6 +28,7 @@
             </div>
             <div class="input-field">
                 <button type="submit" class="btn btn-main">
+                    <i class="fas fa-envelope left"></i>
                     @lang('forms.send')
                 </button>
             </div>

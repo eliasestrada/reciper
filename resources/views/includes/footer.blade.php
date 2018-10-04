@@ -9,6 +9,26 @@
                         <i class="fas fa-angle-right red-text"></i> @lang('home.home')
                     </a>
                 </li>
+                <li>
+                    <a href="/recipes" title="@lang('messages.go')">
+                        <i class="fas fa-angle-right red-text"></i> @lang('recipes.recipes')
+                    </a>
+                </li>
+                <li>
+                    <a href="/search" title="@lang('messages.go')">
+                        <i class="fas fa-angle-right red-text"></i> @lang('pages.search')
+                    </a>
+                </li>
+                <li>
+                    <a href="/help" title="@lang('messages.go')">
+                        <i class="fas fa-angle-right red-text"></i> @lang('messages.help')
+                    </a>
+                </li>
+                <li>
+                    <a href="/contact" title="@lang('messages.go')">
+                        <i class="fas fa-angle-right red-text"></i> @lang('feedback.contact_us')
+                    </a>
+                </li>
             </ul>
             {{-- Documents --}}
             <ul class="unstyled-list col s12">
@@ -67,21 +87,27 @@
         </div>
     </div>
 
-    <div class="center pt-4">
-        <a href="/contact" title="@lang('feedback.contact_us')">
-            <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="40" class="pt-2">
-        </a>
-        
+    <div class="center pt-2">
         <div>
-            <a href="/contact">
-                <i class="fas fa-headset red-text"></i> 
+            <a href="/contact" title="@lang('messages.go')" class="mr-3">
+                <i class="fas fa-envelope mr-1"></i>
                 @lang('feedback.contact_us')
+            </a>
+            <a href="/help" title="@lang('messages.go')">
+                <i class="fas fa-question mr-1"></i>
+                @lang('messages.help')
             </a>
         </div>
 
-        <p class="footer-copyright mt-3">
-            &copy; {{ date('Y') }} {{ config('app.name') }} <br> {{ $title_footer ?? '' }}
-        </p>
+        <div class="footer-copyright mt-4 row">
+            <div class="col s12 m1 l1 offset-m3 offset-l4 m">
+                <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="40">
+            </div>
+            <div class="col s12 m5 l3 left-align">
+                <span>{{ $title_footer ?? '' }}</span><br>
+                <span>&copy; {{ date('Y') }} {{ config('app.name') }}</span>
+            </div>
+        </div>
     </div>
 
     @hasRole('admin')
