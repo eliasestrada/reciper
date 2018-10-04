@@ -14,21 +14,7 @@ class PagesController extends Controller
      */
     public function home()
     {
-        $random_recipes = Recipe::getRandomUnseen();
-
-        $last_liked = Recipe::query()
-            ->join('likes', 'likes.recipe_id', '=', 'recipes.id')
-            ->selectBasic(['recipe_id'], ['id'])
-            ->orderBy('likes.id', 'desc')
-            ->limit(8)
-            ->done(1)
-            ->get();
-
-        $last_liked->map(function ($liked) {
-            $liked->id = $liked->recipe_id;
-        });
-
-        return view('pages.home', compact('random_recipes', 'last_liked'));
+        return view('pages.home', ['random_recipes' => Recipe::getRandomUnseen(28, 12)]);
     }
 
     /**

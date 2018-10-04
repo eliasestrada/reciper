@@ -7,7 +7,6 @@ return [
     'footer_text' => 'Содержание подвала',
     'last_recipes' => 'Последние рецепты',
     'random_choice' => 'Случайный выбор',
-    'last_liked' => 'Полюбившийся',
 
     // Header
     'breakfast' => 'завтрак',
