@@ -16,8 +16,8 @@ class FeedbackRequestTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->msg_min = config('validation.feedback.contact.message.min');
-        $this->msg_max = config('validation.feedback.contact.message.max');
+        $this->msg_min = config('valid.feedback.contact.message.min');
+        $this->msg_max = config('valid.feedback.contact.message.max');
     }
 
     /** @test */

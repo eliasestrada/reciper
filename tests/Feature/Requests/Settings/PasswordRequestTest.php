@@ -18,8 +18,8 @@ class PasswordRequestTest extends TestCase
     {
         parent::setUp();
         $this->user = create_user();
-        $this->pwd_min = config('validation.settings.password.min');
-        $this->pwd_max = config('validation.settings.password.max');
+        $this->pwd_min = config('valid.settings.password.min');
+        $this->pwd_max = config('valid.settings.password.max');
         $this->request = $this->actingAs($this->user)->followingRedirects();
     }
 

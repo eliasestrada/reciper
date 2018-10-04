@@ -18,8 +18,8 @@ class VisitorsRequestTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->msg_min = config('validation.feedback.ban.message.min');
-        $this->msg_max = config('validation.feedback.ban.message.max');
+        $this->msg_min = config('valid.feedback.ban.message.min');
+        $this->msg_max = config('valid.feedback.ban.message.max');
         $this->visitor = create(Visitor::class);
         $this->request = $this->actingAs(create_user('master'))->followingRedirects();
     }

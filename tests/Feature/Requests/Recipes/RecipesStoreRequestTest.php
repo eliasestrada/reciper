@@ -16,8 +16,8 @@ class RecipesStoreRequestTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->title_min = config('validation.recipes.title.min');
-        $this->title_max = config('validation.recipes.title.max');
+        $this->title_min = config('valid.recipes.title.min');
+        $this->title_max = config('valid.recipes.title.max');
         $this->request = $this->actingAs(create_user())->followingRedirects();
     }
 

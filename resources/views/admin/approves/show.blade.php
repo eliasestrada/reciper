@@ -31,7 +31,7 @@
                             @csrf
                             <p>@lang('notifications.set_message_desc')</p>
                             <div class="input-field">
-                                <textarea name="message" id="textarea1" class="materialize-textarea counter" data-length="{{ config('validation.approves.disapprove.message.max') }}" required></textarea>
+                                <textarea name="message" id="textarea1" class="materialize-textarea counter" data-length="{{ config('valid.approves.disapprove.message.max') }}" required></textarea>
                                 <label for="textarea1">* @lang('notifications.set_message')</label>
                                 <button class="btn red" type="submit" onclick="if (!confirm('@lang('recipes.are_you_sure_to_cancel')')) event.preventDefault()">@lang('forms.send')</button>
                             </div>

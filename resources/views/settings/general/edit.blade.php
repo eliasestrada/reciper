@@ -13,7 +13,7 @@
             <div class="center"><h2 class="headline">@lang('settings.reciper_name')</h2></div>
             <div class="input-field">
                 <label for="name">@lang('forms.name')</label>
-                <input type="text" name="name" id="name" value="{{ user()->name }}" data-length="{{ config('validation.settings.general.name.max') }}" class="counter" maxlength="{{ config('validation.settings.general.name.max') }}" minlength="{{ config('validation.settings.general.name.min') }}">
+                <input type="text" name="name" id="name" value="{{ user()->name }}" data-length="{{ config('valid.settings.general.name.max') }}" class="counter" maxlength="{{ config('valid.settings.general.name.max') }}" minlength="{{ config('valid.settings.general.name.min') }}">
             </div>
         </div>
 
@@ -21,7 +21,7 @@
         <div class="col s12 m6">
             <div class="center"><h2 class="headline">@lang('settings.about_me')</h2></div>
             <div class="input-field">
-                <textarea id="about_me" class="materialize-textarea counter" data-length="{{ config('validation.settings.general.about_me.max') }}" name="about_me" maxlength="{{ config('validation.settings.general.about_me.max') }}">{{ (user()->about_me ?? old('about_me')) }}</textarea>
+                <textarea id="about_me" class="materialize-textarea counter" data-length="{{ config('valid.settings.general.about_me.max') }}" name="about_me" maxlength="{{ config('valid.settings.general.about_me.max') }}">{{ (user()->about_me ?? old('about_me')) }}</textarea>
                 <label for="about_me">@lang('settings.about_me')</label>
             </div>
         </div>

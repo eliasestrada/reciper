@@ -15,8 +15,8 @@ class RecipeStoreRequest extends FormRequest
     // Get the validation messages that apply to the request.
     public function rules()
     {
-        $min = config('validation.recipes.title.min');
-        $max = config('validation.recipes.title.max');
+        $min = config('valid.recipes.title.min');
+        $max = config('valid.recipes.title.max');
         return ['title' => "required|min:$min|max:$max"];
     }
 

@@ -33,7 +33,7 @@ class RecipesUpdateRequestTest extends TestCase
     /** @test */
     public function title_must_be_not_short(): void
     {
-        $title_min = config('validation.recipes.title.min');
+        $title_min = config('valid.recipes.title.min');
         $this->data['title'] = str_random($title_min - 1);
         $this->response()->assertSeeText($this->replace(':min', $title_min, trans('recipes.title_min')));
     }
@@ -41,7 +41,7 @@ class RecipesUpdateRequestTest extends TestCase
     /** @test */
     public function title_must_be_not_long(): void
     {
-        $title_max = config('validation.recipes.title.max');
+        $title_max = config('valid.recipes.title.max');
         $this->data['title'] = str_random($title_max + 1);
         $this->response()->assertSeeText($this->replace(':max', $title_max, trans('recipes.title_max')));
     }
@@ -49,7 +49,7 @@ class RecipesUpdateRequestTest extends TestCase
     /** @test */
     public function intro_must_be_not_short(): void
     {
-        $intro_min = config('validation.recipes.intro.min');
+        $intro_min = config('valid.recipes.intro.min');
         $this->data['intro'] = str_random($intro_min - 1);
         $this->response()->assertSeeText($this->replace(':min', $intro_min, trans('recipes.intro_min')));
     }
@@ -57,7 +57,7 @@ class RecipesUpdateRequestTest extends TestCase
     /** @test */
     public function intro_must_be_not_long(): void
     {
-        $intro_max = config('validation.recipes.intro.max');
+        $intro_max = config('valid.recipes.intro.max');
         $this->data['intro'] = str_random($intro_max + 1);
         $this->response()->assertSeeText($this->replace(':max', $intro_max, trans('recipes.intro_max')));
     }
@@ -65,7 +65,7 @@ class RecipesUpdateRequestTest extends TestCase
     /** @test */
     public function ingredients_must_be_not_short(): void
     {
-        $ingredients_min = config('validation.recipes.ingredients.min');
+        $ingredients_min = config('valid.recipes.ingredients.min');
         $this->data['ingredients'] = str_random($ingredients_min - 1);
         $this->response()->assertSeeText($this->replace(':min', $ingredients_min, trans('recipes.ingredients_min')));
     }
@@ -73,7 +73,7 @@ class RecipesUpdateRequestTest extends TestCase
     /** @test */
     public function ingredients_must_be_not_long(): void
     {
-        $ingredients_max = config('validation.recipes.ingredients.max');
+        $ingredients_max = config('valid.recipes.ingredients.max');
         $this->data['ingredients'] = str_random($ingredients_max + 1);
         $this->response()->assertSeeText($this->replace(':max', $ingredients_max, trans('recipes.ingredients_max')));
     }
@@ -81,7 +81,7 @@ class RecipesUpdateRequestTest extends TestCase
     /** @test */
     public function text_must_be_not_short(): void
     {
-        $text_min = config('validation.recipes.text.min');
+        $text_min = config('valid.recipes.text.min');
         $this->data['text'] = str_random($text_min - 1);
         $this->response()->assertSeeText($this->replace(':min', $text_min, trans('recipes.text_min')));
     }
@@ -89,7 +89,7 @@ class RecipesUpdateRequestTest extends TestCase
     /** @test */
     public function text_must_be_not_long(): void
     {
-        $text_max = config('validation.recipes.text.max');
+        $text_max = config('valid.recipes.text.max');
         $this->data['text'] = str_random($text_max + 1);
         $this->response()->assertSeeText($this->replace(':max', $text_max, trans('recipes.text_max')));
     }

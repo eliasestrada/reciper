@@ -19,14 +19,14 @@ class RecipeUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        $title_min = config('validation.recipes.title.min');
-        $title_max = config('validation.recipes.title.max');
-        $intro_min = config('validation.recipes.intro.min');
-        $intro_max = config('validation.recipes.intro.max');
-        $ingredients_min = config('validation.recipes.ingredients.min');
-        $ingredients_max = config('validation.recipes.ingredients.max');
-        $text_min = config('validation.recipes.text.min');
-        $text_max = config('validation.recipes.text.max');
+        $title_min = config('valid.recipes.title.min');
+        $title_max = config('valid.recipes.title.max');
+        $intro_min = config('valid.recipes.intro.min');
+        $intro_max = config('valid.recipes.intro.max');
+        $ingredients_min = config('valid.recipes.ingredients.min');
+        $ingredients_max = config('valid.recipes.ingredients.max');
+        $text_min = config('valid.recipes.text.min');
+        $text_max = config('valid.recipes.text.max');
 
         if ($this->ready == 1) {
             return [

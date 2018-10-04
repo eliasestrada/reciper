@@ -23,8 +23,8 @@ class VisitorsRequest extends FormRequest
      */
     public function rules()
     {
-        $min = config('validation.feedback.ban.message.min');
-        $max = config('validation.feedback.ban.message.max');
+        $min = config('valid.feedback.ban.message.min');
+        $max = config('valid.feedback.ban.message.max');
 
         return [
             'days' => 'required|numeric',

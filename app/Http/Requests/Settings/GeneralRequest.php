@@ -15,9 +15,9 @@ class GeneralRequest extends FormRequest
     // Get the validation rules that apply to the request.
     public function rules()
     {
-        $name_min = config('validation.settings.general.name.min');
-        $name_max = config('validation.settings.general.name.max');
-        $about_me_max = config('validation.settings.general.about_me.max');
+        $name_min = config('valid.settings.general.name.min');
+        $name_max = config('valid.settings.general.name.max');
+        $about_me_max = config('valid.settings.general.about_me.max');
 
         return [
             'name' => "required|min:$name_min|max:$name_max",

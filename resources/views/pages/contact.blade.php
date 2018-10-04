@@ -22,7 +22,7 @@
             </div>
             <div class="input-field">
                 <i class="fas fa-comment-alt prefix"></i>
-                <textarea name="message" id="message" class="materialize-textarea counter" data-length="{{ config('validation.feedback.contact.message.max') }}" maxlength="{{ config('validation.feedback.contact.message.max') }}" minlength="{{ config('validation.feedback.contact.message.min') }}" required>{{ old('message') }}</textarea>
+                <textarea name="message" id="message" class="materialize-textarea counter" data-length="{{ config('valid.feedback.contact.message.max') }}" maxlength="{{ config('valid.feedback.contact.message.max') }}" minlength="{{ config('valid.feedback.contact.message.min') }}" required>{{ old('message') }}</textarea>
                 <label for="message">@lang('forms.message')</label>
                 <span class="helper-text">@lang('forms.message_desc')</span>
             </div>

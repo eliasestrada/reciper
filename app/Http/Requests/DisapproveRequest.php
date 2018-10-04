@@ -21,8 +21,8 @@ class DisapproveRequest extends FormRequest
      */
     public function rules()
     {
-        $min = config('validation.approves.disapprove.message.min');
-        $max = config('validation.approves.disapprove.message.max');
+        $min = config('valid.approves.disapprove.message.min');
+        $max = config('valid.approves.disapprove.message.max');
 
         return ['message' => "required|min:$min|max:$max"];
     }
