@@ -14,10 +14,7 @@
                         </span>
                         <div style="height:25%">
                             <div class="left" style="transform:translateY(-3px)">
-                                <btn-favs v-if="favs" :recipe-id="recipe.id" :favs="favs"></btn-favs>
-                                <a v-else href="/login">
-                                    <i class="fas fa-star fa-15x star"></i>
-                                </a>
+                                <btn-favs :recipe-id="recipe.id" :favs="returnFavs(recipe.id)" :user-id="userId"></btn-favs>
                             </div>
                             <i class="fas fa-ellipsis-h right fa-15x red-text activator"></i>
                         </div>
@@ -54,6 +51,7 @@
         props: {
             "go": { required: true },
             "favs": { default: null },
+            "userId": { default: null }
         },
 
         created() {
@@ -100,13 +98,16 @@
             hash() {
                 return window.location.hash.substring(1)
             },
-            userHasFav(recipe) {
+            userHasFav(recipe_id) {
                 if (this.favs) {
                     var result = this.favs.map(fav => {
-                        return recipe == fav ? 'active' : '';
+                        return recipe_id == fav.recipe_id ? 'active' : '';
                     });
                     return result;
                 }
+            },
+            returnFavs(recipe_id) {
+                return this.favs.filter(fav => fav.recipe_id == recipe_id)
             }
         },
         components: {

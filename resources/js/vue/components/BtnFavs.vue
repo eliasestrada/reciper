@@ -1,10 +1,14 @@
 <template>
-    <div>
-        <a title="@lang('forms.login')" class="p-0" @click="fetchFavs">
-            <i class="fas fa-star fa-15x star" :class="icon"></i>
+    <section>
+        <a v-if="userId" class="p-0" @click="fetchFavs">
+            <i class="fas fa-star fa-15x star" :class="icon"></i> 
             <span v-text="amount"></span>
         </a>
-    </div>
+        <a v-else href="/login" class="p-0">
+            <i class="fas fa-star fa-15x star"></i> 
+            <span v-text="amount"></span>
+        </a>
+    </section>
 </template>
 
 <script>
@@ -20,7 +24,11 @@ export default {
         this.toggleActive()
     },
 
-    props: ['recipeId', 'favs'],
+    props: {
+        'recipeId': { required: true },
+        'favs': { default: null },
+        'userId': { default: null },
+    },
      
     methods: {
         fetchFavs() {
@@ -36,20 +44,22 @@ export default {
             })
             .then(res => res.text())
             .then(data => {
-                this.playSound()
-                this.icon = data
-                if (data == 'active') {
-                    this.amount++
-                } else {
-                    this.amount--
+                if (data != 'fail') {
+                    this.playSound()
+                    this.icon = data
+                    if (data == 'active') {
+                        this.amount++
+                    } else {
+                        this.amount--
+                    }
                 }
             })
             .catch(err => console.log(err))
         },
         toggleActive() {
-            if (this.favs) {
+            if (this.userId) {
                 this.icon = this.favs.map(fav => {
-                    return this.recipeId == fav ? 'active' : '';
+                    return this.recipeId == fav.recipe_id && this.userId == fav.user_id ? 'active' : '';
                 });
             }
         },

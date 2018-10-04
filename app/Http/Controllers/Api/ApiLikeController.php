@@ -29,7 +29,7 @@ class ApiLikeController extends Controller
      * @param integer $id of the recipe
      * @return object
      */
-    public function like($id): ?object
+    public function like(Request $request, $id): ?object
     {
         $visitor = Visitor::whereIp(request()->ip())->first();
 
