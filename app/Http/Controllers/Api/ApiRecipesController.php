@@ -20,8 +20,7 @@ class ApiRecipesController extends Controller
     public function index(?string $hash = null): ?object
     {
         return RecipesResource::collection(
-            $this->makeQueryWithCriteria($hash, Recipe::query())->paginate(8)
-        );
+            $this->makeQueryWithCriteria($hash, Recipe::query(), 8));
     }
 
     /**
@@ -60,52 +59,70 @@ class ApiRecipesController extends Controller
     }
 
     /**
-     * @param [type] $hash
+     * @param string [type] $hash
      * @param [type] $sql
+     * @param int $pagin
      * @return void
      */
-    public function makeQueryWithCriteria($hash, $sql)
+    public function makeQueryWithCriteria(string $hash, $sql, int $pagin)
     {
         if ($hash == 'new') {
-            return $sql->latest()->done(1);
+            return $sql->latest()->done(1)->paginate($pagin);
         }
 
         if ($hash == 'most_liked') {
-            return $sql->withCount('likes')->orderBy('likes_count', 'desc')->done(1);
+            return $sql->withCount('likes')->orderBy('likes_count', 'desc')->done(1)->paginate($pagin);
         }
 
         if ($hash == 'my_viewes') {
-            return $sql->join('views', 'views.recipe_id', '=', 'recipes.id')
+            $result = $sql->join('views', 'views.recipe_id', '=', 'recipes.id')
                 ->where('views.visitor_id', Visitor::whereIp(request()->ip())->value('id'))
+                ->selectBasic(['recipe_id'], ['id'])
                 ->orderBy('views.id', 'asc')
-                ->done(1);
-        }
+                ->done(1)
+                ->paginate($pagin);
 
-        if ($hash == 'simple') {
-            return $sql->whereSimple(1)->selectBasic()->done(1);
+            $result->map(function ($r) {
+                $r->id = $r->recipe_id;
+            });
+
+            return $result;
+
         }
 
         if ($hash == 'my_likes') {
-            return $sql->join('likes', 'likes.recipe_id', '=', 'recipes.id')
+            $result = $sql->join('likes', 'likes.recipe_id', '=', 'recipes.id')
                 ->where('likes.visitor_id', Visitor::whereIp(request()->ip())->value('id'))
+                ->selectBasic(['recipe_id'], ['id'])
                 ->orderBy('likes.id', 'asc')
-                ->done(1);
+                ->done(1)
+                ->paginate($pagin);
+
+            $result->map(function ($r) {
+                $r->id = $r->recipe_id;
+            });
+
+            return $result;
+        }
+
+        if ($hash == 'simple') {
+            return $sql->whereSimple(1)->selectBasic()->done(1)->paginate($pagin);
         }
 
         // Searching for recipes with category
         if (str_contains($hash, 'category=')) {
             return $sql->with('categories')->whereHas('categories', function ($query) use ($hash) {
                 $query->whereId(str_replace('category=', '', $hash));
-            })->done(1);
+            })->done(1)->paginate($pagin);
         }
 
         // Searching for recipes with meal time
         if ($hash == 'breakfast' || $hash == 'lunch' || $hash == 'dinner') {
             return $sql->with('meal')->whereHas('meal', function ($query) use ($hash) {
                 $query->whereNameEn($hash);
-            })->done(1);
+            })->done(1)->paginate($pagin);
         }
 
-        return $sql->latest()->done(1);
+        return $sql->latest()->done(1)->paginate($pagin);
     }
 }
