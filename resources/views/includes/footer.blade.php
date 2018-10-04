@@ -2,7 +2,7 @@
     <div class="row wrapper">
         <div class="col s12 m6 l3 left-align row">
             {{-- Navigation --}}
-            <ul class="unstyled-list col s12">
+            <ul class="px-0 unstyled-list col s12">
                 <li><strong>@lang('pages.navigation')</strong></li>
                 <li>
                     <a href="/" title="@lang('messages.go')">
@@ -31,7 +31,7 @@
                 </li>
             </ul>
             {{-- Documents --}}
-            <ul class="unstyled-list col s12">
+            <ul class="px-0 unstyled-list col s12">
                 <li><strong>@lang('documents.rights_info')</strong></li>
                 @foreach ($documents_footer as $doc)
                     <li>

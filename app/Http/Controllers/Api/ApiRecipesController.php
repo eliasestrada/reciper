@@ -59,12 +59,12 @@ class ApiRecipesController extends Controller
     }
 
     /**
-     * @param string [type] $hash
-     * @param [type] $sql
-     * @param int $pagin
+     * @param string|null $hash
+     * @param $sql
+     * @param int|null $pagin
      * @return void
      */
-    public function makeQueryWithCriteria(string $hash, $sql, int $pagin)
+    public function makeQueryWithCriteria(?string $hash = 'new', $sql, ?int $pagin = 8)
     {
         if ($hash == 'new') {
             return $sql->latest()->done(1)->paginate($pagin);
