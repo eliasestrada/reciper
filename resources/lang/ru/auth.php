@@ -7,7 +7,7 @@ return [
     // Views
     'register' => 'Регистрация',
     'logout' => 'Выйти',
-    'enter' => 'Войти',
+    'login' => 'Войти',
 
     // Validation
     'incorect_name' => 'Не правильный формат имени',
