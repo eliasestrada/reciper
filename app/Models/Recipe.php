@@ -80,4 +80,30 @@ class Recipe extends Model
             ->where('ready_' . lang(), $value)
             ->where('approved_' . lang(), $value);
     }
+
+    /**
+     * @param int $limit
+     * @param int $edge
+     * @param int|null $visitor_id
+     * @return object
+     */
+    public static function getRandomUnseen(int $limit = 12, int $edge = 8, ?int $visitor_id = null): object
+    {
+        $seen = View::whereVisitorId($visitor_id ?? visitor_id())->pluck('recipe_id');
+
+        $random = self::inRandomOrder()
+            ->where($seen->map(function ($id) {
+                return ['id', '!=', $id];
+            })->toArray())
+            ->selectBasic()
+            ->done(1)
+            ->limit($limit)
+            ->get();
+
+        // If not enough recipes to display, show just random recipes
+        if ($random->count() < $edge) {
+            return self::inRandomOrder()->selectBasic()->done(1)->limit(12)->get();
+        }
+        return $random;
+    }
 }

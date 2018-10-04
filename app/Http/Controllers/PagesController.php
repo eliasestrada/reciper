@@ -14,13 +14,7 @@ class PagesController extends Controller
      */
     public function home()
     {
-        $visited = View::whereVisitorId(visitor_id())->pluck('recipe_id');
-        $random_recipes = $this->getRandomRecipes($visited);
-
-        // If not enough recipes to display, show just random recipes
-        if ($random_recipes->count() < 12) {
-            $random_recipes = $this->getRandomRecipes();
-        }
+        $random_recipes = Recipe::getRandomUnseen();
 
         $last_liked = Recipe::query()
             ->join('likes', 'likes.recipe_id', '=', 'recipes.id')
@@ -65,21 +59,6 @@ class PagesController extends Controller
         $search_suggest = $this->searchForSuggestions();
 
         return view('pages.search', compact('recipes', 'search_suggest', 'message'));
-    }
-
-    /**
-     * @param object|null $except
-     */
-    public function getRandomRecipes(?object $except = null)
-    {
-        $query = Recipe::inRandomOrder();
-
-        if ($except) {
-            $query->where($except->map(function ($id) {
-                return ['id', '!=', $id];
-            })->toArray());
-        }
-        return $query->selectBasic()->done(1)->limit(12)->get();
     }
 
     /**
