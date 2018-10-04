@@ -11,9 +11,11 @@ class RecipesIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_is_correct(): void
+    public function view_has_correct_data(): void
     {
-        $this->get('/recipes')->assertViewIs('recipes.index');
+        $this->get('/recipes')
+            ->assertViewIs('recipes.index')
+            ->assertViewHas('favs', \App\Models\Fav::get(['recipe_id', 'user_id']));
     }
 
     /** @test */

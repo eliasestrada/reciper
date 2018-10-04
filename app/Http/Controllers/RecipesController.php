@@ -6,6 +6,7 @@ use App\Helpers\Traits\RecipesControllerHelpers;
 use App\Http\Requests\Recipes\RecipeStoreRequest;
 use App\Http\Requests\Recipes\RecipeUpdateRequest;
 use App\Http\Responses\Controllers\RecipeUpdateResponse;
+use App\Models\Fav;
 use App\Models\Meal;
 use App\Models\Recipe;
 use App\Models\View;
@@ -24,7 +25,9 @@ class RecipesController extends Controller
      */
     public function index()
     {
-        return view('recipes.index');
+        return view('recipes.index', [
+            'favs' => Fav::get(['recipe_id', 'user_id']),
+        ]);
     }
 
     /**

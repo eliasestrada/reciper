@@ -51,6 +51,7 @@ class Recipe extends Model
             'ready_' . lang(),
             'approved_' . lang(),
             'image',
+            'time',
             'updated_at',
         ], $aditional]);
 
