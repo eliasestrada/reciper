@@ -87,31 +87,36 @@
 
         <div class="center">
             @if ($loop->first)
-                <a href="/recipes#new" class="btn-large hoverable my-1 waves-effect waves-light">
+                <a href="/recipes#new" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('recipes.go')">
                     <i class="fas fa-clock left"></i>
                     @lang('home.last_recipes')
                 </a>
-                <a href="/recipes#simple" class="btn-large hoverable my-1 waves-effect waves-light">
+                <a href="/recipes#simple" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('recipes.go')">
                     <i class="fas fa-concierge-bell left"></i>
                     @lang('recipes.simple')
                 </a>
             @elseif ($loop->iteration == 2)
-                <a href="/recipes#breakfast" class="btn-large hoverable my-1 waves-effect waves-light">
+                <a href="/recipes#breakfast" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('recipes.go')">
                     <i class="fas fa-utensils left"></i>
                     @lang('home.breakfast')
                 </a>
-                <a href="/recipes#lunch" class="btn-large hoverable my-1 waves-effect waves-light">
+                <a href="/recipes#lunch" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('recipes.go')">
                     <i class="fas fa-utensils left"></i>
                     @lang('home.lunch')
                 </a>
-                <a href="/recipes#dinner" class="btn-large hoverable my-1 waves-effect waves-light">
+                <a href="/recipes#dinner" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('recipes.go')">
                     <i class="fas fa-utensils left"></i>
                     @lang('home.dinner')
                 </a>
             @elseif ($loop->last)
-                <div class="container">
-
-                </div>
+                <a href="/recipes#my_viewes" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('recipes.go')">
+                    <i class="fas fa-eye left"></i>
+                    @lang('recipes.watched')
+                </a>
+                <a href="/recipes#my_liked" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('recipes.go')">
+                    <i class="fas fa-heart left"></i>
+                    @lang('recipes.loved')
+                </a>
             @endif
         </div>
     </section>
