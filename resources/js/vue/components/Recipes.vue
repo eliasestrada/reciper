@@ -16,6 +16,10 @@
                             <div class="left">
                                 <btn-favs :recipe-id="recipe.id" :favs="returnFavs(recipe.id)" :user-id="userId"></btn-favs>
                             </div>
+                            <div class="left">
+                                <i class="fas fa-clock fa-1x z-depth-2 main-light circle red-text ml-5 mr-1"></i>
+                                {{ recipe.time }} {{ mins }}
+                            </div>
                             <i class="fas fa-ellipsis-h right fa-15x red-text activator"></i>
                         </div>
                     </div>
@@ -51,7 +55,8 @@
         props: {
             "go": { required: true },
             "favs": { default: null },
-            "userId": { default: null }
+            "userId": { default: null },
+            "mins": { default: 'min' }
         },
 
         created() {

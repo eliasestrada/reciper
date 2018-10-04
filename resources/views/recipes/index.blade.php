@@ -25,7 +25,11 @@
             </div>
         </sort-buttons>
     </div>
-    <recipes go="@lang('messages.go')" :favs="{{ $favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}">
+    <recipes
+        go="@lang('messages.go')"
+        :favs="{{ $favs }}"
+        :user-id="{{ auth()->check() ? user()->id : 'null' }}"
+        mins="@lang('recipes.min')">
         @include('includes.preloader')
     </recipes>
 </div>
