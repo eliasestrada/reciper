@@ -7,13 +7,11 @@ use Faker\Generator as Faker;
 cache()->flush();
 
 $factory->define(User::class, function (Faker $faker) {
-    $faker_ru = \Faker\Factory::create('ru_RU');
-
     return [
         'id' => User::orderBy('id', 'desc')->latest()->value('id') + 1,
         'visitor_id' => factory(Visitor::class)->create()->id,
-        'name' => $faker_ru->name,
-        'about_me' => $faker_ru->realText(rand(10, 100)),
+        'name' => $faker->name,
+        'about_me' => '',
         'email' => $faker->freeEmail,
         'password' => bcrypt('111111'),
         'remember_token' => str_random(10),

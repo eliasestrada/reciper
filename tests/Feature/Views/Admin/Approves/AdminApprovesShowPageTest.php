@@ -35,18 +35,10 @@ class AdminApprovesShowPageTest extends TestCase
     /** @test */
     public function view_has_data(): void
     {
-        $this->actingAs($this->admin)
+        $response = $this->actingAs($this->admin)
             ->get("/admin/approves/{$this->unapproved_recipe->id}")
             ->assertViewIs('admin.approves.show')
-            ->assertViewHasAll([
-                'recipe' => Recipe::whereId($this->unapproved_recipe->id)
-                    ->with('approver')
-                    ->with('categories')
-                    ->with('views')
-                    ->with('user')
-                    ->first(),
-                'approver_id' => $this->admin->id,
-            ]);
+            ->assertViewHasAll(['recipe', 'approver_id']);
     }
 
     /** @test */
