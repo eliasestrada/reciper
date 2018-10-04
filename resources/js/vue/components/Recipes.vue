@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-content min-h">
                         <span style="height:75%" class="card-title activator">
-                            {{ recipe.title_short }}
+                            {{ recipe.title }}
                         </span>
                         <div style="height:25%">
                             <div class="left">
