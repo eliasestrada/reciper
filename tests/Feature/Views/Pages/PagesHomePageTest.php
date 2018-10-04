@@ -13,7 +13,7 @@ class PagesHomePageTest extends TestCase
     /** @test */
     public function view_has_data(): void
     {
-        $this->get('/')->assertViewIs('home.home')->assertViewHas('recipes');
+        $this->get('/')->assertViewIs('pages.home')->assertViewHas('recipes');
     }
 
     /** @test */

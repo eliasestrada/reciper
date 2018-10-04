@@ -85,6 +85,6 @@ class LoginPageTest extends TestCase
     {
         $this->get('/login')
             ->assertOk()
-            ->assertViewIs('auth.enter');
+            ->assertViewIs('auth.login');
     }
 }

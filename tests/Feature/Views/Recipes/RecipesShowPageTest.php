@@ -225,8 +225,8 @@ class RecipesShowPageTest extends TestCase
 
         $this->actingAs($user)
             ->followingRedirects()
-            ->post(action('ApiFavsController@store'), ['recipe_id' => $recipe->id])
-            ->assertSeeText(trans('recipes.added_to_favs'));
+            ->post(action('ApiFavsController@store', ['id' => $recipe->id]))
+            ->assertSeeText('active');
 
         $this->assertDatabaseHas('favs', [
             'recipe_id' => $recipe->id,
@@ -243,8 +243,8 @@ class RecipesShowPageTest extends TestCase
 
         $this->actingAs($user)
             ->followingRedirects()
-            ->post(action('ApiFavsController@store'), ['recipe_id' => $recipe->id])
-            ->assertSeeText(trans('recipes.deleted_from_favs'));
+            ->post(action('ApiFavsController@store', ['id' => $recipe->id]))
+            ->assertDontSeeText('active');
 
         $this->assertDatabaseMissing('favs', [
             'recipe_id' => $recipe->id,

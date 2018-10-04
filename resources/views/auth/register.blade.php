@@ -9,7 +9,7 @@
         <div class="paper">
             <div class="register-tabs">
                 <a href="#" class="active">@lang('auth.register')</a>
-                <a href="/login">@lang('auth.enter')</a>
+                <a href="/login">@lang('auth.login')</a>
             </div>
         </div>
 

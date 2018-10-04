@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('auth.enter'))
+@section('title', trans('auth.login'))
 
 @section('content')
 
@@ -9,7 +9,7 @@
         <div class="paper">
             <div class="register-tabs">
                 <a href="/register">@lang('auth.register')</a>
-                <a href="#" class="active">@lang('auth.enter')</a>
+                <a href="#" class="active">@lang('auth.login')</a>
             </div>
         </div>
 
@@ -40,7 +40,7 @@
         
             <div class="input-field">
                 <button type="submit" id="go-to-account" class="waves-effect waves-light btn">
-                    @lang('auth.enter')
+                    @lang('auth.login')
                     <i class="fas fa-sign-in-alt right"></i>
                 </button>
             </div>

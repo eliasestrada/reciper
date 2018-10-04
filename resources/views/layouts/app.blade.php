@@ -48,7 +48,7 @@
                     </span>
                     <p class="pt-1 col s12 m7 left-align">{!! trans('messages.login_to_add_recipe') !!}</p>
                     <div class="col s12">
-                        @include('includes.buttons.btn', ['title' => trans('auth.enter'), 'link' => '/login'])
+                        @include('includes.buttons.btn', ['title' => trans('auth.login'), 'link' => '/login'])
                         @include('includes.buttons.btn', ['title' => trans('auth.register'), 'link' => '/register'])
                     </div>
                 </div>
