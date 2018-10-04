@@ -15,8 +15,15 @@
                         <div style="height:25%">
                             <div>
                                 <div class="left">
-                                    <btn-favs recipe-id="{{ $recipe->id }}" :favs="{{ $recipe->favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}"></btn-favs>
+                                    <btn-favs recipe-id="{{ $recipe->id }}" :favs="{{ $recipe->favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}">
+                                        <i class="star d-inline-block grey circle mx-2" style="width:10px;height:10px;"></i> 
+                                        ...
+                                    </btn-favs>
                                 </div>
+                            </div>
+                            <div class="left">
+                                <i class="fas fa-clock fa-1x z-depth-2 main-light circle red-text ml-5 mr-1"></i>
+                                {{ $recipe->time }} @lang('recipes.min').
                             </div>
                             <i class="fas fa-ellipsis-h fa-15x right red-text activator"></i>
                         </div>
