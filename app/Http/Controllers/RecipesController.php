@@ -9,6 +9,7 @@ use App\Http\Responses\Controllers\RecipeUpdateResponse;
 use App\Models\Fav;
 use App\Models\Meal;
 use App\Models\Recipe;
+use App\Models\User;
 use App\Models\View;
 
 class RecipesController extends Controller
@@ -82,7 +83,7 @@ class RecipesController extends Controller
         // Else increment visits column by one
         if ($recipe->views()->whereVisitorId(visitor_id())->doesntExist()) {
             $recipe->views()->create(['visitor_id' => visitor_id()]);
-            event(new \App\Events\RecipeGotViewed($recipe));
+            User::addExp(config('custom.exp_for_view'), $recipe->user_id);
         } else {
             $recipe->views()->whereVisitorId(visitor_id())->increment('visits');
         }

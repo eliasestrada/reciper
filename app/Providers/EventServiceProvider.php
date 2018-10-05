@@ -29,11 +29,5 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\RemoveExpForDrafting::class,
             \App\Listeners\ForgetCacheAfterDrafting::class,
         ],
-        \App\Events\RecipeGotViewed::class => [
-            \App\Listeners\AddExpForView::class,
-        ],
-        \App\Events\UserVisitedPage::class => [
-            \App\Listeners\UpdateUpdatedAt::class,
-        ],
     ];
 }

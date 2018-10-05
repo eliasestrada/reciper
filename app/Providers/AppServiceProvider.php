@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('includes.footer', function ($view) {
             if (auth()->check()) {
-                event(new \App\Events\UserVisitedPage);
+                User::whereId(user()->id)->update(['updated_at' => now()]);
             }
         });
     }
