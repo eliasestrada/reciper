@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('includes.footer', function ($view) {
             if (auth()->check()) {
-                event(new \App\Events\UserVisitedPage());
+                event(new \App\Events\UserVisitedPage);
             }
         });
     }

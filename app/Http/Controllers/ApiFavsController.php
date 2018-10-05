@@ -22,10 +22,14 @@ class ApiFavsController extends Controller
 
         if (Fav::where([['user_id', user()->id], ['recipe_id', $recipe_id]])->exists()) {
             Fav::where([['user_id', user()->id], ['recipe_id', $recipe_id]])->delete();
+            event(new \App\Events\RecipeRemovedFromFavs($recipe_id));
+
             return response('');
         }
 
         Fav::create(['user_id' => user()->id, 'recipe_id' => $recipe_id]);
+        event(new \App\Events\RecipeAddedToFavs($recipe_id));
+
         return response('active');
     }
 }

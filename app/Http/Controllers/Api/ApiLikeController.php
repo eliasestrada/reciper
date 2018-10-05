@@ -35,7 +35,7 @@ class ApiLikeController extends Controller
 
         if (request()->cookie('ekilx') != $id) {
             Like::create(['visitor_id' => $visitor->id, 'recipe_id' => $id]);
-            event(new \App\Events\RecipeGotLiked(Recipe::find($id)));
+            event(new \App\Events\RecipeGotLiked($id));
 
             return response()->json(['liked' => 1])->withCookie('ekilx', \Crypt::encrypt($id), 5555);
         }
@@ -51,7 +51,7 @@ class ApiLikeController extends Controller
         $visitor = Visitor::whereIp(request()->ip())->first();
         Like::where(['visitor_id' => $visitor->id, 'recipe_id' => $id])->delete();
 
-        event(new \App\Events\RecipeGotDisliked(Recipe::find($id)));
+        event(new \App\Events\RecipeGotDisliked($id));
 
         return response()->json(['liked' => 0])->withCookie('ekilx', $id, -1);
     }

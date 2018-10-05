@@ -18,9 +18,9 @@ class RecipeGotDisliked
     /**
      * @return void
      */
-    public function __construct(Recipe $recipe)
+    public function __construct($id)
     {
-        $this->recipe = $recipe;
+        $this->recipe = Recipe::find($id);
     }
 
     /**

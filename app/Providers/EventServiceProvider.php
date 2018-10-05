@@ -41,5 +41,11 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\UserVisitedPage::class => [
             \App\Listeners\UpdateUpdatedAt::class,
         ],
+        \App\Events\RecipeAddedToFavs::class => [
+            \App\Listeners\AddExpForAddingToFavs::class,
+        ],
+        \App\Events\RecipeRemovedFromFavs::class => [
+            \App\Listeners\RemoveExpForRemovinFromFavs::class,
+        ],
     ];
 }
