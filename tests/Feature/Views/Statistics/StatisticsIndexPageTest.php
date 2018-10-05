@@ -23,11 +23,12 @@ class StatisticsPageTest extends TestCase
 
         $most_viewed = $recipes->where('views_count', $recipes->max('views_count'))->first();
         $most_liked = $recipes->where('likes_count', $recipes->max('likes_count'))->first();
+        $most_favs = $recipes->where('favs_count', $recipes->max('favs_count'))->first();
 
         $this->actingAs($user)
             ->get('/statistics')
             ->assertViewIs('statistics.index')
-            ->assertViewHasAll(compact('recipes', 'most_viewed', 'most_liked'));
+            ->assertViewHasAll(compact('recipes', 'most_viewed', 'most_liked', 'most_favs'));
     }
 
     /** @test */

@@ -12,6 +12,7 @@ return [
     'date' => 'Дата написания',
     'most_viewed_recipe' => 'Самый просматриваемый рецепт',
     'most_liked_recipe' => 'Самый популярный рецепт',
+    'most_favorite_recipe' => 'Самый избранный рецепт',
     'status' => 'Статус',
     'checked' => 'Проверен',
     'not_ready' => 'Не готов',
@@ -25,6 +26,7 @@ return [
     'this_user_does_not_have_recipes' => 'У этого автора нет пока рецептов',
     'amount_of_views' => 'Кол-во просмотров',
     'amount_of_likes' => 'Кол-во лайков',
+    'amount_of_favs' => 'Кол-во звезд',
     'exp_of_reciper' => 'Опыт ресипёра',
 
     // Bubbles

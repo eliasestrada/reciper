@@ -22,6 +22,7 @@ return [
     'sender' => 'Отправитель',
     'in_english' => 'На английском',
     'in_russian' => 'На русском',
+    'general' => 'Общая',
 
     // Artisan controller
     'cache_deleted' => 'Настройки кеша удалены!',
