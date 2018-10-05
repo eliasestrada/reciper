@@ -7280,11 +7280,14 @@ Nav List
 }
 
 .items {
+  width: 100%;
+  max-width: 100%;
   text-align: left;
+  background: #f3edc9;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f3edc9), to(#fdfdf7));
+  background: linear-gradient(#f3edc9, #fdfdf7);
   line-height: 1.4;
   list-style-image: url(../storage/other/tick.png);
-  -webkit-column-count: 1;
-  column-count: 1;
 }
 
 .items li {
@@ -7324,13 +7327,6 @@ Nav List
 .side-bar {
   width: 100%;
   padding: 1.85em 2em;
-}
-
-@media (min-width: 1000px) {
-  .items {
-    -webkit-column-count: 2;
-    column-count: 2;
-  }
 }
 
 @media (min-width: 540px) {

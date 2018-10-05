@@ -75,12 +75,14 @@ background-color: #fff;
 }
 
 .items {
+    width: 100%;
+    max-width: 100%;
     text-align: left;
+    background: #f3edc9;
+    background: linear-gradient(#f3edc9, #fdfdf7);
     line-height: 1.4;
     list-style-image: url(../storage/other/tick.png);
-    -webkit-column-count: 1;
-    -moz-column-count: 1;
-    column-count: 1;
+    
     li {
         font-size: 1.1em;
         border-bottom: 1px solid #c3c3c3;
@@ -118,14 +120,6 @@ background-color: #fff;
 .side-bar {
     width: 100%;
     padding: 1.85em 2em;
-}
-
-@media (min-width: 1000px) {
-    .items {
-        -webkit-column-count: 2;
-        -moz-column-count: 2;
-        column-count: 2;
-    }
 }
 
 @media (min-width: 540px) {

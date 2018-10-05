@@ -27,14 +27,13 @@
 <div class="divider my-4"></div>
 
 {{--  Items --}}
-<h5 class="decorated">@lang('recipes.ingredients')</h5>
-<blockquote class="items">
+<div class="corner items py-4 px-3 z-depth-1">
     <ol class="m-0">
         @foreach ($recipe->ingredientsWithListItems() as $item)
             {!! $item !!}
         @endforeach
     </ol>
-</blockquote>
+</div>
 
 {{--  Text  --}}
 <blockquote class="pt-3" style="border:none">
