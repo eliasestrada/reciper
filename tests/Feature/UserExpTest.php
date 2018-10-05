@@ -72,7 +72,7 @@ class UserExpTest extends TestCase
         $user = create_user('', ['exp' => 0]);
         $recipe = make(Recipe::class, ['user_id' => $user->id]);
 
-        event(new \App\Events\RecipeGotViewed($recipe));
+        User::addExp(config('custom.exp_for_view'), $recipe->user_id);
         $this->assertEquals($this->exp_for_view, User::whereId($user->id)->value('exp'));
     }
 
