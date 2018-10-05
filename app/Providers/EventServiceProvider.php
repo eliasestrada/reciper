@@ -29,12 +29,6 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\RemoveExpForDrafting::class,
             \App\Listeners\ForgetCacheAfterDrafting::class,
         ],
-        \App\Events\RecipeGotLiked::class => [
-            \App\Listeners\AddExpForLike::class,
-        ],
-        \App\Events\RecipeGotDisliked::class => [
-            \App\Listeners\RemoveExpForDislike::class,
-        ],
         \App\Events\RecipeGotViewed::class => [
             \App\Listeners\AddExpForView::class,
         ],
