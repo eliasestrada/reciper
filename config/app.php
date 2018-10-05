@@ -65,7 +65,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\BladeProvider::class,
         App\Providers\VisitorProvider::class,
-        App\Providers\UserMenuProvider::class,
+        App\Providers\NavbarProvider::class,
         App\Providers\FooterProvider::class,
         App\Providers\DebugProvider::class,
     ],

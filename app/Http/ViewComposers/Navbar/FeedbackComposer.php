@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\ViewComposers\UserMenu;
+namespace App\Http\ViewComposers\Navbar;
 
 use App\Models\Feedback;
 use Illuminate\View\View;

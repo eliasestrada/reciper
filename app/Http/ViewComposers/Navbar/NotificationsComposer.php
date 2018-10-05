@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\ViewComposers\UserMenu;
+namespace App\Http\ViewComposers\Navbar;
 
 use App\Models\Notification;
 use Illuminate\View\View;
