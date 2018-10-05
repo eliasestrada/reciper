@@ -30,7 +30,7 @@
             <tr>
                 {{-- All favs --}}
                 <td>@lang('users.amount_of_favs')</td>
-                <td class="right-align">{{ user()->favs->count() }} <i class='fas fa-star tiny' style="color:#d49d10"></td>
+                <td class="right-align">{{ $recipes->pluck('favs_count')->count() }} <i class='fas fa-star tiny' style="color:#d49d10"></td>
             </tr>
             <tr>
                 {{-- Exp points --}}

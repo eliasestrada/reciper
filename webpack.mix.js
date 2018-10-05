@@ -22,5 +22,6 @@ mix.js("resources/js/vue/vue.js", "public/js/vendor")
     })
     .browserSync({
         proxy: "localhost:8000",
-        files: ["resources/sass/**/*", "resources/js/**/*"]
+        files: ["resources/sass/**/*", "resources/js/**/*"],
+        notify: false
     });
