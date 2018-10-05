@@ -99,12 +99,12 @@
                 <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="40" class="mt-2 left">
                 <span class="left pl-1">@lang('messages.app_name')</span>
             </a>
-            @if (isset($visitor_likes) && $visitor_likes > 0)
-                <a href="/recipes#my_likes" title="@lang('recipes.loved')" class="brand-logo loved-link">
+            @isset($visitor_likes)
+                <a href="/recipes#my_likes" title="@lang('recipes.loved')" class="brand-logo loved-link {{ $visitor_likes > 0 ? '' : 'hide' }}" id="visitor-likes-icon">
                     <i class="fas fa-heart fa-2x"></i> 
-                    <span>{{ $visitor_likes }}</span>
+                    <span id="visitor-likes-number">{{ $visitor_likes }}</span>
                 </a>
-            @endif
+            @endisset
             {{-- Hamburger menu --}}
             <a href="#" data-target="mobile-demo" class="sidenav-trigger no-select">
                 <i class="fas fa-bars"></i>
