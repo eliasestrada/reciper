@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Like;
 use App\Models\Recipe;
+use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
 
@@ -16,13 +17,10 @@ class ApiLikeController extends Controller
      */
     public function check($id)
     {
-        if (request()->cookie('ekilx') != $id) {
-            $visitor = Visitor::whereIp(request()->ip())->first();
-            $likes = $visitor->likes()->where('recipe_id', $id)->count();
-
-            return $likes;
+        if (request()->cookie('ekilx') == $id) {
+            return 1;
         }
-        return 1;
+        return Visitor::whereIp(request()->ip())->first()->likes()->whereRecipeId($id)->count();
     }
 
     /**
@@ -34,8 +32,9 @@ class ApiLikeController extends Controller
         $visitor = Visitor::whereIp(request()->ip())->first();
 
         if (request()->cookie('ekilx') != $id) {
-            Like::create(['visitor_id' => $visitor->id, 'recipe_id' => $id]);
-            event(new \App\Events\RecipeGotLiked($id));
+            $recipe = Recipe::find($id);
+            $visitor->likes()->create(['recipe_id' => $recipe->id]);
+            User::addExp(config('custom.exp_for_like'), $recipe->user_id);
 
             return response()->json(['liked' => 1])->withCookie('ekilx', \Crypt::encrypt($id), 5555);
         }
@@ -48,10 +47,11 @@ class ApiLikeController extends Controller
      */
     public function dislike($id): ?object
     {
+        $recipe = Recipe::find($id);
         $visitor = Visitor::whereIp(request()->ip())->first();
-        Like::where(['visitor_id' => $visitor->id, 'recipe_id' => $id])->delete();
 
-        event(new \App\Events\RecipeGotDisliked($id));
+        $visitor->likes()->whereRecipeId($recipe->id)->delete();
+        User::removeExp(config('custom.exp_for_like'), $recipe->user_id);
 
         return response()->json(['liked' => 0])->withCookie('ekilx', $id, -1);
     }

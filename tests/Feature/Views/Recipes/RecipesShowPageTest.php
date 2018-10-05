@@ -6,6 +6,7 @@ use App\Models\Fav;
 use App\Models\Feedback;
 use App\Models\Recipe;
 use App\Models\User;
+use App\Models\Visitor;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -224,8 +225,8 @@ class RecipesShowPageTest extends TestCase
         $recipe = create(Recipe::class);
 
         $this->actingAs($user)
-            ->followingRedirects()
             ->post(action('ApiFavsController@store', ['id' => $recipe->id]))
+            ->assertOk()
             ->assertSeeText('active');
 
         $this->assertDatabaseHas('favs', [
@@ -242,13 +243,33 @@ class RecipesShowPageTest extends TestCase
         Fav::create(['user_id' => $user->id, 'recipe_id' => $recipe->id]);
 
         $this->actingAs($user)
-            ->followingRedirects()
             ->post(action('ApiFavsController@store', ['id' => $recipe->id]))
+            ->assertOk()
             ->assertDontSeeText('active');
 
         $this->assertDatabaseMissing('favs', [
             'recipe_id' => $recipe->id,
             'user_id' => $user->id,
         ]);
+    }
+
+    /** @test */
+    public function visitor_can_like_the_recipe(): void
+    {
+        $visitor = create(Visitor::class);
+        $recipe = create(Recipe::class);
+
+        $this->post("/api/like/like/$recipe->id")
+            ->assertExactJson(['liked' => 1]);
+    }
+
+    /** @test */
+    public function visitor_can_dislike_the_recipe(): void
+    {
+        $visitor = create(Visitor::class);
+        $recipe = create(Recipe::class);
+
+        $this->post("/api/like/dislike/$recipe->id")
+            ->assertExactJson(['liked' => 0]);
     }
 }
