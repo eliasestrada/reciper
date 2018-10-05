@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Fav;
 use App\Models\Recipe;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ApiFavsController extends Controller
@@ -20,15 +21,17 @@ class ApiFavsController extends Controller
             return response('fail');
         }
 
+        $recipe = Recipe::find($recipe_id);
+
         if (Fav::where([['user_id', user()->id], ['recipe_id', $recipe_id]])->exists()) {
             Fav::where([['user_id', user()->id], ['recipe_id', $recipe_id]])->delete();
-            event(new \App\Events\RecipeRemovedFromFavs($recipe_id));
+            User::removeExp(config('custom.exp_for_favs'), $recipe->user_id);
 
             return response('');
         }
 
         Fav::create(['user_id' => user()->id, 'recipe_id' => $recipe_id]);
-        event(new \App\Events\RecipeAddedToFavs($recipe_id));
+        User::addExp(config('custom.exp_for_favs'), $recipe->user_id);
 
         return response('active');
     }
