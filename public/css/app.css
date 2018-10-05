@@ -7618,6 +7618,36 @@ Nav List
   margin-top: 15px;
 }
 
+.loved-link {
+  margin-left: 140px !important;
+}
+
+.loved-link span {
+  font-size: .7em;
+  margin-left: -11px;
+}
+
+.loved-link i {
+  color: #cf4545;
+  -webkit-transition: color .3s, -webkit-transform .3s;
+  transition: color .3s, -webkit-transform .3s;
+  transition: color .3s, transform .3s;
+  transition: color .3s, transform .3s, -webkit-transform .3s;
+  font-size: 1.15em;
+}
+
+.loved-link i:hover {
+  color: #d35555;
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+}
+
+@media only screen and (max-width: 992px) {
+  .loved-link {
+    margin-left: 94px !important;
+  }
+}
+
 .item-list {
   padding: 1em 0;
 }
