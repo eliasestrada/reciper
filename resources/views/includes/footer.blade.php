@@ -29,10 +29,20 @@
                         <i class="fas fa-angle-right red-text"></i> @lang('feedback.contact_us')
                     </a>
                 </li>
+                <li>
+                    <a href="/login" title="@lang('messages.go')">
+                        <i class="fas fa-angle-right red-text"></i> @lang('auth.login')
+                    </a>
+                </li>
+                <li>
+                    <a href="/register" title="@lang('messages.go')">
+                        <i class="fas fa-angle-right red-text"></i> @lang('auth.register')
+                    </a>
+                </li>
             </ul>
             {{-- Documents --}}
             <ul class="px-0 unstyled-list col s12">
-                <li><strong>@lang('documents.rights_info')</strong></li>
+                <li><strong>@lang('documents.info')</strong></li>
                 @foreach ($documents_footer as $doc)
                     <li>
                         <a href="/documents/{{ $doc->id }}">
