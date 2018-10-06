@@ -88,7 +88,7 @@
                 @foreach ($top_recipers as $i => $reciper)
                     <li>
                         <a href="/users/{{ $reciper->id }}">
-                            <i class="fas fa-star" style="font-size:0.8em;color:orange"></i> 
+                            <i class="fas fa-crown" style="font-size:0.8em;color:orange"></i> 
                             {{ $reciper->name }} ({{ $reciper->exp }})
                         </a>
                     </li>

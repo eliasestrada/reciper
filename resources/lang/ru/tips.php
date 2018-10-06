@@ -12,7 +12,7 @@ return [
 
     // User bubbles
     'likes_tip' => 'Лайки: :value<br>Здесь отображается общее кол-во лайков со всех рецептов этого автора',
-    'rating_tip' => 'Популярность: :value<br>В этом поле указаны очки популярности автора. Популярность составляется с нижеперечисленных данных:<br><br>1 лайк = ' . config('custom.popularity_for_like') . ' очков<br>1 просмотр = ' . config('custom.popularity_for_view') . ' очков<br>1 добавление в избранные = ' . config('custom.popularity_for_favs') . ' очков',
+    'rating_tip' => 'Популярность: :value<br>В этом поле указаны очки популярности автора. Популярность составляется с нижеперечисленных данных:<br><br>1 сердечко = ' . config('custom.popularity_for_like') . ' очков<br>1 просмотр = ' . config('custom.popularity_for_view') . ' очков<br>1 добавление в избранные = ' . config('custom.popularity_for_favs') . ' очков',
     'views_tip' => 'Просмотры: :value<br>Это поле для отображения общего кол-ва просмотров со всех рецептов этого автора',
 
     // Other

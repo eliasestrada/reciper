@@ -48,7 +48,7 @@
 
                 {{-- Popularity Bubble --}}
                 <div class="bubbles-block">
-                    <i class="fas fa-award fa-2x tooltipped" data-tooltip="@lang('tips.rating_tip', ['value' => $user->popularity])" data-position="top"></i>
+                    <i class="fas fa-crown fa-2x tooltipped" data-tooltip="@lang('tips.rating_tip', ['value' => $user->popularity])" data-position="top"></i>
                     <div class="bubble">
                         <span class="number">{!! readable_number($user->popularity) !!}</span>
                     </div>
