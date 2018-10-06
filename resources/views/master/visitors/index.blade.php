@@ -7,7 +7,7 @@
 <div class="page">
     <div class="center mb-3">
         <h1 class="headline mb-4">
-            @lang('visitors.visitors'): <span class="red-text">{{ $visitors->count() }}</span>
+            @lang('visitors.visitors'): <span class="red-text">{{ number_format($visitors->count()) }}</span>
         </h1>
         <div class="divider"></div>
     </div>

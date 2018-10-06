@@ -120,9 +120,9 @@
                     <i class="fas fa-eye left"></i>
                     @lang('recipes.watched')
                 </a>
-                <a href="/recipes#my_liked" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
+                <a href="/recipes#most_liked" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
                     <i class="fas fa-heart left"></i>
-                    @lang('recipes.loved')
+                    @lang('recipes.popular')
                 </a>
             @endif
         </div>

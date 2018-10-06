@@ -39,7 +39,7 @@
             <div class="bubbles no-select">
                 {{-- Likes Bubble --}}
                 <div class="bubbles-block">
-                    <i class="fas fa-heart fa-2x tooltipped" data-tooltip="@lang('tips.likes_tip', ['value' => $recipes->sum('likes_count')])" data-position="top" style=""></i>
+                    <i class="fas fa-heart fa-2x tooltipped" data-tooltip="@lang('tips.likes_tip', ['value' => number_format($recipes->sum('likes_count'))])" data-position="top"></i>
                     <div class="bubble">
                         <span class="number">{!! readable_number($recipes->sum('likes_count')) !!}</span>
                     </div>
@@ -57,7 +57,7 @@
 
                 {{-- Views Bubble --}}
                 <div class="bubbles-block">
-                    <i class="fas fa-eye fa-2x tooltipped" data-tooltip="@lang('tips.views_tip', ['value' => $recipes->sum('views_count')])" data-position="top"></i>
+                    <i class="fas fa-eye fa-2x tooltipped" data-tooltip="@lang('tips.views_tip', ['value' => number_format($recipes->sum('views_count'))])" data-position="top"></i>
                     <div class="bubble">
                         <span class="number">{!! readable_number($recipes->sum('views_count')) !!}</span>
                     </div>
