@@ -37,6 +37,7 @@ return [
     'billion' => 'млд.',
     'trillion' => 'трн.',
     'exp' => 'Опыт',
+    'level' => 'Уровень',
     'popularity' => 'Популярность',
     'views' => 'Просмотров',
 

@@ -7750,6 +7750,58 @@ Nav List
   }
 }
 
+.progress-wrap {
+  width: 300px;
+  height: 30px;
+  background: #262525;
+  position: relative;
+  border: 2px outset #262525;
+  border-radius: 7px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.progress-wrap:hover::before {
+  opacity: 0;
+}
+
+.progress-wrap:hover::after {
+  opacity: 1;
+}
+
+.progress-wrap::before, .progress-wrap::after {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: opacity 100ms;
+  transition: opacity 100ms;
+  font-size: 1em;
+  color: #f3f3f3;
+  text-shadow: 1px 1px 1px #000;
+  font-weight: bold;
+}
+
+.progress-wrap::before {
+  content: attr(data-lvl);
+}
+
+.progress-wrap::after {
+  content: attr(data-exp);
+  opacity: 0;
+}
+
+.progress-wrap .bar {
+  background: #7db9e8;
+  background: -webkit-gradient(linear, left top, left bottom, from(#7db9e8), color-stop(26%, #207cca), color-stop(95%, #062d82));
+  background: linear-gradient(to bottom, #7db9e8 0%, #207cca 26%, #062d82 95%);
+  line-height: 30px;
+  height: 100%;
+  -webkit-box-shadow: 2.5px 1px rgba(0, 0, 0, 0.1);
+          box-shadow: 2.5px 1px rgba(0, 0, 0, 0.1);
+}
+
 @-webkit-keyframes heart-beat {
   10%,
   90% {

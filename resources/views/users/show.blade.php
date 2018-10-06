@@ -65,7 +65,12 @@
     </div>
 </div>
 
-<div class="divider mb-3"></div>
+    {{-- Level bar --}}
+    <div class="progress-wrap mt-4 z-depth-1" data-lvl="@lang('users.level') {{ floor($user->exp) }}" data-exp="@lang('users.exp') {{ $user->exp }}">
+        <div class="bar" style="width:{{ explode('.', $user->exp)[1] }}0%"></div>
+    </div>
+
+<div class="divider my-3"></div>
 
 @if ($user->about_me)
     <div class="center pb-3">
