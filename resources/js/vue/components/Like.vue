@@ -45,18 +45,22 @@ export default {
 
         changeVisitorLikesNumber() {
             if (this.liked) {
-                this.visitorLikesIcon.classList.remove('d-inline-block')
-                var number = (this.visitorLikesNumber.innerHTML);
-                number--;
-                if (number < 1) {
-                    this.visitorLikesIcon.classList.add('hide')
-                }
-                this.visitorLikesNumber.innerHTML = number;
+                setTimeout(() => {
+                    this.visitorLikesIcon.classList.remove('d-inline-block')
+                    var number = (this.visitorLikesNumber.innerHTML);
+                    number--;
+                    if (number < 1) {
+                        this.visitorLikesIcon.classList.add('hide')
+                    }
+                    this.visitorLikesNumber.innerHTML = number;
+                }, 300);
             } else {
-                this.visitorLikesIcon.classList.add('d-inline-block')
-                var number = this.visitorLikesNumber.innerHTML;
-                number++;
-                this.visitorLikesNumber.innerHTML = number;
+                setTimeout(() => {
+                    this.visitorLikesIcon.classList.add('d-inline-block')
+                    var number = this.visitorLikesNumber.innerHTML;
+                    number++;
+                    this.visitorLikesNumber.innerHTML = number;
+                }, 300);
             }
         },
         
