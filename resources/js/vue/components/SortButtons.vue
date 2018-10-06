@@ -12,7 +12,7 @@ export default {
                 },
                 {
                     title: this.mostLikedBtn,
-                    icon: 'fa-award',
+                    icon: 'fa-heart',
                     link: 'most_liked',
                     isActive: false
                 },
