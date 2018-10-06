@@ -1,5 +1,5 @@
 {{-- Categories Dropdown menu --}}
-<ul id="dropdown1" class="dropdown-content bottom-borders">
+<ul id="dropdown1" class="dropdown-content dropdown-categories bottom-borders">
     @include('includes.nav.categories')
 </ul>
 
