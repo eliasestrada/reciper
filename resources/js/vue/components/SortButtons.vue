@@ -1,6 +1,6 @@
 <script>
 export default {
-    props: ['newBtn', 'simpleBtn', 'myViewesBtn', 'mostLikedBtn', 'myLikesBtn', 'breakfastBtn', 'lunchBtn', 'dinnerBtn'],
+    props: ['newBtn', 'simpleBtn', 'myViewesBtn', 'mostLikedBtn', 'breakfastBtn', 'lunchBtn', 'dinnerBtn'],
     data() {
         return {
             btns: [
@@ -44,12 +44,6 @@ export default {
                     title: this.myViewesBtn,
                     icon: 'fa-eye',
                     link: 'my_viewes',
-                    isActive: false
-                },
-                {
-                    title: this.myLikesBtn,
-                    icon: 'fa-heart',
-                    link: 'my_likes',
                     isActive: false
                 },
             ]

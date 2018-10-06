@@ -8,7 +8,7 @@
                     </a>
 
                     <div class="item-content">
-                        <section>{{ str_limit($recipe->getTitle(), 45) }}</section>
+                        <section>{{ $recipe->getTitle() }}</section>
                         <section>{{ time_ago($recipe->updated_at) }}</section>
                     </div>
 

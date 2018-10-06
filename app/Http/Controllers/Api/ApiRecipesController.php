@@ -78,7 +78,7 @@ class ApiRecipesController extends Controller
             $result = $sql->join('views', 'views.recipe_id', '=', 'recipes.id')
                 ->where('views.visitor_id', Visitor::whereIp(request()->ip())->value('id'))
                 ->selectBasic(['recipe_id'], ['id'])
-                ->orderBy('views.id', 'asc')
+                ->orderBy('views.id', 'desc')
                 ->done(1)
                 ->paginate($pagin);
 
@@ -87,14 +87,13 @@ class ApiRecipesController extends Controller
             });
 
             return $result;
-
         }
 
         if ($hash == 'my_likes') {
             $result = $sql->join('likes', 'likes.recipe_id', '=', 'recipes.id')
                 ->where('likes.visitor_id', Visitor::whereIp(request()->ip())->value('id'))
                 ->selectBasic(['recipe_id'], ['id'])
-                ->orderBy('likes.id', 'asc')
+                ->orderBy('likes.id', 'desc')
                 ->done(1)
                 ->paginate($pagin);
 

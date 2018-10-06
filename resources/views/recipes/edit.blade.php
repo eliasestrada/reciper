@@ -64,7 +64,7 @@
             {{-- Meal --}}
             <div class="col s12 m6 l4">
                 <label for="meal">@lang('recipes.meal_desc')</label>
-                <select name="meal" id="meal" class="browser-default">
+                <select name="meal" id="meal">
                     @foreach ($meal as $m)
                         <option value="{{ $m->id }}" {{ set_as_selected_if_equal($m->id, ($recipe->meal->id ?? '')) }}>
                             {{ title_case($m->getName()) }}

@@ -4,7 +4,7 @@
             <div class="col s12 m6 l3" v-for="recipe in recipes" :key="recipe.id">
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <a :href="'/recipes/' + recipe.id" :title="recipe.title">
+                        <a :href="'/recipes/' + recipe.id" :title="recipe.intro">
                             <img class="activator" :src="'storage/small/images/' + recipe.image" :alt="recipe.title">
                         </a>
                     </div>
