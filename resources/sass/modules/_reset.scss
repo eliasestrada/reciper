@@ -1,6 +1,6 @@
-.reset ul {
-	padding-left: 30px !important;
-	list-style-type: square !important;
+.reset ul,
+ .reset ol {
+	padding-left: 25px !important;
 }
 
 .reset ul li {
@@ -12,12 +12,12 @@
 }
 
 .reset h1 {
-	font-size: 40px;
+	font-size: 37px;
 	margin: 13px auto;
 }
 
 .reset h2 {
-	font-size: 35px;
+	font-size: 27px;
 	margin: 13px auto;
 }
 

@@ -3,9 +3,9 @@
   src: url(fonts/Comfortaa/Comfortaa-Regular.ttf);
 }
 
-.reset ul {
-  padding-left: 30px !important;
-  list-style-type: square !important;
+.reset ul,
+.reset ol {
+  padding-left: 25px !important;
 }
 
 .reset ul li {
@@ -17,12 +17,12 @@
 }
 
 .reset h1 {
-  font-size: 40px;
+  font-size: 37px;
   margin: 13px auto;
 }
 
 .reset h2 {
-  font-size: 35px;
+  font-size: 27px;
   margin: 13px auto;
 }
 
@@ -2283,7 +2283,7 @@ nav .brand-logo {
 }
 
 nav .brand-logo img {
-  margin-top: .9rem;
+  margin-top: .87rem;
 }
 
 nav .brand-logo.center {
@@ -2298,24 +2298,6 @@ nav .brand-logo.center {
     -webkit-transform: translateX(-72%);
     transform: translateX(-72%);
   }
-  nav .brand-logo.left,
-  nav .brand-logo.right {
-    padding: 0;
-    -webkit-transform: none;
-    transform: none;
-  }
-  nav .brand-logo.left {
-    left: 0.5rem;
-  }
-  nav .brand-logo.right {
-    right: 0.5rem;
-    left: auto;
-  }
-}
-
-nav .brand-logo.right {
-  right: 0.5rem;
-  padding: 0;
 }
 
 nav .brand-logo i,
@@ -2430,17 +2412,17 @@ nav .input-field label.active i {
 
 @media only screen and (min-width: 601px) {
   nav.nav-extended .nav-wrapper {
-    min-height: 64px;
+    height: 56px;
   }
   nav,
   nav .nav-wrapper i,
   nav a.sidenav-trigger,
   nav a.sidenav-trigger i {
-    height: 53px;
-    line-height: 53px;
+    height: 56px;
+    line-height: 56px;
   }
   .navbar-fixed {
-    height: 53px;
+    height: 56px;
   }
 }
 
@@ -3521,7 +3503,7 @@ button.btn-floating {
   opacity: 0;
   position: absolute;
   left: 0;
-  top: 53px !important;
+  top: 57px !important;
   border-radius: 4px;
   border: solid 1px #dbd9ea;
   z-index: 9999;

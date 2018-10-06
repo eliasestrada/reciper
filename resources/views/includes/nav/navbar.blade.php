@@ -113,7 +113,7 @@
             <div class="right">
                 @auth
                     {{-- Dropdown Trigger 2 User --}}
-                    <a id="_user-menu-trigger" class="mt-2 right dropdown-trigger position-relative" href="#!" data-target="dropdown2">
+                    <a id="_user-menu-trigger" class="right dropdown-trigger position-relative" href="#!" data-target="dropdown2" style="margin-top:.65rem">
                         <i class="user-icon-navbar z-depth-1 hoverable waves-effect waves-light d-block {{ $unapproved_notif || $feedback_notif || $notifs_notif || $logs_notif ? 'small-notif' : '' }}">
                             <img src="{{ asset('storage/small/users/' . user()->image) }}">
                         </i>
@@ -121,9 +121,9 @@
                 @endauth
 
                 {{-- Search button --}}
-                {{-- <a href="#" data-target="mobile-demo" class="right" style="margin:2px 17px;" title="@lang('pages.search')" id="nav-btn-for-search">
+                <a href="#" data-target="mobile-demo" class="right hide-on-small-and-down" style="margin:2px 17px;" title="@lang('pages.search')" id="nav-btn-for-search">
                     <i class="fas fa-search fa-15x d-inline"></i>
-                </a> --}}
+                </a>
             </div>
 
             {{-- Regular menu --}}
