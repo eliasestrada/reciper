@@ -82,13 +82,11 @@
     <div class="divider"></div>
 
     {{--  All my recipes  --}}
-    <div class="page">
-        @listOfRecipes(['recipes' => $recipes])
-            @slot('no_recipes')
-                @lang('users.this_user_does_not_have_recipes')
-            @endslot
-        @endlistOfRecipes
-    </div>
+    @listOfRecipes(['recipes' => $recipes])
+        @slot('no_recipes')
+            @lang('users.this_user_does_not_have_recipes')
+        @endslot
+    @endlistOfRecipes
 </div>
 
 @endsection

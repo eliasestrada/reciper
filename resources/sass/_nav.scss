@@ -55,21 +55,23 @@
     span {
         font-size: .7em;
         margin-left: -11px;
+        line-height: 52px;
     }
 
     i {
         color: $red;
-        transition: color .3s, transform .3s;
-        font-size: 1.15em;
+        transition: color .1s, transform .1s;
+        font-size: 1.2em;
+        line-height: 52px;
         &:hover {
-            color: lighten($red, 4%);
-            transform: scale(1.15)
+            color: lighten($red, 7%);
+            transform: scale(1.3)
         }
     }
 }
 
 @media only screen and (max-width: 992px) {
     .loved-link {
-        margin-left: 94px !important;
+        margin-left: 75px !important;
     }
 }

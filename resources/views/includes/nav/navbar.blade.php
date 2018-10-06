@@ -96,7 +96,7 @@
         <div class="px-3 position-relative">
             {{-- Logo --}}
             <a href="/" title="@lang('home.home')" class="brand-logo no-select">
-                <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="40" class="mt-2 left">
+                <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="30" class="left">
                 <span class="left pl-1">@lang('messages.app_name')</span>
             </a>
             @isset($visitor_likes)
@@ -121,9 +121,9 @@
                 @endauth
 
                 {{-- Search button --}}
-                <a href="#" data-target="mobile-demo" class="right" style="margin:2px 17px;" title="@lang('pages.search')" id="nav-btn-for-search">
+                {{-- <a href="#" data-target="mobile-demo" class="right" style="margin:2px 17px;" title="@lang('pages.search')" id="nav-btn-for-search">
                     <i class="fas fa-search fa-15x d-inline"></i>
-                </a>
+                </a> --}}
             </div>
 
             {{-- Regular menu --}}

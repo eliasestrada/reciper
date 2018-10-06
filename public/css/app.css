@@ -2276,11 +2276,14 @@ nav .brand-logo {
   position: absolute;
   color: #fff;
   display: inline-block;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   padding: 0;
   font-family: "Comfortaa", sans-serif;
-  margin-left: -10px;
   margin-top: 1.6px;
+}
+
+nav .brand-logo img {
+  margin-top: .9rem;
 }
 
 nav .brand-logo.center {
@@ -2292,8 +2295,8 @@ nav .brand-logo.center {
 @media only screen and (max-width: 992px) {
   nav .brand-logo {
     left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-72%);
+    transform: translateX(-72%);
   }
   nav .brand-logo.left,
   nav .brand-logo.right {
@@ -7625,26 +7628,28 @@ Nav List
 .loved-link span {
   font-size: .7em;
   margin-left: -11px;
+  line-height: 52px;
 }
 
 .loved-link i {
   color: #cf4545;
-  -webkit-transition: color .3s, -webkit-transform .3s;
-  transition: color .3s, -webkit-transform .3s;
-  transition: color .3s, transform .3s;
-  transition: color .3s, transform .3s, -webkit-transform .3s;
-  font-size: 1.15em;
+  -webkit-transition: color .1s, -webkit-transform .1s;
+  transition: color .1s, -webkit-transform .1s;
+  transition: color .1s, transform .1s;
+  transition: color .1s, transform .1s, -webkit-transform .1s;
+  font-size: 1.2em;
+  line-height: 52px;
 }
 
 .loved-link i:hover {
-  color: #d35555;
-  -webkit-transform: scale(1.15);
-          transform: scale(1.15);
+  color: #d66161;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
 }
 
 @media only screen and (max-width: 992px) {
   .loved-link {
-    margin-left: 94px !important;
+    margin-left: 75px !important;
   }
 }
 
