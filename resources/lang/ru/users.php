@@ -28,6 +28,7 @@ return [
     'amount_of_likes' => 'Кол-во лайков',
     'amount_of_favs' => 'Кол-во звезд',
     'exp_of_reciper' => 'Опыт ресипёра',
+    'popularity_of_reciper' => 'Очки популярности ресипёра',
 
     // Bubbles
     'likes' => 'Лайки',
@@ -36,6 +37,7 @@ return [
     'billion' => 'млд.',
     'trillion' => 'трн.',
     'exp' => 'Опыт',
+    'popularity' => 'Популярность',
     'views' => 'Просмотров',
 
     // Controllers

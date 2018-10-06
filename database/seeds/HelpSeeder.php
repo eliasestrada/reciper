@@ -41,8 +41,8 @@ class HelpSeeder extends Seeder
             [
                 'id' => 6,
                 'help_category_id' => 3,
-                'title_ru' => 'Как распределяются очки опыта?',
-                'text_ru' => 'Информацию о распределении очков опыта можно увидеть наведя курсором на иконку награды <i class="fas fa-award red-text"></i> под фотографией на вашей странице.<br>Опыт составляется с нижеперечисленных данных:<br><br>1 лайк = ' . config('custom.exp_for_like') . ' опыта<br>1 просмотр = ' . config('custom.exp_for_like') . ' опыта<br>1 опубликованный рецепт = ' . config('custom.exp_for_like') . ' опыта<br>1 добавление в избранные = ' . config('custom.exp_for_favs') . ' опыта',
+                'title_ru' => 'Как распределяются очки популярности?',
+                'text_ru' => 'Информацию о распределении очков популярности можно увидеть наведя курсором на иконку награды <i class="fas fa-award red-text"></i> под фотографией на вашей странице.<br>Популярность составляется с нижеперечисленных данных:<br><br>1 лайк = ' . config('custom.popularity_for_like') . ' очков<br>1 просмотр = ' . config('custom.popularity_for_view') . ' очков<br>1 добавление в избранные = ' . config('custom.popularity_for_favs') . ' очков',
             ],
             [
                 'id' => 7,

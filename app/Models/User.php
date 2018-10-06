@@ -82,26 +82,24 @@ class User extends Authenticatable
     }
 
     /**
+     * @param string $column
      * @param int $user_id
-     * @param float $exp
+     * @param float $points
      * @return void
      */
-    public static function addExp(float $exp, int $user_id)
+    public static function addPoints(string $column, float $points, int $user_id)
     {
-        $user = User::find($user_id);
-        $user->exp = $user->exp + $exp;
-        $user->save();
+        User::whereId($user_id)->increment($column, $points);
     }
 
     /**
+     * @param string $column
      * @param int $user_id
-     * @param float $exp
+     * @param float $points
      * @return void
      */
-    public static function removeExp(float $exp, int $user_id)
+    public static function removePoints(string $column, float $points, int $user_id)
     {
-        $user = User::find($user_id);
-        $user->exp = $user->exp - $exp;
-        $user->save();
+        User::whereId($user_id)->decrement($column, $points);
     }
 }
