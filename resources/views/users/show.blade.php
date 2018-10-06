@@ -5,88 +5,90 @@
 @section('content')
 
 <div class="page profile-header">
-    <div class="pb-3">
-        <h1 class="header m-0">{{ $user->name }}</h1>
+    <div class="row">
+        <div class="col s12 l6">
+            <div class="mt-2">
+                <img src="{{ asset('storage/users/'.$user->image) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->name }}" />
+            </div>
 
-        {{-- Registered --}}
-        <span class="d-block py-2 grey-dark-text">
-            @lang('users.joined'): {{ time_ago($user->created_at) }}
-        </span>
+            <h1 class="header mt-4 mb-2">{{ $user->name }}</h1>
 
-        {{-- Last visit --}}
-        @unless ($user->id === optional(user())->id)
-            <span class="d-block py-2">
-                {!! get_online_icon(time_ago($user->updated_at)) !!}
-                @lang('date.online') 
-                {{ time_ago($user->updated_at, 'online') }}
+            {{-- Last visit --}}
+            @unless ($user->id === optional(user())->id)
+                <span class="d-block py-2">
+                    {!! get_online_icon(time_ago($user->updated_at)) !!}
+                    @lang('date.online') 
+                    {{ time_ago($user->updated_at, 'online') }}
+                </span>
+            @endunless
+
+            {{-- Registered --}}
+            <span class="d-block py-2 grey-dark-text">
+                @lang('users.joined'): {{ time_ago($user->created_at) }}
             </span>
-        @endunless
-    </div>
-
-    <div>
-        <img src="{{ asset('storage/users/'.$user->image) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->name }}" />
-    </div>
-
-    {{-- Visitor id --}}
-    @if (optional(user())->hasRole('master'))
-        <a href="/master/visitors/{{ $user->visitor_id }}" class="btn-small mt-3">
-            @lang('visitors.visitor') #{{ $user->visitor_id }}
-        </a>
-    @endif
-
-    <div class="bubbles">
-
-        {{-- Likes Bubble --}}
-        <div class="bubbles-block">
-            <i class="fas fa-heart fa-2x tooltipped" data-tooltip="@lang('tips.likes_tip', ['value' => $recipes->sum('likes_count')])" data-position="top" style=""></i>
-            <div class="bubble">
-                <span class="number">{!! readable_number($recipes->sum('likes_count')) !!}</span>
-            </div>
-            <span>@lang('users.likes')</span>
         </div>
 
-        {{-- Popularity Bubble --}}
-        <div class="bubbles-block">
-            <i class="fas fa-award fa-2x tooltipped" data-tooltip="@lang('tips.rating_tip', ['value' => $user->popularity])" data-position="top"></i>
-            <div class="bubble">
-                <span class="number">{!! readable_number($user->popularity) !!}</span>
+        <div class="col s12 l6">
+            {{-- Visitor id --}}
+            @if (optional(user())->hasRole('master'))
+                <a href="/master/visitors/{{ $user->visitor_id }}" class="btn-small mt-3">
+                    @lang('visitors.visitor') #{{ $user->visitor_id }}
+                </a>
+            @endif
+
+            <div class="bubbles">
+                {{-- Likes Bubble --}}
+                <div class="bubbles-block">
+                    <i class="fas fa-heart fa-2x tooltipped" data-tooltip="@lang('tips.likes_tip', ['value' => $recipes->sum('likes_count')])" data-position="top" style=""></i>
+                    <div class="bubble">
+                        <span class="number">{!! readable_number($recipes->sum('likes_count')) !!}</span>
+                    </div>
+                    <span>@lang('users.likes')</span>
+                </div>
+
+                {{-- Popularity Bubble --}}
+                <div class="bubbles-block">
+                    <i class="fas fa-award fa-2x tooltipped" data-tooltip="@lang('tips.rating_tip', ['value' => $user->popularity])" data-position="top"></i>
+                    <div class="bubble">
+                        <span class="number">{!! readable_number($user->popularity) !!}</span>
+                    </div>
+                    <span>@lang('users.popularity')</span>
+                </div>
+
+                {{-- Views Bubble --}}
+                <div class="bubbles-block">
+                    <i class="fas fa-eye fa-2x tooltipped" data-tooltip="@lang('tips.views_tip', ['value' => $recipes->sum('views_count')])" data-position="top"></i>
+                    <div class="bubble">
+                        <span class="number">{!! readable_number($recipes->sum('views_count')) !!}</span>
+                    </div>
+                    <span>@lang('users.views')</span>
+                </div>
             </div>
-            <span>@lang('users.popularity')</span>
-        </div>
 
-        {{-- Views Bubble --}}
-        <div class="bubbles-block">
-            <i class="fas fa-eye fa-2x tooltipped" data-tooltip="@lang('tips.views_tip', ['value' => $recipes->sum('views_count')])" data-position="top"></i>
-            <div class="bubble">
-                <span class="number">{!! readable_number($recipes->sum('views_count')) !!}</span>
+            {{-- Level bar --}}
+            <div class="progress-wrap mt-4 z-depth-1" data-lvl="@lang('users.level') {{ floor($user->exp) }}" data-exp="@lang('users.exp') {{ $user->exp }}">
+                <div class="bar" style="width:{{ explode('.', $user->exp)[1] }}0%"></div>
             </div>
-            <span>@lang('users.views')</span>
+
+            @if ($user->about_me)
+                <div class="center pb-3 pt-4">
+                    <h6 class="header">@lang('settings.about_me')</h6>
+                    <h6>{{ $user->about_me }}</h6>
+                </div>
+            @endif
         </div>
     </div>
-</div>
 
-    {{-- Level bar --}}
-    <div class="progress-wrap mt-4 z-depth-1" data-lvl="@lang('users.level') {{ floor($user->exp) }}" data-exp="@lang('users.exp') {{ $user->exp }}">
-        <div class="bar" style="width:{{ explode('.', $user->exp)[1] }}0%"></div>
-    </div>
-
-<div class="divider my-3"></div>
-
-@if ($user->about_me)
-    <div class="center pb-3">
-        <h6 class="header">@lang('settings.about_me')</h6>
-        <h6>{{ $user->about_me }}</h6>
-    </div>
     <div class="divider"></div>
-@endif
 
-{{--  All my recipes  --}}
-<div class="page">
-    @listOfRecipes(['recipes' => $recipes])
-        @slot('no_recipes')
-            @lang('users.this_user_does_not_have_recipes')
-        @endslot
-    @endlistOfRecipes
+    {{--  All my recipes  --}}
+    <div class="page">
+        @listOfRecipes(['recipes' => $recipes])
+            @slot('no_recipes')
+                @lang('users.this_user_does_not_have_recipes')
+            @endslot
+        @endlistOfRecipes
+    </div>
 </div>
 
 @endsection

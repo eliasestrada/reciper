@@ -7751,7 +7751,8 @@ Nav List
 }
 
 .progress-wrap {
-  width: 300px;
+  width: 100%;
+  max-width: 350px;
   height: 30px;
   background: #262525;
   position: relative;
@@ -8049,7 +8050,6 @@ Nav List
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-top: 2.3em;
   text-align: center;
 }
 
