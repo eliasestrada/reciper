@@ -36,7 +36,7 @@
                 </a>
             @endif
 
-            <div class="bubbles">
+            <div class="bubbles no-select">
                 {{-- Likes Bubble --}}
                 <div class="bubbles-block">
                     <i class="fas fa-heart fa-2x tooltipped" data-tooltip="@lang('tips.likes_tip', ['value' => $recipes->sum('likes_count')])" data-position="top" style=""></i>
