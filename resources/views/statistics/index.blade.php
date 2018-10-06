@@ -37,6 +37,11 @@
                 <td>@lang('users.exp_of_reciper')</td>
                 <td class="right-align">{{ user()->exp }}</td>
             </tr>
+            <tr>
+                {{-- Popularity points --}}
+                <td>@lang('users.popularity_of_reciper')</td>
+                <td class="right-align">{{ user()->popularity }}</td>
+            </tr>
         </table>
 
         <div class="center mt-4"><h5 class="header">@lang('recipes.recipes')</h5></div>

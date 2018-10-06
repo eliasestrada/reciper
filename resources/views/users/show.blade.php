@@ -45,13 +45,13 @@
             <span>@lang('users.likes')</span>
         </div>
 
-        {{-- Rating Bubble --}}
+        {{-- Popularity Bubble --}}
         <div class="bubbles-block">
-            <i class="fas fa-award fa-2x tooltipped" data-tooltip="@lang('tips.rating_tip', ['value' => $user->exp])" data-position="top"></i>
+            <i class="fas fa-award fa-2x tooltipped" data-tooltip="@lang('tips.rating_tip', ['value' => $user->popularity])" data-position="top"></i>
             <div class="bubble">
-                <span class="number">{!! readable_number($user->exp) !!}</span>
+                <span class="number">{!! readable_number($user->popularity) !!}</span>
             </div>
-            <span>@lang('users.exp')</span>
+            <span>@lang('users.popularity')</span>
         </div>
 
         {{-- Views Bubble --}}
