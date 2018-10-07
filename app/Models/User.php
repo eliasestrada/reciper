@@ -89,7 +89,17 @@ class User extends Authenticatable
      */
     public static function addPoints(string $column, float $points, int $user_id)
     {
-        User::whereId($user_id)->increment($column, $points);
+        if ($column == 'exp') {
+            $exp = User::whereId($user_id)->value('exp');
+
+            if ($exp <= (100 - $points)) {
+                User::whereId($user_id)->increment('exp', $points);
+            } else {
+                User::whereId($user_id)->increment('exp', 100 - $exp);
+            }
+        } else {
+            User::whereId($user_id)->increment($column, $points);
+        }
     }
 
     /**
