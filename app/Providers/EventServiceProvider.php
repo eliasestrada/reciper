@@ -29,5 +29,9 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\RemoveExpForDrafting::class,
             \App\Listeners\ForgetCacheAfterDrafting::class,
         ],
+        \App\Events\UserIsOnline::class => [
+            \App\Listeners\UpdateUpdatedAtColumn::class,
+            \App\Listeners\UpdateStrikeDays::class,
+        ],
     ];
 }
