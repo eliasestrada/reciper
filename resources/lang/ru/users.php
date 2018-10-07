@@ -38,6 +38,7 @@ return [
     'trillion' => 'трн.',
     'exp' => 'Опыт',
     'level' => 'Уровень',
+    'next_level_in' => 'До след. уровня',
     'popularity' => 'Популярность',
     'views' => 'Просмотров',
 

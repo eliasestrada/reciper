@@ -19,6 +19,7 @@ class UserTest extends TestCase
         $this->assertClassHasAttribute('guarded', User::class);
         $this->assertClassHasAttribute('hidden', User::class);
         $this->assertClassHasAttribute('dates', User::class);
+        $this->assertClassHasAttribute('levels', User::class);
     }
 
     /** @test */
@@ -81,5 +82,29 @@ class UserTest extends TestCase
         $recipe = create(Recipe::class);
         Fav::create(['user_id' => $user->id, 'recipe_id' => $recipe->id]);
         $this->assertTrue($user->hasFav($recipe->id));
+    }
+
+    /** @test */
+    public function lvl_method_returns_correct_data(): void
+    {
+        $user = create_user('', ['exp' => 100.0]);
+        $this->assertEquals(6, $user->getLvl());
+
+        $user->exp = 250;
+        $this->assertEquals(8, $user->getLvl());
+    }
+
+    /** @test */
+    public function get_lvl_min_method_returns_correct_data(): void
+    {
+        $user = create_user('', ['exp' => 40.0]);
+        $this->assertEquals($user->levels[5]['min'], $user->getLvlMin());
+    }
+
+    /** @test */
+    public function get_lvl_max_method_returns_correct_data(): void
+    {
+        $user = create_user('', ['exp' => 70.0]);
+        $this->assertEquals($user->levels[6]['max'], $user->getLvlMax());
     }
 }

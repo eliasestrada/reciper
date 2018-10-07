@@ -11,6 +11,19 @@ class User extends Authenticatable
 
     protected $guarded = ['id'];
     protected $hidden = ['password', 'remember_token'];
+    public $levels = [
+        ['lvl' => 0, 'min' => 0, 'max' => 2],
+        ['lvl' => 1, 'min' => 2, 'max' => 4],
+        ['lvl' => 2, 'min' => 4, 'max' => 8],
+        ['lvl' => 3, 'min' => 8, 'max' => 16],
+        ['lvl' => 4, 'min' => 16, 'max' => 32],
+        ['lvl' => 5, 'min' => 32, 'max' => 64],
+        ['lvl' => 6, 'min' => 64, 'max' => 130],
+        ['lvl' => 7, 'min' => 130, 'max' => 230],
+        ['lvl' => 8, 'min' => 230, 'max' => 513],
+        ['lvl' => 9, 'min' => 513, 'max' => 999],
+        ['lvl' => 10, 'min' => 999, 'max' => 999],
+    ];
 
     public function recipes()
     {
@@ -111,5 +124,35 @@ class User extends Authenticatable
     public static function removePoints(string $column, float $points, int $user_id)
     {
         User::whereId($user_id)->decrement($column, $points);
+    }
+
+    /**
+     * @return int
+     */
+    public function getLvl(): int
+    {
+        $result = 0;
+        foreach ($this->levels as $level) {
+            if ($this->exp >= $level['min'] && $this->exp < $level['max']) {
+                $result = $level['lvl'];
+            }
+        }
+        return $result;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLvlMin(): int
+    {
+        return $this->levels[$this->getLvl()]['min'];
+    }
+
+    /**
+     * @return int
+     */
+    public function getLvlMax(): int
+    {
+        return $this->levels[$this->getLvl()]['max'];
     }
 }
