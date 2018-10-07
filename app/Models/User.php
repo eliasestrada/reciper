@@ -12,17 +12,16 @@ class User extends Authenticatable
     protected $guarded = ['id'];
     protected $hidden = ['password', 'remember_token'];
     public $levels = [
-        ['lvl' => 0, 'min' => 0, 'max' => 2],
-        ['lvl' => 1, 'min' => 2, 'max' => 4],
-        ['lvl' => 2, 'min' => 4, 'max' => 8],
-        ['lvl' => 3, 'min' => 8, 'max' => 16],
-        ['lvl' => 4, 'min' => 16, 'max' => 32],
-        ['lvl' => 5, 'min' => 32, 'max' => 64],
-        ['lvl' => 6, 'min' => 64, 'max' => 130],
-        ['lvl' => 7, 'min' => 130, 'max' => 230],
-        ['lvl' => 8, 'min' => 230, 'max' => 513],
-        ['lvl' => 9, 'min' => 513, 'max' => 999],
-        ['lvl' => 10, 'min' => 999, 'max' => 999],
+        ['lvl' => 1, 'min' => 1, 'max' => 39],
+        ['lvl' => 2, 'min' => 40, 'max' => 79],
+        ['lvl' => 3, 'min' => 80, 'max' => 159],
+        ['lvl' => 4, 'min' => 160, 'max' => 319],
+        ['lvl' => 5, 'min' => 320, 'max' => 639],
+        ['lvl' => 6, 'min' => 640, 'max' => 1299],
+        ['lvl' => 7, 'min' => 1300, 'max' => 2299],
+        ['lvl' => 8, 'min' => 2300, 'max' => 5129],
+        ['lvl' => 9, 'min' => 5130, 'max' => 8999],
+        ['lvl' => 10, 'min' => 9000, 'max' => 9001],
     ];
 
     public function recipes()
@@ -133,7 +132,7 @@ class User extends Authenticatable
     {
         $result = 0;
         foreach ($this->levels as $level) {
-            if ($this->exp >= $level['min'] && $this->exp < $level['max']) {
+            if ($this->exp >= $level['min'] && $this->exp <= $level['max']) {
                 $result = $level['lvl'];
             }
         }
@@ -145,7 +144,7 @@ class User extends Authenticatable
      */
     public function getLvlMin(): int
     {
-        return $this->levels[$this->getLvl()]['min'];
+        return $this->levels[$this->getLvl() - 1]['min'];
     }
 
     /**
@@ -153,6 +152,6 @@ class User extends Authenticatable
      */
     public function getLvlMax(): int
     {
-        return $this->levels[$this->getLvl()]['max'];
+        return $this->levels[$this->getLvl() - 1]['max'];
     }
 }
