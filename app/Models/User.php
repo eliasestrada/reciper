@@ -92,10 +92,10 @@ class User extends Authenticatable
         if ($column == 'exp') {
             $exp = User::whereId($user_id)->value('exp');
 
-            if ($exp <= (100 - $points)) {
+            if ($exp <= (config('custom.max_exp') - $points)) {
                 User::whereId($user_id)->increment('exp', $points);
             } else {
-                User::whereId($user_id)->increment('exp', 100 - $exp);
+                User::whereId($user_id)->increment('exp', config('custom.max_exp') - $exp);
             }
         } else {
             User::whereId($user_id)->increment($column, $points);
