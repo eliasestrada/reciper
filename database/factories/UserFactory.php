@@ -20,6 +20,7 @@ $factory->define(User::class, function (Faker $faker) {
         'exp' => config('custom.exp_for_approve'),
         'popularity' => 2,
         "notif_check" => date('Y-m-d H:i:s'),
+        "strike_check" => date('Y-m-d H:i:s'),
         "contact_check" => date('Y-m-d H:i:s'),
     ];
 });
