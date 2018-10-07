@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
             $table->string('name', config('valid.settings_name_max'));
             $table->string('about_me', config('valid.settings_about_me'))->nullable();
             $table->string('email')->unique();
-            $table->decimal('exp', 4, 1)->default(0);
+            $table->unsignedSmallInteger('exp')->default(0);
             $table->integer('strike_days')->default(0);
             $table->decimal('popularity', 8, 1)->default(0);
             $table->timestamp('strike_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
