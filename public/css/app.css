@@ -104,6 +104,10 @@ select {
   min-height: 20em;
 }
 
+.text-hover:hover {
+  text-decoration: underline;
+}
+
 .small-notif::after, .small-notif::before {
   content: '';
   position: absolute;
