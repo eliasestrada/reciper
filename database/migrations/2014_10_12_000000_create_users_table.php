@@ -21,10 +21,10 @@ class CreateUsersTable extends Migration
             $table->timestamp('streak_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('notif_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('contact_check')->nullable();
+            $table->timestamps();
             $table->string('image')->default('default.jpg');
             $table->string('password', 250);
             $table->rememberToken();
-            $table->timestamps();
         });
     }
 

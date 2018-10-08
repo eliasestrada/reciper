@@ -6,7 +6,7 @@ return [
     'url_key' => env('URL_KEY', '??'),
 
     // Experience
-    'xp_for_approve' => 27,
+    'xp_for_approve' => 25,
     'xp_for_online' => 10,
     'max_xp' => 9000,
 
