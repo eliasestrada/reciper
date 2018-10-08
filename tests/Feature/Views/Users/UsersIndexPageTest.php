@@ -16,7 +16,7 @@ class UsersIndexPageTest extends TestCase
         $this->actingAs(make(User::class))
             ->get('/users')
             ->assertViewIs('users.index')
-            ->assertViewHas('users', User::paginate(36)->onEachSide(1));
+            ->assertViewHas('users', User::orderBy('name')->paginate(36)->onEachSide(1));
     }
 
     /** @test */
