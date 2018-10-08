@@ -91,4 +91,17 @@ class Xp
         $max = $this->getLvlMax() - $this->getLvlMin();
         return $this->getLvlMin() >= config('custom.max_xp') ? 100 : 100 * $min / $max;
     }
+
+    /**
+     * @param User $user
+     * @return void
+     */
+    public static function addForStreak(User $user): void
+    {
+        if ($user->streak_days <= 30) {
+            self::add($user->streak_days, $user->id);
+        } else {
+            self::add(30, $user->id);
+        }
+    }
 }

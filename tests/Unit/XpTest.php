@@ -61,4 +61,24 @@ class XpTest extends TestCase
             $this->assertEquals(100, $xp->getPercent());
         }
     }
+
+    /** @test */
+    public function add_for_streak_method_adds_certain_xp_points(): void
+    {
+        $user = create_user('', ['xp' => 0]);
+
+        $days = [
+            ['streak_days' => 1, 'expect_xp' => 1],
+            ['streak_days' => 13, 'expect_xp' => 14],
+            ['streak_days' => 29, 'expect_xp' => 43],
+            ['streak_days' => 30, 'expect_xp' => 73],
+            ['streak_days' => 31, 'expect_xp' => 103],
+        ];
+
+        foreach ($days as $day) {
+            $user->update(['streak_days' => $day['streak_days']]);
+            Xp::addForStreak($user);
+            $this->assertDatabaseHas('users', ['id' => $user->id, 'xp' => $day['expect_xp']]);
+        }
+    }
 }
