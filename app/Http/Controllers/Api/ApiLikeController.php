@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\Xp;
 use App\Http\Controllers\Controller;
 use App\Models\Like;
 use App\Models\Recipe;
-use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
 
@@ -35,7 +35,7 @@ class ApiLikeController extends Controller
             $recipe = Recipe::find($id);
             $visitor->likes()->create(['recipe_id' => $recipe->id]);
             cache()->clear('visitor_likes');
-            User::addPoints('popularity', config('custom.popularity_for_like'), $recipe->user_id);
+            Xp::add(config('custom.popularity_for_like'), $recipe->user_id);
 
             return response()->json(['liked' => 1])->withCookie('ekilx', \Crypt::encrypt($id), 5555);
         }
@@ -53,7 +53,7 @@ class ApiLikeController extends Controller
         cache()->clear('visitor_likes');
 
         $visitor->likes()->whereRecipeId($recipe->id)->delete();
-        User::removePoints('popularity', config('custom.popularity_for_like'), $recipe->user_id);
+        Xp::remove(config('custom.popularity_for_like'), $recipe->user_id);
 
         return response()->json(['liked' => 0])->withCookie('ekilx', $id, -1);
     }
