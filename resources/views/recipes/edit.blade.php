@@ -16,10 +16,10 @@
 
         <div class="center pb-4">
             {{--  View button  --}}
-            <input type="submit" value="&#xf06e" name="view" class="fas btn-floating green tooltipped" data-tooltip="@lang('tips.view')" data-position="top">
+            <input type="submit" value="&#xf06e" name="view" class="fas btn-floating green tooltipped" data-tooltip="@lang('tips.view')">
 
             {{--  Save button  --}}
-            <button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save')" data-position="top" class="btn-floating green tooltipped waves-effect waves-light">
+            <button type="submit" id="submit-save-recipe" data-tooltip="@lang('tips.save')" class="btn-floating green tooltipped waves-effect waves-light">
                 <i class="fas fa-save"></i>
             </button>
 
@@ -38,7 +38,7 @@
             </delete-recipe-btn>
 
             {{--  Publish button  --}}
-            <a href="#" class="btn-floating green tooltipped waves-effect waves-light" id="publish-btn" data-tooltip="@lang('tips.publish')" data-position="top" data-alert="@lang('recipes.are_you_sure_to_publish')">
+            <a href="#" class="btn-floating green tooltipped waves-effect waves-light" id="publish-btn" data-tooltip="@lang('tips.publish')" data-alert="@lang('recipes.are_you_sure_to_publish')">
                 <i class="fas fa-clipboard-check"></i>
             </a>
             <input type="checkbox" name="ready" value="1" class="hide" id="ready-checkbox">

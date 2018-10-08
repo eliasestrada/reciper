@@ -18,11 +18,11 @@
 
         <div class="center pb-2 pt-3">
             {{-- Back button --}}
-            <a href="/master/documents" class="btn-floating green tooltipped" data-tooltip="@lang('messages.back')" data-position="top">
+            <a href="/master/documents" class="btn-floating green tooltipped" data-tooltip="@lang('messages.back')">
                 <i class="fas fa-angle-left"></i>
             </a>
             {{--  Save button  --}}
-            <button type="submit" class="btn-floating green tooltipped" data-tooltip="@lang('tips.save')" data-position="top">
+            <button type="submit" class="btn-floating green tooltipped" data-tooltip="@lang('tips.save')">
                 <i class="fas fa-save"></i>
             </button>
         </div>

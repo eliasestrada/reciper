@@ -5,7 +5,7 @@
 @section('content')
 
 {{-- Back button --}}
-<a href="/help" class="btn-floating mt-3 ml-3 paper-dark tooltipped" data-tooltip="@lang('messages.back')" data-position="top">
+<a href="/help" class="btn-floating mt-3 ml-3 paper-dark tooltipped" data-tooltip="@lang('messages.back')">
     <i class="fas fa-angle-left red-text"></i>
 </a>
 

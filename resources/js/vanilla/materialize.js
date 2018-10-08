@@ -10070,7 +10070,7 @@ document.addEventListener('DOMContentLoaded', function() {
     M.Dropdown.init(dropdown);
 
     let tooltip = document.querySelectorAll('.tooltipped');
-    M.Tooltip.init(tooltip);
+    M.Tooltip.init(tooltip, { position: 'top' });
 
     let sidenav = document.querySelectorAll('.sidenav');
     M.Sidenav.init(sidenav, { draggable: false });

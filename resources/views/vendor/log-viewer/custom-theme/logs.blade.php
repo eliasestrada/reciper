@@ -49,11 +49,11 @@
                                     <i class="fas fa-envelope-open-text"></i>
                                 </a>
                                 {{-- Download button --}}
-                                <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn-floating tooltipped" data-tooltip="@lang('logs.download_file')" data-position="top">
+                                <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn-floating tooltipped" data-tooltip="@lang('logs.download_file')">
                                     <i class="fas fa-file-download"></i>
                                 </a>
                                 {{-- Delete button --}}
-                                <form action="{{ action('Master\LogsController@delete') }}" method="post" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')" data-position="top">
+                                <form action="{{ action('Master\LogsController@delete') }}" method="post" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')">
                                     
                                     @csrf
                                     @method('delete')

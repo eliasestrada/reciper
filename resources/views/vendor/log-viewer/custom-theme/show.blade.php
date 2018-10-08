@@ -33,11 +33,11 @@
                         <i class="fas fa-angle-right right"></i> @lang('messages.back')
                     </a>
                     {{-- Download button --}}
-                    <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn-floating tooltipped" data-tooltip="@lang('logs.download_file')" data-position="top">
+                    <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn-floating tooltipped" data-tooltip="@lang('logs.download_file')">
                         <i class="fas fa-file-download"></i>
                     </a>
                     {{-- Delete button --}}
-                    <form action="{{ action('Master\LogsController@delete') }}" method="POST" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')" data-position="top">
+                    <form action="{{ action('Master\LogsController@delete') }}" method="POST" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')">
                         @method('delete') @csrf
                         <input type="hidden" name="date" value="{{ $log->date }}">
                         <button type="submit" class="btn-floating red" title="@lang('forms.deleting')" onclick="if (!confirm('@lang('logs.confirm', ['date' => $log->date])')) event.preventDefault()">
