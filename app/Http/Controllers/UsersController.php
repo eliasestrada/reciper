@@ -25,6 +25,7 @@ class UsersController extends Controller
         $recipes = Recipe::whereUserId($user->id)
             ->withCount('likes')
             ->withCount('views')
+            ->withCount('favs')
             ->done(1)
             ->latest()
             ->paginate(20)

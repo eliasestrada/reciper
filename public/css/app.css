@@ -7564,8 +7564,6 @@ Nav List
 
 .profile-image {
   width: 200px;
-  -webkit-animation: appearWithRotate .8s;
-          animation: appearWithRotate .8s;
 }
 
 .list-of-recipes {

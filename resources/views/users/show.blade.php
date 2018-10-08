@@ -9,13 +9,19 @@
         <div class="col s12 l6">
             <div class="mt-2">
                 <img src="{{ asset('storage/users/'.$user->image) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->name }}" />
-                <div class="tooltipped" data-tooltip="@lang('users.streak_days', ['days' => $user->streak_days])" style="animation:appearWithRotate 1s">
-                    <i class="fas fa-fire fa-15x" style="color:orangered"></i> 
-                    <b class="px-1">{{ $user->streak_days }}</b>
+                <div class="my-2">
+                    <div class="tooltipped d-inline-block" data-tooltip="@lang('users.streak_days')" style="animation:appearWithRotate .7s">
+                        <i class="fas fa-fire fa-15x" style="color:orangered"></i> 
+                        <b class="px-1">{{ $user->streak_days }}</b>
+                    </div>
+                    <div class="tooltipped d-inline-block" data-tooltip="@lang('users.amount_of_favs')" style="animation:appearWithRotate 1.1s">
+                        <i class="fas fa-star fa-15x" style="color:#d49d10"></i> 
+                        <b class="px-1">{{ $recipes->pluck('favs_count')->count() }}</b>
+                    </div>
                 </div>
             </div>
 
-            <h1 class="header mt-4 mb-2">{{ $user->name }}</h1>
+            <h1 class="header mb-2">{{ $user->name }}</h1>
 
             {{-- Last visit --}}
             @unless ($user->id === optional(user())->id)

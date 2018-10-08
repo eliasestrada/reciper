@@ -25,11 +25,11 @@ return [
     'all_recipes' => 'Всего рецептов',
     'this_user_does_not_have_recipes' => 'У этого автора нет пока рецептов',
     'amount_of_views' => 'Кол-во просмотров',
-    'amount_of_likes' => 'Кол-во лайков',
-    'amount_of_favs' => 'Кол-во звезд',
+    'amount_of_likes' => 'Кол-во полученных лайков',
+    'amount_of_favs' => 'Кол-во полученных звезд',
     'exp_of_reciper' => 'Опыт ресипёра',
     'popularity_of_reciper' => 'Очки популярности ресипёра',
-    'streak_days' => 'Дней в ударном режиме :days',
+    'streak_days' => 'Дней в ударном режиме',
 
     // Bubbles
     'likes' => 'Лайки',
