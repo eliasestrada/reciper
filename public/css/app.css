@@ -7564,12 +7564,8 @@ Nav List
 
 .profile-image {
   width: 200px;
-  -webkit-transition: -webkit-transform 400ms;
-  transition: -webkit-transform 400ms;
-  transition: transform 400ms;
-  transition: transform 400ms, -webkit-transform 400ms;
-  -webkit-animation: appearWithRotate 1s;
-          animation: appearWithRotate 1s;
+  -webkit-animation: appearWithRotate .8s;
+          animation: appearWithRotate .8s;
 }
 
 .list-of-recipes {

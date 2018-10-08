@@ -6,8 +6,7 @@
 
 .profile-image {
     width: 200px;
-    transition: transform 400ms;
-    animation: appearWithRotate 1s;
+    animation:appearWithRotate .8s;
 }
 
 .list-of-recipes {

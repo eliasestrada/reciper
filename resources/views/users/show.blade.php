@@ -9,6 +9,10 @@
         <div class="col s12 l6">
             <div class="mt-2">
                 <img src="{{ asset('storage/users/'.$user->image) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->name }}" />
+                <div class="tooltipped" data-tooltip="@lang('users.streak_days', ['days' => $user->streak_days])" style="animation:appearWithRotate 1s">
+                    <i class="fas fa-fire fa-15x" style="color:orangered"></i> 
+                    <b class="px-1">{{ $user->streak_days }}</b>
+                </div>
             </div>
 
             <h1 class="header mt-4 mb-2">{{ $user->name }}</h1>
@@ -38,8 +42,8 @@
 
             <div class="bubbles no-select">
                 {{-- Likes Bubble --}}
-                <div class="bubbles-block">
-                    <i class="fas fa-heart fa-2x tooltipped" data-tooltip="@lang('tips.likes_tip', ['value' => number_format($recipes->sum('likes_count'))])" data-position="top"></i>
+                <div class="bubbles-block" style="animation:appearWithRotate .3s">
+                    <i class="fas fa-heart fa-2x tooltipped" data-tooltip="@lang('tips.likes_tip', ['value' => number_format($recipes->sum('likes_count'))])"></i>
                     <div class="bubble">
                         <span class="number">{!! readable_number($recipes->sum('likes_count')) !!}</span>
                     </div>
@@ -47,8 +51,8 @@
                 </div>
 
                 {{-- Popularity Bubble --}}
-                <div class="bubbles-block">
-                    <i class="fas fa-crown fa-2x tooltipped" data-tooltip="@lang('tips.rating_tip', ['value' => $user->popularity])" data-position="top"></i>
+                <div class="bubbles-block" style="animation:appearWithRotate .7s">
+                    <i class="fas fa-crown fa-2x tooltipped" data-tooltip="@lang('tips.rating_tip', ['value' => $user->popularity])"></i>
                     <div class="bubble">
                         <span class="number">{!! readable_number($user->popularity) !!}</span>
                     </div>
@@ -56,8 +60,8 @@
                 </div>
 
                 {{-- Views Bubble --}}
-                <div class="bubbles-block">
-                    <i class="fas fa-eye fa-2x tooltipped" data-tooltip="@lang('tips.views_tip', ['value' => number_format($recipes->sum('views_count'))])" data-position="top"></i>
+                <div class="bubbles-block" style="animation:appearWithRotate 1s">
+                    <i class="fas fa-eye fa-2x tooltipped" data-tooltip="@lang('tips.views_tip', ['value' => number_format($recipes->sum('views_count'))])"></i>
                     <div class="bubble">
                         <span class="number">{!! readable_number($recipes->sum('views_count')) !!}</span>
                     </div>

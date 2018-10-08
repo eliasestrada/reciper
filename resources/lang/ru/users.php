@@ -29,6 +29,7 @@ return [
     'amount_of_favs' => 'Кол-во звезд',
     'exp_of_reciper' => 'Опыт ресипёра',
     'popularity_of_reciper' => 'Очки популярности ресипёра',
+    'streak_days' => 'Дней в ударном режиме :days',
 
     // Bubbles
     'likes' => 'Лайки',
