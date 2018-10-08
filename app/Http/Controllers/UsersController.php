@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Xp;
 use App\Models\Recipe;
 use App\Models\User;
 
@@ -29,7 +30,9 @@ class UsersController extends Controller
             ->paginate(20)
             ->onEachSide(1);
 
-        return view('users.show', compact('recipes', 'user'));
+        $xp = new Xp($user->id);
+
+        return view('users.show', compact('recipes', 'user', 'xp'));
     }
 
     /**

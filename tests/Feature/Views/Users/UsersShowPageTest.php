@@ -14,7 +14,7 @@ class UsersShowPageTest extends TestCase
     {
         $this->actingAs($user = create_user())->get("/users/$user->id")
             ->assertViewIs('users.show')
-            ->assertViewHasAll(['recipes', 'user']);
+            ->assertViewHasAll(['recipes', 'user', 'xp']);
     }
 
     /** @test */
