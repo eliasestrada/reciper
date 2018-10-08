@@ -6,9 +6,9 @@ return [
     'url_key' => env('URL_KEY', '??'),
 
     // Experience
-    'exp_for_approve' => 27,
-    'exp_for_online' => 10,
-    'max_exp' => 9000,
+    'xp_for_approve' => 27,
+    'xp_for_online' => 10,
+    'max_xp' => 9000,
 
     // Pupularity points
     'popularity_for_like' => 0.5,

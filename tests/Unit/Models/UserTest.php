@@ -87,65 +87,65 @@ class UserTest extends TestCase
     /** @test */
     public function get_lvl_method_returns_correct_data(): void
     {
-        $user = create_user('', ['exp' => 2299]);
+        $user = create_user('', ['xp' => 2299]);
         $this->assertEquals(7, $user->getLvl());
 
-        $user = create_user('', ['exp' => 5129]);
+        $user = create_user('', ['xp' => 5129]);
         $this->assertEquals(8, $user->getLvl());
 
-        $user->exp = 5130;
+        $user->xp = 5130;
         $this->assertEquals(9, $user->getLvl());
 
-        $user->exp = 8999;
+        $user->xp = 8999;
         $this->assertEquals(9, $user->getLvl());
 
-        $user->exp = 9000;
+        $user->xp = 9000;
         $this->assertEquals(10, $user->getLvl());
     }
 
     /** @test */
     public function get_lvl_min_method_returns_correct_data(): void
     {
-        $user = create_user('', ['exp' => 39]);
+        $user = create_user('', ['xp' => 39]);
         $this->assertEquals(1, $user->getLvlMin());
 
-        $user->exp = 40;
+        $user->xp = 40;
         $this->assertEquals(40, $user->getLvlMin());
 
-        $user->exp = 79;
+        $user->xp = 79;
         $this->assertEquals(40, $user->getLvlMin());
 
-        $user->exp = 80;
+        $user->xp = 80;
         $this->assertEquals(80, $user->getLvlMin());
     }
 
     /** @test */
     public function get_lvl_max_method_returns_correct_data(): void
     {
-        $user = create_user('', ['exp' => 39]);
+        $user = create_user('', ['xp' => 39]);
         $this->assertEquals(39, $user->getLvlMax());
 
-        $user->exp = 40;
+        $user->xp = 40;
         $this->assertEquals(79, $user->getLvlMax());
 
-        $user->exp = 79;
+        $user->xp = 79;
         $this->assertEquals(79, $user->getLvlMax());
 
-        $user->exp = 80;
+        $user->xp = 80;
         $this->assertEquals(159, $user->getLvlMax());
     }
 
     /** @test */
     public function scaling_div_is_showing_correct_data(): void
     {
-        $user = create_user('', ['exp' => 1]);
+        $user = create_user('', ['xp' => 1]);
 
         foreach ($user->levels as $value) {
-            $user->exp = $value['min'];
-            $this->assertEquals(0, (100 * ($user->exp - $user->getLvlMin())) / ($user->getLvlMax() - $user->getLvlMin()), $user->getLvl());
+            $user->xp = $value['min'];
+            $this->assertEquals(0, (100 * ($user->xp - $user->getLvlMin())) / ($user->getLvlMax() - $user->getLvlMin()), $user->getLvl());
 
-            $user->exp = $value['max'];
-            $this->assertEquals(100, (100 * ($user->exp - $user->getLvlMin())) / ($user->getLvlMax() - $user->getLvlMin()), $user->getLvl());
+            $user->xp = $value['max'];
+            $this->assertEquals(100, (100 * ($user->xp - $user->getLvlMin())) / ($user->getLvlMax() - $user->getLvlMin()), $user->getLvl());
         }
     }
 }

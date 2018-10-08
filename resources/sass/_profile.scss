@@ -62,7 +62,7 @@
         content: attr(data-lvl);
     }
     &::after {
-        content: attr(data-exp);
+        content: attr(data-xp);
         opacity: 0;
     }
     .bar {

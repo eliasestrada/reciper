@@ -36,7 +36,7 @@ return [
     'million' => 'млн.',
     'billion' => 'млд.',
     'trillion' => 'трн.',
-    'exp' => 'Опыт',
+    'xp' => 'Опыт',
     'level' => 'Уровень',
     'next_level_in' => 'До след. уровня',
     'popularity' => 'Популярность',

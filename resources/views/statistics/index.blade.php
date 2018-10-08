@@ -35,7 +35,7 @@
             <tr>
                 {{-- Exp points --}}
                 <td>@lang('users.exp_of_reciper')</td>
-                <td class="right-align">{{ user()->exp }}</td>
+                <td class="right-align">{{ user()->xp }}</td>
             </tr>
             <tr>
                 {{-- Popularity points --}}

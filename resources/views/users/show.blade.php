@@ -66,10 +66,9 @@
             </div>
 
             {{-- Level bar --}}
-            <div class="progress-wrap mt-4 z-depth-1" data-lvl="@lang('users.level') {{ $user->getLvl() }}" data-exp="{{ $user->exp }} {{ $user->getLvlMin() >= 9000 ? '' : '/ '. $user->getLvlMax() + 1}}">
-                <div class="bar" style="width:{{ $user->getLvlMin() >= 9000 ? 100 : 100 * ($user->exp - $user->getLvlMin()) / ($user->getLvlMax() - $user->getLvlMin()) }}%"></div>
+            <div class="progress-wrap mt-4 z-depth-1" data-lvl="@lang('users.level') {{ $user->getLvl() }}" data-xp="@lang('users.xp') {{ $user->xp }} {{ $user->getLvlMin() >= config('custom.max_xp') ? '' : '/ '. ($user->getLvlMax() + 1) }}">
+                <div class="bar" style="width:{{ $user->getLvlMin() >= config('custom.max_lvl') ? 100 : 100 * ($user->xp - $user->getLvlMin()) / ($user->getLvlMax() - $user->getLvlMin()) }}%"></div>
             </div>
-            <span class="d-block mt-2">@lang('users.exp') <b class="red-text">{{ $user->exp }}</b></span>
 
             @if ($user->about_me)
                 <div class="center pb-3 pt-4">

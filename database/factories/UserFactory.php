@@ -17,7 +17,7 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
         'image' => 'default.jpg',
         // 'image' => $faker->file(base_path('../tools/people'), storage_path('/app/public/small/users'), false),
-        'exp' => config('custom.exp_for_approve'),
+        'xp' => config('custom.xp_for_approve'),
         'popularity' => 2,
         "notif_check" => date('Y-m-d H:i:s'),
         "strike_check" => date('Y-m-d H:i:s'),

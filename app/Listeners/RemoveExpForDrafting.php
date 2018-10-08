@@ -13,6 +13,6 @@ class RemoveExpForDrafting
      */
     public function handle(RecipeGotDrafted $event)
     {
-        User::removePoints('exp', config('custom.exp_for_approve'), $event->recipe->user_id);
+        User::removePoints('xp', config('custom.xp_for_approve'), $event->recipe->user_id);
     }
 }

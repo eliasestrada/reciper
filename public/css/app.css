@@ -7631,7 +7631,7 @@ Nav List
 }
 
 .progress-wrap::after {
-  content: attr(data-exp);
+  content: attr(data-xp);
   opacity: 0;
 }
 

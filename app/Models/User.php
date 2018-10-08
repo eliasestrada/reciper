@@ -101,13 +101,13 @@ class User extends Authenticatable
      */
     public static function addPoints(string $column, float $points, int $user_id)
     {
-        if ($column == 'exp') {
-            $exp = User::whereId($user_id)->value('exp');
+        if ($column == 'xp') {
+            $xp = User::whereId($user_id)->value('xp');
 
-            if ($exp <= (config('custom.max_exp') - $points)) {
-                User::whereId($user_id)->increment('exp', $points);
+            if ($xp <= (config('custom.max_xp') - $points)) {
+                User::whereId($user_id)->increment('xp', $points);
             } else {
-                User::whereId($user_id)->increment('exp', config('custom.max_exp') - $exp);
+                User::whereId($user_id)->increment('xp', config('custom.max_xp') - $xp);
             }
         } else {
             User::whereId($user_id)->increment($column, $points);
@@ -132,7 +132,7 @@ class User extends Authenticatable
     {
         $result = 0;
         foreach ($this->levels as $level) {
-            if ($this->exp >= $level['min'] && $this->exp <= $level['max']) {
+            if ($this->xp >= $level['min'] && $this->xp <= $level['max']) {
                 $result = $level['lvl'];
             }
         }

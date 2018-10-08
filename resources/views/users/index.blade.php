@@ -19,7 +19,7 @@
                         </a>
                         <span class="title">{!! get_online_icon(time_ago($user->updated_at)) !!} {{ $user->name }}</span>
                         <p>@lang('date.online') {{ time_ago($user->updated_at, 'online') }}</p>
-                        <p>@lang('users.exp'): {{ $user->exp }}</p>
+                        <p>@lang('users.xp'): {{ $user->xp }}</p>
                     </li>
                 </ul>
             </div>

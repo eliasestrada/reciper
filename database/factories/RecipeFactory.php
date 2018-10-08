@@ -11,7 +11,7 @@ $factory->define(Recipe::class, function (Faker $faker) {
     $admin->addRole('admin');
 
     return [
-        'user_id' => factory(User::class)->create(['exp' => 1])->id,
+        'user_id' => factory(User::class)->create(['xp' => 1])->id,
         'meal_id' => rand(1, 3),
         'ru_approver_id' => $admin->id,
         'en_approver_id' => $admin->id,
