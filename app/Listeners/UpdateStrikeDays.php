@@ -13,12 +13,17 @@ class UpdateStrikeDays
     public function handle(UserIsOnline $event)
     {
         if (!request()->cookie('strk')) {
-            if (user()->streak_check <= now()->subDay() && user()->streak_check >= now()->subDays(2)) {
+            $in_a_row = user()->streak_check <= now()->subDay() && user()->streak_check >= now()->subDays(2);
+            $not_in_a_row = user()->streak_check <= now()->subDays(2);
+
+            // If first time online in a day
+            if ($in_a_row) {
                 user()->update([
                     'streak_days' => user()->streak_days + 1,
                     'streak_check' => now(),
                 ]);
-            } else {
+            }
+            if ($not_in_a_row) {
                 user()->update([
                     'streak_days' => 0,
                     'streak_check' => now(),
