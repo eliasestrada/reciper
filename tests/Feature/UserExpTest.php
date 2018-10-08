@@ -120,4 +120,22 @@ class UserExpTest extends TestCase
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_days' => 0]);
     }
+
+    /** @test */
+    public function add_xp_for_days_in_a_row(): void
+    {
+        $this->actingAs($user = create_user('', ['streak_check' => now()->subDay()]))->get('/');
+        $this->assertDatabaseHas('users', ['id' => $user->id, 'xp' => 1]);
+    }
+
+    /** @test */
+    public function dont_add_xp_if_user_visited_app_in_hour_or_23_hours(): void
+    {
+        $this->actingAs($user = create_user('', ['streak_check' => now()->subHour(), 'xp' => 0]))->get('/');
+        $this->assertDatabaseHas('users', ['id' => $user->id, 'xp' => 0]);
+
+        $user->update(['streak_check' => $date = now()->subHours(23), 'xp' => 0]);
+        $this->actingAs($user)->get('/');
+        $this->assertDatabaseHas('users', ['id' => $user->id, 'xp' => 0]);
+    }
 }
