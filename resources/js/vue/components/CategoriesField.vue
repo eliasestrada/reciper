@@ -59,7 +59,7 @@ export default {
             fetch("/api/recipes-category")
                 .then(res => res.json())
                 .then(data => (this.categories = data))
-                .catch(err => console.log(err));
+                .catch(err => console.error(err));
         },
 
         getFieldsFromProps() {

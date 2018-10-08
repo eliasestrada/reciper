@@ -82,7 +82,7 @@
                             this.theEnd = true
                         }
                     })
-                    .catch(err => console.log(err));
+                    .catch(err => console.error(err));
             },
             infiniteHandler($state) {
                 setTimeout(() => {
@@ -96,7 +96,7 @@
                                 this.theEnd = true
                             }
                         })
-                        .catch(err => console.log(err));
+                        .catch(err => console.error(err));
                     $state.loaded()
                 }, 1000);
             },

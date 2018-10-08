@@ -27,7 +27,7 @@ export default {
             })
                 .then(res => res.json())
                 .then(data => this.changeLikeButton(data))
-                .catch(err => console.log(err));
+                .catch(err => console.error(err));
             },
         
         changeLikeButton(value) {
@@ -78,7 +78,7 @@ export default {
                         this.changeLikeNumber(data.liked)
                         this.processed = true
                     })
-                    .catch(err => console.log(err));
+                    .catch(err => console.error(err));
             }
         },
     }
