@@ -124,34 +124,4 @@ class User extends Authenticatable
     {
         User::whereId($user_id)->decrement($column, $points);
     }
-
-    /**
-     * @return int
-     */
-    public function getLvl(): int
-    {
-        $result = 0;
-        foreach ($this->levels as $level) {
-            if ($this->xp >= $level['min'] && $this->xp <= $level['max']) {
-                $result = $level['lvl'];
-            }
-        }
-        return $result;
-    }
-
-    /**
-     * @return int
-     */
-    public function getLvlMin(): int
-    {
-        return $this->levels[$this->getLvl() - 1]['min'];
-    }
-
-    /**
-     * @return int
-     */
-    public function getLvlMax(): int
-    {
-        return $this->levels[$this->getLvl() - 1]['max'];
-    }
 }
