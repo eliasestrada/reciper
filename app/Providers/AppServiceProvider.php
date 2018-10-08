@@ -14,22 +14,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         \Schema::defaultStringLength(191);
-        // \Artisan::call('migrate');
-
+        //\Artisan::call('migrate');
         $this->showListOfCategories();
-        $this->updateLastUserVisit();
-    }
-
-    /**
-     * @return void
-     */
-    public function updateLastUserVisit(): void
-    {
-        view()->composer('includes.footer', function ($view) {
-            if (auth()->check()) {
-                event(new \App\Events\UserIsOnline);
-            }
-        });
     }
 
     /**
