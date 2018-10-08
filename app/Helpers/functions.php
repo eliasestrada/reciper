@@ -168,10 +168,11 @@ function get_online_icon(string $value): string
     $minutes = [trans('date.minute'), trans('date.minutes'), trans('date.minutes2')];
     $url_string = explode(' ', $value);
 
-    if ($url_string[0] >= 0 && $url_string[0] <= 5) {
-        if (in_array($url_string[1], $seconds) || in_array($url_string[1], $minutes)) {
-            return '<span class="online-icon-on"></span>';
-        }
+    if (in_array($url_string[1], $seconds)) {
+        return '<span class="online-icon-on"></span>';
+    }
+    if ($url_string[0] >= 0 && $url_string[0] <= 5 && in_array($url_string[1], $minutes)) {
+        return '<span class="online-icon-on"></span>';
     }
     return '<span class="online-icon-off"></span>';
 }

@@ -40,10 +40,11 @@ function time_ago($date, $param = null)
     if (isset($param) && $param == 'online') {
         $url_string = explode(' ', $value);
 
-        if ($url_string[0] >= 0 && $url_string[0] <= 5) {
-            if (in_array($url_string[1], $seconds) || in_array($url_string[1], $minutes)) {
-                return;
-            }
+        if (in_array($url_string[1], $seconds)) {
+            return;
+        }
+        if ($url_string[0] >= 0 && $url_string[0] <= 5 && in_array($url_string[1], $minutes)) {
+            return;
         }
     }
     return $value . ' ' . trans("date.ago");
