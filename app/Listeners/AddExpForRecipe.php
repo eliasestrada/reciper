@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\RecipeGotApproved;
-use App\Models\User;
+use App\Helpers\Xp;
 
 class AddExpForRecipe
 {
@@ -13,6 +13,6 @@ class AddExpForRecipe
      */
     public function handle(RecipeGotApproved $event)
     {
-        User::addPoints('xp', config('custom.xp_for_approve'), $event->recipe->user_id);
+        Xp::add(config('custom.xp_for_approve'), $event->recipe->user_id);
     }
 }
