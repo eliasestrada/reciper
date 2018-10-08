@@ -37,20 +37,15 @@ function time_ago($date, $param = null)
         $value .= time_ago($_time);
     }
 
-    /**
-     * If second param is set and current secons less than or qual 120,
-     * return empty string instead of telling how many seconds ago user
-     * has been online
-     */
     if (isset($param) && $param == 'online') {
         $url_string = explode(' ', $value);
 
-        if (in_array($url_string[1], $seconds)) {
-            return;
+        if ($url_string[0] >= 0 && $url_string[0] <= 5) {
+            if (in_array($url_string[1], $seconds) || in_array($url_string[1], $minutes)) {
+                return;
+            }
         }
-
     }
-
     return $value . ' ' . trans("date.ago");
 }
 

@@ -19,7 +19,7 @@ class UserOnlineMiddleware
             if (user()->updated_at < now()->subMinutes(5)) {
                 event(new \App\Events\UserIsOnline);
             }
-            return $next($request);
         }
+        return $next($request);
     }
 }

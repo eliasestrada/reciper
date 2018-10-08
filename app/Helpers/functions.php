@@ -165,10 +165,13 @@ function readable_number($number)
 function get_online_icon(string $value): string
 {
     $seconds = [trans('date.second'), trans('date.seconds'), trans('date.seconds2')];
+    $minutes = [trans('date.minute'), trans('date.minutes'), trans('date.minutes2')];
     $url_string = explode(' ', $value);
 
-    if (in_array($url_string[1], $seconds)) {
-        return '<span class="online-icon-on"></span>';
+    if ($url_string[0] >= 0 && $url_string[0] <= 5) {
+        if (in_array($url_string[1], $seconds) || in_array($url_string[1], $minutes)) {
+            return '<span class="online-icon-on"></span>';
+        }
     }
     return '<span class="online-icon-off"></span>';
 }
