@@ -4,13 +4,13 @@
 
 @section('content')
 
-<div class="page">
+<div class="page row">
     <div class="center">
         <h1 class="headline">@lang('admin.statistics')</h1>
     </div>
-    
-    <div class="center mt-3"><h5 class="header">@lang('messages.general')</h5></div>
-    <div class="pb-3">
+
+    <div class="col s12 m12 l6">
+        <div class="center mt-3"><h5 class="header">@lang('messages.general')</h5></div>
         <table class="responsive highlight">
             <tr>
                 {{-- All recipes --}}
@@ -32,18 +32,10 @@
                 <td>@lang('users.amount_of_favs')</td>
                 <td class="right-align">{{ $recipes->pluck('favs_count')->count() }} <i class='fas fa-star tiny' style="color:#d49d10"></td>
             </tr>
-            <tr>
-                {{-- Exp points --}}
-                <td>@lang('users.exp_of_reciper')</td>
-                <td class="right-align">{{ user()->xp }}</td>
-            </tr>
-            <tr>
-                {{-- Popularity points --}}
-                <td>@lang('users.popularity_of_reciper')</td>
-                <td class="right-align">{{ user()->popularity }}</td>
-            </tr>
         </table>
+    </div>
 
+    <div class="col s12 m12 l6">
         <div class="center mt-4"><h5 class="header">@lang('recipes.recipes')</h5></div>
         <table class="responsive highlight">
             <tr>
@@ -77,6 +69,22 @@
                         {{ $most_favs->favs_count }} <i class='fas fa-star tiny' style="color:#d49d10"></i>
                     @else - @endif
                 </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col s12 m12 l6">
+        <div class="center mt-4"><h5 class="header">@lang('users.reciper')</h5></div>
+        <table class="responsive highlight">
+            <tr>
+                {{-- Exp points --}}
+                <td>@lang('users.exp_of_reciper')</td>
+                <td class="right-align">{{ user()->xp }}</td>
+            </tr>
+            <tr>
+                {{-- Popularity points --}}
+                <td>@lang('users.popularity_of_reciper')</td>
+                <td class="right-align">{{ user()->popularity }}</td>
             </tr>
         </table>
     </div>
