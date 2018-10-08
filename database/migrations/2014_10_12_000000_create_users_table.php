@@ -16,9 +16,9 @@ class CreateUsersTable extends Migration
             $table->string('about_me', config('valid.settings_about_me'))->nullable();
             $table->string('email')->unique();
             $table->unsignedSmallInteger('xp')->default(0);
-            $table->integer('strike_days')->default(0);
+            $table->integer('streak_days')->default(0);
             $table->decimal('popularity', 8, 1)->default(0);
-            $table->timestamp('strike_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('streak_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('notif_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('contact_check')->nullable();
             $table->string('image')->default('default.jpg');

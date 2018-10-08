@@ -73,13 +73,13 @@ class UserExpTest extends TestCase
     /** @test */
     // public function user_gets_exp_for_online(): void
     // {
-    //     $user = create_user('', ['strike_check' => now()->subDay()]);
+    //     $user = create_user('', ['streak_check' => now()->subDay()]);
 
     //     $this->actingAs($user)->get('/');
     //     $this->assertDatabaseHas('users', [
     //         'id' => $user->id,
-    //         'strike_days' => 1,
-    //         'strike_check' => date('Y-m-d H:i:s'),
+    //         'streak_days' => 1,
+    //         'streak_check' => date('Y-m-d H:i:s'),
     //         'xp' => $user->xp + $this->xp_for_online,
     //     ]);
     // }
@@ -87,7 +87,7 @@ class UserExpTest extends TestCase
     /** @test */
     public function user_got_cookie_when_first_time_visits_app(): void
     {
-        $user = create_user('', ['strike_days' => 1, 'strike_check' => now()->subDay()]);
+        $user = create_user('', ['streak_days' => 1, 'streak_check' => now()->subDay()]);
 
         $this->actingAs($user)->get('/')->assertCookie('strk');
     }
