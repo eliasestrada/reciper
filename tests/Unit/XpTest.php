@@ -23,9 +23,9 @@ class XpTest extends TestCase
     {
         $xp = new Xp(create_user('')->id);
 
-        foreach ($xp->levels as $level) {
+        foreach ($xp->levels as $i => $level) {
             $xp->user->xp = rand($level['min'], $level['max']);
-            $this->assertEquals($level['lvl'], $xp->getLvl());
+            $this->assertEquals($i, $xp->getLvl());
         }
     }
 
@@ -57,7 +57,7 @@ class XpTest extends TestCase
         $xp = new Xp(create_user('')->id);
 
         foreach ($xp->levels as $i => $level) {
-            if ($level['lvl'] !== 10) {
+            if ($i !== 10) {
                 $xp->user->xp = $level['min'];
                 $this->assertEquals(0, $xp->getPercent());
             } else {

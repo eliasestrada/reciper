@@ -8,18 +8,21 @@ class Xp
 {
     public $user;
     public $levels = [
-        ['lvl' => 1, 'min' => 1, 'max' => 39],
-        ['lvl' => 2, 'min' => 40, 'max' => 79],
-        ['lvl' => 3, 'min' => 80, 'max' => 159],
-        ['lvl' => 4, 'min' => 160, 'max' => 319],
-        ['lvl' => 5, 'min' => 320, 'max' => 639],
-        ['lvl' => 6, 'min' => 640, 'max' => 1279],
-        ['lvl' => 7, 'min' => 1280, 'max' => 2559],
-        ['lvl' => 8, 'min' => 2560, 'max' => 5119],
-        ['lvl' => 9, 'min' => 5120, 'max' => 9989],
-        ['lvl' => 10, 'min' => 9990, 'max' => 9991],
+        1 => ['min' => 1, 'max' => 39],
+        2 => ['min' => 40, 'max' => 79],
+        3 => ['min' => 80, 'max' => 159],
+        4 => ['min' => 160, 'max' => 319],
+        5 => ['min' => 320, 'max' => 639],
+        6 => ['min' => 640, 'max' => 1279],
+        7 => ['min' => 1280, 'max' => 2559],
+        8 => ['min' => 2560, 'max' => 5119],
+        9 => ['min' => 5120, 'max' => 9989],
+        10 => ['min' => 9990, 'max' => 9991],
     ];
 
+    /**
+     * @param integer $user_id
+     */
     public function __construct(int $user_id)
     {
         $this->user = User::find($user_id);
@@ -58,9 +61,9 @@ class Xp
     {
         // Refactor
         $result = 0;
-        foreach ($this->levels as $level) {
+        foreach ($this->levels as $i => $level) {
             if ($this->user->xp >= $level['min'] && $this->user->xp <= $level['max']) {
-                $result = $level['lvl'];
+                $result = $i;
             }
         }
         return $result;
@@ -71,7 +74,7 @@ class Xp
      */
     public function getLvlMin(): int
     {
-        return $this->levels[$this->getLvl() - 1]['min'];
+        return $this->levels[$this->getLvl()]['min'];
     }
 
     /**
@@ -79,7 +82,7 @@ class Xp
      */
     public function getLvlMax(): int
     {
-        return $this->levels[$this->getLvl() - 1]['max'];
+        return $this->levels[$this->getLvl()]['max'];
     }
 
     /**
