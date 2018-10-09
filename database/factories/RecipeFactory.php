@@ -26,6 +26,7 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'text_ru' => $faker->realText(config('valid.recipes.text.min') + 50),
         'ready_ru' => 1,
         'approved_ru' => 1,
+        'published_ru' => 1,
 
         // English language
         'title_en' => $faker->sentence,
@@ -34,5 +35,6 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'text_en' => $faker->realText(config('valid.recipes.text.min') + 50),
         'ready_en' => 1,
         'approved_en' => 1,
+        'published_en' => 1,
     ];
 });

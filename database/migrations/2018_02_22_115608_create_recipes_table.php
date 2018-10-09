@@ -23,6 +23,7 @@ class CreateRecipesTable extends Migration
             $table->text('text_ru')->nullable();
             $table->boolean('ready_ru')->default(0);
             $table->boolean('approved_ru')->default(0);
+            $table->boolean('published_ru')->default(0);
 
             // English language
             $table->string('title_en', config('valid.recipes.title.max') + 20)->nullable();
@@ -31,6 +32,7 @@ class CreateRecipesTable extends Migration
             $table->text('text_en')->nullable();
             $table->boolean('ready_en')->default(0);
             $table->boolean('approved_en')->default(0);
+            $table->boolean('published_en')->default(0);
 
             // Other
             $table->unsignedSmallInteger('time')->default(0);

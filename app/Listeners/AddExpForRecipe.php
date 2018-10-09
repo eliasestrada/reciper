@@ -13,6 +13,8 @@ class AddExpForRecipe
      */
     public function handle(RecipeGotApproved $event)
     {
-        Xp::add(config('custom.xp_for_approve'), $event->recipe->user_id);
+        if (!$event->recipe->isPublished()) {
+            Xp::add(config('custom.xp_for_approve'), $event->recipe->user_id);
+        }
     }
 }

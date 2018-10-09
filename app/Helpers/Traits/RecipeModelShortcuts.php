@@ -61,6 +61,14 @@ trait RecipeModelShortcuts
     }
 
     /**
+     * @return bool
+     */
+    public function isPublished(): bool
+    {
+        return $this->toArray()['published_' . lang()] == 1 ? true : false;
+    }
+
+    /**
      * @return string
      */
     public function getStatusText(): string

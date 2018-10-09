@@ -111,6 +111,13 @@ class RecipeTest extends TestCase
     }
 
     /** @test */
+    public function is_published_method_returns_true_when_published_column_is_set_to_one(): void
+    {
+        $recipe = make(Recipe::class, ['published_' . lang() => 1]);
+        $this->assertTrue($recipe->isPublished());
+    }
+
+    /** @test */
     public function get_status_text_method_returns_status_text(): void
     {
         $done = make(Recipe::class);
