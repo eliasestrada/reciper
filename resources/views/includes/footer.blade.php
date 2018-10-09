@@ -84,12 +84,14 @@
         {{--  Top recipers  --}}
         <div class="col s12 m6 l3 left-align">
             <ul class="unstyled-list">
-                <li><strong>@lang('pages.top_recipers')</strong></li>
-                @foreach ($top_recipers as $i => $reciper)
+                <li>
+                    <strong>@lang('pages.top_recipers')</strong>
+                    <span class="main-light-text d-block" style="font-size:14px;transform:translateY(-5.5px)">@lang('pages.for_today')</span>
+                </li>
+                @foreach ($top_recipers as $name => $value)
                     <li>
-                        <a href="/users/{{ $reciper->id }}">
-                            <i class="fas fa-crown" style="font-size:0.8em;color:orange"></i> 
-                            {{ $reciper->name }} ({{ $reciper->xp }})
+                        <a href="/users/{{ str_slug($name) }}">
+                            <i class="fas fa-crown" style="font-size:0.8em;color:orange"></i> {{ $name }}
                         </a>
                     </li>
                 @endforeach
