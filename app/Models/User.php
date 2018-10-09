@@ -11,18 +11,6 @@ class User extends Authenticatable
 
     protected $guarded = ['id'];
     protected $hidden = ['password', 'remember_token'];
-    public $levels = [
-        ['lvl' => 1, 'min' => 1, 'max' => 39],
-        ['lvl' => 2, 'min' => 40, 'max' => 79],
-        ['lvl' => 3, 'min' => 80, 'max' => 159],
-        ['lvl' => 4, 'min' => 160, 'max' => 319],
-        ['lvl' => 5, 'min' => 320, 'max' => 639],
-        ['lvl' => 6, 'min' => 640, 'max' => 1299],
-        ['lvl' => 7, 'min' => 1300, 'max' => 2299],
-        ['lvl' => 8, 'min' => 2300, 'max' => 5129],
-        ['lvl' => 9, 'min' => 5130, 'max' => 8999],
-        ['lvl' => 10, 'min' => 9000, 'max' => 9001],
-    ];
 
     public function recipes()
     {
@@ -91,37 +79,5 @@ class User extends Authenticatable
     public function hasFav(int $recipe_id): bool
     {
         return Fav::where([['user_id', $this->id], ['recipe_id', $recipe_id]])->exists();
-    }
-
-    /**
-     * @param string $column
-     * @param int $user_id
-     * @param float $points
-     * @return void
-     */
-    public static function addPoints(string $column, float $points, int $user_id)
-    {
-        if ($column == 'xp') {
-            $xp = User::whereId($user_id)->value('xp');
-
-            if ($xp <= (config('custom.max_xp') - $points)) {
-                User::whereId($user_id)->increment('xp', $points);
-            } else {
-                User::whereId($user_id)->increment('xp', config('custom.max_xp') - $xp);
-            }
-        } else {
-            User::whereId($user_id)->increment($column, $points);
-        }
-    }
-
-    /**
-     * @param string $column
-     * @param int $user_id
-     * @param float $points
-     * @return void
-     */
-    public static function removePoints(string $column, float $points, int $user_id)
-    {
-        User::whereId($user_id)->decrement($column, $points);
     }
 }

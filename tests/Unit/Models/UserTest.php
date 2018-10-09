@@ -19,7 +19,6 @@ class UserTest extends TestCase
         $this->assertClassHasAttribute('guarded', User::class);
         $this->assertClassHasAttribute('hidden', User::class);
         $this->assertClassHasAttribute('dates', User::class);
-        $this->assertClassHasAttribute('levels', User::class);
     }
 
     /** @test */

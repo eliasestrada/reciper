@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Helpers\Popularity;
 use App\Models\Fav;
 use App\Models\Recipe;
 use App\Models\User;
@@ -29,7 +30,7 @@ class UserPopularityTest extends TestCase
     {
         $user = create_user('', ['popularity' => 0]);
         $recipe = make(Recipe::class, ['user_id' => $user->id]);
-        User::addPoints('popularity', config('custom.popularity_for_like'), $recipe->user_id);
+        Popularity::add(config('custom.popularity_for_like'), $recipe->user_id);
 
         $this->assertEquals($this->popularity_for_like, User::whereId($user->id)->value('popularity'));
     }
@@ -39,7 +40,7 @@ class UserPopularityTest extends TestCase
     {
         $user = create_user('', ['popularity' => $this->popularity_for_like]);
         $recipe = make(Recipe::class, ['user_id' => $user->id]);
-        User::removePoints('popularity', config('custom.popularity_for_like'), $recipe->user_id);
+        Popularity::remove(config('custom.popularity_for_like'), $recipe->user_id);
 
         $this->assertEquals(0, User::whereId($user->id)->value('popularity'));
     }
@@ -50,7 +51,7 @@ class UserPopularityTest extends TestCase
         $user = create_user('', ['popularity' => 0]);
         $recipe = make(Recipe::class, ['user_id' => $user->id]);
         // Fix this useless test
-        User::addPoints('popularity', config('custom.popularity_for_view'), $recipe->user_id);
+        Popularity::add(config('custom.popularity_for_view'), $recipe->user_id);
         $this->assertEquals($this->popularity_for_view, User::whereId($user->id)->value('popularity'));
     }
 

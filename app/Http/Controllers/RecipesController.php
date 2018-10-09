@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Popularity;
 use App\Helpers\Traits\RecipesControllerHelpers;
 use App\Http\Requests\Recipes\RecipeStoreRequest;
 use App\Http\Requests\Recipes\RecipeUpdateRequest;
@@ -83,7 +84,7 @@ class RecipesController extends Controller
         // Else increment visits column by one
         if ($recipe->views()->whereVisitorId(visitor_id())->doesntExist()) {
             $recipe->views()->create(['visitor_id' => visitor_id()]);
-            User::addPoints('popularity', config('custom.popularity_for_view'), $recipe->user_id);
+            Popularity::add(config('custom.popularity_for_view'), $recipe->user_id);
         } else {
             $recipe->views()->whereVisitorId(visitor_id())->increment('visits');
         }

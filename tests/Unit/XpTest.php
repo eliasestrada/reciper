@@ -3,12 +3,20 @@
 namespace Tests\Unit;
 
 use App\Helpers\Xp;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class XpTest extends TestCase
 {
     use DatabaseTransactions;
+
+    /** @test */
+    public function model_has_attributes(): void
+    {
+        $this->assertClassHasAttribute('user', Xp::class);
+        $this->assertClassHasAttribute('levels', Xp::class);
+    }
 
     /** @test */
     public function get_lvl_method_returns_correct_data(): void

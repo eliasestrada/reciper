@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\RecipeGotDrafted;
-use App\Models\User;
+use App\Helpers\Xp;
 
 class RemoveExpForDrafting
 {
@@ -13,6 +13,6 @@ class RemoveExpForDrafting
      */
     public function handle(RecipeGotDrafted $event)
     {
-        User::removePoints('xp', config('custom.xp_for_approve'), $event->recipe->user_id);
+        Xp::remove(config('custom.xp_for_approve'), $event->recipe->user_id);
     }
 }

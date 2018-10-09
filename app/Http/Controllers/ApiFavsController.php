@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Popularity;
 use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -24,13 +25,13 @@ class ApiFavsController extends Controller
 
         if (user()->favs()->whereRecipeId($recipe->id)->exists()) {
             user()->favs()->whereRecipeId($recipe->id)->delete();
-            User::removePoints('popularity', config('custom.popularity_for_favs'), $recipe->user_id);
+            Popularity::remove(config('custom.popularity_for_favs'), $recipe->user_id);
 
             return response('', 200);
         }
 
         user()->favs()->create(['recipe_id' => $recipe->id]);
-        User::addPoints('popularity', config('custom.popularity_for_favs'), $recipe->user_id);
+        Popularity::add(config('custom.popularity_for_favs'), $recipe->user_id);
 
         return response('active', 200);
     }
