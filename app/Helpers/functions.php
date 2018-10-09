@@ -213,3 +213,13 @@ function tip(string $header, string $message, string $color = 'green-text'): str
 {
     return '<br><br><span class="' . $color . '"><b>' . $header . ':</b> ' . $message . '<span>';
 }
+
+/**
+ * @param string $title
+ * @param $link
+ * @return string
+ */
+function help_link(string $title, $link): string
+{
+    return '<a href="' . \URL::to(is_int($link) ? '/help/' . $link : $link) . '" class="text-hover">' . $title . '</a>';
+}

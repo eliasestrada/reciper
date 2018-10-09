@@ -12,14 +12,12 @@ class UserExpTest extends TestCase
     use DatabaseTransactions;
 
     private $xp_for_approve;
-    private $xp_for_online;
     private $max_xp;
 
     public function setUp()
     {
         parent::setUp();
         $this->xp_for_approve = config('custom.xp_for_approve');
-        $this->xp_for_online = config('custom.xp_for_online');
         $this->max_xp = config('custom.max_xp');
     }
 

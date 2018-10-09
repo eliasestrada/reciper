@@ -7,7 +7,6 @@ return [
 
     // Experience
     'xp_for_approve' => 25,
-    'xp_for_online' => 10,
     'max_xp' => 9990,
 
     // Pupularity points
