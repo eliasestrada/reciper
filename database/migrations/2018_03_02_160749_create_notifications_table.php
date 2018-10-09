@@ -14,7 +14,7 @@ class CreateNotificationsTable extends Migration
             $table->string('title');
             $table->text('message');
             $table->boolean('for_admins')->default(0);
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

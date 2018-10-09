@@ -16,7 +16,7 @@ class FeedbackTest extends TestCase
     public function model_has_attributes(): void
     {
         $this->assertClassHasAttribute('guarded', Feedback::class);
-        $this->assertNull(Feedback::UPDATED_AT);
+        $this->assertClassHasAttribute('timestamps', Feedback::class);
     }
 
     /** @test */

@@ -15,7 +15,7 @@ class NotificationTest extends TestCase
     public function model_has_attributes(): void
     {
         $this->assertClassHasAttribute('guarded', Notification::class);
-        $this->assertNull(Notification::UPDATED_AT);
+        $this->assertClassHasAttribute('timestamps', Notification::class);
     }
 
     /** @test */

@@ -24,7 +24,7 @@ class BanTest extends TestCase
     {
         $this->assertClassHasAttribute('guarded', Ban::class);
         $this->assertClassHasAttribute('table', Ban::class);
-        $this->assertNull(Ban::UPDATED_AT);
+        $this->assertClassHasAttribute('timestamps', Ban::class);
     }
 
     /** @test */

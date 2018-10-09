@@ -17,7 +17,7 @@ class CreateFeedbackTable extends Migration
             $table->integer('recipe_id')->nullable();
             $table->string('lang', 2);
             $table->text('message');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

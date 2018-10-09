@@ -8,7 +8,7 @@ class Ban extends Model
 {
     protected $guarded = ['id'];
     protected $table = 'ban';
-    const UPDATED_AT = null;
+    public $timestamps = false;
 
     public function visitor()
     {
