@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Helpers\Xp;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
