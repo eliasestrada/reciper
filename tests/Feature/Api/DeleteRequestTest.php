@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Http\Api;
+namespace Tests\Feature\Api;
 
 use App\Models\Recipe;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
