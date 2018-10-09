@@ -127,7 +127,10 @@ class RecipesController extends Controller
         // Move to drafts
         if ($recipe->isReady()) {
             $recipe->moveToDrafts();
-            event(new \App\Events\RecipeGotDrafted($recipe));
+            cache()->forget('popular_recipes');
+            cache()->forget('random_recipes');
+            cache()->forget('unapproved_notif');
+            cache()->forget('search_suggest');
 
             return redirect("/recipes/$recipe->id/edit")->withSuccess(
                 trans('recipes.saved')

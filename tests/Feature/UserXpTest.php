@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class UserExpTest extends TestCase
+class UserXpTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -67,16 +67,6 @@ class UserExpTest extends TestCase
 
         event(new \App\Events\RecipeGotApproved($recipe, 'message'));
         $this->assertEquals($this->max_xp, User::whereId($user->id)->value('xp'));
-    }
-
-    /** @test */
-    public function user_looses_exp_for_drafting_recipe(): void
-    {
-        $user = create_user('', ['xp' => $this->xp_for_approve]);
-        $recipe = make(Recipe::class, ['user_id' => $user->id]);
-
-        event(new \App\Events\RecipeGotDrafted($recipe));
-        $this->assertEquals(0, User::whereId($user->id)->value('xp'));
     }
 
     /** @test */

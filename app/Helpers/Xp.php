@@ -45,16 +45,6 @@ class Xp
     }
 
     /**
-     * @param int $user_id
-     * @param float $points
-     * @return void
-     */
-    public static function remove(float $xp_remove, int $user_id)
-    {
-        User::whereId($user_id)->decrement('xp', $xp_remove);
-    }
-
-    /**
      * @return int
      */
     public function getLvl(): int

@@ -25,10 +25,6 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\ClearCacheAfterApproving::class,
             \App\Listeners\UpdateRecipeAfterApproving::class,
         ],
-        \App\Events\RecipeGotDrafted::class => [
-            \App\Listeners\RemoveExpForDrafting::class,
-            \App\Listeners\ForgetCacheAfterDrafting::class,
-        ],
         \App\Events\UserIsOnline::class => [
             \App\Listeners\UpdateUpdatedAtColumn::class,
             \App\Listeners\UpdateStrikeDays::class,
