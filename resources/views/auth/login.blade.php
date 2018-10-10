@@ -22,8 +22,10 @@
         
             <visibility inline-template>
                 <div class="input-field">
-                    <input class="validate" :type="type" name="password" id="password" autocomplete="off" required>
-                    <i :class="icon" class="fas fa-15x main-text no-select position-absolute visibility-icon" v-on:click="changeType"></i>
+                    <input class="validate with-icon" :type="type" name="password" id="password" autocomplete="off" required>
+                    <div class="d-inline-block visibility-icon waves-effect waves-green" v-on:click="changeType">
+                        <i :class="icon" class="fas no-select"></i>
+                    </div>
                     <label for="password">@lang('forms.pwd')</label>
                 </div>
             </visibility>

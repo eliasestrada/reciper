@@ -79,8 +79,18 @@ select {
 }
 
 .visibility-icon {
+  text-align: center;
   cursor: pointer;
-  margin-left: -20px;
+  width: 50px;
+  height: 2.9em;
+  line-height: 2.9em;
+  border-radius: 0 10px 10px 0;
+  margin-left: -4px;
+}
+
+.visibility-icon i {
+  color: #292543;
+  font-size: 20px;
 }
 
 .fa-15x {
@@ -2943,7 +2953,7 @@ small {
 }
 
 .toast {
-  border-radius: 2px;
+  border-radius: 3px;
   top: 35px;
   width: auto;
   margin-top: 10px;
@@ -2967,6 +2977,7 @@ small {
   -ms-flex-pack: justify;
   justify-content: space-between;
   cursor: default;
+  opacity: .95 !important;
 }
 
 .toast .toast-action {
@@ -4103,6 +4114,10 @@ textarea.materialize-textarea {
   transition: box-shadow .3s, border .3s;
   transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
   color: #666;
+}
+
+input.with-icon {
+  width: calc(100% - 55px) !important;
 }
 
 input:not([type]):disabled,
@@ -7209,19 +7224,17 @@ Nav List
 
 .star {
   color: #6d6d6d;
-  -webkit-transition: color 400ms, -webkit-transform 200ms;
-  transition: color 400ms, -webkit-transform 200ms;
-  transition: color 400ms, transform 200ms;
-  transition: color 400ms, transform 200ms, -webkit-transform 200ms;
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+  -webkit-transition: color 400ms;
+  transition: color 400ms;
+  font-size: 1.4em;
   cursor: pointer;
+  -webkit-animation: disappear .7s;
+          animation: disappear .7s;
+  animation-direction: reverse;
 }
 
 .star:hover {
   color: #7f7f7f;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
 }
 
 .star.active {
@@ -7274,8 +7287,8 @@ Nav List
   width: 30px;
   height: 30px;
   margin: auto;
-  -webkit-animation: heart-beat 1.7s infinite both 1s, disappear 1s;
-          animation: heart-beat 1.7s infinite both 1s, disappear 1s;
+  -webkit-animation: heart-beat 1.7s infinite both 1s, disappear .7s;
+          animation: heart-beat 1.7s infinite both 1s, disappear .7s;
   animation-direction: alternate, reverse;
 }
 
@@ -7488,19 +7501,22 @@ Nav List
 }
 
 .loved-link i {
-  color: #cf4545;
-  -webkit-transition: color .1s, -webkit-transform .1s;
-  transition: color .1s, -webkit-transform .1s;
-  transition: color .1s, transform .1s;
-  transition: color .1s, transform .1s, -webkit-transform .1s;
-  font-size: 1.2em;
+  color: #dbd9ea;
+  -webkit-transition: color .1s, -webkit-transform .2s;
+  transition: color .1s, -webkit-transform .2s;
+  transition: color .1s, transform .2s;
+  transition: color .1s, transform .2s, -webkit-transform .2s;
+  font-size: 1.3em;
   line-height: 52px;
+  -webkit-animation: disappear .7s;
+          animation: disappear .7s;
+  animation-direction: reverse;
 }
 
 .loved-link i:hover {
-  color: #d66161;
-  -webkit-transform: scale(1.3);
-          transform: scale(1.3);
+  color: #f4f3f8;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 @media only screen and (max-width: 992px) {
@@ -7548,8 +7564,6 @@ Nav List
   border-radius: 3px;
   border: solid 3px #fff;
   border-bottom: solid 6px #fff;
-  -webkit-animation: appearWithRotate 1s;
-          animation: appearWithRotate 1s;
 }
 
 .item-content {
@@ -7646,26 +7660,22 @@ Nav List
 @-webkit-keyframes heart-beat {
   10%,
   90% {
-    color: #700101;
     -webkit-transform: scale(1);
             transform: scale(1);
   }
   20%,
   80% {
-    color: #860101;
     -webkit-transform: scale(1.1);
             transform: scale(1.1);
   }
   30%,
   50%,
   70% {
-    color: #a50202;
     -webkit-transform: scale(1.15);
             transform: scale(1.15);
   }
   40%,
   60% {
-    color: #c40101;
     -webkit-transform: scale(1.2);
             transform: scale(1.2);
   }
@@ -7674,26 +7684,22 @@ Nav List
 @keyframes heart-beat {
   10%,
   90% {
-    color: #700101;
     -webkit-transform: scale(1);
             transform: scale(1);
   }
   20%,
   80% {
-    color: #860101;
     -webkit-transform: scale(1.1);
             transform: scale(1.1);
   }
   30%,
   50%,
   70% {
-    color: #a50202;
     -webkit-transform: scale(1.15);
             transform: scale(1.15);
   }
   40%,
   60% {
-    color: #c40101;
     -webkit-transform: scale(1.2);
             transform: scale(1.2);
   }
@@ -7829,8 +7835,8 @@ Nav List
   }
   50% {
     opacity: 1;
-    -webkit-transform: scale(1.6);
-            transform: scale(1.6);
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
   }
   100% {
     opacity: 0;
@@ -7851,8 +7857,8 @@ Nav List
   }
   50% {
     opacity: 1;
-    -webkit-transform: scale(1.6);
-            transform: scale(1.6);
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
   }
   100% {
     opacity: 0;
