@@ -42,4 +42,12 @@ class TopRecipersJob implements ShouldQueue
             return $this->release(2);
         });
     }
+
+    /**
+     * @
+     */
+    public function tags()
+    {
+        return ['top_recipers'];
+    }
 }
