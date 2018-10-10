@@ -25,15 +25,13 @@ return [
     // Migration Repository Table
     'migrations' => 'migrations',
 
-    // Redis Databases
     'redis' => [
-        'client' => 'predis',
         'default' => [
-            'host' => env('REDIS_HOST', '127.0.0.1'),
-            'password' => env('REDIS_PASSWORD', null),
-            'port' => env('REDIS_PORT', 6379),
-            'database' => 0,
-            'read_timeout' => 60,
+            'driver' => 'redis',
+            'connection' => 'default',
+            'queue' => '{default}',
+            'retry_after' => 90,
+            'block_for' => 5,
         ],
     ],
 ];
