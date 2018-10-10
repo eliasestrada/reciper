@@ -234,5 +234,5 @@ function tip(string $header, string $message, string $color = 'green-text'): str
  */
 function help_link(string $title, $link): string
 {
-    return '<a href="' . \URL::to(is_int($link) ? '/help/' . $link : $link) . '" class="text-hover">' . $title . '</a>';
+    return '<a href="' . \URL::to(is_int($link) ? '/help/' . $link : $link) . '" class="text-hover">' . $title . ' <i class="fas fa-external-link-square-alt" style="font-size:10px;transform:translateY(-4.5px)"></i></a>';
 }
