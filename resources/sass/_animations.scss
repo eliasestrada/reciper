@@ -1,23 +1,19 @@
 @keyframes heart-beat {
 	10%,
 	90% {
-		color: #700101;
 		transform: scale(1);
 	}
 	20%,
 	80% {
-		color: #860101;
 		transform: scale(1.1);
 	}
 	30%,
 	50%,
 	70% {
-		color: #a50202;
 		transform: scale(1.15);
 	}
 	40%,
 	60% {
-		color: #c40101;
 		transform: scale(1.2);
 	}
 }
@@ -85,7 +81,7 @@
 	}
 	50% {
 		opacity: 1;
-		transform: scale(1.6);
+		transform: scale(1.4);
 	}
 	100% {
 		opacity: 0;

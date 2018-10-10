@@ -2736,7 +2736,7 @@ small {
 }
 
 .toast {
-    border-radius: 2px;
+    border-radius: 3px;
     top: 35px;
     width: auto;
     margin-top: 10px;
@@ -2763,6 +2763,7 @@ small {
     -ms-flex-pack: justify;
     justify-content: space-between;
     cursor: default;
+    opacity: .95 !important;
 }
 
 .toast .toast-action {
@@ -3911,6 +3912,10 @@ textarea.materialize-textarea {
     transition: box-shadow .3s, border .3s;
     transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
     color: #666;
+}
+
+input.with-icon {
+    width: calc(100% - 55px) !important;
 }
 
 input:not([type]):disabled,

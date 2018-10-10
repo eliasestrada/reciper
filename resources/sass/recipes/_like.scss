@@ -1,11 +1,13 @@
 .star {
     color: #6d6d6d;
-    transition: color 400ms, transform 200ms;
-    transform: scale(1.05);
+    transition: color 400ms;
+    font-size: 1.4em;
     cursor: pointer;
+    animation: disappear .7s;
+    animation-direction: reverse;
+
     &:hover {
         color: lighten(#6d6d6d, 7%);
-        transform: scale(1.1);
     }
 }
 .star.active {
@@ -44,7 +46,7 @@
         width: 30px;
         height: 30px;
         margin: auto;
-        animation: heart-beat 1.7s infinite both 1s, disappear 1s;
+        animation: heart-beat 1.7s infinite both 1s, disappear .7s;
         animation-direction: alternate, reverse;
     }
 
@@ -55,7 +57,7 @@
     }
 
     .btn__fill {
-        fill: #cf4545;
+        fill: $red;
     }
 
     .btn__border {
@@ -83,7 +85,7 @@
     }
 
     .btn--liked-small{
-        background-color:#cf4545;
+        background-color: $red;
     }
 
     .btn--liked-small .btn__fill{

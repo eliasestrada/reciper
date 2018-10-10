@@ -59,13 +59,16 @@
     }
 
     i {
-        color: $red;
-        transition: color .1s, transform .1s;
-        font-size: 1.2em;
+        color: $mainLight;
+        transition: color .1s, transform .2s;
+        font-size: 1.3em;
         line-height: 52px;
+        animation: disappear .7s;
+        animation-direction: reverse;
+
         &:hover {
-            color: lighten($red, 7%);
-            transform: scale(1.3)
+            color: lighten($mainLight, 8%);
+            transform: scale(1.2)
         }
     }
 }
