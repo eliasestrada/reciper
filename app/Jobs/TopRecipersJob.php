@@ -26,7 +26,7 @@ class TopRecipersJob implements ShouldQueue
                 return $like->recipe->user->id . '<split>' . $like->recipe->user->name;
             })->toArray();
 
-            $users = array_slice(array_reverse(array_sort(array_count_values($users))), 0, 10);
+            $users = array_slice(array_reverse(array_sort(array_count_values($users))), 0, 7);
 
             $top_recipers = [];
 
