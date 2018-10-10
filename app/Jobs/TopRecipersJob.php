@@ -22,7 +22,7 @@ class TopRecipersJob implements ShouldQueue
     public function handle()
     {
         Redis::throttle('top-recipers')->allow(2)->every(1)->then(function () {
-            $users = Like::whereDay('created_at', date('j'))->get()->map(function ($like) {
+            $users = Like::whereCreatedAt(now()->subDay())->get()->map(function ($like) {
                 return $like->recipe->user->id . '<split>' . $like->recipe->user->name;
             })->toArray();
 
