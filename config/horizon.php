@@ -11,7 +11,7 @@ return [
     | meta information required for it to function. It includes the list
     | of supervisors, failed jobs, job metrics, and other information.
     |
-    */
+     */
 
     'use' => 'default',
 
@@ -24,7 +24,7 @@ return [
     | may modify the prefix when you are running multiple installations
     | of Horizon on the same server so that they don't have problems.
     |
-    */
+     */
 
     'prefix' => env('HORIZON_PREFIX', 'horizon:'),
 
@@ -37,7 +37,7 @@ return [
     | will be fired. Every connection / queue combination may have its
     | own, unique threshold (in seconds) before this event is fired.
     |
-    */
+     */
 
     'waits' => [
         'redis:default' => 60,
@@ -52,7 +52,7 @@ return [
     | persist the recent and failed jobs. Typically, recent jobs are kept
     | for one hour while all failed jobs are stored for an entire week.
     |
-    */
+     */
 
     'trim' => [
         'recent' => 60,
@@ -68,15 +68,15 @@ return [
     | in all environments. These supervisors and settings handle all your
     | queued jobs and will be provisioned by Horizon during deployment.
     |
-    */
+     */
 
     'environments' => [
         'production' => [
             'supervisor-1' => [
                 'connection' => 'redis',
                 'queue' => ['default'],
-                'balance' => 'simple',
-                'processes' => 10,
+                'balance' => 'auto',
+                'processes' => 20,
                 'tries' => 3,
             ],
         ],
@@ -85,8 +85,8 @@ return [
             'supervisor-1' => [
                 'connection' => 'redis',
                 'queue' => ['default'],
-                'balance' => 'simple',
-                'processes' => 3,
+                'balance' => 'auto',
+                'processes' => 20,
                 'tries' => 3,
             ],
         ],
