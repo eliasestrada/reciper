@@ -88,13 +88,15 @@
                     <strong>@lang('pages.top_recipers')</strong>
                     <span class="main-light-text d-block" style="font-size:14px;transform:translateY(-5.5px)">@lang('pages.for_today') <i class="fas fa-heart red-text"></i></span>
                 </li>
-                @foreach ($top_recipers as $reciper)
+                @forelse ($top_recipers as $reciper)
                     <li>
                         <a href="/users/{{ $reciper['id'] }}">
                             <i class="fas fa-crown" style="font-size:0.8em;color:orange"></i> {{ $reciper['name'] }}
                         </a>
                     </li>
-                @endforeach
+                @empty
+                    <span class="grey-text"><i class="fas fa-meh"></i> @lang('pages.no_recipers')</span>
+                @endforelse
             </ul>
         </div>
     </div>
