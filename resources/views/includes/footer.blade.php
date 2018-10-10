@@ -1,5 +1,58 @@
 <footer class="px-5 pt-3 pb-5">
     <div class="row wrapper">
+
+        {{--  Top recipers  --}}
+        <div class="col s12 m6 l3 left-align">
+            <ul class="unstyled-list">
+                <li>
+                    <strong>@lang('pages.top_recipers')</strong>
+                    <span class="main-light-text d-block" style="font-size:14px;transform:translateY(-5.5px)">
+                        @lang('pages.most_popular') <i class="fas fa-heart red-text"></i>
+                    </span>
+                    <span class="main-light-text d-block" style="font-size:14px;transform:translateY(-10px)">
+                        @lang('pages.in_a_day')
+                    </span>
+                </li>
+                @forelse ($top_recipers as $reciper)
+                    <li>
+                        <a href="/users/{{ $reciper['id'] }}">
+                            <i class="fas fa-crown" style="font-size:0.8em;color:orange"></i> {{ $reciper['name'] }}
+                        </a>
+                    </li>
+                @empty
+                    <span class="grey-text"><i class="fas fa-meh"></i> @lang('pages.no_recipers')</span>
+                @endforelse
+            </ul>
+        </div>
+        
+        {{--  Random recipes  --}}
+        <div class="col s12 m6 l3 left-align">
+            <ul class="unstyled-list">
+                <li><strong>@lang('recipes.recipes')</strong></li>
+                @foreach ($random_recipes as $recipe)
+                    <li>
+                        <a href="/recipes/{{ $recipe->id }}">
+                            <i class="fas fa-angle-right red-text"></i> {{ $recipe->getTitle() }}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+
+        {{--  Popular recipes  --}}
+        <div class="col s12 m6 l3 left-align">
+            <ul class="unstyled-list">
+                <li><strong>@lang('recipes.popular')</strong></li>
+                @foreach ($popular_recipes as $recipe)
+                    <li>
+                        <a href="/recipes/{{ $recipe->id }}">
+                            <i class="fas fa-angle-right red-text"></i> {{ $recipe->getTitle() }}
+                        </a>
+                    </li>
+                @endforeach
+            <ul>
+        </div>
+
         <div class="col s12 m6 l3 left-align row">
             {{-- Navigation --}}
             <ul class="px-0 unstyled-list col s12">
@@ -50,58 +103,6 @@
                         </a>
                     </li>
                 @endforeach
-            </ul>
-        </div>
-
-        {{--  Random recipes  --}}
-        <div class="col s12 m6 l3 left-align">
-            <ul class="unstyled-list">
-                <li><strong>@lang('recipes.recipes')</strong></li>
-                @foreach ($random_recipes as $recipe)
-                    <li>
-                        <a href="/recipes/{{ $recipe->id }}">
-                            <i class="fas fa-angle-right red-text"></i> {{ $recipe->getTitle() }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
-
-        {{--  Popular recipes  --}}
-        <div class="col s12 m6 l3 left-align">
-            <ul class="unstyled-list">
-                <li><strong>@lang('recipes.popular')</strong></li>
-                @foreach ($popular_recipes as $recipe)
-                    <li>
-                        <a href="/recipes/{{ $recipe->id }}">
-                            <i class="fas fa-angle-right red-text"></i> {{ $recipe->getTitle() }}
-                        </a>
-                    </li>
-                @endforeach
-            <ul>
-        </div>
-
-        {{--  Top recipers  --}}
-        <div class="col s12 m6 l3 left-align">
-            <ul class="unstyled-list">
-                <li>
-                    <strong>@lang('pages.top_recipers')</strong>
-                    <span class="main-light-text d-block" style="font-size:14px;transform:translateY(-5.5px)">
-                        @lang('pages.most_popular') <i class="fas fa-heart red-text"></i>
-                    </span>
-                    <span class="main-light-text d-block" style="font-size:14px;transform:translateY(-10px)">
-                        @lang('pages.in_a_day')
-                    </span>
-                </li>
-                @forelse ($top_recipers as $reciper)
-                    <li>
-                        <a href="/users/{{ $reciper['id'] }}">
-                            <i class="fas fa-crown" style="font-size:0.8em;color:orange"></i> {{ $reciper['name'] }}
-                        </a>
-                    </li>
-                @empty
-                    <span class="grey-text"><i class="fas fa-meh"></i> @lang('pages.no_recipers')</span>
-                @endforelse
             </ul>
         </div>
     </div>
