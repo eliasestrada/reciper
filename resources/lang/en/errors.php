@@ -1,6 +1,9 @@
 <?php
 
 return [
+    '401' => 'Error 401',
+    '401_title' => 'Unauthorized',
+    '401_description' => 'Sorry, you are not authorized to access this page.',
 
     '403' => 'Error 403',
     '403_title' => 'Forbidden',
@@ -21,8 +24,5 @@ return [
     '503' => 'Unavailable',
     '503_title' => 'Service Unavailable due to a temporary maintenance',
     '503_description' => 'The server is currently unable to handle the request due to a temporary maintenance of the website. The implication is that this is a temporary condition which will be alleviated after some delay.',
-
-    // Other
-    'to_home' => 'Home page',
 
 ];

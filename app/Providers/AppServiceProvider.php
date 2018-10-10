@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Horizon\Horizon;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
         \Schema::defaultStringLength(191);
         //\Artisan::call('migrate');
         $this->showListOfCategories();
+        $this->horizon();
     }
 
     /**
@@ -27,5 +30,18 @@ class AppServiceProvider extends ServiceProvider
             return Category::get(['id', 'name_' . lang()]);
         });
         view()->share(compact('categories'));
+    }
+
+    /**
+     * @
+     */
+    public function horizon()
+    {
+        Horizon::auth(function ($request) {
+            if ($request->user() && $request->user()->hasRole('master')) {
+                return true;
+            }
+            throw new UnauthorizedHttpException('Unauthorized');
+        });
     }
 }
