@@ -44,7 +44,7 @@
         </div>
 
         {{--  Likes  --}}
-        <div class="like-for-author-section no-select" style="width:90%">
+        <div class="like-for-author-section no-select py-1">
             @if ($recipe->isDone())
                 {{-- Favs button --}}
                 <div class="d-inline-block" style="transform:translateX(13px)">
@@ -52,7 +52,7 @@
                 </div>
 
                 {{-- User icon --}}
-                <a href="/users/{{ $recipe->user->id }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->image) }})" title="@lang('recipes.search_by_author')"></a>
+                <a href="/users/{{ $recipe->user->id }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->image) }})" title="@lang('users.go_to_profile') {{ $recipe->user->name }}"></a>
 
                 {{-- Like button --}}
                 <like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}" inline-template>

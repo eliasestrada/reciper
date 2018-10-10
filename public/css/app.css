@@ -7240,6 +7240,10 @@ Nav List
           transform: scale(1.05);
 }
 
+.like-for-author-section {
+  width: 90%;
+}
+
 .like-for-author-section .user-icon-on-single-recipe {
   margin-right: -25px;
   -webkit-transition: margin-right 300ms, -webkit-transform 300ms;
