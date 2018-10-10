@@ -86,7 +86,12 @@
             <ul class="unstyled-list">
                 <li>
                     <strong>@lang('pages.top_recipers')</strong>
-                    <span class="main-light-text d-block" style="font-size:14px;transform:translateY(-5.5px)">@lang('pages.for_today') <i class="fas fa-heart red-text"></i></span>
+                    <span class="main-light-text d-block" style="font-size:14px;transform:translateY(-5.5px)">
+                        @lang('pages.most_popular') <i class="fas fa-heart red-text"></i>
+                    </span>
+                    <span class="main-light-text d-block" style="font-size:14px;transform:translateY(-10px)">
+                        @lang('pages.in_a_day')
+                    </span>
                 </li>
                 @forelse ($top_recipers as $reciper)
                     <li>
