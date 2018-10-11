@@ -41,13 +41,6 @@
         </div>
 
         <div class="col s12 l6">
-            {{-- Visitor id --}}
-            @if (optional(user())->hasRole('master'))
-                <a href="/master/visitors/{{ $user->visitor_id }}" class="btn-small mt-3">
-                    @lang('visitors.visitor') #{{ $user->visitor_id }}
-                </a>
-            @endif
-
             <div class="bubbles no-select">
                 {{-- Likes Bubble --}}
                 <div class="bubbles-block" style="animation:appearWithRotate .3s">
@@ -89,6 +82,14 @@
                 </div>
             @endif
         </div>
+
+        {{-- Manage user --}}
+        @if (optional(user())->hasRole('master'))
+            <a href="/master/manage-users/{{ $user->visitor_id }}" class="btn-small mt-3 red">
+                @lang('manage-users.manage')
+            </a>
+        @endif
+
     </div>
 
     <div class="divider"></div>
