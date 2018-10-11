@@ -6,7 +6,7 @@
 
 <div class="page">
     <div class="center">
-        <h1 class="headline">@lang('feedback.contact_us')</h1>
+        <h1 class="headline"><i class="fas fa-comment-dots red-text"></i> @lang('feedback.contact_us')</h1>
     </div>
 
     {{-- Tabs --}}

@@ -6,7 +6,7 @@
 
 <div class="page row">
     <div class="center">
-        <h1 class="headline">@lang('admin.statistics')</h1>
+        <h1 class="headline"><i class="fas fa-chart-bar red-text"></i> @lang('admin.statistics')</h1>
     </div>
 
     <div class="col s12 m12 l6">

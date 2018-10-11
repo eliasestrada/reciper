@@ -41,7 +41,7 @@
 
         <li class="{{ active_if_route_is('statistics') }}"> {{-- statistics --}}
             <a href="/statistics" title="@lang('pages.statistics')">
-                <i class="fas fa-chart-pie fa-15x left with-red-hover"></i>
+                <i class="fas fa-chart-bar fa-15x left with-red-hover"></i>
                 @lang('pages.statistics')
             </a>
         </li>

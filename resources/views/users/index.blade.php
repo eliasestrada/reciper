@@ -5,8 +5,12 @@
 @section('content')
 
 <div class="page">
-    <div class="center pb-2">
-        <h1 class="headline">@lang('users.all_authors') <span class="red-text">{{ number_format($users->count()) }}</span></h1>
+    <div class="center pb-3">
+        <h1 class="headline">
+            <i class="fas fa-user-friends red-text"></i> 
+            @lang('users.all_authors') 
+            <span class="red-text">{{ number_format($users->count()) }}</span>
+        </h1>
     </div>
 
     <div class="row">
