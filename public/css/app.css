@@ -7525,6 +7525,10 @@ Nav List
   }
 }
 
+.dropdown-content li a i.active {
+  color: #cf4545;
+}
+
 .item-list {
   padding: 1em 0;
 }
