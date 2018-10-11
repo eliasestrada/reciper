@@ -55,21 +55,6 @@ class UsersController extends Controller
             ->paginate(20)
             ->onEachSide(1);
 
-        $favs = Recipe::query()
-            ->join('favs', 'favs.recipe_id', '=', 'recipes.id')
-            ->selectBasic(['recipe_id'], ['id'])
-            ->where('favs.user_id', user()->id)
-            ->orderBy('favs.id', 'desc')
-            ->done(1)
-            ->paginate(20)
-            ->onEachSide(1);
-
-        $favs->map(function ($recipe) {
-            $recipe->id = $recipe->recipe_id;
-        });
-
-        return view('users.other.my-recipes', compact(
-            'recipes_ready', 'recipes_unready', 'favs'
-        ));
+        return view('users.other.my-recipes', compact('recipes_ready', 'recipes_unready'));
     }
 }
