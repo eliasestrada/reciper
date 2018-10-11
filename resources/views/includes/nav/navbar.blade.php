@@ -76,6 +76,12 @@
             </a>
         </li>
         @hasRole('master')
+            <li class="position-relative {{ active_if_route_is('master/manage-users') }}"> {{-- manage-users --}}
+                <a href="/master/manage-users" title="@lang('manage-users.manage-users')">
+                    <i class="fas fa-toolbox fa-15x left with-red-hover"></i>
+                    @lang('manage-users.management')
+                </a>
+            </li>
             <li class="position-relative {{ active_if_route_is('master/visitors') }}"> {{-- visitors --}}
                 <a href="/master/visitors" title="@lang('visitors.visitors')">
                     <i class="fas fa-users fa-15x left with-red-hover"></i>
