@@ -31,29 +31,29 @@
         <div class="divider"></div>
         <thead>
             <tr>
-                <th class="main-text">#</th>
-                <th class="main-text">@lang('forms.name')</th>
-                <th class="main-text">@lang('forms.email')</i></th>
-                <th><i class="fas fa-fire" style="color:orangered" title="@lang('users.streak_days')"></i></th>
-                <th><i class="fas fa-star" style="color:#d49d10" title="@lang('messages.favorites')"></i></th>
-                <th><i class="fas fa-award main-text" title="@lang('users.popularity')"></i></th>
-                <th><i class="fas fa-lightbulb green-text" title="@lang('users.xp')"></i></th>
+                <th class="main-text py-1">#</th>
+                <th class="main-text py-1">@lang('forms.name')</th>
+                <th class="main-text py-1">@lang('forms.email')</i></th>
+                <th class="py-1"><i class="fas fa-fire" style="color:orangered" title="@lang('users.streak_days')"></i></th>
+                <th class="py-1"><i class="fas fa-star" style="color:#d49d10" title="@lang('messages.favorites')"></i></th>
+                <th class="py-1"><i class="fas fa-award main-text" title="@lang('users.popularity')"></i></th>
+                <th class="py-1"><i class="fas fa-lightbulb green-text" title="@lang('users.xp')"></i></th>
             </tr>
         </thead>
         <tbody>
             @foreach ($users as $user)
                 <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>
+                    <td class="py-1">{{ $user->id }}</td>
+                    <td class="py-1">
                         <a href="/master/manage-users/{{ $user->id }}">
                             <span class="z-depth-1 new badge">{{ $user->name }}</span>
                         </a>
                     </td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->streak_days }}</td>
-                    <td>{{ $user->favs_count }}</td>
-                    <td>{{ $user->popularity }}</td>
-                    <td>{{ $user->xp }}</td>
+                    <td class="py-1">{{ $user->email }}</td>
+                    <td class="py-1">{{ $user->streak_days }}</td>
+                    <td class="py-1">{{ $user->favs_count }}</td>
+                    <td class="py-1">{{ $user->popularity }}</td>
+                    <td class="py-1">{{ $user->xp }}</td>
                 </tr>
             @endforeach
             {{ $users->links() }}
