@@ -3332,14 +3332,22 @@ button.btn-floating {
     text-align: left;
 }
 
-.dropdown-content li:hover,
-.dropdown-content li.active {
-    background-color: $mainLight;
-}
-
-.dropdown-content li:focus {
-    outline: none;
-    background-color: $mainLight;
+.dropdown-content {
+    li {
+        &:hover {
+            background-color: $mainLight;
+        }
+        &:active {
+            background-color: $mainLight;
+        }
+        &:focus {
+            outline: none;
+            background-color: $mainLight;
+        }
+    }
+    li.active i.with-red-hover {
+        color: $red;
+    }
 }
 
 .dropdown-content li.divider {

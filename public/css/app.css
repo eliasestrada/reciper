@@ -3540,14 +3540,21 @@ button.btn-floating {
   text-align: left;
 }
 
-.dropdown-content li:hover,
-.dropdown-content li.active {
+.dropdown-content li:hover {
+  background-color: #dbd9ea;
+}
+
+.dropdown-content li:active {
   background-color: #dbd9ea;
 }
 
 .dropdown-content li:focus {
   outline: none;
   background-color: #dbd9ea;
+}
+
+.dropdown-content li.active i.with-red-hover {
+  color: #cf4545;
 }
 
 .dropdown-content li.divider {
@@ -7523,10 +7530,6 @@ Nav List
   .loved-link {
     margin-left: 75px !important;
   }
-}
-
-.dropdown-content li a i.active {
-  color: #cf4545;
 }
 
 .item-list {
