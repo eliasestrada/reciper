@@ -22,7 +22,7 @@
         </form>
     </div>
 
-    {{--  Results  --}}
+    {{--  Cards  --}}
     @component('comps.card', ['recipes' => $recipes])
         @slot('no_recipes')
             {{ $message }} 

@@ -10,7 +10,6 @@ return [
     'back' => 'Назад',
     'app_name' => 'Ресипёр',
     'no_messages' => 'Нет сообщений',
-    'favs' => 'Избранное',
     'agree' => 'Согласен',
     'download' => 'Скачать',
     'open' => 'Открыть',
@@ -23,6 +22,7 @@ return [
     'in_english' => 'На английском',
     'in_russian' => 'На русском',
     'general' => 'Общая',
+    'favorites' => 'Избранное',
 
     // Artisan controller
     'cache_deleted' => 'Настройки кеша удалены!',
