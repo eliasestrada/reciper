@@ -1,17 +1,17 @@
 <template>
     <div class="pt-3">
-        <div class="row">
-            <card :recipes="recipes" :go="go" :mins="mins" :user-id="userId" :favs="favs"></card>
-        </div>
-        <infinite-loading v-show="!theEnd" @infinite="infiniteHandler"></infinite-loading>
+        <card :prop-recipes="recipes"
+            :go="go"
+            :mins="mins"
+            :user-id="userId"
+            :favs="favs"
+            :propTheEnd="theEnd">
+        </card>
     </div>
 </template>
 
 <script>
-    import InfiniteLoading from 'vue-infinite-loading';
-
     export default {
-        
         data() {
             return {
                 recipes: [],
@@ -48,27 +48,12 @@
 
                         if (res.links.next != null) {
                             this.next = res.links.next
+                            Event.$emit('next-link-is-ready', res.links.next)
                         } else {
                             this.theEnd = true
                         }
                     })
                     .catch(err => console.error(err));
-            },
-            infiniteHandler($state) {
-                setTimeout(() => {
-                    fetch(this.next)
-                        .then(res => res.json())
-                        .then(res => {
-                            if (this.next != res.links.next && res.links.next != null) {
-                                this.recipes = this.recipes.concat(res.data)
-                                this.next = res.links.next
-                            } else {
-                                this.theEnd = true
-                            }
-                        })
-                        .catch(err => console.error(err));
-                    $state.loaded()
-                }, 1000);
             },
             hash() {
                 return window.location.hash.substring(1)
@@ -82,8 +67,10 @@
                 }
             },
         },
-        components: {
-            InfiniteLoading,
+        computed: {
+            giveLink() {
+                return this.next;
+            },
         }
     };
 </script>
