@@ -7051,9 +7051,10 @@ Nav List
 
 .btn-sort {
   padding: 0 7px;
-  margin: 5px;
-  height: 27px;
-  line-height: 28px;
+  margin: 5px 4px;
+  letter-spacing: -0.5px;
+  height: 23px;
+  line-height: 24px;
   text-transform: capitalize;
   font-weight: bold;
   border-radius: 20px 0 0 20px;
@@ -7063,9 +7064,9 @@ Nav List
 }
 
 .btn-sort.active {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-  background: #ebbebe;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  background: #e9b6b6;
 }
 
 .decorated {
