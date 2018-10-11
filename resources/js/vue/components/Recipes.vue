@@ -1,32 +1,11 @@
-<template>
-    <div class="pt-3">
-        <card :prop-recipes="recipes"
-            :go="go"
-            :mins="mins"
-            :user-id="userId"
-            :favs="favs"
-            :propTheEnd="theEnd">
-        </card>
-    </div>
-</template>
-
 <script>
     export default {
         data() {
             return {
                 recipes: [],
-                newRecipes: [],
                 next: '',
                 theEnd: false,
-                _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             };
-        },
-    
-        props: {
-            "go": { required: true },
-            "favs": { default: null },
-            "userId": { default: null },
-            "mins": { default: 'min' }
         },
 
         created() {
