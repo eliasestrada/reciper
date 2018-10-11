@@ -14,7 +14,7 @@
         </div>
 
         @if ($visitor->user)
-            <img src="{{ asset('storage/users/'.$visitor->user->image) }}" class="profile-image mb-2" alt="{{ $visitor->user->name }}" />
+            <img src="{{ asset('storage/users/'.$visitor->user->image) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $visitor->user->name }}" />
             <div class="my-2">
                 <a href="/users/{{ $visitor->user->id }}" class="btn-small min-w">
                     @lang('users.go_to_profile')
