@@ -14,13 +14,11 @@
             <div class="form-group simple-group">
                 <label :for="'category_id' + field">{{ label }} {{ field }}</label>
                 <select name="categories[]" class="browser-default">
-                    <option :value="recipeCategories[i]['id']"
-                        v-if="recipeCategories && recipeCategories[i]"
-                        selected>
-                        {{ recipeCategories[i]['name_' + locale] }}
+                    <option :value="recipeCategories[i]['id']" v-if="recipeCategories && recipeCategories[i]" selected>
+                        {{ categories[recipeCategories[i]['id']].name }}
                     </option>
-                    <option v-for="categ in categories" :key="categ.id" :value="categ.id">
-                        {{ categ['name_' + locale] }}
+                    <option v-for="category in categories" :key="category.id" :value="category.id">
+                        {{ category.name }}
                     </option>
                 </select>
             </div>
@@ -32,7 +30,6 @@
 export default {
     data() {
         return {
-            categories: [],
             fields: 1,
             visibleAddBtn: true,
             visibleDelBtn: false
@@ -40,28 +37,20 @@ export default {
     },
 
     props: [
+        "add",
         "label",
-        "locale",
         "select",
         "deleting",
-        "add",
         "recipeCategories",
+        "categories",
         "categoriesTitle"
     ],
 
     created() {
-        this.fetchCategories(),
         this.getFieldsFromProps();
     },
 
     methods: {
-        fetchCategories() {
-            fetch("/api/recipes-category")
-                .then(res => res.json())
-                .then(data => (this.categories = data))
-                .catch(err => console.error(err));
-        },
-
         getFieldsFromProps() {
             if (this.recipeCategories) {
                 if (this.recipeCategories.length == 0) {

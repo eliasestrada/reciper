@@ -11,5 +11,4 @@ Route::prefix('like')->group(function () {
     Route::post('dislike/{id}', 'Api\ApiLikeController@dislike');
 });
 
-Route::get('recipes-category', 'Api\ApiRecipesController@categories');
 Route::get('recipes-random/{visitor_id}', 'Api\ApiRandomRecipesController@boot');

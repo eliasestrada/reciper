@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Helpers\Traits\RecipesControllerHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipesResource;
-use App\Models\Category;
 use App\Models\Recipe;
 use App\Models\Visitor;
 
@@ -48,14 +47,6 @@ class ApiRecipesController extends Controller
 
         logger()->error('An error occured while trying to delete recipe. Recipe data: ' . $recipe);
         return 'failed';
-    }
-
-    /**
-     * @return object
-     */
-    public function categories(): ?object
-    {
-        return Category::get(['id', 'name_' . lang()]);
     }
 
     /**
