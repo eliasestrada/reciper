@@ -11,7 +11,6 @@ const components = [
     "Recipes",
     "BtnFavs",
     "Like",
-    "Card",
     "Tabs",
     "Tab"
 ];

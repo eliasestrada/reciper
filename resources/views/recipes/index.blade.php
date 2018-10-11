@@ -24,16 +24,12 @@
             </div>
         </sort-buttons>
     </div>
-    <recipes inline-template>
-        <div class="pt-3">
-            <card :prop-recipes="recipes"
-                go="@lang('messages.go')"
-                mins="@lang('recipes.min')"
-                :user-id="{{ auth()->check() ? user()->id : 'null' }}"
-                :favs="{{ $favs }}"
-                :prop-the-end="theEnd">
-            </card>
-        </div>
+    <recipes
+        go="@lang('messages.go')"
+        :favs="{{ $favs }}"
+        :user-id="{{ auth()->check() ? user()->id : 'null' }}"
+        mins="@lang('recipes.min')">
+        @include('includes.preloader')
     </recipes>
 </div>
 

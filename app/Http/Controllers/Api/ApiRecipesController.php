@@ -101,7 +101,7 @@ class ApiRecipesController extends Controller
 
         // Searching for recipes with category
         if (str_contains($hash, 'category=')) {
-            return $sql->with('categories')->whereHas('categories', function ($query) use ($hash) {
+            return $sql->whereHas('categories', function ($query) use ($hash) {
                 $query->whereId(str_replace('category=', '', $hash));
             })->done(1)->paginate($pagin);
         }
