@@ -172,8 +172,7 @@
                 @guest
                     <li>
                         <a href="/login" title="@lang('auth.login')">
-                            @lang('auth.login')
-                            <i class="fas fa-sign-in-alt fa-15x right"></i>
+                            @lang('auth.login') <i class="fas fa-sign-in-alt fa-15x right"></i>
                         </a>
                     </li>
                 @endguest

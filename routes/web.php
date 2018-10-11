@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('statistics', 'StatisticsController@index');
-    Route::get('favs', 'FavsController@index');
+    Route::get('favs/{category?}', 'FavsController@index');
     Route::post('favs/{recipe_id}', 'FavsController@store');
 });
 

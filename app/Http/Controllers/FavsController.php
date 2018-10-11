@@ -10,24 +10,32 @@ use Illuminate\Http\Request;
 class FavsController extends Controller
 {
     /**
+     * @param int $category
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(int $category = 1)
     {
-        $favs = Recipe::query()
+        $query = Recipe::query()
             ->join('favs', 'favs.recipe_id', '=', 'recipes.id')
             ->selectBasic(['recipe_id'], ['id'])
             ->where('favs.user_id', user()->id)
-            ->orderBy('favs.id', 'desc')
-            ->done(1)
+            ->orderBy('favs.id', 'desc');
+
+        if ($category !== 1) {
+            $query->whereHas('categories', function ($q) use ($category) {
+                $q->whereId($category);
+            });
+        }
+
+        $recipes = $query->done(1)
             ->paginate(20)
             ->onEachSide(1);
 
-        $favs->map(function ($recipe) {
+        $recipes->map(function ($recipe) {
             $recipe->id = $recipe->recipe_id;
         });
 
-        return view('favs.index', compact('favs'));
+        return view('favs.index', compact('recipes'));
     }
 
     /**

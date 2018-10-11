@@ -17,24 +17,11 @@ class FavsIndexPageTest extends TestCase
     public function page_accessible_and_has_data(): void
     {
         $user = make(User::class);
-        $response = $this->actingAs($user)->get('/favs');
-
-        $favs = Recipe::query()
-            ->join('favs', 'favs.recipe_id', '=', 'recipes.id')
-            ->selectBasic(['recipe_id'], ['id'])
-            ->where('favs.user_id', $user->id)
-            ->orderBy('favs.id', 'desc')
-            ->done(1)
-            ->paginate(20)
-            ->onEachSide(1);
-
-        $favs->map(function ($recipe) {
-            $recipe->id = $recipe->recipe_id;
-        });
-
-        $response->assertOk()
+        $this->actingAs($user)
+            ->get('/favs')
+            ->assertOk()
             ->assertViewIs('favs.index')
-            ->assertViewHas('favs', $favs);
+            ->assertViewHasAll(compact('recipes'));
     }
 
     /** @test */
@@ -54,5 +41,20 @@ class FavsIndexPageTest extends TestCase
 
         Fav::whereId($fav->id)->delete();
         $this->actingAs($user)->get('/favs')->assertDontSee('<img src="' . asset('storage/small/images/' . $recipe->image));
+    }
+
+    /** @test */
+    public function user_doesnt_see_recipe_if_category_of_this_recipe_is_not_selected(): void
+    {
+        $user = create_user();
+        $recipe = create(Recipe::class);
+        $recipe->categories()->sync([2, 3]);
+        Fav::create(['user_id' => $user->id, 'recipe_id' => $recipe->id]);
+
+        $this->actingAs($user)->get('/favs/4')
+            ->assertDontSee('<img src="' . asset('storage/small/images/' . $recipe->image));
+
+        $this->actingAs($user)->get('/favs/3')
+            ->assertSee('<img src="' . asset('storage/small/images/' . $recipe->image));
     }
 }
