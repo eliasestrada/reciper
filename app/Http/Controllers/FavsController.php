@@ -7,8 +7,29 @@ use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class ApiFavsController extends Controller
+class FavsController extends Controller
 {
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function index()
+    {
+        $favs = Recipe::query()
+            ->join('favs', 'favs.recipe_id', '=', 'recipes.id')
+            ->selectBasic(['recipe_id'], ['id'])
+            ->where('favs.user_id', user()->id)
+            ->orderBy('favs.id', 'desc')
+            ->done(1)
+            ->paginate(20)
+            ->onEachSide(1);
+
+        $favs->map(function ($recipe) {
+            $recipe->id = $recipe->recipe_id;
+        });
+
+        return view('favs.index', compact('favs'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
