@@ -17,13 +17,10 @@
         <ul class="col s12 m6">
             <li><i class="fas fa-fire tiny" style="color:orangered"></i> - @lang('users.streak_days')</li>
             <li><i class="fas fa-star tiny" style="color:#d49d10"></i> - @lang('messages.favorites')</li>
-            <li><i class="main-text fas fa-award tiny"></i> - @lang('users.popularity')</li>
-            <li><i class="green-text fas fa-lightbulb tiny"></i> - @lang('users.xp')</li>
         </ul>
         <ul class="col s12 m6">
-            <li><i class="green-text fas fa-circle tiny"></i> - </li>
-            <li><i class="main-text fas fa-circle tiny"></i> - </li>
-            <li><i class="red-text fas fa-circle tiny"></i> - </li>
+            <li><i class="main-text fas fa-award tiny"></i> - @lang('users.popularity')</li>
+            <li><i class="green-text fas fa-lightbulb tiny"></i> - @lang('users.xp')</li>
         </ul>
     </div>
 

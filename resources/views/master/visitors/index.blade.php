@@ -25,14 +25,14 @@
         </ul>
     </div>
 
-    <table class="responsive striped highlight">
+    <table class="responsive-table striped highlight">
         <div class="divider"></div>
         <thead>
             <tr>
-                <th class="main-text pl-3">#</th>
-                <th><i class="fas fa-book-reader main-text" title="@lang('visitors.recipes_viewed')"></i></th>
-                <th><i class="fas fa-heart main-text" title="@lang('visitors.gave_likes')"></i></th>
-                <th><i class="fas fa-eye main-text" title="@lang('visitors.all_views')"></i></th>
+                <th class="py-main-text">#</th>
+                <th class="py-1"><i class="fas fa-book-reader main-text" title="@lang('visitors.recipes_viewed')"></i></th>
+                <th class="py-1"><i class="fas fa-heart main-text" title="@lang('visitors.gave_likes')"></i></th>
+                <th class="py-1"><i class="fas fa-eye main-text" title="@lang('visitors.all_views')"></i></th>
             </tr>
         </thead>
         <tbody>
@@ -48,9 +48,9 @@
                             </span>
                         </a>
                     </td>
-                    <td class="py-1 pl-2">{{ $visitor->likes->count() }}</td>
-                    <td class="py-1 pl-2">{{ $visitor->views->count() }}</td>
-                    <td class="py-1 pl-2">{{ $visitor->views->sum('visits') }}</td>
+                    <td class="py-1">{{ $visitor->likes->count() }}</td>
+                    <td class="py-1">{{ $visitor->views->count() }}</td>
+                    <td class="py-1">{{ $visitor->views->sum('visits') }}</td>
                 </tr>
             @endforeach
             {{ $visitors->links() }}
