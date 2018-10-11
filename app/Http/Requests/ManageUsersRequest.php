@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class VisitorsRequest extends FormRequest
+class ManageUsersRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -38,11 +38,11 @@ class VisitorsRequest extends FormRequest
     public function messages()
     {
         return [
-            'days.required' => trans('visitors.days_required'),
-            'days.numeric' => trans('visitors.days_numeric'),
-            'message.required' => trans('visitors.message_required'),
-            'message.min' => trans('visitors.message_min'),
-            'message.max' => trans('visitors.message_max'),
+            'days.required' => trans('manage-users.days_required'),
+            'days.numeric' => trans('manage-users.days_numeric'),
+            'message.required' => trans('manage-users.message_required'),
+            'message.min' => trans('manage-users.message_min'),
+            'message.max' => trans('manage-users.message_max'),
         ];
     }
 }

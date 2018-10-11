@@ -80,4 +80,33 @@ class User extends Authenticatable
     {
         return Fav::where([['user_id', $this->id], ['recipe_id', $recipe_id]])->exists();
     }
+
+    /**
+     * @return int
+     */
+    public function daysWithUs(): int
+    {
+        return \Carbon\Carbon::parse($this->created_at)->diffInDays(now());
+    }
+
+    public function ban()
+    {
+        return $this->hasOne(Ban::class);
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isBanned(): bool
+    {
+        if ($this->ban()->exists()) {
+            // If ban time is passed delete user from banlist
+            if ($this->ban->created_at <= now()->subDays($this->ban->days)) {
+                $this->ban()->delete();
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
 }

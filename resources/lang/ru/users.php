@@ -19,7 +19,7 @@ return [
     'is_checking' => 'Проверяется',
     'joined' => 'Регистрация',
     'go_to_recipe' => 'Перейти к рецепту',
-    'go_to_profile' => 'К странице пользователя',
+    'go_to_profile' => 'К странице',
     'no_recipes_yet' => 'У вас пока нет рецептов',
     'no_recipes' => 'Нет рецептов',
     'all_recipes' => 'Всего рецептов',

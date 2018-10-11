@@ -10,18 +10,18 @@ class Ban extends Model
     protected $table = 'ban';
     public $timestamps = false;
 
-    public function visitor()
+    public function user()
     {
-        return $this->belongsTo(Visitor::class);
+        return $this->belongsTo(User::class);
     }
 
     /**
-     * @param integer $visitor_id
+     * @param integer $user_id
      * @param integer $days
      * @param string $message
      */
-    public static function banVisitor(int $visitor_id, int $days, string $message)
+    public static function put(int $user_id, int $days, string $message)
     {
-        return self::create(compact('visitor_id', 'days', 'message'));
+        return self::create(compact('user_id', 'days', 'message'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Ban;
 use App\Models\Fav;
 use App\Models\Recipe;
 use App\Models\User;
@@ -81,5 +82,45 @@ class UserTest extends TestCase
         $recipe = create(Recipe::class);
         Fav::create(['user_id' => $user->id, 'recipe_id' => $recipe->id]);
         $this->assertTrue($user->hasFav($recipe->id));
+    }
+
+    /** @test */
+    public function model_has_relationship_with_ban(): void
+    {
+        $user = create_user();
+        $ban = Ban::put($user->id, 1, '');
+        $this->assertEquals($user->ban->id, $ban->id);
+    }
+
+    /** @test */
+    public function is_banned_method_returns_true_if_user_in_banlist(): void
+    {
+        $user = create_user();
+        $this->assertFalse($user->isBanned());
+        Ban::put($user->id, 1, '');
+        $this->assertTrue($user->isBanned());
+    }
+
+    /** @test */
+    public function is_banned_method_removes_user_from_banlist_after_a_term(): void
+    {
+        $user = create_user();
+        Ban::create([
+            'user_id' => $user->id,
+            'days' => 3,
+            'message' => 'some message',
+            'created_at' => now()->subDays(3),
+        ]);
+
+        $this->assertFalse($user->isBanned());
+    }
+
+    /** @test */
+    public function is_banned_returns_true_if_user_in_banlist(): void
+    {
+        $user = create_user();
+        $this->assertFalse($user->isBanned());
+        Ban::put($user->id, 1, '');
+        $this->assertTrue($user->isBanned());
     }
 }

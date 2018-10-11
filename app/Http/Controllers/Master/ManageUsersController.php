@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\VisitorsRequest;
+use App\Http\Requests\ManageUsersRequest;
 use App\Models\Ban;
 use App\Models\User;
-use App\Models\Visitor;
 use Illuminate\Http\Request;
 
 class ManageUsersController extends Controller
@@ -26,41 +25,45 @@ class ManageUsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  User  $user
+     * @param  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($user)
     {
-        return view('master.manage-users.show', compact('user'));
+        return view('master.manage-users.show', [
+            'user' => User::find($user),
+        ]);
     }
 
     /**
-     * Ban visitor
+     * Ban user
      * @param Request $request
-     * @param Visitor $visitor
+     * @param $user
      * @return void
      */
-    public function update(VisitorsRequest $request, Visitor $visitor)
+    public function update(ManageUsersRequest $request, $user)
     {
-        // Check if visitor is already banned
-        if (Ban::whereVisitorId($visitor->id)->exists()) {
-            return back()->withError(trans('visitors.visitor_already_banned'));
+        $user = User::find($user);
+
+        // Check if user is already banned
+        if (Ban::whereUserId($user->id)->exists()) {
+            return back()->withError(trans('manage-users.user_already_banned'));
         }
 
-        if ($visitor->id != 1) {
-            Ban::banVisitor($visitor->id, $request->days, $request->message);
-            return back()->withSuccess(trans('visitors.visitor_banned', ['days' => $request->days]));
+        if ($user->id != 1) {
+            Ban::put($user->id, $request->days, $request->message);
+            return back()->withSuccess(trans('manage-users.user_banned', ['days' => $request->days]));
         }
         return back();
     }
 
     /**
-     * Unban visitor
-     * @param Visitor $visitor
+     * Unban user
+     * @param User $user
      */
-    public function destroy(Visitor $visitor)
+    public function destroy($user)
     {
-        $visitor->ban()->delete();
-        return back()->withSuccess(trans('visitors.visitor_unbanned'));
+        User::find($user)->ban()->delete();
+        return back()->withSuccess(trans('manage-users.user_unbanned'));
     }
 }

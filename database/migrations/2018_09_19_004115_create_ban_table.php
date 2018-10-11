@@ -15,7 +15,7 @@ class CreateBanTable extends Migration
     {
         Schema::create('ban', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('visitor_id');
+            $table->unsignedInteger('user_id');
             $table->unsignedMediumInteger('days');
             $table->string('message', config('valid.feedback.ban.message.max'));
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));

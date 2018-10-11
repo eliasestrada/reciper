@@ -2,17 +2,16 @@
 
 namespace Tests\Feature\Requests;
 
-use App\Models\Visitor;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class VisitorsRequestTest extends TestCase
+class ManageUsersRequestTest extends TestCase
 {
     use DatabaseTransactions;
 
     private $msg_min;
     private $msg_max;
-    private $visitor;
+    private $user;
     private $request;
 
     public function setUp()
@@ -20,52 +19,52 @@ class VisitorsRequestTest extends TestCase
         parent::setUp();
         $this->msg_min = config('valid.feedback.ban.message.min');
         $this->msg_max = config('valid.feedback.ban.message.max');
-        $this->visitor = create(Visitor::class);
+        $this->user = create_user();
         $this->request = $this->actingAs(create_user('master'))->followingRedirects();
     }
 
     /** @test */
     public function ban_days_field_is_required(): void
     {
-        $this->request->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), [
+        $this->request->put(action('Master\ManageUsersController@update', ['id' => $this->user->id]), [
             'days' => '',
             'message' => str_random(40),
-        ])->assertSeeText(trans('visitors.days_required'));
+        ])->assertSeeText(trans('manage-users.days_required'));
     }
 
     /** @test */
     public function ban_message_fiels_is_required(): void
     {
-        $this->request->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), [
+        $this->request->put(action('Master\ManageUsersController@update', ['id' => $this->user->id]), [
             'days' => 2,
             'message' => '',
-        ])->assertSeeText(trans('visitors.message_required'));
+        ])->assertSeeText(trans('manage-users.message_required'));
     }
 
     /** @test */
     public function ban_days_field_must_be_numeric(): void
     {
-        $this->request->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), [
+        $this->request->put(action('Master\ManageUsersController@update', ['id' => $this->user->id]), [
             'days' => 'gg',
             'message' => str_random(40),
-        ])->assertSeeText(trans('visitors.days_numeric'));
+        ])->assertSeeText(trans('manage-users.days_numeric'));
     }
 
     /** @test */
     public function ban_message_must_be_not_short(): void
     {
-        $this->request->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), [
+        $this->request->put(action('Master\ManageUsersController@update', ['id' => $this->user->id]), [
             'days' => 5,
             'message' => str_random($this->msg_min - 1),
-        ])->assertSeeText(preg_replace('/:min/', $this->msg_min, trans('visitors.message_min')));
+        ])->assertSeeText(preg_replace('/:min/', $this->msg_min, trans('manage-users.message_min')));
     }
 
     /** @test */
     public function ban_message_must_be_not_long(): void
     {
-        $this->request->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), [
+        $this->request->put(action('Master\ManageUsersController@update', ['id' => $this->user->id]), [
             'days' => 5,
             'message' => str_random($this->msg_max + 1),
-        ])->assertSeeText(preg_replace('/:max/', $this->msg_max, trans('visitors.message_max')));
+        ])->assertSeeText(preg_replace('/:max/', $this->msg_max, trans('manage-users.message_max')));
     }
 }

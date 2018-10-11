@@ -23,24 +23,6 @@ class Visitor extends Model
         return $this->hasOne(User::class);
     }
 
-    public function ban()
-    {
-        return $this->hasOne(Ban::class);
-    }
-
-    public function isBanned(): bool
-    {
-        if ($this->ban()->exists()) {
-            // If ban time is passed delete visitor from banlist
-            if ($this->ban->created_at <= now()->subDays($this->ban->days)) {
-                $this->ban()->delete();
-                return false;
-            }
-            return true;
-        }
-        return false;
-    }
-
     public static function updateOrCreateNewVisitor()
     {
         return self::updateOrCreate(
@@ -62,11 +44,9 @@ class Visitor extends Model
      */
     public function getStatusColor(): string
     {
-        if ($this->isBanned()) {
-            return 'red';
-        } elseif ($this->user) {
+        if ($this->user) {
             return 'green';
         }
-        return 'main';
+        return 'red';
     }
 }

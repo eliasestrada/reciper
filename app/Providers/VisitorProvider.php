@@ -13,14 +13,9 @@ class VisitorProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $visitor = Visitor::updateOrCreateNewVisitor();
-
-        if ($visitor->isBanned()) {
-            die($visitor->ban->message);
-        }
-
         // If visitor doesn't have a cookie it will set it
         if (!request()->cookie('rotsiv')) {
+            Visitor::updateOrCreateNewVisitor();
             \Cookie::queue('rotsiv', Visitor::whereIp(request()->ip())->value('id'), 218400);
         }
     }
