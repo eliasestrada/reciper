@@ -3,16 +3,18 @@ import "./bootstrap";
 window.Event = new Vue();
 
 const components = [
-    "Recipes",
-    "SortButtons",
     "RandomRecipesSidebar",
     "DeleteRecipeBtn",
     "CategoriesField",
-    "Like",
-    "Tabs",
-    "Tab",
+    "SortButtons",
     "Visibility",
-    "BtnFavs"
+    "FavsFilter",
+    "Recipes",
+    "BtnFavs",
+    "Like",
+    "Card",
+    "Tabs",
+    "Tab"
 ];
 
 components.forEach(comp => {
