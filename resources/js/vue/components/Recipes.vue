@@ -20,12 +20,12 @@
                                 <i class="fas fa-clock fa-1x z-depth-2 main-light circle red-text ml-5 mr-1"></i>
                                 {{ recipe.time }} {{ mins }}
                             </div>
-                            <i class="fas fa-ellipsis-h right fa-15x red-text activator"></i>
+                            <i class="fas fa-ellipsis-h right fa-15x red-text activator px-1"></i>
                         </div>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title">{{ recipe.title }}</span>
-                        <div><i class="fas fa-times right red-text card-title"></i></div>
+                        <div><i class="fas fa-times right red-text card-title p-1"></i></div>
                         <a class="btn-small mt-3" :href="'/recipes/' + recipe.id">{{ go }}</a>
                         <p>{{ recipe.intro }}</p>
                     </div>
