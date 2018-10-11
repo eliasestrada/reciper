@@ -44,12 +44,7 @@
                     });
                     return result;
                 }
-            },
-        },
-        computed: {
-            giveLink() {
-                return this.next;
-            },
+            }
         }
     };
 </script>

@@ -8,7 +8,6 @@ const components = [
     "CategoriesField",
     "SortButtons",
     "Visibility",
-    "FavsFilter",
     "Recipes",
     "BtnFavs",
     "Like",
