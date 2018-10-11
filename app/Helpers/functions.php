@@ -179,13 +179,16 @@ function get_online_icon(string $value): string
 
 /**
  * Function for debuging queries
+ * @param bool|null $show_data
  * @return void
  */
-function dump_sql(): void
+function dump_sql(?bool $show_data = false): void
 {
-    \DB::listen(function ($query) {
+    \DB::listen(function ($query) use ($show_data) {
         dump($query->sql);
-        dump($query->bindings);
+        if ($show_data) {
+            dump($query->bindings);
+        }
     });
 }
 
