@@ -20,6 +20,7 @@ return [
             'name' => ['min' => 3, 'max' => 50],
         ],
         'password' => ['min' => 6, 'max' => 250],
+        'email' => ['max' => 190],
     ],
 
     'feedback' => [

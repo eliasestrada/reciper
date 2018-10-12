@@ -49,10 +49,16 @@ class RegisterController extends Controller
             throw ValidationException::withMessages(['name' => [trans('auth.incorect_name')]]);
         }
 
+        $name_min = config('valid.settings.general.name.min');
+        $name_max = config('valid.settings.general.name.max');
+        $pwd_min = config('valid.settings.password.min');
+        $pwd_max = config('valid.settings.password.max');
+        $email_max = config('valid.settings.email.max');
+
         return Validator::make($data, [
-            'name' => 'required|string|min:3|max:199',
-            'email' => 'required|string|email|max:199|unique:users',
-            'password' => 'required|string|min:6|max:250|confirmed',
+            'name' => "required|string|min:$name_min|max:$name_max",
+            'email' => "required|string|email|max:$email_max|unique:users",
+            'password' => "required|string|min:$pwd_min|max:$pwd_max|confirmed",
         ], [
             'name.required' => trans('auth.name_required'),
             'name.string' => trans('auth.name_string'),

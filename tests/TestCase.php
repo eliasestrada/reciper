@@ -8,9 +8,6 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
-    protected $migrate = false;
-    protected static $migrationsRun = false;
-
     public function setUp()
     {
         parent::setUp();
