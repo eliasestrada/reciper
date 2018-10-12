@@ -18,3 +18,9 @@
         border-bottom: solid 3px lighten($main, 10%);
     }
 }
+
+.form-wrapper {
+    background: rgba(#fff, .9);
+    padding-top: 1em !important;
+    padding-bottom: 2em !important;
+}

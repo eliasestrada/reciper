@@ -4,9 +4,9 @@
 
 @section('content')
 
-<div class="page row">
-    <div class="col s12 m8 offset-m2 l6 offset-l3">
-        <div class="paper">
+<div class="page row image-bg mb-0">
+    <div class="col s12 m6 offset-m3 form-wrapper corner z-depth-1">
+        <div>
             <div class="register-tabs">
                 <a href="#" class="active">@lang('auth.register')</a>
                 <a href="/login">@lang('auth.login')</a>

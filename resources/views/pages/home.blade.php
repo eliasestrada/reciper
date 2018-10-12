@@ -41,7 +41,7 @@
 
 {{--  Cards  --}}
 @forelse ($recipes->chunk(8) as $chunk1)
-    <section class="home-section {{ $loop->first || $loop->iteration == 3 ? '' : 'main-dark home-bg-section' }}">
+    <section class="home-section {{ $loop->first || $loop->iteration == 3 ? '' : 'image-bg' }}">
         @if ($loop->first)
             <div class="center">
                 <h4 class="section-headline mt-3 mb-4">@lang('home.random_choice')</h4>

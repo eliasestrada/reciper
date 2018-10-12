@@ -12,7 +12,7 @@
 
     @yield('home-header')
 
-    <div id="app" class="{{ request()->is('/') ? '' : 'wrapper' }}">
+    <div id="app">
         @yield('content')
     </div>
 
