@@ -13,7 +13,9 @@ class PagesHomePageTest extends TestCase
     /** @test */
     public function view_has_data(): void
     {
-        $this->get('/')->assertViewIs('pages.home')->assertViewHas('recipes');
+        $this->get('/')
+            ->assertViewIs('pages.home')
+            ->assertViewHasAll(['recipes', 'users']);
     }
 
     /** @test */

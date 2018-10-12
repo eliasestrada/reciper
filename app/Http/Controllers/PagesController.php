@@ -14,7 +14,14 @@ class PagesController extends Controller
      */
     public function home()
     {
-        return view('pages.home', ['recipes' => Recipe::getRandomUnseen(24, 12)]);
+        $users = User::where('image', '!=', 'default.jpg')->count() >= 50
+        ? User::where('image', '!=', 'default.jpg')
+        : User::query();
+
+        return view('pages.home', [
+            'recipes' => Recipe::getRandomUnseen(24, 12),
+            'users' => $users->inRandomOrder()->limit(50)->get(['id', 'image']),
+        ]);
     }
 
     /**

@@ -2,6 +2,9 @@
     background: $paper;
     color: #333;
     padding: 1.5em 2em;
+    max-width: 1150px;
+    margin: auto;
+
     .headline {
         margin-bottom: 1em;
         font-size: 1.9em;
@@ -181,4 +184,52 @@
     font-family: $headerFont;
     font-weight: bold;
     letter-spacing: 4px;
+}
+
+.people-gallery {
+    height: 99px;
+    overflow: hidden;
+    a {
+        img {
+            width: 45px;
+            height: 45px;
+            transform: scale(1.12, 1.1);
+        }
+    }
+}
+
+@media only screen and (max-width: 870px) {
+    .people-gallery {
+        height: 150px;
+    }
+}
+
+@media only screen and (max-width: 660px) {
+    .people-gallery {
+        height: 200px;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    .people-gallery {
+        height: 250px;
+    }
+}
+
+@media only screen and (max-width: 470px) {
+    .people-gallery {
+        height: 303px;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    .people-gallery {
+        height: 354px;
+    }
+}
+
+@media only screen and (max-width: 325px) {
+    .people-gallery {
+        height: 609px;
+    }
 }

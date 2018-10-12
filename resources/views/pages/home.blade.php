@@ -41,92 +41,93 @@
 
 {{--  Cards  --}}
 @forelse ($recipes->chunk(8) as $chunk1)
-    <section class="home-section {{ $loop->first || $loop->iteration == 3 ? '' : 'image-bg' }}">
-        @if ($loop->first)
-            <div class="center">
-                <h4 class="section-headline mt-3 mb-4">@lang('home.random_choice')</h4>
-            </div>
-        @endif
-
-        @foreach ($chunk1->chunk(4) as $chunk2)
-            <div class="row">
-                @foreach ($chunk2 as $recipe)
-                    <div class="col s12 m6 l3">
-                        <div class="card hoverable">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <a href="/recipes/{{ $recipe->id }}">
-                                    <img class="activator" alt="{{ $recipe->getTitle() }}" src="{{ asset('storage/small/images/'.$recipe->image) }}">
-                                </a>
-                            </div>
-                            <div class="card-content min-h">
-                                <span style="height:75%" class="card-title activator">
-                                    {{ $recipe->getTitle() }}
-                                </span>
-                                <div style="height:25%">
-                                    <div>
-                                        <div class="left">
-                                            <btn-favs recipe-id="{{ $recipe->id }}" :favs="{{ $recipe->favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}">
-                                                <i class="star d-inline-block grey circle mx-2" style="width:10px;height:10px;"></i> 
-                                                ...
-                                            </btn-favs>
+    <div class="{{ $loop->iteration == 2 ? 'image-bg' : '' }}">
+        <section class="{{ $loop->first || $loop->iteration == 3 ? 'home-section' : 'wrapper' }}">
+            @if ($loop->first)
+                <div class="center">
+                    <h4 class="section-headline mt-3 mb-4">@lang('home.random_choice')</h4>
+                </div>
+            @endif
+    
+            @foreach ($chunk1->chunk(4) as $chunk2)
+                <div class="row">
+                    @foreach ($chunk2 as $recipe)
+                        <div class="col s12 m6 l3">
+                            <div class="card hoverable">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <a href="/recipes/{{ $recipe->id }}">
+                                        <img class="activator" alt="{{ $recipe->getTitle() }}" src="{{ asset('storage/small/images/'.$recipe->image) }}">
+                                    </a>
+                                </div>
+                                <div class="card-content min-h">
+                                    <span style="height:75%" class="card-title activator">
+                                        {{ $recipe->getTitle() }}
+                                    </span>
+                                    <div style="height:25%">
+                                        <div>
+                                            <div class="left">
+                                                <btn-favs recipe-id="{{ $recipe->id }}" :favs="{{ $recipe->favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}">
+                                                    <i class="star d-inline-block grey circle mx-2" style="width:10px;height:10px;"></i> 
+                                                    ...
+                                                </btn-favs>
+                                            </div>
                                         </div>
+                                        <div class="left">
+                                            <i class="fas fa-clock fa-1x z-depth-2 main-light circle red-text ml-5 mr-1"></i>
+                                            {{ $recipe->time }} @lang('recipes.min').
+                                        </div>
+                                        <i class="fas fa-ellipsis-h fa-15x right red-text activator px-1"></i>
                                     </div>
-                                    <div class="left">
-                                        <i class="fas fa-clock fa-1x z-depth-2 main-light circle red-text ml-5 mr-1"></i>
-                                        {{ $recipe->time }} @lang('recipes.min').
-                                    </div>
-                                    <i class="fas fa-ellipsis-h fa-15x right red-text activator px-1"></i>
+                                </div>
+                                <div class="card-reveal">
+                                    <span class="card-title">{{ $recipe->getTitle() }}</span>
+                                    <div><i class="fas fa-times right red-text card-title p-1"></i></div>
+                                    <a class="btn-small mt-3" href="/recipes/{{ $recipe->id }}">
+                                        @lang('messages.go')
+                                    </a>
+                                    <p>{{ $recipe->getIntro() }}</p>
                                 </div>
                             </div>
-                            <div class="card-reveal">
-                                <span class="card-title">{{ $recipe->getTitle() }}</span>
-                                <div><i class="fas fa-times right red-text card-title p-1"></i></div>
-                                <a class="btn-small mt-3" href="/recipes/{{ $recipe->id }}">
-                                    @lang('messages.go')
-                                </a>
-                                <p>{{ $recipe->getIntro() }}</p>
-                            </div>
                         </div>
+                    @endforeach
+                </div>
+            @endforeach
+    
+            <div class="center">
+                @if ($loop->first)
+                    <a href="/recipes#new" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
+                        <i class="fas fa-clock left"></i>
+                        @lang('home.last_recipes')
+                    </a>
+                    <a href="/recipes#simple" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
+                        <i class="fas fa-concierge-bell left"></i>
+                        @lang('recipes.simple')
+                    </a>
+                @elseif ($loop->iteration == 2)
+                    <a href="/recipes#breakfast" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
+                        <i class="fas fa-utensils left"></i>
+                        @lang('home.breakfast')
+                    </a>
+                    <a href="/recipes#lunch" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
+                        <i class="fas fa-utensils left"></i>
+                        @lang('home.lunch')
+                    </a>
+                    <a href="/recipes#dinner" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
+                        <i class="fas fa-utensils left"></i>
+                        @lang('home.dinner')
+                    </a>
+                @elseif ($loop->last)
+                    <div class="people-gallery">
+                        @foreach ($users as $user)
+                            <a href="/users/{{ $user->id }}">
+                                <img src="{{ asset('storage/small/users/' . $user->image) }}" alt="{{ $user->id }}" class="hoverable">
+                            </a>
+                        @endforeach
                     </div>
-                @endforeach
+                @endif
             </div>
-        @endforeach
-
-        <div class="center">
-            @if ($loop->first)
-                <a href="/recipes#new" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
-                    <i class="fas fa-clock left"></i>
-                    @lang('home.last_recipes')
-                </a>
-                <a href="/recipes#simple" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
-                    <i class="fas fa-concierge-bell left"></i>
-                    @lang('recipes.simple')
-                </a>
-            @elseif ($loop->iteration == 2)
-                <a href="/recipes#breakfast" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
-                    <i class="fas fa-utensils left"></i>
-                    @lang('home.breakfast')
-                </a>
-                <a href="/recipes#lunch" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
-                    <i class="fas fa-utensils left"></i>
-                    @lang('home.lunch')
-                </a>
-                <a href="/recipes#dinner" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
-                    <i class="fas fa-utensils left"></i>
-                    @lang('home.dinner')
-                </a>
-            @elseif ($loop->last)
-                <a href="/recipes#my_viewes" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
-                    <i class="fas fa-eye left"></i>
-                    @lang('recipes.watched')
-                </a>
-                <a href="/recipes#most_liked" class="btn-large hoverable my-1 waves-effect waves-light" title="@lang('messages.go')">
-                    <i class="fas fa-heart left"></i>
-                    @lang('recipes.popular')
-                </a>
-            @endif
-        </div>
-    </section>
+        </section>
+    </div>
 @empty
     @component('comps.empty')
         @slot('text')
