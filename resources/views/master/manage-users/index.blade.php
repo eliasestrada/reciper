@@ -16,10 +16,10 @@
     <div class="row container">
         <ul class="col s12 m6">
             <li><i class="fas fa-fire tiny" style="color:orangered"></i> - @lang('users.streak_days')</li>
-            <li><i class="fas fa-star tiny" style="color:#d49d10"></i> - @lang('messages.favorites')</li>
+            <li><i class="fas fa-book-open tiny" style="color:#d49d10"></i> - @lang('recipes.recipes')</li>
         </ul>
         <ul class="col s12 m6">
-            <li><i class="main-text fas fa-award tiny"></i> - @lang('users.popularity')</li>
+            <li><i class="fas fa-award red-text tiny"></i> - @lang('users.popularity')</li>
             <li><i class="green-text fas fa-lightbulb tiny"></i> - @lang('users.xp')</li>
         </ul>
     </div>
@@ -28,13 +28,31 @@
         <div class="divider"></div>
         <thead>
             <tr>
-                <th class="main-text py-1">#</th>
+                <th class="main-text py-1">
+                    <a href="/master/manage-users" class="{{ $active == 'id' ? 'red-text' : '' }}">#</a>
+                </th>
                 <th class="main-text py-1">@lang('forms.name')</th>
                 <th class="main-text py-1">@lang('forms.email')</i></th>
-                <th class="py-1"><i class="fas fa-fire" style="color:orangered" title="@lang('users.streak_days')"></i></th>
-                <th class="py-1"><i class="fas fa-star" style="color:#d49d10" title="@lang('messages.favorites')"></i></th>
-                <th class="py-1"><i class="fas fa-award main-text" title="@lang('users.popularity')"></i></th>
-                <th class="py-1"><i class="fas fa-lightbulb green-text" title="@lang('users.xp')"></i></th>
+                <th class="py-1">
+                    <a href="/master/manage-users?order=streak_days" title="@lang('users.streak_days')">
+                        <i class="fas fa-fire" style="{{ $active == 'streak_days' ? 'color:orangered' : '' }}"></i>
+                    </a>
+                </th>
+                <th class="py-1">
+                    <a href="/master/manage-users?order=recipes" title="@lang('recipes.recipes')">
+                        <i class="fas fa-book-open" style="{{ $active == 'recipes' ? 'color:#d49d10' : '' }}"></i>
+                    </a>
+                </th>
+                <th class="py-1">
+                    <a href="/master/manage-users?order=popularity" title="@lang('users.popularity')">
+                        <i class="fas fa-award {{ $active == 'popularity' ? 'red-text' : '' }}"></i>
+                    </a>
+                </th>
+                <th class="py-1">
+                    <a href="/master/manage-users?order=xp" title="@lang('users.xp')">
+                        <i class="fas fa-lightbulb {{ $active == 'xp' ? 'green-text' : '' }}"></i>
+                    </a>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -48,7 +66,7 @@
                     </td>
                     <td class="py-1">{{ $user->email }}</td>
                     <td class="py-1">{{ $user->streak_days }}</td>
-                    <td class="py-1">{{ $user->favs_count }}</td>
+                    <td class="py-1">{{ $user->recipes->count() }}</td>
                     <td class="py-1">{{ $user->popularity }}</td>
                     <td class="py-1">{{ $user->xp }}</td>
                 </tr>

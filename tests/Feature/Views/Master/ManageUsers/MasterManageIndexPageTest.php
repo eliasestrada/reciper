@@ -45,6 +45,6 @@ class MasterManageUsersIndexPageTest extends TestCase
         $this->actingAs($this->master)
             ->get('/master/manage-users')
             ->assertViewIs('master.manage-users.index')
-            ->assertViewHas('users');
+            ->assertViewHasAll(['users', 'active']);
     }
 }

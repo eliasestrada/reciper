@@ -13,12 +13,24 @@ class ManageUsersController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $users = User::query();
+
+        if ($request->order == 'recipes') {
+            $users = $users->withCount('recipes')->orderBy('recipes_count', 'desc');
+        }
+
+        if (in_array($request->order, ['streak_days', 'popularity', 'xp'])) {
+            $users = $users->orderBy($request->order, 'desc');
+        }
+
         return view('master.manage-users.index', [
-            'users' => User::withCount('favs')->orderBy('name', 'desc')->paginate(50)->onEachSide(1),
+            'users' => $users->paginate(50)->onEachSide(1),
+            'active' => $request->has('order') ? $request->order : 'id',
         ]);
     }
 
