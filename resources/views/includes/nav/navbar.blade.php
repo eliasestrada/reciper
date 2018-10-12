@@ -146,7 +146,7 @@
 
                 {{-- Search button --}}
                 <a href="#" data-target="mobile-demo" class="right hide-on-small-and-down" style="margin:2px 17px;" title="@lang('pages.search')" id="nav-btn-for-search">
-                    <i class="fas fa-search fa-15x d-inline"></i>
+                    <i class="fas fa-search fa-15x"></i>
                 </a>
             </div>
 

@@ -32,7 +32,7 @@
                 @foreach ($random_recipes as $recipe)
                     <li>
                         <a href="/recipes/{{ $recipe->id }}">
-                            <i class="fas fa-angle-right red-text"></i> {{ $recipe->getTitle() }}
+                            <i class="fas fa-angle-right red-text" style="width:7.5px"></i> {{ $recipe->getTitle() }}
                         </a>
                     </li>
                 @endforeach
@@ -46,7 +46,7 @@
                 @foreach ($popular_recipes as $recipe)
                     <li>
                         <a href="/recipes/{{ $recipe->id }}">
-                            <i class="fas fa-angle-right red-text"></i> {{ $recipe->getTitle() }}
+                            <i class="fas fa-angle-right red-text" style="width:7.5px"></i> {{ $recipe->getTitle() }}
                         </a>
                     </li>
                 @endforeach
@@ -59,37 +59,37 @@
                 <li><strong>@lang('pages.navigation')</strong></li>
                 <li>
                     <a href="/" title="@lang('messages.go')">
-                        <i class="fas fa-angle-right red-text"></i> @lang('home.home')
+                        <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('home.home')
                     </a>
                 </li>
                 <li>
                     <a href="/recipes" title="@lang('messages.go')">
-                        <i class="fas fa-angle-right red-text"></i> @lang('recipes.recipes')
+                        <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('recipes.recipes')
                     </a>
                 </li>
                 <li>
                     <a href="/search" title="@lang('messages.go')">
-                        <i class="fas fa-angle-right red-text"></i> @lang('pages.search')
+                        <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('pages.search')
                     </a>
                 </li>
                 <li>
                     <a href="/help" title="@lang('messages.go')">
-                        <i class="fas fa-angle-right red-text"></i> @lang('messages.help')
+                        <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('messages.help')
                     </a>
                 </li>
                 <li>
                     <a href="/contact" title="@lang('messages.go')">
-                        <i class="fas fa-angle-right red-text"></i> @lang('feedback.contact_us')
+                        <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('feedback.contact_us')
                     </a>
                 </li>
                 <li>
                     <a href="/login" title="@lang('messages.go')">
-                        <i class="fas fa-angle-right red-text"></i> @lang('auth.login')
+                        <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('auth.login')
                     </a>
                 </li>
                 <li>
                     <a href="/register" title="@lang('messages.go')">
-                        <i class="fas fa-angle-right red-text"></i> @lang('auth.register')
+                        <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('auth.register')
                     </a>
                 </li>
             </ul>
@@ -99,7 +99,7 @@
                 @foreach ($documents_footer as $doc)
                     <li>
                         <a href="/documents/{{ $doc->id }}">
-                            <i class="fas fa-angle-right red-text"></i> {{ $doc->getTitle() }}
+                            <i class="fas fa-angle-right red-text" style="width:7.5px"></i> {{ $doc->getTitle() }}
                         </a>
                     </li>
                 @endforeach
@@ -110,11 +110,11 @@
     <div class="center pt-2">
         <div>
             <a href="/contact" title="@lang('messages.go')" class="mr-3">
-                <i class="fas fa-envelope mr-1"></i>
+                <i class="fas fa-envelope mr-1" style="width:15px"></i>
                 @lang('feedback.contact_us')
             </a>
             <a href="/help" title="@lang('messages.go')">
-                <i class="fas fa-question mr-1"></i>
+                <i class="fas fa-question mr-1" style="width:11px"></i>
                 @lang('messages.help')
             </a>
         </div>
