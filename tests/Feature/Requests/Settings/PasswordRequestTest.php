@@ -17,7 +17,7 @@ class PasswordRequestTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->user = create_user();
+        $this->user = create_user('', ['password' => bcrypt('111111')]);
         $this->pwd_min = config('valid.settings.password.min');
         $this->pwd_max = config('valid.settings.password.max');
         $this->request = $this->actingAs($this->user)->followingRedirects();
@@ -29,21 +29,41 @@ class PasswordRequestTest extends TestCase
         $this->request->put(action('Settings\PasswordController@update'), [
             'old_password' => '',
             'password' => str_random(14),
+        ])->assertSeeText(trans('settings.old_pwd_required'));
+    }
+
+    /** @test */
+    public function old_password_must_be_string(): void
+    {
+        $this->request->put(action('Settings\PasswordController@update'), [
+            'old_password' => 111111,
+            'password' => '111111',
+            'password_confirmation' => '111111',
+        ])->assertSeeText(trans('settings.old_pwd_string'));
+    }
+
+    /** @test */
+    public function password_must_be_string(): void
+    {
+        $this->request->put(action('Settings\PasswordController@update'), [
+            'old_password' => '111111',
+            'password' => 111111,
+            'password_confirmation' => 111111,
+        ])->assertSeeText(trans('settings.pwd_string'));
+    }
+
+    /** @test */
+    public function password_is_required(): void
+    {
+        $this->request->put(action('Settings\PasswordController@update'), [
+            'old_password' => '111111',
+            'password' => '',
+            'password_confirmation' => '',
         ])->assertSeeText(trans('settings.pwd_required'));
     }
 
     /** @test */
-    public function new_password_is_required(): void
-    {
-        $this->request->put(action('Settings\PasswordController@update'), [
-            'old_password' => str_random(15),
-            'password' => '',
-            'password_confirmation' => '',
-        ])->assertSeeText(trans('settings.new_pwd_required'));
-    }
-
-    /** @test */
-    public function new_password_must_be_not_short(): void
+    public function password_must_be_not_short(): void
     {
         $this->request->put(action('Settings\PasswordController@update'), [
             'old_password' => $this->user->password,
@@ -53,7 +73,7 @@ class PasswordRequestTest extends TestCase
     }
 
     /** @test */
-    public function new_password_must_be_not_long(): void
+    public function password_must_be_not_long(): void
     {
         $this->request->put(action('Settings\PasswordController@update'), [
             'old_password' => $this->user->password,
