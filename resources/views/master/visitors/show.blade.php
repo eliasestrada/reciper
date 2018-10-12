@@ -24,14 +24,14 @@
                     @lang('users.go_to_profile')
                 </a>
             </div>
-        @endif
 
-        <div class="my-2">
-            <a href="/master/manage-users/{{ $visitor->user->id }}" class="btn-small min-w">
-                <i class="fas fa-user-cog left"></i>
-                @lang('manage-users.manage') 
-            </a>
-        </div>
+            <div class="my-2">
+                <a href="/master/manage-users/{{ $visitor->user->id }}" class="btn-small min-w">
+                    <i class="fas fa-user-cog left"></i>
+                    @lang('manage-users.manage') 
+                </a>
+            </div>
+        @endif
     </div>
 
     <div class="col s12 m6">

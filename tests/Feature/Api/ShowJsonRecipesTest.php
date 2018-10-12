@@ -31,17 +31,4 @@ class ShowJsonRecipesTest extends TestCase
             ->assertJsonCount(1)
             ->assertJsonFragment(['title' => $recipe->getTitle()]);
     }
-
-    /** @test */
-    public function see_categories_json(): void
-    {
-        app()->setLocale('ru');
-
-        $this->get('/api/recipes-category')
-            ->assertJsonFragment(['id' => 2, 'name_ru' => 'Выпечка']);
-
-        app()->setLocale('en');
-        $this->get('/api/recipes-category')
-            ->assertJsonFragment(['id' => 2, 'name_en' => 'Bakery']);
-    }
 }

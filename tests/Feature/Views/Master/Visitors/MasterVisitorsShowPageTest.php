@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Views\Master\Visitors;
 
-use App\Models\Ban;
 use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -29,6 +28,7 @@ class MasterVisitorsShowPageTest extends TestCase
         $this->actingAs($this->master)
             ->get("/master/visitors/{$this->visitor->id}")
             ->assertOk();
+
     }
 
     /** @test */
@@ -56,58 +56,5 @@ class MasterVisitorsShowPageTest extends TestCase
                     ->whereId($this->visitor->id)
                     ->first(),
             ]);
-    }
-
-    /** @test */
-    public function master_can_ban_visitor(): void
-    {
-        $data = ['days' => 1, 'message' => str_random(40)];
-
-        $this->actingAs($this->master)
-            ->followingRedirects()
-            ->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), $data)
-            ->assertSee(trans('visitors.visitor_banned', ['days' => $data['days']]));
-
-        $this->assertDatabaseHas('ban', [
-            'visitor_id' => $this->visitor->id,
-            'days' => $data['days'],
-            'message' => $data['message'],
-        ]);
-    }
-
-    /** @test */
-    public function master_can_see_ban_btn_and_doesnt_see_unban_btn_when_visitor_is_not_banned(): void
-    {
-        $this->actingAs($this->master)
-            ->get("/master/visitors/{$this->visitor->id}")
-            ->assertSee('<i class="fas fa-lock left"></i> ' . trans('visitors.ban'))
-            ->assertDontSee('<i class="fas fa-lock-open left"></i> ' . trans('visitors.unban'));
-    }
-
-    /** @test */
-    public function master_can_see_unban_btn_and_doesnt_see_ban_btn_when_visitor_is_banned(): void
-    {
-        Ban::banVisitor($this->visitor->id, 1, 'Some message');
-
-        $this->actingAs($this->master)
-            ->get("/master/visitors/{$this->visitor->id}")
-            ->assertDontSee('<i class="fas fa-lock left"></i> ' . trans('visitors.ban'))
-            ->assertSee('<i class="fas fa-lock-open left"></i> ' . trans('visitors.unban'));
-    }
-
-    /** @test */
-    public function master_cant_ban_visitor_without_message(): void
-    {
-        $this->actingAs($this->master)
-            ->followingRedirects()
-            ->put(action('Master\VisitorsController@update', ['id' => $this->visitor->id]), [
-                'days' => 2,
-            ])
-            ->assertDontSee(trans('visitors.visitor_banned', ['days' => 1]));
-
-        $this->assertDatabaseMissing('ban', [
-            'visitor_id' => $this->visitor->id,
-            'days' => 2,
-        ]);
     }
 }
