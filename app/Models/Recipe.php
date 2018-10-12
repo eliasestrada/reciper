@@ -103,7 +103,7 @@ class Recipe extends Model
 
         // If not enough recipes to display, show just random recipes
         if ($random->count() < $edge) {
-            return self::inRandomOrder()->selectBasic()->done(1)->limit(12)->get();
+            return self::inRandomOrder()->selectBasic()->done(1)->limit($limit)->get();
         }
         return $random;
     }

@@ -19,7 +19,7 @@ class PagesController extends Controller
         : User::query();
 
         return view('pages.home', [
-            'recipes' => Recipe::getRandomUnseen(24, 12),
+            'recipes' => Recipe::getRandomUnseen(24, 20),
             'users' => $users->inRandomOrder()->limit(50)->get(['id', 'image']),
         ]);
     }
