@@ -187,13 +187,13 @@
 }
 
 .people-gallery {
-    height: 99px;
+    height: 102px;
     overflow: hidden;
     a {
         img {
             width: 45px;
             height: 45px;
-            transform: scale(1.12, 1.1);
+            border-radius: 4px;
         }
     }
 }
@@ -218,7 +218,7 @@
 
 @media only screen and (max-width: 470px) {
     .people-gallery {
-        height: 303px;
+        height: 304px;
     }
 }
 
@@ -230,6 +230,6 @@
 
 @media only screen and (max-width: 325px) {
     .people-gallery {
-        height: 609px;
+        height: 610px;
     }
 }

@@ -6836,15 +6836,14 @@ Nav List
 }
 
 .people-gallery {
-  height: 99px;
+  height: 102px;
   overflow: hidden;
 }
 
 .people-gallery a img {
   width: 45px;
   height: 45px;
-  -webkit-transform: scale(1.12, 1.1);
-          transform: scale(1.12, 1.1);
+  border-radius: 4px;
 }
 
 @media only screen and (max-width: 870px) {
@@ -6867,7 +6866,7 @@ Nav List
 
 @media only screen and (max-width: 470px) {
   .people-gallery {
-    height: 303px;
+    height: 304px;
   }
 }
 
@@ -6879,7 +6878,7 @@ Nav List
 
 @media only screen and (max-width: 325px) {
   .people-gallery {
-    height: 609px;
+    height: 610px;
   }
 }
 
