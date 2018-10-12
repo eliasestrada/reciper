@@ -12,33 +12,12 @@ class LoginPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function user_can_login_with_correct_credentials(): void
+    public function user_can_login(): void
     {
         $user = create(User::class, ['password' => bcrypt('test')]);
+        $form_data = ['email' => $user->email, 'password' => 'test'];
 
-        $response = $this->post('/login', [
-            'email' => $user->email,
-            'password' => 'test',
-        ]);
-        $response->assertRedirect('/dashboard');
-    }
-
-    /** @test */
-    public function user_cannot_login_with_incorrect_password(): void
-    {
-        $user = create(User::class, ['password' => bcrypt('test')]);
-
-        $response = $this->from('/login')->post('/login', [
-            'email' => $user->email,
-            'password' => 'invalid-password',
-        ]);
-
-        $response->assertRedirect('/login');
-        $response->assertSessionHasErrors('email');
-
-        $this->assertTrue(session()->hasOldInput('email'));
-        $this->assertFalse(session()->hasOldInput('password'));
-        $this->assertGuest();
+        $this->post('/login', $form_data)->assertRedirect('/dashboard');
     }
 
     /**

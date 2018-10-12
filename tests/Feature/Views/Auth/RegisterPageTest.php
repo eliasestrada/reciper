@@ -26,4 +26,19 @@ class RegisterPageTest extends TestCase
             ->assertOk()
             ->assertViewIs('auth.register');
     }
+
+    /** @test */
+    public function new_user_can_register(): void
+    {
+        $faker = \Faker\Factory::create();
+        $form_data = [
+            'name' => $faker->name,
+            'email' => $faker->email,
+            'password' => '111111',
+            'password_confirmation' => '111111',
+        ];
+
+        $this->post(route('register'), $form_data)->assertRedirect('/dashboard');
+        $this->assertDatabaseHas('users', ['email' => $form_data['email']]);
+    }
 }
