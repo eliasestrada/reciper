@@ -5,6 +5,7 @@ namespace Tests;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
+use Illuminate\Support\Facades\Artisan;
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\TestCase as BaseTestCase;
 
@@ -17,20 +18,11 @@ abstract class DuskTestCase extends BaseTestCase
      */
     public function setUp(): void
     {
+        parent::setUp();
+        $this->artisan('wipe');
         $this->browse(function (Browser $browser) {
             $browser->maximize();
         });
-        parent::setUp();
-    }
-
-    /**
-     * @return void
-     */
-    public function tearDown(): void
-    {
-        session()->flush();
-
-        parent::tearDown();
     }
 
     /**
