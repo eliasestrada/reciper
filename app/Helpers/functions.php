@@ -210,11 +210,11 @@ function dump_cache()
  */
 function visitor_id()
 {
-    if (request()->cookie('rotsiv')) {
-        return request()->cookie('rotsiv');
+    if (request()->cookie('r_rotsiv')) {
+        return request()->cookie('r_rotsiv');
     }
     $visitor_id = Visitor::whereIp(request()->ip())->value('id');
-    \Cookie::queue('rotsiv', $visitor_id, 218400);
+    \Cookie::queue('r_rotsiv', $visitor_id, 218400);
 
     return $visitor_id;
 }

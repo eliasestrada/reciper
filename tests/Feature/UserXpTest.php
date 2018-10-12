@@ -85,7 +85,7 @@ class UserXpTest extends TestCase
             'streak_check' => now()->subDay(),
             'updated_at' => now()->subHour(),
         ]);
-        $this->actingAs($user)->get('/')->assertCookie('strk');
+        $this->actingAs($user)->get('/')->assertCookie('r_ekirts');
     }
 
     /** @test */
