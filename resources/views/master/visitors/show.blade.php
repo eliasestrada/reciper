@@ -48,7 +48,7 @@
                 </tr>
                 <tr> {{-- Last activity --}}
                     <td>
-                        @lang('visitors.last_activity'): <span class="red-text">{{ $visitor->updated_at }}</span> ({{ time_ago($visitor->updated_at) }})
+                        @lang('visitors.last_activity'): <span class="red-text">{{ $visitor->online_check }}</span> ({{ time_ago($visitor->online_check) }})
                     </td>
                 </tr>
                 <tr> {{-- Firt visit --}}

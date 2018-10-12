@@ -16,7 +16,7 @@ class UserOnlineMiddleware
     public function handle($request, Closure $next, $guard = null)
     {
         if (auth()->check()) {
-            if (user()->updated_at < now()->subMinutes(5)) {
+            if (user()->online_check < now()->subMinutes(5)) {
                 event(new \App\Events\UserIsOnline);
             }
         }

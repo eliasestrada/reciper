@@ -13,6 +13,6 @@ class UpdateUpdatedAtColumn
      */
     public function handle(UserIsOnline $event)
     {
-        User::whereId(user()->id)->update(['updated_at' => now()]);
+        User::whereId(user()->id)->update(['online_check' => now()]);
     }
 }

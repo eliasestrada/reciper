@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->decimal('popularity', 8, 1)->default(0);
             $table->timestamp('streak_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('notif_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('online_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('contact_check')->nullable();
             $table->timestamps();
             $table->string('image')->default('default.jpg');

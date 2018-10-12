@@ -28,9 +28,9 @@
             {{-- Last visit --}}
             @unless ($user->id === optional(user())->id)
                 <span class="d-block py-2">
-                    {!! get_online_icon(time_ago($user->updated_at)) !!}
+                    {!! get_online_icon(time_ago($user->online_check)) !!}
                     @lang('date.online') 
-                    {{ time_ago($user->updated_at, 'online') }}
+                    {{ time_ago($user->online_check, 'online') }}
                 </span>
             @endunless
 

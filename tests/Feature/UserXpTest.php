@@ -72,7 +72,7 @@ class UserXpTest extends TestCase
     /** @test */
     public function reset_streak_day_if_user_visited_app_after_2_days(): void
     {
-        $user = create_user('', ['streak_check' => now()->subDays(2), 'updated_at' => now()->subHour()]);
+        $user = create_user('', ['streak_check' => now()->subDays(2), 'online_check' => now()->subHour()]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_days' => 0]);
     }
@@ -83,7 +83,7 @@ class UserXpTest extends TestCase
         $user = create_user('', [
             'streak_days' => 1,
             'streak_check' => now()->subDay(),
-            'updated_at' => now()->subHour(),
+            'online_check' => now()->subHour(),
         ]);
         $this->actingAs($user)->get('/')->assertCookie('r_ekirts');
     }
@@ -91,7 +91,7 @@ class UserXpTest extends TestCase
     /** @test */
     public function update_streak_check_to_now_after_visiting_the_app(): void
     {
-        $user = create_user('', ['streak_check' => $date = now()->subDay(), 'updated_at' => now()->subHour()]);
+        $user = create_user('', ['streak_check' => $date = now()->subDay(), 'online_check' => now()->subHour()]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_check' => date('Y-m-d H:i:s')]);
     }
@@ -99,7 +99,7 @@ class UserXpTest extends TestCase
     /** @test */
     public function streak_check_is_not_updated_when_already_visited_today(): void
     {
-        $user = create_user('', ['streak_check' => $date = now()->subHour(), 'updated_at' => now()->subHour()]);
+        $user = create_user('', ['streak_check' => $date = now()->subHour(), 'online_check' => now()->subHour()]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_check' => $date]);
 
@@ -111,7 +111,7 @@ class UserXpTest extends TestCase
     /** @test */
     public function add_streak_day_if_user_visited_app_next_days(): void
     {
-        $user = create_user('', ['streak_check' => now()->subDay(), 'updated_at' => now()->subHour()]);
+        $user = create_user('', ['streak_check' => now()->subDay(), 'online_check' => now()->subHour()]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_days' => 1]);
     }
@@ -119,7 +119,7 @@ class UserXpTest extends TestCase
     /** @test */
     public function dont_add_streak_day_if_user_visited_app_in_hour_or_23_hours(): void
     {
-        $user = create_user('', ['streak_check' => now()->subHour(), 'updated_at' => now()->subHour()]);
+        $user = create_user('', ['streak_check' => now()->subHour(), 'online_check' => now()->subHour()]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_days' => 0]);
 
@@ -133,7 +133,7 @@ class UserXpTest extends TestCase
     {
         $user = create_user('', [
             'streak_check' => now()->subDay(),
-            'updated_at' => now()->subHour(),
+            'online_check' => now()->subHour(),
             'xp' => 0,
         ]);
         $this->actingAs($user)->get('/');
@@ -145,7 +145,7 @@ class UserXpTest extends TestCase
     {
         $user = create_user('', [
             'streak_check' => now()->subHour(),
-            'updated_at' => now()->subHour(),
+            'online_check' => now()->subHour(),
             'xp' => 0,
         ]);
         $this->actingAs($user)->get('/');
