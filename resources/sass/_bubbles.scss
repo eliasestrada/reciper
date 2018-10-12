@@ -10,7 +10,7 @@
 
         .fas {
             transform: translateY(62%);
-            color: $main;
+            color: $mainDark;
         }
     }
 }
@@ -21,7 +21,7 @@
     height: 90px;
     margin: auto;
     position: relative;
-    border: solid 2px $main;
+    border: solid 2px $mainDark;
     border-radius: 50%;
     line-height: .6;
 
@@ -39,7 +39,7 @@
         &::after {
             content: '';
             width: 50%;
-            border-bottom: 1px solid $main;
+            border-bottom: 1px solid $mainDark;
             opacity: .7;
             display: block;
             position: absolute;

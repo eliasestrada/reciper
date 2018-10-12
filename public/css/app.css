@@ -7769,7 +7769,7 @@ Nav List
 .bubbles-block .fas {
   -webkit-transform: translateY(62%);
           transform: translateY(62%);
-  color: #484074;
+  color: #292543;
 }
 
 .bubble {
@@ -7778,7 +7778,7 @@ Nav List
   height: 90px;
   margin: auto;
   position: relative;
-  border: solid 2px #484074;
+  border: solid 2px #292543;
   border-radius: 50%;
   line-height: .6;
 }
@@ -7799,7 +7799,7 @@ Nav List
 .bubble .number::after {
   content: '';
   width: 50%;
-  border-bottom: 1px solid #484074;
+  border-bottom: 1px solid #292543;
   opacity: .7;
   display: block;
   position: absolute;
