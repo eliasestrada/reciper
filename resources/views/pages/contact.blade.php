@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="wrapper container">
+<div class="page container">
     <div class="center"><h1 class="headline">@lang('feedback.feedback')</h1></div>
 
     @if (session('success'))

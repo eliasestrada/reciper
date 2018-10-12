@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="wrapper">
+<div class="page">
     <div class="center mb-3">
         <h1 class="headline mb-4">
             <i class="fas fa-users red-text"></i> 

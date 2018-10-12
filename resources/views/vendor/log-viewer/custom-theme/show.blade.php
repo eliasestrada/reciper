@@ -1,7 +1,7 @@
 @extends('log-viewer::custom-theme._master')
 
 @section('content')
-    <div class="wrapper row">
+    <div class="page row">
         <div class="col s12 m4 l3">
             <div class="mb-4"> {{-- Log Menu --}}
                 <ul class="collection">

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="wrapper">
+<div class="page">
     <div class="row">
         <div class="col s12 m6 l7">
             <h1 class="headline">@lang('settings.settings_photo')</h1>

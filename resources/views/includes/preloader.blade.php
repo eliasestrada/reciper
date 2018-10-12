@@ -1,5 +1,5 @@
 <div class="center py-5 {{ ($class ?? '') }}">
-    <div class="preloader-wrapper {{ ($size ?? '') }} active">
+    <div class="preloader-page {{ ($size ?? '') }} active">
         <div class="spinner-layer">
             <div class="circle-clipper left">
             <div class="circle"></div>

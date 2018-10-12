@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="wrapper">
+<div class="page">
     <div class="center">
         <h1 class="headline">
             @if ($feedback->isReport(1))

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="wrapper">
+<div class="page">
     @hasRole('master')
         <div class="center pb-2 pt-3">
             {{-- Back button --}}

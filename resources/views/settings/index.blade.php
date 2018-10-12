@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="wrapper">
+<div class="page">
     <div class="container">
         <ul class="collection with-header">
             <li class="collection-header"><h4 class="header">@lang('settings.settings')</h4></li>

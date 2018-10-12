@@ -6,7 +6,7 @@
 
 @include('includes.buttons.back', ['url' => '/master/visitors'])
 
-<div class="wrapper row">
+<div class="page row">
     <div class="center col s12 m6">
         <div>
             <h1 class="headline mb-4">

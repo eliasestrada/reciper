@@ -11,7 +11,7 @@
     @include('includes.nav.navbar')
 
     @hasRole('master')
-        <div id="app" class="wrapper">
+        <div id="app" class="page">
             @yield('content')
         </div>
         @else

@@ -1,5 +1,5 @@
-<footer class="px-5 pt-3 pb-5">
-    <div class="row wrapper">
+<footer class="px-5 pb-5">
+    <div class="row pt-0 page">
 
         {{--  Top recipers  --}}
         <div class="col s12 m6 l3 left-align">

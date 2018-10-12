@@ -5,7 +5,7 @@
 
 @section('content')
 
-<div class="wrapper">
+<div class="page">
     <div class="center mb-4">
         <h1 class="headline"><i class="fas fa-star" style="color:#d49d10"></i> @lang('messages.favorites')</h1>
     </div>

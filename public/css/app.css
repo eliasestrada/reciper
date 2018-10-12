@@ -6590,6 +6590,8 @@ Nav List
   background: #f3f3f3;
   color: #333;
   padding: 1.5em 2em;
+  max-width: 1150px;
+  margin: auto;
 }
 
 .home-section .headline {
@@ -6831,6 +6833,47 @@ Nav List
   font-family: "Comfortaa", sans-serif;
   font-weight: bold;
   letter-spacing: 4px;
+}
+
+.people-gallery {
+  height: 100px;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 870px) {
+  .people-gallery {
+    height: 150px;
+  }
+}
+
+@media only screen and (max-width: 660px) {
+  .people-gallery {
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .people-gallery {
+    height: 250px;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .people-gallery {
+    height: 305px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .people-gallery {
+    height: 355px;
+  }
+}
+
+@media only screen and (max-width: 325px) {
+  .people-gallery {
+    height: 610px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -12989,6 +13032,11 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 }
 
 .wrapper {
+  max-width: 1150px;
+  margin: auto;
+}
+
+.page {
   max-width: 1150px;
   margin: auto;
   padding: 2em 1em;

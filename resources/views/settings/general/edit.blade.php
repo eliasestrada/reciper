@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="wrapper row">
+<div class="page row">
     <form action="{{ action('Settings\GeneralController@update') }}" method="post" class="form">
         @csrf @method('put')
 

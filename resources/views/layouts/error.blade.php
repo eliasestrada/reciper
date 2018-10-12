@@ -5,7 +5,7 @@
     <title>@yield('title') - @lang('messages.app_name')</title>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="page">
         @yield('content')
     </div>
 </body>
