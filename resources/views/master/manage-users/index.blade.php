@@ -8,7 +8,7 @@
 <div class="page">
     <div class="center mb-3">
         <h1 class="headline mb-4">
-            <i class="fas fa-users red-text"></i> 
+            <i class="fas fa-user-cog red-text"></i> 
             @lang('manage-users.management'): <span class="red-text">{{ number_format($users->count()) }}</span>
         </h1>
         <div class="divider"></div>

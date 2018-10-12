@@ -5,6 +5,7 @@ return [
     // Views
     'visitors' => 'Посетители',
     'visitor' => 'Посетитель',
+    'go_to_visitor' => 'К посетителю',
     'all_views' => 'Все просмотры',
     'all_visitors' => 'Все посетители',
     'gave_likes' => 'Отдано сердечек',
