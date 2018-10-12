@@ -12935,11 +12935,6 @@ select {
   word-wrap: break-word;
 }
 
-.page {
-  padding: 2em 1em;
-  min-height: 20em;
-}
-
 .text-hover:hover {
   text-decoration: underline;
 }
@@ -12996,6 +12991,8 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 .wrapper {
   max-width: 1150px;
   margin: auto;
+  padding: 2em 1em;
+  min-height: 20em;
 }
 
 .header {

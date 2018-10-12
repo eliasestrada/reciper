@@ -4,8 +4,8 @@
 
 @section('content')
 
-<div class="page row image-bg mb-0">
-    <div class="col s12 m6 offset-m3 form-wrapper corner z-depth-1">
+<div class="row image-bg mb-0">
+    <div class="col s12 m6 offset-m3 form-wrapper my-5 corner z-depth-1">
         <div>
             <div class="register-tabs">
                 <a href="#" class="active">@lang('auth.register')</a>

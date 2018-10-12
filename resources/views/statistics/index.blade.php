@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page row">
+<div class="wrapper row">
     <div class="center">
         <h1 class="headline"><i class="fas fa-chart-bar red-text"></i> @lang('admin.statistics')</h1>
     </div>

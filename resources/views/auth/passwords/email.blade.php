@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page">
+<div class="wrapper">
     <div class="center"><h3 class="headline">@lang('passwords.sent_code')</h3></div>
     <p>@lang('passwords.sent_code_desc')</p>
 

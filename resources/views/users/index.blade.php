@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page">
+<div class="wrapper">
     <div class="center pb-3">
         <h1 class="headline">
             <i class="fas fa-user-friends red-text"></i> @lang('users.all_authors')

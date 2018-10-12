@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page">
+<div class="wrapper">
     <div class="center pb-2">
         <h1 class="headline">@lang('pages.search')</h1>
     </div>

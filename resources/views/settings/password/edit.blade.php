@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page row">
+<div class="wrapper row">
     <div class="col s12 m6 offset-m3">
         <div class="center">
             <h2 class="headline">@lang('forms.change_pwd')</h2>

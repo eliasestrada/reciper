@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="center pt-4"><h1 class="headline"><i class="fas fa-copy red-text"></i> @lang('documents.documents')</h1></div>
-<div class="page">
+<div class="wrapper">
     <div v-cloak>
         <tabs>
             @for ($i = 1; $i <= 2; $i++)

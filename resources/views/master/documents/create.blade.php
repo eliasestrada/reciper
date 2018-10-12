@@ -8,7 +8,7 @@
 
 @section('content')
 
-<div class="page">
+<div class="wrapper">
     <div class="center">
         <h1 class="headline">@lang('documents.new_doc')</h1>
     </div>

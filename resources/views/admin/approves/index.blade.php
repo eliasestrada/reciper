@@ -5,7 +5,7 @@
 @section('content')
 
 @hasRole('admin')
-    <div class="page">
+    <div class="wrapper">
         <div class="center mb-3">
             <h1 class="headline"><i class="fas fa-search red-text"></i> @lang('approves.checklist')</h1>
         </div>

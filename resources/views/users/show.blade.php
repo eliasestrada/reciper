@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page profile-header">
+<div class="wrapper profile-header">
     <div class="row">
         <div class="col s12 l6">
             <div class="mt-2">

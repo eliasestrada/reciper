@@ -8,7 +8,7 @@
 
 @section('content')
 
-<div class="page">
+<div class="wrapper">
     <div class="center">
         <h1 class="headline">@lang('common.edit_item', ['item' => $document->getTitle()])</h1>
     </div>
