@@ -14,8 +14,9 @@ mix.js("resources/js/vue/vue.js", "public/js/vendor")
     .combine(
         ["public/js/vendor/vue.js", "public/js/vendor/vanilla.js"],
         "public/js/app.js"
-    )
-    .sass("resources/sass/app.scss", "public/css/app.css")
+    );
+
+mix.sass("resources/sass/app.scss", "public/css/app.css")
     .disableNotifications()
     .options({
         processCssUrls: false
