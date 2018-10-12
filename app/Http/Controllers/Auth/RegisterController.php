@@ -11,17 +11,6 @@ use Validator;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-     */
-
     use RegistersUsers;
 
     /**
@@ -71,6 +60,7 @@ class RegisterController extends Controller
             'name.max' => trans('auth.name_max'),
             'email.required' => trans('auth.email_required'),
             'email.string' => trans('auth.email_string'),
+            'email.email' => trans('auth.email_email'),
             'email.max' => trans('auth.email_max'),
             'email.unique' => trans('auth.email_unique'),
             'password.required' => trans('auth.password_required'),
