@@ -6,8 +6,8 @@
             <h1 class="headline pb-4"><i class="fas fa-file-code red-text"></i> @lang('logs.logs')</h1>
         </div>
 
-        <table class="responsive-table">
-            <thead class="main-light">
+        <table class="responsive-table striped highlight">
+            <thead>
                 <tr>
                     @foreach($headers as $key => $header)
                         <th scope="col" class="{{ $key == 'date' ? 'text-left' : 'text-center' }}">

@@ -706,6 +706,10 @@ td {
     border: none;
 }
 
+table thead {
+    background: darken($mainLight, 5%);
+}
+
 table {
     width: 100%;
     display: table;

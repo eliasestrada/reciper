@@ -92,11 +92,11 @@
 }
 
 .main-light {
-  background-color: #dbd9ea !important;
+  background-color: #d2cfe4 !important;
 }
 
 .main-light-text {
-  color: #dbd9ea !important;
+  color: #d2cfe4 !important;
 }
 
 .main-dark {
@@ -740,6 +740,10 @@ td {
   border: none;
 }
 
+table thead {
+  background: #c3bedb;
+}
+
 table {
   width: 100%;
   display: table;
@@ -765,7 +769,7 @@ table.highlight > tbody > tr {
 }
 
 table.highlight > tbody > tr:hover {
-  background-color: #dbd9ea;
+  background-color: #d2cfe4;
 }
 
 table.centered thead tr th,
@@ -849,7 +853,7 @@ th {
 
 .collection {
   margin: 0.5rem 0 1rem 0;
-  border: 1px solid #dbd9ea;
+  border: 1px solid #d2cfe4;
   border-radius: 2px;
   overflow: hidden;
   position: relative;
@@ -860,7 +864,7 @@ th {
   line-height: 1.5rem;
   padding: 10px 20px;
   margin: 0;
-  border-bottom: 1px solid #dbd9ea;
+  border-bottom: 1px solid #d2cfe4;
 }
 
 .collection .collection-item.avatar {
@@ -930,7 +934,7 @@ th {
 
 .collection.with-header .collection-header {
   background-color: #f3f3f3;
-  border-bottom: 1px solid #dbd9ea;
+  border-bottom: 1px solid #d2cfe4;
   padding: 10px 20px;
 }
 
@@ -974,7 +978,7 @@ th {
   height: 4px;
   display: block;
   width: 100%;
-  background-color: #dbd9ea;
+  background-color: #d2cfe4;
   border-radius: 2px;
   margin: 0.5rem 0 1rem 0;
   overflow: hidden;
@@ -3332,7 +3336,7 @@ button.btn-floating {
   left: 0;
   top: 57px !important;
   border-radius: 4px;
-  border: solid 1px #dbd9ea;
+  border: solid 1px #d2cfe4;
   z-index: 9999;
   -webkit-transform-origin: 0 0;
   transform-origin: 0 0;
@@ -3353,16 +3357,16 @@ button.btn-floating {
 }
 
 .dropdown-content li:hover {
-  background-color: #dbd9ea;
+  background-color: #d2cfe4;
 }
 
 .dropdown-content li:active {
-  background-color: #dbd9ea;
+  background-color: #d2cfe4;
 }
 
 .dropdown-content li:focus {
   outline: none;
-  background-color: #dbd9ea;
+  background-color: #d2cfe4;
 }
 
 .dropdown-content li.active i.with-red-hover {
@@ -7363,7 +7367,7 @@ Nav List
 }
 
 .loved-link i {
-  color: #dbd9ea;
+  color: #d2cfe4;
   -webkit-transition: color .1s, -webkit-transform .2s;
   transition: color .1s, -webkit-transform .2s;
   transition: color .1s, transform .2s;
@@ -7376,7 +7380,7 @@ Nav List
 }
 
 .loved-link i:hover {
-  color: #f4f3f8;
+  color: #eae9f3;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
 }
@@ -7845,7 +7849,7 @@ Nav List
 }
 
 footer {
-  background: url(../storage/other/bg.gif);
+  background: #262525 url(../storage/other/bg.gif);
   min-height: 50em;
 }
 
@@ -12977,6 +12981,26 @@ select {
   width: 20px;
 }
 
+.fa-spinner {
+  color: #484074;
+}
+
+.scroll {
+  overflow: scroll;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 0px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
 .no-select {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -13056,7 +13080,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 
 .header {
   font-family: "Comfortaa", sans-serif;
-  text-shadow: 1px 1px 3px #dbd9ea;
+  text-shadow: 1px 1px 3px #d2cfe4;
   display: inline-block;
   font-size: 1.4em;
   margin: .4em 0;
@@ -13065,7 +13089,7 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 .headline {
   color: #292543;
   font-family: "Comfortaa", sans-serif;
-  text-shadow: 1px 1px 3px #dbd9ea;
+  text-shadow: 1px 1px 3px #d2cfe4;
   display: inline-block;
   font-size: 1.4em;
   margin: .4em 0;
