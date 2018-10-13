@@ -16,7 +16,6 @@ class FooterProvider extends ServiceProvider
         $this->composerPopularRecipes();
         $this->composerTitle();
         $this->composerDocuments();
-        $this->composerTopRecipers();
     }
 
     /**
@@ -44,15 +43,6 @@ class FooterProvider extends ServiceProvider
     {
         view()->composer('includes.footer',
             \App\Http\ViewComposers\Footer\TitleFooterComposer::class);
-    }
-
-    /**
-     * @return void
-     */
-    public function composerTopRecipers(): void
-    {
-        view()->composer('includes.footer',
-            \App\Http\ViewComposers\Footer\TopRecipersComposer::class);
     }
 
     /**
