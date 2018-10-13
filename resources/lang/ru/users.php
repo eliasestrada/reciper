@@ -43,6 +43,7 @@ return [
     'next_level_in' => 'До след. уровня',
     'popularity' => 'Популярность',
     'views' => 'Просмотров',
+    'views2' => 'Просмотры',
 
     // Controllers
     'user_found' => 'Пользователь найден',

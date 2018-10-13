@@ -26,4 +26,60 @@ class StatisticsController extends Controller
             'recipes', 'most_viewed', 'most_liked', 'most_favs'
         ));
     }
+
+    /**
+     * Chart.js
+     */
+    public function likesViewsChart()
+    {
+        $views = $this->getDataFromUser('views');
+        $likes = $this->getDataFromUser('likes');
+
+        return [
+            'labels' => $views->pluck('month'),
+            'datasets' => [
+                [
+                    'label' => trans('users.views2'),
+                    'fill' => false,
+                    'backgroundColor' => '#484074',
+                    'borderColor' => '#484074',
+                    'data' => $views->pluck('sum'),
+                ],
+                [
+                    'label' => trans('users.likes'),
+                    'fill' => false,
+                    'backgroundColor' => '#cf4545',
+                    'borderColor' => '#cf4545',
+                    'data' => $likes->pluck('sum'),
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * @param string $column
+     */
+    public function getDataFromUser(string $column)
+    {
+        $recipes = user()->recipes()->where('created_at', '>=', now()->subYear())->get();
+
+        $rules = array_map(function ($i) {
+            return [
+                'month' => now()->subMonths($i - 1)->month,
+                'from' => now()->subMonths($i),
+                'to' => now()->subMonths($i - 1),
+                'sum' => 0,
+            ];
+        }, [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
+
+        foreach ($rules as $key => $rule) {
+            $rules[$key]['sum'] += $recipes->map(function ($recipe) use ($rule, $column) {
+                return $recipe[$column]
+                    ->where('created_at', '>=', $rule['from'])
+                    ->where('created_at', '<=', $rule['to'])
+                    ->count();
+            })->sum();
+        }
+        return collect($rules);
+    }
 }
