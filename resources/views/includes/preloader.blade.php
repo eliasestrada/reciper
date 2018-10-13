@@ -1,4 +1,4 @@
-<div class="center py-5 {{ ($class ?? '') }}">
+<div class="center py-5 m-auto {{ ($class ?? '') }}">
     <div class="preloader-wrapper {{ ($size ?? '') }} active">
         <div class="spinner-layer">
             <div class="circle-clipper left">

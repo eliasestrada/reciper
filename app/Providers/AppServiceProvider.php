@@ -32,9 +32,6 @@ class AppServiceProvider extends ServiceProvider
         view()->share(compact('categories'));
     }
 
-    /**
-     * @
-     */
     public function horizon()
     {
         Horizon::auth(function ($request) {

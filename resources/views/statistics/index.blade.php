@@ -89,13 +89,12 @@
         </table>
     </div>
     <div class="col s12">
-        <likes-views-chart>
-            <div class="valign-wrapper mt-4" style="height:273px">
-                <i class="fas fa-spinner fa-3x fa-spin m-auto"></i>
+        <statistics-chart>
+            <div class="valign-wrapper mt-4 center" style="height:273px">
+                @include('includes.preloader')
             </div>
-        </likes-views-chart>
+        </statistics-chart>
     </div>
-</div>
 </div>
 
 @endsection

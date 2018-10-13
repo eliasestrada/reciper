@@ -34,6 +34,7 @@ class StatisticsController extends Controller
     {
         $views = $this->getDataFromUser('views');
         $likes = $this->getDataFromUser('likes');
+        $favs = $this->getDataFromUser('favs');
 
         return [
             'labels' => $views->pluck('month'),
@@ -51,6 +52,13 @@ class StatisticsController extends Controller
                     'backgroundColor' => '#cf4545',
                     'borderColor' => '#cf4545',
                     'data' => $likes->pluck('sum'),
+                ],
+                [
+                    'label' => trans('messages.favorites'),
+                    'fill' => false,
+                    'backgroundColor' => '#d49d10',
+                    'borderColor' => '#d49d10',
+                    'data' => $favs->pluck('sum'),
                 ],
             ],
         ];
