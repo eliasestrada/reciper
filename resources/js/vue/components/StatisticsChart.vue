@@ -18,6 +18,10 @@ export default {
     },
 
     created() {
+        let root = this
+        setInterval(function() {
+            root.fetchData()
+        }, 5000)
         this.fetchData()
     },
      
@@ -25,10 +29,8 @@ export default {
         fetchData() {
             fetch('api-statistics/likes-views-chart')
             .then(res => res.json())
-            .then(data => {
-                this.data = data
-            })
-            .catch(err => console.log(err))
+            .then(data => this.data = data)
+            .catch(err => console.error(err))
         }
     },
 
