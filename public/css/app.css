@@ -12942,6 +12942,10 @@ select {
   height: 39px;
 }
 
+.w20 {
+  width: 20px;
+}
+
 .image-bg {
   background: rgba(72, 64, 116, 0.5) url(../storage/other/img.jpg);
   background-attachment: fixed;
