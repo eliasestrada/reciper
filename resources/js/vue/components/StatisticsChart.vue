@@ -1,6 +1,6 @@
 <template>
-    <div class="mt-4">
-        <line-chart :chart-data="data" :height="100" :options="options" />
+    <div class="mt-4" style="min-width:700px">
+        <line-chart :chart-data="data" :height="100" />
     </div>
 </template>
 
@@ -10,14 +10,10 @@ export default {
     data() {
         return {
             data: [],
-            options: {
-                responsive: true,
-                maintainAspect: true
-            }
         }
     },
 
-    created() {
+    mounted() {
         let root = this
         setInterval(function() {
             root.fetchData()

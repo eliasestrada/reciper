@@ -88,7 +88,7 @@
             </tr>
         </table>
     </div>
-    <div class="col s12">
+    <div class="col s12 scroll">
         <statistics-chart>
             <div class="valign-wrapper mt-4 center" style="height:273px">
                 @include('includes.preloader')
