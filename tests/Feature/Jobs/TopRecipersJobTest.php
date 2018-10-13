@@ -45,9 +45,6 @@ class TopRecipersJobTest extends TestCase
         $this->assertEquals($recipes[3]->user->id, $cache[2]['id']);
     }
 
-    /**
-     * @
-     */
     public function fakeHandle()
     {
         $users = Like::whereCreatedAt(now()->subDay())->get()->map(function ($like) {

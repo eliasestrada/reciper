@@ -13,7 +13,7 @@
                         @lang('pages.in_a_day')
                     </span>
                 </li>
-                @forelse ($top_recipers as $reciper)
+                @forelse (cache()->get('top_recipers', []) as $reciper)
                     <li>
                         <a href="/users/{{ $reciper['id'] }}">
                             <i class="fas fa-crown" style="font-size:0.8em;color:orange"></i> {{ $reciper['name'] }}
