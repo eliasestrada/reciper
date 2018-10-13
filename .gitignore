@@ -12,3 +12,6 @@ npm-debug.log
 yarn-error.log
 .env
 dump.rdb
+/public/js/app.js
+/public/js/vendor
+/public/css/app.css
