@@ -1,11 +1,11 @@
 <template>
     <div class="mt-4">
-        <bar-chart :chart-data="data" :height="100" :options="options" />
+        <line-chart :chart-data="data" :height="100" :options="options" />
     </div>
 </template>
 
 <script>
-import BarChart from '../BarChart.js'
+import LineChart from '../LineChart.js'
 export default {
     data() {
         return {
@@ -33,7 +33,7 @@ export default {
     },
 
     components: {
-        BarChart
+        LineChart
     }
 }
 </script>
