@@ -88,6 +88,14 @@
             </tr>
         </table>
     </div>
+    <div class="col s12">
+        <likes-views-chart>
+            <div class="valign-wrapper mt-4" style="height:273px">
+                <i class="fas fa-spinner fa-3x fa-spin m-auto"></i>
+            </div>
+        </likes-views-chart>
+    </div>
+</div>
 </div>
 
 @endsection

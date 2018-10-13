@@ -4,6 +4,7 @@ window.Event = new Vue();
 
 const components = [
     "RandomRecipesSidebar",
+    "LikesViewsChart",
     "DeleteRecipeBtn",
     "CategoriesField",
     "SortButtons",
