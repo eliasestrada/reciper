@@ -38,13 +38,7 @@ class StatisticsController extends Controller
 
         return [
             'labels' => $views->pluck('month'),
-            'options' => [
-                'title' => [
-                    'display' => true,
-                    'text' => trans('users.popularity_chart'),
-                    'fontSize' => 24,
-                ],
-            ],
+            'options' => [],
             'datasets' => [
                 [
                     'label' => trans('users.views2'),
@@ -95,6 +89,13 @@ class StatisticsController extends Controller
                     ->count();
             })->sum();
         }
-        return collect($rules);
+
+        // Convert month number to month name
+        $rules_with_month_name = collect($rules)->map(function ($rule) {
+            $rule['month'] = trans("date.month_{$rule['month']}");
+            return $rule;
+        });
+
+        return collect($rules_with_month_name);
     }
 }

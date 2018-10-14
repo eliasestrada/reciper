@@ -88,6 +88,10 @@
             </tr>
         </table>
     </div>
+    <div class="center col s12 mt-4">
+        <h5 class="mb-0 d-inline-block">@lang('users.popularity_chart') </h5>
+        <b class="red-text">LIVE</b>
+    </div>
     <div class="col s12 scroll">
         <statistics-chart>
             <div class="valign-wrapper mt-4 center" style="height:273px">

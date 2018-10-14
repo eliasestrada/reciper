@@ -1,6 +1,6 @@
 <template>
     <div class="mt-4" style="min-width:700px">
-        <line-chart :chart-data="data" :height="100" :options="options" />
+        <line-chart :chart-data="data" :height="120" :options="options" />
     </div>
 </template>
 
@@ -15,20 +15,23 @@ export default {
     },
 
     mounted() {
+        let root = this
+        this.fetchData()
         setInterval(function() {
+            root.fetchData()
+        }, 5000)
+    },
+
+    methods: {
+        fetchData() {
             fetch('api-statistics/likes-views-chart')
                 .then(res => res.json())
-                .then(data => this.data = data)
+                .then(data => {
+                    this.data = data
+                    this.options = data.options
+                })
                 .catch(err => console.error(err));
-        }, 5000)
-
-        fetch('api-statistics/likes-views-chart')
-            .then(res => res.json())
-            .then(data => {
-                this.data = data
-                this.options = data.options
-            })
-            .catch(err => console.error(err));
+        }
     },
 
     components: {

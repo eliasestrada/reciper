@@ -1,8 +1,8 @@
-@font-face {
-	font-family: Comfortaa;
-	src: url(fonts/Comfortaa/Comfortaa-Regular.ttf); //src: url(fonts/Comfortaa/Comfortaa-Bold.ttf);
+// @font-face {
+	// font-family: Comfortaa;
+	// src: url(fonts/Comfortaa/Comfortaa-Regular.ttf); //src: url(fonts/Comfortaa/Comfortaa-Bold.ttf);
 	//src: url(fonts/Comfortaa/Comfortaa-Light.ttf);
-}
+// }
 
 // Main Colors
 $main: #484074;
@@ -28,8 +28,9 @@ $inputColor: #f5f5f5;
 $inputRadius: 4px;
 $formLines: #444;
 // Fonts
-$headerFont: 'Comfortaa', sans-serif;
+// $headerFont: 'Comfortaa', sans-serif;
 $mainFont: Arial, Helvetica;
+$headerFont: Arial, Helvetica;
 // Button
 $btnBg: -webkit-linear-gradient(top, #fff 0%, #d4d4d4 100%);
 $btnBorder: 1px solid #6b6b6b;
