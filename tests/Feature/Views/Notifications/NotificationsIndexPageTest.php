@@ -39,7 +39,7 @@ class NotificationsIndexPageTest extends TestCase
     /** @test */
     public function user_can_delete_his_notification_message(): void
     {
-        $user = make(User::class);
+        $user = create_user();
         $notif = $this->new_notif($user->id);
 
         // Let's delete the notif
@@ -77,7 +77,7 @@ class NotificationsIndexPageTest extends TestCase
     /** @test */
     public function user_dont_see_delete_button_for_admin(): void
     {
-        $user = make(User::class);
+        $user = create_user();
         $notif = $this->new_notif($user->id, true);
 
         $this->actingAs($user)
@@ -88,7 +88,7 @@ class NotificationsIndexPageTest extends TestCase
     /** @test */
     public function user_cant_delete_notification_for_admin(): void
     {
-        $user = make(User::class);
+        $user = create_user();
         $notif = $this->new_notif($user->id, true);
 
         $this->actingAs($user)

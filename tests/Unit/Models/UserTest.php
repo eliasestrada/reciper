@@ -70,7 +70,7 @@ class UserTest extends TestCase
     /** @test */
     public function has_recipe_method_returns_true_if_user_is_an_author_of_the_given_recipe_id(): void
     {
-        $user = make(User::class);
+        $user = create_user();
         $recipe = create(Recipe::class, ['user_id' => $user->id]);
         $this->assertTrue($user->hasRecipe($recipe->id));
     }
@@ -78,7 +78,7 @@ class UserTest extends TestCase
     /** @test */
     public function has_fav_method_returns_bool_if_user_has_this_recipe_in_favs(): void
     {
-        $user = make(User::class);
+        $user = create_user();
         $recipe = create(Recipe::class);
         Fav::create(['user_id' => $user->id, 'recipe_id' => $recipe->id]);
         $this->assertTrue($user->hasFav($recipe->id));
