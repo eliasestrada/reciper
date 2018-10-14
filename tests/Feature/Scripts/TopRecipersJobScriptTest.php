@@ -17,15 +17,9 @@ class TopRecipersJobScriptTest extends TestCase
     /** @test */
     public function job_must_cache_list_of_top_recipers_in_certain_amount(): void
     {
-        $amount = config('cache.other.amount_of_top_recipers');
         cache()->flush();
-
-        $recipes = collect([
-            create(Recipe::class),
-            create(Recipe::class),
-            create(Recipe::class),
-            create(Recipe::class),
-        ]);
+        $amount = config('cache.other.amount_of_top_recipers');
+        $recipes = create(Recipe::class, [], 4);
 
         // 3 likes for first recipe, 2 likes for second and 1 like for the third
         // last like in array should not be counted
