@@ -8,7 +8,6 @@ cache()->flush();
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'id' => User::orderBy('id', 'desc')->latest()->value('id') + 1,
         'visitor_id' => factory(Visitor::class)->create()->id,
         'name' => $faker->name,
         'about_me' => '',
