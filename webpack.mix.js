@@ -1,7 +1,7 @@
 let mix = require("laravel-mix");
 
-let css = 1;
-let js = 0;
+let css = 0;
+let js = 1;
 let server = 0;
 
 if (css == 1) {
