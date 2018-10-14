@@ -16,7 +16,7 @@ return [
             'path' => storage_path('framework/cache/data'),
         ],
         'redis' => [
-            'driver' => 'phpredis',
+            'driver' => 'redis',
             'connection' => 'default',
         ],
     ],

@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\Like;
 use App\Models\Recipe;
 use App\Models\Visitor;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -17,6 +18,7 @@ class TopRecipersJobTest extends TestCase
     {
         $amount = config('cache.other.amount_of_top_recipers');
         cache()->flush();
+
         $recipes = collect([
             create(Recipe::class),
             create(Recipe::class),
@@ -25,14 +27,23 @@ class TopRecipersJobTest extends TestCase
         ]);
 
         // 3 likes for first recipe, 2 likes for second and 1 like for the third
-        $indexes_of_liked_recipes = [0, 0, 0, 2, 2, 3];
+        // last like in array should not be counted
+        $data = [
+            ['id' => 0, 'hours' => 0],
+            ['id' => 0, 'hours' => 9],
+            ['id' => 0, 'hours' => 13],
+            ['id' => 2, 'hours' => 17],
+            ['id' => 2, 'hours' => 20],
+            ['id' => 3, 'hours' => 23],
+            ['id' => 1, 'hours' => 24],
+        ];
 
-        foreach ($indexes_of_liked_recipes as $value) {
-            $visitor = Visitor::where('id', '!=', $recipes[$value]->user->visitor->id)->inRandomOrder()->first();
+        foreach ($data as $value) {
+            $visitor = Visitor::where('id', '!=', $recipes[$value['id']]->user->visitor->id)->inRandomOrder()->first();
             Like::create([
                 'visitor_id' => $visitor->id,
-                'recipe_id' => $recipes[$value]->id,
-                'created_at' => now()->subDay(),
+                'recipe_id' => $recipes[$value['id']]->id,
+                'created_at' => Carbon::yesterday()->addHours($value['hours']),
             ]);
         }
 
@@ -40,6 +51,7 @@ class TopRecipersJobTest extends TestCase
 
         $cache = cache()->get('top_recipers');
         $this->assertCount(3, $cache);
+
         $this->assertEquals($recipes[0]->user->id, $cache[0]['id']);
         $this->assertEquals($recipes[2]->user->id, $cache[1]['id']);
         $this->assertEquals($recipes[3]->user->id, $cache[2]['id']);
@@ -47,7 +59,10 @@ class TopRecipersJobTest extends TestCase
 
     public function fakeHandle()
     {
-        $users = Like::whereCreatedAt(now()->subDay())->get()->map(function ($like) {
+        $users = Like::where([
+            ['created_at', '>=', Carbon::yesterday()->startOfDay()],
+            ['created_at', '<=', Carbon::yesterday()->endOfDay()],
+        ])->get()->map(function ($like) {
             return $like->recipe->user->id . '<split>' . $like->recipe->user->name;
         })->toArray();
 

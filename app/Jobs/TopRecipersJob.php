@@ -3,6 +3,8 @@
 namespace App\Jobs;
 
 use App\Models\Like;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -22,7 +24,10 @@ class TopRecipersJob implements ShouldQueue
     public function handle()
     {
         Redis::throttle('top-recipers')->allow(2)->every(1)->then(function () {
-            $users = Like::whereCreatedAt(now()->subDay())->get()->map(function ($like) {
+            $users = Like::where([
+                ['created_at', '>=', Carbon::yesterday()->startOfDay()],
+                ['created_at', '<=', Carbon::yesterday()->endOfDay()],
+            ])->get()->map(function ($like) {
                 return $like->recipe->user->id . '<split>' . $like->recipe->user->name;
             })->toArray();
 
@@ -37,6 +42,7 @@ class TopRecipersJob implements ShouldQueue
                     'name' => $explode[1],
                 ]);
             }
+            info($top_recipers);
             cache()->put('top_recipers', $top_recipers, 1440);
         }, function () {
             return $this->release(2);
