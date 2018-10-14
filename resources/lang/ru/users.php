@@ -31,6 +31,7 @@ return [
     'popularity_of_reciper' => 'Очки популярности ресипёра',
     'reciper' => 'Ресипёр',
     'streak_days' => 'Дней в ударном режиме',
+    'popularity_chart' => 'График популярности',
 
     // Bubbles
     'likes' => 'Сердца',

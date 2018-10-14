@@ -38,6 +38,13 @@ class StatisticsController extends Controller
 
         return [
             'labels' => $views->pluck('month'),
+            'options' => [
+                'title' => [
+                    'display' => true,
+                    'text' => trans('users.popularity_chart'),
+                    'fontSize' => 24,
+                ],
+            ],
             'datasets' => [
                 [
                     'label' => trans('users.views2'),
