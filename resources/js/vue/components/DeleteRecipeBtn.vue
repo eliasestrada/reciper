@@ -14,13 +14,13 @@ export default {
                 fetch(`/api/recipes/${this.recipeId}`, {
                     method: "delete"
                 })
-                .then(res => res.text())
-                .then(data => {
-                    data === "success"
-                    ? (window.location.href = "/users/other/my-recipes")
-                    : (this.error = this.deletedFail);
-                })
-                .catch(error => console.error(error));
+                    .then(res => res.text())
+                    .then(data => {
+                        data === "success"
+                        ? (window.location.href = "/users/other/my-recipes")
+                        : (this.error = this.deletedFail);
+                    })
+                    .catch(error => console.error(error));
             }
         }
     }

@@ -42,19 +42,19 @@ export default {
                     _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
                 })
             })
-            .then(res => res.text())
-            .then(data => {
-                if (data != 'fail') {
-                    this.playSound()
-                    this.icon = data
-                    if (data == 'active') {
-                        this.amount++
-                    } else {
-                        this.amount--
+                .then(res => res.text())
+                .then(data => {
+                    if (data != 'fail') {
+                        this.playSound()
+                        this.icon = data
+                        if (data == 'active') {
+                            this.amount++
+                        } else {
+                            this.amount--
+                        }
                     }
-                }
-            })
-            .catch(err => console.error(err))
+                })
+                .catch(err => console.error(err))
         },
         toggleActive() {
             if (this.userId) {
