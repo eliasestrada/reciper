@@ -1,7 +1,8 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Scrips;
 
+use App\Jobs\TopRecipersJob;
 use App\Models\Like;
 use App\Models\Recipe;
 use App\Models\Visitor;
@@ -9,7 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class TopRecipersJobTest extends TestCase
+class TopRecipersJobScriptTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -47,7 +48,7 @@ class TopRecipersJobTest extends TestCase
             ]);
         }
 
-        $this->fakeHandle();
+        (new TopRecipersJob)->bestReciperOfYesterdayScript();
 
         $cache = cache()->get('top_recipers');
         $this->assertCount(3, $cache);
@@ -55,28 +56,5 @@ class TopRecipersJobTest extends TestCase
         $this->assertEquals($recipes[0]->user->id, $cache[0]['id']);
         $this->assertEquals($recipes[2]->user->id, $cache[1]['id']);
         $this->assertEquals($recipes[3]->user->id, $cache[2]['id']);
-    }
-
-    public function fakeHandle()
-    {
-        $users = Like::where([
-            ['created_at', '>=', Carbon::yesterday()->startOfDay()],
-            ['created_at', '<=', Carbon::yesterday()->endOfDay()],
-        ])->get()->map(function ($like) {
-            return $like->recipe->user->id . '<split>' . $like->recipe->user->name;
-        })->toArray();
-
-        $users = array_slice(array_reverse(array_sort(array_count_values($users))), 0, 7);
-
-        $top_recipers = [];
-
-        foreach ($users as $name => $value) {
-            $explode = explode('<split>', $name);
-            array_push($top_recipers, [
-                'id' => $explode[0],
-                'name' => $explode[1],
-            ]);
-        }
-        cache()->put('top_recipers', $top_recipers, 1440);
     }
 }
