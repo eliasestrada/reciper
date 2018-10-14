@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
+use App\Models\User;
 
 class StatisticsController extends Controller
 {
@@ -32,9 +33,9 @@ class StatisticsController extends Controller
      */
     public function likesViewsChart()
     {
-        $views = $this->getDataFromUser('views');
-        $likes = $this->getDataFromUser('likes');
-        $favs = $this->getDataFromUser('favs');
+        $views = $this->getDataFromUserScript('views');
+        $likes = $this->getDataFromUserScript('likes');
+        $favs = $this->getDataFromUserScript('favs');
 
         return [
             'labels' => $views->pluck('month'),
@@ -67,10 +68,16 @@ class StatisticsController extends Controller
 
     /**
      * @param string $column
+     * @param User|null $user this param for testing purposes, coz I can just use auth()->user helper
      */
-    public function getDataFromUser(string $column)
+    public function getDataFromUserScript(string $column, ?User $user = null)
     {
-        $recipes = user()->recipes()->where('created_at', '>=', now()->subYear())->get();
+        if ($column != 'likes' && $column != 'views' && $column != 'favs') {
+            throw new \Exception('getDataFromUserScript 1 parameter can only have one of three values. Given value does not match any of them');
+        }
+
+        $user = $user ? $user : user();
+        $recipes = $user->recipes()->where('created_at', '>=', now()->subYear())->get();
 
         $rules = array_map(function ($i) {
             return [
