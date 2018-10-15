@@ -42,16 +42,13 @@ Route::get('dashboard', 'DashboardController@index');
 // Settings ===========
 Route::prefix('settings')->middleware('auth')->namespace('Settings')->group(function () {
     Route::view('/', 'settings.index');
+    Route::get('general', 'GeneralController@index');
+    Route::put('general', 'GeneralController@updateGeneral');
+    Route::put('password', 'GeneralController@updatePassword');
 
     Route::get('photo/edit', 'PhotoController@edit');
     Route::put('photo', 'PhotoController@update');
     Route::delete('photo', 'PhotoController@destroy');
-
-    Route::get('password/edit', 'PasswordController@edit');
-    Route::put('password', 'PasswordController@update');
-
-    Route::get('general/edit', 'GeneralController@edit');
-    Route::put('general', 'GeneralController@update');
 });
 
 // Title

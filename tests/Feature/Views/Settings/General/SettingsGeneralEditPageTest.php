@@ -14,22 +14,22 @@ class SettingsGeneralEditPageTest extends TestCase
     public function view_has_a_correct_path(): void
     {
         $this->actingAs(make(User::class))
-            ->get('/settings/general/edit')
-            ->assertViewIs('settings.general.edit');
+            ->get('/settings/general')
+            ->assertViewIs('settings.general.index');
     }
 
     /** @test */
     public function auth_user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
-            ->get('/settings/general/edit')
+            ->get('/settings/general')
             ->assertOk();
     }
 
     /** @test */
     public function guest_cant_see_the_page(): void
     {
-        $this->get('/settings/general/edit')->assertRedirect('/login');
+        $this->get('/settings/general')->assertRedirect('/login');
     }
 
     /** @test */
@@ -37,7 +37,7 @@ class SettingsGeneralEditPageTest extends TestCase
     {
         $user = create_user();
 
-        $this->actingAs($user)->put(action('Settings\GeneralController@update'), [
+        $this->actingAs($user)->put(action('Settings\GeneralController@updateGeneral'), [
             'name' => 'new name',
         ]);
         $this->assertEquals('new name', $user->name);
@@ -49,7 +49,7 @@ class SettingsGeneralEditPageTest extends TestCase
         $name = str_random(10);
         $user = create_user('', compact('name'));
 
-        $this->actingAs($user)->put(action('Settings\GeneralController@update'), ['name' => 'ja']);
+        $this->actingAs($user)->put(action('Settings\GeneralController@updateGeneral'), ['name' => 'ja']);
         $this->assertEquals($name, $user->name);
     }
 
@@ -60,7 +60,37 @@ class SettingsGeneralEditPageTest extends TestCase
         $name = str_random(10);
         $about_me = str_random(30);
 
-        $this->actingAs($user)->put(action('Settings\GeneralController@update'), compact('name', 'about_me'));
+        $this->actingAs($user)->put(action('Settings\GeneralController@updateGeneral'), compact('name', 'about_me'));
         $this->assertEquals($about_me, $user->about_me);
+    }
+
+    /** @test */
+    public function user_can_change_his_pwd_with_correct_pwd(): void
+    {
+        $user = create_user('', ['password' => bcrypt('test')]);
+
+        $this->actingAs($user)
+            ->put(action('Settings\GeneralController@updatePassword'), [
+                'old_password' => 'test',
+                'password' => 'new_password',
+                'password_confirmation' => 'new_password',
+            ]);
+
+        $this->assertTrue(\Hash::check('new_password', $user->password));
+    }
+
+    /** @test */
+    public function user_cant_change_his_pwd_with_incorrect_pwd(): void
+    {
+        $user = create_user('', ['password' => bcrypt('test')]);
+
+        $this->actingAs($user)
+            ->put(action('Settings\GeneralController@updatePassword'), [
+                'old_password' => 'other_test',
+                'password' => 'new_password',
+                'password_confirmation' => 'new_password',
+            ]);
+
+        $this->assertFalse(\Hash::check('new_password', $user->password));
     }
 }
