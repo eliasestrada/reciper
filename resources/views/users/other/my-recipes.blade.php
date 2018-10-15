@@ -13,7 +13,7 @@
 @endcomponent
 
 <div class="page">
-    <div class="center mb-4">
+    <div class="center mb-2">
         <h1 class="header"><i class="fas fa-book-open red-text"></i> @lang('recipes.my_recipes')</h1>
     </div>
 

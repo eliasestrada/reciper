@@ -176,7 +176,7 @@
                 </li>
 
                 @guest
-                    <li>
+                    <li class="{{ active_if_route_is(['login', 'register']) }}">
                         <a href="/login" title="@lang('auth.login')">
                             @lang('auth.login') <i class="fas fa-sign-in-alt fa-15x right"></i>
                         </a>

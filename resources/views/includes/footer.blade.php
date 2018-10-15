@@ -15,7 +15,7 @@
                 </li>
                 @forelse (cache()->get('top_recipers', []) as $reciper)
                     <li>
-                        <a href="/users/{{ $reciper['id'] }}">
+                        <a href="/users/{{ $reciper['id'] }}" class="{{ active_if_route_is(["users/{$reciper['id']}"]) }}">
                             <i class="fas fa-crown" style="font-size:0.8em;color:orange"></i> {{ $reciper['name'] }}
                         </a>
                     </li>
@@ -31,7 +31,7 @@
                 <li><strong>@lang('recipes.recipes')</strong></li>
                 @foreach ($random_recipes as $recipe)
                     <li>
-                        <a href="/recipes/{{ $recipe->id }}">
+                        <a href="/recipes/{{ $recipe->id }}" class="{{ active_if_route_is(["recipes/$recipe->id"]) }}">
                             <i class="fas fa-angle-right red-text" style="width:7.5px"></i> {{ $recipe->getTitle() }}
                         </a>
                     </li>
@@ -45,7 +45,7 @@
                 <li><strong>@lang('recipes.popular')</strong></li>
                 @foreach ($popular_recipes as $recipe)
                     <li>
-                        <a href="/recipes/{{ $recipe->id }}">
+                        <a href="/recipes/{{ $recipe->id }}" class="{{ active_if_route_is(["recipes/$recipe->id"]) }}">
                             <i class="fas fa-angle-right red-text" style="width:7.5px"></i> {{ $recipe->getTitle() }}
                         </a>
                     </li>
@@ -58,37 +58,37 @@
             <ul class="px-0 unstyled-list col s12">
                 <li><strong>@lang('pages.navigation')</strong></li>
                 <li>
-                    <a href="/" title="@lang('messages.go')">
+                    <a href="/" title="@lang('messages.go')" class="{{ active_if_route_is(['/']) }}">
                         <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('home.home')
                     </a>
                 </li>
                 <li>
-                    <a href="/recipes" title="@lang('messages.go')">
+                    <a href="/recipes" title="@lang('messages.go')" class="{{ active_if_route_is(['recipes', 'recipes/*']) }}">
                         <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('recipes.recipes')
                     </a>
                 </li>
                 <li>
-                    <a href="/search" title="@lang('messages.go')">
+                    <a href="/search" title="@lang('messages.go')" class="{{ active_if_route_is(['search']) }}">
                         <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('pages.search')
                     </a>
                 </li>
                 <li>
-                    <a href="/help" title="@lang('messages.go')">
+                    <a href="/help" title="@lang('messages.go')" class="{{ active_if_route_is(['help']) }}">
                         <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('messages.help')
                     </a>
                 </li>
                 <li>
-                    <a href="/contact" title="@lang('messages.go')">
+                    <a href="/contact" title="@lang('messages.go')" class="{{ active_if_route_is(['contact']) }}">
                         <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('feedback.contact_us')
                     </a>
                 </li>
                 <li>
-                    <a href="/login" title="@lang('messages.go')">
+                    <a href="/login" title="@lang('messages.go')" class="{{ active_if_route_is(['login']) }}">
                         <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('auth.login')
                     </a>
                 </li>
                 <li>
-                    <a href="/register" title="@lang('messages.go')">
+                    <a href="/register" title="@lang('messages.go')" class="{{ active_if_route_is(['register']) }}">
                         <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('auth.register')
                     </a>
                 </li>
@@ -98,7 +98,7 @@
                 <li><strong>@lang('documents.info')</strong></li>
                 @foreach ($documents_footer as $doc)
                     <li>
-                        <a href="/documents/{{ $doc->id }}">
+                        <a href="/documents/{{ $doc->id }}" class="{{ active_if_route_is(["documents/$doc->id"]) }}">
                             <i class="fas fa-angle-right red-text" style="width:7.5px"></i> {{ $doc->getTitle() }}
                         </a>
                     </li>
@@ -109,11 +109,11 @@
 
     <div class="center pt-2">
         <div>
-            <a href="/contact" title="@lang('messages.go')" class="mr-3">
+            <a href="/contact" title="@lang('messages.go')" class="mr-3 {{ active_if_route_is(['contact']) }}">
                 <i class="fas fa-envelope mr-1" style="width:15px"></i>
                 @lang('feedback.contact_us')
             </a>
-            <a href="/help" title="@lang('messages.go')">
+            <a href="/help" title="@lang('messages.go')" class="{{ active_if_route_is(['help']) }}">
                 <i class="fas fa-question mr-1" style="width:11px"></i>
                 @lang('messages.help')
             </a>

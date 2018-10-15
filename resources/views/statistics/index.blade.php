@@ -5,12 +5,8 @@
 @section('content')
 
 <div class="page row">
-    <div class="center">
-        <h1 class="header"><i class="fas fa-chart-bar red-text"></i> @lang('admin.statistics')</h1>
-    </div>
-
-    <div class="col s12 m12 l6">
-        <div class="center mt-3"><h5 class="header">@lang('messages.general')</h5></div>
+    <div class="col s12 l6 mb-3">
+        <div class="center"><h5 class="header">@lang('messages.general')</h5></div>
         <table class="responsive highlight">
             <tr>
                 {{-- All recipes --}}
@@ -35,8 +31,8 @@
         </table>
     </div>
 
-    <div class="col s12 m12 l6">
-        <div class="center mt-4"><h5 class="header">@lang('users.reciper')</h5></div>
+    <div class="col s12 l6">
+        <div class="center"><h5 class="header">@lang('users.reciper')</h5></div>
         <table class="responsive highlight">
             <tr>
                 {{-- Exp points --}}
