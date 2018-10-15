@@ -63,7 +63,7 @@ function set_as_selected_if_equal($num1, $num2): string
 function style_timestamp(string $path): string
 {
     try {
-        $timestamp = '?v=' . File::lastModified(public_path() . $path);
+        $timestamp = '?v=' . \File::lastModified(public_path() . $path);
     } catch (Exception $e) {
         $timestamp = '';
     }
