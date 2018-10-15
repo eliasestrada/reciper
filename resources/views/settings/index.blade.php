@@ -8,7 +8,7 @@
     <div class="container">
         <ul class="collection with-header">
             <li class="collection-header"><h4 class="header">@lang('settings.settings')</h4></li>
-            <a href="/settings/general/edit" class="collection-item">
+            <a href="/settings/general" class="collection-item">
                 <i class="fas fa-cogs fa-15x right grey-text"></i>
                 @lang('settings.general'). 
                 <span class="grey-text">@lang('settings.general_desc')</span>

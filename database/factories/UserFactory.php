@@ -10,7 +10,7 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'visitor_id' => factory(Visitor::class)->create()->id,
         'name' => $faker->name,
-        'about_me' => '',
+        'status' => '',
         'email' => $faker->freeEmail,
         'password' => bcrypt('111111'),
         'remember_token' => str_random(10),

@@ -16,8 +16,8 @@
                 <input type="text" name="name" id="name" value="{{ user()->name }}" data-length="{{ config('valid.settings.general.name.max') }}" class="counter" maxlength="{{ config('valid.settings.general.name.max') }}" minlength="{{ config('valid.settings.general.name.min') }}">
             </div>
             <div class="input-field">
-                <textarea id="about_me" class="materialize-textarea counter" data-length="{{ config('valid.settings.general.about_me.max') }}" name="about_me" maxlength="{{ config('valid.settings.general.about_me.max') }}">{{ (user()->about_me ?? old('about_me')) }}</textarea>
-                <label for="about_me">@lang('settings.about_me')</label>
+                <textarea id="status" class="materialize-textarea counter" data-length="{{ config('valid.settings.general.status.max') }}" name="status" maxlength="{{ config('valid.settings.general.status.max') }}">{{ (user()->status ?? old('status')) }}</textarea>
+                <label for="status">@lang('settings.status')</label>
             </div>
             <div class="input-field mt-4">
                 <button class="btn" type="submit">@lang('forms.save')</button>

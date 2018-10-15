@@ -75,10 +75,9 @@
                 <div class="bar" style="width:{{ $xp->getPercent() }}%"></div>
             </div>
 
-            @if ($user->about_me)
+            @if ($user->status)
                 <div class="center pb-3 pt-4">
-                    <h6 class="header">@lang('settings.about_me')</h6>
-                    <h6>{{ $user->about_me }}</h6>
+                    <h6>{{ $user->status }}</h6>
                 </div>
             @endif
         </div>

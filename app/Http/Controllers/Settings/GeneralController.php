@@ -23,7 +23,7 @@ class GeneralController extends Controller
     {
         user()->update([
             'name' => $request->name,
-            'about_me' => $request->about_me,
+            'status' => $request->status,
         ]);
 
         return back()->withSuccess(trans('settings.saved'));

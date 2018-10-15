@@ -17,11 +17,11 @@ class GeneralRequest extends FormRequest
     {
         $name_min = config('valid.settings.general.name.min');
         $name_max = config('valid.settings.general.name.max');
-        $about_me_max = config('valid.settings.general.about_me.max');
+        $about_me_max = config('valid.settings.general.status.max');
 
         return [
             'name' => "required|min:$name_min|max:$name_max",
-            'about_me' => "max:$about_me_max",
+            'status' => "max:$about_me_max",
         ];
     }
 
@@ -32,7 +32,7 @@ class GeneralRequest extends FormRequest
             'name.required' => trans('settings.name_required'),
             'name.min' => trans('settings.name_min'),
             'name.max' => trans('settings.name_max'),
-            'about_me.max' => trans('settings.about_me_max'),
+            'status.max' => trans('settings.about_me_max'),
         ];
     }
 }

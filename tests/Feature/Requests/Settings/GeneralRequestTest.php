@@ -19,7 +19,7 @@ class GeneralRequestTest extends TestCase
         parent::setUp();
         $this->name_min = config('valid.settings.general.name.min');
         $this->name_max = config('valid.settings.general.name.max');
-        $this->about_me_max = config('valid.settings.general.about_me.max');
+        $this->about_me_max = config('valid.settings.general.status.max');
         $this->request = $this->actingAs(create_user())->followingRedirects();
     }
 

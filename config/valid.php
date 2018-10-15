@@ -16,7 +16,7 @@ return [
 
     'settings' => [
         'general' => [
-            'about_me' => ['max' => 250],
+            'status' => ['max' => 250],
             'name' => ['min' => 3, 'max' => 50],
         ],
         'password' => ['min' => 6, 'max' => 250],

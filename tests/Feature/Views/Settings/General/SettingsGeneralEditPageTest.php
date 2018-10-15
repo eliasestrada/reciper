@@ -58,10 +58,10 @@ class SettingsGeneralEditPageTest extends TestCase
     {
         $user = create_user();
         $name = str_random(10);
-        $about_me = str_random(30);
+        $status = str_random(30);
 
-        $this->actingAs($user)->put(action('Settings\GeneralController@updateGeneral'), compact('name', 'about_me'));
-        $this->assertEquals($about_me, $user->about_me);
+        $this->actingAs($user)->put(action('Settings\GeneralController@updateGeneral'), compact('name', 'status'));
+        $this->assertEquals($status, $user->status);
     }
 
     /** @test */
