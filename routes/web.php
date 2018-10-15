@@ -41,7 +41,7 @@ Route::get('dashboard', 'DashboardController@index');
 
 // Settings ===========
 Route::prefix('settings')->middleware('auth')->namespace('Settings')->group(function () {
-    Route::view('/', 'settings.index');
+    Route::view('/', 'settings.general.index');
     Route::get('general', 'GeneralController@index');
     Route::put('general', 'GeneralController@updateGeneral');
     Route::put('password', 'GeneralController@updatePassword');
