@@ -14,7 +14,7 @@
 
 <div class="page">
     <div class="center mb-4">
-        <h1 class="headline"><i class="fas fa-book-open red-text"></i> @lang('recipes.my_recipes')</h1>
+        <h1 class="header"><i class="fas fa-book-open red-text"></i> @lang('recipes.my_recipes')</h1>
     </div>
 
     <div v-cloak>

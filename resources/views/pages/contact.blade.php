@@ -6,7 +6,7 @@
 
 <div class="image-bg row mb-0">
     <div class="col s12 m6 offset-m3 form-wrapper my-5 corner z-depth-1">
-        <div class="center mt-4"><h1 class="headline">@lang('feedback.feedback')</h1></div>
+        <div class="center mt-4"><h1 class="header">@lang('feedback.feedback')</h1></div>
 
         @if (session('success'))
             <div class="mt-4">

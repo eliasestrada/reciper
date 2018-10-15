@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="page">
-    <div class="center"><h3 class="headline">@lang('passwords.reset_pwd')</h3></div>
+    <div class="center"><h3 class="header">@lang('passwords.reset_pwd')</h3></div>
 
     <form method="POST" action="{{ route('password.request') }}">
 

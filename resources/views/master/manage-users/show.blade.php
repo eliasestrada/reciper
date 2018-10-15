@@ -8,7 +8,7 @@
 
 <div class="page row">
     <div class="center col s12 m6">
-        <div><h1 class="headline mb-4">{{ $user->name }}</span></h1></div>
+        <div><h1 class="header mb-4">{{ $user->name }}</span></h1></div>
 
         <img src="{{ asset('storage/users/'.$user->image) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->name }}" />
 

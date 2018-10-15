@@ -6,7 +6,7 @@
 
 <div class="page">
     <div class="center pb-2">
-        <h1 class="headline">@lang('pages.search')</h1>
+        <h1 class="header">@lang('pages.search')</h1>
     </div>
     
     {{--  Form  --}}

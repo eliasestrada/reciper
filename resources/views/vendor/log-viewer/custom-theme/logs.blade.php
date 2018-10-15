@@ -3,7 +3,7 @@
 @section('content')
     <div class="page">
         <div class="center">
-            <h1 class="headline pb-4"><i class="fas fa-file-code red-text"></i> @lang('logs.logs')</h1>
+            <h1 class="header pb-4"><i class="fas fa-file-code red-text"></i> @lang('logs.logs')</h1>
         </div>
 
         <table class="responsive-table striped highlight">

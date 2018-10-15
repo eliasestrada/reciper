@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="center">
-            <h1 class="headline pb-4">@lang('recipes.add_recipe')</h1>
+            <h1 class="header pb-4">@lang('recipes.add_recipe')</h1>
         </div>
 
         <div class="center pb-4">

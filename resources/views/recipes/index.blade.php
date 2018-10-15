@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="page">
-    <div class="center"><h1 class="headline">@lang('recipes.recipes')</h1></div>
+    <div class="center"><h1 class="header">@lang('recipes.recipes')</h1></div>
 
     <div class="my-3" v-cloak>
         <sort-buttons

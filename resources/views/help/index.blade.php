@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="page">
-    <div class="center"><h1 class="headline">@lang('messages.help')</h1></div>
+    <div class="center"><h1 class="header">@lang('messages.help')</h1></div>
 
     <div class="row mt-4">
         @foreach ($help_categories as $category)

@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="page">
-    <div class="center"><h3 class="headline">@lang('passwords.sent_code')</h3></div>
+    <div class="center"><h3 class="header">@lang('passwords.sent_code')</h3></div>
     <p>@lang('passwords.sent_code_desc')</p>
 
     <form method="POST" action="{{ route('password.email') }}">

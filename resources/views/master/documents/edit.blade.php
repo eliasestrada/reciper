@@ -10,7 +10,7 @@
 
 <div class="page">
     <div class="center">
-        <h1 class="headline">@lang('common.edit_item', ['item' => $document->getTitle()])</h1>
+        <h1 class="header">@lang('common.edit_item', ['item' => $document->getTitle()])</h1>
     </div>
 
     <form action="{{ action('Master\DocumentsController@update', ['id' => $document->id]) }}" method="post">

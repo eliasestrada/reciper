@@ -9,7 +9,7 @@
 <div class="page row">
     <div class="center col s12 m6">
         <div>
-            <h1 class="headline mb-4">
+            <h1 class="header mb-4">
                 <i class="fas fa-circle tiny {{ $visitor->getStatusColor() }}-text"></i>
                 @lang('visitors.visitor'): <span class="red-text">{{ $visitor->id }}</span>
             </h1>

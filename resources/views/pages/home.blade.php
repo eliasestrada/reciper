@@ -45,7 +45,7 @@
         <section class="{{ $loop->first || $loop->iteration == 3 ? 'home-section' : 'wrapper' }}">
             @if ($loop->first)
                 <div class="center">
-                    <h4 class="section-headline mt-3 mb-4">@lang('home.random_choice')</h4>
+                    <h4 class="section-header mt-3 mb-4">@lang('home.random_choice')</h4>
                 </div>
             @endif
     

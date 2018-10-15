@@ -6,7 +6,7 @@
 
 <div class="page">
     <div class="center pb-4">
-        <h1 class="headline">
+        <h1 class="header">
             <i class="fas fa-bell red-text"></i> 
             @lang('notifications.notifications') 
             {{ $notifications->count() > 0 ? ': ' . $notifications->count() : '' }}

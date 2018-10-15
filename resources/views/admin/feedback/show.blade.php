@@ -6,7 +6,7 @@
 
 <div class="page">
     <div class="center">
-        <h1 class="headline">
+        <h1 class="header">
             @if ($feedback->isReport(1))
                 @lang('feedback.report')
             @else

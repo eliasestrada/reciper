@@ -6,7 +6,7 @@
 
 <div class="page">
     <div class="center pb-3">
-        <h1 class="headline">
+        <h1 class="header">
             <i class="fas fa-user-friends red-text"></i> @lang('users.all_authors')
         </h1>
     </div>

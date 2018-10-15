@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="center pt-4"><h1 class="headline"><i class="fas fa-copy red-text"></i> @lang('documents.documents')</h1></div>
+<div class="center pt-4"><h1 class="header"><i class="fas fa-copy red-text"></i> @lang('documents.documents')</h1></div>
 <div class="page">
     <div v-cloak>
         <tabs>

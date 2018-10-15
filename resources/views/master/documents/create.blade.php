@@ -10,7 +10,7 @@
 
 <div class="page">
     <div class="center">
-        <h1 class="headline">@lang('documents.new_doc')</h1>
+        <h1 class="header">@lang('documents.new_doc')</h1>
     </div>
 
     <form action="{{ action('Master\DocumentsController@store') }}" method="post">
