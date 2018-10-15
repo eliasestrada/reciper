@@ -93,7 +93,7 @@ function script_timestamp(string $path): string
 function active_if_route_is(array $routes): string
 {
     foreach ($routes as $route) {
-        if (request()->is($route[0] == '/' ? substr($route, 1) : $route)) {
+        if (request()->is(($route[0] == '/' && strlen($route) != 1) ? substr($route, 1) : $route)) {
             return 'active';
         }
     }

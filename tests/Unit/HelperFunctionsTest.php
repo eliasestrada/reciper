@@ -61,8 +61,8 @@ class HelperFunctionsTest extends TestCase
     /** @test */
     public function active_if_route_is_helper_returns_active_string(): void
     {
-        $this->get('/recipes');
-        $this->assertEquals('active', active_if_route_is(['/recipes', 'settings']));
+        $this->get('/');
+        $this->assertEquals('active', active_if_route_is(['/', 'settings']));
 
         $this->get('/settings');
         $this->assertEquals('active', active_if_route_is(['/recipes', 'settings']));
