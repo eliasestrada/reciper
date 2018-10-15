@@ -14,22 +14,22 @@
         </div>
     @endguest
 
-    <li class="{{ active_if_route_is('/') }}">
+    <li class="{{ active_if_route_is(['/']) }}">
         <a href="/">
             @lang('home.home')
         </a>
     </li>
-    <li class="{{ active_if_route_is('recipes') }}">
+    <li class="{{ active_if_route_is(['recipes']) }}">
         <a href="/recipes">
             @lang('recipes.recipes')
         </a>
     </li>
-    <li class="{{ active_if_route_is('search') }}">
+    <li class="{{ active_if_route_is(['search']) }}">
         <a href="/search">
             @lang('pages.search')
         </a>
     </li>
-    <li class="{{ active_if_route_is('help') }}">
+    <li class="{{ active_if_route_is(['help']) }}">
         <a href="/help" title="@lang('messages.help')">
             @lang('messages.help')
         </a>

@@ -5,41 +5,41 @@
 
 @auth {{-- User Dropdown menu --}}
     <ul id="dropdown2" class="dropdown-content bottom-borders">
-        <li class="{{ active_if_route_is('users/' . user()->id) }}"> {{-- home --}}
+        <li class="{{ active_if_route_is(['users/' . user()->id]) }}"> {{-- home --}}
             <a href="/users/{{ user()->id }}" title="@lang('users.my_account')">
                 <i class="fas fa-user-circle fa-15x left with-red-hover"></i>
                 @lang('users.my_account')
             </a>
         </li>
 
-        <li class="{{ active_if_route_is('recipes/edit') }}"> {{-- add recipe --}}
+        <li class="{{ active_if_route_is(['recipes/edit']) }}"> {{-- add recipe --}}
             <a href="#add-recipe-modal" title="@lang('recipes.new_recipe')" class="modal-trigger">
                 <i class="fas fa-plus-circle fa-15x left with-red-hover"></i>@lang('recipes.new_recipe')
             </a>
         </li>
 
-        <li class="{{ active_if_route_is('users/other/my-recipes') }}"> {{-- my recipes --}}
+        <li class="{{ active_if_route_is(['users/other/my-recipes']) }}"> {{-- my recipes --}}
             <a href="/users/other/my-recipes" title="@lang('recipes.my_recipes')">
                 <i class="fas fa-book-open fa-15x left with-red-hover"></i>
                 @lang('recipes.my_recipes')
             </a>
         </li>
 
-        <li class="{{ active_if_route_is('users') }}"> {{-- users --}}
+        <li class="{{ active_if_route_is(['users']) }}"> {{-- users --}}
             <a href="/users" title="@lang('users.users')">
                 <i class="fas fa-user-friends fa-15x left with-red-hover"></i>
                 @lang('users.users')
             </a>
         </li>
 
-        <li class="{{ active_if_route_is('favs') }}"> {{-- favorites --}}
+        <li class="{{ active_if_route_is(['favs']) }}"> {{-- favorites --}}
             <a href="/favs" title="@lang('messages.favorites')">
                 <i class="fas fa-star fa-15x left with-red-hover"></i>
                 @lang('messages.favorites')
             </a>
         </li>
 
-        <li class="{{ active_if_route_is('statistics') }}"> {{-- statistics --}}
+        <li class="{{ active_if_route_is(['statistics']) }}"> {{-- statistics --}}
             <a href="/statistics" title="@lang('pages.statistics')">
                 <i class="fas fa-chart-bar fa-15x left with-red-hover"></i>
                 @lang('pages.statistics')
@@ -47,14 +47,14 @@
         </li>
 
         @hasRole('admin')
-            <li class="position-relative {{ active_if_route_is('admin/approves') }}"> {{-- approves --}}
+            <li class="position-relative {{ active_if_route_is(['admin/approves']) }}"> {{-- approves --}}
                 <a href="/admin/approves" title="@lang('approves.checklist')" class="{{ $unapproved_notif ? 'small-notif' : '' }}">
                     <i class="fas fa-search fa-15x left with-red-hover"></i>
                     @lang('approves.checklist')
                 </a>
             </li>
 
-            <li class="position-relative {{ active_if_route_is('admin/feedback') }}"> {{-- feedback --}}
+            <li class="position-relative {{ active_if_route_is(['admin/feedback']) }}"> {{-- feedback --}}
                 <a href="/admin/feedback" title="@lang('feedback.contact_us')" class=" {{ $feedback_notif ? 'small-notif' : '' }}">
                     <i class="fas fa-comment-dots fa-15x left with-red-hover"></i>
                     @lang('feedback.contact_us')
@@ -62,39 +62,39 @@
             </li>
         @endhasRole
 
-        <li class="position-relative {{ active_if_route_is('notifications') }}"> {{-- notifications --}}
+        <li class="position-relative {{ active_if_route_is(['notifications']) }}"> {{-- notifications --}}
             <a href="/notifications" title="@lang('notifications.notifications')" class="{{ $notifs_notif ? 'small-notif' : '' }} ">
                 <i class="fas fa-bell fa-15x left with-red-hover"></i>
                 @lang('notifications.notifications')
             </a>
         </li>
 
-        <li class="{{ active_if_route_is('settings') }}"> {{-- settings --}}
+        <li class="{{ active_if_route_is(['settings']) }}"> {{-- settings --}}
             <a href="/settings" title="@lang('settings.settings')">
                 <i class="fas fa-cog fa-15x left with-red-hover"></i>
                 @lang('settings.settings')
             </a>
         </li>
         @hasRole('master')
-            <li class="position-relative {{ active_if_route_is('master/manage-users') }}"> {{-- manage-users --}}
+            <li class="position-relative {{ active_if_route_is(['master/manage-users']) }}"> {{-- manage-users --}}
                 <a href="/master/manage-users" title="@lang('manage-users.manage-users')">
                     <i class="fas fa-user-cog fa-15x left with-red-hover"></i>
                     @lang('manage-users.management')
                 </a>
             </li>
-            <li class="position-relative {{ active_if_route_is('master/visitors') }}"> {{-- visitors --}}
+            <li class="position-relative {{ active_if_route_is(['master/visitors']) }}"> {{-- visitors --}}
                 <a href="/master/visitors" title="@lang('visitors.visitors')">
                     <i class="fas fa-users fa-15x left with-red-hover"></i>
                     @lang('visitors.visitors')
                 </a>
             </li>
-            <li class="position-relative {{ active_if_route_is('master/documents') }}"> {{-- Documents --}}
+            <li class="position-relative {{ active_if_route_is(['master/documents']) }}"> {{-- Documents --}}
                 <a href="/master/documents" title="@lang('documents.documents')">
                     <i class="fas fa-copy fa-15x left with-red-hover"></i>
                     @lang('documents.documents')
                 </a>
             </li>
-            <li class="position-relative {{ active_if_route_is('log-viewer/logs*') }}"> {{-- log-viewer --}}
+            <li class="position-relative {{ active_if_route_is(['log-viewer/logs*']) }}"> {{-- log-viewer --}}
                 <a href="/log-viewer/logs" title="@lang('logs.logs')" class=" {{ $logs_notif ? 'small-notif' : '' }}">
                     <i class="fas fa-file-code fa-15x left with-red-hover"></i>
                     @lang('logs.logs')
@@ -152,17 +152,17 @@
 
             {{-- Regular menu --}}
             <ul class="right hide-on-med-and-down right-borders">
-                <li class="{{ active_if_route_is('/') }}">
+                <li class="{{ active_if_route_is(['/']) }}">
                     <a href="/" title="@lang('home.home')">
                         @lang('home.home')
                     </a>
                 </li>
-                <li class="{{ active_if_route_is('recipes') }}">
+                <li class="{{ active_if_route_is(['recipes', 'recipes/*']) }}">
                     <a href="/recipes" title="@lang('recipes.recipes')">
                         @lang('recipes.recipes')
                     </a>
                 </li>
-                <li class="{{ active_if_route_is('help') }}">
+                <li class="{{ active_if_route_is(['help']) }}">
                     <a href="/help" title="@lang('messages.help')">
                         @lang('messages.help')
                     </a>

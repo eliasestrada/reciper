@@ -87,16 +87,17 @@ function script_timestamp(string $path): string
 }
 
 /**
- * @param string $route
+ * @param array $routes
  * @return string
  */
-function active_if_route_is(string $route): string
+function active_if_route_is(array $routes): string
 {
-    if ($route[0] == '/') {
-        return request()->is(substr($route, 1)) ? 'active' : '';
-    } else {
-        return request()->is($route) ? 'active' : '';
+    foreach ($routes as $route) {
+        if (request()->is($route[0] == '/' ? substr($route, 1) : $route)) {
+            return 'active';
+        }
     }
+    return '';
 }
 
 /**
