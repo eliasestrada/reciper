@@ -26,7 +26,7 @@ class PasswordRequestTest extends TestCase
     /** @test */
     public function old_password_is_required(): void
     {
-        $this->request->put(action('Settings\PasswordController@update'), [
+        $this->request->put(action('Settings\GeneralController@updatePassword'), [
             'old_password' => '',
             'password' => str_random(14),
         ])->assertSeeText(trans('settings.old_pwd_required'));
@@ -35,7 +35,7 @@ class PasswordRequestTest extends TestCase
     /** @test */
     public function old_password_must_be_string(): void
     {
-        $this->request->put(action('Settings\PasswordController@update'), [
+        $this->request->put(action('Settings\GeneralController@updatePassword'), [
             'old_password' => 111111,
             'password' => '111111',
             'password_confirmation' => '111111',
@@ -45,7 +45,7 @@ class PasswordRequestTest extends TestCase
     /** @test */
     public function password_must_be_string(): void
     {
-        $this->request->put(action('Settings\PasswordController@update'), [
+        $this->request->put(action('Settings\GeneralController@updatePassword'), [
             'old_password' => '111111',
             'password' => 111111,
             'password_confirmation' => 111111,
@@ -55,7 +55,7 @@ class PasswordRequestTest extends TestCase
     /** @test */
     public function password_is_required(): void
     {
-        $this->request->put(action('Settings\PasswordController@update'), [
+        $this->request->put(action('Settings\GeneralController@updatePassword'), [
             'old_password' => '111111',
             'password' => '',
             'password_confirmation' => '',
@@ -65,7 +65,7 @@ class PasswordRequestTest extends TestCase
     /** @test */
     public function password_must_be_not_short(): void
     {
-        $this->request->put(action('Settings\PasswordController@update'), [
+        $this->request->put(action('Settings\GeneralController@updatePassword'), [
             'old_password' => $this->user->password,
             'password' => $new_pwd = str_random($this->pwd_min - 1),
             'password_confirmation' => $new_pwd,
@@ -75,7 +75,7 @@ class PasswordRequestTest extends TestCase
     /** @test */
     public function password_must_be_not_long(): void
     {
-        $this->request->put(action('Settings\PasswordController@update'), [
+        $this->request->put(action('Settings\GeneralController@updatePassword'), [
             'old_password' => $this->user->password,
             'password' => $new_pwd = str_random($this->pwd_max + 1),
             'password_confirmation' => $new_pwd,
@@ -85,7 +85,7 @@ class PasswordRequestTest extends TestCase
     /** @test */
     public function password_must_be_confirmed(): void
     {
-        $this->request->put(action('Settings\PasswordController@update'), [
+        $this->request->put(action('Settings\GeneralController@updatePassword'), [
             'old_password' => $this->user->password,
             'password' => str_random(10),
             'password_confirmation' => str_random(11),
