@@ -72,4 +72,5 @@ class HelperFunctionsTest extends TestCase
         $expected = \App\Models\Visitor::whereIp(request()->ip())->value('id');
         $this->assertEquals($expected, visitor_id());
     }
+
 }
