@@ -18,7 +18,4 @@ public/css/app.css
 public/mix-manifest.json
 
 tags
-core_index
-index_cache
-phpcomplete_index
-report.txt
+/.phpcomplete_extended
