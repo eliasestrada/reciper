@@ -26,7 +26,7 @@ class HelpSeeder extends Seeder
                 'id' => 1,
                 'help_category_id' => 1,
                 'title_ru' => 'Как изменить пароль?',
-                'text_ru' => 'Вы можете изменить пароль в общих настройках страницы: ' . help_link('reciper.tk/settings/general', '/settings/general') . '. Либо перейдите в Меню > Настройки > Общее.',
+                'text_ru' => 'Вы можете изменить пароль в общих настройках страницы: ' . help_link('reciper.tk/settings/general', '/settings/general') . '. Либо перейдите в Меню > Настройки.',
             ],
             [
                 'id' => 2,

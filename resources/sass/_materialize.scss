@@ -878,12 +878,7 @@ th {
 }
 
 .collection .collection-item.active {
-    background-color: $main;
-    color: #eafaf9;
-}
-
-.collection .collection-item.active .secondary-content {
-    color: #fff;
+    background-color: $mainLight;
 }
 
 .collection a.collection-item {

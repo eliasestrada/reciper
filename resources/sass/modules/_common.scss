@@ -55,7 +55,7 @@ select {
 }
 
 .fa-15x {
-    font-size: 1.35em;
+    font-size: 1.35em !important;
     width: 20px;
 }
 
@@ -165,37 +165,6 @@ nav .input-field input[type=search]:-webkit-autofill:active {
     display: inline-block;
     font-size: 1.4em;
     margin: .4em 0;
-}
-
-.headline {
-    color: $mainDark;
-    font-family: $headerFont;
-    text-shadow: 1px 1px 3px $mainLight;
-    display: inline-block;
-    font-size: 1.4em;
-    margin: .4em 0;
-    position: relative;
-    &::first-letter {
-        text-transform: uppercase;
-    }
-    &::before {
-        content: '';
-        width: 80px;
-        height: 2px;
-        background: $main;
-        position: absolute;
-        left: -18px;
-        top: -10px;
-    }
-    &::after {
-        content: '';
-        width: 3px;
-        height: 40px;
-        background: $main;
-        position: absolute;
-        left: -10px;
-        top: -16px;
-    }
 }
 
 .online-icon-on,
