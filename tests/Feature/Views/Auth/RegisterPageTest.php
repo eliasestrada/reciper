@@ -11,7 +11,7 @@ class RegisterPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function user_cannot_see_the_page(): void
+    public function auth_user_cannot_see_the_page(): void
     {
         $this->actingAs(make(User::class))
             ->get('/register')
@@ -32,8 +32,7 @@ class RegisterPageTest extends TestCase
     {
         $faker = \Faker\Factory::create();
         $form_data = [
-            'name' => $faker->name,
-            'email' => $faker->email,
+            'username' => $faker->username,
             'password' => '111111',
             'password_confirmation' => '111111',
         ];
