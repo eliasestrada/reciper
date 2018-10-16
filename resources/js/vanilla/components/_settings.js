@@ -1,5 +1,8 @@
-if ($("visible-on-big-screen") && window.innerWidth < 600) {
+if ($("collapsible-li-tag") && window.innerWidth > 600) {
     setTimeout(() => {
-        $("visible-on-big-screen").removeAttribute("style", "display:block");
+        document
+            .querySelector("#collapsible-li-tag .collapsible-body")
+            .setAttribute("style", "display:block");
+        $("collapsible-li-tag").classList.add("active");
     }, 1);
 }

@@ -1,5 +1,5 @@
 <ul class="collapsible">
-    <li class="active">
+    <li id="collapsible-li-tag">
         <div class="collapsible-header px-1 py-3 center">
             <span class="d-inline-block m-auto">
                 <i class="fas fa-cog mr-1 fa-15x grey-text"></i>
@@ -7,7 +7,7 @@
                 <i class="fas fa-caret-down fa-15x grey-text"></i>
             </span> 
         </div>
-        <div class="collapsible-body p-0 visible-on-big-screen" id="visible-on-big-screen" style="display:block">
+        <div class="collapsible-body p-0">
             <ul class="collection with-header">
                 <a href="/settings/general" class="collection-item {{ $route == 'general' ? 'active' : '' }}">
                     <b>@lang('settings.general')</b>. 

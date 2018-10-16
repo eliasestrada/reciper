@@ -10066,21 +10066,16 @@ ia = function () {
 })(cash, M.anime);
 
 document.addEventListener('DOMContentLoaded', function() {
-    let dropdown = document.querySelectorAll('.dropdown-trigger');
-    M.Dropdown.init(dropdown);
-
-    let tooltip = document.querySelectorAll('.tooltipped');
-    M.Tooltip.init(tooltip, { position: 'top' });
-
-    let sidenav = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(sidenav, { draggable: false });
-
-    let collapsible = document.querySelectorAll('.collapsible');
-    M.Collapsible.init(collapsible);
-
-    let characterCounter = document.querySelectorAll('.counter')
-    M.CharacterCounter.init(characterCounter)
-
-    let modal = document.querySelectorAll('.modal');
-    M.Modal.init(modal);
+    M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), {
+        coverTrigger: false,
+    });
+    M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
+        position: 'top'
+    });
+    M.Sidenav.init(document.querySelectorAll('.sidenav'), {
+        draggable: false
+    });
+    M.Collapsible.init(document.querySelectorAll('.collapsible'));
+    M.CharacterCounter.init(document.querySelectorAll('.counter'))
+    M.Modal.init(document.querySelectorAll('.modal'));
 });
