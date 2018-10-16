@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\TopRecipersJob;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Models\View;
@@ -18,6 +19,7 @@ class PagesController extends Controller
         ? User::where('image', '!=', 'default.jpg')
         : User::query();
 
+        TopRecipersJob::dispatch();
         return view('pages.home', [
             'recipes' => Recipe::getRandomUnseen(24, 20),
             'users' => $users->inRandomOrder()->limit(50)->get(['id', 'image']),

@@ -13,10 +13,10 @@
                         @lang('pages.in_a_day')
                     </span>
                 </li>
-                @forelse (cache()->get('top_recipers', []) as $reciper)
+                @forelse (cache()->get('top_recipers', []) as $key => $value)
                     <li>
-                        <a href="/users/{{ $reciper['id'] }}" class="{{ active_if_route_is(["users/{$reciper['id']}"]) }}">
-                            <i class="fas fa-crown" style="font-size:0.8em;color:orange"></i> {{ $reciper['name'] }}
+                        <a href="/users/{{ $key }}" class="{{ active_if_route_is(["users/$key"]) }}">
+                            <i class="fas fa-crown" style="font-size:0.8em;color:orange"></i> {{ $key }} <span style="color:orange"><i class="fas fa-heart" style="font-size:0.6em"></i> {{ $value }}</span>
                         </a>
                     </li>
                 @empty

@@ -47,8 +47,8 @@ class TopRecipersJobScriptTest extends TestCase
         $cache = cache()->get('top_recipers');
         $this->assertCount(3, $cache);
 
-        $this->assertEquals($recipes[0]->user->id, $cache[0]['id']);
-        $this->assertEquals($recipes[2]->user->id, $cache[1]['id']);
-        $this->assertEquals($recipes[3]->user->id, $cache[2]['id']);
+        $this->assertEquals($recipes[0]->user->username, array_keys($cache)[0]);
+        $this->assertEquals($recipes[2]->user->username, array_keys($cache)[1]);
+        $this->assertEquals($recipes[3]->user->username, array_keys($cache)[2]);
     }
 }
