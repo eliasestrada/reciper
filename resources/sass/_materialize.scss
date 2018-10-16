@@ -1,5 +1,4 @@
 // Materialize v1.0.0-beta http://materializecss.com
-
 .red {
     background-color: $red !important;
 }
@@ -380,7 +379,6 @@ a {
 }
 
 /* 2dp elevation modified*/
-
 .z-depth-1,
 nav,
 .card-panel,
@@ -407,28 +405,24 @@ nav,
 }
 
 /* 6dp elevation modified*/
-
 .z-depth-2 {
     -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
 }
 
 /* 12dp elevation modified*/
-
 .z-depth-3 {
     -webkit-box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
     box-shadow: 0 8px 17px 2px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
 }
 
 /* 16dp elevation */
-
 .z-depth-4 {
     -webkit-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
     box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
 }
 
 /* 24dp elevation */
-
 .z-depth-5,
 .modal {
     -webkit-box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
@@ -603,10 +597,7 @@ video.responsive-video {
     position: fixed !important;
 }
 
-/*********************
-Transition Classes
-**********************/
-
+// Transition Classes
 ul.staggered-list li {
     opacity: 0;
 }
@@ -617,10 +608,7 @@ ul.staggered-list li {
     transform-origin: 0 50%;
 }
 
-/*********************
-Media Query Classes
-**********************/
-
+// Media Query Classes
 @media only screen and (max-width: 600px) {
     .hide-on-small-only,
     .hide-on-small-and-down {
@@ -1045,10 +1033,7 @@ th {
     }
 }
 
-/*******************
-Utility Classes
-*******************/
-
+// Utility Classes
 .hide {
     display: none !important;
 }
@@ -3387,15 +3372,7 @@ button.btn-floating {
     transform: none;
 }
 
-/*!
-* Waves v0.6.0
-* http://fian.my.id/Waves
-*
-* Copyright 2014 Alfiana E. Sibuea and other contributors
-* Released under the MIT license
-* https://github.com/fians/Waves/blob/master/LICENSE
-*/
-
+/* Waves v0.6.0 */
 .waves-effect {
     position: relative;
     cursor: pointer;
@@ -3456,10 +3433,6 @@ button.btn-floating {
     background-color: rgba(76, 175, 80, 0.7);
 }
 
-.waves-effect.waves-teal .waves-ripple {
-    background-color: rgba(0, 150, 136, 0.7);
-}
-
 .waves-effect input[type="button"],
 .waves-effect input[type="reset"],
 .waves-effect input[type="submit"] {
@@ -3512,7 +3485,6 @@ button.btn-floating {
 }
 
 /* Firefox Bug: link not triggered */
-
 .waves-effect .waves-ripple {
     z-index: -1;
 }
@@ -3864,11 +3836,8 @@ label {
     color: #9e9e9e;
 }
 
-/* Text Inputs + Textarea
-========================================================================== */
-
-/* Style Placeholders */
-
+// Text Inputs + Textarea
+// Style Placeholders
 ::-webkit-input-placeholder {
     color: #d1d1d1;
 }
@@ -3886,7 +3855,6 @@ label {
 }
 
 /* Text inputs */
-
 input:not([type]),
 input[type=text]:not(.browser-default),
 input[type=password]:not(.browser-default),
@@ -4068,7 +4036,6 @@ textarea.materialize-textarea.validate+label {
 }
 
 /* Validation Sass Placeholders */
-
 input.valid:not([type]),
 input.valid:not([type]):focus,
 input[type=text].valid:not(.browser-default),
@@ -4399,7 +4366,6 @@ textarea.materialize-textarea+label:after,
 }
 
 /* Search Field */
-
 .input-field input[type=search] {
     display: block;
     line-height: inherit;
@@ -4447,7 +4413,6 @@ textarea.materialize-textarea+label:after,
 }
 
 /* Textarea */
-
 textarea {
     width: 100%;
     height: 3rem;
@@ -4480,7 +4445,6 @@ textarea.materialize-textarea {
 }
 
 /* Autocomplete */
-
 .autocomplete-content li .highlight {
     color: #444;
 }
@@ -4493,14 +4457,11 @@ textarea.materialize-textarea {
 }
 
 /* Character Counter */
-
 .character-counter {
     min-height: 18px;
 }
 
-/* Radio Buttons
-========================================================================== */
-
+// Radio Buttons
 [type="radio"]:not(:checked),
 [type="radio"]:checked {
     position: absolute;
@@ -4540,7 +4501,6 @@ textarea.materialize-textarea {
 }
 
 /* Unchecked styles */
-
 [type="radio"]:not(:checked)+span:before,
 [type="radio"]:not(:checked)+span:after,
 [type="radio"]:checked+span:before,
@@ -4561,7 +4521,6 @@ textarea.materialize-textarea {
 }
 
 /* Checked styles */
-
 [type="radio"]:checked+span:before {
     border: 2px solid transparent;
 }
@@ -4583,21 +4542,18 @@ textarea.materialize-textarea {
 }
 
 /* Radio With gap */
-
 [type="radio"].with-gap:checked+span:after {
     -webkit-transform: scale(0.5);
     transform: scale(0.5);
 }
 
 /* Focused styles */
-
 [type="radio"].tabbed:focus+span:before {
     -webkit-box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Disabled Radio With gap */
-
 [type="radio"].with-gap:disabled:checked+span:before {
     border: 2px solid rgba(0, 0, 0, 0.42);
 }
@@ -4608,7 +4564,6 @@ textarea.materialize-textarea {
 }
 
 /* Disabled style */
-
 [type="radio"]:disabled:not(:checked)+span:before,
 [type="radio"]:disabled:checked+span:before {
     background-color: transparent;
@@ -4628,11 +4583,7 @@ textarea.materialize-textarea {
     border-color: #949494;
 }
 
-/* Checkboxes
-========================================================================== */
-
-/* Remove default checkbox */
-
+// Checkboxes Remove default checkbox
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
     position: absolute;
@@ -4718,7 +4669,6 @@ textarea.materialize-textarea {
 }
 
 /* Indeterminate checkbox */
-
 [type="checkbox"]:indeterminate+span:not(.lever):before {
     top: -11px;
     left: -12px;
@@ -4832,9 +4782,7 @@ textarea.materialize-textarea {
     border-color: #949494;
 }
 
-/* Switch
-========================================================================== */
-
+// Switch
 .switch,
 .switch * {
     -webkit-tap-highlight-color: transparent;
@@ -4950,8 +4898,7 @@ select:disabled {
     color: rgba(0, 0, 0, 0.42);
 }
 
-/* File Input */
-
+// File Input
 .file-field {
     position: relative;
 }
@@ -4996,9 +4943,7 @@ select:disabled {
     display: none;
 }
 
-/* Range
-========================================================================== */
-
+// Range
 .range-field {
     position: relative;
 }
@@ -5162,10 +5107,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
     box-shadow: 0 0 0 10px rgba(38, 166, 154, 0.26);
 }
 
-/***************
-Nav List
-***************/
-
+// Nav List
 .table-of-contents.fixed {
     position: fixed;
 }
@@ -5434,7 +5376,6 @@ Nav List
     display: none;
 }
 /* STYLES FOR THE SPINNER */
-
 .preloader-wrapper {
     display: inline-block;
     position: relative;
