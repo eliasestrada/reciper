@@ -12,9 +12,9 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('visitor_id');
-            $table->string('name', config('valid.settings.general.name.max'));
+            $table->string('name', config('valid.settings.general.name.max'))->nullable();
             $table->string('status', config('valid.settings.general.status.max'))->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->string('username')->unique();
             $table->unsignedSmallInteger('xp')->default(1);
             $table->integer('streak_days')->default(0);

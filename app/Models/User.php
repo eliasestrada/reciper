@@ -109,4 +109,13 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    /**
+     * If no name use username
+     * @return void
+     */
+    public function getName()
+    {
+        return is_null($this->name) ? $this->username : $this->name;
+    }
 }
