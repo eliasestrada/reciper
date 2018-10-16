@@ -22,11 +22,11 @@ class AuthLoginRequestTest extends TestCase
     }
 
     /** @test */
-    public function email_is_required(): void
+    public function username_is_required(): void
     {
         $this->followingRedirects()
             ->post(route('login'), ['password' => '111111'])
-            ->assertSeeText(trans('auth.email_required'));
+            ->assertSeeText(trans('auth.username_required'));
     }
 
     /** @test */

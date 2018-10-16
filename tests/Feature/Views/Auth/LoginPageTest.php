@@ -15,7 +15,7 @@ class LoginPageTest extends TestCase
     public function user_can_login(): void
     {
         $user = create(User::class, ['password' => bcrypt('test')]);
-        $form_data = ['email' => $user->email, 'password' => 'test'];
+        $form_data = ['username' => $user->username, 'password' => 'test'];
 
         $this->post('/login', $form_data)->assertRedirect('/dashboard');
     }
@@ -33,7 +33,7 @@ class LoginPageTest extends TestCase
         ]);
 
         $response = $this->post('/login', [
-            'email' => $user->email,
+            'username' => $user->username,
             'password' => 'test',
             'remember' => 'on',
         ]);
