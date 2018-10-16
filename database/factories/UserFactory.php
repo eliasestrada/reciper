@@ -12,6 +12,7 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->name,
         'status' => '',
         'email' => $faker->freeEmail,
+        'username' => $faker->userName,
         'password' => bcrypt('111111'),
         'remember_token' => str_random(10),
         'image' => 'default.jpg',
