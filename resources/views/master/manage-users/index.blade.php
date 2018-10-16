@@ -32,7 +32,6 @@
                     <a href="/master/manage-users" class="{{ $active == 'id' ? 'red-text' : '' }}">#</a>
                 </th>
                 <th class="main-text py-1">@lang('forms.name')</th>
-                <th class="main-text py-1">@lang('forms.email')</i></th>
                 <th class="py-1">
                     <a href="/master/manage-users?order=streak_days" title="@lang('users.streak_days')">
                         <i class="fas fa-fire" style="{{ $active == 'streak_days' ? 'color:orangered' : '' }}"></i>
@@ -64,7 +63,6 @@
                             <span class="z-depth-1 new badge">{{ $user->getName() }}</span>
                         </a>
                     </td>
-                    <td class="py-1">{{ $user->email }}</td>
                     <td class="py-1">{{ $user->streak_days }}</td>
                     <td class="py-1">{{ $user->recipes->count() }}</td>
                     <td class="py-1">{{ $user->popularity }}</td>
