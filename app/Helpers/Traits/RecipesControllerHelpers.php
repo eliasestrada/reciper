@@ -99,7 +99,7 @@ trait RecipesControllerHelpers
         foreach ($request->except(['_method', '_token']) as $field) {
             if (is_string($field) && preg_match("/<script>/", $field)) {
                 $user_id = user()->id;
-                $user_name = user()->name;
+                $user_name = user()->getName();
 
                 logger()->emergency("User with name $user_name and id $user_id was trying to inject javascript script tags in his recipe. User data:" . user());
 

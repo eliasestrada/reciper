@@ -17,9 +17,9 @@
                 <ul class="collection my-1 z-depth-1 hoverable">
                     <li class="collection-item avatar">
                         <a href="/users/{{ $user->id }}">
-                            <img src="{{ asset('storage/small/users/'.$user->image) }}" alt="{{ $user->name }}" class="circle">
+                            <img src="{{ asset('storage/small/users/'.$user->image) }}" alt="{{ $user->getName() }}" class="circle">
                         </a>
-                        <span class="title">{!! get_online_icon(time_ago($user->online_check)) !!} {{ $user->name }}</span>
+                        <span class="title">{!! get_online_icon(time_ago($user->online_check)) !!} {{ $user->getName() }}</span>
                         <p>@lang('date.online') {{ time_ago($user->online_check, 'online') }}</p>
                         <p>@lang('users.xp'): {{ $user->xp }}</p>
                     </li>

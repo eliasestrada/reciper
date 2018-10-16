@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('users.user') . ' ' . $user->name)
+@section('title', trans('users.user') . ' ' . $user->getName())
 
 @section('content')
 
@@ -8,9 +8,9 @@
 
 <div class="page row">
     <div class="center col s12 m6">
-        <div><h1 class="header mb-4">{{ $user->name }}</span></h1></div>
+        <div><h1 class="header mb-4">{{ $user->getName() }}</span></h1></div>
 
-        <img src="{{ asset('storage/users/'.$user->image) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->name }}" />
+        <img src="{{ asset('storage/users/'.$user->image) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->getName() }}" />
 
         {{-- Go to profile --}}
         <div class="my-2">

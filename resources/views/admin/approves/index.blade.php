@@ -41,7 +41,7 @@
                                                     @if ($i == 1)
                                                         @lang('approves.waiting_for_approves')
                                                     @elseif ($i == 2)
-                                                        @lang('approves.user_is_checking', ['user' => $recipe->approver->name])
+                                                        @lang('approves.user_is_checking', ['user' => $recipe->approver->getName()])
                                                     @endif
                                                 </span>
                                         </section>

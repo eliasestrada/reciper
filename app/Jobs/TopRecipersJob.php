@@ -41,7 +41,7 @@ class TopRecipersJob implements ShouldQueue
             ['created_at', '>=', Carbon::yesterday()->startOfDay()],
             ['created_at', '<=', Carbon::yesterday()->endOfDay()],
         ])->get()->map(function ($like) {
-            return $like->recipe->user->id . '<split>' . $like->recipe->user->name;
+            return $like->recipe->user->id . '<split>' . $like->recipe->user->getName();
         })->toArray();
 
         $users = array_slice(array_reverse(array_sort(array_count_values($users))), 0, 7);

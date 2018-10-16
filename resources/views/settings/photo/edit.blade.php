@@ -19,7 +19,7 @@
                     <form action="{{ action('Settings\PhotoController@update') }}" method="post" enctype="multipart/form-data" class="center"> 
                         @method('put') @csrf
                         <div class="preview-image preview-image-profile position-relative z-depth-2 hoverable">
-                            <img src="{{ asset('storage/users/' . user()->image) }}" alt="{{ user()->name }}" id="target-image">
+                            <img src="{{ asset('storage/users/' . user()->image) }}" alt="{{ user()->getName() }}" id="target-image">
                             <input type="file" name="image" id="src-image" class="hide" style="overflow:hidden">
                             <label for="src-image" class="btn min-w waves-effect waves-light">
                                 <i class="fas fa-upload left"></i>

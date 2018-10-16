@@ -32,12 +32,12 @@ class RegisterPageTest extends TestCase
     {
         $faker = \Faker\Factory::create();
         $form_data = [
-            'username' => $faker->username,
+            'username' => str_random(10),
             'password' => '111111',
             'password_confirmation' => '111111',
         ];
 
         $this->post(route('register'), $form_data)->assertRedirect('/dashboard');
-        $this->assertDatabaseHas('users', ['email' => $form_data['email']]);
+        $this->assertDatabaseHas('users', ['username' => $form_data['username']]);
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $user->name)
+@section('title', $user->getName())
 
 @section('content')
 
@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col s12 l6">
             <div class="mt-2">
-                <img src="{{ asset('storage/users/'.$user->image) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->name }}" />
+                <img src="{{ asset('storage/users/'.$user->image) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->getName() }}" />
                 <div class="my-2">
                     {{-- Streak days --}}
                     <div class="tooltipped d-inline-block" data-tooltip="@lang('users.streak_days')" style="animation:appearWithRotate .7s">
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <h1 class="header mb-2">{{ $user->name }}</h1>
+            <h1 class="header mb-2">{{ $user->getName() }}</h1>
 
             {{-- Last visit --}}
             @unless ($user->id === optional(user())->id)

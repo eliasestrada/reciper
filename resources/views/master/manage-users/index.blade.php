@@ -61,7 +61,7 @@
                     <td class="py-1">{{ $user->id }}</td>
                     <td class="py-1">
                         <a href="/master/manage-users/{{ $user->id }}">
-                            <span class="z-depth-1 new badge">{{ $user->name }}</span>
+                            <span class="z-depth-1 new badge">{{ $user->getName() }}</span>
                         </a>
                     </td>
                     <td class="py-1">{{ $user->email }}</td>

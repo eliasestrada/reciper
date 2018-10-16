@@ -60,7 +60,7 @@
     <li>
         <a href="/users/{{ $recipe->user->id }}" title="@lang('recipes.search_by_author')" class="grey-text">
             @lang('recipes.author'): 
-            <span class="red-text">{{ optional($recipe->user)->name }}</span>
+            <span class="red-text">{{ optional($recipe->user)->getName() }}</span>
         </a>
     </li>
 </ul>
