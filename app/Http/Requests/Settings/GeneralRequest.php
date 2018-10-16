@@ -20,7 +20,7 @@ class GeneralRequest extends FormRequest
         $about_me_max = config('valid.settings.general.status.max');
 
         return [
-            'name' => "required|min:$name_min|max:$name_max",
+            'name' => "nullable|min:$name_min|max:$name_max",
             'status' => "max:$about_me_max",
         ];
     }
@@ -29,7 +29,6 @@ class GeneralRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => trans('settings.name_required'),
             'name.min' => trans('settings.name_min'),
             'name.max' => trans('settings.name_max'),
             'status.max' => trans('settings.about_me_max'),
