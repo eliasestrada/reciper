@@ -8,6 +8,8 @@ return [
     'register' => 'Регистрация',
     'logout' => 'Выйти',
     'login' => 'Войти',
+    'username' => 'Логин',
+    'username_desc' => 'Введите ваш уникальный логин',
 
     // Validation
     'incorect_name' => 'Не правильный формат имени',

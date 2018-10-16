@@ -16,8 +16,8 @@
         <form method="POST" action="{{ route('login') }}" class="pt-5">
             @csrf
             <div class="input-field">
-                <input id="email" value="{{ old('email') }}" type="email" name="email" class="validate">
-                <label for="email">@lang('forms.email')</label>
+                <input id="username" value="{{ old('username') }}" type="text" name="username" class="validate">
+                <label for="username">@lang('auth.username')</label>
             </div>
         
             <visibility inline-template>
