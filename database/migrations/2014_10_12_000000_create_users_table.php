@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->unsignedSmallInteger('xp')->default(1);
             $table->integer('streak_days')->default(0);
             $table->decimal('popularity', 8, 1)->default(0);
+            $table->boolean('active')->default(1);
             $table->timestamp('streak_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('notif_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('online_check')->default(\DB::raw('CURRENT_TIMESTAMP'));

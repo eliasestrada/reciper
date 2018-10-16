@@ -5,12 +5,12 @@
 @section('content')
 
 <div class="page row">
-    <div class="col s12 m4 l3">
+    <div class="col s12 m5 l4">
         @include('includes.settings-sidebar', ['route' => 'general'])
     </div>
-    <div class="col s12 m8 l9 mt-3">
+    <div class="col s12 m7 l8 mt-3">
         <div class="row">
-            <div class="col s12 m6">
+            <div class="col s12">
                 <form action="{{ action('Settings\GeneralController@updateGeneral') }}" method="post">
                     @csrf @method('put')
 
@@ -29,7 +29,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col s12 m6">
+            <div class="col s12">
                 <h2 class="header">@lang('forms.change_pwd')</h2>
                 <form action="{{ action('Settings\GeneralController@updatePassword') }}" method="post">
                     @method('put') @csrf
@@ -52,8 +52,47 @@
                         <button class="btn" type="submit">@lang('forms.save')</button>
                     </div>
                 </form>
+                <div class="center mt-2">
+                    <a href="#" class=""></a>
+                    <a href="#delete-account-modal" title="@lang('settings.delete_account')" class="modal-trigger">
+                        @lang('settings.delete_account')
+                    </a>
+                </div>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- delete-account-modal structure -->
+<div id="delete-account-modal" class="modal">
+    <div class="modal-content reset">
+        <form action="{{ action('UsersController@destroy', ['m' => 'd']) }}" method="post" enctype="multipart/form-data">
+            @csrf @method('delete')
+
+            <div class="center">
+                <p class="mb-0 flow-text red-text">@lang('settings.delete_account')</p>
+            </div>
+            <p>@lang('settings.delete_account_desc')</p>
+
+            {{-- Password --}}
+            <div class="row">
+                <div class="col s8">
+                    <div class="input-field">
+                        <input type="password" name="password" id="password" required>
+                        <label for="title">@lang('settings.password')</label>
+                    </div>
+                </div>
+                <div class="col s4">
+                    {{--  Button  --}}
+                    <div class="center pb-2">
+                        <button type="submit" class="btn red waves-effect waves-light mt-4" onclick="if (!confirm('@lang('settings.are_you_sure_to_deactivate')')) event.preventDefault()">
+                            <i class="fas fa-trash-alt left"></i>
+                            @lang('forms.deleting')
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 

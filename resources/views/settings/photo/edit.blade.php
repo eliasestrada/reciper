@@ -6,15 +6,16 @@
 
 <div class="page">
     <div class="row">
-        <div class="col s12 m4 l3">
+        <div class="col s12 m5 l4">
             @include('includes.settings-sidebar', ['route' => 'photo'])
         </div>
-        <div class="col s12 m8 l9 mt-3">
+        <div class="col s12 m7 l8 mt-3">
             <div class="row">
                 <div class="col s12 l6">
                     <h1 class="header ml-2">@lang('settings.settings_photo')</h1>
                     <p>@lang('settings.choose_photo', ['btn1' => trans('forms.select'), 'btn2' => trans('forms.save')])</p>
                 </div>
+
                 <div class="col s12 l6">
                     <form action="{{ action('Settings\PhotoController@update') }}" method="post" enctype="multipart/form-data" class="center"> 
                         @method('put') @csrf
