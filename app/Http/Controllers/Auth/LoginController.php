@@ -8,12 +8,6 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    /**
-     * This controller handles authenticating users for the application and
-     * redirecting them to your home screen. The controller uses a trait
-     * to conveniently provide its functionality to your applications.
-     */
-
     use AuthenticatesUsers;
 
     /**
@@ -31,6 +25,11 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function username()
+    {
+        return 'username';
+    }
+
     /**
      * Validate the user login request.
      *
@@ -40,11 +39,12 @@ class LoginController extends Controller
     protected function validateLogin(Request $request)
     {
         $this->validate($request, [
-            $this->username() => 'required|string',
+            $this->username() => 'required|alpha_dash|string',
             'password' => 'required|string',
         ], [
-            'email.required' => trans('auth.email_required'),
-            'email.string' => trans('auth.email_string'),
+            'username.required' => trans('auth.username_required'),
+            'username.string' => trans('auth.username_string'),
+            'username.alpha_dash' => trans('auth.username_alpha_dash'),
             'password.required' => trans('auth.password_required'),
             'password.string' => trans('auth.password_string'),
         ]);

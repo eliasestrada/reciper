@@ -16,28 +16,12 @@
         <form method="POST" action="{{ route('register') }}" class="pt-5">
             @csrf
             <div class="input-field">
-                <input type="text" id="name" name="name" value="{{ old('name') }}" class="validate" required>
-                <label for="name">
-                    @lang('settings.reciper_name') 
-                    @include('includes.tip', ['tip' => trans('forms.name_desc')])
-                </label>
-            </div>
-
-            <div class="input-field">
                 <input type="text" id="username" name="username" value="{{ old('username') }}" class="validate" required>
                 <label for="username">
                     @lang('auth.username') 
                     @include('includes.tip', ['tip' => trans('auth.username_desc')])
                 </label>
             </div>
-
-            {{-- <div class="input-field">
-                <input type="email" id="email" name="email" value="{{ old('email') }}" class="validate" required>
-                <label for="email">
-                    @lang('forms.email')
-                    @include('includes.tip', ['tip' => trans('forms.email_desc')])
-                </label>
-            </div> --}}
 
             <visibility inline-template>
                 <div class="input-field">

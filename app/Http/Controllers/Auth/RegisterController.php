@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Document;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Validation\ValidationException;
 use Validator;
 
 class RegisterController extends Controller
@@ -45,30 +44,22 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        if (strpos(strtolower($data['name']), 'admin') !== false || strpos(strtolower($data['name']), 'админ') !== false) {
-            throw ValidationException::withMessages(['name' => [trans('auth.incorect_name')]]);
-        }
-
-        $name_min = config('valid.settings.general.name.min');
-        $name_max = config('valid.settings.general.name.max');
         $pwd_min = config('valid.settings.password.min');
         $pwd_max = config('valid.settings.password.max');
-        $email_max = config('valid.settings.email.max');
+        $username_min = config('valid.settings.username.min');
+        $username_max = config('valid.settings.username.max');
 
         return Validator::make($data, [
-            'name' => "required|string|min:$name_min|max:$name_max",
-            'email' => "required|string|email|max:$email_max|unique:users",
+            'username' => "required|alpha_dash|string|min:$username_min|max:$username_max|unique:users|regex:/^[a-zA-Z0-9]+([_ -]?[a-zA-Z0-9])*$/",
             'password' => "required|string|min:$pwd_min|max:$pwd_max|confirmed",
         ], [
-            'name.required' => trans('auth.name_required'),
-            'name.string' => trans('auth.name_string'),
-            'name.min' => trans('auth.name_min'),
-            'name.max' => trans('auth.name_max'),
-            'email.required' => trans('auth.email_required'),
-            'email.string' => trans('auth.email_string'),
-            'email.email' => trans('auth.email_email'),
-            'email.max' => trans('auth.email_max'),
-            'email.unique' => trans('auth.email_unique'),
+            'username.required' => trans('auth.username_required'),
+            'username.string' => trans('auth.username_string'),
+            'username.alpha_dash' => trans('auth.username_alpha_dash'),
+            'username.regex' => trans('auth.username_regex'),
+            'username.min' => trans('auth.username_min'),
+            'username.max' => trans('auth.username_max'),
+            'username.unique' => trans('auth.username_unique'),
             'password.required' => trans('auth.password_required'),
             'password.string' => trans('auth.password_string'),
             'password.min' => trans('auth.password_min'),
@@ -82,8 +73,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'visitor_id' => visitor_id(),
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'username' => $data['username'],
             'password' => bcrypt($data['password']),
         ]);
     }
