@@ -116,6 +116,6 @@ class User extends Authenticatable
      */
     public function getName()
     {
-        return is_null($this->name) ? $this->username : $this->name;
+        return is_null($this->name) || $this->name == '' ? $this->username : $this->name;
     }
 }

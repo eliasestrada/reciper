@@ -33,7 +33,7 @@ class UsersSeeder extends Seeder
         User::create([
             'visitor_id' => factory(Visitor::class)->create(['ip' => '127.0.0.2'])->id,
             'email' => '22@22.com',
-            'username' => 'kristina',
+            'username' => 'kris',
             'name' => 'Кристина 👑',
             'xp' => 177,
             'popularity' => 5,
