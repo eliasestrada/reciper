@@ -14,7 +14,7 @@
 
         {{-- Go to profile --}}
         <div class="my-2">
-            <a href="/users/{{ $user->id }}" class="btn-small min-w">
+            <a href="/users/{{ $user->username }}" class="btn-small min-w">
                 <i class="fas fa-user-circle left"></i>
                 @lang('users.go_to_profile')
             </a>

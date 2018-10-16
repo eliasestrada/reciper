@@ -5,8 +5,8 @@
 
 @auth {{-- User Dropdown menu --}}
     <ul id="dropdown2" class="dropdown-content bottom-borders">
-        <li class="{{ active_if_route_is(['users/' . user()->id]) }}"> {{-- home --}}
-            <a href="/users/{{ user()->id }}" title="@lang('users.my_account')">
+        <li class="{{ active_if_route_is(['users/' . user()->username]) }}"> {{-- home --}}
+            <a href="/users/{{ user()->username }}" title="@lang('users.my_account')">
                 <i class="fas fa-user-circle fa-15x left with-red-hover"></i>
                 @lang('users.my_account')
             </a>

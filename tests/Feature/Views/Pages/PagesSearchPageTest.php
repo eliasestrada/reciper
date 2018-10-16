@@ -47,7 +47,7 @@ class PagesSearchPageTest extends TestCase
     {
         $this->actingAs($admin = create_user('admin'))
             ->get("/search?for=$admin->id")
-            ->assertRedirect("/users/$admin->id");
+            ->assertRedirect("/users/$admin->username");
     }
 
     /** @test */

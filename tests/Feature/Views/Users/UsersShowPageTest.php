@@ -12,7 +12,7 @@ class UsersShowPageTest extends TestCase
     /** @test */
     public function view_has_data(): void
     {
-        $this->actingAs($user = create_user())->get("/users/$user->id")
+        $this->actingAs($user = create_user())->get("/users/$user->username")
             ->assertViewIs('users.show')
             ->assertViewHasAll(['recipes', 'user', 'xp']);
     }
@@ -21,13 +21,13 @@ class UsersShowPageTest extends TestCase
     public function auth_user_can_see_the_page(): void
     {
         $user = create_user();
-        $this->actingAs($user)->get("/users/$user->id")->assertOk();
+        $this->actingAs($user)->get("/users/$user->username")->assertOk();
     }
 
     /** @test */
     public function guest_can_see_users_show_page(): void
     {
         $user = create_user();
-        $this->get("/users/$user->id")->assertOk();
+        $this->get("/users/$user->username")->assertOk();
     }
 }

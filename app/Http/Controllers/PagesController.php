@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\TopRecipersJob;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Models\View;
@@ -19,7 +18,6 @@ class PagesController extends Controller
         ? User::where('image', '!=', 'default.jpg')
         : User::query();
 
-        TopRecipersJob::dispatch();
         return view('pages.home', [
             'recipes' => Recipe::getRandomUnseen(24, 20),
             'users' => $users->inRandomOrder()->limit(50)->get(['id', 'image']),
@@ -38,8 +36,8 @@ class PagesController extends Controller
 
             // Searching for user is for admin only
             if (user() && user()->hasRole('admin') && is_numeric($request)) {
-                if ($this->searchForUser($request)) {
-                    return redirect("/users/$request")->withSuccess(trans('users.user_found'));
+                if (!is_null($result = $this->searchForUser($request))) {
+                    return redirect("/users/$result")->withSuccess(trans('users.user_found'));
                 } else {
                     return back()->withError(trans('users.user_not_found'));
                 }
@@ -71,14 +69,13 @@ class PagesController extends Controller
 
     /**
      * @param string $request
-     * @return void
      */
     public function searchForUser(string $request)
     {
-        if (User::whereId($request)->exists()) {
-            return true;
+        if (!is_null($result = User::whereId($request)->first())) {
+            return $result->username;
         }
-        return false;
+        return null;
     }
 
     public function searchForSuggestions()

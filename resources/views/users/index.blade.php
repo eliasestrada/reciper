@@ -16,7 +16,7 @@
             <div class="col s12 m6 l4">
                 <ul class="collection my-1 z-depth-1 hoverable">
                     <li class="collection-item avatar">
-                        <a href="/users/{{ $user->id }}">
+                        <a href="/users/{{ $user->username }}">
                             <img src="{{ asset('storage/small/users/'.$user->image) }}" alt="{{ $user->getName() }}" class="circle">
                         </a>
                         <span class="title">{!! get_online_icon(time_ago($user->online_check)) !!} {{ $user->getName() }}</span>

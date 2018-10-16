@@ -58,7 +58,7 @@
         <span class="red-text">{{ time_ago($recipe->created_at) }}</span>
     </li>
     <li>
-        <a href="/users/{{ $recipe->user->id }}" title="@lang('recipes.search_by_author')" class="grey-text">
+        <a href="/users/{{ $recipe->user->username }}" title="@lang('recipes.search_by_author')" class="grey-text">
             @lang('recipes.author'): 
             <span class="red-text">{{ optional($recipe->user)->getName() }}</span>
         </a>

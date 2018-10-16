@@ -20,8 +20,9 @@ class UsersController extends Controller
      * @param User $user
      * @return \Illuminate\View\View
      */
-    public function show(User $user)
+    public function show($username)
     {
+        $user = User::whereUsername($username)->first();
         $recipes = Recipe::whereUserId($user->id)
             ->withCount('likes')
             ->withCount('views')

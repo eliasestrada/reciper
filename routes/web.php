@@ -13,7 +13,7 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('users')->group(function () {
     Route::get('/', 'UsersController@index');
-    Route::get('{user}', 'UsersController@show');
+    Route::get('{username}', 'UsersController@show')->where('username', '[a-z]+');
 
     Route::prefix('other')->middleware('auth')->group(function () {
         Route::get('my-recipes', 'UsersController@my_recipes');
@@ -25,7 +25,7 @@ Route::get('/', 'PagesController@home');
 Route::get('search', 'PagesController@search');
 Route::view('contact', 'pages.contact');
 Route::post('admin/feedback', 'Admin\FeedbackController@store');
-Route::get('documents/{document}', 'Master\DocumentsController@show');
+Route::get('documents/{document}', 'Master\DocumentsController@show')->where('document', '[0-9]+');
 
 // Recipes ===========
 Route::resource('recipes', 'RecipesController')->except(['destroy']);

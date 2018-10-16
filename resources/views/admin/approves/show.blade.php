@@ -41,13 +41,13 @@
             @else
                 <div class="no-select">
                     {{-- Approver icon --}}
-                    <a href="/users/{{ $recipe->approver->id }}" title="@lang('users.go_to_profile')">
+                    <a href="/users/{{ $recipe->approver->username }}" title="@lang('users.go_to_profile')">
                         <img src="{{ asset('storage/small/users/' . $recipe->approver->image) }}" class="circle" style="border:3px solid green" alt="{{ $recipe->approver->getName() }}" width="50">
                         <i class="fas fa-search fa-15x paper circle p-1" style="color:green;transform:translateX(-20px)"></i>
                     </a>
                     <i class="fas fa-arrow-right fa-3x green-text mr-4"></i>
                     {{-- Author icon --}}
-                    <a href="/users/{{ $recipe->user_id }}" title="@lang('users.go_to_profile')">
+                    <a href="/users/{{ $recipe->user->username }}" title="@lang('users.go_to_profile')">
                         <img src="{{ asset('storage/small/users/' . $recipe->user->image) }}" class="circle" style="border:3px solid green" alt="{{ $recipe->approver->getName() }}" width="50">
                         <i class="fas fa-file-alt fa-15x paper p-1" style="color:green;transform:translateX(-20px)"></i><br>
                     </a>

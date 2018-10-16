@@ -119,7 +119,7 @@
                 @elseif ($loop->last)
                     <div class="people-gallery">
                         @foreach ($users as $user)
-                            <a href="/users/{{ $user->id }}">
+                            <a href="/users/{{ $user->username }}">
                                 <img src="{{ asset('storage/small/users/' . $user->image) }}" alt="{{ $user->id }}" class="hoverable">
                             </a>
                         @endforeach
