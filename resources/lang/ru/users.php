@@ -49,5 +49,6 @@ return [
     // Controllers
     'user_found' => 'Пользователь найден',
     'user_not_found' => 'Пользователь не найден',
+    'account_diactivate' => 'Ваша страница деактивирована',
 
 ];

@@ -93,4 +93,25 @@ class SettingsGeneralIndexPageTest extends TestCase
 
         $this->assertFalse(\Hash::check('new_password', $user->password));
     }
+
+    /** @test */
+    public function user_can_deactivate_account(): void
+    {
+        $user = create_user('', ['password' => bcrypt('111111')]);
+
+        $this->actingAs($user)
+            ->delete(action('UsersController@destroy', ['m' => 'd']), ['password' => '111111'])
+            ->assertRedirect('/login');
+    }
+
+    /** @test */
+    public function user_cant_deactivate_account_with_wrong_password(): void
+    {
+        $user = create_user('', ['password' => bcrypt('111111')]);
+
+        $this->actingAs($user)
+            ->followingRedirects()
+            ->delete(action('UsersController@destroy', ['m' => 'd']), ['password' => '22222'])
+            ->assertSeeText(trans('settings.pwd_wrong'));
+    }
 }

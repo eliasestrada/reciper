@@ -14,6 +14,7 @@ Route::middleware('auth')->group(function () {
 Route::prefix('users')->group(function () {
     Route::get('/', 'UsersController@index');
     Route::get('{username}', 'UsersController@show')->where('username', '[a-z]+');
+    Route::delete('{d}', 'UsersController@destroy');
 
     Route::prefix('other')->middleware('auth')->group(function () {
         Route::get('my-recipes', 'UsersController@my_recipes');

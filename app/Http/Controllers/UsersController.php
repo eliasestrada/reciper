@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Xp;
 use App\Models\Recipe;
 use App\Models\User;
+use GuzzleHttp\Psr7\Request;
 
 class UsersController extends Controller
 {
@@ -57,5 +58,27 @@ class UsersController extends Controller
             ->onEachSide(1);
 
         return view('users.other.my-recipes', compact('recipes_ready', 'recipes_unready'));
+    }
+
+    /**
+     * Deactivate user account
+     * @param $method this param is there coz its required by Guzzle
+     */
+    public function destroy($method)
+    {
+        if (\Hash::check(request()->password, user()->password)) {
+            user()->update([
+                'popularity' => 0,
+                'status' => null,
+                'email' => null,
+                'name' => null,
+                'active' => 0,
+                'xp' => 0,
+            ]);
+            auth()->logout();
+            return redirect('/login')->withSuccess(trans('users.account_diactivate'));
+        } else {
+            return back()->withError(trans('settings.pwd_wrong'));
+        }
     }
 }
