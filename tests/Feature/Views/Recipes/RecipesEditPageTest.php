@@ -46,7 +46,7 @@ class RecipesEditPageTest extends TestCase
 
         $response->assertViewIs('recipes.edit')
             ->assertViewHasAll([
-                'meal' => Meal::get(['id', 'name_' . lang()]),
+                'meal' => Meal::getWithCache(),
                 'recipe' => Recipe::with('categories', 'meal')
                     ->whereId($recipe->id)
                     ->first(),
