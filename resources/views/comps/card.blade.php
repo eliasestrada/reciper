@@ -5,7 +5,7 @@
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
                         <a href="/recipes/{{ $recipe->id }}">
-                            <img src="{{ asset('storage/small/images/'.$recipe->image) }}" class="activator" alt="{{ $recipe->getTitle() }}">
+                            <img src="{{ asset('storage/small/recipes/'.$recipe->image) }}" class="activator" alt="{{ $recipe->getTitle() }}">
                         </a>
                     </div>
                     <div class="card-content min-h">

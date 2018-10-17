@@ -13,7 +13,7 @@ let imageUploader = {
                     that.target.src = this.result;
                 };
             } else {
-                this.target.src = "/storage/images/default.jpg";
+                this.target.src = "/storage/recipes/default.jpg";
             }
         });
     }

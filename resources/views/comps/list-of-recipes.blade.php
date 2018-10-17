@@ -4,7 +4,7 @@
             <ul>
                 <li style="margin-bottom:5px;border-left-color:{{ $recipe->getStatusColor() }};" class="col s12 m6 l4 row">
                     <a href="/recipes/{{ $recipe->id }}">
-                        <img src="{{ asset('storage/small/images/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" />
+                        <img src="{{ asset('storage/small/recipes/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" />
                     </a>
 
                     <div class="item-content">

@@ -37,10 +37,10 @@ class FavsIndexPageTest extends TestCase
         $recipe = create(Recipe::class);
 
         $fav = Fav::create(['user_id' => $user->id, 'recipe_id' => $recipe->id]);
-        $this->actingAs($user)->get('/favs')->assertSee('<img src="' . asset('storage/small/images/' . $recipe->image));
+        $this->actingAs($user)->get('/favs')->assertSee('<img src="' . asset('storage/small/recipes/' . $recipe->image));
 
         Fav::whereId($fav->id)->delete();
-        $this->actingAs($user)->get('/favs')->assertDontSee('<img src="' . asset('storage/small/images/' . $recipe->image));
+        $this->actingAs($user)->get('/favs')->assertDontSee('<img src="' . asset('storage/small/recipes/' . $recipe->image));
     }
 
     /** @test */
@@ -52,9 +52,9 @@ class FavsIndexPageTest extends TestCase
         Fav::create(['user_id' => $user->id, 'recipe_id' => $recipe->id]);
 
         $this->actingAs($user)->get('/favs/4')
-            ->assertDontSee('<img src="' . asset('storage/small/images/' . $recipe->image));
+            ->assertDontSee('<img src="' . asset('storage/small/recipes/' . $recipe->image));
 
         $this->actingAs($user)->get('/favs/3')
-            ->assertSee('<img src="' . asset('storage/small/images/' . $recipe->image));
+            ->assertSee('<img src="' . asset('storage/small/recipes/' . $recipe->image));
     }
 }

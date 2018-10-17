@@ -16,6 +16,7 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'ru_approver_id' => $admin->id,
         'en_approver_id' => $admin->id,
         'time' => rand(10, 160),
+        // 'image' => $faker->file(base_path('../tools/food'), storage_path('/app/public/small/recipes'), false),
         'image' => 'default.jpg',
         'simple' => rand(0, 1),
 

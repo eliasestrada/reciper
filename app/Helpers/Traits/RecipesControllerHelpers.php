@@ -21,14 +21,14 @@ trait RecipesControllerHelpers
                     $constraint->upsize();
                 }, 'top')
                 ->insert(storage_path('app/public/other/watermark.png'))
-                ->save(storage_path("app/public/images/$image_name"));
+                ->save(storage_path("app/public/recipes/$image_name"));
 
             // Small image
             \Image::make($image)
                 ->fit(240, 160, function ($constraint) {
                     $constraint->upsize();
                 }, 'top')
-                ->save(storage_path("app/public/small/images/$image_name"));
+                ->save(storage_path("app/public/small/recipes/$image_name"));
 
             return $image_name;
         }
@@ -43,8 +43,8 @@ trait RecipesControllerHelpers
     {
         if ($image != 'default.jpg') {
             \Storage::delete([
-                "public/images/$image",
-                "public/images/small/$image",
+                "public/recipes/$image",
+                "public/recipes/small/$image",
             ]);
         }
     }
