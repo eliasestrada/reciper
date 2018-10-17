@@ -39,6 +39,17 @@ class UsersController extends Controller
     }
 
     /**
+     * Recover users' account
+     */
+    public function store()
+    {
+        user()->update(['active' => 1]);
+        return redirect('/users/' . user()->username)->withSuccess(
+            trans('users.account_recovered')
+        );
+    }
+
+    /**
      * @return \Illuminate\View\View
      */
     public function my_recipes()

@@ -60,6 +60,14 @@
                         </div>
                         <span>@lang('users.popularity')</span>
                     </div>
+                    
+                {{-- <div>
+                    <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="77">
+
+                    <h5 class="d-inline-block main-dark-text" style="transform:translateX(-8px)">
+                        {{ user()->recipes->count() }}
+                    </h5>
+                </div> --}}
     
                     {{-- Views Bubble --}}
                     <div class="bubbles-block" style="animation:appearWithRotate 1s">
