@@ -7,7 +7,7 @@ return [
     'expire_on_close' => false,
     'encrypt' => false,
     'files' => storage_path('framework/sessions'),
-    'connection' => null,
+    'connection' => 'session',
     'table' => 'sessions',
     'store' => null,
     'lottery' => [2, 100],
