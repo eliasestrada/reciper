@@ -27,11 +27,6 @@ class User extends Authenticatable
         return $this->hasMany(Fav::class);
     }
 
-    public function notifications()
-    {
-        return $this->hasMany(Notification::class);
-    }
-
     public function visitor()
     {
         return $this->belongsTo(Visitor::class);

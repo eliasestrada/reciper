@@ -13,7 +13,7 @@ class SendCanceledNotification
      */
     public function handle(RecipeGotCanceled $event)
     {
-        Notification::sendToUser(
+        LNotification::sendToUser(
             trans('notifications.recipe_not_published'),
             $event->message,
             $event->recipe->user_id
