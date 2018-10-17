@@ -30,4 +30,12 @@ class UsersShowPageTest extends TestCase
         $user = create_user();
         $this->get("/users/$user->username")->assertOk();
     }
+
+    /** @test */
+    public function noone_can_see_user_page_after_diactivating(): void
+    {
+        $user = create_user('', ['active' => 0]);
+
+        $this->get("/users/$user->username")->assertSeeText(trans('users.user_is_not_active'));
+    }
 }

@@ -123,4 +123,22 @@ class UserTest extends TestCase
         Ban::put($user->id, 1, '');
         $this->assertTrue($user->isBanned());
     }
+
+    /** @test */
+    public function is_active_method_returns_true_if_user_in_active(): void
+    {
+        $user = make(User::class);
+        $this->assertTrue($user->isActive());
+        $user = make(User::class, ['active' => 0]);
+        $this->assertFalse($user->isActive());
+    }
+
+    /** @test */
+    public function get_name_method_return_name_if_no_name_returns_username(): void
+    {
+        $user = make(User::class, ['name' => 'Alex']);
+        $this->assertEquals($user->name, $user->getName());
+        $user = make(User::class, ['name' => null]);
+        $this->assertEquals($user->username, $user->getName());
+    }
 }
