@@ -5,6 +5,7 @@ namespace Tests\Unit\Models;
 use App\Models\Meal;
 use App\Models\Recipe;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\Cache;
 use Tests\TestCase;
 
 class MealTest extends TestCase
@@ -44,5 +45,17 @@ class MealTest extends TestCase
         foreach ($actual as $i => $meal) {
             $this->assertEquals($meal->getName(), $expected[$i]);
         }
+    }
+
+    /** @test */
+    public function get_with_cache_method_returs_array_of_cached_meal_list()
+    {
+        cache()->forget('meal');
+        $list = Meal::getWithCache();
+        $this->assertCount(3, $list);
+        $this->assertCount(3, cache()->get('meal'));
+        $this->assertEquals(trans('home.breakfast'), $list[0]['name']);
+        $this->assertEquals(trans('home.lunch'), $list[1]['name']);
+        $this->assertEquals(trans('home.dinner'), $list[2]['name']);
     }
 }

@@ -66,8 +66,8 @@
                 <label for="meal">@lang('recipes.meal_desc')</label>
                 <select name="meal" id="meal">
                     @foreach ($meal as $m)
-                        <option value="{{ $m->id }}" {{ set_as_selected_if_equal($m->id, ($recipe->meal->id ?? '')) }}>
-                            {{ title_case($m->getName()) }}
+                        <option value="{{ $m['id'] }}" {{ set_as_selected_if_equal($m['id'], ($recipe->meal->id ?? '')) }}>
+                            {{ title_case($m['name']) }}
                         </option>
                     @endforeach
                 </select>
@@ -117,7 +117,7 @@
             <div class="col s12 m6">
                 <categories-field
                     :recipe-categories="{{ json_encode($recipe->categories->toArray()) }}"
-                    :categories="{{ $categories }}"
+                    :categories="{{ json_encode($categories) }}"
                     label="@lang('recipes.category')"
                     select="@lang('forms.select')"
                     categories-title="@lang('recipes.categories_title')"

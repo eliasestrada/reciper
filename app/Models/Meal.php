@@ -19,4 +19,11 @@ class Meal extends Model
     {
         return $this->toArray()['name_' . lang()];
     }
+
+    public static function getWithCache()
+    {
+        return cache()->rememberForever('meal', function () {
+            return self::select('id', 'name_' . lang() . ' as name')->get()->toArray();
+        });
+    }
 }

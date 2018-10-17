@@ -107,7 +107,7 @@ class RecipesController extends Controller
 
         return view('recipes.edit', [
             'recipe' => $recipe,
-            'meal' => Meal::get(['id', 'name_' . lang()]),
+            'meal' => Meal::getWithCache(),
         ]);
     }
 
