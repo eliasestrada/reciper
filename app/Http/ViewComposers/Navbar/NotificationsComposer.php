@@ -2,7 +2,6 @@
 
 namespace App\Http\ViewComposers\Navbar;
 
-use App\Models\Notification;
 use Illuminate\View\View;
 
 class NotificationsComposer
@@ -18,18 +17,7 @@ class NotificationsComposer
             return;
         }
 
-        $notifs_notif = Notification::where([
-            ['user_id', user()->id],
-            ['created_at', '>', user()->notif_check],
-        ])->exists();
-
-        if (user()->hasRole('admin')) {
-            $admin_notif = Notification::where([
-                ['for_admins', 1],
-                ['created_at', '>', user()->notif_check],
-            ])->exists();
-            $notifs_notif = $admin_notif ? $admin_notif : $notifs_notif;
-        }
+        $notifs_notif = count(user()->unreadNotifications) > 0;
         $view->with(compact('notifs_notif'));
     }
 }
