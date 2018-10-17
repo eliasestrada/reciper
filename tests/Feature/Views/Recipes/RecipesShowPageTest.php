@@ -25,6 +25,12 @@ class RecipesShowPageTest extends TestCase
     }
 
     /** @test */
+    public function guest_can_see_the_page(): void
+    {
+        $this->get('/recipes/' . make(Recipe::class)->id)->assertOk();
+    }
+
+    /** @test */
     public function auth_user_can_see_the_page(): void
     {
         $user = make(User::class);
@@ -34,13 +40,6 @@ class RecipesShowPageTest extends TestCase
 
         $this->actingAs($user)->get("/recipes/$recipe->id")->assertOk();
         $this->actingAs($user2)->get("/recipes/$recipe->id")->assertOk();
-    }
-
-    /** @test */
-    public function guest_can_see_the_page(): void
-    {
-        $recipe = make(Recipe::class);
-        $this->get("/recipes/$recipe->id")->assertOk();
     }
 
     /** @test */

@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends(auth()->check() ? 'layouts.auth' : 'layouts.guest')
 
 @section('title', trans('home.home'))
 

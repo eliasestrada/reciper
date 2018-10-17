@@ -82,16 +82,18 @@
                         <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('feedback.contact_us')
                     </a>
                 </li>
-                <li>
-                    <a href="/login" title="@lang('messages.go')" class="{{ active_if_route_is(['login']) }}">
-                        <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('auth.login')
-                    </a>
-                </li>
-                <li>
-                    <a href="/register" title="@lang('messages.go')" class="{{ active_if_route_is(['register']) }}">
-                        <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('auth.register')
-                    </a>
-                </li>
+                @guest
+                    <li>
+                        <a href="/login" title="@lang('messages.go')" class="{{ active_if_route_is(['login']) }}">
+                            <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('auth.login')
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/register" title="@lang('messages.go')" class="{{ active_if_route_is(['register']) }}">
+                            <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('auth.register')
+                        </a>
+                    </li>
+                @endguest
             </ul>
             {{-- Documents --}}
             <ul class="px-0 unstyled-list col s12">
