@@ -26,10 +26,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function showListOfCategories(): void
     {
-        $categories = cache()->rememberForever('categories', function () {
-            return Category::get(['id', 'name_' . lang() . ' as name']);
-        });
-        view()->share(compact('categories'));
+        view()->share('categories', cache()->rememberForever('categories', function () {
+            return Category::select('id', 'name_' . lang() . ' as name')->get()->toArray();
+        }));
     }
 
     public function horizon()
