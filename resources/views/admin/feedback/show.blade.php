@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('title', optional($feedback->recipe)->getTitle() ?? trans('feedback.feedback'))
 

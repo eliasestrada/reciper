@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(auth()->check() ? 'layouts.auth' : 'layouts.guest')
 
 @section('title', trans('pages.search'))
 

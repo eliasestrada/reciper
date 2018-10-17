@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('title', trans('common.edit_item', ['item' => $document->getTitle()]))
 
