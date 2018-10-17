@@ -21,10 +21,7 @@ return [
         ],
     ],
 
-    'prefix' => env(
-        'CACHE_PREFIX',
-        str_slug(env('APP_NAME', 'laravel'), '_') . '_cache'
-    ),
+    'prefix' => env('CACHE_PREFIX', 'C'),
 
     // Timing for certain parts in app in minutes
     'timing' => [
