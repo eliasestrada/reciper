@@ -26,7 +26,7 @@ return [
     // Timing for certain parts in app in minutes
     'timing' => [
         'popular_recipes' => 10,
-        'random_recipes' => 2,
+        'random_recipes' => 10,
         'search_suggest' => 60,
     ],
 ];

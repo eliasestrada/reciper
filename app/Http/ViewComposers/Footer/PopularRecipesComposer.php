@@ -15,12 +15,13 @@ class PopularRecipesComposer
     public function compose(View $view): void
     {
         $popular_recipes = cache()->remember('popular_recipes', config('cache.timing.popular_recipes'), function () {
-            return Recipe::select('id', 'title_' . lang())
+            return Recipe::select('id', 'title_' . lang() . ' as title')
                 ->withCount('likes')
                 ->orderBy('likes_count', 'desc')
                 ->done(1)
                 ->limit(10)
-                ->get();
+                ->get()
+                ->toArray();
         });
 
         $view->with(compact('popular_recipes'));

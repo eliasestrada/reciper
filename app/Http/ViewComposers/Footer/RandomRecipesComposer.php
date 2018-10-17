@@ -15,10 +15,12 @@ class RandomRecipesComposer
     public function compose(View $view): void
     {
         $random_recipes = cache()->remember('random_recipes', config('cache.timing.random_recipes'), function () {
-            return Recipe::inRandomOrder()
+            return Recipe::select('id', 'title_' . lang() . ' as title')
+                ->inRandomOrder()
                 ->done(1)
                 ->limit(10)
-                ->get(['id', "title_" . lang()]);
+                ->get()
+                ->toArray();
         });
 
         $view->with(compact('random_recipes'));
