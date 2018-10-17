@@ -100,8 +100,8 @@
                 <li><strong>@lang('documents.info')</strong></li>
                 @foreach ($documents_footer as $doc)
                     <li>
-                        <a href="/documents/{{ $doc->id }}" class="{{ active_if_route_is(["documents/$doc->id"]) }}">
-                            <i class="fas fa-angle-right red-text" style="width:7.5px"></i> {{ $doc->getTitle() }}
+                        <a href="/documents/{{ $doc['id'] }}" class="{{ active_if_route_is(['documents/' . $doc['id']]) }}">
+                            <i class="fas fa-angle-right red-text" style="width:7.5px"></i> {{ $doc['title'] }}
                         </a>
                     </li>
                 @endforeach
