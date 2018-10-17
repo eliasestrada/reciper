@@ -14,7 +14,6 @@ class FooterProvider extends ServiceProvider
     {
         $this->composerRandomRecipes();
         $this->composerPopularRecipes();
-        $this->composerTitle();
         $this->composerDocuments();
     }
 
@@ -34,15 +33,6 @@ class FooterProvider extends ServiceProvider
     {
         view()->composer('includes.footer',
             \App\Http\ViewComposers\Footer\PopularRecipesComposer::class);
-    }
-
-    /**
-     * @return void
-     */
-    public function composerTitle(): void
-    {
-        view()->composer('includes.footer',
-            \App\Http\ViewComposers\Footer\TitleFooterComposer::class);
     }
 
     /**

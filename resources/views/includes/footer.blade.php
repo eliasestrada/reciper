@@ -126,35 +126,9 @@
                 <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="40">
             </div>
             <div class="col s12 m5 l3 left-align">
-                <span>{{ $title_footer ?? '' }}</span><br>
+                <div><span>@lang('pages.title_footer')</span></div>
                 <span>&copy; {{ date('Y') }} {{ config('app.name') }}</span>
             </div>
         </div>
     </div>
-
-    @hasRole('admin')
-        {{--  Настройки подвала  --}}
-        <div class="position-relative">
-            <a class="magic-btn" title="@lang('home.edit_banner')" id="btn-for-footer">
-                <i class="fa fa-pen"></i>
-            </a>
-            @magicForm
-                @slot('id')
-                    footer-form
-                @endslot
-                @slot('text')
-                    {{ $title_footer }}
-                @endslot
-                @slot('action')
-                    TitleController@footer
-                @endslot
-                @slot('holder_text')
-                    @lang('home.footer_text')
-                @endslot
-                @slot('slug_text')
-                    footer_text
-                @endslot
-            @endmagicForm
-        </div>
-    @endhasRole
 </footer>

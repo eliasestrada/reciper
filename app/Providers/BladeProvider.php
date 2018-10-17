@@ -28,6 +28,5 @@ class BladeProvider extends ServiceProvider
             return auth()->check() && user()->isActive();
         });
         Blade::component('comps.list-of-recipes', 'listOfRecipes');
-        Blade::component('comps.magic-form', 'magicForm');
     }
 }

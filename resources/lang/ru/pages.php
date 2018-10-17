@@ -12,6 +12,7 @@ return [
     'search_details' => 'Что искать?',
     'search' => 'Поиск',
     'no_recipers' => 'Еще нет никого',
+    'title_footer' => 'При копировании любых материалов с сайта активная ссылка на сайт reciper.tk обязательна.',
 
     // Controller
     'nothing_found' => 'Ничего не найдено',
