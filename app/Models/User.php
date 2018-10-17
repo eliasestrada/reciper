@@ -118,4 +118,12 @@ class User extends Authenticatable
     {
         return is_null($this->name) || $this->name == '' ? $this->username : $this->name;
     }
+
+    /**
+     * @return boolean
+     */
+    public function isActive(): bool
+    {
+        return $this->active === 1;
+    }
 }

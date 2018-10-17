@@ -14,7 +14,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.index', ['users' => User::orderBy('name')->paginate(36)->onEachSide(1)]);
+        return view('users.index', ['users' => User::whereActive(1)->orderBy('name')->paginate(36)->onEachSide(1)]);
     }
 
     /**
@@ -67,14 +67,7 @@ class UsersController extends Controller
     public function destroy($method)
     {
         if (\Hash::check(request()->password, user()->password)) {
-            user()->update([
-                'popularity' => 0,
-                'status' => null,
-                'email' => null,
-                'name' => null,
-                'active' => 0,
-                'xp' => 0,
-            ]);
+            user()->update(['active' => 0]);
             auth()->logout();
             return redirect('/login')->withSuccess(trans('users.account_diactivate'));
         } else {
