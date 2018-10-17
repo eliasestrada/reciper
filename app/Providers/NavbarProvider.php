@@ -12,54 +12,26 @@ class NavbarProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->countAndComposeAllNotifications();
-        $this->countAndComposeAllFeedback();
-        $this->countAndComposeAllUnapprovedRecipes();
-        $this->countAndComposeAllLogFiles();
-        $this->countAndComposeAllVisitorLikes();
+        $this->countAndCompose();
     }
 
     /**
      * @return void
      */
-    public function countAndComposeAllNotifications(): void
+    public function countAndCompose(): void
     {
         view()->composer('includes.nav.navbar',
             \App\Http\ViewComposers\Navbar\NotificationsComposer::class);
-    }
 
-    /**
-     * @return void
-     */
-    public function countAndComposeAllFeedback(): void
-    {
         view()->composer('includes.nav.navbar',
             \App\Http\ViewComposers\Navbar\FeedbackComposer::class);
-    }
 
-    /**
-     * @return void
-     */
-    public function countAndComposeAllUnapprovedRecipes(): void
-    {
         view()->composer('includes.nav.navbar',
             \App\Http\ViewComposers\Navbar\UnapprovedRecipesComposer::class);
-    }
 
-    /**
-     * @return void
-     */
-    public function countAndComposeAllLogFiles(): void
-    {
         view()->composer('includes.nav.navbar',
             \App\Http\ViewComposers\Navbar\LogsComposer::class);
-    }
 
-    /**
-     * @return void
-     */
-    public function countAndComposeAllVisitorLikes(): void
-    {
         view()->composer('includes.nav.navbar',
             \App\Http\ViewComposers\Navbar\VisitorLikesComposer::class);
     }
