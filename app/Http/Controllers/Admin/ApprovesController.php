@@ -88,6 +88,7 @@ class ApprovesController extends Controller
 
         $message = trans('approves.approved_' . rand(1, 5), ['title' => $recipe->getTitle()]);
         event(new \App\Events\RecipeGotApproved($recipe, $message));
+        cache()->forget('unapproved_notif');
 
         return redirect("/recipes/$recipe->id")->withSuccess(
             trans('recipes.recipe_published')
@@ -106,6 +107,7 @@ class ApprovesController extends Controller
         }
 
         event(new \App\Events\RecipeGotCanceled($recipe, $request->message));
+        cache()->forget('unapproved_notif');
 
         return redirect('/recipes')->withSuccess(
             trans('recipes.you_gave_recipe_back_on_editing')
