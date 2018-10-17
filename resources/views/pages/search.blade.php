@@ -16,8 +16,8 @@
                 <button type="submit" class="prefix btn-floating">
                     <i class="fas fa-search"></i>
                 </button>
-                <input type="text" name="for" id="autocomplete-input" class="autocomplete" style="margin-left:4em" autocomplete="off">
-                <label for="autocomplete-input" style="margin-left:4em">@lang('pages.search_details')</label>
+                <input type="text" name="for" id="search" style="margin-left:4em">
+                <label for="search" style="margin-left:4em">@lang('pages.search_details')</label>
             </div>
         </form>
     </div>
@@ -34,26 +34,4 @@
     @endif
 </div>
 
-@endsection
-
-@section('script')
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var titles = {!! json_encode($search_suggest) !!}
-        var converted = {};
-
-        titles.forEach(function (title) {
-            converted[title] = null;
-        })
-
-        var elems = document.querySelectorAll('.autocomplete');
-        M.Autocomplete.init(elems, {
-            data: converted,
-            limit: 20,
-            onAutocomplete: function() {
-                $('search-form').submit()
-            }
-        });
-    });
-</script>
 @endsection

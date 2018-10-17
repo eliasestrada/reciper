@@ -49,9 +49,7 @@ class PagesController extends Controller
             $message = trans('pages.use_search');
         }
 
-        $search_suggest = $this->searchForSuggestions();
-
-        return view('pages.search', compact('recipes', 'search_suggest', 'message'));
+        return view('pages.search', compact('recipes', 'message'));
     }
 
     /**
@@ -76,12 +74,5 @@ class PagesController extends Controller
             return $result->username;
         }
         return null;
-    }
-
-    public function searchForSuggestions()
-    {
-        return cache()->remember('search_suggest', config('cache.search_suggest'), function () {
-            return Recipe::query()->done(1)->pluck('title_' . lang())->toArray();
-        });
     }
 }

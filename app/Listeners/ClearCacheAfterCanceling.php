@@ -13,6 +13,5 @@ class ClearCacheAfterCanceling
     public function handle(RecipeGotCanceled $event)
     {
         cache()->forget('unapproved_notif');
-        cache()->forget('search_suggest');
     }
 }

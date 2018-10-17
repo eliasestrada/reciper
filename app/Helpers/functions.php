@@ -193,19 +193,6 @@ function dump_sql(?bool $show_data = false): void
     });
 }
 
-function dump_cache()
-{
-    $filesystem = \Cache::getStore()->getFilesystem();
-    $keys = [];
-    foreach ($filesystem->allFiles(\Cache::getDirectory()) as $file1) {
-        if (is_dir($file1->getPath())) {
-            foreach ($filesystem->allFiles($file1->getPath()) as $file2) {
-                $keys = array_merge($keys, [$file2->getRealpath() => unserialize(substr(\File::get($file2->getRealpath()), 10))]);
-            }
-        }
-    }
-    dump($keys);
-}
 /**
  * It returns visitor_id even if cookie is not set
  */

@@ -16,11 +16,11 @@ class PagesSearchPageTest extends TestCase
     {
         $this->get('/search')
             ->assertViewIs('pages.search')
-            ->assertViewHasAll(['recipes', 'search_suggest', 'message']);
+            ->assertViewHasAll(['recipes', 'message']);
 
         $this->get('/search?for=some')
             ->assertViewIs('pages.search')
-            ->assertViewHasAll(['recipes', 'search_suggest', 'message']);
+            ->assertViewHasAll(['recipes', 'message']);
     }
 
     /** @test */

@@ -27,6 +27,5 @@ return [
     'timing' => [
         'popular_recipes' => 10,
         'random_recipes' => 10,
-        'search_suggest' => 60,
     ],
 ];
