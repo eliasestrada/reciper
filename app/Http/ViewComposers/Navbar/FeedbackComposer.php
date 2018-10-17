@@ -18,10 +18,9 @@ class FeedbackComposer
             if (user()->contact_check == null) {
                 user()->update(['contact_check' => now()]);
             }
-            $feedback_notif = cache()->rememberForever('feedback_notif', function () {
+            $view->with('feedback_notif', cache()->rememberForever('feedback_notif', function () {
                 return Feedback::where('created_at', '>', user()->contact_check)->exists();
-            });
-            $view->with(compact('feedback_notif'));
+            }));
         } else {
             $view->with('feedback_notif', false);
         }
