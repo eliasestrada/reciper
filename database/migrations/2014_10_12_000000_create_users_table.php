@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
             $table->string('name', config('valid.settings.general.name.max'))->nullable();
             $table->string('status', config('valid.settings.general.status.max'))->nullable();
             $table->string('email')->unique()->nullable();
-            $table->string('username')->unique();
+            $table->string('username', 40)->unique();
             $table->unsignedSmallInteger('xp')->default(1);
             $table->integer('streak_days')->default(0);
             $table->decimal('popularity', 8, 1)->default(0);
