@@ -68,8 +68,8 @@ trait RecipesControllerHelpers
     {
         $recipe_columns = [
             'image' => $image_name ? $image_name : $recipe->image ?? 'default.jpg',
-            'meal_id' => $request->meal ?? 0,
-            'time' => $request->time ?? 0,
+            'meal_id' => request('meal', 0),
+            'time' => request('time', 0),
 
             'title_' . lang() => $request->title,
             'intro_' . lang() => $request->intro,
