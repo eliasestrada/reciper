@@ -10,7 +10,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Redis;
 
 class TopRecipersJob implements ShouldQueue
 {
@@ -23,7 +22,7 @@ class TopRecipersJob implements ShouldQueue
      */
     public function handle()
     {
-        Redis::throttle('top-recipers')->allow(2)->every(1)->then(function () {
+        \Redis::throttle('top-recipers')->allow(2)->every(1)->then(function () {
             $this->bestReciperOfYesterdayScript();
         }, function () {
             return $this->release(2);
