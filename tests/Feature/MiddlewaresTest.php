@@ -13,7 +13,7 @@ class MiddlewaresTest extends TestCase
     public function online_check_is_updated_to_now_aftet_user_visits_the_app(): void
     {
         $this->actingAs($user = create_user('', ['online_check' => now()->subWeek()]))->get('/');
-        $now = now();
+        $now = now()->toDateTimeString();
         $this->assertDatabaseHas('users', ['id' => $user->id, 'online_check' => $now]);
     }
 
