@@ -1,18 +1,22 @@
 <?php
 
-namespace Tests\Unit\Models;
+namespace Tests\Feature\Models;
 
 use App\Models\Help;
+use App\Models\HelpCategory;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class HelpTest extends TestCase
+class HelpCategoryTest extends TestCase
 {
-    public $help;
+    use DatabaseTransactions;
+
+    public $help_category;
 
     public function setUp()
     {
         parent::setUp();
-        $this->help = make(Help::class);
+        $this->help_category = create(HelpCategory::class);
     }
 
     /** @test */
@@ -26,12 +30,6 @@ class HelpTest extends TestCase
     /** @test */
     public function get_title_method_returns_title_from_database(): void
     {
-        $this->assertEquals($this->help->getTitle(), $this->help->toArray()['title_' . lang()]);
-    }
-
-    /** @test */
-    public function get_text_method_returns_text_from_database(): void
-    {
-        $this->assertEquals($this->help->getText(), $this->help->toArray()['text_' . lang()]);
+        $this->assertEquals($this->help_category->getTitle(), $this->help_category->toArray()['title_' . lang()]);
     }
 }
