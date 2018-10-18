@@ -38,8 +38,10 @@ class RecipeApprovedNotification extends Notification
     {
         return [
             'title' => trans('approves.recipe_published'),
-            'message' => trans('approves.approved_' . rand(1, 5), ['title' => $this->recipe->getTitle()]),
-            'recipe_id' => $this->recipe->id,
+            'message' => trans('approves.approved_' . rand(1, 5), [
+                'title' => $this->recipe->getTitle(),
+            ]),
+            'link' => '/recipes/' . $this->recipe->id,
         ];
     }
 }
