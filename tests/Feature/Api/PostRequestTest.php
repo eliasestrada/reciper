@@ -16,9 +16,8 @@ class PostRequestTest extends TestCase
     {
         // Like recipe request ======
         $recipe = create(Recipe::class);
-        $visitor = create(Visitor::class, ['ip' => '777.777.7.7']);
+        $visitor = make(Visitor::class, ['ip' => '777.777.7.7']);
 
-        $this->assertEquals(0, count($recipe->likes));
         $this->post("/api/like/like/$recipe->id", ['ip' => $visitor->ip]);
 
         $recipe = Recipe::find($recipe->id);

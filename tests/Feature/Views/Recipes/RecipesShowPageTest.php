@@ -200,13 +200,6 @@ class RecipesShowPageTest extends TestCase
     }
 
     /** @test */
-    public function visitors_see_report_button_not_disabled(): void
-    {
-        $this->get('/recipes/' . create(Recipe::class)->id)
-            ->assertSee('<a href="#report-recipe-modal" class="btn waves-effect waves-light modal-trigger min-w">');
-    }
-
-    /** @test */
     public function owner_of_the_recipe_sees_report_button_disabled(): void
     {
         $user = create_user();

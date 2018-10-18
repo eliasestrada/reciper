@@ -19,7 +19,11 @@ class TopRecipersJobScriptTest extends TestCase
     {
         cache()->flush();
         $amount = config('cache.other.amount_of_top_recipers');
-        $recipes = create(Recipe::class, [], 4);
+        $recipes = collect([]);
+
+        for ($i = 1; $i <= 4; $i++) {
+            $recipes->push(create(Recipe::class, ['user_id' => create_user()->id]));
+        }
 
         // 3 likes for first recipe, 2 likes for second and 1 like for the third
         // last like in array should not be counted
@@ -34,8 +38,8 @@ class TopRecipersJobScriptTest extends TestCase
         ];
 
         foreach ($data as $value) {
-            $visitor = Visitor::where('id', '!=', $recipes[$value['id']]->user->visitor->id)->inRandomOrder()->first();
-            Like::create([
+            $visitor = Visitor::inRandomOrder()->first();
+            $like = Like::create([
                 'visitor_id' => $visitor->id,
                 'recipe_id' => $recipes[$value['id']]->id,
                 'created_at' => Carbon::yesterday()->addHours($value['hours']),

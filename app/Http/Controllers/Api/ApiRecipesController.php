@@ -39,7 +39,6 @@ class ApiRecipesController extends Controller
             cache()->forget('popular_recipes');
             cache()->forget('random_recipes');
             cache()->forget('unapproved_notif');
-
             return 'success';
         }
 
