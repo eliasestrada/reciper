@@ -9,7 +9,7 @@ class ScriptAttackNotification extends Notification
 {
     use Queueable;
 
-    public $username = '';
+    public $username;
 
     /**
      * @param string $username
@@ -38,7 +38,7 @@ class ScriptAttackNotification extends Notification
         return [
             'title' => trans('notifications.title_script_attack'),
             'message' => trans('notifications.message_script_attack', ['username' => $this->username]),
-            'link' => '/user/' . $this->username,
+            'link' => '/users/' . $this->username,
         ];
     }
 }
