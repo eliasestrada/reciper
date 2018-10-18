@@ -41,12 +41,6 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function model_has_relationship_with_notification(): void
-    {
-        $this->assertNotNull(make(User::class)->notifications);
-    }
-
-    /** @test */
     public function model_has_relationship_with_visitor(): void
     {
         $this->assertNotNull(make(User::class)->visitor);

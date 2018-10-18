@@ -2,7 +2,7 @@
 
 namespace App\Helpers\Traits;
 
-use App\Models\Notification;
+use App\Models\User;
 
 trait RecipesControllerHelpers
 {
@@ -98,15 +98,9 @@ trait RecipesControllerHelpers
     {
         foreach ($request->except(['_method', '_token']) as $field) {
             if (is_string($field) && preg_match("/<script>/", $field)) {
-                $user_id = user()->id;
-                $user_name = user()->getName();
+                logger()->emergency('User ' . user()->username . ' with id of ' . user()->id . ' was trying to inject javascript script tags in his recipe. User data:' . user());
 
-                logger()->emergency("User with name $user_name and id $user_id was trying to inject javascript script tags in his recipe. User data:" . user());
-
-                Notification::sendToAdmin(
-                    trans('notifications.title_script_attack'),
-                    trans('notifications.message_script_attack', compact('user_id', 'user_name'))
-                );
+                User::whereId(1)->first()->notify(user()->username);
                 return true;
             }
         }

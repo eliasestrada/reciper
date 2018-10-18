@@ -33,10 +33,7 @@ Route::get('documents/{document}', 'Master\DocumentsController@show')->where('do
 Route::resource('recipes', 'RecipesController')->except(['destroy']);
 
 // Notifications ===========
-Route::prefix('notifications')->middleware('auth')->group(function () {
-    Route::get('/', 'NotificationController@index');
-    Route::delete('{notification}', 'NotificationController@destroy');
-});
+Route::get('notifications', 'NotificationController@index')->middleware('auth');
 
 // Dashboard ===========
 Route::get('dashboard', 'DashboardController@index');
