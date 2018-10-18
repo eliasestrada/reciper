@@ -15,12 +15,10 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\SendSms::class,
         ],
         \App\Events\RecipeGotCanceled::class => [
-            \App\Listeners\SendCanceledNotification::class,
             \App\Listeners\UpdateRecipeAfterCanceling::class,
         ],
         \App\Events\RecipeGotApproved::class => [
             \App\Listeners\AddExpForRecipe::class,
-            \App\Listeners\SendApprovedNotification::class,
             \App\Listeners\UpdateRecipeAfterApproving::class,
         ],
         \App\Events\UserIsOnline::class => [

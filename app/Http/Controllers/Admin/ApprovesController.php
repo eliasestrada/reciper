@@ -7,6 +7,7 @@ use App\Http\Requests\CancelMessageRequest;
 use App\Http\Requests\DisapproveRequest;
 use App\Models\Recipe;
 use App\Models\User;
+use App\Notifications\RecipeApprovedNotification;
 use Illuminate\Http\Request;
 
 class ApprovesController extends Controller
@@ -87,6 +88,7 @@ class ApprovesController extends Controller
         }
 
         event(new \App\Events\RecipeGotApproved($recipe));
+        user()->notify(new RecipeApprovedNotification($recipe));
         cache()->forget('unapproved_notif');
 
         return redirect("/recipes/$recipe->id")->withSuccess(
@@ -106,6 +108,7 @@ class ApprovesController extends Controller
         }
 
         event(new \App\Events\RecipeGotCanceled($recipe, $request->message));
+        user()->notify(new RecipeApprovedNotification($recipe, $request->message));
         cache()->forget('unapproved_notif');
 
         return redirect('/recipes')->withSuccess(

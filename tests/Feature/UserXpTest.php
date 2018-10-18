@@ -27,7 +27,7 @@ class UserXpTest extends TestCase
         $user = create_user('', ['xp' => 0]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, 'published_' . lang() => 0]);
 
-        event(new \App\Events\RecipeGotApproved($recipe, 'message'));
+        event(new \App\Events\RecipeGotApproved($recipe));
         $this->assertEquals($this->xp_for_approve, User::whereId($user->id)->value('xp'));
     }
 
@@ -37,7 +37,7 @@ class UserXpTest extends TestCase
         $user = create_user('', ['xp' => 0]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, 'published_' . lang() => 1]);
 
-        event(new \App\Events\RecipeGotApproved($recipe, 'message'));
+        event(new \App\Events\RecipeGotApproved($recipe));
         $this->assertEquals(0, User::whereId($user->id)->value('xp'));
     }
 
@@ -48,14 +48,14 @@ class UserXpTest extends TestCase
         $user = create_user('', ['xp' => $this->max_xp]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, 'published_ru' . lang() => 0]);
 
-        event(new \App\Events\RecipeGotApproved($recipe, 'message'));
+        event(new \App\Events\RecipeGotApproved($recipe));
         $this->assertEquals($this->max_xp, User::whereId($user->id)->value('xp'));
 
         // Has 99 xp
         $user = create_user('', ['xp' => $this->max_xp - 0.8]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, 'published_' . lang() => 0]);
 
-        event(new \App\Events\RecipeGotApproved($recipe, 'message'));
+        event(new \App\Events\RecipeGotApproved($recipe));
         $this->assertEquals($this->max_xp, User::whereId($user->id)->value('xp'));
     }
 
@@ -65,7 +65,7 @@ class UserXpTest extends TestCase
         $user = create_user('', ['xp' => $this->max_xp - $this->xp_for_approve]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, 'published_' . lang() => 0]);
 
-        event(new \App\Events\RecipeGotApproved($recipe, 'message'));
+        event(new \App\Events\RecipeGotApproved($recipe));
         $this->assertEquals($this->max_xp, User::whereId($user->id)->value('xp'));
     }
 
