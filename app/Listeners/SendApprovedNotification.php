@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\RecipeGotApproved;
-use App\Models\Notification;
+use App\Notifications\RecipeApprovedNotification;
 
 class SendApprovedNotification
 {
@@ -13,10 +13,6 @@ class SendApprovedNotification
      */
     public function handle(RecipeGotApproved $event)
     {
-        Notification::sendToUser(
-            trans('approves.recipe_published'),
-            $event->message,
-            $event->recipe->user_id
-        );
+        user()->notify(new RecipeApprovedNotification($event->recipe));
     }
 }

@@ -86,8 +86,7 @@ class ApprovesController extends Controller
             return redirect("/admin/approves")->withError($error);
         }
 
-        $message = trans('approves.approved_' . rand(1, 5), ['title' => $recipe->getTitle()]);
-        event(new \App\Events\RecipeGotApproved($recipe, $message));
+        event(new \App\Events\RecipeGotApproved($recipe));
         cache()->forget('unapproved_notif');
 
         return redirect("/recipes/$recipe->id")->withSuccess(

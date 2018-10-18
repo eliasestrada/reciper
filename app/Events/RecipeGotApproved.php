@@ -14,17 +14,15 @@ class RecipeGotApproved
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $recipe;
-    public $message;
 
     /**
      * @param Recipe $recipe
      * @param string $message
      * @return void
      */
-    public function __construct(Recipe $recipe, string $message = '')
+    public function __construct(Recipe $recipe)
     {
         $this->recipe = $recipe;
-        $this->message = $message;
     }
 
     /**
