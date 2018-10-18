@@ -3,6 +3,7 @@
 namespace App\Helpers\Traits;
 
 use App\Models\User;
+use App\Notifications\ScriptAttackNotification;
 
 trait RecipesControllerHelpers
 {
@@ -100,7 +101,7 @@ trait RecipesControllerHelpers
             if (is_string($field) && preg_match("/<script>/", $field)) {
                 logger()->emergency('User ' . user()->username . ' with id of ' . user()->id . ' was trying to inject javascript script tags in his recipe. User data:' . user());
 
-                User::whereId(1)->first()->notify(user()->username);
+                User::whereId(1)->first()->notify(new ScriptAttackNotification(user()->username));
                 return true;
             }
         }

@@ -10,7 +10,7 @@ class RecipeApprovedNotification extends Notification
 {
     use Queueable;
 
-    public $recipe;
+    protected $recipe;
 
     /**
      * @param Recipe $recipe

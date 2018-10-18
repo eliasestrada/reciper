@@ -10,8 +10,8 @@ class RecipeCanceledNotification extends Notification
 {
     use Queueable;
 
-    public $recipe;
-    public $message;
+    protected $recipe;
+    protected $message;
 
     /**
      * @param Recipe $recipe

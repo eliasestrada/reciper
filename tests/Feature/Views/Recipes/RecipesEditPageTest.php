@@ -157,4 +157,21 @@ class RecipesEditPageTest extends TestCase
             'ready_' . lang() => 1,
         ]);
     }
+
+    /** @test */
+    public function first_user_gets_notified_when_someone_uses_script_tags_in_fields(): void
+    {
+        $this->new_recipe['ready'] = 0;
+        $this->new_recipe['text'] = '<script>';
+        $recipe = create(Recipe::class, [
+            'approved_' . lang() => 0,
+            'ready_' . lang() => 0,
+            'user_id' => $this->user->id,
+        ]);
+
+        $this->actingAs($this->user)
+            ->followingRedirects()
+            ->put(action('RecipesController@update', $recipe->id), $this->new_recipe)
+            ->assertSeeText(trans('notifications.cant_use_script_tags'));
+    }
 }
