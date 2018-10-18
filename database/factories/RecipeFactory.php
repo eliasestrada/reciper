@@ -3,8 +3,6 @@
 use App\Models\Recipe;
 use Faker\Generator as Faker;
 
-cache()->flush();
-
 $factory->define(Recipe::class, function (Faker $faker) {
     return [
         'user_id' => 1,
