@@ -15,7 +15,7 @@
                 <label :for="'category_id' + field">{{ label }} {{ field }}</label>
                 <select name="categories[]" class="browser-default">
                     <option :value="recipeCategories[i]['id']" v-if="recipeCategories && recipeCategories[i]" selected>
-                        {{ categories[recipeCategories[i]['id']].name }}
+                        {{ categories[recipeCategories[i]['id'] - 1].name }}
                     </option>
                     <option v-for="category in categories" :key="category.id" :value="category.id">
                         {{ category.name }}
@@ -48,6 +48,7 @@ export default {
 
     created() {
         this.getFieldsFromProps();
+        console.log(this.categories, this.recipeCategories)
     },
 
     methods: {
