@@ -3,56 +3,38 @@
 namespace Tests\Feature\Scrips;
 
 use App\Jobs\TopRecipersJob;
-use App\Models\Like;
-use App\Models\Recipe;
-use App\Models\Visitor;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class TopRecipersJobScriptTest extends TestCase
 {
-    use DatabaseTransactions;
+    /** @test */
+    public function where_statement_in_Like_query_must_be_correct(): void
+    {
+        $this->assertTrue($this->state(Carbon::yesterday()->setTime(0, 0, 0)->toDateTimeString()));
+        $this->assertTrue($this->state(Carbon::yesterday()->setTime(23, 59, 59)->toDateTimeString()));
+        $this->assertFalse($this->state(Carbon::yesterday()->setTime(23, 59, 59)->addSecond()->toDateTimeString()));
+    }
 
     /** @test */
-    public function job_must_cache_list_of_top_recipers_in_certain_amount(): void
+    public function convertArrayToNeededFormat_method_return_proper_array(): void
     {
-        cache()->flush();
-        $amount = config('cache.other.amount_of_top_recipers');
-        $recipes = collect([]);
+        $result = (new TopRecipersJob)->convertArrayToNeededFormat([
+            'bogdan', 'bogdan', 'bogdan', 'valya',
+        ]);
 
-        for ($i = 1; $i <= 4; $i++) {
-            $recipes->push(create(Recipe::class, ['user_id' => create_user()->id]));
-        }
+        $this->assertCount(2, $result);
+        $this->assertEquals(3, $result['bogdan']);
+        $this->assertEquals(1, $result['valya']);
+    }
 
-        // 3 likes for first recipe, 2 likes for second and 1 like for the third
-        // last like in array should not be counted
-        $data = [
-            ['id' => 0, 'hours' => 0],
-            ['id' => 0, 'hours' => 9],
-            ['id' => 0, 'hours' => 13],
-            ['id' => 2, 'hours' => 17],
-            ['id' => 2, 'hours' => 20],
-            ['id' => 3, 'hours' => 23],
-            ['id' => 1, 'hours' => 24],
-        ];
-
-        foreach ($data as $value) {
-            $visitor = Visitor::inRandomOrder()->first();
-            $like = Like::create([
-                'visitor_id' => $visitor->id,
-                'recipe_id' => $recipes[$value['id']]->id,
-                'created_at' => Carbon::yesterday()->addHours($value['hours']),
-            ]);
-        }
-
-        (new TopRecipersJob)->bestReciperOfYesterdayScript();
-
-        $cache = cache()->get('top_recipers');
-        $this->assertCount(3, $cache);
-
-        $this->assertEquals($recipes[0]->user->username, array_keys($cache)[0]);
-        $this->assertEquals($recipes[2]->user->username, array_keys($cache)[1]);
-        $this->assertEquals($recipes[3]->user->username, array_keys($cache)[2]);
+    /**
+     * @param $date
+     * @return boolean
+     */
+    public function state($date): bool
+    {
+        $yesterday = Carbon::yesterday();
+        return $date >= $yesterday->startOfDay() && $date <= $yesterday->endOfDay() ? true : false;
     }
 }
