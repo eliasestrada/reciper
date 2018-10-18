@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Scrips;
+namespace Tests\Unit\Scripts;
 
 use App\Http\Controllers\StatisticsController;
 use App\Models\Recipe;

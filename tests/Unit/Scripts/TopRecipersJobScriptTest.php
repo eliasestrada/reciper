@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Scrips;
+namespace Tests\Unit\Scripts;
 
 use App\Jobs\TopRecipersJob;
 use Carbon\Carbon;
