@@ -55,14 +55,6 @@ class ApiRecipesController extends Controller
     public function makeQueryWithCriteria(?string $hash = 'new', ?int $pagin = 8)
     {
         if ($hash == 'most_liked') {
-            // $result = cache()->remember('most_liked_recipes', 10, function() use ($pagin) {
-            //     return Recipe::withCount('likes')
-            //         ->orderBy('likes_count', 'desc')
-            //         ->done(1)
-            //         ->paginate($pagin);
-            //     // ->toJson();
-            // });
-            // return $result;
             return Recipe::withCount('likes')->orderBy('likes_count', 'desc')->done(1)->paginate($pagin);
         }
 
