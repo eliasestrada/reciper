@@ -2,13 +2,10 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class HelperFunctionsTest extends TestCase
 {
-    use DatabaseTransactions;
-
     /** @test */
     public function convert_to_array_of_list_items_helper_returns_array(): void
     {
@@ -74,8 +71,7 @@ class HelperFunctionsTest extends TestCase
     /** @test */
     public function visitor_id_function_returns_correct_data(): void
     {
-        $expected = \App\Models\Visitor::whereIp(request()->ip())->value('id');
+        $expected = make(\App\Models\Visitor::class)->value('id');
         $this->assertEquals($expected, visitor_id());
     }
-
 }
