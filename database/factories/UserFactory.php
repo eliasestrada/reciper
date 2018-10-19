@@ -27,6 +27,10 @@ $factory->define(User::class, function (Faker $faker) {
     ];
 });
 
+$factory->afterMaking(User::class, function ($user) {
+    $user->id = 1;
+});
+
 $factory->state(User::class, 'admin', function ($faker) {
     return [];
 });
@@ -35,9 +39,15 @@ $factory->state(User::class, 'master', function ($faker) {
 });
 
 $factory->afterCreatingState(User::class, 'admin', function ($user, $faker) {
-    $user->addRole('admin');
+    $user->roles()->attach([1]);
+});
+$factory->afterMakingState(User::class, 'admin', function ($user, $faker) {
+    $user->roles()->attach([1]);
 });
 
 $factory->afterCreatingState(User::class, 'master', function ($user, $faker) {
-    $user->addRole('master');
+    $user->roles()->attach([2]);
+});
+$factory->afterMakingState(User::class, 'master', function ($user, $faker) {
+    $user->roles()->attach([2]);
 });
