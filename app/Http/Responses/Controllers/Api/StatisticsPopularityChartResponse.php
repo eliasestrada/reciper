@@ -18,9 +18,9 @@ class StatisticsPopularityChartResponse implements Responsable
 
     /**
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return array
      */
-    public function toResponse($request)
+    public function toResponse($request): array
     {
         return [
             'labels' => $this->chart_data['views']->pluck('month'),
