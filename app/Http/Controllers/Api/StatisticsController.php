@@ -15,9 +15,9 @@ class StatisticsController extends Controller
     public function popularityChart()
     {
         $chart_data = [
-            'views' => $this->getDataFromUserScript('views'),
-            'likes' => $this->getDataFromUserScript('likes'),
-            'favs' => $this->getDataFromUserScript('favs'),
+            'views' => $this->getDataFromUser('views'),
+            'likes' => $this->getDataFromUser('likes'),
+            'favs' => $this->getDataFromUser('favs'),
         ];
 
         return new StatisticsPopularityChartResponse($chart_data);
@@ -26,11 +26,12 @@ class StatisticsController extends Controller
     /**
      * @param string $column
      * @param User|null $user this param for testing purposes, coz I can just use auth()->user helper
+     * @return Collection
      */
-    public function getDataFromUserScript(string $column, ?User $user = null)
+    public function getDataFromUser(string $column, ?User $user = null): Collection
     {
         if ($column != 'likes' && $column != 'views' && $column != 'favs') {
-            throw new \Exception('getDataFromUserScript 1 parameter can only have one of three values. Given value does not match any of them');
+            throw new \Exception('getDataFromUser 1 parameter can only have one of three values. Given value does not match any of them');
         }
 
         $rules = $this->makeArrayOfRules();
@@ -44,11 +45,11 @@ class StatisticsController extends Controller
      */
     public function makeArrayOfRules(): array
     {
-        return array_map(function ($i) {
+        return array_map(function ($month_number) {
             return [
-                'month' => now()->subMonths($i - 1)->month,
-                'from' => now()->subMonths($i),
-                'to' => now()->subMonths($i - 1),
+                'month' => now()->subMonths($month_number - 1)->month,
+                'from' => now()->subMonths($month_number),
+                'to' => now()->subMonths($month_number - 1),
                 'sum' => 0,
             ];
         }, [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
