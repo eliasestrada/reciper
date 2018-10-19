@@ -33,7 +33,3 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'published_en' => 1,
     ];
 });
-
-$factory->afterMaking(Recipe::class, function ($recipe) {
-    $recipe->id = 1;
-});
