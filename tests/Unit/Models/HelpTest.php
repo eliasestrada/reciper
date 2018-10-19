@@ -1,12 +1,11 @@
 <?php
 
-namespace Tests\Feature\Models;
+namespace Tests\Unit\Models;
 
 use App\Models\Help;
-use App\Models\HelpCategory;
 use Tests\TestCase;
 
-class HelpCategoryTest extends TestCase
+class HelpTest extends TestCase
 {
     /** @test */
     public function model_has_attributes(): void
@@ -19,7 +18,14 @@ class HelpCategoryTest extends TestCase
     /** @test */
     public function getTitle_method_returns_title_from_database_column(): void
     {
-        $help_category = make(HelpCategory::class);
-        $this->assertEquals($help_category->getTitle(), $help_category->toArray()['title_' . lang()]);
+        $help = make(Help::class);
+        $this->assertEquals($help->getTitle(), $help->toArray()['title_' . lang()]);
+    }
+
+    /** @test */
+    public function getText_method_returns_text_from_database_column(): void
+    {
+        $help = make(Help::class);
+        $this->assertEquals($help->getText(), $help->toArray()['text_' . lang()]);
     }
 }
