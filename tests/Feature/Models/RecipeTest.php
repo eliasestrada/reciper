@@ -3,13 +3,10 @@
 namespace Tests\Feature\Models;
 
 use App\Models\Recipe;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class RecipeTest extends TestCase
 {
-    use DatabaseTransactions;
-
     /** @test */
     public function model_has_attributes(): void
     {
@@ -47,109 +44,106 @@ class RecipeTest extends TestCase
     }
 
     /** @test */
-    public function model_has_relationship_with_category(): void
-    {
-        $recipe = create(Recipe::class);
-        $recipe->categories()->sync([1, 2]);
-
-        $this->assertCount(2, $recipe->categories);
-    }
-
-    /** @test */
     public function model_has_relationship_with_user_called_approver(): void
     {
         $this->assertTrue(make(Recipe::class)->approver->exists());
     }
 
     /** @test */
-    public function get_title_method_returns_title_row(): void
+    public function getTitle_method_returns_title_row(): void
     {
-        $recipe = make(Recipe::class, ['title_' . lang() => 'Sumpakuma']);
+        $recipe = new Recipe(['title_' . lang() => 'Sumpakuma']);
         $this->assertEquals('Sumpakuma', $recipe->getTitle());
     }
 
     /** @test */
-    public function get_ingredients_method_returns_ingredients_row(): void
+    public function getIngredients_method_returns_ingredients_row(): void
     {
-        $recipe = make(Recipe::class, ['ingredients_' . lang() => 'Homatoma']);
+        $recipe = new Recipe(['ingredients_' . lang() => 'Homatoma']);
         $this->assertEquals('Homatoma', $recipe->getIngredients());
     }
 
     /** @test */
-    public function get_intro_method_returns_intro_row(): void
+    public function getIntro_method_returns_intro_row(): void
     {
-        $recipe = make(Recipe::class, ['intro_' . lang() => 'Mapacuta']);
+        $recipe = new Recipe(['intro_' . lang() => 'Mapacuta']);
         $this->assertEquals('Mapacuta', $recipe->getIntro());
     }
 
     /** @test */
-    public function get_text_method_returns_text_row(): void
+    public function getText_method_returns_text_row(): void
     {
-        $recipe = make(Recipe::class, ['text_' . lang() => 'Kolobok']);
+        $recipe = new Recipe(['text_' . lang() => 'Kolobok']);
         $this->assertEquals('Kolobok', $recipe->getText());
     }
 
     /** @test */
-    public function is_ready_method_returns_true_when_ready_column_set_to_one(): void
+    public function isReady_method_returns_true_when_ready_column_set_to_one(): void
     {
-        $recipe = make(Recipe::class, ['ready_' . lang() => 1]);
+        $recipe = new Recipe(['ready_' . lang() => 1]);
         $this->assertTrue($recipe->isReady());
     }
 
     /** @test */
-    public function is_approved_method_returns_true_when_approved_column_set_to_one(): void
+    public function isApproved_method_returns_true_when_approved_column_set_to_one(): void
     {
-        $recipe = make(Recipe::class, ['approved_' . lang() => 1]);
+        $recipe = new Recipe(['ready_' . lang() => 1, 'approved_' . lang() => 1]);
         $this->assertTrue($recipe->isApproved());
     }
 
     /** @test */
-    public function is_done_method_returns_true_when_ready_and_approved_columns_set_to_one(): void
+    public function isDone_method_returns_true_when_ready_and_approved_columns_set_to_one(): void
     {
-        $recipe = make(Recipe::class, ['ready_' . lang() => 1, 'approved_' . lang() => 1]);
+        $recipe = new Recipe(['ready_' . lang() => 1, 'approved_' . lang() => 1]);
         $this->assertTrue($recipe->isDone());
     }
 
     /** @test */
-    public function is_published_method_returns_true_when_published_column_is_set_to_one(): void
+    public function isPublished_method_returns_true_when_published_column_is_set_to_one(): void
     {
-        $recipe = make(Recipe::class, ['published_' . lang() => 1]);
+        $recipe = new Recipe(['published_' . lang() => 1]);
         $this->assertTrue($recipe->isPublished());
     }
 
     /** @test */
-    public function get_status_text_method_returns_status_text(): void
+    public function getStatusText_method_returns_status_text(): void
     {
-        $done = make(Recipe::class);
-        $not_ready = make(Recipe::class, ['ready_' . lang() => 0]);
-        $not_approved = make(Recipe::class, ['approved_' . lang() => 0]);
+        $recipe = new Recipe(['ready_' . lang() => 1, 'approved_' . lang() => 1]);
+        $this->assertEquals(trans('users.checked'), $recipe->getStatusText());
 
-        $this->assertEquals(trans('users.checked'), $done->getStatusText());
-        $this->assertEquals(trans('users.not_ready'), $not_ready->getStatusText());
-        $this->assertEquals(trans('users.is_checking'), $not_approved->getStatusText());
+        $recipe->{'ready_' . lang()} = 0;
+        $this->assertEquals(trans('users.not_ready'), $recipe->getStatusText());
+
+        $recipe->{'ready_' . lang()} = 1;
+        $recipe->{'approved_' . lang()} = 0;
+        $this->assertEquals(trans('users.is_checking'), $recipe->getStatusText());
     }
 
     /** @test */
-    public function get_status_icon_method_returns_icon_name(): void
+    public function getStatusIcon_method_returns_icon_name(): void
     {
-        $done = make(Recipe::class);
-        $not_ready = make(Recipe::class, ['ready_' . lang() => 0]);
-        $not_approved = make(Recipe::class, ['approved_' . lang() => 0]);
+        $recipe = new Recipe(['ready_' . lang() => 1, 'approved_' . lang() => 1]);
+        $this->assertEquals('fa-check', $recipe->getStatusIcon());
 
-        $this->assertEquals('fa-check', $done->getStatusIcon());
-        $this->assertEquals('fa-pen', $not_ready->getStatusIcon());
-        $this->assertEquals('fa-clock', $not_approved->getStatusIcon());
+        $recipe->{'ready_' . lang()} = 0;
+        $this->assertEquals('fa-pen', $recipe->getStatusIcon());
+
+        $recipe->{'ready_' . lang()} = 1;
+        $recipe->{'approved_' . lang()} = 0;
+        $this->assertEquals('fa-clock', $recipe->getStatusIcon());
     }
 
     /** @test */
-    public function get_status_color_method_returns_color_code(): void
+    public function getStatusColor_method_returns_color_code(): void
     {
-        $done = make(Recipe::class);
-        $not_ready = make(Recipe::class, ['ready_' . lang() => 0]);
-        $not_approved = make(Recipe::class, ['approved_' . lang() => 0]);
+        $recipe = new Recipe(['ready_' . lang() => 1, 'approved_' . lang() => 1]);
+        $this->assertEquals('#65b56e', $recipe->getStatusColor());
 
-        $this->assertEquals('#65b56e', $done->getStatusColor());
-        $this->assertEquals('#ce7777', $not_ready->getStatusColor());
-        $this->assertEquals('#e2bd18', $not_approved->getStatusColor());
+        $recipe->{'ready_' . lang()} = 0;
+        $this->assertEquals('#ce7777', $recipe->getStatusColor());
+
+        $recipe->{'ready_' . lang()} = 1;
+        $recipe->{'approved_' . lang()} = 0;
+        $this->assertEquals('#e2bd18', $recipe->getStatusColor());
     }
 }
