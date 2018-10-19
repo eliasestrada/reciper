@@ -2,13 +2,10 @@
 
 namespace Tests\Feature\Requests;
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class AuthRegisterRequestTest extends TestCase
 {
-    use DatabaseTransactions;
-
     private $pwd_min;
     private $pwd_max;
     private $username_min;
@@ -37,39 +34,6 @@ class AuthRegisterRequestTest extends TestCase
             ->post(route('register'), $this->data)
             ->assertSeeText(trans('auth.password_required'));
     }
-
-    // /** @test */
-    // public function email_must_be_like_a_proper_email_address(): void
-    // {
-    //     $emails = ['tarleva@mail,com', 'chernov@gmail', 'voronov.com', '1990senya@q'];
-
-    //     foreach ($emails as $email) {
-    //         $this->data['email'] = $email;
-    //         $this->followingRedirects()
-    //             ->post(route('register'), $this->data)
-    //             ->assertSeeText(trans('auth.email_email'));
-    //     }
-    // }
-
-    // /** @test */
-    // public function email_must_be_not_long(): void
-    // {
-    //     $this->data['email'] = str_random($this->email_max + 1);
-
-    //     $this->followingRedirects()
-    //         ->post(route('register'), $this->data)
-    //         ->assertSeeText(preg_replace('/:max/', $this->email_max, trans('auth.email_max')));
-    // }
-
-    // /** @test */
-    // public function email_must_be_unique(): void
-    // {
-    //     $this->data['email'] = create_user()->email;
-
-    //     $this->followingRedirects()
-    //         ->post(route('register'), $this->data)
-    //         ->assertSeeText(trans('auth.email_unique'));
-    // }
 
     /** @test */
     public function password_must_be_string(): void

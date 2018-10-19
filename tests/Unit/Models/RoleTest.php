@@ -11,5 +11,6 @@ class RoleTest extends TestCase
     public function model_has_attributes(): void
     {
         $this->assertClassHasAttribute('timestamps', Role::class);
+        $this->assertClassHasAttribute('guarded', Role::class);
     }
 }
