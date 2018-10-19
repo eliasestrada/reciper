@@ -1,107 +1,95 @@
 <?php
 
-namespace Tests\Unit\Methods;
+namespace Tests\Unit\Scripts;
 
 use App\Http\Controllers\Api\StatisticsController;
-use App\Models\Recipe;
-use App\Models\View;
-use App\Models\Visitor;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\Models\User;
 use Illuminate\Support\Collection;
 use Tests\TestCase;
 
 class StatisticsPopularityChartTest extends TestCase
 {
-    use DatabaseTransactions;
-
-    /** @test */
-    public function try_to_use_mockery(): void
-    {
-        $mock = \Mockery::mock('\App\Models\Recipe');
-        $mock->shouldReceive('ingredientsWithListItems')->once()->andReturn(['test']);
-        $this->assertEquals(['test'], $mock->ingredientsWithListItems());
-    }
-
-    /** @test */
-    public function script_returns_collection_with_12_months_in_it(): void
-    {
-        $script = (new StatisticsController)->getDataFromUserScript('likes', create_user());
-
-        $this->assertInstanceOf(Collection::class, $script);
-        $this->assertCount(12, $script);
-        $script->each(function ($chart_data) {
-            $this->assertArrayHasKey('month', $chart_data);
-        });
-    }
-
-    /** @test */
-    public function script_returns_month_names_from_latest_to_newest(): void
-    {
-        $script = (new StatisticsController)->getDataFromUserScript('likes', create_user());
-
-        for ($i = 0, $sub_month = 11; $i < $script->count(); $i++, $sub_month--) {
-            $month_number = now()->subMonths($sub_month)->month;
-            $month_name = trans("date.month_$month_number");
-            $this->assertEquals($month_name, $script[$i]['month']);
-        }
-    }
-
     /**
      * @test
      * @expectedException \Exception
      */
-    public function script_throws_exception_if_first_parameter_is_not_eccepteble(): void
+    public function getDataFromUser_throws_exception_if_first_parameter_is_not_acceptable(): void
     {
-        $script = (new StatisticsController)->getDataFromUserScript('something', create_user());
-        $this - assertInstanceOf(Collection::class, $script);
+        $method = (new StatisticsController)->getDataFromUser('something', make(User::class));
+        $this->assertInstanceOf(Collection::class, $method);
     }
 
     /** @test */
-    public function first_param_can_have_one_of_three_values(): void
+    public function getDataFromUser_method_first_param_can_have_one_of_three_values(): void
     {
-        $user = create_user();
+        $user = make(User::class);
         array_map(function ($param) use ($user) {
-            $script = (new StatisticsController)->getDataFromUserScript($param, $user);
-            $this->assertInstanceOf(Collection::class, $script);
+            $method = (new StatisticsController)->getDataFromUser($param, $user);
+            $this->assertInstanceOf(Collection::class, $method);
         }, ['likes', 'views', 'favs']);
     }
 
     /** @test */
-    public function script_returns_amount_of_needed_column_grouped_by_months(): void
+    public function getDataFromUser_returns_month_names_from_latest_to_newest(): void
     {
-        $user = create_user();
-        $recipes = create(Recipe::class, ['user_id' => $user->id], 5);
-        $visitor = create(Visitor::class);
+        $method = (new StatisticsController)->getDataFromUser('likes', make(User::class));
 
-        View::insert([
-            ['recipe_id' => $recipes[0]->id, 'visitor_id' => $visitor->id, 'created_at' => now()->subWeeks(1)],
-            ['recipe_id' => $recipes[1]->id, 'visitor_id' => $visitor->id, 'created_at' => now()->subHour()],
-            ['recipe_id' => $recipes[2]->id, 'visitor_id' => $visitor->id, 'created_at' => now()->subMonth()->subWeeks(2)],
-            ['recipe_id' => $recipes[3]->id, 'visitor_id' => $visitor->id, 'created_at' => now()->subMonth()->subWeeks(3)],
-            ['recipe_id' => $recipes[4]->id, 'visitor_id' => $visitor->id, 'created_at' => now()->subMonths(4)->subWeek()],
-        ]);
-
-        $script = (new StatisticsController)->getDataFromUserScript('views', $user);
-
-        $this->assertEquals(2, $script->last()['sum']);
-        $this->assertEquals(2, $script[10]['sum']);
-        $this->assertEquals(1, $script[7]['sum']);
-
-        $this->assertEquals(5, $script->sum('sum'));
+        for ($i = 0, $sub_month = 11; $i < $method->count(); $i++, $sub_month--) {
+            $month_number = now()->subMonths($sub_month)->month;
+            $month_name = trans("date.month_$month_number");
+            $this->assertEquals($month_name, $method[$i]['month']);
+        }
     }
 
     /** @test */
-    public function script_returns_sum_of_null_if_no_favs_were_found_for_this_user(): void
+    public function getDataFromUser_returns_sum_of_null_if_no_favs_were_found_for_this_user(): void
     {
-        $other_user = create_user();
+        $method = (new StatisticsController)->getDataFromUser('views', make(User::class));
+        $this->assertEquals(0, $method->sum('sum'));
+    }
 
-        View::create([
-            'recipe_id' => create(Recipe::class, ['user_id' => $other_user])->id,
-            'visitor_id' => create(Visitor::class)->id,
-            'created_at' => now(),
-        ]);
+    /** @test */
+    public function makeArrayOfRules_method_generates_rules_list(): void
+    {
+        $method = (new StatisticsController)->makeArrayOfRules();
+        $keys = ['month', 'from', 'to', 'sum'];
 
-        $script = (new StatisticsController)->getDataFromUserScript('views', create_user());
-        $this->assertEquals(0, $script->sum('sum'));
+        $this->assertTrue(is_array($method));
+
+        foreach ($keys as $key) {
+            $this->assertArrayHasKey($key, $method[0]);
+        }
+    }
+
+    /**
+     * In $expect variable we need to subtract 11 on the first lap, 10 on the second etc
+     * That's why I'm adding month and then subtract months on this lap
+     * @test
+     * */
+    public function makeArrayOfRules_contains_12_months_from_from_this_month(): void
+    {
+        $method = (new StatisticsController)->makeArrayOfRules();
+
+        foreach ([12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1] as $key => $month) {
+            $expect = now()->addMonth()->subMonths($month)->month;
+            $actual = $method[$key]['month'];
+            $this->assertEquals($expect, $actual, ">>> KEY IS $key\n");
+        }
+    }
+
+    /** @test */
+    public function convertMonthNumberToName_method_converts_date(): void
+    {
+        $months = [
+            ['month' => 12], ['month' => 11], ['month' => 10], ['month' => 9],
+            ['month' => 8], ['month' => 7], ['month' => 6], ['month' => 5],
+            ['month' => 4], ['month' => 3], ['month' => 2], ['month' => 1],
+        ];
+        $result = (new StatisticsController)->convertMonthNumberToName($months);
+
+        foreach ($result->pluck('month') as $key => $actual) {
+            $expect = trans('date.month_' . $months[$key]['month']);
+            $this->assertEquals($expect, $actual, ">>> KEY IS $key");
+        }
     }
 }
