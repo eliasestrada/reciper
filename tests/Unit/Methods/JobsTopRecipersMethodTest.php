@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Unit\Scripts;
+namespace Tests\Unit\Methods;
 
 use App\Jobs\TopRecipersJob;
 use Carbon\Carbon;
 use Tests\TestCase;
 
-class TopRecipersJobScriptTest extends TestCase
+class JobsTopRecipersMethodTest extends TestCase
 {
     /** @test */
     public function where_statement_in_Like_query_must_be_correct(): void
