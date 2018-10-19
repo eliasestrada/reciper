@@ -11,14 +11,6 @@ class PagesContactPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    private $faker;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->faker = \Faker\Factory::create();
-    }
-
     /** @test */
     public function view_has_a_correct_path(): void
     {
@@ -42,7 +34,8 @@ class PagesContactPageTest extends TestCase
     /** @test */
     public function anyone_can_send_feedback_message(): void
     {
-        $data = ['email' => $this->faker->safeEmail, 'message' => $this->faker->text];
+        cache()->flush();
+        $data = ['email' => 'test@emil.com', 'message' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit'];
 
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
@@ -54,14 +47,14 @@ class PagesContactPageTest extends TestCase
     public function user_cant_send_feedback_message_more_then_once_per_day(): void
     {
         // First attempt to send a message, should be successful
-        $first_data = ['email' => $this->faker->safeEmail, 'message' => $this->faker->text];
+        $first_data = ['email' => 'test@emil.com', 'message' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit'];
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $first_data)
             ->assertSeeText(trans('feedback.success_message'));
         $this->assertDatabaseHas('feedback', $first_data);
 
         // Second attempt to send a message, should be denied
-        $second_data = ['email' => $this->faker->safeEmail, 'message' => $this->faker->text];
+        $second_data = ['email' => 'test@emil.com', 'message' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit'];
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $second_data)
             ->assertSeeText(trans('feedback.operation_denied'));
@@ -70,8 +63,8 @@ class PagesContactPageTest extends TestCase
     /** @test */
     public function user_can_send_message_after_a_day_since_the_last_message(): void
     {
-        $first_data = ['email' => $this->faker->safeEmail, 'message' => $this->faker->text];
-        $second_data = ['email' => $this->faker->safeEmail, 'message' => $this->faker->text];
+        $first_data = ['email' => '11test@emil.com', 'message' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit'];
+        $second_data = ['email' => 'testing@emil.com', 'message' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit'];
 
         // Make first request
         $this->followingRedirects()

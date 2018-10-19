@@ -11,7 +11,7 @@ class MiddlewaresTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function online_check_is_updated_to_now_aftet_user_visits_the_app(): void
+    public function online_check_is_updated_to_now_after_user_visits_the_app(): void
     {
         $this->actingAs($user = create_user('', ['online_check' => now()->subWeek()]))->get('/');
 
