@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -13,8 +14,9 @@ class MiddlewaresTest extends TestCase
     public function online_check_is_updated_to_now_aftet_user_visits_the_app(): void
     {
         $this->actingAs($user = create_user('', ['online_check' => now()->subWeek()]))->get('/');
-        $now = now()->toDateTimeString();
-        $this->assertDatabaseHas('users', ['id' => $user->id, 'online_check' => $now]);
+
+        $actual = date("Y-m-d H-i", strtotime(User::whereId($user->id)->value('online_check')));
+        $this->assertEquals(now()->format('Y-m-d H-i'), $actual);
     }
 
     /** @test */
