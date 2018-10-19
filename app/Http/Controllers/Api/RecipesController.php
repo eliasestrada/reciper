@@ -8,7 +8,7 @@ use App\Http\Resources\RecipesResource;
 use App\Models\Recipe;
 use App\Models\Visitor;
 
-class ApiRecipesController extends Controller
+class RecipesController extends Controller
 {
     use RecipesControllerHelpers;
 

@@ -1,14 +1,14 @@
 <?php
 
-Route::prefix('recipes')->group(function () {
-    Route::get('{hash?}', 'Api\ApiRecipesController@index');
-    Route::delete('{id}', 'Api\ApiRecipesController@destroy');
+Route::prefix('recipes')->namespace('Api')->group(function () {
+    Route::get('{hash?}', 'RecipesController@index');
+    Route::delete('{id}', 'RecipesController@destroy');
 });
 
-Route::prefix('like')->group(function () {
-    Route::post('check/{id}', 'Api\ApiLikeController@check');
-    Route::post('like/{id}', 'Api\ApiLikeController@like');
-    Route::post('dislike/{id}', 'Api\ApiLikeController@dislike');
+Route::prefix('like')->namespace('Api')->group(function () {
+    Route::post('check/{id}', 'LikeController@check');
+    Route::post('like/{id}', 'LikeController@like');
+    Route::post('dislike/{id}', 'LikeController@dislike');
 });
 
-Route::get('recipes-random/{visitor_id}', 'Api\ApiRandomRecipesController@boot');
+Route::get('recipes-random/{visitor_id}', 'Api\RandomRecipesController@boot');
