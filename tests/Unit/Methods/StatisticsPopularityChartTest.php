@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Unit\Scripts;
+namespace Tests\Unit\Methods;
 
-use App\Http\Controllers\StatisticsController;
+use App\Http\Controllers\Api\StatisticsController;
 use App\Models\Recipe;
 use App\Models\View;
 use App\Models\Visitor;
@@ -10,9 +10,17 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Collection;
 use Tests\TestCase;
 
-class StatisticsPopularityChartScriptTest extends TestCase
+class StatisticsPopularityChartTest extends TestCase
 {
     use DatabaseTransactions;
+
+    /** @test */
+    public function try_to_use_mockery(): void
+    {
+        $mock = \Mockery::mock('\App\Models\Recipe');
+        $mock->shouldReceive('ingredientsWithListItems')->once()->andReturn(['test']);
+        $this->assertEquals(['test'], $mock->ingredientsWithListItems());
+    }
 
     /** @test */
     public function script_returns_collection_with_12_months_in_it(): void
