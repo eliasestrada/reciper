@@ -3,21 +3,11 @@
 namespace Tests\Feature\Models;
 
 use App\Models\Ban;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\Models\User;
 use Tests\TestCase;
 
 class BanTest extends TestCase
 {
-    use DatabaseTransactions;
-
-    public $user;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->user = create_user();
-    }
-
     /** @test */
     public function model_has_attributes(): void
     {
@@ -27,20 +17,10 @@ class BanTest extends TestCase
     }
 
     /** @test */
-    public function model_has_relationship_with_user(): void
-    {
-        $ban = Ban::make(['days' => 2, 'user_id' => $this->user->id]);
-        $this->assertEquals($ban->user->id, $this->user->id);
-    }
-
-    /** @test */
     public function put_method_adds_user_to_ban_list(): void
     {
-        Ban::put($this->user->id, 1, 'some message');
-        $this->assertDatabaseHas('ban', [
-            'user_id' => $this->user->id,
-            'message' => 'some message',
-            'days' => 1,
-        ]);
+        $user = make(User::class, ['id' => rand(2, 10000)]);
+        $output = Ban::put($user->id, 1, 'some message', false);
+        $this->assertEquals($output->user_id, $user->id);
     }
 }

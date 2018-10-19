@@ -4,21 +4,10 @@ namespace Tests\Feature\Models;
 
 use App\Models\Help;
 use App\Models\HelpCategory;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class HelpCategoryTest extends TestCase
 {
-    use DatabaseTransactions;
-
-    public $help_category;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->help_category = create(HelpCategory::class);
-    }
-
     /** @test */
     public function model_has_attributes(): void
     {
@@ -28,8 +17,9 @@ class HelpCategoryTest extends TestCase
     }
 
     /** @test */
-    public function get_title_method_returns_title_from_database(): void
+    public function getTitle_method_returns_title_from_database_column(): void
     {
-        $this->assertEquals($this->help_category->getTitle(), $this->help_category->toArray()['title_' . lang()]);
+        $help_category = make(HelpCategory::class);
+        $this->assertEquals($help_category->getTitle(), $help_category->toArray()['title_' . lang()]);
     }
 }

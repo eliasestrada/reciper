@@ -7,14 +7,6 @@ use Tests\TestCase;
 
 class HelpTest extends TestCase
 {
-    public $help;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->help = make(Help::class);
-    }
-
     /** @test */
     public function model_has_attributes(): void
     {
@@ -24,14 +16,16 @@ class HelpTest extends TestCase
     }
 
     /** @test */
-    public function get_title_method_returns_title_from_database(): void
+    public function getTitle_method_returns_title_from_database_column(): void
     {
-        $this->assertEquals($this->help->getTitle(), $this->help->toArray()['title_' . lang()]);
+        $help = make(Help::class);
+        $this->assertEquals($help->getTitle(), $help->toArray()['title_' . lang()]);
     }
 
     /** @test */
-    public function get_text_method_returns_text_from_database(): void
+    public function getText_method_returns_text_from_database_column(): void
     {
-        $this->assertEquals($this->help->getText(), $this->help->toArray()['text_' . lang()]);
+        $help = make(Help::class);
+        $this->assertEquals($help->getText(), $help->toArray()['text_' . lang()]);
     }
 }
