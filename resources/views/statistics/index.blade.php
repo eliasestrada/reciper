@@ -88,9 +88,9 @@
         <h5 class="mb-0 d-inline-block">@lang('users.popularity_chart') </h5>
         <b class="red-text">LIVE</b>
     </div>
-    <div class="col s12 scroll">
+    <div class="col s12 scroll position-relative" style="min-height:370px">
         <statistics-chart>
-            <div class="valign-wrapper mt-4 center" style="height:273px">
+            <div slot="loader" v-cloak>
                 @include('includes.preloader')
             </div>
         </statistics-chart>

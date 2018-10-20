@@ -1,5 +1,8 @@
 <template>
     <div class="mt-4" style="min-width:700px">
+        <div v-if="loader" class="valign-wrapper position-absolute center" style="top:50%;left:50%;transform:translate(-50%,-50%)">
+            <slot name="loader"></slot>
+        </div>
         <line-chart :chart-data="data" :height="120" :options="options" />
     </div>
 </template>
@@ -10,7 +13,8 @@ export default {
     data() {
         return {
             data: [],
-            options: {}
+            options: {},
+            loader: true
         }
     },
 
@@ -27,6 +31,7 @@ export default {
             fetch('api-statistics/likes-views-chart')
                 .then(res => res.json())
                 .then(data => {
+                    this.loader = false
                     this.data = data
                     this.options = data.options
                 })
