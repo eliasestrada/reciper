@@ -13,7 +13,7 @@ class Document extends Model
      */
     public function getTitle(): string
     {
-        return $this->toArray()['title_' . lang()];
+        return $this->toArray()['title_' . LANG];
     }
 
     /**
@@ -21,7 +21,7 @@ class Document extends Model
      */
     public function getText(): string
     {
-        return $this->toArray()['text_' . lang()];
+        return $this->toArray()['text_' . LANG];
     }
 
     /**
@@ -29,7 +29,7 @@ class Document extends Model
      */
     public function isReady(): bool
     {
-        return $this->toArray()['ready_' . lang()];
+        return $this->toArray()['ready_' . LANG];
     }
 
     /**
@@ -39,6 +39,6 @@ class Document extends Model
      */
     public function scopeIsReady($query, int $value)
     {
-        return $query->where('ready_' . lang(), $value);
+        return $query->where('ready_' . LANG, $value);
     }
 }

@@ -52,98 +52,98 @@ class RecipeTest extends TestCase
     /** @test */
     public function getTitle_method_returns_title_row(): void
     {
-        $recipe = new Recipe(['title_' . lang() => 'Sumpakuma']);
+        $recipe = new Recipe(['title_' . LANG => 'Sumpakuma']);
         $this->assertEquals('Sumpakuma', $recipe->getTitle());
     }
 
     /** @test */
     public function getIngredients_method_returns_ingredients_row(): void
     {
-        $recipe = new Recipe(['ingredients_' . lang() => 'Homatoma']);
+        $recipe = new Recipe(['ingredients_' . LANG => 'Homatoma']);
         $this->assertEquals('Homatoma', $recipe->getIngredients());
     }
 
     /** @test */
     public function getIntro_method_returns_intro_row(): void
     {
-        $recipe = new Recipe(['intro_' . lang() => 'Mapacuta']);
+        $recipe = new Recipe(['intro_' . LANG => 'Mapacuta']);
         $this->assertEquals('Mapacuta', $recipe->getIntro());
     }
 
     /** @test */
     public function getText_method_returns_text_row(): void
     {
-        $recipe = new Recipe(['text_' . lang() => 'Kolobok']);
+        $recipe = new Recipe(['text_' . LANG => 'Kolobok']);
         $this->assertEquals('Kolobok', $recipe->getText());
     }
 
     /** @test */
     public function isReady_method_returns_true_when_ready_column_set_to_one(): void
     {
-        $recipe = new Recipe(['ready_' . lang() => 1]);
+        $recipe = new Recipe(['ready_' . LANG => 1]);
         $this->assertTrue($recipe->isReady());
     }
 
     /** @test */
     public function isApproved_method_returns_true_when_approved_column_set_to_one(): void
     {
-        $recipe = new Recipe(['ready_' . lang() => 1, 'approved_' . lang() => 1]);
+        $recipe = new Recipe(['ready_' . LANG => 1, 'approved_' . LANG => 1]);
         $this->assertTrue($recipe->isApproved());
     }
 
     /** @test */
     public function isDone_method_returns_true_when_ready_and_approved_columns_set_to_one(): void
     {
-        $recipe = new Recipe(['ready_' . lang() => 1, 'approved_' . lang() => 1]);
+        $recipe = new Recipe(['ready_' . LANG => 1, 'approved_' . LANG => 1]);
         $this->assertTrue($recipe->isDone());
     }
 
     /** @test */
     public function isPublished_method_returns_true_when_published_column_is_set_to_one(): void
     {
-        $recipe = new Recipe(['published_' . lang() => 1]);
+        $recipe = new Recipe(['published_' . LANG => 1]);
         $this->assertTrue($recipe->isPublished());
     }
 
     /** @test */
     public function getStatusText_method_returns_status_text(): void
     {
-        $recipe = new Recipe(['ready_' . lang() => 1, 'approved_' . lang() => 1]);
+        $recipe = new Recipe(['ready_' . LANG => 1, 'approved_' . LANG => 1]);
         $this->assertEquals(trans('users.checked'), $recipe->getStatusText());
 
-        $recipe->{'ready_' . lang()} = 0;
+        $recipe->{'ready_' . LANG} = 0;
         $this->assertEquals(trans('users.not_ready'), $recipe->getStatusText());
 
-        $recipe->{'ready_' . lang()} = 1;
-        $recipe->{'approved_' . lang()} = 0;
+        $recipe->{'ready_' . LANG} = 1;
+        $recipe->{'approved_' . LANG} = 0;
         $this->assertEquals(trans('users.is_checking'), $recipe->getStatusText());
     }
 
     /** @test */
     public function getStatusIcon_method_returns_icon_name(): void
     {
-        $recipe = new Recipe(['ready_' . lang() => 1, 'approved_' . lang() => 1]);
+        $recipe = new Recipe(['ready_' . LANG => 1, 'approved_' . LANG => 1]);
         $this->assertEquals('fa-check', $recipe->getStatusIcon());
 
-        $recipe->{'ready_' . lang()} = 0;
+        $recipe->{'ready_' . LANG} = 0;
         $this->assertEquals('fa-pen', $recipe->getStatusIcon());
 
-        $recipe->{'ready_' . lang()} = 1;
-        $recipe->{'approved_' . lang()} = 0;
+        $recipe->{'ready_' . LANG} = 1;
+        $recipe->{'approved_' . LANG} = 0;
         $this->assertEquals('fa-clock', $recipe->getStatusIcon());
     }
 
     /** @test */
     public function getStatusColor_method_returns_color_code(): void
     {
-        $recipe = new Recipe(['ready_' . lang() => 1, 'approved_' . lang() => 1]);
+        $recipe = new Recipe(['ready_' . LANG => 1, 'approved_' . LANG => 1]);
         $this->assertEquals('#65b56e', $recipe->getStatusColor());
 
-        $recipe->{'ready_' . lang()} = 0;
+        $recipe->{'ready_' . LANG} = 0;
         $this->assertEquals('#ce7777', $recipe->getStatusColor());
 
-        $recipe->{'ready_' . lang()} = 1;
-        $recipe->{'approved_' . lang()} = 0;
+        $recipe->{'ready_' . LANG} = 1;
+        $recipe->{'approved_' . LANG} = 0;
         $this->assertEquals('#e2bd18', $recipe->getStatusColor());
     }
 }

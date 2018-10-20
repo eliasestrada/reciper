@@ -114,8 +114,8 @@ class RecipesUpdateRequestPart1Test extends TestCase
         $user = make(User::class, ['id' => 1]);
 
         $recipe = create(Recipe::class, [
-            'approved_' . lang() => 0,
-            'ready_' . lang() => 0,
+            'approved_' . LANG => 0,
+            'ready_' . LANG => 0,
             'user_id' => $user->id,
         ]);
 

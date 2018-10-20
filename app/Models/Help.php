@@ -15,7 +15,7 @@ class Help extends Model
      */
     public function getTitle(): string
     {
-        return $this->toArray()['title_' . lang()];
+        return $this->toArray()['title_' . LANG];
     }
 
     /**
@@ -23,6 +23,6 @@ class Help extends Model
      */
     public function getText(): string
     {
-        return $this->toArray()['text_' . lang()];
+        return $this->toArray()['text_' . LANG];
     }
 }

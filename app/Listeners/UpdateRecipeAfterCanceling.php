@@ -12,6 +12,6 @@ class UpdateRecipeAfterCanceling
      */
     public function handle(RecipeGotCanceled $event)
     {
-        $event->recipe->update(['ready_' . lang() => 0]);
+        $event->recipe->update(['ready_' . LANG => 0]);
     }
 }

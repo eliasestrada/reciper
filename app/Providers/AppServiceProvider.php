@@ -44,6 +44,6 @@ class AppServiceProvider extends ServiceProvider
 
     public function register()
     {
-        define('LANG', '_' . app()->getLocale());
+        define('LANG', app()->getLocale());
     }
 }

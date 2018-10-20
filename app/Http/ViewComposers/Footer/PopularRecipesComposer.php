@@ -15,7 +15,7 @@ class PopularRecipesComposer
     public function compose(View $view): void
     {
         $popular_recipes = cache()->remember('popular_recipes', config('cache.timing.popular_recipes'), function () {
-            return Recipe::select('id', 'title_' . lang() . ' as title')
+            return Recipe::select('id', 'title_' . LANG . ' as title')
                 ->withCount('likes')
                 ->orderBy('likes_count', 'desc')
                 ->done(1)

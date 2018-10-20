@@ -44,7 +44,7 @@ class RecipesShowPagePart1Test extends TestCase
     public function admin_can_approve_recipe_with_message(): void
     {
         $admin = create_user('admin');
-        $unapproved_recipe = create(Recipe::class, ['approved_' . lang() => 0]);
+        $unapproved_recipe = create(Recipe::class, ['approved_' . LANG => 0]);
 
         $this->actingAs($admin)
             ->get("/recipes/$unapproved_recipe->id");
@@ -59,7 +59,7 @@ class RecipesShowPagePart1Test extends TestCase
         // Now recipe should be approved
         $this->assertDatabaseHas('recipes', [
             'id' => $unapproved_recipe->id,
-            'approved_' . lang() => 1,
+            'approved_' . LANG => 1,
         ]);
     }
 
@@ -67,7 +67,7 @@ class RecipesShowPagePart1Test extends TestCase
     public function admin_can_disapprove_recipe_with_message(): void
     {
         $admin = create_user('admin');
-        $unapproved_recipe = create(Recipe::class, ['approved_' . lang() => 0]);
+        $unapproved_recipe = create(Recipe::class, ['approved_' . LANG => 0]);
 
         // Make request to disapprove a recipe with message
         $this->actingAs($admin)
@@ -78,7 +78,7 @@ class RecipesShowPagePart1Test extends TestCase
         // Recipe should be still unapproved
         $this->assertDatabaseHas('recipes', [
             'id' => $unapproved_recipe->id,
-            'approved_' . lang() => 0,
+            'approved_' . LANG => 0,
         ]);
     }
 
@@ -86,7 +86,7 @@ class RecipesShowPagePart1Test extends TestCase
     public function admin_cant_disapprove_recipe_without_message(): void
     {
         $admin = create_user('admin');
-        $unapproved_recipe = create(Recipe::class, ['approved_' . lang() => 0]);
+        $unapproved_recipe = create(Recipe::class, ['approved_' . LANG => 0]);
 
         $this->actingAs($admin)->get("/recipes/$unapproved_recipe->id");
 
@@ -98,7 +98,7 @@ class RecipesShowPagePart1Test extends TestCase
         // Recipe should be still unapproved
         $this->assertDatabaseHas('recipes', [
             'id' => $unapproved_recipe->id,
-            'approved_' . lang() => 0,
+            'approved_' . LANG => 0,
         ]);
     }
 
@@ -107,7 +107,7 @@ class RecipesShowPagePart1Test extends TestCase
     {
         $admin = create_user('admin');
         $user = create(User::class);
-        $recipe = create(Recipe::class, ['user_id' => $user->id, 'approved_' . lang() => 0]);
+        $recipe = create(Recipe::class, ['user_id' => $user->id, 'approved_' . LANG => 0]);
 
         $this->actingAs($admin)->get("/recipes/$recipe->id");
 
