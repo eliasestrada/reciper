@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CancelMessageRequest;
 use App\Http\Requests\DisapproveRequest;
 use App\Models\Recipe;
 use App\Models\User;
@@ -62,9 +61,10 @@ class ApprovesController extends Controller
      */
     public function show(Recipe $recipe)
     {
-        // Check if u can work with the recipe
-        if (($error = $this->hasErrors($recipe)) !== false) {
-            return redirect("/admin/approves")->withError($error);
+        $error_message = $this->returnErrorIfApprovedOrNotReady($recipe);
+
+        if (!is_null($error_message)) {
+            return redirect("/admin/approves")->withError($error_message);
         }
 
         if (!optional($recipe->approver)->id) {
@@ -80,11 +80,12 @@ class ApprovesController extends Controller
     /**
      * @param Recipe $recipe
      */
-    public function approve(Recipe $recipe, Request $request)
+    public function approve(Recipe $recipe)
     {
-        // Check if u can work with the recipe
-        if (($error = $this->hasErrors($recipe)) !== false) {
-            return redirect("/admin/approves")->withError($error);
+        $error_message = $this->returnErrorIfApprovedOrNotReady($recipe);
+
+        if (!is_null($error_message)) {
+            return redirect("/admin/approves")->withError($error_message);
         }
 
         event(new \App\Events\RecipeGotApproved($recipe));
@@ -98,13 +99,14 @@ class ApprovesController extends Controller
 
     /**
      * @param Recipe $recipe
-     * @param CancelMessageRequest $request
+     * @param DisapproveRequest $request
      */
     public function disapprove(Recipe $recipe, DisapproveRequest $request)
     {
-        // Check if u can work with the recipe
-        if (($error = $this->hasErrors($recipe)) !== false) {
-            return redirect("/admin/approves")->withError($error);
+        $error_message = $this->returnErrorIfApprovedOrNotReady($recipe);
+
+        if (!is_null($error_message)) {
+            return redirect("/admin/approves")->withError($error_message);
         }
 
         event(new \App\Events\RecipeGotCanceled($recipe, $request->message));
@@ -117,10 +119,9 @@ class ApprovesController extends Controller
     }
 
     /**
-     * Checks if recipe not approved and ready
      * @param $recipe
      */
-    public function hasErrors($recipe)
+    public function returnErrorIfApprovedOrNotReady(Recipe $recipe)
     {
         if ($recipe->isDone()) {
             return trans('approves.already_approved');
@@ -129,6 +130,6 @@ class ApprovesController extends Controller
         if (!$recipe->isReady() && !$recipe->isApproved()) {
             return trans('recipes.not_written');
         }
-        return false;
+        return null;
     }
 }
