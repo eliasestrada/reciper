@@ -2,13 +2,11 @@
 
 namespace Tests\Feature\Requests;
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\Models\User;
 use Tests\TestCase;
 
 class AuthLoginRequestTest extends TestCase
 {
-    use DatabaseTransactions;
-
     private $user;
     private $pwd_max;
     private $pwd_min;
@@ -16,7 +14,7 @@ class AuthLoginRequestTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->user = create_user('', ['password' => bcrypt('111111')]);
+        $this->user = make(User::class, ['id' => 1, 'password' => bcrypt('111111')]);
         $this->pwd_min = config('valid.settings.password.min');
         $this->pwd_max = config('valid.settings.password.max');
     }

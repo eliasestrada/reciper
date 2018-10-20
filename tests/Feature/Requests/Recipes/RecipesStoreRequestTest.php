@@ -2,13 +2,11 @@
 
 namespace Tests\Feature\Requests\Recipes;
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\Models\User;
 use Tests\TestCase;
 
 class RecipesStoreRequestTest extends TestCase
 {
-    use DatabaseTransactions;
-
     private $title_min;
     private $title_max;
     private $request;
@@ -18,7 +16,7 @@ class RecipesStoreRequestTest extends TestCase
         parent::setUp();
         $this->title_min = config('valid.recipes.title.min');
         $this->title_max = config('valid.recipes.title.max');
-        $this->request = $this->actingAs(create_user())->followingRedirects();
+        $this->request = $this->actingAs(make(User::class))->followingRedirects();
     }
 
     /** @test */

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -19,7 +20,7 @@ class ManageUsersRequestTest extends TestCase
         parent::setUp();
         $this->msg_min = config('valid.feedback.ban.message.min');
         $this->msg_max = config('valid.feedback.ban.message.max');
-        $this->user = create_user();
+        $this->user = make(User::class, ['id' => 1]);
         $this->request = $this->actingAs(create_user('master'))->followingRedirects();
     }
 
@@ -27,7 +28,6 @@ class ManageUsersRequestTest extends TestCase
     public function ban_days_field_is_required(): void
     {
         $this->request->put(action('Master\ManageUsersController@update', ['id' => $this->user->id]), [
-            'days' => '',
             'message' => str_random(40),
         ])->assertSeeText(trans('manage-users.days_required'));
     }

@@ -13,11 +13,12 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesSeeder::class);
 
         if (app()->env !== 'testing') {
-            $this->call(UsersSeeder::class);
             $this->call(HelpCategoriesSeeder::class);
             $this->call(HelpSeeder::class);
         }
 
+        $this->call(RecipeSeeder::class);
+        $this->call(UsersSeeder::class);
         $this->call(DocumentsSeeder::class);
         $this->call(CategoriesSeeder::class);
         $this->call(MealSeeder::class);

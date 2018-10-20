@@ -8,7 +8,7 @@ use App\Http\Resources\RecipesResource;
 use App\Models\Recipe;
 use App\Models\Visitor;
 
-class ApiRecipesController extends Controller
+class RecipesController extends Controller
 {
     use RecipesControllerHelpers;
 
@@ -39,7 +39,6 @@ class ApiRecipesController extends Controller
             cache()->forget('popular_recipes');
             cache()->forget('random_recipes');
             cache()->forget('unapproved_notif');
-
             return 'success';
         }
 
@@ -55,14 +54,6 @@ class ApiRecipesController extends Controller
     public function makeQueryWithCriteria(?string $hash = 'new', ?int $pagin = 8)
     {
         if ($hash == 'most_liked') {
-            // $result = cache()->remember('most_liked_recipes', 10, function() use ($pagin) {
-            //     return Recipe::withCount('likes')
-            //         ->orderBy('likes_count', 'desc')
-            //         ->done(1)
-            //         ->paginate($pagin);
-            //     // ->toJson();
-            // });
-            // return $result;
             return Recipe::withCount('likes')->orderBy('likes_count', 'desc')->done(1)->paginate($pagin);
         }
 

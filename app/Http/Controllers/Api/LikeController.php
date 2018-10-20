@@ -9,7 +9,7 @@ use App\Models\Recipe;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
 
-class ApiLikeController extends Controller
+class LikeController extends Controller
 {
     /**
      * @param integer $id of the recipe

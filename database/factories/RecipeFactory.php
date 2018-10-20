@@ -1,20 +1,14 @@
 <?php
 
 use App\Models\Recipe;
-use App\Models\User;
 use Faker\Generator as Faker;
 
-cache()->flush();
-
 $factory->define(Recipe::class, function (Faker $faker) {
-    $admin = factory(User::class)->create();
-    $admin->addRole('admin');
-
     return [
-        'user_id' => factory(User::class)->create(['xp' => 1])->id,
+        'user_id' => 1,
         'meal_id' => rand(1, 3),
-        'ru_approver_id' => $admin->id,
-        'en_approver_id' => $admin->id,
+        'ru_approver_id' => 1,
+        'en_approver_id' => 1,
         'time' => rand(10, 160),
         // 'image' => $faker->file(base_path('../tools/food'), storage_path('/app/public/small/recipes'), false),
         'image' => 'default.jpg',

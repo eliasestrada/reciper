@@ -28,7 +28,7 @@ export default {
 
     methods: {
         fetchData() {
-            fetch('api-statistics/likes-views-chart')
+            fetch('api-statistics/popularity-chart')
                 .then(res => res.json())
                 .then(data => {
                     this.loader = false

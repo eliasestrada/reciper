@@ -1,9 +1,8 @@
 <?php
 
-namespace Tests\Feature\Views\Help;
+namespace Tests\Feature\Views\Favs;
 
 use App\Models\Fav;
-use App\Models\Help;
 use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

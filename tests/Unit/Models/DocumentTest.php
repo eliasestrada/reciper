@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Models;
+namespace Tests\Unit\Models;
 
 use App\Models\Document;
 use Tests\TestCase;
@@ -14,21 +14,21 @@ class DocumentTest extends TestCase
     }
 
     /** @test */
-    public function get_title_method_returns_title(): void
+    public function getTitle_method_returns_title_column(): void
     {
         $document = make(Document::class, ['title_' . lang() => 'Название документа']);
         $this->assertEquals('Название документа', $document->getTitle());
     }
 
     /** @test */
-    public function get_text_method_returns_text(): void
+    public function getText_method_returns_text_column(): void
     {
-        $document = make(Document::class, ['text_' . lang() => 'Название документа']);
-        $this->assertEquals('Название документа', $document->getText());
+        $document = make(Document::class, ['text_' . lang() => 'Название']);
+        $this->assertEquals('Название', $document->getText());
     }
 
     /** @test */
-    public function is_ready_method_returns_true_when_doc_is_ready(): void
+    public function isReady_method_returns_true_when_column_ready_is_set_to_1(): void
     {
         $document = make(Document::class, ['ready_' . lang() => 1]);
         $this->assertTrue($document->isReady());

@@ -2,14 +2,10 @@
 
 namespace Tests\Feature\Requests;
 
-use App\Models\Recipe;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class FeedbackRequestTest extends TestCase
 {
-    use DatabaseTransactions;
-
     private $msg_min;
     private $msg_max;
 
@@ -77,19 +73,6 @@ class FeedbackRequestTest extends TestCase
     }
 
     /** @test */
-    public function if_recipe_id_field_is_in_request_email_is_not_required(): void
-    {
-        $data = [
-            'message' => str_random(50),
-            'recipe_id' => create(Recipe::class)->id,
-        ];
-
-        $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), $data)
-            ->assertSeeText(trans('feedback.success_message'));
-    }
-
-    /** @test */
     public function recipe_id_field_must_be_integer(): void
     {
         $data = ['message' => str_random(50), 'recipe_id' => 'h'];
@@ -100,7 +83,7 @@ class FeedbackRequestTest extends TestCase
     /** @test */
     public function message_field_required_even_with_recipe_id_field(): void
     {
-        $data = ['message' => '', 'recipe_id' => create(Recipe::class)->id];
+        $data = ['message' => '', 'recipe_id' => 3];
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
             ->assertSeeText(trans('contact.contact_message_required'));
