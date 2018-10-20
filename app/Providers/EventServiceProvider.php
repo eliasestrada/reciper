@@ -16,10 +16,12 @@ class EventServiceProvider extends ServiceProvider
         ],
         \App\Events\RecipeGotCanceled::class => [
             \App\Listeners\UpdateRecipeAfterCanceling::class,
+            \App\Listeners\SendSadNotificationToAuthor::class,
         ],
         \App\Events\RecipeGotApproved::class => [
             \App\Listeners\AddExpForRecipe::class,
             \App\Listeners\UpdateRecipeAfterApproving::class,
+            \App\Listeners\SendHappyNotificationToAuthor::class,
         ],
         \App\Events\UserIsOnline::class => [
             \App\Listeners\UpdateUpdatedAtColumn::class,

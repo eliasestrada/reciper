@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DisapproveRequest;
 use App\Models\Recipe;
 use App\Models\User;
-use App\Notifications\RecipeApprovedNotification;
 use Illuminate\Http\Request;
 
 class ApprovesController extends Controller
@@ -85,16 +84,17 @@ class ApprovesController extends Controller
         $error_message = $this->returnErrorIfApprovedOrNotReady($recipe);
 
         if (!is_null($error_message)) {
-            return redirect("/admin/approves")->withError($error_message);
+            return redirect("/admin/approves")
+                ->header('x-recipe-cant-be-approved', 0)
+                ->withError($error_message);
         }
 
-        event(new \App\Events\RecipeGotApproved($recipe));
-        user()->notify(new RecipeApprovedNotification($recipe));
+        event(new \App\Events\RecipeGotApproved($recipe, user()->id));
         cache()->forget('unapproved_notif');
 
-        return redirect("/recipes/$recipe->id")->withSuccess(
-            trans('recipes.recipe_published')
-        );
+        return redirect("/recipes/$recipe->id")
+            ->header('x-recipe-approved', 1)
+            ->withSuccess(trans('recipes.recipe_published'));
     }
 
     /**
@@ -106,11 +106,12 @@ class ApprovesController extends Controller
         $error_message = $this->returnErrorIfApprovedOrNotReady($recipe);
 
         if (!is_null($error_message)) {
-            return redirect("/admin/approves")->withError($error_message);
+            return redirect("/admin/approves")
+                ->header('X-APPROVING-ERROR', 'Already Approved or not ready')
+                ->withError($error_message);
         }
 
         event(new \App\Events\RecipeGotCanceled($recipe, $request->message));
-        user()->notify(new RecipeApprovedNotification($recipe, $request->message));
         cache()->forget('unapproved_notif');
 
         return redirect('/recipes')->withSuccess(
