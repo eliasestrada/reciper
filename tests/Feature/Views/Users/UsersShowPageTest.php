@@ -46,7 +46,7 @@ class UsersShowPageTest extends TestCase
 
         $this->actingAs($user)
             ->get("/users/$user->username")
-            ->assertSee(trans('users.activate_account_desc', [
+            ->assertSeeText(trans('users.activate_account_desc', [
                 'days' => 30 - (date('j') - $user->updated_at->format('j')),
             ]));
     }
