@@ -19,7 +19,7 @@ class XpTest extends TestCase
     }
 
     /** @test */
-    public function get_lvl_method_returns_correct_data(): void
+    public function getLvl_method_returns_correct_data(): void
     {
         $xp = new Xp(create_user('')->id);
 
@@ -30,7 +30,7 @@ class XpTest extends TestCase
     }
 
     /** @test */
-    public function get_lvl_min_method_returns_correct_data(): void
+    public function getLvlMin_method_returns_correct_data(): void
     {
         $xp = new Xp(create_user('')->id);
 
@@ -41,7 +41,7 @@ class XpTest extends TestCase
     }
 
     /** @test */
-    public function get_lvl_max_method_returns_correct_data(): void
+    public function getLvlMax_method_returns_correct_data(): void
     {
         $xp = new Xp(create_user('')->id);
 
@@ -71,7 +71,16 @@ class XpTest extends TestCase
     }
 
     /** @test */
-    public function add_for_streak_method_adds_certain_xp_points(): void
+    public function add_method_adds_xp(): void
+    {
+        // $user = create_user('', ['xp' => 0]);
+        $user = make(User::class, ['xp' => 0]);
+        $response = Xp::add(32, $user->id);
+        $this->assertTrue((bool) $response);
+    }
+
+    /** @test */
+    public function addForStreak_method_adds_certain_xp_points(): void
     {
         $user = create_user('', ['xp' => 0]);
 
@@ -85,8 +94,8 @@ class XpTest extends TestCase
 
         foreach ($days as $day) {
             $user->update(['streak_days' => $day['streak_days']]);
-            Xp::addForStreak($user);
-            $this->assertDatabaseHas('users', ['id' => $user->id, 'xp' => $day['expect_xp']]);
+            $response = Xp::addForStreak($user);
+            $this->assertTrue((bool) $response);
         }
     }
 }

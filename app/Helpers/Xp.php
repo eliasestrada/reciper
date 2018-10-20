@@ -31,16 +31,15 @@ class Xp
     /**
      * @param int $user_id
      * @param float $points
-     * @return void
      */
     public static function add(float $xp_add, int $user_id)
     {
         $xp_current = User::whereId($user_id)->value('xp');
 
         if ($xp_current <= (config('custom.max_xp') - $xp_add)) {
-            User::whereId($user_id)->increment('xp', $xp_add);
+            return User::whereId($user_id)->increment('xp', $xp_add);
         } else {
-            User::whereId($user_id)->increment('xp', config('custom.max_xp') - $xp_current);
+            return User::whereId($user_id)->increment('xp', config('custom.max_xp') - $xp_current);
         }
     }
 
@@ -87,14 +86,13 @@ class Xp
 
     /**
      * @param User $user
-     * @return void
      */
-    public static function addForStreak(User $user): void
+    public static function addForStreak(User $user)
     {
         if ($user->streak_days <= 30) {
-            self::add($user->streak_days, $user->id);
+            return self::add($user->streak_days, $user->id);
         } else {
-            self::add(30, $user->id);
+            return self::add(30, $user->id);
         }
     }
 }
