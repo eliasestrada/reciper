@@ -13,7 +13,7 @@
     @yield('home-header')
 
     <div id="app">
-        @isActive
+        @if (user()->isActive())
             @yield('content')
         @else
             <div class="page pt-5 center">
@@ -27,7 +27,7 @@
                 </form>
                 <h5 class="mt-4 main-text">@lang('users.we_missed_you')</h5>
             </div>
-        @endisActive
+        @endif
     </div>
 
     <!-- add-recipe-modal structure -->

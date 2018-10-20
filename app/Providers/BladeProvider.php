@@ -24,9 +24,6 @@ class BladeProvider extends ServiceProvider
         Blade::if('hasRole', function ($role) {
             return auth()->check() && user()->hasRole($role);
         });
-        Blade::if('isActive', function () {
-            return auth()->check() && user()->isActive();
-        });
         Blade::component('comps.list-of-recipes', 'listOfRecipes');
     }
 }
