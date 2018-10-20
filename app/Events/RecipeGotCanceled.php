@@ -15,16 +15,19 @@ class RecipeGotCanceled
 
     public $recipe;
     public $message;
+    public $user_id;
 
     /**
      * @param Recipe $recipe
      * @param string $message
+     * @param int $user_id
      * @return void
      */
-    public function __construct(Recipe $recipe, string $message)
+    public function __construct(Recipe $recipe, string $message, int $user_id)
     {
         $this->recipe = $recipe;
         $this->message = $message;
+        $this->user_id = $user_id;
     }
 
     /**
