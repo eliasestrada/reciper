@@ -38,12 +38,6 @@ function user()
     return auth()->user();
 }
 
-// Shortcut
-function lang()
-{
-    return app()->getLocale();
-}
-
 /**
  * @param integer $num1
  * @param integer $num2

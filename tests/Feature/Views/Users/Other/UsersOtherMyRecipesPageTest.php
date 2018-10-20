@@ -18,7 +18,7 @@ class UsersOtherMyRecipesPageTest extends TestCase
 
         create(Recipe::class, [
             'user_id' => $user->id,
-            'title_' . lang() => 'My recipe',
+            'title_' . LANG => 'My recipe',
         ]);
 
         $response = $this->actingAs($user)->get('/users/other/my-recipes');

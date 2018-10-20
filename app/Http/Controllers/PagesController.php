@@ -57,8 +57,8 @@ class PagesController extends Controller
      */
     public function searchForRecipes(string $request)
     {
-        return Recipe::where('title_' . lang(), 'LIKE', "%$request%")
-            ->orWhere('ingredients_' . lang(), 'LIKE', "%$request%")
+        return Recipe::where('title_' . LANG, 'LIKE', "%$request%")
+            ->orWhere('ingredients_' . LANG, 'LIKE', "%$request%")
             ->selectBasic()
             ->take(50)
             ->done(1)

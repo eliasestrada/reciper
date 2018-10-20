@@ -15,7 +15,7 @@ class RandomRecipesComposer
     public function compose(View $view): void
     {
         $random_recipes = cache()->remember('random_recipes', config('cache.timing.random_recipes'), function () {
-            return Recipe::select('id', 'title_' . lang() . ' as title')
+            return Recipe::select('id', 'title_' . LANG . ' as title')
                 ->inRandomOrder()
                 ->done(1)
                 ->limit(10)

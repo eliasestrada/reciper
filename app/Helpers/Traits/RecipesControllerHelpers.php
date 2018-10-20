@@ -56,7 +56,7 @@ trait RecipesControllerHelpers
      */
     public function createRecipe($request)
     {
-        return user()->recipes()->create(['title_' . lang() => $request->title]);
+        return user()->recipes()->create(['title_' . LANG => $request->title]);
     }
 
     /**
@@ -72,13 +72,13 @@ trait RecipesControllerHelpers
             'meal_id' => request('meal', 0),
             'time' => request('time', 0),
 
-            'title_' . lang() => $request->title,
-            'intro_' . lang() => $request->intro,
-            'text_' . lang() => $request->text,
-            'ingredients_' . lang() => $request->ingredients,
+            'title_' . LANG => $request->title,
+            'intro_' . LANG => $request->intro,
+            'text_' . LANG => $request->text,
+            'ingredients_' . LANG => $request->ingredients,
             'simple' => $this->isSimple($request),
-            'ready_' . lang() => ($request->ready == 1) ? 1 : 0,
-            'approved_' . lang() => ($request->ready == 1 && user()->hasRole('admin')) ? 1 : 0,
+            'ready_' . LANG => ($request->ready == 1) ? 1 : 0,
+            'approved_' . LANG => ($request->ready == 1 && user()->hasRole('admin')) ? 1 : 0,
         ];
 
         // If recipe moved from being ready to not ready

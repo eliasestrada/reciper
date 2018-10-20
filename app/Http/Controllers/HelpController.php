@@ -10,8 +10,8 @@ class HelpController extends Controller
     public function index()
     {
         return view('help.index', [
-            'help' => Help::orderBy('title_' . lang())->get([
-                'id', 'help_category_id', 'title_' . lang(),
+            'help' => Help::orderBy('title_' . LANG)->get([
+                'id', 'help_category_id', 'title_' . LANG,
             ]),
             'help_categories' => HelpCategory::get(),
         ]);

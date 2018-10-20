@@ -19,7 +19,7 @@ class MealTest extends TestCase
     /** @test */
     public function getName_method_returns_name_column_from_database(): void
     {
-        $meal = make(Meal::class, ['name_' . lang() => 'dinner']);
+        $meal = make(Meal::class, ['name_' . LANG => 'dinner']);
         $this->assertEquals('dinner', $meal->getName());
     }
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ lang() }}">
+<html lang="{{ LANG }}">
 <head>
     @yield('head')
     @include('includes.head')
@@ -17,7 +17,11 @@
             @yield('content')
         @else
             <div class="page pt-5 center">
-                <p class="header">@lang('users.activate_account_desc', ['days' => 30 - (date('j') - user()->updated_at->format('j'))])</p>
+                <p class="header">
+                    @lang('users.activate_account_desc', [
+                        'days' => 30 - (date('j') - user()->updated_at->format('j'))
+                    ])
+                </p>
                 <form action="{{ action('UsersController@store') }}" method="post">
                     @csrf
                     <button type="submit" class="btn mt-3 green hoverable waves-effect waves-green z-depth-2" onclick="if (!confirm('@lang('users.are_you_sure_to_recover')')) event.preventDefault()">
