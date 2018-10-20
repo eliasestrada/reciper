@@ -65,6 +65,6 @@ class LogsIndexPageTest extends TestCase
     private function createLogFile(): string
     {
         info('test');
-        return now()->subDays(2)->format('Y-m-d');
+        return date('Y-m-d');
     }
 }

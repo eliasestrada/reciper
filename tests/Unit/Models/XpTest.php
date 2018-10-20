@@ -73,8 +73,7 @@ class XpTest extends TestCase
     /** @test */
     public function add_method_adds_xp(): void
     {
-        // $user = create_user('', ['xp' => 0]);
-        $user = make(User::class, ['xp' => 0]);
+        $user = create_user('', ['xp' => 0]);
         $response = Xp::add(32, $user->id);
         $this->assertTrue((bool) $response);
     }
