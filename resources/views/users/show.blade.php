@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="page profile-header">
-    @isActive
+    @if ($user->isActive())
         <div class="row">
             <div class="col s12 l6">
                 <div class="mt-2">
@@ -103,7 +103,7 @@
             <img src="{{ asset('storage/users/not_active.jpg') }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->getName() }}" />
             <p>@lang('users.user_is_not_active')</p>
         </div>
-    @endisActive
+    @endif
 </div>
 
 @endsection

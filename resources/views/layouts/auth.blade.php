@@ -13,11 +13,15 @@
     @yield('home-header')
 
     <div id="app">
-        @isActive
+        @if (user()->isActive())
             @yield('content')
         @else
             <div class="page pt-5 center">
-                <p class="header">@lang('users.activate_account_desc', ['days' => 30 - (date('j') - user()->updated_at->format('j'))])</p>
+                <p class="header">
+                    @lang('users.activate_account_desc', [
+                        'days' => 30 - (date('j') - user()->updated_at->format('j'))
+                    ])
+                </p>
                 <form action="{{ action('UsersController@store') }}" method="post">
                     @csrf
                     <button type="submit" class="btn mt-3 green hoverable waves-effect waves-green z-depth-2" onclick="if (!confirm('@lang('users.are_you_sure_to_recover')')) event.preventDefault()">
@@ -27,7 +31,7 @@
                 </form>
                 <h5 class="mt-4 main-text">@lang('users.we_missed_you')</h5>
             </div>
-        @endisActive
+        @endif
     </div>
 
     <!-- add-recipe-modal structure -->
