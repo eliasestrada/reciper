@@ -37,8 +37,8 @@ class RecipesEditPageTest extends TestCase
     public function view_has_data(): void
     {
         $recipe = create(Recipe::class, [
-            'ready_' . LANG => 0,
-            'approved_' . LANG => 0,
+            'ready_' . lang() => 0,
+            'approved_' . lang() => 0,
             'user_id' => $this->user->id,
         ]);
 
@@ -67,8 +67,8 @@ class RecipesEditPageTest extends TestCase
     public function recipe_is_ready_but_not_approved_after_publishing_by_user(): void
     {
         $old_recipe = create(Recipe::class, [
-            'approved_' . LANG => 0,
-            'ready_' . LANG => 0,
+            'approved_' . lang() => 0,
+            'ready_' . lang() => 0,
             'user_id' => $this->user->id,
         ]);
 
@@ -77,9 +77,9 @@ class RecipesEditPageTest extends TestCase
             ->assertRedirect('/users/other/my-recipes');
 
         $this->assertDatabaseHas('recipes', [
-            'title_' . LANG => $this->new_recipe['title'],
-            'ready_' . LANG => 1,
-            'approved_' . LANG => 0,
+            'title_' . lang() => $this->new_recipe['title'],
+            'ready_' . lang() => 1,
+            'approved_' . lang() => 0,
         ]);
     }
 
@@ -88,8 +88,8 @@ class RecipesEditPageTest extends TestCase
     {
         $this->new_recipe['ready'] = 0;
         $recipe = create(Recipe::class, [
-            'approved_' . LANG => 0,
-            'ready_' . LANG => 0,
+            'approved_' . lang() => 0,
+            'ready_' . lang() => 0,
             'user_id' => $this->user->id,
         ]);
 
@@ -100,8 +100,8 @@ class RecipesEditPageTest extends TestCase
 
         $this->assertDatabaseHas('recipes', [
             'id' => $recipe->id,
-            'ready_' . LANG => 0,
-            'approved_' . LANG => 0,
+            'ready_' . lang() => 0,
+            'approved_' . lang() => 0,
         ]);
     }
 
@@ -112,8 +112,8 @@ class RecipesEditPageTest extends TestCase
 
         $recipe_before = create(Recipe::class, [
             'user_id' => $admin->id,
-            'ready_' . LANG => 0,
-            'approved_' . LANG => 0,
+            'ready_' . lang() => 0,
+            'approved_' . lang() => 0,
         ]);
 
         $this->actingAs($admin)
@@ -121,9 +121,9 @@ class RecipesEditPageTest extends TestCase
             ->assertRedirect('/users/other/my-recipes');
 
         $this->assertDatabaseHas('recipes', [
-            'title_' . LANG => $this->new_recipe['title'],
-            'ready_' . LANG => 1,
-            'approved_' . LANG => 1,
+            'title_' . lang() => $this->new_recipe['title'],
+            'ready_' . lang() => 1,
+            'approved_' . lang() => 1,
         ]);
     }
 
@@ -137,8 +137,8 @@ class RecipesEditPageTest extends TestCase
 
         $this->assertDatabaseHas('recipes', [
             'id' => $recipe->id,
-            'approved_' . LANG => 0,
-            'ready_' . LANG => 0,
+            'approved_' . lang() => 0,
+            'ready_' . lang() => 0,
         ]);
     }
 
@@ -153,8 +153,8 @@ class RecipesEditPageTest extends TestCase
 
         $this->assertDatabaseHas('recipes', [
             'id' => $recipe->id,
-            'approved_' . LANG => 1,
-            'ready_' . LANG => 1,
+            'approved_' . lang() => 1,
+            'ready_' . lang() => 1,
         ]);
     }
 
@@ -164,8 +164,8 @@ class RecipesEditPageTest extends TestCase
         $this->new_recipe['ready'] = 0;
         $this->new_recipe['text'] = '<script>';
         $recipe = create(Recipe::class, [
-            'approved_' . LANG => 0,
-            'ready_' . LANG => 0,
+            'approved_' . lang() => 0,
+            'ready_' . lang() => 0,
             'user_id' => $this->user->id,
         ]);
 

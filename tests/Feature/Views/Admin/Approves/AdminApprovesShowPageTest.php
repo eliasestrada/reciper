@@ -25,8 +25,8 @@ class AdminApprovesShowPageTest extends TestCase
         $admin = create_user('admin');
 
         $this->unapproved_recipe = create(Recipe::class, [
-            'approved_' . LANG => 0,
-            LANG . '_approver_id' => $admin->id,
+            'approved_' . lang() => 0,
+            lang() . '_approver_id' => $admin->id,
         ]);
 
         $this->admin = $admin;

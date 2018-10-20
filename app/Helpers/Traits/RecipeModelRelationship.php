@@ -43,6 +43,6 @@ trait RecipeModelRelationship
 
     public function approver()
     {
-        return $this->belongsTo(User::class, LANG . '_approver_id');
+        return $this->belongsTo(User::class, lang() . '_approver_id');
     }
 }

@@ -16,6 +16,6 @@ class Category extends Model
 
     public function getName(): string
     {
-        return $this->toArray()['name_' . LANG];
+        return $this->toArray()['name_' . lang()];
     }
 }

@@ -26,7 +26,7 @@ class PagesSearchPageTest extends TestCase
     /** @test */
     public function serch_form_shows_results_after_submitting(): void
     {
-        $recipe = create(Recipe::class, ['title_' . LANG => 'Recipe for test']);
+        $recipe = create(Recipe::class, ['title_' . lang() => 'Recipe for test']);
 
         $this->get('/search?for=Recipe+for+test')
             ->assertOk()

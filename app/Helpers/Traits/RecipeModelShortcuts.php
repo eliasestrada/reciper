@@ -9,7 +9,7 @@ trait RecipeModelShortcuts
      */
     public function getTitle(): ?string
     {
-        return $this->toArray()['title_' . LANG];
+        return $this->toArray()['title_' . lang()];
     }
 
     /**
@@ -17,7 +17,7 @@ trait RecipeModelShortcuts
      */
     public function getIngredients(): ?string
     {
-        return $this->toArray()['ingredients_' . LANG];
+        return $this->toArray()['ingredients_' . lang()];
     }
 
     /**
@@ -25,7 +25,7 @@ trait RecipeModelShortcuts
      */
     public function getIntro(): ?string
     {
-        return $this->toArray()['intro_' . LANG];
+        return $this->toArray()['intro_' . lang()];
     }
 
     /**
@@ -33,7 +33,7 @@ trait RecipeModelShortcuts
      */
     public function getText(): ?string
     {
-        return $this->toArray()['text_' . LANG];
+        return $this->toArray()['text_' . lang()];
     }
 
     /**
@@ -41,7 +41,7 @@ trait RecipeModelShortcuts
      */
     public function isReady(): bool
     {
-        return $this->toArray()['ready_' . LANG] == 1 ? true : false;
+        return $this->toArray()['ready_' . lang()] == 1 ? true : false;
     }
 
     /**
@@ -49,7 +49,7 @@ trait RecipeModelShortcuts
      */
     public function isApproved(): bool
     {
-        return $this->toArray()['approved_' . LANG] == 1 ? true : false;
+        return $this->toArray()['approved_' . lang()] == 1 ? true : false;
     }
 
     /**
@@ -65,7 +65,7 @@ trait RecipeModelShortcuts
      */
     public function isPublished(): bool
     {
-        return $this->toArray()['published_' . LANG] == 1 ? true : false;
+        return $this->toArray()['published_' . lang()] == 1 ? true : false;
     }
 
     /**
@@ -113,9 +113,9 @@ trait RecipeModelShortcuts
     public function moveToDrafts()
     {
         return $this->update([
-            'ready_' . LANG => 0,
-            'approved_' . LANG => 0,
-            LANG . '_approver_id' => 0,
+            'ready_' . lang() => 0,
+            'approved_' . lang() => 0,
+            lang() . '_approver_id' => 0,
         ]);
     }
 }

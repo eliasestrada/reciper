@@ -35,8 +35,8 @@ class DocumentsController extends Controller
     public function store(DocumentsRequest $request)
     {
         $doc = Document::create([
-            'title_' . LANG => $request->title,
-            'text_' . LANG => $request->text,
+            'title_' . lang() => $request->title,
+            'text_' . lang() => $request->text,
         ]);
 
         return redirect("/master/documents/$doc->id/edit");
@@ -67,9 +67,9 @@ class DocumentsController extends Controller
     public function update(DocumentsRequest $request, Document $document)
     {
         $document->update([
-            'title_' . LANG => $request->title,
-            'text_' . LANG => $request->text,
-            'ready_' . LANG => $request->ready == 1 || $document->id == 1 ? 1 : 0,
+            'title_' . lang() => $request->title,
+            'text_' . lang() => $request->text,
+            'ready_' . lang() => $request->ready == 1 || $document->id == 1 ? 1 : 0,
         ]);
 
         if ($request->has('view')) {

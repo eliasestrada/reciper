@@ -43,7 +43,7 @@ class AdminFeedbackIndexPageTest extends TestCase
 
         $feed = Feedback::create([
             'visitor_id' => create(Visitor::class)->id,
-            'lang' => LANG,
+            'lang' => lang(),
             'email' => 'johndoe@gmail.com',
             'message' => $msg,
         ]);

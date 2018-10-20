@@ -34,8 +34,8 @@ class AdminApprovesIndexPageTest extends TestCase
     /** @test */
     public function recipes_are_seen_if_they_are_ready_for_approving(): void
     {
-        $recipe1 = create(Recipe::class, ['approved_' . LANG => 0, LANG . '_approver_id' => 0]);
-        $recipe2 = create(Recipe::class, ['approved_' . LANG => 0, LANG . '_approver_id' => 0]);
+        $recipe1 = create(Recipe::class, ['approved_' . lang() => 0, lang() . '_approver_id' => 0]);
+        $recipe2 = create(Recipe::class, ['approved_' . lang() => 0, lang() . '_approver_id' => 0]);
 
         $this->actingAs(create_user('admin'))
             ->get('/admin/approves/')

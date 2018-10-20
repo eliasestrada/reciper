@@ -38,6 +38,11 @@ function user()
     return auth()->user();
 }
 
+function lang()
+{
+    return app()->getLocale();
+}
+
 /**
  * @param integer $num1
  * @param integer $num2

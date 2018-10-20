@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     public function showListOfCategories(): void
     {
         view()->share('categories', cache()->rememberForever('categories', function () {
-            return Category::select('id', 'name' . LANG . ' as name')->get()->toArray();
+            return Category::select('id', 'name_' . lang() . ' as name')->get()->toArray();
         }));
     }
 
@@ -40,10 +40,5 @@ class AppServiceProvider extends ServiceProvider
             }
             throw new UnauthorizedHttpException('Unauthorized');
         });
-    }
-
-    public function register()
-    {
-        define('LANG', app()->getLocale());
     }
 }

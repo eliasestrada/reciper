@@ -33,7 +33,7 @@ class MasterDocumentsShowPageTest extends TestCase
     public function user_cant_see_the_page_if_document_is_not_ready(): void
     {
         $this->actingAs(make(User::class))
-            ->get('/documents/' . create(Document::class, ['ready_' . LANG => 0])->id)
+            ->get('/documents/' . create(Document::class, ['ready_' . lang() => 0])->id)
             ->assertRedirect();
     }
 
@@ -41,7 +41,7 @@ class MasterDocumentsShowPageTest extends TestCase
     public function master_can_see_the_page_if_document_is_not_ready(): void
     {
         $this->actingAs(create_user('master'))
-            ->get('/documents/' . create(Document::class, ['ready_' . LANG => 0])->id)
+            ->get('/documents/' . create(Document::class, ['ready_' . lang() => 0])->id)
             ->assertOk();
     }
 
