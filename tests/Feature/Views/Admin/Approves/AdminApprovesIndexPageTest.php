@@ -14,33 +14,14 @@ class AdminApprovesIndexPageTest extends TestCase
     /** @test */
     public function view_has_data(): void
     {
-        $admin = create_user('admin');
-        $user = create_user();
-
-        $this->actingAs($admin)
+        $this->actingAs(create_user('admin'))
             ->get('/admin/approves')
             ->assertOk()
             ->assertViewIs('admin.approves.index')
             ->assertViewHas([
-                'unapproved_waiting' => Recipe::oldest()
-                    ->where(lang() . '_approver_id', 0)
-                    ->selectBasic()
-                    ->approved(0)
-                    ->ready(1)
-                    ->paginate(30)
-                    ->onEachSide(1),
-                'unapproved_checking' => Recipe::oldest()
-                    ->where(lang() . '_approver_id', '!=', 0)
-                    ->selectBasic()
-                    ->approved(0)
-                    ->ready(1)
-                    ->paginate(30)
-                    ->onEachSide(1),
-                'my_approves' => Recipe::oldest()
-                    ->where(lang() . '_approver_id', user()->id)
-                    ->done(1)
-                    ->paginate(30)
-                    ->onEachSide(1),
+                'unapproved_waiting',
+                'unapproved_checking',
+                'my_approves',
             ]);
     }
 
