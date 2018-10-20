@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         \Schema::defaultStringLength(191);
-        // \Artisan::call('migrate:fresh');
+        // \Artisan::call('wipe');
         $this->showListOfCategories();
         // $this->horizon();
     }
