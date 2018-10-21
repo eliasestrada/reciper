@@ -107,16 +107,16 @@ class ApprovesController extends Controller
 
         if (!is_null($error_message)) {
             return redirect("/admin/approves")
-                ->header('X-APPROVING-ERROR', 'Already Approved or not ready')
+                ->header('x-recipe-cant-be-approved', 0)
                 ->withError($error_message);
         }
 
         event(new \App\Events\RecipeGotCanceled($recipe, $request->message));
         cache()->forget('unapproved_notif');
 
-        return redirect('/recipes')->withSuccess(
-            trans('recipes.you_gave_recipe_back_on_editing')
-        );
+        return redirect('/recipes')
+            ->header('x-recipe-disapproved', 1)
+            ->withSuccess(trans('recipes.you_gave_recipe_back_on_editing'));
     }
 
     /**
