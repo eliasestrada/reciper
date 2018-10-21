@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Scripts;
+namespace Tests\Unit\Controllers\Statistics\Chart;
 
 use App\Http\Controllers\Api\StatisticsController;
 use App\Models\User;
