@@ -13,13 +13,7 @@ class Popularity
      */
     public static function add(float $points, int $user_id)
     {
-        $xp = User::whereId($user_id)->value('xp');
-
-        if ($xp <= (config('custom.max_xp') - $points)) {
-            User::whereId($user_id)->increment('popularity', $points);
-        } else {
-            User::whereId($user_id)->increment('popularity', config('custom.max_xp') - $xp);
-        }
+        User::whereId($user_id)->increment('popularity', $points);
     }
 
     /**
