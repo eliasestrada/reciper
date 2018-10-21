@@ -93,7 +93,9 @@ class UserXpTest extends TestCase
     {
         $user = create_user('', ['streak_check' => $date = now()->subDay(), 'online_check' => now()->subHour()]);
         $this->actingAs($user)->get('/');
-        $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_check' => date('Y-m-d H:i:s')]);
+
+        $user_streak_date = User::whereId($user->id)->value('streak_check');
+        $this->assertEquals(date('Y-m-d H:i'), date("Y-m-d H:i", strtotime($user_streak_date)));
     }
 
     /** @test */

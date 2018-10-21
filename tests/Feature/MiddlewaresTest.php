@@ -17,8 +17,8 @@ class MiddlewaresTest extends TestCase
         $this->actingAs($user)->get('/');
 
         $online_check_value = User::whereId($user->id)->value('online_check');
-        $user_last_visit = date("Y-m-d H-i", strtotime($online_check_value));
-        $this->assertEquals(now()->format('Y-m-d H-i'), $user_last_visit);
+        $user_last_visit = date("Y-m-d H:i", strtotime($online_check_value));
+        $this->assertEquals(now()->format('Y-m-d H:i'), $user_last_visit);
     }
 
     /** @test */
