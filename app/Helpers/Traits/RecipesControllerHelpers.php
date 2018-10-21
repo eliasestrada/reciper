@@ -45,7 +45,7 @@ trait RecipesControllerHelpers
         if ($image != 'default.jpg') {
             \Storage::delete([
                 "public/recipes/$image",
-                "public/recipes/small/$image",
+                "public/small/recipes/$image",
             ]);
         }
     }
