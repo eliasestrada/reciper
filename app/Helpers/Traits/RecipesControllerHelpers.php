@@ -113,9 +113,20 @@ trait RecipesControllerHelpers
      */
     public function isSimple($request): bool
     {
-        $ingredients = count(convert_to_array_of_list_items($request->ingredients));
-        $text = count(convert_to_array_of_list_items($request->text));
+        $ingredients = count(to_array_of_list_items($request->ingredients));
+        $text = count(to_array_of_list_items($request->text));
 
-        return $ingredients + $text <= 10 ? ($request->time < 60 ? true : false) : false;
+        $allowed_maximum_of_rows = config('custom.rows_for_simple_recipe');
+        $sum = $ingredients + $text;
+
+        if ($request->ingredients == '' || $request->text == '') {
+            return false;
+        }
+
+        if ($sum <= $allowed_maximum_of_rows && $request->time < 60) {
+            return true;
+        }
+
+        return false;
     }
 }
