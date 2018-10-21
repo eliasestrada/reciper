@@ -36,12 +36,7 @@ class RecipesEditPageTest extends TestCase
     /** @test */
     public function view_has_data(): void
     {
-        $recipe = create(Recipe::class, [
-            'ready_' . lang() => 0,
-            'approved_' . lang() => 0,
-            'user_id' => $this->user->id,
-        ]);
-
+        $recipe = create(Recipe::class, ['user_id' => $this->user->id], null, 'draft');
         $response = $this->actingAs($this->user)->get("/recipes/{$recipe->id}/edit");
 
         $response->assertViewIs('recipes.edit')
@@ -66,11 +61,7 @@ class RecipesEditPageTest extends TestCase
     /** @test */
     public function recipe_is_ready_but_not_approved_after_publishing_by_user(): void
     {
-        $old_recipe = create(Recipe::class, [
-            'approved_' . lang() => 0,
-            'ready_' . lang() => 0,
-            'user_id' => $this->user->id,
-        ]);
+        $old_recipe = create(Recipe::class, ['user_id' => $this->user->id], null, 'draft');
 
         $this->actingAs($this->user)
             ->put(action('RecipesController@update', $old_recipe->id), $this->new_recipe)
@@ -87,11 +78,7 @@ class RecipesEditPageTest extends TestCase
     public function recipe_can_be_saved(): void
     {
         $this->new_recipe['ready'] = 0;
-        $recipe = create(Recipe::class, [
-            'approved_' . lang() => 0,
-            'ready_' . lang() => 0,
-            'user_id' => $this->user->id,
-        ]);
+        $recipe = create(Recipe::class, ['user_id' => $this->user->id], null, 'draft');
 
         $this->actingAs($this->user)
             ->followingRedirects()
@@ -109,12 +96,7 @@ class RecipesEditPageTest extends TestCase
     public function recipe_is_ready_and_approved_after_publishing_by_admin(): void
     {
         $admin = create_user('admin');
-
-        $recipe_before = create(Recipe::class, [
-            'user_id' => $admin->id,
-            'ready_' . lang() => 0,
-            'approved_' . lang() => 0,
-        ]);
+        $recipe_before = create(Recipe::class, ['user_id' => $admin->id], null, 'draft');
 
         $this->actingAs($admin)
             ->put(action('RecipesController@update', $recipe_before->id), $this->new_recipe)
@@ -163,11 +145,7 @@ class RecipesEditPageTest extends TestCase
     {
         $this->new_recipe['ready'] = 0;
         $this->new_recipe['text'] = '<script>';
-        $recipe = create(Recipe::class, [
-            'approved_' . lang() => 0,
-            'ready_' . lang() => 0,
-            'user_id' => $this->user->id,
-        ]);
+        $recipe = create(Recipe::class, ['user_id' => $this->user->id], null, 'draft');
 
         $this->actingAs($this->user)
             ->followingRedirects()

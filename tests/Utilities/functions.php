@@ -2,7 +2,7 @@
 
 use App\Models\User;
 
-function create($class, $attributes = [], $times = null, $state)
+function create($class, $attributes = [], $times = null, $state = null)
 {
     if ($state) {
         return factory($class, $times)->state($state)->create($attributes);

@@ -112,12 +112,7 @@ class RecipesUpdateRequestPart2Test extends TestCase
     public function response()
     {
         $user = make(User::class, ['id' => 1]);
-
-        $recipe = create(Recipe::class, [
-            'approved_' . lang() => 0,
-            'ready_' . lang() => 0,
-            'user_id' => $user->id,
-        ]);
+        $recipe = create(Recipe::class, ['user_id' => $user->id], null, 'draft');
 
         return $this->actingAs($user)
             ->followingRedirects()
