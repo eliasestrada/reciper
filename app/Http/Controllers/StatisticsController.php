@@ -13,7 +13,7 @@ class StatisticsController extends Controller
     public function index()
     {
         $recipes = Recipe::whereUserId(user()->id)
-            ->select('id', 'title_' . lang())
+            ->select('id', 'title_' . LANG())
             ->withCount('likes')
             ->withCount('views')
             ->withCount('favs')

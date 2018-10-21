@@ -4,7 +4,7 @@
         selector: "#text",
         themes: "modern",
         skin: "light",
-        language: '{{ lang() }}',
+        language: '{{ LANG() }}',
         plugins: [
             "autolink lists link preview wordcount fullscreen paste",
         ],

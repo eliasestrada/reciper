@@ -37,9 +37,9 @@ class MasterDocumentsCreatePageTest extends TestCase
             ->post(action('Master\DocumentsController@store'), $data);
 
         $this->assertDatabaseHas('documents', [
-            'title_' . lang() => $data['title'],
-            'text_' . lang() => $data['text'],
-            'ready_' . lang() => 0,
+            'title_' . LANG() => $data['title'],
+            'text_' . LANG() => $data['text'],
+            'ready_' . LANG() => 0,
         ]);
     }
 
@@ -88,9 +88,9 @@ class MasterDocumentsCreatePageTest extends TestCase
             ->assertSeeText(trans('documents.saved'));
 
         $this->assertDatabaseHas('documents', [
-            'title_' . lang() => $data['title'],
-            'text_' . lang() => $data['text'],
-            'ready_' . lang() => 0,
+            'title_' . LANG() => $data['title'],
+            'text_' . LANG() => $data['text'],
+            'ready_' . LANG() => 0,
         ]);
     }
 
@@ -107,7 +107,7 @@ class MasterDocumentsCreatePageTest extends TestCase
 
         $this->assertDatabaseHas('documents', [
             'id' => 1,
-            'ready_' . lang() => 1,
+            'ready_' . LANG() => 1,
         ]);
     }
 }

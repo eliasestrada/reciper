@@ -20,7 +20,7 @@ class ApprovesController extends Controller
     public function index()
     {
         $unapproved_waiting = Recipe::oldest()
-            ->where(lang() . '_approver_id', 0)
+            ->where(LANG() . '_approver_id', 0)
             ->selectBasic()
             ->approved(0)
             ->ready(1)
@@ -28,7 +28,7 @@ class ApprovesController extends Controller
             ->onEachSide(1);
 
         $unapproved_checking = Recipe::oldest()
-            ->where(lang() . '_approver_id', '!=', 0)
+            ->where(LANG() . '_approver_id', '!=', 0)
             ->selectBasic()
             ->approved(0)
             ->ready(1)
@@ -36,13 +36,13 @@ class ApprovesController extends Controller
             ->onEachSide(1);
 
         $my_approves = Recipe::oldest()
-            ->where(lang() . '_approver_id', user()->id)
+            ->where(LANG() . '_approver_id', user()->id)
             ->done(1)
             ->paginate(30)
             ->onEachSide(1);
 
         // Check if admin is already has recipe that he didnt approved
-        $already_checking = Recipe::where(lang() . '_approver_id', user()->id)->approved(0)->ready(1)->value('id');
+        $already_checking = Recipe::where(LANG() . '_approver_id', user()->id)->approved(0)->ready(1)->value('id');
 
         if ($already_checking) {
             return redirect("/admin/approves/$already_checking")->withSuccess(
@@ -67,7 +67,7 @@ class ApprovesController extends Controller
         }
 
         if (!optional($recipe->approver)->id) {
-            $recipe->update([lang() . '_approver_id' => user()->id]);
+            $recipe->update([LANG() . '_approver_id' => user()->id]);
             $approver_id = user()->id;
         } else {
             $approver_id = $recipe->approver->id;

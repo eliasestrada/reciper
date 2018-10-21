@@ -38,7 +38,7 @@ function user()
     return auth()->user();
 }
 
-function lang()
+function LANG()
 {
     return app()->getLocale();
 }

@@ -12,6 +12,6 @@ class UpdateRecipeAfterApproving
      */
     public function handle(RecipeGotApproved $event)
     {
-        $event->recipe->update(['approved_' . lang() => 1]);
+        $event->recipe->update(['approved_' . LANG() => 1]);
     }
 }

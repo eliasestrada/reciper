@@ -17,13 +17,13 @@ class Meal extends Model
 
     public function getName(): string
     {
-        return $this->toArray()['name_' . lang()];
+        return $this->toArray()['name_' . LANG()];
     }
 
     public static function getWithCache()
     {
         return cache()->rememberForever('meal', function () {
-            return self::select('id', 'name_' . lang() . ' as name')->get()->toArray();
+            return self::select('id', 'name_' . LANG() . ' as name')->get()->toArray();
         });
     }
 }

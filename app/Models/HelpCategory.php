@@ -15,6 +15,6 @@ class HelpCategory extends Model
      */
     public function getTitle(): string
     {
-        return $this->toArray()['title_' . lang()];
+        return $this->toArray()['title_' . LANG()];
     }
 }

@@ -15,7 +15,7 @@ class DocumentsComposer
     public function compose(View $view): void
     {
         $view->with('documents_footer', cache()->rememberForever('documents_footer', function () {
-            return Document::select('id', 'title_' . lang() . ' as title')
+            return Document::select('id', 'title_' . LANG() . ' as title')
                 ->isReady(1)
                 ->limit(10)
                 ->get()
