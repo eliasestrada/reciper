@@ -13,18 +13,20 @@ class MiddlewaresTest extends TestCase
     /** @test */
     public function online_check_is_updated_to_now_after_user_visits_the_app(): void
     {
-        $this->actingAs($user = create_user('', ['online_check' => now()->subWeek()]))->get('/');
+        $user = create_user('', ['online_check' => now()->subWeek()]);
+        $this->actingAs($user)->get('/');
 
-        $actual = date("Y-m-d H-i", strtotime(User::whereId($user->id)->value('online_check')));
-        $this->assertEquals(now()->format('Y-m-d H-i'), $actual);
+        $online_check_value = User::whereId($user->id)->value('online_check');
+        $user_last_visit = date("Y-m-d H-i", strtotime($online_check_value));
+        $this->assertEquals(now()->format('Y-m-d H-i'), $user_last_visit);
     }
 
     /** @test */
     public function online_check_is_updated_after_5_minutes(): void
     {
-        $this->actingAs($user = create_user('', ['online_check' => now()->subMinutes(5)]))->get('/');
-        $now = now();
-        $this->assertDatabaseHas('users', ['id' => $user->id, 'online_check' => $now]);
+        $user = create_user('', ['online_check' => now()->subMinutes(5)]);
+        $this->actingAs($user)->get('/');
+        $this->assertDatabaseHas('users', ['id' => $user->id, 'online_check' => now()]);
     }
 
     /** @test */
@@ -33,8 +35,9 @@ class MiddlewaresTest extends TestCase
         $user = create_user();
 
         for ($i = 1; $i < 5; $i++) {
-            $date = now()->subMinutes($i);
+            $date = now()->subMinutes($i)->toDateTimeString();
             $user->update(['online_check' => $date]);
+
             $this->actingAs($user)->get('/');
             $this->assertDatabaseHas('users', ['id' => $user->id, 'online_check' => $date]);
         }
