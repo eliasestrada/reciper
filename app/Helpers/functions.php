@@ -17,17 +17,20 @@ function custom_strip_tags(string $string): string
  * @param string $str
  * @return array
  */
-function convert_to_array_of_list_items(?string $str): array
+function to_array_of_list_items(?string $str): array
 {
-    $string = strip_tags($str, '<li>');
+    $string_with_no_tags = strip_tags($str, '<li>');
 
-    // Convert from string to array
-    $array = explode("\n", preg_replace("/[\r\n]+/", "\n", $string));
+    $array_of_lines = explode("\n", preg_replace("/[\r\n]+/", "\n", $string_with_no_tags));
+
+    $array_without_empty_lines = array_filter($array_of_lines, function($item) {
+        return $item != '';
+    });
 
     // Every array item wrapping with <li> tags
     $list_of_ingredients = array_map(function ($item) {
-        return '<li>' . $item . '</li>';
-    }, $array);
+        return "<li>$item</li>";
+    }, $array_without_empty_lines);
 
     return array_values($list_of_ingredients);
 }

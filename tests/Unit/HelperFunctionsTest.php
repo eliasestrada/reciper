@@ -7,15 +7,22 @@ use Tests\TestCase;
 class HelperFunctionsTest extends TestCase
 {
     /** @test */
-    public function convert_to_array_of_list_items_helper_returns_array(): void
+    public function toArrayOfListItems_helper_returns_array(): void
     {
-        $string = 'First line
-            Second line';
-
-        $result = convert_to_array_of_list_items($string);
+        $string = "First line\nSecond line";
+        $result = to_array_of_list_items($string);
 
         $this->assertCount(2, $result);
         $this->assertEquals('<li>First line</li>', $result[0]);
+        $this->assertEquals('<li>Second line</li>', $result[1]);
+    }
+
+    /** @test */
+    public function toArrayOfListItems_helper_removes_empty_lines(): void
+    {
+        $this->assertCount(0, to_array_of_list_items("\n\n\n"));
+        $this->assertCount(1, to_array_of_list_items("First \n"));
+        $this->assertCount(2, to_array_of_list_items("First \n Second \n"));
     }
 
     /** @test */
