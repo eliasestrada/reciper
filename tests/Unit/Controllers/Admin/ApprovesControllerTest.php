@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Controllers\Admin\Approves;
+namespace Tests\Unit\Controllers\Admin;
 
 use App\Http\Controllers\Admin\ApprovesController;
 use App\Http\Requests\DisapproveRequest;
