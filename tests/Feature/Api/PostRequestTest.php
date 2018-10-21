@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Api;
 
+use App\Models\Like;
 use App\Models\Recipe;
 use App\Models\Visitor;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -12,36 +13,35 @@ class PostRequestTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function like_and_dislike_recipe_post_request(): void
+    public function like_is_added_after_visitor_makes_like_post_request(): void
     {
-        // Like recipe request ======
-        $recipe = create(Recipe::class);
-        $visitor = make(Visitor::class, ['ip' => '777.777.7.7']);
-
-        $this->post("/api/like/like/$recipe->id", ['ip' => $visitor->ip]);
-
-        $recipe = Recipe::find($recipe->id);
-        $this->assertEquals(1, count($recipe->likes));
-
-        // Dislike recipe request ======
-        $this->post("/api/like/dislike/$recipe->id", [
-            'ip' => $visitor->ip,
-        ]);
-
-        $recipe = Recipe::find($recipe->id);
-        $this->assertEquals(0, count($recipe->likes));
+        $visitor = make(Visitor::class);
+        $this->post('/api/like/like/1', ['ip' => $visitor->ip]);
+        $this->assertCount(1, Recipe::first()->likes);
     }
 
     /** @test */
-    public function check_if_liked_post_request(): void
+    public function like_is_removed_after_visitor_makes_dislike_post_request(): void
     {
-        $recipe = create(Recipe::class);
-        $visitor = Visitor::create(['ip' => '777.777.7.7']);
+        Like::create(['recipe_id' => 1, 'visitor_id' => 1]);
 
-        $response = $this->post("/api/like/check/$recipe->id", [
-            'ip' => $visitor->ip,
-        ]);
+        $this->post('/api/like/dislike/1', ['ip' => '127.0.0.1']);
+        $this->assertCount(0, Recipe::first()->likes);
+    }
 
+    /** @test */
+    public function request_returns_1_if_visitor_liked_the_recipe_before(): void
+    {
+        Like::create(['recipe_id' => 1, 'visitor_id' => 1]);
+        $response = $this->post('/api/like/check/1', ['ip' => '127.0.0.1']);
+        $response->assertOk();
+        $this->assertEquals(1, $response->original);
+    }
+
+    /** @test */
+    public function request_returns_0_if_visitor_did_not_like_the_recipe_before(): void
+    {
+        $response = $this->post('/api/like/check/1', ['ip' => '127.0.0.1']);
         $response->assertOk();
         $this->assertEquals(0, $response->original);
     }

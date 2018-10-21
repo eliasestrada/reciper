@@ -11,7 +11,7 @@ class ShowJsonRecipesTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function see_latest_recipes_json_if_no_hash(): void
+    public function see_latest_recipes_json_if_there_are_no_hash_in_url(): void
     {
         $recipe = create(Recipe::class);
 
@@ -21,7 +21,10 @@ class ShowJsonRecipesTest extends TestCase
             ->assertJsonFragment(['intro' => $recipe->getIntro()]);
     }
 
-    /** @test */
+    /**
+     * @test
+     *  "1" in request url is visitor id
+     * */
     public function see_random_recipes_json(): void
     {
         $recipe = create(Recipe::class);
