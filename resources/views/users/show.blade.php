@@ -44,8 +44,8 @@
             <div class="col s12 l6">
                 <div class="bubbles no-select">
                     {{-- Likes Bubble --}}
-                    <div class="bubbles-block" style="animation:appearWithRotate .3s">
-                        <i class="fas fa-heart fa-2x tooltipped" data-tooltip="@lang('tips.likes_tip', ['value' => number_format($recipes->sum('likes_count'))])"></i>
+                    <div class="bubbles-block tooltipped" style="animation:appearWithRotate .3s" data-tooltip="@lang('tips.likes_tip', ['value' => number_format($recipes->sum('likes_count'))])">
+                        <i class="fas fa-heart fa-2x"></i>
                         <div class="bubble">
                             <span class="number">{!! readable_number($recipes->sum('likes_count')) !!}</span>
                         </div>
@@ -53,8 +53,8 @@
                     </div>
 
                     {{-- Popularity Bubble --}}
-                    <div class="bubbles-block" style="animation:appearWithRotate .7s">
-                        <i class="fas fa-crown fa-2x tooltipped" data-tooltip="@lang('tips.rating_tip', ['value' => $user->popularity])"></i>
+                    <div class="bubbles-block tooltipped" style="animation:appearWithRotate .7s" data-tooltip="@lang('tips.rating_tip', ['value' => $user->popularity])">
+                        <i class="fas fa-crown fa-2x"></i>
                         <div class="bubble">
                             <span class="number">{!! readable_number($user->popularity) !!}</span>
                         </div>
@@ -62,8 +62,8 @@
                     </div>
 
                     {{-- Views Bubble --}}
-                    <div class="bubbles-block" style="animation:appearWithRotate 1s">
-                        <i class="fas fa-eye fa-2x tooltipped" data-tooltip="@lang('tips.views_tip', ['value' => number_format($recipes->sum('views_count'))])"></i>
+                    <div class="bubbles-block tooltipped" style="animation:appearWithRotate 1s" data-tooltip="@lang('tips.views_tip', ['value' => number_format($recipes->sum('views_count'))])">
+                        <i class="fas fa-eye fa-2x"></i>
                         <div class="bubble">
                             <span class="number">{!! readable_number($recipes->sum('views_count')) !!}</span>
                         </div>
