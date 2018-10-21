@@ -6,7 +6,7 @@ use App\Events\RecipeGotApproved;
 use App\Models\User;
 use App\Notifications\RecipeApprovedNotification;
 
-class SendHappyNotificationToAuthor
+class NotifyAuthorAboutApproving
 {
     /**
      * @param  RecipeGotApproved  $event
@@ -14,6 +14,7 @@ class SendHappyNotificationToAuthor
      */
     public function handle(RecipeGotApproved $event)
     {
-        User::whereId($event->user_id)->first()->notify(new RecipeApprovedNotification($event->recipe));
+        $author = User::whereId($event->recipe->user_id)->first();
+        $author->notify(new RecipeApprovedNotification($event->recipe));
     }
 }

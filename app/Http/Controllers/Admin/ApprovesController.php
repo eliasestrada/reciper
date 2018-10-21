@@ -89,7 +89,7 @@ class ApprovesController extends Controller
                 ->withError($error_message);
         }
 
-        event(new \App\Events\RecipeGotApproved($recipe, user()->id));
+        event(new \App\Events\RecipeGotApproved($recipe));
         cache()->forget('unapproved_notif');
 
         return redirect("/recipes/$recipe->id")

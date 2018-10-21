@@ -6,7 +6,7 @@ use App\Events\RecipeGotCanceled;
 use App\Models\User;
 use App\Notifications\RecipeApprovedNotification;
 
-class SendSadNotificationToAuthor
+class NotifyAuthorAboutCanceling
 {
     /**
      * @param  RecipeGotCanceled  $event
@@ -14,6 +14,7 @@ class SendSadNotificationToAuthor
      */
     public function handle(RecipeGotCanceled $event)
     {
-        User::whereId($event->user_id)->first()->notify(new RecipeApprovedNotification($event->recipe, $event->message));
+        $author = User::whereId($event->recipe->user_id)->first();
+        $author->notify(new RecipeApprovedNotification($event->recipe, $event->message));
     }
 }
