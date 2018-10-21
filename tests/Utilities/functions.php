@@ -2,13 +2,19 @@
 
 use App\Models\User;
 
-function create($class, $attributes = [], $times = null)
+function create($class, $attributes = [], $times = null, $state)
 {
+    if ($state) {
+        return factory($class, $times)->state($state)->create($attributes);
+    }
     return factory($class, $times)->create($attributes);
 }
 
-function make($class, $attributes = [], $times = null)
+function make($class, $attributes = [], $times = null, $state = null)
 {
+    if ($state) {
+        return factory($class, $times)->state($state)->make($attributes);
+    }
     return factory($class, $times)->make($attributes);
 }
 

@@ -33,3 +33,12 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'published_en' => 1,
     ];
 });
+
+$factory->state(Recipe::class, 'draft', [
+    'ready_en' => 0,
+    'ready_ru' => 0,
+    'approved_en' => 0,
+    'approved_ru' => 0,
+    'en_approver_id' => 0,
+    'ru_approver_id' => 0,
+]);
