@@ -33,11 +33,13 @@ class LikeController extends Controller
 
         if (request()->cookie('ekilx') != $id) {
             $recipe = Recipe::find($id);
-            $visitor->likes()->create(['recipe_id' => $recipe->id]);
             cache()->forget('visitor_likes');
+
+            $visitor->likes()->create(['recipe_id' => $recipe->id]);
             Popularity::add(config('custom.popularity_for_like'), $recipe->user_id);
 
-            return response()->json(['liked' => 1])->withCookie('ekilx', \Crypt::encrypt($id), 5555);
+            return response()->json(['liked' => 1])
+                ->withCookie('ekilx', \Crypt::encrypt($id), 5555);
         }
         return response()->json(['liked' => 0])->withCookie('ekilx', $id, -5);
     }
