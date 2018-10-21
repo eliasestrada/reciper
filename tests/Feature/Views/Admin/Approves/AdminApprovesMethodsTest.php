@@ -17,4 +17,16 @@ class AdminApprovesMethodsTest extends TestCase
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertArrayHasKey('x-recipe-cant-be-approved', $response->headers->all());
     }
+
+    /** @test */
+    public function approve_method_redirects_if_recipe_is_in_drafts(): void
+    {
+        $this->withoutEvents();
+
+        $recipe = make(Recipe::class, [], null, 'draft');
+        $response = (new ApprovesController)->approve($recipe);
+
+        $this->assertEquals(302, $response->getStatusCode());
+        $this->assertArrayHasKey('x-recipe-cant-be-approved', $response->headers->all());
+    }
 }
