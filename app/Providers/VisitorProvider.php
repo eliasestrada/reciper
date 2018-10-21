@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Visitor;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\ServiceProvider;
 
 class VisitorProvider extends ServiceProvider
@@ -15,8 +16,12 @@ class VisitorProvider extends ServiceProvider
     {
         // If visitor doesn't have a cookie it will set it
         if (!request()->cookie('r_rotsiv')) {
-            Visitor::updateOrCreateNewVisitor();
-            \Cookie::queue('r_rotsiv', Visitor::whereIp(request()->ip())->value('id'), 218400);
+            try {
+                Visitor::updateOrCreateNewVisitor();
+                \Cookie::queue('r_rotsiv', Visitor::whereIp(request()->ip())->value('id'), 218400);
+            } catch (QueryException $e) {
+                logger()->error($e->getMessage());
+            }
         }
     }
 }
