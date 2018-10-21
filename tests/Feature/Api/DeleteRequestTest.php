@@ -4,6 +4,7 @@ namespace Tests\Feature\Api;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use App\Models\Recipe;
 
 class DeleteRequestTest extends TestCase
 {
@@ -12,7 +13,8 @@ class DeleteRequestTest extends TestCase
     /** @test */
     public function recipe_deletes_after_delete_request(): void
     {
-        $response = $this->delete('/api/recipes/1');
+        $recipe = create(Recipe::class);
+        $response = $this->delete("/api/recipes/$recipe->id");
         $response->assertStatus(200);
         $this->assertEquals('success', $response->original);
     }

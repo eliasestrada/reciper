@@ -28,6 +28,5 @@ class RecipeSeeder extends Seeder
             'updated_at' => '2018-04-02 12:48:26',
         ]);
         $recipe->categories()->sync([4, 11, 13, 16]);
-        $recipe->likes()->create(['visitor_id' => 1]);
     }
 }
