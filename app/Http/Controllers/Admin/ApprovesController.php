@@ -41,18 +41,14 @@ class ApprovesController extends Controller
             ->paginate(30)
             ->onEachSide(1);
 
-        // Check if admin is already has recipe that he didnt approved
-        $already_checking = Recipe::where(LANG() . '_approver_id', user()->id)->approved(0)->ready(1)->value('id');
-
-        if ($already_checking) {
-            return redirect("/admin/approves/$already_checking")->withSuccess(
-                trans('approves.finish_checking')
-            );
+        // Check if admin is already has recipe that he didnt approve
+        if (Recipe::where(LANG() . '_approver_id', user()->id)->approved(0)->ready(1)->value('id')) {
+            return redirect("/admin/approves/$already_checking")
+                ->withSuccess(trans('approves.finish_checking'));
         }
 
-        return view('admin.approves.index', compact(
-            'unapproved_waiting', 'unapproved_checking', 'my_approves'
-        ));
+        return view('admin.approves.index',
+            compact('unapproved_waiting', 'unapproved_checking', 'my_approves'));
     }
 
     /**
