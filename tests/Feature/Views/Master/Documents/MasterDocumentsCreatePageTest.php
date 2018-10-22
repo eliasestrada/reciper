@@ -31,7 +31,7 @@ class MasterDocumentsCreatePageTest extends TestCase
     /** @test */
     public function master_can_create_document(): void
     {
-        $data = ['title' => str_random(20), 'text' => str_random(300)];
+        $data = ['title' => str_random(20), 'text' => str_random(100)];
 
         $this->actingAs(create_user('master'))
             ->post(action('Master\DocumentsController@store'), $data);
@@ -47,19 +47,16 @@ class MasterDocumentsCreatePageTest extends TestCase
     public function master_can_delete_document(): void
     {
         $this->actingAs(create_user('master'))
-            ->followingRedirects()
             ->delete(action('Master\DocumentsController@destroy', [
                 'id' => $document_id = create(Document::class)->id,
-            ]))
-            ->assertSeeText(trans('documents.doc_has_been_deleted'));
-
+            ]));
         $this->assertDatabaseMissing('documents', ['id' => $document_id]);
     }
 
     /** @test */
     public function user_cant_delete_document(): void
     {
-        $this->actingAs(create_user())
+        $this->actingAs(make(User::class))
             ->followingRedirects()
             ->delete(action('Master\DocumentsController@destroy', [
                 'id' => $document_id = create(Document::class)->id,
@@ -79,13 +76,11 @@ class MasterDocumentsCreatePageTest extends TestCase
     /** @test */
     public function master_can_move_documents_to_drafts(): void
     {
-        $data = ['title' => str_random(20), 'text' => str_random(200)];
+        $data = ['title' => str_random(20), 'text' => str_random(100)];
         $doc = create(Document::class);
 
         $this->actingAs(create_user('master'))
-            ->followingRedirects()
-            ->put(action('Master\DocumentsController@update', ['id' => $doc->id]), $data)
-            ->assertSeeText(trans('documents.saved'));
+            ->put(action('Master\DocumentsController@update', ['id' => $doc->id]), $data);
 
         $this->assertDatabaseHas('documents', [
             'title_' . LANG() => $data['title'],
@@ -97,17 +92,13 @@ class MasterDocumentsCreatePageTest extends TestCase
     /** @test */
     public function master_cant_move_main_first_document_to_drafts(): void
     {
-        $doc = Document::first();
-        $data = ['title' => $doc->getTitle(), 'text' => $doc->getText()];
+        $data = ['title' => str_random(10), 'text' => str_random(100)];
 
         $this->actingAs(create_user('master'))
-            ->followingRedirects()
-            ->put(action('Master\DocumentsController@update', ['id' => $doc->id]), $data)
-            ->assertSeeText(trans('documents.saved'));
+            ->put(action('Master\DocumentsController@update', [
+                'id' => Document::first()->id,
+            ]), $data);
 
-        $this->assertDatabaseHas('documents', [
-            'id' => 1,
-            'ready_' . LANG() => 1,
-        ]);
+        $this->assertDatabaseHas('documents', ['id' => 1, 'ready_' . LANG() => 1]);
     }
 }

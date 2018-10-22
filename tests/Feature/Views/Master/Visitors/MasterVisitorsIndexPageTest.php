@@ -10,41 +10,29 @@ class MasterVisitorsIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    private $master;
-
-    public function setUp()
-    {
-        parent::setUp();
-
-        $this->master = create_user('master');
-    }
-
     /** @test */
-    public function master_can_view_the_page(): void
+    public function view_has_data(): void
     {
-        $this->actingAs($this->master)
+        $this->actingAs(create_user('master'))
             ->get('/master/visitors')
-            ->assertOk();
+            ->assertOk()
+            ->assertViewIs('master.visitors.index')
+            ->assertViewHas('visitors');
     }
 
     /** @test */
-    public function admin_and_user_cant_view_the_page(): void
+    public function admin_cant_view_the_page(): void
     {
         $this->actingAs(create_user('admin'))
             ->get('/master/visitors')
             ->assertRedirect();
-
-        $this->actingAs(make(User::class))
-            ->get('/master/visitors')
-            ->assertRedirect();
     }
 
     /** @test */
-    public function view_has_data(): void
+    public function user_cant_view_the_page(): void
     {
-        $this->actingAs($this->master)
+        $this->actingAs(make(User::class))
             ->get('/master/visitors')
-            ->assertViewIs('master.visitors.index')
-            ->assertViewHas('visitors');
+            ->assertRedirect();
     }
 }
