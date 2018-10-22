@@ -14,7 +14,7 @@ class UsersSeeder extends Seeder
         $user = User::create([
             'visitor_id' => 1,
             'email' => '11@11.com',
-            'username' => 'admin',
+            'username' => 'master',
             'name' => 'Серый 😎',
             'xp' => config('custom.xp_for_approve'),
             'popularity' => config('custom.popularity_for_like'),
