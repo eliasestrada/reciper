@@ -10,18 +10,21 @@
     <div class="row mt-4">
         @foreach ($help_categories as $category)
             <div class="col s12 m6 l4">
-                <h5 class="grey-dark-text header"> <i class="fas {{ $category->icon }} left red-text"></i>
-                    {{ $category->title }}
+                <h5 class="grey-dark-text header">
+                    <i class="fas {{ $category['icon'] }} left red-text w20"></i>
+                    {{ $category['title'] }}
                 </h5>
                 <div class="divider"></div>
 
                 <ul>
-                    @foreach ($help->where('help_category_id', $category->id) as $h)
-                        <li>
-                            <a href="/help/{{ $h->id }}" class="main-dark-text text-hover" style="font-size:1.05em">
-                                <span class="red-text">#</span> {{ $h->title }}
-                            </a>
-                        </li>
+                    @foreach ($help as $question)
+                        @if ($question['help_category_id'] == $category['id'])
+                            <li>
+                                <a href="/help/{{ $question['id'] }}" class="main-dark-text text-hover" style="font-size:1.05em">
+                                    <span class="red-text">#</span> {{ $question['title'] }}
+                                </a>
+                            </li>
+                        @endif
                     @endforeach
                 </ul>
             </div>

@@ -9,10 +9,15 @@ class HelpController extends Controller
 {
     public function index()
     {
-        return view('help.index', [
-            'help' => Help::selectBasic()->orderBy('title')->get(),
-            'help_categories' => HelpCategory::selectBasic()->get(),
-        ]);
+        $help = cache()->remember('help', 10, function () {
+            return Help::selectBasic()->orderBy('title')->get()->toArray();
+        });
+
+        $help_categories = cache()->remember('help_categories', 10, function () {
+            return HelpCategory::selectBasic()->get()->toArray();
+        });
+
+        return view('help.index', compact('help', 'help_categories'));
     }
 
     /**
