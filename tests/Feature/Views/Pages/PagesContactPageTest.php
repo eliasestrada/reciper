@@ -3,7 +3,6 @@
 namespace Tests\Feature\Views\Pages;
 
 use App\Models\Feedback;
-use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -14,50 +13,34 @@ class PagesContactPageTest extends TestCase
     /** @test */
     public function view_has_a_correct_path(): void
     {
-        $this->get('/contact')->assertViewIs('pages.contact');
-    }
-
-    /** @test */
-    public function auth_user_can_see_the_page(): void
-    {
-        $this->actingAs(make(User::class))
-            ->get('/contact')
-            ->assertOk();
-    }
-
-    /** @test */
-    public function guest_can_see_the_page(): void
-    {
-        $this->get('/contact')->assertOk();
+        $this->get('/contact')
+            ->assertOk()
+            ->assertViewIs('pages.contact');
     }
 
     /** @test */
     public function anyone_can_send_feedback_message(): void
     {
-        cache()->flush();
-        $data = ['email' => 'test@emil.com', 'message' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit'];
-
-        $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), $data)
-            ->assertSeeText(trans('feedback.success_message'));
+        $this->post(action('Admin\FeedbackController@store'), $data = [
+            'email' => 'test@emil.com',
+            'message' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit',
+        ]);
         $this->assertDatabaseHas('feedback', $data);
     }
 
     /** @test */
     public function user_cant_send_feedback_message_more_then_once_per_day(): void
     {
-        // First attempt to send a message, should be successful
         $first_data = ['email' => 'test@emil.com', 'message' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit'];
-        $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), $first_data)
-            ->assertSeeText(trans('feedback.success_message'));
+        $second_data = ['email' => 'test2@emil.com', 'message' => 'New, ipsum dolor sit amet consectetur adipisicing elit'];
+
+        // First attempt to send a message, should be successful
+        $this->post(action('Admin\FeedbackController@store'), $first_data);
         $this->assertDatabaseHas('feedback', $first_data);
 
         // Second attempt to send a message, should be denied
-        $second_data = ['email' => 'test@emil.com', 'message' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit'];
-        $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), $second_data)
-            ->assertSeeText(trans('feedback.operation_denied'));
+        $this->post(action('Admin\FeedbackController@store'), $second_data);
+        $this->assertDatabaseMissing('feedback', $second_data);
     }
 
     /** @test */
@@ -67,18 +50,14 @@ class PagesContactPageTest extends TestCase
         $second_data = ['email' => 'testing@emil.com', 'message' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit'];
 
         // Make first request
-        $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), $first_data)
-            ->assertSeeText(trans('feedback.success_message'));
+        $this->post(action('Admin\FeedbackController@store'), $first_data);
         $this->assertDatabaseHas('feedback', $first_data);
 
         // Change created_at to minus day
         Feedback::latest()->first()->update(['created_at' => now()->subDay()]);
 
         // Make second request (imitating the next day)
-        $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), $second_data)
-            ->assertSeeText(trans('feedback.success_message'));
+        $this->post(action('Admin\FeedbackController@store'), $second_data);
         $this->assertDatabaseHas('feedback', $second_data);
     }
 }

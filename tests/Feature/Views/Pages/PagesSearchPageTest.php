@@ -3,7 +3,6 @@
 namespace Tests\Feature\Views\Pages;
 
 use App\Models\Recipe;
-use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -15,10 +14,7 @@ class PagesSearchPageTest extends TestCase
     public function view_has_data(): void
     {
         $this->get('/search')
-            ->assertViewIs('pages.search')
-            ->assertViewHasAll(['recipes', 'message']);
-
-        $this->get('/search?for=some')
+            ->assertOk()
             ->assertViewIs('pages.search')
             ->assertViewHasAll(['recipes', 'message']);
     }
@@ -26,20 +22,15 @@ class PagesSearchPageTest extends TestCase
     /** @test */
     public function serch_form_shows_results_after_submitting(): void
     {
-        $recipe = create(Recipe::class, ['title_' . LANG() => 'Recipe for test']);
-
-        $this->get('/search?for=Recipe+for+test')
-            ->assertOk()
-            ->assertSeeText('Recipe for test');
+        $recipe = create(Recipe::class, ['title_' . LANG() => 'Recipe for testing']);
+        $this->get('/search?for=Recipe+for+testing')->assertSeeText('Recipe for testing');
     }
 
     /** @test */
-    public function anyone_can_see_the_page(): void
+    public function when_nothing_found_message_appears(): void
     {
-        $this->get('/search')->assertOk();
-        $this->actingAs(create(User::class))
-            ->get('/search')
-            ->assertOk();
+        $this->get('/search?for=nothing+cant+be+found')->assertSeeText(trans('pages.nothing_found'));
+
     }
 
     /** @test */
@@ -54,7 +45,6 @@ class PagesSearchPageTest extends TestCase
     public function user_cant_search_for_user_by_id(): void
     {
         $this->get('/search?for=' . create_user()->id)
-            ->assertViewIs('pages.search')
             ->assertSeeText(trans('pages.nothing_found'));
     }
 }

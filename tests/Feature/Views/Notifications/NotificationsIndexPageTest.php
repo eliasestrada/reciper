@@ -14,9 +14,11 @@ class NotificationsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function user_can_see_the_page(): void
+    public function view_has_data(): void
     {
-        $this->actingAs(make(User::class))->get('/notifications')->assertViewIs('notifications.index')->assertOk();
+        $this->actingAs(make(User::class))
+            ->get('/notifications')
+            ->assertViewHas('notifications');
     }
 
     /** @test */
@@ -26,7 +28,7 @@ class NotificationsIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function user_can_recive_recipe_approved_notification(): void
+    public function user_can_recive_RecipeApprovedNotification(): void
     {
         $user = create_user();
         $recipe = make(Recipe::class, ['user_id' => $user->id]);
