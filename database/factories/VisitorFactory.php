@@ -1,8 +1,7 @@
 <?php
 
 use App\Models\Visitor;
-use Faker\Generator as Faker;
 
-$factory->define(Visitor::class, function (Faker $faker) {
-    return ['ip' => $faker->ipv4];
+$factory->define(Visitor::class, function () {
+    return ['ip' => rand(100, 999) . '.' . rand(0, 255) . '.0.1'];
 });

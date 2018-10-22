@@ -2,17 +2,16 @@
 
 use App\Models\User;
 use App\Models\Visitor;
-use Faker\Generator as Faker;
 
 cache()->flush();
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(User::class, function () {
     return [
         'visitor_id' => factory(Visitor::class)->create()->id,
-        'name' => $faker->name,
+        'name' => 'Name' . rand(),
         'status' => '',
-        'email' => $faker->freeEmail,
-        'username' => str_replace('.', '', $faker->userName) . '_' . rand(),
+        'email' => rand() . '@mail.ru',
+        'username' => str_random(5) . '_' . rand(),
         'password' => bcrypt('111111'),
         'remember_token' => str_random(10),
         'image' => 'default.jpg',
@@ -31,10 +30,10 @@ $factory->afterMaking(User::class, function ($user) {
     $user->id = rand();
 });
 
-$factory->state(User::class, 'admin', function ($faker) {
+$factory->state(User::class, 'admin', function () {
     return [];
 });
-$factory->state(User::class, 'master', function ($faker) {
+$factory->state(User::class, 'master', function () {
     return [];
 });
 

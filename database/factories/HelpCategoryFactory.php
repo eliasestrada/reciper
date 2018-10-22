@@ -1,10 +1,10 @@
 <?php
 
-use Faker\Generator as Faker;
+use App\Models\HelpCategory;
 
-$factory->define(App\Models\HelpCategory::class, function (Faker $faker) {
+$factory->define(HelpCategory::class, function () {
     return [
-        'title_ru' => $faker->word,
-        'title_en' => $faker->word,
+        'title_ru' => 'Название' . rand(),
+        'title_en' => 'Title ' . rand(),
     ];
 });

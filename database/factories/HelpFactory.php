@@ -1,12 +1,10 @@
 <?php
 
-use Faker\Generator as Faker;
-
-$factory->define(App\Models\Help::class, function (Faker $faker) {
+$factory->define(App\Models\Help::class, function () {
     return [
-        'title_ru' => $faker->sentence(5),
-        'title_en' => $faker->sentence(5),
-        'text_ru' => $faker->realText(100),
-        'text_en' => $faker->realText(100),
+        'title_ru' => 'Название #' . rand(),
+        'title_en' => 'Help title #' . rand(),
+        'text_ru' => str_random(20),
+        'text_en' => str_random(20),
     ];
 });
