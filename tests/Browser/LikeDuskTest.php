@@ -2,7 +2,6 @@
 
 namespace Tests\Browser;
 
-use App\Models\Recipe;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
@@ -12,9 +11,7 @@ class LikeDuskTest extends DuskTestCase
     public function guest_can_like_and_dislike_recipe(): void
     {
         $this->browse(function (Browser $browser) {
-            $recipe = create(Recipe::class);
-
-            $browser->visit("/recipes/$recipe->id")
+            $browser->visit('/recipes/1')
                 ->waitFor('.like-icon')
                 ->assertSeeIn('#_all-likes', 0)
                 ->click('.like-icon')
@@ -27,9 +24,7 @@ class LikeDuskTest extends DuskTestCase
     public function heart_icon_appears_on_navbar_after_giving_a_like_and_disappears_after_dislike(): void
     {
         $this->browse(function (Browser $browser) {
-            $recipe = create(Recipe::class);
-
-            $browser->visit("/recipes/$recipe->id")
+            $browser->visit('/recipes/1')
                 ->waitFor('.like-icon')
                 ->assertDontSeeIn('#visitor-likes-number', 1)
                 ->press('.like-icon')

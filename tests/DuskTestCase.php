@@ -19,7 +19,8 @@ abstract class DuskTestCase extends BaseTestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->artisan('wipe');
+        $this->artisan('migrate:fresh');
+        $this->artisan('db:seed');
         $this->browse(function (Browser $browser) {
             $browser->maximize();
         });
