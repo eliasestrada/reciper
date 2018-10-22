@@ -104,7 +104,7 @@ class AuthRegisterRequestTest extends TestCase
     /** @test */
     public function username_must_be_unique(): void
     {
-        $this->data['username'] = 'admin';
+        $this->data['username'] = 'master';
 
         $this->followingRedirects()
             ->post(route('register'), $this->data)

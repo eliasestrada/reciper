@@ -15,15 +15,8 @@ class SettingsPhotoEditPageTest extends TestCase
     {
         $this->actingAs(make(User::class))
             ->get('/settings/photo/edit')
+            ->assertOk()
             ->assertViewIs('settings.photo.edit');
-    }
-
-    /** @test */
-    public function auth_user_can_see_the_page(): void
-    {
-        $this->actingAs(make(User::class))
-            ->get('/settings/photo/edit')
-            ->assertOk();
     }
 
     /** @test */
@@ -37,9 +30,7 @@ class SettingsPhotoEditPageTest extends TestCase
     {
         $user = create_user('', ['image' => 'some/image.jpg']);
 
-        $this->actingAs($user)
-            ->delete(action('Settings\PhotoController@destroy'));
-
+        $this->actingAs($user)->delete(action('Settings\PhotoController@destroy'));
         $this->assertEquals('default.jpg', $user->image);
     }
 }

@@ -15,15 +15,8 @@ class SettingsGeneralIndexPageTest extends TestCase
     {
         $this->actingAs(make(User::class))
             ->get('/settings/general')
+            ->assertOk()
             ->assertViewIs('settings.general.index');
-    }
-
-    /** @test */
-    public function auth_user_can_see_the_page(): void
-    {
-        $this->actingAs(make(User::class))
-            ->get('/settings/general')
-            ->assertOk();
     }
 
     /** @test */
@@ -36,70 +29,49 @@ class SettingsGeneralIndexPageTest extends TestCase
     public function user_can_update_his_name(): void
     {
         $user = create_user();
+        $new_name = str_random(7);
 
         $this->actingAs($user)->put(action('Settings\GeneralController@updateGeneral'), [
-            'name' => 'new name',
+            'name' => $new_name,
         ]);
-        $this->assertEquals('new name', $user->name);
-    }
-
-    /** @test */
-    public function user_cant_update_his_name_to_short_one(): void
-    {
-        $name = str_random(10);
-        $user = create_user('', compact('name'));
-
-        $this->actingAs($user)->put(action('Settings\GeneralController@updateGeneral'), ['name' => 'ja']);
-        $this->assertEquals($name, $user->name);
+        $this->assertEquals($new_name, $user->name);
     }
 
     /** @test */
     public function user_can_change_about_me_information(): void
     {
         $user = create_user();
-        $name = str_random(10);
-        $status = str_random(30);
+        $status = str_random(10);
 
-        $this->actingAs($user)->put(action('Settings\GeneralController@updateGeneral'), compact('name', 'status'));
+        $this->actingAs($user)->put(action('Settings\GeneralController@updateGeneral'), [
+            'name' => $name = str_random(7),
+            'status' => $status = str_random(7),
+        ]);
+
+        $this->assertEquals($name, $user->name);
         $this->assertEquals($status, $user->status);
     }
 
     /** @test */
-    public function user_can_change_his_pwd_with_correct_pwd(): void
+    public function user_can_change_his_pwd(): void
     {
-        $user = create_user('', ['password' => bcrypt('test')]);
-
-        $this->actingAs($user)
+        $this->actingAs($user = create_user())
             ->put(action('Settings\GeneralController@updatePassword'), [
-                'old_password' => 'test',
+                'old_password' => '111111',
                 'password' => 'new_password',
                 'password_confirmation' => 'new_password',
             ]);
 
-        $this->assertTrue(\Hash::check('new_password', $user->password));
+        $this->assertTrue(\Hash::check('new_password', $user->password), 'Passwords are not maching');
     }
 
-    /** @test */
-    public function user_cant_change_his_pwd_with_incorrect_pwd(): void
-    {
-        $user = create_user('', ['password' => bcrypt('test')]);
-
-        $this->actingAs($user)
-            ->put(action('Settings\GeneralController@updatePassword'), [
-                'old_password' => 'other_test',
-                'password' => 'new_password',
-                'password_confirmation' => 'new_password',
-            ]);
-
-        $this->assertFalse(\Hash::check('new_password', $user->password));
-    }
-
-    /** @test */
+    /**
+     * ['m' => 'd'] doent metter for request
+     * @test
+     * */
     public function user_can_deactivate_account(): void
     {
-        $user = create_user('', ['password' => bcrypt('111111')]);
-
-        $this->actingAs($user)
+        $this->actingAs(create_user())
             ->delete(action('UsersController@destroy', ['m' => 'd']), ['password' => '111111'])
             ->assertRedirect('/login');
     }
@@ -107,9 +79,7 @@ class SettingsGeneralIndexPageTest extends TestCase
     /** @test */
     public function user_cant_deactivate_account_with_wrong_password(): void
     {
-        $user = create_user('', ['password' => bcrypt('111111')]);
-
-        $this->actingAs($user)
+        $this->actingAs($user = create_user())
             ->followingRedirects()
             ->delete(action('UsersController@destroy', ['m' => 'd']), ['password' => '22222'])
             ->assertSeeText(trans('settings.pwd_wrong'));

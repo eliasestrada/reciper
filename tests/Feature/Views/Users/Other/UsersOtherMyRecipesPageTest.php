@@ -14,30 +14,9 @@ class UsersOtherMyRecipesPageTest extends TestCase
     /** @test */
     public function view_has_data(): void
     {
-        $user = create(User::class);
-
-        create(Recipe::class, [
-            'user_id' => $user->id,
-            'title_' . LANG() => 'My recipe',
-        ]);
-
-        $response = $this->actingAs($user)->get('/users/other/my-recipes');
-
-        $recipes_ready = Recipe::whereUserId($user->id)
-            ->selectBasic()
-            ->done(1)
-            ->latest()
-            ->paginate(20)
-            ->onEachSide(1);
-
-        $recipes_unready = Recipe::whereUserId($user->id)
-            ->selectBasic()
-            ->approved(0)
-            ->latest()
-            ->paginate(20)
-            ->onEachSide(1);
-
-        $response->assertSeeText('My recipe')
+        $this->actingAs(make(User::class))
+            ->get('/users/other/my-recipes')
+            ->assertOk()
             ->assertViewIs('users.other.my-recipes')
             ->assertViewHasAll(compact('recipes_ready', 'recipes_unready'));
     }
@@ -49,10 +28,13 @@ class UsersOtherMyRecipesPageTest extends TestCase
     }
 
     /** @test */
-    public function auth_user_can_see_the_page(): void
+    public function user_sees_his_recipe(): void
     {
-        $this->actingAs(make(User::class))
+        $user = create(User::class);
+        $recipe = create(Recipe::class, ['user_id' => $user->id]);
+
+        $this->actingAs($user)
             ->get('/users/other/my-recipes')
-            ->assertOk();
+            ->assertSee("<section>{$recipe->getTitle()}</section>");
     }
 }

@@ -12,6 +12,7 @@ class StatisticsPageTest extends TestCase
     {
         $this->actingAs(make(User::class))
             ->get('/statistics')
+            ->assertOk()
             ->assertViewIs('statistics.index')
             ->assertViewHasAll(['recipes', 'most_viewed', 'most_liked', 'most_favs']);
     }

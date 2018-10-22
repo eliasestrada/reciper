@@ -28,20 +28,6 @@ class LogsShowPageTest extends TestCase
             ->assertOk();
     }
 
-    /** @test */
-    public function master_can_see_the_page(): void
-    {
-        $file_name = $this->createLogFile();
-
-        $this->actingAs($this->master)
-            ->get("/log-viewer/logs/$file_name/info")
-            ->assertSeeText($file_name);
-
-        $this->delete(action('Master\LogsController@delete'), [
-            'date' => $file_name,
-        ]);
-    }
-
     /**
      * @return string
      */
