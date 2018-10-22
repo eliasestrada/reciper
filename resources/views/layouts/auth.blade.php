@@ -59,7 +59,6 @@
                 </div>
             </form>
         </div>
-        <audio id="favs-effect" src="/storage/audio/favs-effect.mp3" class="hide" type="audio/mpeg"></audio>
     </div>
 
     @include('includes.footer')

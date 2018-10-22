@@ -63,10 +63,6 @@ export default {
                 });
             }
         },
-        playSound() {
-            $('favs-effect').volume = 0.7
-            $('favs-effect').play()
-        },
     },
 }
 </script>
