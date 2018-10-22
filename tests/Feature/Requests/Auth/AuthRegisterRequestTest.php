@@ -6,19 +6,11 @@ use Tests\TestCase;
 
 class AuthRegisterRequestTest extends TestCase
 {
-    private $pwd_min;
-    private $pwd_max;
-    private $username_min;
-    private $username_max;
     private $data = [];
 
     public function setUp()
     {
         parent::setUp();
-        $this->pwd_min = config('valid.settings.password.min');
-        $this->pwd_max = config('valid.settings.password.max');
-        $this->username_min = config('valid.settings.username.min');
-        $this->username_max = config('valid.settings.username.max');
         $this->data = [
             'username' => str_random(10),
             'password' => '111111',
@@ -48,21 +40,23 @@ class AuthRegisterRequestTest extends TestCase
     /** @test */
     public function password_must_be_not_short(): void
     {
-        $this->data['password'] = str_random($this->pwd_min - 1);
+        $pwd_min = config('valid.settings.password.min');
+        $this->data['password'] = str_random($pwd_min - 1);
 
         $this->followingRedirects()
             ->post(route('register'), $this->data)
-            ->assertSeeText(preg_replace('/:min/', $this->pwd_min, trans('auth.password_min')));
+            ->assertSeeText(preg_replace('/:min/', $pwd_min, trans('auth.password_min')));
     }
 
     /** @test */
     public function password_must_be_not_long(): void
     {
-        $this->data['password'] = str_random($this->pwd_max + 1);
+        $pwd_max = config('valid.settings.password.max');
+        $this->data['password'] = str_random($pwd_max + 1);
 
         $this->followingRedirects()
             ->post(route('register'), $this->data)
-            ->assertSeeText(preg_replace('/:max/', $this->pwd_max, trans('auth.password_max')));
+            ->assertSeeText(preg_replace('/:max/', $pwd_max, trans('auth.password_max')));
     }
 
     /** @test */
@@ -78,21 +72,23 @@ class AuthRegisterRequestTest extends TestCase
     /** @test */
     public function username_must_be_not_short(): void
     {
-        $this->data['username'] = str_random($this->username_min - 1);
+        $username_min = config('valid.settings.username.min');
+        $this->data['username'] = str_random($username_min - 1);
 
         $this->followingRedirects()
             ->post(route('register'), $this->data)
-            ->assertSeeText(preg_replace('/:min/', $this->username_min, trans('auth.username_min')));
+            ->assertSeeText(preg_replace('/:min/', $username_min, trans('auth.username_min')));
     }
 
     /** @test */
     public function username_must_be_not_long(): void
     {
-        $this->data['username'] = str_random($this->username_max + 1);
+        $username_max = config('valid.settings.username.max');
+        $this->data['username'] = str_random($username_max + 1);
 
         $this->followingRedirects()
             ->post(route('register'), $this->data)
-            ->assertSeeText(preg_replace('/:max/', $this->username_max, trans('auth.username_max')));
+            ->assertSeeText(preg_replace('/:max/', $username_max, trans('auth.username_max')));
     }
 
     /** @test */
@@ -108,7 +104,7 @@ class AuthRegisterRequestTest extends TestCase
     /** @test */
     public function username_must_be_unique(): void
     {
-        $this->data['username'] = create_user()->username;
+        $this->data['username'] = 'admin';
 
         $this->followingRedirects()
             ->post(route('register'), $this->data)
