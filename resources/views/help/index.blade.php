@@ -11,7 +11,7 @@
         @foreach ($help_categories as $category)
             <div class="col s12 m6 l4">
                 <h5 class="grey-dark-text header"> <i class="fas {{ $category->icon }} left red-text"></i>
-                    {{ $category->getTitle() }}
+                    {{ $category->title }}
                 </h5>
                 <div class="divider"></div>
 
@@ -19,7 +19,7 @@
                     @foreach ($help->where('help_category_id', $category->id) as $h)
                         <li>
                             <a href="/help/{{ $h->id }}" class="main-dark-text text-hover" style="font-size:1.05em">
-                                <span class="red-text">#</span> {{ $h->getTitle() }}
+                                <span class="red-text">#</span> {{ $h->title }}
                             </a>
                         </li>
                     @endforeach
