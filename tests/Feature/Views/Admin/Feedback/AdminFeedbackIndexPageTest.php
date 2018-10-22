@@ -28,12 +28,6 @@ class AdminFeedbackIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function guest_cant_see_the_page(): void
-    {
-        $this->get('/admin/feedback')->assertRedirect('/');
-    }
-
-    /** @test */
     public function admin_sees_the_message_if_it_exist(): void
     {
         $feed = Feedback::create([

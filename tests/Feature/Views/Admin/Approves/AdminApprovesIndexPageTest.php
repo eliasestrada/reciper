@@ -26,12 +26,6 @@ class AdminApprovesIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function guest_cant_see_the_page(): void
-    {
-        $this->get('/admin/approves')->assertRedirect('/');
-    }
-
-    /** @test */
     public function user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))->get('/admin/approves')->assertRedirect('/');
