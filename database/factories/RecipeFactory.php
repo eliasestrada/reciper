@@ -1,9 +1,8 @@
 <?php
 
 use App\Models\Recipe;
-use Faker\Generator as Faker;
 
-$factory->define(Recipe::class, function (Faker $faker) {
+$factory->define(Recipe::class, function () {
     return [
         'user_id' => 1,
         'meal_id' => rand(1, 3),
@@ -15,19 +14,19 @@ $factory->define(Recipe::class, function (Faker $faker) {
         'simple' => rand(0, 1),
 
         // Russian language
-        'title_ru' => $faker->sentence,
-        'intro_ru' => $faker->paragraph,
-        'ingredients_ru' => $faker->paragraph,
-        'text_ru' => $faker->realText(config('valid.recipes.text.min') + 50),
+        'title_ru' => 'Название рецепта #' . rand(),
+        'intro_ru' => 'Вкусная морковь по-корейски за 10 минут которая готовится довольно просто. Морковь приправленная пряностями, будет отличной закуской на вашем столе.',
+        'ingredients_ru' => "1 кг моркови\n1 маленькая луковица\n1 зубчик чеснока\n1/2 ч. л. красного перца",
+        'text_ru' => "После того как морковь почищена, натираем ее на терке (шинковка).\nВ натертую морковь добавляем 1 чайную ложку соли, пол чайной ложки сахара и 3 капли уксуса.\nМелко нарезанный лук обжариваем на растительном масле до мягкости.\nДобавляем пол ложки красного перца в обжаренный лук.",
         'ready_ru' => 1,
         'approved_ru' => 1,
         'published_ru' => 1,
 
         // English language
-        'title_en' => $faker->sentence,
-        'intro_en' => $faker->paragraph,
-        'ingredients_en' => $faker->paragraph,
-        'text_en' => $faker->realText(config('valid.recipes.text.min') + 50),
+        'title_en' => 'Name of the recipe #' . rand(),
+        'intro_en' => 'Another genius technique that this soup employs (which for some might be obvious, but for others might be soup-er revelatory**) is adding uncooked grains to the boiling broth.',
+        'ingredients_en' => "",
+        'text_en' => "Peel ginger using a spoon's edge — you'll be able to maneuver around the knobbly!\nWash and dry all produce.* Peel, then zest or grate 1 tbsp ginger (dbl for 4 ppl).\nMince or grate the garlic. Cut and discard 1-inch off the root end of the enoki mushrooms.\nThinly slice the green onions. Thinly slice the radish into 1/8-inch matchsticks",
         'ready_en' => 1,
         'approved_en' => 1,
         'published_en' => 1,
