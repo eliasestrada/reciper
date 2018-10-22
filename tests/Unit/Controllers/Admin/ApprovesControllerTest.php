@@ -9,6 +9,12 @@ use Tests\TestCase;
 
 class ApprovesControllerTest extends TestCase
 {
+    public function setUp()
+    {
+        parent::setUp();
+        $this->withoutEvents();
+    }
+
     /** @test */
     public function approve_method_redirects_if_recipe_is_already_approved(): void
     {
