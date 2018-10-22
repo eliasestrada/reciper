@@ -28,4 +28,14 @@ class HelpTest extends TestCase
         $help = make(Help::class);
         $this->assertEquals($help->getText(), $help->toArray()['text_' . LANG()]);
     }
+
+    /** @test */
+    public function selectBasic_scope_method_returns_Id_Title_and_HelpCategoryId(): void
+    {
+        $help = Help::selectBasic()->first()->toArray();
+
+        array_map(function ($key) use ($help) {
+            $this->assertArrayHasKey($key, $help);
+        }, ['id', 'title', 'help_category_id']);
+    }
 }

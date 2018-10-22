@@ -11,15 +11,25 @@ class HelpCategoryTest extends TestCase
     /** @test */
     public function model_has_attributes(): void
     {
-        $this->assertClassHasAttribute('table', Help::class);
-        $this->assertClassHasAttribute('guarded', Help::class);
-        $this->assertClassHasAttribute('timestamps', Help::class);
+        array_map(function ($attr) {
+            $this->assertClassHasAttribute($attr, Help::class);
+        }, ['table', 'guarded', 'timestamps']);
     }
 
     /** @test */
     public function getTitle_method_returns_title_from_database_column(): void
     {
-        $help_category = make(HelpCategory::class);
-        $this->assertEquals($help_category->getTitle(), $help_category->toArray()['title_' . LANG()]);
+        $help = make(HelpCategory::class);
+        $this->assertEquals($help->getTitle(), $help->toArray()['title_' . LANG()]);
+    }
+
+    /** @test */
+    public function selectBasic_scope_method_returns_Id_Icon_and_Title(): void
+    {
+        $category = HelpCategory::selectBasic()->first()->toArray();
+
+        array_map(function ($key) use ($category) {
+            $this->assertArrayHasKey($key, $category);
+        }, ['id', 'title', 'icon']);
     }
 }

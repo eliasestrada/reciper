@@ -25,4 +25,12 @@ class Help extends Model
     {
         return $this->toArray()['text_' . LANG()];
     }
+
+    /**
+     * @param $query
+     */
+    public function scopeSelectBasic($query)
+    {
+        return $query->select('id', 'title_' . LANG() . ' as title', 'help_category_id');
+    }
 }
