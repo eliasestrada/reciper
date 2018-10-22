@@ -2,13 +2,10 @@
 
 namespace Tests\Feature\Views\Errors;
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class Errors404PageTest extends TestCase
 {
-    use DatabaseTransactions;
-
     /** @test */
     public function page_404_not_found_shows_up(): void
     {
