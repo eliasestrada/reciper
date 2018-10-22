@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\Controllers\Recipes;
 
-use Tests\TestCase;
+use App\Helpers\Traits\RecipesControllerHelpers;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
-use App\Helpers\Traits\RecipesControllerHelpers;
+use Tests\TestCase;
 
 class IsSimpleMethodTest extends TestCase
 {
@@ -53,7 +53,7 @@ class IsSimpleMethodTest extends TestCase
         }
         $this->assertTrue($this->isSimple($recipe));
     }
-    
+
     /**
      * More ditailes:
      * If allowed number of rows 20, and ingredients with text have 21 rows,
@@ -81,7 +81,8 @@ class IsSimpleMethodTest extends TestCase
      */
     private function isSimple(Recipe $recipe): bool
     {
-        $controller = new class { use RecipesControllerHelpers; };
+        $controller = new class
+        {use RecipesControllerHelpers;};
         $request = Request::create(null, null, $recipe->toArray());
         return $controller->isSimple($request);
     }
