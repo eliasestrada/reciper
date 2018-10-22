@@ -12,45 +12,6 @@ class LoginPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function user_can_login(): void
-    {
-        $user = create(User::class, ['password' => bcrypt('test')]);
-        $form_data = ['username' => $user->username, 'password' => 'test'];
-
-        $this->post('/login', $form_data)->assertRedirect('/dashboard');
-    }
-
-    /**
-     * We will login user and create cookie to check them
-     * @test
-     * @return void
-     */
-    public function remember_me_functionality(): void
-    {
-        $user = create(User::class, [
-            'id' => random_int(10, 100),
-            'password' => bcrypt('test'),
-        ]);
-
-        $response = $this->post('/login', [
-            'username' => $user->username,
-            'password' => 'test',
-            'remember' => 'on',
-        ]);
-
-        $response->assertRedirect('/dashboard');
-
-        // Creating cookie
-        $cookie = vsprintf('%s|%s|%s', [
-            $user->id,
-            $user->getRememberToken(),
-            $user->password,
-        ]);
-
-        $response->assertCookie(Auth::guard()->getRecallerName(), $cookie);
-    }
-
-    /** @test */
     public function user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))
@@ -65,5 +26,36 @@ class LoginPageTest extends TestCase
         $this->get('/login')
             ->assertOk()
             ->assertViewIs('auth.login');
+    }
+
+    /** @test */
+    public function user_can_login(): void
+    {
+        $form_data = ['username' => create(User::class)->username, 'password' => '111111'];
+        $this->post('/login', $form_data)->assertRedirect('/dashboard');
+    }
+
+    /**
+     * We will login user and create cookie to check them
+     * @test
+     * @return void
+     */
+    public function remember_me_functionality_works(): void
+    {
+        $user = create(User::class);
+        $response = $this->post('/login', [
+            'username' => $user->username,
+            'password' => '111111',
+            'remember' => 'on',
+        ]);
+
+        // Creating cookie
+        $cookie = vsprintf('%s|%s|%s', [
+            $user->id,
+            $user->getRememberToken(),
+            $user->password,
+        ]);
+
+        $response->assertCookie(Auth::guard()->getRecallerName(), $cookie);
     }
 }

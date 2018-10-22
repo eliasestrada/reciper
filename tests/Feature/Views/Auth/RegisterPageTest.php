@@ -15,8 +15,7 @@ class RegisterPageTest extends TestCase
     {
         $this->actingAs(make(User::class))
             ->get('/register')
-            ->assertRedirect('/dashboard')
-            ->assertRedirect(action('DashboardController@index'));
+            ->assertRedirect('/dashboard');
     }
 
     /** @test */
@@ -28,15 +27,15 @@ class RegisterPageTest extends TestCase
     }
 
     /** @test */
-    public function new_user_can_register(): void
+    public function new_user_can_register_with_correct_data(): void
     {
         $form_data = [
-            'username' => str_random(10),
+            'username' => str_random(5),
             'password' => '111111',
             'password_confirmation' => '111111',
         ];
 
-        $this->post(route('register'), $form_data)->assertRedirect('/dashboard');
+        $this->post(route('register'), $form_data);
         $this->assertDatabaseHas('users', ['username' => $form_data['username']]);
     }
 }

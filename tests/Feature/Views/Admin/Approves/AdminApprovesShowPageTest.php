@@ -22,14 +22,11 @@ class AdminApprovesShowPageTest extends TestCase
     {
         parent::setUp();
 
-        $admin = create_user('admin');
-
+        $this->admin = ($admin = create_user('admin'));
         $this->unapproved_recipe = create(Recipe::class, [
             'approved_' . LANG() => 0,
             LANG() . '_approver_id' => $admin->id,
         ]);
-
-        $this->admin = $admin;
     }
 
     /** @test */
@@ -39,6 +36,20 @@ class AdminApprovesShowPageTest extends TestCase
             ->get("/admin/approves/{$this->unapproved_recipe->id}")
             ->assertViewIs('admin.approves.show')
             ->assertViewHasAll(['recipe', 'approver_id']);
+    }
+
+    /** @test */
+    public function guest_cant_see_the_page(): void
+    {
+        $this->get("/admin/approves/{$this->unapproved_recipe->id}")->assertRedirect('/');
+    }
+
+    /** @test */
+    public function user_cant_see_the_page(): void
+    {
+        $this->actingAs(make(User::class))
+            ->get("/admin/approves/{$this->unapproved_recipe->id}")
+            ->assertRedirect('/');
     }
 
     /** @test */
@@ -71,14 +82,6 @@ class AdminApprovesShowPageTest extends TestCase
             ->get("/admin/approves/{$this->unapproved_recipe->id}")
             ->assertDontSee('<i class="fas fa-thumbs-up right"></i>')
             ->assertDontSee('<i class="fas fa-thumbs-down right"></i>');
-    }
-
-    /** @test */
-    public function user_cant_see_the_page(): void
-    {
-        $this->actingAs(make(User::class))
-            ->get("/admin/approves/{$this->unapproved_recipe->id}")
-            ->assertRedirect('/');
     }
 
     /** @test */
