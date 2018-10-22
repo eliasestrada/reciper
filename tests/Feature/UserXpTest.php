@@ -17,6 +17,7 @@ class UserXpTest extends TestCase
     public function setUp()
     {
         parent::setUp();
+        $this->withoutNotifications();
         $this->xp_for_approve = config('custom.xp_for_approve');
         $this->max_xp = config('custom.max_xp');
     }
@@ -32,7 +33,7 @@ class UserXpTest extends TestCase
     }
 
     /** @test */
-    public function user_doesnt_gets_exp_for_approving_recipe_if_it_was_approved_before(): void
+    public function user_doesnt_get_exp_for_approving_recipe_if_it_was_approved_before(): void
     {
         $user = create_user('', ['xp' => 0]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, 'published_' . LANG() => 1]);
@@ -42,21 +43,13 @@ class UserXpTest extends TestCase
     }
 
     /** @test */
-    public function user_doesnt_get_exp_for_approving_recipe_if_he_has_maximum(): void
+    public function user_doesnt_get_exp_for_approving_recipe_if_he_has_maximum_xp(): void
     {
-        // Has 100 xp
         $user = create_user('', ['xp' => $this->max_xp]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, 'published_ru' . LANG() => 0]);
 
         event(new \App\Events\RecipeGotApproved($recipe));
-        $this->assertEquals($this->max_xp, User::whereId($user->id)->value('xp'));
-
-        // Has 99 xp
-        $user = create_user('', ['xp' => $this->max_xp - 0.8]);
-        $recipe = make(Recipe::class, ['user_id' => $user->id, 'published_' . LANG() => 0]);
-
-        event(new \App\Events\RecipeGotApproved($recipe));
-        $this->assertEquals($this->max_xp, User::whereId($user->id)->value('xp'));
+        $this->assertEquals($this->max_xp, User::whereId($user->id)->value('xp'), 'Max xp doesnt equal user\'s xp');
     }
 
     /** @test */
@@ -66,11 +59,11 @@ class UserXpTest extends TestCase
         $recipe = make(Recipe::class, ['user_id' => $user->id, 'published_' . LANG() => 0]);
 
         event(new \App\Events\RecipeGotApproved($recipe));
-        $this->assertEquals($this->max_xp, User::whereId($user->id)->value('xp'));
+        $this->assertEquals($this->max_xp, User::whereId($user->id)->value('xp'), 'Max xp doesnt equal user\'s xp');
     }
 
     /** @test */
-    public function reset_streak_day_if_user_visited_app_after_2_days(): void
+    public function reset_streak_days_if_user_visited_app_after_2_days(): void
     {
         $user = create_user('', ['streak_check' => now()->subDays(2), 'online_check' => now()->subHour()]);
         $this->actingAs($user)->get('/');
@@ -78,7 +71,7 @@ class UserXpTest extends TestCase
     }
 
     /** @test */
-    public function user_got_cookie_when_first_time_visits_app(): void
+    public function user_got_strike_cookie_when_first_time_visits_app(): void
     {
         $user = create_user('', [
             'streak_days' => 1,
@@ -99,13 +92,17 @@ class UserXpTest extends TestCase
     }
 
     /** @test */
-    public function streak_check_is_not_updated_when_already_visited_today(): void
+    public function streak_check_is_not_updated_when_already_visited_today_hour_ago(): void
     {
         $user = create_user('', ['streak_check' => $date = now()->subHour(), 'online_check' => now()->subHour()]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_check' => $date]);
+    }
 
-        $user->update(['streak_check' => $date = now()->subHours(23)]);
+    /** @test */
+    public function streak_check_is_not_updated_when_already_visited_today_23_hours_ago(): void
+    {
+        $user = create_user('', ['streak_check' => $date = now()->subHours(23), 'online_check' => now()->subHour()]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_check' => $date]);
     }
@@ -119,13 +116,17 @@ class UserXpTest extends TestCase
     }
 
     /** @test */
-    public function dont_add_streak_day_if_user_visited_app_in_hour_or_23_hours(): void
+    public function dont_add_streak_day_if_user_visited_app_in_hour(): void
     {
         $user = create_user('', ['streak_check' => now()->subHour(), 'online_check' => now()->subHour()]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_days' => 0]);
+    }
 
-        $user->update(['streak_check' => $date = now()->subHours(23)]);
+    /** @test */
+    public function dont_add_streak_day_if_user_visited_app_in_23_hours(): void
+    {
+        $user = create_user('', ['streak_check' => now()->subHours(23), 'online_check' => now()->subHour()]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_days' => 0]);
     }
@@ -143,7 +144,7 @@ class UserXpTest extends TestCase
     }
 
     /** @test */
-    public function dont_add_xp_if_user_visited_app_in_hour_or_23_hours(): void
+    public function dont_add_xp_if_user_visited_app_in_hour(): void
     {
         $user = create_user('', [
             'streak_check' => now()->subHour(),
@@ -152,8 +153,16 @@ class UserXpTest extends TestCase
         ]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'xp' => 0]);
+    }
 
-        $user->update(['streak_check' => $date = now()->subHours(23)]);
+    /** @test */
+    public function dont_add_xp_if_user_visited_app_in_23_hours(): void
+    {
+        $user = create_user('', [
+            'streak_check' => now()->subHours(23),
+            'online_check' => now()->subHour(),
+            'xp' => 0,
+        ]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id]);
     }

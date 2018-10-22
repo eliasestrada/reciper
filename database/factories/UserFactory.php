@@ -17,7 +17,7 @@ $factory->define(User::class, function () {
         'image' => 'default.jpg',
         // 'image' => $faker->file(base_path('../tools/people'), storage_path('/app/public/small/users'), false),
         'xp' => 1,
-        'popularity' => 2,
+        'popularity' => 0,
         'active' => 1,
         "streak_days" => 0,
         "streak_check" => date('Y-m-d H:i:s'),

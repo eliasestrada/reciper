@@ -24,9 +24,9 @@ class MiddlewaresTest extends TestCase
     /** @test */
     public function online_check_is_updated_after_5_minutes(): void
     {
-        $user = create_user('', ['online_check' => now()->subMinutes(5)]);
+        $user = create_user('', ['online_check' => $date = now()->subMinutes(5)]);
         $this->actingAs($user)->get('/');
-        $this->assertDatabaseHas('users', ['id' => $user->id, 'online_check' => now()]);
+        $this->assertDatabaseMissing('users', ['id' => $user->id, 'online_check' => $date]);
     }
 
     /** @test */
