@@ -32,7 +32,7 @@ class FeedbackController extends Controller
 
     /**
      * Store a newly created report in storage.
-     *
+     * Refactore
      * @param ContactRequest $request
      * @return \Illuminate\Http\Response
      */

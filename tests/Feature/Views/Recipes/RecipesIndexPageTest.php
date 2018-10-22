@@ -3,31 +3,21 @@
 namespace Tests\Feature\Views\Recipes;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class RecipesIndexPageTest extends TestCase
 {
-    use DatabaseTransactions;
-
     /** @test */
     public function view_has_correct_data(): void
     {
         $this->get('/recipes')
             ->assertViewIs('recipes.index')
-            ->assertViewHas('favs', \App\Models\Fav::get(['recipe_id', 'user_id']));
+            ->assertViewHas('favs');
     }
 
     /** @test */
     public function auth_user_can_see_the_page(): void
     {
-        $user = make(User::class);
-        $this->actingAs($user)->get("/recipes")->assertOk();
-    }
-
-    /** @test */
-    public function guest_can_see_the_page(): void
-    {
-        $this->get('/recipes')->assertOk();
+        $this->actingAs(make(User::class))->get("/recipes")->assertOk();
     }
 }

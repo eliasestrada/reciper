@@ -24,39 +24,39 @@ class LikeController extends Controller
     }
 
     /**
-     * @param integer $id of the recipe
+     * @param integer $recipe_id of the recipe
      * @return object
      */
-    public function like(Request $request, $id): ?object
+    public function like(Request $request, $recipe_id): ?object
     {
         $visitor = Visitor::whereIp(request()->ip())->first();
 
-        if (request()->cookie('ekilx') != $id) {
-            $recipe = Recipe::find($id);
+        if (request()->cookie('ekilx') != $recipe_id) {
+            $recipe = Recipe::find($recipe_id);
             cache()->forget('visitor_likes');
 
             $visitor->likes()->create(['recipe_id' => $recipe->id]);
             Popularity::add(config('custom.popularity_for_like'), $recipe->user_id);
 
             return response()->json(['liked' => 1])
-                ->withCookie('ekilx', \Crypt::encrypt($id), 5555);
+                ->withCookie('ekilx', \Crypt::encrypt($recipe_id), 5555);
         }
-        return response()->json(['liked' => 0])->withCookie('ekilx', $id, -5);
+        return response()->json(['liked' => 0])->withCookie('ekilx', $recipe_id, -5);
     }
 
     /**
-     * @param integer $id of the recipe
+     * @param integer $recipe_id of the recipe
      * @return object
      */
-    public function dislike($id): ?object
+    public function dislike($recipe_id): ?object
     {
-        $recipe = Recipe::find($id);
+        $recipe = Recipe::find($recipe_id);
         $visitor = Visitor::whereIp(request()->ip())->first();
         cache()->forget('visitor_likes');
 
         $visitor->likes()->whereRecipeId($recipe->id)->delete();
         Popularity::remove(config('custom.popularity_for_like'), $recipe->user_id);
 
-        return response()->json(['liked' => 0])->withCookie('ekilx', $id, -1);
+        return response()->json(['liked' => 0])->withCookie('ekilx', $recipe_id, -1);
     }
 }
