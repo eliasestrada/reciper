@@ -30,7 +30,6 @@ class RegisterPageTest extends TestCase
     /** @test */
     public function new_user_can_register(): void
     {
-        $faker = \Faker\Factory::create();
         $form_data = [
             'username' => str_random(10),
             'password' => '111111',
