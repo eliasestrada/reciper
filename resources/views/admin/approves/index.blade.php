@@ -31,7 +31,7 @@
                                 <ul>
                                     <li style="margin-bottom:5px" class="col s12 m6 l4 row">
                                         <a href="/admin/approves/{{ $recipe->id }}" style="width:11em">
-                                            <img src="{{ asset("storage/recipes/small/$recipe->image") }}" alt="{{ $recipe->getTitle() }}" />
+                                            <img src="{{ asset("storage/small/recipes/$recipe->image") }}" alt="{{ $recipe->getTitle() }}" />
                                         </a>
 
                                         <div class="item-content">

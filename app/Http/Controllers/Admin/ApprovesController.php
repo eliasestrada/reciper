@@ -42,7 +42,8 @@ class ApprovesController extends Controller
             ->onEachSide(1);
 
         // Check if admin is already has recipe that he didnt approve
-        if (Recipe::where(LANG() . '_approver_id', user()->id)->approved(0)->ready(1)->value('id')) {
+        $already_checking = Recipe::where(LANG() . '_approver_id', user()->id)->approved(0)->ready(1)->value('id');
+        if ($already_checking) {
             return redirect("/admin/approves/$already_checking")
                 ->withSuccess(trans('approves.finish_checking'));
         }
