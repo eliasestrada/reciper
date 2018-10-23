@@ -110,8 +110,7 @@ function active_if_route_is(array $routes): string
 function set_image_name(string $extension = null): string
 {
     if ($extension) {
-        $time = time();
-        return "$time.$extension";
+        return time() . rand() . '.' . $extension;
     }
     return 'default.jpg';
 }
