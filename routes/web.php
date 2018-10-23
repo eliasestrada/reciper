@@ -34,7 +34,7 @@ Route::post('admin/feedback', 'Admin\FeedbackController@store');
 Route::get('documents/{document}', 'Master\DocumentsController@show')->where('document', '[0-9]+');
 
 // Recipes ===========
-Route::resource('recipes', 'RecipesController')->except(['destroy']);
+Route::resource('recipes', RecipesController::class)->except(['destroy']);
 
 // Notifications ===========
 Route::get('notifications', 'NotificationController@index')->middleware('auth');
@@ -70,16 +70,16 @@ Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function 
     Route::get('approves/{recipe}', 'ApprovesController@show');
     Route::post('answer/approve/{recipe}', 'ApprovesController@approve');
     Route::post('answer/disapprove/{recipe}', 'ApprovesController@disapprove');
-    Route::resource('feedback', 'FeedbackController')->only(['index', 'show', 'destroy']);
+    Route::resource('feedback', FeedbackController::class)->only(['index', 'show', 'destroy']);
 });
 
 // Master ==========
 Route::prefix('master')->namespace('Master')->middleware('master')->group(function () {
-    Route::resource('documents', 'DocumentsController')->except('show');
+    Route::resource('documents', DocumentsController::class)->except('show');
     Route::delete('log-viewer/logs/delete', 'LogsController@delete');
-    Route::resource('visitors', 'VisitorsController')->except(['edit']);
-    Route::resource('manage-users', 'ManageUsersController')->except(['edit']);
+    Route::resource('visitors', VisitorsController::class)->except(['edit']);
+    Route::resource('manage-users', ManageUsersController::class)->except(['edit']);
 });
 
 // Help =========
-Route::resource('help', 'HelpController')->only(['index', 'show']);
+Route::resource('help', HelpController::class)->only(['index', 'show']);
