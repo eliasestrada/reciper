@@ -27,12 +27,9 @@ class PhotoController extends Controller
             return back()->withError(trans('settings.there_are_no_file'));
         }
 
-        $extention = $image->getClientOriginalExtension();
-        $file_name = set_image_name($extention, 'user' . user()->id);
-
         $this->deleteOldImage(user()->image, 'users');
-        $this->saveImageIfExist($image, $file_name);
-        $this->saveFileNameToDB($file_name);
+        $image_name = $this->saveImageIfExist($image);
+        $this->saveFileNameToDB($image_name);
 
         return back()->withSuccess(trans('settings.saved'));
     }
