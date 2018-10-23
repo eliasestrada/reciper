@@ -226,3 +226,14 @@ function help_link(string $title, $link): string
 {
     return '<a href="' . \URL::to(is_int($link) ? '/help/' . $link : $link) . '" class="text-hover">' . $title . ' <i class="fas fa-external-link-square-alt" style="font-size:10px;transform:translateY(-4.5px)"></i></a>';
 }
+
+/**
+ * @param $exception
+ * @param string $file
+ * @return void
+ */
+function no_connection_error($exception, string $file): void
+{
+    logger()->error($exception->getMessage() . " in file $file.php");
+    session()->flash('error', trans('messages.query_error'));
+}
