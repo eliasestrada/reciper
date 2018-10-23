@@ -23,7 +23,7 @@ function to_array_of_list_items(?string $str): array
 
     $array_of_lines = explode("\n", preg_replace("/[\r\n]+/", "\n", $string_with_no_tags));
 
-    $array_without_empty_lines = array_filter($array_of_lines, function($item) {
+    $array_without_empty_lines = array_filter($array_of_lines, function ($item) {
         return $item != '';
     });
 
@@ -104,16 +104,14 @@ function active_if_route_is(array $routes): string
 
 /**
  * Converts given parameters into a file name
- *
  * @param string $extention
- * @param string $slug
  * @return string
  */
-function set_image_name(string $extension = null, string $slug = ''): string
+function set_image_name(string $extension = null): string
 {
     if ($extension) {
         $time = time();
-        return "{$time}-{$slug}.{$extension}";
+        return "$time.$extension";
     }
     return 'default.jpg';
 }

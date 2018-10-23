@@ -23,7 +23,7 @@ trait PhotoControllerHelpers
         $path_slug = $this->makePathSlug();
         $path = storage_path("app/public/users/$path_slug");
         $path_small = storage_path("app/public/small/users/$path_slug");
-        $image_name = set_image_name($image->getClientOriginalExtension(), 'user' . user()->id);
+        $image_name = set_image_name($image->getClientOriginalExtension());
 
         if (!File::exists($path) && !File::exists($path_small)) {
             File::makeDirectory($path, 0777, true);
@@ -46,14 +46,14 @@ trait PhotoControllerHelpers
     }
 
     /**
-     * @param string $file_name
+     * @param string|null $file_name
      * @return void
      */
-    public function saveFileNameToDB($file_name = ''): void
+    public function saveFileNameToDB(?strign $file_name = null): void
     {
         $user = User::find(user()->id);
 
-        if (empty($file_name)) {
+        if (is_null($file_name)) {
             $user->image = 'default.jpg';
         } else {
             $user->image = $this->makePathSlug() . "/$file_name";
