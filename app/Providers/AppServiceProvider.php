@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
             try {
                 return Category::select('id', 'name_' . LANG() . ' as name')->get()->toArray();
             } catch (QueryException $e) {
-                logger()->error($e->getMessage());
+                no_connection_error($e);
             }
             return [];
         }));

@@ -42,6 +42,6 @@ class WipeCommand extends Command
         $this->call('route:clear');
         $this->call('migrate:fresh');
         $this->call('db:seed');
-        $this->info('Database had been cleared');
+        $this->info('App had been cleared');
     }
 }

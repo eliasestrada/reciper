@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Models\View;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -14,14 +15,18 @@ class PagesController extends Controller
      */
     public function home()
     {
-        $users = User::where('image', '!=', 'default.jpg')->count() >= 50
-        ? User::where('image', '!=', 'default.jpg')
-        : User::query();
-
-        return view('pages.home', [
-            'recipes' => Recipe::getRandomUnseen(24, 20),
-            'users' => $users->inRandomOrder()->limit(50)->get(['id', 'image']),
-        ]);
+        try {
+            return view('pages.home', [
+                'users' => User::inRandomOrder()->limit(50)->get(['id', 'image']),
+                'recipes' => Recipe::getRandomUnseen(24, 20),
+            ]);
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
+            return view('pages.home', [
+                'users' => collect(),
+                'recipes' => collect(),
+            ]);
+        }
     }
 
     /**

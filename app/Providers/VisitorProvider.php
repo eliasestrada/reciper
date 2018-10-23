@@ -20,7 +20,7 @@ class VisitorProvider extends ServiceProvider
                 Visitor::updateOrCreateNewVisitor();
                 \Cookie::queue('r_rotsiv', Visitor::whereIp(request()->ip())->value('id'), 218400);
             } catch (QueryException $e) {
-                logger()->error($e->getMessage());
+                no_connection_error($e, __CLASS__);
             }
         }
     }
