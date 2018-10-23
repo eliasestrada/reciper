@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Settings;
 
-use App\Helpers\Traits\PhotoControllerHelper;
+use App\Helpers\Traits\PhotoControllerHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\PhotoRequest;
 use App\Http\Requests\Settings\SettingsPhotoRequest;
@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class PhotoController extends Controller
 {
-    use PhotoControllerHelper;
+    use PhotoControllerHelpers;
 
     public function edit()
     {
@@ -31,7 +31,7 @@ class PhotoController extends Controller
         $file_name = set_image_name($extention, 'user' . user()->id);
 
         $this->deleteOldFileFromStorage(user()->image, 'users');
-        $this->saveFileToStorage($image, $file_name);
+        $this->saveImageIfExist($image, $file_name);
         $this->saveFileNameToDB($file_name);
 
         return back()->withSuccess(trans('settings.saved'));

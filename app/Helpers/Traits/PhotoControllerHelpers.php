@@ -4,14 +4,14 @@ namespace App\Helpers\Traits;
 
 use App\Models\User;
 
-trait PhotoControllerHelper
+trait PhotoControllerHelpers
 {
     /**
      * @param string $image
      * @param object $file_name
      * @return void
      */
-    public function saveFileToStorage($image, $file_name): void
+    public function saveImageIfExist($image, $file_name): void
     {
         $path_slug = date('Y') . '/' . date('n');
         $path = storage_path("app/public/users/$path_slug");
