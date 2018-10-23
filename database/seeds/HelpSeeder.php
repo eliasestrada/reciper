@@ -32,7 +32,7 @@ class HelpSeeder extends Seeder
                 'id' => 2,
                 'help_category_id' => 1,
                 'title_ru' => 'Как изменить фотографию?',
-                'text_ru' => 'Изменить фотографию можно в настройках фотографии: ' . help_link('reciper.tk/settings/photo/edit', '/settings/photo/edit') . '. Либо перейдите в Меню > Настройки > Фотография.',
+                'text_ru' => 'Изменить фотографию можно в настройках фотографии: ' . help_link('reciper.tk/settings/photo', '/settings/photo') . '. Либо перейдите в Меню > Настройки > Фотография.',
             ],
             [
                 'id' => 3,
