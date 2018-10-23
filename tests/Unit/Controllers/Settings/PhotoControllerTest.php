@@ -4,7 +4,6 @@ namespace Tests\Unit\Controllers\Settings;
 
 use App\Helpers\Traits\PhotoControllerHelpers;
 use Illuminate\Http\UploadedFile;
-use Storage;
 use Tests\TestCase;
 
 class PhotoControllerTest extends TestCase
@@ -24,12 +23,11 @@ class PhotoControllerTest extends TestCase
     {
         $image = UploadedFile::fake()->image('image.jpg');
         $filename = $this->class->saveImageIfExist($image);
-        $path_slug = $this->class->makePathSlug();
 
         $this->assertNotNull($filename);
-        $this->assertFileExists(storage_path("app/public/users/$path_slug/$filename"));
-        $this->assertFileExists(storage_path("app/public/small/users/$path_slug/$filename"));
-        $this->cleanAfterYourself("$path_slug/$filename");
+        $this->assertFileExists(storage_path("app/public/users/$filename"));
+        $this->assertFileExists(storage_path("app/public/small/users/$filename"));
+        $this->cleanAfterYourself($filename);
     }
 
     /** @test */
@@ -65,11 +63,9 @@ class PhotoControllerTest extends TestCase
      */
     private function cleanAfterYourself(string $image_path): void
     {
-        // \Storage::delete([
-        //     "public/users/$image_path",
-        //     "public/small/users/$image_path",
-        // ]);
-        Storage::delete("public/users/$image_path");
-        Storage::delete("public/small/users/$image_path");
+        \Storage::delete([
+            "public/users/$image_path",
+            "public/small/users/$image_path",
+        ]);
     }
 }
