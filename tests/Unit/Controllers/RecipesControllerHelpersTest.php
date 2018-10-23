@@ -114,7 +114,7 @@ class RecipesControllerHelpersTest extends TestCase
         $image = UploadedFile::fake()->image('image.jpg');
         $filename = $this->class->saveImageIfExist($image);
 
-        $this->class->DeleteOldImage($filename);
+        $this->class->deleteOldImage($filename);
         $this->assertFileNotExists(storage_path("app/public/recipes/$filename"));
         $this->assertFileNotExists(storage_path("app/public/small/recipes/$filename"));
     }

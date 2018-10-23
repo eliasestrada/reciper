@@ -36,7 +36,7 @@ class PhotoController extends Controller
 
     public function destroy()
     {
-        $this->deleteOldImage(user()->image, 'users');
+        $this->deleteOldImage(user()->image);
         user()->update(['image' => 'default.jpg']);
 
         return back()->withSuccess(trans('settings.photo_deleted'));
