@@ -24,7 +24,7 @@ class DocumentsComposer
                     ->toArray();
             }));
         } catch (QueryException $e) {
-            $view->with('documents_footer', cache()->get('documents_footer', []));
+            $view->with('documents_footer', []);
             no_connection_error($e, __CLASS__);
         }
     }

@@ -20,7 +20,7 @@ class VisitorLikesComposer
                 return Like::whereVisitorId(visitor_id())->count();
             }));
         } catch (QueryException $e) {
-            $view->with('visitor_likes', cache()->get('visitor_likes', null));
+            $view->with('visitor_likes', null);
             no_connection_error($e, __CLASS__);
         }
     }
