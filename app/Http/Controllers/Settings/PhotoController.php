@@ -29,7 +29,7 @@ class PhotoController extends Controller
 
         $this->deleteOldImage(user()->image, 'users');
         $image_name = $this->saveImageIfExist($image);
-        $this->saveFileNameToDB((string) $image_name);
+        $this->updateImageInDatabase((string) $image_name);
 
         return back()->withSuccess(trans('settings.saved'));
     }

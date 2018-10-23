@@ -49,7 +49,7 @@ trait PhotoControllerHelpers
      * @param string|null $file_name
      * @return void
      */
-    public function saveFileNameToDB(?string $file_name = null): void
+    public function updateImageInDatabase(?string $file_name = null): void
     {
         user()->update([
             'image' => is_null($file_name) ? 'default.jpg' : $file_name,
