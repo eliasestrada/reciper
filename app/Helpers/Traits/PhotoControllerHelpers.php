@@ -42,23 +42,18 @@ trait PhotoControllerHelpers
             }, 'top')
             ->save("$path_small/$image_name");
 
-        return $image_name;
+        return "$path_slug/$image_name";
     }
 
     /**
      * @param string|null $file_name
      * @return void
      */
-    public function saveFileNameToDB(?strign $file_name = null): void
+    public function saveFileNameToDB(?string $file_name = null): void
     {
-        $user = User::find(user()->id);
-
-        if (is_null($file_name)) {
-            $user->image = 'default.jpg';
-        } else {
-            $user->image = $this->makePathSlug() . "/$file_name";
-        }
-        $user->save();
+        user()->update([
+            'image' => is_null($file_name) ? 'default.jpg' : $file_name,
+        ]);
     }
 
     /**

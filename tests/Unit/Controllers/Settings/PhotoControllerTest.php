@@ -4,6 +4,7 @@ namespace Tests\Unit\Controllers\Settings;
 
 use App\Helpers\Traits\PhotoControllerHelpers;
 use Illuminate\Http\UploadedFile;
+use Storage;
 use Tests\TestCase;
 
 class PhotoControllerTest extends TestCase
@@ -64,9 +65,11 @@ class PhotoControllerTest extends TestCase
      */
     private function cleanAfterYourself(string $image_path): void
     {
-        \Storage::delete([
-            "public/users/$image_path",
-            "public/small/users/$image_path",
-        ]);
+        // \Storage::delete([
+        //     "public/users/$image_path",
+        //     "public/small/users/$image_path",
+        // ]);
+        Storage::delete("public/users/$image_path");
+        Storage::delete("public/small/users/$image_path");
     }
 }
