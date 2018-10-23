@@ -20,7 +20,7 @@ trait PhotoControllerHelpers
             return null;
         }
 
-        $path_slug = date('Y') . '/' . date('n');
+        $path_slug = $this->makePathSlug();
         $path = storage_path("app/public/users/$path_slug");
         $path_small = storage_path("app/public/small/users/$path_slug");
         $image_name = set_image_name($image->getClientOriginalExtension(), 'user' . user()->id);
@@ -51,13 +51,12 @@ trait PhotoControllerHelpers
      */
     public function saveFileNameToDB($file_name = ''): void
     {
-        $path_slug = date('Y') . '/' . date('n');
         $user = User::find(user()->id);
 
         if (empty($file_name)) {
             $user->image = 'default.jpg';
         } else {
-            $user->image = "$path_slug/$file_name";
+            $user->image = $this->makePathSlug() . "/$file_name";
         }
         $user->save();
     }
@@ -73,5 +72,14 @@ trait PhotoControllerHelpers
             Storage::delete("public/$folder/$file");
             Storage::delete("public/small/$folder/$file");
         }
+    }
+
+    /**
+     * Function helper
+     * @return string
+     */
+    public function makePathSlug(): string
+    {
+        return date('Y') . '/' . date('n');
     }
 }
