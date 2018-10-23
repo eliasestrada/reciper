@@ -49,7 +49,7 @@
                 </div>
             </visibility>
 
-            @if(!empty($document))
+            @if(isset($document))
                 <blockquote class="mt-5">
                     {!! trans('forms.agree_to_terms', ['btn' => trans('auth.register')]) !!}
                 </blockquote>
@@ -57,8 +57,8 @@
                 <!-- show-document-modal structure -->
                 <div id="show-document-modal" class="modal">
                     <div class="modal-content reset">
-                        <h4>{{ $document->getTitle() }}</h4>
-                        {!! $document->getText() !!}
+                        <h4>{{ $document['title'] }}</h4>
+                        {!! $document['text'] !!}
                     </div>
                     <div class="modal-footer">
                         <a href="#!" class="modal-close waves-effect waves-green btn-flat left">

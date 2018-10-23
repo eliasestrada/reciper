@@ -25,6 +25,15 @@ class Document extends Model
     }
 
     /**
+     * @param $query
+     * @return void
+     */
+    public function scopeSelectBasic($query)
+    {
+        return $query->select('id', 'title_' . LANG() . ' as title', 'text_' . LANG() . ' as text');
+    }
+
+    /**
      * @return boolean
      */
     public function isReady(): bool

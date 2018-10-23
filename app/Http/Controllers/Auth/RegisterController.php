@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Document;
 use App\Models\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Validator;
 
@@ -31,9 +32,16 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('auth.register', [
-            'document' => Document::whereId(1)->first(),
-        ]);
+        try {
+            return view('auth.register', [
+                'document' => cache()->rememberForever('document_agreement', function () {
+                    return Document::selectBasic()->whereId(1)->first()->toArray();
+                }),
+            ]);
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
+            return view('auth.register');
+        }
     }
 
     /**

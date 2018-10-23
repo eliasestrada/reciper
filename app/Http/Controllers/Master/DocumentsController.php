@@ -76,6 +76,10 @@ class DocumentsController extends Controller
             return redirect("/documents/$document->id");
         }
 
+        if ($document->id == 1) {
+            cache()->forget('document_agreement');
+        }
+
         return $request->ready == 0
         ? back()->withSuccess(trans('documents.saved'))
         : back()->withSuccess(trans('documents.published'));
