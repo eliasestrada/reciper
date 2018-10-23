@@ -1,14 +1,25 @@
 <?php
 
-namespace Tests\Unit\Controllers\Recipes;
+namespace Tests\Unit\Controllers;
 
 use App\Helpers\Traits\RecipesControllerHelpers;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
-class IsSimpleMethodTest extends TestCase
+class RecipesControllerHelpersTest extends TestCase
 {
+    private $class;
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->class = new class
+
+        {use RecipesControllerHelpers;};
+    }
+
     /** @test */
     public function isSimple_method_returns_true_if_recipe_time_less_then_59(): void
     {
@@ -19,7 +30,8 @@ class IsSimpleMethodTest extends TestCase
             'time' => 59,
         ]);
 
-        $this->assertTrue($this->isSimple($recipe));
+        $request = Request::create(null, null, $recipe->toArray());
+        $this->assertTrue($this->class->isSimple($recipe));
     }
 
     /** @test */
@@ -32,7 +44,8 @@ class IsSimpleMethodTest extends TestCase
             'time' => 60,
         ]);
 
-        $this->assertFalse($this->isSimple($recipe));
+        $request = Request::create(null, null, $recipe->toArray());
+        $this->assertFalse($this->class->isSimple($recipe));
     }
 
     /**
@@ -51,7 +64,9 @@ class IsSimpleMethodTest extends TestCase
             $recipe->ingredients .= "Row number $i \n";
             $recipe->text .= "Row number $i \n";
         }
-        $this->assertTrue($this->isSimple($recipe));
+
+        $request = Request::create(null, null, $recipe->toArray());
+        $this->assertTrue($this->class->isSimple($recipe));
     }
 
     /**
@@ -70,20 +85,39 @@ class IsSimpleMethodTest extends TestCase
             $recipe->ingredients .= "Row number $i\n";
             $recipe->text .= "Row number $i\n";
         }
-        $this->assertFalse($this->isSimple($recipe));
+        $request = Request::create(null, null, $recipe->toArray());
+        $this->assertFalse($this->class->isSimple($recipe));
+    }
+
+    /** @test */
+    public function SaveImageIfExist_method_uploads_file_and_saves_it_in_2_folders(): void
+    {
+        $image = UploadedFile::fake()->image('image.jpg');
+        $filename = $this->class->saveImageIfExist($image);
+
+        $this->assertNotNull($filename);
+        $this->assertFileExists(storage_path("app/public/recipes/$filename"));
+        $this->assertFileExists(storage_path("app/public/small/recipes/$filename"));
+        $this->cleanAfterYourself($filename);
+    }
+
+    /** @test */
+    public function SaveImageIfExist_method_returns_null_if_user_doent_have_a_file(): void
+    {
+        $filename = $this->class->saveImageIfExist();
+        $this->assertNull($filename);
     }
 
     /**
-     * Helper function to prevent repeating same code
-     *
-     * @param Recipe $recipe
-     * @return bool
+     * Helper function
+     * @param string $filename
+     * @return void
      */
-    private function isSimple(Recipe $recipe): bool
+    private function cleanAfterYourself(string $filename): void
     {
-        $controller = new class
-        {use RecipesControllerHelpers;};
-        $request = Request::create(null, null, $recipe->toArray());
-        return $controller->isSimple($request);
+        \Storage::delete([
+            "public/recipes/$filename",
+            "public/small/recipes/$filename",
+        ]);
     }
 }
