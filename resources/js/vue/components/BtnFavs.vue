@@ -45,7 +45,6 @@ export default {
                 .then(res => res.text())
                 .then(data => {
                     if (data != 'fail') {
-                        this.playSound()
                         this.icon = data
                         if (data == 'active') {
                             this.amount++

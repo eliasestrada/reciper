@@ -34,7 +34,7 @@ class UsersSeeder extends Seeder
             'email' => '22@22.com',
             'username' => 'kris',
             'name' => 'Кристина 👑',
-            'xp' => 177,
+            'xp' => 17,
             'popularity' => 5,
             'status' => 'Люблю Никитку',
             'streak_days' => 24,
