@@ -4,6 +4,7 @@ namespace Tests\Feature\Views\Recipes;
 
 use App\Models\Recipe;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class RecipesEditPageTest extends TestCase
@@ -146,6 +147,24 @@ class RecipesEditPageTest extends TestCase
             ->assertSeeText(trans('notifications.cant_use_script_tags'));
     }
 
+    /** @test */
+    public function user_can_upload_recipe_image(): void
+    {
+        $user = create_user();
+        $recipe = create(Recipe::class, ['user_id' => $user->id], null, 'draft');
+
+        $this->actingAs($user)->put(action('RecipesController@update', ['recipe' => $recipe->id]), [
+            'image' => UploadedFile::fake()->image('image.jpg'),
+        ]);
+
+        $image_name = Recipe::whereId($recipe->id)->value('image');
+
+        $this->assertNotEquals('default.jpg', $image_name);
+        $this->assertFileExists(storage_path("app/public/recipes/$image_name"));
+        $this->assertFileExists(storage_path("app/public/small/recipes/$image_name"));
+        $this->cleanAfterYourself($image_name);
+    }
+
     /**
      * Function helper
      *
@@ -173,5 +192,18 @@ class RecipesEditPageTest extends TestCase
         }
 
         return $result;
+    }
+
+    /**
+     * Helper function
+     * @param string $image_path
+     * @return void
+     */
+    private function cleanAfterYourself(string $image_path): void
+    {
+        \Storage::delete([
+            "public/recipes/$image_path",
+            "public/small/recipes/$image_path",
+        ]);
     }
 }
