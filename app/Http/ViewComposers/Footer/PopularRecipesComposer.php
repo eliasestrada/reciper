@@ -27,7 +27,7 @@ class PopularRecipesComposer
             });
             $view->with(compact('popular_recipes'));
         } catch (QueryException $e) {
-            $view->with('popular_recipes', cache()->get('popular_recipes', collect()));
+            $view->with('popular_recipes', cache()->get('popular_recipes', []));
             no_connection_error($e, __CLASS__);
         }
     }
