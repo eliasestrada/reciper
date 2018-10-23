@@ -4,6 +4,7 @@ namespace Tests\Feature\Views\Settings\Photo;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class SettingsPhotoIndexPageTest extends TestCase
@@ -26,11 +27,38 @@ class SettingsPhotoIndexPageTest extends TestCase
     }
 
     /** @test */
+    public function user_can_upload_new_profile_photo(): void
+    {
+        $user = create_user();
+
+        $this->actingAs($user)->put(action('Settings\PhotoController@update'), [
+            'image' => UploadedFile::fake()->image('image.jpg'),
+        ]);
+        $this->assertNotEquals('default.jpg', $user->image);
+        $this->assertFileExists(storage_path("app/public/users/$user->image"));
+        $this->assertFileExists(storage_path("app/public/small/users/$user->image"));
+        $this->cleanAfterYourself($user->image);
+    }
+
+    /** @test */
     public function user_can_delete_his_photo(): void
     {
         $user = create_user('', ['image' => 'some/image.jpg']);
 
         $this->actingAs($user)->delete(action('Settings\PhotoController@destroy'));
         $this->assertEquals('default.jpg', $user->image);
+    }
+
+    /**
+     * Helper function
+     * @param string $image_path
+     * @return void
+     */
+    private function cleanAfterYourself(string $image_path): void
+    {
+        \Storage::delete([
+            "public/users/$image_path",
+            "public/small/users/$image_path",
+        ]);
     }
 }
