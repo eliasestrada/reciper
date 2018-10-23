@@ -62,15 +62,14 @@ trait PhotoControllerHelpers
     }
 
     /**
-     * @param string $file
-     * @param string $foder
+     * @param string $path
      * @return void
      */
-    public function deleteOldImage(string $file, string $folder): void
+    public function deleteOldImage(string $path): void
     {
-        if ($file !== 'default.jpg') {
-            Storage::delete("public/$folder/$file");
-            Storage::delete("public/small/$folder/$file");
+        if ($path != 'default.jpg') {
+            Storage::delete("public/users/$path");
+            Storage::delete("public/small/users/$path");
         }
     }
 
