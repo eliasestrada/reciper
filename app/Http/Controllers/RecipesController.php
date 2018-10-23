@@ -12,6 +12,7 @@ use App\Models\Meal;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Models\View;
+use Illuminate\Database\QueryException;
 
 class RecipesController extends Controller
 {
@@ -27,9 +28,14 @@ class RecipesController extends Controller
      */
     public function index()
     {
-        return view('recipes.index', [
-            'favs' => Fav::get(['recipe_id', 'user_id']),
-        ]);
+        try {
+            return view('recipes.index', [
+                'favs' => Fav::get(['recipe_id', 'user_id']),
+            ]);
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
+            return view('recipes.index');
+        }
     }
 
     /**
