@@ -14,27 +14,28 @@ trait RecipesControllerHelpers
      */
     public function saveImageIfExist(?UploadedFile $image = null): ?string
     {
-        if ($image) {
-            $image_name = set_image_name($image->getClientOriginalExtension());
-
-            // Big image
-            \Image::make($image)
-                ->fit(600, 400, function ($constraint) {
-                    $constraint->upsize();
-                }, 'top')
-                ->insert(storage_path('app/public/other/watermark.png'))
-                ->save(storage_path("app/public/recipes/$image_name"));
-
-            // Small image
-            \Image::make($image)
-                ->fit(240, 160, function ($constraint) {
-                    $constraint->upsize();
-                }, 'top')
-                ->save(storage_path("app/public/small/recipes/$image_name"));
-
-            return $image_name;
+        if (is_null($image)) {
+            return null;
         }
-        return null;
+
+        $image_name = set_image_name($image->getClientOriginalExtension());
+
+        // Big image
+        \Image::make($image)
+            ->fit(600, 400, function ($constraint) {
+                $constraint->upsize();
+            }, 'top')
+            ->insert(storage_path('app/public/other/watermark.png'))
+            ->save(storage_path("app/public/recipes/$image_name"));
+
+        // Small image
+        \Image::make($image)
+            ->fit(240, 160, function ($constraint) {
+                $constraint->upsize();
+            }, 'top')
+            ->save(storage_path("app/public/small/recipes/$image_name"));
+
+        return $image_name;
     }
 
     /**
