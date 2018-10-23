@@ -69,7 +69,7 @@
             </a>
         </li>
 
-        <li class="{{ active_if_route_is(['settings']) }}"> {{-- settings --}}
+        <li class="{{ active_if_route_is(['settings', 'settings/photo', 'settings/general']) }}"> {{-- settings --}}
             <a href="/settings" title="@lang('settings.settings')">
                 <i class="fas fa-cog fa-15x left with-red-hover"></i>
                 @lang('settings.settings')

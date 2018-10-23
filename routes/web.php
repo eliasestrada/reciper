@@ -49,7 +49,7 @@ Route::prefix('settings')->middleware('auth')->namespace('Settings')->group(func
     Route::put('general', 'GeneralController@updateGeneral');
     Route::put('password', 'GeneralController@updatePassword');
 
-    Route::get('photo/edit', 'PhotoController@edit');
+    Route::get('photo', 'PhotoController@index');
     Route::put('photo', 'PhotoController@update');
     Route::delete('photo', 'PhotoController@destroy');
 });

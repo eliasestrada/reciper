@@ -13,9 +13,9 @@ class PhotoController extends Controller
 {
     use PhotoControllerHelpers;
 
-    public function edit()
+    public function index()
     {
-        return view('settings.photo.edit');
+        return view('settings.photo.index');
     }
 
     /**
@@ -29,7 +29,7 @@ class PhotoController extends Controller
 
         $this->deleteOldImage(user()->image, 'users');
         $image_name = $this->saveImageIfExist($image);
-        $this->saveFileNameToDB($image_name);
+        $this->saveFileNameToDB((string) $image_name);
 
         return back()->withSuccess(trans('settings.saved'));
     }
