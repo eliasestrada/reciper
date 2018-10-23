@@ -108,6 +108,25 @@ class RecipesControllerHelpersTest extends TestCase
         $this->assertNull($filename);
     }
 
+    /** @test */
+    public function DeleteOldImage_method_deletes_files(): void
+    {
+        $image = UploadedFile::fake()->image('image.jpg');
+        $filename = $this->class->saveImageIfExist($image);
+
+        $this->class->DeleteOldImage($filename);
+        $this->assertFileNotExists(storage_path("app/public/recipes/$filename"));
+        $this->assertFileNotExists(storage_path("app/public/small/recipes/$filename"));
+    }
+
+    /** @test */
+    public function DeleteOldImage_method_doent_delete_files_if_name_is_default_jpg(): void
+    {
+        $this->class->DeleteOldImage('default.jpg');
+        $this->assertFileExists(storage_path('app/public/recipes/default.jpg'));
+        $this->assertFileExists(storage_path('app/public/small/recipes/default.jpg'));
+    }
+
     /**
      * Helper function
      * @param string $filename
