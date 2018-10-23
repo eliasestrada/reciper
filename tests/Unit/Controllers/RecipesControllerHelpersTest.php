@@ -90,7 +90,7 @@ class RecipesControllerHelpersTest extends TestCase
     }
 
     /** @test */
-    public function SaveImageIfExist_method_uploads_file_and_saves_it_in_2_folders(): void
+    public function saveImageIfExist_method_uploads_file_and_saves_it_in_2_folders(): void
     {
         $image = UploadedFile::fake()->image('image.jpg');
         $filename = $this->class->saveImageIfExist($image);
@@ -102,14 +102,14 @@ class RecipesControllerHelpersTest extends TestCase
     }
 
     /** @test */
-    public function SaveImageIfExist_method_returns_null_if_user_doent_have_a_file(): void
+    public function saveImageIfExist_method_returns_null_if_user_doent_have_a_file(): void
     {
         $filename = $this->class->saveImageIfExist();
         $this->assertNull($filename);
     }
 
     /** @test */
-    public function DeleteOldImage_method_deletes_files(): void
+    public function deleteOldImage_method_deletes_files(): void
     {
         $image = UploadedFile::fake()->image('image.jpg');
         $filename = $this->class->saveImageIfExist($image);
@@ -120,7 +120,7 @@ class RecipesControllerHelpersTest extends TestCase
     }
 
     /** @test */
-    public function DeleteOldImage_method_doent_delete_files_if_name_is_default_jpg(): void
+    public function deleteOldImage_method_doent_delete_files_if_name_is_default_jpg(): void
     {
         $this->class->DeleteOldImage('default.jpg');
         $this->assertFileExists(storage_path('app/public/recipes/default.jpg'));
