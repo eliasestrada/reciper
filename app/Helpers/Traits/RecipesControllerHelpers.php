@@ -4,14 +4,15 @@ namespace App\Helpers\Traits;
 
 use App\Models\User;
 use App\Notifications\ScriptAttackNotification;
+use Illuminate\Http\UploadedFile;
 
 trait RecipesControllerHelpers
 {
     /**
      * @return string
-     * @param string $image
+     * @param UploadedFile|null $image
      */
-    public function saveImageIfExists($image): ?string
+    public function saveImageIfExist(?UploadedFile $image = null): ?string
     {
         if ($image) {
             $image_name = set_image_name($image->getClientOriginalExtension());
