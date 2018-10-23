@@ -146,4 +146,24 @@ class RecipeTest extends TestCase
         $recipe->{'approved_' . LANG()} = 0;
         $this->assertEquals('#e2bd18', $recipe->getStatusColor());
     }
+
+    /** @test */
+    public function selectBasic_scope_returns_only_title_and_text_columns(): void
+    {
+        $recipe = Recipe::selectBasic()->first()->toArray();
+        $columns = [
+            'id',
+            'title_' . LANG(),
+            'intro_' . LANG(),
+            'ready_' . LANG(),
+            'approved_' . LANG(),
+            'image',
+            'time',
+            'updated_at',
+        ];
+
+        array_map(function ($key) use ($recipe) {
+            $this->assertArrayHasKey($key, $recipe);
+        }, $columns);
+    }
 }
