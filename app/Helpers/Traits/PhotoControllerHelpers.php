@@ -3,6 +3,9 @@
 namespace App\Helpers\Traits;
 
 use App\Models\User;
+use File;
+use Image;
+use Storage;
 
 trait PhotoControllerHelpers
 {
@@ -17,21 +20,18 @@ trait PhotoControllerHelpers
         $path = storage_path("app/public/users/$path_slug");
         $path_small = storage_path("app/public/small/users/$path_slug");
 
-        if (!\File::exists($path)) {
-            \File::makeDirectory($path, 0777, true);
+        if (!File::exists($path) && !File::exists($path_small)) {
+            File::makeDirectory($path, 0777, true);
+            File::makeDirectory($path_small, 0777, true);
         }
 
-        if (!\File::exists($path_small)) {
-            \File::makeDirectory($path_small, 0777, true);
-        }
-
-        \Image::make($image)
+        Image::make($image)
             ->fit(300, 300, function ($constraint) {
                 $constraint->upsize();
             }, 'top')
             ->save("$path/$file_name");
 
-        \Image::make($image)
+        Image::make($image)
             ->fit(60, 60, function ($constraint) {
                 $constraint->upsize();
             }, 'top')
@@ -60,11 +60,11 @@ trait PhotoControllerHelpers
      * @param string $foder
      * @return void
      */
-    public function deleteOldFileFromStorage(string $file, string $folder): void
+    public function deleteOldImage(string $file, string $folder): void
     {
         if ($file !== 'default.jpg') {
-            \Storage::delete("public/$folder/$file");
-            \Storage::delete("public/small/$folder/$file");
+            Storage::delete("public/$folder/$file");
+            Storage::delete("public/small/$folder/$file");
         }
     }
 }

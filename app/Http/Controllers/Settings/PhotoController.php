@@ -30,7 +30,7 @@ class PhotoController extends Controller
         $extention = $image->getClientOriginalExtension();
         $file_name = set_image_name($extention, 'user' . user()->id);
 
-        $this->deleteOldFileFromStorage(user()->image, 'users');
+        $this->deleteOldImage(user()->image, 'users');
         $this->saveImageIfExist($image, $file_name);
         $this->saveFileNameToDB($file_name);
 
@@ -39,7 +39,7 @@ class PhotoController extends Controller
 
     public function destroy()
     {
-        $this->deleteOldFileFromStorage(user()->image, 'users');
+        $this->deleteOldImage(user()->image, 'users');
         user()->update(['image' => 'default.jpg']);
 
         return back()->withSuccess(trans('settings.photo_deleted'));
