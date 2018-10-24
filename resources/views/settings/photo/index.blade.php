@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col s12 l6">
                     <h1 class="header ml-2">@lang('settings.settings_photo')</h1>
-                    <p>@lang('settings.choose_photo', ['btn1' => trans('forms.select'), 'btn2' => trans('forms.save')])</p>
+                    <p>@lang('settings.choose_photo', ['btn1' => trans('forms.select_file'), 'btn2' => trans('forms.save')])</p>
                 </div>
 
                 <div class="col s12 l6">
@@ -28,7 +28,7 @@
                             </label>
                             <div class="preview-overlay"></div>
                         </div>
-                        <button class="min-w btn waves-effect hoverable mt-2">
+                        <button class="d-block mx-auto min-w btn waves-effect hoverable mt-2">
                             <i class="fas fa-save left"></i>
                             @lang('forms.save')
                         </button>
@@ -38,7 +38,7 @@
                     @if (user()->image != 'default.jpg')
                         <form action="{{ action('Settings\PhotoController@destroy') }}" method="post" enctype="multipart/form-data" class="center">
                             @method('delete') @csrf
-                            <button type="submit" class="btn red my-1 min-w hoverable waves-effect waves-light">
+                            <button type="submit" class="d-block mx-auto btn red my-1 min-w hoverable waves-effect waves-light">
                                 <i class="fas fa-trash left"></i>
                                 @lang('forms.deleting')
                             </button>
