@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
         \Schema::defaultStringLength(191);
         // \Artisan::call('wipe');
         $this->showListOfCategories();
-        // $this->horizonRightsChecker();
+        $this->horizonRightsChecker();
     }
 
     /**

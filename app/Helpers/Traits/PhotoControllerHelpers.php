@@ -6,7 +6,6 @@ use App\Models\User;
 use File;
 use Illuminate\Http\UploadedFile;
 use Image;
-use Storage;
 
 trait PhotoControllerHelpers
 {
@@ -54,18 +53,6 @@ trait PhotoControllerHelpers
         user()->update([
             'image' => is_null($file_name) ? 'default.jpg' : $file_name,
         ]);
-    }
-
-    /**
-     * @param string $path
-     * @return void
-     */
-    public function deleteOldImage(string $path): void
-    {
-        if ($path != 'default.jpg') {
-            Storage::delete("public/users/$path");
-            Storage::delete("public/small/users/$path");
-        }
     }
 
     /**
