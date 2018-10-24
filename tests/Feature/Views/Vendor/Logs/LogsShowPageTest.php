@@ -26,6 +26,8 @@ class LogsShowPageTest extends TestCase
             ->get("/log-viewer/logs/$file_name/info")
             ->assertViewIs('log-viewer::custom-theme.show')
             ->assertOk();
+
+        unlink(storage_path("logs/laravel-{$file_name}.log"));
     }
 
     /**
