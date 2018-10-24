@@ -15,7 +15,6 @@ $factory->define(User::class, function () {
         'password' => bcrypt('111111'),
         'remember_token' => str_random(10),
         'photo' => 'default.jpg',
-        // 'photo' => $faker->file(base_path('../tools/people'), storage_path('/app/public/small/users'), false),
         'xp' => 1,
         'popularity' => 0,
         'active' => 1,
@@ -42,4 +41,21 @@ $factory->afterCreatingState(User::class, 'admin', function ($user) {
 });
 $factory->afterCreatingState(User::class, 'master', function ($user) {
     $user->roles()->attach([2]);
+});
+
+/**
+ * Helper function to make fake photo
+ * for user
+ * @return string
+ */
+function uploadFakePhoto(): string
+{
+    $random = rand(1, 45);
+    copy(base_path("../tools/people/{$random}.jpg"), storage_path("app/public/small/users/{$random}.jpg"));
+    copy(base_path("../tools/people/{$random}.jpg"), storage_path("app/public/users/{$random}.jpg"));
+    return "{$random}.jpg";
+}
+
+$factory->state(User::class, 'with_photo', function () {
+    return ['photo' => uploadFakePhoto()];
 });

@@ -9,7 +9,6 @@ $factory->define(Recipe::class, function () {
         'ru_approver_id' => 1,
         'en_approver_id' => 1,
         'time' => rand(10, 160),
-        // 'image' => $faker->file(base_path('../tools/food'), storage_path('/app/public/small/recipes'), false),
         'image' => 'default.jpg',
         'simple' => rand(0, 1),
 
@@ -41,3 +40,20 @@ $factory->state(Recipe::class, 'draft', [
     'en_approver_id' => 0,
     'ru_approver_id' => 0,
 ]);
+
+/**
+ * Helper function to make fake image
+ * for recipe
+ * @return string
+ */
+function uploadFakeImage(): string
+{
+    $random = rand(1, 51);
+    copy(base_path("../tools/food/{$random}.jpg"), storage_path("app/public/small/recipes/{$random}.jpg"));
+    copy(base_path("../tools/food/{$random}.jpg"), storage_path("app/public/recipes/{$random}.jpg"));
+    return "{$random}.jpg";
+}
+
+$factory->state(Recipe::class, 'with_image', function () {
+    return ['image' => uploadFakeImage()];
+});
