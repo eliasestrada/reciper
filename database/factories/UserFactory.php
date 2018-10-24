@@ -3,8 +3,6 @@
 use App\Models\User;
 use App\Models\Visitor;
 
-cache()->flush();
-
 $factory->define(User::class, function () {
     return [
         'visitor_id' => factory(Visitor::class)->create()->id,
@@ -32,6 +30,7 @@ $factory->afterMaking(User::class, function ($user) {
 $factory->state(User::class, 'admin', function () {
     return [];
 });
+
 $factory->state(User::class, 'master', function () {
     return [];
 });
@@ -39,22 +38,10 @@ $factory->state(User::class, 'master', function () {
 $factory->afterCreatingState(User::class, 'admin', function ($user) {
     $user->roles()->attach([1]);
 });
+
 $factory->afterCreatingState(User::class, 'master', function ($user) {
     $user->roles()->attach([2]);
 });
-
-/**
- * Helper function to make fake photo
- * for user
- * @return string
- */
-function uploadFakePhoto(): string
-{
-    $random = rand(1, 45);
-    copy(base_path("../tools/people/{$random}.jpg"), storage_path("app/public/small/users/{$random}.jpg"));
-    copy(base_path("../tools/people/{$random}.jpg"), storage_path("app/public/users/{$random}.jpg"));
-    return "{$random}.jpg";
-}
 
 $factory->state(User::class, 'with_photo', function () {
     return ['photo' => uploadFakePhoto()];

@@ -25,3 +25,29 @@ function create_user($role = null, $attributes = [], $times = null)
     }
     return factory(User::class, $times)->create($attributes);
 }
+
+/**
+ * Helper function to make fake photo
+ * for user
+ * @return string
+ */
+function uploadFakePhoto(): string
+{
+    $random = rand(1, 45);
+    copy(base_path("../tools/people/{$random}.jpg"), storage_path("app/public/small/users/{$random}.jpg"));
+    copy(base_path("../tools/people/{$random}.jpg"), storage_path("app/public/users/{$random}.jpg"));
+    return "{$random}.jpg";
+}
+
+/**
+ * Helper function to make fake image
+ * for recipe
+ * @return string
+ */
+function uploadFakeImage(): string
+{
+    $random = rand(1, 51);
+    copy(base_path("../tools/food/{$random}.jpg"), storage_path("app/public/small/recipes/{$random}.jpg"));
+    copy(base_path("../tools/food/{$random}.jpg"), storage_path("app/public/recipes/{$random}.jpg"));
+    return "{$random}.jpg";
+}
