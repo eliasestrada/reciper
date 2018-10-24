@@ -8,13 +8,12 @@ use Tests\TestCase;
 class StatisticsPageTest extends TestCase
 {
     /** @test */
-    public function view_has_data(): void
+    public function user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
             ->get('/statistics')
             ->assertOk()
-            ->assertViewIs('statistics.index')
-            ->assertViewHasAll(['recipes', 'most_viewed', 'most_liked', 'most_favs']);
+            ->assertViewIs('statistics.index');
     }
 
     /** @test */

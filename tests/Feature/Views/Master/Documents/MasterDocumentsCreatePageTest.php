@@ -12,12 +12,11 @@ class MasterDocumentsCreatePageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_has_a_correct_path(): void
+    public function master_can_see_the_page(): void
     {
         $this->actingAs(create_user('master'))
             ->get('/master/documents/create')
-            ->assertOk()
-            ->assertViewIs('master.documents.create');
+            ->assertOk();
     }
 
     /** @test */
@@ -25,7 +24,7 @@ class MasterDocumentsCreatePageTest extends TestCase
     {
         $this->actingAs(make(User::class))
             ->get("/master/documents/create")
-            ->assertRedirect('/');
+            ->assertRedirect();
     }
 
     /** @test */

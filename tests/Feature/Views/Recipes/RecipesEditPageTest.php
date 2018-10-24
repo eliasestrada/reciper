@@ -12,16 +12,15 @@ class RecipesEditPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_has_data(): void
+    public function user_can_see_the_page_if_its_his_recipe(): void
     {
         $user = create_user();
-        $recipe = create(Recipe::class, ['user_id' => $user->id], null, 'draft');
+        $recipe_id = create(Recipe::class, ['user_id' => $user->id], null, 'draft')->id;
 
         $this->actingAs($user)
-            ->get("/recipes/{$recipe->id}/edit")
+            ->get("/recipes/$recipe_id/edit")
             ->assertOk()
-            ->assertViewIs('recipes.edit')
-            ->assertViewHasAll(['meal', 'recipe']);
+            ->assertViewIs('recipes.edit');
     }
 
     /** @test */

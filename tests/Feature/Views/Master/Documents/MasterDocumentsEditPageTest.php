@@ -11,13 +11,12 @@ class MasterDocumentsEditPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_has_data(): void
+    public function master_can_see_the_page(): void
     {
         $this->actingAs(create_user('master'))
             ->get("/master/documents/1/edit")
             ->assertOk()
-            ->assertViewIs('master.documents.edit')
-            ->assertViewHas('document');
+            ->assertViewIs('master.documents.edit');
     }
 
     /** @test */
@@ -25,6 +24,6 @@ class MasterDocumentsEditPageTest extends TestCase
     {
         $this->actingAs(make(User::class))
             ->get("/master/documents/1/edit")
-            ->assertRedirect('/');
+            ->assertRedirect();
     }
 }

@@ -11,11 +11,11 @@ class RegisterPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function auth_user_cannot_see_the_page(): void
+    public function auth_user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))
             ->get('/register')
-            ->assertRedirect('/dashboard');
+            ->assertRedirect();
     }
 
     /** @test */

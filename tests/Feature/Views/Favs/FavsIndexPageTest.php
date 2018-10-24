@@ -13,17 +13,16 @@ class FavsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function page_accessible_and_has_data(): void
+    public function user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
             ->get('/favs')
             ->assertOk()
-            ->assertViewIs('favs.index')
-            ->assertViewHas('recipes');
+            ->assertViewIs('favs.index');
     }
 
     /** @test */
-    public function page_is_not_accessible_by_visitors(): void
+    public function guest_cant_see_the_page(): void
     {
         $this->get('/favs')->assertRedirect('/login');
     }

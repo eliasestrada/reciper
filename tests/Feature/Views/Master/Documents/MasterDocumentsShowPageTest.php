@@ -12,14 +12,6 @@ class MasterDocumentsShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_has_data(): void
-    {
-        $this->get("/documents/1")
-            ->assertViewIs('master.documents.show')
-            ->assertViewHas('document');
-    }
-
-    /** @test */
     public function user_can_see_the_page_if_document_is_ready(): void
     {
         $this->actingAs(make(User::class))
@@ -30,16 +22,20 @@ class MasterDocumentsShowPageTest extends TestCase
     /** @test */
     public function user_cant_see_the_page_if_document_is_not_ready(): void
     {
+        $document_id = create(Document::class, ['ready_' . LANG() => 0])->id;
+
         $this->actingAs(make(User::class))
-            ->get('/documents/' . create(Document::class, ['ready_' . LANG() => 0])->id)
+            ->get("/documents/$document_id")
             ->assertRedirect();
     }
 
     /** @test */
     public function master_can_see_the_page_if_document_is_not_ready(): void
     {
+        $document_id = create(Document::class, ['ready_' . LANG() => 0])->id;
+
         $this->actingAs(create_user('master'))
-            ->get('/documents/' . create(Document::class, ['ready_' . LANG() => 0])->id)
+            ->get("/documents/$document_id")
             ->assertOk();
     }
 

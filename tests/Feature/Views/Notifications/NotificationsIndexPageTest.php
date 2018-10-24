@@ -14,17 +14,18 @@ class NotificationsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_has_data(): void
+    public function user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
             ->get('/notifications')
-            ->assertViewHas('notifications');
+            ->assertViewIs('notifications.index')
+            ->assertOk();
     }
 
     /** @test */
     public function guest_cant_see_the_page(): void
     {
-        $this->get('/notifications')->assertRedirect('/login');
+        $this->get('/notifications')->assertRedirect();
     }
 
     /** @test */

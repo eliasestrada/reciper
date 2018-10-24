@@ -11,20 +11,19 @@ class UsersShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_has_data(): void
+    public function user_can_see_the_page(): void
     {
         $this->actingAs($user = create_user())
             ->get("/users/$user->username")
             ->assertOk()
-            ->assertViewIs('users.show')
-            ->assertViewHasAll(['recipes', 'user', 'xp']);
+            ->assertViewIs('users.show');
     }
 
     /** @test */
     public function guest_can_see_users_show_page(): void
     {
-        $user = create_user();
-        $this->get("/users/$user->username")->assertOk();
+        $username = create_user()->username;
+        $this->get("/users/$username")->assertOk();
     }
 
     /** @test */

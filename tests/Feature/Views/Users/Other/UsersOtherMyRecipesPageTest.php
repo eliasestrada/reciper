@@ -12,19 +12,18 @@ class UsersOtherMyRecipesPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_has_data(): void
+    public function user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
             ->get('/users/other/my-recipes')
             ->assertOk()
-            ->assertViewIs('users.other.my-recipes')
-            ->assertViewHasAll(compact('recipes_ready', 'recipes_unready'));
+            ->assertViewIs('users.other.my-recipes');
     }
 
     /** @test */
     public function guest_cant_see_the_page(): void
     {
-        $this->get('/users/other/my-recipes')->assertRedirect('/login');
+        $this->get('/users/other/my-recipes')->assertRedirect();
     }
 
     /** @test */

@@ -18,7 +18,7 @@ class LogsShowPageTest extends TestCase
     }
 
     /** @test */
-    public function view_has_a_correct_path(): void
+    public function master_can_see_the_page(): void
     {
         $file_name = $this->createLogFile();
 

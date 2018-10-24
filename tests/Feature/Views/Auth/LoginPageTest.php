@@ -16,16 +16,13 @@ class LoginPageTest extends TestCase
     {
         $this->actingAs(make(User::class))
             ->get('/login')
-            ->assertRedirect('/dashboard')
-            ->assertRedirect(action('DashboardController@index'));
+            ->assertRedirect();
     }
 
     /** @test */
     public function guest_can_see_the_page(): void
     {
-        $this->get('/login')
-            ->assertOk()
-            ->assertViewIs('auth.login');
+        $this->get('/login')->assertOk()->assertViewIs('auth.login');
     }
 
     /** @test */

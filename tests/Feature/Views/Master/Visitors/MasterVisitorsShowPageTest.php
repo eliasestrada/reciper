@@ -20,17 +20,16 @@ class MasterVisitorsShowPageTest extends TestCase
     }
 
     /** @test */
-    public function view_has_data(): void
+    public function master_can_see_the_page(): void
     {
         $this->actingAs(create_user('master'))
             ->get("/master/visitors/{$this->visitor->id}")
             ->assertViewIs('master.visitors.show')
-            ->assertOk()
-            ->assertViewHas('visitor');
+            ->assertOk();
     }
 
     /** @test */
-    public function admin_cant_view_the_page(): void
+    public function admin_cant_see_the_page(): void
     {
         $this->actingAs(create_user('admin'))
             ->get("/master/visitors/{$this->visitor->id}")
@@ -38,7 +37,7 @@ class MasterVisitorsShowPageTest extends TestCase
     }
 
     /** @test */
-    public function user_cant_view_the_page(): void
+    public function user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))
             ->get("/master/visitors/{$this->visitor->id}")

@@ -30,15 +30,6 @@ class AdminApprovesShowPageTest extends TestCase
     }
 
     /** @test */
-    public function view_has_data(): void
-    {
-        $response = $this->actingAs($this->admin)
-            ->get("/admin/approves/{$this->unapproved_recipe->id}")
-            ->assertViewIs('admin.approves.show')
-            ->assertViewHasAll(['recipe', 'approver_id']);
-    }
-
-    /** @test */
     public function user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))
@@ -51,6 +42,7 @@ class AdminApprovesShowPageTest extends TestCase
     {
         $this->actingAs($this->admin)
             ->get("/admin/approves/{$this->unapproved_recipe->id}")
+            ->assertViewIs('admin.approves.show')
             ->assertOk();
 
         $this->actingAs(create_user('admin'))

@@ -11,13 +11,12 @@ class MasterVisitorsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_has_data(): void
+    public function master_can_see_the_page(): void
     {
         $this->actingAs(create_user('master'))
             ->get('/master/visitors')
             ->assertOk()
-            ->assertViewIs('master.visitors.index')
-            ->assertViewHas('visitors');
+            ->assertViewIs('master.visitors.index');
     }
 
     /** @test */

@@ -11,13 +11,12 @@ class MasterDocumentsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_is_correct(): void
+    public function master_can_see_the_page(): void
     {
         $this->actingAs(create_user('master'))
             ->get("/master/documents")
             ->assertOk()
-            ->assertViewIs('master.documents.index')
-            ->assertViewHasAll(['ready_docs', 'unready_docs']);
+            ->assertViewIs('master.documents.index');
     }
 
     /** @test */
@@ -25,6 +24,6 @@ class MasterDocumentsIndexPageTest extends TestCase
     {
         $this->actingAs(make(User::class))
             ->get('/master/documents')
-            ->assertRedirect('/');
+            ->assertRedirect();
     }
 }

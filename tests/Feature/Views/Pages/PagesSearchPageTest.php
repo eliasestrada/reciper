@@ -11,12 +11,11 @@ class PagesSearchPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_has_data(): void
+    public function view_is_accessable(): void
     {
         $this->get('/search')
             ->assertOk()
-            ->assertViewIs('pages.search')
-            ->assertViewHasAll(['recipes', 'message']);
+            ->assertViewIs('pages.search');
     }
 
     /** @test */

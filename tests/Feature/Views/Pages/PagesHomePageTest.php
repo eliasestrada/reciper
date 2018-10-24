@@ -7,11 +7,8 @@ use Tests\TestCase;
 class PagesHomePageTest extends TestCase
 {
     /** @test */
-    public function view_has_data(): void
+    public function view_is_accessable(): void
     {
-        $this->get('/')
-            ->assertOk()
-            ->assertViewIs('pages.home')
-            ->assertViewHasAll(['recipes', 'users']);
+        $this->get('/')->assertOk()->assertViewIs('pages.home');
     }
 }

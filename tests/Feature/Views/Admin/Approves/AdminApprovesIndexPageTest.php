@@ -12,17 +12,12 @@ class AdminApprovesIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_has_data(): void
+    public function admin_can_see_the_page(): void
     {
         $this->actingAs(create_user('admin'))
             ->get('/admin/approves')
             ->assertOk()
-            ->assertViewIs('admin.approves.index')
-            ->assertViewHas([
-                'unapproved_waiting',
-                'unapproved_checking',
-                'my_approves',
-            ]);
+            ->assertViewIs('admin.approves.index');
     }
 
     /** @test */

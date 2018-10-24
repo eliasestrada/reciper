@@ -12,13 +12,12 @@ class AdminFeedbackIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_has_data(): void
+    public function admin_can_see_the_page(): void
     {
         $this->actingAs(create_user('admin'))
             ->get('/admin/feedback')
             ->assertOk()
-            ->assertViewIs('admin.feedback.index')
-            ->assertViewHasAll(['feedback_ru', 'feedback_en']);
+            ->assertViewIs('admin.feedback.index');
     }
 
     /** @test */

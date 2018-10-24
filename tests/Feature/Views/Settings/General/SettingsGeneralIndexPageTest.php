@@ -11,7 +11,7 @@ class SettingsGeneralIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_has_a_correct_path(): void
+    public function user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
             ->get('/settings/general')
@@ -22,7 +22,7 @@ class SettingsGeneralIndexPageTest extends TestCase
     /** @test */
     public function guest_cant_see_the_page(): void
     {
-        $this->get('/settings/general')->assertRedirect('/login');
+        $this->get('/settings/general')->assertRedirect();
     }
 
     /** @test */

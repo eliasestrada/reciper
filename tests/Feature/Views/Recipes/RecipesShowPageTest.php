@@ -13,11 +13,10 @@ class RecipesShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_has_data(): void
+    public function view_is_accessable(): void
     {
-        $this->get('/recipes/' . create(Recipe::class)->id)
-            ->assertViewIs('recipes.show')
-            ->assertViewHas('recipe');
+        $recipe_id = create(Recipe::class)->id;
+        $this->get("/recipes/$recipe_id")->assertViewIs('recipes.show')->assertOk();
     }
 
     /** @test */

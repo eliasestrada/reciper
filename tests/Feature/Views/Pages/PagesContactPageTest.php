@@ -11,7 +11,7 @@ class PagesContactPageTest extends TestCase
     use DatabaseTransactions;
 
     /** @test */
-    public function view_has_a_correct_path(): void
+    public function view_is_accessable(): void
     {
         $this->get('/contact')
             ->assertOk()

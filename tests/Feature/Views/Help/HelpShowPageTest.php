@@ -3,16 +3,17 @@
 namespace Tests\Feature\Views\Help;
 
 use App\Models\Help;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class HelpShowPageTest extends TestCase
 {
+    use DatabaseTransactions;
+
     /** @test */
-    public function page_accessible_and_has_data(): void
+    public function page_accessible(): void
     {
-        $this->get('/help/1')
-            ->assertOk()
-            ->assertViewIs('help.show')
-            ->assertViewHas('help');
+        $help_page_id = create(Help::class)->id;
+        $this->get("/help/$help_page_id")->assertOk()->assertViewIs('help.show');
     }
 }
