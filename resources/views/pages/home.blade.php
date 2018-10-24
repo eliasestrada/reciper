@@ -120,7 +120,7 @@
                     <div class="people-gallery">
                         @foreach ($users as $user)
                             <a href="/users/{{ $user->username }}">
-                                <img src="{{ asset('storage/small/users/' . $user->image) }}" alt="{{ $user->id }}" class="hoverable">
+                                <img src="{{ asset('storage/small/users/' . $user->photo) }}" alt="{{ $user->id }}" class="hoverable">
                             </a>
                         @endforeach
                     </div>

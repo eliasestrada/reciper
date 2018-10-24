@@ -139,7 +139,7 @@
                     {{-- Dropdown Trigger 2 User --}}
                     <a id="_user-menu-trigger" class="right dropdown-trigger position-relative" href="#!" data-target="dropdown2" style="margin-top:.65rem">
                         <i class="user-icon-navbar z-depth-1 hoverable waves-effect waves-light d-block {{ $unapproved_notif || $feedback_notif || $notifs_notif || $logs_notif ? 'small-notif' : '' }}">
-                            <img src="{{ asset('storage/small/users/' . user()->image) }}">
+                            <img src="{{ asset('storage/small/users/' . user()->photo) }}">
                         </i>
                     </a>
                 @endauth

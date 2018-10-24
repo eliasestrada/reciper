@@ -10,20 +10,21 @@ use Illuminate\Queue\SerializesModels;
 use Redis;
 use Storage;
 
-class DeleteImageJob implements ShouldQueue
+class DeletePhotoJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    public $image_name;
+    public $photo_name;
 
     /**
      * Create a new job instance.
      *
+     * @param string $photo_name
      * @return void
      */
-    public function __construct(string $image_name)
+    public function __construct(string $photo_name)
     {
-        $this->image_name = $image_name;
+        $this->photo_name = $photo_name;
     }
 
     /**
@@ -33,11 +34,11 @@ class DeleteImageJob implements ShouldQueue
      */
     public function handle()
     {
-        Redis::throttle('delete_image')->allow(2)->every(1)->then(function () {
-            if ($this->image_name != 'default.jpg') {
+        Redis::throttle('delete_photo')->allow(2)->every(1)->then(function () {
+            if ($this->photo_name != 'default.jpg') {
                 Storage::delete([
-                    "public/users/$this->image_name",
-                    "public/small/users/$this->image_name",
+                    "public/users/$this->photo_name",
+                    "public/small/users/$this->photo_name",
                 ]);
             }
         }, function () {
@@ -50,6 +51,6 @@ class DeleteImageJob implements ShouldQueue
      */
     public function tags()
     {
-        return ['delete_image'];
+        return ['delete_photo'];
     }
 }

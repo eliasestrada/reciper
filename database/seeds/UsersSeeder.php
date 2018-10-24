@@ -24,7 +24,7 @@ class UsersSeeder extends Seeder
             'notif_check' => date("Y-m-d H:i:s"),
             'contact_check' => date("Y-m-d H:i:s"),
             'created_at' => '2018-03-08 12:08:59',
-            'image' => '2018/10/1539031832-user1.jpg',
+            'photo' => '2018/10/1539031832-user1.jpg',
         ]);
         $user->addRole('admin');
         $user->addRole('master');
@@ -41,7 +41,7 @@ class UsersSeeder extends Seeder
             'password' => bcrypt('111111'),
             'contact_check' => date("Y-m-d H:i:s"),
             'created_at' => '2018-03-08 12:08:59',
-            'image' => '2018/10/1539024731-user2.jpg',
+            'photo' => '2018/10/1539024731-user2.jpg',
         ]);
     }
 }

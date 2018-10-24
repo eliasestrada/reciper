@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('online_check')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('contact_check')->nullable();
             $table->timestamps();
-            $table->string('image')->default('default.jpg');
+            $table->string('photo')->default('default.jpg');
             $table->string('password', 250);
             $table->rememberToken();
         });

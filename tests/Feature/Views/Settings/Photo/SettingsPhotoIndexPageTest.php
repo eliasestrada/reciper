@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Views\Settings\Photo;
 
-use App\Jobs\DeleteImageJob;
+use App\Jobs\DeletePhotoJob;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
@@ -34,58 +34,58 @@ class SettingsPhotoIndexPageTest extends TestCase
         $user = create_user();
 
         $this->actingAs($user)->put(action('Settings\PhotoController@update'), [
-            'image' => UploadedFile::fake()->image('image.jpg'),
+            'photo' => UploadedFile::fake()->image('image.jpg'),
         ]);
-        $this->assertNotEquals('default.jpg', $user->image);
-        $this->assertFileExists(storage_path("app/public/users/$user->image"));
-        $this->assertFileExists(storage_path("app/public/small/users/$user->image"));
-        $this->cleanAfterYourself($user->image);
+        $this->assertNotEquals('default.jpg', $user->photo);
+        $this->assertFileExists(storage_path("app/public/users/$user->photo"));
+        $this->assertFileExists(storage_path("app/public/small/users/$user->photo"));
+        $this->cleanAfterYourself($user->photo);
     }
 
     /** @test */
-    public function delete_photo_request_dispaches_job_DeleteImageJob(): void
+    public function delete_photo_request_dispaches_job_DeletePhotoJob(): void
     {
         Queue::fake();
 
-        $user = create_user('', ['image' => 'some/image.jpg']);
+        $user = create_user('', ['photo' => 'some/image.jpg']);
         $this->actingAs($user)->delete(action('Settings\PhotoController@destroy'));
 
-        Queue::assertPushed(DeleteImageJob::class, function ($job) {
-            return $job->image_name == 'some/image.jpg';
+        Queue::assertPushed(DeletePhotoJob::class, function ($job) {
+            return $job->photo_name == 'some/image.jpg';
         });
     }
 
     /** @test */
-    public function if_profile_image_is_default_DeleteImageJob_is_not_queued(): void
+    public function if_profile_photo_is_default_DeletePhotoJob_is_not_queued(): void
     {
         Queue::fake();
 
         $this->actingAs(create_user())
             ->delete(action('Settings\PhotoController@destroy'));
 
-        Queue::assertNotPushed(DeleteImageJob::class);
+        Queue::assertNotPushed(DeletePhotoJob::class);
     }
 
     /** @test */
-    public function after_delete_photo_request_image_column_is_set_to_default_jpg(): void
+    public function after_delete_photo_request_photo_column_is_set_to_default_jpg(): void
     {
-        $user = create_user('', ['image' => 'another/image.jpg']);
+        $user = create_user('', ['photo' => 'another/image.jpg']);
 
         $this->withoutJobs();
         $this->actingAs($user)->delete(action('Settings\PhotoController@destroy'));
-        $this->assertEquals('default.jpg', $user->image);
+        $this->assertEquals('default.jpg', $user->photo);
     }
 
     /**
      * Helper function
-     * @param string $image_path
+     * @param string $photo_path
      * @return void
      */
-    private function cleanAfterYourself(string $image_path): void
+    private function cleanAfterYourself(string $photo_path): void
     {
         \Storage::delete([
-            "public/users/$image_path",
-            "public/small/users/$image_path",
+            "public/users/$photo_path",
+            "public/small/users/$photo_path",
         ]);
     }
 }

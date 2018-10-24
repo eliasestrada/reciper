@@ -16,7 +16,7 @@
         </div>
 
         @if ($visitor->user)
-            <img src="{{ asset('storage/users/'.$visitor->user->image) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $visitor->user->getName() }}" />
+            <img src="{{ asset('storage/users/'.$visitor->user->photo) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $visitor->user->getName() }}" />
             <div class="my-2">
 
                 <a href="/users/{{ $visitor->user->username }}" class="btn-small min-w">

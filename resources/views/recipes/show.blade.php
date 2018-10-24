@@ -52,7 +52,7 @@
                 </div>
 
                 {{-- User icon --}}
-                <a href="/users/{{ $recipe->user->username }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->image) }})" title="@lang('users.go_to_profile') {{ $recipe->user->getName() }}"></a>
+                <a href="/users/{{ $recipe->user->username }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->photo) }})" title="@lang('users.go_to_profile') {{ $recipe->user->getName() }}"></a>
 
                 {{-- Like button --}}
                 <like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}" inline-template>

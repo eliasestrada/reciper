@@ -16,7 +16,7 @@ class PhotoRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'image|nullable|max:1999',
+            'photo' => 'image|nullable|max:1999',
         ];
     }
 
@@ -24,9 +24,9 @@ class PhotoRequest extends FormRequest
     public function messages()
     {
         return [
-            'image.image' => trans('settings.image_image'),
-            'image.max' => trans('settings.image_max'),
-            'image.uploaded' => trans('settings.image_uploaded'),
+            'photo.image' => trans('settings.photo_image'),
+            'photo.max' => trans('settings.photo_max'),
+            'photo.uploaded' => trans('settings.photo_uploaded'),
         ];
     }
 }

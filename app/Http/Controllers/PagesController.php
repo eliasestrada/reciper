@@ -17,7 +17,7 @@ class PagesController extends Controller
     {
         try {
             return view('pages.home', [
-                'users' => User::inRandomOrder()->limit(50)->get(['id', 'image']),
+                'users' => User::inRandomOrder()->limit(50)->get(['id', 'photo']),
                 'recipes' => Recipe::getRandomUnseen(24, 20),
             ]);
         } catch (QueryException $e) {

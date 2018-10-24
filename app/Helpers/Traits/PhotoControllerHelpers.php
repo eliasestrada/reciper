@@ -10,48 +10,48 @@ use Image;
 trait PhotoControllerHelpers
 {
     /**
-     * @param UploadedFile|null $image
+     * @param UploadedFile|null $photo
      * @return string|null
      */
-    public function saveImageIfExist(?UploadedFile $image = null): ?string
+    public function savePhotoIfExist(?UploadedFile $photo = null): ?string
     {
-        if (is_null($image)) {
+        if (is_null($photo)) {
             return null;
         }
 
         $path_slug = $this->makePathSlug();
         $path = storage_path("app/public/users/$path_slug");
         $path_small = storage_path("app/public/small/users/$path_slug");
-        $image_name = set_image_name($image->getClientOriginalExtension());
+        $photo_name = set_image_name($photo->getClientOriginalExtension());
 
         if (!File::exists($path) && !File::exists($path_small)) {
             File::makeDirectory($path, 0777, true);
             File::makeDirectory($path_small, 0777, true);
         }
 
-        Image::make($image)
+        Image::make($photo)
             ->fit(300, 300, function ($constraint) {
                 $constraint->upsize();
             }, 'top')
-            ->save("$path/$image_name");
+            ->save("$path/$photo_name");
 
-        Image::make($image)
+        Image::make($photo)
             ->fit(60, 60, function ($constraint) {
                 $constraint->upsize();
             }, 'top')
-            ->save("$path_small/$image_name");
+            ->save("$path_small/$photo_name");
 
-        return "$path_slug/$image_name";
+        return "$path_slug/$photo_name";
     }
 
     /**
-     * @param string|null $file_name
+     * @param string|null $photo_name
      * @return void
      */
-    public function updateImageInDatabase(?string $file_name = null): void
+    public function updatePhotoInDatabase(?string $photo_name = null): void
     {
         user()->update([
-            'image' => is_null($file_name) ? 'default.jpg' : $file_name,
+            'photo' => is_null($photo_name) ? 'default.jpg' : $photo_name,
         ]);
     }
 
