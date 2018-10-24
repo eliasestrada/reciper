@@ -2,9 +2,11 @@
 
 namespace Tests\Feature\Views\Settings\Photo;
 
+use App\Jobs\DeleteImageJob;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
 
 class SettingsPhotoIndexPageTest extends TestCase
@@ -41,10 +43,35 @@ class SettingsPhotoIndexPageTest extends TestCase
     }
 
     /** @test */
-    public function user_can_delete_his_photo(): void
+    public function delete_photo_request_dispaches_job_DeleteImageJob(): void
     {
-        $user = create_user('', ['image' => 'some/image.jpg']);
+        Queue::fake();
 
+        $user = create_user('', ['image' => 'some/image.jpg']);
+        $this->actingAs($user)->delete(action('Settings\PhotoController@destroy'));
+
+        Queue::assertPushed(DeleteImageJob::class, function ($job) {
+            return $job->image_name == 'some/image.jpg';
+        });
+    }
+
+    /** @test */
+    public function if_profile_image_is_default_DeleteImageJob_is_not_queued(): void
+    {
+        Queue::fake();
+
+        $this->actingAs(create_user())
+            ->delete(action('Settings\PhotoController@destroy'));
+
+        Queue::assertNotPushed(DeleteImageJob::class);
+    }
+
+    /** @test */
+    public function after_delete_photo_request_image_column_is_set_to_default_jpg(): void
+    {
+        $user = create_user('', ['image' => 'another/image.jpg']);
+
+        $this->withoutJobs();
         $this->actingAs($user)->delete(action('Settings\PhotoController@destroy'));
         $this->assertEquals('default.jpg', $user->image);
     }

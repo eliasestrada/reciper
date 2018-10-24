@@ -7,12 +7,14 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Redis;
+use Storage;
 
 class DeleteImageJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    private $image_name;
+    public $image_name;
 
     /**
      * Create a new job instance.
@@ -31,11 +33,13 @@ class DeleteImageJob implements ShouldQueue
      */
     public function handle()
     {
-        \Redis::throttle('delete_image')->allow(2)->every(1)->then(function () {
-            \Storage::delete([
-                "public/users/$this->image_name",
-                "public/small/users/$this->image_name",
-            ]);
+        Redis::throttle('delete_image')->allow(2)->every(1)->then(function () {
+            if ($this->image_name != 'default.jpg') {
+                Storage::delete([
+                    "public/users/$this->image_name",
+                    "public/small/users/$this->image_name",
+                ]);
+            }
         }, function () {
             return $this->release(2);
         });
