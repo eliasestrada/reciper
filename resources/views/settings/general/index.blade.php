@@ -6,7 +6,7 @@
 
 <div class="page row">
     <div class="col s12 m5 l4">
-        @include('includes.settings-sidebar', ['route' => 'general'])
+        @include('includes.settings-sidebar')
     </div>
     <div class="col s12 m7 l8 mt-3">
         <div class="row">

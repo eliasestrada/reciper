@@ -9,11 +9,11 @@
         </div>
         <div class="collapsible-body p-0">
             <ul class="collection with-header">
-                <a href="/settings/general" class="collection-item {{ $route == 'general' ? 'active' : '' }}">
+                <a href="/settings/general" class="collection-item {{ active_if_route_is(['settings/general', 'settings']) }}">
                     <b>@lang('settings.general')</b>. 
                     <span class="grey-text">@lang('settings.general_desc')</span>
                 </a>
-                <a href="/settings/photo/edit" class="collection-item {{ $route == 'photo' ? 'active' : '' }}">
+                <a href="/settings/photo" class="collection-item {{ active_if_route_is(['settings/photo']) }}">
                     <b>@lang('settings.photo')</b>. 
                     <span class="grey-text">@lang('settings.photo_desc')</span>
                 </a>

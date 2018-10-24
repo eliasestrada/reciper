@@ -7,7 +7,7 @@
 <div class="page">
     <div class="row">
         <div class="col s12 m5 l4">
-            @include('includes.settings-sidebar', ['route' => 'photo'])
+            @include('includes.settings-sidebar')
         </div>
         <div class="col s12 m7 l8 mt-3">
             <div class="row">
