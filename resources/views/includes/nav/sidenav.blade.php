@@ -10,7 +10,7 @@
         </div>
     @else
         <div class="sidebar-hat-auth center"
-            style="background-image:url({{ asset('storage/users/'.user()->image) }})">
+            style="background-image:url({{ asset('storage/users/' . user()->photo) }})">
         </div>
     @endguest
 

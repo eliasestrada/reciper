@@ -39,8 +39,8 @@
                     </div>
 
                     <div class="input-field">
-                        <label for="password">@lang('forms.new_pwd')</label>
-                        <input type="password" name="password" id="password" minlength="{{ config('valid.settings.password.min') }}" maxlength="{{ config('valid.settings.password.max') }}">
+                        <label for="new_password">@lang('forms.new_pwd')</label>
+                        <input type="password" name="password" id="new_password" minlength="{{ config('valid.settings.password.min') }}" maxlength="{{ config('valid.settings.password.max') }}">
                     </div>
 
                     <div class="input-field">
@@ -74,7 +74,7 @@
             </div>
             <p>@lang('settings.delete_account_desc')</p>
 
-            {{-- Password --}}
+            {{-- Delete accoutn Password --}}
             <div class="row">
                 <div class="col s8">
                     <div class="input-field">
@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div class="col s4">
-                    {{--  Button  --}}
+                    {{--  Delete account Button  --}}
                     <div class="center pb-2">
                         <button type="submit" class="btn red waves-effect waves-light mt-4" onclick="if (!confirm('@lang('settings.are_you_sure_to_deactivate')')) event.preventDefault()">
                             <i class="fas fa-trash-alt left"></i>
