@@ -7,6 +7,7 @@ use App\Helpers\Traits\RecipesControllerHelpers;
 use App\Http\Requests\Recipes\RecipeStoreRequest;
 use App\Http\Requests\Recipes\RecipeUpdateRequest;
 use App\Http\Responses\Controllers\RecipeUpdateResponse;
+use App\Jobs\DeleteImageJob;
 use App\Models\Fav;
 use App\Models\Meal;
 use App\Models\Recipe;
@@ -146,8 +147,8 @@ class RecipesController extends Controller
             return back()->withError(trans('notifications.cant_use_script_tags'));
         }
 
-        if ($request->file('image')) {
-            $this->deleteOldImage($recipe->image);
+        if ($request->file('image') && $recipe->image != 'default.jpg') {
+            DeleteImageJob::dispatch($recipe->image);
         }
 
         $image_name = $this->saveImageIfExist($request->file('image'));

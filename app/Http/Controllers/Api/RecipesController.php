@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Helpers\Traits\RecipesControllerHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipesResource;
+use App\Jobs\DeleteImageJob;
 use App\Models\Recipe;
 use App\Models\Visitor;
 
@@ -90,7 +91,7 @@ class RecipesController extends Controller
     {
         $recipe = Recipe::find($id);
 
-        $this->deleteOldImage($recipe->image);
+        DeleteImageJob::dispatch($recipe->image);
 
         $recipe->categories()->detach();
         $recipe->likes()->delete();

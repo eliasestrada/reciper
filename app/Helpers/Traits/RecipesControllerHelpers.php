@@ -39,20 +39,6 @@ trait RecipesControllerHelpers
     }
 
     /**
-     * @param string $image
-     * @return void
-     */
-    public function deleteOldImage(string $image): void
-    {
-        if ($image != 'default.jpg') {
-            \Storage::delete([
-                "public/recipes/$image",
-                "public/small/recipes/$image",
-            ]);
-        }
-    }
-
-    /**
      * @param object $request
      * @return object
      */

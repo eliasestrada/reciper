@@ -2,9 +2,11 @@
 
 namespace Tests\Feature\Views\Recipes;
 
+use App\Jobs\DeleteImageJob;
 use App\Models\Recipe;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
 
 class RecipesEditPageTest extends TestCase
@@ -162,6 +164,40 @@ class RecipesEditPageTest extends TestCase
         $this->assertFileExists(storage_path("app/public/recipes/$image_name"));
         $this->assertFileExists(storage_path("app/public/small/recipes/$image_name"));
         $this->cleanAfterYourself($image_name);
+    }
+
+    /** @test */
+    public function changing_recipe_image_user_dispaches_job_DeleteImageJob(): void
+    {
+        Queue::fake();
+
+        $recipe = create(Recipe::class, [
+            'user_id' => ($user = create_user())->id,
+            'image' => 'image_name.jpg',
+        ], null, 'draft');
+
+        $this->actingAs($user)->put(action('RecipesController@update', ['recipe' => $recipe->id]), [
+            'image' => UploadedFile::fake()->image('image.jpg'),
+        ]);
+
+        Queue::assertPushed(DeleteImageJob::class, function ($job) {
+            return $job->image_name == 'image_name.jpg';
+        });
+        $this->cleanAfterYourself(Recipe::whereId($recipe->id)->value('image'));
+    }
+
+    /** @test */
+    public function if_no_image_profided_DeleteImageJob_is_not_queued(): void
+    {
+        Queue::fake();
+
+        $recipe = create(Recipe::class, [
+            'user_id' => ($user = create_user())->id,
+        ], null, 'draft');
+
+        $this->actingAs($user)->put(action('RecipesController@update', ['recipe' => $recipe->id]));
+
+        Queue::assertNotPushed(DeleteImageJob::class);
     }
 
     /**
