@@ -148,7 +148,7 @@ class RecipeTest extends TestCase
     }
 
     /** @test */
-    public function selectBasic_scope_returns_only_title_and_text_columns(): void
+    public function selectBasic_scope_returns_only_common_columns(): void
     {
         $recipe = Recipe::selectBasic()->first()->toArray();
         $columns = [

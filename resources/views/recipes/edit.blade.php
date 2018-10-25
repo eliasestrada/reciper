@@ -29,11 +29,11 @@
                 deleted-fail="{{ trans('recipes.deleted_fail') }}"
                 confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
                 <span v-if="!error">
-                    <button type="button" class="btn-floating red tooltipped waves-effect waves-light" id="_delete-recipe" data-position="top"
+                    <a href="#" class="btn-floating red tooltipped waves-effect waves-light" data-position="top"
                         data-tooltip="@lang('tips.delete')"
                         v-on:click="deleteRecipe">
                             <i class="fas fa-trash"></i>
-                    </button>
+                    </a>
                 </span>
             </delete-recipe-btn>
 

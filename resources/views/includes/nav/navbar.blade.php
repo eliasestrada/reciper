@@ -103,7 +103,7 @@
         @endhasRole
 
         <li> {{-- logout --}} {{-- This button submits logout-form --}}
-            <a href="#" title="@lang('auth.logout')" onclick="$('logout-form').submit()" id="_logout_btn">
+            <a href="#" title="@lang('auth.logout')" onclick="$('logout-form').submit()">
                 <i class="fas fa-sign-out-alt fa-15x left"></i>@lang('auth.logout')
             </a>
         </li>
@@ -137,7 +137,7 @@
             <div class="right">
                 @auth
                     {{-- Dropdown Trigger 2 User --}}
-                    <a id="_user-menu-trigger" class="right dropdown-trigger position-relative" href="#!" data-target="dropdown2" style="margin-top:.65rem">
+                    <a class="right dropdown-trigger position-relative" href="#!" data-target="dropdown2" style="margin-top:.65rem">
                         <i class="user-icon-navbar z-depth-1 hoverable waves-effect waves-light d-block {{ $unapproved_notif || $feedback_notif || $notifs_notif || $logs_notif ? 'small-notif' : '' }}">
                             <img src="{{ asset('storage/small/users/' . user()->photo) }}">
                         </i>
