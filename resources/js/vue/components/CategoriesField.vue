@@ -48,7 +48,6 @@ export default {
 
     created() {
         this.getFieldsFromProps();
-        console.log(this.categories, this.recipeCategories)
     },
 
     methods: {

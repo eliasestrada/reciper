@@ -18,7 +18,6 @@ document.querySelectorAll("form").forEach(function(form) {
                 button.innerHTML =
                     '<i class="fas fa-circle-notch fa-1x fa-spin"></i>';
             });
-            console.log("nice");
         },
         false
     );
