@@ -11,7 +11,7 @@ export default {
     methods: {
         deleteRecipe() {
             if (confirm(this.confirm)) {
-                fetch(`/api/recipes/${this.recipeId}`, {
+                fetch(`/recipes/${this.recipeId}`, {
                     method: "delete"
                 })
                     .then(res => res.text())

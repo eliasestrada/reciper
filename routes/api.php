@@ -2,7 +2,6 @@
 
 Route::prefix('recipes')->namespace('Api')->group(function () {
     Route::get('{hash?}', 'RecipesController@index');
-    Route::delete('{id}', 'RecipesController@destroy');
 });
 
 Route::prefix('like')->namespace('Api')->group(function () {

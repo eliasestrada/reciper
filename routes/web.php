@@ -34,7 +34,7 @@ Route::post('admin/feedback', 'Admin\FeedbackController@store');
 Route::get('documents/{document}', 'Master\DocumentsController@show')->where('document', '[0-9]+');
 
 // Recipes ===========
-Route::resource('recipes', RecipesController::class)->except(['destroy']);
+Route::resource('recipes', RecipesController::class);
 
 // Notifications ===========
 Route::get('notifications', 'NotificationController@index')->middleware('auth');

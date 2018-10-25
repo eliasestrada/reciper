@@ -210,7 +210,7 @@ class RecipesEditPageTest extends TestCase
             'image' => 'just_image.jpg',
         ]);
 
-        $this->actingAs($user)->delete(action('Api\RecipesController@destroy', ['recipe' => $recipe->id]));
+        $this->actingAs($user)->delete(action('RecipesController@destroy', ['recipe' => $recipe->id]));
 
         Queue::assertPushed(DeleteImageJob::class, function ($job) {
             return $job->image_name == 'just_image.jpg';

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Helpers\Traits\RecipesControllerHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipesResource;
-use App\Jobs\DeleteImageJob;
 use App\Models\Recipe;
 use App\Models\Visitor;
 
@@ -81,31 +80,5 @@ class RecipesController extends Controller
             })->done(1)->paginate($pagin);
         }
         return Recipe::latest()->done(1)->paginate($pagin);
-    }
-
-    /**
-     * @param int $id of the recipe
-     * @return string
-     */
-    public function destroy(int $id): string
-    {
-        $recipe = Recipe::find($id);
-
-        DeleteImageJob::dispatch($recipe->image);
-
-        $recipe->categories()->detach();
-        $recipe->likes()->delete();
-        $recipe->views()->delete();
-        $recipe->favs()->delete();
-
-        if ($recipe->delete()) {
-            cache()->forget('popular_recipes');
-            cache()->forget('random_recipes');
-            cache()->forget('unapproved_notif');
-            return 'success';
-        }
-
-        logger()->error('An error occured while trying to delete recipe. Recipe data: ' . $recipe);
-        return 'failed';
     }
 }

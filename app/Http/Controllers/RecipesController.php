@@ -156,4 +156,30 @@ class RecipesController extends Controller
 
         return new RecipeUpdateResponse($recipe);
     }
+
+    /**
+     * @param Recipe $recipe
+     * @return string
+     */
+    public function destroy(Recipe $recipe): string
+    {
+        if ($recipe->user_id !== user()->id) {
+            return 'failed';
+        }
+
+        if ($recipe->image != 'default') {
+            DeleteImageJob::dispatch($recipe->image);
+        }
+
+        $recipe->categories()->detach();
+        $recipe->likes()->delete();
+        $recipe->views()->delete();
+        $recipe->favs()->delete();
+
+        cache()->forget('popular_recipes');
+        cache()->forget('random_recipes');
+        cache()->forget('unapproved_notif');
+
+        return $recipe->delete() ? 'success' : 'failed';
+    }
 }
