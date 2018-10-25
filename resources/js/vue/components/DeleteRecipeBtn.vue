@@ -12,7 +12,14 @@ export default {
         deleteRecipe() {
             if (confirm(this.confirm)) {
                 fetch(`/recipes/${this.recipeId}`, {
-                    method: "delete"
+                    method: "DELETE",
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    })
                 })
                     .then(res => res.text())
                     .then(data => {
