@@ -200,6 +200,23 @@ class RecipesEditPageTest extends TestCase
         Queue::assertNotPushed(DeleteImageJob::class);
     }
 
+    /** @test */
+    public function DeleteImageJob_is_dispached_when_recipe_is_deleted(): void
+    {
+        Queue::fake();
+
+        $recipe = create(Recipe::class, [
+            'user_id' => ($user = create_user())->id,
+            'image' => 'just_image.jpg',
+        ]);
+
+        $this->actingAs($user)->delete(action('Api\RecipesController@destroy', ['recipe' => $recipe->id]));
+
+        Queue::assertPushed(DeleteImageJob::class, function ($job) {
+            return $job->image_name == 'just_image.jpg';
+        });
+    }
+
     /**
      * Function helper
      *
