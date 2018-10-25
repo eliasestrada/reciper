@@ -20,12 +20,15 @@ trait PhotoControllerHelpers
         }
 
         $path_slug = $this->makePathSlug();
-        $path = storage_path("app/public/users/$path_slug");
-        $path_small = storage_path("app/public/small/users/$path_slug");
+        $path = storage_path("app/public/users/{$path_slug}");
+        $path_small = storage_path("app/public/small/users/{$path_slug}");
         $photo_name = set_image_name($photo->getClientOriginalExtension());
 
-        if (!File::exists($path) && !File::exists($path_small)) {
+        if (!File::exists($path)) {
             File::makeDirectory($path, 0777, true);
+        }
+
+        if (!File::exists($path_small)) {
             File::makeDirectory($path_small, 0777, true);
         }
 
@@ -33,15 +36,15 @@ trait PhotoControllerHelpers
             ->fit(300, 300, function ($constraint) {
                 $constraint->upsize();
             }, 'top')
-            ->save("$path/$photo_name");
+            ->save("{$path}/{$photo_name}");
 
         Image::make($photo)
             ->fit(60, 60, function ($constraint) {
                 $constraint->upsize();
             }, 'top')
-            ->save("$path_small/$photo_name");
+            ->save("{$path_small}/{$photo_name}");
 
-        return "$path_slug/$photo_name";
+        return "{$path_slug}/{$photo_name}";
     }
 
     /**

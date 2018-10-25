@@ -4,7 +4,9 @@ namespace App\Helpers\Traits;
 
 use App\Models\User;
 use App\Notifications\ScriptAttackNotification;
+use File;
 use Illuminate\Http\UploadedFile;
+use Image;
 
 trait RecipesControllerHelpers
 {
@@ -18,24 +20,35 @@ trait RecipesControllerHelpers
             return null;
         }
 
+        $path_slug = $this->makePathSlug();
+        $path = storage_path("app/public/recipes/{$path_slug}");
+        $path_small = storage_path("app/public/small/recipes/{$path_slug}");
         $image_name = set_image_name($image->getClientOriginalExtension());
 
+        if (!File::exists($path)) {
+            File::makeDirectory($path, 0777, true);
+        }
+
+        if (!File::exists($path_small)) {
+            File::makeDirectory($path_small, 0777, true);
+        }
+
         // Big image
-        \Image::make($image)
+        Image::make($image)
             ->fit(600, 400, function ($constraint) {
                 $constraint->upsize();
             }, 'top')
             ->insert(storage_path('app/public/other/watermark.png'))
-            ->save(storage_path("app/public/recipes/$image_name"));
+            ->save("{$path}/{$image_name}");
 
         // Small image
-        \Image::make($image)
+        Image::make($image)
             ->fit(240, 160, function ($constraint) {
                 $constraint->upsize();
             }, 'top')
-            ->save(storage_path("app/public/small/recipes/$image_name"));
+            ->save("{$path_small}/{$image_name}");
 
-        return $image_name;
+        return "$path_slug/$image_name";
     }
 
     /**
@@ -116,5 +129,14 @@ trait RecipesControllerHelpers
         }
 
         return false;
+    }
+
+    /**
+     * Function helper
+     * @return string
+     */
+    public function makePathSlug(): string
+    {
+        return date('Y') . '/' . date('n');
     }
 }
