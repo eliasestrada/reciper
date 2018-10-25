@@ -51,15 +51,6 @@ class AdminApprovesShowPageTest extends TestCase
     }
 
     /** @test */
-    public function first_checker_can_see_approve_and_cancel_buttons(): void
-    {
-        $this->actingAs($this->admin)
-            ->get("/admin/approves/{$this->unapproved_recipe->id}")
-            ->assertSee('<i class="fas fa-thumbs-up right"></i>')
-            ->assertSee('<i class="fas fa-thumbs-down right"></i>');
-    }
-
-    /** @test */
     public function second_checker_cant_see_approve_and_disapprove_buttons(): void
     {
         $other_admin = create_user('admin');

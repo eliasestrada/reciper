@@ -80,17 +80,6 @@ class RecipesShowPageTest extends TestCase
     }
 
     /** @test */
-    public function owner_of_the_recipe_sees_report_button_disabled(): void
-    {
-        $user = create_user();
-        $recipe = create(Recipe::class, ['user_id' => $user->id]);
-
-        $this->actingAs($user)
-            ->get("/recipes/$recipe->id")
-            ->assertSee('<a href="#report-recipe-modal" class="btn waves-effect waves-light modal-trigger min-w" disabled>');
-    }
-
-    /** @test */
     public function auth_user_can_add_recipe_to_favs(): void
     {
         $user = create_user();

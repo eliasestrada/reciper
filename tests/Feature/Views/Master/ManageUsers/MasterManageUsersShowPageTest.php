@@ -61,26 +61,6 @@ class MasterManageUsersShowPageTest extends TestCase
     }
 
     /** @test */
-    public function master_can_see_ban_btn_and_doesnt_see_unban_btn_when_user_is_not_banned(): void
-    {
-        $this->actingAs(create_user('master'))
-            ->get("/master/manage-users/{$this->user->id}")
-            ->assertSee('<i class="fas fa-lock left"></i> ' . trans('manage-users.ban'))
-            ->assertDontSee('<i class="fas fa-lock-open left"></i> ' . trans('manage-users.unban'));
-    }
-
-    /** @test */
-    public function master_can_see_unban_btn_and_doesnt_see_ban_btn_when_user_is_banned(): void
-    {
-        Ban::put($this->user->id, 1, 'Some message');
-
-        $this->actingAs(create_user('master'))
-            ->get("/master/manage-users/{$this->user->id}")
-            ->assertDontSee('<i class="fas fa-lock left"></i> ' . trans('manage-users.ban'))
-            ->assertSee('<i class="fas fa-lock-open left"></i> ' . trans('manage-users.unban'));
-    }
-
-    /** @test */
     public function master_can_unban_user(): void
     {
         Ban::put($this->user->id, 2, 'This user is banned on 2 days');
