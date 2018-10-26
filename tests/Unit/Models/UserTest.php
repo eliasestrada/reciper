@@ -61,4 +61,29 @@ class UserTest extends TestCase
         $user = make(User::class, ['name' => null]);
         $this->assertEquals($user->username, $user->getName());
     }
+
+    /** @test */
+    public function getStatusColor_method_returns_red_if_user_is_not_active(): void
+    {
+        $user = make(User::class, ['active' => 0]);
+        $this->assertEquals('red', $user->getStatusColor());
+    }
+
+    /** @test */
+    public function getStatusColor_method_returns_green_if_user_is_active(): void
+    {
+        $user = make(User::class);
+        $this->assertEquals('green', $user->getStatusColor());
+    }
+
+    /** @test */
+    public function getStatusColor_method_returns_main_if_user_is_banned(): void
+    {
+        $user = $this->getMockBuilder(User::class)
+            ->setMethodsExcept(['getStatusColor'])
+            ->getMock();
+        $user->method('isBanned')->willReturn(true);
+
+        $this->assertEquals('main', $user->getStatusColor());
+    }
 }
