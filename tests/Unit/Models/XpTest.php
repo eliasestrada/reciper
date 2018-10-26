@@ -11,14 +11,20 @@ class XpTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function model_has_attributes(): void
     {
         $this->assertClassHasAttribute('user', Xp::class);
         $this->assertClassHasAttribute('levels', Xp::class);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function getLvl_method_returns_correct_data(): void
     {
         $xp = new Xp(create_user('')->id);
@@ -29,7 +35,10 @@ class XpTest extends TestCase
         }
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function getLvlMin_method_returns_correct_data(): void
     {
         $xp = new Xp(create_user('')->id);
@@ -40,7 +49,10 @@ class XpTest extends TestCase
         }
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function getLvlMax_method_returns_correct_data(): void
     {
         $xp = new Xp(create_user('')->id);
@@ -51,7 +63,10 @@ class XpTest extends TestCase
         }
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function scaling_div_is_showing_correct_data(): void
     {
         $xp = new Xp(create_user('')->id);
@@ -70,7 +85,10 @@ class XpTest extends TestCase
         }
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function add_method_adds_xp(): void
     {
         $user = create_user('', ['xp' => 0]);
@@ -78,7 +96,10 @@ class XpTest extends TestCase
         $this->assertTrue((bool) $response);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function addForStreak_method_adds_certain_xp_points(): void
     {
         $user = create_user('', ['xp' => 0]);

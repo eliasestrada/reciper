@@ -83,6 +83,7 @@ class RecipesControllerHelpersTest extends TestCase
      * More ditailes:
      * If allowed number of rows 20, and ingredients with text have 21 rows,
      * test must fail
+     * @author Cho
      * @test
      * */
     public function isSimple_method_returns_false_if_rows_more_then_allowed(): void
@@ -99,7 +100,10 @@ class RecipesControllerHelpersTest extends TestCase
         $this->assertFalse($this->class->isSimple($recipe));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function saveImageIfExist_method_uploads_file_and_saves_it_in_2_folders(): void
     {
         $image = UploadedFile::fake()->image('image.jpg');
@@ -111,7 +115,10 @@ class RecipesControllerHelpersTest extends TestCase
         $this->cleanAfterYourself($filename);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function saveImageIfExist_method_returns_null_if_user_doent_have_a_file(): void
     {
         $filename = $this->class->saveImageIfExist();
@@ -121,6 +128,7 @@ class RecipesControllerHelpersTest extends TestCase
     /**
      * Helper function
      * @param string $filename
+     * @author Cho
      * @return void
      */
     private function cleanAfterYourself(string $filename): void

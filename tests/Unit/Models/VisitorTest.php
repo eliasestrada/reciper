@@ -8,13 +8,19 @@ use Tests\TestCase;
 
 class VisitorTest extends TestCase
 {
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function model_has_attributes(): void
     {
         $this->assertClassHasAttribute('timestamps', Visitor::class);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function getStatusColor_method_returns_correct_color(): void
     {
         // Red color

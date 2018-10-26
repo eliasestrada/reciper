@@ -55,7 +55,10 @@ class MasterManageUsersShowPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_can_ban_user(): void
     {
         $data = ['days' => 1, 'message' => str_random(40)];
@@ -72,7 +75,10 @@ class MasterManageUsersShowPageTest extends TestCase
         ]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_can_unban_user(): void
     {
         Ban::put($this->user->id, 2, 'This user is banned on 2 days');
