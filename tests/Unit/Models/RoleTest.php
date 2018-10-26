@@ -7,7 +7,10 @@ use Tests\TestCase;
 
 class RoleTest extends TestCase
 {
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function model_has_attributes(): void
     {
         $this->assertClassHasAttribute('timestamps', Role::class);

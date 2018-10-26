@@ -10,7 +10,10 @@ class MasterManageUsersIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_can_see_the_page(): void
     {
         $this->actingAs(create_user('master'))
@@ -18,7 +21,10 @@ class MasterManageUsersIndexPageTest extends TestCase
             ->assertViewIs('master.manage-users.index');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function admin_cant_view_the_page(): void
     {
         $this->actingAs(create_user('admin'))
@@ -26,7 +32,10 @@ class MasterManageUsersIndexPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_cant_view_the_page(): void
     {
         $this->actingAs(make(User::class))

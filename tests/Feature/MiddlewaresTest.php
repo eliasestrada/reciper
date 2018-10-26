@@ -10,7 +10,10 @@ class MiddlewaresTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function online_check_is_updated_to_now_after_user_visits_the_app(): void
     {
         $user = create_user('', ['online_check' => now()->subWeek()]);
@@ -21,7 +24,10 @@ class MiddlewaresTest extends TestCase
         $this->assertEquals(now()->format('Y-m-d H:i'), $user_last_visit);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function online_check_is_updated_after_5_minutes(): void
     {
         $user = create_user('', ['online_check' => $date = now()->subMinutes(5)]);
@@ -29,7 +35,10 @@ class MiddlewaresTest extends TestCase
         $this->assertDatabaseMissing('users', ['id' => $user->id, 'online_check' => $date]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function online_check_is_not_updated_after_first_visit_within_5_minutes(): void
     {
         $user = create_user();

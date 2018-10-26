@@ -11,7 +11,10 @@ class UsersOtherMyRecipesPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
@@ -20,13 +23,19 @@ class UsersOtherMyRecipesPageTest extends TestCase
             ->assertViewIs('users.other.my-recipes');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function guest_cant_see_the_page(): void
     {
         $this->get('/users/other/my-recipes')->assertRedirect();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_sees_his_recipe(): void
     {
         $user = create(User::class);

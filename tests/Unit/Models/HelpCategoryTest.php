@@ -8,7 +8,10 @@ use Tests\TestCase;
 
 class HelpCategoryTest extends TestCase
 {
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function model_has_attributes(): void
     {
         array_map(function ($attr) {
@@ -16,14 +19,20 @@ class HelpCategoryTest extends TestCase
         }, ['table', 'guarded', 'timestamps']);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function getTitle_method_returns_title_from_database_column(): void
     {
         $help = make(HelpCategory::class);
         $this->assertEquals($help->getTitle(), $help->toArray()['title_' . LANG()]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function selectBasic_scope_method_returns_Id_Icon_and_Title(): void
     {
         $category = HelpCategory::selectBasic()->first()->toArray();

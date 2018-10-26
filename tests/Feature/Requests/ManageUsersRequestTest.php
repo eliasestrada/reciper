@@ -15,6 +15,9 @@ class ManageUsersRequestTest extends TestCase
     private $user;
     private $request;
 
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
@@ -24,7 +27,10 @@ class ManageUsersRequestTest extends TestCase
         $this->request = $this->actingAs(create_user('master'))->followingRedirects();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function ban_days_field_is_required(): void
     {
         $this->request->put(action('Master\ManageUsersController@update', ['id' => $this->user->id]), [
@@ -32,7 +38,10 @@ class ManageUsersRequestTest extends TestCase
         ])->assertSeeText(trans('manage-users.days_required'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function ban_message_fiels_is_required(): void
     {
         $this->request->put(action('Master\ManageUsersController@update', ['id' => $this->user->id]), [
@@ -41,7 +50,10 @@ class ManageUsersRequestTest extends TestCase
         ])->assertSeeText(trans('manage-users.message_required'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function ban_days_field_must_be_numeric(): void
     {
         $this->request->put(action('Master\ManageUsersController@update', ['id' => $this->user->id]), [
@@ -50,7 +62,10 @@ class ManageUsersRequestTest extends TestCase
         ])->assertSeeText(trans('manage-users.days_numeric'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function ban_message_must_be_not_short(): void
     {
         $this->request->put(action('Master\ManageUsersController@update', ['id' => $this->user->id]), [
@@ -59,7 +74,10 @@ class ManageUsersRequestTest extends TestCase
         ])->assertSeeText(preg_replace('/:min/', $this->msg_min, trans('manage-users.message_min')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function ban_message_must_be_not_long(): void
     {
         $this->request->put(action('Master\ManageUsersController@update', ['id' => $this->user->id]), [

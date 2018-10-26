@@ -13,13 +13,19 @@ class MasterManageUsersShowPageTest extends TestCase
 
     private $user;
 
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
         $this->user = create(User::class);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_can_see_the_page(): void
     {
         $this->actingAs(create_user('master'))
@@ -27,7 +33,10 @@ class MasterManageUsersShowPageTest extends TestCase
             ->assertViewIs('master.manage-users.show');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function admin_cant_view_the_page(): void
     {
         $this->actingAs(create_user('admin'))
@@ -35,7 +44,10 @@ class MasterManageUsersShowPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_cant_view_the_page(): void
     {
         $this->actingAs(make(User::class))

@@ -8,7 +8,10 @@ use Tests\TestCase;
 
 class BanTest extends TestCase
 {
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function model_has_attributes(): void
     {
         $this->assertClassHasAttribute('guarded', Ban::class);
@@ -16,7 +19,10 @@ class BanTest extends TestCase
         $this->assertClassHasAttribute('timestamps', Ban::class);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function put_method_adds_user_to_ban_list(): void
     {
         $user = make(User::class, ['id' => rand(2, 10000)]);

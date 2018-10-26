@@ -10,7 +10,10 @@ class MasterDocumentsEditPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_can_see_the_page(): void
     {
         $this->actingAs(create_user('master'))
@@ -19,7 +22,10 @@ class MasterDocumentsEditPageTest extends TestCase
             ->assertViewIs('master.documents.edit');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_cannot_see_the_page(): void
     {
         $this->actingAs(make(User::class))

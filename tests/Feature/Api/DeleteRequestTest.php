@@ -12,6 +12,9 @@ class DeleteRequestTest extends TestCase
 
     private $user;
 
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
@@ -19,7 +22,10 @@ class DeleteRequestTest extends TestCase
         $this->user = create_user();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_delete_his_recipe_from_DB(): void
     {
         $recipe = create(Recipe::class, ['user_id' => $this->user->id], null, 'draft');
@@ -28,7 +34,10 @@ class DeleteRequestTest extends TestCase
         $this->assertDatabaseMissing('recipes', ['id' => $recipe->id]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_cant_delete_other_recipe_from_DB(): void
     {
         $recipe = create(Recipe::class, [], null, 'draft');

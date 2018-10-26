@@ -15,6 +15,9 @@ class RecipesUpdateRequestTest extends TestCase
 
     private $data;
 
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
@@ -31,7 +34,10 @@ class RecipesUpdateRequestTest extends TestCase
         ];
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function title_must_be_not_short(): void
     {
         $title_min = config('valid.recipes.title.min');
@@ -39,7 +45,10 @@ class RecipesUpdateRequestTest extends TestCase
         $this->response()->assertSeeText($this->replace(':min', $title_min, trans('recipes.title_min')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function title_must_be_not_long(): void
     {
         $title_max = config('valid.recipes.title.max');
@@ -47,7 +56,10 @@ class RecipesUpdateRequestTest extends TestCase
         $this->response()->assertSeeText($this->replace(':max', $title_max, trans('recipes.title_max')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function intro_must_be_not_short(): void
     {
         $intro_min = config('valid.recipes.intro.min');
@@ -55,7 +67,10 @@ class RecipesUpdateRequestTest extends TestCase
         $this->response()->assertSeeText($this->replace(':min', $intro_min, trans('recipes.intro_min')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function intro_must_be_not_long(): void
     {
         $intro_max = config('valid.recipes.intro.max');
@@ -63,7 +78,10 @@ class RecipesUpdateRequestTest extends TestCase
         $this->response()->assertSeeText($this->replace(':max', $intro_max, trans('recipes.intro_max')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function ingredients_must_be_not_short(): void
     {
         $ingredients_min = config('valid.recipes.ingredients.min');
@@ -71,7 +89,10 @@ class RecipesUpdateRequestTest extends TestCase
         $this->response()->assertSeeText($this->replace(':min', $ingredients_min, trans('recipes.ingredients_min')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function ingredients_must_be_not_long(): void
     {
         $ingredients_max = config('valid.recipes.ingredients.max');
@@ -79,7 +100,10 @@ class RecipesUpdateRequestTest extends TestCase
         $this->response()->assertSeeText($this->replace(':max', $ingredients_max, trans('recipes.ingredients_max')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function text_must_be_not_short(): void
     {
         $text_min = config('valid.recipes.text.min');
@@ -87,7 +111,10 @@ class RecipesUpdateRequestTest extends TestCase
         $this->response()->assertSeeText($this->replace(':min', $text_min, trans('recipes.text_min')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function text_must_be_not_long(): void
     {
         $text_max = config('valid.recipes.text.max');
@@ -95,14 +122,20 @@ class RecipesUpdateRequestTest extends TestCase
         $this->response()->assertSeeText($this->replace(':max', $text_max, trans('recipes.text_max')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function meal_must_be_numeric(): void
     {
         $this->data['meal'] = 'n';
         $this->response()->assertSeeText(trans('recipes.meal_numeric'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function meal_must_be_between_numbers(): void
     {
         $meal_max = Meal::count();
@@ -112,35 +145,50 @@ class RecipesUpdateRequestTest extends TestCase
         $this->response()->assertSeeText($this->replace(':max', $meal_max, $expect));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function categories_are_required(): void
     {
         $this->data['categories'] = '';
         $this->response()->assertSeeText(trans('recipes.categories_required'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function categories_must_be_distinct(): void
     {
         $this->data['categories'] = [0 => 2, 1 => 2];
         $this->response()->assertSeeText(trans('recipes.categories_distinct'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function categories_must_be_numeric(): void
     {
         $this->data['categories'] = [0 => 'string'];
         $this->response()->assertSeeText(trans('recipes.categories_numeric'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function categories_must_not_have_id_of_one(): void
     {
         $this->data['categories'] = [0 => 1];
         $this->response()->assertSeeText(trans('recipes.categories_between'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function categories_must_be_between_numbers(): void
     {
         $this->data['categories'] = [0 => 1, 1 => 2];
@@ -150,7 +198,10 @@ class RecipesUpdateRequestTest extends TestCase
         $this->response()->assertSeeText(trans('recipes.categories_between'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function categories_correct_data(): void
     {
         $this->data['categories'] = [0 => 2, 1 => Category::count()];
@@ -162,6 +213,7 @@ class RecipesUpdateRequestTest extends TestCase
      * @param string $before
      * @param string $after
      * @param string $string
+     * @author Cho
      * @return void
      */
     public function replace(string $before, string $after, string $string)
@@ -171,6 +223,7 @@ class RecipesUpdateRequestTest extends TestCase
 
     /**
      * Helper
+     * @author Cho
      * @return $this
      */
     public function response()

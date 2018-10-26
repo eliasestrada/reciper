@@ -10,7 +10,10 @@ class RegisterPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function auth_user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))
@@ -18,7 +21,10 @@ class RegisterPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function guest_can_see_the_page(): void
     {
         $this->get('/register')
@@ -26,7 +32,10 @@ class RegisterPageTest extends TestCase
             ->assertViewIs('auth.register');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function new_user_can_register_with_correct_data(): void
     {
         $form_data = [

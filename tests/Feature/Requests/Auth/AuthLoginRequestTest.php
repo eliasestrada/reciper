@@ -11,6 +11,9 @@ class AuthLoginRequestTest extends TestCase
     private $pwd_max;
     private $pwd_min;
 
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
@@ -19,7 +22,10 @@ class AuthLoginRequestTest extends TestCase
         $this->pwd_max = config('valid.settings.password.max');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function username_is_required(): void
     {
         $this->followingRedirects()
@@ -27,7 +33,10 @@ class AuthLoginRequestTest extends TestCase
             ->assertSeeText(trans('auth.username_required'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function password_is_required(): void
     {
         $this->followingRedirects()
@@ -35,7 +44,10 @@ class AuthLoginRequestTest extends TestCase
             ->assertSeeText(trans('auth.password_required'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function password_must_be_string(): void
     {
         $this->followingRedirects()

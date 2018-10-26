@@ -13,13 +13,19 @@ class MasterVisitorsShowPageTest extends TestCase
 
     private $visitor;
 
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
         $this->visitor = create(Visitor::class);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_can_see_the_page(): void
     {
         $this->actingAs(create_user('master'))
@@ -28,7 +34,10 @@ class MasterVisitorsShowPageTest extends TestCase
             ->assertOk();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function admin_cant_see_the_page(): void
     {
         $this->actingAs(create_user('admin'))
@@ -36,7 +45,10 @@ class MasterVisitorsShowPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))

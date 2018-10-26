@@ -12,7 +12,10 @@ class FavsIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
@@ -21,13 +24,19 @@ class FavsIndexPageTest extends TestCase
             ->assertViewIs('favs.index');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function guest_cant_see_the_page(): void
     {
         $this->get('/favs')->assertRedirect('/login');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_sees_recipe_that_added_to_favs(): void
     {
         $user = create_user();
@@ -39,7 +48,10 @@ class FavsIndexPageTest extends TestCase
             ->assertSee('<img src="' . asset('storage/small/recipes/' . $recipe->image));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_dont_see_recipe_after_its_deleted(): void
     {
         Fav::create([
@@ -54,7 +66,10 @@ class FavsIndexPageTest extends TestCase
             ->assertDontSee('<img src="' . asset('storage/small/recipes/' . $recipe->image));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_delete_recipe_from_favs(): void
     {
         Fav::create([
@@ -64,7 +79,10 @@ class FavsIndexPageTest extends TestCase
         $this->actingAs($user)->post("/favs/$recipe->id")->assertOk();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_doesnt_see_recipe_if_category_of_this_recipe_is_not_selected(): void
     {
         ($recipe = create(Recipe::class))->categories()->sync([2, 3]);
@@ -78,7 +96,10 @@ class FavsIndexPageTest extends TestCase
             ->assertDontSee('<img src="' . asset('storage/small/recipes/' . $recipe->image));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_sees_recipe_if_category_of_this_recipe_is_selected(): void
     {
         ($recipe = create(Recipe::class))->categories()->sync([2, 3]);

@@ -13,7 +13,10 @@ class NotificationsIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
@@ -22,13 +25,19 @@ class NotificationsIndexPageTest extends TestCase
             ->assertOk();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function guest_cant_see_the_page(): void
     {
         $this->get('/notifications')->assertRedirect();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_recive_RecipeApprovedNotification(): void
     {
         $user = create_user();
@@ -40,7 +49,10 @@ class NotificationsIndexPageTest extends TestCase
             ->assertSeeText(trans('approves.recipe_published'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function first_user_can_recive_script_attack_notification(): void
     {
         $first = User::first();

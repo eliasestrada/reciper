@@ -14,6 +14,9 @@ class PasswordRequestTest extends TestCase
     private $pwd_min;
     private $request;
 
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
@@ -23,7 +26,10 @@ class PasswordRequestTest extends TestCase
         $this->request = $this->actingAs($this->user)->followingRedirects();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function old_password_is_required(): void
     {
         $this->request->put(action('Settings\GeneralController@updatePassword'), [
@@ -32,7 +38,10 @@ class PasswordRequestTest extends TestCase
         ])->assertSeeText(trans('settings.old_pwd_required'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function old_password_must_be_string(): void
     {
         $this->request->put(action('Settings\GeneralController@updatePassword'), [
@@ -42,7 +51,10 @@ class PasswordRequestTest extends TestCase
         ])->assertSeeText(trans('settings.old_pwd_string'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function password_must_be_string(): void
     {
         $this->request->put(action('Settings\GeneralController@updatePassword'), [
@@ -52,7 +64,10 @@ class PasswordRequestTest extends TestCase
         ])->assertSeeText(trans('settings.pwd_string'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function password_is_required(): void
     {
         $this->request->put(action('Settings\GeneralController@updatePassword'), [
@@ -62,7 +77,10 @@ class PasswordRequestTest extends TestCase
         ])->assertSeeText(trans('settings.pwd_required'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function password_must_be_not_short(): void
     {
         $this->request->put(action('Settings\GeneralController@updatePassword'), [
@@ -72,7 +90,10 @@ class PasswordRequestTest extends TestCase
         ])->assertSeeText(preg_replace('/:min/', $this->pwd_min, trans('settings.pwd_min')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function password_must_be_not_long(): void
     {
         $this->request->put(action('Settings\GeneralController@updatePassword'), [
@@ -82,7 +103,10 @@ class PasswordRequestTest extends TestCase
         ])->assertSeeText(preg_replace('/:max/', $this->pwd_max, trans('settings.pwd_max')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function password_must_be_confirmed(): void
     {
         $this->request->put(action('Settings\GeneralController@updatePassword'), [

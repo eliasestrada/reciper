@@ -11,7 +11,10 @@ class MasterDocumentsCreatePageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_can_see_the_page(): void
     {
         $this->actingAs(create_user('master'))
@@ -19,7 +22,10 @@ class MasterDocumentsCreatePageTest extends TestCase
             ->assertOk();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))
@@ -27,7 +33,10 @@ class MasterDocumentsCreatePageTest extends TestCase
             ->assertRedirect();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_can_create_document(): void
     {
         $data = ['title' => str_random(20), 'text' => str_random(100)];
@@ -42,7 +51,10 @@ class MasterDocumentsCreatePageTest extends TestCase
         ]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_can_delete_document(): void
     {
         $this->actingAs(create_user('master'))
@@ -52,7 +64,10 @@ class MasterDocumentsCreatePageTest extends TestCase
         $this->assertDatabaseMissing('documents', ['id' => $document_id]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_cant_delete_document(): void
     {
         $this->actingAs(make(User::class))
@@ -63,7 +78,10 @@ class MasterDocumentsCreatePageTest extends TestCase
             ->assertSeeText(trans('auth.access_denied'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_cant_delete_main_first_document(): void
     {
         $this->actingAs(create_user('master'))
@@ -72,7 +90,10 @@ class MasterDocumentsCreatePageTest extends TestCase
             ->assertSeeText(trans('documents.cant_delete_first_doc'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_can_move_documents_to_drafts(): void
     {
         $data = ['title' => str_random(20), 'text' => str_random(100)];
@@ -88,7 +109,10 @@ class MasterDocumentsCreatePageTest extends TestCase
         ]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_cant_move_main_first_document_to_drafts(): void
     {
         $data = ['title' => str_random(10), 'text' => str_random(100)];

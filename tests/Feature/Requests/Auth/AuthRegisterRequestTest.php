@@ -8,6 +8,9 @@ class AuthRegisterRequestTest extends TestCase
 {
     private $data = [];
 
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
@@ -18,7 +21,10 @@ class AuthRegisterRequestTest extends TestCase
         ];
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function password_is_required(): void
     {
         $this->data['password'] = '';
@@ -27,7 +33,10 @@ class AuthRegisterRequestTest extends TestCase
             ->assertSeeText(trans('auth.password_required'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function password_must_be_string(): void
     {
         $this->data['password'] = 121323553;
@@ -37,7 +46,10 @@ class AuthRegisterRequestTest extends TestCase
             ->assertSeeText(trans('auth.password_string'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function password_must_be_not_short(): void
     {
         $pwd_min = config('valid.settings.password.min');
@@ -48,7 +60,10 @@ class AuthRegisterRequestTest extends TestCase
             ->assertSeeText(preg_replace('/:min/', $pwd_min, trans('auth.password_min')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function password_must_be_not_long(): void
     {
         $pwd_max = config('valid.settings.password.max');
@@ -59,7 +74,10 @@ class AuthRegisterRequestTest extends TestCase
             ->assertSeeText(preg_replace('/:max/', $pwd_max, trans('auth.password_max')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function password_must_be_confirmed(): void
     {
         $this->data['password_confirmation'] = str_random(10);
@@ -69,7 +87,10 @@ class AuthRegisterRequestTest extends TestCase
             ->assertSeeText(trans('auth.password_confirmed'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function username_must_be_not_short(): void
     {
         $username_min = config('valid.settings.username.min');
@@ -80,7 +101,10 @@ class AuthRegisterRequestTest extends TestCase
             ->assertSeeText(preg_replace('/:min/', $username_min, trans('auth.username_min')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function username_must_be_not_long(): void
     {
         $username_max = config('valid.settings.username.max');
@@ -91,7 +115,10 @@ class AuthRegisterRequestTest extends TestCase
             ->assertSeeText(preg_replace('/:max/', $username_max, trans('auth.username_max')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function username_must_be_string(): void
     {
         $this->data['username'] = 135324235;
@@ -101,7 +128,10 @@ class AuthRegisterRequestTest extends TestCase
             ->assertSeeText(trans('auth.username_string'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function username_must_be_unique(): void
     {
         $this->data['username'] = 'master';
@@ -111,7 +141,10 @@ class AuthRegisterRequestTest extends TestCase
             ->assertSeeText(trans('auth.username_unique'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function username_must_be_alpha_dash(): void
     {
         $usernames = ['sffsf sdf', 'на русском'];
@@ -124,7 +157,10 @@ class AuthRegisterRequestTest extends TestCase
         }
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function username_must_be_latin_with_dash_or_underscore(): void
     {
         $usernames = ['stiven-', 'на скрипке', 'Андрей', '_owen', '_jonce_steven'];

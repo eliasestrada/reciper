@@ -8,7 +8,10 @@ use Tests\TestCase;
 
 class MealTest extends TestCase
 {
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function model_has_attributes(): void
     {
         array_map(function ($attr) {
@@ -16,14 +19,20 @@ class MealTest extends TestCase
         }, ['table', 'guarded', 'timestamps']);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function getName_method_returns_name_column_from_database(): void
     {
         $meal = make(Meal::class, ['name_' . LANG() => 'dinner']);
         $this->assertEquals('dinner', $meal->getName());
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function getWithCache_method_returs_array_of_cached_meal_list()
     {
         cache()->forget('meal');

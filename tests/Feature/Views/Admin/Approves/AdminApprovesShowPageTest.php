@@ -16,7 +16,7 @@ class AdminApprovesShowPageTest extends TestCase
 
     /**
      * Creating admin and recipe with his id in approver_id column
-     * @return void
+     * @author Cho
      */
     public function setUp(): void
     {
@@ -29,7 +29,10 @@ class AdminApprovesShowPageTest extends TestCase
         ]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))
@@ -37,7 +40,10 @@ class AdminApprovesShowPageTest extends TestCase
             ->assertRedirect('/');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function view_is_accessable_by_any_admin(): void
     {
         $this->actingAs($this->admin)
@@ -50,7 +56,10 @@ class AdminApprovesShowPageTest extends TestCase
             ->assertOk();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function second_checker_cant_see_approve_and_disapprove_buttons(): void
     {
         $other_admin = create_user('admin');
@@ -61,7 +70,10 @@ class AdminApprovesShowPageTest extends TestCase
             ->assertDontSee('<i class="fas fa-thumbs-down right"></i>');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function admin_approves_recipe(): void
     {
         $this->actingAs($this->admin)

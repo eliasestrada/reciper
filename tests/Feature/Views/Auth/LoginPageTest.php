@@ -11,7 +11,10 @@ class LoginPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))
@@ -19,13 +22,19 @@ class LoginPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function guest_can_see_the_page(): void
     {
         $this->get('/login')->assertOk()->assertViewIs('auth.login');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_login(): void
     {
         $form_data = ['username' => create(User::class)->username, 'password' => '111111'];
@@ -34,6 +43,7 @@ class LoginPageTest extends TestCase
 
     /**
      * We will login user and create cookie to check them
+     * @author Cho
      * @test
      * @return void
      */

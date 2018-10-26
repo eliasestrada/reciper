@@ -10,7 +10,10 @@ class SettingsGeneralIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
@@ -19,13 +22,19 @@ class SettingsGeneralIndexPageTest extends TestCase
             ->assertViewIs('settings.general.index');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function guest_cant_see_the_page(): void
     {
         $this->get('/settings/general')->assertRedirect();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_update_his_name(): void
     {
         $user = create_user();
@@ -37,7 +46,10 @@ class SettingsGeneralIndexPageTest extends TestCase
         $this->assertEquals($new_name, $user->name);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_change_about_me_information(): void
     {
         $user = create_user();
@@ -52,7 +64,10 @@ class SettingsGeneralIndexPageTest extends TestCase
         $this->assertEquals($status, $user->status);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_change_his_pwd(): void
     {
         $this->actingAs($user = create_user())
@@ -67,6 +82,7 @@ class SettingsGeneralIndexPageTest extends TestCase
 
     /**
      * ['m' => 'd'] doent metter for request
+     * @author Cho
      * @test
      * */
     public function user_can_deactivate_account(): void
@@ -76,7 +92,10 @@ class SettingsGeneralIndexPageTest extends TestCase
             ->assertRedirect('/login');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_cant_deactivate_account_with_wrong_password(): void
     {
         $this->actingAs($user = create_user())

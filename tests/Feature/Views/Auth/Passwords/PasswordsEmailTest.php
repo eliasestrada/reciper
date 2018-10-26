@@ -10,7 +10,10 @@ class PasswordsEmailTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function guest_can_see_the_page(): void
     {
         $this->get('/password/reset')
@@ -18,7 +21,10 @@ class PasswordsEmailTest extends TestCase
             ->assertViewIs('auth.passwords.email');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function auth_user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))

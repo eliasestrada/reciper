@@ -6,7 +6,10 @@ use Tests\TestCase;
 
 class HelperFunctionsTest extends TestCase
 {
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function toArrayOfListItems_helper_returns_array(): void
     {
         $string = "First line\nSecond line";
@@ -17,7 +20,10 @@ class HelperFunctionsTest extends TestCase
         $this->assertEquals('<li>Second line</li>', $result[1]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function toArrayOfListItems_helper_removes_empty_lines(): void
     {
         $this->assertCount(0, to_array_of_list_items("\n\n\n"));
@@ -25,7 +31,10 @@ class HelperFunctionsTest extends TestCase
         $this->assertCount(2, to_array_of_list_items("First \n Second \n"));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function get_online_icon_helper_should_return_correct_state(): void
     {
         // Icon should be on ===================
@@ -41,7 +50,10 @@ class HelperFunctionsTest extends TestCase
         }, [trans('date.minute'), trans('date.minutes'), trans('date.minutes2')]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function readable_number_helper_converts_data_correctly(): void
     {
         $data = [
@@ -62,7 +74,10 @@ class HelperFunctionsTest extends TestCase
         }
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function active_if_route_is_helper_returns_active_string(): void
     {
         $this->get('/');
@@ -75,7 +90,10 @@ class HelperFunctionsTest extends TestCase
         $this->assertEquals('active', active_if_route_is(['/users/other/my-recipes']));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function visitor_id_function_returns_correct_data(): void
     {
         $expected = make(\App\Models\Visitor::class)->value('id');

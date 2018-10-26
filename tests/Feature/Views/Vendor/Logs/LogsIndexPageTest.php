@@ -11,13 +11,19 @@ class LogsIndexPageTest extends TestCase
 
     private $master;
 
+    /**
+     * @author Cho
+     */
     public function setUp(): void
     {
         parent::setUp();
         $this->master = create_user('master');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_can_see_the_page(): void
     {
         $this->actingAs($this->master)
@@ -28,6 +34,7 @@ class LogsIndexPageTest extends TestCase
 
     /**
      * Skip test for Windows machine to prevent causing error
+     * @author Cho
      * @test
      * */
     public function master_can_delete_log_file(): void
@@ -50,6 +57,7 @@ class LogsIndexPageTest extends TestCase
 
     /**
      * Function helper
+     * @author Cho
      * @return string
      */
     private function createLogFile(): string

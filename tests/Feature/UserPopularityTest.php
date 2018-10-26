@@ -12,7 +12,10 @@ class UserPopularityTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_gets_popularity_points_for_adding_his_recipe_to_favs(): void
     {
         $some_user = create_user();
@@ -26,7 +29,10 @@ class UserPopularityTest extends TestCase
         $this->assertEquals($points_for_favs, User::whereId($author->id)->value('popularity'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_looses_popularity_points_for_removing_his_recipe_from_favs(): void
     {
         $some_user = create_user();

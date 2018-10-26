@@ -11,6 +11,9 @@ class RecipesStoreRequestTest extends TestCase
     private $title_max;
     private $request;
 
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
@@ -19,7 +22,10 @@ class RecipesStoreRequestTest extends TestCase
         $this->request = $this->actingAs(make(User::class))->followingRedirects();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function title_is_required(): void
     {
         $this->request->post(action('RecipesController@store'), [
@@ -27,7 +33,10 @@ class RecipesStoreRequestTest extends TestCase
         ])->assertSeeText(trans('recipes.title_required'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function title_must_be_not_short(): void
     {
         $this->request->post(action('RecipesController@store'), [
@@ -35,7 +44,10 @@ class RecipesStoreRequestTest extends TestCase
         ])->assertSeeText(preg_replace('/:min/', $this->title_min, trans('recipes.title_min')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function title_must_be_not_long(): void
     {
         $this->request->post(action('RecipesController@store'), [

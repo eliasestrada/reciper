@@ -13,6 +13,9 @@ class DisapproveRequestTest extends TestCase
     private $message_max;
     private $request;
 
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
@@ -21,7 +24,10 @@ class DisapproveRequestTest extends TestCase
         $this->request = $this->actingAs(create_user('admin'))->followingRedirects();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function message_is_required(): void
     {
         $this->request->post(action('Admin\ApprovesController@disapprove', [
@@ -30,7 +36,10 @@ class DisapproveRequestTest extends TestCase
         ]))->assertSeeText(trans('approves.message_required'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function message_must_be_not_short(): void
     {
         $this->request->post(action('Admin\ApprovesController@disapprove', [
@@ -39,7 +48,10 @@ class DisapproveRequestTest extends TestCase
         ]))->assertSeeText(preg_replace('/:min/', $this->message_min, trans('approves.message_min')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function message_must_be_not_long(): void
     {
         $this->request->post(action('Admin\ApprovesController@disapprove', [

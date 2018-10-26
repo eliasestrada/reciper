@@ -14,6 +14,9 @@ class GeneralRequestTest extends TestCase
     private $about_me_max;
     private $request;
 
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
@@ -23,7 +26,10 @@ class GeneralRequestTest extends TestCase
         $this->request = $this->actingAs(create_user())->followingRedirects();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function name_must_be_not_short(): void
     {
         $this->request->put(action('Settings\GeneralController@updateGeneral'), [
@@ -31,7 +37,10 @@ class GeneralRequestTest extends TestCase
         ])->assertSeeText(preg_replace('/:min/', $this->name_min, trans('settings.name_min')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function name_must_be_not_long(): void
     {
         $this->request->put(action('Settings\GeneralController@updateGeneral'), [

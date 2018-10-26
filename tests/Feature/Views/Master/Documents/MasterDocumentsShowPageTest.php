@@ -11,7 +11,10 @@ class MasterDocumentsShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_see_the_page_if_document_is_ready(): void
     {
         $this->actingAs(make(User::class))
@@ -19,7 +22,10 @@ class MasterDocumentsShowPageTest extends TestCase
             ->assertOk();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_cant_see_the_page_if_document_is_not_ready(): void
     {
         $document_id = create(Document::class, ['ready_' . LANG() => 0])->id;
@@ -29,7 +35,10 @@ class MasterDocumentsShowPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_can_see_the_page_if_document_is_not_ready(): void
     {
         $document_id = create(Document::class, ['ready_' . LANG() => 0])->id;

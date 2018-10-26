@@ -10,6 +10,7 @@ use Tests\TestCase;
 class StatisticsPopularityChartTest extends TestCase
 {
     /**
+     * @author Cho
      * @test
      * @expectedException \Exception
      */
@@ -19,7 +20,10 @@ class StatisticsPopularityChartTest extends TestCase
         $this->assertInstanceOf(Collection::class, $method);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function getDataFromUser_method_first_param_can_have_one_of_three_values(): void
     {
         $user = make(User::class);
@@ -29,7 +33,10 @@ class StatisticsPopularityChartTest extends TestCase
         }, ['likes', 'views', 'favs']);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function getDataFromUser_returns_month_names_from_latest_to_newest(): void
     {
         $method = (new StatisticsController)->getDataFromUser('likes', make(User::class));
@@ -41,14 +48,20 @@ class StatisticsPopularityChartTest extends TestCase
         }
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function getDataFromUser_returns_sum_of_null_if_no_favs_were_found_for_this_user(): void
     {
         $method = (new StatisticsController)->getDataFromUser('views', make(User::class));
         $this->assertEquals(0, $method->sum('sum'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function makeArrayOfRules_method_generates_rules_list(): void
     {
         $method = (new StatisticsController)->makeArrayOfRules();
@@ -64,6 +77,7 @@ class StatisticsPopularityChartTest extends TestCase
     /**
      * In $expect variable we need to subtract 11 on the first lap, 10 on the second etc
      * That's why I'm adding month and then subtract months on this lap
+     * @author Cho
      * @test
      * */
     public function makeArrayOfRules_contains_12_months_from_from_this_month(): void
@@ -77,7 +91,10 @@ class StatisticsPopularityChartTest extends TestCase
         }
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function convertMonthNumberToName_method_converts_date(): void
     {
         $months = [

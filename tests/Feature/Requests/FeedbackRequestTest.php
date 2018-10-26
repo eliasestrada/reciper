@@ -9,6 +9,9 @@ class FeedbackRequestTest extends TestCase
     private $msg_min;
     private $msg_max;
 
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
@@ -16,7 +19,10 @@ class FeedbackRequestTest extends TestCase
         $this->msg_max = config('valid.feedback.contact.message.max');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function contact_message_is_required(): void
     {
         $data = ['email' => 'johntest@mail.ru', 'message' => ''];
@@ -26,7 +32,10 @@ class FeedbackRequestTest extends TestCase
             ->assertSeeText(trans('contact.contact_message_required'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function contact_email_is_required(): void
     {
         $data = ['email' => '', 'message' => str_random(50)];
@@ -36,7 +45,10 @@ class FeedbackRequestTest extends TestCase
             ->assertSeeText(trans('contact.contact_email_required'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function email_should_be_email_format(): void
     {
         $data = ['email' => 'testing@mail', 'message' => str_random(50)];
@@ -46,7 +58,10 @@ class FeedbackRequestTest extends TestCase
             ->assertSeeText(trans('contact.contact_email_email'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function message_has_to_be_not_short(): void
     {
         $data = [
@@ -59,7 +74,10 @@ class FeedbackRequestTest extends TestCase
             ->assertSeeText(preg_replace('/:min/', $this->msg_min, trans('contact.contact_message_min')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function message_has_to_be_not_long(): void
     {
         $data = [
@@ -72,7 +90,10 @@ class FeedbackRequestTest extends TestCase
             ->assertSeeText(preg_replace('/:max/', $this->msg_max, trans('contact.contact_message_max')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function recipe_id_field_must_be_integer(): void
     {
         $data = ['message' => str_random(50), 'recipe_id' => 'h'];
@@ -80,7 +101,10 @@ class FeedbackRequestTest extends TestCase
         $this->assertDatabaseMissing('feedback', $data);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function message_field_required_even_with_recipe_id_field(): void
     {
         $data = ['message' => '', 'recipe_id' => 3];

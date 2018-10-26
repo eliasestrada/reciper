@@ -11,13 +11,19 @@ class LogsShowPageTest extends TestCase
 
     private $master;
 
+    /**
+     * @author Cho
+     */
     public function setUp(): void
     {
         parent::setUp();
         $this->master = create_user('master');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function master_can_see_the_page(): void
     {
         $file_name = $this->createLogFile();
@@ -31,6 +37,8 @@ class LogsShowPageTest extends TestCase
     }
 
     /**
+     * Function helper
+     * @author Cho
      * @return string
      */
     private function createLogFile(): string

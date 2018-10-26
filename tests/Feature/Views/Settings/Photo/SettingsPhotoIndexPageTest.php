@@ -13,7 +13,10 @@ class SettingsPhotoIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
@@ -22,13 +25,19 @@ class SettingsPhotoIndexPageTest extends TestCase
             ->assertViewIs('settings.photo.index');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function guest_cant_see_the_page(): void
     {
         $this->get('/settings/photo')->assertRedirect();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_upload_new_profile_photo(): void
     {
         $user = create_user();
@@ -42,7 +51,10 @@ class SettingsPhotoIndexPageTest extends TestCase
         $this->cleanAfterYourself($user->photo);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function delete_photo_request_dispaches_job_DeletePhotoJob(): void
     {
         Queue::fake();
@@ -55,7 +67,10 @@ class SettingsPhotoIndexPageTest extends TestCase
         });
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function if_profile_photo_is_default_DeletePhotoJob_is_not_queued(): void
     {
         Queue::fake();
@@ -66,7 +81,10 @@ class SettingsPhotoIndexPageTest extends TestCase
         Queue::assertNotPushed(DeletePhotoJob::class);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function after_delete_photo_request_photo_column_is_set_to_default_jpg(): void
     {
         $user = create_user('', ['photo' => 'another/image.jpg']);
@@ -78,6 +96,7 @@ class SettingsPhotoIndexPageTest extends TestCase
 
     /**
      * Helper function
+     * @auhor Cho
      * @param string $photo_path
      * @return void
      */

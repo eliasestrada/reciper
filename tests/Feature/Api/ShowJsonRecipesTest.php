@@ -10,7 +10,10 @@ class ShowJsonRecipesTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function see_latest_recipes_json_if_there_are_no_hash_in_url(): void
     {
         $recipe = create(Recipe::class);
@@ -22,8 +25,9 @@ class ShowJsonRecipesTest extends TestCase
     }
 
     /**
-     * @test
      *  "1" in request url is visitor id
+     * @author Cho
+     * @test
      * */
     public function see_random_recipes_json(): void
     {

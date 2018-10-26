@@ -11,7 +11,10 @@ class AdminFeedbackIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function admin_can_see_the_page(): void
     {
         $this->actingAs(create_user('admin'))
@@ -20,13 +23,19 @@ class AdminFeedbackIndexPageTest extends TestCase
             ->assertViewIs('admin.feedback.index');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))->get('/admin/feedback')->assertRedirect('/');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function admin_sees_the_message_if_it_exist(): void
     {
         $feed = Feedback::create([
@@ -42,7 +51,10 @@ class AdminFeedbackIndexPageTest extends TestCase
             ->assertSeeText($msg);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function feedback_message_can_be_deleted_by_admin(): void
     {
         $feed = Feedback::create([

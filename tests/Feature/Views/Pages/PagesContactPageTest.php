@@ -10,7 +10,10 @@ class PagesContactPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function view_is_accessable(): void
     {
         $this->get('/contact')
@@ -18,7 +21,10 @@ class PagesContactPageTest extends TestCase
             ->assertViewIs('pages.contact');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function anyone_can_send_feedback_message(): void
     {
         $this->post(action('Admin\FeedbackController@store'), $data = [
@@ -28,7 +34,10 @@ class PagesContactPageTest extends TestCase
         $this->assertDatabaseHas('feedback', $data);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_cant_send_feedback_message_more_then_once_per_day(): void
     {
         $first_data = ['email' => 'test@emil.com', 'message' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit'];
@@ -43,7 +52,10 @@ class PagesContactPageTest extends TestCase
         $this->assertDatabaseMissing('feedback', $second_data);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_send_message_after_a_day_since_the_last_message(): void
     {
         $first_data = ['email' => '11test@emil.com', 'message' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit'];

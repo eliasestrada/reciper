@@ -7,14 +7,20 @@ use Tests\TestCase;
 
 class CategoryTest extends TestCase
 {
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function model_has_attributes(): void
     {
         $this->assertClassHasAttribute('guarded', Category::class);
         $this->assertClassHasAttribute('timestamps', Category::class);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function getName_method_returns_name_column(): void
     {
         $category = Category::make(['name_' . LANG() => 'Some name']);

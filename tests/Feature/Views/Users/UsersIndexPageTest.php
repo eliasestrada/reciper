@@ -7,7 +7,10 @@ use Tests\TestCase;
 
 class UsersIndexPageTest extends TestCase
 {
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function view_has_data(): void
     {
         $this->actingAs(make(User::class))
@@ -16,7 +19,10 @@ class UsersIndexPageTest extends TestCase
             ->assertViewHas('users');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function guest_can_see_the_page(): void
     {
         $this->get('/users')->assertOk();

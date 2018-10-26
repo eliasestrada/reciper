@@ -8,7 +8,10 @@ use Tests\TestCase;
 
 class TopRecipersJobTest extends TestCase
 {
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function where_statement_in_Like_query_must_be_correct(): void
     {
         $this->assertTrue($this->state(Carbon::yesterday()->setTime(0, 0, 0)->toDateTimeString()));
@@ -16,7 +19,10 @@ class TopRecipersJobTest extends TestCase
         $this->assertFalse($this->state(Carbon::yesterday()->setTime(23, 59, 59)->addSecond()->toDateTimeString()));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function convertArrayToNeededFormat_method_return_proper_array(): void
     {
         $result = (new TopRecipersJob)->convertArrayToNeededFormat([
@@ -30,6 +36,7 @@ class TopRecipersJobTest extends TestCase
 
     /**
      * @param $date
+     * @author Cho
      * @return boolean
      */
     public function state($date): bool

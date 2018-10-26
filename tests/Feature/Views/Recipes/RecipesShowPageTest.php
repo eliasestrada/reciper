@@ -12,14 +12,20 @@ class RecipesShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function view_is_accessable(): void
     {
         $recipe_id = create(Recipe::class)->id;
         $this->get("/recipes/$recipe_id")->assertViewIs('recipes.show')->assertOk();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_report_recipe_by_sending_message(): void
     {
         $data = [
@@ -31,7 +37,10 @@ class RecipesShowPageTest extends TestCase
         $this->assertDatabaseHas('feedback', $data);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_cant_report_same_recipe_twice_per_day(): void
     {
         $data = ['message' => str_random(40), 'recipe_id' => 1];
@@ -46,7 +55,10 @@ class RecipesShowPageTest extends TestCase
         $this->assertDatabaseMissing('feedback', $data);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_report_same_recipe_once_per_day(): void
     {
         $data = ['message' => str_random(40), 'recipe_id' => 1];
@@ -64,7 +76,10 @@ class RecipesShowPageTest extends TestCase
         $this->assertDatabaseHas('feedback', $data);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_report_2_recipes_in_the_same_day(): void
     {
         $data1 = ['message' => str_random(40), 'recipe_id' => 1];
@@ -79,7 +94,10 @@ class RecipesShowPageTest extends TestCase
         $this->assertDatabaseHas('feedback', $data2);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function auth_user_can_add_recipe_to_favs(): void
     {
         $user = create_user();
@@ -95,7 +113,10 @@ class RecipesShowPageTest extends TestCase
         ]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function auth_user_can_delete_recipe_from_favs(): void
     {
         $user = create_user();
@@ -112,14 +133,20 @@ class RecipesShowPageTest extends TestCase
         ]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function visitor_can_like_the_recipe(): void
     {
         $this->post('/api/like/like/1')
             ->assertExactJson(['liked' => 1]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function visitor_can_dislike_the_recipe(): void
     {
         $this->post('/api/like/like/1');

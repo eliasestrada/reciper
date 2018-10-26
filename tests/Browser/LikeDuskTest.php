@@ -7,7 +7,10 @@ use Tests\DuskTestCase;
 
 class LikeDuskTest extends DuskTestCase
 {
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function guest_can_like_and_dislike_recipe(): void
     {
         $this->browse(function (Browser $browser) {
@@ -20,7 +23,10 @@ class LikeDuskTest extends DuskTestCase
         });
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function heart_icon_appears_on_navbar_after_giving_a_like_and_disappears_after_dislike(): void
     {
         $this->browse(function (Browser $browser) {

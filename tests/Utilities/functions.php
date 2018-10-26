@@ -2,6 +2,9 @@
 
 use App\Models\User;
 
+/**
+ * @author Cho
+ */
 function create($class, $attributes = [], $times = null, $state = null)
 {
     if ($state) {
@@ -10,6 +13,9 @@ function create($class, $attributes = [], $times = null, $state = null)
     return factory($class, $times)->create($attributes);
 }
 
+/**
+ * @author Cho
+ */
 function make($class, $attributes = [], $times = null, $state = null)
 {
     if ($state) {
@@ -18,6 +24,9 @@ function make($class, $attributes = [], $times = null, $state = null)
     return factory($class, $times)->make($attributes);
 }
 
+/**
+ * @author Cho
+ */
 function create_user($role = null, $attributes = [], $times = null)
 {
     if ($role) {
@@ -29,6 +38,7 @@ function create_user($role = null, $attributes = [], $times = null)
 /**
  * Helper function to make fake photo
  * for user
+ * @author Cho
  * @return string
  */
 function uploadFakePhoto(): string
@@ -42,6 +52,7 @@ function uploadFakePhoto(): string
 /**
  * Helper function to make fake image
  * for recipe
+ * @author Cho
  * @return string
  */
 function uploadFakeImage(): string

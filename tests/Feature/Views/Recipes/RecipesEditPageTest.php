@@ -13,7 +13,10 @@ class RecipesEditPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_see_the_page_if_its_his_recipe(): void
     {
         $user = create_user();
@@ -25,14 +28,20 @@ class RecipesEditPageTest extends TestCase
             ->assertViewIs('recipes.edit');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function guest_cant_see_the_page(): void
     {
         $recipe = create(Recipe::class);
         $this->get("/recipes/$recipe->id/edit")->assertRedirect();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function not_author_of_the_recipe_cant_see_the_page(): void
     {
         $recipe = create(Recipe::class);
@@ -42,7 +51,10 @@ class RecipesEditPageTest extends TestCase
             ->assertRedirect();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function recipe_is_ready_but_not_approved_after_publishing_by_user(): void
     {
         $user = create_user();
@@ -61,7 +73,10 @@ class RecipesEditPageTest extends TestCase
         ]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function recipe_can_be_saved(): void
     {
         $form_data = $this->form_data(['ready' => 0]);
@@ -79,7 +94,10 @@ class RecipesEditPageTest extends TestCase
         ]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function recipe_is_ready_and_approved_after_publishing_by_admin(): void
     {
         $admin = create_user('admin');
@@ -98,7 +116,10 @@ class RecipesEditPageTest extends TestCase
         ]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function recipe_can_be_moved_to_drafts_by_author(): void
     {
         $author = create_user();
@@ -115,7 +136,10 @@ class RecipesEditPageTest extends TestCase
         ]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function recipe_cant_be_moved_to_drafts_by_other_users(): void
     {
         $recipe = create(Recipe::class);
@@ -130,7 +154,10 @@ class RecipesEditPageTest extends TestCase
         ]);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function first_user_gets_notified_when_someone_uses_script_tags_in_fields(): void
     {
         $form_data = $this->form_data([
@@ -148,7 +175,10 @@ class RecipesEditPageTest extends TestCase
             ->assertSeeText(trans('notifications.cant_use_script_tags'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_upload_recipe_image(): void
     {
         $user = create_user();
@@ -166,7 +196,10 @@ class RecipesEditPageTest extends TestCase
         $this->cleanAfterYourself($image_name);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function changing_recipe_image_user_dispaches_job_DeleteImageJob(): void
     {
         Queue::fake();
@@ -186,7 +219,10 @@ class RecipesEditPageTest extends TestCase
         $this->cleanAfterYourself(Recipe::whereId($recipe->id)->value('image'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function if_no_image_profided_DeleteImageJob_is_not_queued(): void
     {
         Queue::fake();
@@ -200,7 +236,10 @@ class RecipesEditPageTest extends TestCase
         Queue::assertNotPushed(DeleteImageJob::class);
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function DeleteImageJob_is_dispached_when_recipe_is_deleted(): void
     {
         Queue::fake();
@@ -220,6 +259,7 @@ class RecipesEditPageTest extends TestCase
     /**
      * Function helper
      *
+     * @author Cho
      * @param array $new_value
      * @return array
      */
@@ -248,6 +288,7 @@ class RecipesEditPageTest extends TestCase
 
     /**
      * Helper function
+     * @author Cho
      * @param string $image_path
      * @return void
      */

@@ -7,7 +7,10 @@ use Tests\TestCase;
 
 class StatisticsPageTest extends TestCase
 {
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_see_the_page(): void
     {
         $this->actingAs(make(User::class))
@@ -16,7 +19,10 @@ class StatisticsPageTest extends TestCase
             ->assertViewIs('statistics.index');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function guest_cant_see_the_page(): void
     {
         $this->get('/statistics')->assertRedirect();

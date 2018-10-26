@@ -10,7 +10,10 @@ class UsersShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_can_see_the_page(): void
     {
         $this->actingAs($user = create_user())
@@ -19,21 +22,30 @@ class UsersShowPageTest extends TestCase
             ->assertViewIs('users.show');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function guest_can_see_users_show_page(): void
     {
         $username = create_user()->username;
         $this->get("/users/$username")->assertOk();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function noone_can_see_user_page_after_diactivating(): void
     {
         $user = create_user('', ['active' => 0]);
         $this->get("/users/$user->username")->assertSeeText(trans('users.user_is_not_active'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_sees_activate_account_form_when_is_not_active(): void
     {
         $user = create_user('', ['active' => 0]);
@@ -45,7 +57,10 @@ class UsersShowPageTest extends TestCase
             ]));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function user_does_not_see_activate_account_form_when_is_active(): void
     {
         $user = create_user();
@@ -57,7 +72,10 @@ class UsersShowPageTest extends TestCase
             ]));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function unactive_user_can_recover_account(): void
     {
         $user = create_user('', ['active' => 0]);

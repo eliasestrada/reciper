@@ -9,13 +9,19 @@ use Tests\TestCase;
 
 class ApprovesControllerTest extends TestCase
 {
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
         $this->withoutEvents();
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function approve_method_redirects_if_recipe_is_already_approved(): void
     {
         $recipe = make(Recipe::class);
@@ -23,7 +29,10 @@ class ApprovesControllerTest extends TestCase
         $this->assertArrayHasKey('x-recipe-cant-be-approved', $response->headers->all());
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function approve_method_redirects_if_recipe_is_in_frafts(): void
     {
         $recipe = make(Recipe::class, [], null, 'draft');
@@ -31,7 +40,10 @@ class ApprovesControllerTest extends TestCase
         $this->assertArrayHasKey('x-recipe-cant-be-approved', $response->headers->all());
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function approve_method_redirects_with_success_if_recipe_is_ready_and_not_approved(): void
     {
         $recipe = make(Recipe::class, ['approved_' . LANG() => 0]);
@@ -39,7 +51,10 @@ class ApprovesControllerTest extends TestCase
         $this->assertArrayHasKey('x-recipe-approved', $response->headers->all());
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function disapprove_method_redirects_if_recipe_is_already_approved(): void
     {
         $recipe = make(Recipe::class);
@@ -48,7 +63,10 @@ class ApprovesControllerTest extends TestCase
         $this->assertArrayHasKey('x-recipe-cant-be-approved', $response->headers->all());
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function disapprove_method_redirects_if_recipe_is_in_drafts(): void
     {
         $recipe = make(Recipe::class, [], null, 'draft');
@@ -57,7 +75,10 @@ class ApprovesControllerTest extends TestCase
         $this->assertArrayHasKey('x-recipe-cant-be-approved', $response->headers->all());
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function diapprove_method_redirects_with_success_if_recipe_is_ready_and_not_approved(): void
     {
         $recipe = make(Recipe::class, ['approved_' . LANG() => 0]);

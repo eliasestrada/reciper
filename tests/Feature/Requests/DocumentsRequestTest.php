@@ -15,6 +15,9 @@ class DocumentsRuqusetTest extends TestCase
     private $text_max;
     private $text_min;
 
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
@@ -25,7 +28,10 @@ class DocumentsRuqusetTest extends TestCase
         $this->text_min = config('valid.docs.text.min');
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function title_required(): void
     {
         $this->request->post(action('Master\DocumentsController@store'), [
@@ -34,7 +40,10 @@ class DocumentsRuqusetTest extends TestCase
         ])->assertSeeText(trans('documents.title_required'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function text_required(): void
     {
         $this->request->post(action('Master\DocumentsController@store'), [
@@ -43,7 +52,10 @@ class DocumentsRuqusetTest extends TestCase
         ])->assertSeeText(trans('documents.text_required'));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function title_must_be_not_short(): void
     {
         $this->request->post(action('Master\DocumentsController@store'), [
@@ -52,7 +64,10 @@ class DocumentsRuqusetTest extends TestCase
         ])->assertSeeText(preg_replace('/:min/', $this->title_min, trans('documents.title_min')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function title_must_be_not_long(): void
     {
         $this->request->post(action('Master\DocumentsController@store'), [
@@ -61,7 +76,10 @@ class DocumentsRuqusetTest extends TestCase
         ])->assertSeeText(preg_replace('/:max/', $this->title_max, trans('documents.title_max')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function text_must_be_not_short(): void
     {
         $this->request->post(action('Master\DocumentsController@store'), [
@@ -70,7 +88,10 @@ class DocumentsRuqusetTest extends TestCase
         ])->assertSeeText(preg_replace('/:min/', $this->text_min, trans('documents.text_min')));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function text_must_be_not_long(): void
     {
         $this->request->post(action('Master\DocumentsController@store'), [

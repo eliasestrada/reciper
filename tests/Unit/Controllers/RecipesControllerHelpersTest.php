@@ -12,6 +12,9 @@ class RecipesControllerHelpersTest extends TestCase
 {
     private $class;
 
+    /**
+     * @author Cho
+     */
     public function setUp()
     {
         parent::setUp();
@@ -20,7 +23,10 @@ class RecipesControllerHelpersTest extends TestCase
         {use RecipesControllerHelpers;};
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function isSimple_method_returns_true_if_recipe_time_less_then_59(): void
     {
         $allowed_maximum_of_rows = config('custom.rows_for_simple_recipe');
@@ -34,7 +40,10 @@ class RecipesControllerHelpersTest extends TestCase
         $this->assertTrue($this->class->isSimple($recipe));
     }
 
-    /** @test */
+    /**
+     * @author Cho
+     * @test
+     */
     public function isSimple_method_returns_false_if_recipe_time_more_then_59(): void
     {
         $allowed_maximum_of_rows = config('custom.rows_for_simple_recipe');
@@ -52,6 +61,7 @@ class RecipesControllerHelpersTest extends TestCase
      * More ditailes:
      * If allowed number of rows 20, and ingredients with text have 20 rows,
      * test must pass
+     * @author Cho
      * @test
      * */
     public function isSimple_method_returns_true_if_rows_number_allowed(): void
