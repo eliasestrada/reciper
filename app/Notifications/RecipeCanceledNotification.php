@@ -40,7 +40,7 @@ class RecipeCanceledNotification extends Notification
     public function toDatabase($notifiable): array
     {
         return [
-            'title' => trans('notifications.recipe_not_published'),
+            'title' => trans('approves.recipe_not_published'),
             'message' => $this->message,
             'link' => '/recipes/' . $this->recipe->id,
         ];

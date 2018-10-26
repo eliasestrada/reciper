@@ -5,6 +5,7 @@ namespace Tests\Feature\Views\Notifications;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Notifications\RecipeApprovedNotification;
+use App\Notifications\RecipeCanceledNotification;
 use App\Notifications\ScriptAttackNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -47,6 +48,21 @@ class NotificationsIndexPageTest extends TestCase
         $this->actingAs($user)
             ->get('/notifications')
             ->assertSeeText(trans('approves.recipe_published'));
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function user_can_recive_RecipeCanceledNotification(): void
+    {
+        $user = create_user();
+        $recipe = make(Recipe::class, ['user_id' => $user->id]);
+        $user->notify(new RecipeCanceledNotification($recipe, 'some message'));
+
+        $this->actingAs($user)
+            ->get('/notifications')
+            ->assertSeeText(trans('approves.recipe_not_published'));
     }
 
     /**
