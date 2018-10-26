@@ -5,11 +5,14 @@ namespace App\Jobs;
 use App\Models\User;
 use Exception;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
-class DeleteUnactiveUsersJob
+class DeleteUnactiveUsersJob implements ShouldQueue
 {
-    use Dispatchable, Queueable;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
      * Execute the job.
@@ -18,7 +21,18 @@ class DeleteUnactiveUsersJob
      */
     public function handle()
     {
-        User::where('updated_at', '<=', now()->subDays(30))->whereActive(0)->delete();
+        $users = User::where('updated_at', '<=', now()->subDays(30))->whereActive(0)->get();
+
+        foreach ($users as $user) {
+            DeletePhotoJob::dispatch($user->photo);
+            if ($user->roles()) {
+                $user->roles()->detach();
+            }
+            if ($user->favs()) {
+                $user->favs()->delete();
+            }
+            $user->delete();
+        }
     }
 
     /**
