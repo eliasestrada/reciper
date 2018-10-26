@@ -106,6 +106,19 @@ class User extends Authenticatable
     }
 
     /**
+     * @return string
+     */
+    public function getStatusColor(): string
+    {
+        if ($this->isActive() && !$this->isBanned()) {
+            return 'green';
+        } else if ($this->isBanned()) {
+            return 'main';
+        }
+        return 'red';
+    }
+
+    /**
      * If no name use username
      * @return void
      */

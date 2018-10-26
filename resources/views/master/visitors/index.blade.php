@@ -21,7 +21,6 @@
         <ul class="col s12 m6">
             <li><i class="green-text fas fa-circle tiny"></i> - @lang('visitors.registered_users')</li>
             <li><i class="main-text fas fa-circle tiny"></i> - @lang('visitors.not_registered_users')</li>
-            <li><i class="red-text fas fa-circle tiny"></i> - @lang('visitors.banned_users')</li>
         </ul>
     </div>
 
