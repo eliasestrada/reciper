@@ -11,9 +11,6 @@ class EventServiceProvider extends ServiceProvider
      * The event listener mappings for the application.
      */
     protected $listen = [
-        \App\Events\RecipeIsReady::class => [
-            \App\Listeners\SendSms::class,
-        ],
         \App\Events\RecipeGotCanceled::class => [
             \App\Listeners\UpdateRecipeAfterCanceling::class,
             \App\Listeners\NotifyAuthorAboutCanceling::class,

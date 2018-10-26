@@ -21,6 +21,9 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
+            <exclude>
+                <directory suffix=".php">./app/Console/Commands</directory>
+            </exclude>
         </whitelist>
     </filter>
     <php>
@@ -29,7 +32,7 @@
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
     </php>
-    <!-- <logging>
-        <log type="coverage-html" target="./storage/app/tests" lowUpperBound="50" highLowerBound="80"/>
-    </logging> -->
+    <logging>
+        <log type="coverage-html" target="./xdebug" lowUpperBound="50" highLowerBound="80"/>
+    </logging>
 </phpunit>
