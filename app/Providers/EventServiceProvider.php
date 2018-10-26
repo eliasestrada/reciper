@@ -12,12 +12,10 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         \App\Events\RecipeGotCanceled::class => [
-            \App\Listeners\UpdateRecipeAfterCanceling::class,
             \App\Listeners\NotifyAuthorAboutCanceling::class,
         ],
         \App\Events\RecipeGotApproved::class => [
             \App\Listeners\AddExpForRecipe::class,
-            \App\Listeners\UpdateRecipeAfterApproving::class,
             \App\Listeners\NotifyAuthorAboutApproving::class,
         ],
         \App\Events\UserIsOnline::class => [

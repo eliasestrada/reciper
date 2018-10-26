@@ -87,6 +87,7 @@ class ApprovesController extends Controller
         }
 
         event(new \App\Events\RecipeGotApproved($recipe));
+        $recipe->update(['approved_' . LANG() => 1]);
         cache()->forget('unapproved_notif');
 
         return redirect("/recipes/$recipe->id")
@@ -109,6 +110,7 @@ class ApprovesController extends Controller
         }
 
         event(new \App\Events\RecipeGotCanceled($recipe, $request->message));
+        $recipe->update(['ready_' . LANG() => 0]);
         cache()->forget('unapproved_notif');
 
         return redirect('/recipes')
