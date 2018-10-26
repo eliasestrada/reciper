@@ -7,7 +7,7 @@ use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class DeleteUnactiveUsers
+class DeleteUnactiveUsersJob
 {
     use Dispatchable, Queueable;
 

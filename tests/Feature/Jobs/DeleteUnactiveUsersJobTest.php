@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Jobs;
 
-use App\Jobs\DeleteUnactiveUsers;
+use App\Jobs\DeleteUnactiveUsersJob;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class DeleteUnactiveUsersJob extends TestCase
+class DeleteUnactiveUsersJobTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -15,7 +15,7 @@ class DeleteUnactiveUsersJob extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->job = new DeleteUnactiveUsers();
+        $this->job = new DeleteUnactiveUsersJob();
     }
 
     /** @test */
