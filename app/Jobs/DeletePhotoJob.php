@@ -53,4 +53,14 @@ class DeletePhotoJob implements ShouldQueue
     {
         return ['delete_photo'];
     }
+
+    /**
+     * Job failed to process
+     *
+     * @return void
+     */
+    public function failed(Exception $e)
+    {
+        info(__CLASS__ . " failed to proceed: {$e->getMessage()}");
+    }
 }

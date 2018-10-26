@@ -44,6 +44,16 @@ class TopRecipersJob implements ShouldQueue
     }
 
     /**
+     * Job failed to process
+     *
+     * @return void
+     */
+    public function failed(Exception $e)
+    {
+        info(__CLASS__ . " failed to proceed: {$e->getMessage()}");
+    }
+
+    /**
      * @param array $before
      * @return array
      */
