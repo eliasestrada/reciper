@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /storage/*.key
+/xdebug
 /vendor
 /.idea
 /.vscode
@@ -16,6 +17,5 @@ public/js/app.js
 public/js/vendor
 public/css/app.css
 public/mix-manifest.json
-
 tags
 /.phpcomplete_extended
