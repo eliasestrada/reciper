@@ -6,10 +6,10 @@ use App\Models\Visitor;
 $factory->define(User::class, function () {
     return [
         'visitor_id' => factory(Visitor::class)->create()->id,
-        'name' => 'Name' . rand(),
+        'name' => 'Name' . rand(1, 1000),
         'status' => '',
-        'email' => rand() . '@mail.ru',
-        'username' => str_random(5) . '_' . rand(),
+        'email' => rand(1, 1000) . '@mail.ru',
+        'username' => str_random(7),
         'password' => bcrypt('111111'),
         'remember_token' => str_random(10),
         'photo' => 'default.jpg',
