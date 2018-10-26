@@ -21,6 +21,15 @@ class CategoryTest extends TestCase
      * @author Cho
      * @test
      */
+    public function model_has_relationships_with_recipes(): void
+    {
+        $this->assertNotNull(Category::first()->recipes);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
     public function getName_method_returns_name_column(): void
     {
         $category = Category::make(['name_' . LANG() => 'Some name']);

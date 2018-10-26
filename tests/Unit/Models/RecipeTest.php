@@ -29,6 +29,15 @@ class RecipeTest extends TestCase
      * @author Cho
      * @test
      */
+    public function model_has_relationship_with_categories(): void
+    {
+        $this->assertNotNull(make(Recipe::class)->categories);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
     public function model_has_relationship_with_meal(): void
     {
         $this->assertTrue(make(Recipe::class)->meal->exists());
