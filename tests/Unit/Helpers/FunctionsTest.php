@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Helpers;
 
 use Tests\TestCase;
 
-class HelperFunctionsTest extends TestCase
+class FunctionsTest extends TestCase
 {
     /**
      * @author Cho
