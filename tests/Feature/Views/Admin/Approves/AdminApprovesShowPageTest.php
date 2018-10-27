@@ -124,4 +124,22 @@ class AdminApprovesShowPageTest extends TestCase
             RecipeCanceledNotification::class
         );
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function approver_id_column_changes_to_id_of_the_first_admin_who_is_cheking_the_recipe(): void
+    {
+        $recipe = create(Recipe::class, [
+            LANG() . '_approver_id' => 0,
+            'approved_' . LANG() => 0,
+        ]);
+
+        $this->actingAs($this->admin)->get("/admin/approves/{$recipe->id}");
+        $this->assertDatabaseHas('recipes', [
+            'id' => $recipe->id,
+            LANG() . '_approver_id' => $this->admin->id,
+        ]);
+    }
 }

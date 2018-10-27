@@ -74,6 +74,7 @@ class ApprovesController extends Controller
     }
 
     /**
+     * x-recipe-approved header is asserted by tests
      * @param Recipe $recipe
      */
     public function approve(Recipe $recipe)
@@ -82,7 +83,6 @@ class ApprovesController extends Controller
 
         if (!is_null($error_message)) {
             return redirect("/admin/approves")
-                ->header('x-recipe-cant-be-approved', 0)
                 ->withError($error_message);
         }
 
@@ -96,6 +96,7 @@ class ApprovesController extends Controller
     }
 
     /**
+     * x-recipe-disapproved header is asserted by tests
      * @param Recipe $recipe
      * @param DisapproveRequest $request
      */
@@ -105,7 +106,6 @@ class ApprovesController extends Controller
 
         if (!is_null($error_message)) {
             return redirect("/admin/approves")
-                ->header('x-recipe-cant-be-approved', 0)
                 ->withError($error_message);
         }
 
