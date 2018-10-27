@@ -33,6 +33,15 @@ class UserTest extends TestCase
      * @author Cho
      * @test
      */
+    public function model_has_relationship_with_favs(): void
+    {
+        $this->assertNotNull(User::first()->favs);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
     public function model_has_relationship_with_visitor(): void
     {
         $this->assertNotNull(make(User::class)->visitor);
@@ -48,12 +57,14 @@ class UserTest extends TestCase
     }
 
     /**
+     * Ban::put() last param is set to false which means that instead of creating
+     * ban record in DB just make it in memory
      * @author Cho
      * @test
      */
-    public function model_has_relationship_with_ban(): void
+    public function user_has_relationship_with_ban_model(): void
     {
-        $user = make(User::class, ['id' => rand(9, 9999)]);
+        $user = User::first();
         $ban = Ban::put($user->id, 1, '', false);
         $user->setRelation('ban', $ban);
         $this->assertEquals($user->ban->id, $ban->id);

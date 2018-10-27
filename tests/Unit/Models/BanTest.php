@@ -14,9 +14,9 @@ class BanTest extends TestCase
      */
     public function model_has_attributes(): void
     {
-        $this->assertClassHasAttribute('guarded', Ban::class);
-        $this->assertClassHasAttribute('table', Ban::class);
-        $this->assertClassHasAttribute('timestamps', Ban::class);
+        array_map(function ($attr) {
+            $this->assertClassHasAttribute($attr, Ban::class);
+        }, ['guarded', 'table', 'timestamps']);
     }
 
     /**
@@ -28,5 +28,19 @@ class BanTest extends TestCase
         $user = make(User::class, ['id' => rand(2, 10000)]);
         $output = Ban::put($user->id, 1, 'some message', false);
         $this->assertEquals($output->user_id, $user->id);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function ban_has_relationship_with_user_model(): void
+    {
+        $ban = Ban::make([
+            'user_id' => 1,
+            'days' => 1,
+            'message' => 'some message',
+        ]);
+        $this->assertTrue($ban->user->exists());
     }
 }
