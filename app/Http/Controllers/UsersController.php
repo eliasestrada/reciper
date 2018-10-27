@@ -33,7 +33,7 @@ class UsersController extends Controller
             ->paginate(20)
             ->onEachSide(1);
 
-        $xp = new Xp($user->id);
+        $xp = new Xp($user);
 
         return view('users.show', compact('recipes', 'user', 'xp'));
     }

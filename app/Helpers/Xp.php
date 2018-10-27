@@ -21,11 +21,11 @@ class Xp
     ];
 
     /**
-     * @param integer $user_id
+     * @param User $user
      */
-    public function __construct(int $user_id)
+    public function __construct(User $user)
     {
-        $this->user = User::find($user_id);
+        $this->user = $user;
     }
 
     /**
@@ -87,7 +87,7 @@ class Xp
     /**
      * @param User $user
      */
-    public static function addForStreak(User $user)
+    public static function addForStreakDays(User $user)
     {
         if ($user->streak_days <= 30) {
             return self::add($user->streak_days, $user->id);
