@@ -32,14 +32,15 @@ class Xp
      * @param int $user_id
      * @param float $points
      */
-    public static function add(float $xp_add, int $user_id)
+    public static function add(float $xp_to_add, int $user_id)
     {
-        $xp_current = User::whereId($user_id)->value('xp');
+        $current_xp = User::whereId($user_id)->value('xp');
+        $max_possible_level = config('custom.max_xp');
 
-        if ($xp_current <= (config('custom.max_xp') - $xp_add)) {
-            return User::whereId($user_id)->increment('xp', $xp_add);
+        if ($current_xp <= ($max_possible_level - $xp_to_add)) {
+            return User::whereId($user_id)->increment('xp', $xp_to_add);
         } else {
-            return User::whereId($user_id)->increment('xp', config('custom.max_xp') - $xp_current);
+            return User::whereId($user_id)->increment('xp', $max_possible_level - $current_xp);
         }
     }
 
@@ -48,20 +49,17 @@ class Xp
      */
     public function getLevel(): int
     {
-        // Refactor
-        $result = 0;
-        foreach ($this->levels as $i => $level) {
-            if ($this->user->xp >= $level['min'] && $this->user->xp <= $level['max']) {
-                $result = $i;
+        foreach ($this->levels as $level_index => $level_values) {
+            if ($this->user->xp >= $level_values['min'] && $this->user->xp <= $level_values['max']) {
+                return $level_index;
             }
         }
-        return $result;
     }
 
     /**
      * @return int
      */
-    public function getLevelMin(): int
+    public function minXpForCurrentLevel(): int
     {
         return $this->levels[$this->getLevel()]['min'];
     }
@@ -69,7 +67,7 @@ class Xp
     /**
      * @return int
      */
-    public function getLevelMax(): int
+    public function maxXpForCurrentLevel(): int
     {
         return $this->levels[$this->getLevel()]['max'];
     }
@@ -79,9 +77,11 @@ class Xp
      */
     public function getPercent(): int
     {
-        $min = $this->user->xp - $this->getLevelMin();
-        $max = $this->getLevelMax() - $this->getLevelMin();
-        return $this->getLevelMin() >= config('custom.max_xp') ? 100 : 100 * $min / $max;
+        $current_clean = $this->user->xp - $this->minXpForCurrentLevel();
+        $max_for_this_level = $this->maxXpForCurrentLevel() - $this->minXpForCurrentLevel();
+        $result = 100 * $current_clean / $max_for_this_level;
+
+        return $this->minXpForCurrentLevel() >= config('custom.max_xp') ? 100 : $result;
     }
 
     /**
@@ -89,10 +89,12 @@ class Xp
      */
     public static function addForStreakDays(User $user)
     {
-        if ($user->streak_days <= 30) {
+        $max_chained_days = 30;
+
+        if ($user->streak_days <= $max_chained_days) {
             return self::add($user->streak_days, $user->id);
         } else {
-            return self::add(30, $user->id);
+            return self::add($max_chained_days, $user->id);
         }
     }
 }
