@@ -23,6 +23,7 @@
             <directory suffix=".php">./app</directory>
             <exclude>
                 <directory suffix=".php">./app/Console/Commands</directory>
+                <file>./app/Exceptions/Handler.php</file>
             </exclude>
         </whitelist>
     </filter>

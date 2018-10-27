@@ -59,6 +59,7 @@ function set_as_selected_if_equal($num1, $num2): string
 /**
  * Adds version to link href if it was modified
  *
+ * @codeCoverageIgnore
  * @param string
  * @return
  */
@@ -75,6 +76,7 @@ function style_timestamp(string $path): string
 /**
  * Adds version to script src if it was modified
  *
+ * @codeCoverageIgnore
  * @param string
  * @return
  */
@@ -179,6 +181,7 @@ function get_online_icon(string $value): string
 
 /**
  * Function for debuging queries
+ * @codeCoverageIgnore
  * @param bool|null $show_data
  * @return void
  */
