@@ -4,6 +4,8 @@ namespace Tests\Feature\Views\Admin\Approves;
 
 use App\Models\Recipe;
 use App\Models\User;
+use App\Notifications\RecipeApprovedNotification;
+use App\Notifications\RecipeCanceledNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -82,5 +84,44 @@ class AdminApprovesShowPageTest extends TestCase
                 'recipe' => $this->unapproved_recipe->id,
             ]))
             ->assertSee(trans('recipes.recipe_published'));
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function notification_is_sent_after_approving_the_recipe(): void
+    {
+        \Notification::fake();
+
+        $this->actingAs($this->admin)
+            ->post(action('Admin\ApprovesController@approve', [
+                'recipe' => $this->unapproved_recipe->id,
+            ]));
+
+        \Notification::assertSentTo(
+            [$this->unapproved_recipe->user],
+            RecipeApprovedNotification::class
+        );
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function notification_is_sent_after_canceling_the_recipe(): void
+    {
+        \Notification::fake();
+
+        $this->actingAs($this->admin)
+            ->post(action('Admin\ApprovesController@disapprove', [
+                'recipe' => $this->unapproved_recipe->id,
+                'message' => str_random(20),
+            ]));
+
+        \Notification::assertSentTo(
+            [$this->unapproved_recipe->user],
+            RecipeCanceledNotification::class
+        );
     }
 }
