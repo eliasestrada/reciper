@@ -2,13 +2,14 @@
 
 use App\Helpers\Xp;
 use App\Models\Help;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class HelpSeeder extends Seeder
 {
     public function run()
     {
-        $xp = new Xp(1);
+        $xp = new Xp(User::find(1));
         $xp_table = '';
 
         foreach ($xp->levels as $i => $level) {

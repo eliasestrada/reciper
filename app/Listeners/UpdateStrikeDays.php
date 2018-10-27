@@ -21,7 +21,7 @@ class UpdateStrikeDays
 
             if ($in_a_row) {
                 user()->update(['streak_days' => user()->streak_days + 1, 'streak_check' => now()]);
-                Xp::addForStreak(user());
+                Xp::addForStreakDays(user());
             }
 
             if ($not_in_a_row) {
