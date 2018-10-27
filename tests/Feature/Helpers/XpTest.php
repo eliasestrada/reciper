@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Models;
+namespace Tests\Feature\Helpers;
 
 use App\Helpers\Xp;
 use App\Models\User;
@@ -15,19 +15,20 @@ class XpTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_attributes(): void
+    public function xp_helper_has_attributes(): void
     {
         $this->assertClassHasAttribute('user', Xp::class);
         $this->assertClassHasAttribute('levels', Xp::class);
     }
 
     /**
+     * @see \App\Helpers\Xp, it takes user and return his current xp
      * @author Cho
      * @test
      */
-    public function getLvl_method_returns_correct_data(): void
+    public function getLvl_method_returns_current_users_level_depending_on_users_current_xp(): void
     {
-        $xp = new Xp(create_user('')->id);
+        $xp = new Xp(create_user());
 
         foreach ($xp->levels as $i => $level) {
             $xp->user->xp = rand($level['min'], $level['max']);
@@ -39,9 +40,9 @@ class XpTest extends TestCase
      * @author Cho
      * @test
      */
-    public function getLvlMin_method_returns_correct_data(): void
+    public function getLvlMin_method_returns_minimum_value_of_xp_for_current_users_level(): void
     {
-        $xp = new Xp(create_user('')->id);
+        $xp = new Xp(create_user());
 
         foreach ($xp->levels as $level) {
             $xp->user->xp = rand($level['min'], $level['max']);
@@ -53,9 +54,9 @@ class XpTest extends TestCase
      * @author Cho
      * @test
      */
-    public function getLvlMax_method_returns_correct_data(): void
+    public function getLvlMax_method_returns_maximum_value_of_xp_for_current_users_level(): void
     {
-        $xp = new Xp(create_user('')->id);
+        $xp = new Xp(create_user());
 
         foreach ($xp->levels as $level) {
             $xp->user->xp = rand($level['min'], $level['max']);
@@ -64,24 +65,26 @@ class XpTest extends TestCase
     }
 
     /**
+     * 0% - beggining of the level
+     * 99% - the end of the level
      * @author Cho
      * @test
      */
-    public function scaling_div_is_showing_correct_data(): void
+    public function getPercent_method_shows_percent_of_current_level(): void
     {
-        $xp = new Xp(create_user('')->id);
+        $current_xp = new Xp(create_user());
 
-        foreach ($xp->levels as $i => $level) {
+        foreach ($current_xp->levels as $i => $level) {
             if ($i !== 10) {
-                $xp->user->xp = $level['min'];
-                $this->assertEquals(0, $xp->getPercent());
+                $current_xp->user->xp = $level['min'];
+                $this->assertEquals(0, $current_xp->getPercent());
             } else {
-                $xp->user->xp = $level['min'];
-                $this->assertEquals(100, $xp->getPercent());
+                $current_xp->user->xp = $level['min'];
+                $this->assertEquals(100, $current_xp->getPercent());
             }
 
-            $xp->user->xp = $level['max'];
-            $this->assertEquals(100, $xp->getPercent());
+            $current_xp->user->xp = $level['max'];
+            $this->assertEquals(100, $current_xp->getPercent());
         }
     }
 
@@ -89,7 +92,7 @@ class XpTest extends TestCase
      * @author Cho
      * @test
      */
-    public function add_method_adds_xp(): void
+    public function add_method_adds_xp_and_returns_true_if_added_successfuly(): void
     {
         $user = create_user('', ['xp' => 0]);
         $response = Xp::add(32, $user->id);
@@ -100,9 +103,8 @@ class XpTest extends TestCase
      * @author Cho
      * @test
      */
-    public function addForStreak_method_adds_certain_xp_points(): void
+    public function addForStreakDays_method_adds_certain_xp_points(): void
     {
-        $user = create_user('', ['xp' => 0]);
 
         $days = [
             ['streak_days' => 1, 'expect_xp' => 1],
@@ -114,7 +116,7 @@ class XpTest extends TestCase
 
         foreach ($days as $day) {
             $user->update(['streak_days' => $day['streak_days']]);
-            $response = Xp::addForStreak($user);
+            $response = Xp::addForStreakDays($user);
             $this->assertTrue((bool) $response);
         }
     }
