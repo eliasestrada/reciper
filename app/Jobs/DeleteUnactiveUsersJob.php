@@ -38,6 +38,7 @@ class DeleteUnactiveUsersJob implements ShouldQueue
     /**
      * Job failed to process
      *
+     * @codeCoverageIgnore
      * @return void
      */
     public function failed(Exception $e)
