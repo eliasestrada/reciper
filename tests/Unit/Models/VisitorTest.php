@@ -12,7 +12,7 @@ class VisitorTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_attributes(): void
+    public function visitor_model_has_attributes(): void
     {
         $this->assertClassHasAttribute('timestamps', Visitor::class);
     }
@@ -21,7 +21,7 @@ class VisitorTest extends TestCase
      * @author Cho
      * @test
      */
-    public function getStatusColor_method_returns_red_color_if_visitor_is_not_registered(): void
+    public function getStatusColor_method_returns_RED_color_if_visitor_is_not_registered(): void
     {
         $visitor = make(Visitor::class);
         $this->assertEquals('red', $visitor->getStatusColor());
@@ -31,7 +31,7 @@ class VisitorTest extends TestCase
      * @author Cho
      * @test
      */
-    public function getStatusColor_method_returns_green_color_when_visitor_is_registered(): void
+    public function getStatusColor_method_returns_GREEN_color_when_visitor_is_registered(): void
     {
         $user = make(User::class, ['id' => $id = rand(3, 10000), 'visitor_id' => $id]);
         $visitor = make(Visitor::class, ['id' => $id]);

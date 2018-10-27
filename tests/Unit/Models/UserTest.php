@@ -13,7 +13,7 @@ class UserTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_attributes(): void
+    public function user_model_has_attributes(): void
     {
         array_map(function ($attr) {
             $this->assertClassHasAttribute($attr, User::class);
@@ -24,7 +24,7 @@ class UserTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_relationship_with_recipe(): void
+    public function user_model_has_relationship_with_recipe_model(): void
     {
         $this->assertCount(0, make(User::class)->recipes);
     }
@@ -33,7 +33,7 @@ class UserTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_relationship_with_favs(): void
+    public function user_model_has_relationship_with_fav_model(): void
     {
         $this->assertNotNull(User::first()->favs);
     }
@@ -42,9 +42,23 @@ class UserTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_relationship_with_visitor(): void
+    public function user_model_has_relationship_with_visitor_model(): void
     {
         $this->assertNotNull(make(User::class)->visitor);
+    }
+
+    /**
+     * Ban::put() last param is set to false which means that instead of creating
+     * ban record in DB just make it in memory
+     * @author Cho
+     * @test
+     */
+    public function user_model_has_relationship_with_ban_model(): void
+    {
+        $user = User::first();
+        $ban = Ban::put($user->id, 1, '', false);
+        $user->setRelation('ban', $ban);
+        $this->assertEquals($user->ban->id, $ban->id);
     }
 
     /**
@@ -57,27 +71,21 @@ class UserTest extends TestCase
     }
 
     /**
-     * Ban::put() last param is set to false which means that instead of creating
-     * ban record in DB just make it in memory
      * @author Cho
      * @test
      */
-    public function user_has_relationship_with_ban_model(): void
+    public function isActive_method_returns_true_if_table_column_active_is_set_to_1(): void
     {
-        $user = User::first();
-        $ban = Ban::put($user->id, 1, '', false);
-        $user->setRelation('ban', $ban);
-        $this->assertEquals($user->ban->id, $ban->id);
+        $user = make(User::class);
+        $this->assertTrue($user->isActive());
     }
 
     /**
      * @author Cho
      * @test
      */
-    public function isActive_method_returns_true_if_user_in_active(): void
+    public function isActive_method_returns_fasle_if_table_column_active_is_set_to_0(): void
     {
-        $user = make(User::class);
-        $this->assertTrue($user->isActive());
         $user = make(User::class, ['active' => 0]);
         $this->assertFalse($user->isActive());
     }
@@ -86,10 +94,18 @@ class UserTest extends TestCase
      * @author Cho
      * @test
      */
-    public function getName_method_return_name_if_no_name_returns_username(): void
+    public function getName_method_returns_name_if_column_name_is_not_null(): void
     {
         $user = make(User::class, ['name' => 'Alex']);
         $this->assertEquals($user->name, $user->getName());
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function getName_method_returns_username_if_name_column_is_null(): void
+    {
         $user = make(User::class, ['name' => null]);
         $this->assertEquals($user->username, $user->getName());
     }
@@ -98,7 +114,7 @@ class UserTest extends TestCase
      * @author Cho
      * @test
      */
-    public function getStatusColor_method_returns_red_if_user_is_not_active(): void
+    public function getStatusColor_method_returns_RED_color_if_user_is_not_active(): void
     {
         $user = make(User::class, ['active' => 0]);
         $this->assertEquals('red', $user->getStatusColor());
@@ -108,7 +124,7 @@ class UserTest extends TestCase
      * @author Cho
      * @test
      */
-    public function getStatusColor_method_returns_green_if_user_is_active(): void
+    public function getStatusColor_method_returns_GREEN_color_if_user_is_active(): void
     {
         $user = make(User::class);
         $this->assertEquals('green', $user->getStatusColor());
@@ -118,7 +134,7 @@ class UserTest extends TestCase
      * @author Cho
      * @test
      */
-    public function getStatusColor_method_returns_main_if_user_is_banned(): void
+    public function getStatusColor_method_returns_MAIN_color_if_user_is_banned(): void
     {
         $user = $this->getMockBuilder(User::class)
             ->setMethodsExcept(['getStatusColor'])

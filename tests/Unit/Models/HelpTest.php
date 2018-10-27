@@ -11,11 +11,11 @@ class HelpTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_attributes(): void
+    public function help_model_has_attributes(): void
     {
-        $this->assertClassHasAttribute('table', Help::class);
-        $this->assertClassHasAttribute('guarded', Help::class);
-        $this->assertClassHasAttribute('timestamps', Help::class);
+        array_map(function ($attr) {
+            $this->assertClassHasAttribute($attr, Help::class);
+        }, ['table', 'guarded', 'timestamps']);
     }
 
     /**

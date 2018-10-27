@@ -12,7 +12,7 @@ class BanTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_attributes(): void
+    public function ban_model_has_attributes(): void
     {
         array_map(function ($attr) {
             $this->assertClassHasAttribute($attr, Ban::class);
@@ -34,7 +34,7 @@ class BanTest extends TestCase
      * @author Cho
      * @test
      */
-    public function ban_has_relationship_with_user_model(): void
+    public function ban_model_has_relationship_with_user_model(): void
     {
         $ban = Ban::make([
             'user_id' => 1,

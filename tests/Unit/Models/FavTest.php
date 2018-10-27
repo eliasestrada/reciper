@@ -12,7 +12,7 @@ class FavTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_attributes(): void
+    public function fav_model_has_attributes(): void
     {
         $this->assertClassHasAttribute('guarded', Fav::class);
         $this->assertClassHasAttribute('timestamps', Fav::class);
@@ -22,7 +22,7 @@ class FavTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_relationship_with_user(): void
+    public function fav_model_has_relationship_with_user_model(): void
     {
         $fav = Fav::make([
             'user_id' => 1,

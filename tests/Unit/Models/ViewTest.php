@@ -11,7 +11,7 @@ class ViewTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_attributes(): void
+    public function view_model_has_attributes(): void
     {
         $this->assertClassHasAttribute('guarded', View::class);
         $this->assertClassHasAttribute('timestamps', View::class);

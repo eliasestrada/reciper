@@ -11,7 +11,7 @@ class RecipeTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_attributes(): void
+    public function recipe_model_has_attributes(): void
     {
         $this->assertClassHasAttribute('guarded', Recipe::class);
     }
@@ -20,7 +20,7 @@ class RecipeTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_relationship_with_user(): void
+    public function recipe_model_has_relationship_with_user_model(): void
     {
         $this->assertTrue(make(Recipe::class)->user->exists());
     }
@@ -29,7 +29,7 @@ class RecipeTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_relationship_with_categories(): void
+    public function recipe_model_has_relationship_with_category_model(): void
     {
         $this->assertNotNull(make(Recipe::class)->categories);
     }
@@ -38,7 +38,7 @@ class RecipeTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_relationship_with_meal(): void
+    public function recipe_model_has_relationship_with_meal_model(): void
     {
         $this->assertTrue(make(Recipe::class)->meal->exists());
     }
@@ -47,7 +47,7 @@ class RecipeTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_relationship_with_like(): void
+    public function recipe_model_has_relationship_with_like_model(): void
     {
         $this->assertCount(0, make(Recipe::class)->likes);
     }
@@ -56,7 +56,7 @@ class RecipeTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_relationship_with_fav(): void
+    public function recipe_model_has_relationship_with_fav_model(): void
     {
         $this->assertCount(0, make(Recipe::class)->favs);
     }
@@ -65,7 +65,7 @@ class RecipeTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_relationship_with_view(): void
+    public function recipe_model_has_relationship_with_view_model(): void
     {
         $this->assertCount(0, make(Recipe::class)->views);
     }
@@ -74,7 +74,7 @@ class RecipeTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_relationship_with_user_called_approver(): void
+    public function recipe_model_has_relationship_with_user_model_called_approver(): void
     {
         $this->assertTrue(make(Recipe::class)->approver->exists());
     }
@@ -180,16 +180,10 @@ class RecipeTest extends TestCase
      * @author Cho
      * @test
      */
-    public function getStatusIcon_method_returns_icon_name(): void
+    public function getStatusIcon_method_returns_check_icon_when_recipe_is_ready_and_approved(): void
     {
         $recipe = new Recipe(['ready_' . LANG() => 1, 'approved_' . LANG() => 1]);
         $this->assertEquals('fa-check', $recipe->getStatusIcon());
-
-        $recipe->{'ready_' . LANG()} = 0;
-        $this->assertEquals('fa-pen', $recipe->getStatusIcon());
-
-        $recipe->{'ready_' . LANG()} = 1;
-        $recipe->{'approved_' . LANG()} = 0;
         $this->assertEquals('fa-clock', $recipe->getStatusIcon());
     }
 
@@ -197,16 +191,49 @@ class RecipeTest extends TestCase
      * @author Cho
      * @test
      */
-    public function getStatusColor_method_returns_color_code(): void
+    public function getStatusIcon_method_returns_pen_icon_when_recipe_is_not_ready(): void
+    {
+        $recipe = new Recipe(['ready_' . LANG() => 0]);
+        $this->assertEquals('fa-pen', $recipe->getStatusIcon());
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function getStatusIcon_method_returns_clock_icon_when_recipe_is_ready_but_not_approved_yet(): void
+    {
+        $recipe = new Recipe(['ready_' . LANG() => 1, 'approved_' . LANG() => 0]);
+        $this->assertEquals('fa-clock', $recipe->getStatusIcon());
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function getStatusColor_method_returns_green_color_when_recipe_is_ready_and_approved(): void
     {
         $recipe = new Recipe(['ready_' . LANG() => 1, 'approved_' . LANG() => 1]);
         $this->assertEquals('#65b56e', $recipe->getStatusColor());
+    }
 
-        $recipe->{'ready_' . LANG()} = 0;
+    /**
+     * @author Cho
+     * @test
+     */
+    public function getStatusColor_method_returns_red_color_when_recipe_is_in_drafts(): void
+    {
+        $recipe = new Recipe(['ready_' . LANG() => 0]);
         $this->assertEquals('#ce7777', $recipe->getStatusColor());
+    }
 
-        $recipe->{'ready_' . LANG()} = 1;
-        $recipe->{'approved_' . LANG()} = 0;
+    /**
+     * @author Cho
+     * @test
+     */
+    public function getStatusColor_method_returns_orange_color_when_recipe_is_ready_but_not_approved_yet(): void
+    {
+        $recipe = new Recipe(['ready_' . LANG() => 1, 'approved_' . LANG() => 0]);
         $this->assertEquals('#e2bd18', $recipe->getStatusColor());
     }
 
@@ -214,7 +241,7 @@ class RecipeTest extends TestCase
      * @author Cho
      * @test
      */
-    public function selectBasic_scope_returns_only_common_columns(): void
+    public function selectBasic_scope_returns_only_common_used_columns(): void
     {
         $recipe = Recipe::selectBasic()->first()->toArray();
         $columns = [

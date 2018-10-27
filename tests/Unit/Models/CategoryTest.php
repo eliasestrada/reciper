@@ -11,7 +11,7 @@ class CategoryTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_attributes(): void
+    public function category_model_has_attributes(): void
     {
         $this->assertClassHasAttribute('guarded', Category::class);
         $this->assertClassHasAttribute('timestamps', Category::class);
@@ -21,7 +21,7 @@ class CategoryTest extends TestCase
      * @author Cho
      * @test
      */
-    public function model_has_relationships_with_recipes(): void
+    public function category_model_has_relationships_with_recipe_model(): void
     {
         $this->assertNotNull(Category::first()->recipes);
     }
