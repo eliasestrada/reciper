@@ -46,7 +46,7 @@ class Xp
     /**
      * @return int
      */
-    public function getLvl(): int
+    public function getLevel(): int
     {
         // Refactor
         $result = 0;
@@ -61,17 +61,17 @@ class Xp
     /**
      * @return int
      */
-    public function getLvlMin(): int
+    public function getLevelMin(): int
     {
-        return $this->levels[$this->getLvl()]['min'];
+        return $this->levels[$this->getLevel()]['min'];
     }
 
     /**
      * @return int
      */
-    public function getLvlMax(): int
+    public function getLevelMax(): int
     {
-        return $this->levels[$this->getLvl()]['max'];
+        return $this->levels[$this->getLevel()]['max'];
     }
 
     /**
@@ -79,9 +79,9 @@ class Xp
      */
     public function getPercent(): int
     {
-        $min = $this->user->xp - $this->getLvlMin();
-        $max = $this->getLvlMax() - $this->getLvlMin();
-        return $this->getLvlMin() >= config('custom.max_xp') ? 100 : 100 * $min / $max;
+        $min = $this->user->xp - $this->getLevelMin();
+        $max = $this->getLevelMax() - $this->getLevelMin();
+        return $this->getLevelMin() >= config('custom.max_xp') ? 100 : 100 * $min / $max;
     }
 
     /**

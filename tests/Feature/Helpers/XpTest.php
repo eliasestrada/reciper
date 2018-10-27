@@ -26,13 +26,13 @@ class XpTest extends TestCase
      * @author Cho
      * @test
      */
-    public function getLvl_method_returns_current_users_level_depending_on_users_current_xp(): void
+    public function getLevel_method_returns_current_users_level_depending_on_users_current_xp(): void
     {
         $xp = new Xp(create_user());
 
         foreach ($xp->levels as $i => $level) {
             $xp->user->xp = rand($level['min'], $level['max']);
-            $this->assertEquals($i, $xp->getLvl());
+            $this->assertEquals($i, $xp->getLevel());
         }
     }
 
@@ -40,13 +40,13 @@ class XpTest extends TestCase
      * @author Cho
      * @test
      */
-    public function getLvlMin_method_returns_minimum_value_of_xp_for_current_users_level(): void
+    public function getLevelMin_method_returns_minimum_value_of_xp_for_current_users_level(): void
     {
         $xp = new Xp(create_user());
 
         foreach ($xp->levels as $level) {
             $xp->user->xp = rand($level['min'], $level['max']);
-            $this->assertEquals($level['min'], $xp->getLvlMin());
+            $this->assertEquals($level['min'], $xp->getLevelMin());
         }
     }
 
@@ -54,13 +54,13 @@ class XpTest extends TestCase
      * @author Cho
      * @test
      */
-    public function getLvlMax_method_returns_maximum_value_of_xp_for_current_users_level(): void
+    public function getLevelMax_method_returns_maximum_value_of_xp_for_current_users_level(): void
     {
         $xp = new Xp(create_user());
 
         foreach ($xp->levels as $level) {
             $xp->user->xp = rand($level['min'], $level['max']);
-            $this->assertEquals($level['max'], $xp->getLvlMax());
+            $this->assertEquals($level['max'], $xp->getLevelMax());
         }
     }
 
@@ -105,6 +105,7 @@ class XpTest extends TestCase
      */
     public function addForStreakDays_method_adds_certain_xp_points(): void
     {
+        $user = create_user('', ['xp' => 0]);
 
         $days = [
             ['streak_days' => 1, 'expect_xp' => 1],

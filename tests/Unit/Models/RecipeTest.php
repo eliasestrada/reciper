@@ -184,7 +184,6 @@ class RecipeTest extends TestCase
     {
         $recipe = new Recipe(['ready_' . LANG() => 1, 'approved_' . LANG() => 1]);
         $this->assertEquals('fa-check', $recipe->getStatusIcon());
-        $this->assertEquals('fa-clock', $recipe->getStatusIcon());
     }
 
     /**

@@ -72,7 +72,7 @@
                 </div>
 
                 {{-- Level bar --}}
-                <div class="progress-wrap mt-4 z-depth-1" data-lvl="@lang('users.level') {{ $xp->getLvl() }}" data-xp="@lang('users.xp') {{ $user->xp }} {{ $xp->getLvlMin() >= config('custom.max_xp') ? '' : '/ '. ($xp->getLvlMax() + 1) }}">
+                <div class="progress-wrap mt-4 z-depth-1" data-lvl="@lang('users.level') {{ $xp->getLevel() }}" data-xp="@lang('users.xp') {{ $user->xp }} {{ $xp->getLevelMin() >= config('custom.max_xp') ? '' : '/ '. ($xp->getLevelMax() + 1) }}">
                     <div class="bar" style="width:{{ $xp->getPercent() }}%"></div>
                 </div>
                     
