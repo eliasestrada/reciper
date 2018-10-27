@@ -30,7 +30,7 @@ class DeleteRequestTest extends TestCase
     {
         $recipe = create(Recipe::class, ['user_id' => $this->user->id], null, 'draft');
 
-        $this->actingAs($this->user)->delete("/recipes/$recipe->id");
+        $this->actingAs($this->user)->delete("/recipes/{$recipe->id}");
         $this->assertDatabaseMissing('recipes', ['id' => $recipe->id]);
     }
 
@@ -42,7 +42,7 @@ class DeleteRequestTest extends TestCase
     {
         $recipe = create(Recipe::class, [], null, 'draft');
 
-        $this->actingAs($this->user)->delete("/recipes/$recipe->id");
+        $this->actingAs($this->user)->delete("/recipes/{$recipe->id}");
         $this->assertDatabaseHas('recipes', ['id' => $recipe->id]);
     }
 }

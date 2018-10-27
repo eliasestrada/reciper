@@ -46,8 +46,8 @@ class SettingsPhotoIndexPageTest extends TestCase
             'photo' => UploadedFile::fake()->image('image.jpg'),
         ]);
         $this->assertNotEquals('default.jpg', $user->photo);
-        $this->assertFileExists(storage_path("app/public/users/$user->photo"));
-        $this->assertFileExists(storage_path("app/public/small/users/$user->photo"));
+        $this->assertFileExists(storage_path("app/public/users/{$user->photo}"));
+        $this->assertFileExists(storage_path("app/public/small/users/{$user->photo}"));
         $this->cleanAfterYourself($user->photo);
     }
 
@@ -103,8 +103,8 @@ class SettingsPhotoIndexPageTest extends TestCase
     private function cleanAfterYourself(string $photo_path): void
     {
         \Storage::delete([
-            "public/users/$photo_path",
-            "public/small/users/$photo_path",
+            "public/users/{$photo_path}",
+            "public/small/users/{$photo_path}",
         ]);
     }
 }

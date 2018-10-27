@@ -17,7 +17,7 @@ class UsersShowPageTest extends TestCase
     public function user_can_see_the_page(): void
     {
         $this->actingAs($user = create_user())
-            ->get("/users/$user->username")
+            ->get("/users/{$user->username}")
             ->assertOk()
             ->assertViewIs('users.show');
     }
@@ -29,7 +29,7 @@ class UsersShowPageTest extends TestCase
     public function guest_can_see_users_show_page(): void
     {
         $username = create_user()->username;
-        $this->get("/users/$username")->assertOk();
+        $this->get("/users/{$username}")->assertOk();
     }
 
     /**
@@ -39,7 +39,7 @@ class UsersShowPageTest extends TestCase
     public function noone_can_see_user_page_after_diactivating(): void
     {
         $user = create_user('', ['active' => 0]);
-        $this->get("/users/$user->username")->assertSeeText(trans('users.user_is_not_active'));
+        $this->get("/users/{$user->username}")->assertSeeText(trans('users.user_is_not_active'));
     }
 
     /**
@@ -51,7 +51,7 @@ class UsersShowPageTest extends TestCase
         $user = create_user('', ['active' => 0]);
 
         $this->actingAs($user)
-            ->get("/users/$user->username")
+            ->get("/users/{$user->username}")
             ->assertSeeText(trans('users.activate_account_desc', [
                 'days' => 30 - (date('j') - $user->updated_at->format('j')),
             ]));
@@ -66,7 +66,7 @@ class UsersShowPageTest extends TestCase
         $user = create_user();
 
         $this->actingAs($user)
-            ->get("/users/$user->username")
+            ->get("/users/{$user->username}")
             ->assertDontSee(trans('users.activate_account_desc', [
                 'days' => 30 - (date('j') - $user->updated_at->format('j')),
             ]));
@@ -82,7 +82,7 @@ class UsersShowPageTest extends TestCase
 
         $this->actingAs($user)
             ->post(action([UsersController::class, 'store']))
-            ->assertRedirect("/users/$user->username");
+            ->assertRedirect("/users/{$user->username}");
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,

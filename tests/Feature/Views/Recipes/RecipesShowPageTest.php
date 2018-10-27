@@ -19,7 +19,7 @@ class RecipesShowPageTest extends TestCase
     public function view_is_accessable(): void
     {
         $recipe_id = create(Recipe::class)->id;
-        $this->get("/recipes/$recipe_id")->assertViewIs('recipes.show')->assertOk();
+        $this->get("/recipes/{$recipe_id}")->assertViewIs('recipes.show')->assertOk();
     }
 
     /**

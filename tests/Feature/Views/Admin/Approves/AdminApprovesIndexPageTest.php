@@ -56,6 +56,6 @@ class AdminApprovesIndexPageTest extends TestCase
 
         $this->actingAs($admin)
             ->get('/admin/approves')
-            ->assertRedirect("/admin/approves/$recipe->id");
+            ->assertRedirect("/admin/approves/{$recipe->id}");
     }
 }

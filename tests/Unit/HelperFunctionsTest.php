@@ -39,13 +39,13 @@ class HelperFunctionsTest extends TestCase
     {
         // Icon should be on ===================
         array_map(function ($second) {
-            $current = get_online_icon("30 $second " . trans("date.ago"));
+            $current = get_online_icon("30 {$second} " . trans("date.ago"));
             $this->assertEquals('<span class="online-icon-on"></span>', $current);
         }, [trans('date.second'), trans('date.seconds'), trans('date.seconds2')]);
 
         // Icon should be off ===================
         array_map(function ($minute) {
-            $current = get_online_icon("30 $minute " . trans("date.ago"));
+            $current = get_online_icon("30 {$minute} " . trans("date.ago"));
             $this->assertEquals('<span class="online-icon-off"></span>', $current);
         }, [trans('date.minute'), trans('date.minutes'), trans('date.minutes2')]);
     }

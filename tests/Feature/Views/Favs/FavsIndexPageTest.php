@@ -45,7 +45,7 @@ class FavsIndexPageTest extends TestCase
 
         $this->actingAs($user)
             ->get('/favs')
-            ->assertSee('<img src="' . asset('storage/small/recipes/' . $recipe->image));
+            ->assertSee('<img src="' . asset("storage/small/recipes/{$recipe->image}"));
     }
 
     /**
@@ -63,7 +63,7 @@ class FavsIndexPageTest extends TestCase
 
         $this->actingAs($user)
             ->get('/favs')
-            ->assertDontSee('<img src="' . asset('storage/small/recipes/' . $recipe->image));
+            ->assertDontSee('<img src="' . asset("storage/small/recipes/{$recipe->image}"));
     }
 
     /**
@@ -76,7 +76,7 @@ class FavsIndexPageTest extends TestCase
             'user_id' => ($user = create_user())->id,
             'recipe_id' => ($recipe = create(Recipe::class))->id,
         ]);
-        $this->actingAs($user)->post("/favs/$recipe->id")->assertOk();
+        $this->actingAs($user)->post("/favs/{$recipe->id}")->assertOk();
     }
 
     /**
@@ -93,7 +93,7 @@ class FavsIndexPageTest extends TestCase
 
         $this->actingAs($user)
             ->get('/favs/4')
-            ->assertDontSee('<img src="' . asset('storage/small/recipes/' . $recipe->image));
+            ->assertDontSee('<img src="' . asset("storage/small/recipes/{$recipe->image}"));
     }
 
     /**
@@ -109,6 +109,6 @@ class FavsIndexPageTest extends TestCase
         ]);
 
         $this->actingAs($user)->get('/favs/3')
-            ->assertSee('<img src="' . asset('storage/small/recipes/' . $recipe->image));
+            ->assertSee('<img src="' . asset("storage/small/recipes/{$recipe->image}"));
     }
 }

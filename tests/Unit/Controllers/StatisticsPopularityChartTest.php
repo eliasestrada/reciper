@@ -43,7 +43,7 @@ class StatisticsPopularityChartTest extends TestCase
 
         for ($i = 0, $sub_month = 11; $i < $method->count(); $i++, $sub_month--) {
             $month_number = now()->subMonths($sub_month)->month;
-            $month_name = trans("date.month_$month_number");
+            $month_name = trans("date.month_{$month_number}");
             $this->assertEquals($month_name, $method[$i]['month']);
         }
     }
@@ -87,7 +87,7 @@ class StatisticsPopularityChartTest extends TestCase
         foreach ([12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1] as $key => $month) {
             $expect = now()->addMonth()->subMonths($month)->month;
             $actual = $method[$key]['month'];
-            $this->assertEquals($expect, $actual, ">>> KEY IS $key\n");
+            $this->assertEquals($expect, $actual, ">>> KEY IS {$key}\n");
         }
     }
 
@@ -106,7 +106,7 @@ class StatisticsPopularityChartTest extends TestCase
 
         foreach ($result->pluck('month') as $key => $actual) {
             $expect = trans('date.month_' . $months[$key]['month']);
-            $this->assertEquals($expect, $actual, ">>> KEY IS $key");
+            $this->assertEquals($expect, $actual, ">>> KEY IS {$key}");
         }
     }
 }

@@ -31,7 +31,7 @@ class MasterDocumentsShowPageTest extends TestCase
         $document_id = create(Document::class, ['ready_' . LANG() => 0])->id;
 
         $this->actingAs(make(User::class))
-            ->get("/documents/$document_id")
+            ->get("/documents/{$document_id}")
             ->assertRedirect();
     }
 
@@ -44,7 +44,7 @@ class MasterDocumentsShowPageTest extends TestCase
         $document_id = create(Document::class, ['ready_' . LANG() => 0])->id;
 
         $this->actingAs(create_user('master'))
-            ->get("/documents/$document_id")
+            ->get("/documents/${document_id}")
             ->assertOk();
     }
 }

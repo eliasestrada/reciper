@@ -48,8 +48,8 @@ class PagesSearchPageTest extends TestCase
     public function admin_can_search_for_user_by_id(): void
     {
         $this->actingAs($admin = create_user('admin'))
-            ->get("/search?for=$admin->id")
-            ->assertRedirect("/users/$admin->username");
+            ->get("/search?for={$admin->id}")
+            ->assertRedirect("/users/{$admin->username}");
     }
 
     /**

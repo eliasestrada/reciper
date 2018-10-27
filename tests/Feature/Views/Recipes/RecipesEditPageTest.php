@@ -23,7 +23,7 @@ class RecipesEditPageTest extends TestCase
         $recipe_id = create(Recipe::class, ['user_id' => $user->id], null, 'draft')->id;
 
         $this->actingAs($user)
-            ->get("/recipes/$recipe_id/edit")
+            ->get("/recipes/{$recipe_id}/edit")
             ->assertOk()
             ->assertViewIs('recipes.edit');
     }
@@ -35,7 +35,7 @@ class RecipesEditPageTest extends TestCase
     public function guest_cant_see_the_page(): void
     {
         $recipe = create(Recipe::class);
-        $this->get("/recipes/$recipe->id/edit")->assertRedirect();
+        $this->get("/recipes/{$recipe->id}/edit")->assertRedirect();
     }
 
     /**
@@ -47,7 +47,7 @@ class RecipesEditPageTest extends TestCase
         $recipe = create(Recipe::class);
 
         $this->actingAs(create_user())
-            ->get("/recipes/$recipe->id/edit")
+            ->get("/recipes/{$recipe->id}/edit")
             ->assertRedirect();
     }
 
@@ -191,8 +191,8 @@ class RecipesEditPageTest extends TestCase
         $image_name = Recipe::whereId($recipe->id)->value('image');
 
         $this->assertNotEquals('default.jpg', $image_name);
-        $this->assertFileExists(storage_path("app/public/recipes/$image_name"));
-        $this->assertFileExists(storage_path("app/public/small/recipes/$image_name"));
+        $this->assertFileExists(storage_path("app/public/recipes/{$image_name}"));
+        $this->assertFileExists(storage_path("app/public/small/recipes/{$image_name}"));
         $this->cleanAfterYourself($image_name);
     }
 
@@ -295,8 +295,8 @@ class RecipesEditPageTest extends TestCase
     private function cleanAfterYourself(string $image_path): void
     {
         \Storage::delete([
-            "public/recipes/$image_path",
-            "public/small/recipes/$image_path",
+            "public/recipes/{$image_path}",
+            "public/small/recipes/{$image_path}",
         ]);
     }
 }

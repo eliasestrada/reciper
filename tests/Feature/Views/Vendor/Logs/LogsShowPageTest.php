@@ -29,7 +29,7 @@ class LogsShowPageTest extends TestCase
         $file_name = $this->createLogFile();
 
         $this->actingAs($this->master)
-            ->get("/log-viewer/logs/$file_name/info")
+            ->get("/log-viewer/logs/{$file_name}/info")
             ->assertViewIs('log-viewer::custom-theme.show')
             ->assertOk();
 
