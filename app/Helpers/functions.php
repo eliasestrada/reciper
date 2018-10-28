@@ -105,7 +105,6 @@ function active_if_route_is(array $routes): string
 }
 
 /**
- * Converts given parameters into a file name
  * @param string $extention
  * @return string
  */
@@ -221,6 +220,7 @@ function tip(string $header, string $message, string $color = 'green-text'): str
 }
 
 /**
+ * @codeCoverageIgnore
  * @param string $title
  * @param $link
  * @return string

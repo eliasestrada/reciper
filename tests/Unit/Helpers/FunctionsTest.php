@@ -99,4 +99,21 @@ class FunctionsTest extends TestCase
         $expected = make(\App\Models\Visitor::class)->value('id');
         $this->assertEquals($expected, visitor_id());
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function no_connection_error_function_flashes_message_and_logs_given_error(): void
+    {
+        $exception = \Mockery::mock('Exception');
+        $exception->shouldReceive('getMessage')->andReturn('Lorem');
+
+        no_connection_error($exception, 'SomeFile');
+
+        $this->assertFileExists(storage_path('logs/laravel-' . date('Y-m-d') . '.log'));
+        $this->get('/')->assertSessionHas('error', trans('messages.query_error'));
+
+        \File::delete(storage_path('logs/laravel-' . date('Y-m-d') . '.log'));
+    }
 }
