@@ -3,6 +3,7 @@
 namespace Tests\Feature\Jobs;
 
 use App\Jobs\DeleteUnactiveUsersJob;
+use App\Models\Recipe;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -89,5 +90,40 @@ class Test extends TestCase
             'updated_at' => now()->subMonths(2),
         ]);
         $this->job->handle();
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function handle_method_deletes_unactive_users_even_if_they_have_some_roles(): void
+    {
+        $unactive_users = [
+            'admin' => create_user('admin', ['active' => 0, 'updated_at' => now()->subMonth()]),
+            'master' => create_user('master', ['active' => 0, 'updated_at' => now()->subYear()]),
+        ];
+
+        $this->withoutJobs();
+        $this->job->handle();
+
+        $this->assertDatabaseMissing('users', ['id' => $unactive_users['admin']->id]);
+        $this->assertDatabaseMissing('users', ['id' => $unactive_users['master']->id]);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function handle_method_deletes_unactive_user_even_if_he_has_favorite_recipe(): void
+    {
+        $user = create_user('', ['active' => 0, 'updated_at' => now()->subMonth()]);
+        $recipe_id = create(Recipe::class)->id;
+
+        $user->favs()->create(compact('recipe_id'));
+
+        $this->withoutJobs();
+        $this->job->handle();
+
+        $this->assertDatabaseMissing('users', ['id' => $user->id]);
     }
 }
