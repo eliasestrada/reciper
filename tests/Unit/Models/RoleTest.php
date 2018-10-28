@@ -16,4 +16,14 @@ class RoleTest extends TestCase
         $this->assertClassHasAttribute('timestamps', Role::class);
         $this->assertClassHasAttribute('guarded', Role::class);
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function role_model_has_relationship_with_user(): void
+    {
+        $role = Role::whereName('master')->first();
+        $this->assertNotFalse($role->users);
+    }
 }
