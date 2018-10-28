@@ -24,20 +24,34 @@ class TopRecipersJob implements ShouldQueue
     public function handle()
     {
         \Redis::throttle('top-recipers')->allow(2)->every(1)->then(function () {
-            $likes = Like::where([
-                ['created_at', '>=', Carbon::yesterday()->startOfDay()],
-                ['created_at', '<=', Carbon::yesterday()->endOfDay()],
-            ])->get();
-
-            $users = $this->getArrayOfUsernames($likes);
-            $top_recipers = $this->convertArrayToNeededFormat($users);
-
+            $top_recipers = $this->makeListOfTopRecipers();
             cache()->put('top_recipers', $top_recipers, 1440);
         }, function () {
             return $this->release(2);
         });
     }
 
+    /**
+     * Function helper covered by tests
+     * @return array
+     */
+    public function makeListOfTopRecipers(): array
+    {
+        $likes = Like::where([
+            ['created_at', '>=', Carbon::yesterday()->startOfDay()],
+            ['created_at', '<=', Carbon::yesterday()->endOfDay()],
+        ])->get();
+
+        $users = $this->getArrayOfUsernames($likes);
+        $top_recipers = $this->combineArrayValues($users);
+
+        return $top_recipers;
+    }
+
+    /**
+     * @codeCoverageIgnore
+     * @return array
+     */
     public function tags()
     {
         return ['top_recipers'];
@@ -46,6 +60,7 @@ class TopRecipersJob implements ShouldQueue
     /**
      * Job failed to process
      *
+     * @codeCoverageIgnore
      * @return void
      */
     public function failed(Exception $e)
@@ -57,7 +72,7 @@ class TopRecipersJob implements ShouldQueue
      * @param array $before
      * @return array
      */
-    public function convertArrayToNeededFormat(array $before): array
+    public function combineArrayValues(array $before): array
     {
         $count_values = array_count_values($before);
         $sort = array_sort($count_values);
