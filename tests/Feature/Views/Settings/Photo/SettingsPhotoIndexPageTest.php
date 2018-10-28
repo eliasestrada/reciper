@@ -57,14 +57,10 @@ class SettingsPhotoIndexPageTest extends TestCase
      */
     public function delete_photo_request_dispaches_job_DeletePhotoJob(): void
     {
-        Queue::fake();
+        $this->expectsJobs(DeletePhotoJob::class);
 
         $user = create_user('', ['photo' => 'some/image.jpg']);
         $this->actingAs($user)->delete(action('Settings\PhotoController@destroy'));
-
-        Queue::assertPushed(DeletePhotoJob::class, function ($job) {
-            return $job->photo_name == 'some/image.jpg';
-        });
     }
 
     /**
