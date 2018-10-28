@@ -1,10 +1,11 @@
 <?php
 
 use App\Models\Recipe;
+use App\Models\User;
 
 $factory->define(Recipe::class, function () {
     return [
-        'user_id' => 1,
+        'user_id' => factory(User::class)->create()->id,
         'meal_id' => rand(1, 3),
         'ru_approver_id' => 1,
         'en_approver_id' => 1,
