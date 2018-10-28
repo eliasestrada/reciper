@@ -61,17 +61,17 @@ class TopRecipersJobTest extends TestCase
      */
     public function makeCachedListOfToprecipers_method_caches_reciper_username_whos_recipe_were_liked_yesterday(): void
     {
-        cache()->forget('top_recipers');
-
         Like::create([
             'visitor_id' => 1,
             'recipe_id' => ($recipe = create(Recipe::class))->id,
             'created_at' => Carbon::yesterday()->startOfDay(),
         ]);
 
-        $result = $this->job->makeCachedListOfToprecipers();
+        \Cache::shouldReceive('put')->once()->andReturn([
+            $recipe->user->username => 1,
+        ]);
 
-        $this->assertArrayHasKey($recipe->user->username, cache()->get('top_recipers'));
+        $result = $this->job->makeCachedListOfToprecipers();
     }
 
     /**
