@@ -36,14 +36,23 @@ class DeleteImageJob implements ShouldQueue
     {
         Redis::throttle('delete_image')->allow(2)->every(1)->then(function () {
             if ($this->image_name != 'default.jpg') {
-                Storage::delete([
-                    "public/recipes/$this->image_name",
-                    "public/small/recipes/$this->image_name",
-                ]);
+                $this->deleteImagesFromStorage();
             }
         }, function () {
             return $this->release(2);
         });
+    }
+
+    /**
+     * Deletes files from storage
+     * @return boolean
+     */
+    public function deleteImagesFromStorage(): bool
+    {
+        return Storage::delete([
+            "public/recipes/$this->image_name",
+            "public/small/recipes/$this->image_name",
+        ]);
     }
 
     /**

@@ -15,12 +15,13 @@ class DeletePhotoJobTest extends TestCase
      * @author Cho
      * @test
      */
-    public function deleteNotDefaultPhoto_method_deletes_photo(): void
+    public function deletePhotosFromStorage_method_deletes_photos(): void
     {
-        $filename = $this->createFakePhoto();
+        $filename = $this->createFakePhotos();
         $job = new DeletePhotoJob($filename);
-        $job->deleteNotDefaultPhoto();
+        $job->deletePhotosFromStorage();
 
+        $this->assertFileNotExists(storage_path("app/public/users/{$filename}"));
         $this->assertFileNotExists(storage_path("app/public/small/users/{$filename}"));
     }
 
@@ -29,9 +30,12 @@ class DeletePhotoJobTest extends TestCase
      * @autho Cho
      * @return string
      */
-    public function createFakePhoto(): string
+    public function createFakePhotos(): string
     {
         $filename = str_random(5) . '.jpg';
+
+        \Image::make(UploadedFile::fake()->image('image.jpg'))
+            ->save(storage_path("app/public/users/{$filename}"));
 
         \Image::make(UploadedFile::fake()->image('image.jpg'))
             ->save(storage_path("app/public/small/users/{$filename}"));
