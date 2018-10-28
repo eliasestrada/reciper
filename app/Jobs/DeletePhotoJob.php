@@ -35,15 +35,20 @@ class DeletePhotoJob implements ShouldQueue
     public function handle()
     {
         Redis::throttle('delete_photo')->allow(2)->every(1)->then(function () {
-            if ($this->photo_name != 'default.jpg') {
-                Storage::delete([
-                    "public/users/$this->photo_name",
-                    "public/small/users/$this->photo_name",
-                ]);
-            }
+            $this->deleteNotDefaultPhoto();
         }, function () {
             return $this->release(2);
         });
+    }
+
+    public function deleteNotDefaultPhoto()
+    {
+        if ($this->photo_name != 'default.jpg') {
+            return Storage::delete([
+                "public/users/$this->photo_name",
+                "public/small/users/$this->photo_name",
+            ]);
+        }
     }
 
     /**
