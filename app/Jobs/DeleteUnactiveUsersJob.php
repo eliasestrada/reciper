@@ -15,8 +15,10 @@ class DeleteUnactiveUsersJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
-     * Execute the job.
+     * Loop through all unactive users and delete them with
+     * their photos
      *
+     * @see DeletePhotoJob
      * @return void
      */
     public function handle()
@@ -24,13 +26,18 @@ class DeleteUnactiveUsersJob implements ShouldQueue
         $users = User::where('updated_at', '<=', now()->subDays(30))->whereActive(0)->get();
 
         foreach ($users as $user) {
-            DeletePhotoJob::dispatch($user->photo);
+            if ($user->photo != 'default.jpg') {
+                DeletePhotoJob::dispatch($user->photo);
+            }
+
             if ($user->roles()) {
                 $user->roles()->detach();
             }
+
             if ($user->favs()) {
                 $user->favs()->delete();
             }
+
             $user->delete();
         }
     }
