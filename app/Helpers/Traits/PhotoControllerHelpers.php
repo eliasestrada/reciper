@@ -22,7 +22,7 @@ trait PhotoControllerHelpers
         $path_slug = $this->makePathSlug();
         $path = storage_path("app/public/users/{$path_slug}");
         $path_small = storage_path("app/public/small/users/{$path_slug}");
-        $photo_name = set_image_name($photo->getClientOriginalExtension());
+        $photo_name = user()->username . '.' . $photo->getClientOriginalExtension();
 
         if (!File::exists($path)) {
             File::makeDirectory($path, 0777, true);
