@@ -14,6 +14,8 @@ class RecipesUpdateRequestTest extends TestCase
     use DatabaseTransactions;
 
     private $data;
+    private $user;
+    private $recipe;
 
     /**
      * @author Cho
@@ -32,6 +34,9 @@ class RecipesUpdateRequestTest extends TestCase
             'categories' => [0 => 2, 1 => 3],
             'ready' => 1,
         ];
+
+        $this->user = make(User::class, ['id' => 1]);
+        $this->recipe = create(Recipe::class, ['user_id' => $this->user->id], null, 'draft');
     }
 
     /**
@@ -40,9 +45,12 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function title_must_be_not_short(): void
     {
-        $title_min = config('valid.recipes.title.min');
-        $this->data['title'] = str_random($title_min - 1);
-        $this->response()->assertSeeText($this->replace(':min', $title_min, trans('recipes.title_min')));
+        $this->data['title'] = str_random(config('valid.recipes.title.min') - 1);
+
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->doesntExist());
     }
 
     /**
@@ -51,9 +59,12 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function title_must_be_not_long(): void
     {
-        $title_max = config('valid.recipes.title.max');
-        $this->data['title'] = str_random($title_max + 1);
-        $this->response()->assertSeeText($this->replace(':max', $title_max, trans('recipes.title_max')));
+        $this->data['title'] = str_random(config('valid.recipes.title.max') + 1);
+
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->doesntExist());
     }
 
     /**
@@ -62,9 +73,12 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function intro_must_be_not_short(): void
     {
-        $intro_min = config('valid.recipes.intro.min');
-        $this->data['intro'] = str_random($intro_min - 1);
-        $this->response()->assertSeeText($this->replace(':min', $intro_min, trans('recipes.intro_min')));
+        $this->data['intro'] = str_random(config('valid.recipes.intro.min') - 1);
+
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('intro_' . LANG(), $this->data['intro'])->doesntExist());
     }
 
     /**
@@ -73,9 +87,12 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function intro_must_be_not_long(): void
     {
-        $intro_max = config('valid.recipes.intro.max');
-        $this->data['intro'] = str_random($intro_max + 1);
-        $this->response()->assertSeeText($this->replace(':max', $intro_max, trans('recipes.intro_max')));
+        $this->data['intro'] = str_random(config('valid.recipes.intro.max') + 1);
+
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('intro_' . LANG(), $this->data['intro'])->doesntExist());
     }
 
     /**
@@ -84,9 +101,12 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function ingredients_must_be_not_short(): void
     {
-        $ingredients_min = config('valid.recipes.ingredients.min');
-        $this->data['ingredients'] = str_random($ingredients_min - 1);
-        $this->response()->assertSeeText($this->replace(':min', $ingredients_min, trans('recipes.ingredients_min')));
+        $this->data['ingredients'] = str_random(config('valid.recipes.ingredients.min') - 1);
+
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('ingredients_' . LANG(), $this->data['ingredients'])->doesntExist());
     }
 
     /**
@@ -95,9 +115,12 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function ingredients_must_be_not_long(): void
     {
-        $ingredients_max = config('valid.recipes.ingredients.max');
-        $this->data['ingredients'] = str_random($ingredients_max + 1);
-        $this->response()->assertSeeText($this->replace(':max', $ingredients_max, trans('recipes.ingredients_max')));
+        $this->data['ingredients'] = str_random(config('valid.recipes.ingredients.max') + 1);
+
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('ingredients_' . LANG(), $this->data['ingredients'])->doesntExist());
     }
 
     /**
@@ -106,9 +129,12 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function text_must_be_not_short(): void
     {
-        $text_min = config('valid.recipes.text.min');
-        $this->data['text'] = str_random($text_min - 1);
-        $this->response()->assertSeeText($this->replace(':min', $text_min, trans('recipes.text_min')));
+        $this->data['text'] = str_random(config('valid.recipes.text.min') - 1);
+
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('text_' . LANG(), $this->data['text'])->doesntExist());
     }
 
     /**
@@ -117,9 +143,12 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function text_must_be_not_long(): void
     {
-        $text_max = config('valid.recipes.text.max');
-        $this->data['text'] = str_random($text_max + 1);
-        $this->response()->assertSeeText($this->replace(':max', $text_max, trans('recipes.text_max')));
+        $this->data['text'] = str_random(config('valid.recipes.text.max') + 1);
+
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('text_' . LANG(), $this->data['text'])->doesntExist());
     }
 
     /**
@@ -129,7 +158,11 @@ class RecipesUpdateRequestTest extends TestCase
     public function meal_must_be_numeric(): void
     {
         $this->data['meal'] = 'n';
-        $this->response()->assertSeeText(trans('recipes.meal_numeric'));
+
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('meal_id', $this->data['meal'])->doesntExist());
     }
 
     /**
@@ -138,11 +171,12 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function meal_must_be_between_numbers(): void
     {
-        $meal_max = Meal::count();
-        $this->data['meal'] = $meal_max + 1;
-        $expect = $this->replace(':min', 1, trans('recipes.meal_between'));
+        $this->data['meal'] = Meal::count() + 1;
 
-        $this->response()->assertSeeText($this->replace(':max', $meal_max, $expect));
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('meal_id', $this->data['meal'])->doesntExist());
     }
 
     /**
@@ -152,7 +186,12 @@ class RecipesUpdateRequestTest extends TestCase
     public function categories_are_required(): void
     {
         $this->data['categories'] = '';
-        $this->response()->assertSeeText(trans('recipes.categories_required'));
+        $this->data['title'] = 'This title will not be saved because of validation';
+
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->doesntExist());
     }
 
     /**
@@ -162,7 +201,12 @@ class RecipesUpdateRequestTest extends TestCase
     public function categories_must_be_distinct(): void
     {
         $this->data['categories'] = [0 => 2, 1 => 2];
-        $this->response()->assertSeeText(trans('recipes.categories_distinct'));
+        $this->data['title'] = 'This title will not be saved because of validation';
+
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->doesntExist());
     }
 
     /**
@@ -172,7 +216,12 @@ class RecipesUpdateRequestTest extends TestCase
     public function categories_must_be_numeric(): void
     {
         $this->data['categories'] = [0 => 'string'];
-        $this->response()->assertSeeText(trans('recipes.categories_numeric'));
+        $this->data['title'] = 'This title will not be saved because of validation';
+
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->doesntExist());
     }
 
     /**
@@ -182,7 +231,12 @@ class RecipesUpdateRequestTest extends TestCase
     public function categories_must_not_have_id_of_one(): void
     {
         $this->data['categories'] = [0 => 1];
-        $this->response()->assertSeeText(trans('recipes.categories_between'));
+        $this->data['title'] = 'This title will not be saved coz category id';
+
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->doesntExist());
     }
 
     /**
@@ -191,11 +245,13 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function categories_must_be_between_numbers(): void
     {
-        $this->data['categories'] = [0 => 1, 1 => 2];
-        $this->response()->assertSeeText(trans('recipes.categories_between'));
-
         $this->data['categories'] = [0 => 3, 1 => Category::count() + 1];
-        $this->response()->assertSeeText(trans('recipes.categories_between'));
+        $this->data['title'] = 'This title will not be saved coz category id is not between';
+
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+
+        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->doesntExist());
     }
 
     /**
@@ -205,36 +261,11 @@ class RecipesUpdateRequestTest extends TestCase
     public function categories_correct_data(): void
     {
         $this->data['categories'] = [0 => 2, 1 => Category::count()];
-        $this->response()->assertSeeText(trans('recipes.added_to_approving'));
-    }
+        $this->data['title'] = 'This title will be saved to DB';
 
-    /**
-     * Helper
-     * @param string $before
-     * @param string $after
-     * @param string $string
-     * @author Cho
-     * @return void
-     */
-    public function replace(string $before, string $after, string $string)
-    {
-        return preg_replace('/' . $before . '/', $after, $string);
-    }
+        $this->actingAs($this->user)
+            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
 
-    /**
-     * Helper
-     * @author Cho
-     * @return $this
-     */
-    public function response()
-    {
-        $user = make(User::class, ['id' => 1]);
-        $recipe = create(Recipe::class, ['user_id' => $user->id], null, 'draft');
-
-        $this->get("/recipes/$recipe->id/edit");
-
-        return $this->actingAs($user)
-            ->followingRedirects()
-            ->put(action('RecipesController@update', $recipe->id), $this->data);
+        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->exists());
     }
 }
