@@ -76,14 +76,13 @@ class AdminApprovesShowPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function admin_approves_recipe(): void
+    public function admin_approves_recipe_and_got_redirected_to_approved_recipe(): void
     {
         $this->actingAs($this->admin)
-            ->followingRedirects()
             ->post(action('Admin\ApprovesController@approve', [
                 'recipe' => $this->unapproved_recipe->id,
             ]))
-            ->assertSee(trans('recipes.recipe_published'));
+            ->assertRedirect("/recipes/{$this->unapproved_recipe->id}");
     }
 
     /**
