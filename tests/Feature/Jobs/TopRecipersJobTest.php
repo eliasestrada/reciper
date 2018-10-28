@@ -16,11 +16,19 @@ class TopRecipersJobTest extends TestCase
 
     /**
      * @author Cho
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->job = new TopRecipersJob;
+    }
+    /**
+     * @author Cho
      * @test
      */
     public function makeCachedListOfToprecipers_method_returns_empty_array_if_there_are_no_likes_yesterday(): void
     {
-        $method = (new TopRecipersJob)->makeCachedListOfToprecipers();
+        $method = $this->job->makeCachedListOfToprecipers();
         $this->assertTrue(is_array($method));
     }
 
@@ -41,7 +49,7 @@ class TopRecipersJobTest extends TestCase
             'created_at' => Carbon::yesterday()->endOfDay(),
         ]);
 
-        $result = (new TopRecipersJob)->makeCachedListOfToprecipers();
+        $result = $this->job->makeCachedListOfToprecipers();
 
         $this->assertArrayHasKey($first_recipe->user->username, $result);
         $this->assertArrayHasKey($second_recipe->user->username, $result);
@@ -61,7 +69,7 @@ class TopRecipersJobTest extends TestCase
             'created_at' => Carbon::yesterday()->startOfDay(),
         ]);
 
-        $result = (new TopRecipersJob)->makeCachedListOfToprecipers();
+        $result = $this->job->makeCachedListOfToprecipers();
 
         $this->assertArrayHasKey($recipe->user->username, cache()->get('top_recipers'));
     }
@@ -73,7 +81,7 @@ class TopRecipersJobTest extends TestCase
     public function combineArrayValues_method_returns_combined_values_and_their_amount(): void
     {
         // 3 - bogdan and 1 - valya
-        $result = (new TopRecipersJob)->combineArrayValues([
+        $result = $this->job->combineArrayValues([
             'bogdan', 'bogdan', 'bogdan', 'valya',
         ]);
 
