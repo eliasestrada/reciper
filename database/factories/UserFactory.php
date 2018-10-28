@@ -1,11 +1,10 @@
 <?php
 
 use App\Models\User;
-use App\Models\Visitor;
 
 $factory->define(User::class, function () {
     return [
-        'visitor_id' => factory(Visitor::class)->create()->id,
+        'visitor_id' => 1,
         'name' => str_random(7),
         'status' => '',
         'email' => str_random(20) . '@mail.ru',
