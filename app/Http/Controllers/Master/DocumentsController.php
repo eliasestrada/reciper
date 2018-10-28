@@ -99,7 +99,8 @@ class DocumentsController extends Controller
         }
 
         if ($id == 1) {
-            return back()->withError(trans('documents.cant_delete_first_doc'));
+            return redirect('/master/documents/create')
+                ->withError(trans('documents.cant_delete_first_doc'));
         }
 
         Document::find($id)->delete();

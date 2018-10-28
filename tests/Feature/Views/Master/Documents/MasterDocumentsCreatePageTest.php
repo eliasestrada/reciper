@@ -71,11 +71,10 @@ class MasterDocumentsCreatePageTest extends TestCase
     public function user_cant_delete_document(): void
     {
         $this->actingAs(make(User::class))
-            ->followingRedirects()
             ->delete(action('Master\DocumentsController@destroy', [
                 'id' => $document_id = create(Document::class)->id,
             ]))
-            ->assertSeeText(trans('auth.access_denied'));
+            ->assertRedirect('/');
     }
 
     /**
@@ -85,9 +84,8 @@ class MasterDocumentsCreatePageTest extends TestCase
     public function master_cant_delete_main_first_document(): void
     {
         $this->actingAs(create_user('master'))
-            ->followingRedirects()
             ->delete(action('Master\DocumentsController@destroy', ['id' => 1]))
-            ->assertSeeText(trans('documents.cant_delete_first_doc'));
+            ->assertRedirect('/master/documents/create');
     }
 
     /**
