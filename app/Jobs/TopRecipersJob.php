@@ -18,14 +18,13 @@ class TopRecipersJob implements ShouldQueue
 
     /**
      * Execute the job.
-     *
+     * @codeCoverageIgnore
      * @return void
      */
     public function handle()
     {
         \Redis::throttle('top-recipers')->allow(2)->every(1)->then(function () {
-            $top_recipers = $this->makeListOfTopRecipers();
-            cache()->put('top_recipers', $top_recipers, 1440);
+            $this->makeCachedListOfTopRecipers();
         }, function () {
             return $this->release(2);
         });
@@ -35,7 +34,7 @@ class TopRecipersJob implements ShouldQueue
      * Function helper covered by tests
      * @return array
      */
-    public function makeListOfTopRecipers(): array
+    public function makeCachedListOfTopRecipers(): array
     {
         $likes = Like::where([
             ['created_at', '>=', Carbon::yesterday()->startOfDay()],
@@ -44,6 +43,8 @@ class TopRecipersJob implements ShouldQueue
 
         $users = $this->getArrayOfUsernames($likes);
         $top_recipers = $this->combineArrayValues($users);
+
+        cache()->put('top_recipers', $top_recipers, 1440);
 
         return $top_recipers;
     }

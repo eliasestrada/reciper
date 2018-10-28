@@ -18,9 +18,9 @@ class TopRecipersJobTest extends TestCase
      * @author Cho
      * @test
      */
-    public function makeListOfTopRecipers_method_returns_empty_array_if_there_are_no_likes_yesterday(): void
+    public function makeCachedListOfToprecipers_method_returns_empty_array_if_there_are_no_likes_yesterday(): void
     {
-        $method = (new TopRecipersJob)->makeListOfTopRecipers();
+        $method = (new TopRecipersJob)->makeCachedListOfToprecipers();
         $this->assertTrue(is_array($method));
     }
 
@@ -28,30 +28,42 @@ class TopRecipersJobTest extends TestCase
      * @author Cho
      * @test
      */
-    public function makeListOfTopRecipers_method_returns_recipers_usernames_whos_recipes_were_liked_yesterday(): void
+    public function makeCachedListOfToprecipers_method_returns_recipers_usernames_whos_recipes_were_liked_yesterday(): void
     {
-        $recipes = [
-            'first' => create(Recipe::class),
-            'second' => create(Recipe::class),
-        ];
+        Like::create([
+            'visitor_id' => 1,
+            'recipe_id' => ($first_recipe = create(Recipe::class))->id,
+            'created_at' => Carbon::yesterday()->startOfDay(),
+        ]);
+        Like::create([
+            'visitor_id' => 1,
+            'recipe_id' => ($second_recipe = create(Recipe::class))->id,
+            'created_at' => Carbon::yesterday()->endOfDay(),
+        ]);
 
-        $likes = [
-            'first' => Like::create([
-                'visitor_id' => 1,
-                'recipe_id' => $recipes['first']->id,
-                'created_at' => Carbon::yesterday()->startOfDay(),
-            ]),
-            'second' => Like::create([
-                'visitor_id' => 1,
-                'recipe_id' => $recipes['second']->id,
-                'created_at' => Carbon::yesterday()->endOfDay(),
-            ]),
-        ];
+        $result = (new TopRecipersJob)->makeCachedListOfToprecipers();
 
-        $result = (new TopRecipersJob)->makeListOfTopRecipers();
+        $this->assertArrayHasKey($first_recipe->user->username, $result);
+        $this->assertArrayHasKey($second_recipe->user->username, $result);
+    }
 
-        $this->assertArrayHasKey($recipes['first']->user->username, $result);
-        $this->assertArrayHasKey($recipes['second']->user->username, $result);
+    /**
+     * @author Cho
+     * @test
+     */
+    public function makeCachedListOfToprecipers_method_caches_reciper_username_whos_recipe_were_liked_yesterday(): void
+    {
+        cache()->forget('top_recipers');
+
+        Like::create([
+            'visitor_id' => 1,
+            'recipe_id' => ($recipe = create(Recipe::class))->id,
+            'created_at' => Carbon::yesterday()->startOfDay(),
+        ]);
+
+        $result = (new TopRecipersJob)->makeCachedListOfToprecipers();
+
+        $this->assertArrayHasKey($recipe->user->username, cache()->get('top_recipers'));
     }
 
     /**
