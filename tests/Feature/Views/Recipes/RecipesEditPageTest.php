@@ -169,6 +169,7 @@ class RecipesEditPageTest extends TestCase
             'user_id' => ($user = create_user())->id,
         ], null, 'draft');
 
+        $this->actingAs($user)->get("/recipes/{$recipe->id}/edit");
         $this->actingAs($user)
             ->followingRedirects()
             ->put(action('RecipesController@update', $recipe->id), $form_data)

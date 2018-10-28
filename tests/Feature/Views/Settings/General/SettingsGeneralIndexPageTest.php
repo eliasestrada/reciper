@@ -98,7 +98,9 @@ class SettingsGeneralIndexPageTest extends TestCase
      */
     public function user_cant_deactivate_account_with_wrong_password(): void
     {
-        $this->actingAs($user = create_user())
+        $this->actingAs($user = create_user())->get('/settings/general');
+
+        $this->actingAs($user)
             ->followingRedirects()
             ->delete(action('UsersController@destroy', ['m' => 'd']), ['password' => '22222'])
             ->assertSeeText(trans('settings.pwd_wrong'));
