@@ -21,7 +21,9 @@ class DisapproveRequestTest extends TestCase
         parent::setUp();
         $this->message_min = config('valid.approves.disapprove.message.min');
         $this->message_max = config('valid.approves.disapprove.message.max');
-        $this->request = $this->actingAs(create_user('admin'))->followingRedirects();
+
+        $this->actingAs($admin = create_user('admin'))->get('/admin/approves');
+        $this->request = $this->actingAs($admin)->followingRedirects();
     }
 
     /**

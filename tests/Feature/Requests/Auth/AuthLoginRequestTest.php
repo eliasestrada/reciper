@@ -20,6 +20,8 @@ class AuthLoginRequestTest extends TestCase
         $this->user = make(User::class, ['id' => 1, 'password' => bcrypt('111111')]);
         $this->pwd_min = config('valid.settings.password.min');
         $this->pwd_max = config('valid.settings.password.max');
+
+        $this->get(route('login'));
     }
 
     /**

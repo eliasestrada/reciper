@@ -231,6 +231,8 @@ class RecipesUpdateRequestTest extends TestCase
         $user = make(User::class, ['id' => 1]);
         $recipe = create(Recipe::class, ['user_id' => $user->id], null, 'draft');
 
+        $this->get("/recipes/$recipe->id/edit");
+
         return $this->actingAs($user)
             ->followingRedirects()
             ->put(action('RecipesController@update', $recipe->id), $this->data);

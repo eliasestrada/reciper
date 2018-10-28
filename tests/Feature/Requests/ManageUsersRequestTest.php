@@ -24,7 +24,9 @@ class ManageUsersRequestTest extends TestCase
         $this->msg_min = config('valid.feedback.ban.message.min');
         $this->msg_max = config('valid.feedback.ban.message.max');
         $this->user = make(User::class, ['id' => 1]);
-        $this->request = $this->actingAs(create_user('master'))->followingRedirects();
+
+        $this->actingAs($master = create_user('master'))->get('/master/manage-users');
+        $this->request = $this->actingAs($master)->followingRedirects();
     }
 
     /**

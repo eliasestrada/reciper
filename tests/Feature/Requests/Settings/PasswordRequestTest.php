@@ -23,6 +23,8 @@ class PasswordRequestTest extends TestCase
         $this->user = create_user('', ['password' => bcrypt('111111')]);
         $this->pwd_min = config('valid.settings.password.min');
         $this->pwd_max = config('valid.settings.password.max');
+
+        $this->actingAs($this->user)->get('/settings/general');
         $this->request = $this->actingAs($this->user)->followingRedirects();
     }
 

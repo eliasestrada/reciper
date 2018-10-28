@@ -10,10 +10,6 @@ class DocumentsRuqusetTest extends TestCase
     use DatabaseTransactions;
 
     private $request;
-    private $title_max;
-    private $title_min;
-    private $text_max;
-    private $text_min;
 
     /**
      * @author Cho
@@ -21,11 +17,8 @@ class DocumentsRuqusetTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->request = $this->actingAs(create_user('master'))->followingRedirects();
-        $this->title_max = config('valid.docs.title.max');
-        $this->title_min = config('valid.docs.title.min');
-        $this->text_max = config('valid.docs.text.max');
-        $this->text_min = config('valid.docs.text.min');
+        $this->actingAs($master = create_user('master'))->get('/master/documents');
+        $this->request = $this->actingAs($master)->followingRedirects();
     }
 
     /**
@@ -59,9 +52,9 @@ class DocumentsRuqusetTest extends TestCase
     public function title_must_be_not_short(): void
     {
         $this->request->post(action('Master\DocumentsController@store'), [
-            'title' => str_random($this->title_min - 1),
+            'title' => str_random(config('valid.docs.title.min') - 1),
             'text' => str_random(130),
-        ])->assertSeeText(preg_replace('/:min/', $this->title_min, trans('documents.title_min')));
+        ])->assertSeeText(preg_replace('/:min/', config('valid.docs.title.min'), trans('documents.title_min')));
     }
 
     /**
@@ -71,9 +64,9 @@ class DocumentsRuqusetTest extends TestCase
     public function title_must_be_not_long(): void
     {
         $this->request->post(action('Master\DocumentsController@store'), [
-            'title' => str_random($this->title_max + 1),
+            'title' => str_random(config('valid.docs.title.max') + 1),
             'text' => str_random(130),
-        ])->assertSeeText(preg_replace('/:max/', $this->title_max, trans('documents.title_max')));
+        ])->assertSeeText(preg_replace('/:max/', config('valid.docs.title.max'), trans('documents.title_max')));
     }
 
     /**
@@ -84,8 +77,8 @@ class DocumentsRuqusetTest extends TestCase
     {
         $this->request->post(action('Master\DocumentsController@store'), [
             'title' => str_random(30),
-            'text' => str_random($this->text_min - 1),
-        ])->assertSeeText(preg_replace('/:min/', $this->text_min, trans('documents.text_min')));
+            'text' => str_random(config('valid.docs.text.min') - 1),
+        ])->assertSeeText(preg_replace('/:min/', config('valid.docs.text.min'), trans('documents.text_min')));
     }
 
     /**
@@ -96,7 +89,7 @@ class DocumentsRuqusetTest extends TestCase
     {
         $this->request->post(action('Master\DocumentsController@store'), [
             'title' => str_random(32),
-            'text' => str_random($this->text_max + 1),
-        ])->assertSeeText(preg_replace('/:max/', $this->text_max, trans('documents.text_max')));
+            'text' => str_random(config('valid.docs.text.max') + 1),
+        ])->assertSeeText(preg_replace('/:max/', config('valid.docs.text.max'), trans('documents.text_max')));
     }
 }

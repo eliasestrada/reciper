@@ -19,6 +19,7 @@ class AuthRegisterRequestTest extends TestCase
             'password' => '111111',
             'password_confirmation' => '111111',
         ];
+        $this->get(route('register'));
     }
 
     /**
