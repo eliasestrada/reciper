@@ -15,7 +15,7 @@ class UsersSeeder extends Seeder
             'visitor_id' => 1,
             'email' => '11@11.com',
             'username' => 'master',
-            'name' => 'Серый 😎',
+            'name' => 'Серый 🍆',
             'xp' => config('custom.xp_for_approve'),
             'popularity' => config('custom.popularity_for_like'),
             'status' => 'Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live.',
