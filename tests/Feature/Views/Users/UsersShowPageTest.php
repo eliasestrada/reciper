@@ -89,4 +89,17 @@ class UsersShowPageTest extends TestCase
             'active' => 1,
         ]);
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function if_user_not_found_redirect_to_users_with_message(): void
+    {
+        $this->get('/users/100')->assertRedirect('/users');
+
+        $this->followingRedirects()
+            ->get('/users/100')
+            ->assertSeeText(trans('users.user_not_found'));
+    }
 }

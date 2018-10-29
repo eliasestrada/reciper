@@ -24,6 +24,11 @@ class UsersController extends Controller
     public function show($username)
     {
         $user = User::whereUsername($username)->first();
+
+        if (!$user) {
+            return redirect('/users')->withError(trans('users.user_not_found'));
+        }
+
         $recipes = Recipe::whereUserId($user->id)
             ->withCount('likes')
             ->withCount('views')
