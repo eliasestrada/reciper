@@ -33,7 +33,7 @@
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
     </php>
-    <logging>
+    <!-- <logging>
         <log type="coverage-html" target="./xdebug" lowUpperBound="50" highLowerBound="80"/>
-    </logging>
+    </logging> -->
 </phpunit>
