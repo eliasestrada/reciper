@@ -1,7 +1,5 @@
 @component('comps.error', ['btn' => false])
-    @slot('error')
-        @lang('errors.503')
-    @endslot
+    @slot('error') @endslot
     @slot('title')
         @lang('errors.503_title')
     @endslot
