@@ -32,16 +32,16 @@ class UsersSeeder extends Seeder
         User::create([
             'visitor_id' => 1,
             'email' => '22@22.com',
-            'username' => 'kris',
-            'name' => 'Кристина 👑',
+            'username' => 'karina',
+            'name' => 'Карина 👑',
             'xp' => 17,
             'popularity' => 5,
-            'status' => 'Люблю Никитку',
+            'status' => 'I am a cute girl.If you want to know something about me,ask me.',
             'streak_days' => 24,
             'password' => bcrypt('111111'),
             'contact_check' => date("Y-m-d H:i:s"),
             'created_at' => '2018-03-08 12:08:59',
-            'photo' => '2018/10/kris.jpg',
+            'photo' => '2018/10/karina.jpg',
         ]);
     }
 }
