@@ -98,6 +98,21 @@ class RecipesEditPageTest extends TestCase
      * @author Cho
      * @test
      */
+    public function recipe_can_be_previewed(): void
+    {
+        $form_data = $this->form_data(['ready' => 0, 'view' => 1]);
+        $user = create_user();
+        $recipe = create(Recipe::class, ['user_id' => $user->id], null, 'draft');
+
+        $this->actingAs($user)
+            ->put(action('RecipesController@update', $recipe->id), $form_data)
+            ->assertRedirect("/recipes/{$recipe->id}");
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
     public function recipe_is_ready_and_approved_after_publishing_by_admin(): void
     {
         $admin = create_user('admin');
