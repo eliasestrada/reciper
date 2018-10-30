@@ -123,11 +123,12 @@
 
         <div class="footer-copyright mt-4 row">
             <div class="col s12 m1 l1 offset-m3 offset-l4 m">
-                <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="40">
+                <img src="{{ asset('storage/other/logo.png') }}" alt="logo" height="70">
             </div>
             <div class="col s12 m5 l3 left-align">
-                <div><span>@lang('pages.title_footer')</span></div>
-                <span>&copy; {{ date('Y') }} {{ config('app.name') }}</span>
+                <div class="valign-wrapper" style="height:70px">
+                    <span>@lang('pages.title_footer') <br> &copy; {{ date('Y') }} {{ config('app.name') }}</span>
+                </div>
             </div>
         </div>
     </div>

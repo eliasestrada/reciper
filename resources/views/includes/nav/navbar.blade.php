@@ -120,7 +120,7 @@
         <div class="px-3 position-relative">
             {{-- Logo --}}
             <a href="/" title="@lang('home.home')" class="brand-logo no-select">
-                <img src="{{ asset('storage/other/logo.svg') }}" alt="logo" height="30" class="left">
+                <img src="{{ asset('storage/other/logo.png') }}" alt="logo" height="30" class="left">
                 <span class="left pl-1">@lang('messages.app_name')</span>
             </a>
             @isset($visitor_likes)
