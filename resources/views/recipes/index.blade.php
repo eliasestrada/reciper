@@ -17,7 +17,7 @@
             lunch-btn="@lang('home.lunch')"
             dinner-btn="@lang('home.dinner')" inline-template>
             <div>
-                <a :href="'/recipes#' + btn.link" v-for="btn in btns" :key="btn.link" :class="{ 'active': btn.isActive }" class="btn btn-sort main-text">
+                <a :href="'/recipes#' + btn.link" v-for="btn in btns" :key="btn.link" :class="{ 'active': btn.isActive }" class="btn btn-sort">
                     <i class="fas red-text left" :class="btn.icon"></i>
                     <span v-text="btn.title"></span>
                 </a>

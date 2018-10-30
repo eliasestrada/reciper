@@ -11,6 +11,10 @@
         .fas {
             transform: translateY(62%);
             color: $mainDark;
+
+            .dark-theme & {
+                color: lighten($main, 7%);
+            }
         }
     }
 }
@@ -24,6 +28,14 @@
     border: solid 2px $mainDark;
     border-radius: 50%;
     line-height: .6;
+
+    .dark-theme & {
+        border: solid 2px lighten($main, 7%);
+
+        .number::after {
+            border-bottom: 1px solid lighten($main, 7%);
+        }
+    }
 
     .number {
         width: 63px;

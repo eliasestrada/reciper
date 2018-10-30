@@ -43,12 +43,7 @@
 @forelse ($recipes->chunk(8) as $chunk1)
     <div class="{{ $loop->iteration == 2 ? 'image-bg' : '' }}">
         <section class="{{ $loop->first || $loop->iteration == 3 ? 'home-section' : 'wrapper' }}">
-            @if ($loop->first)
-                <div class="center">
-                    <h4 class="section-header mt-3 mb-4">@lang('home.random_choice')</h4>
-                </div>
-            @endif
-    
+
             @foreach ($chunk1->chunk(4) as $chunk2)
                 <div class="row">
                     @foreach ($chunk2 as $recipe)

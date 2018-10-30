@@ -8,7 +8,6 @@ return [
     'edit_footer' => 'Редактировать подвал',
     'footer_text' => 'Содержание подвала',
     'last_recipes' => 'Последние рецепты',
-    'random_choice' => 'Случайный выбор',
 
     // Header
     'breakfast' => 'завтрак',

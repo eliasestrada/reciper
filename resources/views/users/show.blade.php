@@ -36,7 +36,7 @@
                 @endunless
 
                 {{-- Registered --}}
-                <span class="d-block py-2 grey-dark-text">
+                <span class="d-block py-2 grey-text">
                     @lang('users.joined'): {{ time_ago($user->created_at) }}
                 </span>
             </div>
