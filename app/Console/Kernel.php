@@ -2,8 +2,6 @@
 
 namespace App\Console;
 
-use App\Jobs\DeleteUnactiveUsersJob;
-use App\Jobs\TopRecipersJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -27,11 +25,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new TopRecipersJob)->dailyAt('00:00');
-        $schedule->job(new DeleteUnactiveUsersJob)->dailyAt('00:00');
+        // At 00:00
+        $schedule->job(new \App\Jobs\TopRecipersJob)->dailyAt('00:00');
 
-        $schedule->command('backup:clean')->dailyAt('00:00');
-        $schedule->command('backup:run --only-db')->dailyAt('00:00');
+        // At 03:00
+        $schedule->job(new \App\Jobs\DeleteUnactiveUsersJob)->dailyAt('03:00');
+        $schedule->job(new \App\Jobs\DeleteNotificationsJob)->dailyAt('19:12');
+        $schedule->command('backup:clean')->dailyAt('03:00');
+        $schedule->command('backup:run --only-db')->dailyAt('03:00');
     }
 
     /**
