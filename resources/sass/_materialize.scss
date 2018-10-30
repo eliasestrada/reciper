@@ -25,11 +25,15 @@
 }
 
 .paper {
-    background-color: $paper !important;
+    background-color: $paper;
 }
 
 .paper-dark {
-    background-color: $paperDark !important;
+    background-color: $paperDark;
+
+    .dark-theme & {
+        background: lighten($darkTheme, 12%);
+    }
 }
 
 .main {
@@ -80,6 +84,10 @@
 
 .grey-text {
     color: $grey !important;
+
+    .dark-theme & {
+        color: lighten($grey, 10%);
+    }
 }
 
 .grey-dark-text {
@@ -2774,10 +2782,14 @@ small {
     overflow-y: hidden;
     height: 48px;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 7px 7px 0 0;
     background-color: $paper;
     margin: 0 auto;
     white-space: nowrap;
+
+    .dark-theme & {
+        background-color: lighten($darkTheme, 3%);
+    }
 }
 
 .tabs .tab {
@@ -2801,18 +2813,31 @@ small {
     overflow: hidden;
     -webkit-transition: color .28s ease, background-color .28s ease;
     transition: color .28s ease, background-color .28s ease;
+
+    .dark-theme & {
+        color: $mainLight;
+    }
 }
 
 .tabs .tab a:focus,
 .tabs .tab a:focus.active {
     background-color: $paperDark;
     outline: none;
+
+    .dark-theme & {
+        background: lighten($darkTheme, 12%);
+    }
 }
 
 .tabs .tab a:hover,
 .tabs .tab a.active {
     background-color: $paperDark;
     color: $mainDark;
+
+    .dark-theme & {
+        color: $mainLight;
+        background: lighten($darkTheme, 12%);
+    }
 }
 
 .tabs .tab.disabled a,
@@ -3502,6 +3527,10 @@ button.btn-floating {
     overflow-y: auto;
     border-radius: 2px;
     will-change: top, opacity;
+
+    .dark-theme & {
+        background-color: lighten($darkTheme, 10%);
+    }
 }
 
 @media only screen and (max-width: 992px) {
@@ -5141,7 +5170,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
 
 .sidenav {
     position: fixed;
-    width: 260px;
+    width: 240px;
     left: 0;
     top: 0;
     margin: 0;
@@ -5159,6 +5188,10 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
     backface-visibility: hidden;
     -webkit-transform: translateX(-105%);
     transform: translateX(-105%);
+
+    .dark-theme & {
+        background-color: $darkTheme;
+    }
 }
 
 .sidenav.right-aligned {
@@ -5176,11 +5209,15 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
 
 .sidenav li {
     float: none;
-    line-height: 48px;
+    line-height: 40px;
 }
 
 .sidenav li.active {
     background-color: rgba(0, 0, 0, 0.05);
+    
+    .dark-theme & {
+        background-color: lighten($darkTheme, 5%);
+    }
 }
 
 .sidenav li>a {
@@ -5188,9 +5225,13 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
     display: block;
     font-size: 14px;
     font-weight: 500;
-    height: 48px;
-    line-height: 48px;
+    height: 40px;
+    line-height: 40px;
     padding: 0 32px;
+    
+    .dark-theme & {
+        color: #ebebeb;
+    }
 }
 
 .sidenav li>a:hover {
@@ -5233,11 +5274,10 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
 .sidenav li>a>[class^="mdi-"],
 .sidenav li>a li>a>[class*="mdi-"] {
     float: left;
-    height: 48px;
-    line-height: 48px;
-    margin: 0 32px 0 0;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 22px 0 0;
     width: 24px;
-    color: rgba(0, 0, 0, 0.54);
 }
 
 .sidenav .divider {
@@ -5248,8 +5288,8 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
     cursor: initial;
     pointer-events: none;
     color: rgba(0, 0, 0, 0.54);
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 700;
     line-height: 48px;
 }
 
@@ -5260,16 +5300,11 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
 .sidenav .user-view {
     position: relative;
     padding: 32px 32px 0;
-    margin-bottom: 8px;
 }
 
 .sidenav .user-view>a {
     height: auto;
     padding: 0;
-}
-
-.sidenav .user-view>a:hover {
-    background-color: transparent;
 }
 
 .sidenav .user-view .background {

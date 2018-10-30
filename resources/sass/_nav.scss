@@ -35,19 +35,6 @@
     border-bottom: solid 1px darken($paper, 2%);
 }
 
-.sidebar-hat-auth, .sidebar-hat-guest {
-    height: 130px;
-    background-position: center;
-    background-size: cover;
-}
-
-.sidebar-hat-guest {
-    background-image: url(../storage/other/sidebar-hat.jpg);
-    a {
-        opacity: 7;
-        margin-top: 15px;
-    }
-}
 
 .loved-link {
     margin-left: 140px !important;
@@ -61,14 +48,14 @@
     i {
         color: $mainLight;
         transition: color .1s, transform .2s;
-        font-size: 1.3em;
+        font-size: 1.4em !important;
         line-height: 52px;
         animation: disappear .7s;
         animation-direction: reverse;
 
         &:hover {
             color: lighten($mainLight, 8%);
-            transform: scale(1.2)
+            transform: scale(1.1)
         }
     }
 }
