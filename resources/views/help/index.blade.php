@@ -10,7 +10,7 @@
     <div class="row mt-4">
         @foreach ($help_categories as $category)
             <div class="col s12 m6 l4">
-                <h5 class="grey-dark-text header">
+                <h5 class="header">
                     <i class="fas {{ $category['icon'] }} left red-text w20"></i>
                     {{ $category['title'] }}
                 </h5>
@@ -20,7 +20,7 @@
                     @foreach ($help as $question)
                         @if ($question['help_category_id'] == $category['id'])
                             <li>
-                                <a href="/help/{{ $question['id'] }}" class="main-dark-text text-hover" style="font-size:1.05em">
+                                <a href="/help/{{ $question['id'] }}" class="text text-hover" style="font-size:1.05em">
                                     <span class="red-text">#</span> {{ $question['title'] }}
                                 </a>
                             </li>
