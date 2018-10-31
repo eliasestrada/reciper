@@ -44,9 +44,11 @@ nav .input-field input[type=search]:-webkit-autofill:active {
         .card-title {
             color: #ebebeb;
         }
-
         .card-reveal {
             background: lighten($darkTheme, 10%);
+        }
+        .card-time {
+            color: #ebebeb;
         }
     }
 }

@@ -21,10 +21,10 @@
                                     </btn-favs>
                                 </div>
                             </div>
-                            <div class="left">
+                            <span class="left card-time">
                                 <i class="fas fa-clock fa-1x z-depth-2 main-light circle red-text ml-5 mr-1"></i>
                                 {{ $recipe->time }} @lang('recipes.min').
-                            </div>
+                            </span>
                             <i class="fas fa-ellipsis-h fa-15x right red-text activator px-1"></i>
                         </div>
                     </div>

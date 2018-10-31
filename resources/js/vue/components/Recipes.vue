@@ -16,10 +16,10 @@
                             <div class="left">
                                 <btn-favs :recipe-id="recipe.id" :favs="returnFavs(recipe.id)" :user-id="userId"></btn-favs>
                             </div>
-                            <div class="left">
+                            <span class="left card-time">
                                 <i class="fas fa-clock fa-1x z-depth-2 main-light circle red-text ml-5 mr-1"></i>
                                 {{ recipe.time }} {{ mins }}
-                            </div>
+                            </span>
                             <i class="fas fa-ellipsis-h right fa-15x red-text activator px-1"></i>
                         </div>
                     </div>
