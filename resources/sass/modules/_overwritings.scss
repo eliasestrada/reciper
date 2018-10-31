@@ -42,13 +42,14 @@ nav .input-field input[type=search]:-webkit-autofill:active {
         background: lighten($darkTheme, 7%);
 
         .card-title {
-            color: #ebebeb;
+            color: #c8c8c8;
         }
-        .card-reveal {
+        .card-reveal,
+        .card-panel {
             background: lighten($darkTheme, 7%);
         }
         .card-time {
-            color: #ebebeb;
+            color: #c8c8c8;
         }
     }
 }

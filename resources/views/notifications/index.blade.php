@@ -14,12 +14,16 @@
     <div class="row">
         @forelse ($notifications as $notif)
             <a href="{{ ($notif['data']['link'] ?? '#') }}" class="col s12 m6 l4">
-                <div class="card-panel px-3 main-dark-text">
-                    <span>
-                        <h6><i class="fas fa-bell fa-15x left main-text"></i> {{ $notif['data']['title'] }}</h6>
-                        <p>{!! $notif['data']['message'] !!}</p>
-                        <span class="grey-text right">{{ time_ago($notif['created_at']) }}</span>
-                    </span>
+                <div class="card">
+                    <div class="card-panel px-3">
+                        <span>
+                            <h6 class="card-title">
+                                <i class="fas fa-bell red-text fa-15x left"></i> {{ $notif['data']['title'] }}
+                            </h6>
+                            <p class="card-title">{!! $notif['data']['message'] !!}</p>
+                            <span class="grey-text right">{{ time_ago($notif['created_at']) }}</span>
+                        </span>
+                    </div>
                 </div>
             </a>
         @empty
