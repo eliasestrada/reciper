@@ -26,7 +26,7 @@
             </div>
 
             <div class="my-2">
-                <a href="/master/manage-users/{{ $visitor->user->username }}" class="btn-small min-w">
+                <a href="/master/manage-users/{{ $visitor->user->id }}" class="btn-small min-w">
                     <i class="fas fa-user-cog left"></i>
                     @lang('manage-users.manage') 
                 </a>

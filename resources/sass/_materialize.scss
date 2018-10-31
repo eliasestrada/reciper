@@ -708,6 +708,10 @@ td {
 
 table thead {
     background: darken($mainLight, 5%);
+
+    .dark-theme & {
+        background: darken($darkTheme, 4%);
+    }
 }
 
 table {
