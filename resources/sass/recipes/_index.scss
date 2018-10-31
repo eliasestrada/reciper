@@ -23,7 +23,7 @@
         color: #ebebeb;
 
         &.active {
-            background: $mainLight;
+            background: darken($mainLight, 5%);
             color: #222;
         }
     }
