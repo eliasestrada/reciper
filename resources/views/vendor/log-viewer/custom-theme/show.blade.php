@@ -1,4 +1,4 @@
-@extends('log-viewer::custom-theme._master')
+@extends('layouts._master')
 
 @section('content')
     <div class="page row">
