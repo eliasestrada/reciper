@@ -13,7 +13,7 @@
             </div>
         </div>
 
-        <form method="POST" action="{{ route('login') }}" class="pt-5">
+        <form method="POST" action="{{ route('login') }}" class="pt-5 px-4">
             @csrf
             <div class="input-field">
                 <input id="username" value="{{ old('username') }}" type="text" name="username" class="validate">

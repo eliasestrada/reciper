@@ -17,7 +17,7 @@ return [
     'current_pwd' => 'Ваш текущий пароль',
     'repeat_new_pwd' => 'Повторите новый пароль',
     'send' => 'Отправить',
-    'agree_to_terms' => 'Нажимая кнопку ":btn" вы принимаете условия указанные в <a href="#show-document-modal" title="Нажмите чтобы прочитать" class="modal-trigger">Пользовательском соглашении</a>',
+    'agree_to_terms' => 'Нажимая кнопку ":btn" вы принимаете условия указанные в <a href="#show-document-modal" title="Нажмите чтобы прочитать" class="modal-trigger text" style="text-decoration:underline">Пользовательском соглашении</a>',
     'forgot_pwd' => 'Забыли пароль?',
     'remember_me' => 'Запомнить меня',
     'pwd_confirm' => 'Повторите пароль',

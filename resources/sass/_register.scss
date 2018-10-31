@@ -2,6 +2,10 @@
     height: 50px;
     border-bottom: solid 1px lighten($main, 25%);
 
+    .dark-theme & {
+        border-bottom-color: darken($mainLight, 10%);
+    }
+
 
     a {
         width: 50%;
@@ -12,10 +16,19 @@
         font-weight: bold;
         color: lighten($main, 15%);
         font-size: 1.1em;
+
+        .dark-theme & {
+            color: $mainLight;
+        }
     }
     a.active {
         color: $main;
         border-bottom: solid 3px lighten($main, 10%);
+
+        .dark-theme & {
+            color: #fff;
+            border-bottom-color: $mainLight;
+        }
     }
 }
 
@@ -23,4 +36,23 @@
     background: rgba(#fff, .9);
     padding-top: 1em !important;
     padding-bottom: 2em !important;
+}
+
+.visibility-icon {
+    text-align: center;
+    cursor: pointer;
+    width: 50px;
+    height: 2.9em;
+    line-height: 2.9em;
+    border-radius: 0 10px 10px 0;
+    margin-left: -4px;
+
+    i {
+        color: $mainDark;
+        font-size: 20px;
+
+        .dark-theme & {
+            color: $mainLight;
+        }
+    }
 }

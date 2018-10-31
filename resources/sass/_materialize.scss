@@ -3994,7 +3994,7 @@ textarea.materialize-textarea {
     color: #666;
 
     .dark-theme & {
-        color: #999999;
+        color: #a5a5a5;
         border-bottom-color: lighten($darkTheme, 25%);
     }
 }
@@ -4418,6 +4418,10 @@ textarea.materialize-textarea+label:after,
     text-align: initial;
     -webkit-transform: translateY(12px);
     transform: translateY(12px);
+
+    .dark-theme & {
+        color: #b4b4b4;
+    }
 }
 
 .input-field>label:not(.label-icon).active {
@@ -4461,6 +4465,10 @@ textarea.materialize-textarea+label:after,
 
 .input-field .prefix.active {
     color: $main;
+
+    .dark-theme & {
+        color: #ffffff;
+    }
 }
 
 .input-field .prefix~input,

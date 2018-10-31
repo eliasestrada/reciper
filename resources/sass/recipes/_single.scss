@@ -45,10 +45,20 @@
 
     .dark-theme & {
         border: 1px solid lighten($darkTheme, 13%);
-        background-color: lighten($darkTheme, 25%);
+        background-color: lighten($darkTheme, 7%);
+        border-color: transparent;
+        border-radius: 4px;
+        opacity: .85;
+        
+        &::before {
+            content: none;
+        }
+        &::after {
+            content: none;
+        }
     }
 
-    &:before, &:after {
+    &::before, &::after {
         content: '';
         position:absolute;
         top: 25px;
