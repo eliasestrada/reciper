@@ -823,6 +823,10 @@ th {
     border-radius: 2px;
     overflow: hidden;
     position: relative;
+
+    .dark-theme & {
+        border-color: lighten($darkTheme, 13%);
+    }
 }
 
 .collection .collection-item {
@@ -831,6 +835,11 @@ th {
     padding: 10px 20px;
     margin: 0;
     border-bottom: 1px solid $mainLight;
+
+    .dark-theme & {
+        border-color: lighten($darkTheme, 13%);
+        background-color: lighten($darkTheme, 5%);
+    }
 }
 
 .collection .collection-item.avatar {
@@ -879,6 +888,10 @@ th {
 
 .collection .collection-item.active {
     background-color: $mainLight;
+
+    .dark-theme & {
+        background-color: lighten($darkTheme, 15%);
+    }
 }
 
 .collection a.collection-item {
@@ -887,10 +900,18 @@ th {
     transition: .25s;
     font-size: 1.1em;
     color: $mainDark;
+
+    .dark-theme & {
+        color: #b4b4b4;
+    }
 }
 
 .collection a.collection-item:not(.active):hover {
     background-color: #ddd;
+    
+    .dark-theme & {
+        background-color: lighten($darkTheme, 10%);
+    }
 }
 
 .collection.with-header .collection-header {
@@ -3626,6 +3647,10 @@ button.btn-floating {
     border-right: 1px solid #ddd;
     border-left: 1px solid #ddd;
     margin: 0.5rem 0 1rem 0;
+
+    .dark-theme & {
+        border-color: lighten($darkTheme, 7%);
+    }
 }
 
 .collapsible-header {
@@ -3639,6 +3664,11 @@ button.btn-floating {
     padding: 1rem;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
+
+    .dark-theme & {
+        background-color: lighten($darkTheme, 5%);
+        border-bottom-color: lighten($darkTheme, 15%);
+    }
 }
 
 .collapsible-header i {
@@ -3655,6 +3685,10 @@ button.btn-floating {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 2rem;
+
+    .dark-theme & {
+        border-bottom-color: $darkTheme;
+    }
 }
 
 .sidenav .collapsible,
@@ -3924,6 +3958,11 @@ textarea.materialize-textarea {
     transition: box-shadow .3s, border .3s;
     transition: box-shadow .3s, border .3s, -webkit-box-shadow .3s;
     color: #666;
+
+    .dark-theme & {
+        color: #999999;
+        border-bottom-color: lighten($darkTheme, 10%);
+    }
 }
 
 input.with-icon {
@@ -3958,6 +3997,10 @@ textarea.materialize-textarea:disabled,
 textarea.materialize-textarea[readonly="readonly"] {
     color: rgba(0, 0, 0, 0.42);
     border-bottom: 1px dotted rgba(0, 0, 0, 0.42);
+
+    .dark-theme & {
+        color: #cfcfcf;
+    }
 }
 
 input:not([type]):disabled+label,
@@ -3987,6 +4030,10 @@ input[type=search]:not(.browser-default)[readonly="readonly"]+label,
 textarea.materialize-textarea:disabled+label,
 textarea.materialize-textarea[readonly="readonly"]+label {
     color: rgba(0, 0, 0, 0.42);
+
+    .dark-theme & {
+        color: #cfcfcf;
+    }
 }
 
 input:not([type]):focus:not([readonly]),
@@ -4006,6 +4053,11 @@ textarea.materialize-textarea:focus:not([readonly]) {
     -webkit-box-shadow: 0 1px 0 0 $main;
     box-shadow: 0 1px 0 0 $main;
     color: #444;
+
+    .dark-theme & {
+        color: #cfcfcf;
+        border-bottom-color: $mainDark;
+    }
 }
 
 input:not([type]):focus:not([readonly])+label,
