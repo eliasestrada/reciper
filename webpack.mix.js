@@ -11,7 +11,7 @@ if (css == 1) {
 }
 
 if (js == 1) {
-    mix.js("resources/js/vue/vue.js", "public/js/vendor")
+    mix.js("resources/js/vue/vue.js", "public/vendor/js")
         .babel(
             [
                 "resources/js/vanilla/modules.js",
@@ -19,10 +19,10 @@ if (js == 1) {
                 "resources/js/vanilla/functions/_*.js",
                 "resources/js/vanilla/components/_*.js"
             ],
-            "public/js/vendor/vanilla.js"
+            "public/vendor/js/vanilla.js"
         )
         .combine(
-            ["public/js/vendor/vue.js", "public/js/vendor/vanilla.js"],
+            ["public/vendor/js/vue.js", "public/vendor/js/vanilla.js"],
             "public/js/app.js"
         );
 }
