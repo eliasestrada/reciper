@@ -723,6 +723,10 @@ table.striped tr {
 
 table.striped>tbody>tr:nth-child(odd) {
     background-color: $paperDark;
+
+    .dark-theme & {
+        background-color: lighten($darkTheme, 3%);
+    }
 }
 
 table.striped>tbody>tr>td {
@@ -736,6 +740,10 @@ table.highlight>tbody>tr {
 
 table.highlight>tbody>tr:hover {
     background-color: $mainLight;
+
+    .dark-theme & {
+        background-color: lighten($darkTheme, 10%);
+    }
 }
 
 table.centered thead tr th,
@@ -745,6 +753,10 @@ table.centered tbody tr td {
 
 tr {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+    .dark-theme & {
+        border-bottom-color: lighten($darkTheme, 10%);
+    }
 }
 
 td,
@@ -814,6 +826,10 @@ th {
     table.responsive-table thead {
         border: 0;
         border-right: 1px solid rgba(0, 0, 0, 0.12);
+
+        .dark-theme & {
+            background-color: lighten($darkTheme, 10%);
+        }
     }
 }
 
