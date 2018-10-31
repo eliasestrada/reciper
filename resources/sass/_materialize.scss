@@ -2870,7 +2870,7 @@ small {
     outline: none;
 
     .dark-theme & {
-        background: lighten($darkTheme, 12%);
+        background: lighten($darkTheme, 10%);
     }
 }
 
@@ -2881,7 +2881,7 @@ small {
 
     .dark-theme & {
         color: $mainLight;
-        background: lighten($darkTheme, 12%);
+        background: lighten($darkTheme, 10%);
     }
 }
 
@@ -4000,7 +4000,7 @@ textarea.materialize-textarea {
 
     .dark-theme & {
         color: #999999;
-        border-bottom-color: lighten($darkTheme, 10%);
+        border-bottom-color: lighten($darkTheme, 25%);
     }
 }
 
@@ -4095,7 +4095,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
     .dark-theme & {
         color: #cfcfcf;
-        border-bottom-color: $mainDark;
+        border-bottom-color: lighten($darkTheme, 30%);
     }
 }
 
@@ -4113,6 +4113,10 @@ input[type=number]:not(.browser-default):focus:not([readonly])+label,
 input[type=search]:not(.browser-default):focus:not([readonly])+label,
 textarea.materialize-textarea:focus:not([readonly])+label {
     color: $main;
+
+    .dark-theme & {
+        color: #dbdbdb;
+    }
 }
 
 input:not([type]):focus.valid~label,

@@ -37,7 +37,7 @@
                                         <div class="item-content">
                                             <section>{{ str_limit($recipe->getTitle(), 45) }}</section>
                                             <section>
-                                                <span class="main-text">
+                                                <span class="grey-text">
                                                     @if ($i == 1)
                                                         @lang('approves.waiting_for_approves')
                                                     @elseif ($i == 2)

@@ -12,9 +12,9 @@
                 <p>@lang('recipes.approve_or_not')</p>
 
                 {{-- Approve --}}
-                <form action="{{ action('Admin\ApprovesController@approve', ['id' => $recipe->id]) }}" method="post" class="d-inline-block" onsubmit="return confirm('@lang('recipes.are_you_sure_to_publish')')">
+                <form action="{{ action('Admin\ApprovesController@approve', ['id' => $recipe->id]) }}" method="post" class="d-inline-block">
                     @csrf
-                    <button class="btn green" type="submit">
+                    <button class="btn green" type="submit" onclick="if (!confirm('@lang('recipes.are_you_sure_to_publish')')) event.preventDefault()">
                         @lang('messages.yes') <i class="fas fa-thumbs-up right"></i>
                     </button>
                 </form>
