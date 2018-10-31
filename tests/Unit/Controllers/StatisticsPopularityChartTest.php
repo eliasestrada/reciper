@@ -42,7 +42,7 @@ class StatisticsPopularityChartTest extends TestCase
         $method = (new StatisticsController)->getDataFromUser('likes', make(User::class));
 
         for ($i = 0, $sub_month = 11; $i < $method->count(); $i++, $sub_month--) {
-            $month_number = now()->subMonths($sub_month)->month;
+            $month_number = now()->startOfMonth()->subMonths($sub_month)->month;
             $month_name = trans("date.month_{$month_number}");
             $this->assertEquals($month_name, $method[$i]['month']);
         }
@@ -83,9 +83,10 @@ class StatisticsPopularityChartTest extends TestCase
     public function makeArrayOfRules_contains_12_months_from_from_this_month(): void
     {
         $method = (new StatisticsController)->makeArrayOfRules();
+        $months = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
-        foreach ([12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1] as $key => $month) {
-            $expect = now()->addMonth()->subMonths($month)->month;
+        foreach ($months as $key => $month) {
+            $expect = now()->startOfMonth()->addMonth()->subMonths($month)->month;
             $actual = $method[$key]['month'];
             $this->assertEquals($expect, $actual, ">>> KEY IS {$key}\n");
         }

@@ -20,7 +20,7 @@ class RecipeSeeder extends Seeder
             'approved_ru' => 1,
             'published_ru' => 1,
             'time' => 10,
-            'image' => '15409270451528037408.jpg',
+            'image' => '2018/10/15409270451528037408.jpg',
             'ready_ru' => 1,
             'ru_approver_id' => 1,
             'simple' => 1,
