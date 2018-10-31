@@ -4,6 +4,7 @@ export default {
         return {
             liked: false,
             allLikes: this.likes,
+            loading: false,
             processed: true,
             visitorLikesNumber: $('visitor-likes-number'),
             visitorLikesIcon: $('visitor-likes-icon')
@@ -32,6 +33,7 @@ export default {
         
         changeLikeButton(value) {
             this.liked = value == 0 ? false : true;
+            this.loading = false;
         },
         
         changeLikeNumber(value) {
@@ -65,8 +67,10 @@ export default {
         },
         
         toggleButton() {
+            this.loading = true;
+            
             if (this.processed) {
-                this.processed = false
+                this.processed = false;
                 var state = this.liked == false ? "like" : "dislike"
                 this.changeVisitorLikesNumber()
 

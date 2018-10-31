@@ -35,7 +35,7 @@ class LikeController extends Controller
             $recipe = Recipe::find($recipe_id);
             cache()->forget('visitor_likes');
 
-            $visitor->likes()->create(['recipe_id' => $recipe->id]);
+            $visitor->likes()->updateOrCreate(['recipe_id' => $recipe->id]);
             Popularity::add(config('custom.popularity_for_like'), $recipe->user_id);
 
             return response()->json(['liked' => 1])

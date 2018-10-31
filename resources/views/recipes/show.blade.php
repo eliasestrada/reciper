@@ -44,7 +44,10 @@
         </div>
 
         {{--  Likes  --}}
-        <div class="like-for-author-section no-select py-1">
+        <div class="like-for-author-section no-select pt-1" v-if="false">
+            <div class="card-content">@include('includes.preloader')</div>
+        </div>
+        <div class="like-for-author-section no-select py-1" v-cloak>
             @if ($recipe->isDone())
                 {{-- Favs button --}}
                 <div class="d-inline-block" style="transform:translateX(13px)">
@@ -56,15 +59,18 @@
 
                 {{-- Like button --}}
                 <like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}" inline-template>
-                    <span>
-                        <a href="#" v-on:click="toggleButton()" class="like-icon" :class="iconState()">
-                            <div class="btn-wrapper">
-                                <span class="btn-like">@include('includes.icons.like-btn')</span>
-                            </div>
-                        </a>
+                    <div class="d-inline-block">
+                        <span v-if="!loading">
+                            <a href="#" v-on:click="toggleButton()" class="like-icon" :class="iconState()">
+                                <div class="btn-wrapper">
+                                    <span class="btn-like">@include('includes.icons.like-btn')</span>
+                                </div>
+                            </a>
+                            <i id="_all-likes" v-text="allLikes"></i>
+                        </span>
+                        <i class="fas fa-spinner fa-spin fa-15x red-text" v-else></i>
                         <audio ref="audio" src="/storage/audio/like-effect.mp3" type="audio/mpeg"></audio>
-                        <i id="_all-likes" v-text="allLikes"></i>
-                    </span>
+                    </div>
                 </like>
             @endif
         </div>
