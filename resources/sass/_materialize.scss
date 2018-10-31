@@ -4938,7 +4938,7 @@ textarea.materialize-textarea {
 }
 
 .switch label input[type=checkbox]:checked+.lever {
-    background-color: #84c7c1;
+    background-color: #a8a8a8;
 }
 
 .switch label input[type=checkbox]:checked+.lever:before,
@@ -4947,7 +4947,7 @@ textarea.materialize-textarea {
 }
 
 .switch label input[type=checkbox]:checked+.lever:after {
-    background-color: $main;
+    background-color: #468bfa;
 }
 
 .switch label .lever {

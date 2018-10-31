@@ -14,7 +14,7 @@ yarn-error.log
 .env
 dump.rdb
 public/js/app.js
-public/js/vendor
+public/vendor/js/
 public/css/app.css
 public/mix-manifest.json
 tags

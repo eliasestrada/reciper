@@ -145,6 +145,19 @@
             <i class="fas fa-question-circle fa-15x left"></i>@lang('messages.help')
         </a>
     </li>
+    <li>
+        <a href="#" title="@lang('messages.dark_mode')">
+            <i class="fas fa-moon fa-15x left"></i> 
+            <div class="switch">
+                <label class="ml-1">
+                    @lang('messages.off')
+                    <input type="checkbox">
+                    <span class="lever"></span>
+                    @lang('messages.on')
+                </label>
+            </div>
+        </a>
+    </li>
 </ul>
 
 <nav class="no-select">

@@ -9584,6 +9584,7 @@ ia = function () {
 document.addEventListener('DOMContentLoaded', function() {
     M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), {
         coverTrigger: false,
+        closeOnClick: false
     });
     M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
         position: 'top'
