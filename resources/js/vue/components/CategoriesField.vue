@@ -2,10 +2,10 @@
     <div class="row py-2">
         <h5 class="col s12 center mb-1">{{ categoriesTitle }} {{ fields }} / 4</h5>
         <h6 class="col s12 center mb-2">
-            <a class="add-remove-field ml-2" style="color:darkgreen;"
+            <a class="add-remove-field no-select ml-2 green-text"
                 :class="classAddBtn"
                 @click="addField">{{ add + ' +' }}</a>
-            <a style="color:brown;" class="add-remove-field ml-2"
+            <a class="red-text no-select add-remove-field ml-2"
                 :class="classDelBtn"
                 @click="deleteField">{{ deleting + ' -' }}</a>
         </h6>
