@@ -83,3 +83,5 @@ Route::prefix('master')->namespace('Master')->middleware('master')->group(functi
 
 // Help =========
 Route::resource('help', HelpController::class)->only(['index', 'show']);
+
+Route::get('dark-theme-switcher/{state}', Invokes\DarkThemeController::class);

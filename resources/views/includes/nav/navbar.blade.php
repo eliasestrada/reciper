@@ -151,7 +151,7 @@
             <div class="switch">
                 <label class="ml-1">
                     @lang('messages.off')
-                    <input type="checkbox">
+                    <input type="checkbox" id="dark-theme-toggle" {{ !empty(cache()->get('dark-theme')) ? 'checked' : '' }}>
                     <span class="lever"></span>
                     @lang('messages.on')
                 </label>

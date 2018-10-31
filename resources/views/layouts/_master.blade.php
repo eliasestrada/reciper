@@ -5,7 +5,7 @@
     @include('includes.head')
     <title>@lang('logs.logs') {{ log_viewer()->version() }}</title>
 </head>
-<body>
+<body class="{{ cache()->get('dark-theme') }}">
 
     @include('includes.nav.sidenav')
     @include('includes.nav.navbar')
