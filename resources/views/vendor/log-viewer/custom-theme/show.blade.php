@@ -11,12 +11,12 @@
 
                     @foreach($log->menu() as $levelKey => $item)
                         @if ($item['count'] === 0)
-                            <a class="collection-item d-flex justify-content-between align-center main-dark-text">
+                            <a class="collection-item d-flex justify-content-between align-center">
                                 <span class="level-name">{{ $item['name'] }}</span>
                                 <span class="badge">{{ $item['count'] }}</span>
                             </a>
                         @else
-                            <a href="{{ $item['url'] }}" class="collection-item d-flex justify-content-between align-center main-dark-text {{ $level === $levelKey ? ' main-light' : ''}}">
+                            <a href="{{ $item['url'] }}" class="collection-item d-flex justify-content-between align-center {{ $level === $levelKey ? 'active' : '' }}">
                                 <span class="level-name">{{ $item['name'] }}</span>
                                 <span class="new badge">{{ $item['count'] }}</span>
                             </a>
@@ -106,15 +106,15 @@
             <div class="row"> {{-- Log cards --}}
                 @forelse($entries as $key => $entry)
                     <div class="col s12">
-                        <div class="card">
+                        <div class="card" style="min-height:200px">
                             <div class="card-content">
-                                <span class="card-title activator main-dark-text">
+                                <span class="card-title activator">
                                     <div class="d-inline-block">{{ $entry->env }}</div>
                                     <div class="d-inline-block">
                                         <span class="red-text">({{ $entry->level }})</span>
                                     </div>
                                     <div class="d-inline-block">
-                                        <span class="main-text"> - {{ time_ago($entry->datetime) }}</span>
+                                        <span> - {{ time_ago($entry->datetime) }}</span>
                                     </div>
                                     <div class="d-inline-block right">{{ $entry->datetime->format('H:i:s') }}</div>
                                     <div class="divider my-2"></div>

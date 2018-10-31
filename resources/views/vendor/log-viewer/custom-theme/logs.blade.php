@@ -11,12 +11,12 @@
                 <tr>
                     @foreach($headers as $key => $header)
                         <th scope="col" class="{{ $key == 'date' ? 'text-left' : 'text-center' }}">
-                            <span class="new badge transparent main-dark-text">{{ $header }}</span>
+                            <span style="font-size:12px">{{ $header }}</span>
                         </th>
                     @endforeach
-                    <th class="tooltipped" data-tooltip="@lang('logs.open_file')"><i class="fas fa-envelope-open-text main-text"></i></th>
-                    <th class="tooltipped" data-tooltip="@lang('logs.download_file')"><i class="fas fa-file-download main-text"></i></th>
-                    <th class="tooltipped" data-tooltip="@lang('logs.delete_file')"><i class="fas fa-trash main-text"></i></th>
+                    <th class="tooltipped" data-tooltip="@lang('logs.open_file')"><i class="fas fa-envelope-open-text"></i></th>
+                    <th class="tooltipped" data-tooltip="@lang('logs.download_file')"><i class="fas fa-file-download"></i></th>
+                    <th class="tooltipped" data-tooltip="@lang('logs.delete_file')"><i class="fas fa-trash"></i></th>
                 </tr>
             </thead>
             <tbody>
@@ -24,9 +24,9 @@
                     @foreach($rows as $date => $row)
                     <tr>
                         @foreach($row as $key => $value)
-                            <td>
+                            <td class="center">
                                 @if ($key == 'date')
-                                    <span class="new badge transparent main-dark-text">
+                                    <span style="font-size:12px">
                                         {{ $value }} <br>
                                         {{ time_ago($value) }}
                                     </span>
@@ -35,7 +35,7 @@
                                         <span class="new badge">{{ $value }}</span>
                                     </a>
                                 @elseif ($value == 0)
-                                    <span class="new badge transparent main-dark-text">{{ $value }}</span>
+                                    <span style="font-size:12px">{{ $value }}</span>
                                 @else
                                     <a href="{{ route('log-viewer::logs.filter', [$date, $key]) }}">
                                         <span class="new badge green">{{ $value }}</span>
