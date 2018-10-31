@@ -1,5 +1,5 @@
 <div class="center">
-    <h1 class="decorated">{{ $recipe->getTitle() }}</h1>
+    <h5>{{ $recipe->getTitle() }}</h5>
 </div>
 
 <img src="{{ asset('storage/recipes/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img corner z-depth-1">
@@ -15,7 +15,7 @@
 
 {{--  Time  --}}
 <div class="my-3">
-    <i class="fas fa-clock fa-15x z-depth-2 main-light circle red-text mr-1 tooltipped" data-tooltip="@lang('recipes.time')"></i>
+    <i class="fas fa-clock fa-15x z-depth-2 circle red-text mr-1 tooltipped" data-tooltip="@lang('recipes.time')"></i>
     {{ $recipe->time }} @lang('recipes.min').
 </div>
 
