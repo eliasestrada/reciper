@@ -3,8 +3,19 @@
     @include('includes.nav.categories')
 </ul>
 
-@auth {{-- User Dropdown menu --}}
-    <ul id="dropdown2" class="dropdown-content bottom-borders">
+{{-- User Dropdown menu --}}
+<ul id="dropdown2" class="dropdown-content bottom-borders">
+    @isset($visitor_likes)
+        {{-- My loved recipes --}}
+        <li class="{{ active_if_route_is(['recipes*']) }} {{ $visitor_likes > 0 ? '' : 'hide' }}" id="visitor-likes-icon">
+            <a href="/recipes#my_likes">
+                <i class="fas fa-heart fa-15x left with-red-hover"></i>
+                @lang('recipes.loved') 
+                <span id="visitor-likes-number">{{ $visitor_likes }}</span>
+            </a>
+        </li>
+    @endisset
+    @auth 
         <li class="{{ active_if_route_is(['users/' . user()->username]) }}"> {{-- home --}}
             <a href="/users/{{ user()->username }}" title="@lang('users.my_account')">
                 <i class="fas fa-user-circle fa-15x left with-red-hover"></i>
@@ -53,7 +64,6 @@
                     @lang('approves.checklist')
                 </a>
             </li>
-
             <li class="position-relative {{ active_if_route_is(['admin/feedback']) }}"> {{-- feedback --}}
                 <a href="/admin/feedback" title="@lang('feedback.contact_us')" class=" {{ $feedback_notif ? 'small-notif' : '' }}">
                     <i class="fas fa-comment-dots fa-15x left with-red-hover"></i>
@@ -75,6 +85,7 @@
                 @lang('settings.settings')
             </a>
         </li>
+
         @hasRole('master')
             <li class="position-relative {{ active_if_route_is(['master/manage-users']) }}"> {{-- manage-users --}}
                 <a href="/master/manage-users" title="@lang('manage-users.manage-users')">
@@ -82,18 +93,21 @@
                     @lang('manage-users.management')
                 </a>
             </li>
+
             <li class="position-relative {{ active_if_route_is(['master/visitors']) }}"> {{-- visitors --}}
                 <a href="/master/visitors" title="@lang('visitors.visitors')">
                     <i class="fas fa-users fa-15x left with-red-hover"></i>
                     @lang('visitors.visitors')
                 </a>
             </li>
+
             <li class="position-relative {{ active_if_route_is(['master/documents']) }}"> {{-- Documents --}}
                 <a href="/master/documents" title="@lang('documents.documents')">
                     <i class="fas fa-copy fa-15x left with-red-hover"></i>
                     @lang('documents.documents')
                 </a>
             </li>
+
             <li class="position-relative {{ active_if_route_is(['log-viewer/logs*']) }}"> {{-- log-viewer --}}
                 <a href="/log-viewer/logs" title="@lang('logs.logs')" class=" {{ $logs_notif ? 'small-notif' : '' }}">
                     <i class="fas fa-file-code fa-15x left with-red-hover"></i>
@@ -108,12 +122,30 @@
             </a>
         </li>
 
-        {{-- logout-form --}}
+       {{-- logout-form --}}
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hide">
             @csrf <button type="submit"></button>
         </form>
-    </ul>
-@endauth
+    @else
+        {{-- Login --}}
+        <li class="{{ active_if_route_is(['login']) }}">
+            <a href="/login" title="@lang('auth.login')">
+                <i class="fas fa-sign-in-alt fa-15x left with-red-hover"></i>@lang('auth.login')
+            </a>
+        </li>
+        {{-- Register --}}
+        <li class="{{ active_if_route_is(['register']) }}">
+            <a href="/register" title="@lang('auth.register')">
+                <i class="fas fa-pen-alt fa-15x left with-red-hover"></i>@lang('auth.register')
+            </a>
+        </li>
+    @endauth
+    <li class="{{ active_if_route_is(['help']) }}">
+        <a href="/help" title="@lang('messages.help')">
+            <i class="fas fa-question-circle fa-15x left"></i>@lang('messages.help')
+        </a>
+    </li>
+</ul>
 
 <nav class="no-select">
     <div class="nav-wrapper main" style="z-index:15">
@@ -123,12 +155,6 @@
                 <img src="{{ asset('storage/other/logo.png') }}" alt="logo" height="30" class="left">
                 <span class="left pl-1">@lang('messages.app_name')</span>
             </a>
-            @isset($visitor_likes)
-                <a href="/recipes#my_likes" title="@lang('recipes.loved')" class="brand-logo loved-link {{ $visitor_likes > 0 ? '' : 'hide' }}" id="visitor-likes-icon">
-                    <i class="fas fa-heart fa-2x"></i> 
-                    <span id="visitor-likes-number">{{ $visitor_likes }}</span>
-                </a>
-            @endisset
             {{-- Hamburger menu --}}
             <a href="#" data-target="mobile-demo" class="sidenav-trigger no-select">
                 <i class="fas fa-bars"></i>
@@ -142,11 +168,18 @@
                             <img src="{{ asset('storage/small/users/' . user()->photo) }}">
                         </i>
                     </a>
+                @else
+                    {{-- Dropdown Trigger 2  --}}
+                    <a class="right dropdown-trigger position-relative" href="#!" data-target="dropdown2" style="margin-top:.65rem">
+                        <i class="user-icon-navbar z-depth-1 hoverable waves-effect waves-light d-block">
+                            <img src="{{ asset('storage/small/users/default.jpg') }}">
+                        </i>
+                    </a>
                 @endauth
 
                 {{-- Search button --}}
-                <a href="#" data-target="mobile-demo" class="right hide-on-small-and-down" style="margin:2px 17px;" title="@lang('pages.search')" id="nav-btn-for-search">
-                    <i class="fas fa-search fa-15x"></i>
+                <a href="#" data-target="mobile-demo" class="right" style="margin:2px 27px 0 12px" title="@lang('pages.search')" id="nav-btn-for-search">
+                    <i class="fas fa-search fa-15x" style="line-height:1.7"></i>
                 </a>
             </div>
 
@@ -157,14 +190,10 @@
                         @lang('home.home')
                     </a>
                 </li>
+
                 <li class="{{ active_if_route_is(['recipes', 'recipes/*']) }}">
                     <a href="/recipes" title="@lang('recipes.recipes')">
                         @lang('recipes.recipes')
-                    </a>
-                </li>
-                <li class="{{ active_if_route_is(['help']) }}">
-                    <a href="/help" title="@lang('messages.help')">
-                        @lang('messages.help')
                     </a>
                 </li>
 
@@ -174,14 +203,6 @@
                         <i class="fas fa-caret-down fa-15x right"></i>
                     </a>
                 </li>
-
-                @guest
-                    <li class="{{ active_if_route_is(['login', 'register']) }}">
-                        <a href="/login" title="@lang('auth.login')">
-                            @lang('auth.login') <i class="fas fa-sign-in-alt fa-15x right"></i>
-                        </a>
-                    </li>
-                @endguest
             </ul>
         </div>
     </div>

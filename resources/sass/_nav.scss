@@ -38,34 +38,3 @@
         border-color: lighten($darkTheme, 15%);
     }
 }
-
-
-.loved-link {
-    margin-left: 140px !important;
-
-    span {
-        font-size: .7em;
-        margin-left: -11px;
-        line-height: 52px;
-    }
-
-    i {
-        color: $mainLight;
-        transition: color .1s, transform .2s;
-        font-size: 1.4em !important;
-        line-height: 52px;
-        animation: disappear .7s;
-        animation-direction: reverse;
-
-        &:hover {
-            color: lighten($mainLight, 8%);
-            transform: scale(1.1)
-        }
-    }
-}
-
-@media only screen and (max-width: 992px) {
-    .loved-link {
-        margin-left: 75px !important;
-    }
-}
