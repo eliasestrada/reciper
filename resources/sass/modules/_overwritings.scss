@@ -39,13 +39,13 @@ nav .input-field input[type=search]:-webkit-autofill:active {
 
 .card {
     .dark-theme & {
-        background: lighten($darkTheme, 10%);
+        background: lighten($darkTheme, 7%);
 
         .card-title {
             color: #ebebeb;
         }
         .card-reveal {
-            background: lighten($darkTheme, 10%);
+            background: lighten($darkTheme, 7%);
         }
         .card-time {
             color: #ebebeb;

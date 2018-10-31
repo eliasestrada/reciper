@@ -26,13 +26,17 @@
 
 .paper {
     background-color: $paper;
+    
+    .dark-theme & {
+        background-color: lighten($darkTheme, 7%);
+    }
 }
 
 .paper-dark {
     background-color: $paperDark;
 
     .dark-theme & {
-        background: lighten($darkTheme, 12%);
+        background: lighten($darkTheme, 10%);
     }
 }
 
@@ -2948,6 +2952,10 @@ small {
     box-shadow: none;
     color: #9F9F9F !important;
     cursor: default;
+
+    .dark-theme & {
+        background-color: lighten($darkTheme, 17%) !important;
+    }
 }
 
 .btn.disabled:hover,
