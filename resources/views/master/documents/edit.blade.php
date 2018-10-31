@@ -3,7 +3,7 @@
 @section('title', trans('common.edit_item', ['item' => $document->getTitle()]))
 
 @section('head')
-    <script src="{{ URL::to('/js/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ URL::to('/vendor/tinymce/tinymce.min.js') }}"></script>
 @endsection
 
 @section('content')
@@ -67,7 +67,6 @@
 
         <div class="input-field"> {{-- Textarea --}}
             <textarea name="text" id="text" class="materialize-textarea">{!! custom_strip_tags($document->getText()) !!}</textarea>
-            <span class="helper-text">@lang('documents.doc_text')</span>
         </div>
     </form>
 </div>
