@@ -37,6 +37,14 @@ select {
 .text {
     color: #181818;
 
+    &:hover {
+        color: #2f2f2f;
+
+        .dark-theme & {
+            color: #acacac;
+        }
+    }
+
     .dark-theme & {
         color: #dddddd;
     }

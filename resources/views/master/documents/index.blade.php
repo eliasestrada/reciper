@@ -32,8 +32,8 @@
                                         <p>{{ time_ago($doc->updated_at) }}</p>
                                     </div>
                                     <div class="card-action">
-                                        <a href="/documents/{{ $doc->id }}">@lang('messages.open')</a>
-                                        <a href="/master/documents/{{ $doc->id }}/edit">@lang('messages.edit')</a>
+                                        <a href="/documents/{{ $doc->id }}" class="text">@lang('messages.open')</a>
+                                        <a href="/master/documents/{{ $doc->id }}/edit" class="text">@lang('messages.edit')</a>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                         @endforelse
 
                         {{ $i == 1 ? $ready_docs->links() : $unready_docs->links() }}
-                    </div>    
+                    </div>
                 </tab>
             @endfor
         </tabs>
