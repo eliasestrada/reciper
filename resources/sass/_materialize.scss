@@ -3354,6 +3354,11 @@ button.btn-floating {
     z-index: 9999;
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
+
+    .dark-theme & {
+        background-color: lighten($darkTheme, 7%);
+        border-color: lighten($darkTheme, 12%);
+    }
 }
 
 .dropdown-content:focus {
@@ -3368,19 +3373,29 @@ button.btn-floating {
     line-height: 1.5rem;
     width: 100%;
     text-align: left;
+
+    .dark-theme & {
+        color: #dbdbdb;
+    }
 }
 
 .dropdown-content {
     li {
-        &:hover {
-            background-color: $mainLight;
-        }
+        &:hover,
         &:active {
             background-color: $mainLight;
+
+            .dark-theme & {
+                background-color: $darkTheme;
+            }
         }
         &:focus {
             outline: none;
             background-color: $mainLight;
+            
+            .dark-theme & {
+                background-color: $darkTheme;
+            }
         }
     }
     li.active i.with-red-hover {
@@ -3402,6 +3417,10 @@ button.btn-floating {
     padding: 9px 12px;
     border: none;
     background: none;
+
+    .dark-theme & {
+        color: #dbdbdb;
+    }
 }
 
 .dropdown-content li>span>label {

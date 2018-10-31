@@ -33,6 +33,10 @@
 // Sidebar
 .bottom-borders > li {
     border-bottom: solid 1px darken($paper, 2%);
+
+    .dark-theme & {
+        border-color: lighten($darkTheme, 15%);
+    }
 }
 
 
