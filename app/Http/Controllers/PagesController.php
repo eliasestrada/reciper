@@ -16,16 +16,10 @@ class PagesController extends Controller
     public function home()
     {
         try {
-            return view('pages.home', [
-                'users' => User::inRandomOrder()->limit(50)->get(['id', 'photo']),
-                'recipes' => Recipe::getRandomUnseen(24, 20),
-            ]);
+            return view('pages.home', ['recipes' => Recipe::getRandomUnseen(24, 20)]);
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
-            return view('pages.home', [
-                'users' => collect(),
-                'recipes' => collect(),
-            ]);
+            return view('pages.home', ['recipes' => collect()]);
         }
     }
 
