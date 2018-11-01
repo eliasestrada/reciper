@@ -1,8 +1,11 @@
-if ($("collapsible-li-tag") && window.innerWidth > 600) {
-    setTimeout(() => {
-        document
-            .querySelector("#collapsible-li-tag .collapsible-body")
-            .setAttribute("style", "display:block");
-        $("collapsible-li-tag").classList.add("active");
-    }, 1);
-}
+(function CollapsibleNavigationMenu() {
+    let li = $("collapsible-li-tag");
+    let body = document.querySelector("#collapsible-li-tag .collapsible-body");
+
+    if (li && window.innerWidth > 600) {
+        setTimeout(() => {
+            body.setAttribute("style", "display:block");
+            li.classList.add("active");
+        }, 1);
+    }
+})();

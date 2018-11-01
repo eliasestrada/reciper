@@ -1,11 +1,20 @@
-if ($("ready-checkbox")) {
-    checkCheckboxThenSubmit("ready-checkbox", "publish-btn", () => {
-        return confirm($("publish-btn").getAttribute("data-alert"))
-            ? true
-            : false;
-    });
-}
+(function ReadyCheckbox() {
+    let checkbox = $("ready-checkbox");
+    let publishBtn = $("publish-btn");
 
-if (imageUploader.src && imageUploader.target) {
-    imageUploader.showImage();
-}
+    if (checkbox) {
+        publishBtn.addEventListener("click", () => {
+            if (confirm(publishBtn.getAttribute("data-alert"))) {
+                if ((checkbox.checked = true)) {
+                    checkbox.closest("form").submit();
+                }
+            }
+        });
+    }
+})();
+
+(function ImageUploader() {
+    if (imageUploader.src && imageUploader.target) {
+        imageUploader.showImage();
+    }
+})();
