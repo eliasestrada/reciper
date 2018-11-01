@@ -20,11 +20,11 @@ class DownloadIngredientsController extends Controller
     {
         $recipe = Recipe::find($recipe_id);
         $text = $recipe->getTitle() . PHP_EOL . PHP_EOL . $recipe->getIngredients();
-        $filename = "{$recipe->id}_ingredients.txt";
+        $filename = 'ingredients-' . date('d-m-Y H-i-s') . '.txt';
 
         Storage::put($filename, $text);
-        DeleteFileJob::dispatch($filename)->delay(now()->addMinutes(1));
+        DeleteFileJob::dispatch($filename)->delay(now()->addSeconds(7));
 
-        return Storage::download($filename);
+        return response()->download(storage_path("app/{$filename}"));
     }
 }
