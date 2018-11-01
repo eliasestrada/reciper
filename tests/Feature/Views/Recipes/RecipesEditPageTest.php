@@ -6,7 +6,7 @@ use App\Jobs\DeleteImageJob;
 use App\Models\Recipe;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Queue;
+use Queue;
 use Tests\TestCase;
 
 class RecipesEditPageTest extends TestCase
