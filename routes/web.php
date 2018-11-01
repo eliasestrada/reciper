@@ -84,4 +84,6 @@ Route::prefix('master')->namespace('Master')->middleware('master')->group(functi
 // Help =========
 Route::resource('help', HelpController::class)->only(['index', 'show']);
 
-Route::get('dark-theme-switcher/{state}', Invokes\DarkThemeController::class);
+// Invokes
+Route::get('invokes/dark-theme-switcher/{state}', Invokes\DarkThemeController::class);
+Route::post('invokes/download-ingredients/{recipe_id}', Invokes\DownloadIngredientsController::class);
