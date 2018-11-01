@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Views\Recipes;
 
+use App\Jobs\DeleteFileJob;
 use App\Models\Fav;
 use App\Models\Feedback;
 use App\Models\Recipe;
@@ -152,5 +153,17 @@ class RecipesShowPageTest extends TestCase
         $this->post('/api/like/like/1');
         $this->post('/api/like/dislike/1')
             ->assertExactJson(['liked' => 0]);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function DeleteFileJob_dispached_after_making_request_to_download_ingredients(): void
+    {
+        $this->expectsJobs(DeleteFileJob::class);
+        $this->post(action('Invokes\DownloadIngredientsController', [
+            'recipe_id' => 1,
+        ]));
     }
 }
