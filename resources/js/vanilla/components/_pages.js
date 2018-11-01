@@ -1,10 +1,10 @@
 /**
  * When visitor clicks search button, it will show the search form
  * instead of submitting, js prevents default behavior. After first click
- * it will set @var preventing to false, now after second click, it
+ * it will set varible preventing to false, now after second click, it
  * will submit the search form
  */
-(function HeaderSearchForm() {
+(function HomeHeaderSearchForm() {
     let preventing = true;
     let button = $("home-search-btn");
     let form = $("home-search-form");
