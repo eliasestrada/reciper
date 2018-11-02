@@ -47,7 +47,7 @@
                 </button>
             </div>
 
-            {{-- <a href="{{ route('password.request') }}">@lang('forms.forgot_pwd')</a> --}}
+            <a href="{{ route('password.request') }}" class="text text-hover">@lang('forms.forgot_pwd')</a>
         </form>
     </div>
 </div>
