@@ -165,5 +165,7 @@ class RecipesShowPageTest extends TestCase
         $this->post(action('Invokes\DownloadIngredientsController', [
             'recipe_id' => 1,
         ]));
+
+        \Storage::delete('ingredients-' . date('d-m-Y H-i') . '.txt');
     }
 }
