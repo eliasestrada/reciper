@@ -36,7 +36,11 @@
     {{-- File downloader --}}
     <div class="px-3 pt-4">
         <form action="{{ action('Invokes\DownloadIngredientsController', ['id' => $recipe->id]) }}" method="post">
-            @csrf <button type="submit" class="btn-small">@lang('recipes.download_ingredients')</button>
+            @csrf
+            <button type="submit" class="btn-small">
+                <i class="fas fa-download left"></i>
+                @lang('recipes.ingredients')
+            </button>
         </form>
     </div>
 </div>

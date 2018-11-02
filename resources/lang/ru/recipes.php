@@ -9,7 +9,6 @@ return [
     'popular' => 'Популярные',
     'last' => 'Последние',
     'show_menu' => 'Показать меню',
-    'download_ingredients' => 'Скачать ингредиенты',
     'report_recipe' => 'Пожаловаться',
     'next' => 'Далее',
     'watched' => 'Просмотренные',
