@@ -2,8 +2,9 @@
 
 namespace App\Notifications;
 
-use Illuminate\Bus\Queueable;
+use App\Models\User;
 //use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -12,20 +13,20 @@ class ResetPasswordNotification extends Notification
     use Queueable;
 
     public $token;
-    public $username;
+    public $user;
 
     /**
      * Create a new notification instance.
      *
      * @codeCoverageIgnore
      * @param string $token
-     * @param string $username
+     * @param User $user
      * @return void
      */
-    public function __construct(string $token, string $username)
+    public function __construct(string $token, User $user)
     {
         $this->token = $token;
-        $this->username = $username;
+        $this->user = $user;
     }
 
     /**
@@ -49,6 +50,13 @@ class ResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->view('emails.reset-password');
+        $url = url('password/reset', $this->token);
+        $get_param = urlencode($this->user->getEmailForPasswordReset());
+
+        return (new MailMessage)->view('emails.reset-password', [
+            'token' => $this->token,
+            'user' => $this->user,
+            'url' => "{$url}?email={$get_param}",
+        ]);
     }
 }
