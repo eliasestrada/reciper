@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Jobs\DeleteFileJob;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Predis\Connection\ConnectionException;
 use Storage;
 
 class DownloadIngredientsController extends Controller
@@ -23,7 +24,12 @@ class DownloadIngredientsController extends Controller
         $filename = 'ingredients-' . date('d-m-Y H-i') . '.txt';
 
         Storage::put($filename, $text);
-        DeleteFileJob::dispatch($filename)->delay(now()->addSeconds(7));
+
+        try {
+            DeleteFileJob::dispatch($filename)->delay(now()->addSeconds(7));
+        } catch (ConnectionException $e) {
+            logger()->error("DeleteFileJob wasn't executed. {$e->getMessage()}");
+        }
 
         return response()->download(storage_path("app/{$filename}"));
     }

@@ -6,9 +6,10 @@ use App\Helpers\Traits\PhotoControllerHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\PhotoRequest;
 use App\Http\Requests\Settings\SettingsPhotoRequest;
-use App\Jobs\DeletePhotoJob;
+use App\Jobs\DeleteFileJob;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Predis\Connection\ConnectionException;
 
 class PhotoController extends Controller
 {
@@ -29,7 +30,14 @@ class PhotoController extends Controller
         }
 
         if (user()->photo != 'default.jpg') {
-            DeletePhotoJob::dispatch(user()->photo);
+            try {
+                DeleteFileJob::dispatch([
+                    'public/users/' . user()->photo,
+                    'public/small/users/' . user()->photo,
+                ]);
+            } catch (ConnectionException $e) {
+                logger()->error("DeleteFileJob was not dispatched. {$e->getMessage()}");
+            }
         }
 
         $photo_name = $this->savePhotoIfExist($photo);
@@ -41,7 +49,14 @@ class PhotoController extends Controller
     public function destroy()
     {
         if (user()->photo != 'default.jpg') {
-            DeletePhotoJob::dispatch(user()->photo);
+            try {
+                DeleteFileJob::dispatch([
+                    'public/users/' . user()->photo,
+                    'public/small/users/' . user()->photo,
+                ]);
+            } catch (ConnectionException $e) {
+                logger()->error("DeleteFileJob was not dispatched. {$e->getMessage()}");
+            }
         }
 
         user()->update(['photo' => 'default.jpg']);

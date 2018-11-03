@@ -7,13 +7,14 @@ use App\Helpers\Traits\RecipesControllerHelpers;
 use App\Http\Requests\Recipes\RecipeStoreRequest;
 use App\Http\Requests\Recipes\RecipeUpdateRequest;
 use App\Http\Responses\Controllers\RecipeUpdateResponse;
-use App\Jobs\DeleteImageJob;
+use App\Jobs\DeleteFileJob;
 use App\Models\Fav;
 use App\Models\Meal;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Models\View;
 use Illuminate\Database\QueryException;
+use Predis\Connection\ConnectionException;
 
 class RecipesController extends Controller
 {
@@ -148,7 +149,14 @@ class RecipesController extends Controller
         }
 
         if ($request->file('image') && $recipe->image != 'default.jpg') {
-            DeleteImageJob::dispatch($recipe->image);
+            try {
+                DeleteFileJob::dispatch([
+                    "public/recipes/$recipe->image",
+                    "public/small/recipes/$recipe->image",
+                ]);
+            } catch (ConnectionException $e) {
+                logger()->error("DeleteFileJob was not dispatched. {$e->getMessage()}");
+            }
         }
 
         $image_name = $this->saveImageIfExist($request->file('image'));
@@ -168,7 +176,14 @@ class RecipesController extends Controller
         }
 
         if ($recipe->image != 'default') {
-            DeleteImageJob::dispatch($recipe->image);
+            try {
+                DeleteFileJob::dispatch([
+                    "public/recipes/$recipe->image",
+                    "public/small/recipes/$recipe->image",
+                ]);
+            } catch (ConnectionException $e) {
+                logger()->error("DeleteFileJob was not dispatched. {$e->getMessage()}");
+            }
         }
 
         $recipe->categories()->detach();

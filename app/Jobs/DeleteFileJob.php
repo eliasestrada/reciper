@@ -17,10 +17,10 @@ class DeleteFileJob implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param string $filename
+     * @param mixed $filename
      * @return void
      */
-    public function __construct(string $filename)
+    public function __construct($filename)
     {
         $this->filename = $filename;
     }

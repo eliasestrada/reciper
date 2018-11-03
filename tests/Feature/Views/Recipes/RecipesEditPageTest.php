@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Views\Recipes;
 
-use App\Jobs\DeleteImageJob;
+use App\Jobs\DeleteFileJob;
 use App\Models\Recipe;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
@@ -216,7 +216,7 @@ class RecipesEditPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function changing_recipe_image_user_dispaches_job_DeleteImageJob(): void
+    public function changing_recipe_image_user_dispaches_job_DeleteFileJob(): void
     {
         Queue::fake();
 
@@ -229,9 +229,7 @@ class RecipesEditPageTest extends TestCase
             'image' => UploadedFile::fake()->image('image.jpg'),
         ]);
 
-        Queue::assertPushed(DeleteImageJob::class, function ($job) {
-            return $job->image_name == 'image_name.jpg';
-        });
+        Queue::assertPushed(DeleteFileJob::class);
         $this->cleanAfterYourself(Recipe::whereId($recipe->id)->value('image'));
     }
 
@@ -239,7 +237,7 @@ class RecipesEditPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function if_no_image_profided_DeleteImageJob_is_not_queued(): void
+    public function if_no_image_profided_DeleteFileJob_is_not_queued(): void
     {
         Queue::fake();
 
@@ -249,14 +247,14 @@ class RecipesEditPageTest extends TestCase
 
         $this->actingAs($user)->put(action('RecipesController@update', ['recipe' => $recipe->id]));
 
-        Queue::assertNotPushed(DeleteImageJob::class);
+        Queue::assertNotPushed(DeleteFileJob::class);
     }
 
     /**
      * @author Cho
      * @test
      */
-    public function DeleteImageJob_is_dispached_when_recipe_is_deleted(): void
+    public function DeleteFileJob_is_dispached_when_recipe_is_deleted(): void
     {
         Queue::fake();
 
@@ -267,9 +265,7 @@ class RecipesEditPageTest extends TestCase
 
         $this->actingAs($user)->delete(action('RecipesController@destroy', ['recipe' => $recipe->id]));
 
-        Queue::assertPushed(DeleteImageJob::class, function ($job) {
-            return $job->image_name == 'just_image.jpg';
-        });
+        Queue::assertPushed(DeleteFileJob::class);
     }
 
     /**
