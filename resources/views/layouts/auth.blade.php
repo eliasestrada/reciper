@@ -41,7 +41,7 @@
                 @csrf
 
                 <div class="center">
-                    <p class="mb-0 flow-text main-text">@lang('recipes.name_for_recipe')</p>
+                    <p class="mb-0 flow-text">@lang('recipes.name_for_recipe')</p>
                 </div>
 
                 {{-- Title --}}
