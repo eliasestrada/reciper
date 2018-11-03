@@ -53,19 +53,6 @@
                 <blockquote class="mt-5">
                     {!! trans('forms.agree_to_terms', ['btn' => trans('auth.register')]) !!}
                 </blockquote>
-
-                <!-- show-document-modal structure -->
-                <div id="show-document-modal" class="modal">
-                    <div class="modal-content reset">
-                        <h4>{{ $document['title'] }}</h4>
-                        {!! $document['text'] !!}
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat left">
-                            @lang('messages.agree')
-                        </a>
-                    </div>
-                </div>
             @endif
 
             <button type="submit" id="register-btn" class="waves-effect waves-light btn mt-3">
@@ -74,5 +61,20 @@
         </form>
     </div>
 </div>
+
+<!-- show-document-modal structure -->
+@if(isset($document))
+    <div id="show-document-modal" class="modal">
+        <div class="modal-content reset">
+            <h4>{{ $document['title'] }}</h4>
+            {!! $document['text'] !!}
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat left">
+                @lang('messages.agree')
+            </a>
+        </div>
+    </div>
+@endif
 
 @endsection
