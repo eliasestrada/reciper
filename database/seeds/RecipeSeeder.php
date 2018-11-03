@@ -10,10 +10,10 @@ class RecipeSeeder extends Seeder
      */
     public function run()
     {
-        $this->myRecipes();
+        $this->recipes();
     }
 
-    public function recipeWithCarrot()
+    public function recipes()
     {
         $recipe = Recipe::create([
             'user_id' => 1,
