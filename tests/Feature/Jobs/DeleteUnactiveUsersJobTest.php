@@ -80,9 +80,9 @@ class Test extends TestCase
      * @author Cho
      * @test
      */
-    public function handle_method_dispaches_DeletePhotoJob_when_deletes_user(): void
+    public function handle_method_dispaches_DeleteFileJob_when_deletes_user(): void
     {
-        $this->expectsJobs(\App\Jobs\DeletePhotoJob::class);
+        $this->expectsJobs(\App\Jobs\DeleteFileJob::class);
 
         $unactive_user = create_user('', [
             'active' => 0,

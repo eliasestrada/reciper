@@ -18,7 +18,7 @@ class DeleteUnactiveUsersJob implements ShouldQueue
      * Loop through all unactive users and delete them with
      * their photos
      *
-     * @see DeletePhotoJob
+     * @see DeleteFileJob
      * @return void
      */
     public function handle()
@@ -27,7 +27,7 @@ class DeleteUnactiveUsersJob implements ShouldQueue
 
         foreach ($users as $user) {
             if ($user->photo != 'default.jpg') {
-                DeletePhotoJob::dispatch($user->photo);
+                DeleteFileJob::dispatch($user->photo);
             }
 
             if ($user->roles()) {

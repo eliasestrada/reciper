@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Views\Settings\Photo;
 
-use App\Jobs\DeletePhotoJob;
+use App\Jobs\DeleteFileJob;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\UploadedFile;
@@ -55,9 +55,9 @@ class SettingsPhotoIndexPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function delete_photo_request_dispaches_job_DeletePhotoJob(): void
+    public function delete_photo_request_dispaches_job_DeleteFileJob(): void
     {
-        $this->expectsJobs(DeletePhotoJob::class);
+        $this->expectsJobs(DeleteFileJob::class);
 
         $user = create_user('', ['photo' => 'some/image.jpg']);
         $this->actingAs($user)->delete(action('Settings\PhotoController@destroy'));
@@ -67,14 +67,14 @@ class SettingsPhotoIndexPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function if_profile_photo_is_default_DeletePhotoJob_is_not_queued(): void
+    public function if_profile_photo_is_default_DeleteFileJob_is_not_queued(): void
     {
         Queue::fake();
 
         $this->actingAs(create_user())
             ->delete(action('Settings\PhotoController@destroy'));
 
-        Queue::assertNotPushed(DeletePhotoJob::class);
+        Queue::assertNotPushed(DeleteFileJob::class);
     }
 
     /**
