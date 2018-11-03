@@ -36,7 +36,7 @@ class RecipeUpdateRequest extends FormRequest
                 'text' => "min:$text_min|max:$text_max",
                 'meal' => 'numeric|between:1,3',
                 'time' => 'numeric|between:1,1000',
-                'image' => 'image|nullable|max:1999',
+                'image' => 'image|mimes:jpg,png,jpeg|nullable|max:1999',
                 'categories.0' => 'required',
                 'categories.*' => 'distinct|numeric|between:2,' . Category::count(),
             ];
@@ -68,6 +68,7 @@ class RecipeUpdateRequest extends FormRequest
 
             'image.image' => trans('recipes.image_image'),
             'image.max' => trans('recipes.image_max'),
+            'image.mimes' => trans('settings.photo_mimes'),
         ];
     }
 }
