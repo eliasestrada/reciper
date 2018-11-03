@@ -3,7 +3,7 @@
 @section('title', trans('documents.new_doc'))
 
 @section('head')
-    <script src="{{ URL::to('/vendor/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ url('/vendor/tinymce/tinymce.min.js') }}"></script>
 @endsection
 
 @section('content')

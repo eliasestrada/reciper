@@ -1,6 +1,6 @@
 <script>
     var editor_config = {
-        path_absolute: "{{ URL::to('/') }}/",
+        path_absolute: "{{ url('/') }}/",
         selector: "#text",
         themes: "modern",
         skin: "light",

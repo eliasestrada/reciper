@@ -26,7 +26,7 @@ return [
     'in_russian' => 'На русском',
     'general' => 'Общая',
     'favorites' => 'Избранное',
-    'login_to_add_recipe' => 'Для того чтобы добавить рецепт вы должны быть авторизованы. Пожалуйста <a href="' . \URL::to('/login') . '">Войдите</a> на свою страницу, либо <a href="' . \URL::to('/register') . '">Зарегистрируйтесь</a>.',
+    'login_to_add_recipe' => 'Для того чтобы добавить рецепт вы должны быть авторизованы. Пожалуйста <a href="' . url('/login') . '" class="red-text">Войдите</a> на свою страницу, либо <a href="' . url('/register') . '" class="red-text">Зарегистрируйтесь</a>.',
 
     // Artisan controller
     'cache_deleted' => 'Настройки кеша удалены!',
