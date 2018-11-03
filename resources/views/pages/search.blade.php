@@ -16,7 +16,7 @@
                 <button type="submit" class="prefix btn-floating">
                     <i class="fas fa-search"></i>
                 </button>
-                <input type="text" name="for" id="search" style="margin-left:4em">
+                <input type="text" name="for" id="search" class="pl-2" style="margin-left:4em;">
                 <label for="search" style="margin-left:4em">@lang('pages.search_details')</label>
             </div>
         </form>

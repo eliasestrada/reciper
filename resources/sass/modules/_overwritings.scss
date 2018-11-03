@@ -23,18 +23,17 @@
     -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
 
+
 nav .input-field input[type=search] {
-    color: #fff;
-}
+    -webkit-text-fill-color: #dfdfdf !important;
+    background-color: darken($main, 10%) !important;
+    letter-spacing: 1px;
+    font-size: 1.4em;
+    border-radius: 30px;
 
-nav .input-field input[type=search]:-webkit-autofill {
-    box-shadow: 0 0 0 100px $main inset;
-    -webkit-box-shadow: 0 0 0 100px $main inset;
-    -webkit-text-fill-color: #000 !important;
-}
-
-nav .input-field input[type=search]:-webkit-autofill:active {
-    -webkit-text-fill-color: #fff !important;
+    &:focus {
+        background-color: darken($main, 15%) !important;
+    }
 }
 
 .card {

@@ -228,7 +228,7 @@
             <div class="input-field">
                 <input id="search-input" type="search" name="for" placeholder="@lang('pages.search_details')" required>
                 <label class="label-icon" for="search-input">
-                    <i class="fas fa-search grey-text"></i>
+                    <i class="fas fa-search"></i>
                 </label>
             </div>
         </form>

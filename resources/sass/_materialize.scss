@@ -232,6 +232,16 @@ textarea {
     margin: 0;
 }
 
+input:-webkit-autofill {
+    -webkit-text-fill-color: #111 !important;
+    -webkit-box-shadow: 0 0 0px 1000px $paper inset !important;
+
+    .dark-theme & {
+        -webkit-text-fill-color: #dbdbdb !important;
+        -webkit-box-shadow: 0 0 0px 1000px $darkTheme inset !important;
+    }
+}
+
 button,
 input {
     overflow: visible;
@@ -4522,12 +4532,12 @@ textarea.materialize-textarea+label:after,
     border: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
-    color: #444;
+    color: #dfdfdf;
 }
 
 .input-field input[type=search]:focus:not(.browser-default)+label i,
 .input-field input[type=search]:focus:not(.browser-default)~.mdi-navigation-close {
-    color: #444;
+    color: #dfdfdf;
 }
 
 .input-field input[type=search]+.label-icon {
