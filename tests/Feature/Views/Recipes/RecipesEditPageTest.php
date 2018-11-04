@@ -20,10 +20,10 @@ class RecipesEditPageTest extends TestCase
     public function user_can_see_the_page_if_its_his_recipe(): void
     {
         $user = create_user();
-        $recipe_id = create(Recipe::class, ['user_id' => $user->id], null, 'draft')->id;
+        $slug = create(Recipe::class, ['user_id' => $user->id], null, 'draft')->slug;
 
         $this->actingAs($user)
-            ->get("/recipes/{$recipe_id}/edit")
+            ->get("/recipes/{$slug}/edit")
             ->assertOk()
             ->assertViewIs('recipes.edit');
     }
@@ -35,7 +35,7 @@ class RecipesEditPageTest extends TestCase
     public function guest_cant_see_the_page(): void
     {
         $recipe = create(Recipe::class);
-        $this->get("/recipes/{$recipe->id}/edit")->assertRedirect();
+        $this->get("/recipes/{$recipe->slug}/edit")->assertRedirect();
     }
 
     /**
@@ -44,10 +44,10 @@ class RecipesEditPageTest extends TestCase
      */
     public function not_author_of_the_recipe_cant_see_the_page(): void
     {
-        $recipe = create(Recipe::class);
+        $slug = create(Recipe::class)->slug;
 
         $this->actingAs(create_user())
-            ->get("/recipes/{$recipe->id}/edit")
+            ->get("/recipes/{$slug}/edit")
             ->assertRedirect();
     }
 
@@ -106,7 +106,7 @@ class RecipesEditPageTest extends TestCase
 
         $this->actingAs($user)
             ->put(action('RecipesController@update', $recipe->id), $form_data)
-            ->assertRedirect("/recipes/{$recipe->id}");
+            ->assertRedirect("/recipes/{$recipe->slug}");
     }
 
     /**
@@ -184,7 +184,7 @@ class RecipesEditPageTest extends TestCase
             'user_id' => ($user = create_user())->id,
         ], null, 'draft');
 
-        $this->actingAs($user)->get("/recipes/{$recipe->id}/edit");
+        $this->actingAs($user)->get("/recipes/{$recipe->slug}/edit");
         $this->actingAs($user)
             ->followingRedirects()
             ->put(action('RecipesController@update', $recipe->id), $form_data)
@@ -263,7 +263,9 @@ class RecipesEditPageTest extends TestCase
             'image' => 'just_image.jpg',
         ]);
 
-        $this->actingAs($user)->delete(action('RecipesController@destroy', ['recipe' => $recipe->id]));
+        $this->actingAs($user)->delete(action('RecipesController@destroy', [
+            'recipe' => $recipe->id,
+        ]));
 
         Queue::assertPushed(DeleteFileJob::class);
     }
