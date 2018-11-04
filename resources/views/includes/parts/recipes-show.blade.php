@@ -2,7 +2,7 @@
     <h5>{{ $recipe->getTitle() }}</h5>
 </div>
 
-<img src="{{ asset('storage/recipes/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img corner z-depth-1">
+<img src="{{ asset('storage/recipes/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img corner z-depth-1 not-printable">
 
 {{--  Category  --}}
 <div class="center py-2">
@@ -37,7 +37,7 @@
     <div class="px-3 pt-4">
         <form action="{{ action('Invokes\DownloadIngredientsController', ['id' => $recipe->id]) }}" method="post">
             @csrf
-            <button type="submit" class="btn-small">
+            <button type="submit" class="btn-small not-printable">
                 <i class="fas fa-download left"></i>
                 @lang('recipes.ingredients')
             </button>
