@@ -62,16 +62,18 @@ class RecipesController extends Controller
 
         $recipe = $this->createRecipe($request);
 
-        return redirect("/recipes/$recipe->id/edit");
+        return redirect("/recipes/$recipe->slug/edit");
     }
 
     /**
      * It will show the recipe on a single page
-     * @param Recipe $recipe
+     * @param string $slug
      * @return \Illuminate\View\View
      */
-    public function show(Recipe $recipe)
+    public function show(string $slug)
     {
+        $recipe = Recipe::whereSlug($slug)->first();
+
         // Rules for visitors
         if (!user() && !$recipe->isDone()) {
             return redirect('/recipes')->withError(trans('recipes.no_rights_to_see'));
@@ -101,11 +103,13 @@ class RecipesController extends Controller
     }
 
     /**
-     * @param Recipe $recipe
+     * @param string $slug
      * @return \Illuminate\View\View
      */
-    public function edit(Recipe $recipe)
+    public function edit(string $slug)
     {
+        $recipe = Recipe::whereSlug($slug)->first();
+
         // Check for correct user
         if (!user()->hasRecipe($recipe->id) || $recipe->isReady()) {
             return redirect('/recipes')->withError(

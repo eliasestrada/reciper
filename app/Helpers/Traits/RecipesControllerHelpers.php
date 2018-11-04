@@ -58,7 +58,10 @@ trait RecipesControllerHelpers
      */
     public function createRecipe($request)
     {
-        return user()->recipes()->create(['title_' . LANG() => $request->title]);
+        return user()->recipes()->create([
+            'title_' . LANG() => $request->title,
+            'slug' => str_slug($request->title) . '-' . time(),
+        ]);
     }
 
     /**
