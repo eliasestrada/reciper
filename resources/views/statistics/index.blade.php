@@ -55,7 +55,7 @@
                 <td>@lang('users.most_liked_recipe')</td>
                 <td class="right-align">
                     @if ($most_liked)
-                        <a href="{{ "/recipes/$most_liked->id" }}">{{ $most_liked->getTitle() }}</a>
+                        <a href="{{ "/recipes/$most_liked->slug" }}">{{ $most_liked->getTitle() }}</a>
                         {{ $most_liked->likes_count }} <i class='fas fa-heart red-text tiny'></i>
                     @else - @endif
                 </td>
@@ -65,7 +65,7 @@
                 <td>@lang('users.most_viewed_recipe')</td>
                 <td class="right-align">
                     @if ($most_viewed)
-                        <a href="{{ "/recipes/$most_viewed->id" }}">
+                        <a href="{{ "/recipes/$most_viewed->slug" }}">
                             {{ $most_viewed->getTitle() }}
                         </a>
                         {{ $most_viewed->views_count }} <i class='fas fa-eye grey-text tiny'></i>
@@ -77,7 +77,7 @@
                 <td>@lang('users.most_favorite_recipe')</td>
                 <td class="right-align">
                     @if ($most_liked)
-                        <a href="{{ "/recipes/$most_favs->id" }}">{{ $most_favs->getTitle() }}</a>
+                        <a href="{{ "/recipes/$most_favs->slug" }}">{{ $most_favs->getTitle() }}</a>
                         {{ $most_favs->favs_count }} <i class='fas fa-star tiny' style="color:#d49d10"></i>
                     @else - @endif
                 </td>

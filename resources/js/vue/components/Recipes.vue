@@ -4,7 +4,7 @@
             <div class="col s12 m6 l3" v-for="recipe in recipes" :key="recipe.id">
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <a :href="'/recipes/' + recipe.id" :title="recipe.intro">
+                        <a :href="'/recipes/' + recipe.slug" :title="recipe.intro">
                             <img class="activator" :src="'storage/small/recipes/' + recipe.image" :alt="recipe.title">
                         </a>
                     </div>
@@ -26,7 +26,7 @@
                     <div class="card-reveal">
                         <span class="card-title">{{ recipe.title }}</span>
                         <div><i class="fas fa-times right red-text card-title p-1"></i></div>
-                        <a class="btn-small mt-3" :href="'/recipes/' + recipe.id">{{ go }}</a>
+                        <a class="btn-small mt-3" :href="'/recipes/' + recipe.slug">{{ go }}</a>
                         <p>{{ recipe.intro }}</p>
                     </div>
                 </div>

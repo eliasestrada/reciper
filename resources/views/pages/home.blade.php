@@ -50,7 +50,7 @@
                         <div class="col s12 m6 l3">
                             <div class="card hoverable">
                                 <div class="card-image waves-effect waves-block waves-light">
-                                    <a href="/recipes/{{ $recipe->id }}">
+                                    <a href="/recipes/{{ $recipe->slug }}">
                                         <img class="activator" alt="{{ $recipe->getTitle() }}" src="{{ asset('storage/small/recipes/'.$recipe->image) }}">
                                     </a>
                                 </div>
@@ -77,7 +77,7 @@
                                 <div class="card-reveal">
                                     <span class="card-title">{{ $recipe->getTitle() }}</span>
                                     <div><i class="fas fa-times right red-text card-title p-1"></i></div>
-                                    <a class="btn-small mt-3" href="/recipes/{{ $recipe->id }}">
+                                    <a class="btn-small mt-3" href="/recipes/{{ $recipe->slug }}">
                                         @lang('messages.go')
                                     </a>
                                     <p>{{ $recipe->getIntro() }}</p>

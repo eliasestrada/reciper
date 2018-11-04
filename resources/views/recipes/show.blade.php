@@ -10,7 +10,7 @@
         @if (!$recipe->isReady())
             @component('comps.btns.fixed-btn')
                 @slot('icon') fa-pen @endslot
-                @slot('link') /recipes/{{ $recipe->id }}/edit @endslot
+                @slot('link') /recipes/{{ $recipe->slug }}/edit @endslot
                 @slot('tip') @lang('tips.edit') @endslot
             @endcomponent
         @endif
@@ -37,7 +37,7 @@
 
             {{-- Edit button --}}
             @if (optional(user())->hasRecipe($recipe->id))
-                <a href="/recipes/{{ $recipe->id }}/edit" class="btn mt-2 min-w" {{ $recipe->isReady() ? 'disabled' : '' }}>
+                <a href="/recipes/{{ $recipe->slug }}/edit" class="btn mt-2 min-w" {{ $recipe->isReady() ? 'disabled' : '' }}>
                     @lang('tips.edit')
                 </a>
             @endif
