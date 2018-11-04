@@ -209,14 +209,15 @@ function visitor_id()
 }
 
 /**
- * @param string $header
+ * @param string|null $header
  * @param string $message
  * @param string $color
  * @return string
  */
-function tip(string $header, string $message, string $color = 'green-text'): string
+function tip(?string $header = null, string $message, string $color = 'green-text'): string
 {
-    return '<br><br><span class="' . $color . '"><b>' . $header . ':</b> ' . $message . '<span>';
+    $header = $header ? "<b>{$header}:</b> " : '';
+    return '<br><br><span class="' . $color . '">' . $header . $message . '<span>';
 }
 
 /**
