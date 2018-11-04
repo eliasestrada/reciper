@@ -76,6 +76,10 @@
 
 .green-text {
     color: $green !important;
+
+    .dark-theme & {
+        color: lighten($green, 5%) !important;
+    }
 }
 
 .grey {
