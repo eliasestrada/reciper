@@ -163,7 +163,7 @@ class RecipesController extends Controller
             }
         }
 
-        $image_name = $this->saveImageIfExist($request->file('image'));
+        $image_name = $this->saveImageIfExist($request->file('image'), $recipe->slug);
         $this->updateRecipe($request, $image_name, $recipe);
 
         return new RecipeUpdateResponse($recipe);

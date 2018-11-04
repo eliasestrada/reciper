@@ -11,10 +11,11 @@ use Image;
 trait RecipesControllerHelpers
 {
     /**
-     * @return string
      * @param UploadedFile|null $image
+     * @param string $slug
+     * @return string
      */
-    public function saveImageIfExist(?UploadedFile $image = null): ?string
+    public function saveImageIfExist(?UploadedFile $image = null, string $slug): ?string
     {
         if (is_null($image)) {
             return null;
@@ -23,7 +24,7 @@ trait RecipesControllerHelpers
         $path_slug = $this->makePathSlug();
         $path = storage_path("app/public/recipes/{$path_slug}");
         $path_small = storage_path("app/public/small/recipes/{$path_slug}");
-        $image_name = set_image_name($image->getClientOriginalExtension());
+        $image_name = $slug . '.' . $image->getClientOriginalExtension();
 
         if (!File::exists($path)) {
             File::makeDirectory($path, 0777, true);
