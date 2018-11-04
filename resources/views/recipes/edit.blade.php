@@ -63,7 +63,10 @@
 
             {{-- Meal --}}
             <div class="col s12 m6 l4">
-                <label for="meal">@lang('recipes.meal_desc')</label>
+                <label for="meal">
+                    @lang('recipes.meal_desc') 
+                    @include('includes.tip', ['tip' => trans('tips.recipes_meal')])
+                </label>
                 <select name="meal" id="meal">
                     @foreach ($meal as $m)
                         <option value="{{ $m['id'] }}" {{ set_as_selected_if_equal($m['id'], ($recipe->meal->id ?? '')) }}>
