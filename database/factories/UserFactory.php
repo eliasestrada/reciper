@@ -5,12 +5,12 @@ use App\Models\User;
 $factory->define(User::class, function () {
     return [
         'visitor_id' => 1,
-        'name' => str_random(7),
+        'name' => rand(),
         'status' => '',
-        'email' => str_random(20) . '@mail.ru',
-        'username' => str_random(7),
+        'email' => rand() . '@mail.ru',
+        'username' => 'username-' . rand(),
         'password' => bcrypt('111111'),
-        'remember_token' => str_random(10),
+        'remember_token' => rand(1, 99),
         'photo' => 'default.jpg',
         'xp' => 1,
         'popularity' => 0,
@@ -23,7 +23,7 @@ $factory->define(User::class, function () {
 });
 
 $factory->afterMaking(User::class, function ($user) {
-    $user->id = rand(100, 9999);
+    $user->id = rand(20, 9999);
 });
 
 $factory->state(User::class, 'admin', function () {
