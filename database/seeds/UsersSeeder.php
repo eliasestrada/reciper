@@ -24,7 +24,7 @@ class UsersSeeder extends Seeder
             'notif_check' => date("Y-m-d H:i:s"),
             'contact_check' => date("Y-m-d H:i:s"),
             'created_at' => '2018-03-08 12:08:59',
-            'photo' => '2018/11/maser.jpg',
+            'photo' => '2018/11/master.jpg',
         ]);
         $user->addRole('admin');
         $user->addRole('master');
