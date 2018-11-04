@@ -105,18 +105,6 @@ function active_if_route_is(array $routes): string
 }
 
 /**
- * @param string $extention
- * @return string
- */
-function set_image_name(string $extension = null): string
-{
-    if ($extension) {
-        return time() . rand() . '.' . $extension;
-    }
-    return 'default.jpg';
-}
-
-/**
  * Takes number and looks at it, if this number is between 1 thousand and 1 million
  * function returns this number with "тыс." after number, if its bigger it will
  * return this number with 'мил.' after.
