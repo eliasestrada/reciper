@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Invokes;
 
 use App\Http\Controllers\Controller;
+use Cookie;
 use Illuminate\Http\Request;
 
 class DarkThemeController extends Controller
@@ -16,9 +17,9 @@ class DarkThemeController extends Controller
     public function __invoke(Request $request, $state)
     {
         if ($state == 1) {
-            cache()->forever('dark-theme', 'dark-theme');
+            Cookie::queue('r_dark_theme', 1, 218400);
         } else {
-            cache()->forget('dark-theme');
+            Cookie::queue('r_dark_theme', 0, -1);
         }
     }
 }

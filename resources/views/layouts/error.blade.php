@@ -4,7 +4,7 @@
     @include('includes.head')
     <title>@yield('title') - @lang('messages.app_name')</title>
 </head>
-<body class="{{ cache()->get('dark-theme') }}">
+<body class="{{ request()->cookie('r_dark_theme') ? 'dark-theme' : '' }}">
     <div class="page">
         @yield('content')
     </div>
