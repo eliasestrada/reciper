@@ -107,7 +107,7 @@ class RecipesControllerHelpersTest extends TestCase
     public function saveImageIfExist_method_uploads_file_and_saves_it_in_2_folders(): void
     {
         $image = UploadedFile::fake()->image('image.jpg');
-        $filename = $this->class->saveImageIfExist($image);
+        $filename = $this->class->saveImageIfExist($image, 'slug');
 
         $this->assertNotNull($filename);
         $this->assertFileExists(storage_path("app/public/recipes/{$filename}"));
@@ -121,7 +121,8 @@ class RecipesControllerHelpersTest extends TestCase
      */
     public function saveImageIfExist_method_returns_null_if_user_doent_have_a_file(): void
     {
-        $filename = $this->class->saveImageIfExist();
+        $filename = $this->class->saveImageIfExist(null, 'slug');
+
         $this->assertNull($filename);
     }
 
