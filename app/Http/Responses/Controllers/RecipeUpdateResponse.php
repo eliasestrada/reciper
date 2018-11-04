@@ -37,9 +37,9 @@ class RecipeUpdateResponse implements Responsable
         }
 
         if (request()->has('view')) {
-            return redirect("/recipes/{$this->recipe->id}");
+            return redirect("/recipes/{$this->recipe->slug}");
         }
 
-        return redirect("/recipes/{$this->recipe->id}/edit")->withSuccess(trans('recipes.saved'));
+        return redirect("/recipes/{$this->recipe->slug}/edit")->withSuccess(trans('recipes.saved'));
     }
 }
