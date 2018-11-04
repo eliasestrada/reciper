@@ -46,6 +46,7 @@ class Recipe extends Model
     {
         $sql = array_collapse([[
             'id',
+            'slug',
             'title_' . LANG(),
             'intro_' . LANG(),
             'ready_' . LANG(),

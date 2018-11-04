@@ -245,6 +245,7 @@ class RecipeTest extends TestCase
         $recipe = Recipe::selectBasic()->first()->toArray();
         $columns = [
             'id',
+            'slug',
             'title_' . LANG(),
             'intro_' . LANG(),
             'ready_' . LANG(),
