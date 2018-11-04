@@ -4,22 +4,16 @@ namespace App\Http\Controllers\Invokes;
 
 use App\Http\Controllers\Controller;
 use Cookie;
-use Illuminate\Http\Request;
 
 class DarkThemeController extends Controller
 {
     /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param int|null $state
      */
-    public function __invoke(Request $request, $state)
+    public function __invoke(?int $state = null)
     {
-        if ($state == 1) {
-            Cookie::queue('r_dark_theme', 1, 218400);
-        } else {
-            Cookie::queue('r_dark_theme', 0, -1);
-        }
+        return $state == 1
+        ? Cookie::queue('r_dark_theme', 1, 218400)
+        : Cookie::queue('r_dark_theme', 0, -1);
     }
 }

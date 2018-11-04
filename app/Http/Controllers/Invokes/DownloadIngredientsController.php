@@ -15,9 +15,8 @@ class DownloadIngredientsController extends Controller
      * Handle the incoming request.
      *
      * @param int $recipe_id
-     * @param  \Illuminate\Http\Request  $request
      */
-    public function __invoke(Request $request, int $recipe_id)
+    public function __invoke(int $recipe_id)
     {
         $recipe = Recipe::find($recipe_id);
         $text = $recipe->getTitle() . PHP_EOL . PHP_EOL . $recipe->getIngredients();
