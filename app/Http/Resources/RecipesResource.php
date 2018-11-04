@@ -11,6 +11,7 @@ class RecipesResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'slug' => $this->slug,
             'title' => $this->resource->getTitle(),
             'intro' => $this->resource->getIntro(),
             'time' => $this->time,
