@@ -56,8 +56,11 @@
             {{-- Time --}}
             <div class="col s12 m6 l4">
                 <div class="input-field">
+                    <label for="time">
+                        @lang('recipes.time_desc') 
+                        @include('includes.tip', ['tip' => trans('tips.recipes_time')])
+                    </label>
                     <input type="number" name="time" id="time" value="{{ old('time') ?? $recipe->time }}">
-                    <label for="time">@lang('recipes.time_desc')</label>
                 </div>
             </div>
 
