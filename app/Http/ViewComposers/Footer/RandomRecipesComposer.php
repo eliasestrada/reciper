@@ -17,7 +17,7 @@ class RandomRecipesComposer
     {
         try {
             $random_recipes = cache()->remember('random_recipes', config('cache.timing.random_recipes'), function () {
-                return Recipe::select('id', 'title_' . LANG() . ' as title')
+                return Recipe::select('slug', 'title_' . LANG() . ' as title')
                     ->inRandomOrder()
                     ->done(1)
                     ->limit(10)

@@ -31,7 +31,7 @@
                 <li><strong>@lang('recipes.recipes')</strong></li>
                 @foreach ($random_recipes as $recipe)
                     <li>
-                        <a href="/recipes/{{ $recipe['id'] }}" class="{{ active_if_route_is(['recipes/' . $recipe['id']]) }}">
+                        <a href="/recipes/{{ $recipe['slug'] }}" class="{{ active_if_route_is(['recipes/' . $recipe['slug']]) }}">
                             <i class="fas fa-angle-right red-text" style="width:7.5px"></i> {{ $recipe['title'] }}
                         </a>
                     </li>
@@ -45,7 +45,7 @@
                 <li><strong>@lang('recipes.popular')</strong></li>
                 @foreach ($popular_recipes as $recipe)
                     <li>
-                        <a href="/recipes/{{ $recipe['id'] }}" class="{{ active_if_route_is(['recipes/' . $recipe['id']]) }}">
+                        <a href="/recipes/{{ $recipe['slug'] }}" class="{{ active_if_route_is(['recipes/' . $recipe['slug']]) }}">
                             <i class="fas fa-angle-right red-text" style="width:7.5px"></i> {{ $recipe['title'] }}
                         </a>
                     </li>
