@@ -29,6 +29,7 @@ class RecipeSeeder extends Seeder
             'ready_ru' => 1,
             'ru_approver_id' => 1,
             'simple' => 1,
+            'slug' => 'morkov-po-koreyski',
             'created_at' => '2018-04-02 12:48:26',
             'updated_at' => '2018-04-02 12:48:26',
         ]);
@@ -48,6 +49,7 @@ class RecipeSeeder extends Seeder
             'ready_ru' => 1,
             'ru_approver_id' => 1,
             'simple' => 0,
+            'slug' => 'paskhalnyy-kulich-s-tsukatami',
             'created_at' => '2018-11-03 18:59:10',
             'updated_at' => '2018-11-03 18:59:10',
         ]);
@@ -67,6 +69,7 @@ class RecipeSeeder extends Seeder
             'ready_ru' => 1,
             'ru_approver_id' => 1,
             'simple' => 1,
+            'slug' => 'grechaniki-s-gribami',
             'created_at' => '2018-11-03 19:10:10',
             'updated_at' => '2018-11-03 19:10:10',
         ]);

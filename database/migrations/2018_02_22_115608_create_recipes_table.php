@@ -17,7 +17,7 @@ class CreateRecipesTable extends Migration
             $table->unsignedInteger('en_approver_id')->default(0);
 
             // Russian language
-            $table->string('title_ru', config('valid.recipes.title.max') + 20)->nullable();
+            $table->string('title_ru', 100)->nullable();
             $table->text('intro_ru')->nullable();
             $table->text('ingredients_ru')->nullable();
             $table->text('text_ru')->nullable();
@@ -26,7 +26,7 @@ class CreateRecipesTable extends Migration
             $table->boolean('published_ru')->default(0);
 
             // English language
-            $table->string('title_en', config('valid.recipes.title.max') + 20)->nullable();
+            $table->string('title_en', 100)->nullable();
             $table->text('intro_en')->nullable();
             $table->text('ingredients_en')->nullable();
             $table->text('text_en')->nullable();
@@ -35,6 +35,7 @@ class CreateRecipesTable extends Migration
             $table->boolean('published_en')->default(0);
 
             // Other
+            $table->string('slug', 100);
             $table->unsignedSmallInteger('time')->default(0);
             $table->string('image')->default('default.jpg');
             $table->boolean('simple')->default(0);
