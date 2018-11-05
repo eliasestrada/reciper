@@ -15,35 +15,42 @@
                     @slot('tip') @lang('tips.edit') @endslot
                 @endcomponent
             @endif
-    
+
             {{-- Show menu button --}}
             <a href="#" title="@lang('recipes.show_menu')">
                 <i class="fas fa-ellipsis-v fa-15x px-3 py-2 main-text right" id="popup-window-trigger" style="transform:translateX(-15px)"></i>
             </a>
-    
+
             <div class="popup-window z-depth-2 p-3 position-absolute paper" id="popup-window">
                 {{-- Report button --}}
                 <a href="#report-recipe-modal" class="btn waves-effect waves-light modal-trigger min-w"{{ visitor_id() == $recipe->user_id || optional(user())->hasRecipe($recipe->id) ? ' disabled' : '' }}>
                     @lang('recipes.report_recipe')
                 </a>
-    
+
                 {{--  To drafts button  --}}
                 @if (optional(user())->hasRecipe($recipe->id) && $recipe->isDone())
                     <form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post">
                         @method('put')
                         @csrf
-                        <button class="btn min-w" onclick="if (!confirm('@lang('recipes.are_you_sure_to_draft')')) event.preventDefault()">@lang('tips.add_to_drafts')</button>
+                        <button class="btn min-w" onclick="if (!confirm('@lang('recipes.are_you_sure_to_draft')')) event.preventDefault()">
+                            @lang('tips.add_to_drafts')
+                        </button>
                     </form>
                 @endif
-    
+
                 {{-- Edit button --}}
                 @if (optional(user())->hasRecipe($recipe->id))
                     <a href="/recipes/{{ $recipe->slug }}/edit" class="btn mt-2 min-w" {{ $recipe->isReady() ? 'disabled' : '' }}>
                         @lang('tips.edit')
                     </a>
                 @endif
+
+                {{-- Print --}}
+                <a href="#" class="btn min-w" onclick="window.print()">
+                    @lang('messages.print')
+                </a>
             </div>
-    
+
             {{--  Likes  --}}
             <div class="like-for-author-section no-select pt-1" v-if="false">
                 <div class="card-content">@include('includes.preloader')</div>
@@ -54,10 +61,10 @@
                     <div class="d-inline-block" style="transform:translateX(13px)">
                         <btn-favs recipe-id="{{ $recipe->id }}" :favs="{{ $recipe->favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}"></btn-favs>
                     </div>
-    
+
                     {{-- User icon --}}
                     <a href="/users/{{ $recipe->user->username }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->photo) }})" title="@lang('users.go_to_profile') {{ $recipe->user->getName() }}"></a>
-    
+
                     {{-- Like button --}}
                     <like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}" inline-template>
                         <div class="d-inline-block">
@@ -90,7 +97,7 @@
                     :key="recipe.id">
 
                     <div class="card-image">
-                        <a :href="'/recipes/' + recipe.id" :title="recipe.title" class="waves-effect waves-light">
+                        <a :href="'/recipes/' + recipe.slug" :title="recipe.title" class="waves-effect waves-light">
                             <img :src="'/storage/recipes/' + recipe.image" :alt="recipe.title">
                         </a>
                     </div>

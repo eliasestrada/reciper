@@ -26,7 +26,7 @@
 
 .paper {
     background-color: $paper;
-    
+
     .dark-theme & {
         background-color: lighten($darkTheme, 7%);
     }
@@ -942,7 +942,7 @@ th {
 
 .collection a.collection-item:not(.active):hover {
     background-color: #ddd;
-    
+
     .dark-theme & {
         background-color: lighten($darkTheme, 10%);
     }
@@ -3421,7 +3421,7 @@ button.btn-floating {
         &:focus {
             outline: none;
             background-color: $mainLight;
-            
+
             .dark-theme & {
                 background-color: $darkTheme;
             }
@@ -3516,7 +3516,7 @@ button.btn-floating {
 }
 
 .waves-effect.waves-red .waves-ripple {
-    background-color: $red;
+    background-color: lighten($red, 10%);
 }
 
 .waves-effect.waves-yellow .waves-ripple {
@@ -3532,7 +3532,7 @@ button.btn-floating {
 }
 
 .waves-effect.waves-green .waves-ripple {
-    background-color: rgba(76, 175, 80, 0.7);
+    background-color: lighten($green, 10%);
 }
 
 .waves-effect input[type="button"],
@@ -5344,7 +5344,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
 
 .sidenav li.active {
     background-color: #dcdcdc;
-    
+
     .dark-theme & {
         background-color: lighten($darkTheme, 5%);
     }
@@ -5362,7 +5362,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
     height: 40px;
     line-height: 40px;
     padding: 0 32px;
-    
+
     .dark-theme & {
         color: #ebebeb;
     }
