@@ -13,6 +13,14 @@ function custom_strip_tags(string $string): string
 }
 
 /**
+ * Helper for cookie
+ */
+function getCookie($name)
+{
+    return request()->cookie($name);
+}
+
+/**
  * Takes string, adds li tags to every line separeted by "\n"
  * @param string $str
  * @return array
