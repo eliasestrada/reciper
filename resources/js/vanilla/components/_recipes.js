@@ -36,11 +36,12 @@
     incFontSizeBtn.addEventListener('click', () => {
         elements.forEach(el => {
             let currentSize = parseFloat(el.style.fontSize);
-
-            if (el.style.fontSize == "") el.style.fontSize = "1.05em";
+            let newFontSize = currentSize + 0.1
 
             if (currentSize <= 1.5 && currentSize >= 0.9) {
-                el.style.fontSize = currentSize + 0.1 + "em"
+                el.style.fontSize = newFontSize + "em"
+                fetch(`/invokes/font-size-switcher/${newFontSize}`)
+                    .catch(err => console.error(err));
             }
         });
     });
@@ -48,9 +49,12 @@
     dicFontSizeBtn.addEventListener('click', () => {
         elements.forEach(el => {
             let currentSize = parseFloat(el.style.fontSize);
+            let newFontSize = currentSize - 0.1
 
             if (currentSize <= 1.6 && currentSize >= 1) {
-                el.style.fontSize = currentSize - 0.1 + "em"
+                el.style.fontSize = newFontSize + "em"
+                fetch(`/invokes/font-size-switcher/${newFontSize}`)
+                    .catch(err => console.error(err));
             }
         });
     });
