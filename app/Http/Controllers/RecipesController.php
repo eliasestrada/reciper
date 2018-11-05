@@ -99,7 +99,10 @@ class RecipesController extends Controller
             $recipe->views()->whereVisitorId(visitor_id())->increment('visits');
         }
 
-        return view('recipes.show', compact('recipe'));
+        return view('recipes.show', [
+            'recipe' => $recipe,
+            'cookie' => getCookie('r_font_size') ? getCookie('r_font_size') : '1.0'
+        ]);
     }
 
     /**
