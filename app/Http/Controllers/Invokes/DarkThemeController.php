@@ -13,7 +13,7 @@ class DarkThemeController extends Controller
     public function __invoke(?int $state = null)
     {
         return $state == 1
-        ? Cookie::queue('r_dark_theme', 1, 218400)
-        : Cookie::queue('r_dark_theme', 0, -1);
+            ? Cookie::queue('r_dark_theme', 1, 218400)
+            : Cookie::queue('r_dark_theme', 0, -1);
     }
 }
