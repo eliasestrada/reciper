@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Controllers;
+namespace Tests\Unit\Controllers\Invokes;
 
 use Tests\TestCase;
 
