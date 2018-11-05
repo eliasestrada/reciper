@@ -5,7 +5,7 @@
 <img src="{{ asset('storage/recipes/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img corner z-depth-1 not-printable">
 
 {{--  Category  --}}
-<div class="center py-2 font-scalable">
+<div class="center py-2 font-scalable" style="font-size:1.0em">
     @foreach ($recipe->categories as $category)
         <a href="/recipes#category={{ $category->id }}" title="{{ $category->getName() }}">
             <span class="new badge p-1 px-2 float-none">{{ $category->getName() }}</span>
@@ -14,13 +14,13 @@
 </div>
 
 {{--  Time  --}}
-<div class="my-3 font-scalable">
+<div class="my-3 font-scalable" style="font-size:{{ $cookie }}em">
     <i class="fas fa-clock fa-15x z-depth-2 circle red-text mr-2 tooltipped" data-tooltip="@lang('tips.recipes_time')"></i>
     {{ $recipe->time }} @lang('recipes.min').
 </div>
 
 {{-- Increase Font-Size --}}
-<div class="min-w mt-2" style="opacity:.8">
+<div class="min-w mt-2" style="opacity:.7">
     <i class="fas fa-plus fa-1x mr-2"></i>
     <button type="button" class="hoverable waves-effect waves-green btn-floating btn-small green d-inline-block m-0 p-0" id="inc-font-size">
         <i class="fas fa-font fa-1x"></i>
@@ -32,14 +32,14 @@
 </div>
 
 {{--  Intro  --}}
-<blockquote class="left-align font-scalable">
+<blockquote class="left-align font-scalable" style="font-size:{{ $cookie }}em">
     {{ $recipe->getIntro() }}
 </blockquote>
 
 <div class="divider my-4"></div>
 
 {{--  Items --}}
-<div class="corner items py-4 px-3 z-depth-1 font-scalable">
+<div class="corner items py-4 px-3 z-depth-1 font-scalable" style="font-size:{{ $cookie }}em">
     <ol class="m-0">
         @foreach ($recipe->ingredientsWithListItems() as $item)
             {!! $item !!}
@@ -59,7 +59,7 @@
 </div>
 
 {{--  Text  --}}
-<blockquote class="pt-3 font-scalable" style="border:none">
+<blockquote class="pt-3 font-scalable" style="border:none; font-size:{{ $cookie }}em">
     <ol class="instruction unstyled-list">
         @foreach ($recipe->textWithListItems() as $item)
             {!! $item !!}
