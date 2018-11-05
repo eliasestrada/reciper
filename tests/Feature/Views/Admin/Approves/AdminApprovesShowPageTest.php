@@ -82,7 +82,7 @@ class AdminApprovesShowPageTest extends TestCase
             ->post(action('Admin\ApprovesController@approve', [
                 'recipe' => $this->unapproved_recipe->id,
             ]))
-            ->assertRedirect("/recipes/{$this->unapproved_recipe->id}");
+            ->assertRedirect("/recipes/{$this->unapproved_recipe->slug}");
     }
 
     /**

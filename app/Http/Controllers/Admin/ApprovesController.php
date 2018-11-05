@@ -58,6 +58,7 @@ class ApprovesController extends Controller
     public function show(Recipe $recipe)
     {
         $error_message = $this->returnErrorIfApprovedOrNotReady($recipe);
+        $cookie = getCookie('r_font_size') ? getCookie('r_font_size') : '1.0';
 
         if (!is_null($error_message)) {
             return redirect("/admin/approves")->withError($error_message);
@@ -70,7 +71,7 @@ class ApprovesController extends Controller
             $approver_id = $recipe->approver->id;
         }
 
-        return view('admin.approves.show', compact('recipe', 'approver_id'));
+        return view('admin.approves.show', compact('recipe', 'approver_id', 'cookie'));
     }
 
     /**
@@ -90,7 +91,7 @@ class ApprovesController extends Controller
         $recipe->update(['approved_' . LANG() => 1]);
         cache()->forget('unapproved_notif');
 
-        return redirect("/recipes/$recipe->id")
+        return redirect("/recipes/$recipe->slug")
             ->header('x-recipe-approved', 1)
             ->withSuccess(trans('recipes.recipe_published'));
     }
