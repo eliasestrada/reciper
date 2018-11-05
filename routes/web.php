@@ -79,5 +79,8 @@ Route::prefix('master')->namespace('Master')->middleware('master')->group(functi
 Route::resource('help', HelpController::class)->only(['index', 'show']);
 
 // Invokes
-Route::get('invokes/dark-theme-switcher/{state}', Invokes\DarkThemeController::class);
-Route::post('invokes/download-ingredients/{recipe_id}', Invokes\DownloadIngredientsController::class);
+Route::prefix('invokes')->namespace('Invokes')->group(function () {
+    Route::get('dark-theme-switcher/{state}', DarkThemeController::class);
+    Route::get('font-size-switcher/{font_size}', FontSizeController::class);
+    Route::post('download-ingredients/{recipe_id}', DownloadIngredientsController::class);
+});
