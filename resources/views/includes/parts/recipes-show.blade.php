@@ -20,7 +20,7 @@
 </div>
 
 {{-- Increase Font-Size --}}
-<div class="min-w mt-2" style="opacity:.7">
+<div class="min-w mt-2 not-printable" style="opacity:.7">
     <i class="fas fa-plus fa-1x mr-2"></i>
     <button type="button" class="hoverable waves-effect waves-green btn-floating btn-small green d-inline-block m-0 p-0" id="inc-font-size">
         <i class="fas fa-font fa-1x"></i>
