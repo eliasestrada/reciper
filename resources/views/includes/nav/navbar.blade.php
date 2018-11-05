@@ -10,12 +10,12 @@
         <li class="{{ active_if_route_is(['recipes*']) }} {{ $visitor_likes > 0 ? '' : 'hide' }}" id="visitor-likes-icon">
             <a href="/recipes#my_likes">
                 <i class="fas fa-heart fa-15x left with-red-hover"></i>
-                @lang('recipes.loved') 
+                @lang('recipes.loved')
                 <span id="visitor-likes-number">{{ $visitor_likes }}</span>
             </a>
         </li>
     @endisset
-    @auth 
+    @auth
         <li class="{{ active_if_route_is(['users/' . user()->username]) }}"> {{-- home --}}
             <a href="/users/{{ user()->username }}" title="@lang('users.my_account')">
                 <i class="fas fa-user-circle fa-15x left with-red-hover"></i>
@@ -147,11 +147,11 @@
     </li>
     <li>
         <a href="#" title="@lang('messages.dark_mode')">
-            <i class="fas fa-moon fa-15x left"></i> 
+            <i class="fas fa-moon fa-15x left"></i>
             <div class="switch">
                 <label class="ml-1">
                     @lang('messages.off')
-                    <input type="checkbox" id="dark-theme-toggle" {{ request()->cookie('r_dark_theme') == 1 ? 'checked' : '' }}>
+                    <input type="checkbox" id="dark-theme-toggle" {{ getCookie('r_dark_theme') == 1 ? 'checked' : '' }}>
                     <span class="lever"></span>
                     @lang('messages.on')
                 </label>
