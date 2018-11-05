@@ -54,12 +54,6 @@ Route::prefix('settings')->middleware('auth')->namespace('Settings')->group(func
     Route::delete('photo', 'PhotoController@destroy');
 });
 
-// Title
-Route::prefix('titles')->middleware('admin')->group(function () {
-    Route::put('intro', 'TitleController@intro');
-    Route::put('footer', 'TitleController@footer');
-});
-
 // Artisan commands =======
 Route::get('php/artisan/cache/{url_key}', 'ArtisanController@cache');
 Route::get('php/artisan/clear/{url_key}', 'ArtisanController@clear');
