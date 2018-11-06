@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
 
         // At 03:00
         $schedule->job(new \App\Jobs\DeleteUnactiveUsersJob)->dailyAt('03:00');
-        $schedule->job(new \App\Jobs\DeleteNotificationsJob)->dailyAt('19:12');
+        $schedule->job(new \App\Jobs\DeleteNotificationsJob)->dailyAt('03:03');
         $schedule->command('backup:clean')->dailyAt('03:00');
         $schedule->command('backup:run --only-db')->dailyAt('03:00');
     }
