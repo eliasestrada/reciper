@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Models\Like;
 use App\Models\User;
+use App\Helpers\TopRecipers;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -24,7 +25,8 @@ class TopRecipersJob implements ShouldQueue
     public function handle()
     {
         \Redis::throttle('top-recipers')->allow(2)->every(1)->then(function () {
-            $this->makeCachedListOfTopRecipers();
+            $list_of_top_recipers = $this->makeCachedListOfTopRecipers();
+            $this->saveWinnersToDatabase($list_of_top_recipers);
         }, function () {
             return $this->release(2);
         });
@@ -90,5 +92,18 @@ class TopRecipersJob implements ShouldQueue
         return $likes->map(function ($like) {
             return $like->recipe->user->username;
         })->toArray();
+    }
+
+    /**
+     * @param array $list
+     * @return bool
+     */
+    public function saveWinnersToDatabase(array $list): bool
+    {
+        $result = array_filter($list, function($item) use ($list) {
+            return $item == array_shift($list);
+        });
+
+        return TopRecipers::add(array_keys($result));
     }
 }

@@ -71,7 +71,7 @@ class TopRecipersJobTest extends TestCase
             $recipe->user->username => 1,
         ]);
 
-        $result = $this->job->makeCachedListOfToprecipers();
+        $this->job->makeCachedListOfToprecipers();
     }
 
     /**
@@ -87,5 +87,31 @@ class TopRecipersJobTest extends TestCase
 
         $this->assertEquals(3, $result['bogdan']);
         $this->assertEquals(1, $result['valya']);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function saveWinnersToDatabase_method_saves_given_username_to_DB(): void
+    {
+        $result = $this->job->saveWinnersToDatabase(['user1' => 11]);
+        $this->assertDatabaseHas('top_recipers', ['username' => 'user1']);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function saveWinnersToDatabase_method_saves_usernames_with_higher_score(): void
+    {
+        $result = $this->job->saveWinnersToDatabase([
+            'user1' => 11,
+            'user2' => 11,
+            'user3' => 9
+        ]);
+        $this->assertDatabaseHas('top_recipers', ['username' => 'user1']);
+        $this->assertDatabaseHas('top_recipers', ['username' => 'user2']);
+        $this->assertDatabaseMissing('top_recipers', ['username' => 'user3']);
     }
 }
