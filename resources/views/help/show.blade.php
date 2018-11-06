@@ -7,7 +7,7 @@
 @include('includes.buttons.back', ['url' => '/help'])
 
 <div class="page">
-    <p class="pt-4"><b>{{ $help->getTitle() }}</b></p>
+    <h1 class="pt-4 header"><b>{{ $help->getTitle() }}</b></h1>
     <div class="divider"></div>
     <p>{!! $help->getText() !!}</p>
 </div>
