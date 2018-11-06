@@ -6,20 +6,17 @@
 
 <div class="image-bg row mb-0">
     <div class="col s12 m6 offset-m3 form-wrapper my-5 corner z-depth-1">
-        <div>
-            <div class="register-tabs mt-2">
-                <a href="/register">@lang('auth.register')</a>
-                <a href="#" class="active">@lang('auth.login')</a>
-            </div>
+        <div class="center pt-2">
+            <h1 class="header">@lang('auth.login')</h1>
         </div>
 
-        <form method="POST" action="{{ route('login') }}" class="pt-5 px-4">
+        <form method="POST" action="{{ route('login') }}" class="px-4">
             @csrf
             <div class="input-field">
                 <input id="username" value="{{ old('username') }}" type="text" name="username" class="validate">
                 <label for="username">@lang('auth.username')</label>
             </div>
-        
+
             <visibility inline-template>
                 <div class="input-field">
                     <input class="validate with-icon" :type="type" name="password" id="password" autocomplete="off" required>
@@ -34,12 +31,12 @@
                 <label>
                     <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }} />
                     <span>
-                        @lang('forms.remember_me') 
+                        @lang('forms.remember_me')
                         @include('includes.tip', ['tip' => trans('tips.remember_info')])
                     </span>
                 </label>
             </div>
-        
+
             <div class="input-field">
                 <button type="submit" id="go-to-account" class="waves-effect waves-light btn">
                     @lang('auth.login')

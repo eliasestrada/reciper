@@ -1,37 +1,3 @@
-.register-tabs {
-    height: 50px;
-    border-bottom: solid 1px lighten($main, 25%);
-
-    .dark-theme & {
-        border-bottom-color: darken($mainLight, 10%);
-    }
-
-
-    a {
-        width: 50%;
-        height: 100%;
-        line-height: 50px;
-        float: left;
-        text-align: center;
-        font-weight: bold;
-        color: lighten($main, 15%);
-        font-size: 1.1em;
-
-        .dark-theme & {
-            color: $mainLight;
-        }
-    }
-    a.active {
-        color: $main;
-        border-bottom: solid 3px lighten($main, 10%);
-
-        .dark-theme & {
-            color: #fff;
-            border-bottom-color: $mainLight;
-        }
-    }
-}
-
 .form-wrapper {
     background: rgba(#fff, .9);
     padding-top: 1em !important;

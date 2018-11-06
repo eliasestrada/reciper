@@ -6,19 +6,16 @@
 
 <div class="row image-bg mb-0">
     <div class="col s12 m6 offset-m3 form-wrapper my-5 corner z-depth-1">
-        <div>
-            <div class="register-tabs mt-2">
-                <a href="#" class="active">@lang('auth.register')</a>
-                <a href="/login">@lang('auth.login')</a>
-            </div>
+        <div class="center pt-2">
+            <h1 class="header">@lang('auth.register')</h1>
         </div>
 
-        <form method="POST" action="{{ route('register') }}" class="pt-5 px-4">
+        <form method="POST" action="{{ route('register') }}" class="px-4">
             @csrf
             <div class="input-field">
                 <input type="text" id="username" name="username" value="{{ old('username') }}" class="validate" required>
                 <label for="username">
-                    @lang('auth.username') 
+                    @lang('auth.username')
                     @include('includes.tip', ['tip' => trans('auth.username_desc')])
                 </label>
             </div>
