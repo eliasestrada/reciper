@@ -6,7 +6,7 @@
 
 <div class="page row">
     <div class="col s12 l6 mb-3">
-        <div class="center"><h5 class="header">@lang('messages.general')</h5></div>
+        <div class="center"><h1 class="header">@lang('messages.general')</h1></div>
         <table class="responsive highlight">
             <tr>
                 {{-- All recipes --}}
@@ -55,7 +55,7 @@
                 <td>@lang('users.most_liked_recipe')</td>
                 <td class="right-align">
                     @if ($most_liked)
-                        <a href="{{ "/recipes/$most_liked->slug" }}">{{ $most_liked->getTitle() }}</a>
+                        <a href="{{ "/recipes/$most_liked->slug" }}" class="main-text">{{ $most_liked->getTitle() }}</a>
                         {{ $most_liked->likes_count }} <i class='fas fa-heart red-text tiny'></i>
                     @else - @endif
                 </td>
@@ -65,7 +65,7 @@
                 <td>@lang('users.most_viewed_recipe')</td>
                 <td class="right-align">
                     @if ($most_viewed)
-                        <a href="{{ "/recipes/$most_viewed->slug" }}">
+                        <a href="{{ "/recipes/$most_viewed->slug" }}" class="main-text">
                             {{ $most_viewed->getTitle() }}
                         </a>
                         {{ $most_viewed->views_count }} <i class='fas fa-eye grey-text tiny'></i>
@@ -77,7 +77,7 @@
                 <td>@lang('users.most_favorite_recipe')</td>
                 <td class="right-align">
                     @if ($most_liked)
-                        <a href="{{ "/recipes/$most_favs->slug" }}">{{ $most_favs->getTitle() }}</a>
+                        <a href="{{ "/recipes/$most_favs->slug" }}" class="main-text">{{ $most_favs->getTitle() }}</a>
                         {{ $most_favs->favs_count }} <i class='fas fa-star tiny' style="color:#d49d10"></i>
                     @else - @endif
                 </td>

@@ -48,8 +48,8 @@ class StatisticsController extends Controller
         return array_map(function ($month_number) {
             return [
                 'month' => now()->startOfMonth()->subMonths($month_number - 1)->month,
-                'from' => now()->startOfMonth()->subMonths($month_number),
-                'to' => now()->startOfMonth()->subMonths($month_number - 1),
+                'from' => now()->startOfMonth()->subMonths($month_number - 1),
+                'to' => now()->startOfMonth()->subMonths($month_number - 2),
                 'sum' => 0,
             ];
         }, [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
