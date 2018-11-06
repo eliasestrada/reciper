@@ -183,9 +183,8 @@
                     </a>
                 @else
                     {{-- Dropdown Trigger 2  --}}
-                    <a class="right dropdown-trigger position-relative" href="#!" data-target="dropdown2" style="margin-top:.65rem">
+                    <a class="right dropdown-trigger position-relative" href="#!" data-target="dropdown2" style="margin-top:.65rem" id="_hamb-menu">
                         <i class="fas fa-bars user-icon-navbar z-depth-1 hoverable waves-effect waves-light d-block center" style="line-height:42px">
-                            {{-- <img src="{{ asset('storage/small/users/default.jpg') }}"> --}}
                         </i>
                     </a>
                 @endauth

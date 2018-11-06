@@ -14,7 +14,7 @@ class LikeDuskTest extends DuskTestCase
     public function guest_can_like_and_dislike_recipe(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/recipes/1')
+            $browser->visit('/recipes/morkov-po-koreyski')
                 ->waitFor('.like-icon')
                 ->assertSeeIn('#_all-likes', 0)
                 ->click('.like-icon')
@@ -30,10 +30,11 @@ class LikeDuskTest extends DuskTestCase
     public function heart_icon_appears_on_navbar_after_giving_a_like_and_disappears_after_dislike(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/recipes/1')
+            $browser->visit('/recipes/morkov-po-koreyski')
                 ->waitFor('.like-icon')
                 ->assertDontSeeIn('#visitor-likes-number', 1)
                 ->press('.like-icon')
+                ->press('#_hamb-menu')
                 ->waitFor('#visitor-likes-number')
                 ->assertSeeIn('#visitor-likes-number', 1)
                 ->press('.like-icon')
