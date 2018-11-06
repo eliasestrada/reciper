@@ -50,6 +50,10 @@
 
 .main-text {
     color: $main !important;
+
+    .dark-theme & {
+        color: lighten($main, 10%) !important;
+    }
 }
 
 // Main light color
