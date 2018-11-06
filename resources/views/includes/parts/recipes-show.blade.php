@@ -1,6 +1,4 @@
-<div class="center">
-    <h5>{{ $recipe->getTitle() }}</h5>
-</div>
+<div class="center"><h1 style="font-size:2em">{{ $recipe->getTitle() }}</h1></div>
 
 <img src="{{ asset('storage/recipes/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img corner z-depth-1 not-printable">
 
@@ -8,7 +6,7 @@
 <div class="center py-2 font-scalable" style="font-size:1.0em">
     @foreach ($recipe->categories as $category)
         <a href="/recipes#category={{ $category->id }}" title="{{ $category->getName() }}">
-            <span class="new badge p-1 px-2 float-none">{{ $category->getName() }}</span>
+            <span class="new badge p-1 px-2 mx-1 float-none">{{ $category->getName() }}</span>
         </a>
     @endforeach
 </div>
