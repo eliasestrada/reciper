@@ -76,7 +76,7 @@ select {
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none; 
+    user-select: none;
 }
 
 .break-word {
@@ -141,7 +141,7 @@ select {
     font-family: $headerFont;
     text-shadow: 1px 1px 3px $mainLight;
     display: inline-block;
-    font-size: 1.4em;
+    font-size: 1.5em;
     margin: .4em 0;
 
     .dark-theme & {
