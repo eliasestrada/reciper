@@ -15,6 +15,7 @@ class CreateTopRecipersTable extends Migration
     {
         Schema::create('top_recipers', function (Blueprint $table) {
             $table->string('username', 40);
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
