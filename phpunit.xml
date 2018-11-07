@@ -24,6 +24,8 @@
             <exclude>
                 <directory suffix=".php">./app/Console/Commands</directory>
                 <file>./app/Exceptions/Handler.php</file>
+                <file>./app/Http/Controllers/ArtisanController.php</file>
+                <file>./app/Http/Controllers/Controller.php</file>
             </exclude>
         </whitelist>
     </filter>
