@@ -23,9 +23,11 @@
             <directory suffix=".php">./app</directory>
             <exclude>
                 <directory suffix=".php">./app/Console/Commands</directory>
+                <directory suffix=".php">./app/Providers</directory>
                 <file>./app/Exceptions/Handler.php</file>
                 <file>./app/Http/Controllers/ArtisanController.php</file>
                 <file>./app/Http/Controllers/Controller.php</file>
+                <file>./app/Http/Kernel.php</file>
             </exclude>
         </whitelist>
     </filter>
