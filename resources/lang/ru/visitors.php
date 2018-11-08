@@ -6,8 +6,6 @@ return [
     'visitors' => 'Посетители',
     'visitor' => 'Посетитель',
     'go_to_visitor' => 'К посетителю',
-    'all_views' => 'Все просмотры',
-    'all_visitors' => 'Все посетители',
     'gave_likes' => 'Отдано сердечек',
     'recipes_viewed' => 'Просмотрено рецептов',
     'registered_users' => 'Зарегистрированные пользователи',

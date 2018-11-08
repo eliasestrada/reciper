@@ -14,9 +14,8 @@
     </div>
     <div class="row container">
         <ul class="col s12 m6">
-            <li><i class="main-text fas fa-eye tiny"></i> - @lang('visitors.all_views')</li>
             <li><i class="main-text fas fa-heart tiny"></i> - @lang('visitors.gave_likes')</li>
-            <li><i class="main-text fas fa-book-reader tiny"></i> - @lang('visitors.recipes_viewed')</li>
+            <li><i class="main-text fas fa-eye tiny"></i> - @lang('visitors.recipes_viewed')</li>
         </ul>
         <ul class="col s12 m6">
             <li><i class="green-text fas fa-circle tiny"></i> - @lang('visitors.registered_users')</li>

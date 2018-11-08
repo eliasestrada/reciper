@@ -43,9 +43,6 @@
                 <tr> {{-- Recipes viewed --}}
                     <td>@lang('visitors.recipes_viewed'): <span class="red-text">{{ $visitor->views->count() }}</span></td>
                 </tr>
-                <tr> {{-- All views --}}
-                    <td>@lang('visitors.all_views'): <span class="red-text">{{ $visitor->views->sum('visits') }}</span></td>
-                </tr>
                 <tr> {{-- Last activity --}}
                     <td>
                         @lang('visitors.last_activity'): <span class="red-text">{{ $visitor->online_check }}</span> ({{ time_ago($visitor->online_check) }})
