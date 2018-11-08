@@ -1,8 +1,6 @@
 <?php
 
-Route::prefix('recipes')->namespace('Api')->group(function () {
-    Route::get('{hash?}', 'RecipesController@index');
-});
+Route::get('recipes/{hash?}', 'Api\RecipesController@index');
 
 Route::prefix('like')->namespace('Api')->group(function () {
     Route::post('check/{id}', 'LikeController@check');
