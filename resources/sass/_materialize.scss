@@ -33,10 +33,10 @@
 }
 
 .paper-dark {
-    background-color: $paperDark;
+    background-color: $paperDark !important;
 
     .dark-theme & {
-        background: lighten($darkTheme, 10%);
+        background: lighten($darkTheme, 10%) !important;
     }
 }
 

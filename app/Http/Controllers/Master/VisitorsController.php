@@ -17,7 +17,7 @@ class VisitorsController extends Controller
         return view('master.visitors.index', [
             'visitors' => Visitor::withCount('views')
                 ->withCount('likes')
-                ->orderBy('views_count', 'desc')
+                ->orderBy('created_at', 'desc')
                 ->paginate(50)
                 ->onEachSide(1),
         ]);
