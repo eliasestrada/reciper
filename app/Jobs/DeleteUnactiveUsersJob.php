@@ -10,9 +10,11 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class DeleteUnactiveUsersJob implements ShouldQueue
+// class DeleteUnactiveUsersJob implements ShouldQueue
+class DeleteUnactiveUsersJob
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    // use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable, Queueable;
 
     /**
      * Loop through all unactive users and delete them with

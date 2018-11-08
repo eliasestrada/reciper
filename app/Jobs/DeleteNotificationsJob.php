@@ -9,9 +9,11 @@ use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class DeleteNotificationsJob implements ShouldQueue
+// class DeleteNotificationsJob implements ShouldQueue
+class DeleteNotificationsJob
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    // use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable, Queueable;
 
     /**
      * Execute the job.
