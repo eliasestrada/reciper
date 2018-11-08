@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
         // \Artisan::call('wipe');
         $this->showListOfCategories();
         $this->horizonRightsChecker();
+
+        if (app()->env === 'production') {
+            url()->forceScheme('https');
+        }
     }
 
     /**
