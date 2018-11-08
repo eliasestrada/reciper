@@ -78,7 +78,7 @@ function style_timestamp(string $path): string
     } catch (Exception $e) {
         $timestamp = '';
     }
-    return '<link rel="stylesheet" href="' . $path . $timestamp . '">';
+    return '<link rel="stylesheet" href="' . url($path) . $timestamp . '">';
 }
 
 /**
@@ -95,7 +95,7 @@ function script_timestamp(string $path): string
     } catch (Exception $e) {
         $timestamp = '';
     }
-    return '<script type="text/javascript" src="' . $path . $timestamp . '"></script>';
+    return '<script type="text/javascript" src="' . url($path) . $timestamp . '"></script>';
 }
 
 /**

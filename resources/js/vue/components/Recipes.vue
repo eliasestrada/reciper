@@ -71,16 +71,11 @@
             makeFirstRequest() {
                 Event.$emit('hash-changed', this.hash())
 
-                fetch('/api/recipes/' + this.hash())
+                fetch(`/api/recipes/${this.hash()}`)
                     .then(res => res.json())
                     .then(res => {
                         this.recipes = res.data
-
-                        if (res.links.next != null) {
-                            this.next = res.links.next
-                        } else {
-                            this.theEnd = true
-                        }
+                        res.links.next != null ? this.next = res.links.next : this.theEnd = true;
                     })
                     .catch(err => console.error(err));
             },
