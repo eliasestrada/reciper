@@ -2,16 +2,13 @@
 
 namespace App\Jobs;
 
+use App\Helpers\TopRecipers;
 use App\Models\Like;
 use App\Models\User;
-use App\Helpers\TopRecipers;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
 
 // class TopRecipersJob implements ShouldQueue
 class TopRecipersJob
@@ -26,12 +23,12 @@ class TopRecipersJob
      */
     public function handle()
     {
-        \Redis::throttle('top-recipers')->allow(2)->every(1)->then(function () {
-            $list_of_top_recipers = $this->makeCachedListOfTopRecipers();
-            $this->saveWinnersToDatabase($list_of_top_recipers);
-        }, function () {
-            return $this->release(2);
-        });
+        // \Redis::throttle('top-recipers')->allow(2)->every(1)->then(function () {
+        $list_of_top_recipers = $this->makeCachedListOfTopRecipers();
+        $this->saveWinnersToDatabase($list_of_top_recipers);
+        // }, function () {
+        //     return $this->release(2);
+        // });
     }
 
     /**
@@ -102,7 +99,7 @@ class TopRecipersJob
      */
     public function saveWinnersToDatabase(array $list): bool
     {
-        $result = array_filter($list, function($item) use ($list) {
+        $result = array_filter($list, function ($item) use ($list) {
             return $item == array_shift($list);
         });
 

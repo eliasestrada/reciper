@@ -3,11 +3,8 @@
 namespace App\Jobs;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Notifications\DatabaseNotification;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
 
 // class DeleteNotificationsJob implements ShouldQueue
 class DeleteNotificationsJob
@@ -22,11 +19,11 @@ class DeleteNotificationsJob
      */
     public function handle()
     {
-        \Redis::throttle('delete-notifications')->allow(2)->every(1)->then(function () {
-            $this->deleteNotifications();
-        }, function () {
-            return $this->release(2);
-        });
+        // \Redis::throttle('delete-notifications')->allow(2)->every(1)->then(function () {
+        $this->deleteNotifications();
+        // }, function () {
+        // return $this->release(2);
+        // });
     }
 
     /**
