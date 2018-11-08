@@ -42,7 +42,7 @@ class RecipeCanceledNotification extends Notification
         return [
             'title' => trans('approves.recipe_not_published'),
             'message' => $this->message,
-            'link' => '/recipes/' . $this->recipe->id,
+            'link' => '/recipes/' . $this->recipe->slug,
         ];
     }
 }

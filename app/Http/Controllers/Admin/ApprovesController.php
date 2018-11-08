@@ -114,7 +114,7 @@ class ApprovesController extends Controller
         $recipe->update(['ready_' . LANG() => 0]);
         cache()->forget('unapproved_notif');
 
-        return redirect('/recipes')
+        return redirect('/recipes#new')
             ->header('x-recipe-disapproved', 1)
             ->withSuccess(trans('recipes.you_gave_recipe_back_on_editing'));
     }

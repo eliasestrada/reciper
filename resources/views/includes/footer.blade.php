@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/recipes" title="@lang('messages.go')" class="{{ active_if_route_is(['recipes', 'recipes/*']) }}">
+                    <a href="/recipes#new" title="@lang('messages.go')" class="{{ active_if_route_is(['recipes', 'recipes/*']) }}">
                         <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('recipes.recipes')
                     </a>
                 </li>
