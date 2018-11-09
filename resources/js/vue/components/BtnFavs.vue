@@ -4,7 +4,7 @@
             <i class="fas fa-star fa-15x star" :class="icon"></i> 
             <span v-text="amount" style="transform:translate(-2px, 5px);color:#6b6b6b" class="d-inline-block"></span>
         </a>
-        <a v-else href="#" class="p-0 tooltipped" :data-tooltip="tooltip">
+        <a v-else href="#" class="p-0 tooltipped" :data-tooltip="tooltip" data-position="bottom">
             <i class="fas fa-star fa-15x star"></i> 
             <span v-text="amount" style="transform:translate(-4px, 5px);color:#6b6b6b" class="d-inline-block"></span>
         </a>
