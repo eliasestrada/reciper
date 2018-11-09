@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Popularity;
 use App\Helpers\Traits\RecipesControllerHelpers;
+use App\Helpers\Xp;
 use App\Http\Requests\Recipes\RecipeStoreRequest;
 use App\Http\Requests\Recipes\RecipeUpdateRequest;
 use App\Http\Responses\Controllers\RecipeUpdateResponse;
@@ -101,6 +102,7 @@ class RecipesController extends Controller
 
         return view('recipes.show', [
             'recipe' => $recipe,
+            'xp' => new Xp($recipe->user),
             'cookie' => getCookie('r_font_size') ? getCookie('r_font_size') : '1.0',
         ]);
     }
