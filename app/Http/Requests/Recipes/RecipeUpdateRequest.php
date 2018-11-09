@@ -38,7 +38,7 @@ class RecipeUpdateRequest extends FormRequest
                 'time' => 'numeric|between:1,1000',
                 'image' => 'image|mimes:jpg,png,jpeg|nullable|max:1999',
                 'categories.0' => 'required',
-                'categories.*' => 'distinct|numeric|between:2,' . Category::count(),
+                'categories.*' => 'distinct|numeric|between:1,' . Category::count(),
             ];
         }
         return [];

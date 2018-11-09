@@ -228,21 +228,6 @@ class RecipesUpdateRequestTest extends TestCase
      * @author Cho
      * @test
      */
-    public function categories_must_not_have_id_of_one(): void
-    {
-        $this->data['categories'] = [0 => 1];
-        $this->data['title'] = 'This title will not be saved coz category id';
-
-        $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
-
-        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->doesntExist());
-    }
-
-    /**
-     * @author Cho
-     * @test
-     */
     public function categories_must_be_between_numbers(): void
     {
         $this->data['categories'] = [0 => 3, 1 => Category::count() + 1];

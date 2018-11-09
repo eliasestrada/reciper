@@ -12,7 +12,6 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
         Category::insert([
-            ['name_ru' => 'Все категории', 'name_en' => 'All categories'],
             ['name_ru' => 'Вторые блюда', 'name_en' => 'Second course'],
             ['name_ru' => 'Выпечка', 'name_en' => 'Bakery'],
             ['name_ru' => 'Вегетарианские', 'name_en' => 'Vegetarian'],
