@@ -25,7 +25,6 @@
 
     .user-icon-on-single-recipe {
         margin-right: -25px;
-        transition: margin-right 300ms, transform 300ms;
         width: 70px;
         height: 70px;
         border-radius: 50%;
@@ -33,12 +32,6 @@
         background-position: top !important;
         background-size: 70px !important;
         background-repeat: no-repeat !important;
-
-        &:hover {
-            margin-right: 5px;
-            transition: margin-right 300ms, transform 300ms;
-            transform: scale(1.2);
-        }
     }
 
     .like-icon {
