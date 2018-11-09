@@ -10,10 +10,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-// class TopRecipersJob implements ShouldQueue
 class TopRecipersJob
 {
-    // use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     use Dispatchable, Queueable;
 
     /**
@@ -23,12 +21,8 @@ class TopRecipersJob
      */
     public function handle()
     {
-        // \Redis::throttle('top-recipers')->allow(2)->every(1)->then(function () {
         $list_of_top_recipers = $this->makeCachedListOfTopRecipers();
         $this->saveWinnersToDatabase($list_of_top_recipers);
-        // }, function () {
-        //     return $this->release(2);
-        // });
     }
 
     /**

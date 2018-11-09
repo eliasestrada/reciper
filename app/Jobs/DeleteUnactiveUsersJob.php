@@ -7,10 +7,8 @@ use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-// class DeleteUnactiveUsersJob implements ShouldQueue
 class DeleteUnactiveUsersJob
 {
-    // use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     use Dispatchable, Queueable;
 
     /**

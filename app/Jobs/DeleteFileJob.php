@@ -3,13 +3,14 @@
 namespace App\Jobs;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
-// class DeleteFileJob implements ShouldQueue
-class DeleteFileJob
+class DeleteFileJob implements ShouldQueue
 {
-    // use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    use Dispatchable, Queueable;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $filename;
 
@@ -31,11 +32,11 @@ class DeleteFileJob
      */
     public function handle()
     {
-        // \Redis::throttle('delete-file')->allow(2)->every(1)->then(function () {
-        $this->deleteFile();
-        // }, function () {
-        // return $this->release(2);
-        // });
+        \Redis::throttle('delete-file')->allow(2)->every(1)->then(function () {
+            $this->deleteFile();
+        }, function () {
+            return $this->release(2);
+        });
     }
 
     /**
