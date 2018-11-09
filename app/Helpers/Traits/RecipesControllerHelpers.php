@@ -39,8 +39,7 @@ trait RecipesControllerHelpers
             ->fit(600, 400, function ($constraint) {
                 $constraint->upsize();
             }, 'top')
-        // No watermarks for now, maybe in a future
-        // ->insert(storage_path('app/public/other/watermark.png'))
+            ->insert(storage_path('app/public/other/watermark.png'))
             ->save("{$path}/{$image_name}");
 
         // Small image
