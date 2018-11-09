@@ -28,7 +28,7 @@
         <div class="divider"></div>
         <thead>
             <tr>
-                <th class="py-main-text">#</th>
+                <th class="py-1 main-text">#</th>
                 <th class="py-1"><i class="fas fa-door-open main-text" title="@lang('visitors.first_visit')"></i></th>
                 <th class="py-1"><i class="fas fa-heart main-text" title="@lang('visitors.gave_likes')"></i></th>
                 <th class="py-1"><i class="fas fa-eye main-text" title="@lang('visitors.recipes_viewed')"></i></th>
