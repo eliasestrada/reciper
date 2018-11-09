@@ -101,7 +101,7 @@ class RecipesController extends Controller
 
         return view('recipes.show', [
             'recipe' => $recipe,
-            'cookie' => getCookie('r_font_size') ? getCookie('r_font_size') : '1.0'
+            'cookie' => getCookie('r_font_size') ? getCookie('r_font_size') : '1.0',
         ]);
     }
 
@@ -146,7 +146,7 @@ class RecipesController extends Controller
             cache()->forget('random_recipes');
             cache()->forget('unapproved_notif');
 
-            return redirect("/recipes/$recipe->id/edit")->withSuccess(
+            return redirect("/recipes/{$recipe->slug}/edit")->withSuccess(
                 trans('recipes.saved')
             );
         }
