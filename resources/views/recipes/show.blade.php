@@ -59,7 +59,9 @@
                 @if ($recipe->isDone())
                     {{-- Favs button --}}
                     <div class="d-inline-block" style="transform:translateX(13px)">
-                        <btn-favs recipe-id="{{ $recipe->id }}" :favs="{{ $recipe->favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}"></btn-favs>
+                        <btn-favs recipe-id="{{ $recipe->id }}" :favs="{{ $recipe->favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}" tooltip="@lang('messages.u_need_to_login')">
+                        
+                        </btn-favs>
                     </div>
 
                     {{-- User icon --}}
