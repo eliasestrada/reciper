@@ -10,6 +10,7 @@
             <div class="col s12 l6">
                 <div class="mt-2">
                     <img src="{{ asset('storage/users/'.$user->photo) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->getName() }}" />
+
                     <div class="my-2">
                         {{-- Streak days --}}
                         <div class="tooltipped d-inline-block" data-tooltip="@lang('users.streak_days')" style="animation:appearWithRotate .7s">
@@ -76,12 +77,19 @@
                         <span>@lang('users.views')</span>
                     </div>
                 </div>
-
+                
                 {{-- Level bar --}}
-                <div class="progress-wrap mt-4 z-depth-1" data-lvl="@lang('users.level') {{ $xp->getLevel() }}" data-xp="@lang('users.xp') {{ $user->xp }} {{ $xp->minXpForCurrentLevel() >= config('custom.max_xp') ? '' : '/ '. ($xp->maxXpForCurrentLevel() + 1) }}">
+                <div class="progress-wrap mt-4 z-depth-1 mb-2" data-lvl="@lang('users.level') {{ $xp->getLevel() }}" data-xp="@lang('users.xp') {{ $user->xp }} {{ $xp->minXpForCurrentLevel() >= config('custom.max_xp') ? '' : '/ '. ($xp->maxXpForCurrentLevel() + 1) }}">
                     <div class="bar" style="width:{{ $xp->getPercent() }}%"></div>
                 </div>
-                    
+
+                {{-- Level badge --}}
+                <div class="level-badge-wrap d-inline-block mt-4 z-depth-2 hoverable {{ $xp->getColor() }}">
+                    <div class="level-badge tooltipped {{ $xp->getColor() }}">
+                        <span>{{ $xp->getLevel() }}</span>
+                    </div>
+                </div>
+
                 @if ($user->status)
                     <div class="center pb-3 pt-4">
                         <h6>{{ $user->status }}</h6>
