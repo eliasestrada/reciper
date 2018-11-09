@@ -33,7 +33,7 @@ class RecipeSeeder extends Seeder
             'created_at' => '2018-04-02 12:48:26',
             'updated_at' => '2018-04-02 12:48:26',
         ]);
-        $recipe->categories()->sync([4, 11, 13, 16]);
+        $recipe->categories()->sync([3, 11, 13]);
 
         $recipe = Recipe::create([
             'user_id' => 2,
@@ -53,7 +53,7 @@ class RecipeSeeder extends Seeder
             'created_at' => '2018-11-03 18:59:10',
             'updated_at' => '2018-11-03 18:59:10',
         ]);
-        $recipe->categories()->sync([3, 4, 6]);
+        $recipe->categories()->sync([2, 5]);
 
         $recipe = Recipe::create([
             'user_id' => 2,
@@ -73,6 +73,6 @@ class RecipeSeeder extends Seeder
             'created_at' => '2018-11-03 19:10:10',
             'updated_at' => '2018-11-03 19:10:10',
         ]);
-        $recipe->categories()->sync([5]);
+        $recipe->categories()->sync([4]);
     }
 }
