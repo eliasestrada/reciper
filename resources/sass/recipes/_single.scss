@@ -23,6 +23,107 @@
         transition: transform 300ms, right 300ms, 300ms, opacity 500ms;
         transform: scale(1, 1);
     }
+
+    .user-icon-on-single-recipe {
+        margin-right: -25px;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid $silverColor;
+        display: inline-block;
+        background-position: top !important;
+        background-size: 70px !important;
+        background-repeat: no-repeat !important;
+        &.gold-color {
+            border-color: $goldColor;
+        }
+        &.blue-color {
+            border-color: $blueColor;
+        }
+        &.purple-color {
+            border-color: $purpleColor;
+        }
+    }
+
+    .level-badge, .level-badge-wrap {
+        width: 33px;
+        height: 23px;
+        background: #181919;
+        position: relative;
+        &::before, &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 16.7px solid transparent;
+            border-right: 16.7px solid transparent;
+        }
+        &::before {
+            top: -9px;
+            border-bottom: 9px solid #181919;
+        }
+        &::after {
+            bottom: -12px;
+            border-top: 12px solid $silverColor;
+        }
+        span {
+            font-size: 1.6em;
+            font-weight: bold;
+            font-family: sans-serif;
+            line-height: 23px;
+            color: $silverColor;
+        }
+    }
+    .level-badge.gold-color {
+        &::after {
+            border-top-color: $goldColor;
+        }
+        span {
+            color: $goldColor;
+        }
+    }
+    .level-badge.purple-color {
+        &::after {
+            border-top-color: $purpleColor;
+        }
+        span {
+            color: $purpleColor;
+        }
+    }
+    .level-badge.blue-color {
+        &::after {
+            border-top-color: $blueColor;
+        }
+        span {
+            color: $blueColor;
+        }
+    }
+    .level-badge-wrap {
+        &::before {
+            top: -13px;
+            border-bottom: 13px solid $silverColor;
+        }
+        &::after {
+            bottom: -8px;
+            border-top: 9px solid #181919;
+        }
+        &.gold-color {
+            &::before {
+                border-bottom-color: $goldColor;
+            }
+        }
+        &.purple-color {
+            &::before {
+                border-bottom-color: $purpleColor;
+            }
+        }
+        &.blue-color {
+            &::before {
+                border-bottom-color: $blueColor;
+            }
+        }
+    }
 }
 
 .recipe-img {
@@ -114,11 +215,9 @@
         padding: 0 .7em;
         text-align: left;
         border-bottom: 1px solid #c3c3c3;
-
         .dark-theme & {
             border-bottom-color: lighten($darkTheme, 17%);
         }
-
         &:before {
             width: 50px;
             height: 50px;

@@ -59,16 +59,18 @@
                 @if ($recipe->isDone())
                     {{-- Favs button --}}
                     <div class="d-inline-block" style="transform:translateX(13px)">
-                        <btn-favs recipe-id="{{ $recipe->id }}" :favs="{{ $recipe->favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}" tooltip="@lang('messages.u_need_to_login')">
-                        
-                        </btn-favs>
+                        <btn-favs recipe-id="{{ $recipe->id }}" :favs="{{ $recipe->favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}" tooltip="@lang('messages.u_need_to_login')"></btn-favs>
                     </div>
 
                     {{-- User icon --}}
-                    <a href="/users/{{ $recipe->user->username }}" class="user-icon-on-single-recipe z-depth-1 hoverable" style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->photo) }})" title="@lang('users.go_to_profile') {{ $recipe->user->getName() }}"></a>
+                    <a href="/users/{{ $recipe->user->username }}" class="user-icon-on-single-recipe z-depth-1 hoverable {{ $xp->getColor() }}" style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->photo) }})" title="@lang('users.go_to_profile') {{ $recipe->user->getName() }}"></a>
 
-                    {{-- Like button --}}
-                    <like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}" inline-template>
+                    <div class="level-badge-wrap d-inline-block ml-0 z-depth-2 hoverable {{ $xp->getColor() }}">
+                        <div class="level-badge tooltipped {{ $xp->getColor() }}" data-tooltip="@lang('users.user_level_is', ['level' => $xp->getLevel()])" data-position="right">
+                            <span>{{ $xp->getLevel() }}</span>
+                        </div>
+                    </div>
+                    {{-- <like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}" inline-template>
                         <div class="d-inline-block">
                             <span v-if="!loading">
                                 <a href="#" v-on:click="toggleButton()" class="like-icon" :class="iconState()">
@@ -81,7 +83,7 @@
                             <i class="fas fa-spinner fa-spin fa-15x red-text" v-else></i>
                             <audio ref="audio" src="/storage/audio/like-effect.mp3" type="audio/mpeg"></audio>
                         </div>
-                    </like>
+                    </like> --}}
                 @endif
             </div>
         </section>
