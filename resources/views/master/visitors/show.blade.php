@@ -28,7 +28,7 @@
             <div class="my-2">
                 <a href="/master/manage-users/{{ $visitor->user->id }}" class="btn-small min-w">
                     <i class="fas fa-user-cog left"></i>
-                    @lang('manage-users.manage') 
+                    @lang('manage-users.manage')
                 </a>
             </div>
         @endif
@@ -45,7 +45,7 @@
                 </tr>
                 <tr> {{-- Last activity --}}
                     <td>
-                        @lang('visitors.last_activity'): <span class="red-text">{{ $visitor->online_check }}</span> ({{ time_ago($visitor->online_check) }})
+                        @lang('visitors.last_activity'): <span class="red-text">{{ $visitor->user->online_check }}</span> ({{ time_ago($visitor->user->online_check) }})
                     </td>
                 </tr>
                 <tr> {{-- Firt visit --}}
