@@ -140,4 +140,24 @@ class XpTest extends TestCase
 
         $this->assertEquals($expect_xp, User::whereId($user->id)->value('xp'));
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function getColor_method_returns_correct_color(): void
+    {
+        $user = create_user('', ['xp' => 1]);
+        $xp = new Xp($user);
+        $this->assertEquals('', $xp->getColor());
+
+        $user->xp = $xp->levels[4]['min'];
+        $this->assertEquals('gold-color', $xp->getColor());
+
+        $user->xp = $xp->levels[7]['min'];
+        $this->assertEquals('blue-color', $xp->getColor());
+
+        $user->xp = $xp->levels[10]['min'];
+        $this->assertEquals('purple-color', $xp->getColor());
+    }
 }

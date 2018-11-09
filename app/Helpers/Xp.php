@@ -97,4 +97,23 @@ class Xp
             return self::add($max_chained_days, $user->id);
         }
     }
+
+    /**
+     * @return string
+     */
+    public function getColor(): string
+    {
+        if (in_array($this->getLevel(), range(1, 3))) {
+            return '';
+        }
+        if (in_array($this->getLevel(), range(4, 6))) {
+            return 'gold-color';
+        }
+        if (in_array($this->getLevel(), range(7, 9))) {
+            return 'blue-color';
+        }
+        if ($this->getLevel() == 10) {
+            return 'purple-color';
+        }
+    }
 }
