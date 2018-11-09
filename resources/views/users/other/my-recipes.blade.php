@@ -19,33 +19,32 @@
 
     <div v-cloak>
         <tabs>
-            @for ($i = 1; $i <= 2; $i++)
-                <tab 
-                    @if ($i == 1)
-                        name="@lang('messages.published') 
-                        <span class='red-text'><b>{{ $recipes_ready->count() }}</b></span>"
-                        :selected="true"
-                    @else
-                        name="@lang('messages.drafts') 
-                        <span class='red-text'><b>{{ $recipes_unready->count() }}</b></span>"
-                    @endif
-                >
-                    @listOfRecipes([
-                        'recipes' => $i == 1 ? $recipes_ready : $recipes_unready,
-                        'class' => 'paper-dark',
-                    ])
-                        @slot('no_recipes')
-                            @lang('users.no_recipes_yet')
-                            @include('includes.buttons.btn', [
-                                'title' => trans('recipes.add_recipe'),
-                                'icon' => 'fa-plus',
-                                'class' => 'modal-trigger',
-                                'link' => '#add-recipe-modal'
-                            ])
-                        @endslot
-                    @endlistOfRecipes
-                </tab>
-            @endfor
+            <tab name="@lang('messages.published') <span class='red-text'><b>{{ $recipes_ready->count() }}</b></span>" :selected="true">
+                @listOfRecipes(['recipes' => $recipes_ready, 'class' => 'paper-dark'])
+                    @slot('no_recipes')
+                        @lang('users.no_recipes_yet')
+                        @include('includes.buttons.btn', [
+                            'title' => trans('recipes.add_recipe'),
+                            'icon' => 'fa-plus',
+                            'class' => 'modal-trigger',
+                            'link' => '#add-recipe-modal'
+                        ])
+                    @endslot
+                @endlistOfRecipes
+            </tab>
+            <tab name="@lang('messages.drafts') <span class='red-text'><b>{{ $recipes_unready->count() }}</b></span>">
+                @listOfRecipes(['recipes' => $recipes_unready, 'class' => 'paper-dark', 'edit' => true])
+                    @slot('no_recipes')
+                        @lang('users.no_recipes_yet')
+                        @include('includes.buttons.btn', [
+                            'title' => trans('recipes.add_recipe'),
+                            'icon' => 'fa-plus',
+                            'class' => 'modal-trigger',
+                            'link' => '#add-recipe-modal'
+                        ])
+                    @endslot
+                @endlistOfRecipes
+            </tab>
         </tabs>
     </div>
 </div>

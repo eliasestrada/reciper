@@ -13,9 +13,11 @@
                     </div>
 
                     <div class="mt-3" style="width:35px">
-                        <span class="tooltipped" data-tooltip="@lang('users.status'): {{ $recipe->getStatusText() }}">
-                            <i class="fas {{ $recipe->getStatusIcon() }} circle p-1" style="color:{{ $recipe->getStatusColor() }};border:solid 2px {{ $recipe->getStatusColor() }};animation:appearWithRotate .5s"></i>
-                        </span>
+                        <a href="{{ isset($edit) ? "/recipes/{$recipe->slug}/edit" : '#' }}">
+                            <span class="tooltipped" data-tooltip="@lang('users.status'): {{ $recipe->getStatusText() }}">
+                                <i class="fas {{ $recipe->getStatusIcon() }} circle p-1" style="color:{{ $recipe->getStatusColor() }};border:solid 2px {{ $recipe->getStatusColor() }};animation:appearWithRotate .5s"></i>
+                            </span>
+                        </a>
                     </div>
                 </li>
             </ul>
