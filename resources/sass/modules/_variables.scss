@@ -24,22 +24,33 @@ $greyLight: lighten($grey, 30%);
 $greyDark: darken($grey, 30%);
 // Navigation
 $navBorderBottom: solid 2px $mainLight;
+
 // Home header
 $homeHeaderImage: url(../storage/other/img.jpg);
 $homeHeaderBg: rgba($main, .5);
+
 // Forms
 $inputColor: #f5f5f5;
 $inputRadius: 4px;
 $formLines: #444;
+
 // Fonts
 // $headerFont: 'Comfortaa', sans-serif;
 $mainFont: Arial, Helvetica;
 $headerFont: Arial, Helvetica;
+
 // Button
 $btnBg: -webkit-linear-gradient(top, #fff 0%, #d4d4d4 100%);
 $btnBorder: 1px solid #6b6b6b;
 $btnShadow: 1px 1px 1px #868686;
+
 // Button main
 $btnMainBg: -webkit-linear-gradient(top, lighten($main, 5%) 0%, $main 100%);
 $btnMainBorder: 1px solid darken($main, 1%);
 $btnMainShadow: 1px 1px 1px darken($main, 40%);
+
+// Levels
+$silverColor: #c0c0c0;
+$goldColor: #ecb613;
+$blueColor: #548bbe;
+$purpleColor: #9c85d6;
