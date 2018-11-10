@@ -133,4 +133,14 @@ class UserTest extends TestCase
 
         $this->assertEquals('main', $user->getStatusColor());
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function verified_method_returns_true_if_user_has_token_field_empty(): void
+    {
+        $virified_user = User::first();
+        $this->assertTrue($virified_user->verified());
+    }
 }

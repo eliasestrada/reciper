@@ -79,10 +79,8 @@ class User extends Authenticatable
 
     /**
      * @return int
-     */
-    public function daysWithUs(): int
-    {
-        return \Carbon\Carbon::parse($this->created_at)->diffInDays(now());
+     */public function daysWithUs(): int
+    {return \Carbon\Carbon::parse($this->created_at)->diffInDays(now());
     }
 
     public function ban()
@@ -145,5 +143,15 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token, $this));
+    }
+
+    /**
+     * Returns true if user verified the email
+     *
+     * @return boolean
+     */
+    public function verified(): bool
+    {
+        return is_null($this->token);
     }
 }

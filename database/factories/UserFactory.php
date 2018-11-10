@@ -7,6 +7,7 @@ $factory->define(User::class, function () {
         'name' => rand(),
         'status' => '',
         'email' => rand() . '@mail.ru',
+        'token' => null,
         'username' => 'username-' . rand(),
         'password' => bcrypt('111111'),
         'remember_token' => rand(1, 99),
