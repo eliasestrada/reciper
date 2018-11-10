@@ -31,8 +31,5 @@ class NavbarProvider extends ServiceProvider
 
         view()->composer('includes.nav.navbar',
             \App\Http\ViewComposers\Navbar\LogsComposer::class);
-
-        view()->composer('includes.nav.navbar',
-            \App\Http\ViewComposers\Navbar\VisitorLikesComposer::class);
     }
 }

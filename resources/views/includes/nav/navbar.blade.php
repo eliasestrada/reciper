@@ -5,16 +5,6 @@
 
 {{-- User Dropdown menu --}}
 <ul id="dropdown2" class="dropdown-content bottom-borders">
-    @isset($visitor_likes)
-        {{-- My loved recipes --}}
-        <li class="{{ active_if_route_is(['recipes*']) }} {{ $visitor_likes > 0 ? '' : 'hide' }}" id="visitor-likes-icon">
-            <a href="/recipes#my_likes">
-                <i class="fas fa-heart fa-15x left with-red-hover"></i>
-                @lang('recipes.loved')
-                <span id="visitor-likes-number">{{ $visitor_likes }}</span>
-            </a>
-        </li>
-    @endisset
     @auth
         <li class="{{ active_if_route_is(['users/' . user()->username]) }}"> {{-- home --}}
             <a href="/users/{{ user()->username }}" title="@lang('users.my_account')">
