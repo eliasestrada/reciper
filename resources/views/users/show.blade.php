@@ -85,7 +85,7 @@
 
                 {{-- Level badge --}}
                 <div class="level-badge-wrap d-inline-block mt-4 z-depth-2 hoverable {{ $xp->getColor() }}">
-                    <div class="level-badge tooltipped {{ $xp->getColor() }}">
+                    <div class="level-badge {{ $xp->getColor() }}">
                         <span>{{ $xp->getLevel() }}</span>
                     </div>
                 </div>

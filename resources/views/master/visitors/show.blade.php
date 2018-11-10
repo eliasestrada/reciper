@@ -43,11 +43,13 @@
                 <tr> {{-- Recipes viewed --}}
                     <td>@lang('visitors.recipes_viewed'): <span class="red-text">{{ $visitor->views->count() }}</span></td>
                 </tr>
-                <tr> {{-- Last activity --}}
-                    <td>
-                        @lang('visitors.last_activity'): <span class="red-text">{{ $visitor->user->online_check }}</span> ({{ time_ago($visitor->user->online_check) }})
-                    </td>
-                </tr>
+                @if ($visitor->user)
+                    <tr> {{-- Last activity --}}
+                        <td>
+                            @lang('visitors.last_activity'): <span class="red-text">{{ $visitor->user->online_check }}</span> ({{ time_ago($visitor->user->online_check) }})
+                        </td>
+                    </tr>
+                @endif
                 <tr> {{-- Firt visit --}}
                     <td>
                         @lang('visitors.first_visit'): <span class="red-text">{{ $visitor->created_at }}</span> ({{ time_ago($visitor->created_at) }})
