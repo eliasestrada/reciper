@@ -104,7 +104,7 @@ class RecipesShowPageTest extends TestCase
         $user = create_user();
 
         $this->actingAs($user)
-            ->post(action('FavsController@store', ['id' => 1]))
+            ->post(action('WebApi\FavsController@store', ['id' => 1]))
             ->assertOk()
             ->assertSeeText('active');
 
@@ -124,7 +124,7 @@ class RecipesShowPageTest extends TestCase
         Fav::create(['user_id' => $user->id, 'recipe_id' => 1]);
 
         $this->actingAs($user)
-            ->post(action('FavsController@store', ['id' => 1]))
+            ->post(action('WebApi\FavsController@store', ['id' => 1]))
             ->assertOk()
             ->assertDontSeeText('active');
 
@@ -138,21 +138,15 @@ class RecipesShowPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function visitor_can_like_the_recipe(): void
+    public function user_can_like_and_dislikethe_recipe(): void
     {
-        $this->post('/api/like/like/1')
-            ->assertExactJson(['liked' => 1]);
-    }
+        $this->actingAs($user = create_user())
+            ->post('/like/1')
+            ->assertSeeText('active');
 
-    /**
-     * @author Cho
-     * @test
-     */
-    public function visitor_can_dislike_the_recipe(): void
-    {
-        $this->post('/api/like/like/1');
-        $this->post('/api/like/dislike/1')
-            ->assertExactJson(['liked' => 0]);
+        $this->actingAs($user)
+            ->post('/like/1')
+            ->assertSeeText('');
     }
 
     /**
