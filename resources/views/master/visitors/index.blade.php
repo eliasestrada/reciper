@@ -14,13 +14,10 @@
     </div>
     <div class="row container">
         <ul class="col s12 m6">
-            <li><i class="main-text fas fa-heart tiny"></i> - @lang('visitors.gave_likes')</li>
             <li><i class="main-text fas fa-eye tiny"></i> - @lang('visitors.recipes_viewed')</li>
-            <li><i class="main-text fas fa-door-open tiny"></i> - @lang('visitors.first_visit')</li>
         </ul>
         <ul class="col s12 m6">
-            <li><i class="green-text fas fa-circle tiny"></i> - @lang('visitors.registered_users')</li>
-            <li><i class="main-text fas fa-circle tiny"></i> - @lang('visitors.not_registered_users')</li>
+            <li><i class="main-text fas fa-door-open tiny"></i> - @lang('visitors.first_visit')</li>
         </ul>
     </div>
 
@@ -30,7 +27,6 @@
             <tr>
                 <th class="py-1 main-text">#</th>
                 <th class="py-1"><i class="fas fa-door-open main-text" title="@lang('visitors.first_visit')"></i></th>
-                <th class="py-1"><i class="fas fa-heart main-text" title="@lang('visitors.gave_likes')"></i></th>
                 <th class="py-1"><i class="fas fa-eye main-text" title="@lang('visitors.recipes_viewed')"></i></th>
             </tr>
         </thead>
@@ -39,16 +35,10 @@
                 <tr>
                     <td class="py-1">
                         <a href="/master/visitors/{{ $visitor->id }}">
-                            <span class="z-depth-1 new badge {{ $visitor->getStatusColor() }}">
-                                {{ $visitor->id }} 
-                                @if ($visitor->user)
-                                    ({{ $visitor->user->id }})
-                                @endif
-                            </span>
+                            <span class="z-depth-1 new badge">{{ $visitor->id }}</span>
                         </a>
                     </td>
                     <td class="py-1">{{ time_ago($visitor->created_at) }}</td>
-                    <td class="py-1">{{ $visitor->likes->count() }}</td>
                     <td class="py-1">{{ $visitor->views->count() }}</td>
                 </tr>
             @endforeach
