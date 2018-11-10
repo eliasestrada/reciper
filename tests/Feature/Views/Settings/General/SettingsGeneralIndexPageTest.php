@@ -3,6 +3,7 @@
 namespace Tests\Feature\Views\Settings\General;
 
 use App\Models\User;
+use App\Notifications\EmailConfirmation;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -104,5 +105,19 @@ class SettingsGeneralIndexPageTest extends TestCase
             ->followingRedirects()
             ->delete(action('UsersController@destroy', ['m' => 'd']), ['password' => '22222'])
             ->assertSeeText(trans('settings.pwd_wrong'));
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function sending_notification_after_saving_email_address(): void
+    {
+        $this->expectsNotification($user = create_user(), EmailConfirmation::class);
+
+        $this->actingAs($user)
+            ->put(action('Settings\GeneralController@updateEmail'), [
+                'email' => 'testingemail@gmail.com',
+            ]);
     }
 }
