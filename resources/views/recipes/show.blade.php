@@ -67,7 +67,7 @@
 
                     {{-- Level badge --}}
                     <div class="level-badge-wrap d-inline-block ml-0 z-depth-2 hoverable {{ $xp->getColor() }}">
-                        <div class="level-badge tooltipped {{ $xp->getColor() }}" data-tooltip="@lang('users.user_level_is', ['level' => $xp->getLevel()])" data-position="right">
+                        <div class="level-badge tooltipped {{ $xp->getColor() }}" data-tooltip="@lang('users.user_level_is', ['level' => $xp->getLevel()])" data-position="top">
                             <span>{{ $xp->getLevel() }}</span>
                         </div>
                     </div>
