@@ -19,16 +19,12 @@ export default {
     },
 
     mounted() {
-        let root = this
         this.fetchData()
-        setInterval(function() {
-            root.fetchData()
-        }, 5000)
     },
 
     methods: {
         fetchData() {
-            fetch('api-statistics/popularity-chart')
+            fetch('/popularity-chart')
                 .then(res => res.json())
                 .then(data => {
                     this.loader = false

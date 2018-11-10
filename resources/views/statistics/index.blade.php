@@ -85,8 +85,7 @@
         </table>
     </div>
     <div class="center col s12 mt-4">
-        <h5 class="mb-0 d-inline-block">@lang('users.popularity_chart') </h5>
-        <b class="red-text">LIVE</b>
+        <h5 class="mb-0 d-inline-block">@lang('users.popularity_chart')</h5>
     </div>
     <div class="col s12 scroll position-relative" style="min-height:370px">
         <statistics-chart>

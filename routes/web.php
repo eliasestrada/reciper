@@ -6,15 +6,15 @@ Auth::routes();
 
 // Web APIs
 Route::middleware('auth')->namespace('WebApi')->group(function () {
-    Route::get('statistics', 'StatisticsController@index');
+    Route::get('popularity-chart', 'StatisticsController@popularityChart');
     Route::get('favs/{category?}', 'FavsController@index');
     Route::post('favs/{recipe_id}', 'FavsController@store');
     Route::post('like/{recipe_id}', 'LikeController@store');
 });
 
-// Api routes with in web enviroment
-Route::namespace ('Api')->middleware('auth')->group(function () {
-    Route::get('api-statistics/popularity-chart', 'StatisticsController@popularityChart');
+// Statistisc
+Route::middleware('auth')->group(function () {
+    Route::get('statistics', 'StatisticsController@index');
 });
 
 Route::prefix('users')->group(function () {

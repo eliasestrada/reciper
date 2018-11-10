@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Controllers\Statistics;
 
-use App\Http\Controllers\Api\StatisticsController;
+use App\Http\Controllers\WebApi\StatisticsController;
 use App\Models\User;
 use Illuminate\Support\Collection;
 use Tests\TestCase;
