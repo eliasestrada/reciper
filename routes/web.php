@@ -12,7 +12,7 @@ Route::middleware('auth')->namespace('WebApi')->group(function () {
     Route::post('like/{recipe_id}', 'LikeController@store');
 });
 
-// Statistisc
+// Statistics
 Route::middleware('auth')->group(function () {
     Route::get('statistics', 'StatisticsController@index');
 });
@@ -50,6 +50,7 @@ Route::prefix('settings')->middleware('auth')->namespace('Settings')->group(func
     Route::get('general', 'GeneralController@index');
     Route::put('general', 'GeneralController@updateGeneral');
     Route::put('password', 'GeneralController@updatePassword');
+    Route::put('email', 'GeneralController@updateEmail');
 
     Route::get('photo', 'PhotoController@index');
     Route::put('photo', 'PhotoController@update');
