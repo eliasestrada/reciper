@@ -53,10 +53,12 @@ class ResetPasswordNotification extends Notification
         $url = url('password/reset', $this->token);
         $get_param = urlencode($this->user->getEmailForPasswordReset());
 
-        return (new MailMessage)->view('emails.reset-password', [
-            'token' => $this->token,
-            'user' => $this->user,
-            'url' => "{$url}?email={$get_param}",
-        ]);
+        return (new MailMessage)
+            ->subject(trans('passwords.reset_pwd'))
+            ->view('emails.reset-password', [
+                'token' => $this->token,
+                'user' => $this->user,
+                'url' => "{$url}?email={$get_param}",
+            ]);
     }
 }
