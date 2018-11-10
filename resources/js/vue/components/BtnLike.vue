@@ -1,6 +1,7 @@
 <template>
     <section class="ml-2 d-inline-block">
-        <a v-if="userId" class="p-0" @click="fetchLikes">
+        <a v-if="userId" class="p-0 _like-button" @click="fetchLikes">
+            
             <i class="fas fa-heart fa-15x heart" :class="iconClass"></i> 
             <span v-text="amount" style="transform:translate(-2px, 5px);color:#6b6b6b" class="d-inline-block"></span>
         </a>

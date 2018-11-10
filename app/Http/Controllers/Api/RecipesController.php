@@ -58,21 +58,6 @@ class RecipesController extends Controller
             return $result;
         }
 
-        if ($hash == 'my_likes') {
-            $result = Recipe::join('likes', 'likes.recipe_id', '=', 'recipes.id')
-                ->where('likes.visitor_id', Visitor::whereIp(request()->ip())->value('id'))
-                ->selectBasic(['recipe_id'], ['id'])
-                ->orderBy('likes.id', 'desc')
-                ->done(1)
-                ->paginate($pagin);
-
-            $result->map(function ($r) {
-                $r->id = $r->recipe_id;
-            });
-
-            return $result;
-        }
-
         // Searching for recipes with category
         if (str_contains($hash, 'category=')) {
             return Recipe::whereHas('categories', function ($query) use ($hash) {
