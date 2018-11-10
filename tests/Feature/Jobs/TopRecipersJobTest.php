@@ -39,12 +39,12 @@ class TopRecipersJobTest extends TestCase
     public function makeCachedListOfToprecipers_method_returns_recipers_usernames_whos_recipes_were_liked_yesterday(): void
     {
         Like::create([
-            'visitor_id' => 1,
+            'user_id' => 1,
             'recipe_id' => ($first_recipe = create(Recipe::class))->id,
             'created_at' => Carbon::yesterday()->startOfDay(),
         ]);
         Like::create([
-            'visitor_id' => 1,
+            'user_id' => 1,
             'recipe_id' => ($second_recipe = create(Recipe::class))->id,
             'created_at' => Carbon::yesterday()->endOfDay(),
         ]);
@@ -62,7 +62,7 @@ class TopRecipersJobTest extends TestCase
     public function makeCachedListOfToprecipers_method_caches_reciper_username_whos_recipe_were_liked_yesterday(): void
     {
         Like::create([
-            'visitor_id' => 1,
+            'user_id' => 1,
             'recipe_id' => ($recipe = create(Recipe::class))->id,
             'created_at' => Carbon::yesterday()->startOfDay(),
         ]);
@@ -108,7 +108,7 @@ class TopRecipersJobTest extends TestCase
         $result = $this->job->saveWinnersToDatabase([
             'user1' => 11,
             'user2' => 11,
-            'user3' => 9
+            'user3' => 9,
         ]);
         $this->assertDatabaseHas('top_recipers', ['username' => 'user1']);
         $this->assertDatabaseHas('top_recipers', ['username' => 'user2']);
