@@ -1,10 +1,10 @@
-{{-- Categories Dropdown menu --}}
-<ul id="dropdown1" class="dropdown-content bottom-borders">
+{{-- Categories Dropdown trigger menu --}}
+<ul id="categories-dropdown" class="dropdown-content bottom-borders">
     @include('includes.nav.categories')
 </ul>
 
 {{-- User Dropdown menu --}}
-<ul id="dropdown2" class="dropdown-content bottom-borders">
+<ul id="user-menu-dropdown" class="dropdown-content bottom-borders">
     @auth
         <li class="{{ active_if_route_is(['users/' . user()->username]) }}"> {{-- home --}}
             <a href="/users/{{ user()->username }}" title="@lang('users.my_account')">
@@ -166,14 +166,14 @@
             <div class="right">
                 @auth
                     {{-- Dropdown Trigger 2 User --}}
-                    <a class="right dropdown-trigger position-relative" href="#!" data-target="dropdown2" style="margin-top:.65rem">
+                    <a class="right dropdown-trigger position-relative" data-target="user-menu-dropdown" style="margin-top:.65rem">
                         <i class="user-icon-navbar z-depth-1 hoverable waves-effect waves-light d-block {{ $unapproved_notif || $feedback_notif || $notifs_notif || $logs_notif ? 'small-notif' : '' }}">
                             <img src="{{ asset('storage/small/users/' . user()->photo) }}">
                         </i>
                     </a>
                 @else
                     {{-- Dropdown Trigger 2  --}}
-                    <a class="right dropdown-trigger position-relative" href="#!" data-target="dropdown2" style="margin-top:.65rem" id="_hamb-menu">
+                    <a class="right dropdown-trigger position-relative" data-target="user-menu-dropdown" style="margin-top:.65rem" id="_hamb-menu">
                         <i class="fas fa-bars user-icon-navbar z-depth-1 hoverable waves-effect waves-light d-block center" style="line-height:40px; font-size:19px">
                         </i>
                     </a>
@@ -199,8 +199,8 @@
                     </a>
                 </li>
 
-                <li> {{-- Dropdown Trigger 1 Categories --}}
-                    <a class="dropdown-trigger" href="#!" data-target="dropdown1">
+                <li> {{-- Categories Dropdown Trigger Categories --}}
+                    <a class="dropdown-trigger" data-target="categories-dropdown">
                         @lang('pages.categories')
                         <i class="fas fa-caret-down fa-15x right"></i>
                     </a>
