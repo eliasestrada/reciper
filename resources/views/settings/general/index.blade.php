@@ -37,7 +37,11 @@
                     <div class="input-field">
                         <label for="email">@lang('forms.email_desc')</label>
                         <input type="text" name="email" id="email" value="{{ user()->email }}" data-length="{{ config('valid.settings.email.max') }}" class="counter" maxlength="{{ config('valid.settings.email.max') }}">
-                        <span class="helper-text red-text">@lang('settings.email_change_once_per_week')</span>
+                        @if (!empty(user()->email))
+                            <span class="helper-text {{ user()->verified() ? 'green' : 'red' }}-text">
+                                {!! user()->verified() ? trans('settings.verified') : trans('settings.not_verified') !!}
+                            </span>
+                        @endif
                     </div>
                     <div class="input-field mt-4">
                         <button class="btn" type="submit">@lang('forms.save')</button>
