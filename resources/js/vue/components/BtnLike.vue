@@ -21,7 +21,7 @@ export default {
         iconState() {
             return this.liked ? "btn--liked-small" : "";
         },
-        
+
         fetchVisitorLikes() {
             fetch(`/api/like/check/${this.recipeId}`, {
                 method: "post"
@@ -35,7 +35,7 @@ export default {
             this.liked = value == 0 ? false : true;
             this.loading = false;
         },
-        
+
         changeLikeNumber(value) {
             value == 0 ? this.allLikes-- : this.allLikes++;
         },
@@ -65,10 +65,10 @@ export default {
                 }, 300);
             }
         },
-        
+
         toggleButton() {
             this.loading = true;
-            
+
             if (this.processed) {
                 this.processed = false;
                 var state = this.liked == false ? "like" : "dislike"

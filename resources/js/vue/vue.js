@@ -11,7 +11,7 @@ const components = [
     "Visibility",
     "Recipes",
     "BtnFavs",
-    "Like",
+    "BtnLike",
     "Tabs",
     "Tab"
 ];

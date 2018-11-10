@@ -58,32 +58,34 @@
             <div class="like-for-author-section no-select py-1" v-cloak>
                 @if ($recipe->isDone())
                     {{-- Favs button --}}
-                    <div class="d-inline-block" style="transform:translateX(13px)">
+                    <div class="d-inline-block" style="transform:translateX(7px)">
                         <btn-favs recipe-id="{{ $recipe->id }}" :favs="{{ $recipe->favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}" tooltip="@lang('messages.u_need_to_login')"></btn-favs>
                     </div>
 
                     {{-- User icon --}}
                     <a href="/users/{{ $recipe->user->username }}" class="user-icon-on-single-recipe z-depth-1 hoverable {{ $xp->getColor() }}" style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->photo) }})" title="@lang('users.go_to_profile') {{ $recipe->user->getName() }}"></a>
 
+                    {{-- Level badge --}}
                     <div class="level-badge-wrap d-inline-block ml-0 z-depth-2 hoverable {{ $xp->getColor() }}">
                         <div class="level-badge tooltipped {{ $xp->getColor() }}" data-tooltip="@lang('users.user_level_is', ['level' => $xp->getLevel()])" data-position="right">
                             <span>{{ $xp->getLevel() }}</span>
                         </div>
                     </div>
-                    {{-- <like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}" inline-template>
-                        <div class="d-inline-block">
+
+                    {{-- Like button --}}
+                    <btn-like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}" inline-template>
+                        <div class="d-inline-block ml-2">
                             <span v-if="!loading">
-                                <a href="#" v-on:click="toggleButton()" class="like-icon" :class="iconState()">
-                                    <div class="btn-wrapper">
-                                        <span class="btn-like">@include('includes.icons.like-btn')</span>
-                                    </div>
+                                <a href="#" v-on:click="toggleButton()" :class="iconState()">
+                                    <i class="fas fa-heart fa-15x heart"></i> 
+                                    <span id="_all-likes" v-text="allLikes" style="transform:translate(-2px, 5px);color:#6b6b6b" class="d-inline-block"></span>
                                 </a>
-                                <i id="_all-likes" v-text="allLikes"></i>
                             </span>
                             <i class="fas fa-spinner fa-spin fa-15x red-text" v-else></i>
                             <audio ref="audio" src="/storage/audio/like-effect.mp3" type="audio/mpeg"></audio>
                         </div>
-                    </like> --}}
+                    </btn-like>
+
                 @endif
             </div>
         </section>
