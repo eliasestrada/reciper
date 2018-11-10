@@ -4,7 +4,7 @@
 
 @section('content')
 
-@include('includes.buttons.back', ['url' => '/master/visitors'])
+@include('includes.buttons.back', ['url' => '/master/manage-users'])
 
 <div class="page row">
     <div class="center col s12 m6">
@@ -17,14 +17,6 @@
             <a href="/users/{{ $user->username }}" class="btn-small min-w">
                 <i class="fas fa-user-circle left"></i>
                 @lang('users.go_to_profile')
-            </a>
-        </div>
-
-        {{-- Go to visitor --}}
-        <div class="my-2">
-            <a href="/master/visitors/{{ $user->id }}" class="btn-small min-w">
-                <i class="fas fa-users left"></i>
-                @lang('visitors.go_to_visitor')
             </a>
         </div>
 
