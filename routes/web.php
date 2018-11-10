@@ -86,4 +86,5 @@ Route::prefix('invokes')->namespace('Invokes')->group(function () {
     Route::get('dark-theme-switcher/{state}', DarkThemeController::class);
     Route::get('font-size-switcher/{font_size}', FontSizeController::class);
     Route::post('download-ingredients/{recipe_id}', DownloadIngredientsController::class);
+    Route::get('verify-email/{token}', VerifyEmailController::class);
 });
