@@ -1,88 +1,63 @@
+<template>
+    <section class="ml-2 d-inline-block">
+        <a v-if="userId" class="p-0" @click="fetchLikes">
+            <i class="fas fa-heart fa-15x heart" :class="iconClass"></i> 
+            <span v-text="amount" style="transform:translate(-2px, 5px);color:#6b6b6b" class="d-inline-block"></span>
+        </a>
+        <a v-else class="p-0 tooltipped" :data-tooltip="tooltip" data-position="bottom">
+            <i class="fas fa-star fa-15x heart"></i> 
+            <span v-text="amount" style="transform:translate(-4px, 5px);color:#6b6b6b" class="d-inline-block"></span>
+        </a>
+    </section>
+</template>
+
 <script>
 export default {
     data() {
         return {
-            liked: false,
-            allLikes: this.likes,
-            loading: false,
-            processed: true,
-            visitorLikesNumber: $('visitor-likes-number'),
-            visitorLikesIcon: $('visitor-likes-icon')
+            iconClass: '',
+            amount: this.likes.length,
         };
     },
 
-    props: ["likes", "recipeId"],
-
     created() {
-        this.fetchVisitorLikes();
+        this.toggleActive()
     },
 
+    props: ["likes", "recipeId", "userId", "tooltip"],
+
     methods: {
-        iconState() {
-            return this.liked ? "btn--liked-small" : "";
-        },
-
-        fetchVisitorLikes() {
-            fetch(`/api/like/check/${this.recipeId}`, {
-                method: "post"
+        fetchLikes() {
+            fetch(`/like/${this.recipeId}`, {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    _token: document.querySelector('meta[name="csrf-token"]')
+                        .getAttribute('content')
+                })
             })
-                .then(res => res.json())
-                .then(data => this.changeLikeButton(data))
-                .catch(err => console.error(err));
-            },
-        
-        changeLikeButton(value) {
-            this.liked = value == 0 ? false : true;
-            this.loading = false;
-        },
-
-        changeLikeNumber(value) {
-            value == 0 ? this.allLikes-- : this.allLikes++;
-        },
-
-        playSound() {
-            this.$refs.audio.volume = 0.2
-            this.$refs.audio.play()
-        },
-
-        changeVisitorLikesNumber() {
-            if (this.liked) {
-                setTimeout(() => {
-                    this.visitorLikesIcon.classList.remove('d-inline-block')
-                    var number = (this.visitorLikesNumber.innerHTML);
-                    number--;
-                    if (number < 1) {
-                        this.visitorLikesIcon.classList.add('hide')
+                .then(res => res.text())
+                .then(data => {
+                    if (data != 'fail') {
+                        this.iconClass = data
+                        if (data == 'active') {
+                            this.amount++
+                        } else {
+                            this.amount--
+                        }
                     }
-                    this.visitorLikesNumber.innerHTML = number;
-                }, 300);
-            } else {
-                setTimeout(() => {
-                    this.visitorLikesIcon.classList.add('d-inline-block')
-                    var number = this.visitorLikesNumber.innerHTML;
-                    number++;
-                    this.visitorLikesNumber.innerHTML = number;
-                }, 300);
-            }
+                })
+                .catch(err => console.error(err));
         },
 
-        toggleButton() {
-            this.loading = true;
-
-            if (this.processed) {
-                this.processed = false;
-                var state = this.liked == false ? "like" : "dislike"
-                this.changeVisitorLikesNumber()
-
-                fetch(`/api/like/${state}/${this.recipeId}`, {method: "post"})
-                    .then(res => res.json())
-                    .then(data => {
-                        this.playSound()
-                        this.changeLikeButton(data.liked)
-                        this.changeLikeNumber(data.liked)
-                        this.processed = true
-                    })
-                    .catch(err => console.error(err));
+        toggleActive() {
+            if (this.userId) {
+                this.iconClass = this.likes.map(like => {
+                    return this.recipeId == like.recipe_id && this.userId == like.user_id ? 'active' : '';
+                });
             }
         },
     }

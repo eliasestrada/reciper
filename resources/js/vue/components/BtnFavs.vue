@@ -1,10 +1,10 @@
 <template>
     <section>
         <a v-if="userId" class="p-0" @click="fetchFavs">
-            <i class="fas fa-star fa-15x star" :class="icon"></i> 
+            <i class="fas fa-star fa-15x star" :class="iconClass"></i> 
             <span v-text="amount" style="transform:translate(-2px, 5px);color:#6b6b6b" class="d-inline-block"></span>
         </a>
-        <a v-else href="#" class="p-0 tooltipped" :data-tooltip="tooltip" data-position="bottom">
+        <a v-else class="p-0 tooltipped" :data-tooltip="tooltip" data-position="bottom">
             <i class="fas fa-star fa-15x star"></i> 
             <span v-text="amount" style="transform:translate(-4px, 5px);color:#6b6b6b" class="d-inline-block"></span>
         </a>
@@ -15,7 +15,7 @@
 export default {
     data() {
         return {
-            icon: '',
+            iconClass: '',
             amount: this.favs.length
         }
     },
@@ -24,13 +24,8 @@ export default {
         this.toggleActive()
     },
 
-    props: {
-        'recipeId': { required: true },
-        'favs': { default: null },
-        'userId': { default: null },
-        'tooltip': { default: '' }
-    },
-     
+    props: ['recipeId', 'favs', 'userId', 'tooltip'],
+
     methods: {
         fetchFavs() {
             fetch('/favs/' + this.recipeId, {
@@ -40,13 +35,14 @@ export default {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    _token: document.querySelector('meta[name="csrf-token"]')
+                        .getAttribute('content')
                 })
             })
                 .then(res => res.text())
                 .then(data => {
                     if (data != 'fail') {
-                        this.icon = data
+                        this.iconClass = data
                         if (data == 'active') {
                             this.amount++
                         } else {
@@ -58,7 +54,7 @@ export default {
         },
         toggleActive() {
             if (this.userId) {
-                this.icon = this.favs.map(fav => {
+                this.iconClass = this.favs.map(fav => {
                     return this.recipeId == fav.recipe_id && this.userId == fav.user_id ? 'active' : '';
                 });
             }

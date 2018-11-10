@@ -72,20 +72,7 @@
                         </div>
                     </div>
 
-                    {{-- Like button --}}
-                    <btn-like likes="{{ count($recipe->likes) }}" recipe-id="{{ $recipe->id }}" inline-template>
-                        <div class="d-inline-block ml-2">
-                            <span v-if="!loading">
-                                <a href="#" v-on:click="toggleButton()" :class="iconState()">
-                                    <i class="fas fa-heart fa-15x heart"></i> 
-                                    <span id="_all-likes" v-text="allLikes" style="transform:translate(-2px, 5px);color:#6b6b6b" class="d-inline-block"></span>
-                                </a>
-                            </span>
-                            <i class="fas fa-spinner fa-spin fa-15x red-text" v-else></i>
-                            <audio ref="audio" src="/storage/audio/like-effect.mp3" type="audio/mpeg"></audio>
-                        </div>
-                    </btn-like>
-
+                    <btn-like :likes="{{ $recipe->likes }}" recipe-id="{{ $recipe->id }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}" tooltip="@lang('messages.u_need_to_login')">
                 @endif
             </div>
         </section>
