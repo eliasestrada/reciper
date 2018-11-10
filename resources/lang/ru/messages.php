@@ -25,6 +25,8 @@ return [
     'sender' => 'Отправитель',
     'in_english' => 'На английском',
     'u_need_to_login' => 'Вам нужно авторизоваться',
+    'email_confirmation' => 'Подтверждение эл. адреса',
+    'confirm_email_message' => 'Для того чтобы подтвердить адрес эл. почты на ' . config('app.name') . ' перейдите по ссылке ниже',
     'in_russian' => 'На русском',
     'general' => 'Общая',
     'favorites' => 'Избранное',
