@@ -44,7 +44,9 @@ class VerifyEmailNotification extends Notification implements ShouldQueue
         return (new MailMessage)
             ->subject(trans('messages.email_confirmation'))
             ->view('emails.email-confirmation', [
-                'token' => $this->user->token,
+                'token' => action('Invokes\VerifyEmailController', [
+                    'token' => $this->user->token,
+                ]),
             ]);
     }
 }
