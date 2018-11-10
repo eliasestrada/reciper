@@ -12,6 +12,12 @@
                     <img src="{{ asset('storage/users/'.$user->photo) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->getName() }}" />
 
                     <div class="my-2">
+                        {{-- Manage user --}}
+                        @if (optional(user())->hasRole('master'))
+                            <a href="/master/manage-users/{{ $user->id }}" class="mr-2" title="@lang('manage-users.manage')">
+                                <i class="fas fa-cog red-text fa-15x"></i>
+                            </a>
+                        @endif
                         {{-- Streak days --}}
                         <div class="tooltipped d-inline-block" data-tooltip="@lang('users.streak_days')" style="animation:appearWithRotate .7s">
                             <i class="fas fa-fire fa-15x" style="color:orangered"></i> 
@@ -77,33 +83,33 @@
                         <span>@lang('users.views')</span>
                     </div>
                 </div>
-                
+
                 {{-- Level bar --}}
-                <div class="progress-wrap mt-4 z-depth-1 mb-2" data-lvl="@lang('users.level') {{ $xp->getLevel() }}" data-xp="@lang('users.xp') {{ $user->xp }} {{ $xp->minXpForCurrentLevel() >= config('custom.max_xp') ? '' : '/ '. ($xp->maxXpForCurrentLevel() + 1) }}">
+                <div class="progress-wrap mt-4 z-depth-1 mb-2" data-xp="@lang('users.xp') {{ $user->xp }} {{ $xp->minXpForCurrentLevel() >= config('custom.max_xp') ? '' : '/ '. ($xp->maxXpForCurrentLevel() + 1) }}">
                     <div class="bar" style="width:{{ $xp->getPercent() }}%"></div>
                 </div>
 
-                {{-- Level badge --}}
-                <div class="level-badge-wrap d-inline-block mt-4 z-depth-2 hoverable {{ $xp->getColor() }}">
-                    <div class="level-badge {{ $xp->getColor() }}">
-                        <span>{{ $xp->getLevel() }}</span>
+                {{-- Level Badge --}}
+                <div class="badge-panel mb-3">
+                    <h6 class="mr-3 d-inline-block">
+                        @lang('users.reciper')
+                    </h6>
+                    <div class="level-badge-wrap mt-5 d-inline-block z-depth-2 hoverable {{ $xp->getColor() }}">
+                        <div class="level-badge {{ $xp->getColor() }}">
+                            <span>{{ $xp->getLevel() }}</span>
+                        </div>
                     </div>
+                    <h6 class="ml-3 d-inline-block">
+                        @lang('users.level')
+                    </h6>
                 </div>
 
                 @if ($user->status)
-                    <div class="center pb-3 pt-4">
+                    <div class="center pb-3 pt-2">
                         <h6>{{ $user->status }}</h6>
                     </div>
                 @endif
             </div>
-
-            {{-- Manage user --}}
-            @if (optional(user())->hasRole('master'))
-                <a href="/master/manage-users/{{ $user->id }}" class="btn-small mt-3 red">
-                    <i class="fas fa-user-cog left"></i>
-                    @lang('manage-users.manage')
-                </a>
-            @endif
         </div>
         <div class="divider"></div>
 
