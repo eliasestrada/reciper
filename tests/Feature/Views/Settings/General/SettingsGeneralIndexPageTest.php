@@ -3,7 +3,7 @@
 namespace Tests\Feature\Views\Settings\General;
 
 use App\Models\User;
-use App\Notifications\EmailConfirmation;
+use App\Notifications\EmailConfirmationNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -113,7 +113,7 @@ class SettingsGeneralIndexPageTest extends TestCase
      */
     public function sending_notification_after_saving_email_address(): void
     {
-        $this->expectsNotification($user = create_user(), EmailConfirmation::class);
+        $this->expectsNotification($user = create_user(), EmailConfirmationNotification::class);
 
         $this->actingAs($user)
             ->put(action('Settings\GeneralController@updateEmail'), [
