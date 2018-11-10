@@ -120,4 +120,28 @@ class SettingsGeneralIndexPageTest extends TestCase
                 'email' => 'testingemail@gmail.com',
             ]);
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function user_cant_change_email_if_he_already_changed_it(): void
+    {
+        $this->withoutNotifications();
+        $user = create_user();
+
+        // First attempt
+        $this->actingAs($user)
+            ->put(action('Settings\GeneralController@updateEmail'), [
+                'email' => 'testingemail@gmail.com',
+            ]);
+
+        // Second attempt
+        $this->actingAs($user)
+            ->followingRedirects()
+            ->put(action('Settings\GeneralController@updateEmail'), [
+                'email' => 'testingemail@gmail.com',
+            ])
+            ->assertSeeText(trans('settings.email_change_once_per_week'));
+    }
 }

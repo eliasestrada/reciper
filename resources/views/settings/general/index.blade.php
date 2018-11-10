@@ -37,6 +37,7 @@
                     <div class="input-field">
                         <label for="email">@lang('forms.email_desc')</label>
                         <input type="text" name="email" id="email" value="{{ user()->email }}" data-length="{{ config('valid.settings.email.max') }}" class="counter" maxlength="{{ config('valid.settings.email.max') }}">
+                        <span class="helper-text red-text">@lang('settings.email_change_once_per_week')</span>
                     </div>
                     <div class="input-field mt-4">
                         <button class="btn" type="submit">@lang('forms.save')</button>
@@ -68,8 +69,7 @@
                     </div>
                 </form>
                 <div class="center mt-2">
-                    <a href="#" class=""></a>
-                    <a href="#delete-account-modal" title="@lang('settings.delete_account')" class="modal-trigger">
+                    <a href="#delete-account-modal" title="@lang('settings.delete_account')" class="modal-trigger red-text">
                         @lang('settings.delete_account')
                     </a>
                 </div>

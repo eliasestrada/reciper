@@ -52,13 +52,20 @@ class GeneralController extends Controller
      */
     public function updateEmail(EmailRequest $request)
     {
+        $user = user();
+
         if (empty(request('email'))) {
             user()->update(['email' => null, 'token' => 'none']);
             return back()->withSuccess(trans('settings.email_is_empty'));
         }
 
-        user()->update(['email' => request('email'), 'token' => str_random(20)]);
-        user()->notify(new EmailConfirmationNotification(user()));
+        if (cache()->has("user_{$user->id}_changed_email")) {
+            return back()->withError(trans('settings.email_change_once_per_week'));
+        }
+
+        $user->update(['email' => request('email'), 'token' => str_random(30)]);
+        $user->notify(new EmailConfirmationNotification($user));
+        cache()->put("user_{$user->id}_changed_email", 1, 10080);
 
         return back()->withSuccess(trans('settings.saved_now_verify_email'));
     }
