@@ -33,11 +33,6 @@ class User extends Authenticatable
         return $this->hasMany(Like::class);
     }
 
-    public function visitor()
-    {
-        return $this->belongsTo(Visitor::class);
-    }
-
     /**
      * Find out if user has a specific role
      * @param string $check

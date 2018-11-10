@@ -12,7 +12,6 @@ class UsersSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'visitor_id' => 1,
             'email' => '1990serzhil@gmail.com',
             'username' => 'master',
             'name' => 'Серый 🍆',
@@ -30,7 +29,6 @@ class UsersSeeder extends Seeder
         $user->addRole('master');
 
         User::create([
-            'visitor_id' => 1,
             'email' => null,
             'username' => 'irina',
             'name' => 'Ирен 👑',

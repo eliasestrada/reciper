@@ -4,7 +4,6 @@ namespace Tests\Unit\Models;
 
 use App\Models\Ban;
 use App\Models\User;
-use App\Models\Visitor;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -36,15 +35,6 @@ class UserTest extends TestCase
     public function user_model_has_relationship_with_fav_model(): void
     {
         $this->assertNotNull(User::first()->favs);
-    }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function user_model_has_relationship_with_visitor_model(): void
-    {
-        $this->assertNotNull(make(User::class)->visitor);
     }
 
     /**

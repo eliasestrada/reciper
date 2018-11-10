@@ -4,7 +4,6 @@ use App\Models\User;
 
 $factory->define(User::class, function () {
     return [
-        'visitor_id' => 1,
         'name' => rand(),
         'status' => '',
         'email' => rand() . '@mail.ru',
