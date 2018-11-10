@@ -1,12 +1,9 @@
 @component('comps.email')
-    @slot('title')
-        @lang('messages.email_confirmation')
-    @endslot
     @slot('message')
         @lang('messages.confirm_email_message')
     @endslot
     @slot('link')
-        <a href="{{ $url }}" target="_blank" style="font-family: sans-serif">
+        <a href="{{ $token }}" target="_blank" style="font-family: sans-serif">
             {{ $token }}
         </a>
     @endslot
