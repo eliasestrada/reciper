@@ -8,7 +8,7 @@ use App\Http\Requests\Settings\GeneralRequest;
 use App\Http\Requests\Settings\PasswordRequest;
 use App\Http\Requests\Settings\SettingsGeneralRequest;
 use App\Models\User;
-use App\Notifications\EmailConfirmationNotification;
+use App\Notifications\VerifyEmailNotification;
 use Illuminate\Http\Request;
 
 class GeneralController extends Controller
@@ -64,7 +64,7 @@ class GeneralController extends Controller
         }
 
         $user->update(['email' => request('email'), 'token' => str_random(30)]);
-        $user->notify(new EmailConfirmationNotification($user));
+        $user->notify(new VerifyEmailNotification($user));
         cache()->put("user_{$user->id}_changed_email", 1, 10080);
 
         return back()->withSuccess(trans('settings.saved_now_verify_email'));
