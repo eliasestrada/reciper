@@ -8,11 +8,6 @@ class Visitor extends Model
 {
     protected $guarded = ['id'];
 
-    public function likes()
-    {
-        return $this->hasMany(Like::class);
-    }
-
     public function views()
     {
         return $this->hasMany(View::class);

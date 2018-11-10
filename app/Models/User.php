@@ -28,6 +28,11 @@ class User extends Authenticatable
         return $this->hasMany(Fav::class);
     }
 
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
     public function visitor()
     {
         return $this->belongsTo(Visitor::class);
