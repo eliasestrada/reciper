@@ -99,7 +99,8 @@
 
             {{-- Manage user --}}
             @if (optional(user())->hasRole('master'))
-                <a href="/master/manage-users/{{ $user->visitor_id }}" class="btn-small mt-3 red">
+                <a href="/master/manage-users/{{ $user->id }}" class="btn-small mt-3 red">
+                    <i class="fas fa-user-cog left"></i>
                     @lang('manage-users.manage')
                 </a>
             @endif
