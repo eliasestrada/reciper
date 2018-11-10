@@ -64,7 +64,7 @@
     background-color: #fff;
 
     .dark-theme & {
-        border: 1px solid lighten($darkTheme, 13%);
+        border-color: lighten($darkTheme, 13%);
         background-color: lighten($darkTheme, 7%);
         border-color: transparent;
         border-radius: 4px;

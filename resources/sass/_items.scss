@@ -37,6 +37,10 @@
         border-radius: 3px;
         border: solid 3px #fff;
         border-bottom: solid 6px #fff;
+
+        .dark-theme & {
+            border-color: lighten($darkTheme, 17%);
+        }
     }
 }
 
