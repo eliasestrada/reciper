@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-// For auth users
 Auth::routes();
-Route::middleware('auth')->group(function () {
+
+// Web APIs
+Route::middleware('auth')->namespace('WebApi')->group(function () {
     Route::get('statistics', 'StatisticsController@index');
     Route::get('favs/{category?}', 'FavsController@index');
     Route::post('favs/{recipe_id}', 'FavsController@store');
+    Route::post('like/{recipe_id}', 'LikeController@store');
 });
 
 // Api routes with in web enviroment

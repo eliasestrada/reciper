@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\WebApi;
 
 use App\Helpers\Popularity;
+use App\Http\Controllers\Controller;
 use App\Models\Recipe;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class FavsController extends Controller
 {
@@ -39,12 +40,10 @@ class FavsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  string $recipe_id
+     * @return Response
      */
-    public function store($recipe_id)
+    public function store($recipe_id): Response
     {
         if (!$recipe_id || !is_numeric($recipe_id) || Recipe::whereId($recipe_id)->doesntExist()) {
             return response('fail', 403);
