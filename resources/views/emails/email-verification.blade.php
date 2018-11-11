@@ -1,8 +1,7 @@
 @component('mail::layout')
+
 @slot('header')
-    @component('mail::header', ['url' => config('app.url')])
-    {{ config('app.name') }}
-    @endcomponent
+    @include('includes.emails.header')
 @endslot
 
 @lang('messages.confirm_email_message')
@@ -22,4 +21,5 @@
     @lang('messages.mail_footer')
     @endcomponent
 @endslot
+
 @endcomponent
