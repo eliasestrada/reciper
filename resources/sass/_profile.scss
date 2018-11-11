@@ -56,11 +56,12 @@
         font-weight: bold;
     }
     .bar {
-        background: $main;
-        background: -moz-linear-gradient(to top, $main 0%, $mainDark 50%, $main 95%);
-        background: linear-gradient(to bottom, $main 0%, lighten($main, 17%) 60%, lighten($main, 30%) 95%);
+        background: #5c08aa;
+        background: -moz-linear-gradient(to top, $main 0%, #7718cf 60%, #5c08aa 95%);
+        background: linear-gradient(to bottom, $main 0%, #7718cf 60%, #5c08aa 95%);
         line-height: 30px;
         height: 100%;
+        transition: 7000ms background;
         box-shadow: 2.5px 1px rgba(0, 0, 0, .1);
     }
 }
