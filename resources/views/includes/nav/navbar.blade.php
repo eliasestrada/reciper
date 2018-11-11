@@ -130,11 +130,6 @@
             </a>
         </li>
     @endauth
-    <li class="{{ active_if_route_is(['help']) }}">
-        <a href="/help" title="@lang('messages.help')">
-            <i class="fas fa-question-circle fa-15x left"></i>@lang('messages.help')
-        </a>
-    </li>
     <li>
         <a href="#" title="@lang('messages.dark_mode')">
             <i class="fas fa-moon fa-15x left"></i>
@@ -196,6 +191,12 @@
                 <li class="{{ active_if_route_is(['recipes', 'recipes/*']) }}">
                     <a href="/recipes#new" title="@lang('recipes.recipes')">
                         @lang('recipes.recipes')
+                    </a>
+                </li>
+
+                <li class="{{ active_if_route_is(['help']) }}">
+                    <a href="/help" title="@lang('messages.help')">
+                       @lang('messages.help')
                     </a>
                 </li>
 
