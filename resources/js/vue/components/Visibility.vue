@@ -6,7 +6,7 @@ export default {
             icon: 'fa-eye'
         }
     },
-    
+
     methods: {
         changeType() {
             if (this.type === 'password') {
