@@ -59,13 +59,13 @@ class GeneralController extends Controller
             return back()->withSuccess(trans('settings.email_is_empty'));
         }
 
-        if (cache()->has("user_{$user->id}_changed_email")) {
+        if (cache()->has("user:{$user->id}:changed_email")) {
             return back()->withError(trans('settings.email_change_once_per_week'));
         }
 
         $user->update(['email' => request('email'), 'token' => str_random(30)]);
         $user->notify(new VerifyEmailNotification($user));
-        cache()->put("user_{$user->id}_changed_email", 1, 10080);
+        cache()->put("user:{$user->id}:changed_email", 1, 10080);
 
         return back()->withSuccess(trans('settings.saved_now_verify_email'));
     }
