@@ -44,7 +44,6 @@ class ResetPasswordNotification extends Notification implements ShouldQueue
     /**
      * Get the mail representation of the notification.
      *
-     * @codeCoverageIgnore
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
@@ -55,9 +54,8 @@ class ResetPasswordNotification extends Notification implements ShouldQueue
 
         return (new MailMessage)
             ->subject(trans('passwords.reset_pwd'))
-            ->view('emails.reset-password', [
-                'token' => $this->token,
-                'user' => $this->user,
+            ->markdown('emails.reset-password', [
+                'name' => $this->user->getName(),
                 'url' => "{$url}?email={$get_param}",
             ]);
     }

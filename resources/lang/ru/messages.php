@@ -28,6 +28,7 @@ return [
     'email_confirmation' => 'Подтверждение эл. адреса',
     'confirm_email_message' => 'Для того чтобы подтвердить адрес эл. почты на ' . config('app.name') . ' перейдите по ссылке ниже',
     'in_russian' => 'На русском',
+    'mail_footer' => 'С уважением комманда ' . config('app.url') . '">' . config('app.name'),
     'general' => 'Общая',
     'favorites' => 'Избранное',
     'login_to_add_recipe' => 'Для того чтобы добавить рецепт вы должны быть авторизованы. Пожалуйста <a href="' . url('/login') . '" class="red-text">Войдите</a> на свою страницу, либо <a href="' . url('/register') . '" class="red-text">Зарегистрируйтесь</a>.',

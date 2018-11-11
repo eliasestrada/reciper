@@ -5,7 +5,7 @@
     @endcomponent
 @endslot
 
-@lang('passwords.we_got_request', ['username' => $name])
+@lang('messages.confirm_email_message')
 
 @slot('subcopy')
     @component('mail::subcopy')
@@ -13,8 +13,8 @@
     @endcomponent
 @endslot
 
-@component('mail::button', compact('url'))
-    @lang('passwords.reset_pwd')
+@component('mail::button', ['url' => $token])
+    @lang('messages.email_confirmation')
 @endcomponent
 
 @slot('footer')
