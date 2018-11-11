@@ -23,13 +23,13 @@ class LikeController extends Controller
 
         if (user()->likes()->whereRecipeId($recipe->id)->exists()) {
             user()->likes()->whereRecipeId($recipe->id)->delete();
-            Popularity::remove(config('custom.popularity_for_favs'), $recipe->user_id);
+            Popularity::remove(config('custom.popularity_for_like'), $recipe->user_id);
 
             return response('', 200);
         }
 
         user()->likes()->create(['recipe_id' => $recipe->id]);
-        Popularity::add(config('custom.popularity_for_favs'), $recipe->user_id);
+        Popularity::add(config('custom.popularity_for_like'), $recipe->user_id);
 
         return response('active', 200);
     }
