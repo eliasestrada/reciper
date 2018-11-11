@@ -2786,14 +2786,14 @@ small {
 }
 
 .toast {
+    width: auto;
+    height: auto;
+    max-width: 500px;
+    min-height: 48px;
     border-radius: 3px;
     top: 35px;
-    width: auto;
     margin-top: 10px;
     position: relative;
-    max-width: 100%;
-    height: auto;
-    min-height: 48px;
     line-height: 1.5em;
     background-color: #323232;
     padding: 10px 25px;
@@ -2812,7 +2812,7 @@ small {
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    cursor: default;
+    cursor: grab;
     opacity: .95 !important;
 }
 
