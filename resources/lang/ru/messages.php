@@ -40,4 +40,7 @@ return [
     // Errors
     'query_error' => 'Некоторые данные невозможно отобразить',
 
+    // Other
+    'congrats_streak_days' => '<i class="fas fa-fire left" style="color:orangered"></i> + :xp опыта за ударный режим',
+
 ];
