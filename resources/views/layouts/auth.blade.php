@@ -16,11 +16,11 @@
         @if (user()->isActive())
             @yield('content')
         @else
-            <div class="page pt-5 center">
+            <div class="page pt-4 center">
+                <img src="{{ asset('storage/users/not_active.jpg') }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->getName() }}" />
+                <h5 class="mt-4 main-text">@lang('users.we_missed_you')</h5>
                 <p class="header">
-                    @lang('users.activate_account_desc', [
-                        'days' => 30 - (date('j') - user()->updated_at->format('j'))
-                    ])
+                    @lang('users.activate_account_desc', ['days' => 30 - (date('j') - user()->updated_at->format('j'))])
                 </p>
                 <form action="{{ action('UsersController@store') }}" method="post">
                     @csrf
@@ -29,7 +29,6 @@
                         @lang('users.recover')
                     </button>
                 </form>
-                <h5 class="mt-4 main-text">@lang('users.we_missed_you')</h5>
             </div>
         @endif
     </div>

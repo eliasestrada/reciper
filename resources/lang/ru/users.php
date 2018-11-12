@@ -50,9 +50,9 @@ return [
     'recover' => 'Восстановить',
     'are_you_sure_to_recover' => 'Вы точно хотите восставить вашу страницу и все ее данные?',
     'we_missed_you' => 'Мы скучали за вами',
-    'account_recovered' => 'Ура! Страница восстановлена, добро пожаловать в семью',
 
     // Controllers
+    'account_recovered' => '<i class="fas fa-heart red-text left"></i> Ура! Страница восстановлена, добро пожаловать в семью',
     'user_found' => 'Пользователь найден',
     'user_not_found' => 'Пользователь не найден',
     'account_diactivate' => 'Ваша страница деактивирована',
