@@ -8,25 +8,35 @@
     <div class="col s12 l6 mb-3">
         <div class="center"><h1 class="header">@lang('messages.general')</h1></div>
         <table class="responsive highlight">
-            <tr>
-                {{-- All recipes --}}
+            <tr> {{-- All recipes --}}
                 <td>@lang('recipes.amount_of_recipes')</td>
                 <td class="right-align">{{ user()->recipes->count() }}</td>
             </tr>
-            <tr>
-                {{-- All likes --}}
+            <tr> {{-- All likes --}}
                 <td>@lang('users.amount_of_likes')</td>
                 <td class="right-align">{{ $recipes->sum('likes_count') }} <i class='fas fa-heart tiny red-text'></i></td>
             </tr>
-            <tr>
-                {{-- All views --}}
+            <tr> {{-- All views --}}
                 <td>@lang('users.amount_of_views')</td>
-                <td class="right-align">{{ $recipes->sum('views_count') }} <i class='fas fa-eye tiny grey-text'></i></td>
+                <td class="right-align">{{ $recipes->sum('views_count') }} <i class='fas fa-eye tiny'></i></td>
             </tr>
-            <tr>
-                {{-- All favs --}}
+            <tr> {{-- All favs --}}
                 <td>@lang('users.amount_of_favs')</td>
                 <td class="right-align">{{ $recipes->sum('favs_count') }} <i class='fas fa-star tiny' style="color:#d49d10"></td>
+            </tr>
+            <tr> {{-- Streak days --}}
+                <td>@lang('users.streak_days')</td>
+                <td class="right-align">
+                    <span style="margin-right:4px">{{ user()->streak_days }}</span>
+                    <i class="fas fa-fire tiny" style="color:orangered"></i>
+                </td>
+            </tr>
+            <tr> {{-- To next streak --}}
+                <td>@lang('users.next_streak_day')</td>
+                <td class="right-align">
+                    <span>{{ $next_streak == 0 ? trans('date.less_than_hour') : $next_streak }}</span>
+                    <i class="fas fa-clock tiny" style="color:orangered"></i>
+                </td>
             </tr>
         </table>
     </div>

@@ -4,6 +4,7 @@ return [
 
     'ago' => 'назад',
     'online' => 'В сети',
+    'less_than_hour' => 'меньше часа',
     // Seconds
     'second' => 'секунда',
     'seconds' => 'секунды',

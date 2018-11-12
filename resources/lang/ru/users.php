@@ -15,6 +15,7 @@ return [
     'most_favorite_recipe' => 'Самый избранный рецепт',
     'status' => 'Статус',
     'checked' => 'Проверен',
+    'next_streak_day' => 'Часов до след. ударного дня',
     'not_ready' => 'Не готов',
     'is_checking' => 'Проверяется',
     'joined' => 'Регистрация',
