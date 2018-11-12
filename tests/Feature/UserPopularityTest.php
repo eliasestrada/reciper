@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Fav;
+use App\Models\Like;
 use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -21,12 +22,12 @@ class UserPopularityTest extends TestCase
         $some_user = create_user();
         $author = create_user();
         $authors_recipe = create(Recipe::class, ['user_id' => $author->id]);
-        $points_for_favs = config('custom.popularity_for_favs');
+        $fav_point = config('custom.popularity_for_favs');
 
         $this->actingAs($some_user)->post(action('WebApi\FavsController@store', [
             'id' => $authors_recipe->id,
         ]));
-        $this->assertEquals($points_for_favs, User::whereId($author->id)->value('popularity'));
+        $this->assertEquals($fav_point, User::whereId($author->id)->value('popularity'));
     }
 
     /**
@@ -42,6 +43,41 @@ class UserPopularityTest extends TestCase
         Fav::create(['user_id' => $some_user->id, 'recipe_id' => $authors_recipe->id]);
 
         $this->actingAs($some_user)->post(action('WebApi\FavsController@store', [
+            'id' => $authors_recipe->id,
+        ]));
+        $this->assertEquals(0, User::whereId($author->id)->value('popularity'));
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function user_gets_popularity_points_for_like(): void
+    {
+        $some_user = create_user();
+        $author = create_user();
+        $authors_recipe = create(Recipe::class, ['user_id' => $author->id]);
+        $like_points = config('custom.popularity_for_like');
+
+        $this->actingAs($some_user)->post(action('WebApi\LikeController@store', [
+            'id' => $authors_recipe->id,
+        ]));
+        $this->assertEquals($like_points, User::whereId($author->id)->value('popularity'));
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function user_looses_popularity_points_for_dislike(): void
+    {
+        $some_user = create_user();
+        $author = create_user('', ['popularity' => config('custom.popularity_for_like')]);
+        $authors_recipe = create(Recipe::class, ['user_id' => $author->id]);
+
+        Like::create(['user_id' => $some_user->id, 'recipe_id' => $authors_recipe->id]);
+
+        $this->actingAs($some_user)->post(action('WebApi\LikeController@store', [
             'id' => $authors_recipe->id,
         ]));
         $this->assertEquals(0, User::whereId($author->id)->value('popularity'));
