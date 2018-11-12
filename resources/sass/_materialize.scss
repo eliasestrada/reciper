@@ -36,7 +36,7 @@
     background-color: $paperDark !important;
 
     .dark-theme & {
-        background: lighten($darkTheme, 10%) !important;
+        background: lighten($darkTheme, 4%) !important;
     }
 }
 

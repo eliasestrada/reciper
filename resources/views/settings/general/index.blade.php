@@ -5,12 +5,12 @@
 @section('content')
 
 <div class="page row">
-    <div class="col s12 m5 l4">
+    <div class="col s12 m5 l4 mt-2">
         @include('includes.settings-sidebar')
     </div>
     <div class="col s12 m7 l8 mt-3">
         <div class="row">
-            <div class="col s12">
+            <div class="col s12 paper-dark settings-section mt-0">
                 <form action="{{ action('Settings\GeneralController@updateGeneral') }}" method="post">
                     @csrf @method('put')
                     {{-- Name --}}
@@ -24,32 +24,37 @@
                         <textarea id="status" class="materialize-textarea counter" data-length="{{ config('valid.settings.general.status.max') }}" name="status" maxlength="{{ config('valid.settings.general.status.max') }}">{{ (user()->status ?? old('status')) }}</textarea>
                         <label for="status">@lang('settings.status')</label>
                     </div>
-                    <div class="input-field mt-4">
-                        <button class="btn" type="submit">@lang('forms.save')</button>
-                    </div>
+                    <button class="btn-small mt-2" type="submit">
+                        <i class="fas fa-save left"></i>
+                        @lang('forms.save')
+                    </button>
                 </form>
             </div>
             {{-- Email --}}
-            <div class="col s12 mt-5">
+            <div class="col s12 paper-dark settings-section">
                 <form action="{{ action('Settings\GeneralController@updateEmail') }}" method="post">
                     @csrf @method('put')
+
                     <h2 class="header">@lang('forms.email')</h2>
+
                     <div class="input-field">
                         <label for="email">@lang('forms.email_desc')</label>
                         <input type="text" name="email" id="email" value="{{ user()->email }}" data-length="{{ config('valid.settings.email.max') }}" class="counter" maxlength="{{ config('valid.settings.email.max') }}">
+
                         @if (!empty(user()->email))
                             <span class="helper-text {{ user()->verified() ? 'green' : 'red' }}-text">
                                 {!! user()->verified() ? trans('settings.verified') : trans('settings.not_verified') !!}
                             </span>
                         @endif
                     </div>
-                    <div class="input-field mt-4">
-                        <button class="btn" type="submit">@lang('forms.save')</button>
-                    </div>
+                    <button class="btn-small mt-2" type="submit">
+                        <i class="fas fa-save left"></i>
+                        @lang('forms.save')
+                    </button>
                 </form>
             </div>
             {{-- Password --}}
-            <div class="col s12 mt-5">
+            <div class="col s12 paper-dark settings-section">
                 <h2 class="header">@lang('forms.change_pwd')</h2>
                 <form action="{{ action('Settings\GeneralController@updatePassword') }}" method="post">
                     @method('put') @csrf
@@ -68,16 +73,17 @@
                         <input type="password" name="password_confirmation" id="password_confirmation" minlength="{{ config('valid.settings.password.min') }}" maxlength="{{ config('valid.settings.password.max') }}">
                     </div>
 
-                    <div class="input-field mt-4">
-                        <button class="btn" type="submit">@lang('forms.save')</button>
-                    </div>
+                    <button class="btn-small mt-2" type="submit">
+                        <i class="fas fa-save left"></i>
+                        @lang('forms.save')
+                    </button>
                 </form>
-                <div class="center mt-2">
-                    <a href="#delete-account-modal" title="@lang('settings.delete_account')" class="modal-trigger red-text">
-                        @lang('settings.delete_account')
-                    </a>
-                </div>
             </div>
+        </div>
+        <div class="center">
+            <a href="#delete-account-modal" title="@lang('settings.delete_account')" class="modal-trigger red-text">
+                @lang('settings.delete_account')
+            </a>
         </div>
     </div>
 </div>
