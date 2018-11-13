@@ -57,13 +57,6 @@
             </li>
         @endhasRole
 
-        <li class="position-relative {{ active_if_route_is(['notifications']) }}"> {{-- notifications --}}
-            <a href="/notifications" title="@lang('notifications.notifications')" class="{{ $notifs_notif ? 'small-notif' : '' }} ">
-                <i class="fas fa-bell fa-15x left with-red-hover"></i>
-                @lang('notifications.notifications')
-            </a>
-        </li>
-
         <li class="{{ active_if_route_is(['settings', 'settings/photo', 'settings/general']) }}"> {{-- settings --}}
             <a href="/settings" title="@lang('settings.settings')">
                 <i class="fas fa-cog fa-15x left with-red-hover"></i>

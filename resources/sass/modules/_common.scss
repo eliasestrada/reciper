@@ -92,6 +92,7 @@ select {
     &::before {
         content: '';
         position: absolute;
+        left: 7px;
         background: $red;
         border: solid 1px #fff;
         border-radius: 50%;
@@ -100,14 +101,12 @@ select {
     &::before {
         width: 13px;
         height: 13px;
-        left: -6px;
         top: 8px;
     }
 
     &::after {
         width: 15px;
         height: 15px;
-        left: -6px;
         top: 7px;
         -webkit-animation: pulse-animation 1.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
         animation: pulse-animation 1.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
