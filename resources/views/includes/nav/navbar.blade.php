@@ -169,7 +169,7 @@
 
                 {{-- Notifications bell --}}
                 <a href="#" class="right ml-1 mr-4 dropdown-trigger position-relative align-to-the-middle" title="@lang('notifications.notifications')" data-target="notifications-dropdown" id="mark-notifs-as-read">
-                    <span class="{{ $has_notifications ? 'small-notif' : '' }}" style="height:53px">
+                    <span class="{{ ($has_notifications ?? null) ? 'small-notif' : '' }}" style="height:53px">
                         <i class="fas fa-bell fa-15x"></i>
                     </span>
                 </a>
@@ -226,26 +226,28 @@
 </ul>
 
 {{-- Notifications --}}
-<ul id="notifications-dropdown" class="dropdown-content bottom-borders">
-    @forelse ($notifications as $notif)
-        <li class="{{ !is_null($notif['read_at']) ? 'active' : '' }}">
-            <a href="{{ ($notif['data']['link'] ?? '#') }}">
-                <span>
-                    <div>
-                        <span class="red-text">
-                            {{ $notif['data']['title'] }}
-                        </span>
-                    </div>
-                    <span>{!! $notif['data']['message'] !!}</span>
-                    <div>
-                        <small class="grey-text">{{ time_ago($notif['created_at']) }}</small>
-                    </div>
-                </span>
-            </a>
-        </li>
-    @empty
-        <li>
-            no messages
-        </li>
-    @endforelse
-</ul>
+@auth
+    <ul id="notifications-dropdown" class="dropdown-content bottom-borders">
+        @forelse ($notifications as $notif)
+            <li class="{{ !is_null($notif['read_at']) ? 'active' : '' }}">
+                <a href="{{ ($notif['data']['link'] ?? '#') }}">
+                    <span>
+                        <div>
+                            <span class="red-text">
+                                {{ $notif['data']['title'] }}
+                            </span>
+                        </div>
+                        <span>{!! $notif['data']['message'] !!}</span>
+                        <div>
+                            <small class="grey-text">{{ time_ago($notif['created_at']) }}</small>
+                        </div>
+                    </span>
+                </a>
+            </li>
+        @empty
+            <li>
+                no messages
+            </li>
+        @endforelse
+    </ul>
+@endauth
