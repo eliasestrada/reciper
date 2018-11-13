@@ -1,8 +1,3 @@
-{{-- Categories Dropdown trigger menu --}}
-<ul id="categories-dropdown" class="dropdown-content bottom-borders">
-    @include('includes.nav.categories')
-</ul>
-
 {{-- User Dropdown menu --}}
 <ul id="user-menu-dropdown" class="dropdown-content bottom-borders">
     @auth
@@ -161,22 +156,29 @@
             <div class="right">
                 @auth
                     {{-- Dropdown Trigger 2 User --}}
-                    <a class="right dropdown-trigger position-relative" data-target="user-menu-dropdown" style="margin-top:.65rem">
-                        <i class="user-icon-navbar z-depth-1 hoverable waves-effect waves-light d-block {{ $unapproved_notif || $feedback_notif || $notifs_notif || $logs_notif ? 'small-notif' : '' }}">
-                            <img src="{{ asset('storage/small/users/' . user()->photo) }}">
+                    <a class="right dropdown-trigger position-relative align-to-the-middle" data-target="user-menu-dropdown">
+                        <i class="user-icon-navbar d-block {{ $unapproved_notif || $feedback_notif || $logs_notif ? 'small-notif' : '' }}">
+                            <img src="{{ asset('storage/small/users/' . user()->photo) }}" class="z-depth-1 hoverable">
                         </i>
                     </a>
                 @else
                     {{-- Dropdown Trigger 2  --}}
-                    <a class="right dropdown-trigger position-relative" data-target="user-menu-dropdown" style="margin-top:.65rem" id="_hamb-menu">
+                    <a class="right dropdown-trigger position-relative align-to-the-middle" data-target="user-menu-dropdown" id="_hamb-menu">
                         <i class="fas fa-bars user-icon-navbar z-depth-1 hoverable waves-effect waves-light d-block center" style="line-height:40px; font-size:19px">
                         </i>
                     </a>
                 @endauth
 
                 {{-- Search button --}}
-                <a href="#" data-target="mobile-demo" class="right" style="margin:2px 27px 0 12px" title="@lang('pages.search')" id="nav-btn-for-search">
-                    <i class="fas fa-search fa-15x" style="line-height:1.7"></i>
+                <a href="#" data-target="mobile-demo" class="hide-on-small-only right mr-4 align-to-the-middle" title="@lang('pages.search')" id="nav-btn-for-search">
+                    <i class="fas fa-search fa-15x"></i>
+                </a>
+
+                {{-- Notifications bell --}}
+                <a href="#" class="right ml-1 mr-4 dropdown-trigger position-relative align-to-the-middle" title="@lang('notifications.notifications')" data-target="notifications-dropdown">
+                    <span class="{{ $notifs_notif ? 'small-notif' : '' }}" style="height:53px">
+                        <i class="fas fa-bell fa-15x"></i>
+                    </span>
                 </a>
             </div>
 
@@ -224,3 +226,17 @@
         </form>
     </div>
 </nav>
+
+{{-- Categories Dropdown trigger menu --}}
+<ul id="categories-dropdown" class="dropdown-content bottom-borders">
+    @include('includes.nav.categories')
+</ul>
+
+{{-- Notifications --}}
+<ul id="notifications-dropdown" class="dropdown-content bottom-borders">
+    <li>
+        <a href="#" title="">
+            Пользователь c логином master использовал Javascript тег script в одном из своих рецептов. Срочно проверьте журнал
+        </a>
+    </li>
+</ul>

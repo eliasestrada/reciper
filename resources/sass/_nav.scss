@@ -3,13 +3,19 @@
     height: 39px !important;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    border-radius: 50%;
+    overflow: visible;
     
     img {
         width: 39px;
         height: auto;
+        border-radius: 50%;
     }
+}
+
+.align-to-the-middle {
+    height:54px;
+    display: flex;
+    align-items: center;
 }
 
 

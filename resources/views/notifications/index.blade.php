@@ -14,7 +14,7 @@
     <div class="row">
         @forelse ($notifications as $notif)
             <a href="{{ ($notif['data']['link'] ?? '#') }}" class="col s12 m6 l4">
-                <div class="card">
+                <div class="card break-word">
                     <div class="card-panel px-3">
                         <span>
                             <h6 class="card-title">
