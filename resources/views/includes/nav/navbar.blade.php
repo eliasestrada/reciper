@@ -169,7 +169,7 @@
 
                 {{-- Notifications bell --}}
                 <a href="#" class="right ml-1 mr-4 dropdown-trigger position-relative align-to-the-middle" title="@lang('notifications.notifications')" data-target="notifications-dropdown">
-                    <span class="{{ $notifs_notif ? 'small-notif' : '' }}" style="height:53px">
+                    <span class="{{ count($notifications) > 0 ? 'small-notif' : '' }}" style="height:53px">
                         <i class="fas fa-bell fa-15x"></i>
                     </span>
                 </a>
@@ -227,9 +227,25 @@
 
 {{-- Notifications --}}
 <ul id="notifications-dropdown" class="dropdown-content bottom-borders">
-    <li>
-        <a href="#" title="">
-            Пользователь c логином master использовал Javascript тег script в одном из своих рецептов. Срочно проверьте журнал
-        </a>
-    </li>
+    @forelse ($notifications as $notif)
+        <li>
+            <a href="{{ ($notif['data']['link'] ?? '#') }}" class="col s12 m6 l4">
+                <span>
+                    <div>
+                        <span class="red-text">
+                            {{ $notif['data']['title'] }}
+                        </span>
+                    </div>
+                    <span>{!! $notif['data']['message'] !!}</span>
+                    <div>
+                        <small class="grey-text">{{ time_ago($notif['created_at']) }}</small>
+                    </div>
+                </span>
+            </a>
+        </li>
+    @empty
+        <li>
+            no messages
+        </li>
+    @endforelse
 </ul>
