@@ -14,13 +14,15 @@ class NotificationsComposer
     public function compose(View $view): void
     {
         if (user()) {
-            $view->with([
-                'notifications' => user()
-                    ->notifications()
-                    ->select('data', 'created_at')
-                    ->get()
-                    ->toArray(),
-            ]);
+            $notifications = user()
+                ->notifications()
+                ->select('data', 'created_at', 'read_at')
+                ->get();
+
+            $has_notifications = $notifications->where('read_at', '=', null)->count() > 0;
+
+            $view->with('notifications', $notifications->toArray());
+            $view->with(compact('has_notifications'));
         }
     }
 }

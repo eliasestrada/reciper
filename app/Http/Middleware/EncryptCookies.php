@@ -15,5 +15,6 @@ class EncryptCookies extends Middleware
         'r_ekirts',
         'r_font_size',
         'r_dark_theme',
+        'r_fiton',
     ];
 }

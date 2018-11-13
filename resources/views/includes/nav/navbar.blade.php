@@ -168,8 +168,8 @@
                 </a>
 
                 {{-- Notifications bell --}}
-                <a href="#" class="right ml-1 mr-4 dropdown-trigger position-relative align-to-the-middle" title="@lang('notifications.notifications')" data-target="notifications-dropdown">
-                    <span class="{{ count($notifications) > 0 ? 'small-notif' : '' }}" style="height:53px">
+                <a href="#" class="right ml-1 mr-4 dropdown-trigger position-relative align-to-the-middle" title="@lang('notifications.notifications')" data-target="notifications-dropdown" id="mark-notifs-as-read">
+                    <span class="{{ $has_notifications ? 'small-notif' : '' }}" style="height:53px">
                         <i class="fas fa-bell fa-15x"></i>
                     </span>
                 </a>
@@ -228,8 +228,8 @@
 {{-- Notifications --}}
 <ul id="notifications-dropdown" class="dropdown-content bottom-borders">
     @forelse ($notifications as $notif)
-        <li>
-            <a href="{{ ($notif['data']['link'] ?? '#') }}" class="col s12 m6 l4">
+        <li class="{{ !is_null($notif['read_at']) ? 'active' : '' }}">
+            <a href="{{ ($notif['data']['link'] ?? '#') }}">
                 <span>
                     <div>
                         <span class="red-text">

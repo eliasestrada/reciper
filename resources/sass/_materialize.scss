@@ -3398,22 +3398,20 @@ button.btn-floating {
     outline: 0;
 }
 
-.dropdown-content li {
-    clear: both;
-    color: $mainDark;
-    cursor: pointer;
-    min-height: 40px;
-    line-height: 1.5rem;
-    width: 100%;
-    text-align: left;
-
-    .dark-theme & {
-        color: #dbdbdb;
-    }
-}
-
 .dropdown-content {
     li {
+        clear: both;
+        color: $mainDark;
+        cursor: pointer;
+        min-height: 40px;
+        line-height: 1.5rem;
+        width: 100%;
+        text-align: left;
+
+        .dark-theme & {
+            color: #dbdbdb;
+        }
+        &.active,
         &:hover,
         &:active {
             background-color: $mainLight;

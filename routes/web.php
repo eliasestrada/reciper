@@ -38,9 +38,6 @@ Route::get('documents/{document}', 'Master\DocumentsController@show')->where('do
 // Recipes ===========
 Route::resource('recipes', RecipesController::class);
 
-// Notifications ===========
-Route::get('notifications', 'NotificationController@index')->middleware('auth');
-
 // Dashboard ===========
 Route::get('dashboard', 'DashboardController@index');
 
@@ -87,4 +84,5 @@ Route::prefix('invokes')->namespace('Invokes')->group(function () {
     Route::get('font-size-switcher/{font_size}', FontSizeController::class);
     Route::post('download-ingredients/{recipe_id}', DownloadIngredientsController::class);
     Route::get('verify-email/{token}', VerifyEmailController::class);
+    Route::put('notifications', NotificationController::class)->middleware('auth');
 });
