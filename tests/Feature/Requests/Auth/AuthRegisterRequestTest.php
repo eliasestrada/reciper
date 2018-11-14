@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Requests;
+namespace Tests\Feature\Requests\Auth;
 
 use Tests\TestCase;
 
