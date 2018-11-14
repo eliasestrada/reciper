@@ -3,10 +3,13 @@
 namespace Tests\Feature\Views\Help;
 
 use App\Models\Help;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class HelpCreatePageTest extends TestCase
 {
+    use DatabaseTransactions;
+
     /**
      * @author Cho
      * @test
