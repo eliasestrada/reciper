@@ -167,12 +167,13 @@
                     <i class="fas fa-search fa-15x"></i>
                 </a>
 
-                {{-- Notifications bell --}}
-                <a href="#" class="right ml-1 mr-4 dropdown-trigger position-relative align-to-the-middle" title="@lang('notifications.notifications')" data-target="notifications-dropdown" id="mark-notifs-as-read">
-                    <span class="{{ ($has_notifications ?? null) ? 'small-notif' : '' }}" style="height:53px">
-                        <i class="fas fa-bell fa-15x"></i>
-                    </span>
-                </a>
+                @auth {{-- Notifications bell --}}
+                    <a href="#" class="right ml-1 mr-4 dropdown-trigger position-relative align-to-the-middle" title="@lang('notifications.notifications')" data-target="notifications-dropdown" id="mark-notifs-as-read">
+                        <span class="{{ ($has_notifications ?? null) ? 'small-notif' : '' }}" style="height:53px">
+                            <i class="fas fa-bell fa-15x"></i>
+                        </span>
+                    </a>
+                @endauth
             </div>
 
             {{-- Regular menu --}}
@@ -245,9 +246,9 @@
                 </a>
             </li>
         @empty
-            <li>
-                no messages
-            </li>
+            <div class="center">
+                <span class="mx-3">@lang('notifications.no_notifs')</span>
+            </div>
         @endforelse
     </ul>
 @endauth
