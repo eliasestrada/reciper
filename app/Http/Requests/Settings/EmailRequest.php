@@ -27,10 +27,7 @@ class EmailRequest extends FormRequest
         $max_length = config('valid.settings.email.max');
 
         return ['email' => [
-            'nullable',
-            new UniqueEmailRule,
-            "max:{$max_length}",
-            'email',
+            'nullable', new UniqueEmailRule, "max:{$max_length}", 'email',
         ]];
     }
 

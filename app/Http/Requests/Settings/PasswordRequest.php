@@ -28,7 +28,7 @@ class PasswordRequest extends FormRequest
 
         return [
             'old_password' => 'required|string',
-            'password' => "required|string|min:$pwd_min|max:$pwd_max|confirmed",
+            'password' => "required|string|min:{$pwd_min}|max:{$pwd_max}|confirmed",
         ];
     }
 

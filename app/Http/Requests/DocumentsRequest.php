@@ -29,8 +29,8 @@ class DocumentsRequest extends FormRequest
         $text_min = config('valid.docs.text.min');
 
         return [
-            'title' => "required|min:$title_min|max:$title_max",
-            'text' => "required|min:$text_min|max:$text_max",
+            'title' => "required|min:{$title_min}|max:{$title_max}",
+            'text' => "required|min:{$text_min}|max:{$text_max}",
         ];
     }
 

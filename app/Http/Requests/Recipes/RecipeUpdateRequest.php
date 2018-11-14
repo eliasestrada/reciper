@@ -33,18 +33,19 @@ class RecipeUpdateRequest extends FormRequest
         $ingredients_max = config('valid.recipes.ingredients.max');
         $text_min = config('valid.recipes.text.min');
         $text_max = config('valid.recipes.text.max');
+        $last_number = Category::count();
 
         if ($this->ready == 1) {
             return [
-                'title' => "min:$title_min|max:$title_max",
-                'intro' => "min:$intro_min|max:$intro_max",
-                'ingredients' => "min:$ingredients_min|max:$ingredients_max",
-                'text' => "min:$text_min|max:$text_max",
+                'title' => "min:{$title_min}|max:{$title_max}",
+                'intro' => "min:{$intro_min}|max:{$intro_max}",
+                'ingredients' => "min:{$ingredients_min}|max:{$ingredients_max}",
+                'text' => "min:{$text_min}|max:{$text_max}",
                 'meal' => 'numeric|between:1,3',
                 'time' => 'numeric|between:1,1000',
                 'image' => 'image|mimes:jpg,png,jpeg|nullable|max:1999',
                 'categories.0' => 'required',
-                'categories.*' => 'distinct|numeric|between:1,' . Category::count(),
+                'categories.*' => "distinct|numeric|between:1,{$last_number}",
             ];
         }
         return [];
@@ -72,10 +73,8 @@ class RecipeUpdateRequest extends FormRequest
             'categories.*.between' => trans('recipes.categories_between'),
             'text.min' => trans('recipes.text_min'),
             'text.max' => trans('recipes.text_max'),
-
             'time.numeric' => trans('recipes.time_numeric'),
             'time.between' => trans('recipes.time_between'),
-
             'image.image' => trans('recipes.image_image'),
             'image.max' => trans('recipes.image_max'),
             'image.mimes' => trans('settings.photo_mimes'),

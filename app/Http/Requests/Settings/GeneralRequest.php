@@ -28,8 +28,8 @@ class GeneralRequest extends FormRequest
         $about_me_max = config('valid.settings.general.status.max');
 
         return [
-            'name' => "nullable|min:$name_min|max:$name_max",
-            'status' => "max:$about_me_max",
+            'name' => "nullable|min:{$name_min}|max:{$name_max}",
+            'status' => "max:{$about_me_max}",
         ];
     }
 

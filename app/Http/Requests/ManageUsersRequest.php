@@ -28,7 +28,7 @@ class ManageUsersRequest extends FormRequest
 
         return [
             'days' => 'required|numeric',
-            'message' => "required|min:$min|max:$max",
+            'message' => "required|min:{$min}|max:{$max}",
         ];
     }
 

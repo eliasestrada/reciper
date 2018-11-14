@@ -25,7 +25,8 @@ class RecipeStoreRequest extends FormRequest
     {
         $min = config('valid.recipes.title.min');
         $max = config('valid.recipes.title.max');
-        return ['title' => "required|min:$min|max:$max"];
+
+        return ['title' => "required|min:{$min}|max:{$max}"];
     }
 
     /**
