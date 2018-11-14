@@ -1,20 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\Master;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\DocumentsRequest;
 use App\Models\Document;
 use Illuminate\Http\Request;
 
 class DocumentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('master')->except(['index', 'show']);
+    }
+
     /**
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('master.documents.index', [
+        return view('documents.index', [
             'ready_docs' => Document::query()->isReady(1)->paginate(20)->onEachSide(1),
             'unready_docs' => Document::query()->isReady(0)->paginate(20)->onEachSide(1),
         ]);
@@ -25,7 +29,7 @@ class DocumentsController extends Controller
      */
     public function create()
     {
-        return view('master.documents.create');
+        return view('documents.create');
     }
 
     /**
@@ -39,7 +43,7 @@ class DocumentsController extends Controller
             'text_' . LANG() => $request->text,
         ]);
 
-        return redirect("/master/documents/$doc->id/edit");
+        return redirect("/documents/$doc->id/edit");
     }
 
     /**
@@ -50,7 +54,7 @@ class DocumentsController extends Controller
         if (!$document->isReady() && !optional(user())->hasRole('master')) {
             return redirect('/')->withError(trans('documents.not_ready'));
         }
-        return view('master.documents.show', compact('document'));
+        return view('documents.show', compact('document'));
     }
 
     /**
@@ -58,7 +62,7 @@ class DocumentsController extends Controller
      */
     public function edit(Document $document)
     {
-        return view('master.documents.edit', compact('document'));
+        return view('documents.edit', compact('document'));
     }
 
     /**
@@ -99,13 +103,13 @@ class DocumentsController extends Controller
         }
 
         if ($id == 1) {
-            return redirect('/master/documents/create')
+            return redirect('/documents/create')
                 ->withError(trans('documents.cant_delete_first_doc'));
         }
 
         Document::find($id)->delete();
 
-        return redirect('/master/documents')->withSuccess(
+        return redirect('/documents')->withSuccess(
             trans('documents.doc_has_been_deleted')
         );
     }

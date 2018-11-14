@@ -82,6 +82,11 @@
                         <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('feedback.contact_us')
                     </a>
                 </li>
+                <li>
+                    <a href="/documents" title="@lang('messages.go')" class="{{ active_if_route_is(['documents']) }}">
+                        <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('documents.documents')
+                    </a>
+                </li>
                 @guest
                     <li>
                         <a href="/login" title="@lang('messages.go')" class="{{ active_if_route_is(['login']) }}">
@@ -97,7 +102,7 @@
             </ul>
             {{-- Documents --}}
             <ul class="px-0 unstyled-list col s12">
-                <li><strong>@lang('documents.info')</strong></li>
+                <li><a href="/documents"><strong>@lang('documents.info')</strong></a></li>
                 @foreach ($documents_footer as $doc)
                     <li>
                         <a href="/documents/{{ $doc['id'] }}" class="{{ active_if_route_is(['documents/' . $doc['id']]) }}">

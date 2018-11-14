@@ -8,11 +8,11 @@
     @hasRole('master')
         <div class="center pb-2 pt-3">
             {{-- Back button --}}
-            <a href="/master/documents" class="btn-floating green tooltipped" data-tooltip="@lang('messages.back')">
+            <a href="/documents" class="btn-floating green tooltipped" data-tooltip="@lang('messages.back')">
                 <i class="fas fa-angle-left"></i>
             </a>
             {{--  edit button  --}}
-            <a href="/master/documents/{{ $document->id }}/edit" class="btn-floating green tooltipped" data-tooltip="@lang('tips.edit')">
+            <a href="/documents/{{ $document->id }}/edit" class="btn-floating green tooltipped" data-tooltip="@lang('tips.edit')">
                 <i class="fas fa-pen"></i>
             </a>
         </div>

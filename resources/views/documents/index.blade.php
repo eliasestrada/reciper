@@ -1,10 +1,15 @@
-@extends('layouts.auth')
+@extends(auth()->check() ? 'layouts.auth' : 'layouts.guest')
 
 @section('title', trans('documents.documents'))
 
 @section('content')
 
-<div class="center pt-4"><h1 class="header"><i class="fas fa-copy red-text"></i> @lang('documents.documents')</h1></div>
+<div class="center pt-4">
+    <h1 class="header">
+        <i class="fas fa-copy red-text"></i> @lang('documents.documents')
+    </h1>
+</div>
+
 <div class="page">
     <div v-cloak>
         <tabs>
@@ -14,7 +19,7 @@
                         name="@lang('messages.published') 
                         <span class='red-text'><b>{{ $ready_docs->count() }}</b></span>"
                         :selected="true"
-                    @else
+                    @elseif (user() && user()->hasRole('master'))
                         name="@lang('messages.drafts') 
                         <span class='red-text'><b>{{ $unready_docs->count() }}</b></span>"
                     @endif
@@ -33,7 +38,11 @@
                                     </div>
                                     <div class="card-action">
                                         <a href="/documents/{{ $doc->id }}" class="text">@lang('messages.open')</a>
-                                        <a href="/master/documents/{{ $doc->id }}/edit" class="text">@lang('messages.edit')</a>
+                                        @hasRole('master')
+                                            <a href="/documents/{{ $doc->id }}/edit" class="text">
+                                                @lang('messages.edit')
+                                            </a>
+                                        @endhasRole
                                     </div>
                                 </div>
                             </div>
@@ -44,7 +53,7 @@
                                     @include('includes.buttons.btn', [
                                         'title' => trans('documents.new_doc'),
                                         'icon' => 'fa-plus',
-                                        'link' => '/master/documents/create'
+                                        'link' => '/documents/create'
                                     ])
                                 @endslot
                             @endcomponent
@@ -58,10 +67,12 @@
     </div>
 </div>
 
-@component('comps.btns.fixed-btn')
-    @slot('icon') fa-plus @endslot
-    @slot('link') /master/documents/create @endslot
-    @slot('tip') @lang('documents.new_doc') @endslot
-@endcomponent
+@hasRole('master')
+    @component('comps.btns.fixed-btn')
+        @slot('icon') fa-plus @endslot
+        @slot('link') /documents/create @endslot
+        @slot('tip') @lang('documents.new_doc') @endslot
+    @endcomponent
+@endhasRole
 
 @endsection

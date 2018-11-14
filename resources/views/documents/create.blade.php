@@ -8,14 +8,14 @@
 
 @section('content')
 
-@include('includes.buttons.back', ['url' => '/master/documents'])
+@include('includes.buttons.back', ['url' => '/documents'])
 
 <div class="page">
     <div class="center">
         <h1 class="header">@lang('documents.new_doc')</h1>
     </div>
 
-    <form action="{{ action('Master\DocumentsController@store') }}" method="post">
+    <form action="{{ action('DocumentsController@store') }}" method="post">
         @csrf
         <div class="center pb-2 pt-3">
             {{--  Save button  --}}

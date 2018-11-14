@@ -79,13 +79,6 @@
                 </a>
             </li>
 
-            <li class="position-relative {{ active_if_route_is(['master/documents']) }}"> {{-- Documents --}}
-                <a href="/master/documents" title="@lang('documents.documents')">
-                    <i class="fas fa-copy fa-15x left with-red-hover"></i>
-                    @lang('documents.documents')
-                </a>
-            </li>
-
             <li class="position-relative {{ active_if_route_is(['log-viewer/logs*']) }}"> {{-- log-viewer --}}
                 <a href="/log-viewer/logs" title="@lang('logs.logs')" class=" {{ $logs_notif ? 'small-notif' : '' }}">
                     <i class="fas fa-file-code fa-15x left with-red-hover"></i>

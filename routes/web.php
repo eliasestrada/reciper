@@ -33,10 +33,10 @@ Route::get('/', 'PagesController@home');
 Route::get('search', 'PagesController@search');
 Route::view('contact', 'pages.contact');
 Route::post('admin/feedback', 'Admin\FeedbackController@store');
-Route::get('documents/{document}', 'Master\DocumentsController@show')->where('document', '[0-9]+');
 
-// Recipes ===========
+Route::resource('documents', DocumentsController::class);
 Route::resource('recipes', RecipesController::class);
+Route::resource('help', HelpController::class);
 
 // Dashboard ===========
 Route::get('dashboard', 'DashboardController@index');
@@ -69,14 +69,10 @@ Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function 
 
 // Master ==========
 Route::prefix('master')->namespace('Master')->middleware('master')->group(function () {
-    Route::resource('documents', DocumentsController::class)->except('show');
     Route::delete('log-viewer/logs/delete', 'LogsController@delete');
     Route::resource('visitors', VisitorsController::class)->except(['edit']);
     Route::resource('manage-users', ManageUsersController::class)->except(['edit']);
 });
-
-// Help =========
-Route::resource('help', HelpController::class);
 
 // Invokes
 Route::prefix('invokes')->namespace('Invokes')->group(function () {

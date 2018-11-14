@@ -8,14 +8,14 @@
 
 @section('content')
 
-@include('includes.buttons.back', ['url' => '/master/documents'])
+@include('includes.buttons.back', ['url' => '/documents'])
 
 <div class="page">
     <div class="center">
         <h1 class="header">@lang('common.edit_item', ['item' => $document->getTitle()])</h1>
     </div>
 
-    <form action="{{ action('Master\DocumentsController@update', ['id' => $document->id]) }}" method="post">
+    <form action="{{ action('DocumentsController@update', ['id' => $document->id]) }}" method="post">
         @csrf
         @method('put')
 
@@ -67,7 +67,7 @@
     </form>
 </div>
 
-<form action="{{ action('Master\DocumentsController@destroy', ['id' => $document->id]) }}" method="post" id="delete-doc" class="hide">
+<form action="{{ action('DocumentsController@destroy', ['id' => $document->id]) }}" method="post" id="delete-doc" class="hide">
     @method('delete') @csrf
 </form>
 
