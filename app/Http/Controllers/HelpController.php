@@ -38,8 +38,7 @@ class HelpController extends Controller
 
     /**
      * @param Help $help
-     */
-    public function show(Help $help)
+     */public function show(Help $help)
     {
         return view('help.show', compact('help'));
     }
@@ -66,8 +65,41 @@ class HelpController extends Controller
             'help_category_id' => request('category'),
         ]);
 
+        cache()->forget('help');
+        cache()->forget('help_categories');
+
         return redirect('/help')->withSuccess(
             trans('help.help_message_is_created')
         );
+    }
+
+    /**
+     * Show edit page
+     */
+    public function edit(Help $help)
+    {
+        $categories = HelpCategory::select('id', 'title_' . LANG() . ' as title')->get();
+        return view('help.edit', compact('categories', 'help'));
+    }
+
+    /**
+     * Update existing help material
+     *
+     * @param HelpRequest $request
+     * @param Help $help
+     */
+    public function update(HelpRequest $request, Help $help)
+    {
+        $help->update([
+            'title_' . LANG() => request('title'),
+            'text_' . LANG() => request('text'),
+            'help_category_id' => request('category'),
+        ]);
+
+        cache()->forget('help');
+        cache()->forget('help_categories');
+
+        return redirect("/help/{$help->id}/edit")
+            ->withSuccess(trans('help.help_updated'));
     }
 }
