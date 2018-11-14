@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Help\HelpStoreRequest;
+use App\Http\Requests\HelpRequest;
 use App\Models\Help;
 use App\Models\HelpCategory;
 use Illuminate\Database\QueryException;
@@ -49,15 +49,16 @@ class HelpController extends Controller
      */
     public function create()
     {
-        return view('help.create', compact('help'));
+        $categories = HelpCategory::select('id', 'title_' . LANG() . ' as title')->get();
+        return view('help.create', compact('categories'));
     }
 
     /**
      * Store data in database
      *
-     * @param HelpStoreRequest $request
+     * @param HelpRequest $request
      */
-    public function store(HelpStoreRequest $request)
+    public function store(HelpRequest $request)
     {
         Help::create([
             'title_' . LANG() => request('title'),

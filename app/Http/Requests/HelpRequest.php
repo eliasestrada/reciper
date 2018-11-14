@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Help;
+namespace App\Http\Requests;
 
 use App\Models\HelpCategory;
 use Illuminate\Foundation\Http\FormRequest;
 
-class HelpStoreRequest extends FormRequest
+class HelpRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

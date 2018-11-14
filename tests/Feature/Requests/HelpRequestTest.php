@@ -1,12 +1,15 @@
 <?php
 
-namespace Tests\Feature\Requests\Help;
+namespace Tests\Feature\Requests;
 
 use App\Models\HelpCategory;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class HelpStoreRequestTest extends TestCase
+class HelpRequestTest extends TestCase
 {
+    use DatabaseTransactions;
+
     private $data = [];
 
     /**
