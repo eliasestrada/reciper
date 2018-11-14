@@ -16,6 +16,9 @@
     </div>
 
     <form action="{{ action('Master\DocumentsController@update', ['id' => $document->id]) }}" method="post">
+        @csrf
+        @method('put')
+
         <div class="center p-3">
             {{-- View button --}}
             @if ($document->id != 1)
@@ -53,10 +56,7 @@
             @endif
         </div>
 
-        @csrf
-        @method('put')
-
-        <div class="input-field"> {{-- Input field --}}
+        <div class="input-field"> {{-- Title field --}}
             <input type="text" name="title" id="title" value="{{ $document->getTitle() }}" class="counter" data-length="{{ config('valid.docs.title.max') }}" maxlength="{{ config('valid.docs.title.max') }}" minlength="{{ config('valid.docs.title.min') }}">
             <label for="title">@lang('documents.doc_title')</label>
         </div>
