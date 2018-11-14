@@ -16,9 +16,9 @@ abstract class DuskTestCase extends BaseTestCase
     /**
      * @return void
      */
-    public function setUp(): void
+    public function tearDown(): void
     {
-        parent::setUp();
+        parent::tearDown();
         $this->artisan('migrate:fresh');
         $this->artisan('db:seed');
         $this->browse(function (Browser $browser) {
