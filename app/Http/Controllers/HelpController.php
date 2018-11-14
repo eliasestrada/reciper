@@ -2,12 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Help\HelpStoreRequest;
 use App\Models\Help;
 use App\Models\HelpCategory;
 use Illuminate\Database\QueryException;
+use Illuminate\Http\Request;
 
 class HelpController extends Controller
 {
+    /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('admin')->except(['index', 'show']);
+    }
+
     public function index()
     {
         try {
@@ -32,5 +42,31 @@ class HelpController extends Controller
     public function show(Help $help)
     {
         return view('help.show', compact('help'));
+    }
+
+    /**
+     * Show create page
+     */
+    public function create()
+    {
+        return view('help.create', compact('help'));
+    }
+
+    /**
+     * Store data in database
+     *
+     * @param HelpStoreRequest $request
+     */
+    public function store(HelpStoreRequest $request)
+    {
+        Help::create([
+            'title_' . LANG() => request('title'),
+            'text_' . LANG() => request('text'),
+            'help_category_id' => request('category'),
+        ]);
+
+        return redirect('/help')->withSuccess(
+            trans('help.help_message_is_created')
+        );
     }
 }
