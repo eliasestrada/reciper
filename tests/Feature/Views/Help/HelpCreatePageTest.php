@@ -49,7 +49,7 @@ class HelpCreatePageTest extends TestCase
     public function admin_can_add_new_help_answer(): void
     {
         $form_data = [
-            'title' => $title = str_random(17),
+            'title' => str_random(17),
             'text' => str_random(27),
             'category' => 1,
         ];
@@ -59,7 +59,8 @@ class HelpCreatePageTest extends TestCase
             ->assertRedirect('/help');
 
         $this->assertDatabaseHas('help', [
-            'title_' . LANG() => $title,
+            'title_' . LANG() => $form_data['title'],
+            'text_' . LANG() => $form_data['text'],
         ]);
     }
 }
