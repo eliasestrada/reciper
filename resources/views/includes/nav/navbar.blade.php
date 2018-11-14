@@ -191,8 +191,8 @@
                 </li>
 
                 <li class="{{ active_if_route_is(['help']) }}">
-                    <a href="/help" title="@lang('messages.help')">
-                       @lang('messages.help')
+                    <a href="/help" title="@lang('help.help')">
+                       @lang('help.help')
                     </a>
                 </li>
 

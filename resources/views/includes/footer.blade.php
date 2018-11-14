@@ -74,7 +74,7 @@
                 </li>
                 <li>
                     <a href="/help" title="@lang('messages.go')" class="{{ active_if_route_is(['help']) }}">
-                        <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('messages.help')
+                        <i class="fas fa-angle-right red-text" style="width:7.5px"></i> @lang('help.help')
                     </a>
                 </li>
                 <li>
@@ -117,7 +117,7 @@
             </a>
             <a href="/help" title="@lang('messages.go')" class="{{ active_if_route_is(['help']) }}">
                 <i class="fas fa-question mr-1" style="width:11px"></i>
-                @lang('messages.help')
+                @lang('help.help')
             </a>
         </div>
 

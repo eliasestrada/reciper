@@ -50,9 +50,9 @@
         </a>
     </li>
     <li class="{{ active_if_route_is(['help']) }}">
-        <a href="/help" title="@lang('messages.help')">
+        <a href="/help" title="@lang('help.help')">
             <i class="fas fa-question-circle fa-15x grey-text left"></i>
-            @lang('messages.help')
+            @lang('help.help')
         </a>
         <div class="divider"></div>
     </li>

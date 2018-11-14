@@ -1,11 +1,11 @@
 @extends(auth()->check() ? 'layouts.auth' : 'layouts.guest')
 
-@section('title', trans('messages.help'))
+@section('title', trans('help.help'))
 
 @section('content')
 
 <div class="page">
-    <div class="center"><h1 class="header">@lang('messages.help')</h1></div>
+    <div class="center"><h1 class="header">@lang('help.help')</h1></div>
 
     <div class="row mt-4">
         @foreach ($help_categories as $category)

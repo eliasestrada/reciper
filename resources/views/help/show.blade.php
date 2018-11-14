@@ -1,6 +1,6 @@
 @extends(auth()->check() ? 'layouts.auth' : 'layouts.guest')
 
-@section('title', trans('messages.help'))
+@section('title', trans('help.help'))
 
 @section('content')
 
