@@ -8,6 +8,8 @@
 
 @section('content')
 
+@include('includes.buttons.back', ['url' => '/master/documents'])
+
 <div class="page">
     <div class="center">
         <h1 class="header">@lang('documents.new_doc')</h1>
@@ -15,12 +17,7 @@
 
     <form action="{{ action('Master\DocumentsController@store') }}" method="post">
         @csrf
-
         <div class="center pb-2 pt-3">
-            {{-- Back button --}}
-            <a href="/master/documents" class="btn-floating green tooltipped" data-tooltip="@lang('messages.back')">
-                <i class="fas fa-angle-left"></i>
-            </a>
             {{--  Save button  --}}
             <button type="submit" class="btn-floating green tooltipped" data-tooltip="@lang('tips.save')">
                 <i class="fas fa-save"></i>
