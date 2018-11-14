@@ -6,14 +6,22 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PasswordRequest extends FormRequest
 {
-    // Determine if the user is authorized to make this request.
-    public function authorize()
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
     {
         return true;
     }
 
-    // Get the validation rules that apply to the request.
-    public function rules()
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
     {
         $pwd_min = config('valid.settings.password.min');
         $pwd_max = config('valid.settings.password.max');
@@ -24,8 +32,12 @@ class PasswordRequest extends FormRequest
         ];
     }
 
-    // Get the validation messages that apply to the request.
-    public function messages()
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array
+     */
+    public function messages(): array
     {
         return [
             'old_password.required' => trans('settings.old_pwd_required'),

@@ -6,14 +6,22 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class GeneralRequest extends FormRequest
 {
-    // Determine if the user is authorized to make this request.
-    public function authorize()
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
     {
         return true;
     }
 
-    // Get the validation rules that apply to the request.
-    public function rules()
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
     {
         $name_min = config('valid.settings.general.name.min');
         $name_max = config('valid.settings.general.name.max');
@@ -25,8 +33,12 @@ class GeneralRequest extends FormRequest
         ];
     }
 
-    // Get the validation messages that apply to the request.
-    public function messages()
+    /**
+     * Get the validation messages that apply to the request.
+     *
+     * @return array
+     */
+    public function messages(): array
     {
         return [
             'name.min' => trans('settings.name_min'),

@@ -11,7 +11,7 @@ class ManageUsersRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,7 +21,7 @@ class ManageUsersRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $min = config('valid.feedback.ban.message.min');
         $max = config('valid.feedback.ban.message.max');
@@ -33,9 +33,11 @@ class ManageUsersRequest extends FormRequest
     }
 
     /**
+     * Get the validation messages that apply to the request.
+     *
      * @return array
      */
-    public function messages()
+    public function messages(): array
     {
         return [
             'days.required' => trans('manage-users.days_required'),
