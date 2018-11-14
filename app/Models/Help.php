@@ -10,6 +10,11 @@ class Help extends Model
     protected $guarded = ['id'];
     public $timestamps = false;
 
+    public function category()
+    {
+        return $this->belongsTo(HelpCategory::class, 'help_category_id');
+    }
+
     /**
      * @return string
      */
