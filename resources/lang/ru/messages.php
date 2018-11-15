@@ -9,7 +9,6 @@ return [
     'off' => 'откл.',
     'go' => 'Перейти',
     'back' => 'Назад',
-    'trash' => 'Корзина',
     'app_name' => 'Ресипёр',
     'no_messages' => 'Нет сообщений',
     'dark_mode' => 'Ночной режим',
@@ -42,5 +41,12 @@ return [
 
     // Other
     'congrats_streak_days' => '<i class="fas fa-fire left" style="color:orangered"></i> + :xp опыта за ударный режим',
+
+    // Trash
+    'trash' => 'Корзина',
+    'trash_is_empty' => 'Корзина пуста',
+    'not_allowed' => 'Данный материал не может быть удален, не хватает параметра table',
+    'trash_deleted' => 'Удалено с корзины',
+    'sure_to_delete_trash' => 'Вы уверены что хотите удалить этот материал? Его невозможно будет восстановить после удаления.',
 
 ];
