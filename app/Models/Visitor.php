@@ -6,13 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Visitor extends Model
 {
+    /**
+     * Guarder columns
+     *
+     * @var array
+     */
     protected $guarded = ['id'];
 
+    /**
+     * Relationship with View model
+     */
     public function views()
     {
         return $this->hasMany(View::class);
     }
 
+    /**
+     * Uses updateOrCreate eloquent method
+     */
     public static function updateOrCreateNewVisitor()
     {
         return self::updateOrCreate(
@@ -22,7 +33,9 @@ class Visitor extends Model
     }
 
     /**
-     * @return int
+     * Returns how many days visitor is with us
+     *
+     * @return integer
      */
     public function daysWithUs(): int
     {

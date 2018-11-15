@@ -10,31 +10,63 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    /**
+     * Guarder columns
+     *
+     * @var array
+     */
     protected $guarded = ['id'];
+
+    /**
+     * Hide fields when displaying data
+     *
+     * @var array
+     */
     protected $hidden = ['password', 'remember_token'];
 
+    /**
+     * Relationship with Recipe model
+     */
     public function recipes()
     {
         return $this->hasMany(Recipe::class);
     }
 
+    /**
+     * Relationship with Role model
+     */
     public function roles()
     {
         return $this->belongsToMany(Role::class);
     }
 
+    /**
+     * Relationship with Fav model
+     */
     public function favs()
     {
         return $this->hasMany(Fav::class);
     }
 
+    /**
+     * Relationship with Like model
+     */
     public function likes()
     {
         return $this->hasMany(Like::class);
     }
 
     /**
+     * Relationship with Ban model
+     */
+    public function ban()
+    {
+        return $this->hasOne(Ban::class);
+    }
+
+    /**
      * Find out if user has a specific role
+     *
      * @param string $check
      * @return boolean
      */
@@ -48,7 +80,12 @@ class User extends Authenticatable
         return false;
     }
 
-    public function addRole(string $check)
+    /**
+     * Attach a new role to a user
+     *
+     * @return void
+     */
+    public function addRole(string $check): void
     {
         $roles = Role::get();
 
@@ -60,6 +97,8 @@ class User extends Authenticatable
     }
 
     /**
+     * Check if user owns particular recipe or not
+     *
      * @param integer $recipe_id
      * @return boolean
      */
@@ -69,6 +108,8 @@ class User extends Authenticatable
     }
 
     /**
+     * Check if user has particular recipe added to his favorite list
+     *
      * @param integer $recipe_id
      * @return boolean
      */
@@ -78,17 +119,18 @@ class User extends Authenticatable
     }
 
     /**
+     * Shows how many days this user is with us
+     *
      * @return int
-     */public function daysWithUs(): int
-    {return \Carbon\Carbon::parse($this->created_at)->diffInDays(now());
-    }
-
-    public function ban()
+     */
+    public function daysWithUs(): int
     {
-        return $this->hasOne(Ban::class);
+        return \Carbon\Carbon::parse($this->created_at)->diffInDays(now());
     }
 
     /**
+     * Check if this user is banned or not
+     *
      * @return boolean
      */
     public function isBanned(): bool
@@ -105,6 +147,10 @@ class User extends Authenticatable
     }
 
     /**
+     * Returns green if user is active and not banned
+     * Reurns main color if user is banned
+     * Returns red if user is not active
+     *
      * @return string
      */
     public function getStatusColor(): string
@@ -118,15 +164,18 @@ class User extends Authenticatable
     }
 
     /**
-     * If no name use username
-     * @return void
+     * If user doesn't have name then use username
+     *
+     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return is_null($this->name) || $this->name == '' ? $this->username : $this->name;
     }
 
     /**
+     * Check if user is active or not
+     *
      * @return boolean
      */
     public function isActive(): bool

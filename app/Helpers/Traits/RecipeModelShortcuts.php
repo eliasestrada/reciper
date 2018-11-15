@@ -5,7 +5,9 @@ namespace App\Helpers\Traits;
 trait RecipeModelShortcuts
 {
     /**
-     * @return string
+     * Get title column from db
+     *
+     * @return string|null
      */
     public function getTitle(): ?string
     {
@@ -13,6 +15,8 @@ trait RecipeModelShortcuts
     }
 
     /**
+     * Get ingredients column from db
+     *
      * @return string
      */
     public function getIngredients(): ?string
@@ -21,6 +25,8 @@ trait RecipeModelShortcuts
     }
 
     /**
+     * Get intro column from db
+     *
      * @return string
      */
     public function getIntro(): ?string
@@ -29,6 +35,8 @@ trait RecipeModelShortcuts
     }
 
     /**
+     * Get text column from db
+     *
      * @return string
      */
     public function getText(): ?string
@@ -37,7 +45,9 @@ trait RecipeModelShortcuts
     }
 
     /**
-     * @return bool
+     * Check if this recipe has ready column set to 1
+     *
+     * @return boolean
      */
     public function isReady(): bool
     {
@@ -45,7 +55,9 @@ trait RecipeModelShortcuts
     }
 
     /**
-     * @return bool
+     * Check if this recipe has approved column set to 1
+     *
+     * @return boolean
      */
     public function isApproved(): bool
     {
@@ -53,7 +65,10 @@ trait RecipeModelShortcuts
     }
 
     /**
-     * @return bool
+     * Check if this recipe has approved column set to 1
+     * and ready column set to 1
+     *
+     * @return boolean
      */
     public function isDone(): bool
     {
@@ -61,7 +76,9 @@ trait RecipeModelShortcuts
     }
 
     /**
-     * @return bool
+     * Check if this recipe has published column set to 1
+     *
+     * @return boolean
      */
     public function isPublished(): bool
     {
@@ -69,6 +86,8 @@ trait RecipeModelShortcuts
     }
 
     /**
+     * Returns status of the current recipe
+     *
      * @return string
      */
     public function getStatusText(): string
@@ -83,6 +102,9 @@ trait RecipeModelShortcuts
     }
 
     /**
+     * Returns font awesome icon of the current recipe,
+     * dipending of the current recipe status
+     *
      * @return string
      */
     public function getStatusIcon(): string
@@ -97,6 +119,9 @@ trait RecipeModelShortcuts
     }
 
     /**
+     * Returns color of the current recipe,
+     * dipending of the current recipe status
+     *
      * @return string
      */
     public function getStatusColor(): string
@@ -110,6 +135,10 @@ trait RecipeModelShortcuts
         }
     }
 
+    /**
+     * This method will update recipe and set ready,
+     * approved and approver_id field to 0
+     */
     public function moveToDrafts()
     {
         return $this->update([

@@ -10,9 +10,17 @@ class Recipe extends Model
 {
     use RecipeModelShortcuts, RecipeModelRelationship;
 
+    /**
+     * Guarder columns
+     *
+     * @var array
+     */
     protected $guarded = ['id'];
 
     /**
+     * Returns ingredients field from db, converted to array with
+     * list items
+     *
      * @return array
      */
     public function ingredientsWithListItems(): array
@@ -21,6 +29,9 @@ class Recipe extends Model
     }
 
     /**
+     * Returns text field from db, converted to array with
+     * list items
+     *
      * @return array
      */
     public function textWithListItems(): array
@@ -29,6 +40,8 @@ class Recipe extends Model
     }
 
     /**
+     * Scope that selects recipes that have ready field set to 1
+     *
      * @param $query
      * @param integer $value
      */
@@ -38,6 +51,8 @@ class Recipe extends Model
     }
 
     /**
+     * Scope that select common fields from db
+     *
      * @param $query
      * @param array $aditional
      * @param array $mute
@@ -64,6 +79,8 @@ class Recipe extends Model
     }
 
     /**
+     * Scope that returns only recipes that have approved field set to 1
+     *
      * @param $query
      * @param integer $value
      */
@@ -73,6 +90,9 @@ class Recipe extends Model
     }
 
     /**
+     * Scope that returns only recipes that have approved field set to 1
+     * and ready field set to 1
+     *
      * @param $query
      * @param integer $value
      */
@@ -84,6 +104,9 @@ class Recipe extends Model
     }
 
     /**
+     * Returns only those recipes that user haven't seen, if there no recipes
+     * the he haven't seen, shows just random recipes
+     *
      * @param int $limit
      * @param int $edge
      * @param int|null $visitor_id

@@ -6,9 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Document extends Model
 {
+    /**
+     * Guarder columns
+     *
+     * @var array
+     */
     protected $guarded = ['id'];
 
     /**
+     * Returns title column from db
+     *
      * @return string
      */
     public function getTitle(): string
@@ -17,6 +24,8 @@ class Document extends Model
     }
 
     /**
+     * Returns text column from db
+     *
      * @return string
      */
     public function getText(): string
@@ -25,6 +34,18 @@ class Document extends Model
     }
 
     /**
+     * Check if recipe has ready column set to 1
+     *
+     * @return boolean
+     */
+    public function isReady(): bool
+    {
+        return $this->toArray()['ready_' . LANG()];
+    }
+
+    /**
+     * Scope that selects common columns from db
+     *
      * @param $query
      * @return void
      */
@@ -34,14 +55,8 @@ class Document extends Model
     }
 
     /**
-     * @return boolean
-     */
-    public function isReady(): bool
-    {
-        return $this->toArray()['ready_' . LANG()];
-    }
-
-    /**
+     * Scope that selects only records from db that are ready
+     *
      * @param [type] $query
      * @param integer $value
      * @return void

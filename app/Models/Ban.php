@@ -6,16 +6,38 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ban extends Model
 {
+    /**
+     * Guarder columns
+     *
+     * @var array
+     */
     protected $guarded = ['id'];
+
+    /**
+     * String that represents the name of the table
+     *
+     * @var string
+     */
     protected $table = 'ban';
+
+    /**
+     * Use or not laravel timestamps
+     *
+     * @var bool
+     */
     public $timestamps = false;
 
+    /**
+     * Relationship with User model
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
     /**
+     * Adds user to ban list
+     *
      * @param integer $user_id
      * @param integer $days
      * @param string $message
