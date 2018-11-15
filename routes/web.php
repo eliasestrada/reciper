@@ -72,7 +72,7 @@ Route::prefix('master')->namespace('Master')->middleware('master')->group(functi
     Route::delete('log-viewer/logs/delete', 'LogsController@delete');
     Route::resource('visitors', VisitorsController::class)->except(['edit']);
     Route::resource('manage-users', ManageUsersController::class)->except(['edit']);
-    Route::resource('trash', TrashController::class)->only(['index', 'destroy', 'show']);
+    Route::resource('trash', TrashController::class)->only(['index', 'destroy']);
 });
 
 // Invokes

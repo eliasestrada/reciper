@@ -11,18 +11,16 @@
                 <div class="card blue-grey darken-1">
                     <div class="card-content pt-4">
                         <span class="card-title">{!! $item->getTitle() !!}</span>
-                        <p>{!! str_limit($item->getText(), 177) !!}</p>
+                        <p>{!! $item->getText() !!}</p>
+                        <p class="pt-2 grey-text">@lang('messages.deleted') {!! time_ago($item->deleted_at) !!}</p>
                     </div>
                     <div class="card-action">
-                        {{-- Open button --}}
-                        <a href="/master/trash/{{ $item->id }}" class="btn-small" title="@lang('messages.open')">
-                            @lang('messages.open')
-                        </a>
                         {{-- Restore button --}}
                         <form action="" method="post" class="d-inline-block">
                             @method('put') @csrf
                             <button type="submit" class="btn-small green confirm" data-confirm="@lang('messages.sure_to_restore')" title="@lang('messages.restore')">
-                                <i class="fas fa-sync-alt"></i>
+                                <i class="fas fa-sync-alt left"></i>
+                                @lang('messages.restore')
                             </button>
                         </form>
                         {{-- Delete button --}}
@@ -31,7 +29,8 @@
 
                             <input type="hidden" name="table" value="help">
                             <button type="submit" class="btn-small red confirm" data-confirm="@lang('messages.sure_to_delete_trash')" title="@lang('forms.deleting')">
-                                <i class="fas fa-trash"></i>
+                                <i class="fas fa-trash left"></i>
+                                @lang('forms.deleting')
                             </button>
                         </form>
                     </div>
