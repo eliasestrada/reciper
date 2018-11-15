@@ -33,6 +33,7 @@ class TrashController extends Controller
 
             cache()->forget('help');
             cache()->forget('help_categories');
+            cache()->forget('trash_notif');
 
             return redirect("/help/{$id}")
                 ->withSuccess(trans('messages.trash_restored'));
@@ -51,6 +52,8 @@ class TrashController extends Controller
     {
         if ($request->table === 'help') {
             Help::withTrashed()->whereId($id)->forceDelete();
+
+            cache()->forget('trash_notif');
 
             return redirect('/master/trash')
                 ->withSuccess(trans('messages.trash_deleted'));
