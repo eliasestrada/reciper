@@ -38,20 +38,22 @@
     let button = $('mark-notifs-as-read');
     let alertIcon = document.querySelector('#mark-notifs-as-read span');
 
-    button.addEventListener('click', () => {
-        alertIcon.classList.remove('small-notif');
+    if (button && alertIcon) {
+        button.addEventListener('click', () => {
+            alertIcon.classList.remove('small-notif');
 
-        fetch('/invokes/notifications', {
-            method: 'PUT',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                _token: document
-                    .querySelector('meta[name="csrf-token"]')
-                    .getAttribute('content')
-            })
-        }).catch(e => console.error(e));
-    });
+            fetch('/invokes/notifications', {
+                method: 'PUT',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    _token: document
+                        .querySelector('meta[name="csrf-token"]')
+                        .getAttribute('content')
+                })
+            }).catch(e => console.error(e));
+        });
+    }
 })();

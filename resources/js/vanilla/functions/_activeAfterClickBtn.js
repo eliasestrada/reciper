@@ -5,10 +5,10 @@
  * @param {string} element that u want to show
  * @param {string} button that u want to click
  */
-function activeAfterClickBtn(element, button, customClass = "active") {
+function activeAfterClickBtn(element, button, customClass = 'active') {
     let visible = false;
 
-    $(button).addEventListener("click", () => {
+    $(button).addEventListener('click', () => {
         if (visible === false) {
             $(element).classList.add(customClass);
             visible = true;

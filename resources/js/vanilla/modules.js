@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * A simple way to cut 'document.getElementById'
  * @param {string} e
@@ -7,14 +9,14 @@ function $(e) {
 }
 
 // Script that prevents mulltiple forms submitting
-document.querySelectorAll("form").forEach(function(form) {
+document.querySelectorAll('form').forEach(function(form) {
     form.addEventListener(
-        "submit",
+        'submit',
         function() {
-            var buttons = this.querySelectorAll("button");
+            var buttons = this.querySelectorAll('button');
             buttons.forEach(function(button) {
-                button.setAttribute("disabled", "disabled");
-                button.classList.add("disabled");
+                button.setAttribute('disabled', 'disabled');
+                button.classList.add('disabled');
                 button.innerHTML =
                     '<i class="fas fa-circle-notch fa-1x fa-spin"></i>';
             });

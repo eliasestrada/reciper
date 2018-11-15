@@ -6,13 +6,13 @@
  */
 (function HomeHeaderSearchForm() {
     let preventing = true;
-    let button = $("home-search-btn");
-    let form = $("home-search-form");
+    let button = $('home-search-btn');
+    let form = $('home-search-form');
 
     if (form && button) {
-        activeAfterClickBtn("home-search-form", "home-search-btn");
+        activeAfterClickBtn('home-search-form', 'home-search-btn');
 
-        button.addEventListener("click", e => {
+        button.addEventListener('click', e => {
             if (preventing) {
                 e.preventDefault();
                 preventing = false;
