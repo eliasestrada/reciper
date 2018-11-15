@@ -15,7 +15,7 @@ class HelpTest extends TestCase
     {
         array_map(function ($attr) {
             $this->assertClassHasAttribute($attr, Help::class);
-        }, ['table', 'guarded', 'timestamps']);
+        }, ['table', 'guarded', 'timestamps', 'dates']);
     }
 
     /**

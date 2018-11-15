@@ -20,6 +20,7 @@ class CreateHelpTable extends Migration
             $table->string('title_en', 255)->nullable();
             $table->text('text_ru')->nullable();
             $table->text('text_en')->nullable();
+            $table->softDeletes();
         });
     }
 
