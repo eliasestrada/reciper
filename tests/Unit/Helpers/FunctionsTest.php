@@ -83,11 +83,11 @@ class FunctionsTest extends TestCase
         $this->get('/');
         $this->assertEquals('active', active_if_route_is(['/', 'settings']));
 
-        $this->get('/settings');
-        $this->assertEquals('active', active_if_route_is(['/recipes', 'settings']));
+        $this->get('/contact');
+        $this->assertEquals('active', active_if_route_is(['/recipes', 'contact']));
 
-        $this->get('/users/other/my-recipes');
-        $this->assertEquals('active', active_if_route_is(['/users/other/my-recipes']));
+        $this->get('/search');
+        $this->assertEquals('active', active_if_route_is(['/search']));
     }
 
     /**
