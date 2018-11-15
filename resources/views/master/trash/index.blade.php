@@ -4,6 +4,13 @@
 
 @section('content')
 
+<div class="center pt-4">
+    <h1 class="header">
+        <i class="fas fa-trash red-text"></i> @lang('messages.trash') 
+        {{ $trash->count() > 0 ? $trash->count() : '' }}
+    </h1>
+</div>
+
 <div class="page">
     <div class="row">
         @forelse ($trash as $item)
@@ -12,12 +19,16 @@
                     <div class="card-content pt-4">
                         <span class="card-title">{!! $item->getTitle() !!}</span>
                         <p>{!! $item->getText() !!}</p>
-                        <p class="pt-2 grey-text">@lang('messages.deleted') {!! time_ago($item->deleted_at) !!}</p>
+                        <p class="pt-2 grey-text">
+                            @lang('messages.deleted') 
+                            {!! time_ago($item->deleted_at) !!}
+                        </p>
                     </div>
                     <div class="card-action">
                         {{-- Restore button --}}
-                        <form action="" method="post" class="d-inline-block">
+                        <form action="{{ action('Master\TrashController@update', ['id' => $item->id]) }}" method="post" class="d-inline-block">
                             @method('put') @csrf
+                            <input type="hidden" name="table" value="help">
                             <button type="submit" class="btn-small green confirm" data-confirm="@lang('messages.sure_to_restore')" title="@lang('messages.restore')">
                                 <i class="fas fa-sync-alt left"></i>
                                 @lang('messages.restore')

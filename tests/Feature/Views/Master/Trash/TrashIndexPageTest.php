@@ -72,7 +72,26 @@ class TrashIndexPageTest extends TestCase
             ->assertRedirect('/master/trash');
 
         $this->assertDatabaseMissing('help', [
-            'title_' . LANG() => $trash,
+            'title_' . LANG() => $trash['title'],
+        ]);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function master_can_restore_trashed_material(): void
+    {
+        $trash = $this->createTrash();
+
+        $this->actingAs(create_user('master'))
+            ->put(action('Master\TrashController@update', [
+                'id' => $trash['id'],
+            ]), ['table' => 'help'])
+            ->assertRedirect("/help/{$trash['id']}");
+
+        $this->assertDatabaseHas('help', [
+            'title_' . LANG() => $trash['title'],
         ]);
     }
 
@@ -86,10 +105,9 @@ class TrashIndexPageTest extends TestCase
         $help = create(Help::class);
         $data = [
             'id' => $help->id,
-            'title' => $help->title,
+            'title' => $help->getTitle(),
         ];
         $help->delete();
-
         return $data;
     }
 }

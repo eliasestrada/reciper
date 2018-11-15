@@ -21,6 +21,27 @@ class TrashController extends Controller
     }
 
     /**
+     * Restore material
+     *
+     * @param Request $request
+     * @param int $id
+     */
+    public function update(Request $request, int $id)
+    {
+        if ($request->table === 'help') {
+            Help::withTrashed()->whereId($id)->restore();
+
+            cache()->forget('help');
+            cache()->forget('help_categories');
+
+            return redirect("/help/{$id}")
+                ->withSuccess(trans('messages.trash_restored'));
+        }
+
+        return back()->withError(trans('messages.not_allowed'));
+    }
+
+    /**
      * Force deletes all trash
      *
      * @param Request $request
@@ -29,11 +50,10 @@ class TrashController extends Controller
     public function destroy(Request $request, int $id)
     {
         if ($request->table === 'help') {
-            Help::whereId($id)->forceDelete();
+            Help::withTrashed()->whereId($id)->forceDelete();
 
-            return redirect('/master/trash')->withSuccess(
-                trans('messages.trash_deleted')
-            );
+            return redirect('/master/trash')
+                ->withSuccess(trans('messages.trash_deleted'));
         }
         return back()->withError(trans('messages.not_allowed'));
     }
