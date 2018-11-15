@@ -80,14 +80,14 @@
             </li>
 
             <li class="position-relative {{ active_if_route_is(['log-viewer/logs*']) }}"> {{-- log-viewer --}}
-                <a href="/log-viewer/logs" title="@lang('logs.logs')" class=" {{ $logs_notif ? 'small-notif' : '' }}">
+                <a href="/log-viewer/logs" title="@lang('logs.logs')" class="{{ $logs_notif ? 'small-notif' : '' }}">
                     <i class="fas fa-file-code fa-15x left with-red-hover"></i>
                     @lang('logs.logs')
                 </a>
             </li>
 
             <li class="position-relative {{ active_if_route_is(['master/trash']) }}"> {{-- trash --}}
-                <a href="/master/trash" title="@lang('messages.trash')">
+                <a href="/master/trash" title="@lang('messages.trash')" class="{{ $trash_notif ? 'small-notif' : '' }}">
                     <i class="fas fa-trash fa-15x left with-red-hover"></i>
                     @lang('messages.trash')
                 </a>
@@ -150,7 +150,7 @@
                 @auth
                     {{-- Dropdown Trigger 2 User --}}
                     <a class="right dropdown-trigger position-relative align-to-the-middle" data-target="user-menu-dropdown">
-                        <i class="user-icon-navbar d-block {{ $unapproved_notif || $feedback_notif || $logs_notif ? 'small-notif' : '' }}">
+                        <i class="user-icon-navbar d-block {{ $trash_notif || $unapproved_notif || $feedback_notif || $logs_notif ? 'small-notif' : '' }}">
                             <img src="{{ asset('storage/small/users/' . user()->photo) }}" class="z-depth-1 hoverable">
                         </i>
                     </a>
