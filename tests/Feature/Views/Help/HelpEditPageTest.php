@@ -109,7 +109,7 @@ class HelpEditPageTest extends TestCase
             ->delete(action('HelpController@destroy', ['id' => $help->id]))
             ->assertRedirect("/help");
 
-        $this->assertDatabaseMissing('help', [
+        $this->assertSoftDeleted('help', [
             'title_' . LANG() => $help->getTitle(),
             'text_' . LANG() => $help->getText(),
         ]);
