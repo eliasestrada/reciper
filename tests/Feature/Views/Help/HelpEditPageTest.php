@@ -57,7 +57,7 @@ class HelpEditPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function admin_can_add_new_help_answer(): void
+    public function admin_can_add_new_help_material(): void
     {
         $form_data = [
             'title' => $title = str_random(17),
@@ -78,7 +78,7 @@ class HelpEditPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function admin_can_update_help_answer(): void
+    public function admin_can_update_help_material(): void
     {
         $help = create(Help::class);
         $form_data = [
@@ -94,6 +94,24 @@ class HelpEditPageTest extends TestCase
         $this->assertDatabaseHas('help', [
             'title_' . LANG() => $form_data['title'],
             'text_' . LANG() => $form_data['text'],
+        ]);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_can_delete_help_material(): void
+    {
+        $help = create(Help::class);
+
+        $this->actingAs(create_user('admin'))
+            ->delete(action('HelpController@destroy', ['id' => $help->id]))
+            ->assertRedirect("/help");
+
+        $this->assertDatabaseMissing('help', [
+            'title_' . LANG() => $help->getTitle(),
+            'text_' . LANG() => $help->getText(),
         ]);
     }
 }

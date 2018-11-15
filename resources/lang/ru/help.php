@@ -9,10 +9,12 @@ return [
     'edit_help' => 'Изменить материал',
     'help_title' => 'Заголовок',
     'help_text' => 'Описание',
+    'sure_del_help' => 'Вы точно хотите удалить этот материал?',
 
     // Controller
     'help_message_is_created' => 'Материал создан',
     'help_updated' => 'Материал изменен',
+    'help_deleted' => 'Материал удален',
 
     // Validation
     'title_required' => 'Укажите заголовок',

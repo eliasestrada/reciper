@@ -65,8 +65,7 @@ class HelpController extends Controller
             'help_category_id' => request('category'),
         ]);
 
-        cache()->forget('help');
-        cache()->forget('help_categories');
+        $this->forgetCache();
 
         return redirect('/help')->withSuccess(
             trans('help.help_message_is_created')
@@ -96,10 +95,33 @@ class HelpController extends Controller
             'help_category_id' => request('category'),
         ]);
 
-        cache()->forget('help');
-        cache()->forget('help_categories');
+        $this->forgetCache();
 
         return redirect("/help/{$help->id}/edit")
             ->withSuccess(trans('help.help_updated'));
+    }
+
+    /**
+     * Delete particular help material
+     *
+     * @param Help $help
+     */
+    public function destroy(Help $help)
+    {
+        $help->delete();
+        $this->forgetCache();
+
+        return redirect('/help')->withSuccess(trans('help.help_deleted'));
+    }
+
+    /**
+     * Function helper
+     *
+     * @return void
+     */
+    public function forgetCache(): void
+    {
+        cache()->forget('help');
+        cache()->forget('help_categories');
     }
 }

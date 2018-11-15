@@ -16,19 +16,28 @@
             @csrf
             @method('put')
             <div class="center pb-2 pt-3">
+                {{-- Publich button --}}
                 <button type="submit" class="btn-floating tooltipped" data-tooltip="@lang('tips.publish')">
                     <i class="fas fa-save"></i>
                 </button>
-                <div class="d-inline-block ml-4">
+
+                {{-- Delete button --}}
+                <a onclick="if (confirm('@lang('help.sure_del_help')')) $('delete-help').submit()" class="btn-floating red tooltipped" data-tooltip="@lang('tips.delete')">
+                    <i class="fas fa-trash"></i>
+                </a>
+
+                {{-- Choose category --}}
+                <div class="d-inline-block ml-3">
                     <label for="category">@lang('help.help_category')</label>
+
                     <select name="category" id="category">
                         @foreach ($categories as $c)
                             <option value="{{ $c['id'] }}" {{ set_as_selected_if_equal($c['id'], ($help->category->id ?? '')) }}>
                                 {{ $c['title'] }}
                             </option>
                         @endforeach
-                    </select>
-                </div>
+                        </select>
+                    </div>
             </div>
 
             <div class="input-field"> {{-- Title field --}}
@@ -43,5 +52,9 @@
         </form>
     </div>
 </div>
+
+<form action="{{ action('HelpController@destroy', ['id' => $help->id]) }}" method="post" id="delete-help" class="hide">
+    @method('delete') @csrf
+</form>
 
 @endsection
