@@ -85,6 +85,13 @@
                     @lang('logs.logs')
                 </a>
             </li>
+
+            <li class="position-relative {{ active_if_route_is(['master/trash']) }}"> {{-- trash --}}
+                <a href="/master/trash" title="@lang('messages.trash')">
+                    <i class="fas fa-trash fa-15x left with-red-hover"></i>
+                    @lang('messages.trash')
+                </a>
+            </li>
         @endhasRole
 
         <li> {{-- logout --}} {{-- This button submits logout-form --}}
