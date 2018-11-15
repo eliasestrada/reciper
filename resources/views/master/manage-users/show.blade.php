@@ -78,7 +78,9 @@
                     <textarea name="message" id="ban-textarea" class="materialize-textarea counter" data-length="{{ config('valid.feedback.ban.message.max') }}" maxlength="{{ config('valid.feedback.ban.message.max') }}" minlength="{{ config('valid.feedback.ban.message.min') }}" required>{{ old('message') }}</textarea>
                     <label for="ban-textarea">@lang('forms.message')</label>
                 </div>
-                <button class="btn red" type="submit" onclick="if (!confirm('@lang('manage-users.are_you_sure_to_ban')')) event.preventDefault()">@lang('manage-users.ban')</button>
+                <button class="btn red confirm" type="submit" data-confirm="@lang('manage-users.are_you_sure_to_ban')">
+                    @lang('manage-users.ban')
+                </button>
             </form>
         </div>
     </div>

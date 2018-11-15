@@ -24,7 +24,7 @@
                 </p>
                 <form action="{{ action('UsersController@store') }}" method="post">
                     @csrf
-                    <button type="submit" class="btn mt-3 green hoverable waves-effect waves-green z-depth-2" onclick="if (!confirm('@lang('users.are_you_sure_to_recover')')) event.preventDefault()">
+                    <button type="submit" class="btn mt-3 green hoverable waves-effect waves-green z-depth-2 confirm" data-confirm="@lang('users.are_you_sure_to_recover')">
                         <i class="fas fa-unlock-alt left"></i>
                         @lang('users.recover')
                     </button>

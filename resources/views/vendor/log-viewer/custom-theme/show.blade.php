@@ -40,7 +40,7 @@
                     <form action="{{ action('Master\LogsController@delete') }}" method="POST" class="d-inline-block tooltipped" data-tooltip="@lang('logs.delete_file')">
                         @method('delete') @csrf
                         <input type="hidden" name="date" value="{{ $log->date }}">
-                        <button type="submit" class="btn-floating red" title="@lang('forms.deleting')" onclick="if (!confirm('@lang('logs.confirm', ['date' => $log->date])')) event.preventDefault()">
+                        <button type="submit" class="btn-floating red confirm" title="@lang('forms.deleting')" data-confirm="@lang('logs.confirm', ['date' => $log->date])">
                             <i class="fas fa-trash"></i>
                         </button>
                     </form>

@@ -44,13 +44,15 @@
 
                                     <div class="card-action">
                                         {{-- Open button --}}
-                                        <a href="/admin/feedback/{{ $feed->id }}">@lang('messages.open')</a>
+                                        <a href="/admin/feedback/{{ $feed->id }}" class="btn-small mr-2">@lang('messages.open')</a>
                                         {{-- Delete button --}}
-                                        <a onclick="if (confirm('@lang('contact.sure_del_feed')')) $('delete-feed-{{$loop->index}}').submit()" class="red-text">
-                                            @lang('tips.delete')
-                                        </a>
-                                        <form action="{{ action('Admin\FeedbackController@destroy', ['id' => $feed->id]) }}" method="post" id="delete-feed-{{$loop->index}}" class="hide">
-                                            @method('delete') @csrf
+                                        <form action="{{ action('Admin\FeedbackController@destroy', ['id' => $feed->id]) }}" method="post" class="d-inline-block">
+                                            @method('delete')
+                                            @csrf
+
+                                            <button type="submit" class="btn-small red confirm" data-confirm="@lang('contact.sure_del_feed')">
+                                                @lang('forms.deleting')
+                                            </button>
                                         </form>
                                     </div>
                                 </div>

@@ -23,7 +23,7 @@
 
             <div class="popup-window z-depth-2 p-3 position-absolute paper" id="popup-window">
                 {{-- Report button --}}
-                <a href="#report-recipe-modal" class="btn waves-effect waves-light modal-trigger min-w"{{ visitor_id() == $recipe->user_id || optional(user())->hasRecipe($recipe->id) ? ' disabled' : '' }}>
+                <a href="#report-recipe-modal" class="btn waves-effect waves-light modal-trigger min-w"{{ visitor_id() == $recipe->user_id || optional(user())->hasRecipe($recipe->id) ? ' disabled' : '' }} title="@lang('recipes.report_recipe')">
                     @lang('recipes.report_recipe')
                 </a>
 
@@ -32,7 +32,7 @@
                     <form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post">
                         @method('put')
                         @csrf
-                        <button class="btn min-w" onclick="if (!confirm('@lang('recipes.are_you_sure_to_draft')')) event.preventDefault()">
+                        <button class="btn min-w confirm" data-confirm="@lang('recipes.are_you_sure_to_draft')" title="@lang('tips.add_to_drafts')">
                             @lang('tips.add_to_drafts')
                         </button>
                     </form>
@@ -40,13 +40,13 @@
 
                 {{-- Edit button --}}
                 @if (optional(user())->hasRecipe($recipe->id))
-                    <a href="/recipes/{{ $recipe->slug }}/edit" class="btn mt-2 min-w" {{ $recipe->isReady() ? 'disabled' : '' }}>
+                    <a href="/recipes/{{ $recipe->slug }}/edit" class="btn mt-2 min-w" {{ $recipe->isReady() ? 'disabled' : '' }} title="@lang('tips.edit')">
                         @lang('tips.edit')
                     </a>
                 @endif
 
                 {{-- Print --}}
-                <a href="#" class="btn min-w" onclick="window.print()">
+                <a href="#" class="btn min-w" onclick="window.print()" title="@lang('messages.print')">
                     @lang('messages.print')
                 </a>
             </div>

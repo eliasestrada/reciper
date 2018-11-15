@@ -64,7 +64,7 @@
                                 @method('delete')
 
                                 <input type="hidden" name="date" value="{{ $date }}">
-                                <button type="submit" class="btn-floating red" onclick="if (!confirm('@lang('logs.confirm', ['date' => $date])')) event.preventDefault()" style="width:30px;height:30px;line-height:30px">
+                                <button type="submit" class="btn-floating red confirm" data-confirm="@lang('logs.confirm', ['date' => $date])" style="width:30px;height:30px;line-height:30px">
                                     <i class="fas fa-trash" style="font-size:1.2rem;line-height:30px"></i>
                                 </button>
                             </form>

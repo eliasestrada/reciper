@@ -34,9 +34,14 @@
             
             {{-- Delete button --}}
             @if ($document->id != 1)
-                <a onclick="if(confirm('@lang('documents.sure_del_doc')')) $('delete-doc').submit()" class="btn-floating red tooltipped" data-tooltip="@lang('tips.delete')">
-                    <i class="fas fa-trash"></i>
-                </a>
+                <form action="{{ action('DocumentsController@destroy', ['id' => $document->id]) }}" method="post" class="d-inline-block">
+                    @method('delete')
+                    @csrf
+
+                    <button type="submit" class="tooltipped btn-floating red confirm" data-confirm="@lang('documents.sure_del_doc')" data-tooltip="@lang('forms.deleting')">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
             @endif
 
             {{-- Move to draft --}}
@@ -66,10 +71,6 @@
         </div>
     </form>
 </div>
-
-<form action="{{ action('DocumentsController@destroy', ['id' => $document->id]) }}" method="post" id="delete-doc" class="hide">
-    @method('delete') @csrf
-</form>
 
 @endsection
 

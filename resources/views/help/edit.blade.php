@@ -22,9 +22,12 @@
                 </button>
 
                 {{-- Delete button --}}
-                <a onclick="if (confirm('@lang('help.sure_del_help')')) $('delete-help').submit()" class="btn-floating red tooltipped" data-tooltip="@lang('tips.delete')">
-                    <i class="fas fa-trash"></i>
-                </a>
+                <form action="{{ action('HelpController@destroy', ['id' => $help->id]) }}" method="post" class="d-inline-block">
+                    @method('delete') @csrf
+                    <button type="submit" class="tooltipped confirm btn-floating red" data-tooltip="@lang('forms.deleting')" data-confirm="@lang('help.sure_del_help')">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
 
                 {{-- Choose category --}}
                 <div class="d-inline-block ml-3">
@@ -52,9 +55,5 @@
         </form>
     </div>
 </div>
-
-<form action="{{ action('HelpController@destroy', ['id' => $help->id]) }}" method="post" id="delete-help" class="hide">
-    @method('delete') @csrf
-</form>
 
 @endsection

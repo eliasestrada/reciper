@@ -30,7 +30,7 @@
                 confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
                 <span v-if="!error">
                     <a href="#" class="btn-floating red tooltipped waves-effect waves-light" data-position="top"
-                        data-tooltip="@lang('tips.delete')"
+                        data-tooltip="@lang('forms.deleting')"
                         v-on:click="deleteRecipe">
                             <i class="fas fa-trash"></i>
                     </a>

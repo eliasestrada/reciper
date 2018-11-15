@@ -110,7 +110,7 @@
                 <div class="col s4">
                     {{--  Delete account Button  --}}
                     <div class="center pb-2">
-                        <button type="submit" class="btn red waves-effect waves-light mt-4" onclick="if (!confirm('@lang('settings.are_you_sure_to_deactivate')')) event.preventDefault()">
+                        <button type="submit" class="btn red waves-effect waves-light mt-4 confirm" data-confirm="@lang('settings.are_you_sure_to_deactivate')">
                             <i class="fas fa-trash-alt left"></i>
                             @lang('forms.deleting')
                         </button>

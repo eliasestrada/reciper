@@ -14,10 +14,16 @@
             @endif
         </h1>
 
-        <div class="mt-3"> {{-- Delete button --}}
-            <a onclick="if (confirm('@lang('contact.sure_del_feed')')) $('delete-feed').submit()" class="btn-floating red tooltipped" data-tooltip="@lang('tips.delete')">
-                <i class="fas fa-trash"></i>
-            </a>
+        {{-- Delete button --}}
+        <div class="mt-3">
+            <form action="{{ action('Admin\FeedbackController@destroy', ['id' => $feedback->id]) }}" method="post" class="d-inline-block">
+                @method('delete')
+                @csrf
+
+                <button type="submit" class="btn-floating red confirm tooltipped" data-confirm="@lang('contact.sure_del_feed')" data-tooltip="@lang('forms.deleting')">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </form>
         </div>
     </div>
 
@@ -36,7 +42,7 @@
             <tr> {{-- Sender --}}
                 <td>
                     <b>@lang('messages.sender'):</b> 
-                    <a href="#">{{ $feedback->visitor->id }}</a>
+                    <a href="#" class="text">{{ $feedback->visitor->id }}</a>
                 </td>
             </tr>
             <tr> {{-- Time ago --}}
@@ -51,9 +57,5 @@
         </tbody>
     </table>
 </div>
-
-<form action="{{ action('Admin\FeedbackController@destroy', ['id' => $feedback->id]) }}" method="post" id="delete-feed" class="hide">
-    @method('delete') @csrf
-</form>
 
 @endsection

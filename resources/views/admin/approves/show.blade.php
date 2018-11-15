@@ -14,7 +14,7 @@
                 {{-- Approve --}}
                 <form action="{{ action('Admin\ApprovesController@approve', ['id' => $recipe->id]) }}" method="post" class="d-inline-block">
                     @csrf
-                    <button class="btn green" type="submit" onclick="if (!confirm('@lang('recipes.are_you_sure_to_publish')')) event.preventDefault()">
+                    <button class="btn green confirm" type="submit" data-confirm="@lang('recipes.are_you_sure_to_publish')">
                         @lang('messages.yes') <i class="fas fa-thumbs-up right"></i>
                     </button>
                 </form>
@@ -33,7 +33,10 @@
                             <div class="input-field">
                                 <textarea name="message" id="textarea1" class="materialize-textarea counter" data-length="{{ config('valid.approves.disapprove.message.max') }}" required></textarea>
                                 <label for="textarea1">* @lang('notifications.set_message')</label>
-                                <button class="btn red" type="submit" onclick="if (!confirm('@lang('recipes.are_you_sure_to_cancel')')) event.preventDefault()">@lang('forms.send')</button>
+
+                                <button class="btn red confirm" type="submit" data-confirm="@lang('recipes.are_you_sure_to_cancel')">
+                                    @lang('forms.send')
+                                </button>
                             </div>
                         </form>
                     </div>
