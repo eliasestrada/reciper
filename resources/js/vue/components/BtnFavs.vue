@@ -1,6 +1,6 @@
 <template>
     <section>
-        <a v-if="userId" class="p-0" @click="fetchFavs">
+        <a v-if="userId" class="p-0 _fav-button" @click="fetchFavs">
             <i class="fas fa-star fa-15x star" :class="iconClass"></i> 
             <span v-text="amount" style="transform:translate(-2px, 5px);color:#6b6b6b" class="d-inline-block"></span>
         </a>

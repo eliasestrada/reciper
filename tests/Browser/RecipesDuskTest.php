@@ -23,4 +23,21 @@ class RecipesDuskTest extends DuskTestCase
                 ->assertSeeIn('._like-button span', 1);
         });
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function user_can_add_recipe_to_favs(): void
+    {
+        $this->browse(function ($user) {
+            $user->loginAs(create_user())
+                ->visit('/recipes/morkov-po-koreyski')
+                ->waitFor('._fav-button')
+                ->assertSeeIn('._fav-button span', 0)
+                ->click('._fav-button')
+                ->waitFor('._fav-button span')
+                ->assertSeeIn('._fav-button span', 1);
+        });
+    }
 }
