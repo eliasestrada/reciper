@@ -5,7 +5,7 @@ namespace Tests\Browser;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class SettingsDuskTest extends DuskTestCase
+class FormsDuskTest extends DuskTestCase
 {
     /**
      * @author Cho
