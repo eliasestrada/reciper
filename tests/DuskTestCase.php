@@ -14,16 +14,24 @@ abstract class DuskTestCase extends BaseTestCase
     use CreatesApplication;
 
     /**
+     * @author Cho
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->browse(function (Browser $browser) {
+            $browser->maximize();
+        });
+    }
+
+    /**
      * @return void
      */
     public function tearDown(): void
     {
-        parent::tearDown();
         $this->artisan('migrate:fresh');
         $this->artisan('db:seed');
-        $this->browse(function (Browser $browser) {
-            $browser->maximize();
-        });
+        parent::tearDown();
     }
 
     /**

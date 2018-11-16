@@ -81,7 +81,7 @@
             </div>
         </div>
         <div class="center">
-            <a href="#delete-account-modal" title="@lang('settings.delete_account')" class="modal-trigger red-text">
+            <a href="#delete-account-modal" title="@lang('settings.delete_account')" class="modal-trigger red-text" id="_modal-trigger">
                 @lang('settings.delete_account')
             </a>
         </div>
@@ -99,7 +99,7 @@
             </div>
             <p>@lang('settings.delete_account_desc')</p>
 
-            {{-- Delete accoutn Password --}}
+            {{-- Delete account Password --}}
             <div class="row">
                 <div class="col s8">
                     <div class="input-field">
@@ -111,7 +111,7 @@
                     {{--  Delete account Button  --}}
                     <div class="center pb-2">
                         <button type="submit" class="btn red waves-effect waves-light mt-4 confirm" data-confirm="@lang('settings.are_you_sure_to_deactivate')">
-                            <i class="fas fa-trash-alt left"></i>
+                            <i class="fas fa-trash-alt left" id="_delete-account-button"></i>
                             @lang('forms.deleting')
                         </button>
                     </div>
