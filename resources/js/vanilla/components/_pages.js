@@ -1,3 +1,6 @@
+import $ from '../modules/_main';
+import activeAfterClickBtn from '../modules/_activeAfterClickBtn';
+
 /**
  * When visitor clicks search button, it will show the search form
  * instead of submitting, js prevents default behavior. After first click
@@ -21,8 +24,31 @@
     }
 })();
 
+/**
+ * This object auto updates pictures after
+ * selecting them via file input
+ */
+(function runImageUploader() {
+    let target = $('target-image');
+    let src = $('src-image');
+    let fr = new FileReader();
+
+    if (target && src) {
+        src.addEventListener('change', () => {
+            if (src.files.length !== 0) {
+                fr.readAsDataURL(src.files[0]);
+                fr.onload = function() {
+                    target.src = this.result;
+                };
+            } else {
+                target.src = '/storage/recipes/default.jpg';
+            }
+        });
+    }
+})();
+
 (function PreventSubmittingIfNotConfirmed() {
-    buttons = document.querySelectorAll('.confirm');
+    let buttons = document.querySelectorAll('.confirm');
 
     if (buttons) {
         buttons.forEach(btn => {
@@ -33,4 +59,22 @@
             });
         });
     }
+})();
+
+(function PreventMultipleFormSubmitting() {
+    document.querySelectorAll('form').forEach(function(form) {
+        form.addEventListener(
+            'submit',
+            function() {
+                var buttons = this.querySelectorAll('button');
+                buttons.forEach(function(button) {
+                    button.setAttribute('disabled', 'disabled');
+                    button.classList.add('disabled');
+                    button.innerHTML =
+                        '<i class="fas fa-circle-notch fa-1x fa-spin"></i>';
+                });
+            },
+            false
+        );
+    });
 })();

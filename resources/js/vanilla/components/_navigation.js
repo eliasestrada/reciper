@@ -1,3 +1,6 @@
+import $ from '../modules/_main';
+import activeAfterClickBtn from '../modules/_activeAfterClickBtn';
+
 (function SearchFormActivator() {
     let opened = false;
     let navBtnForSearch = $('nav-btn-for-search');

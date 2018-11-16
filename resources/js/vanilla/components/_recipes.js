@@ -1,3 +1,6 @@
+import $ from '../modules/_main';
+import activeAfterClickBtn from '../modules/_activeAfterClickBtn';
+
 (function ReadyCheckbox() {
     let checkbox = $('ready-checkbox');
     let publishBtn = $('publish-btn');
@@ -10,12 +13,6 @@
                 }
             }
         });
-    }
-})();
-
-(function ImageUploader() {
-    if (imageUploader.src && imageUploader.target) {
-        imageUploader.showImage();
     }
 })();
 
