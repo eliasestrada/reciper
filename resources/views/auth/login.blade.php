@@ -21,7 +21,7 @@
                 <div class="input-field">
                     <input class="validate with-icon" :type="type" name="password" id="password" autocomplete="off" required>
                     <div class="d-inline-block visibility-icon waves-effect waves-green" v-on:click="changeType">
-                        <i :class="icon" class="fas no-select"></i>
+                        <i :class="icon" class="fas no-select _visibility-icon"></i>
                     </div>
                     <label for="password">@lang('forms.pwd')</label>
                 </div>

@@ -26,4 +26,19 @@ class FormsDuskTest extends DuskTestCase
                 ->assertSee(trans('users.account_diactivate'));
         });
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function password_becomes_visible_after_clicking_eye_icon(): void
+    {
+        $this->browse(function ($browse) {
+            $browse->visit('/login')
+                ->type('#password', 'somepassword')
+                ->assertSourceHas('<input type="password"')
+                ->click('._visibility-icon')
+                ->assertSourceHas('<input type="text"');
+        });
+    }
 }
