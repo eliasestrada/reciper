@@ -1,11 +1,5 @@
 <script>
 export default {
-    data() {
-        return {
-            recipes: []
-        };
-    },
-
     created() {
         this.fetchData();
     },

@@ -1,5 +1,6 @@
-import $ from '../modules/_main';
-import activeAfterClickBtn from '../modules/_activeAfterClickBtn';
+import $ from '../../modules/_main';
+import withMethod from '../../modules/_withMethod';
+import activeAfterClickBtn from '../../modules/_activeAfterClickBtn';
 
 (function SearchFormActivator() {
     let opened = false;
@@ -45,18 +46,9 @@ import activeAfterClickBtn from '../modules/_activeAfterClickBtn';
         button.addEventListener('click', () => {
             alertIcon.classList.remove('small-notif');
 
-            fetch('/invokes/notifications', {
-                method: 'PUT',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    _token: document
-                        .querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content')
-                })
-            }).catch(e => console.error(e));
+            fetch('/invokes/notifications', withMethod('put')).catch(e =>
+                console.error(e)
+            );
         });
     }
 })();

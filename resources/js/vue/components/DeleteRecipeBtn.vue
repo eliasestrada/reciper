@@ -1,4 +1,6 @@
 <script>
+import withMethod from '../../modules/_withMethod';
+
 export default {
     data() {
         return {
@@ -11,16 +13,7 @@ export default {
     methods: {
         deleteRecipe() {
             if (confirm(this.confirm)) {
-                fetch(`/recipes/${this.recipeId}`, {
-                    method: "DELETE",
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    })
-                })
+                fetch(`/recipes/${this.recipeId}`, withMethod('delete'))
                     .then(res => res.text())
                     .then(data => {
                         data === "success"

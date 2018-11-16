@@ -1,4 +1,4 @@
-import $ from '../modules/_main';
+import $ from '../../modules/_main';
 
 (function CollapsibleNavigationMenu() {
     let li = $('collapsible-li-tag');

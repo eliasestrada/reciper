@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import withMethod from '../../modules/_withMethod';
+
 export default {
     data() {
         return {
@@ -28,17 +30,7 @@ export default {
 
     methods: {
         fetchFavs() {
-            fetch('/favs/' + this.recipeId, {
-                method: "POST",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    _token: document.querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content')
-                })
-            })
+            fetch(`/favs/${this.recipeId}`, withMethod('post'))
                 .then(res => res.text())
                 .then(data => {
                     if (data != 'fail') {
@@ -55,7 +47,7 @@ export default {
         toggleActive() {
             if (this.userId) {
                 this.iconClass = this.favs.map(fav => {
-                    return this.recipeId == fav.recipe_id && this.userId == fav.user_id ? 'active' : '';
+                    this.recipeId == fav.recipe_id && this.userId == fav.user_id ? 'active' : '';
                 });
             }
         },

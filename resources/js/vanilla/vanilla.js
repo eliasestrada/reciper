@@ -1,6 +1,7 @@
 // Modules
-import './modules/_main';
-import './modules/_activeAfterClickBtn';
+import '../modules/_main';
+import '../modules/_activeAfterClickBtn';
+import '../modules/_withMethod';
 
 // Modules
 import './components/_navigation';

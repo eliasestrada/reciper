@@ -1,5 +1,5 @@
-import $ from '../modules/_main';
-import activeAfterClickBtn from '../modules/_activeAfterClickBtn';
+import $ from '../../modules/_main';
+import activeAfterClickBtn from '../../modules/_activeAfterClickBtn';
 
 (function ReadyCheckbox() {
     let checkbox = $('ready-checkbox');

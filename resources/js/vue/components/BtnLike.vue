@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import withMethod from '../../modules/_withMethod';
+
 export default {
     data() {
         return {
@@ -29,17 +31,7 @@ export default {
 
     methods: {
         fetchLikes() {
-            fetch(`/like/${this.recipeId}`, {
-                method: "POST",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    _token: document.querySelector('meta[name="csrf-token"]')
-                        .getAttribute('content')
-                })
-            })
+            fetch(`/like/${this.recipeId}`, withMethod('post'))
                 .then(res => res.text())
                 .then(data => {
                     if (data != 'fail') {
@@ -57,7 +49,7 @@ export default {
         toggleActive() {
             if (this.userId) {
                 this.iconClass = this.likes.map(like => {
-                    return this.recipeId == like.recipe_id && this.userId == like.user_id ? 'active' : '';
+                    this.recipeId == like.recipe_id && this.userId == like.user_id ? 'active' : '';
                 });
             }
         },

@@ -11,7 +11,7 @@ if (css == 1) {
 }
 
 if (js == 1) {
-    mix.js('resources/js/app.js', 'public/js/app.js');
+    mix.js('resources/js/app.js', 'public/js/app.js').options({ uglify: true });
 }
 
 if (server == 1) {

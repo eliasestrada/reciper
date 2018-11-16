@@ -1,5 +1,5 @@
-import $ from '../modules/_main';
-import activeAfterClickBtn from '../modules/_activeAfterClickBtn';
+import $ from '../../modules/_main';
+import activeAfterClickBtn from '../../modules/_activeAfterClickBtn';
 
 /**
  * When visitor clicks search button, it will show the search form
