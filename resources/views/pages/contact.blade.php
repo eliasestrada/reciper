@@ -19,11 +19,13 @@
                     <i class="fas fa-at prefix"></i>
                     <input type="email" name="email" value="{{ old('email') }}" id="email">
                     <label for="email">@lang('forms.email')</label>
+                    @include('includes.input-error', ['field' => 'email'])
                 </div>
                 <div class="input-field">
                     <i class="fas fa-comment-alt prefix"></i>
                     <textarea name="message" id="message" class="materialize-textarea counter" data-length="{{ config('valid.feedback.contact.message.max') }}" maxlength="{{ config('valid.feedback.contact.message.max') }}" minlength="{{ config('valid.feedback.contact.message.min') }}" required>{{ old('message') }}</textarea>
                     <label for="message">@lang('forms.message')</label>
+                    @include('includes.input-error', ['field' => 'message'])
                 </div>
                 <div class="input-field">
                     <button type="submit" class="btn btn-main">

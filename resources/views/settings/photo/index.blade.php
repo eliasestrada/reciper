@@ -14,6 +14,7 @@
                 <div class="col s12 l6">
                     <h1 class="header ml-2">@lang('settings.settings_photo')</h1>
                     <p>@lang('settings.choose_photo', ['btn1' => trans('forms.select_file'), 'btn2' => trans('forms.save')])</p>
+                    @include('includes.input-error', ['field' => 'photo'])
                 </div>
 
                 <div class="col s12 l6">

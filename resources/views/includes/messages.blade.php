@@ -1,17 +1,3 @@
-@if (count($errors) > 0)
-    @foreach ($errors->all() as $error)
-    <script>
-        let message = '<i class="fas fa-exclamation left"></i>'
-    </script>
-        <script>
-            message += '{{ $error }} <br>'
-        </script>
-    @endforeach
-    <script>
-        M.toast({html: message, displayLength: 5000, classes: 'red z-depth-2'})
-    </script>
-@endif
-
 @if (session('success'))
     @if (session('success')[0] == '<')
         <script>

@@ -18,6 +18,7 @@
                     @lang('auth.username')
                     @include('includes.tip', ['tip' => trans('auth.username_desc')])
                 </label>
+                @include('includes.input-error', ['field' => 'username'])
             </div>
 
             <visibility inline-template>
@@ -30,6 +31,7 @@
                         @lang('forms.pwd')
                         @include('includes.tip', ['tip' => trans('forms.pwd_desc')])
                     </label>
+                    @include('includes.input-error', ['field' => 'password'])
                 </div>
             </visibility>
 

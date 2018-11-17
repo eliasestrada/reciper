@@ -47,6 +47,7 @@
                 <div class="input-field">
                     <input type="text" name="title" id="title" value="{{ old('title') }}" class="counter" data-length="{{ config('valid.recipes.title.max') }}" minlength="5" required>
                     <label for="title">@lang('recipes.title')</label>
+                    @include('includes.input-error', ['field' => 'title'])
                 </div>
 
                 {{--  Save button  --}}

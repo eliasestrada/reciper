@@ -14,6 +14,7 @@
             @csrf <div class="input-field">
                 <label for="email">@lang('forms.email')</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required>
+                @include('includes.input-error', ['field' => 'email'])
             </div>
 
             <div class="input-field">

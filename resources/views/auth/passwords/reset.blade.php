@@ -14,11 +14,13 @@
             <div class="input-field">
                 <label for="email">@lang('forms.email')</label>
                 <input id="email" type="email" name="email" value="{{ ($email ?? old('email')) }}" required autofocus>
+                @include('includes.input-error', ['field' => 'email'])
             </div>
 
             <div class="input-field">
                 <label for="password">@lang('passwords.new_pwd')</label>
                 <input id="password" type="password" name="password" required>
+                @include('includes.input-error', ['field' => 'password'])
             </div>
 
             <div class="input-field">

@@ -18,11 +18,13 @@
                     <div class="input-field">
                         <label for="name">@lang('forms.name')</label>
                         <input type="text" name="name" id="name" value="{{ user()->name }}" data-length="{{ config('valid.settings.general.name.max') }}" class="counter" maxlength="{{ config('valid.settings.general.name.max') }}" minlength="{{ config('valid.settings.general.name.min') }}">
+                        @include('includes.input-error', ['field' => 'name'])
                     </div>
                     {{-- Status --}}
                     <div class="input-field">
                         <textarea id="status" class="materialize-textarea counter" data-length="{{ config('valid.settings.general.status.max') }}" name="status" maxlength="{{ config('valid.settings.general.status.max') }}">{{ (user()->status ?? old('status')) }}</textarea>
                         <label for="status">@lang('settings.status')</label>
+                        @include('includes.input-error', ['field' => 'status'])
                     </div>
                     <button class="btn-small mt-2" type="submit">
                         <i class="fas fa-save left"></i>
@@ -40,6 +42,7 @@
                     <div class="input-field">
                         <label for="email">@lang('forms.email_desc')</label>
                         <input type="text" name="email" id="email" value="{{ user()->email }}" data-length="{{ config('valid.settings.email.max') }}" class="counter" maxlength="{{ config('valid.settings.email.max') }}">
+                        @include('includes.input-error', ['field' => 'email'])
 
                         @if (!empty(user()->email))
                             <span class="helper-text {{ user()->verified() ? 'green' : 'red' }}-text">
@@ -60,12 +63,15 @@
                     @method('put') @csrf
                     <div class="input-field">
                         <label for="old_password">@lang('forms.current_pwd')</label>
-                        <input type="password" name="old_password" id="old_password" minlength="{{ config('valid.settings.password.min') }}" maxlength="{{ config('valid.settings.password.max') }}">
+                        {{-- <input type="password" name="old_password" id="old_password" minlength="{{ config('valid.settings.password.min') }}" maxlength="{{ config('valid.settings.password.max') }}"> --}}
+                        <input type="password" name="old_password" id="old_password">
+                        @include('includes.input-error', ['field' => 'old_password'])
                     </div>
 
                     <div class="input-field">
                         <label for="new_password">@lang('forms.new_pwd')</label>
                         <input type="password" name="password" id="new_password" minlength="{{ config('valid.settings.password.min') }}" maxlength="{{ config('valid.settings.password.max') }}">
+                        @include('includes.input-error', ['field' => 'password'])
                     </div>
 
                     <div class="input-field">

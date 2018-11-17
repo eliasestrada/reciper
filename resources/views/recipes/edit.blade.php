@@ -50,6 +50,7 @@
                 <div class="input-field">
                     <input type="text" name="title" id="title" value="{{ old('title') ?? $recipe->getTitle() }}" class="counter" data-length="{{ config('valid.recipes.title.max') }}">
                     <label for="title">@lang('recipes.title')</label>
+                    @include('includes.input-error', ['field' => 'title'])
                 </div>
             </div>
 
@@ -61,6 +62,7 @@
                         @include('includes.tip', ['tip' => trans('tips.recipes_time')])
                     </label>
                     <input type="number" name="time" id="time" value="{{ old('time') ?? $recipe->time }}">
+                    @include('includes.input-error', ['field' => 'time'])
                 </div>
             </div>
 
@@ -77,6 +79,7 @@
                         </option>
                     @endforeach
                 </select>
+                @include('includes.input-error', ['field' => 'meal'])
             </div>
         </div>
 
@@ -90,6 +93,7 @@
                         @lang('recipes.ingredients') 
                         @include('includes.tip', ['tip' => trans('tips.recipes_ingredients')])
                     </label>
+                    @include('includes.input-error', ['field' => 'ingredients'])
                 </div>
             </div>
 
@@ -102,6 +106,7 @@
                         @lang('recipes.short_intro') 
                         @include('includes.tip', ['tip' => trans('tips.recipes_intro')])
                     </label>
+                    @include('includes.input-error', ['field' => 'intro'])
                 </div>
             </div>
         </div>
@@ -115,6 +120,7 @@
                     @lang('recipes.text_of_recipe') 
                     @include('includes.tip', ['tip' => trans('tips.recipes_text')])
                 </label>
+                @include('includes.input-error', ['field' => 'text'])
             </div>
         </div>
 
@@ -131,12 +137,14 @@
                     add="@lang('forms.add')">
                     @include('includes.preloader')
                 </categories-field>
+                @include('includes.input-error', ['field' => 'categories.*'])
             </div>
 
             {{-- Image --}}
             <div class="col s12 m6">
                 <div class="center pb-5">
                     <h5 class="col s12 mb-3">@lang('recipes.image')</h5>
+                    @include('includes.input-error', ['field' => 'image'])
                     <div class="preview-image preview-image-recipe position-relative">
                         <img src="{{ asset("storage/recipes/$recipe->image") }}" alt="{{ $recipe->title }}" id="target-image">
                         <input type="file" name="image" id="src-image" class="hide" style="overflow:hidden">

@@ -73,10 +73,12 @@
                 <div class="input-field col s12 m3">
                     <input type="number" id="ban-input" name="days" value="{{ old('days') }}">
                     <label for="ban-input">@lang('manage-users.days')</label>
+                    @include('includes.input-error', ['field' => 'days'])
                 </div>
                 <div class="input-field col s12 m9">
-                    <textarea name="message" id="ban-textarea" class="materialize-textarea counter" data-length="{{ config('valid.feedback.ban.message.max') }}" maxlength="{{ config('valid.feedback.ban.message.max') }}" minlength="{{ config('valid.feedback.ban.message.min') }}" required>{{ old('message') }}</textarea>
+                    <textarea name="message" id="ban-textarea" class="materialize-textarea counter" data-length="{{ config('valid.feedback.ban.message.max') }}" maxlength="{{ config('valid.feedback.ban.message.max') }}" required>{{ old('message') }}</textarea>
                     <label for="ban-textarea">@lang('forms.message')</label>
+                    @include('includes.input-error', ['field' => 'message'])
                 </div>
                 <button class="btn red confirm" type="submit" data-confirm="@lang('manage-users.are_you_sure_to_ban')">
                     @lang('manage-users.ban')

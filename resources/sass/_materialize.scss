@@ -3997,7 +3997,7 @@ textarea.materialize-textarea {
     height: 3rem;
     width: 98%;
     font-size: 16px;
-    margin: 0 0 8px 0;
+    margin: 0 0 4px 0;
     padding: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -4459,7 +4459,8 @@ textarea.materialize-textarea+label:after,
     position: relative;
     min-height: 18px;
     display: block;
-    font-size: 12px;
+    font-size: 15px;
+    font-weight: bold;
     color: rgba(0, 0, 0, 0.54);
 }
 

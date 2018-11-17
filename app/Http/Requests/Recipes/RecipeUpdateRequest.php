@@ -48,7 +48,12 @@ class RecipeUpdateRequest extends FormRequest
                 'categories.*' => "distinct|numeric|between:1,{$last_number}",
             ];
         }
-        return [];
+        return [
+            'meal' => 'numeric|between:0,3',
+            'time' => 'numeric|between:0,1000',
+            'image' => 'image|mimes:jpg,png,jpeg|nullable|max:1999',
+            'categories.*' => "distinct|numeric|between:1,{$last_number}",
+        ];
     }
 
     /**

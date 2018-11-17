@@ -15,6 +15,7 @@
             <div class="input-field">
                 <input id="username" value="{{ old('username') }}" type="text" name="username" class="validate">
                 <label for="username">@lang('auth.username')</label>
+                @include('includes.input-error', ['field' => 'username'])
             </div>
 
             <visibility inline-template>
@@ -24,6 +25,7 @@
                         <i :class="icon" class="fas no-select _visibility-icon"></i>
                     </div>
                     <label for="password">@lang('forms.pwd')</label>
+                    @include('includes.input-error', ['field' => 'password'])
                 </div>
             </visibility>
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Helpers\Xp;
 use App\Models\Recipe;
 use App\Models\User;
-use GuzzleHttp\Psr7\Request;
 
 class UsersController extends Controller
 {
@@ -25,8 +24,7 @@ class UsersController extends Controller
     {
         $user = User::whereUsername($username)->first();
 
-        if (!$user) {
-            return redirect('/users')->withError(trans('users.user_not_found'));
+        if (!$user) {return redirect('/users')->withError(trans('users.user_not_found'));
         }
 
         $recipes = Recipe::whereUserId($user->id)
