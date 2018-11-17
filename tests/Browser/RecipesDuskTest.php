@@ -50,7 +50,7 @@ class RecipesDuskTest extends DuskTestCase
         $this->browse(function ($browser) {
             $browser->visit('/recipes/morkov-po-koreyski')
                 ->click('#popup-window-trigger')
-                ->assertSee(trans('messages.print'));
+                ->assertSee(mb_strtoupper(trans('messages.print')));
         });
     }
 }
