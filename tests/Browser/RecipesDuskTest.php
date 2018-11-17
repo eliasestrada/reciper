@@ -40,4 +40,17 @@ class RecipesDuskTest extends DuskTestCase
                 ->assertSeeIn('._fav-button span', 1);
         });
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function user_can_open_recipe_menu_by_clicking_open_menu_button(): void
+    {
+        $this->browse(function ($browser) {
+            $browser->visit('/recipes/morkov-po-koreyski')
+                ->click('#popup-window-trigger')
+                ->assertSee(trans('messages.print'));
+        });
+    }
 }
