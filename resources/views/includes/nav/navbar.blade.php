@@ -95,7 +95,7 @@
         @endhasRole
 
         <li> {{-- logout --}} {{-- This button submits logout-form --}}
-            <a href="#" title="@lang('auth.logout')" onclick="$('logout-form').submit()">
+            <a href="#" title="@lang('auth.logout')" onclick="document.getElementById('logout-form').submit()">
                 <i class="fas fa-sign-out-alt fa-15x left"></i>@lang('auth.logout')
             </a>
         </li>
