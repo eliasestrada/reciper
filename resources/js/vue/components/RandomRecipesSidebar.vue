@@ -1,11 +1,14 @@
 <script>
 export default {
+    data() {
+        return {
+            recipes: []
+        }
+    },
     created() {
         this.fetchData();
     },
-
     props: ["visitorId"],
-
     methods: {
         fetchData() {
             fetch(`/api/recipes-random/${this.visitorId}`)
