@@ -38,4 +38,19 @@ class NavbarDuskTest extends DuskTestCase
                 ->assertSourceHas('<body class="dark-theme">');
         });
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function user_can_use_navbar_search_to_find_recipe(): void
+    {
+        $this->browse(function ($browse) {
+            $browse->visit('/')
+                ->click('#nav-btn-for-search')
+                ->type('#search-input', 'морковь')
+                ->keys('#search-input', '{enter}')
+                ->assertPathIs('/search');
+        });
+    }
 }
