@@ -53,4 +53,18 @@ class NavbarDuskTest extends DuskTestCase
                 ->assertPathIs('/search');
         });
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function categories_dropdown_appears_after_clicking_the_button(): void
+    {
+        $this->browse(function ($browse) {
+            $browse->visit('/')
+                ->click('[data-target="categories-dropdown"]')
+                ->click('#categories-dropdown li:first-child')
+                ->asserPathIs('/recipes');
+        });
+    }
 }
