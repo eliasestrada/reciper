@@ -64,7 +64,7 @@ class NavbarDuskTest extends DuskTestCase
             $browse->visit('/')
                 ->click('[data-target="categories-dropdown"]')
                 ->click('#categories-dropdown li:first-child')
-                ->asserPathIs('/recipes');
+                ->assertPathIs('/recipes');
         });
     }
 }
