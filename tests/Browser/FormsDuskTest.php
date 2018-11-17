@@ -31,7 +31,7 @@ class FormsDuskTest extends DuskTestCase
      * @author Cho
      * @test
      */
-    public function password_becomes_visible_after_clicking_eye_icon(): void
+    public function password_becomes_visible_after_clicking_eye_icon_on_login_page(): void
     {
         $this->browse(function ($browse) {
             $browse->visit('/login')
@@ -39,6 +39,29 @@ class FormsDuskTest extends DuskTestCase
                 ->assertSourceHas('<input type="password"')
                 ->click('._visibility-icon')
                 ->assertSourceHas('<input type="text"');
+        });
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function password_becomes_visible_after_clicking_eye_icon_on_register_page(): void
+    {
+        $this->browse(function ($browse) {
+            $browse->visit('/register')
+                ->type('#password', 'somepassword')
+                ->type('#password_confirmation', 'somepassword')
+                ->assertSourceHas('<input type="password" id="password"')
+                ->assertSourceHas('<input type="password" id="password_confirmation"')
+                ->click('._eye-icon-1')
+                ->click('._eye-icon-2')
+                ->assertSourceHas('<input type="text" id="password"')
+                ->assertSourceHas('<input type="text" id="password_confirmation"')
+                ->click('._eye-icon-1')
+                ->click('._eye-icon-2')
+                ->assertSourceHas('<input type="password" id="password"')
+                ->assertSourceHas('<input type="password" id="password_confirmation"');
         });
     }
 }

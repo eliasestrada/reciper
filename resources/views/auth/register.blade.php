@@ -22,8 +22,8 @@
 
             <visibility inline-template>
                 <div class="input-field">
-                    <input class="validate with-icon" :type="type" name="password" id="password" autocomplete="off" required>
-                    <div class="d-inline-block visibility-icon waves-effect waves-green" v-on:click="changeType">
+                    <input :type="type" id="password" name="password" class="validate with-icon" autocomplete="off" required>
+                    <div class="d-inline-block visibility-icon waves-effect waves-green _eye-icon-1" v-on:click="changeType">
                         <i :class="icon" class="fas no-select"></i>
                     </div>
                     <label for="password">
@@ -35,8 +35,8 @@
 
             <visibility inline-template>
                 <div class="input-field">
-                    <input class="validate with-icon" :type="type" name="password_confirmation" id="password_confirmation" autocomplete="off" required>
-                    <div class="d-inline-block visibility-icon waves-effect waves-green" v-on:click="changeType">
+                    <input :type="type" id="password_confirmation" name="password_confirmation" class="validate with-icon" autocomplete="off" required>
+                    <div class="d-inline-block visibility-icon waves-effect waves-green _eye-icon-2" v-on:click="changeType">
                         <i :class="icon" class="fas no-select"></i>
                     </div>
                     <label for="password_confirmation">
