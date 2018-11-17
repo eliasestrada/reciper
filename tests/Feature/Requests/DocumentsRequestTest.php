@@ -9,28 +9,20 @@ class DocumentsRuqusetTest extends TestCase
 {
     use DatabaseTransactions;
 
-    private $request;
-
-    /**
-     * @author Cho
-     */
-    public function setUp()
-    {
-        parent::setUp();
-        $this->actingAs($master = create_user('master'))->get('/documents');
-        $this->request = $this->actingAs($master)->followingRedirects();
-    }
-
     /**
      * @author Cho
      * @test
      */
     public function title_required(): void
     {
-        $this->request->post(action('DocumentsController@store'), [
+        $this->makeRequestAsMaster([
             'title' => '',
-            'text' => str_random(300),
-        ])->assertSeeText(trans('documents.title_required'));
+            'text' => $text = str_random(300),
+        ]);
+
+        $this->assertDatabaseMissing('documents', [
+            'text_' . LANG() => $text,
+        ]);
     }
 
     /**
@@ -39,10 +31,14 @@ class DocumentsRuqusetTest extends TestCase
      */
     public function text_required(): void
     {
-        $this->request->post(action('DocumentsController@store'), [
-            'title' => str_random(21),
+        $this->makeRequestAsMaster([
+            'title' => $title = str_random(21),
             'text' => '',
-        ])->assertSeeText(trans('documents.text_required'));
+        ]);
+
+        $this->assertDatabaseMissing('documents', [
+            'title_' . LANG() => $title,
+        ]);
     }
 
     /**
@@ -51,10 +47,14 @@ class DocumentsRuqusetTest extends TestCase
      */
     public function title_must_be_not_short(): void
     {
-        $this->request->post(action('DocumentsController@store'), [
+        $this->makeRequestAsMaster([
             'title' => str_random(config('valid.docs.title.min') - 1),
-            'text' => str_random(130),
-        ])->assertSeeText(preg_replace('/:min/', config('valid.docs.title.min'), trans('documents.title_min')));
+            'text' => $text = str_random(130),
+        ]);
+
+        $this->assertDatabaseMissing('documents', [
+            'text_' . LANG() => $text,
+        ]);
     }
 
     /**
@@ -63,10 +63,14 @@ class DocumentsRuqusetTest extends TestCase
      */
     public function title_must_be_not_long(): void
     {
-        $this->request->post(action('DocumentsController@store'), [
+        $this->makeRequestAsMaster([
             'title' => str_random(config('valid.docs.title.max') + 1),
-            'text' => str_random(130),
-        ])->assertSeeText(preg_replace('/:max/', config('valid.docs.title.max'), trans('documents.title_max')));
+            'text' => $text = str_random(130),
+        ]);
+
+        $this->assertDatabaseMissing('documents', [
+            'text_' . LANG() => $text,
+        ]);
     }
 
     /**
@@ -75,10 +79,14 @@ class DocumentsRuqusetTest extends TestCase
      */
     public function text_must_be_not_short(): void
     {
-        $this->request->post(action('DocumentsController@store'), [
-            'title' => str_random(30),
+        $this->makeRequestAsMaster([
+            'title' => $title = str_random(30),
             'text' => str_random(config('valid.docs.text.min') - 1),
-        ])->assertSeeText(preg_replace('/:min/', config('valid.docs.text.min'), trans('documents.text_min')));
+        ]);
+
+        $this->assertDatabaseMissing('documents', [
+            'title_' . LANG() => $title,
+        ]);
     }
 
     /**
@@ -87,9 +95,25 @@ class DocumentsRuqusetTest extends TestCase
      */
     public function text_must_be_not_long(): void
     {
-        $this->request->post(action('DocumentsController@store'), [
-            'title' => str_random(32),
+        $this->makeRequestAsMaster([
+            'title' => $title = str_random(32),
             'text' => str_random(config('valid.docs.text.max') + 1),
-        ])->assertSeeText(preg_replace('/:max/', config('valid.docs.text.max'), trans('documents.text_max')));
+        ]);
+
+        $this->assertDatabaseMissing('documents', [
+            'title_' . LANG() => $title,
+        ]);
+    }
+
+    /**
+     * Function helper to clear the code
+     *
+     * @param array $data
+     * @return void
+     */
+    public function makeRequestAsMaster(array $data): void
+    {
+        $this->actingAs(create_user('master'))
+            ->post(action('DocumentsController@store'), $data);
     }
 }

@@ -19,7 +19,7 @@ class AuthRegisterRequestTest extends TestCase
             'password' => '111111',
             'password_confirmation' => '111111',
         ];
-        $this->get(route('register'));
+        $this->get('/register');
     }
 
     /**
@@ -164,7 +164,7 @@ class AuthRegisterRequestTest extends TestCase
      */
     public function username_must_be_latin_with_dash_or_underscore(): void
     {
-        $usernames = ['stiven-', 'на скрипке', 'Андрей', '_owen', '_jonce_steven'];
+        $usernames = ['stiven-', 'наипке', 'Андрей', '_owen', '_jonce_steven'];
 
         foreach ($usernames as $username) {
             $this->data['username'] = $username;

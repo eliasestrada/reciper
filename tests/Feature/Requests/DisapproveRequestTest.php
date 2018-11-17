@@ -9,21 +9,16 @@ class DisapproveRequestTest extends TestCase
 {
     use DatabaseTransactions;
 
-    private $message_min;
-    private $message_max;
-    private $request;
-
     /**
      * @author Cho
      */
-    public function setUp()
+    public function tearDown()
     {
-        parent::setUp();
-        $this->message_min = config('valid.approves.disapprove.message.min');
-        $this->message_max = config('valid.approves.disapprove.message.max');
-
-        $this->actingAs($admin = create_user('admin'))->get('/admin/approves');
-        $this->request = $this->actingAs($admin)->followingRedirects();
+        $this->assertDatabaseMissing('recipes', [
+            'id' => 1,
+            'ready_' . LANG() => 0,
+        ]);
+        parent::tearDown();
     }
 
     /**
@@ -32,10 +27,11 @@ class DisapproveRequestTest extends TestCase
      */
     public function message_is_required(): void
     {
-        $this->request->post(action('Admin\ApprovesController@disapprove', [
-            'recipe' => 1,
-            'message' => '',
-        ]))->assertSeeText(trans('approves.message_required'));
+        $this->actingAs(create_user('admin'))
+            ->post(action('Admin\ApprovesController@disapprove', [
+                'recipe' => 1,
+                'message' => '',
+            ]));
     }
 
     /**
@@ -44,10 +40,11 @@ class DisapproveRequestTest extends TestCase
      */
     public function message_must_be_not_short(): void
     {
-        $this->request->post(action('Admin\ApprovesController@disapprove', [
-            'recipe' => 1,
-            'message' => str_random($this->message_min - 1),
-        ]))->assertSeeText(preg_replace('/:min/', $this->message_min, trans('approves.message_min')));
+        $this->actingAs(create_user('admin'))
+            ->post(action('Admin\ApprovesController@disapprove', [
+                'recipe' => 1,
+                'message' => str_random(config('valid.approves.disapprove.message.min') - 1),
+            ]));
     }
 
     /**
@@ -56,9 +53,10 @@ class DisapproveRequestTest extends TestCase
      */
     public function message_must_be_not_long(): void
     {
-        $this->request->post(action('Admin\ApprovesController@disapprove', [
-            'recipe' => 1,
-            'message' => str_random($this->message_max + 1),
-        ]))->assertSeeText(preg_replace('/:max/', $this->message_max, trans('approves.message_max')));
+        $this->actingAs(create_user('admin'))
+            ->post(action('Admin\ApprovesController@disapprove', [
+                'recipe' => 1,
+                'message' => str_random(config('valid.approves.disapprove.message.max') + 1),
+            ]));
     }
 }
