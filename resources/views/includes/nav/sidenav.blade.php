@@ -6,7 +6,7 @@
             </div>
 
             @guest
-                <a href="/login" class="btn waves-effect waves-light min-w" title="@lang('auth.login')">
+                <a href="/login" class="btn waves-effect waves-light min-w mb-2" title="@lang('auth.login')">
                     @lang('auth.login')
                 </a>
                 <br>
@@ -32,19 +32,19 @@
     </li>
 
     <li class="{{ active_if_route_is(['/']) }}">
-        <a href="/">
+        <a href="/" title="@lang('home.home')">
             <i class="fas fa-home fa-15x grey-text left"></i>
             @lang('home.home')
         </a>
     </li>
     <li class="{{ active_if_route_is(['recipes*']) }}">
-        <a href="/recipes#new">
+        <a href="/recipes#new" title="@lang('recipes.recipes')">
             <i class="fas fa-book-open fa-15x grey-text left"></i>
             @lang('recipes.recipes')
         </a>
     </li>
     <li class="{{ active_if_route_is(['search']) }}">
-        <a href="/search">
+        <a href="/search" title="@lang('pages.search')">
             <i class="fas fa-search fa-15x grey-text left"></i>
             @lang('pages.search')
         </a>
