@@ -142,7 +142,7 @@
                 <span class="left pl-1">@lang('messages.app_name')</span>
             </a>
             {{-- Hamburger menu --}}
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger no-select">
+            <a href="#" data-target="mobile-sidenav" class="sidenav-trigger no-select">
                 <i class="fas fa-bars"></i>
             </a>
 
