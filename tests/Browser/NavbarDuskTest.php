@@ -17,6 +17,7 @@ class NavbarDuskTest extends DuskTestCase
             $browse->visit('/recipes')
                 ->click('#_hamb-menu')
                 ->assertSourceHas('<body class="">')
+                ->waitFor('.lever')
                 ->click('.lever')
                 ->assertSourceHas('<body class="dark-theme">')
                 ->click('.lever')
@@ -33,6 +34,7 @@ class NavbarDuskTest extends DuskTestCase
         $this->browse(function ($browse) {
             $browse->visit('/recipes')
                 ->click('#_hamb-menu')
+                ->waitFor('.lever')
                 ->click('.lever')
                 ->visit('/search')
                 ->assertSourceHas('<body class="dark-theme">');
@@ -65,6 +67,21 @@ class NavbarDuskTest extends DuskTestCase
                 ->click('[data-target="categories-dropdown"]')
                 ->click('#categories-dropdown li:first-child')
                 ->assertPathIs('/recipes');
+        });
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function sidenav_appears_after_clicking_trigger_hamburger_menu(): void
+    {
+        $this->browse(function ($browser) {
+            $browser->resize(500, 800)
+                ->visit('/')
+                ->click('.sidenav-trigger');
+
+            $this->assertNotNull($browser->element('#mobile-sidenav'));
         });
     }
 }
