@@ -1,6 +1,14 @@
 <script>
 export default {
-    props: ['newBtn', 'simpleBtn', 'myViewesBtn', 'mostLikedBtn', 'breakfastBtn', 'lunchBtn', 'dinnerBtn'],
+    props: [
+        'newBtn',
+        'simpleBtn',
+        'myViewesBtn',
+        'mostLikedBtn',
+        'breakfastBtn',
+        'lunchBtn',
+        'dinnerBtn'
+    ],
     data() {
         return {
             btns: [

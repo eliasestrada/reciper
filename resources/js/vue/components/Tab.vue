@@ -14,7 +14,7 @@ export default {
         name: { required: true },
         selected: { default: false }
     },
-     
+
     mounted() {
         this.active = this.selected
     }

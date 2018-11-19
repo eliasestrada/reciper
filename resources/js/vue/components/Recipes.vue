@@ -5,7 +5,9 @@
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
                         <a :href="'/recipes/' + recipe.slug" :title="recipe.intro">
-                            <img class="activator" :src="'storage/small/recipes/' + recipe.image" :alt="recipe.title">
+                            <img class="activator"
+                                :src="'storage/small/recipes/' + recipe.image"
+                                :alt="recipe.title">
                         </a>
                     </div>
                     <div class="card-content min-h">
@@ -14,7 +16,11 @@
                         </span>
                         <div style="height:25%">
                             <div class="left">
-                                <btn-favs :recipe-id="recipe.id" :favs="returnFavs(recipe.id)" :user-id="userId"></btn-favs>
+                                <btn-favs
+                                    :recipe-id="recipe.id"
+                                    :favs="returnFavs(recipe.id)"
+                                    :user-id="userId">
+                                </btn-favs>
                             </div>
                             <span class="left card-time">
                                 <i class="fas fa-clock fa-1x z-depth-2 main-light circle red-text ml-5 mr-1"></i>
@@ -32,7 +38,7 @@
                 </div>
             </div>
         </div>
-    
+
         <infinite-loading v-show="!theEnd" @infinite="infiniteHandler"></infinite-loading>
     </div>
 </template>
@@ -41,7 +47,7 @@
     import InfiniteLoading from 'vue-infinite-loading';
 
     export default {
-        
+
         data() {
             return {
                 recipes: [],
@@ -51,7 +57,7 @@
                 _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             };
         },
-    
+
         props: {
             "go": { required: true },
             "favs": { default: null },
@@ -66,7 +72,7 @@
                 this.makeFirstRequest()
             }
         },
-    
+
         methods: {
             makeFirstRequest() {
                 Event.$emit('hash-changed', this.hash())
