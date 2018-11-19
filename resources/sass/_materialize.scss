@@ -5347,6 +5347,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
 
 .sidenav li.active {
     background-color: #dcdcdc;
+    border-radius: 5px;
 
     .dark-theme & {
         background-color: lighten($darkTheme, 5%);
@@ -5373,6 +5374,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
 
 .sidenav li>a:hover {
     background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
 }
 
 .sidenav li>a.btn,

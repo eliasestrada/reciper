@@ -8,27 +8,29 @@
     <div class="center"><h1 class="header">@lang('help.help')</h1></div>
 
     <div class="row mt-4">
-        @foreach ($help_categories as $category)
-            <div class="col s12 m6 l4">
-                <h5 class="header">
-                    <i class="fas {{ $category['icon'] }} left red-text w20"></i>
-                    {{ $category['title'] }}
-                </h5>
-                <div class="divider"></div>
+        @isset($help_categories, $help_list)
+            @foreach ($help_categories as $category)
+                <div class="col s12 m6 l4">
+                    <h5 class="header">
+                        <i class="fas {{ $category['icon'] }} left red-text w20"></i>
+                        {{ $category['title'] }}
+                    </h5>
+                    <div class="divider"></div>
 
-                <ul>
-                    @foreach ($help as $question)
-                        @if ($question['help_category_id'] == $category['id'])
-                            <li>
-                                <a href="/help/{{ $question['id'] }}" class="text text-hover" style="font-size:1.05em">
-                                    <span class="red-text">#</span> {{ $question['title'] }}
-                                </a>
-                            </li>
-                        @endif
-                    @endforeach
-                </ul>
-            </div>
-        @endforeach
+                    <ul>
+                        @foreach ($help_list as $help)
+                            @if ($help['help_category_id'] == $category['id'])
+                                <li>
+                                    <a href="/help/{{ $help['id'] }}" class="text text-hover" style="font-size:1.05em">
+                                        <span class="red-text">#</span> {{ $help['title'] }}
+                                    </a>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </div>
+            @endforeach
+        @endisset
     </div>
 </div>
 

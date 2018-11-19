@@ -21,26 +21,31 @@ class HelpController extends Controller
     public function index()
     {
         try {
-            $help = cache()->remember('help', 10, function () {
-                return Help::selectBasic()->orderBy('title')->get()->toArray();
-            });
-
-            $help_categories = cache()->remember('help_categories', 10, function () {
-                return HelpCategory::selectBasic()->get()->toArray();
-            });
-
-            return view('help.index', compact('help', 'help_categories'));
+            return view('help.index', [
+                'help_list' => $this->getHelpList(),
+                'help_categories' => $this->getHelpCategories(),
+            ]);
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
-            return view('help.index', ['help' => [], 'help_categories' => []]);
+            return view('help.index');
         }
     }
 
     /**
      * @param Help $help
-     */public function show(Help $help)
+     */
+    public function show(Help $help)
     {
-        return view('help.show', compact('help'));
+        try {
+            return view('help.show', [
+                'help' => $help,
+                'help_list' => $this->getHelpList(),
+                'help_categories' => $this->getHelpCategories(),
+            ]);
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
+            return view('help.index');
+        }
     }
 
     /**
@@ -117,5 +122,19 @@ class HelpController extends Controller
         cache()->forget('trash_notif');
 
         return redirect('/help')->withSuccess(trans('help.help_deleted'));
+    }
+
+    public function getHelpList()
+    {
+        return cache()->remember('help_list', 10, function () {
+            return Help::selectBasic()->orderBy('title')->get()->toArray();
+        });
+    }
+
+    public function getHelpCategories()
+    {
+        return cache()->remember('help_categories', 10, function () {
+            return HelpCategory::selectBasic()->get()->toArray();
+        });
     }
 }
