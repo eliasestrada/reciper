@@ -28,7 +28,6 @@ class CategoriesSeeder extends Seeder
             ['name_ru' => 'Соусы', 'name_en' => 'Sauces'],
             ['name_ru' => 'Суши', 'name_en' => 'Sushi'],
             ['name_ru' => 'Фрукты', 'name_en' => 'Fruits'],
-            ['name_ru' => 'Разное', 'name_en' => 'Other'],
         ]);
     }
 }

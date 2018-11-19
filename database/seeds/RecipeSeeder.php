@@ -73,7 +73,7 @@ class RecipeSeeder extends Seeder
             'created_at' => '2018-11-03 19:10:10',
             'updated_at' => '2018-11-03 19:10:10',
         ]);
-        $recipe->categories()->sync([4]);
+        $recipe->categories()->sync([4, 1]);
 
         $recipe = Recipe::create([
             'user_id' => 1,
