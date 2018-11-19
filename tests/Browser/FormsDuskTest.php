@@ -33,8 +33,8 @@ class FormsDuskTest extends DuskTestCase
      */
     public function password_becomes_visible_after_clicking_eye_icon_on_login_page(): void
     {
-        $this->browse(function ($browse) {
-            $browse->visit('/login')
+        $this->browse(function ($browser) {
+            $browser->visit('/login')
                 ->type('#password', 'somepassword')
                 ->assertSourceHas('<input type="password"')
                 ->click('._visibility-icon')
@@ -48,8 +48,8 @@ class FormsDuskTest extends DuskTestCase
      */
     public function password_becomes_visible_after_clicking_eye_icon_on_register_page(): void
     {
-        $this->browse(function ($browse) {
-            $browse->visit('/register')
+        $this->browse(function ($browser) {
+            $browser->visit('/register')
                 ->type('#password', 'somepassword')
                 ->type('#password_confirmation', 'somepassword')
                 ->assertSourceHas('<input type="password" id="password"')
@@ -62,6 +62,18 @@ class FormsDuskTest extends DuskTestCase
                 ->click('._eye-icon-2')
                 ->assertSourceHas('<input type="password" id="password"')
                 ->assertSourceHas('<input type="password" id="password_confirmation"');
+        });
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function guest_can_read_terms_document_when_registering(): void
+    {
+        $this->browse(function ($browser) {
+            $browser->visit('/register')->click('[href="#show-document-modal"]');
+            $this->assertNotNull($browser->element('.modal.open'));
         });
     }
 }
