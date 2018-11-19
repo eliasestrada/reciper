@@ -34,7 +34,7 @@
                         <a class="btn-small mt-3" href="/recipes/{{ $recipe->slug }}">
                             @lang('messages.go')
                         </a>
-                        <p>{{ $recipe->getIntro() }}</p>
+                        <p class="text">{{ $recipe->getIntro() }}</p>
                     </div>
                 </div>
             </div>
