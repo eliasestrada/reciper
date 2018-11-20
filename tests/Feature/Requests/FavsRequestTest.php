@@ -15,8 +15,7 @@ class FavsRequestTest extends TestCase
     {
         $this->actingAs(new User)
             ->post(action('WebApi\FavsController@store', ['id' => 99999]))
-            ->assertStatus(403)
-            ->assertSeeText('fail');
+            ->assertStatus(404);
     }
 
     /**
@@ -27,7 +26,6 @@ class FavsRequestTest extends TestCase
     {
         $this->actingAs(new User)
             ->post(action('WebApi\FavsController@store', ['id' => 'f']))
-            ->assertStatus(500)
-            ->assertSeeText('fail');
+            ->assertStatus(404);
     }
 }
