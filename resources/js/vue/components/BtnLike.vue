@@ -48,9 +48,11 @@ export default {
 
         toggleActive() {
             if (this.userId) {
-                this.iconClass = this.likes.map(like => {
-                    this.recipeId == like.recipe_id && this.userId == like.user_id ? 'active' : '';
-                });
+                let that = this
+                let checkIfLikedBefore = this.likes.filter(like => {
+                    return that.recipeId == like.recipe_id && that.userId == like.user_id
+                })
+                this.iconClass = checkIfLikedBefore.length > 0 ? 'active' : ''
             }
         },
     }

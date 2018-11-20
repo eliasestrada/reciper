@@ -46,9 +46,11 @@ export default {
         },
         toggleActive() {
             if (this.userId) {
-                this.iconClass = this.favs.map(fav => {
-                    this.recipeId == fav.recipe_id && this.userId == fav.user_id ? 'active' : '';
-                });
+                let that = this
+                let checkIfAddedBefore = this.favs.filter(fav => {
+                    return that.recipeId == fav.recipe_id && that.userId == fav.user_id
+                })
+                this.iconClass = checkIfAddedBefore.length > 0 ? 'active' : ''
             }
         },
     },
