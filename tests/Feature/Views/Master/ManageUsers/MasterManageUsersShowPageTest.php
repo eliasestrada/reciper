@@ -84,7 +84,9 @@ class MasterManageUsersShowPageTest extends TestCase
         Ban::put($this->user->id, 2, 'This user is banned on 2 days');
 
         $this->actingAs(create_user('master'))
-            ->delete(action('Master\ManageUsersController@destroy', ['id' => $this->user->id]));
+            ->delete(action('Master\ManageUsersController@destroy', [
+                'user' => $this->user->id,
+            ]));
 
         $this->assertDatabaseMissing('ban', ['user_id' => $this->user->id]);
     }

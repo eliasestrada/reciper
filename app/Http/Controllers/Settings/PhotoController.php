@@ -5,25 +5,32 @@ namespace App\Http\Controllers\Settings;
 use App\Helpers\Traits\PhotoControllerHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\PhotoRequest;
-use App\Http\Requests\Settings\SettingsPhotoRequest;
 use App\Jobs\DeleteFileJob;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Predis\Connection\ConnectionException;
 
 class PhotoController extends Controller
 {
     use PhotoControllerHelpers;
 
-    public function index()
+    /**
+     * Show settings photo page
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index(): View
     {
         return view('settings.photo.index');
     }
 
     /**
-     * @param SettingsPhotoRequest $request
+     * @param \App\Http\Requests\Settings\PhotoRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(PhotoRequest $request)
+    public function update(PhotoRequest $request): RedirectResponse
     {
         if (!$photo = $request->file('photo')) {
             return back()->withError(trans('settings.there_are_no_file'));
@@ -46,7 +53,12 @@ class PhotoController extends Controller
         return back()->withSuccess(trans('settings.saved'));
     }
 
-    public function destroy()
+    /**
+     * Dispatch DeleteFileJob and update user photo to default.jpg
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(): RedirectResponse
     {
         if (user()->photo != 'default.jpg') {
             try {

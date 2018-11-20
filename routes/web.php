@@ -8,8 +8,8 @@ Auth::routes();
 Route::middleware('auth')->namespace('WebApi')->group(function () {
     Route::get('popularity-chart', 'StatisticsController@popularityChart');
     Route::get('favs/{category?}', 'FavsController@index');
-    Route::post('favs/{recipe_id}', 'FavsController@store');
-    Route::post('like/{recipe_id}', 'LikeController@store');
+    Route::post('favs/{recipe}', 'FavsController@store');
+    Route::post('like/{recipe}', 'LikeController@store');
 });
 
 // Statistics
@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
 Route::prefix('users')->group(function () {
     Route::get('/', 'UsersController@index');
     Route::get('{username}', 'UsersController@show');
-    Route::delete('delete/{d}', 'UsersController@destroy');
+    Route::delete('delete/{id}', 'UsersController@destroy');
     Route::post('/', 'UsersController@store');
 
     Route::prefix('other')->middleware('auth')->group(function () {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Models\Help;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -12,7 +13,7 @@ class TrashController extends Controller
     /**
      * Show view with all trashed data
      *
-     * @return Illuminate\View\View
+     * @return \Illuminate\View\View
      */
     public function index(): View
     {
@@ -23,10 +24,11 @@ class TrashController extends Controller
     /**
      * Restore material
      *
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $id): RedirectResponse
     {
         if ($request->table === 'help') {
             Help::withTrashed()->whereId($id)->restore();
@@ -35,8 +37,9 @@ class TrashController extends Controller
             cache()->forget('help_categories');
             cache()->forget('trash_notif');
 
-            return redirect("/help/{$id}")
-                ->withSuccess(trans('messages.trash_restored'));
+            return redirect("/help/{$id}")->withSuccess(
+                trans('messages.trash_restored')
+            );
         }
 
         return back()->withError(trans('messages.not_allowed'));
@@ -45,18 +48,20 @@ class TrashController extends Controller
     /**
      * Force deletes all trash
      *
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request, int $id)
+    public function destroy(Request $request, int $id): RedirectResponse
     {
         if ($request->table === 'help') {
             Help::withTrashed()->whereId($id)->forceDelete();
 
             cache()->forget('trash_notif');
 
-            return redirect('/master/trash')
-                ->withSuccess(trans('messages.trash_deleted'));
+            return redirect('/master/trash')->withSuccess(
+                trans('messages.trash_deleted')
+            );
         }
         return back()->withError(trans('messages.not_allowed'));
     }

@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Recipe;
 use App\Models\User;
+use Illuminate\View\View;
 
 class StatisticsController extends Controller
 {
     /**
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(): View
     {
         $recipes = Recipe::whereUserId(user()->id)
             ->select('slug', 'title_' . LANG())

@@ -10,16 +10,16 @@ use Illuminate\Http\Response;
 class LikeController extends Controller
 {
     /**
-     * @param  string $recipe_id
-     * @return Response
+     * Add like to particular recipe
+     *
+     * @param \App\Models\Recipe $recipe
+     * @return \Illuminate\Http\Response
      */
-    public function store($recipe_id): Response
+    public function store(Recipe $recipe): Response
     {
-        if (!$recipe_id || !is_numeric($recipe_id) || Recipe::whereId($recipe_id)->doesntExist()) {
+        if (!$recipe) {
             return response('fail', 403);
         }
-
-        $recipe = Recipe::find($recipe_id);
 
         if (user()->likes()->whereRecipeId($recipe->id)->exists()) {
             user()->likes()->whereRecipeId($recipe->id)->delete();

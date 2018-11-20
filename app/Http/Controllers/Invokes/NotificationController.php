@@ -9,7 +9,10 @@ use Cookie;
 class NotificationController extends Controller
 {
     /**
-     * @return void
+     * Mark notifications as read and return cookie for 10 seconds
+     * that prevent user from hitting database every click
+     *
+     * @return \Illuminate\Facades\Cookie
      */
     public function __invoke()
     {

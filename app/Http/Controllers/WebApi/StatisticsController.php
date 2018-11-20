@@ -10,9 +10,11 @@ use Illuminate\Support\Collection;
 class StatisticsController extends Controller
 {
     /**
-     * Chart.js
+     * Give respons with Chart.js array data
+     *
+     * @return \App\Http\Responses\Controllers\Api\StatisticsPopularityChartResponse
      */
-    public function popularityChart()
+    public function popularityChart(): StatisticsPopularityChartResponse
     {
         $chart_data = [
             'views' => $this->getDataFromUser('views'),
@@ -24,9 +26,11 @@ class StatisticsController extends Controller
     }
 
     /**
+     * Function helper that looks for all data for statistics
+     *
      * @param string $column
-     * @param User|null $user this param for testing purposes, coz I can just use auth()->user helper
-     * @return Collection
+     * @param \App\Models\User|null $user this param for testing purposes, coz I can just use auth()->user helper
+     * @return \Illuminate\Support\Collection
      */
     public function getDataFromUser(string $column, ?User $user = null): Collection
     {
@@ -41,6 +45,8 @@ class StatisticsController extends Controller
     }
 
     /**
+     * This helper function creates array with needed attributes
+     *
      * @return array
      */
     public function makeArrayOfRules(): array
@@ -56,9 +62,11 @@ class StatisticsController extends Controller
     }
 
     /**
+     * Take array of rules and populate it with real data
+     *
      * @param array $rules
      * @param string $column
-     * @param User $user
+     * @param \App\Models\User $user
      * @return array
      */
     public function populateWithSumOfLikes(array $rules, string $column, User $user): array
@@ -78,8 +86,9 @@ class StatisticsController extends Controller
 
     /**
      * Convert month number to month name
+     *
      * @param array $rules
-     * @return Collection
+     * @return \Illuminate\Support\Collection
      */
     public function convertMonthNumberToName(array $rules): Collection
     {

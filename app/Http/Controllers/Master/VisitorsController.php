@@ -4,15 +4,16 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Models\Visitor;
+use Illuminate\View\View;
 
 class VisitorsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display page with all visitrors
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(): View
     {
         return view('master.visitors.index', [
             'visitors' => Visitor::withCount('views')
@@ -23,12 +24,12 @@ class VisitorsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display page with single visitor
      *
-     * @param  Visitor  $visitor
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Visitor  $visitor
+     * @return \Illuminate\View\View
      */
-    public function show(Visitor $visitor)
+    public function show(Visitor $visitor): View
     {
         return view('master.visitors.show', compact('visitor'));
     }

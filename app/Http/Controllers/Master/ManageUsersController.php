@@ -6,17 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ManageUsersRequest;
 use App\Models\Ban;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ManageUsersController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $users = User::query();
 
@@ -37,10 +39,10 @@ class ManageUsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  $user
-     * @return \Illuminate\Http\Response
+     * @param int $user
+     * @return \Illuminate\View\View
      */
-    public function show($user)
+    public function show(int $user): View
     {
         return view('master.manage-users.show', [
             'user' => User::find($user),
@@ -49,11 +51,12 @@ class ManageUsersController extends Controller
 
     /**
      * Ban user
-     * @param Request $request
-     * @param $user
-     * @return void
+     *
+     * @param \App\Http\Requests\ManageUsersRequest $request
+     * @param int $user
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ManageUsersRequest $request, $user)
+    public function update(ManageUsersRequest $request, int $user): RedirectResponse
     {
         $user = User::find($user);
 
@@ -71,11 +74,13 @@ class ManageUsersController extends Controller
 
     /**
      * Unban user
-     * @param User $user
+     *
+     * @param int $user_id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($user)
+    public function destroy(int $user_id): RedirectResponse
     {
-        User::find($user)->ban()->delete();
+        User::find($user_id)->ban()->delete();
         return back()->withSuccess(trans('manage-users.user_unbanned'));
     }
 }

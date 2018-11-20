@@ -6,16 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DisapproveRequest;
 use App\Models\Recipe;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ApprovesController extends Controller
 {
-
     /**
      * Shows all recipes that need to be approved
      * by administration
      *
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
     public function index()
     {
@@ -48,12 +48,14 @@ class ApprovesController extends Controller
                 ->withSuccess(trans('approves.finish_checking'));
         }
 
-        return view('admin.approves.index',
-            compact('unapproved_waiting', 'unapproved_checking', 'my_approves'));
+        return view('admin.approves.index', compact(
+            'unapproved_waiting', 'unapproved_checking', 'my_approves'
+        ));
     }
 
     /**
-     * @param Recipe $recipe
+     * @param \App\Models\Recipe $recipe
+     * @return mixed
      */
     public function show(Recipe $recipe)
     {
@@ -76,18 +78,20 @@ class ApprovesController extends Controller
 
     /**
      * x-recipe-approved header is asserted by tests
-     * @param Recipe $recipe
+     *
+     * @param \App\Models\Recipe $recipe
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function approve(Recipe $recipe)
+    public function approve(Recipe $recipe): RedirectResponse
     {
         $error_message = $this->returnErrorIfApprovedOrNotReady($recipe);
 
         if (!is_null($error_message)) {
-            return redirect("/admin/approves")
-                ->withError($error_message);
+            return redirect("/admin/approves")->withError($error_message);
         }
 
         event(new \App\Events\RecipeGotApproved($recipe));
+
         $recipe->update(['approved_' . LANG() => 1]);
         cache()->forget('unapproved_notif');
 
@@ -98,19 +102,21 @@ class ApprovesController extends Controller
 
     /**
      * x-recipe-disapproved header is asserted by tests
-     * @param Recipe $recipe
-     * @param DisapproveRequest $request
+     *
+     * @param \App\Models\Recipe $recipe
+     * @param \App\Http\Requests\DisapproveRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function disapprove(Recipe $recipe, DisapproveRequest $request)
+    public function disapprove(Recipe $recipe, DisapproveRequest $request): RedirectResponse
     {
         $error_message = $this->returnErrorIfApprovedOrNotReady($recipe);
 
         if (!is_null($error_message)) {
-            return redirect("/admin/approves")
-                ->withError($error_message);
+            return redirect("/admin/approves")->withError($error_message);
         }
 
         event(new \App\Events\RecipeGotCanceled($recipe, $request->message));
+
         $recipe->update(['ready_' . LANG() => 0]);
         cache()->forget('unapproved_notif');
 
@@ -120,7 +126,9 @@ class ApprovesController extends Controller
     }
 
     /**
-     * @param $recipe
+     * Helper function
+     *
+     * @param \App\Models\Recipe $recipe
      */
     public function returnErrorIfApprovedOrNotReady(Recipe $recipe)
     {

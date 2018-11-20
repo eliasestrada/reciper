@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipesResource;
 use App\Models\Recipe;
 use App\Models\Visitor;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class RecipesController extends Controller
 {
@@ -24,9 +25,9 @@ class RecipesController extends Controller
     /**
      * @param string|null $hash
      * @param int|null $pagin
-     * @return void
+     * @return \Illuminate\Http\LenghtAwarePaginator
      */
-    public function makeQueryWithCriteria(?string $hash = 'new', ?int $pagin = 8)
+    public function makeQueryWithCriteria(?string $hash = 'new', ?int $pagin = 8): LengthAwarePaginator
     {
         if ($hash == 'most_liked') {
             return Recipe::withCount('likes')->orderBy('likes_count', 'desc')->done(1)->paginate($pagin);

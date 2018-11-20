@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Invokes;
 use App\Http\Controllers\Controller;
 use App\Jobs\DeleteFileJob;
 use App\Models\Recipe;
-use Illuminate\Http\Request;
 use Predis\Connection\ConnectionException;
 use Storage;
 
 class DownloadIngredientsController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * Creates file with list of ingredients, downloads it to user and
+     * puts DeleteFileJob on queue
      *
      * @param int $recipe_id
      */

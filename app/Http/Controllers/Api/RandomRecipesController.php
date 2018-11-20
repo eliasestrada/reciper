@@ -9,6 +9,8 @@ use App\Models\Recipe;
 class RandomRecipesController extends Controller
 {
     /**
+     * Returns js object of random recipes
+     *
      * @param int $visitor_id
      * @return object|null
      */

@@ -15,12 +15,17 @@ use App\Models\Recipe;
 use App\Models\User;
 use App\Models\View;
 use Illuminate\Database\QueryException;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View as ViewResponse;
 use Predis\Connection\ConnectionException;
 
 class RecipesController extends Controller
 {
     use RecipesControllerHelpers;
 
+    /**
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
@@ -29,7 +34,7 @@ class RecipesController extends Controller
     /**
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(): ViewResponse
     {
         try {
             return view('recipes.index', [
@@ -44,7 +49,7 @@ class RecipesController extends Controller
     /**
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(): ViewResponse
     {
         return view('recipes.create', [
             'meal' => Meal::get(['id', 'name_' . LANG()]),
@@ -53,9 +58,11 @@ class RecipesController extends Controller
 
     /**
      * It will save the recipe to a database with title only
-     * @param RecipeStoreRequest $request
+     *
+     * @param \App\Http\Requests\Recipes\RecipeStoreRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(RecipeStoreRequest $request)
+    public function store(RecipeStoreRequest $request): RedirectResponse
     {
         if ($this->checkForScriptTags($request)) {
             return back()->withError(trans('notifications.cant_use_script_tags'));
@@ -68,8 +75,9 @@ class RecipesController extends Controller
 
     /**
      * It will show the recipe on a single page
+     *
      * @param string $slug
-     * @return \Illuminate\View\View
+     * @return mixed
      */
     public function show(string $slug)
     {
@@ -109,7 +117,7 @@ class RecipesController extends Controller
 
     /**
      * @param string $slug
-     * @return \Illuminate\View\View
+     * @return mixed
      */
     public function edit(string $slug)
     {
@@ -131,9 +139,10 @@ class RecipesController extends Controller
     /**
      * Update single recipe
      * This method triggers event RecipeIsReady
-     * @param RecipeUpdateRequest $request
-     * @param Recipe $recipe
-     * @return RecipeUpdateResponse
+     *
+     * @param \App\Http\Requests\Recipes\RecipeUpdateRequest $request
+     * @param \App\Models\Recipe $recipe
+     * @return mixed
      */
     public function update(RecipeUpdateRequest $request, Recipe $recipe)
     {
@@ -175,7 +184,7 @@ class RecipesController extends Controller
     }
 
     /**
-     * @param Recipe $recipe
+     * @param \App\Models\Recipe $recipe
      * @return string
      */
     public function destroy(Recipe $recipe): string

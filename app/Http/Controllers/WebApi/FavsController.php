@@ -7,14 +7,17 @@ use App\Http\Controllers\Controller;
 use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class FavsController extends Controller
 {
     /**
+     * Show page with recipes of particular category
+     *
      * @param int $category
      * @return \Illuminate\View\View
      */
-    public function index(int $category = 1)
+    public function index(int $category = 1): View
     {
         $query = Recipe::query()
             ->join('favs', 'favs.recipe_id', '=', 'recipes.id')
@@ -40,16 +43,16 @@ class FavsController extends Controller
     }
 
     /**
-     * @param  string $recipe_id
-     * @return Response
+     * Add recipe to favorites
+     *
+     * @param \App\Models\Recipe $recipe
+     * @return \Illuminate\Http\Response
      */
-    public function store($recipe_id): Response
+    public function store(Recipe $recipe): Response
     {
-        if (!$recipe_id || !is_numeric($recipe_id) || Recipe::whereId($recipe_id)->doesntExist()) {
+        if (!$recipe) {
             return response('fail', 403);
         }
-
-        $recipe = Recipe::find($recipe_id);
 
         if (user()->favs()->whereRecipeId($recipe->id)->exists()) {
             user()->favs()->whereRecipeId($recipe->id)->delete();

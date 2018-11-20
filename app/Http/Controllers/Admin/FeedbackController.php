@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ContactRequest;
 use App\Http\Requests\FeedbackRequest;
 use App\Models\Feedback;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class FeedbackController extends Controller
 {
@@ -14,9 +15,9 @@ class FeedbackController extends Controller
      * Show all reports and feedback
      * Mark user as he saw these messages
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(): View
     {
         cache()->forget('feedback_notif');
 
@@ -32,11 +33,11 @@ class FeedbackController extends Controller
 
     /**
      * Store a newly created report in storage.
-     * Refactore
-     * @param ContactRequest $request
-     * @return \Illuminate\Http\Response
+     *
+     * @param \App\Http\Requests\FeedbackRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(FeedbackRequest $request)
+    public function store(FeedbackRequest $request): RedirectResponse
     {
         cache()->forget('feedback_notif');
 
@@ -74,10 +75,10 @@ class FeedbackController extends Controller
     /**
      * Display single message
      *
-     * @param  Feedback  $feedback
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Feedback $feedback
+     * @return \Illuminate\View\View
      */
-    public function show(Feedback $feedback)
+    public function show(Feedback $feedback): View
     {
         return view('admin.feedback.show', compact('feedback'));
     }
@@ -85,10 +86,10 @@ class FeedbackController extends Controller
     /**
      * Remove message from storage
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
         Feedback::findOrFail($id)->delete();
 

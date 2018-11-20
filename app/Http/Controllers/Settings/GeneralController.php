@@ -6,22 +6,31 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\EmailRequest;
 use App\Http\Requests\Settings\GeneralRequest;
 use App\Http\Requests\Settings\PasswordRequest;
-use App\Http\Requests\Settings\SettingsGeneralRequest;
 use App\Models\User;
 use App\Notifications\VerifyEmailNotification;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class GeneralController extends Controller
 {
-    public function index()
+    /**
+     * Show general settings page
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index(): View
     {
         return view('settings.general.index');
     }
 
     /**
-     * @param SettingsGeneralRequest $request
+     * Update general settings like user name and status
+     *
+     * @param \App\Http\Requests\Settings\GeneralRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function updateGeneral(GeneralRequest $request)
+    public function updateGeneral(GeneralRequest $request): RedirectResponse
     {
         user()->update([
             'name' => $request->name,
@@ -32,9 +41,12 @@ class GeneralController extends Controller
     }
 
     /**
-     * @param SettingsPasswordRequest $request
+     * Update user's password
+     *
+     * @param \App\Http\Requests\Settings\PasswordRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function updatePassword(PasswordRequest $request)
+    public function updatePassword(PasswordRequest $request): RedirectResponse
     {
         if (\Hash::check(request('old_password'), user()->password)) {
             user()->update([
@@ -47,10 +59,12 @@ class GeneralController extends Controller
     }
 
     /**
-     * @param EmailRequest $request
-     * @return void
+     * Update user's email address
+     *
+     * @param \App\Http\Requests\Settings\EmailRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function updateEmail(EmailRequest $request)
+    public function updateEmail(EmailRequest $request): RedirectResponse
     {
         $user = user();
 
@@ -65,6 +79,7 @@ class GeneralController extends Controller
 
         $user->update(['email' => request('email'), 'token' => str_random(30)]);
         $user->notify(new VerifyEmailNotification($user));
+
         cache()->put("user:{$user->id}:changed_email", 1, 10080);
 
         return back()->withSuccess(trans('settings.saved_now_verify_email'));

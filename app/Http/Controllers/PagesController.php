@@ -7,13 +7,14 @@ use App\Models\User;
 use App\Models\View;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\View\View as ViewResponse;
 
 class PagesController extends Controller
 {
     /**
      * @return \Illuminate\View\View
      */
-    public function home()
+    public function home(): ViewResponse
     {
         try {
             return view('pages.home', ['recipes' => Recipe::getRandomUnseen(24, 20)]);
@@ -24,8 +25,10 @@ class PagesController extends Controller
     }
 
     /**
-     * @param Request $request
-     * @return \Illuminate\View\View
+     * Show search page
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return mixed
      */
     public function search(Request $request)
     {
@@ -52,7 +55,10 @@ class PagesController extends Controller
     }
 
     /**
+     * Helper that searches for recipes
+     *
      * @param string $request
+     * @return Illuminate\Pagination\LengthAwarePaginator
      */
     public function searchForRecipes(string $request)
     {
@@ -65,11 +71,16 @@ class PagesController extends Controller
     }
 
     /**
+     * Helper that searches for user by user id
+     *
      * @param string $request
+     * @return string|null
      */
-    public function searchForUser(string $request)
+    public function searchForUser(string $request): ?string
     {
-        if (!is_null($result = User::whereId($request)->first())) {
+        $result = User::whereId($request)->first();
+
+        if (!is_null($result)) {
             return $result->username;
         }
         return null;

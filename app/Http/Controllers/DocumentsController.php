@@ -4,19 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\DocumentsRequest;
 use App\Models\Document;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class DocumentsController extends Controller
 {
+    /**
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('master')->except(['index', 'show']);
     }
 
     /**
-     * @return \Illuminate\Http\Response
+     * Show page with all documents
+     *
+     * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(): View
     {
         return view('documents.index', [
             'ready_docs' => Document::query()->isReady(1)->paginate(20)->onEachSide(1),
@@ -25,18 +32,22 @@ class DocumentsController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\Response
+     * Show create document page
+     *
+     * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(): View
     {
         return view('documents.create');
     }
 
     /**
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Create document in database
+     *
+     * @param  \App\Http\Requests\DocumentsRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(DocumentsRequest $request)
+    public function store(DocumentsRequest $request): RedirectResponse
     {
         $doc = Document::create([
             'title_' . LANG() => $request->title,
@@ -47,7 +58,10 @@ class DocumentsController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\Response
+     * Show single document page
+     *
+     * @param \App\Models\Documetn $document
+     * @return mixed
      */
     public function show(Document $document)
     {
@@ -58,17 +72,24 @@ class DocumentsController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\Response
+     * Edit document page
+     *
+     * @param \App\Models\Document $document
+     * @return \Illuminate\View\View
      */
-    public function edit(Document $document)
+    public function edit(Document $document): View
     {
         return view('documents.edit', compact('document'));
     }
 
     /**
-     * @return \Illuminate\Http\Response
+     * Update existing document
+     *
+     * @param \App\Http\Requests\DocumentRequest $requet
+     * @param \App\Models\Document $document
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(DocumentsRequest $request, Document $document)
+    public function update(DocumentsRequest $request, Document $document): RedirectResponse
     {
         $document->update([
             'title_' . LANG() => $request->title,
@@ -90,10 +111,12 @@ class DocumentsController extends Controller
     }
 
     /**
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Delete document
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
         // Check for correct user
         if (!user()->hasRole('master')) {
@@ -103,8 +126,9 @@ class DocumentsController extends Controller
         }
 
         if ($id == 1) {
-            return redirect('/documents/create')
-                ->withError(trans('documents.cant_delete_first_doc'));
+            return redirect('/documents/create')->withError(
+                trans('documents.cant_delete_first_doc')
+            );
         }
 
         Document::find($id)->delete();

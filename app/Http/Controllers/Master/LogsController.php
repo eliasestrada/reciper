@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Master;
 
 use Arcanedev\LogViewer\Http\Controllers\LogViewerController;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class LogsController extends LogViewerController
@@ -10,9 +11,10 @@ class LogsController extends LogViewerController
     /**
      * Delete a log. This method just overwrites delete method from
      * LogViewer package
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param \Illuminate\Http\RedirectRequest $request
      */
-    public function delete(Request $request)
+    public function delete(Request $request): RedirectResponse
     {
         $this->logViewer->delete(request('date'));
 

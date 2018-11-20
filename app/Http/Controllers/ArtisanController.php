@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Artisan;
+use Exception;
+
 class ArtisanController extends Controller
 {
     /**
      * @param string $url_key
      * @return void
      */
-    public function cache($url_key): void
+    public function cache(string $url_key): void
     {
         if ($url_key != config('custom.url_key')) {
             abort(403);
         }
         try {
-            \Artisan::call('config:cache');
-            \Artisan::call('route:cache');
+            Artisan::call('config:cache');
+            Artisan::call('route:cache');
 
             logger()->info("Artisan commands 'config:cache' and 'route:cache' has been fired");
 
@@ -30,16 +33,16 @@ class ArtisanController extends Controller
      * @param string $url_key
      * @return void
      */
-    public function clear($url_key): void
+    public function clear(string $url_key): void
     {
         if ($url_key != config('custom.url_key')) {
             abort(403);
         }
         try {
-            \Artisan::call('cache:clear');
-            \Artisan::call('config:clear');
-            \Artisan::call('view:clear');
-            \Artisan::call('route:clear');
+            Artisan::call('cache:clear');
+            Artisan::call('config:clear');
+            Artisan::call('view:clear');
+            Artisan::call('route:clear');
 
             logger()->info("Artisan commands 'cache:clear', 'config:clear', 'view:clear' and 'route:clear' has been fired");
 
