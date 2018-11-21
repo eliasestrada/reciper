@@ -7,7 +7,7 @@ export default {
         'mostLikedBtn',
         'breakfastBtn',
         'lunchBtn',
-        'dinnerBtn'
+        'dinnerBtn',
     ],
     data() {
         return {
@@ -16,61 +16,61 @@ export default {
                     title: this.newBtn,
                     icon: 'fa-clock',
                     link: 'new',
-                    isActive: false
+                    isActive: false,
                 },
                 {
                     title: this.mostLikedBtn,
                     icon: 'fa-heart',
                     link: 'most_liked',
-                    isActive: false
+                    isActive: false,
                 },
                 {
                     title: this.simpleBtn,
                     icon: 'fa-concierge-bell',
                     link: 'simple',
-                    isActive: false
+                    isActive: false,
                 },
                 {
                     title: this.breakfastBtn,
                     icon: 'fa-utensils',
                     link: 'breakfast',
-                    isActive: false
+                    isActive: false,
                 },
                 {
                     title: this.lunchBtn,
                     icon: 'fa-utensils',
                     link: 'lunch',
-                    isActive: false
+                    isActive: false,
                 },
                 {
                     title: this.dinnerBtn,
                     icon: 'fa-utensils',
                     link: 'dinner',
-                    isActive: false
+                    isActive: false,
                 },
                 {
                     title: this.myViewesBtn,
                     icon: 'fa-eye',
                     link: 'my_viewes',
-                    isActive: false
+                    isActive: false,
                 },
-            ]
-        }
+            ],
+        };
     },
 
     created() {
-        Event.$on('hash-changed', (hash) => {
-            this.btns[0].isActive = true
+        Event.$on('hash-changed', hash => {
+            this.btns[0].isActive = true;
             if (hash != '') {
-                this.btns.forEach((btn) => {
+                this.btns.forEach(btn => {
                     if (btn.link == hash) {
-                        btn.isActive = true
+                        btn.isActive = true;
                     } else {
-                        btn.isActive = false
+                        btn.isActive = false;
                     }
-                })
+                });
             }
-        })
-    }
-}
+        });
+    },
+};
 </script>

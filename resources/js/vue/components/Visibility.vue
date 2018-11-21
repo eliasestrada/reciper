@@ -3,20 +3,20 @@ export default {
     data() {
         return {
             type: 'password',
-            icon: 'fa-eye'
-        }
+            icon: 'fa-eye',
+        };
     },
 
     methods: {
         changeType() {
             if (this.type === 'password') {
-                this.type = 'text'
-                this.icon = 'fa-eye-slash'
+                this.type = 'text';
+                this.icon = 'fa-eye-slash';
             } else {
-                this.type = 'password'
-                this.icon = 'fa-eye'
+                this.type = 'password';
+                this.icon = 'fa-eye';
             }
-        }
-    }
-}
+        },
+    },
+};
 </script>

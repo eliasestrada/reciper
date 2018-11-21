@@ -24,10 +24,10 @@ export default {
     },
 
     created() {
-        this.toggleActive()
+        this.toggleActive();
     },
 
-    props: ["likes", "recipeId", "userId", "tooltip"],
+    props: ['likes', 'recipeId', 'userId', 'tooltip'],
 
     methods: {
         fetchLikes() {
@@ -35,11 +35,11 @@ export default {
                 .then(res => res.text())
                 .then(data => {
                     if (data != 'fail') {
-                        this.iconClass = data
+                        this.iconClass = data;
                         if (data == 'active') {
-                            this.amount++
+                            this.amount++;
                         } else {
-                            this.amount--
+                            this.amount--;
                         }
                     }
                 })
@@ -48,13 +48,13 @@ export default {
 
         toggleActive() {
             if (this.userId) {
-                let that = this
+                let that = this;
                 let checkIfLikedBefore = this.likes.filter(like => {
-                    return that.recipeId == like.recipe_id && that.userId == like.user_id
-                })
-                this.iconClass = checkIfLikedBefore.length > 0 ? 'active' : ''
+                    return that.recipeId == like.recipe_id && that.userId == like.user_id;
+                });
+                this.iconClass = checkIfLikedBefore.length > 0 ? 'active' : '';
             }
         },
-    }
+    },
 };
 </script>

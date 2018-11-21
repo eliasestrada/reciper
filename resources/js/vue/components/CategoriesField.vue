@@ -32,18 +32,18 @@ export default {
         return {
             fields: 1,
             visibleAddBtn: true,
-            visibleDelBtn: false
+            visibleDelBtn: false,
         };
     },
 
     props: [
-        "add",
-        "label",
-        "select",
-        "deleting",
-        "recipeCategories",
-        "categories",
-        "categoriesTitle"
+        'add',
+        'label',
+        'select',
+        'deleting',
+        'recipeCategories',
+        'categories',
+        'categoriesTitle',
     ],
 
     created() {
@@ -93,19 +93,19 @@ export default {
             if (this.fields === 1) {
                 this.visibleDelBtn = false;
             }
-        }
+        },
     },
     computed: {
         classDelBtn() {
             return {
-                disable: !this.visibleDelBtn
+                disable: !this.visibleDelBtn,
             };
         },
         classAddBtn() {
             return {
-                disable: !this.visibleAddBtn
+                disable: !this.visibleAddBtn,
             };
-        }
-    }
+        },
+    },
 };
 </script>

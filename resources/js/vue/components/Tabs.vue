@@ -19,20 +19,20 @@
 export default {
     data() {
         return {
-            tabs: []
-        }
+            tabs: [],
+        };
     },
 
     created() {
-        this.tabs = this.$children
+        this.tabs = this.$children;
     },
 
     methods: {
         selectedTab(selectedTab) {
             this.tabs.forEach(tab => {
-                tab.active = (tab.name == selectedTab.name)
-            })
-        }
-    }
-}
+                tab.active = tab.name == selectedTab.name;
+            });
+        },
+    },
+};
 </script>

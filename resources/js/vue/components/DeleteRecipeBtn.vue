@@ -4,11 +4,11 @@ import withMethod from '../../modules/_withMethod';
 export default {
     data() {
         return {
-            error: ""
-        }
+            error: '',
+        };
     },
 
-    props: ["confirm", "recipeId", "deletedFail"],
+    props: ['confirm', 'recipeId', 'deletedFail'],
 
     methods: {
         deleteRecipe() {
@@ -16,13 +16,13 @@ export default {
                 fetch(`/recipes/${this.recipeId}`, withMethod('delete'))
                     .then(res => res.text())
                     .then(data => {
-                        data === "success"
-                        ? (window.location.href = "/users/other/my-recipes")
-                        : (this.error = this.deletedFail);
+                        data === 'success'
+                            ? (window.location.href = '/users/other/my-recipes')
+                            : (this.error = this.deletedFail);
                     })
                     .catch(error => console.error(error));
             }
-        }
-    }
+        },
+    },
 };
 </script>

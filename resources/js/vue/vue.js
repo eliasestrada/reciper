@@ -13,7 +13,7 @@ const components = [
     'BtnFavs',
     'BtnLike',
     'Tabs',
-    'Tab'
+    'Tab',
 ];
 
 components.forEach(comp => {
@@ -21,5 +21,5 @@ components.forEach(comp => {
 });
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
 });

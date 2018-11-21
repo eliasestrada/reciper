@@ -74,7 +74,7 @@ import activeAfterClickBtn from '../../modules/_activeAfterClickBtn';
                         '<i class="fas fa-circle-notch fa-1x fa-spin"></i>';
                 });
             },
-            false
+            false,
         );
     });
 })();

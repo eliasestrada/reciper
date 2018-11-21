@@ -44,80 +44,83 @@
 </template>
 
 <script>
-    import InfiniteLoading from 'vue-infinite-loading';
+import InfiniteLoading from 'vue-infinite-loading';
 
-    export default {
+export default {
+    data() {
+        return {
+            recipes: [],
+            newRecipes: [],
+            next: '',
+            theEnd: false,
+            _token: document
+                .querySelector('meta[name="csrf-token"]')
+                .getAttribute('content'),
+        };
+    },
 
-        data() {
-            return {
-                recipes: [],
-                newRecipes: [],
-                next: '',
-                theEnd: false,
-                _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            };
+    props: {
+        go: { required: true },
+        favs: { default: null },
+        userId: { default: null },
+        mins: { default: 'min' },
+    },
+
+    created() {
+        this.makeFirstRequest();
+        window.onhashchange = () => {
+            this.theEnd = false;
+            this.makeFirstRequest();
+        };
+    },
+
+    methods: {
+        makeFirstRequest() {
+            Event.$emit('hash-changed', this.hash());
+
+            fetch(`/api/recipes/${this.hash()}`)
+                .then(res => res.json())
+                .then(res => {
+                    this.recipes = res.data;
+                    res.links.next != null
+                        ? (this.next = res.links.next)
+                        : (this.theEnd = true);
+                })
+                .catch(err => console.error(err));
         },
-
-        props: {
-            "go": { required: true },
-            "favs": { default: null },
-            "userId": { default: null },
-            "mins": { default: 'min' }
-        },
-
-        created() {
-            this.makeFirstRequest()
-            window.onhashchange = () => {
-                this.theEnd = false
-                this.makeFirstRequest()
-            }
-        },
-
-        methods: {
-            makeFirstRequest() {
-                Event.$emit('hash-changed', this.hash())
-
-                fetch(`/api/recipes/${this.hash()}`)
+        infiniteHandler($state) {
+            setTimeout(() => {
+                fetch(this.next)
                     .then(res => res.json())
                     .then(res => {
-                        this.recipes = res.data
-                        res.links.next != null ? this.next = res.links.next : this.theEnd = true;
+                        if (this.next != res.links.next && res.links.next != null) {
+                            this.recipes = this.recipes.concat(res.data);
+                            this.next = res.links.next;
+                        } else {
+                            this.theEnd = true;
+                        }
                     })
                     .catch(err => console.error(err));
-            },
-            infiniteHandler($state) {
-                setTimeout(() => {
-                    fetch(this.next)
-                        .then(res => res.json())
-                        .then(res => {
-                            if (this.next != res.links.next && res.links.next != null) {
-                                this.recipes = this.recipes.concat(res.data)
-                                this.next = res.links.next
-                            } else {
-                                this.theEnd = true
-                            }
-                        })
-                        .catch(err => console.error(err));
-                    $state.loaded()
-                }, 1000);
-            },
-            hash() {
-                return window.location.hash.substring(1)
-            },
-            userHasFav(recipe_id) {
-                if (this.favs) {
-                    var result = this.favs.map(fav => {
-                        return recipe_id == fav.recipe_id ? 'active' : '';
-                    });
-                    return result;
-                }
-            },
-            returnFavs(recipe_id) {
-                return this.favs.filter(fav => fav.recipe_id == recipe_id)
+                $state.loaded();
+            }, 1000);
+        },
+        hash() {
+            return window.location.hash.substring(1);
+        },
+        userHasFav(recipe_id) {
+            if (this.favs) {
+                var result = this.favs.map(fav => {
+                    return recipe_id == fav.recipe_id ? 'active' : '';
+                });
+                return result;
             }
         },
-        components: {
-            InfiniteLoading,
-        }
-    };
+        returnFavs(recipe_id) {
+            return this.favs.filter(fav => fav.recipe_id == recipe_id);
+        },
+    },
+    components: {
+        InfiniteLoading,
+    },
+};
 </script>

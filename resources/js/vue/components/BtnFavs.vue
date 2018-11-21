@@ -18,12 +18,12 @@ export default {
     data() {
         return {
             iconClass: '',
-            amount: this.favs.length
-        }
+            amount: this.favs.length,
+        };
     },
 
     created() {
-        this.toggleActive()
+        this.toggleActive();
     },
 
     props: ['recipeId', 'favs', 'userId', 'tooltip'],
@@ -34,25 +34,25 @@ export default {
                 .then(res => res.text())
                 .then(data => {
                     if (data != 'fail') {
-                        this.iconClass = data
+                        this.iconClass = data;
                         if (data == 'active') {
-                            this.amount++
+                            this.amount++;
                         } else {
-                            this.amount--
+                            this.amount--;
                         }
                     }
                 })
-                .catch(err => console.error(err))
+                .catch(err => console.error(err));
         },
         toggleActive() {
             if (this.userId) {
-                let that = this
+                let that = this;
                 let checkIfAddedBefore = this.favs.filter(fav => {
-                    return that.recipeId == fav.recipe_id && that.userId == fav.user_id
-                })
-                this.iconClass = checkIfAddedBefore.length > 0 ? 'active' : ''
+                    return that.recipeId == fav.recipe_id && that.userId == fav.user_id;
+                });
+                this.iconClass = checkIfAddedBefore.length > 0 ? 'active' : '';
             }
         },
     },
-}
+};
 </script>

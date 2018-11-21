@@ -47,7 +47,7 @@ import activeAfterClickBtn from '../../modules/_activeAfterClickBtn';
             alertIcon.classList.remove('small-notif');
 
             fetch('/invokes/notifications', withMethod('put')).catch(e =>
-                console.error(e)
+                console.error(e),
             );
         });
     }

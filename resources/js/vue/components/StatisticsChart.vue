@@ -8,18 +8,18 @@
 </template>
 
 <script>
-import LineChart from '../LineChart.js'
+import LineChart from '../LineChart.js';
 export default {
     data() {
         return {
             data: [],
             options: {},
-            loader: true
-        }
+            loader: true,
+        };
     },
 
     mounted() {
-        this.fetchData()
+        this.fetchData();
     },
 
     methods: {
@@ -27,16 +27,16 @@ export default {
             fetch('/popularity-chart')
                 .then(res => res.json())
                 .then(data => {
-                    this.loader = false
-                    this.data = data
-                    this.options = data.options
+                    this.loader = false;
+                    this.data = data;
+                    this.options = data.options;
                 })
                 .catch(err => console.error(err));
-        }
+        },
     },
 
     components: {
-        LineChart
-    }
-}
+        LineChart,
+    },
+};
 </script>

@@ -38,8 +38,8 @@ import activeAfterClickBtn from '../../modules/_activeAfterClickBtn';
 
                 if (currentSize <= 1.5 && currentSize >= 0.9) {
                     el.style.fontSize = newFontSize + 'em';
-                    fetch(`/invokes/font-size-switcher/${newFontSize}`).catch(
-                        err => console.error(err)
+                    fetch(`/invokes/font-size-switcher/${newFontSize}`).catch(err =>
+                        console.error(err),
                     );
                 }
             });
@@ -52,8 +52,8 @@ import activeAfterClickBtn from '../../modules/_activeAfterClickBtn';
 
                 if (currentSize <= 1.6 && currentSize >= 1) {
                     el.style.fontSize = newFontSize + 'em';
-                    fetch(`/invokes/font-size-switcher/${newFontSize}`).catch(
-                        err => console.error(err)
+                    fetch(`/invokes/font-size-switcher/${newFontSize}`).catch(err =>
+                        console.error(err),
                     );
                 }
             });
