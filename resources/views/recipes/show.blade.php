@@ -78,6 +78,10 @@
         </section>
 
         @include('includes.parts.recipes-show')
+
+        <div class="py-4">
+            <div class="sharethis-inline-share-buttons"></div>
+        </div>
     </div>
 
     {{-- API: Еще рецепты Sidebar --}}
@@ -124,3 +128,8 @@
 @endif
 
 @endsection
+
+@section('script')
+    <script src="//platform-api.sharethis.com/js/sharethis.js#property=5bf5c388a0286b00115a8b3f&product=inline-share-buttons"></script>
+@endsection
+
