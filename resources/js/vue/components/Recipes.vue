@@ -53,9 +53,6 @@ export default {
             newRecipes: [],
             next: '',
             theEnd: false,
-            _token: document
-                .querySelector('meta[name="csrf-token"]')
-                .getAttribute('content'),
         };
     },
 

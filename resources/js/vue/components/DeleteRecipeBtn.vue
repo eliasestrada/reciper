@@ -20,7 +20,7 @@ export default {
                             ? (window.location.href = '/users/other/my-recipes')
                             : (this.error = this.deletedFail);
                     })
-                    .catch(error => console.error(error));
+                    .catch(err => console.error(err));
             }
         },
     },
