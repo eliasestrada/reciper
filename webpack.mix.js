@@ -2,11 +2,11 @@ const mix = require('laravel-mix');
 
 let css = 1;
 let js = 1;
-let server = 0;
+let server = 1;
 
 if (css == 1) {
     mix.sass('resources/sass/app.scss', 'public/css/app.css').options({
-        processCssUrls: false
+        processCssUrls: false,
     });
 }
 
@@ -20,6 +20,6 @@ if (server == 1) {
     mix.browserSync({
         proxy: 'localhost:8000',
         files: ['public/css/*.css', 'public/js/*.js'],
-        notify: false
+        notify: false,
     });
 }
