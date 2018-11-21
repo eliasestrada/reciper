@@ -2,7 +2,6 @@ import './bootstrap';
 
 window.Event = new Vue();
 
-import SaveButton from './components/SaveButton';
 import StatisticsChart from './components/StatisticsChart';
 import RandomRecipesSidebar from './components/RandomRecipesSidebar';
 import DeleteRecipeBtn from './components/DeleteRecipeBtn';
@@ -18,7 +17,6 @@ import Tab from './components/Tab';
 new Vue({
     el: '#app',
     components: {
-        SaveButton,
         StatisticsChart,
         RandomRecipesSidebar,
         DeleteRecipeBtn,
