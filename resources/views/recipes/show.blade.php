@@ -59,7 +59,11 @@
                 @if ($recipe->isDone())
                     {{-- Favs button --}}
                     <div class="d-inline-block" style="transform:translateX(7px)">
-                        <btn-favs recipe-id="{{ $recipe->id }}" :favs="{{ $recipe->favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}" tooltip="@lang('messages.u_need_to_login')"></btn-favs>
+                        <btn-favs recipe-id="{{ $recipe->id }}"
+                            :favs="{{ $recipe->favs }}"
+                            audio-path="{{ asset('storage/audio/fav-effect.wav') }}"
+                            :user-id="{{ auth()->check() ? user()->id : 'null' }}"
+                            tooltip="@lang('messages.u_need_to_login')">
                     </div>
 
                     {{-- User icon --}}
@@ -72,7 +76,11 @@
                         </div>
                     </div>
 
-                    <btn-like :likes="{{ $recipe->likes }}" recipe-id="{{ $recipe->id }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}" tooltip="@lang('messages.u_need_to_login')">
+                    <btn-like :likes="{{ $recipe->likes }}"
+                            recipe-id="{{ $recipe->id }}"
+                            audio-path="{{ asset('storage/audio/like-effect.mp3') }}"
+                            :user-id="{{ auth()->check() ? user()->id : 'null' }}"
+                            tooltip="@lang('messages.u_need_to_login')">
                 @endif
             </div>
         </section>

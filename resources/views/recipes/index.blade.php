@@ -28,6 +28,7 @@
         <recipes
             go="@lang('messages.go')"
             :favs="{{ $favs }}"
+            audio-path="{{ asset('storage/audio/fav-effect.wav') }}"
             :user-id="{{ auth()->check() ? user()->id : 'null' }}"
             mins="@lang('recipes.min')">
             @include('includes.preloader')

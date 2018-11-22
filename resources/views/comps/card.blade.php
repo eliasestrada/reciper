@@ -15,7 +15,11 @@
                         <div style="height:25%">
                             <div>
                                 <div class="left">
-                                    <btn-favs recipe-id="{{ $recipe->id }}" :favs="{{ $recipe->favs }}" :user-id="{{ auth()->check() ? user()->id : 'null' }}">
+                                    <btn-favs recipe-id="{{ $recipe->id }}"
+                                        :favs="{{ $recipe->favs }}"
+                                        audio-path="{{ asset('storage/audio/fav-effect.wav') }}"
+                                        :user-id="{{ auth()->check() ? user()->id : 'null' }}"
+                                    >
                                         <i class="star d-inline-block grey circle mx-2" style="width:10px;height:10px;"></i> 
                                         ...
                                     </btn-favs>

@@ -18,6 +18,7 @@
                             <div class="left">
                                 <btn-favs
                                     :recipe-id="recipe.id"
+                                    :audio-path="audioPath"
                                     :favs="returnFavs(recipe.id)"
                                     :user-id="userId">
                                 </btn-favs>
@@ -61,6 +62,7 @@ export default {
         favs: { default: null },
         userId: { default: null },
         mins: { default: 'min' },
+        audioPath: { required: true },
     },
 
     created() {

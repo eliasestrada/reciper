@@ -19,6 +19,7 @@ export default {
         return {
             iconClass: '',
             amount: this.favs.length,
+            audio: new Audio(this.audioPath),
         };
     },
 
@@ -26,7 +27,7 @@ export default {
         this.toggleActive();
     },
 
-    props: ['recipeId', 'favs', 'userId', 'tooltip'],
+    props: ['recipeId', 'favs', 'userId', 'tooltip', 'audioPath'],
 
     methods: {
         fetchFavs() {
@@ -35,15 +36,18 @@ export default {
                 .then(data => {
                     if (data != 'fail') {
                         this.iconClass = data;
-                        if (data == 'active') {
-                            this.amount++;
-                        } else {
-                            this.amount--;
-                        }
+                        this.playSoundEffect();
+                        data == 'active' ? this.amount++ : this.amount--;
                     }
                 })
                 .catch(err => console.error(err));
         },
+
+        playSoundEffect() {
+            this.audio.volume = 0.3;
+            this.audio.play();
+        },
+
         toggleActive() {
             if (this.userId) {
                 let that = this;

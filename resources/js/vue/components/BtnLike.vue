@@ -20,6 +20,7 @@ export default {
         return {
             iconClass: '',
             amount: this.likes.length,
+            audio: new Audio(this.audioPath),
         };
     },
 
@@ -27,7 +28,7 @@ export default {
         this.toggleActive();
     },
 
-    props: ['likes', 'recipeId', 'userId', 'tooltip'],
+    props: ['likes', 'recipeId', 'userId', 'tooltip', 'audioPath'],
 
     methods: {
         fetchLikes() {
@@ -36,14 +37,16 @@ export default {
                 .then(data => {
                     if (data != 'fail') {
                         this.iconClass = data;
-                        if (data == 'active') {
-                            this.amount++;
-                        } else {
-                            this.amount--;
-                        }
+                        this.playSoundEffect();
+                        data == 'active' ? this.amount++ : this.amount--;
                     }
                 })
                 .catch(err => console.error(err));
+        },
+
+        playSoundEffect() {
+            this.audio.volume = 0.3;
+            this.audio.play();
         },
 
         toggleActive() {
