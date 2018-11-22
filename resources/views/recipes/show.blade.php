@@ -60,7 +60,7 @@
                     {{-- Favs button --}}
                     <div class="d-inline-block" style="transform:translateX(7px)">
                         <btn-favs recipe-id="{{ $recipe->id }}"
-                            :favs="{{ $recipe->favs }}"
+                            :items="{{ $recipe->favs }}"
                             audio-path="{{ asset('storage/audio/fav-effect.wav') }}"
                             :user-id="{{ auth()->check() ? user()->id : 'null' }}"
                             tooltip="@lang('messages.u_need_to_login')">
@@ -76,7 +76,7 @@
                         </div>
                     </div>
 
-                    <btn-like :likes="{{ $recipe->likes }}"
+                    <btn-like :items="{{ $recipe->likes }}"
                             recipe-id="{{ $recipe->id }}"
                             audio-path="{{ asset('storage/audio/like-effect.mp3') }}"
                             :user-id="{{ auth()->check() ? user()->id : 'null' }}"

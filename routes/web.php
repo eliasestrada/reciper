@@ -9,7 +9,7 @@ Route::middleware('auth')->namespace('WebApi')->group(function () {
     Route::get('popularity-chart', 'StatisticsController@popularityChart');
     Route::get('favs/{category?}', 'FavsController@index');
     Route::post('favs/{recipe}', 'FavsController@store');
-    Route::post('like/{recipe}', 'LikeController@store');
+    Route::post('likes/{recipe}', 'LikeController@store');
 });
 
 // Statistics
