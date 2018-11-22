@@ -65,6 +65,7 @@
                                                     :favs="{{ $recipe->favs }}"
                                                     audio-path="{{ asset('storage/audio/fav-effect.wav') }}"
                                                     :user-id="{{ auth()->check() ? user()->id : 'null' }}"
+                                                    tooltip="@lang('messages.u_need_to_login')"
                                                 >
                                                     <i class="star d-inline-block grey circle mx-2" style="width:10px;height:10px;"></i> 
                                                     ...
