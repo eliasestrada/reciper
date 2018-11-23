@@ -17,7 +17,7 @@ class PostRequestTest extends TestCase
      */
     public function like_is_added_after_user_makes_like_post_request(): void
     {
-        $this->actingAs(create_user())->post('/like/1');
+        $this->actingAs(create_user())->post('/likes/1');
         $this->assertCount(1, Recipe::first()->likes);
     }
 
@@ -30,7 +30,7 @@ class PostRequestTest extends TestCase
         $user = create_user();
         Like::create(['recipe_id' => 1, 'user_id' => $user->id]);
 
-        $this->actingAs($user)->post('/like/1');
+        $this->actingAs($user)->post('/likes/1');
         $this->assertCount(0, Recipe::first()->likes);
     }
 }

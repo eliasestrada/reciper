@@ -141,11 +141,11 @@ class RecipesShowPageTest extends TestCase
     public function user_can_like_and_dislikethe_recipe(): void
     {
         $this->actingAs($user = create_user())
-            ->post('/like/1')
+            ->post('/likes/1')
             ->assertSeeText('active');
 
         $this->actingAs($user)
-            ->post('/like/1')
+            ->post('/likes/1')
             ->assertSeeText('');
     }
 
