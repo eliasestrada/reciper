@@ -17,7 +17,7 @@
         border-left: solid 3px $main;
         
         .dark-theme & {
-            background-color: lighten($darkTheme, 7%);
+            background-color: $darkThemeLight;
         }
 
         &:hover {
@@ -25,7 +25,7 @@
             background-color: #ddd;
 
             .dark-theme & {
-                background-color: lighten($darkTheme, 5%);
+                background-color: $darkThemeLight;
             }
         }
     }

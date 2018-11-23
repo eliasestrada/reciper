@@ -65,7 +65,7 @@
 
     .dark-theme & {
         border-color: lighten($darkTheme, 13%);
-        background-color: lighten($darkTheme, 7%);
+        background-color: $darkThemeLight;
         border-color: transparent;
         border-radius: 4px;
         opacity: .85;
@@ -109,7 +109,7 @@
     list-style-image: url(../storage/other/tick.png);
 
     .dark-theme & {
-        background: lighten($darkTheme, 7%);
+        background: $darkThemeLight;
     }
 
     li {

@@ -134,7 +134,7 @@
 </ul>
 
 <nav class="no-select">
-    <div class="nav-wrapper main" style="z-index:15">
+    <div class="nav-wrapper main-navbar" style="z-index:15">
         <div class="px-3 position-relative">
             {{-- Logo --}}
             <a href="/" title="@lang('home.home')" class="brand-logo no-select">

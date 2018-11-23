@@ -28,7 +28,7 @@
     background-color: $paper;
 
     .dark-theme & {
-        background-color: lighten($darkTheme, 7%);
+        background-color: $darkThemeLight;
     }
 }
 
@@ -764,7 +764,7 @@ table.highlight>tbody>tr:hover {
     background-color: $mainLight;
 
     .dark-theme & {
-        background-color: lighten($darkTheme, 10%);
+        background-color: $darkThemeLight;
     }
 }
 
@@ -777,7 +777,7 @@ tr {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
     .dark-theme & {
-        border-bottom-color: lighten($darkTheme, 10%);
+        border-bottom-color: $darkThemeLight;
     }
 }
 
@@ -850,7 +850,7 @@ th {
         border-right: 1px solid rgba(0, 0, 0, 0.12);
 
         .dark-theme & {
-            background-color: lighten($darkTheme, 10%);
+            background-color: $darkThemeLight;
         }
     }
 }
@@ -876,7 +876,7 @@ th {
 
     .dark-theme & {
         border-color: lighten($darkTheme, 13%);
-        background-color: lighten($darkTheme, 5%);
+        background-color: $darkThemeLight;
     }
 }
 
@@ -948,7 +948,7 @@ th {
     background-color: #ddd;
 
     .dark-theme & {
-        background-color: lighten($darkTheme, 10%);
+        background-color: $darkThemeLight;
     }
 }
 
@@ -2846,7 +2846,7 @@ small {
     white-space: nowrap;
 
     .dark-theme & {
-        background-color: lighten($darkTheme, 7%);
+        background-color: $darkThemeLight;
     }
 }
 
@@ -3389,7 +3389,7 @@ button.btn-floating {
     transform-origin: 0 0;
 
     .dark-theme & {
-        background-color: lighten($darkTheme, 7%);
+        background-color: $darkThemeLight;
         border-color: lighten($darkTheme, 12%);
     }
 }
@@ -3608,7 +3608,7 @@ button.btn-floating {
     will-change: top, opacity;
 
     .dark-theme & {
-        background-color: lighten($darkTheme, 10%);
+        background-color: $darkThemeLight;
     }
 }
 
@@ -3699,7 +3699,7 @@ button.btn-floating {
     margin: 0.5rem 0 1rem 0;
 
     .dark-theme & {
-        border-color: lighten($darkTheme, 7%);
+        border-color: $darkThemeLight;
     }
 }
 
@@ -3716,7 +3716,7 @@ button.btn-floating {
     border-bottom: 1px solid #ddd;
 
     .dark-theme & {
-        background-color: lighten($darkTheme, 5%);
+        background-color: $darkThemeLight;
         border-bottom-color: lighten($darkTheme, 15%);
     }
 }
@@ -5350,7 +5350,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
     border-radius: 5px;
 
     .dark-theme & {
-        background-color: lighten($darkTheme, 5%);
+        background-color: $darkThemeLight;
     }
 
     i {

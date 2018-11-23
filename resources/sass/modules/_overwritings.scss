@@ -45,14 +45,14 @@ nav .input-field input[type='search'] {
 
 .card {
     .dark-theme & {
-        background: lighten($darkTheme, 7%);
+        background: $darkThemeLight;
 
         .card-title {
             color: #c8c8c8;
         }
         .card-reveal,
         .card-panel {
-            background: lighten($darkTheme, 7%);
+            background: $darkThemeLight;
         }
         .card-time {
             color: #c8c8c8;

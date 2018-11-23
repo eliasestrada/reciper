@@ -1,3 +1,10 @@
+.main-navbar {
+    background: $main;
+    .dark-theme & {
+        background: $darkThemeLight;
+    }
+}
+
 .user-icon-navbar {
     width: 39px;
     height: 39px !important;
@@ -19,9 +26,12 @@
     align-items: center;
 }
 
-
 .right-borders > li {
     border-left: solid 1px darken($main, 6%);
+
+    .dark-theme & {
+        border-color: lighten($darkTheme, 13%);
+    }
 }
 
 // Search form
