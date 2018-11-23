@@ -6,8 +6,9 @@
                     <div class="card-image waves-effect waves-block waves-light">
                         <a :href="'/recipes/' + recipe.slug" :title="recipe.intro">
                             <img class="activator"
-                                :src="'storage/small/recipes/' + recipe.image"
-                                :alt="recipe.title">
+                                :src="`storage/small/recipes/${recipe.image}`"
+                                :alt="recipe.title"
+                            >
                         </a>
                     </div>
                     <div class="card-content min-h">
@@ -19,7 +20,8 @@
                                 <btn-favs
                                     :recipe-id="recipe.id"
                                     :audio-path="audioPath"
-                                    :favs="returnFavs(recipe.id)"
+                                    :items="returnFavs(recipe.id)"
+                                    :tooltip="tooltip"
                                     :user-id="userId">
                                 </btn-favs>
                             </div>
@@ -33,7 +35,7 @@
                     <div class="card-reveal">
                         <span class="card-title">{{ recipe.title }}</span>
                         <div><i class="fas fa-times right red-text card-title p-1"></i></div>
-                        <a class="btn-small mt-3" :href="'/recipes/' + recipe.slug">{{ go }}</a>
+                        <a class="btn-small mt-3" :href="`/recipes/${recipe.slug}`">{{ go }}</a>
                         <p>{{ recipe.intro }}</p>
                     </div>
                 </div>
@@ -63,6 +65,7 @@ export default {
         userId: { default: null },
         mins: { default: 'min' },
         audioPath: { required: true },
+        tooltip: { required: true },
     },
 
     created() {
@@ -87,6 +90,7 @@ export default {
                 })
                 .catch(err => console.error(err));
         },
+
         infiniteHandler($state) {
             setTimeout(() => {
                 fetch(this.next)
@@ -103,9 +107,11 @@ export default {
                 $state.loaded();
             }, 1000);
         },
+
         hash() {
             return window.location.hash.substring(1);
         },
+
         userHasFav(recipe_id) {
             if (this.favs) {
                 var result = this.favs.map(fav => {
@@ -114,10 +120,12 @@ export default {
                 return result;
             }
         },
+
         returnFavs(recipe_id) {
             return this.favs.filter(fav => fav.recipe_id == recipe_id);
         },
     },
+
     components: {
         InfiniteLoading,
     },

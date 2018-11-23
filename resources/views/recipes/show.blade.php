@@ -77,10 +77,10 @@
                     </div>
 
                     <btn-like :items="{{ $recipe->likes }}"
-                            recipe-id="{{ $recipe->id }}"
-                            audio-path="{{ asset('storage/audio/like-effect.mp3') }}"
-                            :user-id="{{ auth()->check() ? user()->id : 'null' }}"
-                            tooltip="@lang('messages.u_need_to_login')">
+                        recipe-id="{{ $recipe->id }}"
+                        audio-path="{{ asset('storage/audio/like-effect.mp3') }}"
+                        :user-id="{{ auth()->check() ? user()->id : 'null' }}"
+                        tooltip="@lang('messages.u_need_to_login')">
                 @endif
             </div>
         </section>

@@ -16,7 +16,7 @@
                             <div>
                                 <div class="left">
                                     <btn-favs recipe-id="{{ $recipe->id }}"
-                                        :favs="{{ $recipe->favs }}"
+                                        :items="{{ $recipe->favs }}"
                                         audio-path="{{ asset('storage/audio/fav-effect.wav') }}"
                                         :user-id="{{ auth()->check() ? user()->id : 'null' }}"
                                         tooltip="@lang('messages.u_need_to_login')"
