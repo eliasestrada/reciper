@@ -1,5 +1,21 @@
+<template>
+    <div>
+        <a :href="`/recipes#${btn.link}`" v-for="btn in btns"
+            :key="btn.link"
+            :class="{ 'active': btn.isActive }"
+            class="btn btn-sort"
+        >
+            <i class="fas red-text left" :class="btn.icon"></i>
+            <span v-text="btn.title"></span>
+        </a>
+    </div>
+</template>
+
 <script>
+import SortButtons from '../mixins/SortButtons';
+
 export default {
+    mixins: [SortButtons],
     props: [
         'newBtn',
         'simpleBtn',
@@ -9,68 +25,23 @@ export default {
         'lunchBtn',
         'dinnerBtn',
     ],
-    data() {
-        return {
-            btns: [
-                {
-                    title: this.newBtn,
-                    icon: 'fa-clock',
-                    link: 'new',
-                    isActive: false,
-                },
-                {
-                    title: this.mostLikedBtn,
-                    icon: 'fa-heart',
-                    link: 'most_liked',
-                    isActive: false,
-                },
-                {
-                    title: this.simpleBtn,
-                    icon: 'fa-concierge-bell',
-                    link: 'simple',
-                    isActive: false,
-                },
-                {
-                    title: this.breakfastBtn,
-                    icon: 'fa-utensils',
-                    link: 'breakfast',
-                    isActive: false,
-                },
-                {
-                    title: this.lunchBtn,
-                    icon: 'fa-utensils',
-                    link: 'lunch',
-                    isActive: false,
-                },
-                {
-                    title: this.dinnerBtn,
-                    icon: 'fa-utensils',
-                    link: 'dinner',
-                    isActive: false,
-                },
-                {
-                    title: this.myViewesBtn,
-                    icon: 'fa-eye',
-                    link: 'my_viewes',
-                    isActive: false,
-                },
-            ],
-        };
-    },
 
     created() {
-        Event.$on('hash-changed', hash => {
-            this.btns[0].isActive = true;
-            if (hash != '') {
-                this.btns.forEach(btn => {
-                    if (btn.link == hash) {
-                        btn.isActive = true;
-                    } else {
-                        btn.isActive = false;
-                    }
-                });
-            }
-        });
+        this.buttonWasClicked();
+    },
+
+    methods: {
+        buttonWasClicked() {
+            Event.$on('hash-changed', hash => {
+                this.btns[0].isActive = true;
+
+                if (hash != '') {
+                    this.btns.forEach(btn => {
+                        btn.isActive = btn.link == hash ? true : false;
+                    });
+                }
+            });
+        },
     },
 };
 </script>

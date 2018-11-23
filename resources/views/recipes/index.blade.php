@@ -15,13 +15,7 @@
             simple-btn="@lang('recipes.simple')"
             breakfast-btn="@lang('home.breakfast')"
             lunch-btn="@lang('home.lunch')"
-            dinner-btn="@lang('home.dinner')" inline-template>
-            <div>
-                <a :href="'/recipes#' + btn.link" v-for="btn in btns" :key="btn.link" :class="{ 'active': btn.isActive }" class="btn btn-sort">
-                    <i class="fas red-text left" :class="btn.icon"></i>
-                    <span v-text="btn.title"></span>
-                </a>
-            </div>
+            dinner-btn="@lang('home.dinner')">
         </sort-buttons>
     </div>
     @isset($favs)
@@ -30,6 +24,7 @@
             :favs="{{ $favs }}"
             audio-path="{{ asset('storage/audio/fav-effect.wav') }}"
             :user-id="{{ auth()->check() ? user()->id : 'null' }}"
+            tooltip="@lang('messages.u_need_to_login')"
             mins="@lang('recipes.min')">
             @include('includes.preloader')
         </recipes>
