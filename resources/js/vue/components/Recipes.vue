@@ -5,16 +5,15 @@
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
                         <a :href="'/recipes/' + recipe.slug" :title="recipe.intro">
-                            <img class="activator"
+                            <img
+                                class="activator"
                                 :src="`storage/small/recipes/${recipe.image}`"
                                 :alt="recipe.title"
                             >
                         </a>
                     </div>
                     <div class="card-content min-h">
-                        <span style="height:75%" class="card-title activator">
-                            {{ recipe.title }}
-                        </span>
+                        <span style="height:75%" class="card-title activator">{{ recipe.title }}</span>
                         <div style="height:25%">
                             <div class="left">
                                 <btn-favs
@@ -22,8 +21,8 @@
                                     :audio-path="audioPath"
                                     :items="returnFavs(recipe.id)"
                                     :tooltip="tooltip"
-                                    :user-id="userId">
-                                </btn-favs>
+                                    :user-id="userId"
+                                ></btn-favs>
                             </div>
                             <span class="left card-time">
                                 <i class="fas fa-clock fa-1x z-depth-2 main-light circle red-text ml-5 mr-1"></i>
@@ -34,7 +33,9 @@
                     </div>
                     <div class="card-reveal">
                         <span class="card-title">{{ recipe.title }}</span>
-                        <div><i class="fas fa-times right red-text card-title p-1"></i></div>
+                        <div>
+                            <i class="fas fa-times right red-text card-title p-1"></i>
+                        </div>
                         <a class="btn-small mt-3" :href="`/recipes/${recipe.slug}`">{{ go }}</a>
                         <p>{{ recipe.intro }}</p>
                     </div>
@@ -47,15 +48,15 @@
 </template>
 
 <script>
-import InfiniteLoading from 'vue-infinite-loading';
+import InfiniteLoading from "vue-infinite-loading";
 
 export default {
     data() {
         return {
             recipes: [],
             newRecipes: [],
-            next: '',
-            theEnd: false,
+            next: "",
+            theEnd: false
         };
     },
 
@@ -63,13 +64,14 @@ export default {
         go: { required: true },
         favs: { default: null },
         userId: { default: null },
-        mins: { default: 'min' },
+        mins: { default: "min" },
         audioPath: { required: true },
-        tooltip: { required: true },
+        tooltip: { required: true }
     },
 
     created() {
         this.makeFirstRequest();
+
         window.onhashchange = () => {
             this.theEnd = false;
             this.makeFirstRequest();
@@ -78,32 +80,30 @@ export default {
 
     methods: {
         makeFirstRequest() {
-            Event.$emit('hash-changed', this.hash());
+        Event.$emit("hash-changed", this.hash());
 
-            fetch(`/api/recipes/${this.hash()}`)
-                .then(res => res.json())
-                .then(res => {
-                    this.recipes = res.data;
-                    res.links.next != null
-                        ? (this.next = res.links.next)
-                        : (this.theEnd = true);
-                })
-                .catch(err => console.error(err));
+        this.$axios.get(`/api/recipes/${this.hash()}`)
+            .then(res => {
+                this.recipes = res.data.data;
+                res.data.links.next != null
+                    ? (this.next = res.data.links.next)
+                    : (this.theEnd = true);
+            })
+            .catch(err => console.error(err));
         },
 
         infiniteHandler($state) {
             setTimeout(() => {
-                fetch(this.next)
-                    .then(res => res.json())
+                this.$axios.get(this.next)
                     .then(res => {
-                        if (this.next != res.links.next && res.links.next != null) {
-                            this.recipes = this.recipes.concat(res.data);
-                            this.next = res.links.next;
+                        if (this.next != res.data.links.next && res.data.links.next != null) {
+                            this.recipes = this.recipes.concat(res.data.data);
+                            this.next = res.data.links.next;
                         } else {
                             this.theEnd = true;
                         }
                     })
-                    .catch(err => console.error(err));
+                .catch(err => console.error(err));
                 $state.loaded();
             }, 1000);
         },
@@ -115,7 +115,7 @@ export default {
         userHasFav(recipe_id) {
             if (this.favs) {
                 var result = this.favs.map(fav => {
-                    return recipe_id == fav.recipe_id ? 'active' : '';
+                    return recipe_id == fav.recipe_id ? "active" : "";
                 });
                 return result;
             }
@@ -123,11 +123,11 @@ export default {
 
         returnFavs(recipe_id) {
             return this.favs.filter(fav => fav.recipe_id == recipe_id);
-        },
+        }
     },
 
     components: {
-        InfiniteLoading,
-    },
-};
+        InfiniteLoading
+    }
+}
 </script>

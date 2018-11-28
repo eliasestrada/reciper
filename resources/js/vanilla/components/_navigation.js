@@ -1,5 +1,5 @@
 import $ from '../../modules/_main';
-import withMethod from '../../modules/_withMethod';
+import axios from 'axios';
 import activeAfterClickBtn from '../../modules/_activeAfterClickBtn';
 
 (function SearchFormActivator() {
@@ -30,10 +30,10 @@ import activeAfterClickBtn from '../../modules/_activeAfterClickBtn';
     button.addEventListener('click', () => {
         if (className.value === 'dark-theme') {
             className.remove('dark-theme');
-            fetch(urlWithState(0)).catch(e => console.error(e));
+            axios.get(urlWithState(0)).catch(e => console.error(e));
         } else {
             className.add('dark-theme');
-            fetch(urlWithState(1)).catch(e => console.error(e));
+            axios.get(urlWithState(1)).catch(e => console.error(e));
         }
     });
 })();
@@ -46,7 +46,7 @@ import activeAfterClickBtn from '../../modules/_activeAfterClickBtn';
         button.addEventListener('click', () => {
             alertIcon.classList.remove('small-notif');
 
-            fetch('/invokes/notifications', withMethod('put')).catch(e =>
+            axios.put('/invokes/notifications').catch(e =>
                 console.error(e),
             );
         });

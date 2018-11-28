@@ -1,5 +1,4 @@
 <script>
-import withMethod from '../../modules/_withMethod';
 
 export default {
     data() {
@@ -13,10 +12,9 @@ export default {
     methods: {
         deleteRecipe() {
             if (confirm(this.confirm)) {
-                fetch(`/recipes/${this.recipeId}`, withMethod('delete'))
-                    .then(res => res.text())
+                this.$axios.delete(`/recipes/${this.recipeId}`)
                     .then(data => {
-                        data === 'success'
+                        data.data === 'success'
                             ? (window.location.href = '/users/other/my-recipes')
                             : (this.error = this.deletedFail);
                     })

@@ -1,5 +1,3 @@
-import withMethod from '../../modules/_withMethod';
-
 export default {
     data() {
         return {
@@ -17,13 +15,12 @@ export default {
 
     methods: {
         fetchItems() {
-            fetch(this.url, withMethod('post'))
-                .then(res => res.text())
+            this.$axios.post(this.url)
                 .then(data => {
-                    if (data != 'fail') {
-                        this.iconClass = data;
+                    if (data.data != 'fail') {
+                        this.iconClass = data.data;
                         this.playSoundEffect();
-                        data == 'active' ? this.amount++ : this.amount--;
+                        data.data == 'active' ? this.amount++ : this.amount--;
                     }
                 })
                 .catch(err => console.error(err));

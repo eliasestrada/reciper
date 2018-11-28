@@ -24,12 +24,11 @@ export default {
 
     methods: {
         fetchData() {
-            fetch('/popularity-chart')
-                .then(res => res.json())
+            this.$axios.get('/popularity-chart')
                 .then(data => {
                     this.loader = false;
-                    this.data = data;
-                    this.options = data.options;
+                    this.data = data.data;
+                    this.options = data.data.options;
                 })
                 .catch(err => console.error(err));
         },
