@@ -27,12 +27,16 @@
             <delete-recipe-btn inline-template
                 recipe-id="{{ $recipe->id }}"
                 deleted-fail="{{ trans('recipes.deleted_fail') }}"
-                confirm="{{ trans('recipes.are_you_sure_to_delete') }}">
+                confirm="{{ trans('recipes.are_you_sure_to_delete') }}"
+            >
                 <span v-if="!error">
-                    <a href="#" class="btn-floating red tooltipped waves-effect waves-light" data-position="top"
+                    <a href="#" class="btn-floating red tooltipped waves-effect waves-light"
+                        data-position="top"
                         data-tooltip="@lang('forms.deleting')"
-                        v-on:click="deleteRecipe">
-                            <i class="fas fa-trash"></i>
+                        v-on:click="deleteRecipe"
+                        id="_delete-recipe"
+                    >
+                        <i class="fas fa-trash"></i>
                     </a>
                 </span>
             </delete-recipe-btn>
