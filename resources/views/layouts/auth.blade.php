@@ -5,8 +5,8 @@
     @include('includes.head')
     <title>@yield('title') - @lang('messages.app_name')</title>
 </head>
-<body class="{{ request()->cookie('r_dark_theme') ? 'dark-theme' : '' }}">
 
+<body class="{{ request()->cookie('r_dark_theme') ? 'dark-theme' : '' }}">
     @include('includes.nav.sidenav')
     @include('includes.nav.navbar')
     @yield('home-header')

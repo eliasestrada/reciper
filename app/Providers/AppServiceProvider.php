@@ -46,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
     public function horizonRightsChecker(): void
     {
         Horizon::auth(function ($request) {
-            if ($request->user() && $request->user()->hasRole('master')) {
+            if ($request->user() && $request->user()->hasRole('master') || app()->env == 'local') {
                 return true;
             }
             throw new UnauthorizedHttpException('Unauthorized');
