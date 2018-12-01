@@ -27,7 +27,7 @@ export default {
         },
 
         playSoundEffect() {
-            this.audio.volume = 0.3;
+            this.audio.volume = 0.1;
             this.audio.play();
         },
 
