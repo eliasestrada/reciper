@@ -208,7 +208,7 @@
 </nav>
 
 {{-- Search navigation --}}
-<nav class="main-hover nav-search-form" id="nav-search-form">
+<nav class="nav-search-form" id="nav-search-form">
     <div class="nav-wrapper container">
         <form action="{{ action('PagesController@search') }}" method="get">
             <div class="input-field">

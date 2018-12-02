@@ -41,6 +41,11 @@
     transition: transform 500ms;
     transform: translateY(-100%);
     z-index: 5;
+    background: $mainHover;
+
+    .dark-theme & {
+        background: darken($darkThemeLight, 5%);
+    }
 }
 
 .nav-search-form.active {
