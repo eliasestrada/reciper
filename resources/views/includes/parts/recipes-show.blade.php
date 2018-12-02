@@ -48,9 +48,9 @@
     <div class="px-3 pt-4">
         <form action="{{ action('Invokes\DownloadIngredientsController', ['id' => $recipe->id]) }}" method="post">
             @csrf
-            <button type="submit" class="btn-small not-printable">
+            <button type="submit" class="btn-small not-printable confirm" data-confirm="@lang('recipes.are_you_sure_to_download')">
                 <i class="fas fa-download left"></i>
-                @lang('recipes.ingredients')
+                @lang('recipes.download_ingredients')
             </button>
         </form>
     </div>
