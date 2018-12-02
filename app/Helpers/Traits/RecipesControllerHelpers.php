@@ -11,7 +11,7 @@ use Image;
 trait RecipesControllerHelpers
 {
     /**
-     * @param UploadedFile|null $image
+     * @param \Illuminate\Http\UploadedFile|null $image
      * @param string $slug
      * @return string
      */
@@ -24,30 +24,34 @@ trait RecipesControllerHelpers
         $path_slug = $this->makePathSlug();
         $path = storage_path("app/public/big/recipes/{$path_slug}");
         $path_small = storage_path("app/public/small/recipes/{$path_slug}");
-        $image_name = $slug . '.' . $image->getClientOriginalExtension();
+        $path_blur = storage_path("app/public/blur/recipes/{$path_slug}");
+        $image_name = "{$slug}.{$image->getClientOriginalExtension()}";
 
-        if (!File::exists($path)) {
-            File::makeDirectory($path, 0777, true);
-        }
+        $this->makeNeededDerectoriesFor([$path, $path_small, $path_blur]);
 
-        if (!File::exists($path_small)) {
-            File::makeDirectory($path_small, 0777, true);
-        }
-
-        // Big image
-        Image::make($image)
-            ->fit(600, 400, function ($constraint) {
-                $constraint->upsize();
-            }, 'top')
-            ->insert(storage_path('app/public/other/watermark.png'))
-            ->save("{$path}/{$image_name}");
-
-        // Small image
-        Image::make($image)
-            ->fit(240, 160, function ($constraint) {
-                $constraint->upsize();
-            }, 'top')
-            ->save("{$path_small}/{$image_name}");
+        $this->uploadImages($image, $image_name, [
+            [
+                'path' => $path,
+                'width' => 600,
+                'height' => 400,
+                'watermark' => true,
+                'blur' => false,
+            ],
+            [
+                'path' => $path_small,
+                'width' => 240,
+                'height' => 160,
+                'watermark' => false,
+                'blur' => false,
+            ],
+            [
+                'path' => $path_blur,
+                'width' => 100,
+                'height' => 67,
+                'watermark' => false,
+                'blur' => true,
+            ],
+        ]);
 
         return "$path_slug/$image_name";
     }
@@ -142,5 +146,45 @@ trait RecipesControllerHelpers
     public function makePathSlug(): string
     {
         return date('Y') . '/' . date('n');
+    }
+
+    /**
+     * @param array $paths
+     * @return void
+     */
+    public function makeNeededDerectoriesFor(array $paths): void
+    {
+        foreach ($paths as $path) {
+            if (!File::exists($path)) {
+                File::makeDirectory($path, 0777, true);
+            }
+        }
+    }
+
+    /**
+     * @param \Illuminate\Http\UploadedFile $image
+     * @param string $image_name
+     * @param array $image_data
+     * @return void
+     */
+    public function uploadImages(UploadedFile $image, string $image_name, array $image_data): void
+    {
+        foreach ($image_data as $data) {
+            $image_inst = Image::make($image);
+
+            $image_inst->fit($data['width'], $data['height'], function ($constraint) {
+                $constraint->upsize();
+            }, 'top');
+
+            if ($data['watermark']) {
+                $image_inst->insert(storage_path('app/public/other/watermark.png'));
+            }
+
+            if ($data['blur']) {
+                $image_inst->blur(50);
+            }
+
+            $image_inst->save("{$data['path']}/{$image_name}");
+        }
     }
 }
