@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
         $this->showListOfCategories();
         $this->horizonRightsChecker();
 
-        if (app()->env === 'production') {
+        if ($this->app->env === 'production') {
             url()->forceScheme('https');
         }
     }
@@ -46,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
     public function horizonRightsChecker(): void
     {
         Horizon::auth(function ($request) {
-            if ($request->user() && $request->user()->hasRole('master') || app()->env == 'local') {
+            if ($request->user() && $request->user()->hasRole('master') || $this->app->isLocal()) {
                 return true;
             }
             throw new UnauthorizedHttpException('Unauthorized');
