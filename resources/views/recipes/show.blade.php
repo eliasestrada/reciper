@@ -23,16 +23,29 @@
 
             <div class="popup-window z-depth-2 p-3 position-absolute paper" id="popup-window">
                 {{-- Report button --}}
-                <a href="#report-recipe-modal" class="btn waves-effect waves-light modal-trigger min-w"{{ visitor_id() == $recipe->user_id || optional(user())->hasRecipe($recipe->id) ? ' disabled' : '' }} title="@lang('recipes.report_recipe')">
+                <a href="#report-recipe-modal"
+                    title="@lang('recipes.report_recipe')"
+                    class="btn waves-effect waves-light modal-trigger min-w"
+                    {{ visitor_id() == $recipe->user_id
+                        || optional(user())->hasRecipe($recipe->id)
+                        ? ' disabled'
+                        : ''
+                    }}
+                >
                     @lang('recipes.report_recipe')
                 </a>
 
                 {{--  To drafts button  --}}
                 @if (optional(user())->hasRecipe($recipe->id) && $recipe->isDone())
-                    <form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}" method="post">
-                        @method('put')
-                        @csrf
-                        <button class="btn min-w confirm" data-confirm="@lang('recipes.are_you_sure_to_draft')" title="@lang('tips.add_to_drafts')">
+                    <form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}"
+                        method="post"
+                    >
+                        @method('put') @csrf
+
+                        <button class="btn min-w confirm"
+                            data-confirm="@lang('recipes.are_you_sure_to_draft')"
+                            title="@lang('tips.add_to_drafts')"
+                        >
                             @lang('tips.add_to_drafts')
                         </button>
                     </form>
@@ -40,7 +53,10 @@
 
                 {{-- Edit button --}}
                 @if (optional(user())->hasRecipe($recipe->id))
-                    <a href="/recipes/{{ $recipe->slug }}/edit" class="btn mt-2 min-w" {{ $recipe->isReady() ? 'disabled' : '' }} title="@lang('tips.edit')">
+                    <a href="/recipes/{{ $recipe->slug }}/edit"
+                        class="btn mt-2 min-w" {{ $recipe->isReady() ? 'disabled' : '' }}
+                        title="@lang('tips.edit')"
+                    >
                         @lang('tips.edit')
                     </a>
                 @endif
@@ -63,15 +79,23 @@
                             :items="{{ $recipe->favs }}"
                             audio-path="{{ asset('storage/audio/fav-effect.wav') }}"
                             :user-id="{{ auth()->check() ? user()->id : 'null' }}"
-                            tooltip="@lang('messages.u_need_to_login')">
+                            tooltip="@lang('messages.u_need_to_login')"
+                        >
                     </div>
 
                     {{-- User icon --}}
-                    <a href="/users/{{ $recipe->user->username }}" class="user-icon-on-single-recipe z-depth-2 hoverable {{ $xp->getColor() }}" style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->photo) }})" title="@lang('users.go_to_profile') {{ $recipe->user->getName() }}"></a>
+                    <a href="/users/{{ $recipe->user->username }}"
+                        class="user-icon-on-single-recipe z-depth-2 hoverable {{ $xp->getColor() }}"
+                        style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->photo) }})"
+                        title="@lang('users.go_to_profile') {{ $recipe->user->getName() }}"
+                    ></a>
 
                     {{-- Level badge --}}
                     <div class="level-badge-wrap z-depth-2 d-inline-block ml-0 z-depth-2 hoverable {{ $xp->getColor() }}">
-                        <div class="level-badge tooltipped {{ $xp->getColor() }}" data-tooltip="@lang('users.user_level_is', ['level' => $xp->getLevel()])" data-position="top">
+                        <div class="level-badge tooltipped {{ $xp->getColor() }}"
+                            data-tooltip="@lang('users.user_level_is', ['level' => $xp->getLevel()])"
+                            data-position="top"
+                        >
                             <span>{{ $xp->getLevel() }}</span>
                         </div>
                     </div>
@@ -80,7 +104,8 @@
                         recipe-id="{{ $recipe->id }}"
                         audio-path="{{ asset('storage/audio/like-effect.mp3') }}"
                         :user-id="{{ auth()->check() ? user()->id : 'null' }}"
-                        tooltip="@lang('messages.u_need_to_login')">
+                        tooltip="@lang('messages.u_need_to_login')"
+                    >
                 @endif
             </div>
         </section>
@@ -112,7 +137,9 @@
                             >
                         </a>
                     </div>
-                    <div class="card-content p-3" v-text="recipe.title">@include('includes.preloader')</div>
+                    <div class="card-content p-3" v-text="recipe.title">
+                        @include('includes.preloader')
+                    </div>
                 </div>
             </div>
         </random-recipes-sidebar>
@@ -132,7 +159,15 @@
 
                 <div class="input-field mt-4">
                     <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
-                    <textarea name="message" minlength="{{ config('valid.feedback.contact.message.min') }}" id="message" class="materialize-textarea counter" data-length="{{ config('valid.feedback.contact.message.max') }}" required>{{ old('message') }}</textarea>
+
+                    <textarea name="message" id="message"
+                        minlength="{{ config('valid.feedback.contact.message.min') }}"
+                        class="materialize-textarea counter"
+                        data-length="{{ config('valid.feedback.contact.message.max') }}"
+                        required
+                    >{{ old('message') }}
+                    </textarea>
+
                     <label for="message">@lang('forms.message')</label>
                 </div>
                 <button type="submit" class="btn">@lang('forms.send')</button>
