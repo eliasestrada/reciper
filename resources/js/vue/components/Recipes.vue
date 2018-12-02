@@ -5,8 +5,8 @@
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
                         <a :href="'/recipes/' + recipe.slug" :title="recipe.intro">
-                            <img class="activator" :alt="recipe.title"
-                                :src="`storage/small/recipes/${recipe.image}`">
+                            <img class="activator lazy-load-img" :alt="recipe.title"
+                                :src="`storage/blur/recipes/${recipe.image}`">
                         </a>
                     </div>
                     <div class="card-content min-h">
@@ -46,6 +46,7 @@
 
 <script>
 import InfiniteLoading from "vue-infinite-loading";
+import LazyLoadImages from "../../modules/_lazyLoadImages";
 
 export default {
     data() {
@@ -77,16 +78,18 @@ export default {
 
     methods: {
         makeFirstRequest() {
-        Event.$emit("hash-changed", this.hash());
+            Event.$emit("hash-changed", this.hash());
 
-        this.$axios.get(`/api/recipes/${this.hash()}`)
-            .then(res => {
-                this.recipes = res.data.data;
-                res.data.links.next != null
-                    ? (this.next = res.data.links.next)
-                    : (this.theEnd = true);
-            })
-            .catch(err => console.error(err));
+            this.$axios.get(`/api/recipes/${this.hash()}`)
+                .then(res => {
+                    this.recipes = res.data.data
+                    this.runLazyLoadImagesFunction()
+
+                    res.data.links.next != null
+                        ? (this.next = res.data.links.next)
+                        : (this.theEnd = true)
+                })
+                .catch(err => console.error(err));
         },
 
         infiniteHandler($state) {
@@ -120,7 +123,13 @@ export default {
 
         returnFavs(recipe_id) {
             return this.favs.filter(fav => fav.recipe_id == recipe_id);
-        }
+        },
+
+        runLazyLoadImagesFunction() {
+            setTimeout(() => {
+                LazyLoadImages()
+            }, 100);
+        },
     },
 
     components: {

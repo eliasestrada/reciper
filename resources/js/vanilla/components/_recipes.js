@@ -1,4 +1,5 @@
 import $ from '../../modules/_main';
+import lazyLoadImages from '../../modules/_lazyLoadImages';
 import activeAfterClickBtn from '../../modules/_activeAfterClickBtn';
 import axios from 'axios';
 
@@ -61,21 +62,5 @@ import axios from 'axios';
 })();
 
 (function HideBlurImageAndShowOriginal() {
-    let images = document.querySelectorAll('img.lazy-load-img')
-
-    if (images) {
-        images.forEach(img => {
-            let bigImg = document.createElement('img')
-
-            bigImg.onload = () => {
-                img.src = bigImg.src
-                img.classList.remove('blur')
-                img.classList.add('noblur')
-            }
-
-            setTimeout(() => {
-                bigImg.src = img.src.replace('/blur/', '/small/')
-            }, 10);
-        })
-    }
+    lazyLoadImages()
 })();
