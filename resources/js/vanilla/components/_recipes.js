@@ -59,3 +59,15 @@ import axios from 'axios';
         });
     }
 })();
+
+(function HideBlurImageAndShowOriginal() {
+   let blured = document.querySelectorAll('img.image-blured')
+   let small = document.querySelectorAll('img.image-small')
+
+    if (blured && small) {
+        window.onload = () => {
+            blured.forEach(img => img.style.display = 'none')
+            small.forEach(img => img.style.display = 'block')
+        }
+    }
+})();
