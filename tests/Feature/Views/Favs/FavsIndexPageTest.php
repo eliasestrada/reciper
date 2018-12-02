@@ -45,7 +45,7 @@ class FavsIndexPageTest extends TestCase
 
         $this->actingAs($user)
             ->get('/favs')
-            ->assertSee('<img src="' . asset("storage/small/recipes/{$recipe->image}"));
+            ->assertSee('<img src="' . asset("storage/blur/recipes/{$recipe->image}"));
     }
 
     /**
@@ -103,12 +103,13 @@ class FavsIndexPageTest extends TestCase
     public function user_sees_recipe_if_category_of_this_recipe_is_selected(): void
     {
         ($recipe = create(Recipe::class))->categories()->sync([2, 3]);
+
         Fav::create([
             'user_id' => ($user = create_user())->id,
             'recipe_id' => $recipe->id,
         ]);
 
         $this->actingAs($user)->get('/favs/3')
-            ->assertSee('<img src="' . asset("storage/small/recipes/{$recipe->image}"));
+            ->assertSee('<img src="' . asset("storage/blur/recipes/{$recipe->image}"));
     }
 }
