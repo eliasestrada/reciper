@@ -207,8 +207,11 @@ class RecipesEditPageTest extends TestCase
         $image_name = Recipe::whereId($recipe->id)->value('image');
 
         $this->assertNotEquals('default.jpg', $image_name);
-        $this->assertFileExists(storage_path("app/public/big/recipes/{$image_name}"));
-        $this->assertFileExists(storage_path("app/public/small/recipes/{$image_name}"));
+
+        array_map(function ($dir) use ($image_name) {
+            $this->assertFileExists(storage_path("app/public/{$dir}/recipes/{$image_name}"));
+        }, ['big', 'small', 'blur']);
+
         $this->cleanAfterYourself($image_name);
     }
 
@@ -311,6 +314,7 @@ class RecipesEditPageTest extends TestCase
         \Storage::delete([
             "public/big/recipes/{$image_path}",
             "public/small/recipes/{$image_path}",
+            "public/blur/recipes/{$image_path}",
         ]);
     }
 }

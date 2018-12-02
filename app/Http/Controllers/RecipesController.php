@@ -171,6 +171,7 @@ class RecipesController extends Controller
                 DeleteFileJob::dispatch([
                     "public/big/recipes/$recipe->image",
                     "public/small/recipes/$recipe->image",
+                    "public/blur/recipes/$recipe->image",
                 ]);
             } catch (ConnectionException $e) {
                 logger()->error("DeleteFileJob was not dispatched. {$e->getMessage()}");
@@ -197,6 +198,7 @@ class RecipesController extends Controller
             try {
                 DeleteFileJob::dispatch([
                     "public/big/recipes/$recipe->image",
+                    "public/blur/recipes/$recipe->image",
                     "public/small/recipes/$recipe->image",
                 ]);
             } catch (ConnectionException $e) {
