@@ -65,7 +65,6 @@
     </ol>
 </blockquote>
 
-<div class="divider"></div>
 <h5 class="decorated pt-3">@lang('recipes.bon_appetit')!</h5>
 
 {{--  Date, views, author --}}
