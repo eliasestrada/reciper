@@ -61,13 +61,21 @@ import axios from 'axios';
 })();
 
 (function HideBlurImageAndShowOriginal() {
-   let blured = document.querySelectorAll('img.image-blured')
-   let small = document.querySelectorAll('img.image-small')
+    let images = document.querySelectorAll('img.lazy-load-img')
 
-    if (blured && small) {
-        window.onload = () => {
-            blured.forEach(img => img.style.display = 'none')
-            small.forEach(img => img.style.display = 'block')
-        }
+    if (images) {
+        images.forEach(img => {
+            let bigImg = document.createElement('img')
+
+            bigImg.onload = () => {
+                img.src = bigImg.src
+                img.classList.remove('blur')
+                img.classList.add('noblur')
+            }
+
+            setTimeout(() => {
+                bigImg.src = img.src.replace('/blur/', '/small/')
+            }, 10);
+        })
     }
 })();
