@@ -1,6 +1,6 @@
 <div class="center"><h1 style="font-size:2em">{{ $recipe->getTitle() }}</h1></div>
 
-<img src="{{ asset('storage/big/recipes/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img corner z-depth-1 not-printable">
+<img src="{{ asset('storage/blur/recipes/'.$recipe->image) }}" data-lazy-load="{{ asset('storage/big/recipes/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" class="recipe-img corner z-depth-1 not-printable lazy-load-img blur">
 
 {{--  Category  --}}
 <div class="center py-2 font-scalable" style="font-size:1.0em">

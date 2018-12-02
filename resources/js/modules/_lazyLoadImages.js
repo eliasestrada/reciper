@@ -4,15 +4,12 @@ export default function () {
     if (images) {
         images.forEach(img => {
             let bigImg = document.createElement('img')
+            let newSrc = img.getAttribute('data-lazy-load')
 
-            bigImg.onload = () => {
-                img.src = bigImg.src
-                img.classList.remove('blur')
-                img.classList.add('noblur')
-            }
+            bigImg.onload = () => img.src = bigImg.src;
 
             setTimeout(() => {
-                bigImg.src = img.src.replace('/blur/', '/small/')
+                bigImg.src = img.src = newSrc
             }, 10);
         })
     }

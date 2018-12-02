@@ -6,7 +6,8 @@
                     <div class="card-image waves-effect waves-block waves-light">
                         <a :href="'/recipes/' + recipe.slug" :title="recipe.intro">
                             <img class="activator lazy-load-img" :alt="recipe.title"
-                                :src="`storage/blur/recipes/${recipe.image}`">
+                                :src="`storage/blur/recipes/${recipe.image}`"
+                                :data-lazy-load="`storage/small/recipes/${recipe.image}`">
                         </a>
                     </div>
                     <div class="card-content min-h">

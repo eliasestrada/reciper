@@ -51,7 +51,7 @@
                             <div class="card hoverable">
                                 <div class="card-image waves-effect waves-block waves-light">
                                     <a href="/recipes/{{ $recipe->slug }}">
-                                        <img class="activator lazy-load-img blur" alt="{{ $recipe->getTitle() }}" src="{{ asset('storage/blur/recipes/'.$recipe->image) }}">
+                                        <img class="activator lazy-load-img" data-lazy-load="{{ asset('storage/small/recipes/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}" src="{{ asset('storage/blur/recipes/'.$recipe->image) }}">
                                     </a>
                                 </div>
                                 <div class="card-content min-h">
