@@ -5,13 +5,17 @@
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
                         <a :href="'/recipes/' + recipe.slug" :title="recipe.intro">
-                            <img class="activator lazy-load-img" :alt="recipe.title"
+                            <img class="activator lazy-load-img"
                                 :src="`storage/blur/recipes/${recipe.image}`"
-                                :data-lazy-load="`storage/small/recipes/${recipe.image}`">
+                                :data-lazy-load="`storage/small/recipes/${recipe.image}`"
+                                :alt="recipe.title"
+                            >
                         </a>
                     </div>
                     <div class="card-content min-h">
-                        <span style="height:75%" class="card-title activator">{{ recipe.title }}</span>
+                        <span style="height:75%" class="card-title activator">
+                            {{ recipe.title }}
+                        </span>
                         <div style="height:25%">
                             <div class="left">
                                 <btn-favs
