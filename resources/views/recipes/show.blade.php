@@ -97,13 +97,19 @@
         <h6 class="decorated pb-3">@lang('recipes.more')</h6>
         <random-recipes-sidebar visitor-id="{{ visitor_id() }}" inline-template>
             <div>
-                <div class="card hoverable" style="animation:appearWithRotate 1s;"
+                <div class="card hoverable"
                     v-for="recipe in recipes"
-                    :key="recipe.id">
-
+                    :key="recipe.id"
+                >
                     <div class="card-image">
-                        <a :href="'/recipes/' + recipe.slug" :title="recipe.title" class="waves-effect waves-light">
-                            <img :src="`/storage/big/recipes/${recipe.image}`" :alt="recipe.title">
+                        <a :href="'/recipes/' + recipe.slug"
+                            :title="recipe.title"
+                        >
+                            <img :src="`/storage/blur/recipes/${recipe.image}`"
+                                :data-lazy-load="`/storage/small/recipes/${recipe.image}`"
+                                :alt="recipe.title"
+                                class="lazy-load-img"
+                            >
                         </a>
                     </div>
                     <div class="card-content p-3" v-text="recipe.title">@include('includes.preloader')</div>

@@ -1,4 +1,6 @@
 <script>
+import LazyLoadImages from "../../modules/_lazyLoadImages";
+
 export default {
     data() {
         return {
@@ -12,8 +14,17 @@ export default {
     methods: {
         fetchData() {
             this.$axios.get(`/api/recipes-random/${this.visitorId}`)
-                .then(res => (this.recipes = res.data.data))
+                .then(res => {
+                    this.recipes = res.data.data
+                    this.runLazyLoadImagesFunction()
+                })
                 .catch(err => console.error(err));
+        },
+
+        runLazyLoadImagesFunction() {
+            setTimeout(() => {
+                LazyLoadImages()
+            }, 100);
         },
     },
 };

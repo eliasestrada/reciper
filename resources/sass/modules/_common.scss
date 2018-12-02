@@ -164,11 +164,3 @@ select {
 .unstyled-list {
     list-style: none;
 }
-
-.blur {
-    filter: blur(20px);
-    transition: filter 200ms;
-}
-.noblur {
-    transition: filter 200ms;
-}
