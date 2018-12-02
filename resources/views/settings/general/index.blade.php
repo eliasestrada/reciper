@@ -40,7 +40,10 @@
                     <h2 class="header">@lang('forms.email')</h2>
 
                     <div class="input-field">
-                        <label for="email">@lang('forms.email_desc')</label>
+                        <label for="email">
+                            @lang('forms.email_desc')
+                            @include('includes.tip', ['tip' => trans('tips.email_settings_tip')])
+                        </label>
                         <input type="text" name="email" id="email" value="{{ user()->email }}" data-length="{{ config('valid.settings.email.max') }}" class="counter" maxlength="{{ config('valid.settings.email.max') }}">
                         @include('includes.input-error', ['field' => 'email'])
 
