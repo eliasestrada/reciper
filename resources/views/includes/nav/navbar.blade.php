@@ -95,14 +95,14 @@
         @endhasRole
 
         <li> {{-- logout --}} {{-- This button submits logout-form --}}
-            <a href="#" title="@lang('auth.logout')" onclick="document.getElementById('logout-form').submit()">
+            <a href="#" title="@lang('auth.logout')" onclick="document.querySelector('#logout-form button').click()">
                 <i class="fas fa-sign-out-alt fa-15x left"></i>@lang('auth.logout')
             </a>
         </li>
 
        {{-- logout-form --}}
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hide">
-            @csrf <button type="submit"></button>
+            @csrf <button type="submit" class="confirm" data-confirm="@lang('messages.sure_to_logout')"></button>
         </form>
     @else
         {{-- Login --}}
