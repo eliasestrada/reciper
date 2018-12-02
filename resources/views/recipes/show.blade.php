@@ -103,7 +103,7 @@
 
                     <div class="card-image">
                         <a :href="'/recipes/' + recipe.slug" :title="recipe.title" class="waves-effect waves-light">
-                            <img :src="'/storage/recipes/' + recipe.image" :alt="recipe.title">
+                            <img :src="`/storage/big/recipes/${recipe.image}`" :alt="recipe.title">
                         </a>
                     </div>
                     <div class="card-content p-3" v-text="recipe.title">@include('includes.preloader')</div>

@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col s12 l6">
                 <div class="mt-2">
-                    <img src="{{ asset('storage/users/'.$user->photo) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->getName() }}" />
+                    <img src="{{ asset('storage/big/users/'.$user->photo) }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->getName() }}" />
 
                     <div class="my-2">
                         {{-- Manage user --}}
@@ -121,7 +121,7 @@
         @endlistOfRecipes
     @else
         <div class="center">
-            <img src="{{ asset('storage/users/not_active.jpg') }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->getName() }}" />
+            <img src="{{ asset('storage/big/users/not_active.jpg') }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->getName() }}" />
             <p>@lang('users.user_is_not_active')</p>
         </div>
     @endif

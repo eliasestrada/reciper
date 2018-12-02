@@ -150,7 +150,7 @@
                     <h5 class="col s12 mb-3">@lang('recipes.image')</h5>
                     @include('includes.input-error', ['field' => 'image'])
                     <div class="preview-image preview-image-recipe position-relative">
-                        <img src="{{ asset("storage/recipes/$recipe->image") }}" alt="{{ $recipe->title }}" id="target-image">
+                        <img src="{{ asset("storage/big/recipes/$recipe->image") }}" alt="{{ $recipe->title }}" id="target-image">
                         <input type="file" name="image" id="src-image" class="hide" style="overflow:hidden">
                         <label for="src-image" class="btn waves-effect waves-light min-w">
                             <i class="fas fa-upload left"></i>

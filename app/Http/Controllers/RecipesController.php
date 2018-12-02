@@ -169,7 +169,7 @@ class RecipesController extends Controller
         if ($request->file('image') && $recipe->image != 'default.jpg') {
             try {
                 DeleteFileJob::dispatch([
-                    "public/recipes/$recipe->image",
+                    "public/big/recipes/$recipe->image",
                     "public/small/recipes/$recipe->image",
                 ]);
             } catch (ConnectionException $e) {
@@ -196,7 +196,7 @@ class RecipesController extends Controller
         if ($recipe->image != 'default') {
             try {
                 DeleteFileJob::dispatch([
-                    "public/recipes/$recipe->image",
+                    "public/big/recipes/$recipe->image",
                     "public/small/recipes/$recipe->image",
                 ]);
             } catch (ConnectionException $e) {

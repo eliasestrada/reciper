@@ -20,7 +20,7 @@ trait PhotoControllerHelpers
         }
 
         $path_slug = $this->makePathSlug();
-        $path = storage_path("app/public/users/{$path_slug}");
+        $path = storage_path("app/public/big/users/{$path_slug}");
         $path_small = storage_path("app/public/small/users/{$path_slug}");
         $photo_name = user()->username . '.' . $photo->getClientOriginalExtension();
 

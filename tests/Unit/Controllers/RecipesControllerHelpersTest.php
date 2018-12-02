@@ -110,7 +110,7 @@ class RecipesControllerHelpersTest extends TestCase
         $filename = $this->class->saveImageIfExist($image, 'slug');
 
         $this->assertNotNull($filename);
-        $this->assertFileExists(storage_path("app/public/recipes/{$filename}"));
+        $this->assertFileExists(storage_path("app/public/big/recipes/{$filename}"));
         $this->assertFileExists(storage_path("app/public/small/recipes/{$filename}"));
         $this->cleanAfterYourself($filename);
     }
@@ -135,7 +135,7 @@ class RecipesControllerHelpersTest extends TestCase
     private function cleanAfterYourself(string $filename): void
     {
         \Storage::delete([
-            "public/recipes/{$filename}",
+            "public/big/recipes/{$filename}",
             "public/small/recipes/{$filename}",
         ]);
     }

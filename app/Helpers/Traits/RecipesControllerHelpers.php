@@ -22,7 +22,7 @@ trait RecipesControllerHelpers
         }
 
         $path_slug = $this->makePathSlug();
-        $path = storage_path("app/public/recipes/{$path_slug}");
+        $path = storage_path("app/public/big/recipes/{$path_slug}");
         $path_small = storage_path("app/public/small/recipes/{$path_slug}");
         $image_name = $slug . '.' . $image->getClientOriginalExtension();
 

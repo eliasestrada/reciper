@@ -41,7 +41,7 @@ import activeAfterClickBtn from '../../modules/_activeAfterClickBtn';
                     target.src = this.result;
                 };
             } else {
-                target.src = '/storage/recipes/default.jpg';
+                target.src = '/storage/big/recipes/default.jpg';
             }
         });
     }

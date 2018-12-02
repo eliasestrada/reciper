@@ -15,7 +15,7 @@
                 </a>
             @else
                 <a href="/users/{{ user()->username }}">
-                    <img class="circle z-depth-1 hoverable" src="{{ asset('storage/users/' . user()->photo) }}">
+                    <img class="circle z-depth-1 hoverable" src="{{ asset('storage/big/users/' . user()->photo) }}">
                 </a>
                 <a href="/users/{{ user()->username }}">
                     <span class="white-text name">{{ user()->getName() }}</span>
