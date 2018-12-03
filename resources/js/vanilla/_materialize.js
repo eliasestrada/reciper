@@ -9584,13 +9584,14 @@ ia = function () {
 document.addEventListener('DOMContentLoaded', function() {
     M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), {
         coverTrigger: false,
-        closeOnClick: false
+        closeOnClick: false,
+        alignment: 'left',
     });
     M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
-        position: 'top'
+        position: 'top',
     });
     M.Sidenav.init(document.querySelectorAll('.sidenav'), {
-        draggable: false
+        draggable: false,
     });
     M.Collapsible.init(document.querySelectorAll('.collapsible'));
     M.CharacterCounter.init(document.querySelectorAll('.counter'))
