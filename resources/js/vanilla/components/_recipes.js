@@ -64,3 +64,18 @@ import axios from 'axios';
 (function HideBlurImageAndShowOriginal() {
     lazyLoadImages()
 })();
+
+(function RemoveEmptyLinesFromTextareaWithLines() {
+    let fields = document.querySelectorAll('.textarea-lines')
+    let regex = /^\s*[\r\n]/gm
+
+    if (fields) {
+        fields.forEach(field => {
+            field.addEventListener('focusout', () => {
+                field.value = field.value.replace(regex, '')
+                field.value = field.value.trim()
+                M.textareaAutoResize(field)
+            })
+        })
+    }
+})();
