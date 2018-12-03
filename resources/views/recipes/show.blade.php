@@ -126,11 +126,10 @@
                     v-for="recipe in recipes"
                     :key="recipe.id"
                 >
-                    <div class="card-image">
-                        <a :href="'/recipes/' + recipe.slug"
-                            :title="recipe.title"
-                        >
+                    <div>
+                        <a :href="'/recipes/' + recipe.slug" :title="recipe.title">
                             <img :src="`/storage/blur/recipes/${recipe.image}`"
+                                style="width: 100%;border-radius: 7px 7px 0 0"
                                 :data-lazy-load="`/storage/small/recipes/${recipe.image}`"
                                 :alt="recipe.title"
                                 class="lazy-load-img"
