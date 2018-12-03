@@ -114,7 +114,7 @@
             <div class="col s12 l6">
                 <div class="input-field">
                     <textarea name="ingredients" id="ingredients"
-                        class="materialize-textarea counter"
+                        class="materialize-textarea counter textarea-lines"
                         data-length="{{ config('valid.recipes.ingredients.max') }}"
                     >{{ old('ingredients') ?? $recipe->getIngredients() }}
                     </textarea>
@@ -149,7 +149,7 @@
         <div class="col s12">
             <div class="input-field">
                 <textarea name="text" id="text"
-                    class="materialize-textarea counter"
+                    class="materialize-textarea counter textarea-lines"
                     data-length="{{ config('valid.recipes.text.max') }}"
                 >{{ old('text') ?? $recipe->getText() }}
                 </textarea>
