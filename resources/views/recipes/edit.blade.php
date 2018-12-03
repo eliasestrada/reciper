@@ -65,7 +65,7 @@
 
         <div class="row">
             {{-- Title --}}
-            <div class="col s12 m6 l4">
+            <div class="col s12 m12 l6">
                 <div class="input-field">
                     <input type="text" name="title"
                         value="{{ old('title') ?? $recipe->getTitle() }}"
@@ -79,10 +79,10 @@
             </div>
 
             {{-- Time --}}
-            <div class="col s12 m6 l4">
+            <div class="col s12 m6 l3">
                 <div class="input-field">
                     <label for="time">
-                        @lang('recipes.time_desc') 
+                        @lang('recipes.time') 
                         @include('includes.tip', ['tip' => trans('tips.recipes_time')])
                     </label>
                     <input type="number" name="time" id="time" value="{{ old('time') ?? $recipe->time }}">
@@ -91,7 +91,7 @@
             </div>
 
             {{-- Meal --}}
-            <div class="col s12 m6 l4">
+            <div class="col s12 m6 l3">
                 <label for="meal">
                     @lang('recipes.meal_desc') 
                     @include('includes.tip', ['tip' => trans('tips.recipes_meal')])
@@ -164,7 +164,7 @@
 
         {{-- Categories --}}
         <div class="row">
-            <div class="col s12 m6">
+            <div class="col s12 m12 l6">
                 <categories-field
                     :recipe-categories="{{ json_encode($recipe->categories->toArray()) }}"
                     :categories="{{ json_encode($categories) }}"
@@ -181,7 +181,7 @@
             </div>
 
             {{-- Image --}}
-            <div class="col s12 m6">
+            <div class="col s12 m12 l6">
                 <div class="center pb-5">
                     <h5 class="col s12 mb-3">@lang('recipes.image')</h5>
 
