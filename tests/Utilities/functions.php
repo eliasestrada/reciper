@@ -60,6 +60,5 @@ function uploadFakeImage(): string
     $random = rand(1, 51);
     copy(base_path("../tools/food/{$random}.jpg"), storage_path("app/public/small/recipes/{$random}.jpg"));
     copy(base_path("../tools/food/{$random}.jpg"), storage_path("app/public/big/recipes/{$random}.jpg"));
-    copy(base_path("../tools/food/{$random}.jpg"), storage_path("app/public/blur/recipes/{$random}.jpg"));
     return "{$random}.jpg";
 }

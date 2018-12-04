@@ -5,7 +5,7 @@
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
                         <a href="/recipes/{{ $recipe->slug }}">
-                            <img src="{{ asset('storage/blur/recipes/'.$recipe->image) }}" class="activator lazy-load-img" data-lazy-load="{{ asset('storage/small/recipes/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}">
+                            <img src="{{ asset('storage/small/recipes/'.$recipe->image) }}" class="activator lazy-load-img" data-lazy-load="{{ asset('storage/small/recipes/'.$recipe->image) }}" alt="{{ $recipe->getTitle() }}">
                         </a>
                     </div>
                     <div class="card-content min-h">

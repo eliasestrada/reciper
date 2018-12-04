@@ -45,7 +45,7 @@ class FavsIndexPageTest extends TestCase
 
         $this->actingAs($user)
             ->get('/favs')
-            ->assertSee('<img src="' . asset("storage/blur/recipes/{$recipe->image}"));
+            ->assertSee('<img src="' . asset("storage/small/recipes/{$recipe->image}"));
     }
 
     /**
@@ -110,6 +110,6 @@ class FavsIndexPageTest extends TestCase
         ]);
 
         $this->actingAs($user)->get('/favs/3')
-            ->assertSee('<img src="' . asset("storage/blur/recipes/{$recipe->image}"));
+            ->assertSee('<img src="' . asset("storage/small/recipes/{$recipe->image}"));
     }
 }

@@ -26,7 +26,7 @@ trait RecipesControllerHelpers
         $path_small = storage_path("app/public/small/recipes/{$path_slug}");
         $image_name = "{$slug}.{$image->getClientOriginalExtension()}";
 
-        $this->makeNeededDerectoriesFor([$path, $path_small, $path_blur]);
+        $this->makeNeededDerectoriesFor([$path, $path_small]);
 
         $this->uploadImages($image, $image_name, [
             [

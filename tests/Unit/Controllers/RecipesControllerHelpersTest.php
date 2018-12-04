@@ -113,7 +113,7 @@ class RecipesControllerHelpersTest extends TestCase
 
         array_map(function ($dir) use ($filename) {
             $this->assertFileExists(storage_path("app/public/{$dir}/recipes/{$filename}"));
-        }, ['small', 'big', 'blur']);
+        }, ['small', 'big']);
 
         $this->cleanAfterYourself($filename);
     }
@@ -140,7 +140,6 @@ class RecipesControllerHelpersTest extends TestCase
         \Storage::delete([
             "public/big/recipes/{$filename}",
             "public/small/recipes/{$filename}",
-            "public/blur/recipes/{$filename}",
         ]);
     }
 }

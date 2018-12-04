@@ -210,7 +210,7 @@ class RecipesEditPageTest extends TestCase
 
         array_map(function ($dir) use ($image_name) {
             $this->assertFileExists(storage_path("app/public/{$dir}/recipes/{$image_name}"));
-        }, ['big', 'small', 'blur']);
+        }, ['big', 'small']);
 
         $this->cleanAfterYourself($image_name);
     }
@@ -314,7 +314,6 @@ class RecipesEditPageTest extends TestCase
         \Storage::delete([
             "public/big/recipes/{$image_path}",
             "public/small/recipes/{$image_path}",
-            "public/blur/recipes/{$image_path}",
         ]);
     }
 }
