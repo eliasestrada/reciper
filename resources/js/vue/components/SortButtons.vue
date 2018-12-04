@@ -4,6 +4,7 @@
             :key="btn.link"
             :class="{ 'active': btn.isActive }"
             class="btn btn-sort"
+            @click="LazyLoadImagesForVue()"
         >
             <i class="fas red-text left" :class="btn.icon"></i>
             <span v-text="btn.title"></span>
@@ -13,6 +14,7 @@
 
 <script>
 import SortButtons from '../mixins/SortButtons';
+import LazyLoadImagesForVue from '../../modules/_lazyLoadImagesForVue'
 
 export default {
     mixins: [SortButtons],
@@ -27,7 +29,7 @@ export default {
     ],
 
     created() {
-        this.buttonWasClicked();
+        this.buttonWasClicked()
     },
 
     methods: {
@@ -38,7 +40,7 @@ export default {
                 if (hash != '') {
                     this.btns.forEach(btn => {
                         btn.isActive = btn.link == hash ? true : false;
-                    });
+                    })
                 }
             });
         },

@@ -8,9 +8,10 @@
                             <div class="placeholder-image"
                                 :style="{ 'background-color': setRandomBgColor() }"
                             ></div>
-                            <img class="activator lazy-load-img"
+                            <img class="activator lazy-load-img-vue"
                                 :src="`storage/small/recipes/${recipe.image}`"
                                 :alt="recipe.title"
+                                style="display:none"
                             >
                         </a>
                     </div>
@@ -53,7 +54,7 @@
 
 <script>
 import InfiniteLoading from 'vue-infinite-loading'
-import LazyLoadImages from '../../modules/_lazyLoadImages'
+import LazyLoadImagesForVue from '../../modules/_lazyLoadImagesForVue'
 
 export default {
     data() {
@@ -90,7 +91,10 @@ export default {
             this.$axios.get(`/api/recipes/${this.hash()}`)
                 .then(res => {
                     this.recipes = res.data.data
-                    this.loadLazyLoadImagesMethod()
+
+                    setTimeout(() => {
+                        LazyLoadImagesForVue()
+                    }, 0);
 
                     res.data.links.next != null
                         ? (this.next = res.data.links.next)
@@ -130,12 +134,6 @@ export default {
 
         returnFavs(recipe_id) {
             return this.favs.filter(fav => fav.recipe_id == recipe_id)
-        },
-
-        loadLazyLoadImagesMethod() {
-            setTimeout(() => {
-                LazyLoadImages()
-            }, 10);
         },
 
         setRandomBgColor() {
