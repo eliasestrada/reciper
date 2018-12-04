@@ -184,7 +184,7 @@
                     </a>
                 </li>
 
-                <li class="{{ active_if_route_is(['recipes', 'recipes/*']) }}">
+                <li class="{{ active_if_route_is(['recipes*']) }}">
                     <a href="/recipes#new" title="@lang('recipes.recipes')">
                         @lang('recipes.recipes')
                     </a>

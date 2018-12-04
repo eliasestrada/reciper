@@ -1,13 +1,13 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix')
 
-let css = 1;
-let js = 1;
-let server = 1;
+let css = 0
+let js = 1
+let server = 1
 
 if (css == 1) {
     mix.sass('resources/sass/app.scss', 'public/css/app.css').options({
         processCssUrls: false,
-    });
+    })
 }
 
 if (js == 1) {
