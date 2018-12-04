@@ -130,6 +130,7 @@
                             <img class="activator lazy-load-img"
                                 :src="`/storage/small/recipes/${recipe.image}`"
                                 style="width:100%; border-radius:7px 7px 0 0"
+                                v-on:load="runLazyLoadImagesForVue($event.target)"
                                 :alt="recipe.title"
                             >
                         </a>

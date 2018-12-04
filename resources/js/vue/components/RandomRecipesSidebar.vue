@@ -1,5 +1,5 @@
 <script>
-import LazyLoadImages from "../../modules/_lazyLoadImages"
+import LazyLoadImagesForVue from '../../modules/_lazyLoadImagesForVue'
 
 export default {
     data() {
@@ -24,11 +24,9 @@ export default {
                 .catch(err => console.error(err))
         },
 
-        runLazyLoadImagesMethod() {
-            setTimeout(() => {
-                LazyLoadImages()
-            }, 10)
-        },
+        runLazyLoadImagesForVue(target) {
+            LazyLoadImagesForVue(target)
+        }
     },
 };
 </script>
