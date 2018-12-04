@@ -1,12 +1,13 @@
 <div class="center"><h1 style="font-size:2em">{{ $recipe->getTitle() }}</h1></div>
 
-<div class="single-recipe-img-wrapper">
+<div class="single-recipe-img-wrapper recipe-img corner ">
     <div class="placeholder-image"
         style="padding-bottom:67%; border-radius:4px; {{ setRandomBgColor() }}"
     ></div>
     <img src="{{ asset('storage/big/recipes/'.$recipe->image) }}"
         alt="{{ $recipe->getTitle() }}"
-        class="recipe-img corner z-depth-1 not-printable lazy-load-img"
+        class="z-depth-1 not-printable lazy-load-img"
+        style="width:100%"
     >
 </div>
 
