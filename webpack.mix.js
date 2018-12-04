@@ -1,7 +1,8 @@
 const mix = require('laravel-mix')
 
-let css = 0
+let css = 1
 let js = 1
+let chartjs = 1
 let server = 1
 
 if (css == 1) {
@@ -21,7 +22,20 @@ if (js == 1) {
                 }
             }
         })
-        .sourceMaps();
+        // .sourceMaps();
+}
+
+if (chartjs == 1) {
+    mix.js('resources/js/chart/chart.js', 'public/js/chart.js')
+        .options({
+            uglify: {
+                uglifyOptions: {
+                    compress: {
+                        drop_console: true
+                    }
+                }
+            }
+        })
 }
 
 if (server == 1) {

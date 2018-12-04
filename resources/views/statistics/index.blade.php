@@ -107,3 +107,7 @@
 </div>
 
 @endsection
+
+@section('script')
+    {!! script_timestamp('/js/chart.js') !!}
+@endsection
