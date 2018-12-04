@@ -11,7 +11,7 @@
                             <img class="activator lazy-load-img-vue"
                                 :src="`storage/small/recipes/${recipe.image}`"
                                 :alt="recipe.title"
-                                style="display:none"
+                                @load="runLazyLoadImagesForVue($event.target)"
                             >
                         </a>
                     </div>
@@ -92,10 +92,6 @@ export default {
                 .then(res => {
                     this.recipes = res.data.data
 
-                    setTimeout(() => {
-                        LazyLoadImagesForVue()
-                    }, 0);
-
                     res.data.links.next != null
                         ? (this.next = res.data.links.next)
                         : (this.theEnd = true)
@@ -105,17 +101,17 @@ export default {
 
         infiniteHandler($state) {
             setTimeout(() => {
-                this.$axios.get(this.next)
-                    .then(res => {
-                        if (this.next != res.data.links.next && res.data.links.next != null) {
+                if (this.next) {
+                    this.$axios.get(this.next)
+                        .then(res => {
                             this.recipes = this.recipes.concat(res.data.data)
                             this.next = res.data.links.next
-                        } else {
-                            this.theEnd = true
-                        }
-                    })
-                .catch(err => console.error(err))
-                $state.loaded()
+                        })
+                    .catch(err => console.error(err))
+                    $state.loaded()
+                } else {
+                    this.theEnd = true
+                }
             }, 1000)
         },
 
@@ -143,6 +139,10 @@ export default {
                 ${Math.floor(Math.random() * Math.floor(254))},
                 0.3
             )`
+        },
+
+        runLazyLoadImagesForVue(target) {
+            LazyLoadImagesForVue(target)
         }
     },
 
