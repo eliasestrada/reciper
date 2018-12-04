@@ -24,7 +24,6 @@ trait RecipesControllerHelpers
         $path_slug = $this->makePathSlug();
         $path = storage_path("app/public/big/recipes/{$path_slug}");
         $path_small = storage_path("app/public/small/recipes/{$path_slug}");
-        $path_blur = storage_path("app/public/blur/recipes/{$path_slug}");
         $image_name = "{$slug}.{$image->getClientOriginalExtension()}";
 
         $this->makeNeededDerectoriesFor([$path, $path_small, $path_blur]);
@@ -35,21 +34,12 @@ trait RecipesControllerHelpers
                 'width' => 600,
                 'height' => 400,
                 'watermark' => true,
-                'blur' => false,
             ],
             [
                 'path' => $path_small,
                 'width' => 240,
                 'height' => 160,
                 'watermark' => false,
-                'blur' => false,
-            ],
-            [
-                'path' => $path_blur,
-                'width' => 100,
-                'height' => 67,
-                'watermark' => false,
-                'blur' => true,
             ],
         ]);
 
@@ -178,10 +168,6 @@ trait RecipesControllerHelpers
 
             if ($data['watermark']) {
                 $image_inst->insert(storage_path('app/public/other/watermark.png'));
-            }
-
-            if ($data['blur']) {
-                $image_inst->blur(50);
             }
 
             $image_inst->save("{$data['path']}/{$image_name}");
