@@ -37,7 +37,7 @@
             @lang('home.home')
         </a>
     </li>
-    <li class="{{ active_if_route_is(['recipes*']) }}">
+    <li class="{{ active_if_route_is(['recipes']) }}">
         <a href="/recipes#new" title="@lang('recipes.recipes')">
             <i class="fas fa-book-open fa-15x grey-text left"></i>
             @lang('recipes.recipes')
