@@ -111,10 +111,6 @@
         </section>
 
         @include('includes.parts.recipes-show')
-
-        <div class="py-4">
-            <div class="sharethis-inline-share-buttons"></div>
-        </div>
     </div>
 
     {{-- API: Еще рецепты Sidebar --}}
@@ -128,11 +124,11 @@
                 >
                     <div>
                         <a :href="'/recipes/' + recipe.slug" :title="recipe.title">
-                            <img :src="`/storage/small/recipes/${recipe.image}`"
-                                style="width: 100%;border-radius: 7px 7px 0 0"
-                                :data-lazy-load="`/storage/small/recipes/${recipe.image}`"
+                            <div class="placeholder-image" style="height:105px"></div>
+                            <img class="activator lazy-load-img"
+                                :src="`/storage/small/recipes/${recipe.image}`"
+                                style="width:100%; border-radius:7px 7px 0 0"
                                 :alt="recipe.title"
-                                class="lazy-load-img"
                             >
                         </a>
                     </div>
@@ -176,8 +172,3 @@
 @endif
 
 @endsection
-
-@section('script')
-    <script src="//platform-api.sharethis.com/js/sharethis.js#property=5bf5c388a0286b00115a8b3f&product=inline-share-buttons"></script>
-@endsection
-

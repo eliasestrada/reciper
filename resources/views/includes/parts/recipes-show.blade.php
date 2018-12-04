@@ -1,10 +1,12 @@
 <div class="center"><h1 style="font-size:2em">{{ $recipe->getTitle() }}</h1></div>
 
-<img src="{{ asset('storage/small/recipes/'.$recipe->image) }}"
-    data-lazy-load="{{ asset('storage/big/recipes/'.$recipe->image) }}"
-    alt="{{ $recipe->getTitle() }}"
-    class="recipe-img corner z-depth-1 not-printable"
->
+<div class="single-recipe-img-wrapper">
+    <div class="placeholder-image" style="padding-bottom:67%; border-radius:4px"></div>
+    <img src="{{ asset('storage/big/recipes/'.$recipe->image) }}"
+        alt="{{ $recipe->getTitle() }}"
+        class="recipe-img corner z-depth-1 not-printable lazy-load-img"
+    >
+</div>
 
 {{--  Category  --}}
 <div class="center py-2 font-scalable" style="font-size:1.0em">
