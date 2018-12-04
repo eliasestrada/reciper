@@ -124,7 +124,9 @@
                 >
                     <div>
                         <a :href="'/recipes/' + recipe.slug" :title="recipe.title">
-                            <div class="placeholder-image" style="height:105px"></div>
+                            <div class="placeholder-image"
+                                style="height:105px; {{ setRandomBgColor() }}"
+                            ></div>
                             <img class="activator lazy-load-img"
                                 :src="`/storage/small/recipes/${recipe.image}`"
                                 style="width:100%; border-radius:7px 7px 0 0"

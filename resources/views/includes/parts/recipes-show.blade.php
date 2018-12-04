@@ -1,7 +1,9 @@
 <div class="center"><h1 style="font-size:2em">{{ $recipe->getTitle() }}</h1></div>
 
 <div class="single-recipe-img-wrapper">
-    <div class="placeholder-image" style="padding-bottom:67%; border-radius:4px"></div>
+    <div class="placeholder-image"
+        style="padding-bottom:67%; border-radius:4px; {{ setRandomBgColor() }}"
+    ></div>
     <img src="{{ asset('storage/big/recipes/'.$recipe->image) }}"
         alt="{{ $recipe->getTitle() }}"
         class="recipe-img corner z-depth-1 not-printable lazy-load-img"

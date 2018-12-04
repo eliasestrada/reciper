@@ -5,7 +5,9 @@
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
                         <a href="/recipes/{{ $recipe->slug }}">
-                            <div class="placeholder-image"></div>
+                            <div class="placeholder-image"
+                                style="{{ setRandomBgColor() }}"
+                            ></div>
                             <img src="{{ asset('storage/small/recipes/'.$recipe->image) }}" class="activator lazy-load-img" alt="{{ $recipe->getTitle() }}">
                         </a>
                     </div>
