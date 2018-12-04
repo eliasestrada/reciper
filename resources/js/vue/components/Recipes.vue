@@ -1,14 +1,17 @@
 <template>
     <div class="pt-3">
         <div class="row">
-            <div class="col s12 m6 l3" v-for="recipe in recipes" :key="recipe.id">
+            <div class="col s12 m6 l3" v-for="(recipe, i) in recipes" :key="recipe.id">
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <a :href="'/recipes/' + recipe.slug" :title="recipe.intro">
-                            <img class="activator lazy-load-img"
-                                :src="`storage/blur/recipes/${recipe.image}`"
-                                :data-lazy-load="`storage/small/recipes/${recipe.image}`"
+                        <a :href="`/recipes/${recipe.slug}`" :title="recipe.intro">
+                            <div class="card-image-placeholder"
+                                :class="`placeholder-num-${i}`"
+                            ></div>
+                            <img class="activator" style="display:none"
+                                :src="`storage/small/recipes/${recipe.image}`"
                                 :alt="recipe.title"
+                                @load="deletePlaceholder($event, i)"
                             >
                         </a>
                     </div>
@@ -51,7 +54,6 @@
 
 <script>
 import InfiniteLoading from "vue-infinite-loading";
-import LazyLoadImages from "../../modules/_lazyLoadImages";
 
 export default {
     data() {
@@ -88,7 +90,6 @@ export default {
             this.$axios.get(`/api/recipes/${this.hash()}`)
                 .then(res => {
                     this.recipes = res.data.data
-                    this.runLazyLoadImagesFunction()
 
                     res.data.links.next != null
                         ? (this.next = res.data.links.next)
@@ -130,10 +131,16 @@ export default {
             return this.favs.filter(fav => fav.recipe_id == recipe_id);
         },
 
-        runLazyLoadImagesFunction() {
-            setTimeout(() => {
-                LazyLoadImages()
-            }, 100);
+        deletePlaceholder(e, placeholder) {
+            let holder = document.querySelector(`.placeholder-num-${placeholder}`)
+            let target = e.target
+
+            if (holder && target) {
+                setTimeout(() => {
+                    holder.style.display = 'none'
+                    target.style.display = 'block'
+                }, 10);
+            }
         },
     },
 
