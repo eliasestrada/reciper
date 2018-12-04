@@ -26,7 +26,7 @@ if (js == 1) {
 }
 
 if (chartjs == 1) {
-    mix.js('resources/js/chart/chart.js', 'public/js/chart.js')
+    mix.js('resources/js/vue/chart/chart.js', 'public/js/chart.js')
         .options({
             uglify: {
                 uglifyOptions: {
