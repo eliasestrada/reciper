@@ -60,6 +60,10 @@
         </div>
     </div>
 
+    <audio id="click-audio" class="hidden">
+        <source src="{{ asset('storage/audio/click-audio.wav') }}" type="audio/wav">
+    </audio>
+
     @include('includes.footer')
 
     {!! script_timestamp('/js/app.js') !!}

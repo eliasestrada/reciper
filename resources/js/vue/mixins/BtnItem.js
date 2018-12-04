@@ -3,7 +3,7 @@ export default {
         return {
             iconClass: '',
             amount: this.items.length,
-            audio: new Audio(this.audioPath),
+            audio: document.querySelector('#click-audio'),
         };
     },
 
