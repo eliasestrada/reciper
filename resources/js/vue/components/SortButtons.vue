@@ -4,7 +4,6 @@
             :key="btn.link"
             :class="{ 'active': btn.isActive }"
             class="btn btn-sort"
-            @click="LazyLoadImagesForVue()"
         >
             <i class="fas red-text left" :class="btn.icon"></i>
             <span v-text="btn.title"></span>
@@ -14,10 +13,10 @@
 
 <script>
 import SortButtons from '../mixins/SortButtons';
-import LazyLoadImagesForVue from '../../modules/_lazyLoadImagesForVue'
 
 export default {
     mixins: [SortButtons],
+
     props: [
         'newBtn',
         'simpleBtn',
