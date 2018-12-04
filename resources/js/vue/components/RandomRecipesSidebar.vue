@@ -1,5 +1,5 @@
 <script>
-import LazyLoadImages from "../../modules/_lazyLoadImages";
+import LazyLoadImages from "../../modules/_lazyLoadImages"
 
 export default {
     data() {
@@ -7,24 +7,27 @@ export default {
             recipes: [],
         };
     },
+
     created() {
-        this.fetchData();
+        this.fetchData()
     },
+
     props: ['visitorId'],
+
     methods: {
         fetchData() {
             this.$axios.get(`/api/recipes-random/${this.visitorId}`)
                 .then(res => {
                     this.recipes = res.data.data
-                    this.runLazyLoadImagesFunction()
+                    this.runLazyLoadImagesMethod()
                 })
-                .catch(err => console.error(err));
+                .catch(err => console.error(err))
         },
 
-        runLazyLoadImagesFunction() {
+        runLazyLoadImagesMethod() {
             setTimeout(() => {
                 LazyLoadImages()
-            }, 100);
+            }, 10)
         },
     },
 };

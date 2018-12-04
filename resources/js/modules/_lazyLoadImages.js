@@ -3,14 +3,14 @@ export default function () {
 
     if (images) {
         images.forEach(img => {
-            let bigImg = document.createElement('img')
-            let newSrc = img.getAttribute('data-lazy-load')
+            img.onload = () => {
+                let holder = img.parentElement.querySelector('.placeholder-image')
 
-            bigImg.onload = () => img.src = bigImg.src;
-
-            setTimeout(() => {
-                bigImg.src = img.src = newSrc
-            }, 10);
+                setTimeout(() => {
+                    img.style.display = 'block'
+                    holder.style.display = 'none'
+                }, 0);
+            };
         })
     }
 }

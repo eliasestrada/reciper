@@ -1,17 +1,14 @@
 <template>
     <div class="pt-3">
         <div class="row">
-            <div class="col s12 m6 l3" v-for="(recipe, i) in recipes" :key="recipe.id">
+            <div class="col s12 m6 l3" v-for="recipe in recipes" :key="recipe.id">
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
                         <a :href="`/recipes/${recipe.slug}`" :title="recipe.intro">
-                            <div class="card-image-placeholder"
-                                :class="`placeholder-num-${i}`"
-                            ></div>
-                            <img class="activator" style="display:none"
+                            <div class="placeholder-image"></div>
+                            <img class="activator lazy-load-img"
                                 :src="`storage/small/recipes/${recipe.image}`"
                                 :alt="recipe.title"
-                                @load="deletePlaceholder($event, i)"
                             >
                         </a>
                     </div>
@@ -53,7 +50,8 @@
 </template>
 
 <script>
-import InfiniteLoading from "vue-infinite-loading";
+import InfiniteLoading from 'vue-infinite-loading'
+import LazyLoadImages from '../../modules/_lazyLoadImages'
 
 export default {
     data() {
@@ -61,7 +59,7 @@ export default {
             recipes: [],
             newRecipes: [],
             next: "",
-            theEnd: false
+            theEnd: false,
         };
     },
 
@@ -71,15 +69,15 @@ export default {
         userId: { default: null },
         mins: { default: "min" },
         audioPath: { required: true },
-        tooltip: { required: true }
+        tooltip: { required: true },
     },
 
     created() {
-        this.makeFirstRequest();
+        this.makeFirstRequest()
 
         window.onhashchange = () => {
-            this.theEnd = false;
-            this.makeFirstRequest();
+            this.theEnd = false
+            this.makeFirstRequest()
         };
     },
 
@@ -90,12 +88,13 @@ export default {
             this.$axios.get(`/api/recipes/${this.hash()}`)
                 .then(res => {
                     this.recipes = res.data.data
+                    this.loadLazyLoadImagesMethod()
 
                     res.data.links.next != null
                         ? (this.next = res.data.links.next)
                         : (this.theEnd = true)
                 })
-                .catch(err => console.error(err));
+                .catch(err => console.error(err))
         },
 
         infiniteHandler($state) {
@@ -103,44 +102,38 @@ export default {
                 this.$axios.get(this.next)
                     .then(res => {
                         if (this.next != res.data.links.next && res.data.links.next != null) {
-                            this.recipes = this.recipes.concat(res.data.data);
-                            this.next = res.data.links.next;
+                            this.recipes = this.recipes.concat(res.data.data)
+                            this.next = res.data.links.next
                         } else {
-                            this.theEnd = true;
+                            this.theEnd = true
                         }
                     })
-                .catch(err => console.error(err));
-                $state.loaded();
-            }, 1000);
+                .catch(err => console.error(err))
+                $state.loaded()
+            }, 1000)
         },
 
         hash() {
-            return window.location.hash.substring(1);
+            return window.location.hash.substring(1)
         },
 
         userHasFav(recipe_id) {
             if (this.favs) {
                 var result = this.favs.map(fav => {
-                    return recipe_id == fav.recipe_id ? "active" : "";
+                    return recipe_id == fav.recipe_id ? "active" : ""
                 });
-                return result;
+                return result
             }
         },
 
         returnFavs(recipe_id) {
-            return this.favs.filter(fav => fav.recipe_id == recipe_id);
+            return this.favs.filter(fav => fav.recipe_id == recipe_id)
         },
 
-        deletePlaceholder(e, placeholder) {
-            let holder = document.querySelector(`.placeholder-num-${placeholder}`)
-            let target = e.target
-
-            if (holder && target) {
-                setTimeout(() => {
-                    holder.style.display = 'none'
-                    target.style.display = 'block'
-                }, 10);
-            }
+        loadLazyLoadImagesMethod() {
+            setTimeout(() => {
+                LazyLoadImages()
+            }, 10);
         },
     },
 
