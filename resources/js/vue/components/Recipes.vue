@@ -5,7 +5,9 @@
                 <div class="card hoverable">
                     <div class="card-image waves-effect waves-block waves-light">
                         <a :href="`/recipes/${recipe.slug}`" :title="recipe.intro">
-                            <div class="placeholder-image"></div>
+                            <div class="placeholder-image"
+                                :style="{ 'background-color': setRandomBgColor() }"
+                            ></div>
                             <img class="activator lazy-load-img"
                                 :src="`storage/small/recipes/${recipe.image}`"
                                 :alt="recipe.title"
@@ -135,6 +137,15 @@ export default {
                 LazyLoadImages()
             }, 10);
         },
+
+        setRandomBgColor() {
+            return `rgba(
+                ${Math.floor(Math.random() * Math.floor(254))},
+                ${Math.floor(Math.random() * Math.floor(254))},
+                ${Math.floor(Math.random() * Math.floor(254))},
+                0.3
+            )`
+        }
     },
 
     components: {

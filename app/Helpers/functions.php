@@ -237,3 +237,16 @@ function no_connection_error($exception, string $file): void
     logger()->error($exception->getMessage() . " in file $file.php");
     session()->flash('error', trans('messages.query_error'));
 }
+
+/**
+ * @return string
+ */
+function setRandomBgColor(): string
+{
+    return 'background-color: rgba(
+        ' . rand(0, 255) . ',
+        ' . rand(0, 255) . ',
+        ' . rand(0, 255) . ',
+        0.3
+    )';
+}
