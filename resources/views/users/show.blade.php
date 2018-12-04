@@ -9,7 +9,15 @@
         <div class="row">
             <div class="col s12 l6">
                 <div class="mt-2">
-                    <img src="{{ asset('storage/small/users/'.$user->photo) }}" data-lazy-load="{{ asset('storage/big/users/'.$user->photo) }}" class="profile-image corner z-depth-1 hoverable lazy-load-img" alt="{{ $user->getName() }}" />
+                    <div class="profile-image corner">
+                        <div class="placeholder-image"
+                            style="padding-bottom:100%; {{ setRandomBgColor() }}"
+                        ></div>
+                        <img src="{{ asset('storage/big/users/'.$user->photo) }}"
+                            class="z-depth-1 hoverable lazy-load-img"
+                            alt="{{ $user->getName() }}"
+                        />
+                    </div>
 
                     <div class="my-2">
                         {{-- Manage user --}}

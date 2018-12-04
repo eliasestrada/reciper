@@ -30,8 +30,8 @@
         }
     }
 
-    img {
-        width: 6em;
+    .image-wrapper {
+        width: 9em;
         height: 4.3em;
         margin: .5em 0;
         border-radius: 3px;
@@ -40,6 +40,9 @@
 
         .dark-theme & {
             border-color: lighten($darkTheme, 17%);
+        }
+        img {
+            width: 100%;
         }
     }
 }

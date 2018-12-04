@@ -5,7 +5,18 @@
 }
 
 .profile-image {
-    width: 200px;
+    width: 67%;
+    margin: auto;
+
+    img {
+        width: 100%;
+    }
+}
+
+@media (min-width: 640px) {
+    .profile-image {
+        width: 47%;
+    }
 }
 
 .list-of-recipes {
