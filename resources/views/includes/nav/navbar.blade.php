@@ -315,10 +315,10 @@
                     <span>
                         <div>
                             <span class="red-text">
-                                {{ $notif['data']['title'] }}
+                                {{ ($notif['data']['title'] ?? '') }}
                             </span>
                         </div>
-                        <span>{!! $notif['data']['message'] !!}</span>
+                        <span>{!! ($notif['data']['message'] ?? '') !!}</span>
                         <div>
                             <small class="grey-text">
                                 {{ time_ago($notif['created_at']) }}
