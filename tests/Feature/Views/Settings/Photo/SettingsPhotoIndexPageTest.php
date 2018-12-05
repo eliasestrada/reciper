@@ -99,7 +99,7 @@ class SettingsPhotoIndexPageTest extends TestCase
     private function cleanAfterYourself(string $photo_path): void
     {
         \Storage::delete([
-            "public/users/{$photo_path}",
+            "public/big/users/{$photo_path}",
             "public/small/users/{$photo_path}",
         ]);
     }

@@ -39,7 +39,7 @@ class PhotoController extends Controller
         if (user()->photo != 'default.jpg') {
             try {
                 DeleteFileJob::dispatch([
-                    'public/users/' . user()->photo,
+                    'public/big/users/' . user()->photo,
                     'public/small/users/' . user()->photo,
                 ]);
             } catch (ConnectionException $e) {
@@ -63,7 +63,7 @@ class PhotoController extends Controller
         if (user()->photo != 'default.jpg') {
             try {
                 DeleteFileJob::dispatch([
-                    'public/users/' . user()->photo,
+                    'public/big/users/' . user()->photo,
                     'public/small/users/' . user()->photo,
                 ]);
             } catch (ConnectionException $e) {
