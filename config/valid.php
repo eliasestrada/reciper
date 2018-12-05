@@ -5,13 +5,13 @@ return [
     'recipes' => [
         'title' => ['min' => 3, 'max' => 85],
         'intro' => ['min' => 20, 'max' => 500],
-        'ingredients' => ['min' => 20, 'max' => 5000],
-        'text' => ['min' => 150, 'max' => 10000],
+        'ingredients' => ['min' => 20, 'max' => 1200],
+        'text' => ['min' => 150, 'max' => 5000],
     ],
 
     'docs' => [
         'title' => ['min' => 5, 'max' => 190],
-        'text' => ['min' => 100, 'max' => 10000],
+        'text' => ['min' => 100, 'max' => 7000],
     ],
 
     'settings' => [
