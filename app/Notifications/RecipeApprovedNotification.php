@@ -22,6 +22,9 @@ class RecipeApprovedNotification extends Notification
     }
 
     /**
+     * Get the notification's delivery channels.
+     *
+     * @codeCoverageIgnore
      * @param  mixed  $notifiable
      * @return array
      */
@@ -31,6 +34,8 @@ class RecipeApprovedNotification extends Notification
     }
 
     /**
+     * Get the mail representation of the notification.
+     *
      * @param  mixed  $notifiable
      * @return array
      */

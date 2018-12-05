@@ -25,6 +25,7 @@ class VerifyEmailNotification extends Notification implements ShouldQueue
     /**
      * Get the notification's delivery channels.
      *
+     * @codeCoverageIgnore
      * @param  mixed  $notifiable
      * @return array
      */

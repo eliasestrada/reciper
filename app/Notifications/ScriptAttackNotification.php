@@ -21,6 +21,7 @@ class ScriptAttackNotification extends Notification
     }
 
     /**
+     * @codeCoverageIgnore
      * @param  mixed  $notifiable
      * @return array
      */
@@ -30,6 +31,8 @@ class ScriptAttackNotification extends Notification
     }
 
     /**
+     * Get the mail representation of the notification.
+     *
      * @param  mixed  $notifiable
      * @return array
      */
