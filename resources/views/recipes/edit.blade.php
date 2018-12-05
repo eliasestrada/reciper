@@ -116,8 +116,7 @@
                     <textarea name="ingredients" id="ingredients"
                         class="materialize-textarea counter textarea-lines"
                         data-length="{{ config('valid.recipes.ingredients.max') }}"
-                    >{{ old('ingredients') ?? $recipe->getIngredients() }}
-                    </textarea>
+                    >{{ old('ingredients') ?? $recipe->getIngredients() }}</textarea>
 
                     <label for="ingredients">
                         @lang('recipes.ingredients') 
@@ -133,8 +132,7 @@
                     <textarea name="intro" id="intro"
                         class="materialize-textarea counter"
                         data-length="{{ config('valid.recipes.intro.max') }}"
-                    >{{ old('intro') ?? $recipe->getIntro() }}
-                    </textarea>
+                    >{{ old('intro') ?? $recipe->getIntro() }}</textarea>
 
                     <label for="intro">
                         @lang('recipes.short_intro') 
@@ -151,8 +149,7 @@
                 <textarea name="text" id="text"
                     class="materialize-textarea counter textarea-lines"
                     data-length="{{ config('valid.recipes.text.max') }}"
-                >{{ old('text') ?? $recipe->getText() }}
-                </textarea>
+                >{{ old('text') ?? $recipe->getText() }}</textarea>
 
                 <label for="text">
                     @lang('recipes.text_of_recipe') 
