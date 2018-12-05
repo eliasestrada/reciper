@@ -60,3 +60,23 @@
         border-color: lighten($darkTheme, 15%);
     }
 }
+
+.dropdown-content {
+    ul.collapsible {
+        border: none;
+
+        li {
+            .collapsible-header {
+                background: none;
+                line-height: 40px;
+                padding: 0 5px;
+                font-size: 16px;
+
+                i.fas {
+                    height: 40px;
+                    line-height: 40px;
+                }
+            }
+        }
+    }
+}

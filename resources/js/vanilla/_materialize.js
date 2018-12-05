@@ -1907,7 +1907,7 @@ ia = function () {
             _this3._setupEventHandlers();
             
             // Open first active
-            var $activeBodies = _this3.$el.children('li.active').children('.collapsible-body');
+            var $activeBodies = _this3.$el.children('li.activated').children('.collapsible-body');
             if (_this3.options.accordion) {
                 // Handle Accordion
                 $activeBodies.first().css('display', 'block');
@@ -1971,7 +1971,7 @@ ia = function () {
                     if ($collapsible[0] === this.el) {
                         var $collapsibleLi = $header.closest('li');
                         var $collapsibleLis = $collapsible.children('li');
-                        var isActive = $collapsibleLi[0].classList.contains('active');
+                        var isActive = $collapsibleLi[0].classList.contains('activated');
                         var index = $collapsibleLis.index($collapsibleLi);
                         
                         if (isActive) {
@@ -2101,7 +2101,7 @@ ia = function () {
                 var _this7 = this;
                 
                 var $collapsibleLi = this.$el.children('li').eq(index);
-                if ($collapsibleLi.length && !$collapsibleLi[0].classList.contains('active')) {
+                if ($collapsibleLi.length && !$collapsibleLi[0].classList.contains('activated')) {
                     
                     // onOpenStart callback
                     if (typeof this.options.onOpenStart === 'function') {
@@ -2111,7 +2111,7 @@ ia = function () {
                     // Handle accordion behavior
                     if (this.options.accordion) {
                         var $collapsibleLis = this.$el.children('li');
-                        var $activeLis = this.$el.children('li.active');
+                        var $activeLis = this.$el.children('li.activated');
                         $activeLis.each(function (el) {
                             var index = $collapsibleLis.index($(el));
                             _this7.close(index);
@@ -2119,7 +2119,7 @@ ia = function () {
                     }
                     
                     // Animate in
-                    $collapsibleLi[0].classList.add('active');
+                    $collapsibleLi[0].classList.add('activated');
                     this._animateIn(index);
                 }
             }
@@ -2133,7 +2133,7 @@ ia = function () {
             key: "close",
             value: function close(index) {
                 var $collapsibleLi = this.$el.children('li').eq(index);
-                if ($collapsibleLi.length && $collapsibleLi[0].classList.contains('active')) {
+                if ($collapsibleLi.length && $collapsibleLi[0].classList.contains('activated')) {
                     
                     // onCloseStart callback
                     if (typeof this.options.onCloseStart === 'function') {
@@ -2141,7 +2141,7 @@ ia = function () {
                     }
                     
                     // Animate out
-                    $collapsibleLi[0].classList.remove('active');
+                    $collapsibleLi[0].classList.remove('activated');
                     this._animateOut(index);
                 }
             }
@@ -6069,11 +6069,18 @@ ia = function () {
 })(cash, M.anime);
 
 document.addEventListener('DOMContentLoaded', function() {
-    M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), {
+    let dropdowns = M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), {
         coverTrigger: false,
         closeOnClick: false,
         alignment: 'left',
     });
+    document.getElementById('adminka-collapsible').addEventListener('click', () => {
+        dropdowns.forEach(menu => {
+            setTimeout(() => {
+                menu.recalculateDimensions()
+            }, 400);
+        })
+    })
     M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
         position: 'top',
     });

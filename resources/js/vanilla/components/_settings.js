@@ -7,7 +7,7 @@ import $ from '../../modules/_main';
     if (li && window.innerWidth > 600) {
         setTimeout(() => {
             body.setAttribute('style', 'display:block');
-            li.classList.add('active');
+            li.classList.add('activated');
         }, 1);
     }
 })();
