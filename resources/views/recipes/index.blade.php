@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page">
+<div class="page" id="recipes-page">
     <div class="center"><h1 class="header">@lang('recipes.recipes')</h1></div>
 
     <div class="my-3" v-cloak>

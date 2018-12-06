@@ -47,21 +47,20 @@
                 </div>
             </div>
         </div>
-
-        <infinite-loading v-show="!theEnd" @infinite="infiniteHandler"></infinite-loading>
+        <preloader v-if="loading"></preloader>
     </div>
 </template>
 
 <script>
-import InfiniteLoading from 'vue-infinite-loading'
 import LazyLoadImagesForVue from '../../modules/_lazyLoadImagesForVue'
+import Preloader from './templates/Preloader'
 
 export default {
     data() {
         return {
             recipes: [],
-            newRecipes: [],
-            next: "",
+            loading: false,
+            url: null,
             theEnd: false,
         };
     },
@@ -76,47 +75,56 @@ export default {
     },
 
     created() {
-        this.makeFirstRequest()
+        this.fetchRecipes(true)
+
+        window.addEventListener('scroll', () => {
+            if (!this.theEnd) {
+                this.onScroll()
+            }
+        })
 
         window.onhashchange = () => {
             this.theEnd = false
-            this.makeFirstRequest()
+            this.url = null
+            this.fetchRecipes(true)
         };
     },
 
     methods: {
-        makeFirstRequest() {
-            Event.$emit("hash-changed", this.hash());
+        fetchRecipes(reload = false) {
+            this.loading = true
 
-            this.$axios.get(`/api/recipes/${this.hash()}`)
+            let hash = window.location.hash.substring(1)
+            let url = this.url === null ? `/api/recipes/${hash}` : this.url
+
+            Event.$emit("hash-changed", hash);
+
+            this.$axios.get(url)
                 .then(res => {
-                    this.recipes = res.data.data
+                    if (res.data.links.next !== null) {
+                        this.url = res.data.links.next
+                    } else {
+                        this.theEnd = true
+                    }
 
-                    res.data.links.next != null
-                        ? (this.next = res.data.links.next)
-                        : (this.theEnd = true)
+                    this.recipes = reload ? res.data.data : this.recipes.concat(res.data.data)
+                    this.loading = false
                 })
-                .catch(err => console.error(err))
+                .catch(err => {
+                    console.error(err)
+                    this.loading = false
+                })
         },
 
-        infiniteHandler($state) {
-            setTimeout(() => {
-                if (this.next) {
-                    this.$axios.get(this.next)
-                        .then(res => {
-                            this.recipes = this.recipes.concat(res.data.data)
-                            this.next = res.data.links.next
-                        })
-                    .catch(err => console.error(err))
-                    $state.loaded()
-                } else {
-                    this.theEnd = true
-                }
-            }, 1000)
-        },
+        onScroll() {
+            let wrap = document.getElementById('recipes-page')
+            let contentHeight = wrap.offsetHeight
+            let yOffset = window.pageYOffset
+            let currentPosition = yOffset + window.innerHeight
 
-        hash() {
-            return window.location.hash.substring(1)
+            if (currentPosition >= contentHeight && !this.loading) {
+                this.fetchRecipes()
+            }
         },
 
         userHasFav(recipe_id) {
@@ -147,7 +155,7 @@ export default {
     },
 
     components: {
-        InfiniteLoading
+        Preloader,
     }
 }
 </script>
