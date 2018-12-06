@@ -6074,13 +6074,17 @@ document.addEventListener('DOMContentLoaded', function() {
         closeOnClick: false,
         alignment: 'left',
     });
-    document.getElementById('adminka-collapsible').addEventListener('click', () => {
-        dropdowns.forEach(menu => {
-            setTimeout(() => {
-                menu.recalculateDimensions()
-            }, 400);
+    let menu = document.getElementById('adminka-collapsible')
+
+    if (menu) {
+        menu.addEventListener('click', () => {
+            dropdowns.forEach(menu => {
+                setTimeout(() => {
+                    menu.recalculateDimensions()
+                }, 400);
+            })
         })
-    })
+    }
     M.Tooltip.init(document.querySelectorAll('.tooltipped'), {
         position: 'top',
     });
