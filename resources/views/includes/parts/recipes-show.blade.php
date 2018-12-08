@@ -47,18 +47,23 @@
 
 {{--  Items --}}
 <div class="corner items py-4 px-3 z-depth-1 font-scalable" style="font-size:{{ $cookie }}em">
-    <ol class="m-0">
+    <ul class="m-0">
         @foreach ($recipe->ingredientsWithListItems() as $item)
-            {!! $item !!}
+            <div>
+                <span class="btn-floating btn-small center mr-3 left transparent">
+                    {{-- <i class="fas fa-check-square fa-2x green-text"></i> --}}
+                    <i class="fas fa-square fa-2x main-text"></i>
+                </span>
+                {!! $item !!}
+            </div>
         @endforeach
-    </ol>
+    </ul>
 
     {{-- File downloader --}}
     <div class="px-3 pt-4">
         <form action="{{ action('Invokes\DownloadIngredientsController', ['id' => $recipe->id]) }}" method="post">
             @csrf
             <button type="submit" class="btn-small not-printable confirm" data-confirm="@lang('recipes.are_you_sure_to_download')">
-                <i class="fas fa-download left"></i>
                 @lang('recipes.download_ingredients')
             </button>
         </form>
@@ -67,11 +72,17 @@
 
 {{--  Text  --}}
 <blockquote class="pt-3 font-scalable" style="border:none; font-size:{{ $cookie }}em">
-    <ol class="instruction unstyled-list">
+    <ul class="instruction unstyled-list">
         @foreach ($recipe->textWithListItems() as $item)
-            {!! $item !!}
+            <div>
+                <span class="btn-floating btn-small center mx-3 mt-3 left transparent">
+                    {{-- <i class="fas fa-check-square fa-2x green-text"></i> --}}
+                    <i class="main-text bold-text">{{ $loop->iteration }}</i>
+                </span>
+                <span>{!! $item !!}</span>
+            </div>
         @endforeach
-    </ol>
+    </ul>
 </blockquote>
 
 <h5 class="decorated pt-3">@lang('recipes.bon_appetit')!</h5>

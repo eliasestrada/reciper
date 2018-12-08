@@ -109,8 +109,7 @@
     text-align: left;
     background: #f3edc9;
     background: linear-gradient(#f3edc9, #fdfdf7);
-    line-height: 1.4;
-    list-style-image: url(../storage/other/tick.png);
+    line-height: 2.4;
 
     .dark-theme & {
         background: $darkThemeLight;
@@ -119,9 +118,19 @@
     li {
         font-size: 1.1em;
         border-bottom: 1px solid #c3c3c3;
+        transition: background-color 170ms;
+        cursor: pointer;
+
+        &:hover {
+            background: rgba(0, 0, 0, .07);
+        }
 
         .dark-theme & {
             border-bottom-color: lighten($darkTheme, 17%);
+
+            &:hover {
+                background: rgba(0, 0, 0, .2);
+            }
         }
     }
 }
@@ -130,30 +139,28 @@
     padding: 0 0 1em 2.6em;
     font-size: 1.2em;
 
+    .bold-text {
+        font-weight: bold;
+    }
+
     li {
-        min-height: 3em;
-        margin-top: .93em;
-        counter-increment: item;
-        position: relative;
-        left: .4em;
-        padding: 0 .7em;
+        min-height: 2.7em;
         text-align: left;
         border-bottom: 1px solid #c3c3c3;
+        transition: background-color 170ms;
+        padding: 1em 0;
+        cursor: pointer;
+
+        &:hover {
+            background: rgba(0, 0, 0, .07);
+        }
+
         .dark-theme & {
             border-bottom-color: lighten($darkTheme, 17%);
-        }
-        &:before {
-            width: 50px;
-            height: 50px;
-            text-align: center;
-            color: #fff;
-            content: counter(item);
-            font-size: 1.5em;
-            line-height: 50px;
-            position: absolute;
-            left: -2.2em;
-            background: $main;
-            border-radius: 5px;
+
+            &:hover {
+                background: rgba(0,0,0,.2);
+            }
         }
     }
 }
@@ -178,6 +185,7 @@
             grid-area: recipe-content;
             margin-left: .93rem;
         }
+
         .side-bar {
             grid-area: side-bar;
             width: 12.5rem;
@@ -191,6 +199,7 @@
     height: 23px;
     background: #181919;
     position: relative;
+
     &::before, &::after {
         content: "";
         position: absolute;
@@ -200,14 +209,17 @@
         border-left: 16.7px solid transparent;
         border-right: 16.7px solid transparent;
     }
+
     &::before {
         top: -8px;
         border-bottom: 9px solid #181919;
     }
+
     &::after {
         bottom: -12px;
         border-top: 12px solid $silverColor;
     }
+
     span {
         font-size: 1.6em;
         font-weight: bold;
