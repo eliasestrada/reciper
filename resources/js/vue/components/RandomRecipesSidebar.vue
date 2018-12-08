@@ -17,10 +17,7 @@ export default {
     methods: {
         fetchData() {
             this.$axios.get(`/api/recipes-random/${this.visitorId}`)
-                .then(res => {
-                    this.recipes = res.data.data
-                    this.runLazyLoadImagesMethod()
-                })
+                .then(res => this.recipes = res.data.data)
                 .catch(err => console.error(err))
         },
 
