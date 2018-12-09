@@ -102,13 +102,29 @@
                                     </a>
                                 </li>
 
-                                {{-- trash --}}
+                                {{-- Trash --}}
                                 <li class="position-relative {{ active_if_route_is(['master/trash']) }}">
                                     <a href="/master/trash" title="@lang('messages.trash')"
                                         class="{{ $trash_notif ? 'small-notif' : '' }}"
                                     >
                                         <i class="fas fa-trash fa-15x left with-red-hover"></i>
                                         @lang('messages.trash')
+                                    </a>
+                                </li>
+
+                                {{-- Horizon --}}
+                                <li>
+                                    <a href="/horizon/dashboard" title="Horizon">
+                                        <i class="fas fa-h-square fa-15x left"></i>
+                                        Horizon
+                                    </a>
+                                </li>
+
+                                {{-- Telescope --}}
+                                <li>
+                                    <a href="telescope/requests" title="Telescope">
+                                        <i class="fas fa-star-and-crescent fa-15x left"></i>
+                                        Telescope
                                     </a>
                                 </li>
                                 <li class="divider"></li>
