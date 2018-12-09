@@ -10,7 +10,15 @@
     <div class="center col s12 m6">
         <div><h1 class="header mb-4">{{ $user->getName() }}</span></h1></div>
 
-        <img src="{{ asset('storage/small/users/'.$user->photo) }}" data-lazy-load="{{ asset('storage/big/users/'.$user->photo) }}" class="profile-image frames z-depth-1 hoverable lazy-load-img" alt="{{ $user->getName() }}" />
+        <div class="profile-image frames">
+            <div class="placeholder-image"
+                style="padding-bottom:100%; {{ setRandomBgColor() }}"
+            ></div>
+            <img src="{{ asset('storage/big/users/'.$user->photo) }}"
+                class="z-depth-1 hoverable lazy-load-img"
+                alt="{{ $user->getName() }}"
+            />
+        </div>
 
         {{-- Go to profile --}}
         <div class="my-2">
