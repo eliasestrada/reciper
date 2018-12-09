@@ -10,6 +10,8 @@ use App\Notifications\UserGotXpPoints;
 class NotifyAuthorAboutApproving
 {
     /**
+     * Send notification and mark recipe as approved if it wasn't approved before
+     *
      * @param  RecipeGotApproved  $event
      * @return void
      */
@@ -22,6 +24,10 @@ class NotifyAuthorAboutApproving
             if ($author->xp < 9990) {
                 $author->notify(new UserGotXpPoints(config('custom.xp_for_approve')));
             }
+
+            $event->recipe->update([
+                'published_' . LANG() => 1,
+            ]);
         }
     }
 }
