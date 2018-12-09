@@ -16,7 +16,7 @@
     height: 100vh;
     align-items: center;
     color: #fff;
-    background: $homeHeaderBg $homeHeaderImage;
+    background: map-get($home-header, bg-color) map-get($home-header, bg-image);
     background-blend-mode: overlay;
     background-position: center;
     background-repeat: no-repeat;
@@ -61,7 +61,7 @@
                 &:hover {
                     transform: scale(1.2);
                     transition: padding .3s, transform .2s, background-color .5s;
-                    background: $mainDark;
+                    background: color(main-dark);
                     padding: 0 15px;
                     box-shadow: 2px 2px 15px rgba(0, 0, 0, .6);
                 }
@@ -78,7 +78,7 @@
         height: 5em;
         text-align: center;
         border-radius: 50%;
-        background: $main;
+        background: color(main);
         color: #fff;
         animation: appearWithRotate 1s;
         animation-fill-mode: forwards;
@@ -92,7 +92,7 @@
             font-size: 30px;
         }
         &:hover {
-            background: $mainHover;
+            background: color(main-hover);
             transition: transform 400ms, background-color 400ms;
         }
     }

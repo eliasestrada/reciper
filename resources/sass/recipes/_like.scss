@@ -21,10 +21,10 @@
 }
 .heart.active {
     transform: scale(1.1);
-    color: $red;
+    color: color(red);
     transition: color 400ms, transform 200ms;
     &:hover {
-        color: lighten($red, 7%);
+        color: lighten(color(red), 7%);
         transform: scale(1.05);
     }
 }

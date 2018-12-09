@@ -56,7 +56,7 @@
     border-radius: 4px;
 
     &:hover {
-        background: lighten($mainLight, 15%);
+        background: lighten(color(main-light), 15%);
     }
 
     .dark-theme & {

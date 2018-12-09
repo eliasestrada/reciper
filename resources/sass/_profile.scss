@@ -43,7 +43,7 @@
     width: 100%;
     max-width: 350px;
     height: 25px;
-    background: $greyDark;
+    background: color(grey-dark);
     position: relative;
     border: solid 2px #222;
     border-radius: 17px;
@@ -51,7 +51,7 @@
     margin: auto;
 
     .dark-theme & {
-        box-shadow: 0px 0px 30px 1px $main;
+        box-shadow: 0px 0px 30px 1px color(main);
     }
 
     &::after {
@@ -62,14 +62,14 @@
         transform: translate(-50%, -50%);
         transition: opacity 100ms;
         font-size: 1em;
-        color: $paper;
+        color: color(paper);
         text-shadow: 1px 1px 1px #000;
         font-weight: bold;
     }
     .bar {
         background: #5c08aa;
-        background: -moz-linear-gradient(to top, $main 0%, #7718cf 60%, #5c08aa 95%);
-        background: linear-gradient(to bottom, $main 0%, #7718cf 60%, #5c08aa 95%);
+        background: -moz-linear-gradient(to top, color(main) 0%, #7718cf 60%, #5c08aa 95%);
+        background: linear-gradient(to bottom, color(main) 0%, #7718cf 60%, #5c08aa 95%);
         line-height: 30px;
         height: 100%;
         transition: 7000ms background;

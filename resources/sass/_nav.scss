@@ -1,7 +1,7 @@
 .main-navbar {
-    background: $main;
+    background: color(main);
     .dark-theme & {
-        background: $darkThemeLight;
+        background: colorDark('main-light');
     }
 }
 
@@ -27,10 +27,10 @@
 }
 
 .right-borders > li {
-    border-left: solid 1px darken($main, 6%);
+    border-left: solid 1px darken(color(main), 6%);
 
     .dark-theme & {
-        border-color: lighten($darkTheme, 13%);
+        border-color: lighten(colorDark('main'), 13%);
     }
 }
 
@@ -41,10 +41,10 @@
     transition: transform 500ms;
     transform: translateY(-100%);
     z-index: 5;
-    background: $mainHover;
+    background: color(main-hover);
 
     .dark-theme & {
-        background: darken($darkThemeLight, 5%);
+        background: darken(colorDark('main-light'), 5%);
     }
 }
 
@@ -54,10 +54,10 @@
 
 // Sidebar
 .bottom-borders > li {
-    border-bottom: solid 1px darken($paper, 2%);
+    border-bottom: solid 1px darken(color(paper), 2%);
 
     .dark-theme & {
-        border-color: lighten($darkTheme, 15%);
+        border-color: lighten(colorDark('main'), 15%);
     }
 }
 

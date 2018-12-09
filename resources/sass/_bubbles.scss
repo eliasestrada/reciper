@@ -10,10 +10,10 @@
 
         .fas {
             transform: translateY(62%);
-            color: $mainDark;
+            color: color(main-dark);
 
             .dark-theme & {
-                color: lighten($main, 7%);
+                color: lighten(color(main), 7%);
             }
         }
     }
@@ -25,15 +25,15 @@
     height: 90px;
     margin: auto;
     position: relative;
-    border: solid 2px $mainDark;
+    border: solid 2px color(main-dark);
     border-radius: 50%;
     line-height: .6;
 
     .dark-theme & {
-        border: solid 2px lighten($main, 7%);
+        border: solid 2px lighten(color(main), 7%);
 
         .number::after {
-            border-bottom: 1px solid lighten($main, 7%);
+            border-bottom: 1px solid lighten(color(main), 7%);
         }
     }
 
@@ -44,14 +44,14 @@
         left: 50%;
         font-size: 30px;
         z-index: 1;
-        color: $red;
+        color: color(red);
         position: absolute;
         letter-spacing: -1.5px;
 
         &::after {
             content: '';
             width: 50%;
-            border-bottom: 1px solid $mainDark;
+            border-bottom: 1px solid color(main-dark);
             opacity: .7;
             display: block;
             position: absolute;

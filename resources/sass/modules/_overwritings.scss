@@ -4,12 +4,12 @@
 
 .divider {
     .dark-theme & {
-        background: lighten($darkTheme, 17%);
+        background: lighten(colorDark('main'), 17%);
     }
 }
 
 .fa-spinner {
-    color: $main;
+    color: color(main);
 }
 
 ::-webkit-scrollbar {
@@ -37,26 +37,26 @@
 
 nav .input-field input[type='search'] {
     -webkit-text-fill-color: #dfdfdf !important;
-    background-color: darken($main, 10%) !important;
+    background-color: darken(color(main), 10%) !important;
     letter-spacing: 1px;
     font-size: 1.4em;
     border-radius: 30px;
 
     &:focus {
-        background-color: darken($main, 15%) !important;
+        background-color: darken(color(main), 15%) !important;
     }
 }
 
 .card {
     .dark-theme & {
-        background: $darkThemeLight;
+        background: colorDark('main-light');
 
         .card-title {
             color: #c8c8c8;
         }
         .card-reveal,
         .card-panel {
-            background: $darkThemeLight;
+            background: colorDark('main-light');
         }
         .card-time {
             color: #c8c8c8;

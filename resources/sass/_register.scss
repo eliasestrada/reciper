@@ -14,11 +14,11 @@
     margin-left: -4px;
 
     i {
-        color: $mainDark;
+        color: color(main-dark);
         font-size: 20px;
 
         .dark-theme & {
-            color: $mainLight;
+            color: color(main-light);
         }
     }
 }

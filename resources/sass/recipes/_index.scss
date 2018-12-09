@@ -11,7 +11,7 @@
     background: -moz-linear-gradient(left, #d5cee0 0%, #f2eaf3 72%);
     background: -webkit-linear-gradient(left, #d5cee0 0%,#f2eaf3 72%);
     background: linear-gradient(to right, #d5cee0 0%,#f2eaf3 72%);
-    color: $main;
+    color: color(main);
 
     &.active {
         transform: scale(1.05);
@@ -19,11 +19,11 @@
     }
 
     .dark-theme & {
-        background: lighten($darkTheme, 15%);
+        background: lighten(colorDark('main'), 15%);
         color: #ebebeb;
 
         &.active {
-            background: darken($mainLight, 5%);
+            background: darken(color(main-light), 5%);
             color: #222;
         }
     }
