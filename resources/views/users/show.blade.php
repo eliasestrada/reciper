@@ -129,7 +129,10 @@
         @endlistOfRecipes
     @else
         <div class="center">
-            <img src="{{ asset('storage/big/users/not_active.jpg') }}" class="profile-image frames z-depth-1 hoverable" alt="{{ $user->getName() }}" />
+            <img src="{{ asset('storage/big/users/not_active.jpg') }}"
+                class="profile-image frames z-depth-1 hoverable"
+                alt="{{ $user->getName() }}"
+            />
             <p>@lang('users.user_is_not_active')</p>
         </div>
     @endif
