@@ -193,7 +193,7 @@ class RecipesController extends Controller
             return 'failed';
         }
 
-        if ($recipe->image != 'default') {
+        if ($recipe->image != 'default.jpg') {
             try {
                 DeleteFileJob::dispatch([
                     "public/big/recipes/$recipe->image",
