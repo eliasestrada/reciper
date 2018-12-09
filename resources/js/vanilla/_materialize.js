@@ -6081,7 +6081,7 @@ document.addEventListener('DOMContentLoaded', function() {
             dropdowns.forEach(menu => {
                 setTimeout(() => {
                     menu.recalculateDimensions()
-                }, 400);
+                }, 200);
             })
         })
     }
