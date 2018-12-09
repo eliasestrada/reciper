@@ -16,7 +16,7 @@
             @yield('content')
         @else
             <div class="page pt-4 center">
-                <img src="{{ asset('storage/big/users/not_active.jpg') }}" class="profile-image corner z-depth-1 hoverable" alt="{{ user()->getName() }}" />
+                <img src="{{ asset('storage/big/users/not_active.jpg') }}" class="profile-image frames z-depth-1 hoverable" alt="{{ user()->getName() }}" />
                 <h5 class="mt-4 main-text">@lang('users.we_missed_you')</h5>
                 <p class="header">
                     @lang('users.activate_account_desc', ['days' => 30 - (date('j') - user()->updated_at->format('j'))])

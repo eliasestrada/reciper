@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="image-bg row mb-0">
-    <div class="col s12 m6 offset-m3 form-wrapper my-5 corner z-depth-1 px-4">
+    <div class="col s12 m6 offset-m3 form-wrapper my-5 frames z-depth-1 px-4">
         <div class="center mt-4"><h1 class="header">@lang('passwords.reset_pwd')</h1></div>
 
         <form method="POST" action="{{ route('password.request') }}">

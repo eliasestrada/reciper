@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col s12 l6">
                 <div class="mt-2">
-                    <div class="profile-image corner">
+                    <div class="profile-image frames">
                         <div class="placeholder-image"
                             style="padding-bottom:100%; {{ setRandomBgColor() }}"
                         ></div>
@@ -129,7 +129,7 @@
         @endlistOfRecipes
     @else
         <div class="center">
-            <img src="{{ asset('storage/big/users/not_active.jpg') }}" class="profile-image corner z-depth-1 hoverable" alt="{{ $user->getName() }}" />
+            <img src="{{ asset('storage/big/users/not_active.jpg') }}" class="profile-image frames z-depth-1 hoverable" alt="{{ $user->getName() }}" />
             <p>@lang('users.user_is_not_active')</p>
         </div>
     @endif

@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="image-bg row mb-0">
-    <div class="col s12 m6 offset-m3 form-wrapper my-5 corner z-depth-1">
+    <div class="col s12 m6 offset-m3 form-wrapper my-5 frames z-depth-1">
         <div class="center pt-2">
             <h1 class="header">@lang('auth.login')</h1>
         </div>
