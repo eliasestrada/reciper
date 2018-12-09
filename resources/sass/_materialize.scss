@@ -3663,35 +3663,6 @@ button.btn-floating {
     will-change: opacity;
 }
 
-.modal.modal-fixed-footer {
-    padding: 0;
-    height: 70%;
-}
-
-.modal.modal-fixed-footer .modal-content {
-    position: absolute;
-    height: calc(100% - 56px);
-    max-height: 100%;
-    width: 100%;
-    overflow-y: auto;
-}
-
-.modal.modal-fixed-footer .modal-footer {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    position: absolute;
-    bottom: 0;
-}
-
-.modal.bottom-sheet {
-    top: auto;
-    bottom: -100%;
-    margin: 0;
-    width: 100%;
-    max-height: 45%;
-    border-radius: 0;
-    will-change: bottom, opacity;
-}
-
 .collapsible {
     border-top: 1px solid #ddd;
     border-right: 1px solid #ddd;

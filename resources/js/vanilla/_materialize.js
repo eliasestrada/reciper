@@ -2875,8 +2875,7 @@ ia = function () {
         
         _createClass(Modal, [{
             key: "destroy",
-            
-            
+
             /**
             * Teardown component
             */
@@ -2887,11 +2886,10 @@ ia = function () {
                 this.$overlay.remove();
                 this.el.M_Modal = undefined;
             }
-            
+
             /**
             * Setup Event Handlers
             */
-            
         }, {
             key: "_setupEventHandlers",
             value: function _setupEventHandlers() {
@@ -2908,7 +2906,6 @@ ia = function () {
             /**
             * Remove Event Handlers
             */
-            
         }, {
             key: "_removeEventHandlers",
             value: function _removeEventHandlers() {
@@ -2923,7 +2920,6 @@ ia = function () {
             * Handle Trigger Click
             * @param {Event} e
             */
-            
         }, {
             key: "_handleTriggerClick",
             value: function _handleTriggerClick(e) {
@@ -2941,7 +2937,6 @@ ia = function () {
             /**
             * Handle Overlay Click
             */
-            
         }, {
             key: "_handleOverlayClick",
             value: function _handleOverlayClick() {
@@ -2954,7 +2949,6 @@ ia = function () {
             * Handle Modal Close Click
             * @param {Event} e
             */
-            
         }, {
             key: "_handleModalCloseClick",
             value: function _handleModalCloseClick(e) {
@@ -2968,7 +2962,6 @@ ia = function () {
             * Handle Keydown
             * @param {Event} e
             */
-            
         }, {
             key: "_handleKeydown",
             value: function _handleKeydown(e) {
@@ -2977,12 +2970,11 @@ ia = function () {
                     this.close();
                 }
             }
-            
+
             /**
             * Handle Focus
             * @param {Event} e
             */
-            
         }, {
             key: "_handleFocus",
             value: function _handleFocus(e) {
@@ -2990,16 +2982,15 @@ ia = function () {
                     this.el.focus();
                 }
             }
-            
+
             /**
             * Animate in modal
             */
-            
         }, {
             key: "_animateIn",
             value: function _animateIn() {
                 var _this13 = this;
-                
+
                 // Set initial styles
                 $.extend(this.el.style, {
                     display: 'block',
@@ -3009,7 +3000,7 @@ ia = function () {
                     display: 'block',
                     opacity: 0
                 });
-                
+
                 // Animate overlay
                 anim({
                     targets: this.$overlay[0],
@@ -3017,7 +3008,7 @@ ia = function () {
                     duration: this.options.inDuration,
                     easing: 'easeOutQuad'
                 });
-                
+
                 // Define modal animation options
                 var enterAnimOptions = {
                     targets: this.el,
@@ -3030,7 +3021,7 @@ ia = function () {
                         }
                     }
                 };
-                
+
                 // Bottom sheet animation
                 if (this.el.classList.contains('bottom-sheet')) {
                     $.extend(enterAnimOptions, {
@@ -3038,7 +3029,7 @@ ia = function () {
                         opacity: 1
                     });
                     anim(enterAnimOptions);
-                    
+
                     // Normal modal animation
                 } else {
                     $.extend(enterAnimOptions, {
@@ -3050,11 +3041,10 @@ ia = function () {
                     anim(enterAnimOptions);
                 }
             }
-            
+
             /**
             * Animate out modal
             */
-            
         }, {
             key: "_animateOut",
             value: function _animateOut() {
