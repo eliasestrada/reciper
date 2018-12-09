@@ -2,22 +2,25 @@
 @import 'modules/variables';
 @import 'modules/functions';
 @import 'modules/reset';
-@import 'materialize';
 
+// Frameworks
+@import 'materialize';
 @import 'bootstrap';
-// Home
-@import 'home/home';
-@import 'home/home-media';
+
 // Recipes
 @import 'recipes/index';
 @import 'recipes/single';
 @import 'recipes/like';
 @import 'recipes/create';
+
+// Components
+@import 'components/badge';
+@import 'components/items';
+@import 'components/frames';
+
 // Other
-@import 'frames';
-@import 'badge';
+@import 'home';
 @import 'nav';
-@import 'items';
 @import 'profile';
 @import 'animations';
 @import 'bubbles';
