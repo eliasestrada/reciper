@@ -21,7 +21,7 @@
 
     &::after {
         bottom: -12px;
-        border-top: 12px solid $silverColor;
+        border-top: 12px solid levelColor(silver);
     }
 
     span {
@@ -29,36 +29,36 @@
         font-weight: bold;
         font-family: sans-serif;
         line-height: 23px;
-        color: $silverColor;
+        color: levelColor(silver);
     }
 
     &.gold-color {
         &::after {
-            border-top-color: $goldColor;
+            border-top-color: levelColor(gold);
         }
 
         span {
-            color: $goldColor;
+            color: levelColor(gold);
         }
     }
 
     &.purple-color {
         &::after {
-            border-top-color: $purpleColor;
+            border-top-color: levelColor(purple);
         }
 
         span {
-            color: $purpleColor;
+            color: levelColor(purple);
         }
     }
 
     &.blue-color {
         &::after {
-            border-top-color: $blueColor;
+            border-top-color: levelColor(blue);
         }
 
         span {
-            color: $blueColor;
+            color: levelColor(blue);
         }
     }
 
@@ -67,7 +67,7 @@
 .level-badge-wrap {
     &::before {
         top: -13px;
-        border-bottom: 13px solid $silverColor;
+        border-bottom: 13px solid levelColor(silver);
     }
 
     &::after {
@@ -77,19 +77,19 @@
 
     &.gold-color {
         &::before {
-            border-bottom-color: $goldColor;
+            border-bottom-color: levelColor(gold);
         }
     }
 
     &.purple-color {
         &::before {
-            border-bottom-color: $purpleColor;
+            border-bottom-color: levelColor(purple);
         }
     }
 
     &.blue-color {
         &::before {
-            border-bottom-color: $blueColor;
+            border-bottom-color: levelColor(blue);
         }
     }
 }
