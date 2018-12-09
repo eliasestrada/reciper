@@ -1,13 +1,12 @@
 <div class="center"><h1 style="font-size:2em">{{ $recipe->getTitle() }}</h1></div>
 
-<div class="single-recipe-img-wrapper recipe-img corner ">
+<div class="single-recipe__img-wrapper frames">
     <div class="placeholder-image"
         style="padding-bottom:67%; border-radius:4px; {{ setRandomBgColor() }}"
     ></div>
     <img src="{{ asset('storage/big/recipes/'.$recipe->image) }}"
         alt="{{ $recipe->getTitle() }}"
-        class="z-depth-1 not-printable lazy-load-img"
-        style="width:100%"
+        class="single-recipe__img-wrapper__img z-depth-1 not-printable lazy-load-img"
     >
 </div>
 
@@ -46,7 +45,7 @@
 <div class="divider my-4"></div>
 
 {{--  Items --}}
-<div class="corner items py-4 px-3 z-depth-1 font-scalable" style="font-size:{{ $cookie }}em">
+<div class="frames single-recipe__items py-4 px-3 z-depth-1 font-scalable" style="font-size:{{ $cookie }}em">
     <ul class="m-0">
         @foreach ($recipe->ingredientsWithListItems() as $item)
             <div>
@@ -72,7 +71,7 @@
 
 {{--  Text  --}}
 <blockquote class="pt-3 font-scalable" style="border:none; font-size:{{ $cookie }}em">
-    <ul class="instruction unstyled-list">
+    <ul class="single-recipe__instruction unstyled-list">
         @foreach ($recipe->textWithListItems() as $item)
             <div>
                 <span class="btn-floating btn-small center mx-3 mt-3 left transparent">

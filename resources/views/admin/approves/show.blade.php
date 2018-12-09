@@ -4,7 +4,7 @@
 
 @section('content')
 
-<section class="grid-recipe pt-3">
+<section class="single-recipe pt-3">
     <div class="recipe-content center">
 
         <div class="py-2">
