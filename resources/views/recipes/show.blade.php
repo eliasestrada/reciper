@@ -81,10 +81,7 @@
             </div>
 
             {{--  Likes  --}}
-            <div class="no-select pt-1" v-if="false">
-                <div class="card-content">@include('includes.preloader')</div>
-            </div>
-
+            @include('includes.vue-preloader')
             <div class="no-select py-1" v-cloak>
                 @if ($recipe->isDone())
                     {{-- Favs button --}}
