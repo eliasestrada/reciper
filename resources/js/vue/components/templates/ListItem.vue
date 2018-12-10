@@ -1,13 +1,15 @@
 <template>
-    <div @click="iconState = !iconState">
+    <section @click="iconState = !iconState">
         <span class="btn-floating center mr-3 left transparent" :class="classNames">
-            <slot name="icon-on" v-if="iconState"></slot>
-            <i class="main-text bold-text">
-                <slot name="icon-off" v-if="!iconState"></slot>
+            <span v-if="iconState">
+                <slot name="icon-on"></slot>
+            </span>
+            <i class="main-text bold-text" v-else>
+                <slot name="icon-off"></slot>
             </i>
         </span>
         <slot name="item"></slot>
-    </div>
+    </section>
 </template>
 
 <script>
