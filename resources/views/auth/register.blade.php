@@ -68,11 +68,6 @@
             <h4>{{ $document['title'] }}</h4>
             {!! $document['text'] !!}
         </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat left">
-                @lang('messages.agree')
-            </a>
-        </div>
     </div>
 @endif
 
