@@ -47,22 +47,24 @@
 {{--  Items --}}
 <div class="frames single-recipe__items py-4 px-3 z-depth-1 font-scalable" style="font-size:{{ $cookie }}em">
     <ul class="m-0">
+        @include('includes.vue-preloader')
         @foreach ($recipe->ingredientsWithListItems() as $item)
-            <div>
-                <span class="btn-floating btn-small center mr-3 left transparent">
-                    {{-- <i class="fas fa-check-square fa-2x green-text"></i> --}}
-                    <i class="fas fa-square fa-2x main-text"></i>
-                </span>
-                {!! $item !!}
-            </div>
+            <list-item class-names="m-1 btn-small" v-cloak>
+                <i slot="icon-on" class="fas fa-check-square fa-2x green-text"></i>
+                <i slot="icon-off" class="fas fa-square fa-15x main-text"></i>
+                <span slot="item">{!! $item !!}</span>
+            </list-item>
         @endforeach
     </ul>
 
     {{-- File downloader --}}
     <div class="px-3 pt-4">
-        <form action="{{ action('Invokes\DownloadIngredientsController', ['id' => $recipe->id]) }}" method="post">
+        <form method="post" action="{{ action('Invokes\DownloadIngredientsController', ['id' => $recipe->id]) }}">
             @csrf
-            <button type="submit" class="btn-small not-printable confirm" data-confirm="@lang('recipes.are_you_sure_to_download')">
+            <button type="submit"
+                class="btn-small not-printable confirm"
+                data-confirm="@lang('recipes.are_you_sure_to_download')"
+            >
                 @lang('recipes.download_ingredients')
             </button>
         </form>
@@ -72,14 +74,14 @@
 {{--  Text  --}}
 <blockquote class="pt-3 font-scalable" style="border:none; font-size:{{ $cookie }}em">
     <ul class="single-recipe__instruction unstyled-list">
+        @include('includes.vue-preloader')
+
         @foreach ($recipe->textWithListItems() as $item)
-            <div>
-                <span class="btn-floating btn-small center mx-3 mt-3 left transparent">
-                    {{-- <i class="fas fa-check-square fa-2x green-text"></i> --}}
-                    <i class="main-text bold-text">{{ $loop->iteration }}</i>
-                </span>
-                <span>{!! $item !!}</span>
-            </div>
+            <list-item class-names="m-3" v-cloak>
+                <i slot="icon-on" class="fas fa-check-square fa-2x green-text"></i>
+                <i slot="icon-off" class="main-text bold-text">{{ $loop->iteration }}</i>
+                <span slot="item">{!! $item !!}</span>
+            </list-item>
         @endforeach
     </ul>
 </blockquote>
@@ -97,7 +99,10 @@
         <span class="red-text">{{ time_ago($recipe->created_at) }}</span>
     </li>
     <li>
-        <a href="/users/{{ $recipe->user->username }}" title="@lang('recipes.search_by_author')" class="grey-text">
+        <a href="/users/{{ $recipe->user->username }}"
+            title="@lang('recipes.search_by_author')"
+            class="grey-text"
+        >
             @lang('recipes.author'):
             <span class="red-text">{{ optional($recipe->user)->getName() }}</span>
         </a>

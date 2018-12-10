@@ -2,27 +2,17 @@ import './bootstrap';
 
 window.Event = new Vue();
 
-import RandomRecipesSidebar from './components/RandomRecipesSidebar';
-import DeleteRecipeBtn from './components/DeleteRecipeBtn';
-import CategoriesField from './components/CategoriesField';
-import SortButtons from './components/SortButtons';
-import Visibility from './components/Visibility';
-import Recipes from './components/Recipes';
-import BtnFavs from './components/BtnFavs';
-import BtnLike from './components/BtnLike';
-import Tabs from './components/Tabs';
-import Tab from './components/Tab';
-
-Vue.component('random-recipes-sidebar', RandomRecipesSidebar);
-Vue.component('delete-recipe-btn', DeleteRecipeBtn);
-Vue.component('categories-field', CategoriesField);
-Vue.component('sort-buttons', SortButtons);
-Vue.component('visibility', Visibility);
-Vue.component('btn-favs', BtnFavs);
-Vue.component('btn-like', BtnLike);
-Vue.component('recipes', Recipes);
-Vue.component('tabs', Tabs);
-Vue.component('tab', Tab);
+Vue.component('random-recipes-sidebar', require('./components/RandomRecipesSidebar'));
+Vue.component('delete-recipe-btn', require('./components/DeleteRecipeBtn'));
+Vue.component('categories-field', require('./components/CategoriesField'));
+Vue.component('list-item', require('./components/templates/ListItem'));
+Vue.component('sort-buttons', require('./components/SortButtons'));
+Vue.component('visibility', require('./components/Visibility'));
+Vue.component('btn-favs', require('./components/BtnFavs'));
+Vue.component('btn-like', require('./components/BtnLike'));
+Vue.component('recipes', require('./components/Recipes'));
+Vue.component('tabs', require('./components/Tabs'));
+Vue.component('tab', require('./components/Tab'));
 
 new Vue({
     el: '#app',
