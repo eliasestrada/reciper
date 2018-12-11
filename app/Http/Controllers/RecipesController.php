@@ -155,9 +155,7 @@ class RecipesController extends Controller
         // Move to drafts
         if ($recipe->isReady()) {
             $recipe->moveToDrafts();
-            cache()->forget('popular_recipes');
-            cache()->forget('random_recipes');
-            cache()->forget('unapproved_notif');
+            $this->forgetCache();
 
             return redirect("/recipes/{$recipe->slug}/edit")->withSuccess(
                 trans('recipes.saved')
@@ -168,15 +166,8 @@ class RecipesController extends Controller
             return back()->withError(trans('notifications.cant_use_script_tags'));
         }
 
-        if ($request->file('image') && $recipe->image != 'default.jpg') {
-            try {
-                DeleteFileJob::dispatch([
-                    "public/big/recipes/$recipe->image",
-                    "public/small/recipes/$recipe->image",
-                ]);
-            } catch (ConnectionException $e) {
-                logger()->error("DeleteFileJob was not dispatched. {$e->getMessage()}");
-            }
+        if ($request->file('image')) {
+            $this->dispatchDeleteFileJob($recipe->image);
         }
 
         $image_name = $this->saveImageIfExist($request->file('image'), $recipe->slug);
@@ -195,26 +186,46 @@ class RecipesController extends Controller
             return 'failed';
         }
 
-        if ($recipe->image != 'default.jpg') {
-            try {
-                DeleteFileJob::dispatch([
-                    "public/big/recipes/$recipe->image",
-                    "public/small/recipes/$recipe->image",
-                ]);
-            } catch (ConnectionException $e) {
-                logger()->error("DeleteFileJob was not dispatched. {$e->getMessage()}");
-            }
-        }
+        $this->dispatchDeleteFileJob($recipe->image);
 
         $recipe->categories()->detach();
         $recipe->likes()->delete();
         $recipe->views()->delete();
         $recipe->favs()->delete();
 
+        $this->forgetCache();
+
+        return $recipe->delete() ? 'success' : 'failed';
+    }
+
+    /**
+     * Method helper clears cache
+     *
+     * @return void
+     */
+    public function forgetCache(): void
+    {
         cache()->forget('popular_recipes');
         cache()->forget('random_recipes');
         cache()->forget('unapproved_notif');
+    }
 
-        return $recipe->delete() ? 'success' : 'failed';
+    /**
+     * Helper method
+     * @param string $image_name
+     * @return void
+     */
+    public function dispatchDeleteFileJob(string $image_name): void
+    {
+        if ($image_name != 'default.jpg') {
+            try {
+                DeleteFileJob::dispatch([
+                    "public/big/recipes/$image_name",
+                    "public/small/recipes/$image_name",
+                ]);
+            } catch (ConnectionException $e) {
+                logger()->error("DeleteFileJob was not dispatched. {$e->getMessage()}");
+            }
+        }
     }
 }
