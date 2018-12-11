@@ -14,7 +14,8 @@ use App\Models\Meal;
 use App\Models\Recipe;
 use App\Models\User;
 use App\Models\View;
-use Illuminate\Database\QueryException;
+use App\Repos\FavRepo;
+use App\Repos\MealRepo;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View as ViewResponse;
 use Predis\Connection\ConnectionException;
@@ -32,27 +33,24 @@ class RecipesController extends Controller
     }
 
     /**
+     * @param \App\Repos\FavRepo
      * @return \Illuminate\View\View
      */
-    public function index(): ViewResponse
+    public function index(FavRepo $favs): ViewResponse
     {
-        try {
-            return view('recipes.index', [
-                'favs' => Fav::get(['recipe_id', 'user_id']),
-            ]);
-        } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return view('recipes.index');
-        }
+        return view('recipes.index', [
+            'favs' => $favs->all(),
+        ]);
     }
 
     /**
+     * @param \App\Repos\MealRepo $meal_repo
      * @return \Illuminate\View\View
      */
-    public function create(): ViewResponse
+    public function create(MealRepo $meal_repo): ViewResponse
     {
         return view('recipes.create', [
-            'meal' => Meal::get(['id', 'name_' . LANG()]),
+            'meal' => $meal_repo->all(),
         ]);
     }
 
@@ -68,7 +66,10 @@ class RecipesController extends Controller
             return back()->withError(trans('notifications.cant_use_script_tags'));
         }
 
-        $recipe = $this->createRecipe($request);
+        $recipe = user()->recipes()->create([
+            'title_' . LANG() => $request->title,
+            'slug' => str_slug($request->title) . '-' . time(),
+        ]);
 
         return redirect("/recipes/$recipe->slug/edit");
     }
@@ -117,13 +118,14 @@ class RecipesController extends Controller
 
     /**
      * @param string $slug
+     * @param \App\Repos\MealRepo $meal_repo
      * @return mixed
      */
-    public function edit(string $slug)
+    public function edit(string $slug, MealRepo $meal_repo)
     {
         $recipe = Recipe::whereSlug($slug)->first();
 
-        // Check for correct user
+        // Check for the correct user
         if (!user()->hasRecipe($recipe->id) || $recipe->isReady()) {
             return redirect('/recipes')->withError(
                 trans('recipes.cant_edit_ready_recipe')
@@ -132,7 +134,7 @@ class RecipesController extends Controller
 
         return view('recipes.edit', [
             'recipe' => $recipe,
-            'meal' => Meal::getWithCache(),
+            'meal' => $meal_repo->getWithCache(),
         ]);
     }
 

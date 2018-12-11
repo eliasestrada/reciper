@@ -48,18 +48,6 @@ trait RecipesControllerHelpers
 
     /**
      * @param object $request
-     * @return object
-     */
-    public function createRecipe($request)
-    {
-        return user()->recipes()->create([
-            'title_' . LANG() => $request->title,
-            'slug' => str_slug($request->title) . '-' . time(),
-        ]);
-    }
-
-    /**
-     * @param object $request
      * @param string $image_name
      * @param oblect $recipe
      * @return object
