@@ -15,8 +15,10 @@ class RecipesDuskTest extends DuskTestCase
     public function user_can_like_and_dislike_recipe(): void
     {
         $this->browse(function ($user) {
+            $recipe = create(Recipe::class);
+
             $user->loginAs(create_user())
-                ->visit('/recipes/morkov-po-koreyski')
+                ->visit("/recipes/{$recipe->slug}")
                 ->waitFor('._like-button')
                 ->assertSeeIn('._like-button span', 0)
                 ->click('._like-button')
@@ -29,16 +31,72 @@ class RecipesDuskTest extends DuskTestCase
      * @author Cho
      * @test
      */
-    public function user_can_add_recipe_to_favs(): void
+    public function user_can_add_recipe_to_favs_on_show_page(): void
     {
         $this->browse(function ($user) {
+            $recipe = create(Recipe::class);
+
             $user->loginAs(create_user())
-                ->visit('/recipes/morkov-po-koreyski')
+                ->visit("/recipes/{$recipe->slug}")
                 ->waitFor('._fav-button')
                 ->assertSeeIn('._fav-button span', 0)
                 ->click('._fav-button')
                 ->waitFor('._fav-button span')
                 ->assertSeeIn('._fav-button span', 1);
+        });
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function user_can_add_recipe_to_favs_on_recipes_index_page(): void
+    {
+        $this->browse(function ($user) {
+            $user->loginAs(create_user())
+                ->visit('/recipes')
+                ->waitFor('._fav-button:first-child')
+                ->assertSeeIn('._fav-button:first-child span', 0)
+                ->click('._fav-button:first-child')
+                ->waitFor('._fav-button:first-child span')
+                ->assertSeeIn('._fav-button:first-child span', 1);
+        });
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function user_can_add_recipe_to_favs_on_pages_home_page(): void
+    {
+        $this->browse(function ($user) {
+            $user->loginAs(create_user())
+                ->visit('/')
+                ->waitFor('._fav-button:first-child')
+                ->assertSeeIn('._fav-button:first-child span', 0)
+                ->click('._fav-button:first-child')
+                ->waitFor('._fav-button:first-child span')
+                ->assertSeeIn('._fav-button:first-child span', 1);
+        });
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function user_can_remove_recipe_from_favs_on_favorites_index_page(): void
+    {
+        $this->browse(function ($user) {
+            $auth = create_user();
+            $auth->favs()->create(['recipe_id' => create(Recipe::class)->id]);
+
+            $user->loginAs($auth)
+                ->visit('/favs')
+                ->waitFor('._fav-button')
+                ->assertSeeIn('._fav-button span', 1)
+                ->click('._fav-button')
+                ->waitFor('._fav-button span')
+                ->assertSeeIn('._fav-button span', 0);
         });
     }
 
