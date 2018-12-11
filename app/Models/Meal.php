@@ -44,14 +44,4 @@ class Meal extends Model
     {
         return $this->toArray()['name_' . LANG()];
     }
-
-    /**
-     * Selects common fields from db and caching them
-     */
-    public static function getWithCache()
-    {
-        return cache()->rememberForever('meal', function () {
-            return self::select('id', 'name_' . LANG() . ' as name')->get()->toArray();
-        });
-    }
 }

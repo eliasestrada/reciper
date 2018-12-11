@@ -3,7 +3,6 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Meal;
-use Illuminate\Support\Facades\Cache;
 use Tests\TestCase;
 
 class MealTest extends TestCase
@@ -27,21 +26,5 @@ class MealTest extends TestCase
     {
         $meal = make(Meal::class, ['name_' . LANG() => 'dinner']);
         $this->assertEquals('dinner', $meal->getName());
-    }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function getWithCache_method_returs_array_of_cached_meal_list()
-    {
-        cache()->forget('meal');
-        Meal::getWithCache();
-
-        $list = cache()->get('meal');
-        $this->assertCount(3, cache()->get('meal'));
-        $this->assertEquals(trans('home.breakfast'), $list[0]['name']);
-        $this->assertEquals(trans('home.lunch'), $list[1]['name']);
-        $this->assertEquals(trans('home.dinner'), $list[2]['name']);
     }
 }
