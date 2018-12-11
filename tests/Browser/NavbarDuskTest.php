@@ -84,4 +84,35 @@ class NavbarDuskTest extends DuskTestCase
             $this->assertNotNull($browser->element('#mobile-sidenav'));
         });
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_menu_appears_after_clicking_admin_button(): void
+    {
+        $this->browse(function ($user) {
+            $user->loginAs(create_user('admin'))
+                ->visit('/')
+                ->click('a[data-target=user-menu-dropdown]')
+                ->waitFor('#adminka-collapsible')
+                ->click('#adminka-collapsible > li')
+                ->assertSee(trans('approves.checklist'))
+                ->assertSee(trans('feedback.contact_us'));
+        });
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function admin_menu_is_invisible_for_simple_users(): void
+    {
+        $this->browse(function ($user) {
+            $user->loginAs(create_user())
+                ->visit('/')
+                ->click('a[data-target=user-menu-dropdown]')
+                ->assertDontSee(trans('messages.adminka'));
+        });
+    }
 }
