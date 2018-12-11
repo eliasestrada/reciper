@@ -17,6 +17,14 @@ class PhotoController extends Controller
     use PhotoControllerHelpers;
 
     /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Show settings photo page
      *
      * @return \Illuminate\View\View

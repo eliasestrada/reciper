@@ -12,6 +12,14 @@ use Illuminate\View\View;
 class UsersController extends Controller
 {
     /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show', 'store']);
+    }
+
+    /**
      * Show all users
      *
      * @return \Illuminate\View\View

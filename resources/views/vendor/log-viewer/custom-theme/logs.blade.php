@@ -58,7 +58,7 @@
                         </td>
                         <td class="p-0">
                             {{-- Delete button --}}
-                            <form action="{{ action('Master\LogsController@delete') }}" method="post" class="d-inline-block">
+                            <form action="{{ action('Master\LogsController@destroy') }}" method="post" class="d-inline-block">
                                 
                                 @csrf
                                 @method('delete')

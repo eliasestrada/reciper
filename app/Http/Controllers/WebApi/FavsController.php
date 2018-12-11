@@ -12,6 +12,14 @@ use Illuminate\View\View;
 class FavsController extends Controller
 {
     /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Show page with recipes of particular category
      *
      * @param int $category

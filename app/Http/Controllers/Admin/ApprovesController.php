@@ -12,6 +12,14 @@ use Illuminate\Http\Request;
 class ApprovesController extends Controller
 {
     /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
+    /**
      * Shows all recipes that need to be approved
      * by administration
      *

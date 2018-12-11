@@ -14,7 +14,7 @@ class LogsController extends LogViewerController
      *
      * @param \Illuminate\Http\RedirectRequest $request
      */
-    public function delete(Request $request): RedirectResponse
+    public function destroy(Request $request): RedirectResponse
     {
         $this->logViewer->delete(request('date'));
 

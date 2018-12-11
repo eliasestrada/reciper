@@ -5,17 +5,14 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Web APIs
-Route::middleware('auth')->namespace('WebApi')->group(function () {
+Route::namespace ('WebApi')->group(function () {
     Route::get('popularity-chart', 'StatisticsController@popularityChart');
     Route::get('favs/{category?}', 'FavsController@index');
     Route::post('favs/{recipe}', 'FavsController@store');
     Route::post('likes/{recipe}', 'LikeController@store');
 });
 
-// Statistics
-Route::middleware('auth')->group(function () {
-    Route::get('statistics', 'StatisticsController@index');
-});
+Route::get('statistics', 'StatisticsController@index');
 
 Route::prefix('users')->group(function () {
     Route::get('/', 'UsersController@index');
@@ -23,7 +20,7 @@ Route::prefix('users')->group(function () {
     Route::delete('delete/{id}', 'UsersController@destroy');
     Route::post('/', 'UsersController@store');
 
-    Route::prefix('other')->middleware('auth')->group(function () {
+    Route::prefix('other')->group(function () {
         Route::get('my-recipes', 'UsersController@my_recipes');
     });
 });
@@ -42,8 +39,8 @@ Route::resource('help', HelpController::class);
 Route::get('dashboard', 'DashboardController@index');
 
 // Settings ===========
-Route::prefix('settings')->middleware('auth')->namespace('Settings')->group(function () {
-    Route::view('/', 'settings.general.index');
+Route::prefix('settings')->namespace('Settings')->group(function () {
+    Route::view('/', 'settings.general.index')->middleware('auth');
     Route::get('general', 'GeneralController@index');
     Route::put('general', 'GeneralController@updateGeneral');
     Route::put('password', 'GeneralController@updatePassword');
@@ -59,7 +56,7 @@ Route::get('php/artisan/cache/{url_key}', 'ArtisanController@cache');
 Route::get('php/artisan/clear/{url_key}', 'ArtisanController@clear');
 
 // Admin ===========
-Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function () {
+Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('approves', 'ApprovesController@index');
     Route::get('approves/{recipe}', 'ApprovesController@show');
     Route::post('answer/approve/{recipe}', 'ApprovesController@approve');
@@ -68,8 +65,8 @@ Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function 
 });
 
 // Master ==========
-Route::prefix('master')->namespace('Master')->middleware('master')->group(function () {
-    Route::delete('log-viewer/logs/delete', 'LogsController@delete');
+Route::prefix('master')->namespace('Master')->group(function () {
+    Route::delete('log-viewer/logs/destroy', 'LogsController@destroy')->middleware('master');
     Route::resource('visitors', VisitorsController::class)->except(['edit']);
     Route::resource('manage-users', ManageUsersController::class)->except(['edit']);
     Route::resource('trash', TrashController::class)->only(['index', 'destroy', 'update']);

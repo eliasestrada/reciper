@@ -13,7 +13,15 @@ use Illuminate\View\View;
 class ManageUsersController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('master');
+    }
+
+    /**
+     * Display a listing of users
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\View\View
@@ -37,7 +45,7 @@ class ManageUsersController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource with user
      *
      * @param int $user
      * @return \Illuminate\View\View

@@ -11,6 +11,14 @@ use Illuminate\View\View;
 class TrashController extends Controller
 {
     /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('master');
+    }
+
+    /**
      * Show view with all trashed data
      *
      * @return \Illuminate\View\View

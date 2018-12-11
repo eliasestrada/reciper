@@ -12,6 +12,14 @@ use Illuminate\View\View;
 class FeedbackController extends Controller
 {
     /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('admin')->except(['store']);
+    }
+
+    /**
      * Show all reports and feedback
      * Mark user as he saw these messages
      *

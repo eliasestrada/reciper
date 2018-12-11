@@ -9,6 +9,14 @@ use Illuminate\View\View;
 class VisitorsController extends Controller
 {
     /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('master');
+    }
+
+    /**
      * Display page with all visitrors
      *
      * @return \Illuminate\View\View

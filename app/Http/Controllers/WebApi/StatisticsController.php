@@ -10,6 +10,14 @@ use Illuminate\Support\Collection;
 class StatisticsController extends Controller
 {
     /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Give respons with Chart.js array data
      *
      * @return \App\Http\Responses\Controllers\Api\StatisticsPopularityChartResponse

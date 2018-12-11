@@ -10,6 +10,14 @@ use Illuminate\Http\Response;
 class LikeController extends Controller
 {
     /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Add like to particular recipe
      *
      * @param \App\Models\Recipe $recipe

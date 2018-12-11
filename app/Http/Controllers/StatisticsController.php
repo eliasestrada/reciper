@@ -9,6 +9,14 @@ use Illuminate\View\View;
 class StatisticsController extends Controller
 {
     /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * @return \Illuminate\View\View
      */
     public function index(): View

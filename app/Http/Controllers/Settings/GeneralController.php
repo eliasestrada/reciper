@@ -15,6 +15,14 @@ use Illuminate\View\View;
 class GeneralController extends Controller
 {
     /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Show general settings page
      *
      * @return \Illuminate\View\View
