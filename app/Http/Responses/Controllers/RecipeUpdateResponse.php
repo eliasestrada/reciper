@@ -25,12 +25,17 @@ class RecipeUpdateResponse implements Responsable
         if ($this->recipe->isReady() && user()->hasRole('admin')) {
             event(new \App\Events\RecipeGotApproved($this->recipe));
 
-            return redirect('/users/other/my-recipes')->withSuccess(trans('recipes.recipe_published'));
+            return redirect('/users/other/my-recipes')->withSuccess(
+                trans('recipes.recipe_published')
+            );
         }
 
         if ($this->recipe->isReady()) {
             cache()->forget('unapproved_notif');
-            return redirect('/users/other/my-recipes')->withSuccess(trans('recipes.added_to_approving'));
+
+            return redirect('/users/other/my-recipes')->withSuccess(
+                trans('recipes.added_to_approving')
+            );
 
             // turned off
             //event(new RecipeIsReady($this->recipe));
@@ -40,6 +45,8 @@ class RecipeUpdateResponse implements Responsable
             return redirect("/recipes/{$this->recipe->slug}");
         }
 
-        return redirect("/recipes/{$this->recipe->slug}/edit")->withSuccess(trans('recipes.saved'));
+        return redirect("/recipes/{$this->recipe->slug}/edit")->withSuccess(
+            trans('recipes.saved')
+        );
     }
 }
