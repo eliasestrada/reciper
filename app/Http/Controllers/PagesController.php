@@ -39,7 +39,7 @@ class PagesController extends Controller
             // Searching for user is for admin only
             if (user() && user()->hasRole('admin') && is_numeric($request)) {
                 if (!is_null($result = $this->searchForUser($request))) {
-                    return redirect("/users/$result")->withSuccess(trans('users.user_found'));
+                    return redirect("/users/{$result}")->withSuccess(trans('users.user_found'));
                 } else {
                     return back()->withError(trans('users.user_not_found'));
                 }

@@ -84,8 +84,7 @@ class HelpController extends Controller
             'help_category_id' => request('category'),
         ]);
 
-        cache()->forget('help_list');
-        cache()->forget('help_categories');
+        $this->forgetCache();
 
         return redirect('/help')->withSuccess(
             trans('help.help_message_is_created')
@@ -122,8 +121,7 @@ class HelpController extends Controller
             'help_category_id' => request('category'),
         ]);
 
-        cache()->forget('help_list');
-        cache()->forget('help_categories');
+        $this->forgetCache();
 
         return redirect("/help/{$help->id}/edit")->withSuccess(
             trans('help.help_updated')
@@ -140,8 +138,7 @@ class HelpController extends Controller
     {
         $help->delete();
 
-        cache()->forget('help_list');
-        cache()->forget('help_categories');
+        $this->forgetCache();
         cache()->forget('trash_notif');
 
         return redirect('/help')->withSuccess(trans('help.help_deleted'));
@@ -169,5 +166,16 @@ class HelpController extends Controller
         return cache()->remember('help_categories', 10, function () {
             return HelpCategory::selectBasic()->get()->toArray();
         });
+    }
+
+    /**
+     * Method helper
+     *
+     * @return void
+     */
+    public function forgetCache(): void
+    {
+        cache()->forget('help_list');
+        cache()->forget('help_categories');
     }
 }
