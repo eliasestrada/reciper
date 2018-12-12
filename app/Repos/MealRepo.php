@@ -3,13 +3,13 @@
 namespace App\Repos;
 
 use App\Models\Meal;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Collection;
 
 class MealRepo
 {
     /**
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Support\Collection
      */
     public function all(): Collection
     {
