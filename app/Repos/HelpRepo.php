@@ -24,7 +24,7 @@ class HelpRepo
 
     /**
      * @param \App\Models\Help $help
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\HelpRequest $request
      * @return void
      */
     public static function update(Help $help, HelpRequest $request): void
