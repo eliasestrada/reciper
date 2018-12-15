@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Repos;
+namespace Tests\Feature\Repos;
 
 use App\Models\Meal;
 use App\Repos\MealRepo;
