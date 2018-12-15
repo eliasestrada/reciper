@@ -28,8 +28,13 @@ class MealRepo
      */
     public function getWithCache(): array
     {
-        return cache()->rememberForever('meal', function () {
-            return Meal::select('id', 'name_' . LANG() . ' as name')->get()->toArray();
-        });
+        try {
+            return cache()->rememberForever('meal', function () {
+                return Meal::select('id', 'name_' . LANG() . ' as name')->get()->toArray();
+            });
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
+            return collect();
+        }
     }
 }
