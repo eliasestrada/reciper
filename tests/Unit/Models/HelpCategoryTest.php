@@ -28,17 +28,4 @@ class HelpCategoryTest extends TestCase
         $help = make(HelpCategory::class);
         $this->assertEquals($help->getTitle(), $help->toArray()['title_' . LANG()]);
     }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function selectBasic_scope_method_returns_Id_Icon_and_Title(): void
-    {
-        $category = HelpCategory::selectBasic()->first()->toArray();
-
-        array_map(function ($key) use ($category) {
-            $this->assertArrayHasKey($key, $category);
-        }, ['id', 'title', 'icon']);
-    }
 }

@@ -36,14 +36,4 @@ class HelpCategory extends Model
     {
         return $this->toArray()['title_' . LANG()];
     }
-
-    /**
-     * Scope that select most common columns from db
-     *
-     * @param $query
-     */
-    public function scopeSelectBasic($query)
-    {
-        return $query->select('id', 'title_' . LANG() . ' as title', 'icon');
-    }
 }
