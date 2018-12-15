@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\DocumentsRequest;
+use App\Http\Requests\DocumentRequest;
 use App\Models\Document;
+use App\Repos\DocumentRepo;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -44,23 +45,19 @@ class DocumentsController extends Controller
     /**
      * Create document in database
      *
-     * @param  \App\Http\Requests\DocumentsRequest  $request
+     * @param  \App\Http\Requests\DocumentRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(DocumentsRequest $request): RedirectResponse
+    public function store(DocumentRequest $request): RedirectResponse
     {
-        $doc = Document::create([
-            'title_' . LANG() => $request->title,
-            'text_' . LANG() => $request->text,
-        ]);
-
-        return redirect("/documents/$doc->id/edit");
+        $doc = DocumentRepo::create($request);
+        return redirect("/documents/{$doc->id}/edit");
     }
 
     /**
      * Show single document page
      *
-     * @param \App\Models\Documetn $document
+     * @param \App\Models\Document $document
      * @return mixed
      */
     public function show(Document $document)
@@ -89,13 +86,9 @@ class DocumentsController extends Controller
      * @param \App\Models\Document $document
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(DocumentsRequest $request, Document $document): RedirectResponse
+    public function update(DocumentRequest $request, Document $document): RedirectResponse
     {
-        $document->update([
-            'title_' . LANG() => $request->title,
-            'text_' . LANG() => $request->text,
-            'ready_' . LANG() => $request->ready == 1 || $document->id == 1 ? 1 : 0,
-        ]);
+        DocumentRepo::update($request, $document);
 
         if ($request->has('view')) {
             return redirect("/documents/$document->id");
@@ -118,13 +111,6 @@ class DocumentsController extends Controller
      */
     public function destroy(int $id): RedirectResponse
     {
-        // Check for correct user
-        if (!user()->hasRole('master')) {
-            return redirect('/')->withError(
-                trans('documents.only_master_can_delete')
-            );
-        }
-
         if ($id == 1) {
             return redirect('/documents/create')->withError(
                 trans('documents.cant_delete_first_doc')
