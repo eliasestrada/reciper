@@ -24,8 +24,6 @@ class HelpIndexPageTest extends TestCase
      */
     public function queries_are_cached_when_someone_visits_the_page(): void
     {
-        $this->assertNull(cache()->get('help_list'));
-        $this->assertNull(cache()->get('help_categories'));
         $this->get('/help');
         $this->assertNotNull(cache()->pull('help_list'));
         $this->assertNotNull(cache()->pull('help_categories'));

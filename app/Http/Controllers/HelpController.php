@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\HelpRequest;
 use App\Models\Help;
 use App\Models\HelpCategory;
+use App\Repos\HelpRepo;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class HelpController extends Controller
     {
         try {
             return view('help.index', [
-                'help_list' => $this->getHelpList(),
+                'help_list' => HelpRepo::getCache(),
                 'help_categories' => $this->getHelpCategories(),
             ]);
         } catch (QueryException $e) {
@@ -47,7 +48,7 @@ class HelpController extends Controller
         try {
             return view('help.show', [
                 'help' => $help,
-                'help_list' => $this->getHelpList(),
+                'help_list' => HelpRepo::getCache(),
                 'help_categories' => $this->getHelpCategories(),
             ]);
         } catch (QueryException $e) {
@@ -78,11 +79,7 @@ class HelpController extends Controller
      */
     public function store(HelpRequest $request): RedirectResponse
     {
-        Help::create([
-            'title_' . LANG() => request('title'),
-            'text_' . LANG() => request('text'),
-            'help_category_id' => request('category'),
-        ]);
+        HelpRepo::create($request);
 
         $this->forgetCache();
 
@@ -115,11 +112,7 @@ class HelpController extends Controller
      */
     public function update(HelpRequest $request, Help $help): RedirectResponse
     {
-        $help->update([
-            'title_' . LANG() => request('title'),
-            'text_' . LANG() => request('text'),
-            'help_category_id' => request('category'),
-        ]);
+        HelpRepo::update($help, $request);
 
         $this->forgetCache();
 
@@ -142,18 +135,6 @@ class HelpController extends Controller
         cache()->forget('trash_notif');
 
         return redirect('/help')->withSuccess(trans('help.help_deleted'));
-    }
-
-    /**
-     * Helper that caches help list for 10 minutes
-     *
-     * @return array
-     */
-    public function getHelpList(): array
-    {
-        return cache()->remember('help_list', 10, function () {
-            return Help::selectBasic()->orderBy('title')->get()->toArray();
-        });
     }
 
     /**
