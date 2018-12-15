@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\HelpRequest;
 use App\Models\Help;
 use App\Models\HelpCategory;
+use App\Repos\HelpCategoryRepo;
 use App\Repos\HelpRepo;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
@@ -29,7 +30,7 @@ class HelpController extends Controller
         try {
             return view('help.index', [
                 'help_list' => HelpRepo::getCache(),
-                'help_categories' => $this->getHelpCategories(),
+                'help_categories' => HelpCategoryRepo::getCache(),
             ]);
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
@@ -49,7 +50,7 @@ class HelpController extends Controller
             return view('help.show', [
                 'help' => $help,
                 'help_list' => HelpRepo::getCache(),
-                'help_categories' => $this->getHelpCategories(),
+                'help_categories' => HelpCategoryRepo::getCache(),
             ]);
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
@@ -135,18 +136,6 @@ class HelpController extends Controller
         cache()->forget('trash_notif');
 
         return redirect('/help')->withSuccess(trans('help.help_deleted'));
-    }
-
-    /**
-     * Helper that caches help categories for 10 minutes
-     *
-     * @return array
-     */
-    public function getHelpCategories(): array
-    {
-        return cache()->remember('help_categories', 10, function () {
-            return HelpCategory::selectBasic()->get()->toArray();
-        });
     }
 
     /**
