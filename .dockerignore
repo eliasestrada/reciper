@@ -1,0 +1,13 @@
+/reciper/node_modules
+/reciper/public/hot
+/reciper/public/storage
+/reciper/storage/*.key
+/reciper/vendor
+/reciper/.idea
+/reciper/.vscode
+/reciper/.vagrant
+/reciper/Homestead.json
+/reciper/Homestead.yaml
+/reciper/npm-debug.log
+/reciper/yarn-error.log
+/reciper/.env

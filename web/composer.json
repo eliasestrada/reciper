@@ -10,7 +10,6 @@
         "arcanedev/support": "^4.3.0",
         "ckeditor/ckeditor": "4.*",
         "doctrine/dbal": "^2.6",
-        "eseath/sypexgeo": "^1.1",
         "fideloper/proxy": "~4.0",
         "intervention/image": "^2.4",
         "laravel/dusk": "^4.0",
