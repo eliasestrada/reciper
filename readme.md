@@ -1,14 +1,12 @@
-<h2>Reciper</h2>
+![reciper](https://bitbucket.org/serhii_cho/reciper/raw/7e56dd00a6711e6e7cedad95f2cb4f3f85cd35ed/storage/app/public/big/recipes/default.jpg)
 
-<h4>Using</h4>
-<ol>
-	<li>PHP Laravel framework</li>
-	<li>Vue.js</li>
-</ol>
+## Using
+* [Laravel - PHP framework](https://github.com/laravel/laravel)
+* [Vue.js - JavaScript framework](https://github.com/vuejs/vue)
+* [Materialize - CSS framework](https://materializecss.com)
 
-<h4>Laravel Packages</h4>
-<ol>
-	<li><a href="https://github.com/laravel/dusk">laravel/dusk</a></li>
-	<li><a href="http://image.intervention.io/">Intervention/image</a></li>
-	<li><a href="https://github.com/ARCANEDEV/LogViewer">ARCANEDEV/LogViewer</a></li>
-</ol>
+## Laravel Packages
+* [Intervention/image](http://image.intervention.io/)
+* [ARCANEDEV/LogViewer](https://github.com/ARCANEDEV/LogViewer)
+* [laravel/dusk](https://github.com/laravel/dusk)
+* [TinyMCE Editor](https://www.tinymce.com/)
