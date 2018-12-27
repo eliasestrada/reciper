@@ -11,7 +11,7 @@ class HelpShowPageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function page_accessible(): void
+    public function page_is_accessible(): void
     {
         $this->get('/help/1')->assertOk()->assertViewIs('help.show');
     }
