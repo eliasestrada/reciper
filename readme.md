@@ -1,4 +1,4 @@
-![reciper](https://bitbucket.org/serhii_cho/reciper/raw/7e56dd00a6711e6e7cedad95f2cb4f3f85cd35ed/storage/app/public/big/recipes/default.jpg)
+![reciper](https://raw.githubusercontent.com/SerhiiCho/reciper/master/storage/app/public/big/recipes/default.jpg)
 
 ## Using
 * [Laravel - PHP framework](https://github.com/laravel/laravel)
