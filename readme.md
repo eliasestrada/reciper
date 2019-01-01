@@ -4,15 +4,19 @@
 
 It's a free web application that unites people who love cooking and charing their recipes with other people. People can register and have their own account where they can publish cooking recipes, and earn experience and popularity points for different actions. Such as publishing recipe, likes, views and starts that they receive from other users. Every register user also has free access to the statistic page, where they can watch stats. For example chart (chart.js with vue.js) with data that shows how many likes, views and stars they received in particular month and general statistic.
 
-## Technologies
+##### Technologies
 
-* [Laravel - PHP framework](https://github.com/laravel/laravel)
-* [Vue.js - JavaScript framework](https://github.com/vuejs/vue)
-* [Materialize - CSS framework](https://materializecss.com)
-* [Intervention/image](http://image.intervention.io/)
-* [ARCANEDEV/LogViewer](https://github.com/ARCANEDEV/LogViewer)
-* [laravel/dusk](https://github.com/laravel/dusk)
-* [TinyMCE Editor](https://www.tinymce.com/)
+* [PHP](http://php.net/)
+* [Redis](https://redis.io/)
+* [MySQL](https://www.mysql.com/)
+* [JavaScript](https://www.javascript.com/)
+* [Docker](https://www.docker.com/)
+
+##### Frameworks
+
+* [laravel/laravel](https://github.com/laravel/laravel) | PHP framework
+* [vuejs/vue](https://github.com/vuejs/vue) | JavaScript framework
+* [Dogfalo/materialize](https://materializecss.com) | CSS framework
 
 ## Get started (without Docker)
 
