@@ -1,9 +1,0 @@
-big/recipes/*
-big/users/*
-small/recipes/*
-small/users/*
-
-!big/recipes/default.jpg
-!big/users/default.jpg
-!small/recipes/default.jpg
-!small/users/default.jpg
