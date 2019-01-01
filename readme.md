@@ -10,3 +10,7 @@
 * [ARCANEDEV/LogViewer](https://github.com/ARCANEDEV/LogViewer)
 * [laravel/dusk](https://github.com/laravel/dusk)
 * [TinyMCE Editor](https://www.tinymce.com/)
+
+## Get started with Docker
+1. `docker-compose up -d` and wait untill it's done
+2. `docker-compose exec server /start.sh` *(go to localhost)*
