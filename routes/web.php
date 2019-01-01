@@ -51,10 +51,6 @@ Route::prefix('settings')->namespace('Settings')->group(function () {
     Route::delete('photo', 'PhotoController@destroy');
 });
 
-// Artisan commands =======
-Route::get('php/artisan/cache/{url_key}', 'ArtisanController@cache');
-Route::get('php/artisan/clear/{url_key}', 'ArtisanController@clear');
-
 // Admin ===========
 Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('approves', 'ApprovesController@index');
