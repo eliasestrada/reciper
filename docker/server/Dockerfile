@@ -3,6 +3,10 @@ FROM php:7.3-apache
 RUN apt-get update \
     && apt-get install -y \
         apt-utils \
+        libpng-dev \
+        libjpeg-dev \
+        libjpeg62-turbo-dev \
+        libfreetype6-dev \
         build-essential \
         mysql-client \
         libbz2-dev \
@@ -28,6 +32,9 @@ RUN apt-get update \
         pcntl \
         bcmath \
     && a2enmod rewrite \
-    && service apache2 restart
+    && service apache2 restart \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd
 
 COPY ./start.sh /
+COPY ./.bashrc /

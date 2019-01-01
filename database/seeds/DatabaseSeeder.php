@@ -17,10 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersSeeder::class);
         $this->call(DocumentsSeeder::class);
         $this->call(MealSeeder::class);
-
-        if (app()->env !== 'testing') {
-            $this->call(HelpCategoriesSeeder::class);
-            $this->call(HelpSeeder::class);
-        }
+        $this->call(HelpCategoriesSeeder::class);
+        $this->call(HelpSeeder::class);
     }
 }
