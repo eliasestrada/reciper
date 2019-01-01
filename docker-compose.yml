@@ -1,0 +1,40 @@
+version: '3'
+
+services: 
+  server:
+    build: ./docker/server
+    environment: 
+      - APACHE_RUN_USER=#1000
+    volumes: 
+      - ./:/var/www
+      - ./docker/server/sites-available:/etc/apache2/sites-available
+    ports: 
+      - 80:80
+    working_dir: /var/www
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: reciper
+    volumes:
+      - ./docker/db:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 5080:8080
+
+  composer:
+    image: composer
+    volumes:
+      - ./:/var/www
+    working_dir: /var/www
+    command: composer install
+
+  cache:
+    image: redis:5.0
+    ports: 
+      - 6379:6379
