@@ -1,6 +1,6 @@
 version: '3'
 
-services: 
+services:
   server:
     build: ./docker/server
     environment: 
@@ -14,27 +14,28 @@ services:
 
   db:
     image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: example
+      MYSQL_ROOT_PASSWORD: 111111
       MYSQL_DATABASE: reciper
-    volumes:
+    volumes: 
       - ./docker/db:/var/lib/mysql
 
   adminer:
     image: adminer
     restart: always
     ports:
-      - 5080:8080
+      - 5000:8080
 
   composer:
     image: composer
-    volumes:
+    volumes: 
       - ./:/var/www
     working_dir: /var/www
-    command: composer install
+    command: composer install --ignore-platform-reqs
 
   cache:
     image: redis:5.0
-    ports: 
+    ports:
       - 6379:6379
