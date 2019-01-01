@@ -14,9 +14,6 @@ npm-debug.log
 yarn-error.log
 .env
 dump.rdb
-public/js/app.js
-public/vendor/js/
-public/css/app.css
-public/mix-manifest.json
 tags
 /.phpcomplete_extended
+/public/mix-manifest.json
