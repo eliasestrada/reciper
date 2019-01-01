@@ -31,4 +31,3 @@ RUN apt-get update \
     && service apache2 restart
 
 COPY ./start.sh /
-COPY ./.bashrc ~/.bashrc
