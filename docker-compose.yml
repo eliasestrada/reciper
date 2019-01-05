@@ -29,6 +29,13 @@ services:
     working_dir: /var/www
     command: composer install --ignore-platform-reqs
 
+  node:
+    image: node:8-alpine
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    command: sh -c "npm rebuild node-sass && npm install && npm run dev"
+
   cache:
     image: redis:5.0
     ports:

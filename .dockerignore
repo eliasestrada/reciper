@@ -2,7 +2,9 @@ public/hot
 storage/*.key
 .idea
 .vscode
+.git
 .vagrant
+node_modules
 Homestead.json
 Homestead.yaml
 npm-debug.log
