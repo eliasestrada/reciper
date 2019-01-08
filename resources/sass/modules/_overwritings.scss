@@ -4,7 +4,7 @@
 
 .divider {
     .dark-theme & {
-        background: lighten(colorDark('main'), 17%);
+        background: lighten(colorDark(main), 17%);
     }
 }
 
@@ -49,14 +49,14 @@ nav .input-field input[type='search'] {
 
 .card {
     .dark-theme & {
-        background: colorDark('main-light');
+        background: colorDark(main-light);
 
         .card-title {
             color: #c8c8c8;
         }
         .card-reveal,
         .card-panel {
-            background: colorDark('main-light');
+            background: colorDark(main-light);
         }
         .card-time {
             color: #c8c8c8;

@@ -19,7 +19,7 @@
     }
 
     .dark-theme & {
-        background: lighten(colorDark('main'), 15%);
+        background: lighten(colorDark(main), 15%);
         color: #ebebeb;
 
         &.active {

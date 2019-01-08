@@ -1,7 +1,7 @@
 .main-navbar {
     background: color(main);
     .dark-theme & {
-        background: colorDark('main-light');
+        background: colorDark(main-light);
     }
 }
 
@@ -30,7 +30,7 @@
     border-left: solid 1px darken(color(main), 6%);
 
     .dark-theme & {
-        border-color: lighten(colorDark('main'), 13%);
+        border-color: lighten(colorDark(main), 13%);
     }
 }
 
@@ -44,7 +44,7 @@
     background: color(main-hover);
 
     .dark-theme & {
-        background: darken(colorDark('main-light'), 5%);
+        background: darken(colorDark(main-light), 5%);
     }
 }
 
@@ -57,7 +57,7 @@
     border-bottom: solid 1px darken(color(paper), 2%);
 
     .dark-theme & {
-        border-color: lighten(colorDark('main'), 15%);
+        border-color: lighten(colorDark(main), 15%);
     }
 }
 

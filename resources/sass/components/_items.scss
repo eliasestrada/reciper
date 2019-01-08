@@ -17,7 +17,7 @@
         border-left: solid 3px color(main);
         
         .dark-theme & {
-            background-color: colorDark('main-light');
+            background-color: colorDark(main-light);
         }
 
         &:hover {
@@ -25,7 +25,7 @@
             background-color: #ddd;
 
             .dark-theme & {
-                background-color: colorDark('main-light');
+                background-color: colorDark(main-light);
             }
         }
     }
@@ -39,7 +39,7 @@
         border-bottom: solid 6px #fff;
 
         .dark-theme & {
-            border-color: lighten(colorDark('main'), 17%);
+            border-color: lighten(colorDark(main), 17%);
         }
         img {
             width: 100%;

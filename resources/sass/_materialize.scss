@@ -28,7 +28,7 @@
     background-color: color(paper);
 
     .dark-theme & {
-        background-color: colorDark('main-light');
+        background-color: colorDark(main-light);
     }
 }
 
@@ -36,7 +36,7 @@
     background-color: color(paper-dark) !important;
 
     .dark-theme & {
-        background: lighten(colorDark('main'), 4%) !important;
+        background: lighten(colorDark(main), 4%) !important;
     }
 }
 
@@ -246,7 +246,7 @@ input:-webkit-autofill {
 
     .dark-theme & {
         -webkit-text-fill-color: #dbdbdb !important;
-        -webkit-box-shadow: 0 0 0px 1000px colorDark('main') inset !important;
+        -webkit-box-shadow: 0 0 0px 1000px colorDark(main) inset !important;
     }
 }
 
@@ -728,7 +728,7 @@ table thead {
     background: darken(color(main-light), 5%);
 
     .dark-theme & {
-        background: darken(colorDark('main'), 4%);
+        background: darken(colorDark(main), 4%);
     }
 }
 
@@ -747,7 +747,7 @@ table.striped>tbody>tr:nth-child(odd) {
     background-color: color(paper-dark);
 
     .dark-theme & {
-        background-color: lighten(colorDark('main'), 3%);
+        background-color: lighten(colorDark(main), 3%);
     }
 }
 
@@ -764,7 +764,7 @@ table.highlight>tbody>tr:hover {
     background-color: color(main-light);
 
     .dark-theme & {
-        background-color: colorDark('main-light');
+        background-color: colorDark(main-light);
     }
 }
 
@@ -777,7 +777,7 @@ tr {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
     .dark-theme & {
-        border-bottom-color: colorDark('main-light');
+        border-bottom-color: colorDark(main-light);
     }
 }
 
@@ -850,7 +850,7 @@ th {
         border-right: 1px solid rgba(0, 0, 0, 0.12);
 
         .dark-theme & {
-            background-color: colorDark('main-light');
+            background-color: colorDark(main-light);
         }
     }
 }
@@ -863,7 +863,7 @@ th {
     position: relative;
 
     .dark-theme & {
-        border-color: lighten(colorDark('main'), 13%);
+        border-color: lighten(colorDark(main), 13%);
     }
 }
 
@@ -875,8 +875,8 @@ th {
     border-bottom: 1px solid color(main-light);
 
     .dark-theme & {
-        border-color: lighten(colorDark('main'), 13%);
-        background-color: colorDark('main-light');
+        border-color: lighten(colorDark(main), 13%);
+        background-color: colorDark(main-light);
     }
 }
 
@@ -928,7 +928,7 @@ th {
     background-color: color(main-light);
 
     .dark-theme & {
-        background-color: lighten(colorDark('main'), 15%);
+        background-color: lighten(colorDark(main), 15%);
     }
 }
 
@@ -948,7 +948,7 @@ th {
     background-color: #ddd;
 
     .dark-theme & {
-        background-color: colorDark('main-light');
+        background-color: colorDark(main-light);
     }
 }
 
@@ -2846,7 +2846,7 @@ small {
     white-space: nowrap;
 
     .dark-theme & {
-        background-color: colorDark('main-light');
+        background-color: colorDark(main-light);
     }
 }
 
@@ -2883,7 +2883,7 @@ small {
     outline: none;
 
     .dark-theme & {
-        background-color: lighten(colorDark('main'), 4%);
+        background-color: lighten(colorDark(main), 4%);
     }
 }
 
@@ -2894,7 +2894,7 @@ small {
 
     .dark-theme & {
         color: color(main-light);
-        background-color: lighten(colorDark('main'), 4%);
+        background-color: lighten(colorDark(main), 4%);
     }
 }
 
@@ -3008,7 +3008,7 @@ small {
     cursor: default;
 
     .dark-theme & {
-        background-color: lighten(colorDark('main'), 17%) !important;
+        background-color: lighten(colorDark(main), 17%) !important;
     }
 }
 
@@ -3389,8 +3389,8 @@ button.btn-floating {
     transform-origin: 0 0;
 
     .dark-theme & {
-        background-color: colorDark('main-light');
-        border-color: lighten(colorDark('main'), 12%);
+        background-color: colorDark(main-light);
+        border-color: lighten(colorDark(main), 12%);
     }
 }
 
@@ -3417,7 +3417,7 @@ button.btn-floating {
             background-color: color(main-light);
 
             .dark-theme & {
-                background-color: colorDark('main');
+                background-color: colorDark(main);
             }
         }
         &:focus {
@@ -3425,7 +3425,7 @@ button.btn-floating {
             background-color: color(main-light);
 
             .dark-theme & {
-                background-color: colorDark('main');
+                background-color: colorDark(main);
             }
         }
     }
@@ -3608,7 +3608,7 @@ button.btn-floating {
     will-change: top, opacity;
 
     .dark-theme & {
-        background-color: colorDark('main-light');
+        background-color: colorDark(main-light);
     }
 }
 
@@ -3670,7 +3670,7 @@ button.btn-floating {
     margin: 0.5rem 0 1rem 0;
 
     .dark-theme & {
-        border-color: colorDark('main-light');
+        border-color: colorDark(main-light);
     }
 }
 
@@ -3687,8 +3687,8 @@ button.btn-floating {
     border-bottom: 1px solid #ddd;
 
     .dark-theme & {
-        background-color: colorDark('main-light');
-        border-bottom-color: lighten(colorDark('main'), 15%);
+        background-color: colorDark(main-light);
+        border-bottom-color: lighten(colorDark(main), 15%);
     }
 }
 
@@ -3708,7 +3708,7 @@ button.btn-floating {
     padding: 2rem;
 
     .dark-theme & {
-        border-bottom-color: colorDark('main');
+        border-bottom-color: colorDark(main);
     }
 }
 
@@ -3822,7 +3822,7 @@ textarea.materialize-textarea {
 
     .dark-theme & {
         color: #a5a5a5;
-        border-bottom-color: lighten(colorDark('main'), 25%);
+        border-bottom-color: lighten(colorDark(main), 25%);
     }
 }
 
@@ -3917,7 +3917,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
     .dark-theme & {
         color: #cfcfcf;
-        border-bottom-color: lighten(colorDark('main'), 30%);
+        border-bottom-color: lighten(colorDark(main), 30%);
     }
 }
 
@@ -5134,7 +5134,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
     transform: translateX(-105%);
 
     .dark-theme & {
-        background-color: colorDark('main');
+        background-color: colorDark(main);
     }
 }
 
@@ -5161,7 +5161,7 @@ input[type=range].focused:focus:not(.active)::-ms-thumb {
     border-radius: 5px;
 
     .dark-theme & {
-        background-color: colorDark('main-light');
+        background-color: colorDark(main-light);
     }
 
     i {

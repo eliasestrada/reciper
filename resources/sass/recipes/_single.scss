@@ -67,7 +67,7 @@
         line-height: 2.4;
 
         .dark-theme & {
-            background: colorDark('main-light');
+            background: colorDark(main-light);
         }
 
         li {
@@ -81,7 +81,7 @@
             }
 
             .dark-theme & {
-                border-bottom-color: lighten(colorDark('main'), 17%);
+                border-bottom-color: lighten(colorDark(main), 17%);
 
                 &:hover {
                     background: rgba(0, 0, 0, .2);
@@ -111,7 +111,7 @@
             }
 
             .dark-theme & {
-                border-bottom-color: lighten(colorDark('main'), 17%);
+                border-bottom-color: lighten(colorDark(main), 17%);
 
                 &:hover {
                     background: rgba(0,0,0,.2);
