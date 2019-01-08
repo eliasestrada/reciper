@@ -1,12 +1,12 @@
 ![reciper](https://github.com/SerhiiCho/reciper/blob/master/storage/app/public/other/wallpaper.jpg?raw=true)
 
-## About
+# About
 
 ##### What is it?
 
 It's a free web application that unites people who love cooking and charing their recipes with other people. People can register and have their own account where they can publish cooking recipes, and earn experience and popularity points for different actions. Such as publishing recipe, likes, views and starts that they receive from other users. Every register user also has free access to the statistic page, where they can watch stats. For example chart (chart.js with vue.js) with data that shows how many likes, views and stars they received in particular month and general statistic.
 
-## Languages
+# Languages
 
 ##### Where we at?
 
@@ -16,13 +16,11 @@ For this moment, the application fully supports Russian language and will be sup
 
 All Russian translation files are in `resources/lang/ru` folder, they will be copied to `resources/lang/en` folder and translated to English in a future.
 
-
 ##### Database tables
 
 The idea is that depending on what language is currently selected, user or visitor sees materials with chosen language. I have some duplicate fields in database like *title_ru* and *title_en*, *text_ru* and *text_en* etc.. And depending on what language is selected it shows needed fields. Also any author of the recipe will be able to translate his or her recipe from Russian to English or vice versa.
 
-
-## Get started
+# Get started
 
 ##### For non docker people
 
@@ -43,7 +41,7 @@ The idea is that depending on what language is currently selected, user or visit
 2. `docker-compose up -d` and wait untill it's done
 3. `docker-compose exec server /start.sh` *(go to localhost)*
 
-## Editional information
+# Editional information
 
 ##### Used technologies
 
