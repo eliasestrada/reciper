@@ -122,7 +122,7 @@
 
                                 {{-- Telescope --}}
                                 <li>
-                                    <a href="telescope/requests" title="Telescope">
+                                    <a href="/telescope/requests" title="Telescope">
                                         <i class="fas fa-star-and-crescent fa-15x left"></i>
                                         Telescope
                                     </a>
