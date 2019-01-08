@@ -33,9 +33,11 @@ class WipeCommand extends Command
      */
     public function handle()
     {
+        cache()->flush();
+        session()->flush();
+
         cookie()->forget('r_rotsiv');
         cookie()->forget('r_ekirts');
-        session()->flush();
 
         $this->call('cache:clear');
         $this->call('route:clear');

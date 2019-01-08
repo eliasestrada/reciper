@@ -40,7 +40,7 @@ if (chartjs == 1) {
 
 if (server == 1) {
     mix.browserSync({
-        proxy: 'localhost:8000',
+        proxy: 'server',
         files: ['public/css/*.css', 'public/js/*.js'],
         notify: false,
     });
