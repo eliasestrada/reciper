@@ -24,22 +24,24 @@ The idea is that depending on what language is currently selected, user or visit
 
 ##### For non docker people
 
-1. Clone and enter downloaded folder
-2. `cp .env.example .env` copy the *env.example* and create *.env*
-3. Open just created *.env* file and fill database credentials
-4. Create database with the name that you filled in *.env* file in DB_DATABASE field
-5. `composer install` to install all PHP packages
-6. `php artisan key:generate` to generate laravel app key
-7. `php artisan wipe`, migrate all migrations and seed the database
-8. `php artisan storage:link`, create a link in public folder to storage
-9. `php artisan serve` to start a server *(go to localhost:8000)*
-10. `vendor/bin/phpunit` make sure tests are green
+* Clone and enter downloaded folder
+* `cp .env.example .env` copy the *env.example* and create *.env*
+* Open just created *.env* file and fill database credentials
+* Create database with the name that you filled in *.env* file in DB_DATABASE field
+* `composer install` to install all PHP packages
+* `npm install` to install node modules
+* `npm run prod` to compile sass and vue files
+* `php artisan key:generate` to generate laravel app key
+* `php artisan wipe`, migrate all migrations and seed the database
+* `php artisan storage:link`, create a link in public folder to storage
+* `php artisan serve` to start a server *(go to localhost:8000)*
+*. `vendor/bin/phpunit` make sure tests are green
 
 ##### For docker people
 
-1. Clone and enter downloaded folder
-2. `docker-compose up -d` and wait untill it's done
-3. `docker-compose exec server /start.sh` *(go to localhost)*
+* Clone and enter downloaded folder
+* `docker-compose up -d` and wait untill it's done
+* `docker-compose exec server /start.sh` *(go to localhost)*
 
 # Editional information
 
