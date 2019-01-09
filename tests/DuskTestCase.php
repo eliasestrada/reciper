@@ -5,7 +5,6 @@ namespace Tests;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
-use Illuminate\Support\Facades\Artisan;
 use Laravel\Dusk\TestCase as BaseTestCase;
 
 abstract class DuskTestCase extends BaseTestCase
@@ -17,8 +16,8 @@ abstract class DuskTestCase extends BaseTestCase
      */
     public function tearDown(): void
     {
-        $this->artisan('migrate:fresh');
-        $this->artisan('db:seed');
+        // $this->artisan('migrate:fresh');
+        // $this->artisan('db:seed');
         parent::tearDown();
     }
 
@@ -46,7 +45,7 @@ abstract class DuskTestCase extends BaseTestCase
         ]);
 
         return RemoteWebDriver::create(
-            'http://localhost:9515',
+            'http://selenium-hub:4444/dev/shm',
             DesiredCapabilities::chrome()->setCapability(
                 ChromeOptions::CAPABILITY, $options
             )
