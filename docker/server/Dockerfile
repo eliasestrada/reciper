@@ -23,9 +23,11 @@ RUN apt-get update \
         gnupg \
         zip \
         vim \
+        \
 ########## Apache2 enable mods ##########
     && a2enmod rewrite \
     && sevice apache2 restart \
+    \
 ########## Install php extentions ##########
     && docker-php-ext-install -j$(nproc) \
         pdo_mysql \
@@ -34,11 +36,13 @@ RUN apt-get update \
         zip \
         pcntl \
         bcmath \
+        \
 ########## Configure php extentions ##########
     && docker-php-ext-configure \
         gd \
         --with-freetype-dir=/usr/include/ \
         --with-jpeg-dir=/usr/include/ \
+        \
 ########## Add aliases to a .bashrc file ##########
     && echo 'alias phpunit="vendor/bin/phpunit"' >> ~/.bashrc \
     && echo 'alias pa="php artisan"' >> ~/.bashrc \
