@@ -39,6 +39,6 @@
         <env name="QUEUE_DRIVER" value="sync"/>
     </php>
     <logging>
-        <log type="coverage-html" target="./xdebug" lowUpperBound="50" highLowerBound="80"/>
+        <!-- <log type="coverage-html" target="./xdebug" lowUpperBound="50" highLowerBound="80"/> -->
     </logging>
 </phpunit>

@@ -286,6 +286,7 @@ input:-webkit-autofill {
 
 .dark-theme input:-webkit-autofill {
   -webkit-text-fill-color: #dbdbdb !important;
+  box-shadow: 0 0 0px 1000px #0e141a inset !important;
   -webkit-box-shadow: 0 0 0px 1000px #0e141a inset !important;
 }
 
@@ -629,7 +630,6 @@ video.responsive-video {
 .breadcrumb i,
 .breadcrumb [class^="mdi-"],
 .breadcrumb [class*="mdi-"] {
-  display: inline-block;
   float: left;
   font-size: 24px;
 }
@@ -3624,6 +3624,7 @@ button.btn-floating {
   height: 2.5em;
   line-height: 2.5em;
   border-radius: 50%;
+  mask-image: none;
   -webkit-mask-image: none;
 }
 
@@ -4676,10 +4677,6 @@ textarea.materialize-textarea {
   position: absolute;
   opacity: 0;
   pointer-events: none;
-}
-
-[type="checkbox"] {
-  /* checkbox aspect */
 }
 
 [type="checkbox"] + span:not(.lever) {
