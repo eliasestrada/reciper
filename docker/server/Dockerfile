@@ -49,4 +49,3 @@ RUN apt-get update \
 
 ########## Supervisor ##########
 COPY ./laravel-worker.conf /etc/supervisor/conf.d/
-RUN supervisorctl update && supervisorctl start laravel-worker:*
