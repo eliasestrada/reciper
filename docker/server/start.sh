@@ -19,7 +19,7 @@ if [ -f /var/www/vendor/autoload.php ]; then
     fi
 
     if [ -f /etc/supervisor/conf.d/laravel-worker.conf ]; then
-        supervisorctl update && supervisorctl start laravel-worker:*
+        supervisord && supervisorctl update && supervisorctl start laravel-worker:*
     fi
 else
     echo 'Try again, vendor/autoload.php is not created yet'
