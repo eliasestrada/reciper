@@ -9,13 +9,10 @@ if [ -f /var/www/vendor/autoload.php ]; then
     if [ ! -f /var/www/.env ]; then
         cp .env.example .env
         php artisan key:generate
+        php artisan storage:link
         php artisan wipe
     else
         echo 'Seems like .env file is already created'
-    fi
-
-    if [ ! -f /var/www/public/storage ]; then
-        php artisan storage:link
     fi
 
     if [ -f /etc/supervisor/conf.d/laravel-worker.conf ]; then
