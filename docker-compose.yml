@@ -42,23 +42,12 @@ services:
 
   cache:
     image: redis:5.0
-    container_name: redis
+    container_name: cache
     ports:
       - 6379:6379
 
-  # selenium-hub:
-  #   image: selenium/hub:3.141.59-copernicium
-  #   container_name: selenium-hub
-  #   volumes:
-  #     - /docker/selenium/dev/shm:/dev/shm
+  # selenium:
+  #   image: selenium/standalone-chrome
+  #   container_name: selenium
   #   ports:
   #     - "4444:4444"
-
-  # chrome:
-  #   image: selenium/node-chrome:3.141.59-copernicium
-  #   container_name: chrome
-  #   depends_on:
-  #     - selenium-hub
-  #   environment:
-  #     - HUB_HOST=selenium-hub
-  #     - HUB_PORT=4444
