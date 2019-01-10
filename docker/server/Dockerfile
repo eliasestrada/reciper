@@ -16,6 +16,7 @@ RUN apt-get update \
         libpng-dev \
         libzip-dev \
         libbz2-dev \
+        supervisor \
         apt-utils \
         libcurl3 \
         gnupg2 \
@@ -45,3 +46,7 @@ RUN apt-get update \
     && echo 'alias phpunit="vendor/bin/phpunit"' >> ~/.bashrc \
     && echo 'alias pa="php artisan"' >> ~/.bashrc \
     && chmod u+x /start.sh
+
+########## Supervisor ##########
+COPY ./laravel-worker.conf /etc/supervisor/conf.d/
+RUN supervisorctl update && supervisorctl start laravel-worker:*
