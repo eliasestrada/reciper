@@ -16,8 +16,7 @@ abstract class DuskTestCase extends BaseTestCase
      */
     public function tearDown(): void
     {
-        // $this->artisan('migrate:fresh');
-        // $this->artisan('db:seed');
+        $this->artisan('wipe');
         parent::tearDown();
     }
 
@@ -45,8 +44,7 @@ abstract class DuskTestCase extends BaseTestCase
         ]);
 
         return RemoteWebDriver::create(
-            'http://selenium-hub:4444/dev/shm',
-            DesiredCapabilities::chrome()->setCapability(
+            'http://selenium:4444/wd/hub', DesiredCapabilities::chrome()->setCapability(
                 ChromeOptions::CAPABILITY, $options
             )
         );
