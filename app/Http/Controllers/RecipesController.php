@@ -16,6 +16,7 @@ use App\Models\User;
 use App\Models\View;
 use App\Repos\FavRepo;
 use App\Repos\MealRepo;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View as ViewResponse;
 use Predis\Connection\ConnectionException;
@@ -103,8 +104,12 @@ class RecipesController extends Controller
         // Mark that visitor saw the recipe if he didn't
         // Else increment visits column by one
         if ($recipe->views()->whereVisitorId(visitor_id())->doesntExist()) {
-            $recipe->views()->create(['visitor_id' => visitor_id()]);
-            Popularity::add(config('custom.popularity_for_view'), $recipe->user_id);
+            try {
+                $recipe->views()->create(['visitor_id' => visitor_id()]);
+                Popularity::add(config('custom.popularity_for_view'), $recipe->user_id);
+            } catch (QueryException $e) {
+                logger()->error("Cant add view to recipe. {$e->getMessage()}");
+            }
         } else {
             $recipe->views()->whereVisitorId(visitor_id())->increment('visits');
         }
