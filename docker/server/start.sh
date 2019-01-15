@@ -21,8 +21,12 @@ while [ true ]; do
             supervisord && supervisorctl update && supervisorctl start laravel-worker:*
         fi
 
-        printf 'DONE! You can go to a localhost \n'
-        break;
+        printf 'Waiting until npm will compile js and css files... \n'
+
+        if [ -f /var/www/public/css/app.css ] && [ -f /var/www/public/js/app.js ]; then
+            printf 'DONE! You can go to a localhost \n'
+            break;
+        fi
     fi
 done
 
