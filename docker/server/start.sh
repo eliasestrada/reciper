@@ -1,23 +1,28 @@
 #! /bin/bash
+# This script will run untill composer done with creating autoload.php file
+# in laravel vendor folder
 
-echo 'Waiting for 5 seconds'
-sleep 5
+printf 'Waiting until composer will create autoload.php file... \n'
+cd /var/www
 
-if [ -f /var/www/vendor/autoload.php ]; then
-    cd /var/www
+while [ true ]; do
+    if [ -f /var/www/vendor/autoload.php ]; then
+        if [ ! -f /var/www/.env ]; then
+            cp .env.example .env
+            php artisan key:generate
+            php artisan storage:link
+        else
+            printf '.env file is already exists \n'
+        fi
 
-    if [ ! -f /var/www/.env ]; then
-        cp .env.example .env
-        php artisan key:generate
-        php artisan storage:link
         php artisan wipe
-    else
-        echo 'Seems like .env file is already created'
-    fi
 
-    if [ -f /etc/supervisor/conf.d/laravel-worker.conf ]; then
-        supervisord && supervisorctl update && supervisorctl start laravel-worker:*
+        if [ -f /etc/supervisor/conf.d/laravel-worker.conf ]; then
+            supervisord && supervisorctl update && supervisorctl start laravel-worker:*
+        fi
+
+        printf 'DONE! You can go to a localhost \n'
+        break;
     fi
-else
-    echo 'Try again, vendor/autoload.php is not created yet'
-fi
+done
+

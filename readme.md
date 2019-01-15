@@ -39,9 +39,7 @@ The idea is that depending on what language is currently selected, user or visit
 
 ##### For docker people
 
-* Clone and enter downloaded folder
-* `docker-compose up -d` and wait untill it's done
-* `docker-compose exec server /start.sh` *(go to localhost)*
+* Clone, enter reciper folder and run `./run.sh`
 
 # Editional information
 
