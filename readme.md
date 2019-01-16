@@ -56,3 +56,7 @@ The idea is that depending on what language is currently selected, user or visit
 * [laravel/laravel](https://github.com/laravel/laravel) | PHP framework
 * [vuejs/vue](https://github.com/vuejs/vue) | JavaScript framework
 * [Dogfalo/materialize](https://materializecss.com) | CSS framework
+
+> Note that if you want to login as admin, you need to use these credentials:
+> **Username:** master
+> **Password:** 111111
