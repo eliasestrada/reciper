@@ -25,7 +25,7 @@ class RecipesController extends Controller
     /**
      * @param string|null $hash
      * @param int|null $pagin
-     * @return \Illuminate\Http\LenghtAwarePaginator
+     * @return \Illuminate\Pagination\LenghtAwarePaginator
      */
     public function makeQueryWithCriteria(?string $hash = 'new', ?int $pagin = 8): LengthAwarePaginator
     {
