@@ -92,7 +92,8 @@ class SettingsPhotoIndexPageTest extends TestCase
 
     /**
      * Helper function
-     * @auhor Cho
+     *
+     * @author Cho
      * @param string $photo_path
      * @return void
      */
