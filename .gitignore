@@ -13,6 +13,7 @@ yarn-error.log
 dump.rdb
 tags
 /docker/db/storage
+/docker/*/logs
 /storage/*.key
 /public/mix-manifest.json
 /public/hot
