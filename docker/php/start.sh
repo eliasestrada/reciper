@@ -15,9 +15,9 @@ while [ true ]; do
             printf '.env file is already exists \n'
         fi
 
-        rm storage/logs/laravel-*
         php artisan wipe
         chmod -R 775 storage
+        chown -R www-data:www-data *
 
         if [ -f /etc/supervisor/conf.d/laravel-worker.conf ]; then
             supervisord && supervisorctl update && supervisorctl start laravel-worker:*

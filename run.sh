@@ -1,1 +1,1 @@
-docker-compose up -d && docker-compose exec server /start.sh
+docker-compose up -d && docker-compose exec reciper_php /start.sh
