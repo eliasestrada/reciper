@@ -23,7 +23,7 @@ while [ true ]; do
             supervisord && supervisorctl update && supervisorctl start laravel-worker:*
         fi
 
-        printf 'DONE! You can go to a localhost \n'
+        printf 'DONE! You can go to a localhost:3000 \n'
         break;
     fi
 done
