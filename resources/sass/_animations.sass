@@ -1,0 +1,81 @@
+@keyframes heart-beat 
+    10%, 90% 
+        transform: scale(1)
+
+    20%, 80% 
+        transform: scale(1.1)
+
+    30%, 50%, 70% 
+        transform: scale(1.15)
+
+    40%, 60% 
+        transform: scale(1.2)
+
+
+@keyframes appear 
+    0% 
+        opacity: 0
+        transform: scale(0)
+
+    25%, 75% 
+        opacity: 1
+
+    50% 
+        opacity: 1
+        transform: scale(1)
+
+    100% 
+        opacity: 1
+
+@keyframes appearWithOpacity 
+    0% 
+        opacity: 0
+
+    100% 
+        opacity: 1
+
+@keyframes appearWithRotate 
+    0% 
+        opacity: 0
+
+    10% 
+        transform: scale(0)
+
+    20% 
+        transform: scale3d(-0.5, 1, 1)
+
+    25% 
+        transform: scale3d(-1, 1, 1)
+
+    60% 
+        transform: scale(1.1)
+
+    70% 
+        opacity: 1
+
+    100% 
+        transform: scale(1)
+        opacity: 1
+
+@keyframes disappear 
+    0% 
+        opacity: 1
+        transform: scale(1)
+
+    25%, 75% 
+        opacity: 1
+
+    50% 
+        opacity: 1
+        transform: scale(1.4)
+
+    100% 
+        opacity: 0
+        transform: scale(0)
+
+@keyframes loadingRotate 
+    0% 
+        transform: rotate(0deg)
+
+    100% 
+        transform: rotate(360deg)

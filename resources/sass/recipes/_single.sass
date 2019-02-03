@@ -1,0 +1,123 @@
+.single-recipe 
+    padding: 0 .6em
+
+    &__img-wrapper 
+        width: 97% !important
+        margin: auto
+
+        &__img 
+            width: 100%
+            margin: auto
+
+    &__popup-window 
+        width: 260px
+        right: -80px
+        top: -20px
+        opacity: 0
+        z-index: 1
+        border-radius: 7px 0 7px 7px
+        transition: transform 300ms, right 300ms, top 300ms, opacity 500ms
+        transform: scale(0, 0)
+
+        &__btn 
+            margin-bottom: 10px
+
+        &.active 
+            right: 25px
+            opacity: 1
+            top: 30px
+            transition: transform 300ms, right 300ms, 300ms, opacity 500ms
+            transform: scale(1, 1)
+
+    &__user-icon 
+        margin-right: -25px
+        width: 70px
+        height: 70px
+        border-radius: 50%
+        border: 3px solid levelColor(silver)
+        display: inline-block
+        background-position: top !important
+        background-size: 70px !important
+        background-repeat: no-repeat !important
+
+        &.gold-color 
+            border-color: levelColor(gold)
+
+        &.blue-color 
+            border-color: levelColor(blue)
+
+        &.purple-color 
+            border-color: levelColor(purple)
+
+    &__items 
+        width: 100%
+        max-width: 100%
+        text-align: left
+        background: #f3edc9
+        background: linear-gradient(#f3edc9, #fdfdf7)
+        line-height: 2.4
+
+        .dark-theme & 
+            background: colorDark(main-light)
+
+        li 
+            font-size: 1.1em
+            border-bottom: 1px solid #c3c3c3
+            transition: background-color 170ms
+            cursor: pointer
+
+            &:hover 
+                background: rgba(0, 0, 0, .07)
+
+            .dark-theme & 
+                border-bottom-color: lighten(colorDark(main), 17%)
+
+                &:hover 
+                    background: rgba(0, 0, 0, .2)
+
+    &__instruction 
+        padding: 0 0 1em 2.6em
+        font-size: 1.2em
+
+        .bold-text 
+            font-weight: bold
+
+        li 
+            min-height: 4em
+            text-align: left
+            border-bottom: 1px solid #c3c3c3
+            transition: background-color 170ms
+            padding: 1em 0
+            cursor: pointer
+
+            &:hover 
+                background: rgba(0, 0, 0, .07)
+
+            .dark-theme & 
+                border-bottom-color: lighten(colorDark(main), 17%)
+
+                &:hover 
+                    background: rgba(0,0,0,.2)
+
+    &__side-bar 
+        width: 100%
+        padding: 1.85em 2em
+
+@media (min-width: 540px) 
+    .single-recipe 
+        display: grid
+        grid-template: "content side-bar" 1fr / 1fr 15.62rem
+        grid-gap: 1.12rem
+        padding: 1rem .6rem .93rem
+
+        &__img-wrapper 
+            width: 77% !important
+
+        &__content 
+            grid-area: content
+            margin-left: .93rem
+
+        &__side-bar 
+            grid-area: side-bar
+            width: 12.5rem
+            padding: 0 0 1.25rem 2rem

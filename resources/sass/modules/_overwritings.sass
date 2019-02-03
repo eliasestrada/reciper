@@ -1,0 +1,56 @@
+.w20 
+    width: 20px
+
+.divider 
+    .dark-theme & 
+        background: lighten(colorDark(main), 17%)
+
+.fa-spinner 
+    color: color(main)
+
+::-webkit-scrollbar 
+    -webkit-appearance: none
+    width: 8px
+    height: 8px
+
+::-webkit-scrollbar-corner 
+    background-color: transparent
+
+::-webkit-scrollbar-thumb 
+    border-radius: 4px
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5)
+    background-color: rgba(0, 0, 0, 0.349)
+
+    .dark-theme & 
+        background-color: rgba(119, 119, 119, 0.349)
+
+.st-image-share-buttons 
+    margin-top: 10px !important
+
+nav .input-field input[type='search'] 
+    -webkit-text-fill-color: #dfdfdf !important
+    background-color: darken(color(main), 10%) !important
+    letter-spacing: 1px
+    font-size: 1.4em
+    border-radius: 30px
+
+    &:focus 
+        background-color: darken(color(main), 15%) !important
+
+.card 
+    .dark-theme & 
+        background: colorDark(main-light)
+
+        .card-title 
+            color: #c8c8c8
+
+        .card-reveal,
+        .card-panel 
+            background: colorDark(main-light)
+
+        .card-time 
+            color: #c8c8c8
+
+#notifications-dropdown 
+    width: 25% !important
+    min-width: 270px !important

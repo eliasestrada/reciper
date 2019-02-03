@@ -1,0 +1,26 @@
+.btn-sort 
+    padding: 2px 7px
+    margin: 5px 4px
+    letter-spacing: -0.5px
+    height: 23px
+    line-height: 20px
+    text-transform: capitalize
+    font-weight: bold
+    border-radius: 20px 0 0 20px
+    background: #d5cee0
+    background: -moz-linear-gradient(left, #d5cee0 0%, #f2eaf3 72%)
+    background: -webkit-linear-gradient(left, #d5cee0 0%,#f2eaf3 72%)
+    background: linear-gradient(to right, #d5cee0 0%,#f2eaf3 72%)
+    color: color(main)
+
+    &.active 
+        transform: scale(1.05)
+        background: #e9b6b6
+
+    .dark-theme & 
+        background: lighten(colorDark(main), 15%)
+        color: #ebebeb
+
+        &.active 
+            background: darken(color(main-light), 5%)
+            color: #222

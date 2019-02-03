@@ -7,7 +7,7 @@ $colors: (
     paper-dark: #e9e9e9,
     grey: #727272,
     grey-dark: #262525,
-    red:#cf4545,
+    red: #cf4545,
     green: #249128
 );
 
@@ -17,7 +17,7 @@ $colorsDark: (
 );
 
 $home-header: (
-    bg-image: url(../storage/other/img.jpg),
+    bg-image: url('../storage/other/img.jpg'),
     bg-color: rgba(map-get($colors, main), .5)
 );
 
