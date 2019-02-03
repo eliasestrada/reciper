@@ -63,13 +63,11 @@ import activeAfterClickBtn from '../../modules/_activeAfterClickBtn'
 
 ;(function PreventMultipleFormSubmitting() {
     document.querySelectorAll('form').forEach(form => {
-        form.addEventListener('submit', () => {
-            let buttons = this.querySelectorAll('button')
-
-            buttons.forEach(button => {
-                button.setAttribute('disabled', 'disabled')
-                button.classList.add('disabled')
-                button.innerHTML = '<i class="fas fa-circle-notch fa-1x fa-spin"></i>'
+        form.addEventListener('submit', e => {
+            e.target.querySelectorAll('button').forEach(btn => {
+                btn.setAttribute('disabled', 'disabled')
+                btn.classList.add('disabled')
+                btn.innerHTML = '<i class="fas fa-circle-notch fa-1x fa-spin"></i>'
             })
         }, false)
     })
