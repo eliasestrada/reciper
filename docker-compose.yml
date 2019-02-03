@@ -19,6 +19,7 @@ services:
 
   reciper_php:
     image: serhiicho/reciper:php
+    # build: docker/php
     working_dir: /var/www
     container_name: reciper_php
     ports: 
