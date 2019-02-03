@@ -1,6 +1,10 @@
 .item-list {
     padding: 1em 0;
 
+    img {
+        max-width: 100%;
+    }
+
     .btn {
         color: #fff;
     }
@@ -40,9 +44,6 @@
 
         .dark-theme & {
             border-color: lighten(colorDark(main), 17%);
-        }
-        img {
-            width: 100%;
         }
     }
 }

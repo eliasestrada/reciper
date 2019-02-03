@@ -2,7 +2,9 @@
     @isset($recipes)
         @forelse ($recipes as $recipe)
             <ul>
-                <li style="margin-bottom:5px;border-left-color:{{ $recipe->getStatusColor() }};" class="col s12 m6 l4 row">
+                <li style="margin-bottom:5px;border-left-color:{{ $recipe->getStatusColor() }}"
+                    class="col s12 m6 l4 row"
+                >
                     <a href="/recipes/{{ $recipe->slug}}" class="image-wrapper">
                         <div class="placeholder-image"
                             style="height:auto; padding-bottom:66%; border-radius:2px; {{ setRandomBgColor() }}"
