@@ -1,4 +1,4 @@
-FROM php:7.3-apache
+FROM php:7.3-fpm
 
 COPY ./start.sh /
 
@@ -25,8 +25,6 @@ RUN apt-get update \
         zip \
         vim \
         \
-    ########## Apache2 enable mods ##########
-    && a2enmod rewrite \
     ########## Install php extentions ##########
     && docker-php-ext-install -j$(nproc) \
         pdo_mysql \

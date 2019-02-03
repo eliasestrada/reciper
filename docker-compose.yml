@@ -1,15 +1,33 @@
 version: '3'
 
 services:
+  reciper_nginx:
+    image: nginx:1.15
+    container_name: reciper_nginx
+    working_dir: /var/www
+    depends_on: 
+      - reciper_db
+    ports:
+      - 3000:80
+    links:
+      - reciper_php
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx/logs:/var/log/nginx
+
   reciper_php:
     build: ./docker/php
+    # image: serhiicho/reciper:php
+    working_dir: /var/www
     container_name: reciper_php
+    ports: 
+      - 9002:9000
     volumes: 
       - ./:/var/www
-      - ./docker/php/sites-available:/etc/apache2/sites-available
-    ports: 
-      - 3000:80
-    working_dir: /var/www
+      - ./docker/php/php-fpm.conf:/etc/php-fpm.d/php-fpm.conf
+      - ./docker/php/logs:/var/log/php
     depends_on: 
       - reciper_db
 

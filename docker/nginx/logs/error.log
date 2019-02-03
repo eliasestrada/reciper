@@ -1,0 +1,4 @@
+2019/02/03 14:36:28 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.30.0.1, server: , request: "GET / HTTP/1.1", upstream: "fastcgi://172.30.0.6:9000", host: "localhost:3000"
+2019/02/03 14:36:28 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.30.0.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "fastcgi://172.30.0.6:9000", host: "localhost:3000"
+2019/02/03 14:36:31 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.30.0.1, server: , request: "GET / HTTP/1.1", upstream: "fastcgi://172.30.0.6:9000", host: "localhost:3000"
+2019/02/03 14:36:32 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.30.0.1, server: , request: "GET / HTTP/1.1", upstream: "fastcgi://172.30.0.6:9000", host: "localhost:3000"
