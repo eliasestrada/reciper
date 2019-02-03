@@ -1,12 +1,12 @@
 const mix = require('laravel-mix')
 
-let css = 1
-let js = 1
-let chartjs = 0
-let server = 1
+const css = 1
+const js = 1
+const chartjs = 0
+const server = 1
 
 if (css == 1) {
-    mix.sass('resources/sass/app.scss', 'public/css/app.css').options({
+    mix.sass('resources/sass/app.sass', 'public/css/app.css').options({
         processCssUrls: false,
     })
 }
