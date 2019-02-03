@@ -18,8 +18,7 @@ services:
       - ./docker/nginx/logs:/var/log/nginx
 
   reciper_php:
-    build: ./docker/php
-    # image: serhiicho/reciper:php
+    image: serhiicho/reciper:php
     working_dir: /var/www
     container_name: reciper_php
     ports: 
