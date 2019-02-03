@@ -11,10 +11,13 @@ while [ true ]; do
             cp .env.example .env
             php artisan key:generate
             php artisan storage:link
-            php artisan wipe
         else
             printf '.env file is already exists \n'
         fi
+
+        rm storage/logs/laravel-*
+        php artisan wipe
+        chmod -R 775 storage
 
         if [ -f /etc/supervisor/conf.d/laravel-worker.conf ]; then
             supervisord && supervisorctl update && supervisorctl start laravel-worker:*

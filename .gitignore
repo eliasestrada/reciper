@@ -12,7 +12,7 @@ npm-debug.log
 yarn-error.log
 dump.rdb
 tags
-/docker/db
+/docker/db/storage
 /storage/*.key
 /public/mix-manifest.json
 /public/hot

@@ -1,53 +1,55 @@
 version: '3'
 
 services:
-  server:
-    build: ./docker/server
-    container_name: server
-    environment: 
-      - APACHE_RUN_USER=#1000
+  reciper_php:
+    build: ./docker/php
+    container_name: reciper_php
     volumes: 
       - ./:/var/www
-      - ./docker/server/sites-available:/etc/apache2/sites-available
+      - ./docker/php/sites-available:/etc/apache2/sites-available
     ports: 
-      - 80:80
+      - 3000:80
     working_dir: /var/www
+    depends_on: 
+      - reciper_db
 
-  db:
+  reciper_db:
     image: mysql:8.0
-    container_name: db
+    container_name: reciper_db
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 111111
       MYSQL_DATABASE: reciper
+    ports:
+      - 1000:3306
     volumes: 
-      - ./docker/db:/var/lib/mysql
+      - ./docker/db/storage:/var/lib/mysql
 
-  composer:
+  reciper_composer:
     image: composer
-    container_name: composer
+    container_name: reciper_composer
     volumes: 
       - ./:/var/www
     working_dir: /var/www
     command: composer install --ignore-platform-reqs
 
-  node:
+  reciper_node:
     image: node:8-alpine
-    container_name: node
+    container_name: reciper_node
     working_dir: /var/www
     volumes:
       - ./:/var/www
     command: sh -c "npm rebuild node-sass && npm install && npm run production"
 
-  cache:
+  reciper_redis:
     image: redis:5.0
-    container_name: cache
+    container_name: reciper_redis
     ports:
-      - 6379:6379
+      - 6380:6379
 
-  # selenium:
+  # reciper_selenium:
   #   image: selenium/standalone-chrome
-  #   container_name: selenium
+  #   container_name: reciper_selenium
   #   ports:
   #     - "4444:4444"
