@@ -1,16 +1,15 @@
-import $ from '../../modules/_main'
-import lazyLoadImages from '../../modules/_lazyLoadImages'
-import activeAfterClickBtn from '../../modules/_activeAfterClickBtn'
+import lazyLoadImages from '../../modules/lazyLoadImages'
+import addClassAfterClick from '../../modules/addClassAfterClick'
 import axios from 'axios'
 
 ;(function ReadyCheckbox() {
-    let checkbox = $('ready-checkbox')
-    let publishBtn = $('publish-btn')
+    const checkbox = document.getElementById('ready-checkbox')
+    const publishBtn = document.getElementById('publish-btn')
 
     if (checkbox) {
         publishBtn.addEventListener('click', () => {
             if (confirm(publishBtn.getAttribute('data-alert'))) {
-                if ((checkbox.checked = true)) {
+                if (checkbox.checked = true) {
                     checkbox.closest('form').submit()
                 }
             }
@@ -19,24 +18,22 @@ import axios from 'axios'
 })()
 
 ;(function PopupWindowShowMore() {
-    let popupTrigger = $('popup-window-trigger')
-    let popupWindow = $('popup-window')
+    const btn = document.getElementById('popup-window-trigger')
+    const target = document.getElementById('popup-window')
 
-    if (popupTrigger && popupWindow) {
-        activeAfterClickBtn('popup-window', 'popup-window-trigger')
-    }
+    ;(target && btn) ? addClassAfterClick(target, btn) : ''
 })()
 
 ;(function IncreaseFontSize() {
-    let incFontSizeBtn = $('inc-font-size')
-    let dicFontSizeBtn = $('dic-font-size')
+    let incFontSizeBtn = document.getElementById('inc-font-size')
+    let dicFontSizeBtn = document.getElementById('dic-font-size')
     let elements = document.querySelectorAll('.font-scalable')
 
     if (incFontSizeBtn && dicFontSizeBtn) {
         incFontSizeBtn.addEventListener('click', () => {
             elements.forEach(el => {
-                let currentSize = parseFloat(el.style.fontSize)
-                let newFontSize = currentSize + 0.1
+                const currentSize = parseFloat(el.style.fontSize)
+                const newFontSize = currentSize + 0.1
 
                 if (currentSize <= 1.5 && currentSize >= 0.9) {
                     el.style.fontSize = newFontSize + 'em'
@@ -48,8 +45,8 @@ import axios from 'axios'
 
         dicFontSizeBtn.addEventListener('click', () => {
             elements.forEach(el => {
-                let currentSize = parseFloat(el.style.fontSize)
-                let newFontSize = currentSize - 0.1
+                const currentSize = parseFloat(el.style.fontSize)
+                const newFontSize = currentSize - 0.1
 
                 if (currentSize <= 1.6 && currentSize >= 1) {
                     el.style.fontSize = newFontSize + 'em'
@@ -66,8 +63,8 @@ import axios from 'axios'
 })()
 
 ;(function RemoveEmptyLinesFromTextareaWithLines() {
-    let fields = document.querySelectorAll('.textarea-lines')
-    let regex = /^\s*[\r\n]/gm
+    const fields = document.querySelectorAll('.textarea-lines')
+    const regex = /^\s*[\r\n]/gm
 
     if (fields) {
         fields.forEach(field => {

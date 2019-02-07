@@ -1,14 +1,13 @@
-import $ from '../../modules/_main'
 import axios from 'axios'
-import activeAfterClickBtn from '../../modules/_activeAfterClickBtn'
+import addClassAfterClick from '../../modules/addClassAfterClick'
 
 ;(function SearchFormActivator() {
     let opened = false
-    let navBtnForSearch = $('nav-btn-for-search')
-    let searchInput = $('search-input')
+    const navBtnForSearch = document.getElementById('nav-btn-for-search')
+    const searchInput = document.getElementById('search-input')
 
-    if (navBtnForSearch) {
-        activeAfterClickBtn('nav-search-form', 'nav-btn-for-search')
+    if (navBtnForSearch && searchInput) {
+        addClassAfterClick(navBtnForSearch, searchInput)
 
         navBtnForSearch.addEventListener('click', () => {
             if (opened == false) {
@@ -23,9 +22,9 @@ import activeAfterClickBtn from '../../modules/_activeAfterClickBtn'
 })()
 
 ;(function DarkThemeSwitcher() {
-    let button = $('dark-theme-toggle')
-    let className = document.body.classList
-    let urlWithState = state => `/invokes/dark-theme-switcher/${state}`
+    const button = document.getElementById('dark-theme-toggle')
+    const className = document.body.classList
+    const urlWithState = state => `/invokes/dark-theme-switcher/${state}`
 
     button.addEventListener('click', () => {
         if (className.value === 'dark-theme') {
@@ -39,8 +38,8 @@ import activeAfterClickBtn from '../../modules/_activeAfterClickBtn'
 })()
 
 ;(function MarkNotificationsAsRead() {
-    let button = $('mark-notifs-as-read')
-    let alertIcon = document.querySelector('#mark-notifs-as-read span')
+    const button = document.getElementById('mark-notifs-as-read')
+    const alertIcon = document.querySelector('#mark-notifs-as-read span')
 
     if (button && alertIcon) {
         button.addEventListener('click', () => {

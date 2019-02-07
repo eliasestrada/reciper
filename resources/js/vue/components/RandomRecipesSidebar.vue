@@ -1,11 +1,11 @@
 <script>
-import LazyLoadImagesForVue from '../../modules/_lazyLoadImagesForVue'
+import LazyLoadImagesForVue from '../../modules/lazyLoadImagesForVue'
 
 export default {
     data() {
         return {
             recipes: [],
-        };
+        }
     },
 
     created() {
@@ -25,5 +25,5 @@ export default {
             LazyLoadImagesForVue(target)
         }
     },
-};
+}
 </script>

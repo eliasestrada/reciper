@@ -1,5 +1,4 @@
-import $ from '../../modules/_main'
-import activeAfterClickBtn from '../../modules/_activeAfterClickBtn'
+import activeAfterClickBtn from '../../modules/addClassAfterClick'
 
 /**
  * When visitor clicks search button, it will show the search form
@@ -8,12 +7,12 @@ import activeAfterClickBtn from '../../modules/_activeAfterClickBtn'
  * will submit the search form
  */
 ;(function HomeHeaderSearchForm() {
+    const button = document.getElementById('home-search-btn')
+    const form = document.getElementById('home-search-form')
     let preventing = true
-    let button = $('home-search-btn')
-    let form = $('home-search-form')
 
     if (form && button) {
-        activeAfterClickBtn('home-search-form', 'home-search-btn')
+        activeAfterClickBtn(form, button)
 
         button.addEventListener('click', e => {
             if (preventing) {
@@ -29,15 +28,15 @@ import activeAfterClickBtn from '../../modules/_activeAfterClickBtn'
  * selecting them via file input
  */
 ;(function runImageUploader() {
-    let target = $('target-image')
-    let src = $('src-image')
+    let target = document.getElementById('target-image')
+    let src = document.getElementById('src-image')
     let fr = new FileReader()
 
     if (target && src) {
         src.addEventListener('change', () => {
             if (src.files.length !== 0) {
                 fr.readAsDataURL(src.files[0])
-                fr.onload = function() {
+                fr.onload = function () {
                     target.src = this.result
                 }
             } else {

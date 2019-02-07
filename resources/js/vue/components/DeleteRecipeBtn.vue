@@ -1,10 +1,9 @@
 <script>
-
 export default {
     data() {
         return {
             error: '',
-        };
+        }
     },
 
     props: ['confirm', 'recipeId', 'deletedFail'],
@@ -16,11 +15,11 @@ export default {
                     .then(data => {
                         data.data === 'success'
                             ? (window.location.href = '/users/other/my-recipes')
-                            : (this.error = this.deletedFail);
+                            : (this.error = this.deletedFail)
                     })
-                    .catch(err => console.error(err));
+                    .catch(err => console.error(err))
             }
         },
     },
-};
+}
 </script>

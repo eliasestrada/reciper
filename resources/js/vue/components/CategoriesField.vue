@@ -33,7 +33,7 @@ export default {
             fields: 1,
             visibleAddBtn: true,
             visibleDelBtn: false,
-        };
+        }
     },
 
     props: [
@@ -47,51 +47,51 @@ export default {
     ],
 
     created() {
-        this.getFieldsFromProps();
+        this.getFieldsFromProps()
     },
 
     methods: {
         getFieldsFromProps() {
             if (this.recipeCategories) {
                 if (this.recipeCategories.length == 0) {
-                    this.fields = 1;
+                    this.fields = 1
                 } else {
-                    this.fields = this.recipeCategories.length;
+                    this.fields = this.recipeCategories.length
                 }
-                this.stableButtons();
+                this.stableButtons()
             }
         },
 
         addField() {
             if (this.fields <= 3 && this.fields > 0) {
-                this.fields++;
+                this.fields++
             }
-            this.stableButtons();
+            this.stableButtons()
         },
 
         deleteField() {
             if (this.fields > 1) {
-                this.fields--;
+                this.fields--
             }
-            this.stableButtons();
+            this.stableButtons()
         },
 
         stableButtons() {
             if (this.fields > 1) {
-                this.visibleDelBtn = true;
+                this.visibleDelBtn = true
             }
 
             if (this.fields === 4) {
-                this.visibleAddBtn = false;
-                this.visibleDelBtn = true;
+                this.visibleAddBtn = false
+                this.visibleDelBtn = true
             }
 
             if (this.fields < 4) {
-                this.visibleAddBtn = true;
+                this.visibleAddBtn = true
             }
 
             if (this.fields === 1) {
-                this.visibleDelBtn = false;
+                this.visibleDelBtn = false
             }
         },
     },
@@ -99,13 +99,13 @@ export default {
         classDelBtn() {
             return {
                 disable: !this.visibleDelBtn,
-            };
+            }
         },
         classAddBtn() {
             return {
                 disable: !this.visibleAddBtn,
-            };
+            }
         },
     },
-};
+}
 </script>

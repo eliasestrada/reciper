@@ -7,7 +7,7 @@ export default {
     data() {
         return {
             active: false,
-        };
+        }
     },
 
     props: {
@@ -16,7 +16,7 @@ export default {
     },
 
     mounted() {
-        this.active = this.selected;
+        this.active = this.selected
     },
-};
+}
 </script>

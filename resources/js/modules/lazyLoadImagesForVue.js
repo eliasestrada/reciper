@@ -1,4 +1,4 @@
-export default function (element = null) {
+export default (element = null) => {
     let images = document.querySelectorAll('img.lazy-load-img-vue')
 
     if (element) {

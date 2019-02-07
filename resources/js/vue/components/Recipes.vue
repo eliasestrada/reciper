@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import LazyLoadImagesForVue from '../../modules/_lazyLoadImagesForVue'
+import LazyLoadImagesForVue from '../../modules/lazyLoadImagesForVue'
 import Preloader from './templates/Preloader'
 
 export default {
@@ -62,7 +62,7 @@ export default {
             loading: false,
             url: null,
             theEnd: false,
-        };
+        }
     },
 
     props: {
@@ -87,7 +87,7 @@ export default {
             this.theEnd = false
             this.url = null
             this.fetchRecipes(true)
-        };
+        }
     },
 
     methods: {
@@ -97,7 +97,7 @@ export default {
             let hash = window.location.hash.substring(1)
             let url = this.url === null ? `/api/recipes/${hash}` : this.url
 
-            Event.$emit("hash-changed", hash);
+            Event.$emit("hash-changed", hash)
 
             this.$axios.get(url)
                 .then(res => {
@@ -131,7 +131,7 @@ export default {
             if (this.favs) {
                 var result = this.favs.map(fav => {
                     return recipe_id == fav.recipe_id ? "active" : ""
-                });
+                })
                 return result
             }
         },

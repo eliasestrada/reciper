@@ -1,12 +1,8 @@
-// Modules
-import '../modules/_main';
-import '../modules/_activeAfterClickBtn';
+// Components
+import './components/navigation'
+import './components/pages'
+import './components/recipes'
+import './components/settings'
 
-// Modules
-import './components/_navigation';
-import './components/_pages';
-import './components/_recipes';
-import './components/_settings';
-
-// Libs
-import './_materialize';
+// Other
+import './materialize'

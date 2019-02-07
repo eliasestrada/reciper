@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import BtnItem from '../mixins/BtnItem';
+import BtnItem from '../mixins/BtnItem'
 
 export default {
     data() {
         return {
             url: `/favs/${this.recipeId}`,
-        };
+        }
     },
     mixins: [BtnItem],
-};
+}
 </script>

@@ -1,8 +1,6 @@
-import $ from '../../modules/_main'
-
 ;(function CollapsibleNavigationMenu() {
-    let li = $('collapsible-li-tag')
-    let body = document.querySelector('#collapsible-li-tag .collapsible-body')
+    const li = document.getElementById('collapsible-li-tag')
+    const body = document.querySelector('#collapsible-li-tag .collapsible-body')
 
     if (li && window.innerWidth > 600) {
         setTimeout(() => {

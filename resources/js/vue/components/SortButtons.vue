@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import SortButtons from '../mixins/SortButtons';
+import SortButtons from '../mixins/SortButtons'
 
 export default {
     mixins: [SortButtons],
@@ -34,15 +34,15 @@ export default {
     methods: {
         buttonWasClicked() {
             Event.$on('hash-changed', hash => {
-                this.btns[0].isActive = true;
+                this.btns[0].isActive = true
 
                 if (hash != '') {
                     this.btns.forEach(btn => {
-                        btn.isActive = btn.link == hash ? true : false;
+                        btn.isActive = btn.link == hash ? true : false
                     })
                 }
-            });
+            })
         },
     },
-};
+}
 </script>
