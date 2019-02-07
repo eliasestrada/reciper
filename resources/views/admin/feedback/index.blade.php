@@ -26,12 +26,18 @@
                     <div class="row paper-dark pt-3" id="tab-{{ $i }}">
                         @forelse ($i == 1 ? $feedback_ru : $feedback_en as $feed)
                             <div class="col s12 l6">
-                                <div class="card" style="min-height:200px;border-left:4px solid;border-color:{{ $feed->isReport(1) ? 'red' : 'green' }};">
+                                <div class="card"
+                                    style="min-height:200px;
+                                        border-left:4px solid;
+                                        border-color:{{ $feed->isReport(1) ? 'red' : 'green' }}"
+                                >
                                     <div class="card-content">
                                         <span class="card-title" style="line-height:32px!important">
                                             @if ($feed->isReport(1))
                                                 <b>@lang('feedback.report_recipe'):</b> 
-                                                <a href="/recipes/{{ $feed->recipe->id }}">{{ $feed->recipe->getTitle() }}</a>
+                                                <a href="/recipes/{{ $feed->recipe->slug }}">
+                                                    {{ $feed->recipe->getTitle() }}
+                                                </a>
                                             @else
                                                 <b>@lang('feedback.feedback')</b> 
                                             @endif
@@ -46,11 +52,17 @@
                                         {{-- Open button --}}
                                         <a href="/admin/feedback/{{ $feed->id }}" class="btn-small mr-2">@lang('messages.open')</a>
                                         {{-- Delete button --}}
-                                        <form action="{{ action('Admin\FeedbackController@destroy', ['id' => $feed->id]) }}" method="post" class="d-inline-block">
+                                        <form method="post"
+                                            action="{{ action('Admin\FeedbackController@destroy', ['id' => $feed->id]) }}"
+                                            class="d-inline-block"
+                                        >
                                             @method('delete')
                                             @csrf
 
-                                            <button type="submit" class="btn-small red confirm" data-confirm="@lang('contact.sure_del_feed')">
+                                            <button type="submit"
+                                                class="btn-small red confirm"
+                                                data-confirm="@lang('contact.sure_del_feed')"
+                                            >
                                                 @lang('forms.deleting')
                                             </button>
                                         </form>
