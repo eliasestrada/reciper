@@ -51,7 +51,8 @@ class FeedbackController extends Controller
 
         // If already send feedback today, return with error message
         if (is_null($request->recipe_id)) {
-            $alredy_send = Feedback::whereVisitorId(visitor_id())->where('created_at', '>', now()->subDay());
+            $alredy_send = Feedback::whereVisitorId(visitor_id())
+                ->where('created_at', '>', now()->subDay());
 
             if ($alredy_send->exists()) {
                 return back()->withError(trans('feedback.operation_denied'));
@@ -69,12 +70,13 @@ class FeedbackController extends Controller
         }
 
         Feedback::create([
-            'is_report' => is_null($request->recipe) ? 0 : 1,
+            'is_report' => $request->recipe_id ? 1 : 0,
             'lang' => LANG(),
             'visitor_id' => visitor_id(),
             'email' => $request->email ?? null,
             'recipe_id' => $request->recipe_id,
             'message' => $request->message,
+            'created_at' => now(),
         ]);
 
         return back()->withSuccess(trans('feedback.success_message'));
