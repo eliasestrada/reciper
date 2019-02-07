@@ -24,11 +24,13 @@
                 ></i>
             </a>
 
-            <div class="single-recipe__popup-window z-depth-1 p-3 position-absolute paper" id="popup-window">
+            <div class="single-recipe__popup-window z-depth-1 p-3 position-absolute paper"
+                id="popup-window"
+            >
                 {{-- Report button --}}
                 <a href="#report-recipe-modal"
                     title="@lang('recipes.report_recipe')"
-                        class="btn min-w single-recipe__popup-window__btn"
+                    class="btn min-w single-recipe__popup-window__btn modal-trigger"
                     {{ visitor_id() == $recipe->user_id
                         || optional(user())->hasRecipe($recipe->id)
                         ? ' disabled'

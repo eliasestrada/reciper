@@ -10,7 +10,9 @@
 
 <div class="p-3 row">
     @isset($help_categories, $help_list)
-        <ul class="sidenav col m4 l3 z-depth-0 position-relative hide-on-small-only transparent" style="transform:translateX(0%);overflow:scroll;max-height:700px">
+        <ul class="sidenav col m4 l3 z-depth-0 position-relative hide-on-small-only transparent"
+            style="transform:translateX(0%);overflow:scroll;max-height:700px"
+        >
             @foreach ($help_categories as $category)
                 <li>
                     <a class="subheader grey-text mt-3">
@@ -24,8 +26,13 @@
                     @foreach ($help_list as $question)
                         @if ($question['help_category_id'] == $category['id'])
                             <li class="p-1 {{ active_if_route_is(["help/{$question['id']}"]) }}">
-                                <i class="fas fa-angle-right red-text ml-1 left" style="line-height:22px"></i>
-                                <a href="/help/{{ $question['id'] }}" class="text text-hover" style="font-size:1.05em;height:auto;line-height:22px">
+                                <i class="fas fa-angle-right red-text ml-1 left"
+                                    style="line-height:22px"
+                                ></i>
+                                <a href="/help/{{ $question['id'] }}"
+                                    class="text text-hover"
+                                    style="font-size:1.05em;height:auto;line-height:22px"
+                                >
                                     {{ $question['title'] }}
                                 </a>
                             </li>
