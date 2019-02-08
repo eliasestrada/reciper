@@ -4,18 +4,26 @@
  *
  * @param {object} el that u want to show
  * @param {object} btn that u want to click
- * @param {string} customClass
+ * @param {string} className
+ * @param {callback} onOpen
+ * @param {callback} onClose
  * @return {void}
  */
-export default (el, btn, customClass = 'active') => {
+export default (el, btn, className = 'active', onOpen, onClose) => {
     let visible = false
 
     btn.addEventListener('click', () => {
         if (visible === false) {
-            el.classList.add(customClass)
+            if (Object.prototype.toString.call(onOpen) == "[object Function]") {
+                onOpen()
+            }
+            el.classList.add(className)
             visible = true
-        } else if (visible === true) {
-            el.classList.remove(customClass)
+        } else {
+            if (Object.prototype.toString.call(onClose) == "[object Function]") {
+                onClose()
+            }
+            el.classList.remove(className)
             visible = false
         }
     })
