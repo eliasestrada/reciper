@@ -1,5 +1,5 @@
 export default (element = null) => {
-    let images = document.querySelectorAll('img.lazy-load-img-vue')
+    const images = document.querySelectorAll('img.lazy-load-img-vue')
 
     if (element) {
         setTimeout(() => {

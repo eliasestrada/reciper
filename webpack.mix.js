@@ -1,9 +1,9 @@
 const mix = require('laravel-mix')
 
-const css = 1
+const css = 0
 const js = 1
 const chartjs = 0
-const server = 1
+const server = 0
 
 if (css == 1) {
     mix.sass('resources/sass/app.sass', 'public/css/app.css').options({
@@ -22,7 +22,7 @@ if (js == 1) {
                 }
             }
         })
-        // .sourceMaps();
+        .sourceMaps();
 }
 
 if (chartjs == 1) {
@@ -40,8 +40,8 @@ if (chartjs == 1) {
 
 if (server == 1) {
     mix.browserSync({
-        proxy: 'server',
+        proxy: 'php',
         files: ['public/css/*.css', 'public/js/*.js'],
         notify: false,
-    });
+    })
 }

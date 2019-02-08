@@ -1,5 +1,5 @@
 export default () => {
-    let images = document.querySelectorAll('img.lazy-load-img')
+    const images = document.querySelectorAll('img.lazy-load-img')
 
     if (images.length > 0) {
         images.forEach(img => {
