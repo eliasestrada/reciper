@@ -1,24 +1,14 @@
 import axios from 'axios'
 import addClassAfterClick from '../../modules/addClassAfterClick'
 
-;(function SearchFormActivator() {
-    let opened = false
-    const navBtnForSearch = document.getElementById('nav-btn-for-search')
-    const searchInput = document.getElementById('search-input')
+;(function SearchFromWillAppearAfterBtnWillBeClicked() {
+    const btn = document.getElementById('nav-btn-for-search')
+    const el = document.getElementById('nav-search-form')
+    const input = el.querySelector('#search-input')
 
-    if (navBtnForSearch && searchInput) {
-        addClassAfterClick(navBtnForSearch, searchInput)
-
-        navBtnForSearch.addEventListener('click', () => {
-            if (opened == false) {
-                searchInput.focus()
-                opened = true
-            } else {
-                searchInput.blur()
-                opened = false
-            }
-        })
-    }
+    ;(btn && el && input)
+        ? addClassAfterClick(el, btn, 'active', () => input.focus(), () => input.blur())
+        : ''
 })()
 
 ;(function DarkThemeSwitcher() {
