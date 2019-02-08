@@ -10,15 +10,15 @@
  * @return {void}
  */
 export default (el, btn, className = 'active', onOpen, onClose) => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', e => {
         if (el.classList.contains(className)) {
             if (Object.prototype.toString.call(onClose) == "[object Function]") {
-                onClose()
+                onClose(e)
             }
             el.classList.remove(className)
         } else {
             if (Object.prototype.toString.call(onOpen) == "[object Function]") {
-                onOpen()
+                onOpen(e)
             }
             el.classList.add(className)
         }
