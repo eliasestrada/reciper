@@ -10,21 +10,17 @@
  * @return {void}
  */
 export default (el, btn, className = 'active', onOpen, onClose) => {
-    let visible = false
-
     btn.addEventListener('click', () => {
-        if (visible === false) {
-            if (Object.prototype.toString.call(onOpen) == "[object Function]") {
-                onOpen()
-            }
-            el.classList.add(className)
-            visible = true
-        } else {
+        if (el.classList.contains(className)) {
             if (Object.prototype.toString.call(onClose) == "[object Function]") {
                 onClose()
             }
             el.classList.remove(className)
-            visible = false
+        } else {
+            if (Object.prototype.toString.call(onOpen) == "[object Function]") {
+                onOpen()
+            }
+            el.classList.add(className)
         }
     })
 }

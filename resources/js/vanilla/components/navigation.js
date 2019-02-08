@@ -6,25 +6,21 @@ import addClassAfterClick from '../../modules/addClassAfterClick'
     const el = document.getElementById('nav-search-form')
     const input = el.querySelector('#search-input')
 
-    ;(btn && el && input)
-        ? addClassAfterClick(el, btn, 'active', () => input.focus(), () => input.blur())
-        : ''
+    if (btn && el && input) {
+        addClassAfterClick(el, btn, 'active', () => input.focus(), () => input.blur())
+    }
 })()
 
 ;(function DarkThemeSwitcher() {
-    const button = document.getElementById('dark-theme-toggle')
-    const className = document.body.classList
+    const btn = document.getElementById('dark-theme-toggle')
     const urlWithState = state => `/invokes/dark-theme-switcher/${state}`
 
-    button.addEventListener('click', () => {
-        if (className.value === 'dark-theme') {
-            className.remove('dark-theme')
-            axios.get(urlWithState(0)).catch(e => console.error(e))
-        } else {
-            className.add('dark-theme')
-            axios.get(urlWithState(1)).catch(e => console.error(e))
-        }
-    })
+    if (btn) {
+        addClassAfterClick(document.body, btn, 'dark-theme',
+            () => axios.get(urlWithState(1)).catch(e => console.error(e)),
+            () => axios.get(urlWithState(0)).catch(e => console.error(e))
+        )
+    }
 })()
 
 ;(function MarkNotificationsAsRead() {
