@@ -6,20 +6,12 @@ import activeAfterClickBtn from '../../modules/addClassAfterClick'
  * it will set varible preventing to false, now after second click, it
  * will submit the search form
  */
-;(function HomeHeaderSearchForm() {
-    const button = document.getElementById('home-search-btn')
+;(function HomeHeaderSearchFormAppearsAfterButtonIsClicked() {
+    const btn = document.getElementById('home-search-btn')
     const form = document.getElementById('home-search-form')
-    let preventing = true
 
-    if (form && button) {
-        activeAfterClickBtn(form, button)
-
-        button.addEventListener('click', e => {
-            if (preventing) {
-                e.preventDefault()
-                preventing = false
-            }
-        })
+    if (form && btn) {
+        activeAfterClickBtn(form, btn, 'active', e => e.preventDefault())
     }
 })()
 
@@ -29,8 +21,8 @@ import activeAfterClickBtn from '../../modules/addClassAfterClick'
  */
 ;(function runImageUploader() {
     let target = document.getElementById('target-image')
-    let src = document.getElementById('src-image')
-    let fr = new FileReader()
+    const src = document.getElementById('src-image')
+    const fr = new FileReader()
 
     if (target && src) {
         src.addEventListener('change', () => {
@@ -47,10 +39,10 @@ import activeAfterClickBtn from '../../modules/addClassAfterClick'
 })()
 
 ;(function PreventSubmittingIfNotConfirmed() {
-    let buttons = document.querySelectorAll('.confirm')
+    const btns = document.querySelectorAll('.confirm')
 
-    if (buttons) {
-        buttons.forEach(btn => {
+    if (btns) {
+        btns.forEach(btn => {
             btn.addEventListener('click', e => {
                 if (!confirm(btn.getAttribute('data-confirm'))) {
                     e.preventDefault()
