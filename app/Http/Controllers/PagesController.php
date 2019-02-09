@@ -17,11 +17,12 @@ class PagesController extends Controller
     public function home(): ViewResponse
     {
         try {
-            return view('pages.home', ['recipes' => Recipe::getRandomUnseen(24, 20)]);
+            $recipes = Recipe::getRandomUnseen(24, 20);
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
-            return view('pages.home', ['recipes' => collect()]);
+            $recipes = [];
         }
+        return view('pages.home', compact('recipes'));
     }
 
     /**
@@ -58,16 +59,20 @@ class PagesController extends Controller
      * Helper that searches for recipes
      *
      * @param string $request
-     * @return Illuminate\Pagination\LengthAwarePaginator
+     * @return Illuminate\Pagination\LengthAwarePaginator or void
      */
     public function searchForRecipes(string $request)
     {
-        return Recipe::where('title_' . LANG(), 'LIKE', "%$request%")
-            ->orWhere('ingredients_' . LANG(), 'LIKE', "%$request%")
-            ->selectBasic()
-            ->take(50)
-            ->done(1)
-            ->paginate(12);
+        try {
+            return Recipe::where('title_' . LANG(), 'LIKE', "%$request%")
+                ->orWhere('ingredients_' . LANG(), 'LIKE', "%$request%")
+                ->selectBasic()
+                ->take(50)
+                ->done(1)
+                ->paginate(12);
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
+        }
     }
 
     /**
@@ -78,11 +83,12 @@ class PagesController extends Controller
      */
     public function searchForUser(string $request): ?string
     {
-        $result = User::whereId($request)->first();
-
-        if (!is_null($result)) {
-            return $result->username;
+        try {
+            $result = User::whereId($request)->first();
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
         }
-        return null;
+
+        return is_null($result) ? null : $result->username;
     }
 }
