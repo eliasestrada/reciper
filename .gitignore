@@ -20,4 +20,5 @@ public/mix-manifest.json
 public/hot
 public/storage
 public/js/app.js
+public/js/app.js.map
 public/css/app.css

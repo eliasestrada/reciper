@@ -94,8 +94,8 @@ export default {
         fetchRecipes(reload = false) {
             this.loading = true
 
-            let hash = window.location.hash.substring(1)
-            let url = this.url === null ? `/api/recipes/${hash}` : this.url
+            const hash = window.location.hash.substring(1)
+            const url = this.url === null ? `/api/recipes/${hash}` : this.url
 
             Event.$emit("hash-changed", hash)
 
@@ -117,10 +117,10 @@ export default {
         },
 
         onScroll() {
-            let wrap = document.getElementById('recipes-page')
-            let contentHeight = wrap.offsetHeight
-            let yOffset = window.pageYOffset
-            let currentPosition = yOffset + window.innerHeight
+            const wrap = document.getElementById('recipes-page')
+            const contentHeight = wrap.offsetHeight
+            const yOffset = window.pageYOffset
+            const currentPosition = yOffset + window.innerHeight
 
             if (currentPosition >= contentHeight && !this.loading) {
                 this.fetchRecipes()
@@ -129,7 +129,7 @@ export default {
 
         userHasFav(recipe_id) {
             if (this.favs) {
-                var result = this.favs.map(fav => {
+                const result = this.favs.map(fav => {
                     return recipe_id == fav.recipe_id ? "active" : ""
                 })
                 return result
