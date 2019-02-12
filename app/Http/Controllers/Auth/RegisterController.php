@@ -35,7 +35,7 @@ class RegisterController extends Controller
         try {
             return view('auth.register', [
                 'document' => cache()->rememberForever('document_agreement', function () {
-                    return Document::selectBasic()->whereId(1)->first()->toArray();
+                    return Document::whereId(1)->first()->toArray();
                 }),
             ]);
         } catch (QueryException $e) {

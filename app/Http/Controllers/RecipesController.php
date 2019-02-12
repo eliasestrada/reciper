@@ -39,9 +39,7 @@ class RecipesController extends Controller
      */
     public function index(FavRepo $favs): ViewResponse
     {
-        return view('recipes.index', [
-            'favs' => $favs->all(),
-        ]);
+        return view('recipes.index', ['favs' => $favs->all()]);
     }
 
     /**
@@ -61,7 +59,7 @@ class RecipesController extends Controller
             'slug' => str_slug($request->title) . '-' . time(),
         ]);
 
-        return redirect("/recipes/$recipe->slug/edit");
+        return redirect("/recipes/{$recipe->slug}/edit");
     }
 
     /**

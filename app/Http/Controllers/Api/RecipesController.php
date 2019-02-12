@@ -34,7 +34,7 @@ class RecipesController extends Controller
         }
 
         if ($hash == 'simple') {
-            return Recipe::whereSimple(1)->selectBasic()->done(1)->paginate($pagin);
+            return Recipe::whereSimple(1)->done(1)->paginate($pagin);
         }
 
         // Searching for recipes with meal time
@@ -47,7 +47,6 @@ class RecipesController extends Controller
         if ($hash == 'my_viewes') {
             $result = Recipe::join('views', 'views.recipe_id', '=', 'recipes.id')
                 ->where('views.visitor_id', Visitor::whereIp(request()->ip())->value('id'))
-                ->selectBasic(['recipe_id'], ['id'])
                 ->orderBy('views.id', 'desc')
                 ->done(1)
                 ->paginate($pagin);

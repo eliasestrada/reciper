@@ -29,7 +29,6 @@ class ApprovesController extends Controller
     {
         $unapproved_waiting = Recipe::oldest()
             ->where(_('approver_id', true), 0)
-            ->selectBasic()
             ->approved(0)
             ->ready(1)
             ->paginate(30)
@@ -37,7 +36,6 @@ class ApprovesController extends Controller
 
         $unapproved_checking = Recipe::oldest()
             ->where(_('approver_id', true), '!=', 0)
-            ->selectBasic()
             ->approved(0)
             ->ready(1)
             ->paginate(30)

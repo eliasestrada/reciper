@@ -45,17 +45,4 @@ class DocumentTest extends TestCase
         $document = make(Document::class, [_('ready') => 1]);
         $this->assertTrue($document->isReady());
     }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function selectBasic_scope_returns_only_id_title_and_text_columns(): void
-    {
-        $document = Document::selectBasic()->first()->toArray();
-
-        array_map(function ($key) use ($document) {
-            $this->assertArrayHasKey($key, $document);
-        }, ['id', 'title', 'text']);
-    }
 }

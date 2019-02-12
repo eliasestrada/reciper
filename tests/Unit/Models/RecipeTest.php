@@ -235,28 +235,4 @@ class RecipeTest extends TestCase
         $recipe = new Recipe([_('ready') => 1, _('approved') => 0]);
         $this->assertEquals('#e2bd18', $recipe->getStatusColor());
     }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function selectBasic_scope_returns_only_common_used_columns(): void
-    {
-        $recipe = Recipe::selectBasic()->first()->toArray();
-        $columns = [
-            'id',
-            'slug',
-            _('title'),
-            _('intro'),
-            _('ready'),
-            _('approved'),
-            'image',
-            'time',
-            'updated_at',
-        ];
-
-        array_map(function ($key) use ($recipe) {
-            $this->assertArrayHasKey($key, $recipe);
-        }, $columns);
-    }
 }

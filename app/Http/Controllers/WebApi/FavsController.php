@@ -29,7 +29,6 @@ class FavsController extends Controller
     {
         $query = Recipe::query()
             ->join('favs', 'favs.recipe_id', '=', 'recipes.id')
-            ->selectBasic(['recipe_id'], ['id'])
             ->where('favs.user_id', user()->id)
             ->orderBy('favs.id', 'desc');
 

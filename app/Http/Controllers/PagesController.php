@@ -66,7 +66,6 @@ class PagesController extends Controller
         try {
             return Recipe::where(_('title'), 'LIKE', "%$request%")
                 ->orWhere(_('ingredients'), 'LIKE', "%$request%")
-                ->selectBasic()
                 ->take(50)
                 ->done(1)
                 ->paginate(12);

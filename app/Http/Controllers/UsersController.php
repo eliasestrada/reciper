@@ -80,14 +80,12 @@ class UsersController extends Controller
     public function my_recipes(): View
     {
         $recipes_ready = Recipe::whereUserId(user()->id)
-            ->selectBasic()
             ->done(1)
             ->latest()
             ->paginate(20)
             ->onEachSide(1);
 
         $recipes_unready = Recipe::whereUserId(user()->id)
-            ->selectBasic()
             ->approved(0)
             ->latest()
             ->paginate(20)

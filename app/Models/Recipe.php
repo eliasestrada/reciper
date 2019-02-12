@@ -51,34 +51,6 @@ class Recipe extends Model
     }
 
     /**
-     * Scope that select common fields from db
-     *
-     * @param $query
-     * @param array $aditional
-     * @param array $mute
-     */
-    public function scopeSelectBasic($query, array $aditional = [], array $mute = [])
-    {
-        $sql = array_collapse([[
-            'id',
-            'slug',
-            _('title'),
-            _('intro'),
-            _('ready'),
-            _('approved'),
-            'image',
-            'time',
-            'updated_at',
-        ], $aditional]);
-
-        $sql = array_where($sql, function ($value, $key) use ($mute) {
-            return !array_has($mute, $key);
-        });
-
-        return $query->select($sql);
-    }
-
-    /**
      * Scope that returns only recipes that have approved field set to 1
      *
      * @param $query
@@ -120,14 +92,13 @@ class Recipe extends Model
             ->where($seen->map(function ($id) {
                 return ['id', '!=', $id];
             })->toArray())
-            ->selectBasic()
             ->done(1)
             ->limit($limit)
             ->get();
 
         // If not enough recipes to display, show just random recipes
         if ($random->count() < $edge) {
-            return self::inRandomOrder()->selectBasic()->done(1)->limit($limit)->get();
+            return self::inRandomOrder()->done(1)->limit($limit)->get();
         }
         return $random;
     }

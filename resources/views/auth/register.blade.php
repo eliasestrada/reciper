@@ -65,8 +65,8 @@
 @if(isset($document))
     <div id="show-document-modal" class="modal">
         <div class="modal-content reset">
-            <h4>{{ $document['title'] }}</h4>
-            {!! $document['text'] !!}
+            <h4>{{ $document[_('title')] }}</h4>
+            {!! $document[_('text')] !!}
         </div>
     </div>
 @endif
