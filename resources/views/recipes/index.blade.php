@@ -1,4 +1,4 @@
-@extends(auth()->check() ? 'layouts.auth' : 'layouts.guest')
+@extends(setLayout())
 
 @section('title', trans('recipes.recipes'))
 
