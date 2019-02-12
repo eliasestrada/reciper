@@ -22,7 +22,7 @@
                             @if ($help['help_category_id'] == $category['id'])
                                 <li>
                                     <a href="/help/{{ $help['id'] }}" class="text text-hover" style="font-size:1.05em">
-                                        <span class="red-text">#</span> {{ $help['title'] }}
+                                        <span class="red-text">#</span> {{ $help['title_' . LANG()] }}
                                     </a>
                                 </li>
                             @endif

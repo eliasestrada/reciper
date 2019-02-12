@@ -33,7 +33,7 @@
                                     class="text text-hover"
                                     style="font-size:1.05em;height:auto;line-height:22px"
                                 >
-                                    {{ $question['title'] }}
+                                    {{ $question['title_' . LANG()] }}
                                 </a>
                             </li>
                         @endif

@@ -15,10 +15,7 @@ class HelpRepo
     public static function getCache(): array
     {
         return cache()->remember('help_list', 10, function () {
-            return Help::select('id', 'title_' . LANG() . ' as title', 'help_category_id')
-                ->orderBy('title')
-                ->get()
-                ->toArray();
+            return Help::orderBy('title_' . LANG())->get()->toArray();
         });
     }
 

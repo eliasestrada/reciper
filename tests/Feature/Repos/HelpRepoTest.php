@@ -23,7 +23,7 @@ class HelpRepoTest extends TestCase
 
         $this->assertTrue(is_array($result));
         $this->assertArrayHasKey('id', $result[0]);
-        $this->assertArrayHasKey('title', $result[0]);
+        $this->assertArrayHasKey('title_' . LANG(), $result[0]);
         $this->assertArrayHasKey('help_category_id', $result[0]);
     }
 
