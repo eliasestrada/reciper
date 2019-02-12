@@ -1,0 +1,7 @@
+{
+    "better-phpunit.docker.enable": true,
+    "better-phpunit.docker.command": "docker-compose run --rm reciper_php",
+    "better-phpunit.docker.paths": {
+        "/home/serhii/www/reciper": "/var/www"
+    },
+}
