@@ -17,11 +17,6 @@ class Recipe extends Model
      */
     protected $guarded = ['id'];
 
-    // public function __construct($attributes = []) {
-        // parent::__construct($attributes);
-        // $this->setTable('recipes_' . LANG());
-    // }
-
     /**
      * Returns ingredients field from db, converted to array with
      * list items
