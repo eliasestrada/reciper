@@ -41,7 +41,3 @@ $factory->state(Recipe::class, 'draft', [
     'en_approver_id' => 0,
     'ru_approver_id' => 0,
 ]);
-
-$factory->state(Recipe::class, 'with_image', function () {
-    return ['image' => uploadFakeImage()];
-});

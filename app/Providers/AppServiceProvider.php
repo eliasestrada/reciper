@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use App\Repos\CategoryRepo;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Horizon\Horizon;
