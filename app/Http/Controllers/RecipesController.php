@@ -45,17 +45,6 @@ class RecipesController extends Controller
     }
 
     /**
-     * @param \App\Repos\MealRepo $meal_repo
-     * @return \Illuminate\View\View
-     */
-    public function create(MealRepo $meal_repo): ViewResponse
-    {
-        return view('recipes.create', [
-            'meal' => $meal_repo->all(),
-        ]);
-    }
-
-    /**
      * It will save the recipe to a database with title only
      *
      * @param \App\Http\Requests\Recipes\RecipeStoreRequest $request

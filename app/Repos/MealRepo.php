@@ -14,7 +14,7 @@ class MealRepo
     public function all(): Collection
     {
         try {
-            return Meal::get(['id', 'name_' . LANG()]);
+            return Meal::get();
         } catch (QueryException $e) {
             no_connection_rror($e, __CLASS__);
             return collect();
@@ -30,11 +30,11 @@ class MealRepo
     {
         try {
             return cache()->rememberForever('meal', function () {
-                return Meal::select('id', 'name_' . LANG() . ' as name')->get()->toArray();
+                return Meal::get()->toArray();
             });
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
-            return collect();
+            return [];
         }
     }
 }

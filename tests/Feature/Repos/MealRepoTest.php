@@ -47,8 +47,8 @@ class MealRepoTest extends TestCase
         $list = cache()->get('meal');
 
         $this->assertCount(3, cache()->get('meal'));
-        $this->assertEquals(trans('home.breakfast'), $list[0]['name']);
-        $this->assertEquals(trans('home.lunch'), $list[1]['name']);
-        $this->assertEquals(trans('home.dinner'), $list[2]['name']);
+        $this->assertEquals(trans('home.breakfast'), $list[0]['name_' . LANG()]);
+        $this->assertEquals(trans('home.lunch'), $list[1]['name_' . LANG()]);
+        $this->assertEquals(trans('home.dinner'), $list[2]['name_' . LANG()]);
     }
 }

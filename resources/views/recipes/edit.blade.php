@@ -98,10 +98,10 @@
                 </label>
                 <select name="meal" id="meal">
                     @foreach ($meal as $m)
-                        <option value="{{ $m['id'] }}" {{ set_as_selected_if_equal(
-                            $m['id'], ($recipe->meal->id ?? '')
-                        ) }}>
-                            {{ title_case($m['name']) }}
+                        <option value="{{ $m['id'] }}"
+                            {{ set_as_selected_if_equal($m['id'], ($recipe->meal->id ?? '')) }}
+                        >
+                            {{ title_case($m['name_' . LANG()]) }}
                         </option>
                     @endforeach
                 </select>
