@@ -2,8 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Category;
-use Illuminate\Database\QueryException;
+use App\Repos\CategoryRepo;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Horizon\Horizon;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
@@ -16,7 +15,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         \Schema::defaultStringLength(191);
-        // \Artisan::call('wipe');
         $this->showListOfCategories();
         $this->horizonRightsChecker();
 
@@ -30,14 +28,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function showListOfCategories(): void
     {
-        view()->share('categories', cache()->rememberForever('categories', function () {
-            try {
-                return Category::select('id', 'name_' . LANG() . ' as name')->get()->toArray();
-            } catch (QueryException $e) {
-                no_connection_error($e, __CLASS__);
-                return [];
-            }
-        }));
+        $categories = cache()->rememberForever('categories', function () {
+            return CategoryRepo::get()->toArray();
+        });
+
+        view()->share('categories', array_map(function ($category) {
+            return [
+                'id' => $category['id'],
+                'name' => $category['name_' . LANG()],
+            ];
+        }, $categories));
     }
 
     /**

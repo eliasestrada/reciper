@@ -164,7 +164,7 @@
             <div class="col s12 m12 l6">
                 <categories-field
                     :recipe-categories="{{ json_encode($recipe->categories->toArray()) }}"
-                    :categories="{{ json_encode($categories) }}"
+                    :categories="{{ isset($categories) ? json_encode($categories) : [] }}"
                     label="@lang('recipes.category')"
                     select="@lang('forms.select')"
                     categories-title="@lang('recipes.categories_title')"
