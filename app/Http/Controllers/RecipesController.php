@@ -106,7 +106,7 @@ class RecipesController extends Controller
         if ($recipe->views()->whereVisitorId(visitor_id())->doesntExist()) {
             try {
                 $recipe->views()->create(['visitor_id' => visitor_id()]);
-                if ($reciper->user_id) {
+                if ($recipe->user_id) {
                     Popularity::add(config('custom.popularity_for_view'), $recipe->user_id);
                 }
             } catch (QueryException $e) {
