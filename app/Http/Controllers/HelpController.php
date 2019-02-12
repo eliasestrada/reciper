@@ -65,11 +65,7 @@ class HelpController extends Controller
      */
     public function create(): View
     {
-        $categories = HelpCategory
-            ::select('id', 'title_' . LANG() . ' as title')
-            ->get();
-
-        return view('help.create', compact('categories'));
+        return view('help.create', ['categories' => HelpCategory::get()]);
     }
 
     /**
@@ -97,11 +93,10 @@ class HelpController extends Controller
      */
     public function edit(Help $help): View
     {
-        $categories = HelpCategory
-            ::select('id', 'title_' . LANG() . ' as title')
-            ->get();
-
-        return view('help.edit', compact('categories', 'help'));
+        return view('help.edit', [
+            'help' => $help,
+            'categories' => HelpCategory::get(),
+        ]);
     }
 
     /**

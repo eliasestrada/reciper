@@ -1,23 +1,23 @@
-@extends(auth()->check() ? 'layouts.auth' : 'layouts.guest')
+@extends(setLayout())
 
 @section('title', trans('help.help'))
 
 @section('content')
 
-<div class="hide-on-large-only hide-on-med-only">
+<div class="hide-on-large-only">
     @include('includes.buttons.back', ['url' => '/help'])
 </div>
 
 <div class="p-3 row">
     @isset($help_categories, $help_list)
-        <ul class="sidenav col m4 l3 z-depth-0 position-relative hide-on-small-only transparent"
+        <ul class="sidenav col l3 z-depth-0 position-relative hide-on-med-only hide-on-small-only transparent"
             style="transform:translateX(0%);overflow:scroll;max-height:700px"
         >
             @foreach ($help_categories as $category)
                 <li>
                     <a class="subheader grey-text mt-3">
                         <i class="fas {{ $category['icon'] }}  red-text fa-15x"></i>
-                        {{ $category['title'] }}
+                        {{ $category['title_' . LANG()] }}
                     </a>
                 </li>
                 <div class="divider mb-2"></div>
@@ -43,7 +43,7 @@
         </ul>
     @endisset
     @isset($help)
-        <div class="col m8 l9 pl-4">
+        <div class="col l9 pl-4">
             <h1 class="pt-5 header"><b>{{ $help->getTitle() }}</b></h1>
             <div class="divider"></div>
             <p>{!! $help->getText() !!}</p>

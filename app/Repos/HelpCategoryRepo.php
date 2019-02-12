@@ -13,13 +13,11 @@ class HelpCategoryRepo
     {
         try {
             return cache()->remember('help_categories', 10, function () {
-                return HelpCategory::select('id', 'title_' . LANG() . ' as title', 'icon')
-                    ->get()
-                    ->toArray();
+                return HelpCategory::get()->toArray();
             });
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
-            return collect();
+            return [];
         }
     }
 }

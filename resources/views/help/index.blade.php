@@ -13,7 +13,7 @@
                 <div class="col s12 m6 l4">
                     <h5 class="header">
                         <i class="fas {{ $category['icon'] }} left red-text w20"></i>
-                        {{ $category['title'] }}
+                        {{ $category['title_' . LANG()] }}
                     </h5>
                     <div class="divider"></div>
 
