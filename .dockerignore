@@ -6,7 +6,6 @@ storage/*.key
 .vagrant
 vendor
 node_modules
-node_modules
 Homestead.json
 Homestead.yaml
 npm-debug.log
