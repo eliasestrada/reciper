@@ -106,7 +106,9 @@ class RecipesController extends Controller
         if ($recipe->views()->whereVisitorId(visitor_id())->doesntExist()) {
             try {
                 $recipe->views()->create(['visitor_id' => visitor_id()]);
-                Popularity::add(config('custom.popularity_for_view'), $recipe->user_id);
+                if ($reciper->user_id) {
+                    Popularity::add(config('custom.popularity_for_view'), $recipe->user_id);
+                }
             } catch (QueryException $e) {
                 logger()->error("Cant add view to recipe. {$e->getMessage()}");
             }
@@ -116,7 +118,7 @@ class RecipesController extends Controller
 
         return view('recipes.show', [
             'recipe' => $recipe,
-            'xp' => new Xp($recipe->user),
+            'xp' => $recipe->user ? new Xp($recipe->user) : [],
             'cookie' => getCookie('r_font_size') ? getCookie('r_font_size') : '1.0',
         ]);
     }
