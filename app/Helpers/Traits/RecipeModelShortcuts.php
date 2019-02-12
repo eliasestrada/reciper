@@ -51,7 +51,7 @@ trait RecipeModelShortcuts
      */
     public function isReady(): bool
     {
-        return $this->toArray()[_('ready')] == 1 ? true : false;
+        return $this->toArray()[_('ready')] === 1;
     }
 
     /**
@@ -61,7 +61,7 @@ trait RecipeModelShortcuts
      */
     public function isApproved(): bool
     {
-        return $this->toArray()[_('approved')] == 1 ? true : false;
+        return $this->toArray()[_('approved')] === 1;
     }
 
     /**
@@ -72,7 +72,7 @@ trait RecipeModelShortcuts
      */
     public function isDone(): bool
     {
-        return ($this->isReady() && $this->isApproved()) ? true : false;
+        return $this->isReady() && $this->isApproved();
     }
 
     /**
@@ -82,7 +82,7 @@ trait RecipeModelShortcuts
      */
     public function isPublished(): bool
     {
-        return $this->toArray()[_('published')] == 1 ? true : false;
+        return $this->toArray()[_('published')] === 1;
     }
 
     /**
