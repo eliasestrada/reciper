@@ -71,7 +71,7 @@ class FeedbackController extends Controller
 
         Feedback::create([
             'is_report' => $request->recipe_id ? 1 : 0,
-            'lang' => LANG(),
+            'lang' => _(),
             'visitor_id' => visitor_id(),
             'email' => $request->email ?? null,
             'recipe_id' => $request->recipe_id,

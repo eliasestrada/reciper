@@ -50,7 +50,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->actingAs($this->user)
             ->put(action('RecipesController@update', $this->recipe->id), $this->data);
 
-        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->doesntExist());
+        $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
 
     /**
@@ -64,7 +64,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->actingAs($this->user)
             ->put(action('RecipesController@update', $this->recipe->id), $this->data);
 
-        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->doesntExist());
+        $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
 
     /**
@@ -78,7 +78,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->actingAs($this->user)
             ->put(action('RecipesController@update', $this->recipe->id), $this->data);
 
-        $this->assertTrue(Recipe::where('intro_' . LANG(), $this->data['intro'])->doesntExist());
+        $this->assertTrue(Recipe::where(_('intro'), $this->data['intro'])->doesntExist());
     }
 
     /**
@@ -92,7 +92,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->actingAs($this->user)
             ->put(action('RecipesController@update', $this->recipe->id), $this->data);
 
-        $this->assertTrue(Recipe::where('intro_' . LANG(), $this->data['intro'])->doesntExist());
+        $this->assertTrue(Recipe::where(_('intro'), $this->data['intro'])->doesntExist());
     }
 
     /**
@@ -106,7 +106,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->actingAs($this->user)
             ->put(action('RecipesController@update', $this->recipe->id), $this->data);
 
-        $this->assertTrue(Recipe::where('ingredients_' . LANG(), $this->data['ingredients'])->doesntExist());
+        $this->assertTrue(Recipe::where(_('ingredients'), $this->data['ingredients'])->doesntExist());
     }
 
     /**
@@ -120,7 +120,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->actingAs($this->user)
             ->put(action('RecipesController@update', $this->recipe->id), $this->data);
 
-        $this->assertTrue(Recipe::where('ingredients_' . LANG(), $this->data['ingredients'])->doesntExist());
+        $this->assertTrue(Recipe::where(_('ingredients'), $this->data['ingredients'])->doesntExist());
     }
 
     /**
@@ -134,7 +134,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->actingAs($this->user)
             ->put(action('RecipesController@update', $this->recipe->id), $this->data);
 
-        $this->assertTrue(Recipe::where('text_' . LANG(), $this->data['text'])->doesntExist());
+        $this->assertTrue(Recipe::where(_('text'), $this->data['text'])->doesntExist());
     }
 
     /**
@@ -148,7 +148,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->actingAs($this->user)
             ->put(action('RecipesController@update', $this->recipe->id), $this->data);
 
-        $this->assertTrue(Recipe::where('text_' . LANG(), $this->data['text'])->doesntExist());
+        $this->assertTrue(Recipe::where(_('text'), $this->data['text'])->doesntExist());
     }
 
     /**
@@ -191,7 +191,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->actingAs($this->user)
             ->put(action('RecipesController@update', $this->recipe->id), $this->data);
 
-        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->doesntExist());
+        $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
 
     /**
@@ -206,7 +206,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->actingAs($this->user)
             ->put(action('RecipesController@update', $this->recipe->id), $this->data);
 
-        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->doesntExist());
+        $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
 
     /**
@@ -221,7 +221,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->actingAs($this->user)
             ->put(action('RecipesController@update', $this->recipe->id), $this->data);
 
-        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->doesntExist());
+        $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
 
     /**
@@ -236,7 +236,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->actingAs($this->user)
             ->put(action('RecipesController@update', $this->recipe->id), $this->data);
 
-        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->doesntExist());
+        $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
 
     /**
@@ -251,6 +251,6 @@ class RecipesUpdateRequestTest extends TestCase
         $this->actingAs($this->user)
             ->put(action('RecipesController@update', $this->recipe->id), $this->data);
 
-        $this->assertTrue(Recipe::where('title_' . LANG(), $this->data['title'])->exists());
+        $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->exists());
     }
 }

@@ -22,7 +22,7 @@ class DocumentTest extends TestCase
      */
     public function getTitle_method_returns_title_column(): void
     {
-        $document = make(Document::class, ['title_' . LANG() => 'Название документа']);
+        $document = make(Document::class, [_('title') => 'Название документа']);
         $this->assertEquals('Название документа', $document->getTitle());
     }
 
@@ -32,7 +32,7 @@ class DocumentTest extends TestCase
      */
     public function getText_method_returns_text_column(): void
     {
-        $document = make(Document::class, ['text_' . LANG() => 'Название']);
+        $document = make(Document::class, [_('text') => 'Название']);
         $this->assertEquals('Название', $document->getText());
     }
 
@@ -42,7 +42,7 @@ class DocumentTest extends TestCase
      */
     public function isReady_method_returns_true_when_column_ready_is_set_to_1(): void
     {
-        $document = make(Document::class, ['ready_' . LANG() => 1]);
+        $document = make(Document::class, [_('ready') => 1]);
         $this->assertTrue($document->isReady());
     }
 

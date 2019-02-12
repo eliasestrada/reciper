@@ -101,7 +101,7 @@
                         <option value="{{ $m['id'] }}"
                             {{ set_as_selected_if_equal($m['id'], ($recipe->meal->id ?? '')) }}
                         >
-                            {{ title_case($m['name_' . LANG()]) }}
+                            {{ title_case($m[_('name')]) }}
                         </option>
                     @endforeach
                 </select>

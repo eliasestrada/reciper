@@ -32,7 +32,7 @@ class CategoryTest extends TestCase
      */
     public function getName_method_returns_name_column(): void
     {
-        $category = Category::make(['name_' . LANG() => 'Some name']);
+        $category = Category::make([_('name') => 'Some name']);
         $this->assertEquals($category->getName(), 'Some name');
     }
 }

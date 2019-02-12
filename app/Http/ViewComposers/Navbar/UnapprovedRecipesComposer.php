@@ -16,7 +16,7 @@ class UnapprovedRecipesComposer
     {
         if (user() && user()->hasRole('admin')) {
             $view->with('unapproved_notif', cache()->rememberForever('unapproved_notif', function () {
-                return Recipe::where(LANG() . '_approver_id', 0)->approved(0)->ready(1)->exists();
+                return Recipe::where(_('approver_id', true), 0)->approved(0)->ready(1)->exists();
             }));
         } else {
             $view->with('unapproved_notif', false);

@@ -17,8 +17,8 @@ class DocumentRepo
     {
         try {
             return Document::create([
-                'title_' . LANG() => $request->title,
-                'text_' . LANG() => $request->text,
+                _('title') => $request->title,
+                _('text') => $request->text,
             ]);
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
@@ -35,9 +35,9 @@ class DocumentRepo
     {
         try {
             $document->update([
-                'title_' . LANG() => $request->title,
-                'text_' . LANG() => $request->text,
-                'ready_' . LANG() => $request->ready == 1 || $document->id == 1 ? 1 : 0,
+                _('title') => $request->title,
+                _('text') => $request->text,
+                _('ready') => $request->ready == 1 || $document->id == 1 ? 1 : 0,
             ]);
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);

@@ -15,7 +15,7 @@ class HelpRepo
     public static function getCache(): array
     {
         return cache()->remember('help_list', 10, function () {
-            return Help::orderBy('title_' . LANG())->get()->toArray();
+            return Help::orderBy(_('title'))->get()->toArray();
         });
     }
 
@@ -28,8 +28,8 @@ class HelpRepo
     {
         try {
             $help->update([
-                'title_' . LANG() => $request->title,
-                'text_' . LANG() => $request->text,
+                _('title') => $request->title,
+                _('text') => $request->text,
                 'help_category_id' => $request->category,
             ]);
         } catch (QueryException $e) {
@@ -45,8 +45,8 @@ class HelpRepo
     {
         try {
             Help::create([
-                'title_' . LANG() => $request->title,
-                'text_' . LANG() => $request->text,
+                _('title') => $request->title,
+                _('text') => $request->text,
                 'help_category_id' => $request->category,
             ]);
         } catch (QueryException $e) {

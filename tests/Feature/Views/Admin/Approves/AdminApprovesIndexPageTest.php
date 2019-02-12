@@ -38,7 +38,7 @@ class AdminApprovesIndexPageTest extends TestCase
      */
     public function recipe_is_seen_if_it_is_ready_for_approving(): void
     {
-        $recipe = create(Recipe::class, ['approved_' . LANG() => 0, LANG() . '_approver_id' => 0]);
+        $recipe = create(Recipe::class, [_('approved') => 0, _('approver_id', true) => 0]);
 
         $this->actingAs(create_user('admin'))
             ->get('/admin/approves/')
@@ -52,7 +52,7 @@ class AdminApprovesIndexPageTest extends TestCase
     public function admin_redirects_to_recipe_that_he_forgot_to_approve_or_cancel(): void
     {
         $admin = create_user('admin');
-        $recipe = create(Recipe::class, ['approved_' . LANG() => 0, LANG() . '_approver_id' => $admin->id]);
+        $recipe = create(Recipe::class, [_('approved') => 0, _('approver_id', true) => $admin->id]);
 
         $this->actingAs($admin)
             ->get('/admin/approves')

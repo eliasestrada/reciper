@@ -59,8 +59,8 @@ class HelpCreatePageTest extends TestCase
             ->assertRedirect('/help');
 
         $this->assertDatabaseHas('help', [
-            'title_' . LANG() => $form_data['title'],
-            'text_' . LANG() => $form_data['text'],
+            _('title') => $form_data['title'],
+            _('text') => $form_data['text'],
         ]);
     }
 }

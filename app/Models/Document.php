@@ -20,7 +20,7 @@ class Document extends Model
      */
     public function getTitle(): string
     {
-        return $this->toArray()['title_' . LANG()];
+        return $this->toArray()[_('title')];
     }
 
     /**
@@ -30,7 +30,7 @@ class Document extends Model
      */
     public function getText(): string
     {
-        return $this->toArray()['text_' . LANG()];
+        return $this->toArray()[_('text')];
     }
 
     /**
@@ -40,7 +40,7 @@ class Document extends Model
      */
     public function isReady(): bool
     {
-        return $this->toArray()['ready_' . LANG()];
+        return $this->toArray()[_('ready')];
     }
 
     /**
@@ -51,7 +51,7 @@ class Document extends Model
      */
     public function scopeSelectBasic($query)
     {
-        return $query->select('id', 'title_' . LANG() . ' as title', 'text_' . LANG() . ' as text');
+        return $query->select('id', _('title') . ' as title', _('text') . ' as text');
     }
 
     /**
@@ -63,6 +63,6 @@ class Document extends Model
      */
     public function scopeIsReady($query, int $value)
     {
-        return $query->where('ready_' . LANG(), $value);
+        return $query->where(_('ready'), $value);
     }
 }

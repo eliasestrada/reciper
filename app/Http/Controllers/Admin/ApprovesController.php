@@ -28,7 +28,7 @@ class ApprovesController extends Controller
     public function index()
     {
         $unapproved_waiting = Recipe::oldest()
-            ->where(LANG() . '_approver_id', 0)
+            ->where(_('approver_id', true), 0)
             ->selectBasic()
             ->approved(0)
             ->ready(1)
@@ -36,7 +36,7 @@ class ApprovesController extends Controller
             ->onEachSide(1);
 
         $unapproved_checking = Recipe::oldest()
-            ->where(LANG() . '_approver_id', '!=', 0)
+            ->where(_('approver_id', true), '!=', 0)
             ->selectBasic()
             ->approved(0)
             ->ready(1)
@@ -44,13 +44,13 @@ class ApprovesController extends Controller
             ->onEachSide(1);
 
         $my_approves = Recipe::oldest()
-            ->where(LANG() . '_approver_id', user()->id)
+            ->where(_('approver_id', true), user()->id)
             ->done(1)
             ->paginate(30)
             ->onEachSide(1);
 
         // Check if admin is already has recipe that he didnt approve
-        $already_checking = Recipe::where(LANG() . '_approver_id', user()->id)->approved(0)->ready(1)->value('id');
+        $already_checking = Recipe::where(_('approver_id', true), user()->id)->approved(0)->ready(1)->value('id');
         if ($already_checking) {
             return redirect("/admin/approves/$already_checking")
                 ->withSuccess(trans('approves.finish_checking'));
@@ -75,7 +75,7 @@ class ApprovesController extends Controller
         }
 
         if (!optional($recipe->approver)->id) {
-            $recipe->update([LANG() . '_approver_id' => user()->id]);
+            $recipe->update([_('approver_id', true) => user()->id]);
             $approver_id = user()->id;
         } else {
             $approver_id = $recipe->approver->id;
@@ -100,7 +100,7 @@ class ApprovesController extends Controller
 
         event(new \App\Events\RecipeGotApproved($recipe));
 
-        $recipe->update(['approved_' . LANG() => 1]);
+        $recipe->update([_('approved') => 1]);
         cache()->forget('unapproved_notif');
 
         return redirect("/recipes/$recipe->slug")
@@ -125,7 +125,7 @@ class ApprovesController extends Controller
 
         event(new \App\Events\RecipeGotCanceled($recipe, $request->message));
 
-        $recipe->update(['ready_' . LANG() => 0]);
+        $recipe->update([_('ready') => 0]);
         cache()->forget('unapproved_notif');
 
         return redirect('/recipes#new')

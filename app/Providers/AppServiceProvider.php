@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
         view()->share('categories', array_map(function ($category) {
             return [
                 'id' => $category['id'],
-                'name' => $category['name_' . LANG()],
+                'name' => $category[_('name')],
             ];
         }, $categories));
     }

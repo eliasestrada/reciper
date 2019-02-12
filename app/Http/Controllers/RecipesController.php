@@ -57,7 +57,7 @@ class RecipesController extends Controller
         }
 
         $recipe = user()->recipes()->create([
-            'title_' . LANG() => $request->title,
+            _('title') => $request->title,
             'slug' => str_slug($request->title) . '-' . time(),
         ]);
 

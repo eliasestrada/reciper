@@ -66,9 +66,9 @@ class RecipesEditPageTest extends TestCase
             ->assertRedirect('/users/other/my-recipes');
 
         $this->assertDatabaseHas('recipes', [
-            'title_' . LANG() => $form_data['title'],
-            'ready_' . LANG() => 1,
-            'approved_' . LANG() => 0,
+            _('title') => $form_data['title'],
+            _('ready') => 1,
+            _('approved') => 0,
             'user_id' => $user->id,
         ]);
     }
@@ -88,8 +88,8 @@ class RecipesEditPageTest extends TestCase
 
         $this->assertDatabaseHas('recipes', [
             'id' => $recipe->id,
-            'ready_' . LANG() => 0,
-            'approved_' . LANG() => 0,
+            _('ready') => 0,
+            _('approved') => 0,
             'user_id' => $user->id,
         ]);
     }
@@ -124,9 +124,9 @@ class RecipesEditPageTest extends TestCase
             ->assertRedirect('/users/other/my-recipes');
 
         $this->assertDatabaseHas('recipes', [
-            'title_' . LANG() => $form_data['title'],
-            'ready_' . LANG() => 1,
-            'approved_' . LANG() => 1,
+            _('title') => $form_data['title'],
+            _('ready') => 1,
+            _('approved') => 1,
             'user_id' => $admin->id,
         ]);
     }
@@ -145,8 +145,8 @@ class RecipesEditPageTest extends TestCase
 
         $this->assertDatabaseHas('recipes', [
             'id' => $recipe->id,
-            'approved_' . LANG() => 0,
-            'ready_' . LANG() => 0,
+            _('approved') => 0,
+            _('ready') => 0,
             'user_id' => $author->id,
         ]);
     }
@@ -164,8 +164,8 @@ class RecipesEditPageTest extends TestCase
 
         $this->assertDatabaseHas('recipes', [
             'id' => $recipe->id,
-            'approved_' . LANG() => 1,
-            'ready_' . LANG() => 1,
+            _('approved') => 1,
+            _('ready') => 1,
         ]);
     }
 

@@ -21,7 +21,7 @@ class DocumentsRuqusetTest extends TestCase
         ]);
 
         $this->assertDatabaseMissing('documents', [
-            'text_' . LANG() => $text,
+            _('text') => $text,
         ]);
     }
 
@@ -37,7 +37,7 @@ class DocumentsRuqusetTest extends TestCase
         ]);
 
         $this->assertDatabaseMissing('documents', [
-            'title_' . LANG() => $title,
+            _('title') => $title,
         ]);
     }
 
@@ -53,7 +53,7 @@ class DocumentsRuqusetTest extends TestCase
         ]);
 
         $this->assertDatabaseMissing('documents', [
-            'text_' . LANG() => $text,
+            _('text') => $text,
         ]);
     }
 
@@ -69,7 +69,7 @@ class DocumentsRuqusetTest extends TestCase
         ]);
 
         $this->assertDatabaseMissing('documents', [
-            'text_' . LANG() => $text,
+            _('text') => $text,
         ]);
     }
 
@@ -85,7 +85,7 @@ class DocumentsRuqusetTest extends TestCase
         ]);
 
         $this->assertDatabaseMissing('documents', [
-            'title_' . LANG() => $title,
+            _('title') => $title,
         ]);
     }
 
@@ -101,7 +101,7 @@ class DocumentsRuqusetTest extends TestCase
         ]);
 
         $this->assertDatabaseMissing('documents', [
-            'title_' . LANG() => $title,
+            _('title') => $title,
         ]);
     }
 

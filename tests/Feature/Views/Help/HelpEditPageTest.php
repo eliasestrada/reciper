@@ -70,7 +70,7 @@ class HelpEditPageTest extends TestCase
             ->assertRedirect('/help');
 
         $this->assertDatabaseHas('help', [
-            'title_' . LANG() => $title,
+            _('title') => $title,
         ]);
     }
 
@@ -92,8 +92,8 @@ class HelpEditPageTest extends TestCase
             ->assertRedirect("/help/{$help->id}/edit");
 
         $this->assertDatabaseHas('help', [
-            'title_' . LANG() => $form_data['title'],
-            'text_' . LANG() => $form_data['text'],
+            _('title') => $form_data['title'],
+            _('text') => $form_data['text'],
         ]);
     }
 
@@ -110,8 +110,8 @@ class HelpEditPageTest extends TestCase
             ->assertRedirect("/help");
 
         $this->assertSoftDeleted('help', [
-            'title_' . LANG() => $help->getTitle(),
-            'text_' . LANG() => $help->getText(),
+            _('title') => $help->getTitle(),
+            _('text') => $help->getText(),
         ]);
     }
 }

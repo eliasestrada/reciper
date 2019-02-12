@@ -28,7 +28,7 @@ class MasterDocumentsShowPageTest extends TestCase
      */
     public function user_cant_see_the_page_if_document_is_not_ready(): void
     {
-        $document_id = create(Document::class, ['ready_' . LANG() => 0])->id;
+        $document_id = create(Document::class, [_('ready') => 0])->id;
 
         $this->actingAs(make(User::class))
             ->get("/documents/{$document_id}")
@@ -41,7 +41,7 @@ class MasterDocumentsShowPageTest extends TestCase
      */
     public function master_can_see_the_page_if_document_is_not_ready(): void
     {
-        $document_id = create(Document::class, ['ready_' . LANG() => 0])->id;
+        $document_id = create(Document::class, [_('ready') => 0])->id;
 
         $this->actingAs(create_user('master'))
             ->get("/documents/${document_id}")

@@ -11,7 +11,7 @@ trait RecipeModelShortcuts
      */
     public function getTitle(): ?string
     {
-        return $this->toArray()['title_' . LANG()];
+        return $this->toArray()[_('title')];
     }
 
     /**
@@ -21,7 +21,7 @@ trait RecipeModelShortcuts
      */
     public function getIngredients(): ?string
     {
-        return $this->toArray()['ingredients_' . LANG()];
+        return $this->toArray()[_('ingredients')];
     }
 
     /**
@@ -31,7 +31,7 @@ trait RecipeModelShortcuts
      */
     public function getIntro(): ?string
     {
-        return $this->toArray()['intro_' . LANG()];
+        return $this->toArray()[_('intro')];
     }
 
     /**
@@ -41,7 +41,7 @@ trait RecipeModelShortcuts
      */
     public function getText(): ?string
     {
-        return $this->toArray()['text_' . LANG()];
+        return $this->toArray()[_('text')];
     }
 
     /**
@@ -51,7 +51,7 @@ trait RecipeModelShortcuts
      */
     public function isReady(): bool
     {
-        return $this->toArray()['ready_' . LANG()] == 1 ? true : false;
+        return $this->toArray()[_('ready')] == 1 ? true : false;
     }
 
     /**
@@ -61,7 +61,7 @@ trait RecipeModelShortcuts
      */
     public function isApproved(): bool
     {
-        return $this->toArray()['approved_' . LANG()] == 1 ? true : false;
+        return $this->toArray()[_('approved')] == 1 ? true : false;
     }
 
     /**
@@ -82,7 +82,7 @@ trait RecipeModelShortcuts
      */
     public function isPublished(): bool
     {
-        return $this->toArray()['published_' . LANG()] == 1 ? true : false;
+        return $this->toArray()[_('published')] == 1 ? true : false;
     }
 
     /**
@@ -142,9 +142,9 @@ trait RecipeModelShortcuts
     public function moveToDrafts()
     {
         return $this->update([
-            'ready_' . LANG() => 0,
-            'approved_' . LANG() => 0,
-            LANG() . '_approver_id' => 0,
+            _('ready') => 0,
+            _('approved') => 0,
+            _('approver_id', true) => 0,
         ]);
     }
 }

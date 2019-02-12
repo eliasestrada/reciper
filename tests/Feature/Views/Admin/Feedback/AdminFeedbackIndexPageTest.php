@@ -40,7 +40,7 @@ class AdminFeedbackIndexPageTest extends TestCase
     {
         $feed = Feedback::create([
             'visitor_id' => 1,
-            'lang' => LANG(),
+            'lang' => _(),
             'email' => 'denis@gmail.com',
             'message' => $msg = str_random(20),
         ]);
@@ -59,7 +59,7 @@ class AdminFeedbackIndexPageTest extends TestCase
     {
         $feed = Feedback::create([
             'visitor_id' => 1,
-            'lang' => LANG(),
+            'lang' => _(),
             'email' => 'johndoe@gmail.com',
             'message' => str_random(20),
         ]);

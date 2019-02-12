@@ -23,7 +23,7 @@ class HelpRepoTest extends TestCase
 
         $this->assertTrue(is_array($result));
         $this->assertArrayHasKey('id', $result[0]);
-        $this->assertArrayHasKey('title_' . LANG(), $result[0]);
+        $this->assertArrayHasKey(_('title'), $result[0]);
         $this->assertArrayHasKey('help_category_id', $result[0]);
     }
 
@@ -33,7 +33,7 @@ class HelpRepoTest extends TestCase
      */
     public function update_method_updates_given_record_in_db(): void
     {
-        $help = create(Help::class, ['title_' . LANG() => 'Test']);
+        $help = create(Help::class, [_('title') => 'Test']);
         $data = [
             'title' => str_random(12),
             'text' => str_random(20),
@@ -59,7 +59,7 @@ class HelpRepoTest extends TestCase
 
         HelpRepo::create(new HelpRequest($data));
 
-        $help_exists = Help::where('title_' . LANG(), $data['title'])->exists();
+        $help_exists = Help::where(_('title'), $data['title'])->exists();
         $this->assertTrue($help_exists);
     }
 }

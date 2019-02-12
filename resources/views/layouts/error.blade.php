@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ LANG() }}">
+<html lang="{{ _() }}">
 <head>
     @include('includes.head')
     <title>@yield('title') - @lang('messages.app_name')</title>

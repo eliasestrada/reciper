@@ -26,7 +26,7 @@ class NotifyAuthorAboutApproving
             }
 
             $event->recipe->update([
-                'published_' . LANG() => 1,
+                _('published') => 1,
             ]);
         }
     }

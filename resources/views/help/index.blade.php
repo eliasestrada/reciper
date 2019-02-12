@@ -13,7 +13,7 @@
                 <div class="col s12 m6 l4">
                     <h5 class="header">
                         <i class="fas {{ $category['icon'] }} left red-text w20"></i>
-                        {{ $category['title_' . LANG()] }}
+                        {{ $category[_('title')] }}
                     </h5>
                     <div class="divider"></div>
 
@@ -22,7 +22,7 @@
                             @if ($help['help_category_id'] == $category['id'])
                                 <li>
                                     <a href="/help/{{ $help['id'] }}" class="text text-hover" style="font-size:1.05em">
-                                        <span class="red-text">#</span> {{ $help['title_' . LANG()] }}
+                                        <span class="red-text">#</span> {{ $help[_('title')] }}
                                     </a>
                                 </li>
                             @endif

@@ -85,7 +85,7 @@ class RecipeTest extends TestCase
      */
     public function getTitle_method_returns_title_row(): void
     {
-        $recipe = new Recipe(['title_' . LANG() => 'Sumpakuma']);
+        $recipe = new Recipe([_('title') => 'Sumpakuma']);
         $this->assertEquals('Sumpakuma', $recipe->getTitle());
     }
 
@@ -95,7 +95,7 @@ class RecipeTest extends TestCase
      */
     public function getIngredients_method_returns_ingredients_row(): void
     {
-        $recipe = new Recipe(['ingredients_' . LANG() => 'Homatoma']);
+        $recipe = new Recipe([_('ingredients') => 'Homatoma']);
         $this->assertEquals('Homatoma', $recipe->getIngredients());
     }
 
@@ -105,7 +105,7 @@ class RecipeTest extends TestCase
      */
     public function getIntro_method_returns_intro_row(): void
     {
-        $recipe = new Recipe(['intro_' . LANG() => 'Mapacuta']);
+        $recipe = new Recipe([_('intro') => 'Mapacuta']);
         $this->assertEquals('Mapacuta', $recipe->getIntro());
     }
 
@@ -115,7 +115,7 @@ class RecipeTest extends TestCase
      */
     public function getText_method_returns_text_row(): void
     {
-        $recipe = new Recipe(['text_' . LANG() => 'Kolobok']);
+        $recipe = new Recipe([_('text') => 'Kolobok']);
         $this->assertEquals('Kolobok', $recipe->getText());
     }
 
@@ -125,7 +125,7 @@ class RecipeTest extends TestCase
      */
     public function isReady_method_returns_true_when_ready_column_set_to_one(): void
     {
-        $recipe = new Recipe(['ready_' . LANG() => 1]);
+        $recipe = new Recipe([_('ready') => 1]);
         $this->assertTrue($recipe->isReady());
     }
 
@@ -135,7 +135,7 @@ class RecipeTest extends TestCase
      */
     public function isApproved_method_returns_true_when_approved_column_set_to_one(): void
     {
-        $recipe = new Recipe(['ready_' . LANG() => 1, 'approved_' . LANG() => 1]);
+        $recipe = new Recipe([_('ready') => 1, _('approved') => 1]);
         $this->assertTrue($recipe->isApproved());
     }
 
@@ -145,7 +145,7 @@ class RecipeTest extends TestCase
      */
     public function isDone_method_returns_true_when_ready_and_approved_columns_set_to_one(): void
     {
-        $recipe = new Recipe(['ready_' . LANG() => 1, 'approved_' . LANG() => 1]);
+        $recipe = new Recipe([_('ready') => 1, _('approved') => 1]);
         $this->assertTrue($recipe->isDone());
     }
 
@@ -155,7 +155,7 @@ class RecipeTest extends TestCase
      */
     public function isPublished_method_returns_true_when_published_column_is_set_to_one(): void
     {
-        $recipe = new Recipe(['published_' . LANG() => 1]);
+        $recipe = new Recipe([_('published') => 1]);
         $this->assertTrue($recipe->isPublished());
     }
 
@@ -165,14 +165,14 @@ class RecipeTest extends TestCase
      */
     public function getStatusText_method_returns_status_text(): void
     {
-        $recipe = new Recipe(['ready_' . LANG() => 1, 'approved_' . LANG() => 1]);
+        $recipe = new Recipe([_('ready') => 1, _('approved') => 1]);
         $this->assertEquals(trans('users.checked'), $recipe->getStatusText());
 
-        $recipe->{'ready_' . LANG()} = 0;
+        $recipe->{_('ready')} = 0;
         $this->assertEquals(trans('users.not_ready'), $recipe->getStatusText());
 
-        $recipe->{'ready_' . LANG()} = 1;
-        $recipe->{'approved_' . LANG()} = 0;
+        $recipe->{_('ready')} = 1;
+        $recipe->{_('approved')} = 0;
         $this->assertEquals(trans('users.is_checking'), $recipe->getStatusText());
     }
 
@@ -182,7 +182,7 @@ class RecipeTest extends TestCase
      */
     public function getStatusIcon_method_returns_check_icon_when_recipe_is_ready_and_approved(): void
     {
-        $recipe = new Recipe(['ready_' . LANG() => 1, 'approved_' . LANG() => 1]);
+        $recipe = new Recipe([_('ready') => 1, _('approved') => 1]);
         $this->assertEquals('fa-check', $recipe->getStatusIcon());
     }
 
@@ -192,7 +192,7 @@ class RecipeTest extends TestCase
      */
     public function getStatusIcon_method_returns_pen_icon_when_recipe_is_not_ready(): void
     {
-        $recipe = new Recipe(['ready_' . LANG() => 0]);
+        $recipe = new Recipe([_('ready') => 0]);
         $this->assertEquals('fa-pen', $recipe->getStatusIcon());
     }
 
@@ -202,7 +202,7 @@ class RecipeTest extends TestCase
      */
     public function getStatusIcon_method_returns_clock_icon_when_recipe_is_ready_but_not_approved_yet(): void
     {
-        $recipe = new Recipe(['ready_' . LANG() => 1, 'approved_' . LANG() => 0]);
+        $recipe = new Recipe([_('ready') => 1, _('approved') => 0]);
         $this->assertEquals('fa-clock', $recipe->getStatusIcon());
     }
 
@@ -212,7 +212,7 @@ class RecipeTest extends TestCase
      */
     public function getStatusColor_method_returns_green_color_when_recipe_is_ready_and_approved(): void
     {
-        $recipe = new Recipe(['ready_' . LANG() => 1, 'approved_' . LANG() => 1]);
+        $recipe = new Recipe([_('ready') => 1, _('approved') => 1]);
         $this->assertEquals('#65b56e', $recipe->getStatusColor());
     }
 
@@ -222,7 +222,7 @@ class RecipeTest extends TestCase
      */
     public function getStatusColor_method_returns_red_color_when_recipe_is_in_drafts(): void
     {
-        $recipe = new Recipe(['ready_' . LANG() => 0]);
+        $recipe = new Recipe([_('ready') => 0]);
         $this->assertEquals('#ce7777', $recipe->getStatusColor());
     }
 
@@ -232,7 +232,7 @@ class RecipeTest extends TestCase
      */
     public function getStatusColor_method_returns_orange_color_when_recipe_is_ready_but_not_approved_yet(): void
     {
-        $recipe = new Recipe(['ready_' . LANG() => 1, 'approved_' . LANG() => 0]);
+        $recipe = new Recipe([_('ready') => 1, _('approved') => 0]);
         $this->assertEquals('#e2bd18', $recipe->getStatusColor());
     }
 
@@ -246,10 +246,10 @@ class RecipeTest extends TestCase
         $columns = [
             'id',
             'slug',
-            'title_' . LANG(),
-            'intro_' . LANG(),
-            'ready_' . LANG(),
-            'approved_' . LANG(),
+            _('title'),
+            _('intro'),
+            _('ready'),
+            _('approved'),
             'image',
             'time',
             'updated_at',

@@ -52,7 +52,7 @@ class Help extends Model
      */
     public function getTitle(): string
     {
-        return $this->toArray()['title_' . LANG()];
+        return $this->toArray()[_('title')];
     }
 
     /**
@@ -62,6 +62,6 @@ class Help extends Model
      */
     public function getText(): string
     {
-        return $this->toArray()['text_' . LANG()];
+        return $this->toArray()[_('text')];
     }
 }

@@ -4,7 +4,7 @@
         selector: "#text",
         themes: "modern",
         skin: "{{ request()->cookie('r_dark_theme') ? 'dark' : 'light' }}",
-        language: '{{ LANG() }}',
+        language: '{{ _() }}',
         plugins: [
             "autolink lists link preview wordcount fullscreen paste",
         ],

@@ -45,9 +45,9 @@ class MasterDocumentsCreatePageTest extends TestCase
             ->post(action('DocumentsController@store'), $data);
 
         $this->assertDatabaseHas('documents', [
-            'title_' . LANG() => $data['title'],
-            'text_' . LANG() => $data['text'],
-            'ready_' . LANG() => 0,
+            _('title') => $data['title'],
+            _('text') => $data['text'],
+            _('ready') => 0,
         ]);
     }
 
@@ -101,9 +101,9 @@ class MasterDocumentsCreatePageTest extends TestCase
             ->put(action('DocumentsController@update', ['id' => $doc->id]), $data);
 
         $this->assertDatabaseHas('documents', [
-            'title_' . LANG() => $data['title'],
-            'text_' . LANG() => $data['text'],
-            'ready_' . LANG() => 0,
+            _('title') => $data['title'],
+            _('text') => $data['text'],
+            _('ready') => 0,
         ]);
     }
 
@@ -120,6 +120,6 @@ class MasterDocumentsCreatePageTest extends TestCase
                 'id' => Document::first()->id,
             ]), $data);
 
-        $this->assertDatabaseHas('documents', ['id' => 1, 'ready_' . LANG() => 1]);
+        $this->assertDatabaseHas('documents', ['id' => 1, _('ready') => 1]);
     }
 }

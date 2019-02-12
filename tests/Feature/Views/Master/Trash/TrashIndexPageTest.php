@@ -72,7 +72,7 @@ class TrashIndexPageTest extends TestCase
             ->assertRedirect('/master/trash');
 
         $this->assertDatabaseMissing('help', [
-            'title_' . LANG() => $trash['title'],
+            _('title') => $trash['title'],
         ]);
     }
 
@@ -91,7 +91,7 @@ class TrashIndexPageTest extends TestCase
             ->assertRedirect("/help/{$trash['id']}");
 
         $this->assertDatabaseHas('help', [
-            'title_' . LANG() => $trash['title'],
+            _('title') => $trash['title'],
         ]);
     }
 

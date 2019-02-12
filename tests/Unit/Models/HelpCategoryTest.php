@@ -26,6 +26,6 @@ class HelpCategoryTest extends TestCase
     public function getTitle_method_returns_title_from_database_column(): void
     {
         $help = make(HelpCategory::class);
-        $this->assertEquals($help->getTitle(), $help->toArray()['title_' . LANG()]);
+        $this->assertEquals($help->getTitle(), $help->toArray()[_('title')]);
     }
 }

@@ -49,9 +49,18 @@ function user()
     return auth()->user();
 }
 
-function LANG()
+/**
+ * @param string|null $str
+ * @param bool $before
+ * @return string
+ */
+function _(?string $str = null, bool $before = false): string
 {
-    return app()->getLocale();
+    $lang = app()->getLocale();
+    if ($str) {
+        return $before ? "{$lang}_{$str}" : "{$str}_{$lang}";
+    }
+    return $lang;
 }
 
 /**

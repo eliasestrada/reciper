@@ -17,7 +17,7 @@
                 <li>
                     <a class="subheader grey-text mt-3">
                         <i class="fas {{ $category['icon'] }}  red-text fa-15x"></i>
-                        {{ $category['title_' . LANG()] }}
+                        {{ $category[_('title')] }}
                     </a>
                 </li>
                 <div class="divider mb-2"></div>
@@ -33,7 +33,7 @@
                                     class="text text-hover"
                                     style="font-size:1.05em;height:auto;line-height:22px"
                                 >
-                                    {{ $question['title_' . LANG()] }}
+                                    {{ $question[_('title')] }}
                                 </a>
                             </li>
                         @endif

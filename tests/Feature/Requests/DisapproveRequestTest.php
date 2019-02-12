@@ -16,7 +16,7 @@ class DisapproveRequestTest extends TestCase
     {
         $this->assertDatabaseMissing('recipes', [
             'id' => 1,
-            'ready_' . LANG() => 0,
+            _('ready') => 0,
         ]);
         parent::tearDown();
     }

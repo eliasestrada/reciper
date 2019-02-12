@@ -47,7 +47,7 @@ class Recipe extends Model
      */
     public function scopeReady($query, int $value)
     {
-        return $query->where('ready_' . LANG(), $value);
+        return $query->where(_('ready'), $value);
     }
 
     /**
@@ -62,10 +62,10 @@ class Recipe extends Model
         $sql = array_collapse([[
             'id',
             'slug',
-            'title_' . LANG(),
-            'intro_' . LANG(),
-            'ready_' . LANG(),
-            'approved_' . LANG(),
+            _('title'),
+            _('intro'),
+            _('ready'),
+            _('approved'),
             'image',
             'time',
             'updated_at',
@@ -86,7 +86,7 @@ class Recipe extends Model
      */
     public function scopeApproved($query, int $value)
     {
-        return $query->where('approved_' . LANG(), $value);
+        return $query->where(_('approved'), $value);
     }
 
     /**
@@ -99,8 +99,8 @@ class Recipe extends Model
     public function scopeDone($query, int $value)
     {
         return $query
-            ->where('ready_' . LANG(), $value)
-            ->where('approved_' . LANG(), $value);
+            ->where(_('ready'), $value)
+            ->where(_('approved'), $value);
     }
 
     /**

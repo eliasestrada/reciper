@@ -59,13 +59,13 @@ trait RecipesControllerHelpers
             'meal_id' => request('meal', 0),
             'time' => request('time', 0),
 
-            'title_' . LANG() => $request->title,
-            'intro_' . LANG() => $request->intro,
-            'text_' . LANG() => $request->text,
-            'ingredients_' . LANG() => $request->ingredients,
+            _('title') => $request->title,
+            _('intro') => $request->intro,
+            _('text') => $request->text,
+            _('ingredients') => $request->ingredients,
             'simple' => $this->isSimple($request),
-            'ready_' . LANG() => ($request->ready == 1) ? 1 : 0,
-            'approved_' . LANG() => ($request->ready == 1 && user()->hasRole('admin')) ? 1 : 0,
+            _('ready') => ($request->ready == 1) ? 1 : 0,
+            _('approved') => ($request->ready == 1 && user()->hasRole('admin')) ? 1 : 0,
         ];
 
         // If recipe moved from being ready to not ready

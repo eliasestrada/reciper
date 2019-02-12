@@ -26,9 +26,9 @@ class AdminApprovesShowPageTest extends TestCase
 
         $this->admin = ($admin = create_user('admin'));
         $this->unapproved_recipe = create(Recipe::class, [
-            'published_' . LANG() => 0,
-            'approved_' . LANG() => 0,
-            LANG() . '_approver_id' => $admin->id,
+            _('published') => 0,
+            _('approved') => 0,
+            _('approver_id', true) => $admin->id,
         ]);
     }
 
@@ -130,14 +130,14 @@ class AdminApprovesShowPageTest extends TestCase
     public function approver_id_column_changes_to_id_of_the_first_admin_who_is_cheking_the_recipe(): void
     {
         $recipe = create(Recipe::class, [
-            LANG() . '_approver_id' => 0,
-            'approved_' . LANG() => 0,
+            _('approver_id', true) => 0,
+            _('approved') => 0,
         ]);
 
         $this->actingAs($this->admin)->get("/admin/approves/{$recipe->id}");
         $this->assertDatabaseHas('recipes', [
             'id' => $recipe->id,
-            LANG() . '_approver_id' => $this->admin->id,
+            _('approver_id', true) => $this->admin->id,
         ]);
     }
 }
