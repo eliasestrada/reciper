@@ -250,3 +250,11 @@ function setRandomBgColor(): string
         0.3
     )';
 }
+
+/**
+ * @return string
+ */
+function setLayout(): string
+{
+    return auth()->check() ? 'layouts.auth' : 'layouts.guest';
+}
