@@ -14,15 +14,23 @@
             </tr>
             <tr> {{-- All likes --}}
                 <td>@lang('users.amount_of_likes')</td>
-                <td class="right-align">{{ $recipes->sum('likes_count') }} <i class='fas fa-heart tiny red-text'></i></td>
+                <td class="right-align">
+                    {{ $recipes->sum('likes_count') }} 
+                    <i class='fas fa-heart tiny red-text'></i>
+                </td>
             </tr>
             <tr> {{-- All views --}}
                 <td>@lang('users.amount_of_views')</td>
-                <td class="right-align">{{ $recipes->sum('views_count') }} <i class='fas fa-eye tiny'></i></td>
+                <td class="right-align">
+                    {{ $recipes->sum('views_count') }} <i class='fas fa-eye tiny'></i>
+                </td>
             </tr>
             <tr> {{-- All favs --}}
                 <td>@lang('users.amount_of_favs')</td>
-                <td class="right-align">{{ $recipes->sum('favs_count') }} <i class='fas fa-star tiny' style="color:#d49d10"></td>
+                <td class="right-align">
+                    {{ $recipes->sum('favs_count') }} 
+                    <i class='fas fa-star tiny' style="color:#d49d10">
+                </td>
             </tr>
             <tr> {{-- Streak days --}}
                 <td>@lang('users.streak_days')</td>
@@ -65,7 +73,9 @@
                 <td>@lang('users.most_liked_recipe')</td>
                 <td class="right-align">
                     @if ($most_liked)
-                        <a href="{{ "/recipes/$most_liked->slug" }}" class="main-text">{{ $most_liked->getTitle() }}</a>
+                        <a href="{{ "/recipes/$most_liked->slug" }}" class="main-text">
+                            {{ $most_liked->getTitle() }}
+                        </a>
                         {{ $most_liked->likes_count }} <i class='fas fa-heart red-text tiny'></i>
                     @else - @endif
                 </td>
@@ -87,8 +97,11 @@
                 <td>@lang('users.most_favorite_recipe')</td>
                 <td class="right-align">
                     @if ($most_liked)
-                        <a href="{{ "/recipes/$most_favs->slug" }}" class="main-text">{{ $most_favs->getTitle() }}</a>
-                        {{ $most_favs->favs_count }} <i class='fas fa-star tiny' style="color:#d49d10"></i>
+                        <a href="{{ "/recipes/$most_favs->slug" }}" class="main-text">
+                            {{ $most_favs->getTitle() }}
+                        </a>
+                        {{ $most_favs->favs_count }} 
+                        <i class='fas fa-star tiny' style="color:#d49d10"></i>
                     @else - @endif
                 </td>
             </tr>
