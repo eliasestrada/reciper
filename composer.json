@@ -68,6 +68,10 @@
         ]
     },
     "config": {
+        "platform": {
+            "ext-pcntl": "7.2",
+            "ext-bcmath": "7.2"
+        },
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true
