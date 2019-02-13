@@ -35,7 +35,7 @@ class CreateRecipesTable extends Migration
             $table->boolean('published_en')->default(0);
 
             // Other
-            $table->string('slug', 100);
+            $table->string('slug', 100)->unique();
             $table->unsignedSmallInteger('time')->default(0);
             $table->string('image')->default('default.jpg');
             $table->boolean('simple')->default(0);
