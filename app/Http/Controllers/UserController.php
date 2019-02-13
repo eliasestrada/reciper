@@ -56,8 +56,11 @@ class UserController extends Controller
             ->onEachSide(1);
 
         $xp = new Xp($user);
+        $max_xp_for_current_level = $xp->maxXpForCurrentLevel() + 1;
+        $level_higher_than_max = $xp->minXpForCurrentLevel() >= config('custom.max_xp');
+        $max_xp = $level_higher_than_max ? '' : "/ {$max_xp_for_current_level}";
 
-        return view('users.show', compact('recipes', 'user', 'xp'));
+        return view('users.show', compact('recipes', 'user', 'xp', 'max_xp'));
     }
 
     /**

@@ -22,17 +22,27 @@
                     <div class="my-2">
                         {{-- Manage user --}}
                         @if (optional(user())->hasRole('master'))
-                            <a href="/master/manage-users/{{ $user->id }}" class="mr-2" title="@lang('manage-users.manage')">
+                            <a href="/master/manage-users/{{ $user->id }}"
+                                class="mr-2"
+                                title="@lang('manage-users.manage')"
+                            >
                                 <i class="fas fa-cog red-text fa-15x"></i>
                             </a>
                         @endif
                         {{-- Streak days --}}
-                        <div class="tooltipped d-inline-block" data-tooltip="@lang('users.streak_days')" style="animation:appearWithRotate .7s">
+                        <div class="tooltipped d-inline-block"
+                            data-tooltip="@lang('users.streak_days')"
+                            style="animation:appearWithRotate .7s"
+                        >
                             <i class="fas fa-fire fa-15x" style="color:orangered"></i> 
                             <b class="px-1">{{ $user->streak_days }}</b>
                         </div>
+
                         {{-- Stars --}}
-                        <div class="tooltipped d-inline-block" data-tooltip="@lang('users.amount_of_favs')" style="animation:appearWithRotate 1.1s">
+                        <div class="tooltipped d-inline-block"
+                            data-tooltip="@lang('users.amount_of_favs')"
+                            style="animation:appearWithRotate 1.1s"
+                        >
                             <i class="fas fa-star fa-15x" style="color:#d49d10"></i> 
                             <b class="px-1">{{ $recipes->sum('favs_count') }}</b>
                         </div>
@@ -61,7 +71,9 @@
                     {{-- Likes Bubble --}}
                     <div class="bubbles-block" style="animation:appearWithRotate .3s">
                         <i class="fas fa-heart fa-2x"></i>
-                        <div class="bubble" title="@lang('tips.likes_tip', ['value' => number_format($recipes->sum('likes_count'))])">
+                        <div class="bubble" title="@lang('tips.likes_tip', [
+                            'value' => number_format($recipes->sum('likes_count'))
+                        ])">
                             <span class="number">
                                 {!! readable_number($recipes->sum('likes_count')) !!}
                             </span>
@@ -83,7 +95,9 @@
                     {{-- Views Bubble --}}
                     <div class="bubbles-block" style="animation:appearWithRotate 1s">
                         <i class="fas fa-eye fa-2x"></i>
-                        <div class="bubble" title="@lang('tips.views_tip', ['value' => number_format($recipes->sum('views_count'))])">
+                        <div class="bubble" title="@lang('tips.views_tip', [
+                            'value' => number_format($recipes->sum('views_count'))
+                        ])">
                             <span class="number">
                                 {!! readable_number($recipes->sum('views_count')) !!}
                             </span>
@@ -93,7 +107,9 @@
                 </div>
 
                 {{-- Level bar --}}
-                <div class="progress-wrap mt-4 z-depth-1 mb-2" data-xp="@lang('users.xp') {{ $user->xp }} {{ $xp->minXpForCurrentLevel() >= config('custom.max_xp') ? '' : '/ '. ($xp->maxXpForCurrentLevel() + 1) }}">
+                <div class="progress-wrap mt-4 z-depth-1 mb-2"
+                    data-xp="@lang('users.xp') {{ $user->xp }} {{ $max_xp }}"
+                >
                     <div class="bar" style="width:{{ $xp->getPercent() }}%"></div>
                 </div>
 
