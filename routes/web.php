@@ -31,7 +31,7 @@ Route::get('search', 'PageController@search');
 Route::view('contact', 'pages.contact');
 Route::post('admin/feedback', 'Admin\FeedbackController@store');
 
-Route::resource('documents', DocumentController::class);
+Route::resource('documents', DocumentController::class)->only(['index', 'show']);
 Route::resource('recipes', RecipeController::class);
 Route::resource('help', HelpController::class);
 
@@ -64,6 +64,7 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 Route::prefix('master')->namespace('Master')->group(function () {
     Route::delete('log-viewer/logs/destroy', 'LogController@destroy')->middleware('master');
     Route::resource('visitors', VisitorController::class)->except(['edit']);
+    Route::resource('documents', DocumentController::class)->except(['index', 'show']);
     Route::resource('manage-users', ManageUserController::class)->except(['edit']);
     Route::resource('trash', TrashController::class)->only(['index', 'destroy', 'update']);
 });

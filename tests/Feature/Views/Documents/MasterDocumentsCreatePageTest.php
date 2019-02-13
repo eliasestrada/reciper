@@ -18,7 +18,7 @@ class MasterDocumentsCreatePageTest extends TestCase
     public function master_can_see_the_page(): void
     {
         $this->actingAs(create_user('master'))
-            ->get('/documents/create')
+            ->get('/master/documents/create')
             ->assertOk();
     }
 
@@ -29,7 +29,7 @@ class MasterDocumentsCreatePageTest extends TestCase
     public function user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))
-            ->get("/documents/create")
+            ->get("/master/documents/create")
             ->assertRedirect();
     }
 
@@ -42,7 +42,7 @@ class MasterDocumentsCreatePageTest extends TestCase
         $data = ['title' => str_random(20), 'text' => str_random(100)];
 
         $this->actingAs(create_user('master'))
-            ->post(action('DocumentController@store'), $data);
+            ->post(action('Master\DocumentController@store'), $data);
 
         $this->assertDatabaseHas('documents', [
             _('title') => $data['title'],
@@ -58,7 +58,7 @@ class MasterDocumentsCreatePageTest extends TestCase
     public function master_can_delete_document(): void
     {
         $this->actingAs(create_user('master'))
-            ->delete(action('DocumentController@destroy', [
+            ->delete(action('Master\DocumentController@destroy', [
                 'id' => $document_id = create(Document::class)->id,
             ]));
         $this->assertDatabaseMissing('documents', ['id' => $document_id]);
@@ -71,7 +71,7 @@ class MasterDocumentsCreatePageTest extends TestCase
     public function user_cant_delete_document(): void
     {
         $this->actingAs(make(User::class))
-            ->delete(action('DocumentController@destroy', [
+            ->delete(action('Master\DocumentController@destroy', [
                 'id' => $document_id = create(Document::class)->id,
             ]))
             ->assertRedirect('/');
@@ -84,8 +84,8 @@ class MasterDocumentsCreatePageTest extends TestCase
     public function master_cant_delete_main_first_document(): void
     {
         $this->actingAs(create_user('master'))
-            ->delete(action('DocumentController@destroy', ['id' => 1]))
-            ->assertRedirect('/documents/create');
+            ->delete(action('Master\DocumentController@destroy', ['id' => 1]))
+            ->assertRedirect('/master/documents/create');
     }
 
     /**
@@ -98,7 +98,7 @@ class MasterDocumentsCreatePageTest extends TestCase
         $doc = create(Document::class);
 
         $this->actingAs(create_user('master'))
-            ->put(action('DocumentController@update', ['id' => $doc->id]), $data);
+            ->put(action('Master\DocumentController@update', ['id' => $doc->id]), $data);
 
         $this->assertDatabaseHas('documents', [
             _('title') => $data['title'],
@@ -116,7 +116,7 @@ class MasterDocumentsCreatePageTest extends TestCase
         $data = ['title' => str_random(10), 'text' => str_random(100)];
 
         $this->actingAs(create_user('master'))
-            ->put(action('DocumentController@update', [
+            ->put(action('Master\DocumentController@update', [
                 'id' => Document::first()->id,
             ]), $data);
 

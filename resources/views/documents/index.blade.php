@@ -30,7 +30,9 @@
                             <div class="col s12 l6">
                                 <div class="card" style="min-height:320px">
                                     <div class="card-content">
-                                        <span class="card-title" style="line-height:32px!important">{{ $doc->getTitle() }}</span>
+                                        <span class="card-title" style="line-height:32px!important">
+                                            {{ $doc->getTitle() }}
+                                        </span>
                                         <div class="divider"></div>
                                         <p>{{ str_limit(strip_tags($doc->getText()), 250) }}</p>
                                         <p class="mt-3"><b>@lang('documents.last_update'):</b></p>
@@ -39,7 +41,7 @@
                                     <div class="card-action">
                                         <a href="/documents/{{ $doc->id }}" class="text">@lang('messages.open')</a>
                                         @hasRole('master')
-                                            <a href="/documents/{{ $doc->id }}/edit" class="text">
+                                            <a href="/master/documents/{{ $doc->id }}/edit" class="text">
                                                 @lang('messages.edit')
                                             </a>
                                         @endhasRole
@@ -53,7 +55,7 @@
                                     @include('includes.buttons.btn', [
                                         'title' => trans('documents.new_doc'),
                                         'icon' => 'fa-plus',
-                                        'link' => '/documents/create'
+                                        'link' => '/master/documents/create'
                                     ])
                                 @endslot
                             @endcomponent
@@ -70,7 +72,7 @@
 @hasRole('master')
     @component('comps.btns.fixed-btn')
         @slot('icon') fa-plus @endslot
-        @slot('link') /documents/create @endslot
+        @slot('link') /master/documents/create @endslot
         @slot('tip') @lang('documents.new_doc') @endslot
     @endcomponent
 @endhasRole

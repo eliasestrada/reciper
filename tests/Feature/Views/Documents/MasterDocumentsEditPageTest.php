@@ -17,7 +17,7 @@ class MasterDocumentsEditPageTest extends TestCase
     public function master_can_see_the_page(): void
     {
         $this->actingAs(create_user('master'))
-            ->get("/documents/1/edit")
+            ->get("/master/documents/1/edit")
             ->assertOk()
             ->assertViewIs('documents.edit');
     }
@@ -29,7 +29,7 @@ class MasterDocumentsEditPageTest extends TestCase
     public function user_cannot_see_the_page(): void
     {
         $this->actingAs(make(User::class))
-            ->get("/documents/1/edit")
+            ->get("/master/documents/1/edit")
             ->assertRedirect();
     }
 }
