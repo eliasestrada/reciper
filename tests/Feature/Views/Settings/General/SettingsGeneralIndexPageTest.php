@@ -89,7 +89,7 @@ class SettingsGeneralIndexPageTest extends TestCase
     public function user_can_deactivate_account(): void
     {
         $this->actingAs(create_user())
-            ->delete(action('UsersController@destroy', ['m' => 'd']), ['password' => '111111'])
+            ->delete(action('UserController@destroy', ['m' => 'd']), ['password' => '111111'])
             ->assertRedirect('/login');
     }
 
@@ -103,7 +103,7 @@ class SettingsGeneralIndexPageTest extends TestCase
 
         $this->actingAs($user)
             ->followingRedirects()
-            ->delete(action('UsersController@destroy', ['m' => 'd']), ['password' => '22222'])
+            ->delete(action('UserController@destroy', ['m' => 'd']), ['password' => '22222'])
             ->assertSeeText(trans('settings.pwd_wrong'));
     }
 

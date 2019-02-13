@@ -31,7 +31,7 @@
         @if ($user->id != 1)
             @if ($user->isBanned())
                 <div class="pt-2"> {{-- Unban button --}}
-                    <form class="row" action="{{ action('Master\ManageUsersController@destroy', ['id' => $user->id]) }}" method="post" onsubmit="return confirm('@lang('manage-users.are_you_sure_to_unban')')">
+                    <form class="row" action="{{ action('Master\ManageUserController@destroy', ['id' => $user->id]) }}" method="post" onsubmit="return confirm('@lang('manage-users.are_you_sure_to_unban')')">
                         @csrf @method('delete')
                         <button class="btn red" type="submit">
                             <i class="fas fa-lock-open left"></i> @lang('manage-users.unban')
@@ -73,7 +73,7 @@
 @if ($user->id != 1 || !$user->isBanned())
     <div id="ban-user-modal" class="modal">
         <div class="modal-content reset">
-            <form class="row" action="{{ action('Master\ManageUsersController@update', ['id' => $user->id]) }}" method="post">
+            <form class="row" action="{{ action('Master\ManageUserController@update', ['id' => $user->id]) }}" method="post">
 
                 @csrf @method('put')
 

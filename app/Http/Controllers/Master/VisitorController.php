@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Visitor;
 use Illuminate\View\View;
 
-class VisitorsController extends Controller
+class VisitorController extends Controller
 {
     /**
      * @return void

@@ -6,7 +6,7 @@ use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\View\View;
 
-class StatisticsController extends Controller
+class StatisticController extends Controller
 {
     /**
      * @return void

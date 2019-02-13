@@ -6,33 +6,33 @@ Auth::routes();
 
 // Web APIs
 Route::namespace ('WebApi')->group(function () {
-    Route::get('popularity-chart', 'StatisticsController@popularityChart');
-    Route::get('favs/{category?}', 'FavsController@index');
-    Route::post('favs/{recipe}', 'FavsController@store');
+    Route::get('popularity-chart', 'StatisticController@popularityChart');
+    Route::get('favs/{category?}', 'FavController@index');
+    Route::post('favs/{recipe}', 'FavController@store');
     Route::post('likes/{recipe}', 'LikeController@store');
 });
 
-Route::get('statistics', 'StatisticsController@index');
+Route::get('statistics', 'StatisticController@index');
 
 Route::prefix('users')->group(function () {
-    Route::get('/', 'UsersController@index');
-    Route::get('{username}', 'UsersController@show');
-    Route::delete('delete/{id}', 'UsersController@destroy');
-    Route::post('/', 'UsersController@store');
+    Route::get('/', 'UserController@index');
+    Route::get('{username}', 'UserController@show');
+    Route::delete('delete/{id}', 'UserController@destroy');
+    Route::post('/', 'UserController@store');
 
     Route::prefix('other')->group(function () {
-        Route::get('my-recipes', 'UsersController@my_recipes');
+        Route::get('my-recipes', 'UserController@my_recipes');
     });
 });
 
 // For all visitors ===========
-Route::get('/', 'PagesController@home');
-Route::get('search', 'PagesController@search');
+Route::get('/', 'PageController@home');
+Route::get('search', 'PageController@search');
 Route::view('contact', 'pages.contact');
 Route::post('admin/feedback', 'Admin\FeedbackController@store');
 
-Route::resource('documents', DocumentsController::class);
-Route::resource('recipes', RecipesController::class);
+Route::resource('documents', DocumentController::class);
+Route::resource('recipes', RecipeController::class);
 Route::resource('help', HelpController::class);
 
 // Dashboard ===========
@@ -53,18 +53,18 @@ Route::prefix('settings')->namespace('Settings')->group(function () {
 
 // Admin ===========
 Route::prefix('admin')->namespace('Admin')->group(function () {
-    Route::get('approves', 'ApprovesController@index');
-    Route::get('approves/{recipe}', 'ApprovesController@show');
-    Route::post('answer/approve/{recipe}', 'ApprovesController@approve');
-    Route::post('answer/disapprove/{recipe}', 'ApprovesController@disapprove');
+    Route::get('approves', 'ApproveController@index');
+    Route::get('approves/{recipe}', 'ApproveController@show');
+    Route::post('answer/approve/{recipe}', 'ApproveController@approve');
+    Route::post('answer/disapprove/{recipe}', 'ApproveController@disapprove');
     Route::resource('feedback', FeedbackController::class)->only(['index', 'show', 'destroy']);
 });
 
 // Master ==========
 Route::prefix('master')->namespace('Master')->group(function () {
-    Route::delete('log-viewer/logs/destroy', 'LogsController@destroy')->middleware('master');
-    Route::resource('visitors', VisitorsController::class)->except(['edit']);
-    Route::resource('manage-users', ManageUsersController::class)->except(['edit']);
+    Route::delete('log-viewer/logs/destroy', 'LogController@destroy')->middleware('master');
+    Route::resource('visitors', VisitorController::class)->except(['edit']);
+    Route::resource('manage-users', ManageUserController::class)->except(['edit']);
     Route::resource('trash', TrashController::class)->only(['index', 'destroy', 'update']);
 });
 

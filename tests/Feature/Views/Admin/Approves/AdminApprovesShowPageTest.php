@@ -80,7 +80,7 @@ class AdminApprovesShowPageTest extends TestCase
     public function admin_approves_recipe_and_got_redirected_to_approved_recipe(): void
     {
         $this->actingAs($this->admin)
-            ->post(action('Admin\ApprovesController@approve', [
+            ->post(action('Admin\ApproveController@approve', [
                 'recipe' => $this->unapproved_recipe->id,
             ]))
             ->assertRedirect("/recipes/{$this->unapproved_recipe->slug}");
@@ -98,7 +98,7 @@ class AdminApprovesShowPageTest extends TestCase
         );
 
         $this->actingAs($this->admin)
-            ->post(action('Admin\ApprovesController@approve', [
+            ->post(action('Admin\ApproveController@approve', [
                 'recipe' => $this->unapproved_recipe->id,
             ]));
     }
@@ -112,7 +112,7 @@ class AdminApprovesShowPageTest extends TestCase
         \Notification::fake();
 
         $this->actingAs($this->admin)
-            ->post(action('Admin\ApprovesController@disapprove', [
+            ->post(action('Admin\ApproveController@disapprove', [
                 'recipe' => $this->unapproved_recipe->id,
                 'message' => str_random(20),
             ]));

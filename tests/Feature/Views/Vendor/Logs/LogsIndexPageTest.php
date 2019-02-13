@@ -47,7 +47,7 @@ class LogsIndexPageTest extends TestCase
             $this->assertFileExists(storage_path("logs/laravel-{$file_name}.log"));
 
             // Delete file
-            $this->actingAs($this->master)->delete(action('Master\LogsController@destroy'), [
+            $this->actingAs($this->master)->delete(action('Master\LogController@destroy'), [
                 'date' => $file_name,
             ]);
 

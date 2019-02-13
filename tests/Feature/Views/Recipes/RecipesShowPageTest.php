@@ -104,7 +104,7 @@ class RecipesShowPageTest extends TestCase
         $user = create_user();
 
         $this->actingAs($user)
-            ->post(action('WebApi\FavsController@store', ['id' => 1]))
+            ->post(action('WebApi\FavController@store', ['id' => 1]))
             ->assertOk()
             ->assertSeeText('active');
 
@@ -124,7 +124,7 @@ class RecipesShowPageTest extends TestCase
         Fav::create(['user_id' => $user->id, 'recipe_id' => 1]);
 
         $this->actingAs($user)
-            ->post(action('WebApi\FavsController@store', ['id' => 1]))
+            ->post(action('WebApi\FavController@store', ['id' => 1]))
             ->assertOk()
             ->assertDontSeeText('active');
 

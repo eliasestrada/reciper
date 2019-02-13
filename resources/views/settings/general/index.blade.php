@@ -100,7 +100,7 @@
 <!-- delete-account-modal structure -->
 <div id="delete-account-modal" class="modal">
     <div class="modal-content reset">
-        <form action="{{ action('UsersController@destroy', ['m' => 'd']) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ action('UserController@destroy', ['m' => 'd']) }}" method="post" enctype="multipart/form-data">
             @csrf @method('delete')
 
             <div class="center">

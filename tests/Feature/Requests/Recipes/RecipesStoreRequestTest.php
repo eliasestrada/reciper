@@ -25,7 +25,7 @@ class RecipesStoreRequestTest extends TestCase
     public function title_is_required(): void
     {
         $this->actingAs($this->user)
-            ->post(action('RecipesController@store'), ['title' => ''])
+            ->post(action('RecipeController@store'), ['title' => ''])
             ->assertRedirect('/users');
     }
 
@@ -36,7 +36,7 @@ class RecipesStoreRequestTest extends TestCase
     public function title_must_be_not_short(): void
     {
         $this->actingAs($this->user)
-            ->post(action('RecipesController@store'), [
+            ->post(action('RecipeController@store'), [
                 'title' => str_random(config('valid.recipes.title.min') - 1),
             ])
             ->assertRedirect('/users');
@@ -49,7 +49,7 @@ class RecipesStoreRequestTest extends TestCase
     public function title_must_be_not_long(): void
     {
         $this->actingAs($this->user)
-            ->post(action('RecipesController@store'), [
+            ->post(action('RecipeController@store'), [
                 'title' => str_random(config('valid.recipes.title.max') + 1),
             ])
             ->assertRedirect('/users');

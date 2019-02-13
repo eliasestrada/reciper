@@ -2,13 +2,13 @@
 
 namespace Tests\Unit\Controllers;
 
-use App\Helpers\Traits\RecipesControllerHelpers;
+use App\Helpers\Traits\RecipeControllerHelpers;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
-class RecipesControllerHelpersTest extends TestCase
+class RecipeControllerHelpersTest extends TestCase
 {
     private $class;
 
@@ -20,7 +20,7 @@ class RecipesControllerHelpersTest extends TestCase
         parent::setUp();
         $this->class = new class
 
-        {use RecipesControllerHelpers;};
+        {use RecipeControllerHelpers;};
     }
 
     /**

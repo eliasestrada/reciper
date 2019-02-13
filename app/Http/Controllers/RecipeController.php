@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Popularity;
-use App\Helpers\Traits\RecipesControllerHelpers;
+use App\Helpers\Traits\RecipeControllerHelpers;
 use App\Helpers\Xp;
 use App\Http\Requests\Recipes\RecipeStoreRequest;
 use App\Http\Requests\Recipes\RecipeUpdateRequest;
@@ -21,9 +21,9 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View as ViewResponse;
 use Predis\Connection\ConnectionException;
 
-class RecipesController extends Controller
+class RecipeController extends Controller
 {
-    use RecipesControllerHelpers;
+    use RecipeControllerHelpers;
 
     /**
      * @return void

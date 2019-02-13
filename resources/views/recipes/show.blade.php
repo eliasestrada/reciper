@@ -49,7 +49,7 @@
                         @lang('tips.add_to_drafts')
                     </a>
 
-                    <form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}"
+                    <form action="{{ action('RecipeController@update', ['recipe' => $recipe->id]) }}"
                         method="post"
                         class="hide"
                     >

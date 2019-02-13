@@ -2,12 +2,12 @@
 
 namespace Tests\Unit\Controllers\Admin;
 
-use App\Http\Controllers\Admin\ApprovesController;
+use App\Http\Controllers\Admin\ApproveController;
 use App\Http\Requests\DisapproveRequest;
 use App\Models\Recipe;
 use Tests\TestCase;
 
-class ApprovesControllerTest extends TestCase
+class ApproveControllerTest extends TestCase
 {
     private $controller;
 
@@ -17,7 +17,7 @@ class ApprovesControllerTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->controller = new ApprovesController;
+        $this->controller = new ApproveController;
         $this->withoutEvents();
         $this->withoutNotifications();
     }

@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class ApprovesController extends Controller
+class ApproveController extends Controller
 {
     /**
      * @return void

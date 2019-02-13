@@ -6,7 +6,7 @@ use Arcanedev\LogViewer\Http\Controllers\LogViewerController;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class LogsController extends LogViewerController
+class LogController extends LogViewerController
 {
     /**
      * Delete a log. This method just overwrites delete method from

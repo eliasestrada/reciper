@@ -302,7 +302,7 @@
 {{-- Search navigation --}}
 <nav class="nav-search-form" id="nav-search-form">
     <div class="nav-wrapper container">
-        <form action="{{ action('PagesController@search') }}" method="get">
+        <form action="{{ action('PageController@search') }}" method="get">
             <div class="input-field">
                 <input id="search-input" type="search"
                     name="for"

@@ -11,7 +11,7 @@
     
     {{--  Form  --}}
     <div class="container">
-        <form action="{{ action('PagesController@search') }}" method="get" id="search-form">
+        <form action="{{ action('PageController@search') }}" method="get" id="search-form">
             <div class="input-field">
                 <button type="submit" class="prefix btn-floating">
                     <i class="fas fa-search"></i>

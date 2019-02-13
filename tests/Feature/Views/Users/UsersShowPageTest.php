@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Views\Users;
 
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -81,7 +81,7 @@ class UsersShowPageTest extends TestCase
         $user = create_user('', ['active' => 0]);
 
         $this->actingAs($user)
-            ->post(action([UsersController::class, 'store']))
+            ->post(action([UserController::class, 'store']))
             ->assertRedirect("/users/{$user->username}");
 
         $this->assertDatabaseHas('users', [

@@ -9,7 +9,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\View\View as ViewResponse;
 
-class PagesController extends Controller
+class PageController extends Controller
 {
     /**
      * @return \Illuminate\View\View

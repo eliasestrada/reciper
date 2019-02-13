@@ -62,7 +62,7 @@ class RecipesEditPageTest extends TestCase
         $form_data = $this->form_data();
 
         $this->actingAs($user)
-            ->put(action('RecipesController@update', $recipe->id), $form_data)
+            ->put(action('RecipeController@update', $recipe->id), $form_data)
             ->assertRedirect('/users/other/my-recipes');
 
         $this->assertDatabaseHas('recipes', [
@@ -84,7 +84,7 @@ class RecipesEditPageTest extends TestCase
         $recipe = create(Recipe::class, ['user_id' => $user->id], null, 'draft');
 
         $this->actingAs($user)
-            ->put(action('RecipesController@update', $recipe->id), $form_data);
+            ->put(action('RecipeController@update', $recipe->id), $form_data);
 
         $this->assertDatabaseHas('recipes', [
             'id' => $recipe->id,
@@ -105,7 +105,7 @@ class RecipesEditPageTest extends TestCase
         $recipe = create(Recipe::class, ['user_id' => $user->id], null, 'draft');
 
         $this->actingAs($user)
-            ->put(action('RecipesController@update', $recipe->id), $form_data)
+            ->put(action('RecipeController@update', $recipe->id), $form_data)
             ->assertRedirect("/recipes/{$recipe->slug}");
     }
 
@@ -120,7 +120,7 @@ class RecipesEditPageTest extends TestCase
         $form_data = $this->form_data();
 
         $this->actingAs($admin)
-            ->put(action('RecipesController@update', $recipe->id), $form_data)
+            ->put(action('RecipeController@update', $recipe->id), $form_data)
             ->assertRedirect('/users/other/my-recipes');
 
         $this->assertDatabaseHas('recipes', [
@@ -141,7 +141,7 @@ class RecipesEditPageTest extends TestCase
         $recipe = create(Recipe::class, ['user_id' => $author->id]);
 
         $this->actingAs($author)
-            ->put(action('RecipesController@update', ['recipe' => $recipe->id]));
+            ->put(action('RecipeController@update', ['recipe' => $recipe->id]));
 
         $this->assertDatabaseHas('recipes', [
             'id' => $recipe->id,
@@ -160,7 +160,7 @@ class RecipesEditPageTest extends TestCase
         $recipe = create(Recipe::class);
 
         $this->actingAs(create_user())
-            ->put(action('RecipesController@update', ['recipe' => $recipe->id]));
+            ->put(action('RecipeController@update', ['recipe' => $recipe->id]));
 
         $this->assertDatabaseHas('recipes', [
             'id' => $recipe->id,
@@ -187,7 +187,7 @@ class RecipesEditPageTest extends TestCase
         $this->actingAs($user)->get("/recipes/{$recipe->slug}/edit");
         $this->actingAs($user)
             ->followingRedirects()
-            ->put(action('RecipesController@update', $recipe->id), $form_data)
+            ->put(action('RecipeController@update', $recipe->id), $form_data)
             ->assertSeeText(trans('notifications.cant_use_script_tags'));
     }
 
@@ -200,7 +200,7 @@ class RecipesEditPageTest extends TestCase
         $user = create_user();
         $recipe = create(Recipe::class, ['user_id' => $user->id], null, 'draft');
 
-        $this->actingAs($user)->put(action('RecipesController@update', ['recipe' => $recipe->id]), [
+        $this->actingAs($user)->put(action('RecipeController@update', ['recipe' => $recipe->id]), [
             'image' => UploadedFile::fake()->image('image.jpg'),
         ]);
 
@@ -228,7 +228,7 @@ class RecipesEditPageTest extends TestCase
             'image' => 'image_name.jpg',
         ], null, 'draft');
 
-        $this->actingAs($user)->put(action('RecipesController@update', ['recipe' => $recipe->id]), [
+        $this->actingAs($user)->put(action('RecipeController@update', ['recipe' => $recipe->id]), [
             'image' => UploadedFile::fake()->image('image.jpg'),
         ]);
 
@@ -248,7 +248,7 @@ class RecipesEditPageTest extends TestCase
             'user_id' => ($user = create_user())->id,
         ], null, 'draft');
 
-        $this->actingAs($user)->put(action('RecipesController@update', ['recipe' => $recipe->id]));
+        $this->actingAs($user)->put(action('RecipeController@update', ['recipe' => $recipe->id]));
 
         Queue::assertNotPushed(DeleteFileJob::class);
     }
@@ -266,7 +266,7 @@ class RecipesEditPageTest extends TestCase
             'image' => 'just_image.jpg',
         ]);
 
-        $this->actingAs($user)->delete(action('RecipesController@destroy', [
+        $this->actingAs($user)->delete(action('RecipeController@destroy', [
             'recipe' => $recipe->id,
         ]));
 

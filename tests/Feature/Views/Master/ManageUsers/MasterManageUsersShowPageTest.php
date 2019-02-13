@@ -64,7 +64,7 @@ class MasterManageUsersShowPageTest extends TestCase
         $data = ['days' => 1, 'message' => str_random(40)];
 
         $this->actingAs(create_user('master'))
-            ->put(action('Master\ManageUsersController@update', [
+            ->put(action('Master\ManageUserController@update', [
                 'id' => $this->user->id,
             ]), $data);
 
@@ -84,7 +84,7 @@ class MasterManageUsersShowPageTest extends TestCase
         Ban::put($this->user->id, 2, 'This user is banned on 2 days');
 
         $this->actingAs(create_user('master'))
-            ->delete(action('Master\ManageUsersController@destroy', [
+            ->delete(action('Master\ManageUserController@destroy', [
                 'user' => $this->user->id,
             ]));
 

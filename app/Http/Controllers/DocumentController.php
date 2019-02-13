@@ -9,7 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class DocumentsController extends Controller
+class DocumentController extends Controller
 {
     /**
      * @return void

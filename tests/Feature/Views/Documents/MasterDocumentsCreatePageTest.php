@@ -42,7 +42,7 @@ class MasterDocumentsCreatePageTest extends TestCase
         $data = ['title' => str_random(20), 'text' => str_random(100)];
 
         $this->actingAs(create_user('master'))
-            ->post(action('DocumentsController@store'), $data);
+            ->post(action('DocumentController@store'), $data);
 
         $this->assertDatabaseHas('documents', [
             _('title') => $data['title'],
@@ -58,7 +58,7 @@ class MasterDocumentsCreatePageTest extends TestCase
     public function master_can_delete_document(): void
     {
         $this->actingAs(create_user('master'))
-            ->delete(action('DocumentsController@destroy', [
+            ->delete(action('DocumentController@destroy', [
                 'id' => $document_id = create(Document::class)->id,
             ]));
         $this->assertDatabaseMissing('documents', ['id' => $document_id]);
@@ -71,7 +71,7 @@ class MasterDocumentsCreatePageTest extends TestCase
     public function user_cant_delete_document(): void
     {
         $this->actingAs(make(User::class))
-            ->delete(action('DocumentsController@destroy', [
+            ->delete(action('DocumentController@destroy', [
                 'id' => $document_id = create(Document::class)->id,
             ]))
             ->assertRedirect('/');
@@ -84,7 +84,7 @@ class MasterDocumentsCreatePageTest extends TestCase
     public function master_cant_delete_main_first_document(): void
     {
         $this->actingAs(create_user('master'))
-            ->delete(action('DocumentsController@destroy', ['id' => 1]))
+            ->delete(action('DocumentController@destroy', ['id' => 1]))
             ->assertRedirect('/documents/create');
     }
 
@@ -98,7 +98,7 @@ class MasterDocumentsCreatePageTest extends TestCase
         $doc = create(Document::class);
 
         $this->actingAs(create_user('master'))
-            ->put(action('DocumentsController@update', ['id' => $doc->id]), $data);
+            ->put(action('DocumentController@update', ['id' => $doc->id]), $data);
 
         $this->assertDatabaseHas('documents', [
             _('title') => $data['title'],
@@ -116,7 +116,7 @@ class MasterDocumentsCreatePageTest extends TestCase
         $data = ['title' => str_random(10), 'text' => str_random(100)];
 
         $this->actingAs(create_user('master'))
-            ->put(action('DocumentsController@update', [
+            ->put(action('DocumentController@update', [
                 'id' => Document::first()->id,
             ]), $data);
 

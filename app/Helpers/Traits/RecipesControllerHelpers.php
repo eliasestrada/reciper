@@ -8,7 +8,7 @@ use File;
 use Illuminate\Http\UploadedFile;
 use Image;
 
-trait RecipesControllerHelpers
+trait RecipeControllerHelpers
 {
     /**
      * @param \Illuminate\Http\UploadedFile|null $image

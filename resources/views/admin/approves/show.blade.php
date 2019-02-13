@@ -12,7 +12,7 @@
                 <p>@lang('recipes.approve_or_not')</p>
 
                 {{-- Approve --}}
-                <form action="{{ action('Admin\ApprovesController@approve', ['id' => $recipe->id]) }}" method="post" class="d-inline-block">
+                <form action="{{ action('Admin\ApproveController@approve', ['id' => $recipe->id]) }}" method="post" class="d-inline-block">
                     @csrf
                     <button class="btn green confirm" type="submit" data-confirm="@lang('recipes.are_you_sure_to_publish')">
                         @lang('messages.yes') <i class="fas fa-thumbs-up right"></i>
@@ -27,7 +27,7 @@
                 <!--  disapprove-publishing-modal structure -->
                 <div id="disapprove-modal" class="modal">
                     <div class="modal-content reset">
-                        <form action="{{ action('Admin\ApprovesController@disapprove', ['recipe' => $recipe->id]) }}" method="post">
+                        <form action="{{ action('Admin\ApproveController@disapprove', ['recipe' => $recipe->id]) }}" method="post">
                             @csrf
                             <p>@lang('notifications.set_message_desc')</p>
                             <div class="input-field">

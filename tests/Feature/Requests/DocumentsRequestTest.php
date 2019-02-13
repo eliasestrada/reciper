@@ -114,6 +114,6 @@ class DocumentsRuqusetTest extends TestCase
     public function makeRequestAsMaster(array $data): void
     {
         $this->actingAs(create_user('master'))
-            ->post(action('DocumentsController@store'), $data);
+            ->post(action('DocumentController@store'), $data);
     }
 }

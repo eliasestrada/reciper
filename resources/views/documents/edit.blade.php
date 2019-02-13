@@ -15,7 +15,7 @@
         <h1 class="header">@lang('common.edit_item', ['item' => $document->getTitle()])</h1>
     </div>
 
-    <form action="{{ action('DocumentsController@update', ['id' => $document->id]) }}" method="post">
+    <form action="{{ action('DocumentController@update', ['id' => $document->id]) }}" method="post">
         @csrf
         @method('put')
 
@@ -34,7 +34,7 @@
             
             {{-- Delete button --}}
             @if ($document->id != 1)
-                <form action="{{ action('DocumentsController@destroy', ['id' => $document->id]) }}" method="post" class="d-inline-block">
+                <form action="{{ action('DocumentController@destroy', ['id' => $document->id]) }}" method="post" class="d-inline-block">
                     @method('delete')
                     @csrf
 

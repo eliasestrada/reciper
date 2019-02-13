@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Traits\RecipesControllerHelpers;
+use App\Helpers\Traits\RecipeControllerHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipesResource;
 use App\Models\Recipe;
 use App\Models\Visitor;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class RecipesController extends Controller
+class RecipeController extends Controller
 {
-    use RecipesControllerHelpers;
+    use RecipeControllerHelpers;
 
     /**
      * @param null|string $hash

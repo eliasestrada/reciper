@@ -39,7 +39,7 @@ class ManageUsersRequestTest extends TestCase
     public function ban_days_field_is_required(): void
     {
         $this->actingAs(create_user('master'))
-            ->put(action('Master\ManageUsersController@update', [
+            ->put(action('Master\ManageUserController@update', [
                 'id' => $this->user->id,
             ]), [
                 'message' => str_random(40),
@@ -53,7 +53,7 @@ class ManageUsersRequestTest extends TestCase
     public function ban_message_fiels_is_required(): void
     {
         $this->actingAs(create_user('master'))
-            ->put(action('Master\ManageUsersController@update', [
+            ->put(action('Master\ManageUserController@update', [
                 'id' => $this->user->id,
             ]), [
                 'days' => 2,
@@ -68,7 +68,7 @@ class ManageUsersRequestTest extends TestCase
     public function ban_days_field_must_be_numeric(): void
     {
         $this->actingAs(create_user('master'))
-            ->put(action('Master\ManageUsersController@update', [
+            ->put(action('Master\ManageUserController@update', [
                 'id' => $this->user->id,
             ]), [
                 'days' => 'gg',
@@ -83,7 +83,7 @@ class ManageUsersRequestTest extends TestCase
     public function ban_message_must_be_not_short(): void
     {
         $this->actingAs(create_user('master'))
-            ->put(action('Master\ManageUsersController@update', [
+            ->put(action('Master\ManageUserController@update', [
                 'id' => $this->user->id,
             ]), [
                 'days' => 5,
@@ -98,7 +98,7 @@ class ManageUsersRequestTest extends TestCase
     public function ban_message_must_be_not_long(): void
     {
         $this->actingAs(create_user('master'))
-            ->put(action('Master\ManageUsersController@update', [
+            ->put(action('Master\ManageUserController@update', [
                 'id' => $this->user->id,
             ]), [
                 'days' => 5,

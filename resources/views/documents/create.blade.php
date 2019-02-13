@@ -15,7 +15,7 @@
         <h1 class="header">@lang('documents.new_doc')</h1>
     </div>
 
-    <form action="{{ action('DocumentsController@store') }}" method="post">
+    <form action="{{ action('DocumentController@store') }}" method="post">
         @csrf
         <div class="center pb-2 pt-3">
             {{--  Save button  --}}

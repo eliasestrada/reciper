@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
-class FavsController extends Controller
+class FavController extends Controller
 {
     /**
      * @return void

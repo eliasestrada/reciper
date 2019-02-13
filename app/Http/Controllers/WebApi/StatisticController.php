@@ -7,7 +7,7 @@ use App\Http\Responses\Controllers\Api\StatisticsPopularityChartResponse;
 use App\Models\User;
 use Illuminate\Support\Collection;
 
-class StatisticsController extends Controller
+class StatisticController extends Controller
 {
     /**
      * @return void

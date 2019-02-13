@@ -35,7 +35,7 @@
         </div>
 
         {{--  Form  --}}
-        <form action="{{ action('PagesController@search') }}" method="get">
+        <form action="{{ action('PageController@search') }}" method="get">
             <div class="position-relative">
                 <div class="home-header__content__search-wrap" id="home-search-form">
                     <input type="search" name="for"

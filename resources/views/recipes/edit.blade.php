@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ action('RecipesController@update', ['recipe' => $recipe->id]) }}"
+<form action="{{ action('RecipeController@update', ['recipe' => $recipe->id]) }}"
     method="post"
     class="page"
     enctype="multipart/form-data"

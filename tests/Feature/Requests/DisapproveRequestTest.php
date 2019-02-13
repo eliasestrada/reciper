@@ -28,7 +28,7 @@ class DisapproveRequestTest extends TestCase
     public function message_is_required(): void
     {
         $this->actingAs(create_user('admin'))
-            ->post(action('Admin\ApprovesController@disapprove', [
+            ->post(action('Admin\ApproveController@disapprove', [
                 'recipe' => 1,
                 'message' => '',
             ]));
@@ -41,7 +41,7 @@ class DisapproveRequestTest extends TestCase
     public function message_must_be_not_short(): void
     {
         $this->actingAs(create_user('admin'))
-            ->post(action('Admin\ApprovesController@disapprove', [
+            ->post(action('Admin\ApproveController@disapprove', [
                 'recipe' => 1,
                 'message' => str_random(config('valid.approves.disapprove.message.min') - 1),
             ]));
@@ -54,7 +54,7 @@ class DisapproveRequestTest extends TestCase
     public function message_must_be_not_long(): void
     {
         $this->actingAs(create_user('admin'))
-            ->post(action('Admin\ApprovesController@disapprove', [
+            ->post(action('Admin\ApproveController@disapprove', [
                 'recipe' => 1,
                 'message' => str_random(config('valid.approves.disapprove.message.max') + 1),
             ]));

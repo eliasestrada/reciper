@@ -48,7 +48,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['title'] = str_random(config('valid.recipes.title.min') - 1);
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
@@ -62,7 +62,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['title'] = str_random(config('valid.recipes.title.max') + 1);
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
@@ -76,7 +76,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['intro'] = str_random(config('valid.recipes.intro.min') - 1);
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where(_('intro'), $this->data['intro'])->doesntExist());
     }
@@ -90,7 +90,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['intro'] = str_random(config('valid.recipes.intro.max') + 1);
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where(_('intro'), $this->data['intro'])->doesntExist());
     }
@@ -104,7 +104,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['ingredients'] = str_random(config('valid.recipes.ingredients.min') - 1);
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where(_('ingredients'), $this->data['ingredients'])->doesntExist());
     }
@@ -118,7 +118,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['ingredients'] = str_random(config('valid.recipes.ingredients.max') + 1);
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where(_('ingredients'), $this->data['ingredients'])->doesntExist());
     }
@@ -132,7 +132,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['text'] = str_random(config('valid.recipes.text.min') - 1);
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where(_('text'), $this->data['text'])->doesntExist());
     }
@@ -146,7 +146,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['text'] = str_random(config('valid.recipes.text.max') + 1);
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where(_('text'), $this->data['text'])->doesntExist());
     }
@@ -160,7 +160,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['meal'] = 'n';
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where('meal_id', $this->data['meal'])->doesntExist());
     }
@@ -174,7 +174,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['meal'] = Meal::count() + 1;
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where('meal_id', $this->data['meal'])->doesntExist());
     }
@@ -189,7 +189,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['title'] = 'This title will not be saved because of validation';
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
@@ -204,7 +204,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['title'] = 'This title will not be saved because of validation';
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
@@ -219,7 +219,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['title'] = 'This title will not be saved because of validation';
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
@@ -234,7 +234,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['title'] = 'This title will not be saved coz category id is not between';
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
@@ -249,7 +249,7 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['title'] = 'This title will be saved to DB';
 
         $this->actingAs($this->user)
-            ->put(action('RecipesController@update', $this->recipe->id), $this->data);
+            ->put(action('RecipeController@update', $this->recipe->id), $this->data);
 
         $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->exists());
     }

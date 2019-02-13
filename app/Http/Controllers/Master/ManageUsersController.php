@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class ManageUsersController extends Controller
+class ManageUserController extends Controller
 {
     /**
      * @return void
