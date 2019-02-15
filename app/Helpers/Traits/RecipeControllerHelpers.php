@@ -2,11 +2,13 @@
 
 namespace App\Helpers\Traits;
 
+use App\Jobs\DeleteFileJob;
 use App\Models\User;
 use App\Notifications\ScriptAttackNotification;
 use File;
 use Illuminate\Http\UploadedFile;
 use Image;
+use Predis\Connection\ConnectionException;
 
 trait RecipeControllerHelpers
 {
@@ -160,5 +162,33 @@ trait RecipeControllerHelpers
 
             $image_inst->save("{$data['path']}/{$image_name}");
         }
+    }
+
+    /**
+     * @param string $filename
+     * @return void
+     */
+    public function dispatchDeleteFileJob(string $filename): void
+    {
+        if ($filename != 'default.jpg') {
+            try {
+                DeleteFileJob::dispatch([
+                    "public/big/recipes/{$filename}",
+                    "public/small/recipes/{$filename}",
+                ]);
+            } catch (ConnectionException $e) {
+                logger()->error("DeleteFileJob was not dispatched. {$e->getMessage()}");
+            }
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function clearCache(): void
+    {
+        cache()->forget('popular_recipes');
+        cache()->forget('random_recipes');
+        cache()->forget('unapproved_notif');
     }
 }
