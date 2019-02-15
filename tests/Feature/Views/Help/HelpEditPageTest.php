@@ -11,6 +11,7 @@ class HelpEditPageTest extends TestCase
     use DatabaseTransactions;
 
     private $help;
+    private $url;
 
     /**
      * @author Cho
@@ -19,6 +20,7 @@ class HelpEditPageTest extends TestCase
     {
         parent::setUp();
         $this->help = create(Help::class);
+        $this->url = "/master/help/{$this->help->id}/edit";
     }
 
     /**
@@ -28,9 +30,9 @@ class HelpEditPageTest extends TestCase
     public function page_is_accessible_by_admin(): void
     {
         $this->actingAs(create_user('admin'))
-            ->get("/help/{$this->help->id}/edit")
+            ->get($this->url)
             ->assertOk()
-            ->assertViewIs('help.edit');
+            ->assertViewIs('master.help.edit');
     }
 
     /**
@@ -40,7 +42,7 @@ class HelpEditPageTest extends TestCase
     public function page_is_not_accessible_by_user(): void
     {
         $this->actingAs(create_user())
-            ->get("/help/{$this->help->id}/edit")
+            ->get($this->url)
             ->assertRedirect();
     }
 
@@ -50,7 +52,7 @@ class HelpEditPageTest extends TestCase
      */
     public function page_is_not_accessible_by_guest(): void
     {
-        $this->get("/help/{$this->help->id}/edit")->assertRedirect();
+        $this->get($this->url)->assertRedirect();
     }
 
     /**
@@ -66,7 +68,7 @@ class HelpEditPageTest extends TestCase
         ];
 
         $this->actingAs(create_user('admin'))
-            ->post(action('HelpController@store'), $form_data)
+            ->post(action('Master\HelpController@store'), $form_data)
             ->assertRedirect('/help');
 
         $this->assertDatabaseHas('help', [
@@ -88,8 +90,8 @@ class HelpEditPageTest extends TestCase
         ];
 
         $this->actingAs(create_user('admin'))
-            ->put(action('HelpController@update', ['id' => $help->id]), $form_data)
-            ->assertRedirect("/help/{$help->id}/edit");
+            ->put(action('Master\HelpController@update', ['id' => $help->id]), $form_data)
+            ->assertRedirect("/master/help/{$help->id}/edit");
 
         $this->assertDatabaseHas('help', [
             _('title') => $form_data['title'],
@@ -106,7 +108,7 @@ class HelpEditPageTest extends TestCase
         $help = create(Help::class);
 
         $this->actingAs(create_user('admin'))
-            ->delete(action('HelpController@destroy', ['id' => $help->id]))
+            ->delete(action('Master\HelpController@destroy', ['id' => $help->id]))
             ->assertRedirect("/help");
 
         $this->assertSoftDeleted('help', [

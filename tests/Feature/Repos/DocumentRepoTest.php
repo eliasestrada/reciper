@@ -7,7 +7,7 @@ use App\Repos\DocumentRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class CategoryRepoTest extends TestCase
+class DocumentRepoTest extends TestCase
 {
     use DatabaseTransactions;
 

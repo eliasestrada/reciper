@@ -17,9 +17,9 @@ class HelpCreatePageTest extends TestCase
     public function page_is_accessible_by_admin(): void
     {
         $this->actingAs(create_user('admin'))
-            ->get('/help/create')
+            ->get('/master/help/create')
             ->assertOk()
-            ->assertViewIs('help.create');
+            ->assertViewIs('master.help.create');
     }
 
     /**
@@ -29,7 +29,7 @@ class HelpCreatePageTest extends TestCase
     public function page_is_not_accessible_by_user(): void
     {
         $this->actingAs(create_user())
-            ->get('/help/create')
+            ->get('/master/help/create')
             ->assertRedirect();
     }
 
@@ -39,7 +39,7 @@ class HelpCreatePageTest extends TestCase
      */
     public function page_is_not_accessible_by_guest(): void
     {
-        $this->get('/help/create')->assertRedirect();
+        $this->get('/master/help/create')->assertRedirect();
     }
 
     /**
@@ -55,7 +55,7 @@ class HelpCreatePageTest extends TestCase
         ];
 
         $this->actingAs(create_user('admin'))
-            ->post(action('HelpController@store'), $form_data)
+            ->post(action('Master\HelpController@store'), $form_data)
             ->assertRedirect('/help');
 
         $this->assertDatabaseHas('help', [

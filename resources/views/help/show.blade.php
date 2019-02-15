@@ -54,7 +54,7 @@
 @hasRole('admin')
     @component('comps.btns.fixed-btn')
         @slot('icon') fa-pen @endslot
-        @slot('link') /help/{{ $help->id }}/edit @endslot
+        @slot('link') /master/help/{{ $help->id }}/edit @endslot
         @slot('tip') @lang('help.edit_help') @endslot
     @endcomponent
 @endhasRole

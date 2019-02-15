@@ -37,7 +37,7 @@
 @hasRole('admin')
     @component('comps.btns.fixed-btn')
         @slot('icon') fa-plus @endslot
-        @slot('link') /help/create @endslot
+        @slot('link') /master/help/create @endslot
         @slot('tip') @lang('help.new_help') @endslot
     @endcomponent
 @endhasRole

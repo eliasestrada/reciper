@@ -32,7 +32,7 @@ class HelpRequestTest extends TestCase
     public function tearDown(): void
     {
         $this->actingAs(create_user('admin'))
-            ->post(action('HelpController@store'), $this->data)
+            ->post(action('Master\HelpController@store'), $this->data)
             ->assertRedirect('/');
 
         parent::tearDown();
