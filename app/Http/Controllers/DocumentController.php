@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Document;
+use App\Repos\DocumentRepo;
 use Illuminate\View\View;
 
 class DocumentController extends Controller
@@ -15,8 +16,8 @@ class DocumentController extends Controller
     public function index(): View
     {
         return view('documents.index', [
-            'ready_docs' => Document::query()->isReady(1)->paginate(20)->onEachSide(1),
-            'unready_docs' => Document::query()->isReady(0)->paginate(20)->onEachSide(1),
+            'ready_docs' => DocumentRepo::paginateAllWithReadyStatus(1),
+            'unready_docs' => DocumentRepo::paginateAllWithReadyStatus(0),
         ]);
     }
 

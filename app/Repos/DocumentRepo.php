@@ -2,27 +2,17 @@
 
 namespace App\Repos;
 
-use App\Http\Requests\DocumentRequest;
 use App\Models\Document;
-use Illuminate\Database\QueryException;
-use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class DocumentRepo
 {
     /**
-     * @param  \App\Http\Requests\DocumentRequest $request
-     * @return \App\Models\Document
+     * @param int $ready
+     * @return \Illuminate\Pagination\LenghtAwarePaginator
      */
-    public static function create(DocumentRequest $request): Document
+    public static function paginateAllWithReadyStatus(int $ready = 1): LengthAwarePaginator
     {
-        try {
-            return Document::create([
-                _('title') => $request->title,
-                _('text') => $request->text,
-            ]);
-        } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return collect();
-        }
+        return Document::query()->isReady($ready)->paginate(20)->onEachSide(1);
     }
 }
