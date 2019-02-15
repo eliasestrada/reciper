@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DocumentRequest;
+use App\Http\Responses\Controllers\Master\DocumentStoreResponse;
 use App\Http\Responses\Controllers\Master\DocumentUpdateResponse;
 use App\Models\Document;
-use App\Repos\DocumentRepo;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -34,13 +34,12 @@ class DocumentController extends Controller
     /**
      * Create document in database
      *
-     * @param  \App\Http\Requests\DocumentRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param \App\Http\Requests\DocumentRequest $request
+     * @return \App\Http\Responses\Controllers\Master\DocumentStoreResponse
      */
-    public function store(DocumentRequest $request): RedirectResponse
+    public function store(DocumentRequest $request): DocumentStoreResponse
     {
-        $doc = DocumentRepo::create($request);
-        return redirect("/master/documents/{$doc->id}/edit");
+        return new DocumentStoreResponse;
     }
 
     /**
