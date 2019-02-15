@@ -12,3 +12,8 @@ $factory->define(Document::class, function () {
         'ready_en' => 1,
     ];
 });
+
+$factory->state(Document::class, 'draft', [
+    'ready_en' => 0,
+    'ready_ru' => 0,
+]);
