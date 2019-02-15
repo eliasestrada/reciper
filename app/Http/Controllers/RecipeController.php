@@ -7,8 +7,7 @@ use App\Helpers\Traits\RecipeControllerHelpers;
 use App\Helpers\Xp;
 use App\Http\Requests\Recipes\RecipeStoreRequest;
 use App\Http\Requests\Recipes\RecipeUpdateRequest;
-use App\Http\Responses\Controllers\RecipeUpdateResponse;
-use App\Jobs\DeleteFileJob;
+use App\Http\Responses\Controllers\Recipes\UpdateResponse;
 use App\Models\Fav;
 use App\Models\Meal;
 use App\Models\Recipe;
@@ -19,7 +18,6 @@ use App\Repos\MealRepo;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View as ViewResponse;
-use Predis\Connection\ConnectionException;
 
 class RecipeController extends Controller
 {
@@ -138,36 +136,11 @@ class RecipeController extends Controller
      *
      * @param \App\Http\Requests\Recipes\RecipeUpdateRequest $request
      * @param \App\Models\Recipe $recipe
-     * @return mixed
+     * @return \App\Http\Responses\Controllers\Recipes\UpdateResponse
      */
     public function update(RecipeUpdateRequest $request, Recipe $recipe)
     {
-        if (!user()->hasRecipe($recipe->id)) {
-            return back()->withError(trans('recipes.cant_draft'));
-        }
-
-        // Move to drafts
-        if ($recipe->isReady()) {
-            $recipe->moveToDrafts();
-            $this->forgetCache();
-
-            return redirect("/recipes/{$recipe->slug}/edit")->withSuccess(
-                trans('recipes.saved')
-            );
-        }
-
-        if ($this->checkForScriptTags($request)) {
-            return back()->withError(trans('notifications.cant_use_script_tags'));
-        }
-
-        if ($request->file('image')) {
-            $this->dispatchDeleteFileJob($recipe->image);
-        }
-
-        $image_name = $this->saveImageIfExist($request->file('image'), $recipe->slug);
-        $this->updateRecipe($request, $image_name, $recipe);
-
-        return new RecipeUpdateResponse($recipe);
+        return new UpdateResponse($recipe);
     }
 
     /**
@@ -187,39 +160,8 @@ class RecipeController extends Controller
         $recipe->views()->delete();
         $recipe->favs()->delete();
 
-        $this->forgetCache();
+        $this->clearCache();
 
         return $recipe->delete() ? 'success' : 'failed';
-    }
-
-    /**
-     * Method helper clears cache
-     *
-     * @return void
-     */
-    public function forgetCache(): void
-    {
-        cache()->forget('popular_recipes');
-        cache()->forget('random_recipes');
-        cache()->forget('unapproved_notif');
-    }
-
-    /**
-     * Helper method
-     * @param string $image_name
-     * @return void
-     */
-    public function dispatchDeleteFileJob(string $image_name): void
-    {
-        if ($image_name != 'default.jpg') {
-            try {
-                DeleteFileJob::dispatch([
-                    "public/big/recipes/$image_name",
-                    "public/small/recipes/$image_name",
-                ]);
-            } catch (ConnectionException $e) {
-                logger()->error("DeleteFileJob was not dispatched. {$e->getMessage()}");
-            }
-        }
     }
 }
