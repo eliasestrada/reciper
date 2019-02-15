@@ -4,6 +4,7 @@ namespace App\Http\Responses\Controllers\Master;
 
 use App\Models\Document;
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 
 class DocumentStoreResponse implements Responsable

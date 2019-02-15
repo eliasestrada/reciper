@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HelpRequest;
+use App\Http\Responses\Controllers\Master\HelpDestroyResponse;
+use App\Http\Responses\Controllers\Master\HelpStoreResponse;
+use App\Http\Responses\Controllers\Master\HelpUpdateResponse;
 use App\Models\Help;
 use App\Models\HelpCategory;
-use App\Repos\HelpRepo;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -35,17 +36,11 @@ class HelpController extends Controller
      * Store data in database and clean cache
      *
      * @param \App\Http\Requests\HelpRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \App\Http\Responses\Controllers\Master\HelpStoreResponse
      */
-    public function store(HelpRequest $request): RedirectResponse
+    public function store(HelpRequest $request): HelpStoreResponse
     {
-        HelpRepo::create($request);
-
-        $this->forgetCache();
-
-        return redirect('/help')->withSuccess(
-            trans('help.help_message_is_created')
-        );
+        return new HelpStoreResponse;
     }
 
     /**
@@ -67,43 +62,21 @@ class HelpController extends Controller
      *
      * @param \App\Http\Requests\HelpRequest $request
      * @param \App\Models\Help $help
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \App\Http\Responses\Controllers\Master\HelpUpdateResponse
      */
-    public function update(HelpRequest $request, Help $help): RedirectResponse
+    public function update(HelpRequest $request, Help $help): HelpUpdateResponse
     {
-        HelpRepo::update($help, $request);
-
-        $this->forgetCache();
-
-        return redirect("/master/help/{$help->id}/edit")->withSuccess(
-            trans('help.help_updated')
-        );
+        return new HelpUpdateResponse($help);
     }
 
     /**
      * Delete particular help material
      *
      * @param \App\Models\Help $help
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \App\Http\Responses\Controllers\Master\HelpDestroyResponse
      */
-    public function destroy(Help $help): RedirectResponse
+    public function destroy(Help $help): HelpDestroyResponse
     {
-        $help->delete();
-
-        $this->forgetCache();
-        cache()->forget('trash_notif');
-
-        return redirect('/help')->withSuccess(trans('help.help_deleted'));
-    }
-
-    /**
-     * Method helper
-     *
-     * @return void
-     */
-    public function forgetCache(): void
-    {
-        cache()->forget('help_list');
-        cache()->forget('help_categories');
+        return new HelpDestroyResponse($help);
     }
 }

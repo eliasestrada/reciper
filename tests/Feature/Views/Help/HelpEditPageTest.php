@@ -90,7 +90,9 @@ class HelpEditPageTest extends TestCase
         ];
 
         $this->actingAs(create_user('admin'))
-            ->put(action('Master\HelpController@update', ['id' => $help->id]), $form_data)
+            ->put(action('Master\HelpController@update', [
+                'id' => $help->id,
+            ]), $form_data)
             ->assertRedirect("/master/help/{$help->id}/edit");
 
         $this->assertDatabaseHas('help', [

@@ -27,13 +27,13 @@ Route::prefix('users')->group(function () {
 
 // For all visitors ===========
 Route::get('/', 'PageController@home');
-Route::get('search', 'PageController@search');
 Route::view('contact', 'pages.contact');
+Route::get('search', 'PageController@search');
 Route::post('admin/feedback', 'Admin\FeedbackController@store');
 
-Route::resource('documents', DocumentController::class)->only(['index', 'show']);
 Route::resource('recipes', RecipeController::class);
 Route::resource('help', HelpController::class)->only(['index', 'show']);
+Route::resource('documents', DocumentController::class)->only(['index', 'show']);
 
 // Dashboard ===========
 Route::get('dashboard', 'DashboardController@index');
