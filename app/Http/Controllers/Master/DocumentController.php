@@ -28,7 +28,7 @@ class DocumentController extends Controller
      */
     public function create(): View
     {
-        return view('documents.create');
+        return view('master.documents.create');
     }
 
     /**
@@ -50,7 +50,7 @@ class DocumentController extends Controller
      */
     public function edit(Document $document): View
     {
-        return view('documents.edit', compact('document'));
+        return view('master.documents.edit', compact('document'));
     }
 
     /**

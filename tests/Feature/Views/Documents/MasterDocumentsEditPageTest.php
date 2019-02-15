@@ -20,7 +20,7 @@ class MasterDocumentsEditPageTest extends TestCase
         $this->actingAs(create_user('master'))
             ->get("/master/documents/1/edit")
             ->assertOk()
-            ->assertViewIs('documents.edit');
+            ->assertViewIs('master.documents.edit');
     }
 
     /**

@@ -19,6 +19,7 @@ class MasterDocumentsCreatePageTest extends TestCase
     {
         $this->actingAs(create_user('master'))
             ->get('/master/documents/create')
+            ->assertViewIs('master.documents.create')
             ->assertOk();
     }
 
