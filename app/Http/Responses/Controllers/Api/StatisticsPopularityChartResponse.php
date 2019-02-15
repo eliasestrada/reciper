@@ -10,6 +10,7 @@ class StatisticsPopularityChartResponse implements Responsable
 
     /**
      * @param array $chart_data
+     * @return void
      */
     public function __construct(array $chart_data)
     {
@@ -17,7 +18,7 @@ class StatisticsPopularityChartResponse implements Responsable
     }
 
     /**
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function toResponse($request): array

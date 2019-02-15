@@ -10,7 +10,8 @@ class RecipeUpdateResponse implements Responsable
     protected $recipe;
 
     /**
-     * @param Collection $recipe
+     * @param \App\Models\Recipe $recipe
+     * @return void
      */
     public function __construct(Recipe $recipe)
     {
@@ -36,9 +37,6 @@ class RecipeUpdateResponse implements Responsable
             return redirect('/users/other/my-recipes')->withSuccess(
                 trans('recipes.added_to_approving')
             );
-
-            // turned off
-            //event(new RecipeIsReady($this->recipe));
         }
 
         if (request()->has('view')) {

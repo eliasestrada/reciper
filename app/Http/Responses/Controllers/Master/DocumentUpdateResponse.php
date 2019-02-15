@@ -20,7 +20,7 @@ class DocumentUpdateResponse implements Responsable
     }
 
     /**
-     * @param $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|null
      */
     public function toResponse($request): ?RedirectResponse
@@ -36,7 +36,7 @@ class DocumentUpdateResponse implements Responsable
     }
 
     /**
-     * @param $request
+     * @param \Illuminate\Http\Request $request
      * @return void
      */
     protected function updateDocument($request): void
@@ -59,7 +59,7 @@ class DocumentUpdateResponse implements Responsable
     }
 
     /**
-     * @param $request
+     * @param \Illuminate\Http\Request $request
      * @return void
      */
     protected function response($request)
