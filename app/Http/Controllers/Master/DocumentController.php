@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DocumentRequest;
-use App\Http\Responses\Controllers\Master\DocumentStoreResponse;
-use App\Http\Responses\Controllers\Master\DocumentUpdateResponse;
+use App\Http\Responses\Controllers\Master\Documents\StoreResponse;
+use App\Http\Responses\Controllers\Master\Documents\UpdateResponse;
 use App\Models\Document;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -35,11 +35,11 @@ class DocumentController extends Controller
      * Create document in database
      *
      * @param \App\Http\Requests\DocumentRequest $request
-     * @return \App\Http\Responses\Controllers\Master\DocumentStoreResponse
+     * @return \App\Http\Responses\Controllers\Master\Documents\StoreResponse
      */
-    public function store(DocumentRequest $request): DocumentStoreResponse
+    public function store(DocumentRequest $request): StoreResponse
     {
-        return new DocumentStoreResponse;
+        return new StoreResponse;
     }
 
     /**
@@ -58,11 +58,11 @@ class DocumentController extends Controller
      *
      * @param \App\Http\Requests\DocumentRequest $requet
      * @param \App\Models\Document $document
-     * @return \App\Http\Responses\Controllers\Master\DocumentUpdateResponse
+     * @return \App\Http\Responses\Controllers\Master\Documents\UpdateResponse
      */
-    public function update(DocumentRequest $request, Document $document): DocumentUpdateResponse
+    public function update(DocumentRequest $request, Document $document): UpdateResponse
     {
-        return new DocumentUpdateResponse($document);
+        return new UpdateResponse($document);
     }
 
     /**

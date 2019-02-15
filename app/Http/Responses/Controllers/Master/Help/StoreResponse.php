@@ -1,25 +1,14 @@
 <?php
 
-namespace App\Http\Responses\Controllers\Master;
+namespace App\Http\Responses\Controllers\Master\Help;
 
 use App\Models\Help;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 
-class HelpUpdateResponse implements Responsable
+class StoreResponse implements Responsable
 {
-    protected $help;
-
-    /**
-     * @param \App\Models\Help $help
-     * @return void
-     */
-    public function __construct(Help $help)
-    {
-        $this->help = $help;
-    }
-
     /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|null
@@ -27,11 +16,12 @@ class HelpUpdateResponse implements Responsable
     public function toResponse($request): ?RedirectResponse
     {
         try {
-            $this->updateHelp($request);
+            $this->createHelpMaterial($request);
             $this->clearCache();
 
-            return redirect("/master/help/{$this->help->id}/edit")
-                ->withSuccess(trans('help.help_updated'));
+            return redirect('/help')->withSuccess(
+                trans('help.help_message_is_created')
+            );
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
             return null;
@@ -42,9 +32,9 @@ class HelpUpdateResponse implements Responsable
      * @param \Illuminate\Http\Request $request
      * @return void
      */
-    protected function updateHelp($request): void
+    protected function createHelpMaterial($request): void
     {
-        $this->help->update([
+        Help::create([
             _('title') => $request->title,
             _('text') => $request->text,
             'help_category_id' => $request->category,

@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HelpRequest;
-use App\Http\Responses\Controllers\Master\HelpDestroyResponse;
-use App\Http\Responses\Controllers\Master\HelpStoreResponse;
-use App\Http\Responses\Controllers\Master\HelpUpdateResponse;
+use App\Http\Responses\Controllers\Master\Help\DestroyResponse;
+use App\Http\Responses\Controllers\Master\Help\StoreResponse;
+use App\Http\Responses\Controllers\Master\Help\UpdateResponse;
 use App\Models\Help;
 use App\Models\HelpCategory;
 use Illuminate\Http\Request;
@@ -36,11 +36,11 @@ class HelpController extends Controller
      * Store data in database and clean cache
      *
      * @param \App\Http\Requests\HelpRequest $request
-     * @return \App\Http\Responses\Controllers\Master\HelpStoreResponse
+     * @return \App\Http\Responses\Controllers\Master\Help\StoreResponse
      */
-    public function store(HelpRequest $request): HelpStoreResponse
+    public function store(HelpRequest $request): StoreResponse
     {
-        return new HelpStoreResponse;
+        return new StoreResponse;
     }
 
     /**
@@ -62,21 +62,21 @@ class HelpController extends Controller
      *
      * @param \App\Http\Requests\HelpRequest $request
      * @param \App\Models\Help $help
-     * @return \App\Http\Responses\Controllers\Master\HelpUpdateResponse
+     * @return \App\Http\Responses\Controllers\Master\Help\UpdateResponse
      */
-    public function update(HelpRequest $request, Help $help): HelpUpdateResponse
+    public function update(HelpRequest $request, Help $help): UpdateResponse
     {
-        return new HelpUpdateResponse($help);
+        return new UpdateResponse($help);
     }
 
     /**
      * Delete particular help material
      *
      * @param \App\Models\Help $help
-     * @return \App\Http\Responses\Controllers\Master\HelpDestroyResponse
+     * @return \App\Http\Responses\Controllers\Master\Help\DestroyResponse
      */
-    public function destroy(Help $help): HelpDestroyResponse
+    public function destroy(Help $help): DestroyResponse
     {
-        return new HelpDestroyResponse($help);
+        return new DestroyResponse($help);
     }
 }

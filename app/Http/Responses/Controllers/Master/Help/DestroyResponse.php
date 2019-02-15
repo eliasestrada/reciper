@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Responses\Controllers\Master;
+namespace App\Http\Responses\Controllers\Master\Help;
 
 use App\Models\Help;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 
-class HelpDestroyResponse implements Responsable
+class DestroyResponse implements Responsable
 {
     protected $help;
 

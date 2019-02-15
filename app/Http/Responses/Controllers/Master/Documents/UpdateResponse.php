@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Responses\Controllers\Master;
+namespace App\Http\Responses\Controllers\Master\Documents;
 
 use App\Models\Document;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 
-class DocumentUpdateResponse implements Responsable
+class UpdateResponse implements Responsable
 {
     protected $document;
 
