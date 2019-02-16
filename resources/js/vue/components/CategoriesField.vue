@@ -13,9 +13,12 @@
         <div v-for="(field, i) in fields" :key="field" class="col s12 m6">
             <div class="form-group simple-group">
                 <label :for="'category_id' + field">{{ label }} {{ field }}</label>
-                <select name="categories[]" class="browser-default">
-                    <option :value="recipeCategories[i]['id']" v-if="recipeCategories && recipeCategories[i]" selected>
-                        {{ categories[recipeCategories[i]['id'] - 1].name }}
+                <select name="categories[]" class="browser-default" v-if="categories.length > 0">
+                    <option v-if="recipeCategories[i]"
+                        :value="recipeCategories[i]['id']"
+                        selected
+                    >
+                        {{ categories[recipeCategories[i]['id'] - 1]['name'] }}
                     </option>
                     <option v-for="category in categories" :key="category.id" :value="category.id">
                         {{ category.name }}
