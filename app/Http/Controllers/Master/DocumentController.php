@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DocumentRequest;
+use App\Http\Responses\Controllers\Master\Documents\DestroyResponse;
 use App\Http\Responses\Controllers\Master\Documents\StoreResponse;
 use App\Http\Responses\Controllers\Master\Documents\UpdateResponse;
 use App\Models\Document;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -32,7 +32,7 @@ class DocumentController extends Controller
     }
 
     /**
-     * Create document in database
+     * Create new document in database
      *
      * @param \App\Http\Requests\DocumentRequest $request
      * @return \App\Http\Responses\Controllers\Master\Documents\StoreResponse
@@ -43,7 +43,7 @@ class DocumentController extends Controller
     }
 
     /**
-     * Edit document page
+     * Return view with edit document form
      *
      * @param \App\Models\Document $document
      * @return \Illuminate\View\View
@@ -54,7 +54,7 @@ class DocumentController extends Controller
     }
 
     /**
-     * Update existing document
+     * Update given document
      *
      * @param \App\Http\Requests\DocumentRequest $requet
      * @param \App\Models\Document $document
@@ -66,21 +66,13 @@ class DocumentController extends Controller
     }
 
     /**
-     * Delete document
+     * Delete given document
      *
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @param \App\Models\Document $document
+     * @return \App\Http\Responses\Controllers\Master\Documents\DestroyResponse
      */
-    public function destroy(Document $document): RedirectResponse
+    public function destroy(Document $document): DestroyResponse
     {
-        if ($document->id == 1) {
-            return redirect('/master/documents/create')
-                ->withError(trans('documents.cant_delete_first_doc'));
-        }
-
-        $document->delete();
-
-        return redirect('/documents')
-            ->withSuccess(trans('documents.doc_has_been_deleted'));
+        return new DestroyResponse($document);
     }
 }
