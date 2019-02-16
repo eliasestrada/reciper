@@ -16,8 +16,11 @@
     </div>
 
     <form action="{{ action('Master\DocumentController@update', [
-        'id' => $document->id
-    ]) }}" method="post">
+            'id' => $document->id
+        ]) }}"
+        method="post"
+        id="submit-document-form"
+    >
         @csrf
         @method('put')
 
@@ -34,55 +37,62 @@
 
             {{-- Save button --}}
             @unless ($document->isReady())
-                <button class="btn-floating green tooltipped"
-                    data-tooltip="@lang('tips.save')"
-                >
+                <button class="btn-floating green tooltipped" data-tooltip="@lang('tips.save')">
                     <i class="fas fa-save"></i>
                 </button>
             @endunless
             
             {{-- Delete button --}}
             @if ($document->id != 1)
-                <form action="{{ action('Master\DocumentController@destroy', ['id' => $document->id]) }}"
-                    method="post"
-                    class="d-inline-block"
-                >
-                    @method('delete')
-                    @csrf
-
-                    <button type="submit"
-                        class="tooltipped btn-floating red confirm"
-                        data-confirm="@lang('documents.sure_del_doc')"
-                        data-tooltip="@lang('forms.deleting')"
-                    >
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </form>
             @endif
 
             {{-- Move to draft --}}
             @if ($document->id !== 1 && $document->isReady())
-                <a href="#" class="btn-floating green tooltipped"
-                    id="publish-btn"
+                <a href="#!"
+                    class="btn-floating green tooltipped submit-form-btn"
                     data-tooltip="@lang('tips.add_to_drafts')"
-                    data-alert="@lang('documents.sure_draft_doc')"
+                    data-confirm="@lang('documents.sure_draft_doc')"
+                    data-checkbox="move-to-drafts"
+                    data-form="submit-document-form"
                 >
                     <i class="fas fa-file-upload"></i>
                 </a>
-                <input type="checkbox" name="ready" value="0" class="hide" id="ready-checkbox">
+                <input
+                    type="checkbox"
+                    name="ready"
+                    value="0"
+                    class="hide"
+                    id="move-to-drafts"
+                />
             @endif
+
+            {{-- Delete document --}}
+            <a href="#!"
+                class="tooltipped btn-floating red submit-form-btn"
+                data-confirm="@lang('documents.sure_del_doc')"
+                data-tooltip="@lang('forms.deleting')"
+                data-form="delete-doc-form"
+            >
+                <i class="fas fa-trash"></i>
+            </a>
 
             {{--  Publish button  --}}
             @if ($document->id == 1 || !$document->isReady())
-                <a href="#"
-                    class="btn-floating green tooltipped"
-                    id="publish-btn"
+                <a href="#!"
+                    class="btn-floating green tooltipped submit-form-btn"
                     data-tooltip="@lang('tips.publish')"
-                    data-alert="@lang('documents.sure_publich_doc')"
+                    data-confirm="@lang('documents.sure_publich_doc')"
+                    data-checkbox="publish-document"
+                    data-form="submit-document-form"
                 >
                     <i class="fas fa-share"></i>
                 </a>
-                <input type="checkbox" name="ready" value="1" class="hide" id="ready-checkbox">
+                <input type="checkbox"
+                    id="publish-document"
+                    name="ready"
+                    value="1"
+                    class="hide"
+                />
             @endif
         </div>
 
@@ -115,6 +125,15 @@
         </div>
     </form>
 </div>
+
+<form action="{{ action('Master\DocumentController@destroy', ['id' => $document->id]) }}"
+    method="post"
+    class="hide"
+    id="delete-doc-form"
+>
+    @method('delete')
+    @csrf
+</form>
 
 @endsection
 

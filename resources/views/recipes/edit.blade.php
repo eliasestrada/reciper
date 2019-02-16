@@ -7,8 +7,8 @@
 <form action="{{ action('RecipeController@update', ['recipe' => $recipe->id]) }}"
     method="post"
     class="page"
+    id="submit-recipe-form"
     enctype="multipart/form-data"
-    id="form-update-recipe"
 >
 
     @method('put')
@@ -53,10 +53,12 @@
             </delete-recipe-btn>
 
             {{--  Publish button  --}}
-            <a href="#" id="publish-btn"
-                class="btn-floating green tooltipped waves-effect waves-light"
-                data-alert="@lang('recipes.are_you_sure_to_publish')"
+            <a href="#"
+                class="btn-floating green tooltipped waves-effect waves-light submit-form-btn"
+                data-confirm="@lang('recipes.are_you_sure_to_publish')"
                 data-tooltip="@lang('tips.publish')"
+                data-checkbox="ready-checkbox"
+                data-form="submit-recipe-form"
             >
                 <i class="fas fa-clipboard-check"></i>
             </a>
@@ -185,7 +187,7 @@
                     @include('includes.input-error', ['field' => 'image'])
 
                     <div class="preview-image preview-image-recipe position-relative">
-                        <img src="{{ asset("storage/big/recipes/$recipe->image") }}"
+                        <img src="{{ asset("storage/big/recipes/{$recipe->image}") }}"
                             alt="{{ $recipe->title }}"
                             id="target-image"
                         >
