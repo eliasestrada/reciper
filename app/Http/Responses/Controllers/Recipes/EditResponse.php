@@ -28,7 +28,7 @@ class EditResponse implements Responsable
      */
     public function toResponse($request)
     {
-        if ($this->recipeIsNotReadyOrDoesntBelongToThisUser()) {
+        if ($this->recipeIsReadyOrDoesntBelongToThisUser()) {
             return redirect('/recipes')->withError(
                 trans('recipes.cant_edit_ready_recipe')
             );
@@ -43,7 +43,7 @@ class EditResponse implements Responsable
     /**
      * @return bool
      */
-    protected function recipeIsNotReadyOrDoesntBelongToThisUser(): bool
+    protected function recipeIsReadyOrDoesntBelongToThisUser(): bool
     {
         return !user()->hasRecipe($this->recipe->id) || $this->recipe->isReady();
     }
