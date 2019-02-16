@@ -68,4 +68,17 @@ class MasterDocumentsEditPageTest extends TestCase
 
         $this->assertDatabaseHas('documents', ['id' => 1, _('ready') => 1]);
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function master_can_delete_document(): void
+    {
+        $this->actingAs(create_user('master'))
+            ->delete(action('Master\DocumentController@destroy', [
+                'id' => $document_id = create(Document::class)->id,
+            ]));
+        $this->assertDatabaseMissing('documents', ['id' => $document_id]);
+    }
 }

@@ -56,19 +56,6 @@ class MasterDocumentsCreatePageTest extends TestCase
      * @author Cho
      * @test
      */
-    public function master_can_delete_document(): void
-    {
-        $this->actingAs(create_user('master'))
-            ->delete(action('Master\DocumentController@destroy', [
-                'id' => $document_id = create(Document::class)->id,
-            ]));
-        $this->assertDatabaseMissing('documents', ['id' => $document_id]);
-    }
-
-    /**
-     * @author Cho
-     * @test
-     */
     public function user_cant_delete_document(): void
     {
         $this->actingAs(make(User::class))
