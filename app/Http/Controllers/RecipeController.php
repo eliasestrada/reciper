@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Popularity;
 use App\Helpers\Traits\RecipeControllerHelpers;
-use App\Helpers\Xp;
 use App\Http\Requests\Recipes\RecipeStoreRequest;
 use App\Http\Requests\Recipes\RecipeUpdateRequest;
 use App\Http\Responses\Controllers\Recipes\DestroyResponse;
 use App\Http\Responses\Controllers\Recipes\EditResponse;
+use App\Http\Responses\Controllers\Recipes\ShowResponse;
 use App\Http\Responses\Controllers\Recipes\UpdateResponse;
 use App\Models\Fav;
 use App\Models\Meal;
@@ -17,7 +16,6 @@ use App\Models\User;
 use App\Models\View;
 use App\Repos\FavRepo;
 use App\Repos\MealRepo;
-use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View as ViewResponse;
 
@@ -66,46 +64,11 @@ class RecipeController extends Controller
      * It will show the recipe on a single page
      *
      * @param string $slug
-     * @return mixed
+     * @return \App\Http\Responses\Controllers\Recipes\ShowResponse
      */
-    public function show(string $slug)
+    public function show(string $slug): ShowResponse
     {
-        $recipe = Recipe::whereSlug($slug)->first();
-
-        // Rules for visitors
-        if (!user() && !$recipe->isDone()) {
-            return redirect('/recipes')->withError(trans('recipes.no_rights_to_see'));
-        }
-
-        // Rules for auth users
-        if (user()) {
-            if (!user()->hasRecipe($recipe->id) && !$recipe->isReady()) {
-                return redirect('/recipes')->withError(trans('recipes.not_written'));
-            }
-
-            if (!user()->hasRecipe($recipe->id) && !$recipe->isApproved()) {
-                return redirect('/recipes')->withError(trans('recipes.not_approved'));
-            }
-        }
-
-        // Mark that visitor saw the recipe if he didn't
-        // Else increment visits column by one
-        if ($recipe->views()->whereVisitorId(visitor_id())->doesntExist()) {
-            try {
-                $recipe->views()->create(['visitor_id' => visitor_id()]);
-                if ($recipe->user_id) {
-                    Popularity::add(config('custom.popularity_for_view'), $recipe->user_id);
-                }
-            } catch (QueryException $e) {}
-        } else {
-            $recipe->views()->whereVisitorId(visitor_id())->increment('visits');
-        }
-
-        return view('recipes.show', [
-            'recipe' => $recipe,
-            'xp' => $recipe->user ? new Xp($recipe->user) : [],
-            'cookie' => getCookie('r_font_size') ? getCookie('r_font_size') : '1.0',
-        ]);
+        return new ShowResponse($slug);
     }
 
     /**
