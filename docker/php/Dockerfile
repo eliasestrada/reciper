@@ -1,7 +1,5 @@
 FROM php:7.3-fpm
 
-COPY ./start.sh /
-
 ########## Install packages ##########
 RUN apt-get update \
     && apt-get install -y \
@@ -26,6 +24,7 @@ RUN apt-get update \
         gnupg \
         gnupg2 \
         gnupg1 \
+    && rm -rf /var/lib/apt/lists/* \
     ########## Configure php extentions ##########
     && docker-php-ext-configure gd \
         --with-freetype-dir=/usr/include/ \
@@ -42,8 +41,7 @@ RUN apt-get update \
         bcmath \
     ########## Add aliases to a .bashrc file ##########
     && echo 'alias phpunit="vendor/bin/phpunit"' >> ~/.bashrc \
-    && echo 'alias pa="php artisan"' >> ~/.bashrc \
-    && chmod u+x /start.sh
+    && echo 'alias pa="php artisan"' >> ~/.bashrc
 
 ########## Supervisor ##########
-COPY ./laravel-worker.conf /etc/supervisor/conf.d/
+COPY start.sh laravel-worker.conf /etc/supervisor/conf.d/
