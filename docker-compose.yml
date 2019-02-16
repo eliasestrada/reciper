@@ -43,6 +43,7 @@ services:
       - 1000:3306
     volumes: 
       - ./docker/db/storage:/var/lib/mysql
+      - ./docker/db/custom.cnf:/etc/mysql/conf.d/custom.cnf
 
   reciper_composer:
     image: composer

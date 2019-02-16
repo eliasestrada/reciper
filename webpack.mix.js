@@ -1,8 +1,8 @@
 const mix = require('laravel-mix')
 
-const css = 0
+const css = 1
 const js = 1
-const chartjs = 0
+const chartjs = 1
 const server = 0
 
 if (css == 1) {

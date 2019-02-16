@@ -2,7 +2,7 @@
 # This script will run untill composer done with creating autoload.php file
 # in laravel vendor folder
 
-printf 'Waiting until composer will create autoload.php file... \n'
+printf 'Waiting for composer and npm to finish... \n'
 cd /var/www
 
 while [ true ]; do
