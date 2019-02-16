@@ -8,15 +8,14 @@ use App\Http\Requests\Recipes\RecipeUpdateRequest;
 use App\Http\Responses\Controllers\Recipes\DestroyResponse;
 use App\Http\Responses\Controllers\Recipes\EditResponse;
 use App\Http\Responses\Controllers\Recipes\ShowResponse;
+use App\Http\Responses\Controllers\Recipes\StoreResponse;
 use App\Http\Responses\Controllers\Recipes\UpdateResponse;
 use App\Models\Fav;
 use App\Models\Meal;
 use App\Models\Recipe;
-use App\Models\User;
 use App\Models\View;
 use App\Repos\FavRepo;
 use App\Repos\MealRepo;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View as ViewResponse;
 
 class RecipeController extends Controller
@@ -44,20 +43,11 @@ class RecipeController extends Controller
      * It will save the recipe to a database with title only
      *
      * @param \App\Http\Requests\Recipes\RecipeStoreRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \App\Http\Responses\Controllers\Recipes\StoreResponse
      */
-    public function store(RecipeStoreRequest $request): RedirectResponse
+    public function store(RecipeStoreRequest $request): StoreResponse
     {
-        if ($this->checkForScriptTags($request)) {
-            return back()->withError(trans('notifications.cant_use_script_tags'));
-        }
-
-        $recipe = user()->recipes()->create([
-            _('title') => $request->title,
-            'slug' => str_slug($request->title) . '-' . time(),
-        ]);
-
-        return redirect("/recipes/{$recipe->slug}/edit");
+        return new StoreResponse;
     }
 
     /**
