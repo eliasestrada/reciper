@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class MasterDocumentsShowPageTest extends TestCase
+class DocumentsShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 

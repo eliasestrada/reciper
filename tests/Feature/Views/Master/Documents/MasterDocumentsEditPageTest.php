@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Views\Documents;
+namespace Tests\Feature\Views\Master\Documents;
 
 use App\Models\Document;
 use App\Models\User;

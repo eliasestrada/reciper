@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature\Views\Help;
+namespace Tests\Feature\Views\Master\Help;
 
 use App\Models\Help;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class HelpCreatePageTest extends TestCase
+class MasterHelpCreatePageTest extends TestCase
 {
     use DatabaseTransactions;
 

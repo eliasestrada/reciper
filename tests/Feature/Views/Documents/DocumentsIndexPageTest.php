@@ -5,7 +5,7 @@ namespace Tests\Feature\Views\Documents;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-class MasterDocumentsIndexPageTest extends TestCase
+class DocumentsIndexPageTest extends TestCase
 {
     use DatabaseTransactions;
 
