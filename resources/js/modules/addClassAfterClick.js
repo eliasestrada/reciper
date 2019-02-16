@@ -9,7 +9,7 @@
  * @param {callback} onClose
  * @return {void}
  */
-export default (el, btn, className = 'active', onOpen, onClose) => {
+export default function(el, btn, className = 'active', onOpen, onClose) {
     btn.addEventListener('click', e => {
         if (el.classList.contains(className)) {
             if (Object.prototype.toString.call(onClose) == "[object Function]") {

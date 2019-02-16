@@ -1,4 +1,4 @@
-export default () => {
+export default function() {
     const images = document.querySelectorAll('img.lazy-load-img')
 
     if (images.length > 0) {
