@@ -3,6 +3,7 @@
 namespace App\Repos;
 
 use App\Models\Category;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
 
 class CategoryRepo

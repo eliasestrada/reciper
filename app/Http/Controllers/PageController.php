@@ -20,7 +20,7 @@ class PageController extends Controller
             $recipes = Recipe::getRandomUnseen(24, 20);
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
-            $recipes = [];
+            $recipes = collect();
         }
         return view('pages.home', compact('recipes'));
     }
