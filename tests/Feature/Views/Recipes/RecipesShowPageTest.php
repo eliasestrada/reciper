@@ -5,6 +5,7 @@ namespace Tests\Feature\Views\Recipes;
 use App\Jobs\DeleteFileJob;
 use App\Models\Fav;
 use App\Models\Feedback;
+use App\Models\Like;
 use App\Models\Recipe;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
@@ -161,5 +162,28 @@ class RecipesShowPageTest extends TestCase
         ]));
 
         \Storage::delete('ingredients-' . date('d-m-Y H-i') . '.txt');
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function like_is_added_after_user_makes_like_post_request(): void
+    {
+        $this->actingAs(create_user())->post('/likes/1');
+        $this->assertCount(1, Recipe::first()->likes);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function like_is_removed_after_user_makes_second_like_post_request(): void
+    {
+        $user = create_user();
+        Like::create(['recipe_id' => 1, 'user_id' => $user->id]);
+
+        $this->actingAs($user)->post('/likes/1');
+        $this->assertCount(0, Recipe::first()->likes);
     }
 }

@@ -274,6 +274,33 @@ class RecipesEditPageTest extends TestCase
     }
 
     /**
+     * @author Cho
+     * @test
+     */
+    public function user_can_delete_his_recipe_from_DB(): void
+    {
+        $user = create_user();
+        $recipe = create(Recipe::class, ['user_id' => $user->id], null, 'draft');
+
+        $this->withoutJobs();
+        $this->actingAs($user)->delete("/recipes/{$recipe->id}");
+        $this->assertDatabaseMissing('recipes', ['id' => $recipe->id]);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function user_cant_delete_other_recipe_from_DB(): void
+    {
+        $recipe = create(Recipe::class, [], null, 'draft');
+
+        $this->withoutJobs();
+        $this->actingAs(create_user())->delete("/recipes/{$recipe->id}");
+        $this->assertDatabaseHas('recipes', ['id' => $recipe->id]);
+    }
+
+    /**
      * Function helper
      *
      * @author Cho
