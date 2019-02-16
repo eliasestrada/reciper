@@ -70,9 +70,10 @@ class Recipe extends Model
      */
     public function scopeDone($query, int $value)
     {
-        return $query
-            ->where(_('ready'), $value)
-            ->where(_('approved'), $value);
+        return $query->where([
+            _('ready') => $value,
+            _('approved') => $value,
+        ]);
     }
 
     /**

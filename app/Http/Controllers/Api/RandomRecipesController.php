@@ -16,6 +16,8 @@ class RandomRecipesController extends Controller
      */
     public function boot(int $visitor_id): ?object
     {
-        return RecipesRandomResource::collection(Recipe::getRandomUnseen(12, 4, $visitor_id));
+        return RecipesRandomResource::collection(
+            Recipe::getRandomUnseen(12, 4, $visitor_id)
+        );
     }
 }
