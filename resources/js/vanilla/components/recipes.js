@@ -1,18 +1,17 @@
 import lazyLoadImages from '../../modules/lazyLoadImages'
 import addClassAfterClick from '../../modules/addClassAfterClick'
+import submitFormAfterClick from '../../modules/submitFormAfterClick'
 import axios from 'axios'
 
-;(function ReadyCheckbox() {
-    const checkbox = document.getElementById('ready-checkbox')
-    const publishBtn = document.getElementById('publish-btn')
+;(function SubmitGivenFormAfterClickEvent() {
+    const btns = document.querySelectorAll('.submit-form-btn')
 
-    if (checkbox) {
-        publishBtn.addEventListener('click', () => {
-            if (confirm(publishBtn.getAttribute('data-alert'))) {
-                if (checkbox.checked = true) {
-                    checkbox.closest('form').submit()
-                }
-            }
+    if (btns) {
+        btns.forEach(btn => {
+            const form = document.getElementById(btn.getAttribute('data-form'))
+            const checkbox = document.getElementById(btn.getAttribute('data-checkbox'))
+            const confirmMsg = btn.getAttribute('data-confirm')
+            submitFormAfterClick(form, btn, confirmMsg, checkbox)
         })
     }
 })()
