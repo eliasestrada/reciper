@@ -71,18 +71,16 @@ class DocumentController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(int $id): RedirectResponse
+    public function destroy(Document $document): RedirectResponse
     {
-        if ($id == 1) {
-            return redirect('/master/documents/create')->withError(
-                trans('documents.cant_delete_first_doc')
-            );
+        if ($document->id == 1) {
+            return redirect('/master/documents/create')
+                ->withError(trans('documents.cant_delete_first_doc'));
         }
 
-        Document::find($id)->delete();
+        $document->delete();
 
-        return redirect('/documents')->withSuccess(
-            trans('documents.doc_has_been_deleted')
-        );
+        return redirect('/documents')
+            ->withSuccess(trans('documents.doc_has_been_deleted'));
     }
 }
