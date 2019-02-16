@@ -65,7 +65,9 @@ class UpdateResponse implements Responsable
      */
     protected function response($request)
     {
-        return $request->has('view') ? $this->showPreview() : $this->showEditPage();
+        return $request->has('view')
+        ? $this->showPreview()
+        : $this->showEditPage($request);
     }
 
     /**
@@ -80,9 +82,10 @@ class UpdateResponse implements Responsable
      * Check if recipe is being saved or published
      * and return redirect back with message
      *
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function showEditPage(): RedirectResponse
+    protected function showEditPage($request): RedirectResponse
     {
         return $request->ready == 0
         ? back()->withSuccess(trans('documents.saved'))
