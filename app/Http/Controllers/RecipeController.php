@@ -7,6 +7,7 @@ use App\Helpers\Traits\RecipeControllerHelpers;
 use App\Helpers\Xp;
 use App\Http\Requests\Recipes\RecipeStoreRequest;
 use App\Http\Requests\Recipes\RecipeUpdateRequest;
+use App\Http\Responses\Controllers\Recipes\DestroyResponse;
 use App\Http\Responses\Controllers\Recipes\UpdateResponse;
 use App\Models\Fav;
 use App\Models\Meal;
@@ -142,24 +143,13 @@ class RecipeController extends Controller
     }
 
     /**
+     * Delete recipe form database
+     *
      * @param \App\Models\Recipe $recipe
-     * @return string
+     * @return \App\Http\Responses\Controllers\Recipes\DestroyResponse
      */
-    public function destroy(Recipe $recipe): string
+    public function destroy(Recipe $recipe): DestroyResponse
     {
-        if ($recipe->user_id !== user()->id) {
-            return 'failed';
-        }
-
-        $this->dispatchDeleteFileJob($recipe->image);
-
-        $recipe->categories()->detach();
-        $recipe->likes()->delete();
-        $recipe->views()->delete();
-        $recipe->favs()->delete();
-
-        $this->clearCache();
-
-        return $recipe->delete() ? 'success' : 'failed';
+        return new DestroyResponse($recipe);
     }
 }
