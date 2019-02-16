@@ -9,6 +9,7 @@
 <body class="{{ request()->cookie('r_dark_theme') ? 'dark-theme' : '' }}">
     @include('includes.nav.sidenav')
     @include('includes.nav.navbar')
+
     @yield('home-header')
 
     <div id="app">
@@ -16,18 +17,30 @@
             @yield('content')
         @else
             <div class="page pt-4 center">
-                <img src="{{ asset('storage/big/users/not_active.jpg') }}" class="profile-image frames z-depth-1 hoverable" alt="{{ user()->getName() }}" />
+                <img src="{{ asset('storage/big/users/not_active.jpg') }}"
+                    class="profile-image frames z-depth-1 hoverable"
+                    alt="{{ user()->getName() }}"
+                />
+
                 <h5 class="mt-4 main-text">@lang('users.we_missed_you')</h5>
+
                 <p class="header">
-                    @lang('users.activate_account_desc', ['days' => 30 - (date('j') - user()->updated_at->format('j'))])
+                    @lang('users.activate_account_desc', [
+                        'days' => 30 - (date('j') - user()->updated_at->format('j'))
+                    ])
                 </p>
+
                 <form action="{{ action('UserController@store') }}" method="post">
                     @csrf
-                    <button type="submit" class="btn mt-3 green hoverable waves-effect waves-green z-depth-2 confirm" data-confirm="@lang('users.are_you_sure_to_recover')">
+                    <button type="submit"
+                        class="btn mt-3 green hoverable waves-effect waves-green z-depth-2 confirm"
+                        data-confirm="@lang('users.are_you_sure_to_recover')"
+                    >
                         <i class="fas fa-unlock-alt left"></i>
                         @lang('users.recover')
                     </button>
                 </form>
+
             </div>
         @endif
     </div>
@@ -44,7 +57,15 @@
 
                 {{-- Title --}}
                 <div class="input-field">
-                    <input type="text" name="title" id="title" value="{{ old('title') }}" class="counter" data-length="{{ config('valid.recipes.title.max') }}" minlength="5" required>
+                    <input type="text"
+                        name="title"
+                        id="title"
+                        value="{{ old('title') }}"
+                        class="counter"
+                        data-length="{{ config('valid.recipes.title.max') }}"
+                        minlength="5"
+                        required
+                    />
                     <label for="title">@lang('recipes.title')</label>
                     @include('includes.input-error', ['field' => 'title'])
                 </div>

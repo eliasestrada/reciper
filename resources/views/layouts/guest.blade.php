@@ -21,12 +21,23 @@
         <div class="modal-content reset">
             <div class="center row">
                 <span class="col s12 m5">
-                    <img src="{{ asset('storage/other/logo.png') }}" alt="logo" height="140">
+                    <img src="{{ asset('storage/other/logo.png') }}"
+                        alt="logo"
+                        height="140"
+                    />
                 </span>
+
                 <p class="pt-1 col s12 m7 left-align">{!! trans('messages.login_to_add_recipe') !!}</p>
+
                 <div class="col s12">
-                    @include('includes.buttons.btn', ['title' => trans('auth.login'), 'link' => '/login'])
-                    @include('includes.buttons.btn', ['title' => trans('auth.register'), 'link' => '/register'])
+                    @include('includes.buttons.btn', [
+                        'title' => trans('auth.login'),
+                        'link' => '/login'
+                    ])
+                    @include('includes.buttons.btn', [
+                        'title' => trans('auth.register'),
+                        'link' => '/register'
+                    ])
                 </div>
             </div>
         </div>
