@@ -94,9 +94,7 @@ class RecipeController extends Controller
                 if ($recipe->user_id) {
                     Popularity::add(config('custom.popularity_for_view'), $recipe->user_id);
                 }
-            } catch (QueryException $e) {
-                logger()->error("Cant add view to recipe. {$e->getMessage()}");
-            }
+            } catch (QueryException $e) {}
         } else {
             $recipe->views()->whereVisitorId(visitor_id())->increment('visits');
         }
