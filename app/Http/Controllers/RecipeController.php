@@ -8,6 +8,7 @@ use App\Helpers\Xp;
 use App\Http\Requests\Recipes\RecipeStoreRequest;
 use App\Http\Requests\Recipes\RecipeUpdateRequest;
 use App\Http\Responses\Controllers\Recipes\DestroyResponse;
+use App\Http\Responses\Controllers\Recipes\EditResponse;
 use App\Http\Responses\Controllers\Recipes\UpdateResponse;
 use App\Models\Fav;
 use App\Models\Meal;
@@ -110,23 +111,11 @@ class RecipeController extends Controller
     /**
      * @param string $slug
      * @param \App\Repos\MealRepo $meal_repo
-     * @return mixed
+     * @return \App\Http\Responses\Controllers\Recipes\EditResponse
      */
-    public function edit(string $slug, MealRepo $meal_repo)
+    public function edit(string $slug, MealRepo $meal_repo): EditResponse
     {
-        $recipe = Recipe::whereSlug($slug)->first();
-
-        // Check for the correct user
-        if (!user()->hasRecipe($recipe->id) || $recipe->isReady()) {
-            return redirect('/recipes')->withError(
-                trans('recipes.cant_edit_ready_recipe')
-            );
-        }
-
-        return view('recipes.edit', [
-            'recipe' => $recipe,
-            'meal' => $meal_repo->getWithCache(),
-        ]);
+        return new EditResponse($slug, $meal_repo);
     }
 
     /**
