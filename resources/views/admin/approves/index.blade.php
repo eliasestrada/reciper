@@ -19,7 +19,7 @@
                     <tab 
                         name="@lang("approves.{$recipes[$i]['name']}") 
                         <span class='red-text'><b>{{ count($recipes[1]['recipes']) }}</b></span>"
-                        :selected="true"
+                        {{ $i === 0 ? ':selected="true"' : '' }}
                     >
                         <div class="item-list unstyled-list row px-2 paper-dark">
                             @forelse ($recipes[$i]['recipes'] as $recipe)
