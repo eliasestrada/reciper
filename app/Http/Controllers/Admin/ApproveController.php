@@ -28,7 +28,7 @@ class ApproveController extends Controller
      */
     public function index(RecipeRepo $recipe_repo)
     {
-        $already_checking = $recipe_repo->getIdOfTheRecipeThatUserIsChecking();
+        $already_checking = $recipe_repo->getIdOfTheRecipeThatUserIsChecking(user()->id);
 
         if ($already_checking) {
             return redirect("/admin/approves/{$already_checking}")
@@ -47,7 +47,7 @@ class ApproveController extends Controller
                 ],
                 3 => [
                     'name' => 'my_approves',
-                    'recipes' => $recipe_repo->paginateMyApproves(),
+                    'recipes' => $recipe_repo->paginateMyApproves(user()->id),
                 ],
             ],
         ]);

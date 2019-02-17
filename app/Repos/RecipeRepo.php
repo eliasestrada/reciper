@@ -44,13 +44,14 @@ class RecipeRepo
     }
 
     /**
+     * @param int $user_id
      * @return mixed
      */
-    public function paginateMyApproves()
+    public function paginateMyApproves(int $user_id)
     {
         try {
             return Recipe::oldest()
-                ->where(_('approver_id', true), user()->id)
+                ->where(_('approver_id', true), $user_id)
                 ->done(1)
                 ->paginate(30)
                 ->onEachSide(1);
@@ -61,12 +62,13 @@ class RecipeRepo
     }
 
     /**
+     * @param int $user_id
      * @return int
      */
-    public function getIdOfTheRecipeThatUserIsChecking(): ?int
+    public function getIdOfTheRecipeThatUserIsChecking(int $user_id): ?int
     {
         try {
-            return Recipe::where(_('approver_id', true), user()->id)
+            return Recipe::where(_('approver_id', true), $user_id)
                 ->approved(0)
                 ->ready(1)
                 ->value('id');
