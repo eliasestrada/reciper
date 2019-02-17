@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use App\Helpers\Traits\RecipeModelRelationship;
-use App\Helpers\Traits\RecipeModelShortcuts;
+use App\Helpers\Models\RecipeHelpers;
 use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
-    use RecipeModelShortcuts, RecipeModelRelationship;
+    use RecipeHelpers;
 
     /**
      * Guarder columns

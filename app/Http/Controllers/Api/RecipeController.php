@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Traits\RecipeControllerHelpers;
+use App\Helpers\Controllers\RecipeHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipesResource;
 use App\Models\Recipe;
@@ -11,7 +11,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class RecipeController extends Controller
 {
-    use RecipeControllerHelpers;
+    use RecipeHelpers;
 
     /**
      * @param null|string $hash

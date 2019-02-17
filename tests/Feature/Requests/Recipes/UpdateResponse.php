@@ -2,14 +2,14 @@
 
 namespace App\Http\Responses\Controllers\Recipes;
 
-use App\Helpers\Traits\RecipeControllerHelpers;
+use App\Helpers\Controllers\RecipeHelpers;
 use App\Models\Recipe;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\RedirectResponse;
 
 class UpdateResponse implements Responsable
 {
-    use RecipeControllerHelpers;
+    use RecipeHelpers;
 
     protected $recipe;
 

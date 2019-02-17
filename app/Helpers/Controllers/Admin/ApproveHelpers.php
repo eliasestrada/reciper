@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Helpers\Traits;
+namespace App\Helpers\Controllers\Admin;
 
 use App\Models\Recipe;
 
-trait ApproveControllerHelpers
+trait ApproveHelpers
 {
     /**
      * @param \App\Models\Recipe $recipe

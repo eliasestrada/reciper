@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Settings;
 
-use App\Helpers\Traits\PhotoControllerHelpers;
+use App\Helpers\Controllers\Settings\PhotoHelpers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\PhotoRequest;
 use App\Jobs\DeleteFileJob;
@@ -14,7 +14,7 @@ use Predis\Connection\ConnectionException;
 
 class PhotoController extends Controller
 {
-    use PhotoControllerHelpers;
+    use PhotoHelpers;
 
     /**
      * @return void

@@ -2,13 +2,13 @@
 
 namespace App\Http\Responses\Controllers\Recipes;
 
-use App\Helpers\Traits\RecipeControllerHelpers;
+use App\Helpers\Controllers\RecipeHelpers;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\RedirectResponse;
 
 class StoreResponse implements Responsable
 {
-    use RecipeControllerHelpers;
+    use RecipeHelpers;
 
     /**
      * @param \Illuminate\Http\Request $request

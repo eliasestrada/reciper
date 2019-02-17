@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers\Traits;
+namespace App\Helpers\Controllers;
 
 use App\Jobs\DeleteFileJob;
 use App\Models\User;
@@ -10,7 +10,7 @@ use Illuminate\Http\UploadedFile;
 use Image;
 use Predis\Connection\ConnectionException;
 
-trait RecipeControllerHelpers
+trait RecipeHelpers
 {
     /**
      * @param \Illuminate\Http\UploadedFile|null $image

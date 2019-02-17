@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Traits\RecipeControllerHelpers;
 use App\Http\Requests\Recipes\RecipeStoreRequest;
 use App\Http\Requests\Recipes\RecipeUpdateRequest;
 use App\Http\Responses\Controllers\Recipes\DestroyResponse;
@@ -20,8 +19,6 @@ use Illuminate\View\View as ViewResponse;
 
 class RecipeController extends Controller
 {
-    use RecipeControllerHelpers;
-
     /**
      * @return void
      */

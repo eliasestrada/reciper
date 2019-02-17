@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Helpers\Traits;
+namespace App\Helpers\Controllers\Settings;
 
 use App\Models\User;
 use File;
 use Illuminate\Http\UploadedFile;
 use Image;
 
-trait PhotoControllerHelpers
+trait PhotoHelpers
 {
     /**
      * @param UploadedFile|null $photo

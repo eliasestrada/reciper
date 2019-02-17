@@ -2,13 +2,13 @@
 
 namespace App\Http\Responses\Controllers\Admin\Approves;
 
-use App\Helpers\Traits\ApproveControllerHelpers;
+use App\Helpers\Controllers\Admin\ApproveHelpers;
 use App\Models\Recipe;
 use Illuminate\Contracts\Support\Responsable;
 
 class ShowResponse implements Responsable
 {
-    use ApproveControllerHelpers;
+    use ApproveHelpers;
 
     protected $recipe;
 

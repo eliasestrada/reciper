@@ -29,8 +29,8 @@ class ApproveControllerTest extends TestCase
     public function show_method_redirects_with_status_302_if_recipe_is_already_approved(): void
     {
         $recipe = make(Recipe::class);
-        $response = $this->controller->show($recipe);
-        $this->assertEquals(302, $response->getStatusCode(), 'Response is not redirect');
+        $response = $this->controller->show($recipe)->toResponse($recipe);
+        $this->assertEquals(302, $response->getStatusCode());
     }
 
     /**
@@ -40,7 +40,7 @@ class ApproveControllerTest extends TestCase
     public function show_method_redirects_if_recipe_is_in_frafts(): void
     {
         $recipe = make(Recipe::class, [], null, 'draft');
-        $response = $this->controller->show($recipe);
+        $response = $this->controller->show($recipe)->toResponse($recipe);
         $this->assertEquals(302, $response->getStatusCode());
     }
 
@@ -51,7 +51,7 @@ class ApproveControllerTest extends TestCase
     public function show_method_returns_view_if_recipe_is_ready_and_not_approved(): void
     {
         $recipe = make(Recipe::class, [_('approved') => 0]);
-        $response = $this->controller->show($recipe);
+        $response = $this->controller->show($recipe)->toResponse($recipe);
         $this->assertInstanceOf(\Illuminate\View\View::class, $response);
     }
 
