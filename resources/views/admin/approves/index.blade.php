@@ -15,13 +15,13 @@
 
         <div v-cloak>
             <tabs>
-                @for ($i = 1; $i <= 3; $i++)
+                @for ($i = 0; $i <= 2; $i++)
                     <tab 
                         name="@lang("approves.{$recipes[$i]['name']}") 
                         <span class='red-text'><b>{{ count($recipes[1]['recipes']) }}</b></span>"
                         :selected="true"
                     >
-                        <div class="item-list unstyled-list row px-2 paper-dark" id="tab-{{ $i }}">
+                        <div class="item-list unstyled-list row px-2 paper-dark">
                             @forelse ($recipes[$i]['recipes'] as $recipe)
                                 <ul>
                                     <li style="margin-bottom:5px" class="col s12 m6 l4 row">

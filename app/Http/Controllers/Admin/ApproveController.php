@@ -37,15 +37,15 @@ class ApproveController extends Controller
 
         return view('admin.approves.index', [
             'recipes' => [
-                1 => [
+                [
                     'name' => 'unapproved_waiting',
                     'recipes' => $recipe_repo->paginateUnapprovedWaiting(),
                 ],
-                2 => [
+                [
                     'name' => 'unapproved_checking',
                     'recipes' => $recipe_repo->paginateUnapprovedChecking(),
                 ],
-                3 => [
+                [
                     'name' => 'my_approves',
                     'recipes' => $recipe_repo->paginateMyApproves(user()->id),
                 ],
