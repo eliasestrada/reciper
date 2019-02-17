@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DisapproveRequest;
+use App\Http\Responses\Controllers\Admin\Approves\IndexResponse;
 use App\Http\Responses\Controllers\Admin\Approves\ShowResponse;
 use App\Models\Recipe;
-use App\Repos\RecipeRepo;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -24,33 +24,11 @@ class ApproveController extends Controller
      * Shows all recipes that need to be approved
      * by administration
      *
-     * @return mixed
+     * @return \App\Http\Responses\Controllers\Admin\Approves\IndexResponse
      */
-    public function index(RecipeRepo $recipe_repo)
+    public function index(): IndexResponse
     {
-        $already_checking = $recipe_repo->getIdOfTheRecipeThatUserIsChecking(user()->id);
-
-        if ($already_checking) {
-            return redirect("/admin/approves/{$already_checking}")
-                ->withSuccess(trans('approves.finish_checking'));
-        }
-
-        return view('admin.approves.index', [
-            'recipes' => [
-                [
-                    'name' => 'unapproved_waiting',
-                    'recipes' => $recipe_repo->paginateUnapprovedWaiting(),
-                ],
-                [
-                    'name' => 'unapproved_checking',
-                    'recipes' => $recipe_repo->paginateUnapprovedChecking(),
-                ],
-                [
-                    'name' => 'my_approves',
-                    'recipes' => $recipe_repo->paginateMyApproves(user()->id),
-                ],
-            ],
-        ]);
+        return new IndexResponse;
     }
 
     /**
