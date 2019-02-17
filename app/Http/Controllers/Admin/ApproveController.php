@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DisapproveRequest;
+use App\Http\Responses\Controllers\Admin\Approves\ShowResponse;
 use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -60,26 +61,14 @@ class ApproveController extends Controller
     }
 
     /**
+     * Show single recipe
+     *
      * @param \App\Models\Recipe $recipe
-     * @return mixed
+     * @return \App\Http\Responses\Controllers\Admin\Approves\ShowResponse
      */
-    public function show(Recipe $recipe)
+    public function show(Recipe $recipe): ShowResponse
     {
-        $error_message = $this->returnErrorIfApprovedOrNotReady($recipe);
-        $cookie = getCookie('r_font_size') ? getCookie('r_font_size') : '1.0';
-
-        if (!is_null($error_message)) {
-            return redirect("/admin/approves")->withError($error_message);
-        }
-
-        if (!optional($recipe->approver)->id) {
-            $recipe->update([_('approver_id', true) => user()->id]);
-            $approver_id = user()->id;
-        } else {
-            $approver_id = $recipe->approver->id;
-        }
-
-        return view('admin.approves.show', compact('recipe', 'approver_id', 'cookie'));
+        return new ShowResponse($recipe);
     }
 
     /**
