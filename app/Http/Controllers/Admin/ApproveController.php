@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DisapproveRequest;
 use App\Http\Responses\Controllers\Admin\Approves\ShowResponse;
 use App\Models\Recipe;
-use App\Models\User;
+use App\Repos\RecipeRepo;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -26,38 +26,31 @@ class ApproveController extends Controller
      *
      * @return mixed
      */
-    public function index()
+    public function index(RecipeRepo $recipe_repo)
     {
-        $unapproved_waiting = Recipe::oldest()
-            ->where(_('approver_id', true), 0)
-            ->approved(0)
-            ->ready(1)
-            ->paginate(30)
-            ->onEachSide(1);
+        $already_checking = $recipe_repo->getIdOfTheRecipeThatUserIsChecking();
 
-        $unapproved_checking = Recipe::oldest()
-            ->where(_('approver_id', true), '!=', 0)
-            ->approved(0)
-            ->ready(1)
-            ->paginate(30)
-            ->onEachSide(1);
-
-        $my_approves = Recipe::oldest()
-            ->where(_('approver_id', true), user()->id)
-            ->done(1)
-            ->paginate(30)
-            ->onEachSide(1);
-
-        // Check if admin is already has recipe that he didnt approve
-        $already_checking = Recipe::where(_('approver_id', true), user()->id)->approved(0)->ready(1)->value('id');
         if ($already_checking) {
-            return redirect("/admin/approves/$already_checking")
+            return redirect("/admin/approves/{$already_checking}")
                 ->withSuccess(trans('approves.finish_checking'));
         }
 
-        return view('admin.approves.index', compact(
-            'unapproved_waiting', 'unapproved_checking', 'my_approves'
-        ));
+        return view('admin.approves.index', [
+            'recipes' => [
+                1 => [
+                    'name' => 'unapproved_waiting',
+                    'recipes' => $recipe_repo->paginateUnapprovedWaiting(),
+                ],
+                2 => [
+                    'name' => 'unapproved_checking',
+                    'recipes' => $recipe_repo->paginateUnapprovedChecking(),
+                ],
+                3 => [
+                    'name' => 'my_approves',
+                    'recipes' => $recipe_repo->paginateMyApproves(),
+                ],
+            ],
+        ]);
     }
 
     /**
