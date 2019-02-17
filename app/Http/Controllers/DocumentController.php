@@ -16,8 +16,16 @@ class DocumentController extends Controller
     public function index(): View
     {
         return view('documents.index', [
-            'ready_docs' => DocumentRepo::paginateAllWithReadyStatus(1),
-            'unready_docs' => DocumentRepo::paginateAllWithReadyStatus(0),
+            'documents' => [
+                [
+                    'docs' => DocumentRepo::paginateAllWithReadyStatus(1),
+                    'name' => 'published',
+                ],
+                [
+                    'docs' => DocumentRepo::paginateAllWithReadyStatus(0),
+                    'name' => 'drafts',
+                ],
+            ],
         ]);
     }
 

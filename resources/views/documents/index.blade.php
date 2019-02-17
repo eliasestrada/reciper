@@ -13,33 +13,32 @@
 <div class="page">
     <div v-cloak>
         <tabs>
-            @for ($i = 1; $i <= 2; $i++)
+            @for ($i = 0; $i < 2; $i++)
                 <tab 
-                    @if ($i == 1)
-                        name="@lang('messages.published') 
-                        <span class='red-text'><b>{{ $ready_docs->count() }}</b></span>"
-                        :selected="true"
-                    @elseif (user() && user()->hasRole('master'))
-                        name="@lang('messages.drafts') 
-                        <span class='red-text'><b>{{ $unready_docs->count() }}</b></span>"
-                    @endif
+                    name="@lang("messages.{$documents[$i]['name']}") 
+                    <span class='red-text'><b>{{ count($documents[$i]['docs']) }}</b></span>"
+                    {{ $i === 0 ? ':selected="true"' : '' }}
                 >
-                    <div class="row paper-dark pt-3" id="tab-{{ $i }}">
-                        {{-- This is regulat loop that loops through docs collection --}}
-                        @forelse ($i == 1 ? $ready_docs : $unready_docs as $doc)
+                    <div class="row paper-dark pt-3">
+                        @forelse ($documents[$i]['docs'] as $doc)
                             <div class="col s12 l6">
                                 <div class="card" style="min-height:320px">
                                     <div class="card-content">
                                         <span class="card-title" style="line-height:32px!important">
                                             {{ $doc->getTitle() }}
                                         </span>
+
                                         <div class="divider"></div>
                                         <p>{{ str_limit(strip_tags($doc->getText()), 250) }}</p>
                                         <p class="mt-3"><b>@lang('documents.last_update'):</b></p>
                                         <p>{{ time_ago($doc->updated_at) }}</p>
                                     </div>
+
                                     <div class="card-action">
-                                        <a href="/documents/{{ $doc->id }}" class="text">@lang('messages.open')</a>
+                                        <a href="/documents/{{ $doc->id }}" class="text">
+                                            @lang('messages.open')
+                                        </a>
+
                                         @hasRole('master')
                                             <a href="/master/documents/{{ $doc->id }}/edit" class="text">
                                                 @lang('messages.edit')
@@ -61,7 +60,7 @@
                             @endcomponent
                         @endforelse
 
-                        {{ $i == 1 ? $ready_docs->links() : $unready_docs->links() }}
+                        {{ $documents[$i]['docs']->links() }}
                     </div>
                 </tab>
             @endfor
