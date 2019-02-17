@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DisapproveRequest;
+use App\Http\Responses\Controllers\Admin\Approves\ApproveResponse;
+use App\Http\Responses\Controllers\Admin\Approves\DisapproveResponse;
 use App\Http\Responses\Controllers\Admin\Approves\IndexResponse;
 use App\Http\Responses\Controllers\Admin\Approves\ShowResponse;
 use App\Models\Recipe;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ApproveController extends Controller
@@ -43,68 +44,27 @@ class ApproveController extends Controller
     }
 
     /**
-     * x-recipe-approved header is asserted by tests
+     * Approve given recipe
+     * Dispaches event \App\Events\RecipeGotApproved
      *
      * @param \App\Models\Recipe $recipe
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \App\Http\Responses\Controllers\Admin\Approves\ApproveResponse
      */
-    public function approve(Recipe $recipe): RedirectResponse
+    public function approve(Recipe $recipe): ApproveResponse
     {
-        $error_message = $this->returnErrorIfApprovedOrNotReady($recipe);
-
-        if (!is_null($error_message)) {
-            return redirect("/admin/approves")->withError($error_message);
-        }
-
-        event(new \App\Events\RecipeGotApproved($recipe));
-
-        $recipe->update([_('approved') => 1]);
-        cache()->forget('unapproved_notif');
-
-        return redirect("/recipes/$recipe->slug")
-            ->header('x-recipe-approved', 1)
-            ->withSuccess(trans('recipes.recipe_published'));
+        return new ApproveResponse($recipe);
     }
 
     /**
-     * x-recipe-disapproved header is asserted by tests
+     * Disapprove given recipe
+     * Dispaches event \App\Events\RecipeGotCanceled
      *
      * @param \App\Models\Recipe $recipe
      * @param \App\Http\Requests\DisapproveRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \App\Http\Responses\Controllers\Admin\Approves\ApproveResponse
      */
-    public function disapprove(Recipe $recipe, DisapproveRequest $request): RedirectResponse
+    public function disapprove(Recipe $recipe, DisapproveRequest $request): DisapproveResponse
     {
-        $error_message = $this->returnErrorIfApprovedOrNotReady($recipe);
-
-        if (!is_null($error_message)) {
-            return redirect("/admin/approves")->withError($error_message);
-        }
-
-        event(new \App\Events\RecipeGotCanceled($recipe, $request->message));
-
-        $recipe->update([_('ready') => 0]);
-        cache()->forget('unapproved_notif');
-
-        return redirect('/recipes#new')
-            ->header('x-recipe-disapproved', 1)
-            ->withSuccess(trans('recipes.you_gave_recipe_back_on_editing'));
-    }
-
-    /**
-     * Helper function
-     *
-     * @param \App\Models\Recipe $recipe
-     */
-    public function returnErrorIfApprovedOrNotReady(Recipe $recipe)
-    {
-        if ($recipe->isDone()) {
-            return trans('approves.already_approved');
-        }
-
-        if (!$recipe->isReady() && !$recipe->isApproved()) {
-            return trans('recipes.not_written');
-        }
-        return null;
+        return new DisapproveResponse($recipe);
     }
 }
