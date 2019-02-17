@@ -6,25 +6,23 @@
 
 <div class="page">
     <div class="center">
-        <h1 class="header"><i class="fas fa-comment-dots red-text"></i> @lang('feedback.contact_us')</h1>
+        <h1 class="header">
+            <i class="fas fa-comment-dots red-text"></i> 
+            @lang('feedback.contact_us')
+        </h1>
     </div>
 
     {{-- Tabs --}}
     <div v-cloak class="mt-4">
         <tabs>
-            @for ($i = 1; $i <= 2; $i++)
+            @for ($i = 0; $i < 2; $i++)
                 <tab 
-                    @if ($i == 1)
-                        name="@lang('messages.in_russian') 
-                        <span class='red-text'><b>{{ $feedback_ru->count() }}</b></span>"
-                        :selected="true"
-                    @else
-                        name="@lang('messages.in_english') 
-                        <span class='red-text'><b>{{ $feedback_en->count() }}</b></span>"
-                    @endif
+                    name="@lang("messages.in_{$feedback[$i]['lang']}") 
+                    <span class='red-text'><b>{{ count($feedback[$i]['feeds']) }}</b></span>"
+                    {{ $i === 0 ? ':selected="true"' : '' }}
                 >
-                    <div class="row paper-dark pt-3" id="tab-{{ $i }}">
-                        @forelse ($i == 1 ? $feedback_ru : $feedback_en as $feed)
+                    <div class="row paper-dark pt-3">
+                        @forelse ($feedback[$i]['feeds'] as $feed)
                             <div class="col s12 l6">
                                 <div class="card"
                                     style="min-height:200px;
@@ -49,8 +47,12 @@
                                     </div>
 
                                     <div class="card-action">
+
                                         {{-- Open button --}}
-                                        <a href="/admin/feedback/{{ $feed->id }}" class="btn-small mr-2">@lang('messages.open')</a>
+                                        <a href="/admin/feedback/{{ $feed->id }}" class="btn-small mr-2">
+                                            @lang('messages.open')
+                                        </a>
+
                                         {{-- Delete button --}}
                                         <form method="post"
                                             action="{{ action('Admin\FeedbackController@destroy', ['id' => $feed->id]) }}"
@@ -76,7 +78,7 @@
                                 @endslot
                             @endcomponent
                         @endforelse
-                        {{ $i == 1 ? $feedback_ru->links() : $feedback_en->links() }}
+                        {{ $feedback[$i]['feeds']->links() }}
                     </div>
                 </tab>
             @endfor

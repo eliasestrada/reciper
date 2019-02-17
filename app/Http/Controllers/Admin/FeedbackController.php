@@ -34,8 +34,16 @@ class FeedbackController extends Controller
         ]);
 
         return view('admin.feedback.index', [
-            'feedback_ru' => Feedback::whereLang('ru')->latest()->paginate(20)->onEachSide(1),
-            'feedback_en' => Feedback::whereLang('en')->latest()->paginate(20)->onEachSide(1),
+            'feedback' => [
+                [
+                    'lang' => 'ru',
+                    'feeds' => Feedback::whereLang('ru')->latest()->paginate(20)->onEachSide(1),
+                ],
+                [
+                    'lang' => 'en',
+                    'feeds' => Feedback::whereLang('en')->latest()->paginate(20)->onEachSide(1),
+                ],
+            ],
         ]);
     }
 
