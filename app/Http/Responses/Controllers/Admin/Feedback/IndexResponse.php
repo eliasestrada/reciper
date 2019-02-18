@@ -4,6 +4,7 @@ namespace App\Http\Responses\Controllers\Admin\Feedback;
 
 use App\Models\Feedback;
 use App\Models\User;
+use App\Repos\FeedbackRepo;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\View\View;
 
@@ -33,11 +34,11 @@ class IndexResponse implements Responsable
             'feedback' => [
                 [
                     'lang' => 'ru',
-                    'feeds' => Feedback::whereLang('ru')->latest()->paginate(20)->onEachSide(1),
+                    'feeds' => FeedbackRepo::paginateWithLanguage('ru'),
                 ],
                 [
                     'lang' => 'en',
-                    'feeds' => Feedback::whereLang('en')->latest()->paginate(20)->onEachSide(1),
+                    'feeds' => FeedbackRepo::paginateWithLanguage('en'),
                 ],
             ],
         ]);

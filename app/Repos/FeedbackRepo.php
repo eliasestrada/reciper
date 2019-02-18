@@ -4,6 +4,7 @@ namespace App\Repos;
 
 use App\Models\Feedback;
 use Illuminate\Database\QueryException;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class FeedbackRepo
 {
@@ -38,6 +39,20 @@ class FeedbackRepo
                 ['visitor_id', $visitor_id],
                 ['created_at', '>', now()->subDay()],
             ])->exists();
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
+            return null;
+        }
+    }
+
+    /**
+     * @param string $lang
+     * @return \Illuminate\Pagination\LengthAwarePaginator|null
+     */
+    public static function paginateWithLanguage(string $lang): ?LengthAwarePaginator
+    {
+        try {
+            return Feedback::whereLang($lang)->latest()->paginate(20)->onEachSide(1);
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
             return null;
