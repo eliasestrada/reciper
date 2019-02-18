@@ -3,6 +3,7 @@
 namespace App\Http\Responses\Controllers\Admin\Feedback;
 
 use App\Models\Feedback;
+use App\Repos\FeedbackRepo;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
@@ -22,22 +23,13 @@ class StoreResponse implements Responsable
             $alredy_send = Feedback::where([
                 ['visitor_id', visitor_id()],
                 ['created_at', '>', now()->subDay()],
-            ]);
+            ])->exists();
 
-            if ($alredy_send->exists()) {
+            if ($alredy_send) {
                 return back()->withError(trans('feedback.operation_denied'));
             }
-        } else {
-            $report_on_the_same_recipe = Feedback::where([
-                ['visitor_id', '=', visitor_id()],
-                ['recipe_id', '=', $request->recipe_id],
-                ['created_at', '>', now()->subDay()],
-                ['is_report', 1],
-            ]);
-
-            if ($report_on_the_same_recipe->exists()) {
-                return back()->withError(trans('feedback.already_reported_today'));
-            }
+        } else if (FeedbackRepo::alreadyReportedToday(visitor_id(), $request->recipe_id)) {
+            return back()->withError(trans('feedback.already_reported_today'));
         }
 
         try {
