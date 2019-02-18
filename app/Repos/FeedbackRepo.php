@@ -26,4 +26,21 @@ class FeedbackRepo
             return null;
         }
     }
+
+    /**
+     * @param int $visitor_id
+     * @return bool
+     */
+    public static function alreadyContactedToday(int $visitor_id): ?bool
+    {
+        try {
+            return Feedback::where([
+                ['visitor_id', $visitor_id],
+                ['created_at', '>', now()->subDay()],
+            ])->exists();
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
+            return null;
+        }
+    }
 }

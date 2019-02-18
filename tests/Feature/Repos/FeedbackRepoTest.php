@@ -42,4 +42,25 @@ class FeedbackRepoTest extends TestCase
         $result = FeedbackRepo::alreadyReportedToday($visitor_id, $recipe_id);
         $this->assertFalse($result);
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function alreadyContactedToday_method_returns_true_if_visitor_send_message_today(): void
+    {
+        $visitor_id = create(Visitor::class)->id;
+        create(Feedback::class, compact('visitor_id'));
+        $this->assertTrue(FeedbackRepo::alreadyContactedToday($visitor_id));
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function alreadyContactedToday_method_returns_false_if_visitor_didnt_send_message_today(): void
+    {
+        $visitor_id = create(Visitor::class)->id;
+        $this->assertFalse(FeedbackRepo::alreadyContactedToday($visitor_id));
+    }
 }

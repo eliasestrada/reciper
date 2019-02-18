@@ -18,18 +18,14 @@ class StoreResponse implements Responsable
     {
         cache()->forget('feedback_notif');
 
-        if (is_null($request->recipe_id)) {
-            // If already send feedback today, return with error message
-            $alredy_send = Feedback::where([
-                ['visitor_id', visitor_id()],
-                ['created_at', '>', now()->subDay()],
-            ])->exists();
-
-            if ($alredy_send) {
+        if ($request->recipe_id) {
+            if (FeedbackRepo::alreadyReportedToday(visitor_id(), $request->recipe_id)) {
+                return back()->withError(trans('feedback.already_reported_today'));
+            }
+        } else {
+            if (FeedbackRepo::alreadyContactedToday(visitor_id())) {
                 return back()->withError(trans('feedback.operation_denied'));
             }
-        } else if (FeedbackRepo::alreadyReportedToday(visitor_id(), $request->recipe_id)) {
-            return back()->withError(trans('feedback.already_reported_today'));
         }
 
         try {
