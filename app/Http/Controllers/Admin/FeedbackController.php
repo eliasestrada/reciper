@@ -55,14 +55,14 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Remove message from storage
+     * Remove feedback message from database
      *
-     * @param int $id
+     * @param \App\Models\Feedback $feedback
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(int $id): RedirectResponse
+    public function destroy(Feedback $feedback): RedirectResponse
     {
-        Feedback::findOrFail($id)->delete();
+        $feedback->delete();
 
         cache()->forget('feedback_notif');
 
