@@ -22,8 +22,6 @@ class StoreResponse implements Responsable
             $alredy_send = Feedback::where([
                 ['visitor_id', visitor_id()],
                 ['created_at', '>', now()->subDay()],
-                ['recipe_id', $request->recipe_id],
-                ['is_report', 1],
             ]);
 
             if ($alredy_send->exists()) {
@@ -34,6 +32,7 @@ class StoreResponse implements Responsable
                 ['visitor_id', '=', visitor_id()],
                 ['recipe_id', '=', $request->recipe_id],
                 ['created_at', '>', now()->subDay()],
+                ['is_report', 1],
             ]);
 
             if ($report_on_the_same_recipe->exists()) {
@@ -42,7 +41,7 @@ class StoreResponse implements Responsable
         }
 
         try {
-            $this->createFeedback();
+            $this->createFeedback($request);
             return back()->withSuccess(trans('feedback.success_message'));
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
@@ -51,9 +50,10 @@ class StoreResponse implements Responsable
     }
 
     /**
+     * @param \Illuminate\Http\Request $request
      * @return void
      */
-    protected function createFeedback(): void
+    protected function createFeedback($request): void
     {
         Feedback::create([
             'is_report' => $request->recipe_id ? 1 : 0,
