@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FeedbackRequest;
+use App\Http\Responses\Controllers\Admin\Feedback\IndexResponse;
 use App\Http\Responses\Controllers\Admin\Feedback\StoreResponse;
 use App\Models\Feedback;
 use App\Models\User;
@@ -24,28 +25,11 @@ class FeedbackController extends Controller
      * Show all reports and feedback
      * Mark user as he saw these messages
      *
-     * @return \Illuminate\View\View
+     * @return \App\Http\Responses\Controllers\Admin\Feedback\IndexResponse
      */
-    public function index(): View
+    public function index(): IndexResponse
     {
-        cache()->forget('feedback_notif');
-
-        User::whereId(user()->id)->update([
-            'contact_check' => now(),
-        ]);
-
-        return view('admin.feedback.index', [
-            'feedback' => [
-                [
-                    'lang' => 'ru',
-                    'feeds' => Feedback::whereLang('ru')->latest()->paginate(20)->onEachSide(1),
-                ],
-                [
-                    'lang' => 'en',
-                    'feeds' => Feedback::whereLang('en')->latest()->paginate(20)->onEachSide(1),
-                ],
-            ],
-        ]);
+        return new IndexResponse;
     }
 
     /**
