@@ -5,11 +5,22 @@ namespace Tests\Feature\Repos;
 use App\Models\Document;
 use App\Repos\DocumentRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Tests\TestCase;
 
 class DocumentRepoTest extends TestCase
 {
     use DatabaseTransactions;
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function paginateAllWithReadyStatus_method_returns_pagination(): void
+    {
+        $result = DocumentRepo::paginateAllWithReadyStatus(1);
+        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
+    }
 
     /**
      * @author Cho

@@ -27,6 +27,36 @@ class RecipeRepoTest extends TestCase
      * @author Cho
      * @test
      */
+    public function method_paginateUnapprovedWaiting_returns_pagination(): void
+    {
+        $result = $this->repo->paginateUnapprovedWaiting();
+        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_paginateUnapprovedChecking_returns_pagination(): void
+    {
+        $result = $this->repo->paginateUnapprovedChecking();
+        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_paginateMyApproves_returns_pagination(): void
+    {
+        $result = $this->repo->paginateMyApproves(create_user('admin')->id);
+        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
     public function method_paginateUnapprovedWaiting_returns_recipes_that_are_waiting_to_be_approved(): void
     {
         create(Recipe::class, [
@@ -38,7 +68,6 @@ class RecipeRepoTest extends TestCase
         $result = $this->repo->paginateUnapprovedWaiting();
 
         $this->assertEquals(2, $result->count());
-        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
     }
 
     /**
@@ -55,7 +84,6 @@ class RecipeRepoTest extends TestCase
         $result = $this->repo->paginateUnapprovedChecking();
 
         $this->assertEquals(2, $result->count());
-        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
     }
 
     /**
@@ -75,7 +103,6 @@ class RecipeRepoTest extends TestCase
         $result = $this->repo->paginateMyApproves($user->id);
 
         $this->assertEquals(2, $result->count());
-        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
     }
 
     /**
