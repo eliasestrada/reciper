@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FeedbackRequest;
+use App\Http\Responses\Controllers\Admin\Feedback\StoreResponse;
 use App\Models\Feedback;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -48,50 +49,18 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Store a newly created report in storage.
+     * Store a newly created report or feedback in database
      *
      * @param \App\Http\Requests\FeedbackRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \App\Http\Responses\Controllers\Admin\Feedback\StoreResponse
      */
-    public function store(FeedbackRequest $request): RedirectResponse
+    public function store(FeedbackRequest $request): StoreResponse
     {
-        cache()->forget('feedback_notif');
-
-        // If already send feedback today, return with error message
-        if (is_null($request->recipe_id)) {
-            $alredy_send = Feedback::whereVisitorId(visitor_id())
-                ->where('created_at', '>', now()->subDay());
-
-            if ($alredy_send->exists()) {
-                return back()->withError(trans('feedback.operation_denied'));
-            }
-        } else {
-            $report_on_the_same_recipe = Feedback::where([
-                ['visitor_id', '=', visitor_id()],
-                ['recipe_id', '=', $request->recipe_id],
-                ['created_at', '>', now()->subDay()],
-            ]);
-
-            if ($report_on_the_same_recipe->exists()) {
-                return back()->withError(trans('feedback.already_reported_today'));
-            }
-        }
-
-        Feedback::create([
-            'is_report' => $request->recipe_id ? 1 : 0,
-            'lang' => _(),
-            'visitor_id' => visitor_id(),
-            'email' => $request->email ?? null,
-            'recipe_id' => $request->recipe_id,
-            'message' => $request->message,
-            'created_at' => now(),
-        ]);
-
-        return back()->withSuccess(trans('feedback.success_message'));
+        return new StoreResponse;
     }
 
     /**
-     * Display single message
+     * Display single feedback message
      *
      * @param \App\Models\Feedback $feedback
      * @return \Illuminate\View\View
