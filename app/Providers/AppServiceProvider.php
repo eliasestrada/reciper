@@ -29,9 +29,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function showListOfCategories(): void
     {
-
         $categories = cache()->rememberForever('categories', function () {
-            return CategoryRepo::get()->toArray();
+            return CategoryRepo::getAllInArray();
         });
 
         view()->share('categories', array_map(function ($category) {

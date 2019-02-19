@@ -4,20 +4,21 @@ namespace App\Repos;
 
 use App\Models\Category;
 use Illuminate\Database\QueryException;
-use Illuminate\Support\Collection;
 
 class CategoryRepo
 {
     /**
-     * @return \Illuminate\Support\Collection
+     * Get all categories in array
+     *
+     * @return array
      */
-    public static function get(): Collection
+    public static function getAllInArray(): array
     {
         try {
-            return Category::get();
+            return Category::get()->toArray();
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
-            return collect();
+            return [];
         }
     }
 }
