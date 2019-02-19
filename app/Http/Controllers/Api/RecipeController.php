@@ -48,7 +48,7 @@ class RecipeController extends Controller
                 break;
 
             case 'simple':
-                return Recipe::whereSimple(1)->done(1)->paginate(8);
+                return $this->recipe_repo->paginateAllSimple();
                 break;
 
             case 'breakfast':

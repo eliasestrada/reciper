@@ -99,4 +99,15 @@ class RecipeRepoTest extends TestCase
     {
         $this->assertNotNull($this->repo->paginateByLikes()->first()->likes_count);
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_paginateAllSimple_doesnt_return_not_simple_recipes(): void
+    {
+        $not_simple_recipe = create(Recipe::class, ['simple' => 0]);
+        $result = $this->repo->paginateAllSimple();
+        $this->assertNull($result->where('id', $not_simple_recipe->id)->first());
+    }
 }

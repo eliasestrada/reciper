@@ -4,6 +4,7 @@ namespace App\Repos;
 
 use App\Models\Recipe;
 use Illuminate\Database\QueryException;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class RecipeRepo
 {
@@ -79,9 +80,9 @@ class RecipeRepo
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Pagination\LengthAwarePaginator|null
      */
-    public function paginateByLikes()
+    public function paginateByLikes(): ?LengthAwarePaginator
     {
         try {
             return Recipe::withCount('likes')
@@ -90,7 +91,20 @@ class RecipeRepo
                 ->paginate(8);
         } catch (QueryException $e) {
             no_connection_rror($e, __CLASS__);
-            return collect();
+            return null;
+        }
+    }
+
+    /**
+     * @return \Illuminate\Pagination\LengthAwarePaginator|null
+     */
+    public function paginateAllSimple(): ?LengthAwarePaginator
+    {
+        try {
+            return Recipe::whereSimple(1)->done(1)->paginate(8);
+        } catch (QueryException $e) {
+            no_connection_rror($e, __CLASS__);
+            return null;
         }
     }
 }
