@@ -33,11 +33,8 @@ class AppServiceProvider extends ServiceProvider
             return (new CategoryRepo)->getAllInArray();
         });
 
-        view()->share('categories', array_map(function ($category) {
-            return [
-                'id' => $category['id'],
-                'name' => $category[_('name')],
-            ];
+        view()->share('categories', array_map(function ($cat) {
+            return ['id' => $cat['id'], 'name' => $cat[_('name')]];
         }, $categories));
     }
 
