@@ -30,7 +30,10 @@ class RecipeController extends Controller
     public function makeQueryWithCriteria(?string $hash = 'new', ?int $pagin = 8): LengthAwarePaginator
     {
         if ($hash == 'most_liked') {
-            return Recipe::withCount('likes')->orderBy('likes_count', 'desc')->done(1)->paginate($pagin);
+            return Recipe::withCount('likes')
+                ->orderBy('likes_count', 'desc')
+                ->done(1)
+                ->paginate($pagin);
         }
 
         if ($hash == 'simple') {

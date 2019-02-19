@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     public function showListOfCategories(): void
     {
         $categories = cache()->rememberForever('categories', function () {
-            return CategoryRepo::getAllInArray();
+            return (new CategoryRepo)->getAllInArray();
         });
 
         view()->share('categories', array_map(function ($category) {

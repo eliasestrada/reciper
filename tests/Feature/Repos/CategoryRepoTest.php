@@ -17,7 +17,7 @@ class CategoryRepoTest extends TestCase
      */
     public function get_method_returns_collection(): void
     {
-        $this->assertTrue(is_array(CategoryRepo::getAllInArray()));
+        $this->assertTrue(is_array((new CategoryRepo)->getAllInArray()));
     }
 
     /**
@@ -26,6 +26,6 @@ class CategoryRepoTest extends TestCase
      */
     public function get_method_returns_all_categories_from_db(): void
     {
-        $this->assertCount(Category::count(), CategoryRepo::getAllInArray());
+        $this->assertCount(Category::count(), (new CategoryRepo)->getAllInArray());
     }
 }

@@ -18,7 +18,7 @@ class HelpCategoryRepoTest extends TestCase
     public function getCache_method_returns_all_help_category_records_from_db(): void
     {
         create(HelpCategory::class);
-        $result = HelpCategoryRepo::getCache();
+        $result = (new HelpCategoryRepo)->getCache();
 
         $this->assertTrue(is_array($result));
         $this->assertArrayHasKey('id', $result[0]);

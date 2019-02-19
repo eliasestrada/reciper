@@ -9,7 +9,7 @@ class HelpCategoryRepo
     /**
      * @return array
      */
-    public static function getCache(): array
+    public function getCache(): array
     {
         try {
             return cache()->remember('help_categories', 10, function () {

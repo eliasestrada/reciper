@@ -12,7 +12,7 @@ class CategoryRepo
      *
      * @return array
      */
-    public static function getAllInArray(): array
+    public function getAllInArray(): array
     {
         try {
             return Category::get()->toArray();
