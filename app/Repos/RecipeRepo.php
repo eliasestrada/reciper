@@ -77,4 +77,20 @@ class RecipeRepo
             return null;
         }
     }
+
+    /**
+     * @return mixed
+     */
+    public function paginateByLikes()
+    {
+        try {
+            return Recipe::withCount('likes')
+                ->orderBy('likes_count', 'desc')
+                ->done(1)
+                ->paginate(8);
+        } catch (QueryException $e) {
+            no_connection_rror($e, __CLASS__);
+            return collect();
+        }
+    }
 }

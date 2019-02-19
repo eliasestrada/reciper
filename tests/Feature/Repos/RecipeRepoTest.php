@@ -47,6 +47,16 @@ class RecipeRepoTest extends TestCase
      * @author Cho
      * @test
      */
+    public function method_paginateByLikes_returns_pagination(): void
+    {
+        $result = $this->repo->paginateByLikes();
+        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
     public function method_paginateMyApproves_returns_pagination(): void
     {
         $result = $this->repo->paginateMyApproves(create_user('admin')->id);
@@ -120,5 +130,14 @@ class RecipeRepoTest extends TestCase
         ]);
 
         $this->assertEquals($recipe->id, $this->repo->getIdOfTheRecipeThatUserIsChecking($user->id));
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_paginateUnapprovedWaiting_returns_aditional_likes_count_column(): void
+    {
+        $this->assertNotNull($this->repo->paginateByLikes()->first()->likes_count);
     }
 }
