@@ -16,7 +16,7 @@ class MealRepo
         try {
             return Meal::get();
         } catch (QueryException $e) {
-            no_connection_rror($e, __CLASS__);
+            no_connection_error($e, __CLASS__);
             return collect();
         }
     }
