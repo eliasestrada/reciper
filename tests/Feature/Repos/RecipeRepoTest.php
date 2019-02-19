@@ -110,4 +110,20 @@ class RecipeRepoTest extends TestCase
         $result = $this->repo->paginateAllSimple();
         $this->assertNull($result->where('id', $not_simple_recipe->id)->first());
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_paginateWithMealTime_returns_recipes_with_given_meal_time(): void
+    {
+        $not_simple_recipe = create(Recipe::class, ['simple' => 0]);
+        $meal = ['breakfast', 'lunch', 'dinner'];
+
+        for ($i = 0; $i < 3; $i++) {
+            $recipe = create(Recipe::class, ['meal_id' => $i + 1]);
+            $result = $this->repo->paginateWithMealTime($meal[$i]);
+            $this->assertNotNull($result->where('id', $recipe->id)->first());
+        }
+    }
 }

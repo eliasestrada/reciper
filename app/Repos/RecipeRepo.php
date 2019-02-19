@@ -21,7 +21,7 @@ class RecipeRepo
                 ->paginate(30)
                 ->onEachSide(1);
         } catch (QueryException $e) {
-            no_connection_rror($e, __CLASS__);
+            no_connection_error($e, __CLASS__);
             return collect();
         }
     }
@@ -39,7 +39,7 @@ class RecipeRepo
                 ->paginate(30)
                 ->onEachSide(1);
         } catch (QueryException $e) {
-            no_connection_rror($e, __CLASS__);
+            no_connection_error($e, __CLASS__);
             return collect();
         }
     }
@@ -57,7 +57,7 @@ class RecipeRepo
                 ->paginate(30)
                 ->onEachSide(1);
         } catch (QueryException $e) {
-            no_connection_rror($e, __CLASS__);
+            no_connection_error($e, __CLASS__);
             return collect();
         }
     }
@@ -74,7 +74,7 @@ class RecipeRepo
                 ->ready(1)
                 ->value('id');
         } catch (QueryException $e) {
-            no_connection_rror($e, __CLASS__);
+            no_connection_error($e, __CLASS__);
             return null;
         }
     }
@@ -91,7 +91,7 @@ class RecipeRepo
                 ->done(1)
                 ->paginate($pagin);
         } catch (QueryException $e) {
-            no_connection_rror($e, __CLASS__);
+            no_connection_error($e, __CLASS__);
             return null;
         }
     }
@@ -105,7 +105,28 @@ class RecipeRepo
         try {
             return Recipe::whereSimple(1)->done(1)->paginate($pagin);
         } catch (QueryException $e) {
-            no_connection_rror($e, __CLASS__);
+            no_connection_error($e, __CLASS__);
+            return null;
+        }
+    }
+    /**
+     * Searching for recipes with specific meal time
+     *
+     * @param string $meal Meal time
+     * @param int|null $pagin Pagination value
+     * @return \Illuminate\Pagination\LengthAwarePaginator|null
+     */
+    public function paginateWithMealTime(string $meal, ?int $pagin = 8): ?LengthAwarePaginator
+    {
+        try {
+            return Recipe::with('meal')
+                ->whereHas('meal', function ($query) use ($meal, $pagin) {
+                    $query->whereNameEn($meal);
+                })
+                ->done(1)
+                ->paginate($pagin);
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
             return null;
         }
     }
