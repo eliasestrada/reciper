@@ -18,7 +18,7 @@ class HelpRepoTest extends TestCase
     public function getCache_method_returns_all_help_records_from_db(): void
     {
         create(Help::class);
-        $result = HelpRepo::getCache();
+        $result = (new HelpRepo)->getCache();
 
         $this->assertTrue(is_array($result));
         $this->assertArrayHasKey('id', $result[0]);

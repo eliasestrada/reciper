@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Help;
 use App\Repos\HelpCategoryRepo;
+use App\Repos\HelpRepo;
 use Illuminate\View\View;
 
 class HelpController extends Controller
@@ -11,10 +12,10 @@ class HelpController extends Controller
     /**
      * @return \Illuminate\Http\View
      */
-    public function index(HelpCategoryRepo $help_category_repo): View
+    public function index(HelpRepo $help_repo, HelpCategoryRepo $help_category_repo): View
     {
         return view('help.index', [
-            'help_list' => $help_category_repo->getCache(),
+            'help_list' => $help_repo->getCache(),
             'help_categories' => $help_category_repo->getCache(),
         ]);
     }
@@ -25,11 +26,11 @@ class HelpController extends Controller
      * @param \App\Models\Help $help
      * @return \Illuminate\View\View
      */
-    public function show(Help $help, HelpCategoryRepo $help_category_repo): View
+    public function show(Help $help, HelpRepo $help_repo, HelpCategoryRepo $help_category_repo): View
     {
         return view('help.show', [
             'help' => $help,
-            'help_list' => $help_category_repo->getCache(),
+            'help_list' => $help_repo->getCache(),
             'help_categories' => $help_category_repo->getCache(),
         ]);
     }
