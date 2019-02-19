@@ -39,9 +39,9 @@ class RecipeController extends Controller
     /**
      * @param string|null $hash Url hash
      * @param int $pagin Pagination value
-     * @return \Illuminate\Pagination\LenghtAwarePaginator
+     * @return \Illuminate\Pagination\LenghtAwarePaginator|null
      */
-    public function makeQueryWithCriteria(?string $hash, int $pagin): LengthAwarePaginator
+    public function makeQueryWithCriteria(?string $hash, int $pagin): ?LengthAwarePaginator
     {
         switch ($hash ?? 'new') {
             case 'most_liked':
@@ -55,10 +55,7 @@ class RecipeController extends Controller
             case 'breakfast':
             case 'lunch':
             case 'dinner':
-                // Searching for recipes with meal time
-                return Recipe::with('meal')->whereHas('meal', function ($query) use ($hash) {
-                    $query->whereNameEn($hash);
-                })->done(1)->paginate($pagin);
+                return $this->recipe_repo->paginateWithMealTime($hash, $pagin);
                 break;
 
             case 'my_views':
