@@ -80,15 +80,16 @@ class RecipeRepo
     }
 
     /**
+     * @param int|null $pagin Pagination value
      * @return \Illuminate\Pagination\LengthAwarePaginator|null
      */
-    public function paginateByLikes(): ?LengthAwarePaginator
+    public function paginateByLikes(?int $pagin = 8): ?LengthAwarePaginator
     {
         try {
             return Recipe::withCount('likes')
                 ->orderBy('likes_count', 'desc')
                 ->done(1)
-                ->paginate(8);
+                ->paginate($pagin);
         } catch (QueryException $e) {
             no_connection_rror($e, __CLASS__);
             return null;
@@ -96,12 +97,13 @@ class RecipeRepo
     }
 
     /**
+     * @param int|null $pagin Pagination value
      * @return \Illuminate\Pagination\LengthAwarePaginator|null
      */
-    public function paginateAllSimple(): ?LengthAwarePaginator
+    public function paginateAllSimple(?int $pagin = 8): ?LengthAwarePaginator
     {
         try {
-            return Recipe::whereSimple(1)->done(1)->paginate(8);
+            return Recipe::whereSimple(1)->done(1)->paginate($pagin);
         } catch (QueryException $e) {
             no_connection_rror($e, __CLASS__);
             return null;

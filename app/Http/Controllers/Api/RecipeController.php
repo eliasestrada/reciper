@@ -29,26 +29,27 @@ class RecipeController extends Controller
 
     /**
      * @param null|string $hash
-     * @return null|object
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection|null
      */
-    public function index(?string $hash = null): ?object
+    public function index(?string $hash = null)
     {
-        return RecipesResource::collection($this->makeQueryWithCriteria($hash));
+        return RecipesResource::collection($this->makeQueryWithCriteria($hash, 8));
     }
 
     /**
-     * @param string|null $hash
+     * @param string|null $hash Url hash
+     * @param int $pagin Pagination value
      * @return \Illuminate\Pagination\LenghtAwarePaginator
      */
-    public function makeQueryWithCriteria(?string $hash): LengthAwarePaginator
+    public function makeQueryWithCriteria(?string $hash, int $pagin): LengthAwarePaginator
     {
         switch ($hash ?? 'new') {
             case 'most_liked':
-                return $this->recipe_repo->paginateByLikes();
+                return $this->recipe_repo->paginateByLikes($pagin);
                 break;
 
             case 'simple':
-                return $this->recipe_repo->paginateAllSimple();
+                return $this->recipe_repo->paginateAllSimple($pagin);
                 break;
 
             case 'breakfast':
@@ -57,7 +58,7 @@ class RecipeController extends Controller
                 // Searching for recipes with meal time
                 return Recipe::with('meal')->whereHas('meal', function ($query) use ($hash) {
                     $query->whereNameEn($hash);
-                })->done(1)->paginate(8);
+                })->done(1)->paginate($pagin);
                 break;
 
             case 'my_views':
@@ -65,7 +66,7 @@ class RecipeController extends Controller
                     ->where('views.visitor_id', Visitor::whereIp(request()->ip())->value('id'))
                     ->orderBy('views.id', 'desc')
                     ->done(1)
-                    ->paginate(8);
+                    ->paginate($pagin);
 
                 $result->map(function ($r) {
                     $r->id = $r->recipe_id;
@@ -78,11 +79,11 @@ class RecipeController extends Controller
                 // Searching for recipes with category
                 return Recipe::whereHas('categories', function ($query) use ($hash) {
                     $query->whereId(str_replace('category=', '', $hash));
-                })->done(1)->paginate(8);
+                })->done(1)->paginate($pagin);
                 break;
 
             case 'new':
-                return Recipe::latest()->done(1)->paginate(8);
+                return Recipe::latest()->done(1)->paginate($pagin);
         }
     }
 }
