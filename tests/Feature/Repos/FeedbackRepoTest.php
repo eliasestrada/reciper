@@ -7,7 +7,6 @@ use App\Models\Recipe;
 use App\Models\Visitor;
 use App\Repos\FeedbackRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Tests\TestCase;
 
 class FeedbackRepoTest extends TestCase
@@ -63,16 +62,6 @@ class FeedbackRepoTest extends TestCase
     {
         $visitor_id = create(Visitor::class)->id;
         $this->assertFalse(FeedbackRepo::alreadyContactedToday($visitor_id));
-    }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function method_paginateWithLanguage_returns_pagination(): void
-    {
-        $result = FeedbackRepo::paginateWithLanguage('ru');
-        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
     }
 
     /**

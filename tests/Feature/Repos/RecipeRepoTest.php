@@ -5,7 +5,6 @@ namespace Tests\Feature\Repos;
 use App\Models\Recipe;
 use App\Repos\RecipeRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Tests\TestCase;
 
 class RecipeRepoTest extends TestCase
@@ -21,46 +20,6 @@ class RecipeRepoTest extends TestCase
     {
         parent::setUp();
         $this->repo = new RecipeRepo;
-    }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function method_paginateUnapprovedWaiting_returns_pagination(): void
-    {
-        $result = $this->repo->paginateUnapprovedWaiting();
-        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
-    }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function method_paginateUnapprovedChecking_returns_pagination(): void
-    {
-        $result = $this->repo->paginateUnapprovedChecking();
-        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
-    }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function method_paginateByLikes_returns_pagination(): void
-    {
-        $result = $this->repo->paginateByLikes();
-        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
-    }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function method_paginateMyApproves_returns_pagination(): void
-    {
-        $result = $this->repo->paginateMyApproves(create_user('admin')->id);
-        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
     }
 
     /**
