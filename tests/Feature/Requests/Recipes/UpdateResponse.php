@@ -28,16 +28,17 @@ class UpdateResponse implements Responsable
      */
     public function toResponse($request): RedirectResponse
     {
-        if (!user()->hasRecipe($this->recipe->id)) {
-            return back()->withError(trans('recipes.cant_draft'));
-        }
+        switch (true) {
+            case !user()->hasRecipe($this->recipe->id):
+                return back()->withError(trans('recipes.cant_draft'));
+                break;
 
-        if ($this->recipe->isReady()) {
-            return $this->moveToDraftsAndRedirectWithSuccess();
-        }
+            case $this->recipe->isReady():
+                return $this->moveToDraftsAndRedirectWithSuccess();
+                break;
 
-        if ($this->checkForScriptTags($request)) {
-            return back()->withError(trans('notifications.cant_use_script_tags'));
+            case $this->checkForScriptTags($request):
+                return back()->withError(trans('notifications.cant_use_script_tags'));
         }
 
         if ($request->file('image')) {
@@ -47,20 +48,23 @@ class UpdateResponse implements Responsable
         $filename = $this->saveImageIfExist($request->file('image'), $this->recipe->slug);
         $this->updateRecipe($request, $filename, $this->recipe);
 
-        if ($this->recipe->isReady() && user()->hasRole('admin')) {
-            return $this->fireEventAndRedirectWithSuccess();
-        }
+        switch (true) {
+            case $this->recipe->isReady() && user()->hasRole('admin'):
+                return $this->fireEventAndRedirectWithSuccess();
+                break;
 
-        if ($this->recipe->isReady()) {
-            return $this->clearCacheAndRedirectWithSuccess();
-        }
+            case $this->recipe->isReady():
+                return $this->clearCacheAndRedirectWithSuccess();
+                break;
 
-        if (request()->has('view')) {
-            return redirect("/recipes/{$this->recipe->slug}");
-        }
+            case request()->has('view'):
+                return redirect("/recipes/{$this->recipe->slug}");
+                break;
 
-        return redirect("/recipes/{$this->recipe->slug}/edit")
-            ->withSuccess(trans('recipes.saved'));
+            default:
+                return redirect("/recipes/{$this->recipe->slug}/edit")
+                    ->withSuccess(trans('recipes.saved'));
+        }
     }
 
     /**
