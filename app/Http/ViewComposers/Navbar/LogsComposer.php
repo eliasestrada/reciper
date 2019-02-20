@@ -3,6 +3,7 @@
 namespace App\Http\ViewComposers\Navbar;
 
 use Illuminate\View\View;
+use File;
 
 class LogsComposer
 {
@@ -14,7 +15,7 @@ class LogsComposer
     public function compose(View $view): void
     {
         if (user() && user()->hasRole('master')) {
-            $view->with('logs_notif', count(\File::files(storage_path('logs'))) > 0 ? true : false);
+            $view->with('logs_notif', count(File::files(storage_path('logs'))) > 0 ? true : false);
         } else {
             $view->with('logs_notif', false);
         }

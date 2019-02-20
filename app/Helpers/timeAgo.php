@@ -24,7 +24,8 @@ function time_ago($date, $param = null)
     $phrase = [$seconds, $minutes, $hours, $days, $weeks, $months, $years, $decades];
     $length = [1, 60, 3600, 86400, 604800, 2630880, 31570560, 315705600];
 
-    for ($i = sizeof($length) - 1; ($i >= 0) && (($no = $diff / $length[$i]) <= 1); $i--);
+    for ($i = count($length) - 1; ($i >= 0) && (($no = $diff / $length[$i]) <= 1); $i--);
+
     if ($i < 0) {
         $i = 0;
     }
@@ -55,8 +56,6 @@ function getPhrase($number, $titles)
     $cases = [2, 0, 1, 1, 1, 2];
 
     return $titles[
-        ($number % 100 > 4 && $number % 100 < 20)
-        ? 2
-        : $cases[min($number % 10, 5)]
+        ($number % 100 > 4 && $number % 100 < 20) ? 2 : $cases[min($number % 10, 5)]
     ];
 }

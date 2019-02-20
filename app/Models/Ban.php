@@ -46,7 +46,7 @@ class Ban extends Model
     public static function put(int $user_id, int $days, string $message, bool $create = true)
     {
         return $create
-        ? self::create(compact('user_id', 'days', 'message'))
-        : self::make(compact('user_id', 'days', 'message'));
+            ? self::create(compact('user_id', 'days', 'message'))
+            : self::make(compact('user_id', 'days', 'message'));
     }
 }

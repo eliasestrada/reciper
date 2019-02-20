@@ -66,8 +66,8 @@ class UpdateResponse implements Responsable
     protected function response($request)
     {
         return $request->has('view')
-        ? $this->showPreview()
-        : $this->showEditPage($request);
+            ? $this->showPreview()
+            : $this->showEditPage($request);
     }
 
     /**
@@ -88,7 +88,7 @@ class UpdateResponse implements Responsable
     protected function showEditPage($request): RedirectResponse
     {
         return $request->ready == 0
-        ? back()->withSuccess(trans('documents.saved'))
-        : back()->withSuccess(trans('documents.published'));
+            ? back()->withSuccess(trans('documents.saved'))
+            : back()->withSuccess(trans('documents.published'));
     }
 }

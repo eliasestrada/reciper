@@ -49,7 +49,9 @@
 
                         @if (!empty(user()->email))
                             <span class="helper-text {{ user()->verified() ? 'green' : 'red' }}-text">
-                                {!! user()->verified() ? trans('settings.verified') : trans('settings.not_verified') !!}
+                                {!! user()->verified()
+                                    ? trans('settings.verified')
+                                    : trans('settings.not_verified') !!}
                             </span>
                         @endif
                     </div>
