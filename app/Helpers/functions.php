@@ -25,7 +25,7 @@ function getCookie($name)
  * @param string $str
  * @return array
  */
-function to_array_of_list_items(?string $str): array
+function to_array_of_list_items(? string $str): array
 {
     $string_with_no_tags = strip_tags($str, '<li>');
 
@@ -54,7 +54,7 @@ function user()
  * @param bool $before
  * @return string
  */
-function _(?string $str = null, bool $before = false): string
+function _(? string $str = null, bool $before = false): string
 {
     $lang = app()->getLocale();
     if ($str) {
@@ -64,11 +64,11 @@ function _(?string $str = null, bool $before = false): string
 }
 
 /**
- * @param integer $num1
- * @param integer $num2
+ * @param int $num1
+ * @param int $num2
  * @return string
  */
-function set_as_selected_if_equal($num1, $num2): string
+function set_as_selected_if_equal(int $num1, int $num2): string
 {
     return $num1 === $num2 ? 'selected' : '';
 }
@@ -114,7 +114,10 @@ function script_timestamp(string $path): string
 function active_if_route_is(array $routes): string
 {
     foreach ($routes as $route) {
-        if (request()->is(($route[0] == '/' && strlen($route) != 1) ? substr($route, 1) : $route)) {
+        $route_starts_with_slash = $route[0] == '/' && strlen($route) != 1;
+        $given_request = $route_starts_with_slash ? substr($route, 1) : $route;
+
+        if (request()->is($given_request)) {
             return 'active';
         }
     }
@@ -146,7 +149,7 @@ function readable_number($number)
             $new_number = number_format($number / 1000000);
             $suffix = trans('users.million');
             break;
-        
+
         case $number < 900000000000: // 0.9b-850b
             $new_number = number_format($number / 1000000000);
             $suffix = trans('users.billion');
@@ -193,7 +196,7 @@ function get_online_icon(string $value): string
  * @param bool|null $show_data
  * @return void
  */
-function dump_sql(?bool $show_data = false): void
+function dump_sql(? bool $show_data = false): void
 {
     \DB::listen(function ($query) use ($show_data) {
         dump($query->sql);
@@ -223,7 +226,7 @@ function visitor_id()
  * @param string $color
  * @return string
  */
-function tip(?string $header = null, string $message, string $color = 'green-text'): string
+function tip(? string $header = null, string $message, string $color = 'green-text'): string
 {
     $header = $header ? "<b>{$header}:</b> " : '';
     return '<br><br><span class="' . $color . '">' . $header . $message . '<span>';
