@@ -44,7 +44,7 @@
                     <select name="category" id="category">
                         @foreach ($categories as $cat)
                             <option value="{{ $cat['id'] }}"
-                                {{ set_as_selected_if_equal($cat['id'], $help->category->id ?? '') }}
+                                {{ set_as_selected_if_equal($cat['id'], $help->category->id ?? null) }}
                             >
                                 {{ $cat[_('title')] }}
                             </option>

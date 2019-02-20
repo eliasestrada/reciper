@@ -18,7 +18,7 @@ class AddExpForRecipe
     {
         if (!$event->recipe->isPublished()) {
             $xp = new Xp(User::find($event->recipe->user_id));
-            $result = $xp->add(config('custom.xp_for_approve'));
+            $xp->add(config('custom.xp_for_approve'));
         }
     }
 }

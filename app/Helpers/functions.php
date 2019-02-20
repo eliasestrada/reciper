@@ -64,11 +64,11 @@ function _(? string $str = null, bool $before = false): string
 }
 
 /**
- * @param int $num1
- * @param int $num2
+ * @param int|null $num1
+ * @param int|null $num2
  * @return string
  */
-function set_as_selected_if_equal(int $num1, int $num2): string
+function set_as_selected_if_equal(?int $num1, ?int $num2): string
 {
     return $num1 === $num2 ? 'selected' : '';
 }

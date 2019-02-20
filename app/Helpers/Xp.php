@@ -47,7 +47,7 @@ class Xp
 
         return $current_xp <= ($max_possible_level - $xp_to_add)
             ? $this->user->increment('xp', $xp_to_add)
-            : $this->increment('xp', $max_possible_level - $current_xp);
+            : $this->user->increment('xp', $max_possible_level - $current_xp);
     }
 
     /**
@@ -98,9 +98,9 @@ class Xp
      * User cannot have more than $max_points xp points
      * for one day
      *
-     * @return bool
+     * @return int
      */
-    public function addForStreakDays(): bool
+    public function addForStreakDays(): int
     {
         $max_points = 30.0;
 
