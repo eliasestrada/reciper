@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Helpers;
-
-use App\Models\User;
+namespace App\Models;
 
 class Xp
 {
@@ -28,10 +26,10 @@ class Xp
     ];
 
     /**
-     * @param \App\Models\User $user
+     * @param \App\Models\User|Auth $user
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct($user)
     {
         $this->user = $user;
     }

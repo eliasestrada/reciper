@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\RecipeGotApproved;
-use App\Helpers\Xp;
+use App\Models\Xp;
 use App\Models\User;
 
 class AddExpForRecipe

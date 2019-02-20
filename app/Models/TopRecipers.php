@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Models;
 
 use DB;
 
@@ -8,6 +8,7 @@ class TopRecipers
 {
     /**
      * Adds username to top_recipers table
+     * 
      * @param array $usernames
      * @return bool
      */

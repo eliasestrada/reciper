@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Helpers\TopRecipers;
+use App\Models\TopRecipers;
 use App\Models\Like;
 use App\Models\User;
 use Carbon\Carbon;

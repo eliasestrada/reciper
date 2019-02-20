@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Helpers;
 
-use App\Helpers\Xp;
+use App\Models\Xp;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;

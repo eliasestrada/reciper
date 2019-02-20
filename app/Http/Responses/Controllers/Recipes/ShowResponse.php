@@ -2,8 +2,8 @@
 
 namespace App\Http\Responses\Controllers\Recipes;
 
-use App\Helpers\Popularity;
-use App\Helpers\Xp;
+use App\Models\Popularity;
+use App\Models\Xp;
 use App\Models\Recipe;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Database\QueryException;

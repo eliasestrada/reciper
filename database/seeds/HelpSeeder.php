@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\Xp;
+use App\Models\Xp;
 use App\Models\Help;
 use App\Models\User;
 use Illuminate\Database\Seeder;

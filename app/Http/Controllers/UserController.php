@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Xp;
+use App\Models\Xp;
 use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;

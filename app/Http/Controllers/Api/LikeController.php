@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Popularity;
+use App\Models\Popularity;
 use App\Http\Controllers\Controller;
 use App\Models\Recipe;
 use Illuminate\Http\Response;

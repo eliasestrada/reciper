@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Helpers;
-
-use App\Models\User;
+namespace App\Models;
 
 class Popularity
 {
@@ -25,5 +23,4 @@ class Popularity
     {
         User::whereId($user_id)->decrement('popularity', $points);
     }
-
 }

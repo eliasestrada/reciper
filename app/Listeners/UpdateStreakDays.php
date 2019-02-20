@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\UserIsOnline;
-use App\Helpers\Xp;
+use App\Models\Xp;
 use Cookie;
 
 class UpdateStreakDays
