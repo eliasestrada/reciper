@@ -240,7 +240,9 @@ function tip(? string $header = null, string $message, string $color = 'green-te
  */
 function help_link(string $title, $link): string
 {
-    return '<a href="' . url(is_int($link) ? '/help/' . $link : $link) . '" class="red-text text-hover">' . $title . ' <i class="fas fa-external-link-square-alt" style="font-size:10px;transform:translateY(-4.5px)"></i></a>';
+    $url = url(is_int($link) ? '/help/' . $link : $link);
+
+    return "<a href='{$url}' class='red-text text-hover'>{$title} <i class='fas fa-external-link-square-alt' style='font-size:10px;transform:translateY(-4.5px)'></i></a>";
 }
 
 /**
