@@ -28,8 +28,6 @@ services:
       - ./:/var/www
       - ./docker/php/php-fpm.conf:/etc/php-fpm.d/php-fpm.conf
       - ./docker/php/logs:/var/log/php
-    depends_on: 
-      - reciper_db
 
   reciper_db:
     image: mysql:8.0
