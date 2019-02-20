@@ -176,7 +176,7 @@ class UserXpTest extends TestCase
      * @author Cho
      * @test
      */
-    public function add_xp_for_days_in_a_row(): void
+    public function add_1_xp_for_1_day_in_a_row(): void
     {
         $user = create_user('', [
             'streak_check' => now()->subDay(),

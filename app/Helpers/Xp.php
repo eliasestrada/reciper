@@ -84,18 +84,22 @@ class Xp
     }
 
     /**
-     * "30" is the value of how many days xp points
+     * $max_points is the value of how many days xp points
      * for steak days will grow. After that value xp will be consist
-     * and equal to this "30"
+     * and equal to this $max_points
      *
-     * User cannot have more than "30" xp points
+     * User cannot have more than $max_points xp points
      * for one day
      *
      * @return bool
      */
     public function addForStreakDays(): bool
     {
-        return $this->add($this->user->streak_days <= 30 ? $this->user->streak_days : 30);
+        $max_points = 30.0;
+
+        return $this->user->streak_days <= $max_points
+            ? $this->add($this->user->streak_days)
+            : $this->add($max_points);
     }
 
     /**
