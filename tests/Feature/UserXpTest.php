@@ -2,8 +2,10 @@
 
 namespace Tests\Feature;
 
+use App\Events\RecipeGotApproved;
 use App\Models\Recipe;
 use App\Models\User;
+use Event;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -34,7 +36,7 @@ class UserXpTest extends TestCase
         $user = create_user('', ['xp' => 0]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, _('published') => 0]);
 
-        event(new \App\Events\RecipeGotApproved($recipe));
+        event(new RecipeGotApproved($recipe));
         $this->assertEquals($this->xp_for_approve, User::whereId($user->id)->value('xp'));
     }
 
@@ -47,7 +49,7 @@ class UserXpTest extends TestCase
         $user = create_user('', ['xp' => 0]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, _('published') => 1]);
 
-        event(new \App\Events\RecipeGotApproved($recipe));
+        event(new RecipeGotApproved($recipe));
         $this->assertEquals(0, User::whereId($user->id)->value('xp'));
     }
 
@@ -60,7 +62,7 @@ class UserXpTest extends TestCase
         $user = create_user('', ['xp' => $this->max_xp]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, _('published') => 0]);
 
-        event(new \App\Events\RecipeGotApproved($recipe));
+        event(new RecipeGotApproved($recipe));
         $this->assertEquals($this->max_xp, User::whereId($user->id)->value('xp'), 'Max xp doesnt equal user\'s xp');
     }
 
@@ -73,7 +75,7 @@ class UserXpTest extends TestCase
         $user = create_user('', ['xp' => $this->max_xp - $this->xp_for_approve]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, _('published') => 0]);
 
-        event(new \App\Events\RecipeGotApproved($recipe));
+        event(new RecipeGotApproved($recipe));
         $this->assertEquals($this->max_xp, User::whereId($user->id)->value('xp'), 'Max xp doesnt equal user\'s xp');
     }
 
