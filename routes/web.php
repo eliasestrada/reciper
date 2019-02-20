@@ -7,11 +7,11 @@ Auth::routes();
 // Web APIs
 Route::namespace ('WebApi')->group(function () {
     Route::get('popularity-chart', 'StatisticController@popularityChart');
-    Route::get('favs/{category?}', 'FavController@index');
     Route::post('favs/{recipe}', 'FavController@store');
     Route::post('likes/{recipe}', 'LikeController@store');
 });
 
+Route::get('favs/{category?}', 'FavController@index');
 Route::get('statistics', 'StatisticController@index');
 
 Route::prefix('users')->group(function () {
