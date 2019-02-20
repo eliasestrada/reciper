@@ -170,7 +170,7 @@ class User extends Authenticatable
      */
     public function getName(): string
     {
-        return is_null($this->name) || $this->name == '' ? $this->username : $this->name;
+        return $this->{!$this->name || $this->name == '' ? 'username' : 'name'};
     }
 
     /**
