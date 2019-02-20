@@ -20,7 +20,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         \App\Events\UserIsOnline::class => [
             \App\Listeners\UpdateUpdatedAtColumn::class,
-            \App\Listeners\UpdateStrikeDays::class,
+            \App\Listeners\UpdateStreakDays::class,
         ],
     ];
 }

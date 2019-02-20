@@ -6,10 +6,10 @@ use App\Events\UserIsOnline;
 use App\Helpers\Xp;
 use Cookie;
 
-class UpdateStrikeDays
+class UpdateStreakDays
 {
     /**
-     * @param  UserIsOnline  $event
+     * @param \App\Events\UserIsOnline $event
      * @return void
      */
     public function handle(UserIsOnline $event)
