@@ -29,18 +29,17 @@ class Xp
     }
 
     /**
-     * @param int $user_id
      * @param float $points
      */
-    public static function add(float $xp_to_add, int $user_id)
+    public function add(float $xp_to_add)
     {
-        $current_xp = User::whereId($user_id)->value('xp');
+        $current_xp = $this->user->xp;
         $max_possible_level = config('custom.max_xp');
 
         if ($current_xp <= ($max_possible_level - $xp_to_add)) {
-            return User::whereId($user_id)->increment('xp', $xp_to_add);
+            return $this->user->increment('xp', $xp_to_add);
         } else {
-            return User::whereId($user_id)->increment('xp', $max_possible_level - $current_xp);
+            return $this->increment('xp', $max_possible_level - $current_xp);
         }
     }
 
@@ -85,17 +84,18 @@ class Xp
     }
 
     /**
-     * @param User $user
+     * "30" is the value of how many days xp points
+     * for steak days will grow. After that value xp will be consist
+     * and equal to this "30"
+     *
+     * User cannot have more than "30" xp points
+     * for one day
+     *
+     * @return bool
      */
-    public static function addForStreakDays(User $user)
+    public function addForStreakDays(): bool
     {
-        $max_chained_days = 30;
-
-        if ($user->streak_days <= $max_chained_days) {
-            return self::add($user->streak_days, $user->id);
-        } else {
-            return self::add($max_chained_days, $user->id);
-        }
+        return $this->add($this->user->streak_days <= 30 ? $this->user->streak_days : 30);
     }
 
     /**
@@ -103,17 +103,21 @@ class Xp
      */
     public function getColor(): string
     {
-        if (in_array($this->getLevel(), range(1, 3))) {
-            return '';
-        }
-        if (in_array($this->getLevel(), range(4, 6))) {
-            return 'gold-color';
-        }
-        if (in_array($this->getLevel(), range(7, 9))) {
-            return 'blue-color';
-        }
-        if ($this->getLevel() == 10) {
-            return 'purple-color';
+        switch (true) {
+            case in_array($this->getLevel(), range(1, 3)):
+                return '';
+                break;
+
+            case in_array($this->getLevel(), range(4, 6)):
+                return 'gold-color';
+                break;
+
+            case in_array($this->getLevel(), range(7, 9)):
+                return 'blue-color';
+                break;
+
+            case $this->getLevel() == 10:
+                return 'purple-color';
         }
     }
 }

@@ -24,7 +24,6 @@ class XpTest extends TestCase
     /**
      * Loop through all levels and assert that user's xp points matches level
      *
-     * @see \App\Helpers\Xp, it takes user and return his current xp
      * @author Cho
      * @test
      */
@@ -106,27 +105,35 @@ class XpTest extends TestCase
     public function add_method_adds_xp_and_returns_true_if_added_successfuly(): void
     {
         $user = create_user('', ['xp' => 0]);
-        $response = Xp::add(32, $user->id);
+        $response = (new Xp($user))->add(32);
         $this->assertTrue((bool) $response);
     }
 
     /**
      * @author Cho
+     * @dataProvider addForStreakDays_method_adds_2_xp_points_for_2_days_in_a_row_provider
      * @test
      */
-    public function addForStreakDays_method_adds_2_xp_points_for_2_days_in_a_row(): void
+    public function addForStreakDays_method_adds_2_xp_points_for_2_days_in_a_row($streak_days): void
     {
-        $expect_xp = 2;
-        $days_in_a_row = 2;
+        $user = create_user('', ['streak_days' => $streak_days, 'xp' => 0]);
+        (new Xp($user))->addForStreakDays();
+        $this->assertEquals($streak_days, $user->xp);
+    }
 
-        $user = create_user('', ['streak_days' => $days_in_a_row, 'xp' => 0]);
-        Xp::addForStreakDays($user);
-
-        $this->assertEquals($expect_xp, User::whereId($user->id)->value('xp'));
+    /**
+     * Data provider for addForStreakDays_method_adds_2_xp_points_for_2_days_in_a_row test
+     *
+     * @return array
+     */
+    public function addForStreakDays_method_adds_2_xp_points_for_2_days_in_a_row_provider(): array
+    {
+        return [[2], [5], [10], [15], [20], [25], [30]];
     }
 
     /**
      * 30 xp is maximum xp user can get
+     *
      * @author Cho
      * @test
      */

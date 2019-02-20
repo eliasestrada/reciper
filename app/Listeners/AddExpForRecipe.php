@@ -4,17 +4,21 @@ namespace App\Listeners;
 
 use App\Events\RecipeGotApproved;
 use App\Helpers\Xp;
+use App\Models\User;
 
 class AddExpForRecipe
 {
     /**
-     * @param  RecipeGotApproved  $event
+     * Add xp point to a user for the recipe
+     *
+     * @param RecipeGotApproved  $event
      * @return void
      */
     public function handle(RecipeGotApproved $event)
     {
         if (!$event->recipe->isPublished()) {
-            Xp::add(config('custom.xp_for_approve'), $event->recipe->user_id);
+            $xp = new Xp(User::find($event->recipe->user_id));
+            $result = $xp->add(config('custom.xp_for_approve'));
         }
     }
 }
