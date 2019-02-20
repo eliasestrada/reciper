@@ -52,26 +52,32 @@ class FunctionsTest extends TestCase
 
     /**
      * @author Cho
+     * @dataProvider readableNumberHelperDataProvider
      * @test
      */
-    public function readable_number_helper_converts_data_correctly(): void
+    public function readable_number_helper_converts_data_correctly($num_before, $num_after, $prefix): void
     {
-        $data = [
-            ['num_before' => 899, 'num_after' => 899, 'prefix' => ''], // 1
-            ['num_before' => 900, 'num_after' => 1, 'prefix' => trans('users.thousand')], // 2
-            ['num_before' => 899499, 'num_after' => 899, 'prefix' => trans('users.thousand')], // 3
-            ['num_before' => 900000, 'num_after' => 1, 'prefix' => trans('users.million')], // 4
-            ['num_before' => 899999999, 'num_after' => 900, 'prefix' => trans('users.million')], // 5
-            ['num_before' => 900000000, 'num_after' => 1, 'prefix' => trans('users.billion')], // 6
-            ['num_before' => 899999999999, 'num_after' => 900, 'prefix' => trans('users.billion')], // 7
-            ['num_before' => 900000000000, 'num_after' => 1, 'prefix' => trans('users.trillion')], // 8
-            ['num_before' => 899999999999999, 'num_after' => 900, 'prefix' => trans('users.trillion')], // 9
-        ];
+        $prefix = $prefix ? trans($prefix) : '';
+        $expect = "{$num_after}<br><small>{$prefix}</small>";
+        $this->assertEquals($expect, readable_number($num_before));
+    }
 
-        foreach ($data as $i => $d) {
-            $expect = $d['num_after'] . '<br><small>' . $d['prefix'] . '</small>';
-            $this->assertEquals($expect, readable_number($d['num_before']), 'array number ' . ($i + 1));
-        }
+    /**
+     * @return array
+     */
+    public function readableNumberHelperDataProvider()
+    {
+        return [
+            [899, 899, ''], // 1
+            [900, 1, 'users.thousand'], // 2
+            [899499, 899, 'users.thousand'], // 3
+            [900000, 1, 'users.million'], // 4
+            [899999999, 900, 'users.million'], // 5
+            [900000000, 1, 'users.billion'], // 6
+            [899999999999, 900, 'users.billion'], // 7
+            [900000000000, 1, 'users.trillion'], // 8
+            [899999999999999, 900, 'users.trillion'], // 9
+        ];
     }
 
     /**

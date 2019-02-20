@@ -131,26 +131,30 @@ function active_if_route_is(array $routes): string
  */
 function readable_number($number)
 {
-    if ($number < 900) {
-        // 0 - 900
-        $new_number = number_format($number);
-        $suffix = '';
-    } else if ($number < 900000) {
-        // 0.9k-850k
-        $new_number = number_format($number / 1000);
-        $suffix = trans('users.thousand');
-    } else if ($number < 900000000) {
-        // 0.9m-850m
-        $new_number = number_format($number / 1000000);
-        $suffix = trans('users.million');
-    } else if ($number < 900000000000) {
-        // 0.9b-850b
-        $new_number = number_format($number / 1000000000);
-        $suffix = trans('users.billion');
-    } else {
-        // 0.9t+
-        $new_number = number_format($number / 1000000000000);
-        $suffix = trans('users.trillion');
+    switch (true) {
+        case $number < 900: // 0 - 900
+            $new_number = number_format($number);
+            $suffix = '';
+            break;
+
+        case $number < 900000: // 0.9k-850k
+            $new_number = number_format($number / 1000);
+            $suffix = trans('users.thousand');
+            break;
+
+        case $number < 900000000: // 0.9m-850m
+            $new_number = number_format($number / 1000000);
+            $suffix = trans('users.million');
+            break;
+        
+        case $number < 900000000000: // 0.9b-850b
+            $new_number = number_format($number / 1000000000);
+            $suffix = trans('users.billion');
+            break;
+
+        default: // 0.9t+
+            $new_number = number_format($number / 1000000000000);
+            $suffix = trans('users.trillion');
     }
 
     // Remove unecessary zeroes after decimal. "1.0" -> "1"; "1.00" -> "1"
