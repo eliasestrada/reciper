@@ -143,7 +143,7 @@ class XpTest extends TestCase
         $days_in_a_row = 31;
 
         $user = create_user('', ['streak_days' => $days_in_a_row, 'xp' => 0]);
-        Xp::addForStreakDays($user);
+        (new Xp($user))->addForStreakDays();
 
         $this->assertEquals($expect_xp, User::whereId($user->id)->value('xp'));
     }
