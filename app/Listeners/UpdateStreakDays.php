@@ -26,7 +26,7 @@ class UpdateStreakDays
                     'streak_check' => now(),
                 ]);
 
-                Xp::addForStreakDays(user());
+                (new Xp(user()))->addForStreakDays();
 
                 session()->flash('success', trans('messages.congrats_streak_days', [
                     'xp' => user()->streak_days,
