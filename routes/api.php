@@ -1,4 +1,4 @@
 <?php
 
-Route::get('recipes/{hash?}', 'Api\RecipeController@index');
-Route::get('recipes-random/{visitor_id}', 'Api\RandomRecipesController@boot');
+Route::get('recipes/{hash?}', 'Resourses\RecipeController@index');
+Route::get('recipes-random/{visitor_id}', 'Resourses\RandomRecipesController@boot');

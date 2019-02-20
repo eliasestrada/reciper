@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // Web APIs
-Route::namespace ('WebApi')->group(function () {
+Route::namespace ('Api')->group(function () {
     Route::get('popularity-chart', 'StatisticController@popularityChart');
     Route::post('favs/{recipe}', 'FavController@store');
     Route::post('likes/{recipe}', 'LikeController@store');

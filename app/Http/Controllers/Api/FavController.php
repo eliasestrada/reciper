@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\WebApi;
+namespace App\Http\Controllers\Api;
 
 use App\Helpers\Popularity;
 use App\Http\Controllers\Controller;
@@ -17,7 +17,6 @@ class FavController extends Controller
     {
         $this->middleware('auth');
     }
-
 
     /**
      * Add recipe to favorites

@@ -24,7 +24,7 @@ class UserPopularityTest extends TestCase
         $authors_recipe = create(Recipe::class, ['user_id' => $author->id]);
         $fav_point = config('custom.popularity_for_favs');
 
-        $this->actingAs($some_user)->post(action('WebApi\FavController@store', [
+        $this->actingAs($some_user)->post(action('Api\FavController@store', [
             'id' => $authors_recipe->id,
         ]));
         $this->assertEquals($fav_point, User::whereId($author->id)->value('popularity'));
@@ -42,7 +42,7 @@ class UserPopularityTest extends TestCase
 
         Fav::create(['user_id' => $some_user->id, 'recipe_id' => $authors_recipe->id]);
 
-        $this->actingAs($some_user)->post(action('WebApi\FavController@store', [
+        $this->actingAs($some_user)->post(action('Api\FavController@store', [
             'id' => $authors_recipe->id,
         ]));
         $this->assertEquals(0, User::whereId($author->id)->value('popularity'));
@@ -59,7 +59,7 @@ class UserPopularityTest extends TestCase
         $authors_recipe = create(Recipe::class, ['user_id' => $author->id]);
         $like_points = config('custom.popularity_for_like');
 
-        $this->actingAs($some_user)->post(action('WebApi\LikeController@store', [
+        $this->actingAs($some_user)->post(action('Api\LikeController@store', [
             'id' => $authors_recipe->id,
         ]));
         $this->assertEquals($like_points, User::whereId($author->id)->value('popularity'));
@@ -77,7 +77,7 @@ class UserPopularityTest extends TestCase
 
         Like::create(['user_id' => $some_user->id, 'recipe_id' => $authors_recipe->id]);
 
-        $this->actingAs($some_user)->post(action('WebApi\LikeController@store', [
+        $this->actingAs($some_user)->post(action('Api\LikeController@store', [
             'id' => $authors_recipe->id,
         ]));
         $this->assertEquals(0, User::whereId($author->id)->value('popularity'));
