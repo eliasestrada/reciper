@@ -37,7 +37,7 @@ class StatisticController extends Controller
      * Function helper that looks for all data for statistics
      *
      * @param string $column
-     * @param \App\Models\User|null $user this param for testing purposes, coz I can just use auth()->user helper
+     * @param \App\Models\User|null
      * @return \Illuminate\Support\Collection
      */
     public function getDataFromUser(string $column, ?User $user = null): Collection
@@ -47,7 +47,7 @@ class StatisticController extends Controller
         }
 
         $rules = $this->makeArrayOfRules();
-        $rules_filled = $this->populateWithSumOfLikes($rules, $column, ($user ? $user : user()));
+        $rules_filled = $this->populateWithSumOfLikes($rules, $column, ($user ?? user()));
 
         return collect($this->convertMonthNumberToName($rules_filled));
     }
