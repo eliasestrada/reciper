@@ -6,7 +6,14 @@ use App\Models\User;
 
 class Xp
 {
+    /**
+     * @var \App\Models\User
+     */
     public $user;
+
+    /**
+     * @var array
+     */
     public $levels = [
         1 => ['min' => 1, 'max' => 39],
         2 => ['min' => 40, 'max' => 79],
@@ -21,7 +28,8 @@ class Xp
     ];
 
     /**
-     * @param User $user
+     * @param \App\Models\User $user
+     * @return void
      */
     public function __construct(User $user)
     {
@@ -30,17 +38,16 @@ class Xp
 
     /**
      * @param float $points
+     * @return int
      */
-    public function add(float $xp_to_add)
+    public function add(float $xp_to_add): int
     {
         $current_xp = $this->user->xp;
         $max_possible_level = config('custom.max_xp');
 
-        if ($current_xp <= ($max_possible_level - $xp_to_add)) {
-            return $this->user->increment('xp', $xp_to_add);
-        } else {
-            return $this->increment('xp', $max_possible_level - $current_xp);
-        }
+        return $current_xp <= ($max_possible_level - $xp_to_add)
+            ? $this->user->increment('xp', $xp_to_add)
+            : $this->increment('xp', $max_possible_level - $current_xp);
     }
 
     /**

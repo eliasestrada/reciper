@@ -105,7 +105,7 @@ class XpTest extends TestCase
     public function add_method_adds_xp_and_returns_true_if_added_successfuly(): void
     {
         $user = create_user('', ['xp' => 0]);
-        $response = (new Xp($user))->add(32);
+        $response = (new Xp($user))->add(32.0);
         $this->assertTrue((bool) $response);
     }
 
