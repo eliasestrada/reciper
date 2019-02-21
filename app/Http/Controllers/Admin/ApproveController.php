@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\DisapproveRequest;
-use App\Http\Responses\Controllers\Admin\Approves\ApproveResponse;
-use App\Http\Responses\Controllers\Admin\Approves\DisapproveResponse;
-use App\Http\Responses\Controllers\Admin\Approves\IndexResponse;
-use App\Http\Responses\Controllers\Admin\Approves\ShowResponse;
-use App\Models\Recipe;
 use Illuminate\Http\Request;
+use App\Models\Recipe;
+use App\Http\Responses\Controllers\Admin\Approves\ShowResponse;
+use App\Http\Responses\Controllers\Admin\Approves\IndexResponse;
+use App\Http\Responses\Controllers\Admin\Approves\DisapproveResponse;
+use App\Http\Responses\Controllers\Admin\Approves\ApproveResponse;
+use App\Http\Requests\DisapproveRequest;
+use App\Http\Controllers\Controller;
 
 class ApproveController extends Controller
 {

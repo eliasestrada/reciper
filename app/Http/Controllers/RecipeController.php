@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Recipes\RecipeStoreRequest;
-use App\Http\Requests\Recipes\RecipeUpdateRequest;
-use App\Http\Responses\Controllers\Recipes\DestroyResponse;
-use App\Http\Responses\Controllers\Recipes\EditResponse;
-use App\Http\Responses\Controllers\Recipes\ShowResponse;
-use App\Http\Responses\Controllers\Recipes\StoreResponse;
-use App\Http\Responses\Controllers\Recipes\UpdateResponse;
-use App\Models\Fav;
-use App\Models\Meal;
-use App\Models\Recipe;
-use App\Models\View;
-use App\Repos\FavRepo;
-use App\Repos\MealRepo;
 use Illuminate\View\View as ViewResponse;
+use App\Repos\MealRepo;
+use App\Repos\FavRepo;
+use App\Models\View;
+use App\Models\Recipe;
+use App\Models\Meal;
+use App\Models\Fav;
+use App\Http\Responses\Controllers\Recipes\UpdateResponse;
+use App\Http\Responses\Controllers\Recipes\StoreResponse;
+use App\Http\Responses\Controllers\Recipes\ShowResponse;
+use App\Http\Responses\Controllers\Recipes\EditResponse;
+use App\Http\Responses\Controllers\Recipes\DestroyResponse;
+use App\Http\Requests\Recipes\RecipeUpdateRequest;
+use App\Http\Requests\Recipes\RecipeStoreRequest;
 
 class RecipeController extends Controller
 {

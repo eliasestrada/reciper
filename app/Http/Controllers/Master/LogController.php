@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Master;
 
-use Arcanedev\LogViewer\Http\Controllers\LogViewerController;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Arcanedev\LogViewer\Http\Controllers\LogViewerController;
 
 class LogController extends LogViewerController
 {

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Resourses;
 
-use App\Http\Controllers\Controller;
-use App\Http\Resources\RecipesRandomResource;
 use App\Models\Recipe;
+use App\Http\Resources\RecipesRandomResource;
+use App\Http\Controllers\Controller;
 
 class RandomRecipesController extends Controller
 {

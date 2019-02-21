@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Invokes;
 
-use App\Http\Controllers\Controller;
 use Cookie;
+use App\Http\Controllers\Controller;
 
 class DarkThemeController extends Controller
 {

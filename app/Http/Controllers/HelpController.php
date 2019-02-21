@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Help;
-use App\Repos\HelpCategoryRepo;
-use App\Repos\HelpRepo;
 use Illuminate\View\View;
+use App\Repos\HelpRepo;
+use App\Repos\HelpCategoryRepo;
+use App\Models\Help;
 
 class HelpController extends Controller
 {

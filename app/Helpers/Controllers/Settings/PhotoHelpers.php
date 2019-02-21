@@ -2,15 +2,15 @@
 
 namespace App\Helpers\Controllers\Settings;
 
-use App\Models\User;
-use File;
-use Illuminate\Http\UploadedFile;
 use Image;
+use Illuminate\Http\UploadedFile;
+use File;
+use App\Models\User;
 
 trait PhotoHelpers
 {
     /**
-     * @param UploadedFile|null $photo
+     * @param \Illuminate\Http\UploadedFile|null $photo
      * @return string|null
      */
     public function savePhotoIfExist(?UploadedFile $photo = null): ?string

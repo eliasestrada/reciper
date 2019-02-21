@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Document;
-use App\Repos\DocumentRepo;
 use Illuminate\View\View;
+use App\Repos\DocumentRepo;
+use App\Models\Document;
 
 class DocumentController extends Controller
 {

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Resourses;
 
-use App\Helpers\Controllers\RecipeHelpers;
-use App\Http\Controllers\Controller;
-use App\Http\Resources\RecipesResource;
-use App\Models\Recipe;
-use App\Models\Visitor;
-use App\Repos\RecipeRepo;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Repos\RecipeRepo;
+use App\Models\Visitor;
+use App\Models\Recipe;
+use App\Http\Resources\RecipesResource;
+use App\Http\Controllers\Controller;
+use App\Helpers\Controllers\RecipeHelpers;
 
 class RecipeController extends Controller
 {

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Recipe;
-use App\Models\User;
 use Illuminate\View\View;
+use App\Models\User;
+use App\Models\Recipe;
 
 class StatisticController extends Controller
 {

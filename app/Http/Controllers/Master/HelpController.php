@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Master;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\HelpRequest;
-use App\Http\Responses\Controllers\Master\Help\DestroyResponse;
-use App\Http\Responses\Controllers\Master\Help\StoreResponse;
-use App\Http\Responses\Controllers\Master\Help\UpdateResponse;
-use App\Models\Help;
-use App\Models\HelpCategory;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Models\HelpCategory;
+use App\Models\Help;
+use App\Http\Responses\Controllers\Master\Help\UpdateResponse;
+use App\Http\Responses\Controllers\Master\Help\StoreResponse;
+use App\Http\Responses\Controllers\Master\Help\DestroyResponse;
+use App\Http\Requests\HelpRequest;
+use App\Http\Controllers\Controller;
 
 class HelpController extends Controller
 {

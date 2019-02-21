@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Responses\Controllers\Api\StatisticsPopularityChartResponse;
-use App\Models\User;
 use Illuminate\Support\Collection;
+use App\Models\User;
+use App\Http\Responses\Controllers\Api\StatisticsPopularityChartResponse;
+use App\Http\Controllers\Controller;
 
 class StatisticController extends Controller
 {

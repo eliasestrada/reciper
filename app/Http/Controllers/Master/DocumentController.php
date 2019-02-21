@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Master;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\DocumentRequest;
-use App\Http\Responses\Controllers\Master\Documents\DestroyResponse;
-use App\Http\Responses\Controllers\Master\Documents\StoreResponse;
-use App\Http\Responses\Controllers\Master\Documents\UpdateResponse;
-use App\Models\Document;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Models\Document;
+use App\Http\Responses\Controllers\Master\Documents\UpdateResponse;
+use App\Http\Responses\Controllers\Master\Documents\StoreResponse;
+use App\Http\Responses\Controllers\Master\Documents\DestroyResponse;
+use App\Http\Requests\DocumentRequest;
+use App\Http\Controllers\Controller;
 
 class DocumentController extends Controller
 {

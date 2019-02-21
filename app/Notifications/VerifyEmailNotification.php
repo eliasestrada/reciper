@@ -2,11 +2,11 @@
 
 namespace App\Notifications;
 
-use App\Models\User;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Bus\Queueable;
+use App\Models\User;
 
 class VerifyEmailNotification extends Notification implements ShouldQueue
 {
@@ -15,7 +15,7 @@ class VerifyEmailNotification extends Notification implements ShouldQueue
     public $user;
 
     /**
-     * @param User $user
+     * @param \Illuminate\Contracts\Auth\Authenticatable|\App\Models\User $user
      */
     public function __construct(User $user)
     {

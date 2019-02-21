@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Settings;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Settings\EmailRequest;
-use App\Http\Requests\Settings\GeneralRequest;
-use App\Http\Requests\Settings\PasswordRequest;
-use App\Models\User;
-use App\Notifications\VerifyEmailNotification;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use App\Notifications\VerifyEmailNotification;
+use App\Models\User;
+use App\Http\Requests\Settings\PasswordRequest;
+use App\Http\Requests\Settings\GeneralRequest;
+use App\Http\Requests\Settings\EmailRequest;
+use App\Http\Controllers\Controller;
 
 class GeneralController extends Controller
 {

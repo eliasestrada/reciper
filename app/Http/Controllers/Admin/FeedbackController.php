@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\FeedbackRequest;
-use App\Http\Responses\Controllers\Admin\Feedback\IndexResponse;
-use App\Http\Responses\Controllers\Admin\Feedback\StoreResponse;
-use App\Models\Feedback;
-use App\Models\User;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use App\Models\User;
+use App\Models\Feedback;
+use App\Http\Responses\Controllers\Admin\Feedback\StoreResponse;
+use App\Http\Responses\Controllers\Admin\Feedback\IndexResponse;
+use App\Http\Requests\FeedbackRequest;
+use App\Http\Controllers\Controller;
 
 class FeedbackController extends Controller
 {

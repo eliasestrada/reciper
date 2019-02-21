@@ -2,13 +2,13 @@
 
 namespace App\Helpers\Controllers;
 
-use App\Jobs\DeleteFileJob;
-use App\Models\User;
-use App\Notifications\ScriptAttackNotification;
-use File;
-use Illuminate\Http\UploadedFile;
-use Image;
 use Predis\Connection\ConnectionException;
+use Image;
+use Illuminate\Http\UploadedFile;
+use File;
+use App\Notifications\ScriptAttackNotification;
+use App\Models\User;
+use App\Jobs\DeleteFileJob;
 
 trait RecipeHelpers
 {
