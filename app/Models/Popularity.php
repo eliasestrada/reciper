@@ -2,25 +2,39 @@
 
 namespace App\Models;
 
+use App\Models\User;
+
 class Popularity
 {
     /**
-     * @param float $points
-     * @param int $user_id
+     * @var \App\Models\User
+     */
+    protected $user;
+
+    /**
+     * @param \App\Models\User $user
      * @return void
      */
-    public static function add(float $points, int $user_id)
+    public function __construct(User $user)
     {
-        User::whereId($user_id)->increment('popularity', $points);
+        $this->user = $user;
     }
 
     /**
      * @param float $points
-     * @param int $user_id
      * @return void
      */
-    public static function remove(float $points, int $user_id)
+    public function add(float $points)
     {
-        User::whereId($user_id)->decrement('popularity', $points);
+        $this->user->increment('popularity', $points);
+    }
+
+    /**
+     * @param float $points
+     * @return void
+     */
+    public function remove(float $points)
+    {
+        $this->user->decrement('popularity', $points);
     }
 }

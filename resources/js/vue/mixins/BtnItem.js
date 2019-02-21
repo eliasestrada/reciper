@@ -17,7 +17,7 @@ export default {
         fetchItems() {
             this.$axios.post(this.url)
                 .then(data => {
-                    if (data.data != 'fail') {
+                    if (data.statusText === 'OK') {
                         this.iconClass = data.data;
                         this.playSoundEffect();
                         data.data == 'active' ? this.amount++ : this.amount--;

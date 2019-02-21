@@ -2,11 +2,12 @@
 
 namespace App\Http\Responses\Controllers\Recipes;
 
-use App\Models\Popularity;
-use App\Models\Xp;
-use App\Models\Recipe;
-use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Database\QueryException;
+use Illuminate\Contracts\Support\Responsable;
+use App\Models\Xp;
+use App\Models\User;
+use App\Models\Recipe;
+use App\Models\Popularity;
 
 class ShowResponse implements Responsable
 {
@@ -60,7 +61,8 @@ class ShowResponse implements Responsable
             try {
                 $this->recipe->views()->create(['visitor_id' => visitor_id()]);
                 if ($this->recipe->user_id) {
-                    Popularity::add(config('custom.popularity_for_view'), $this->recipe->user_id);
+                    $popularity = new Popularity(User::find($this->recipe->user_id));
+                    $popularity->add(config('custom.popularity_for_view'));
                 }
             } catch (QueryException $e) {
                 // do nothing
