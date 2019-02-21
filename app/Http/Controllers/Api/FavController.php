@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\User;
+use App\Models\Recipe;
 use App\Models\Popularity;
 use App\Http\Controllers\Controller;
-use App\Models\Recipe;
-use App\Models\User;
-use Illuminate\Http\Response;
 
 class FavController extends Controller
 {
@@ -19,27 +18,22 @@ class FavController extends Controller
     }
 
     /**
-     * Add recipe to favorites
+     * Add recipe to list of favorite recipes
      *
      * @param \App\Models\Recipe $recipe
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|void
      */
-    public function store(Recipe $recipe): Response
+    public function store(Recipe $recipe)
     {
-        if (!$recipe) {
-            return response('fail', 403);
-        }
+        $popularity = new Popularity(User::find($recipe->user_id));
 
         if (user()->favs()->whereRecipeId($recipe->id)->exists()) {
             user()->favs()->whereRecipeId($recipe->id)->delete();
-            Popularity::remove(config('custom.popularity_for_favs'), $recipe->user_id);
-
-            return response('', 200);
+            $popularity->remove(config('custom.popularity_for_favs'));
+        } else {
+            user()->favs()->create(['recipe_id' => $recipe->id]);
+            $popularity->add(config('custom.popularity_for_favs'));
+            return response('active');
         }
-
-        user()->favs()->create(['recipe_id' => $recipe->id]);
-        Popularity::add(config('custom.popularity_for_favs'), $recipe->user_id);
-
-        return response('active', 200);
     }
 }
