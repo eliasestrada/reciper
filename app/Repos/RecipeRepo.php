@@ -2,9 +2,9 @@
 
 namespace App\Repos;
 
-use App\Models\Recipe;
-use Illuminate\Database\QueryException;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Database\QueryException;
+use App\Models\Recipe;
 
 class RecipeRepo
 {
@@ -118,13 +118,41 @@ class RecipeRepo
      */
     public function paginateWithMealTime(string $meal, ?int $pagin = 8): ?LengthAwarePaginator
     {
+        /** @var \Closure $queryWithMealCallback */
+        $queryWithMealCallback = function ($query) use ($meal, $pagin) {
+            $query->whereNameEn($meal);
+        };
+
         try {
             return Recipe::with('meal')
-                ->whereHas('meal', function ($query) use ($meal, $pagin) {
-                    $query->whereNameEn($meal);
-                })
+                ->whereHas('meal', $queryWithMealCallback)
                 ->done(1)
                 ->paginate($pagin);
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
+            return null;
+        }
+    }
+
+    /**
+     * @param int $visitor_id
+     * @param int|null $pagin Pagination value
+     * @return \Illuminate\Pagination\LengthAwarePaginator|null
+     */
+    public function paginateViewedByVisitor(int $visitor_id, ?int $pagin = 8): ?LengthAwarePaginator
+    {
+        try {
+            $result = Recipe::join('views', 'views.recipe_id', '=', 'recipes.id')
+                ->where('views.visitor_id', $visitor_id)
+                ->orderBy('views.id', 'desc')
+                ->done(1)
+                ->paginate($pagin);
+
+            $result->map(function ($r) {
+                $r->id = $r->recipe_id;
+            });
+
+            return $result;
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
             return null;

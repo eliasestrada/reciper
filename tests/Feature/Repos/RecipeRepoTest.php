@@ -6,6 +6,8 @@ use App\Models\Recipe;
 use App\Repos\RecipeRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use App\Models\Visitor;
+use App\Models\View;
 
 class RecipeRepoTest extends TestCase
 {
@@ -117,7 +119,7 @@ class RecipeRepoTest extends TestCase
      */
     public function method_paginateWithMealTime_returns_recipes_with_given_meal_time(): void
     {
-        $not_simple_recipe = create(Recipe::class, ['simple' => 0]);
+        create(Recipe::class, ['simple' => 0]);
         $meal = ['breakfast', 'lunch', 'dinner'];
 
         for ($i = 0; $i < 3; $i++) {
@@ -125,5 +127,17 @@ class RecipeRepoTest extends TestCase
             $result = $this->repo->paginateWithMealTime($meal[$i]);
             $this->assertNotNull($result->where('id', $recipe->id)->first());
         }
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_paginateViewedByVisitor_returns_recipes_viewed_by_given_visitor(): void
+    {
+        $view = create(View::class);
+        $result = $this->repo->paginateViewedByVisitor($view->visitor->id);
+        $this->assertCount(1, $result);
+        $this->assertSame($view->recipe->getTitle(), $result->first()->getTitle());
     }
 }

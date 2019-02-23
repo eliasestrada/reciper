@@ -59,17 +59,8 @@ class RecipeController extends Controller
                 break;
 
             case 'my_views':
-                $result = Recipe::join('views', 'views.recipe_id', '=', 'recipes.id')
-                    ->where('views.visitor_id', Visitor::whereIp(request()->ip())->value('id'))
-                    ->orderBy('views.id', 'desc')
-                    ->done(1)
-                    ->paginate($pagin);
-
-                $result->map(function ($r) {
-                    $r->id = $r->recipe_id;
-                });
-
-                return $result;
+                $visitor_id = Visitor::whereIp(request()->ip())->value('id');
+                return $this->recipe_repo->paginateViewedByVisitor($visitor_id);
                 break;
 
             case str_contains($hash, 'category='):
