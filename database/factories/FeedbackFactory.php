@@ -5,7 +5,7 @@ use App\Models\Visitor;
 
 $factory->define(Feedback::class, function () {
     return [
-        'email' => rand() . '@mail.com',
+        'email' => rand(1000, 10000) . '@mail.com',
         'visitor_id' => factory(Visitor::class)->create()->id,
         'recipe_id' => null,
         'lang' => _(),
