@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Models\Recipe;
 use App\Http\Responses\Controllers\Admin\Approves\ShowResponse;
 use App\Http\Responses\Controllers\Admin\Approves\IndexResponse;
