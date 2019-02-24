@@ -13,7 +13,7 @@ class FeedbackRepo
      * @param int $recipe_id
      * @return bool
      */
-    public static function alreadyReportedToday(int $visitor_id, int $recipe_id): ?bool
+    public function alreadyReportedToday(int $visitor_id, int $recipe_id): ?bool
     {
         try {
             return Feedback::where([
@@ -32,7 +32,7 @@ class FeedbackRepo
      * @param int $visitor_id
      * @return bool
      */
-    public static function alreadyContactedToday(int $visitor_id): ?bool
+    public function alreadyContactedToday(int $visitor_id): ?bool
     {
         try {
             return Feedback::where([
@@ -49,7 +49,7 @@ class FeedbackRepo
      * @param string $lang
      * @return \Illuminate\Pagination\LengthAwarePaginator|null
      */
-    public static function paginateWithLanguage(string $lang): ?LengthAwarePaginator
+    public function paginateWithLanguage(string $lang): ?LengthAwarePaginator
     {
         try {
             return Feedback::whereLang($lang)->latest()->paginate(20)->onEachSide(1);

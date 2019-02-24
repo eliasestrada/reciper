@@ -14,6 +14,20 @@ class FeedbackRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * @var \App\Repos\FeedbackRepo $repo
+     */
+    private $repo;
+
+    /**
+     * @author Cho
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->repo = new FeedbackRepo;
+    }
+
+    /**
      * @author Cho
      * @test
      */
@@ -24,7 +38,7 @@ class FeedbackRepoTest extends TestCase
 
         create(Feedback::class, compact('visitor_id', 'recipe_id'), null, 'report');
 
-        $result = FeedbackRepo::alreadyReportedToday($visitor_id, $recipe_id);
+        $result = $this->repo->alreadyReportedToday($visitor_id, $recipe_id);
         $this->assertTrue($result);
     }
 
@@ -39,7 +53,7 @@ class FeedbackRepoTest extends TestCase
 
         create(Feedback::class, compact('visitor_id'));
 
-        $result = FeedbackRepo::alreadyReportedToday($visitor_id, $recipe_id);
+        $result = $this->repo->alreadyReportedToday($visitor_id, $recipe_id);
         $this->assertFalse($result);
     }
 
@@ -51,7 +65,7 @@ class FeedbackRepoTest extends TestCase
     {
         $visitor_id = create(Visitor::class)->id;
         create(Feedback::class, compact('visitor_id'));
-        $this->assertTrue(FeedbackRepo::alreadyContactedToday($visitor_id));
+        $this->assertTrue($this->repo->alreadyContactedToday($visitor_id));
     }
 
     /**
@@ -61,7 +75,7 @@ class FeedbackRepoTest extends TestCase
     public function method_alreadyContactedToday_returns_false_if_visitor_didnt_send_message_today(): void
     {
         $visitor_id = create(Visitor::class)->id;
-        $this->assertFalse(FeedbackRepo::alreadyContactedToday($visitor_id));
+        $this->assertFalse($this->repo->alreadyContactedToday($visitor_id));
     }
 
     /**
@@ -71,7 +85,7 @@ class FeedbackRepoTest extends TestCase
     public function method_paginateWithLanguage_returns_paginated_feeds_with_given_language(): void
     {
         create(Feedback::class, ['lang' => 'ru'], 1);
-        $this->assertCount(1, FeedbackRepo::paginateWithLanguage('ru'));
+        $this->assertCount(1, $this->repo->paginateWithLanguage('ru'));
     }
 
     /**
@@ -81,6 +95,6 @@ class FeedbackRepoTest extends TestCase
     public function method_paginateWithLanguage_returns_0_if_given_language_doesnt_have_feeds(): void
     {
         create(Feedback::class, ['lang' => 'ru'], 1);
-        $this->assertCount(0, FeedbackRepo::paginateWithLanguage('en'));
+        $this->assertCount(0, $this->repo->paginateWithLanguage('en'));
     }
 }
