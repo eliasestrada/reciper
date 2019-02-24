@@ -9,7 +9,10 @@ use Tests\TestCase;
 
 class MealRepoTest extends TestCase
 {
-    public $meal_repo;
+    /**
+     * @var \App\Repos\MealRepo $repo
+     */
+    private $repo;
 
     /**
      * @author Cho
@@ -17,7 +20,7 @@ class MealRepoTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->meal_repo = new MealRepo;
+        $this->repo = new MealRepo;
     }
 
     /**
@@ -28,10 +31,10 @@ class MealRepoTest extends TestCase
     {
         $keys = ['id', _('name')];
 
-        $this->assertEquals(Meal::count(), $this->meal_repo->all()->count());
+        $this->assertEquals(Meal::count(), $this->repo->all()->count());
 
         array_walk($keys, function ($key) {
-            $this->assertArrayHasKey($key, $this->meal_repo->all()->first()->toArray());
+            $this->assertArrayHasKey($key, $this->repo->all()->first()->toArray());
         });
     }
 
@@ -42,7 +45,7 @@ class MealRepoTest extends TestCase
     public function getWithCache_method_returs_array_of_cached_meal_list()
     {
         cache()->forget('meal');
-        $this->meal_repo->getWithCache();
+        $this->repo->getWithCache();
 
         $list = cache()->get('meal');
 
