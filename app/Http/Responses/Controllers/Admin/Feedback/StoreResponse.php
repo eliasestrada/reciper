@@ -11,6 +11,19 @@ use Illuminate\Http\RedirectResponse;
 class StoreResponse implements Responsable
 {
     /**
+     * @var \App\Repos\FeedbackRepo $repo
+     */
+    protected $repo;
+
+    /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->repo= new FeedbackRepo;
+    }
+
+    /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|null
      */
@@ -19,11 +32,11 @@ class StoreResponse implements Responsable
         cache()->forget('feedback_notif');
 
         if ($request->recipe_id) {
-            if (FeedbackRepo::alreadyReportedToday(visitor_id(), $request->recipe_id)) {
+            if ($this->repo->alreadyReportedToday(visitor_id(), $request->recipe_id)) {
                 return back()->withError(trans('feedback.already_reported_today'));
             }
         } else {
-            if (FeedbackRepo::alreadyContactedToday(visitor_id())) {
+            if ($this->repo->alreadyContactedToday(visitor_id())) {
                 return back()->withError(trans('feedback.operation_denied'));
             }
         }

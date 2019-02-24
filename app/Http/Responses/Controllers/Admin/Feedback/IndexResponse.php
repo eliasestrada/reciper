@@ -11,6 +11,19 @@ use Illuminate\View\View;
 class IndexResponse implements Responsable
 {
     /**
+     * @var \App\Repos\FeedbackRepo $repo
+     */
+    protected $repo;
+
+    /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->repo = new FeedbackRepo;
+    }
+
+    /**
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\View\View
      */
@@ -34,11 +47,11 @@ class IndexResponse implements Responsable
             'feedback' => [
                 [
                     'lang' => 'ru',
-                    'feeds' => FeedbackRepo::paginateWithLanguage('ru'),
+                    'feeds' => $this->repo->paginateWithLanguage('ru'),
                 ],
                 [
                     'lang' => 'en',
-                    'feeds' => FeedbackRepo::paginateWithLanguage('en'),
+                    'feeds' => $this->repo->paginateWithLanguage('en'),
                 ],
             ],
         ]);
