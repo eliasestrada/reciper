@@ -2,12 +2,13 @@
 
 namespace Tests\Feature\Repos;
 
-use App\Models\Recipe;
-use App\Repos\RecipeRepo;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\Repos\RecipeRepo;
 use App\Models\Visitor;
 use App\Models\View;
+use App\Models\Recipe;
+use App\Models\Category;
 
 class RecipeRepoTest extends TestCase
 {
@@ -161,5 +162,21 @@ class RecipeRepoTest extends TestCase
         $last = create(Recipe::class);
         $result = $this->repo->paginateLatest();
         $this->assertEquals($last->id, $result->first()->id);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_paginateWithCategoryId_returns_recipes_with_given_category_id(): void
+    {
+        Category::pluck('id')->each(function ($category_id) {
+            $result = $this->repo->paginateWithCategoryId($category_id);
+
+            // Loop through every recipe, assert that they have needed category_id
+            $result->each(function ($recipe) use ($category_id) {
+                $this->assertCount(1, $recipe->categories->where('id', $category_id));
+            });
+        });
     }
 }

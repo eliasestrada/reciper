@@ -65,10 +65,7 @@ class RecipeController extends Controller
                 break;
 
             case str_contains($hash, 'category='):
-                // Searching for recipes with category
-                return Recipe::whereHas('categories', function ($query) use ($hash) {
-                    $query->whereId(str_replace('category=', '', $hash));
-                })->done(1)->paginate($pagin);
+                return $this->paginateWithCategoryId((int) $hash, $pagin);
                 break;
 
             case 'new':

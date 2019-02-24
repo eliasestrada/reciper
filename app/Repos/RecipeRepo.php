@@ -172,4 +172,28 @@ class RecipeRepo
             return null;
         }
     }
+
+    /**
+     * Searching for recipes with provided category id
+     * 
+     * @param int $category_id
+     * @param int|null $pagin Pagination value
+     * @return \Illuminate\Pagination\LengthAwarePaginator|null
+     */
+    public function paginateWithCategoryId(int $category_id, ?int $pagin = 8): ?LengthAwarePaginator
+    {
+        /** @var \Closure $queryWithCategoryCallback */
+        $queryWithCategoryCallback = function ($query) use ($category_id, $pagin) {
+            $query->whereId(str_replace('category=', '', $category_id));
+        };
+
+        try {
+            return Recipe::whereHas('categories', $queryWithCategoryCallback)
+                ->done(1)
+                ->paginate($pagin);
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
+            return null;
+        }
+    }
 }
