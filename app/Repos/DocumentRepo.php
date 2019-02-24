@@ -2,17 +2,32 @@
 
 namespace App\Repos;
 
-use App\Models\Document;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Database\QueryException;
+use App\Models\Document;
 
 class DocumentRepo
 {
     /**
+     * @param int $document_id
+     * @return \App\Models\Document
+     */
+    public function find(int $document_id): Document
+    {
+        return Document::find($document_id);
+    }
+
+    /**
      * @param int $ready
      * @return \Illuminate\Pagination\LenghtAwarePaginator
      */
-    public static function paginateAllWithReadyStatus(int $ready = 1): LengthAwarePaginator
+    public function paginateAllWithReadyStatus(int $ready = 1): ?LengthAwarePaginator
     {
-        return Document::query()->isReady($ready)->paginate(20)->onEachSide(1);
+        try {
+            return $this->document->query()->isReady($ready)->paginate(20)->onEachSide(1);
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
+            return null;
+        }
     }
 }

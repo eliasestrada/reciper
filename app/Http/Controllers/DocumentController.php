@@ -4,10 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\View\View;
 use App\Repos\DocumentRepo;
-use App\Models\Document;
 
 class DocumentController extends Controller
 {
+    /**
+     * @var \App\Repos\DocumentRepo $repo
+     */
+    public $repo;
+
+    /**
+     * @param \App\Repos\DocumentRepo $repo
+     * @return void
+     */
+    public function __construct(DocumentRepo $repo)
+    {
+        $this->repo = $repo;
+    }
+
     /**
      * Show page with all documents
      *
@@ -18,11 +31,11 @@ class DocumentController extends Controller
         return view('documents.index', [
             'documents' => [
                 [
-                    'docs' => DocumentRepo::paginateAllWithReadyStatus(1),
+                    'docs' => $this->repo->paginateAllWithReadyStatus(1),
                     'name' => 'published',
                 ],
                 [
-                    'docs' => DocumentRepo::paginateAllWithReadyStatus(0),
+                    'docs' => $this->repo->paginateAllWithReadyStatus(0),
                     'name' => 'drafts',
                 ],
             ],
@@ -32,11 +45,13 @@ class DocumentController extends Controller
     /**
      * Show single document page
      *
-     * @param \App\Models\Document $document
+     * @param int $document_id
      * @return mixed
      */
-    public function show(Document $document)
+    public function show(int $document_id)
     {
+        $document = $this->repo->find($document_id);
+
         if (!$document->isReady() && !optional(user())->hasRole('master')) {
             return redirect('/')->withError(trans('documents.not_ready'));
         }
