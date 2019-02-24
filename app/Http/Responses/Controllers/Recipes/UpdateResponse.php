@@ -41,7 +41,7 @@ class UpdateResponse implements Responsable
             return $this->moveToDraftsAndRedirectWithSuccess();
         }
 
-        if ($this->checkForScriptTags($request)) {
+        if ($this->checkForScriptTags($request->except(['_method', '_token']))) {
             return back()->withError(trans('notifications.cant_use_script_tags'));
         }
 

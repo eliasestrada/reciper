@@ -17,7 +17,7 @@ class StoreResponse implements Responsable
      */
     public function toResponse($request): RedirectResponse
     {
-        if ($this->checkForScriptTags($request)) {
+        if ($this->checkForScriptTags($request->except(['_token']))) {
             return back()->withError(trans('notifications.cant_use_script_tags'));
         }
         $recipe = $this->createRecipeInDatabase($request->title);
