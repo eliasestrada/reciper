@@ -24,7 +24,7 @@ class DocumentRepo
     public function paginateAllWithReadyStatus(int $ready = 1): ?LengthAwarePaginator
     {
         try {
-            return $this->document->query()->isReady($ready)->paginate(20)->onEachSide(1);
+            return Document::query()->isReady($ready)->paginate(20)->onEachSide(1);
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
             return null;
