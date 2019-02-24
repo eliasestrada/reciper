@@ -59,8 +59,9 @@ class RecipeController extends Controller
                 break;
 
             case 'my_views':
-                $visitor_id = Visitor::whereIp(request()->ip())->value('id');
-                return $this->recipe_repo->paginateViewedByVisitor($visitor_id);
+                return $this->recipe_repo->paginateViewedByVisitor(
+                    Visitor::whereIp(request()->ip())->value('id')
+                );
                 break;
 
             case str_contains($hash, 'category='):
