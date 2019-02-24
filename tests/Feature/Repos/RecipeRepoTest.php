@@ -14,7 +14,10 @@ class RecipeRepoTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public $recipe_repo;
+    /**
+     * @var \App\Repos\RecipeRepo $repo
+     */
+    private $repo;
 
     /**
      * @author Cho
