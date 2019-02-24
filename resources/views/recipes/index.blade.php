@@ -10,7 +10,7 @@
     <div class="my-3" v-cloak>
         <sort-buttons
             new-btn="@lang('recipes.last')"
-            my-viewes-btn="@lang('recipes.watched')"
+            my-views-btn="@lang('recipes.watched')"
             most-liked-btn="@lang('recipes.popular')"
             simple-btn="@lang('recipes.simple')"
             breakfast-btn="@lang('home.breakfast')"

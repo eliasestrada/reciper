@@ -39,9 +39,9 @@ export default {
                     isActive: false,
                 },
                 {
-                    title: this.myViewesBtn,
+                    title: this.myViewsBtn,
                     icon: 'fa-eye',
-                    link: 'my_viewes',
+                    link: 'my_views',
                     isActive: false,
                 },
             ]

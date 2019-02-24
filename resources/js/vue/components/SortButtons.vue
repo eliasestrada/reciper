@@ -20,7 +20,7 @@ export default {
     props: [
         'newBtn',
         'simpleBtn',
-        'myViewesBtn',
+        'myViewsBtn',
         'mostLikedBtn',
         'breakfastBtn',
         'lunchBtn',
