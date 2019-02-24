@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Resourses;
 
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Repos\VisitorRepo;
 use App\Repos\RecipeRepo;
-use App\Models\Visitor;
-use App\Models\Recipe;
 use App\Http\Resources\RecipesResource;
 use App\Http\Controllers\Controller;
 use App\Helpers\Controllers\RecipeHelpers;
@@ -17,14 +16,22 @@ class RecipeController extends Controller
     /**
      * @var \App\Repos\RecipeRepo
      */
-    protected $recipe_repo;
+    public $recipe_repo;
+
+    /**
+     * @var \App\Repos\VisitorRepo
+     */
+    public $visitor_repo;
 
     /**
      * @param \App\Repos\RecipeRepo $recipe_repo
+     * @param \App\Repos\VisitorRepo $visitor_repo
+     * @return void
      */
-    public function __construct(RecipeRepo $recipe_repo)
+    public function __construct(RecipeRepo $recipe_repo, VisitorRepo $visitor_repo)
     {
         $this->recipe_repo = $recipe_repo;
+        $this->visitor_repo = $visitor_repo;
     }
 
     /**
@@ -60,7 +67,7 @@ class RecipeController extends Controller
 
             case 'my_views':
                 return $this->recipe_repo->paginateViewedByVisitor(
-                    Visitor::whereIp(request()->ip())->value('id')
+                    $this->visitor_repo->getVisitorId(), $pagin
                 );
                 break;
 
@@ -69,6 +76,7 @@ class RecipeController extends Controller
                 break;
 
             case 'new':
+            default:
                 return $this->recipe_repo->paginateLatest($pagin);
         }
     }
