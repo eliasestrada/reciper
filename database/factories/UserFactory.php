@@ -4,11 +4,11 @@ use App\Models\User;
 
 $factory->define(User::class, function () {
     return [
-        'name' => rand(),
+        'name' => rand(1, 100000),
         'status' => '',
-        'email' => rand() . '@mail.ru',
+        'email' => rand(1, 100000) . '@mail.ru',
         'token' => null,
-        'username' => 'username-' . rand(),
+        'username' => 'username-' . rand(1, 100000),
         'password' => bcrypt('111111'),
         'remember_token' => rand(1, 99),
         'photo' => 'default.jpg',
