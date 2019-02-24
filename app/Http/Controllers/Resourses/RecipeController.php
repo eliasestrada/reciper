@@ -71,7 +71,7 @@ class RecipeController extends Controller
                 break;
 
             case 'new':
-                return Recipe::latest()->done(1)->paginate($pagin);
+                return $this->recipe_repo->paginateLatest($pagin);
         }
     }
 }

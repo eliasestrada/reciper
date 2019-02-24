@@ -158,4 +158,18 @@ class RecipeRepo
             return null;
         }
     }
+
+    /**
+     * @param int|null $pagin Pagination value
+     * @return \Illuminate\Pagination\LengthAwarePaginator|null
+     */
+    public function paginateLatest(?int $pagin = 8): ?LengthAwarePaginator
+    {
+        try {
+            return Recipe::latest()->done(1)->paginate($pagin);
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
+            return null;
+        }
+    }
 }

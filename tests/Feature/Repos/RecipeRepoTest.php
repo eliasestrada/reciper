@@ -140,4 +140,26 @@ class RecipeRepoTest extends TestCase
         $this->assertCount(1, $result);
         $this->assertSame($view->recipe->getTitle(), $result->first()->getTitle());
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_paginateLatest_returns_latest_recipes_that_are_ready_and_approved(): void
+    {
+        create(Recipe::class, [], null, 'waiting');
+        $result = $this->repo->paginateLatest();
+        $this->assertEquals(Recipe::query()->done(1)->count(), $result->count());
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_paginateLatest_returns_recipes_where_first_recipe_is_the_most_recent(): void
+    {
+        $last = create(Recipe::class);
+        $result = $this->repo->paginateLatest();
+        $this->assertEquals($last->id, $result->first()->id);
+    }
 }
