@@ -149,6 +149,24 @@ class RecipeRepoTest extends TestCase
      * @author Cho
      * @test
      */
+    public function method_paginateViewedByVisitor_returns_recipes_ordered_by_latest(): void
+    {
+        $visitor_id = create(Visitor::class)->id;
+        $first_view = create(View::class, [
+            'visitor_id' => $visitor_id,
+            'created_at' => now()->subSecond(),
+        ]);
+        $second_view = create(View::class, compact('visitor_id'));
+
+        $result = $this->repo->paginateViewedByVisitor($visitor_id);
+        $this->assertEquals($second_view->recipe->getTitle(), $result[0]->getTitle());
+        $this->assertEquals($first_view->recipe->getTitle(), $result[1]->getTitle());
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
     public function method_paginateLatest_returns_latest_recipes_that_are_ready_and_approved(): void
     {
         create(Recipe::class, [], null, 'waiting');
