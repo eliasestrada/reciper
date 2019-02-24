@@ -12,13 +12,27 @@ class HelpRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * @var \App\Repos\HelpRepo $repo
+     */
+    private $repo;
+
+    /**
+     * @author Cho
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->repo = new HelpRepo;
+    }
+
+    /**
      * @author Cho
      * @test
      */
     public function getCache_method_returns_all_help_records_from_db(): void
     {
         create(Help::class);
-        $result = (new HelpRepo)->getCache();
+        $result = $this->repo->getCache();
 
         $this->assertTrue(is_array($result));
         $this->assertArrayHasKey('id', $result[0]);
