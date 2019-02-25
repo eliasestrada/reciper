@@ -18,7 +18,7 @@
                 @for ($i = 0; $i <= 2; $i++)
                     <tab 
                         name="@lang("approves.{$recipes[$i]['name']}") 
-                        <span class='red-text'><b>{{ count($recipes[1]['recipes']) }}</b></span>"
+                        <span class='red-text'><b>{{ count($recipes[$i]['recipes']) }}</b></span>"
                         {{ $i === 0 ? ':selected="true"' : '' }}
                     >
                         <div class="item-list unstyled-list row px-2 paper-dark">
@@ -37,9 +37,9 @@
                                             <section>{{ str_limit($recipe->getTitle(), 45) }}</section>
                                             <section>
                                                 <span class="grey-text">
-                                                    @if ($i == 1)
+                                                    @if ($i == 0)
                                                         @lang('approves.waiting_for_approves')
-                                                    @elseif ($i == 2)
+                                                    @elseif ($i == 1)
                                                         @lang('approves.user_is_checking', [
                                                             'user' => $recipe->approver->getName()
                                                         ])
