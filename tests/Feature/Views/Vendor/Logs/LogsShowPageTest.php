@@ -33,7 +33,7 @@ class LogsShowPageTest extends TestCase
             ->assertViewIs('log-viewer::custom-theme.show')
             ->assertOk();
 
-        unlink(storage_path("logs/laravel-{$file_name}.log"));
+        \File::cleanDirectory(storage_path('logs'));
     }
 
     /**

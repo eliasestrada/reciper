@@ -34,6 +34,7 @@ class LogsIndexPageTest extends TestCase
 
     /**
      * Skip test for Windows machine to prevent causing error
+     * 
      * @author Cho
      * @test
      * */
@@ -47,9 +48,10 @@ class LogsIndexPageTest extends TestCase
             $this->assertFileExists(storage_path("logs/laravel-{$file_name}.log"));
 
             // Delete file
-            $this->actingAs($this->master)->delete(action('Master\LogController@destroy'), [
-                'date' => $file_name,
-            ]);
+            $this->actingAs($this->master)
+                ->delete(action('Master\LogController@destroy'), [
+                    'date' => $file_name,
+                ]);
 
             $this->assertFileNotExists(storage_path("logs/laravel-{$file_name}.log"));
         }
@@ -57,7 +59,6 @@ class LogsIndexPageTest extends TestCase
 
     /**
      * Function helper
-     * @author Cho
      * @return string
      */
     private function createLogFile(): string
