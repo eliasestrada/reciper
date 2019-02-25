@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ action('RecipeController@update', ['recipe' => $recipe->id]) }}"
+<form action="{{ action('RecipeController@update', ['recipe' => $recipe->slug]) }}"
     method="post"
     class="page"
     id="submit-recipe-form"
