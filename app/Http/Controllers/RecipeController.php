@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View as ViewResponse;
+use App\Repos\RecipeRepo;
 use App\Repos\MealRepo;
 use App\Repos\FavRepo;
 use App\Models\Recipe;
@@ -17,11 +18,18 @@ use App\Http\Requests\Recipes\RecipeStoreRequest;
 class RecipeController extends Controller
 {
     /**
+     * @var \App\Repos\RecipeRepo $repo
+     */
+    private $repo;
+
+    /**
+     * @param \App\Repos\RecipeRepo $repo
      * @return void
      */
-    public function __construct()
+    public function __construct(RecipeRepo $repo)
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
+        $this->repo = $repo;
     }
 
     /**
@@ -62,7 +70,7 @@ class RecipeController extends Controller
      */
     public function edit(string $slug, MealRepo $meal_repo): EditResponse
     {
-        return new EditResponse($slug, $meal_repo);
+        return new EditResponse($slug, $this->repo, $meal_repo);
     }
 
     /**
