@@ -3,23 +3,29 @@
 namespace Tests\Unit\Controllers;
 
 use Tests\TestCase;
+use App\Notifications\ScriptAttackNotification;
 use App\Models\User;
 use App\Helpers\Controllers\RecipeHelpers;
 
 class RecipeControllerHelpersTest extends TestCase
 {
     /**
-     * @var \App\Helpers\Controllers\RecipeHelpers $class
+     * @param array $fields
+     * @return bool
      */
-    private $class;
+    private function checkForScriptTags(array $fields): bool
+    {
+        $class = new class { use RecipeHelpers; };
+        return $class->checkForScriptTags($fields, make(User::class));
+    }
 
     /**
      * @author Cho
      */
-    public function setUp(): void
+    public function tearDown(): void
     {
-        parent::setUp();
-        $this->class = new class { use RecipeHelpers; };
+        \File::cleanDirectory(storage_path('logs'));
+        parent::tearDown();
     }
 
     /**
@@ -29,9 +35,7 @@ class RecipeControllerHelpersTest extends TestCase
     public function method_checkForScriptTags_returns_true_if_title_has_script_tag(): void
     {
         $this->withoutNotifications();
-        $fields = ['title' => 'Lorem <script ipsum>'];
-        $result = $this->class->checkForScriptTags($fields, make(User::class));
-        $this->assertTrue($result);
+        $this->assertTrue($this->checkForScriptTags(['title' => 'Lorem <script']));
     }
 
     /**
@@ -41,8 +45,33 @@ class RecipeControllerHelpersTest extends TestCase
     public function method_checkForScriptTags_returns_false_if_title_has_no_script_tag(): void
     {
         $this->withoutNotifications();
-        $fields = ['title' => 'Lorem ipsum title'];
-        $result = $this->class->checkForScriptTags($fields, make(User::class));
-        $this->assertFalse($result);
+        $this->assertFalse($this->checkForScriptTags([
+            'title' => 'Lorem ipsum title'
+        ]));
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_checkForScriptTags_notifies_master_user_about_a_script_attack(): void
+    {
+        $this->expectsNotification(User::firstUser(), ScriptAttackNotification::class);
+        $this->checkForScriptTags(['text' => 'Lorem ipsum title <script> hello']);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_checkForScriptTags_creates_logs_about_a_script_attack(): void
+    {
+        $date = date('Y-m-d');
+        $this->assertFileNotExists(storage_path("logs/laravel-{$date}.log"));
+
+        $this->withoutNotifications();
+        $this->checkForScriptTags(['ingredients' => 'Lorem ipsum title <script> hello']);
+
+        $this->assertFileExists(storage_path("logs/laravel-{$date}.log"));
     }
 }
