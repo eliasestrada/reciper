@@ -44,7 +44,7 @@ class DocumentRepoTest extends TestCase
      * @author Cho
      * @test
      */
-    public function method_find_returns_on_document_with_given_id(): void
+    public function method_find_returns_document_by_given_id(): void
     {
         $document = create(Document::class);
         $result = $this->repo->find($document->id);
