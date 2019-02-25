@@ -84,11 +84,12 @@ class Test extends TestCase
     {
         $this->expectsJobs(\App\Jobs\DeleteFileJob::class);
 
-        $unactive_user = create_user('', [
+        create_user('', [
             'active' => 0,
             'photo' => 'some.jpg',
             'updated_at' => now()->subMonths(2),
         ]);
+
         $this->job->handle();
     }
 
