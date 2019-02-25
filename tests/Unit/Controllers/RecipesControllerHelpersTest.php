@@ -10,13 +10,17 @@ use App\Helpers\Controllers\RecipeHelpers;
 class RecipeControllerHelpersTest extends TestCase
 {
     /**
-     * @param array $fields
-     * @return bool
+     * @var \App\Helpers\Controllers\RecipeHelpers $class
      */
-    private function checkForScriptTags(array $fields): bool
+    private $class;
+
+    /**
+     * @author Cho
+     */
+    public function setUp(): void
     {
-        $class = new class { use RecipeHelpers; };
-        return $class->checkForScriptTags($fields, make(User::class));
+        parent::setUp();
+        $this->class = new class { use RecipeHelpers; };
     }
 
     /**
@@ -35,7 +39,7 @@ class RecipeControllerHelpersTest extends TestCase
     public function method_checkForScriptTags_returns_true_if_title_has_script_tag(): void
     {
         $this->withoutNotifications();
-        $this->assertTrue($this->checkForScriptTags(['title' => 'Lorem <script']));
+        $this->class->checkForScriptTags(['title' => 'Lorem <script'], make(User::class));
     }
 
     /**
@@ -45,9 +49,9 @@ class RecipeControllerHelpersTest extends TestCase
     public function method_checkForScriptTags_returns_false_if_title_has_no_script_tag(): void
     {
         $this->withoutNotifications();
-        $this->assertFalse($this->checkForScriptTags([
+        $this->assertFalse($this->class->checkForScriptTags([
             'title' => 'Lorem ipsum title'
-        ]));
+        ]), make(User::class));
     }
 
     /**
@@ -57,7 +61,9 @@ class RecipeControllerHelpersTest extends TestCase
     public function method_checkForScriptTags_notifies_master_user_about_a_script_attack(): void
     {
         $this->expectsNotification(User::firstUser(), ScriptAttackNotification::class);
-        $this->checkForScriptTags(['text' => 'Lorem ipsum title <script> hello']);
+        $this->class->checkForScriptTags([
+            'text' => 'Lorem ipsum title <script> hello'
+        ], make(User::class));
     }
 
     /**
@@ -70,7 +76,9 @@ class RecipeControllerHelpersTest extends TestCase
         $this->assertFileNotExists(storage_path("logs/laravel-{$date}.log"));
 
         $this->withoutNotifications();
-        $this->checkForScriptTags(['ingredients' => 'Lorem ipsum title <script> hello']);
+        $this->class->checkForScriptTags([
+            'ingredients' => 'Lorem ipsum title <script> hello'
+        ], make(User::class));
 
         $this->assertFileExists(storage_path("logs/laravel-{$date}.log"));
     }
