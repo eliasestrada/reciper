@@ -109,18 +109,16 @@ class AdminApprovesShowPageTest extends TestCase
      */
     public function notification_is_sent_after_canceling_the_recipe(): void
     {
-        \Notification::fake();
+        $this->expectsNotification(
+            $this->unapproved_recipe->user,
+            RecipeCanceledNotification::class
+        );
 
         $this->actingAs($this->admin)
             ->post(action('Admin\ApproveController@disapprove', [
                 'recipe' => $this->unapproved_recipe->id,
                 'message' => str_random(20),
             ]));
-
-        \Notification::assertSentTo(
-            [$this->unapproved_recipe->user],
-            RecipeCanceledNotification::class
-        );
     }
 
     /**
