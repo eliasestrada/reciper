@@ -9,6 +9,15 @@ use App\Models\Recipe;
 class RecipeRepo
 {
     /**
+     * @param string $slug
+     * @return \App\Models\Recipe
+     */
+    public function find(string $slug): Recipe
+    {
+        return Recipe::whereSlug($slug)->first();
+    }
+
+    /**
      * @return mixed
      */
     public function paginateUnapprovedWaiting()

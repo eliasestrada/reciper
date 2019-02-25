@@ -200,4 +200,15 @@ class RecipeRepoTest extends TestCase
             });
         });
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_find_returns_recipe_by_given_slug(): void
+    {
+        $recipe = create(Recipe::class);
+        $result = $this->repo->find($recipe->slug);
+        $this->assertEquals($recipe->toBase(), $result->toBase());
+    }
 }
