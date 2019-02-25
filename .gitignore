@@ -15,6 +15,7 @@ docker/db/storage
 docker/php/logs
 docker/nginx/logs
 storage/*.key
+storage/logs/*
 public/mix-manifest.json
 public/hot
 public/storage
