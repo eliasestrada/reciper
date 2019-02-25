@@ -102,4 +102,23 @@ class RecipeControllerHelpersTest extends TestCase
         $this->doesntExpectJobs(\App\Jobs\DeleteFileJob::class);
         $this->class->dispatchDeleteFileJob('default.jpg');
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_clearCache_deletes_3_cache_values(): void
+    {
+        $cache = ['popular_recipes', 'random_recipes', 'unapproved_notif'];
+
+        array_walk($cache, function ($name) {
+            cache()->put($name, str_random(5));
+        });
+
+        $this->class->clearCache();
+
+        array_walk($cache, function ($name) {
+            $this->assertNull(cache()->get($name));
+        });
+    }
 }

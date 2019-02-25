@@ -66,7 +66,7 @@ trait RecipeHelpers
     /**
      * @return void
      */
-    protected function clearCache(): void
+    public function clearCache(): void
     {
         cache()->forget('popular_recipes');
         cache()->forget('random_recipes');
