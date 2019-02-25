@@ -38,7 +38,7 @@ trait RecipeHelpers
         logger()->emergency("User was trying to inject javascript script tags in his recipe. User data: {$user}");
 
         try {
-            User::whereId(1)->first()->notify(new ScriptAttackNotification($user->username));
+            User::firstUser()->notify(new ScriptAttackNotification($user->username));
         } catch (QueryException $e) {
             logger()->error("Can't send ScriptAttackNotification to a user. {$e->getMessage()}");
         }

@@ -203,4 +203,12 @@ class User extends Authenticatable
     {
         return is_null($this->token);
     }
+
+    /**
+     * @return \App\Models\User
+     */
+    public static function firstUser(): self
+    {
+        return self::whereId(1)->first();
+    }
 }

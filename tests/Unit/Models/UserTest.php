@@ -143,4 +143,13 @@ class UserTest extends TestCase
         $virified_user = User::first();
         $this->assertTrue($virified_user->verified());
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_firstUser_returns_first_user_from_database(): void
+    {
+        $this->assertEquals(User::whereId(1)->first()->username, User::firstUser()->username);
+    }
 }
