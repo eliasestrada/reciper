@@ -11,6 +11,20 @@ use App\Http\Responses\Controllers\Recipes\UpdateResponse;
 class UpdateResponseTest extends TestCase
 {
     /**
+     * Function helper
+     *
+     * @param \App\Models\Recipe $recipe
+     * @return \App\Http\Responses\Controllers\Recipes\UpdateResponse
+     */
+    private function classReponse(Recipe $recipe): UpdateResponse
+    {
+        $recipe_repo = \Mockery::mock('App\Repos\RecipeRepo');
+        $recipe_repo->shouldReceive('find')->once()->andReturn($recipe);
+
+        return new UpdateResponse('some-slug', $recipe_repo);
+    }
+
+    /**
      * @author Cho
      * @test
      */
@@ -22,7 +36,7 @@ class UpdateResponseTest extends TestCase
             'time' => 59,
         ]);
         $request = Request::create(null, null, $recipe->toArray());
-        $response = new UpdateResponse($recipe);
+        $response = $this->classReponse($recipe);
         $this->assertTrue($response->isSimple($request));
     }
 
@@ -38,7 +52,7 @@ class UpdateResponseTest extends TestCase
             'time' => 60,
         ]);
         $request = Request::create(null, null, $recipe->toArray());
-        $response = new UpdateResponse($recipe);
+        $response = $this->classReponse($recipe);
         $this->assertFalse($response->isSimple($request));
     }
 
@@ -61,7 +75,7 @@ class UpdateResponseTest extends TestCase
         }
 
         $request = Request::create(null, null, $recipe->toArray());
-        $response = new UpdateResponse($recipe);
+        $response = $this->classReponse($recipe);
 
         $this->assertTrue($response->isSimple($request));
     }
@@ -85,7 +99,7 @@ class UpdateResponseTest extends TestCase
         }
 
         $request = Request::create(null, null, $recipe->toArray());
-        $response = new UpdateResponse($recipe);
+        $response = $this->classReponse($recipe);
 
         $this->assertFalse($response->isSimple($request));
     }
@@ -97,7 +111,7 @@ class UpdateResponseTest extends TestCase
     public function saveImageIfExist_method_uploads_file_and_saves_it_in_2_folders(): void
     {
         $image = UploadedFile::fake()->image('image.jpg');
-        $response = new UpdateResponse(Recipe::make());
+        $response = $this->classReponse(Recipe::make());
         $filename = $response->saveImageIfExist($image, 'slug');
 
         $this->assertNotNull($filename);
@@ -115,7 +129,7 @@ class UpdateResponseTest extends TestCase
      */
     public function saveImageIfExist_method_returns_null_if_user_doent_have_a_file(): void
     {
-        $response = new UpdateResponse(Recipe::make());
+        $response = $this->classReponse(Recipe::make());
         $filename = $response->saveImageIfExist(null, 'slug');
         $this->assertNull($filename);
     }

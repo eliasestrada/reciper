@@ -75,15 +75,14 @@ class RecipeController extends Controller
 
     /**
      * Update single recipe
-     * This method triggers event RecipeIsReady
      *
      * @param \App\Http\Requests\Recipes\RecipeUpdateRequest $request
-     * @param \App\Models\Recipe $recipe
+     * @param string $slug
      * @return \App\Http\Responses\Controllers\Recipes\UpdateResponse
      */
-    public function update(RecipeUpdateRequest $request, Recipe $recipe)
+    public function update(RecipeUpdateRequest $request, string $slug): UpdateResponse
     {
-        return new UpdateResponse($recipe);
+        return new UpdateResponse($slug, $this->repo);
     }
 
     /**
