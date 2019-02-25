@@ -82,4 +82,24 @@ class RecipeControllerHelpersTest extends TestCase
 
         $this->assertFileExists(storage_path("logs/laravel-{$date}.log"));
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_dispatchDeleteFileJob_dispatches_the_job(): void
+    {
+        $this->expectsJobs(\App\Jobs\DeleteFileJob::class);
+        $this->class->dispatchDeleteFileJob('lorem.jpg');
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_dispatchDeleteFileJob_not_dispatches_the_job_if_filename_is_default_jpg(): void
+    {
+        $this->doesntExpectJobs(\App\Jobs\DeleteFileJob::class);
+        $this->class->dispatchDeleteFileJob('default.jpg');
+    }
 }
