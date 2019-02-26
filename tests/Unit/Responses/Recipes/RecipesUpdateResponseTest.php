@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use File;
-use Mockery;
 use Storage;
 use Tests\TestCase;
 use App\Models\Recipe;
@@ -21,8 +20,8 @@ class RecipesUpdateResponseTest extends TestCase
      */
     private function classReponse(Recipe $recipe): UpdateResponse
     {
-        $recipe_repo = Mockery::mock('App\Repos\RecipeRepo');
-        $recipe_repo->shouldReceive('find')->once()->andReturn($recipe);
+        $recipe_repo = $this->createMock(\App\Repos\RecipeRepo::class);
+        $recipe_repo->method('find')->willReturn($recipe);
 
         return new UpdateResponse('some-slug', $recipe_repo);
     }
