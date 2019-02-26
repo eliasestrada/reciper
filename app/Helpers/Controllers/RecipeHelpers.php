@@ -17,7 +17,7 @@ trait RecipeHelpers
      *
      * @param array $fields (All fields from request except _method and _token)
      * @param \App\Models\User $user (optional for unit testing)
-     * @return boolean
+     * @return bool
      */
     public function checkForScriptTags(array $fields, ?User $user = null): bool
     {

@@ -9,21 +9,21 @@ class Meal extends Model
     /**
      * Guarder columns
      *
-     * @var array
+     * @var array $guarded
      */
     protected $guarded = ['id'];
 
     /**
      * String that represents the name of the table
      *
-     * @var string
+     * @var string $table
      */
     protected $table = 'meal';
 
     /**
      * Use or not laravel timestamps
      *
-     * @var bool
+     * @var bool $timestamps
      */
     public $timestamps = false;
 

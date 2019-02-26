@@ -9,7 +9,7 @@ class Document extends Model
     /**
      * Guarder columns
      *
-     * @var array
+     * @var array $guarded
      */
     protected $guarded = ['id'];
 
@@ -36,7 +36,7 @@ class Document extends Model
     /**
      * Check if recipe has ready column set to 1
      *
-     * @return boolean
+     * @return bool
      */
     public function isReady(): bool
     {

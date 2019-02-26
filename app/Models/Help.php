@@ -12,28 +12,28 @@ class Help extends Model
     /**
      * The attributes that should be mutated to dates.
      *
-     * @var array
+     * @var array $dates
      */
     protected $dates = ['deleted_at'];
 
     /**
      * String that represents the name of the table
      *
-     * @var string
+     * @var string $table
      */
     protected $table = 'help';
 
     /**
      * Guarder columns
      *
-     * @var array
+     * @var array $guarded
      */
     protected $guarded = ['id'];
 
     /**
      * Use or not laravel timestamps
      *
-     * @var bool
+     * @var bool $timestamps
      */
     public $timestamps = false;
 

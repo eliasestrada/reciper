@@ -13,14 +13,14 @@ class User extends Authenticatable
     /**
      * Guarder columns
      *
-     * @var array
+     * @var array $guarded
      */
     protected $guarded = ['id'];
 
     /**
      * Hide fields when displaying data
      *
-     * @var array
+     * @var array $hidden
      */
     protected $hidden = ['password', 'remember_token'];
 
@@ -68,7 +68,7 @@ class User extends Authenticatable
      * Find out if user has a specific role
      *
      * @param string $check
-     * @return boolean
+     * @return bool
      */
     public function hasRole(string $check): bool
     {
@@ -100,7 +100,7 @@ class User extends Authenticatable
      * Check if user owns particular recipe or not
      *
      * @param integer $recipe_id
-     * @return boolean
+     * @return bool
      */
     public function hasRecipe(int $recipe_id): bool
     {
@@ -111,7 +111,7 @@ class User extends Authenticatable
      * Check if user has particular recipe added to his favorite list
      *
      * @param integer $recipe_id
-     * @return boolean
+     * @return bool
      */
     public function hasFav(int $recipe_id): bool
     {
@@ -131,7 +131,7 @@ class User extends Authenticatable
     /**
      * Check if this user is banned or not
      *
-     * @return boolean
+     * @return bool
      */
     public function isBanned(): bool
     {
@@ -176,7 +176,7 @@ class User extends Authenticatable
     /**
      * Check if user is active or not
      *
-     * @return boolean
+     * @return bool
      */
     public function isActive(): bool
     {
@@ -186,7 +186,7 @@ class User extends Authenticatable
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param string $token
      * @return void
      */
     public function sendPasswordResetNotification($token)
@@ -197,7 +197,7 @@ class User extends Authenticatable
     /**
      * Returns true if user verified the email
      *
-     * @return boolean
+     * @return bool
      */
     public function verified(): bool
     {

@@ -111,7 +111,7 @@ trait RecipeHelpers
     /**
      * Check if this recipe has ready column set to 1
      *
-     * @return boolean
+     * @return bool
      */
     public function isReady(): bool
     {
@@ -121,7 +121,7 @@ trait RecipeHelpers
     /**
      * Check if this recipe has approved column set to 1
      *
-     * @return boolean
+     * @return bool
      */
     public function isApproved(): bool
     {
@@ -132,7 +132,7 @@ trait RecipeHelpers
      * Check if this recipe has approved column set to 1
      * and ready column set to 1
      *
-     * @return boolean
+     * @return bool
      */
     public function isDone(): bool
     {
@@ -142,7 +142,7 @@ trait RecipeHelpers
     /**
      * Check if this recipe has published column set to 1
      *
-     * @return boolean
+     * @return bool
      */
     public function isPublished(): bool
     {

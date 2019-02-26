@@ -5,12 +5,12 @@ namespace App\Models;
 class Xp
 {
     /**
-     * @var \App\Models\User
+     * @var \App\Models\User $user
      */
     public $user;
 
     /**
-     * @var array
+     * @var array $levels
      */
     public $levels = [
         1 => ['min' => 1, 'max' => 39],

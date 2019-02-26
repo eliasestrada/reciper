@@ -9,14 +9,14 @@ class Feedback extends Model
     /**
      * Guarder columns
      *
-     * @var array
+     * @var array $guarded
      */
     protected $guarded = ['id'];
 
     /**
      * Use or not laravel timestamps
      *
-     * @var bool
+     * @var bool $timestamps
      */
     public $timestamps = false;
 
@@ -40,7 +40,7 @@ class Feedback extends Model
      * Check if this record is users' report or simple feedback
      *
      * @param integer $value
-     * @return boolean
+     * @return bool
      */
     public function isReport(int $value): bool
     {

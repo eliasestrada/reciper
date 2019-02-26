@@ -9,7 +9,7 @@ class Visitor extends Model
     /**
      * Guarder columns
      *
-     * @var array
+     * @var array $guarded
      */
     protected $guarded = ['id'];
 
