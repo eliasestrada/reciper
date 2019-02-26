@@ -2,13 +2,13 @@
 
 namespace App\Http\Responses\Controllers\Recipes;
 
-use Image;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Contracts\Support\Responsable;
 use File;
+use Image;
+use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Http\RedirectResponse;
 use App\Helpers\Controllers\RecipeHelpers;
+use Illuminate\Contracts\Support\Responsable;
 
 class UpdateResponse implements Responsable
 {
@@ -177,7 +177,7 @@ class UpdateResponse implements Responsable
         $path_small = storage_path("app/public/small/recipes/{$path_slug}");
         $image_name = "{$slug}.{$image->getClientOriginalExtension()}";
 
-        $this->makeNeededDirectoriesFor([$path_big, $path_small]);
+        $this->createDirectories([$path_big, $path_small]);
 
         $this->uploadImages($image, $image_name, [
             [
@@ -201,7 +201,7 @@ class UpdateResponse implements Responsable
      * @param array $paths
      * @return void
      */
-    public function makeNeededDirectoriesFor(array $paths): void
+    public function createDirectories(array $paths): void
     {
         foreach ($paths as $path) {
             if (!File::exists($path)) {
