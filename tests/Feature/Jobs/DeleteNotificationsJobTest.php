@@ -3,6 +3,7 @@
 namespace Tests\Feature\Jobs;
 
 use Tests\TestCase;
+use Illuminate\Support\Carbon;
 use App\Jobs\DeleteNotificationsJob;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -47,10 +48,10 @@ class DeleteNotificationsJobTest extends TestCase
     /**
      * Function helper
      *
-     * @param string|null $read_at
+     * @param \Illuminate\Support\Carbon|null $read_at
      * @return string
      */
-    private function createNotificationReadAt(?string $read_at = null): string
+    private function createNotificationReadAt(?Carbon $read_at = null): string
     {
         DatabaseNotification::create([
             'id' => $id = str_random(7),
