@@ -2,8 +2,8 @@
 
 namespace App\Jobs;
 
-use App\Models\User;
 use Exception;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
 

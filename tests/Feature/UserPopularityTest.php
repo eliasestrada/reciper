@@ -3,11 +3,11 @@
 namespace Tests\Feature;
 
 use App\Models\Fav;
-use App\Models\Like;
-use App\Models\Recipe;
-use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use App\Models\Like;
+use App\Models\User;
+use App\Models\Recipe;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserPopularityTest extends TestCase
 {

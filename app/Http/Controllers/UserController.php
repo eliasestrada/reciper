@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-use Illuminate\Http\Response;
-use Illuminate\Http\RedirectResponse;
 use App\Models\Xp;
 use App\Models\User;
 use App\Models\Recipe;
+use Illuminate\View\View;
+use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {

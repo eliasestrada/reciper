@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Models;
 
+use Tests\TestCase;
 use App\Models\Help;
 use App\Models\HelpCategory;
-use Tests\TestCase;
 
 class HelpCategoryTest extends TestCase
 {

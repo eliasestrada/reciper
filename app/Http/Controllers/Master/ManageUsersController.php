@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Master;
 
+use App\Models\Ban;
+use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use App\Models\User;
-use App\Models\Ban;
-use App\Http\Requests\ManageUsersRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\ManageUsersRequest;
 
 class ManageUserController extends Controller
 {

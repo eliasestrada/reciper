@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Views\Master\Visitors;
 
+use Tests\TestCase;
 use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 
 class MasterVisitorsShowPageTest extends TestCase
 {

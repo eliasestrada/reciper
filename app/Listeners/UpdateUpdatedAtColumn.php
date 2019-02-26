@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Events\UserIsOnline;
 use App\Models\User;
+use App\Events\UserIsOnline;
 
 class UpdateUpdatedAtColumn
 {

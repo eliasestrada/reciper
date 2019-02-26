@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Views\Help;
 
-use App\Models\Help;
 use Tests\TestCase;
+use App\Models\Help;
 
 class HelpShowPageTest extends TestCase
 {

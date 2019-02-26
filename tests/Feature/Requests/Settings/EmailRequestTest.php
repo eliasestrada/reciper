@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Requests\Settings;
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class EmailRequestTest extends TestCase
 {

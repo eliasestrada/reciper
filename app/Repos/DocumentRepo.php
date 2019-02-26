@@ -2,9 +2,9 @@
 
 namespace App\Repos;
 
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Database\QueryException;
 use App\Models\Document;
+use Illuminate\Database\QueryException;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class DocumentRepo
 {

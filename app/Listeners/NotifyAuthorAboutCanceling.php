@@ -2,8 +2,8 @@
 
 namespace App\Listeners;
 
-use App\Events\RecipeGotCanceled;
 use App\Models\User;
+use App\Events\RecipeGotCanceled;
 use App\Notifications\RecipeCanceledNotification;
 
 class NotifyAuthorAboutCanceling

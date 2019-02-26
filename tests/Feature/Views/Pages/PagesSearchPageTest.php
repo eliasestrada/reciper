@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Views\Pages;
 
+use Tests\TestCase;
 use App\Models\Recipe;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 
 class PagesSearchPageTest extends TestCase
 {

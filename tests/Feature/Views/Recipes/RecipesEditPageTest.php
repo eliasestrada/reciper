@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Views\Recipes;
 
-use App\Jobs\DeleteFileJob;
-use App\Models\Recipe;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Http\UploadedFile;
 use Queue;
 use Tests\TestCase;
+use App\Models\Recipe;
+use App\Jobs\DeleteFileJob;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class RecipesEditPageTest extends TestCase
 {

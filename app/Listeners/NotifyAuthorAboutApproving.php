@@ -2,10 +2,10 @@
 
 namespace App\Listeners;
 
-use App\Events\RecipeGotApproved;
 use App\Models\User;
-use App\Notifications\RecipeApprovedNotification;
+use App\Events\RecipeGotApproved;
 use App\Notifications\UserGotXpPoints;
+use App\Notifications\RecipeApprovedNotification;
 
 class NotifyAuthorAboutApproving
 {

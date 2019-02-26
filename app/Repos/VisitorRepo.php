@@ -2,8 +2,8 @@
 
 namespace App\Repos;
 
-use Illuminate\Database\QueryException;
 use App\Models\Visitor;
+use Illuminate\Database\QueryException;
 
 class VisitorRepo
 {

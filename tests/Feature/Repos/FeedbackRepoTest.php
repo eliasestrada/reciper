@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Repos;
 
-use App\Models\Feedback;
+use Tests\TestCase;
 use App\Models\Recipe;
 use App\Models\Visitor;
+use App\Models\Feedback;
 use App\Repos\FeedbackRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 
 class FeedbackRepoTest extends TestCase
 {

@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Views\Settings\General;
 
+use Tests\TestCase;
 use App\Models\User;
 use App\Notifications\VerifyEmailNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 
 class SettingsGeneralIndexPageTest extends TestCase
 {

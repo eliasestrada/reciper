@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Views\Statistics;
 
-use App\Models\User;
 use Tests\TestCase;
+use App\Models\User;
 
 class StatisticsPageTest extends TestCase
 {

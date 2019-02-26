@@ -2,8 +2,8 @@
 
 namespace App\Http\ViewComposers\Navbar;
 
-use Illuminate\View\View;
 use File;
+use Illuminate\View\View;
 
 class LogsComposer
 {

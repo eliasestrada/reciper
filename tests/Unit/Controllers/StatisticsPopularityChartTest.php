@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\Controllers\Statistics;
 
-use App\Http\Controllers\Api\StatisticController;
+use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Support\Collection;
-use Tests\TestCase;
+use App\Http\Controllers\Api\StatisticController;
 
 class StatisticsPopularityChartTest extends TestCase
 {

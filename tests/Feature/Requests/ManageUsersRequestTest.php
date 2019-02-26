@@ -2,9 +2,8 @@
 
 namespace Tests\Feature\Requests;
 
-use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ManageUsersRequestTest extends TestCase
 {

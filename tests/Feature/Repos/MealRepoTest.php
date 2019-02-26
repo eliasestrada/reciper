@@ -2,10 +2,9 @@
 
 namespace Tests\Feature\Repos;
 
+use Tests\TestCase;
 use App\Models\Meal;
 use App\Repos\MealRepo;
-use Illuminate\Support\Facades\Cache;
-use Tests\TestCase;
 
 class MealRepoTest extends TestCase
 {

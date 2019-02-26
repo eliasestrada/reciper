@@ -3,8 +3,8 @@
 namespace App\Http\ViewComposers\Footer;
 
 use App\Models\Recipe;
-use Illuminate\Database\QueryException;
 use Illuminate\View\View;
+use Illuminate\Database\QueryException;
 
 class RandomRecipesComposer
 {

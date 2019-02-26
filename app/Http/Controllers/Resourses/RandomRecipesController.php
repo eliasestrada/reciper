@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Resourses;
 
 use App\Models\Recipe;
-use App\Http\Resources\RecipesRandomResource;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\RecipesRandomResource;
 
 class RandomRecipesController extends Controller
 {

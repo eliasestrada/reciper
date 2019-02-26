@@ -3,8 +3,8 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Ban;
-use App\Models\User;
 use Tests\TestCase;
+use App\Models\User;
 
 class BanTest extends TestCase
 {

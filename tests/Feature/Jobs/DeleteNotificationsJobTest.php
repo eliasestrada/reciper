@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Jobs;
 
-use App\Jobs\DeleteNotificationsJob;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Notifications\DatabaseNotification;
 use Tests\TestCase;
+use App\Jobs\DeleteNotificationsJob;
+use Illuminate\Notifications\DatabaseNotification;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class DeleteNotificationsJobTest extends TestCase
 {

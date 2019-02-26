@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Master;
 
+use App\Models\Help;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use App\Models\Help;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 
 class TrashController extends Controller
 {

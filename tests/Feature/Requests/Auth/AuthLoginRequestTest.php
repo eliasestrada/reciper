@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Requests\Auth;
 
-use App\Models\User;
 use Tests\TestCase;
+use App\Models\User;
 
 class AuthLoginRequestTest extends TestCase
 {

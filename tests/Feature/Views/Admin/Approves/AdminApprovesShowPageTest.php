@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Views\Admin\Approves;
 
-use App\Models\Recipe;
+use Tests\TestCase;
 use App\Models\User;
+use App\Models\Recipe;
 use App\Notifications\RecipeApprovedNotification;
 use App\Notifications\RecipeCanceledNotification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 
 class AdminApprovesShowPageTest extends TestCase
 {

@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Jobs;
 
-use App\Jobs\DeleteUnactiveUsersJob;
-use App\Models\Recipe;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use App\Models\Recipe;
+use App\Jobs\DeleteUnactiveUsersJob;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class Test extends TestCase
 {

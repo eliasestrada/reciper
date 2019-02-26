@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Category;
 use Tests\TestCase;
+use App\Models\Category;
 
 class CategoryTest extends TestCase
 {

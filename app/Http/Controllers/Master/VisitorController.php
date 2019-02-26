@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Master;
 
-use Illuminate\View\View;
 use App\Models\Visitor;
+use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 
 class VisitorController extends Controller

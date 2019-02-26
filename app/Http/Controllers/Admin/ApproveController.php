@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Recipe;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\DisapproveRequest;
 use App\Http\Responses\Controllers\Admin\Approves\ShowResponse;
 use App\Http\Responses\Controllers\Admin\Approves\IndexResponse;
-use App\Http\Responses\Controllers\Admin\Approves\DisapproveResponse;
 use App\Http\Responses\Controllers\Admin\Approves\ApproveResponse;
-use App\Http\Requests\DisapproveRequest;
-use App\Http\Controllers\Controller;
+use App\Http\Responses\Controllers\Admin\Approves\DisapproveResponse;
 
 class ApproveController extends Controller
 {

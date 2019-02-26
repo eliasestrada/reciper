@@ -3,12 +3,12 @@
 namespace Tests\Feature\Repos;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\Repos\RecipeRepo;
-use App\Models\Visitor;
 use App\Models\View;
 use App\Models\Recipe;
+use App\Models\Visitor;
 use App\Models\Category;
+use App\Repos\RecipeRepo;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class RecipeRepoTest extends TestCase
 {

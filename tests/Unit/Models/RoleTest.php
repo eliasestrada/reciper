@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Role;
 use Tests\TestCase;
+use App\Models\Role;
 
 class RoleTest extends TestCase
 {

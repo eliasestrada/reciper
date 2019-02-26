@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use App\Repos\CategoryRepo;
 use Laravel\Horizon\Horizon;
 use Illuminate\Support\ServiceProvider;
-use App\Repos\CategoryRepo;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class AppServiceProvider extends ServiceProvider
 {

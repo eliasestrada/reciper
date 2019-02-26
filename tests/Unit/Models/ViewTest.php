@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\View;
 use Tests\TestCase;
+use App\Models\View;
 
 class ViewTest extends TestCase
 {

@@ -2,10 +2,10 @@
 
 namespace App\Http\Responses\Controllers\Recipes;
 
-use Illuminate\Contracts\Support\Responsable;
-use App\Repos\RecipeRepo;
-use App\Repos\MealRepo;
 use App\Models\User;
+use App\Repos\MealRepo;
+use App\Repos\RecipeRepo;
+use Illuminate\Contracts\Support\Responsable;
 
 class EditResponse implements Responsable
 {

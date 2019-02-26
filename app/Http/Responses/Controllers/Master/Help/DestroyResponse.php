@@ -3,9 +3,9 @@
 namespace App\Http\Responses\Controllers\Master\Help;
 
 use App\Models\Help;
-use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Database\QueryException;
+use Illuminate\Contracts\Support\Responsable;
 
 class DestroyResponse implements Responsable
 {

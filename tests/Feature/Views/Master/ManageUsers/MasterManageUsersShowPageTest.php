@@ -3,9 +3,9 @@
 namespace Tests\Feature\Views\Master\ManageUsers;
 
 use App\Models\Ban;
+use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 
 class MasterManageUsersShowPageTest extends TestCase
 {

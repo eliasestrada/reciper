@@ -3,8 +3,8 @@
 namespace App\Repos;
 
 use App\Models\Meal;
-use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
+use Illuminate\Database\QueryException;
 
 class MealRepo
 {

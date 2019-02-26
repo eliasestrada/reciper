@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Jobs;
 
-use App\Jobs\DeleteFileJob;
 use Storage;
 use Tests\TestCase;
+use App\Jobs\DeleteFileJob;
 
 class DeleteFileJobTest extends TestCase
 {

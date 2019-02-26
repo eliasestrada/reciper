@@ -2,13 +2,13 @@
 
 namespace App\Jobs;
 
-use App\Models\TopRecipers;
+use Carbon\Carbon;
 use App\Models\Like;
 use App\Models\User;
-use Carbon\Carbon;
+use App\Models\TopRecipers;
 use Illuminate\Bus\Queueable;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Database\Eloquent\Collection;
 
 class TopRecipersJob
 {

@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\Controllers\Admin;
 
-use App\Http\Controllers\Admin\ApproveController;
-use App\Http\Requests\DisapproveRequest;
-use App\Models\Recipe;
 use Tests\TestCase;
+use App\Models\Recipe;
+use App\Http\Requests\DisapproveRequest;
+use App\Http\Controllers\Admin\ApproveController;
 
 class ApproveControllerTest extends TestCase
 {

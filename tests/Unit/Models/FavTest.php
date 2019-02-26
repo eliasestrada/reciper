@@ -3,8 +3,8 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Fav;
-use App\Models\User;
 use Tests\TestCase;
+use App\Models\User;
 
 class FavTest extends TestCase
 {

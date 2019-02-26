@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Views\Master\Trash;
 
+use Tests\TestCase;
 use App\Models\Help;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 
 class TrashIndexPageTest extends TestCase
 {

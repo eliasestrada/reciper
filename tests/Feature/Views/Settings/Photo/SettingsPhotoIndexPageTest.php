@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Views\Settings\Photo;
 
-use App\Jobs\DeleteFileJob;
-use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Http\UploadedFile;
 use Queue;
 use Tests\TestCase;
+use App\Models\User;
+use App\Jobs\DeleteFileJob;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class SettingsPhotoIndexPageTest extends TestCase
 {

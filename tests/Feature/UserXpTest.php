@@ -2,12 +2,12 @@
 
 namespace Tests\Feature;
 
-use App\Events\RecipeGotApproved;
-use App\Models\Recipe;
-use App\Models\User;
 use Event;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Recipe;
+use App\Events\RecipeGotApproved;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserXpTest extends TestCase
 {

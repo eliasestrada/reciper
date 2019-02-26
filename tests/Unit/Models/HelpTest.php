@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Help;
 use Tests\TestCase;
+use App\Models\Help;
 
 class HelpTest extends TestCase
 {

@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Feedback;
 use Tests\TestCase;
+use App\Models\Feedback;
 
 class FeedbackTest extends TestCase
 {

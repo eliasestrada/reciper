@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Invokes;
 
-use Illuminate\Http\RedirectResponse;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 
 class VerifyEmailController extends Controller
 {

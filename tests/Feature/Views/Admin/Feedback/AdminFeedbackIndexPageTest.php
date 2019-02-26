@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Views\Admin\Feedback;
 
-use App\Models\Feedback;
-use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Feedback;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class AdminFeedbackIndexPageTest extends TestCase
 {

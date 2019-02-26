@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Views\Auth;
 
-use App\Models\User;
 use Auth;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class LoginPageTest extends TestCase
 {

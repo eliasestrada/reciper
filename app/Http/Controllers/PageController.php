@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View as ViewResponse;
+use App\Models\User;
+use App\Models\View;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
-use App\Models\View;
-use App\Models\User;
-use App\Models\Recipe;
+use Illuminate\View\View as ViewResponse;
 
 class PageController extends Controller
 {

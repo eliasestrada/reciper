@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Views\Recipes;
 
-use App\Jobs\DeleteFileJob;
 use App\Models\Fav;
-use App\Models\Feedback;
+use Tests\TestCase;
 use App\Models\Like;
 use App\Models\Recipe;
+use App\Models\Feedback;
+use App\Jobs\DeleteFileJob;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 
 class RecipesShowPageTest extends TestCase
 {

@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Views\Admin\Approves;
 
-use App\Models\Recipe;
-use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Recipe;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class AdminApprovesIndexPageTest extends TestCase
 {

@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Requests;
 
-use App\Models\User;
 use Tests\TestCase;
+use App\Models\User;
 
 class FavsRequestTest extends TestCase
 {

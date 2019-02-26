@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Settings;
 
-use Predis\Connection\ConnectionException;
-use Illuminate\View\View;
-use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
 use App\Models\User;
+use Illuminate\View\View;
 use App\Jobs\DeleteFileJob;
-use App\Http\Requests\Settings\PhotoRequest;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use Predis\Connection\ConnectionException;
+use App\Http\Requests\Settings\PhotoRequest;
 use App\Helpers\Controllers\Settings\PhotoHelpers;
 
 class PhotoController extends Controller

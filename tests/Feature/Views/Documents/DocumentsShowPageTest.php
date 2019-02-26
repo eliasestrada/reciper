@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Views\Documents;
 
-use App\Models\Document;
-use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Document;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class DocumentsShowPageTest extends TestCase
 {

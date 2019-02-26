@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Views\Auth;
 
+use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 
 class RegisterPageTest extends TestCase
 {

@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Database\QueryException;
 use App\Models\User;
 use App\Models\Document;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\QueryException;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {

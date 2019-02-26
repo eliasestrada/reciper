@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Meal;
 use Tests\TestCase;
+use App\Models\Meal;
 
 class MealTest extends TestCase
 {

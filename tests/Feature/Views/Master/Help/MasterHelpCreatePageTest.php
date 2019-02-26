@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Views\Master\Help;
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class MasterHelpCreatePageTest extends TestCase
 {

@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Document;
 use Tests\TestCase;
+use App\Models\Document;
 
 class DocumentTest extends TestCase
 {

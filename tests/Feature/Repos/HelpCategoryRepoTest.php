@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Repos;
 
+use Tests\TestCase;
 use App\Models\HelpCategory;
 use App\Repos\HelpCategoryRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 
 class HelpCategoryRepoTest extends TestCase
 {

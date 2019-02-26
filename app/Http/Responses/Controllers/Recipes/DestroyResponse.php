@@ -2,8 +2,8 @@
 
 namespace App\Http\Responses\Controllers\Recipes;
 
-use App\Helpers\Controllers\RecipeHelpers;
 use App\Models\Recipe;
+use App\Helpers\Controllers\RecipeHelpers;
 use Illuminate\Contracts\Support\Responsable;
 
 class DestroyResponse implements Responsable

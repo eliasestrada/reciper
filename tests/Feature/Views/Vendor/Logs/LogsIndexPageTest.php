@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Views\Vendor\Logs;
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class LogsIndexPageTest extends TestCase
 {

@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Views\Users;
 
+use Tests\TestCase;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 
 class UsersShowPageTest extends TestCase
 {

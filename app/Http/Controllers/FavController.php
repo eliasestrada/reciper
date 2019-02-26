@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\User;
 use App\Models\Recipe;
+use Illuminate\View\View;
 
 class FavController extends Controller
 {

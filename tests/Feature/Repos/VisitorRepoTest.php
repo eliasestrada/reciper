@@ -3,9 +3,9 @@
 namespace Tests\Feature\Repos;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\Repos\VisitorRepo;
 use App\Models\Visitor;
+use App\Repos\VisitorRepo;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class VisitorRepoTest extends TestCase
 {

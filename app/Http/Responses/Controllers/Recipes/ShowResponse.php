@@ -2,12 +2,12 @@
 
 namespace App\Http\Responses\Controllers\Recipes;
 
-use Illuminate\Database\QueryException;
-use Illuminate\Contracts\Support\Responsable;
 use App\Models\Xp;
 use App\Models\User;
 use App\Models\Recipe;
 use App\Models\Popularity;
+use Illuminate\Database\QueryException;
+use Illuminate\Contracts\Support\Responsable;
 
 class ShowResponse implements Responsable
 {

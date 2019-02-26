@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Recipe;
 use Tests\TestCase;
+use App\Models\Recipe;
 
 class RecipeTest extends TestCase
 {

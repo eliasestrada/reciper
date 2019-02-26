@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Requests\Recipes;
 
-use App\Models\Category;
-use App\Models\Meal;
-use App\Models\Recipe;
-use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use App\Models\Meal;
+use App\Models\User;
+use App\Models\Recipe;
+use App\Models\Category;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class RecipesUpdateRequestTest extends TestCase
 {

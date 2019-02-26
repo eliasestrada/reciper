@@ -3,9 +3,9 @@
 namespace Tests\Unit\Controllers;
 
 use Tests\TestCase;
-use App\Notifications\ScriptAttackNotification;
 use App\Models\User;
 use App\Helpers\Controllers\RecipeHelpers;
+use App\Notifications\ScriptAttackNotification;
 
 class RecipeControllerHelpersTest extends TestCase
 {

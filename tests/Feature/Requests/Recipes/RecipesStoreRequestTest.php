@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Requests\Recipes;
 
-use App\Models\User;
 use Tests\TestCase;
+use App\Models\User;
 
 class RecipesStoreRequestTest extends TestCase
 {

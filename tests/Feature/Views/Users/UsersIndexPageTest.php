@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Views\Users;
 
-use App\Models\User;
 use Tests\TestCase;
+use App\Models\User;
 
 class UsersIndexPageTest extends TestCase
 {

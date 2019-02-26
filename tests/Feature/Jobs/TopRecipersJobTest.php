@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Jobs;
 
-use App\Jobs\TopRecipersJob;
-use App\Models\Like;
-use App\Models\Recipe;
-use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
+use App\Models\Like;
+use App\Models\User;
+use App\Models\Recipe;
+use App\Jobs\TopRecipersJob;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class TopRecipersJobTest extends TestCase
 {

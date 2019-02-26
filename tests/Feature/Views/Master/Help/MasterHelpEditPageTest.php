@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Views\Master\Help;
 
+use Tests\TestCase;
 use App\Models\Help;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Tests\TestCase;
 
 class MasterHelpEditPageTest extends TestCase
 {
