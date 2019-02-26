@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Recipe;
 use App\Http\Responses\Controllers\Recipes\UpdateResponse;
 
-class UpdateResponseTest extends TestCase
+class RecipesUpdateResponseTest extends TestCase
 {
     /**
      * Function helper
