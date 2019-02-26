@@ -28,7 +28,7 @@ class UpdateResponseTest extends TestCase
      * @author Cho
      * @test
      */
-    public function isSimple_method_returns_true_if_recipe_time_less_then_59(): void
+    public function method_isSimple_returns_true_if_recipe_time_less_then_59(): void
     {
         $recipe = Recipe::make([
             'ingredients' => str_random(10),
@@ -44,7 +44,7 @@ class UpdateResponseTest extends TestCase
      * @author Cho
      * @test
      */
-    public function isSimple_method_returns_false_if_recipe_time_more_then_59(): void
+    public function method_isSimple_returns_false_if_recipe_time_more_then_59(): void
     {
         $recipe = Recipe::make([
             'ingredients' => str_random(10),
@@ -63,7 +63,7 @@ class UpdateResponseTest extends TestCase
      * @author Cho
      * @test
      * */
-    public function isSimple_method_returns_true_if_rows_number_allowed(): void
+    public function method_isSimple_returns_true_if_rows_number_allowed(): void
     {
         $allowed_maximum_of_rows = config('custom.rows_for_simple_recipe');
         $recipe = Recipe::make(['ingredients' => '', 'text' => '', 'time' => 40]);
@@ -87,7 +87,7 @@ class UpdateResponseTest extends TestCase
      * @author Cho
      * @test
      * */
-    public function isSimple_method_returns_false_if_rows_more_then_allowed(): void
+    public function method_isSimple_returns_false_if_rows_more_then_allowed(): void
     {
         $allowed_maximum_of_rows = config('custom.rows_for_simple_recipe');
         $recipe = Recipe::make(['ingredients' => '', 'text' => '', 'time' => 40]);
@@ -108,7 +108,7 @@ class UpdateResponseTest extends TestCase
      * @author Cho
      * @test
      */
-    public function saveImageIfExist_method_uploads_file_and_saves_it_in_2_folders(): void
+    public function method_saveImageIfExist_uploads_file_and_saves_it_in_2_folders(): void
     {
         $image = UploadedFile::fake()->image('image.jpg');
         $response = $this->classReponse(Recipe::make());
@@ -127,7 +127,7 @@ class UpdateResponseTest extends TestCase
      * @author Cho
      * @test
      */
-    public function saveImageIfExist_method_returns_null_if_user_doent_have_a_file(): void
+    public function method_saveImageIfExist_returns_null_if_user_doent_have_a_file(): void
     {
         $response = $this->classReponse(Recipe::make());
         $filename = $response->saveImageIfExist(null, 'slug');
