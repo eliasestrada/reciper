@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
 use App\Models\Feedback;
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
