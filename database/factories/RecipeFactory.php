@@ -11,7 +11,7 @@ $factory->define(Recipe::class, function () {
         'time' => rand(10, 160),
         'image' => 'default.jpg',
         'simple' => rand(0, 1),
-        'slug' => rand(),
+        'slug' => str_random(10),
 
         // Russian language
         'title_ru' => str_random(config('valid.recipes.title.min')),
