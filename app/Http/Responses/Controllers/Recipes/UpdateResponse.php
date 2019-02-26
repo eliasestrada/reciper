@@ -172,7 +172,7 @@ class UpdateResponse implements Responsable
             return null;
         }
 
-        $path_slug = $this->makePathSlug();
+        $path_slug = date('Y/n');
         $path_big = storage_path("app/public/big/recipes/{$path_slug}");
         $path_small = storage_path("app/public/small/recipes/{$path_slug}");
         $image_name = "{$slug}.{$image->getClientOriginalExtension()}";
@@ -195,14 +195,6 @@ class UpdateResponse implements Responsable
         ]);
 
         return "$path_slug/$image_name";
-    }
-
-    /**
-     * @return string
-     */
-    public function makePathSlug(): string
-    {
-        return date('Y') . '/' . date('n');
     }
 
     /**

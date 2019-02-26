@@ -19,7 +19,7 @@ trait PhotoHelpers
             return null;
         }
 
-        $path_slug = $this->makePathSlug();
+        $path_slug = date('Y/n');
         $path = storage_path("app/public/big/users/{$path_slug}");
         $path_small = storage_path("app/public/small/users/{$path_slug}");
         $photo_name = user()->username . '.' . $photo->getClientOriginalExtension();
@@ -56,14 +56,5 @@ trait PhotoHelpers
         user()->update([
             'photo' => is_null($photo_name) ? 'default.jpg' : $photo_name,
         ]);
-    }
-
-    /**
-     * Function helper
-     * @return string
-     */
-    public function makePathSlug(): string
-    {
-        return date('Y') . '/' . date('n');
     }
 }
