@@ -35,8 +35,10 @@ class RecipesUpdateRequestTest extends TestCase
             'ready' => 1,
         ];
 
-        $this->user = make(User::class, ['id' => 1]);
-        $this->recipe = create(Recipe::class, ['user_id' => $this->user->id], null, 'draft');
+        $this->user = make(User::class);
+        $this->recipe = create(Recipe::class, [
+            'user_id' => $this->user->id
+        ], null, 'draft');
     }
 
     /**
@@ -46,8 +48,9 @@ class RecipesUpdateRequestTest extends TestCase
      */
     private function makeRequest(): void
     {
-        $this->actingAs($this->user)
-            ->put(action('RecipeController@update', $this->recipe->slug), $this->data);
+        $this->actingAs($this->user)->put(
+            action('RecipeController@update', $this->recipe->slug),$this->data
+        );
     }
 
     /**
@@ -169,7 +172,6 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['categories'] = '';
         $this->data['title'] = 'This title will not be saved because of validation';
         $this->makeRequest();
-        $this->assertTrue(Recipe::where('meal_id', $this->data['meal'])->doesntExist());
         $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
 
@@ -194,7 +196,6 @@ class RecipesUpdateRequestTest extends TestCase
         $this->data['categories'] = [0 => 'string'];
         $this->data['title'] = 'This title will not be saved because of validation';
         $this->makeRequest();
-        $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
         $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
 
