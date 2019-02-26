@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Support\Responsable;
 use File;
-use App\Repos\RecipeRepo;
 use App\Helpers\Controllers\RecipeHelpers;
 
 class UpdateResponse implements Responsable
@@ -65,7 +64,8 @@ class UpdateResponse implements Responsable
         }
 
         if ($this->recipe->isReady()) {
-            return $this->clearCacheAndRedirectWithSuccess();
+            cache()->forget('unapproved_notif');
+            return $this->redirectWithSuccess();
         }
 
         if (request()->has('view')) {
@@ -79,7 +79,7 @@ class UpdateResponse implements Responsable
     /**
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function fireEventAndRedirectWithSuccess(): RedirectResponse
+    public function fireEventAndRedirectWithSuccess(): RedirectResponse
     {
         event(new \App\Events\RecipeGotApproved($this->recipe));
 
@@ -88,12 +88,11 @@ class UpdateResponse implements Responsable
     }
 
     /**
+     * @codeCoverageIgnore
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function clearCacheAndRedirectWithSuccess(): RedirectResponse
+    protected function redirectWithSuccess(): RedirectResponse
     {
-        cache()->forget('unapproved_notif');
-
         return redirect('/users/other/my-recipes')
             ->withSuccess(trans('recipes.added_to_approving'));
     }

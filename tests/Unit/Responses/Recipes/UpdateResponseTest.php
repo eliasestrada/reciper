@@ -135,6 +135,16 @@ class UpdateResponseTest extends TestCase
     }
 
     /**
+     * @author Cho
+     * @test
+     */
+    public function method_fireEventAndRedirectWithSuccess_fires_event(): void
+    {
+        $this->expectsEvents(\App\Events\RecipeGotApproved::class);
+        $this->classReponse(Recipe::make())->fireEventAndRedirectWithSuccess();
+    }
+
+    /**
      * Helper function just deletes uploaded files after test
      * 
      * @param string $filename
