@@ -88,7 +88,6 @@ class UpdateResponse implements Responsable
     }
 
     /**
-     * @codeCoverageIgnore
      * @return \Illuminate\Http\RedirectResponse
      */
     protected function redirectWithSuccess(): RedirectResponse
@@ -174,15 +173,15 @@ class UpdateResponse implements Responsable
         }
 
         $path_slug = $this->makePathSlug();
-        $path = storage_path("app/public/big/recipes/{$path_slug}");
+        $path_big = storage_path("app/public/big/recipes/{$path_slug}");
         $path_small = storage_path("app/public/small/recipes/{$path_slug}");
         $image_name = "{$slug}.{$image->getClientOriginalExtension()}";
 
-        $this->makeNeededDirectoriesFor([$path, $path_small]);
+        $this->makeNeededDirectoriesFor([$path_big, $path_small]);
 
         $this->uploadImages($image, $image_name, [
             [
-                'path' => $path,
+                'path' => $path_big,
                 'width' => 600,
                 'height' => 400,
                 'watermark' => true,
