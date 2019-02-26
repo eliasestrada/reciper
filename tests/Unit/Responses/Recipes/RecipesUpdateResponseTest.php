@@ -2,10 +2,13 @@
 
 namespace Tests\Unit;
 
+use File;
+use Mockery;
+use Storage;
 use Tests\TestCase;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Http\Request;
 use App\Models\Recipe;
+use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use App\Http\Responses\Controllers\Recipes\UpdateResponse;
 
 class RecipesUpdateResponseTest extends TestCase
@@ -18,7 +21,7 @@ class RecipesUpdateResponseTest extends TestCase
      */
     private function classReponse(Recipe $recipe): UpdateResponse
     {
-        $recipe_repo = \Mockery::mock('App\Repos\RecipeRepo');
+        $recipe_repo = Mockery::mock('App\Repos\RecipeRepo');
         $recipe_repo->shouldReceive('find')->once()->andReturn($recipe);
 
         return new UpdateResponse('some-slug', $recipe_repo);
@@ -120,7 +123,11 @@ class RecipesUpdateResponseTest extends TestCase
             $this->assertFileExists(storage_path("app/public/{$dir}/recipes/{$filename}"));
         }, ['small', 'big']);
 
-        $this->cleanAfterYourself($filename);
+        // Clean after test by removing files
+        Storage::delete([
+            "public/big/recipes/{$filename}",
+            "public/small/recipes/{$filename}",
+        ]);
     }
 
     /**
@@ -145,16 +152,16 @@ class RecipesUpdateResponseTest extends TestCase
     }
 
     /**
-     * Helper function just deletes uploaded files after test
-     * 
-     * @param string $filename
-     * @return void
+     * @author Cho
+     * @test
      */
-    private function cleanAfterYourself(string $filename): void
+    public function method_createDirectories_creates_directories_in_given_paths(): void
     {
-        \Storage::delete([
-            "public/big/recipes/{$filename}",
-            "public/small/recipes/{$filename}",
-        ]);
+        $directory = storage_path('framework/testing/' . str_random(5));
+        $this->classReponse(Recipe::make())->createDirectories([$directory]);
+        $this->assertDirectoryExists($directory);
+
+        // Clean after test by removing created directory
+        File::deleteDirectory($directory);
     }
 }
