@@ -156,12 +156,17 @@ trait RecipeHelpers
      */
     public function getStatusText(): string
     {
-        if ($this->isDone()) {
-            return trans('users.checked');
-        } elseif (!$this->isReady()) {
-            return trans('users.not_ready');
-        } else {
-            return trans('users.is_checking');
+        switch (true) {
+            case $this->isDone():
+                return trans('users.checked');
+                break;
+
+            case !$this->isReady():
+                return trans('users.not_ready');
+                break;
+
+            default:
+                return trans('users.is_checking');
         }
     }
 
@@ -173,12 +178,17 @@ trait RecipeHelpers
      */
     public function getStatusIcon(): string
     {
-        if ($this->isDone()) {
-            return 'fa-check';
-        } elseif (!$this->isReady()) {
-            return 'fa-pen';
-        } else {
-            return 'fa-clock';
+        switch (true) {
+            case $this->isDone():
+                return 'fa-check';
+                break;
+
+            case !$this->isReady():
+                return 'fa-pen';
+                break;
+
+            default:
+                return 'fa-clock';
         }
     }
 
@@ -190,20 +200,27 @@ trait RecipeHelpers
      */
     public function getStatusColor(): string
     {
-        if ($this->isDone()) {
-            return '#65b56e';
-        } elseif (!$this->isReady()) {
-            return '#ce7777';
-        } else {
-            return '#e2bd18';
+        switch (true) {
+            case $this->isDone():
+                return '#65b56e';
+                break;
+
+            case !$this->isReady():
+                return '#ce7777';
+                break;
+
+            default:
+                return '#e2bd18';
         }
     }
 
     /**
      * This method will update recipe and set ready,
      * approved and approver_id field to 0
+     * 
+     * @return bool
      */
-    public function moveToDrafts()
+    public function moveToDrafts(): bool
     {
         return $this->update([
             _('ready') => 0,
