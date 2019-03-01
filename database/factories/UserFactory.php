@@ -6,9 +6,9 @@ $factory->define(User::class, function () {
     return [
         'name' => str_random(10),
         'status' => '',
-        'email' => str_random(7) . '@mail.ru',
+        'email' => mt_rand(0, 10000) . '@mail.ru',
         'token' => null,
-        'username' => 'user-' . str_random(8),
+        'username' => 'user-' . mt_rand(0, 10000),
         'password' => bcrypt('111111'),
         'remember_token' => mt_rand(1, 99),
         'photo' => 'default.jpg',
