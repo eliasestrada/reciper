@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Resourses;
 
-use App\Models\Recipe;
+use App\Repos\RecipeRepo;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipesRandomResource;
 
@@ -14,10 +14,10 @@ class RandomRecipesController extends Controller
      * @param int $visitor_id
      * @return object|null
      */
-    public function boot(int $visitor_id): ?object
+    public function boot(int $visitor_id, RecipeRepo $recipe_repo): ?object
     {
         return RecipesRandomResource::collection(
-            Recipe::getRandomUnseen(12, 4, $visitor_id)
+            $recipe_repo->getRandomUnseen(12, 4, $visitor_id)
         );
     }
 }

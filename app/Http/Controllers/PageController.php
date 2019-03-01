@@ -3,21 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\View;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\View\View as ViewResponse;
+use App\Repos\RecipeRepo;
 
 class PageController extends Controller
 {
     /**
      * @return \Illuminate\View\View
      */
-    public function home(): ViewResponse
+    public function home(RecipeRepo $recipe_repo): ViewResponse
     {
         try {
-            $recipes = Recipe::getRandomUnseen(24, 20);
+            $recipes = $recipe_repo->getRandomUnseen(24, 20);
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
             $recipes = collect();
