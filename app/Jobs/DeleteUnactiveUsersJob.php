@@ -43,6 +43,7 @@ class DeleteUnactiveUsersJob
      * Job failed to process
      *
      * @codeCoverageIgnore
+     * @param \Exception $e
      * @return void
      */
     public function failed(Exception $e)

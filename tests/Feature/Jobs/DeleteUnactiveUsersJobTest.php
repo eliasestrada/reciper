@@ -7,7 +7,7 @@ use App\Models\Recipe;
 use App\Jobs\DeleteUnactiveUsersJob;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class Test extends TestCase
+class DeleteUnactiveUsersJobTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -100,8 +100,8 @@ class Test extends TestCase
     public function handle_method_deletes_unactive_users_even_if_they_have_some_roles(): void
     {
         $unactive_users = [
-            'admin' => create_user('admin', ['active' => 0, 'updated_at' => now()->subMonth()]),
-            'master' => create_user('master', ['active' => 0, 'updated_at' => now()->subYear()]),
+            'admin' => create_user('admin', ['active' => 0, 'updated_at' => now()->subMonths(2)]),
+            'master' => create_user('master', ['active' => 0, 'updated_at' => now()->subYears(2)]),
         ];
 
         $this->withoutJobs();
@@ -117,7 +117,7 @@ class Test extends TestCase
      */
     public function handle_method_deletes_unactive_user_even_if_he_has_favorite_recipe(): void
     {
-        $user = create_user('', ['active' => 0, 'updated_at' => now()->subMonth()]);
+        $user = create_user('', ['active' => 0, 'updated_at' => now()->subMonths(2)]);
         $recipe_id = create(Recipe::class)->id;
 
         $user->favs()->create(compact('recipe_id'));
