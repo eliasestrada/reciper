@@ -15,8 +15,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         \Schema::defaultStringLength(191);
+
         $this->showListOfCategories();
         $this->horizonRightsChecker();
+        $this->enableSqlQueryLogging(false);
 
         if ($this->app->env === 'production') {
             url()->forceScheme('https');
@@ -50,5 +52,23 @@ class AppServiceProvider extends ServiceProvider
             throw new UnauthorizedHttpException('Unauthorized');
         };
         Horizon::auth($onlyMaster);
+    }
+
+
+    /**
+     * Method for debuging sql queries
+     *
+     * @codeCoverageIgnore
+     * @param bool $enable
+     * @return void
+     */
+    private function enableSqlQueryLogging(bool $enable): void
+    {
+        if (app()->env == 'local' && $enable) {
+            \DB::listen(function ($query) {
+                dump("{$query->sql} | {$query->time} s");
+                // dump($query->bindings);
+            });
+        }
     }
 }
