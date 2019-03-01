@@ -14,9 +14,10 @@ class ViewRepo
      */
     public function pluckViewedRecipeIds(?int $visitor_id): Collection
     {
+        $visitor_id = $visitor_id ?? visitor_id();
+
         try {
-            return View::whereVisitorId($visitor_id ?? visitor_id())
-                ->pluck('recipe_id');
+            return View::whereVisitorId($visitor_id)->pluck('recipe_id');
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
             return collect();
