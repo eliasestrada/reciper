@@ -31,7 +31,7 @@ class EditResponse implements Responsable
      * @param \App\Models\User|null $user
      * @return void
      */
-    public function __construct(string $slug, $recipe_repo, $meal_repo, ?User $user = null)
+    public function __construct(string $slug, RecipeRepo $recipe_repo, MealRepo $meal_repo, ?User $user = null)
     {
         $this->user = $user ?? user();
         $this->recipe = $recipe_repo->find($slug);
