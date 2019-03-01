@@ -17,7 +17,7 @@ class PageController extends Controller
     public function home(RecipeRepo $recipe_repo): ViewResponse
     {
         try {
-            $recipes = $recipe_repo->getRandomUnseen(24, 20);
+            $recipes = $recipe_repo->getRandomUnseen(24);
         } catch (QueryException $e) {
             no_connection_error($e, __CLASS__);
             $recipes = collect();

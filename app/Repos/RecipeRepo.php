@@ -3,6 +3,7 @@
 namespace App\Repos;
 
 use App\Models\Recipe;
+use Illuminate\Support\Collection;
 use Illuminate\Database\QueryException;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -210,35 +211,34 @@ class RecipeRepo
      * Returns only those recipes that user haven't seen, if there no recipes
      * the he haven't seen, shows just random recipes
      *
-     * @param int $limit
-     * @param int $edge
+     * @param int $limit Limit results
      * @param int|null $visitor_id
-     * @return object
+     * @param \App\Repos\ViewRepo|null $view_repo
+     * @return \Illuminate\Support\Collection
      */
-    public static function getRandomUnseen(int $limit = 12, int $edge = 8, ?int $visitor_id = null)
+    public static function getRandomUnseen(int $limit = 12, ?int $visitor_id = null, ?ViewRepo $view_repo = null): Collection
     {
-        $seen = \App\Models\View::whereVisitorId($visitor_id ?? visitor_id())->pluck('recipe_id');
-        $columns = ['id', 'slug', 'image', _('title'), _('intro')];
-        $callback = function ($id) {
-            return ['id', '!=', $id];
+        $viewed = ($view_repo ?? new ViewRepo)->pluckViewedRecipeIds($visitor_id);
+
+        /** @var array $where_condition */
+        $where_condition = $viewed->map(function ($recipe_id) {
+            return ['id', '!=', $recipe_id];
+        })->toArray();
+
+        /** @var \Closure $select_unseen_callback */
+        $select_unseen_callback = function ($query) use ($where_condition) {
+            return $query->where($where_condition);
         };
 
-        // If not enough recipes to display, show just random recipes
-        if (Recipe::where($seen->map($callback)->toArray())->done(1)->count() < $edge) {
-            return Recipe::with(['favs', 'likes'])
-                ->select($columns)
+        /** @var bool $enough_recipes Check if recipes result is less than half of the limit */
+        $enough_recipes = Recipe::where($where_condition)->done(1)->count() < $limit / 2;
+
+        return Recipe::with(['favs', 'likes'])
+                ->select(['id', 'slug', 'image', _('title'), _('intro')])
                 ->inRandomOrder()
+                ->when($enough_recipes, $select_unseen_callback)
                 ->done(1)
                 ->limit($limit)
                 ->get();
-        }
-
-        return Recipe::with(['favs', 'likes'])
-            ->select($columns)
-            ->inRandomOrder()
-            ->where($seen->map($callback)->toArray())
-            ->done(1)
-            ->limit($limit)
-            ->get();
     }
 }
