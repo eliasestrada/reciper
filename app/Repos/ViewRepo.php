@@ -12,7 +12,7 @@ class ViewRepo
      * @param int|null $visitor_id
      * @return \Illuminate\Support\Collection
      */
-    public function pluckViewedRecipeIds(?int $visitor_id): Collection
+    public function pluckViewedRecipeIds(?int $visitor_id = null): Collection
     {
         $visitor_id = $visitor_id ?? visitor_id();
 
