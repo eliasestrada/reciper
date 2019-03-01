@@ -74,32 +74,4 @@ class Recipe extends Model
             _('approved') => $value,
         ]);
     }
-
-    /**
-     * Returns only those recipes that user haven't seen, if there no recipes
-     * the he haven't seen, shows just random recipes
-     *
-     * @param int $limit
-     * @param int $edge
-     * @param int|null $visitor_id
-     * @return object
-     */
-    public static function getRandomUnseen(int $limit = 12, int $edge = 8, ?int $visitor_id = null): object
-    {
-        $seen = View::whereVisitorId($visitor_id ?? visitor_id())->pluck('recipe_id');
-
-        $random = self::inRandomOrder()
-            ->where($seen->map(function ($id) {
-                return ['id', '!=', $id];
-            })->toArray())
-            ->done(1)
-            ->limit($limit)
-            ->get();
-
-        // If not enough recipes to display, show just random recipes
-        if ($random->count() < $edge) {
-            return self::inRandomOrder()->done(1)->limit($limit)->get();
-        }
-        return $random;
-    }
 }

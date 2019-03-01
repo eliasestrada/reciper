@@ -133,7 +133,7 @@ class RecipeRepo
         };
 
         try {
-            return Recipe::with('meal')
+            return Recipe::with('meal:name_en')
                 ->whereHas('meal', $queryWithMealCallback)
                 ->done(1)
                 ->paginate($pagin);
@@ -204,5 +204,41 @@ class RecipeRepo
             no_connection_error($e, __CLASS__);
             return null;
         }
+    }
+
+    /**
+     * Returns only those recipes that user haven't seen, if there no recipes
+     * the he haven't seen, shows just random recipes
+     *
+     * @param int $limit
+     * @param int $edge
+     * @param int|null $visitor_id
+     * @return object
+     */
+    public static function getRandomUnseen(int $limit = 12, int $edge = 8, ?int $visitor_id = null)
+    {
+        $seen = \App\Models\View::whereVisitorId($visitor_id ?? visitor_id())->pluck('recipe_id');
+        $columns = ['id', 'slug', 'image', _('title'), _('intro')];
+        $callback = function ($id) {
+            return ['id', '!=', $id];
+        };
+
+        // If not enough recipes to display, show just random recipes
+        if (Recipe::where($seen->map($callback)->toArray())->done(1)->count() < $edge) {
+            return Recipe::with(['favs', 'likes'])
+                ->select($columns)
+                ->inRandomOrder()
+                ->done(1)
+                ->limit($limit)
+                ->get();
+        }
+
+        return Recipe::with(['favs', 'likes'])
+            ->select($columns)
+            ->inRandomOrder()
+            ->where($seen->map($callback)->toArray())
+            ->done(1)
+            ->limit($limit)
+            ->get();
     }
 }
