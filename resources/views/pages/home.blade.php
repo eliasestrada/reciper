@@ -75,7 +75,7 @@
                                         ></div>
                                         <img class="activator lazy-load-img"
                                             alt="{{ $recipe->getTitle() }}"
-                                            src="{{ asset('storage/small/recipes/'.$recipe->image) }}"
+                                            src="{{ asset("storage/small/recipes/{$recipe->image}") }}"
                                         >
                                     </a>
                                 </div>
