@@ -19,7 +19,9 @@ class ShowResponse implements Responsable
      */
     public function __construct(string $slug)
     {
-        $this->recipe = Recipe::whereSlug($slug)->first();
+        $this->recipe = Recipe::with('user:id,username,photo,name,xp')
+            ->whereSlug($slug)
+            ->first();
     }
 
     /**
