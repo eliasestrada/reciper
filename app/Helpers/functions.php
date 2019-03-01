@@ -262,9 +262,9 @@ function no_connection_error($exception, string $file): void
 function setRandomBgColor(): string
 {
     return 'background-color: rgba(
-        ' . rand(0, 255) . ',
-        ' . rand(0, 255) . ',
-        ' . rand(0, 255) . ',
+        ' . mt_rand(0, 255) . ',
+        ' . mt_rand(0, 255) . ',
+        ' . mt_rand(0, 255) . ',
         0.3
     )';
 }

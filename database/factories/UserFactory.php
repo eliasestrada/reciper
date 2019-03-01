@@ -4,13 +4,13 @@ use App\Models\User;
 
 $factory->define(User::class, function () {
     return [
-        'name' => rand(1, 100000),
+        'name' => str_random(10),
         'status' => '',
-        'email' => rand(1, 100000) . '@mail.ru',
+        'email' => str_random(7) . '@mail.ru',
         'token' => null,
-        'username' => 'username-' . rand(1, 100000),
+        'username' => 'user-' . str_random(8),
         'password' => bcrypt('111111'),
-        'remember_token' => rand(1, 99),
+        'remember_token' => mt_rand(1, 99),
         'photo' => 'default.jpg',
         'xp' => 1,
         'popularity' => 0,
@@ -23,7 +23,7 @@ $factory->define(User::class, function () {
 });
 
 $factory->afterMaking(User::class, function ($user) {
-    $user->id = rand(20, 9999);
+    $user->id = mt_rand(20, 9999);
 });
 
 $factory->state(User::class, 'admin', function () {

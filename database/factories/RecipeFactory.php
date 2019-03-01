@@ -5,12 +5,12 @@ use App\Models\Recipe;
 $factory->define(Recipe::class, function () {
     return [
         'user_id' => 1,
-        'meal_id' => rand(1, 3),
+        'meal_id' => mt_rand(1, 3),
         'ru_approver_id' => 1,
         'en_approver_id' => 1,
-        'time' => rand(10, 160),
+        'time' => mt_rand(10, 160),
         'image' => 'default.jpg',
-        'simple' => rand(0, 1),
+        'simple' => mt_rand(0, 1),
         'slug' => str_random(10),
 
         // Russian language

@@ -29,8 +29,8 @@ class RecipesUpdateRequestTest extends TestCase
             'intro' => str_random(200),
             'ingredients' => str_random(300),
             'text' => str_random(400),
-            'meal' => rand(1, 3),
-            'time' => rand(1, 200),
+            'meal' => mt_rand(1, 3),
+            'time' => mt_rand(1, 200),
             'categories' => [0 => 2, 1 => 3],
             'ready' => 1,
         ];

@@ -32,7 +32,7 @@ class XpTest extends TestCase
         $xp = new Xp(make(User::class));
 
         foreach ($xp->levels as $level => $values) {
-            $xp->user->xp = rand($values['min'], $values['max']);
+            $xp->user->xp = mt_rand($values['min'], $values['max']);
             $this->assertEquals($level, $xp->getLevel());
         }
     }
@@ -46,7 +46,7 @@ class XpTest extends TestCase
         $xp = new Xp(make(User::class));
 
         foreach ($xp->levels as $level) {
-            $xp->user->xp = rand($level['min'], $level['max']);
+            $xp->user->xp = mt_rand($level['min'], $level['max']);
             $this->assertEquals($level['min'], $xp->minXpForCurrentLevel());
         }
     }
@@ -60,7 +60,7 @@ class XpTest extends TestCase
         $xp = new Xp(make(User::class));
 
         foreach ($xp->levels as $level) {
-            $xp->user->xp = rand($level['min'], $level['max']);
+            $xp->user->xp = mt_rand($level['min'], $level['max']);
             $this->assertEquals($level['max'], $xp->maxXpForCurrentLevel());
         }
     }

@@ -43,7 +43,7 @@ function create_user($role = null, $attributes = [], $times = null)
  */
 function uploadFakePhoto(): string
 {
-    $random = rand(1, 45);
+    $random = mt_rand(1, 45);
     copy(base_path("../tools/people/{$random}.jpg"), storage_path("app/public/small/users/{$random}.jpg"));
     copy(base_path("../tools/people/{$random}.jpg"), storage_path("app/public/big/users/{$random}.jpg"));
     return "{$random}.jpg";
@@ -57,7 +57,7 @@ function uploadFakePhoto(): string
  */
 function uploadFakeImage(): string
 {
-    $random = rand(1, 51);
+    $random = mt_rand(1, 51);
     copy(base_path("../tools/food/{$random}.jpg"), storage_path("app/public/small/recipes/{$random}.jpg"));
     copy(base_path("../tools/food/{$random}.jpg"), storage_path("app/public/big/recipes/{$random}.jpg"));
     return "{$random}.jpg";

@@ -43,7 +43,7 @@ class RecipeApprovedNotification extends Notification
     {
         return [
             'title' => trans('approves.recipe_published'),
-            'message' => trans('approves.approved_' . rand(1, 5), [
+            'message' => trans('approves.approved_' . mt_rand(1, 5), [
                 'title' => $this->recipe->getTitle(),
             ]),
             'link' => '/recipes/' . $this->recipe->slug,

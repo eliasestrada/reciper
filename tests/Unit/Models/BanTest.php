@@ -25,7 +25,7 @@ class BanTest extends TestCase
      */
     public function put_method_adds_user_to_ban_list(): void
     {
-        $user = make(User::class, ['id' => rand(2, 10000)]);
+        $user = make(User::class, ['id' => mt_rand(2, 10000)]);
         $output = Ban::put($user->id, 1, 'some message', false);
         $this->assertEquals($output->user_id, $user->id);
     }
