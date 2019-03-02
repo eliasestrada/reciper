@@ -4,7 +4,6 @@ namespace Tests\Unit\Models;
 
 use App\Models\Fav;
 use Tests\TestCase;
-use App\Models\User;
 
 class FavTest extends TestCase
 {
