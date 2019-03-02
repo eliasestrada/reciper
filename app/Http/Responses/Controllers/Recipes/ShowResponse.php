@@ -8,20 +8,23 @@ use App\Models\Recipe;
 use App\Models\Popularity;
 use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Support\Responsable;
+use App\Repos\RecipeRepo;
 
 class ShowResponse implements Responsable
 {
+    /**
+     * @var \App\Models\Recipe $recipe
+     */
     protected $recipe;
 
     /**
      * @param string $slug
+     * @param \App\Repos\RecipeRepo $recipe_repo
      * @return void
      */
-    public function __construct(string $slug)
+    public function __construct(string $slug, RecipeRepo $recipe_repo)
     {
-        $this->recipe = Recipe::with('user:id,username,photo,name,xp')
-            ->whereSlug($slug)
-            ->first();
+        $this->recipe = $recipe_repo->findWithAuthor($slug);
     }
 
     /**
