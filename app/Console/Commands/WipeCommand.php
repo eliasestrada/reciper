@@ -8,18 +8,21 @@ class WipeCommand extends Command
 {
     /**
      * The name and signature of the console command
+     * 
      * @var string
      */
     protected $signature = 'wipe';
 
     /**
      * The console command description
+     * 
      * @var string
      */
     protected $description = 'This command cleans cache and freshes databese';
 
     /**
      * Create a new command instance
+     * 
      * @return void
      */
     public function __construct()
@@ -29,9 +32,10 @@ class WipeCommand extends Command
 
     /**
      * Execute the console command
-     * @return mixed
+     * 
+     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         cache()->flush();
         session()->flush();
