@@ -31,6 +31,11 @@ class Help extends Model
     protected $guarded = ['id'];
 
     /**
+     * @var array $casts
+     */
+    protected $casts = ['deleted_at' => 'string'];
+
+    /**
      * Use or not laravel timestamps
      *
      * @var bool $timestamps
