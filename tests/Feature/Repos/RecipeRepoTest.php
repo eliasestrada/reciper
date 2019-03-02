@@ -214,4 +214,15 @@ class RecipeRepoTest extends TestCase
         $result = $this->repo->find($recipe->slug);
         $this->assertEquals($recipe->toBase(), $result->toBase());
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_findWithAuthor_returns_recipe_by_given_slug_with_user_db_record(): void
+    {
+        $recipe = create(Recipe::class);
+        $result = $this->repo->findWithAuthor($recipe->slug);
+        $this->assertEquals($recipe->user->username, $result->user->username);
+    }
 }

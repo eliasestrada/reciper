@@ -19,6 +19,17 @@ class RecipeRepo
     }
 
     /**
+     * @param string $slug
+     * @return \App\Models\Recipe
+     */
+    public function findWithAuthor(string $slug): Recipe
+    {
+        return Recipe::with('user:id,username,photo,name,xp')
+            ->whereSlug($slug)
+            ->first();
+    }
+
+    /**
      * @return mixed
      */
     public function paginateUnapprovedWaiting()
