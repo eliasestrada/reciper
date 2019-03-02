@@ -60,7 +60,7 @@ class RecipeController extends Controller
      */
     public function show(string $slug): ShowResponse
     {
-        return new ShowResponse($slug);
+        return new ShowResponse($slug, $this->repo);
     }
 
     /**
