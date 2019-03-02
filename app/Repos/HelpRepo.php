@@ -23,4 +23,18 @@ class HelpRepo
             return [];
         }
     }
+
+    /**
+     * @param int $id
+     * @return \App\Models\Help|null
+     */
+    public function find(int $id): ?Help
+    {
+        try {
+            return Help::find($id);
+        } catch (QueryException $e) {
+            no_connection_error($e, __CLASS__);
+            return null;
+        }
+    }
 }
