@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Visitor;
+use Illuminate\Support\Str;
 
 /**
  * @param string $string
@@ -47,6 +48,26 @@ function to_array_of_list_items(? string $str): array
 function user()
 {
     return auth()->user();
+}
+
+/**
+ * @param int $length
+ * @return string
+ */
+function string_random(int $length = 16): string
+{
+    return Str::random($length);
+}
+
+/**
+ * @param string $value
+ * @param int $limit
+ * @param string $end
+ * @return string
+ */
+function string_limit(string $value, int $limit = 100, $end = '...'): string
+{
+    return Str::limit($value, $limit, $end);
 }
 
 /**
