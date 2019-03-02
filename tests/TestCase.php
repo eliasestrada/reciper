@@ -8,7 +8,12 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
-    public function setUp()
+    /**
+     * Setup the test environment
+     *
+     * @return void
+     */
+    public function setUp(): void
     {
         parent::setUp();
     }
