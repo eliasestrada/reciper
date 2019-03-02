@@ -42,7 +42,7 @@ class AdminApprovesIndexPageTest extends TestCase
 
         $this->actingAs(create_user('admin'))
             ->get('/admin/approves/')
-            ->assertSeeText(str_limit($recipe->getTitle(), 45));
+            ->assertSeeText(string_limit($recipe->getTitle(), 45));
     }
 
     /**

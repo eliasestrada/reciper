@@ -20,6 +20,7 @@ class RecipesUpdateResponseTest extends TestCase
      */
     private function classReponse(Recipe $recipe): UpdateResponse
     {
+        /** @var \App\Repos\RecipeRepo $recipe_repo */
         $recipe_repo = $this->createMock(\App\Repos\RecipeRepo::class);
         $recipe_repo->method('find')->willReturn($recipe);
 
@@ -33,8 +34,8 @@ class RecipesUpdateResponseTest extends TestCase
     public function method_isSimple_returns_true_if_recipe_time_less_then_59(): void
     {
         $recipe = Recipe::make([
-            'ingredients' => str_random(10),
-            'text' => str_random(10),
+            'ingredients' => string_random(10),
+            'text' => string_random(10),
             'time' => 59,
         ]);
         $request = Request::create(null, null, $recipe->toArray());
@@ -49,8 +50,8 @@ class RecipesUpdateResponseTest extends TestCase
     public function method_isSimple_returns_false_if_recipe_time_more_then_59(): void
     {
         $recipe = Recipe::make([
-            'ingredients' => str_random(10),
-            'text' => str_random(10),
+            'ingredients' => string_random(10),
+            'text' => string_random(10),
             'time' => 60,
         ]);
         $request = Request::create(null, null, $recipe->toArray());
@@ -156,7 +157,7 @@ class RecipesUpdateResponseTest extends TestCase
      */
     public function method_createDirectories_creates_directories_in_given_paths(): void
     {
-        $directory = storage_path('framework/testing/' . str_random(5));
+        $directory = storage_path('framework/testing/' . string_random(5));
         $this->classReponse(Recipe::make())->createDirectories([$directory]);
         $this->assertDirectoryExists($directory);
 

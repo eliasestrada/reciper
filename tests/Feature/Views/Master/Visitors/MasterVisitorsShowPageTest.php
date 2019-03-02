@@ -11,12 +11,18 @@ class MasterVisitorsShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * @var \App\Models\Visitor $visitor
+     */
     private $visitor;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->visitor = create(Visitor::class);

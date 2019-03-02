@@ -15,7 +15,10 @@ class TopRecipersJobTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
     public function setUp(): void
     {

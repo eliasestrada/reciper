@@ -40,7 +40,7 @@ class MasterDocumentsCreatePageTest extends TestCase
      */
     public function master_can_create_document(): void
     {
-        $data = ['title' => str_random(20), 'text' => str_random(100)];
+        $data = ['title' => string_random(20), 'text' => string_random(100)];
 
         $this->actingAs(create_user('master'))
             ->post(action('Master\DocumentController@store'), $data);

@@ -9,12 +9,18 @@ class ManageUsersRequestTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * @var \App\Models\User $user
+     */
     private $user;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->user = create_user();
@@ -22,6 +28,7 @@ class ManageUsersRequestTest extends TestCase
 
     /**
      * @author Cho
+     * @return void
      */
     public function tearDown(): void
     {
@@ -41,7 +48,7 @@ class ManageUsersRequestTest extends TestCase
             ->put(action('Master\ManageUserController@update', [
                 'id' => $this->user->id,
             ]), [
-                'message' => str_random(40),
+                'message' => string_random(40),
             ]);
     }
 
@@ -71,7 +78,7 @@ class ManageUsersRequestTest extends TestCase
                 'id' => $this->user->id,
             ]), [
                 'days' => 'gg',
-                'message' => str_random(40),
+                'message' => string_random(40),
             ]);
     }
 
@@ -86,7 +93,7 @@ class ManageUsersRequestTest extends TestCase
                 'id' => $this->user->id,
             ]), [
                 'days' => 5,
-                'message' => str_random(config('valid.feedback.ban.message.min') - 1),
+                'message' => string_random(config('valid.feedback.ban.message.min') - 1),
             ]);
     }
 
@@ -101,7 +108,7 @@ class ManageUsersRequestTest extends TestCase
                 'id' => $this->user->id,
             ]), [
                 'days' => 5,
-                'message' => str_random(config('valid.feedback.ban.message.max') + 1),
+                'message' => string_random(config('valid.feedback.ban.message.max') + 1),
             ]);
     }
 }

@@ -9,10 +9,16 @@ class LogsShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * @var \App\Models\User $master
+     */
     private $master;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
     public function setUp(): void
     {

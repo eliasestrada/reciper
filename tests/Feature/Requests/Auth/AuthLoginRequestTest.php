@@ -7,14 +7,28 @@ use App\Models\User;
 
 class AuthLoginRequestTest extends TestCase
 {
+    /**
+     * @var \App\Models\User $user
+     */
     private $user;
+
+    /**
+     * @var int $pwd_max
+     */
     private $pwd_max;
+
+    /**
+     * @var int $pwd_min
+     */
     private $pwd_min;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->user = make(User::class, ['id' => 1, 'password' => bcrypt('111111')]);

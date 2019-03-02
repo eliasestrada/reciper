@@ -314,13 +314,13 @@ class RecipesEditPageTest extends TestCase
     public function form_data(array $new_value = []): array
     {
         $result = [
-            'title' => str_random(20),
+            'title' => string_random(20),
             'time' => 120,
             'meal' => 1,
             'ready' => 1,
-            'ingredients' => str_random(50),
-            'intro' => str_random(100),
-            'text' => str_random(200),
+            'ingredients' => string_random(50),
+            'intro' => string_random(100),
+            'text' => string_random(200),
             'image' => '',
             'categories' => [0 => 2, 1 => 3],
         ];

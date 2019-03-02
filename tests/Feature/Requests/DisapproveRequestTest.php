@@ -11,8 +11,9 @@ class DisapproveRequestTest extends TestCase
 
     /**
      * @author Cho
+     * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->assertDatabaseMissing('recipes', [
             'id' => 1,
@@ -43,7 +44,7 @@ class DisapproveRequestTest extends TestCase
         $this->actingAs(create_user('admin'))
             ->post(action('Admin\ApproveController@disapprove', [
                 'recipe' => 1,
-                'message' => str_random(config('valid.approves.disapprove.message.min') - 1),
+                'message' => string_random(config('valid.approves.disapprove.message.min') - 1),
             ]));
     }
 
@@ -56,7 +57,7 @@ class DisapproveRequestTest extends TestCase
         $this->actingAs(create_user('admin'))
             ->post(action('Admin\ApproveController@disapprove', [
                 'recipe' => 1,
-                'message' => str_random(config('valid.approves.disapprove.message.max') + 1),
+                'message' => string_random(config('valid.approves.disapprove.message.max') + 1),
             ]));
     }
 }

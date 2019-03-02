@@ -11,12 +11,18 @@ class MasterManageUsersShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * @var \App\Models\User $user
+     */
     private $user;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->user = create(User::class);
@@ -61,7 +67,7 @@ class MasterManageUsersShowPageTest extends TestCase
      */
     public function master_can_ban_user(): void
     {
-        $data = ['days' => 1, 'message' => str_random(40)];
+        $data = ['days' => 1, 'message' => string_random(40)];
 
         $this->actingAs(create_user('master'))
             ->put(action('Master\ManageUserController@update', [

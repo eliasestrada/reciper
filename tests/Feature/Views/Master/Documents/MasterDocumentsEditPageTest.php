@@ -40,7 +40,7 @@ class MasterDocumentsEditPageTest extends TestCase
      */
     public function master_can_move_documents_to_drafts_by_updating_document(): void
     {
-        $data = ['title' => str_random(20), 'text' => str_random(100)];
+        $data = ['title' => string_random(20), 'text' => string_random(100)];
         $doc = create(Document::class);
 
         $this->actingAs(create_user('master'))
@@ -59,7 +59,7 @@ class MasterDocumentsEditPageTest extends TestCase
      */
     public function master_cant_move_main_first_document_to_drafts(): void
     {
-        $data = ['title' => str_random(10), 'text' => str_random(100)];
+        $data = ['title' => string_random(10), 'text' => string_random(100)];
 
         $this->actingAs(create_user('master'))
             ->put(action('Master\DocumentController@update', [

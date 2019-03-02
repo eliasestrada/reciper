@@ -41,7 +41,7 @@
                                             @endif
                                             <div class="divider"></div>
                                         </span>
-                                        <p>{{ str_limit($feed->message) }}</p>
+                                        <p>{{ string_limit($feed->message) }}</p>
                                         <p class="mt-3"><b>@lang('documents.last_update'):</b></p>
                                         <p>{{ time_ago($feed->created_at) }}</p>
                                     </div>

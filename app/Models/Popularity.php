@@ -24,7 +24,7 @@ class Popularity
      * @param float $points
      * @return void
      */
-    public function add(float $points)
+    public function add(float $points): void
     {
         $this->user->increment('popularity', $points);
     }
@@ -33,7 +33,7 @@ class Popularity
      * @param float $points
      * @return void
      */
-    public function remove(float $points)
+    public function remove(float $points): void
     {
         $this->user->decrement('popularity', $points);
     }

@@ -34,7 +34,7 @@
                                         </a>
 
                                         <div class="item-content">
-                                            <section>{{ str_limit($recipe->getTitle(), 45) }}</section>
+                                            <section>{{ string_limit($recipe->getTitle(), 45) }}</section>
                                             <section>
                                                 <span class="grey-text">
                                                     @if ($i == 0)

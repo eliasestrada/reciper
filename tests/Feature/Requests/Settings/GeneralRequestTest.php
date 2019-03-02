@@ -9,15 +9,33 @@ class GeneralRequestTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * @var int $name_min
+     */
     private $name_min;
+
+    /**
+     * @var int $name_max
+     */
     private $name_max;
+
+    /**
+     * @var int $about_me_max
+     */
     private $about_me_max;
+
+    /**
+     * @var \Illuminate\Foundation\Testing\TestResponse $request
+     */
     private $request;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->name_min = config('valid.settings.general.name.min');
@@ -35,7 +53,7 @@ class GeneralRequestTest extends TestCase
     public function name_must_be_not_short(): void
     {
         $this->request->put(action('Settings\GeneralController@updateGeneral'), [
-            'name' => str_random($this->name_min - 1),
+            'name' => string_random($this->name_min - 1),
         ])->assertSeeText(preg_replace('/:min/', $this->name_min, trans('settings.name_min')));
     }
 
@@ -46,7 +64,7 @@ class GeneralRequestTest extends TestCase
     public function name_must_be_not_long(): void
     {
         $this->request->put(action('Settings\GeneralController@updateGeneral'), [
-            'name' => str_random($this->name_max + 1),
+            'name' => string_random($this->name_max + 1),
         ])->assertSeeText(preg_replace('/:max/', $this->name_max, trans('settings.name_max')));
     }
 }

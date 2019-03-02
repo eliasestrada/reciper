@@ -9,12 +9,18 @@ class EmailRequestTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * @var int $email_max
+     */
     private $email_max;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->email_max = config('valid.settings.email.max');
@@ -30,7 +36,7 @@ class EmailRequestTest extends TestCase
     public function email_must_be_not_long(): void
     {
         $this->request->put(action('Settings\GeneralController@updateEmail'), [
-            'email' => str_random($this->email_max + 1),
+            'email' => string_random($this->email_max + 1),
         ])->assertSeeText(str_replace(':max', $this->email_max, trans('settings.email_max')));
     }
 

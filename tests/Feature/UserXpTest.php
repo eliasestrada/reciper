@@ -13,13 +13,23 @@ class UserXpTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * @var int $xp_for_approve
+     */
     private $xp_for_approve;
+
+    /**
+     * @var int $max_xp
+     */
     private $max_xp;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->withoutNotifications();

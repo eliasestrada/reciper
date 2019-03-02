@@ -3,6 +3,7 @@
 namespace App\Http\Responses\Controllers\Recipes;
 
 use App\Models\Recipe;
+use Illuminate\Support\Str;
 use Illuminate\Http\RedirectResponse;
 use App\Helpers\Controllers\RecipeHelpers;
 use Illuminate\Contracts\Support\Responsable;
@@ -32,7 +33,7 @@ class StoreResponse implements Responsable
     {
         return user()->recipes()->create([
             _('title') => $title,
-            'slug' => str_slug($title) . '-' . time(),
+            'slug' => Str::slug($title) . '-' . time(),
         ]);
     }
 }

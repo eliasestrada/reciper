@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Resourses;
 
 use App\Repos\RecipeRepo;
 use App\Repos\VisitorRepo;
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipesResource;
 use App\Helpers\Controllers\RecipeHelpers;
@@ -71,7 +72,7 @@ class RecipeController extends Controller
                 );
                 break;
 
-            case str_contains($hash, 'category='):
+            case Str::contains($hash, 'category='):
                 return $this->paginateWithCategoryId((int) $hash, $pagin);
                 break;
 

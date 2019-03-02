@@ -13,12 +13,22 @@ class AdminApprovesShowPageTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * @var \App\Models\Recipe $unapproved_recipe
+     */
     private $unapproved_recipe;
+
+    /**
+     * @var \App\Models\User $admin
+     */
     private $admin;
 
     /**
+     * Setup the test environment
      * Creating admin and recipe with his id in approver_id column
+     * 
      * @author Cho
+     * @return void
      */
     public function setUp(): void
     {
@@ -117,7 +127,7 @@ class AdminApprovesShowPageTest extends TestCase
         $this->actingAs($this->admin)
             ->post(action('Admin\ApproveController@disapprove', [
                 'recipe' => $this->unapproved_recipe->id,
-                'message' => str_random(20),
+                'message' => string_random(20),
             ]));
     }
 

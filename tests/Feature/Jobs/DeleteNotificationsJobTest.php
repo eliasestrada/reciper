@@ -15,7 +15,10 @@ class DeleteNotificationsJobTest extends TestCase
     private $controller;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
     public function setUp(): void
     {
@@ -54,7 +57,7 @@ class DeleteNotificationsJobTest extends TestCase
     private function createNotificationReadAt(?Carbon $read_at = null): string
     {
         DatabaseNotification::create([
-            'id' => $id = str_random(7),
+            'id' => $id = string_random(7),
             'type' => 'Some type',
             'notifiable_type' => 'App\Models\User',
             'notifiable_id' => 1,

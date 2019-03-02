@@ -31,7 +31,7 @@ class RecipesShowPageTest extends TestCase
     public function user_can_report_recipe_by_sending_message(): void
     {
         $data = [
-            'message' => str_random(40),
+            'message' => string_random(40),
             'recipe_id' => 1,
         ];
 
@@ -45,13 +45,13 @@ class RecipesShowPageTest extends TestCase
      */
     public function user_cant_report_same_recipe_twice_per_day(): void
     {
-        $data = ['message' => str_random(40), 'recipe_id' => 1];
+        $data = ['message' => string_random(40), 'recipe_id' => 1];
 
         $this->post(action('Admin\FeedbackController@store'), $data);
         $this->assertDatabaseHas('feedback', $data);
 
         // Changin message but recipe is the same
-        $data['message'] = str_random(45);
+        $data['message'] = string_random(45);
 
         $this->post(action('Admin\FeedbackController@store'), $data);
         $this->assertDatabaseMissing('feedback', $data);
@@ -63,7 +63,7 @@ class RecipesShowPageTest extends TestCase
      */
     public function user_can_report_same_recipe_once_per_day(): void
     {
-        $data = ['message' => str_random(40), 'recipe_id' => 1];
+        $data = ['message' => string_random(40), 'recipe_id' => 1];
 
         // First request
         $this->post(action('Admin\FeedbackController@store'), $data);
@@ -71,7 +71,7 @@ class RecipesShowPageTest extends TestCase
 
         // Changing created_at field to minus day and changing message
         Feedback::latest()->first()->update(['created_at' => now()->subDay()]);
-        $data['message'] = str_random(45);
+        $data['message'] = string_random(45);
 
         // Making another request (imitating the next day)
         $this->post(action('Admin\FeedbackController@store'), $data);
@@ -84,8 +84,8 @@ class RecipesShowPageTest extends TestCase
      */
     public function user_can_report_2_recipes_in_the_same_day(): void
     {
-        $data1 = ['message' => str_random(40), 'recipe_id' => 1];
-        $data2 = ['message' => str_random(45), 'recipe_id' => create(Recipe::class)->id];
+        $data1 = ['message' => string_random(40), 'recipe_id' => 1];
+        $data2 = ['message' => string_random(45), 'recipe_id' => create(Recipe::class)->id];
 
         // First report
         $this->post(action('Admin\FeedbackController@store'), $data1);

@@ -12,10 +12,11 @@ class StatisticsPopularityChartTest extends TestCase
     /**
      * @author Cho
      * @test
-     * @expectedException \Exception
      */
     public function getDataFromUser_throws_exception_if_first_parameter_is_not_acceptable(): void
     {
+        $this->expectException(\Exception::class);
+
         $method = (new StatisticController)->getDataFromUser('something', make(User::class));
         $this->assertInstanceOf(Collection::class, $method);
     }

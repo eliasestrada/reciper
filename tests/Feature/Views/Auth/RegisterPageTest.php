@@ -38,10 +38,11 @@ class RegisterPageTest extends TestCase
      */
     public function new_user_can_register_with_correct_data(): void
     {
+        $password = string_random(config('valid.settings.password.min'));
         $form_data = [
-            'username' => str_random(5),
-            'password' => '111111',
-            'password_confirmation' => '111111',
+            'username' => string_random(5),
+            'password' => $password,
+            'password_confirmation' => $password,
         ];
 
         $this->post(route('register'), $form_data);

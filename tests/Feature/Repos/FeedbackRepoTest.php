@@ -19,7 +19,10 @@ class FeedbackRepoTest extends TestCase
     private $repo;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
     public function setUp(): void
     {
@@ -84,7 +87,7 @@ class FeedbackRepoTest extends TestCase
      */
     public function method_paginateWithLanguage_returns_paginated_feeds_with_given_language(): void
     {
-        create(Feedback::class, ['lang' => 'ru'], 1);
+        $test = create(Feedback::class, ['lang' => 'ru'], 1);
         $this->assertCount(1, $this->repo->paginateWithLanguage('ru'));
     }
 

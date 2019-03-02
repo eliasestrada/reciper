@@ -42,7 +42,7 @@ class AdminFeedbackIndexPageTest extends TestCase
             'visitor_id' => 1,
             'lang' => _(),
             'email' => 'denis@gmail.com',
-            'message' => $msg = str_random(20),
+            'message' => $msg = string_random(20),
         ]);
 
         // Go to admin's feedback page
@@ -61,7 +61,7 @@ class AdminFeedbackIndexPageTest extends TestCase
             'visitor_id' => 1,
             'lang' => _(),
             'email' => 'johndoe@gmail.com',
-            'message' => str_random(20),
+            'message' => string_random(20),
         ]);
 
         // Delete the feed message

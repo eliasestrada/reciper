@@ -9,7 +9,7 @@ $factory->define(Feedback::class, function () {
         'visitor_id' => factory(Visitor::class)->create()->id,
         'recipe_id' => null,
         'lang' => _(),
-        'message' => str_random(100),
+        'message' => string_random(100),
     ];
 });
 

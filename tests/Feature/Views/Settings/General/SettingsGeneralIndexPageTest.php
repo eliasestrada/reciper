@@ -39,7 +39,7 @@ class SettingsGeneralIndexPageTest extends TestCase
     public function user_can_update_his_name(): void
     {
         $user = create_user();
-        $new_name = str_random(7);
+        $new_name = string_random(7);
 
         $this->actingAs($user)->put(action('Settings\GeneralController@updateGeneral'), [
             'name' => $new_name,
@@ -54,11 +54,11 @@ class SettingsGeneralIndexPageTest extends TestCase
     public function user_can_change_about_me_information(): void
     {
         $user = create_user();
-        $status = str_random(10);
+        $status = string_random(10);
 
         $this->actingAs($user)->put(action('Settings\GeneralController@updateGeneral'), [
-            'name' => $name = str_random(7),
-            'status' => $status = str_random(7),
+            'name' => $name = string_random(7),
+            'status' => $status = string_random(7),
         ]);
 
         $this->assertEquals($name, $user->name);

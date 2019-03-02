@@ -24,7 +24,7 @@ class RecipesIndexPageTest extends TestCase
         $user = create_user();
 
         $this->actingAs($user)->post(action('RecipeController@store'), [
-            'title' => $title = str_random(10),
+            'title' => $title = string_random(10),
         ]);
 
         $this->assertDatabaseHas('recipes', [
@@ -42,7 +42,7 @@ class RecipesIndexPageTest extends TestCase
     public function recipe_cant_be_created_by_guest(): void
     {
         $this->post(action('RecipeController@store'), [
-            'title' => $title = str_random(10),
+            'title' => $title = string_random(10),
         ]);
 
         $this->assertDatabaseMissing('recipes', [_('title') => $title]);

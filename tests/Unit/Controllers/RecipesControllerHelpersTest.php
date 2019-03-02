@@ -2,8 +2,10 @@
 
 namespace Tests\Unit\Controllers;
 
+use File;
 use Tests\TestCase;
 use App\Models\User;
+use App\Jobs\DeleteFileJob;
 use App\Helpers\Controllers\RecipeHelpers;
 use App\Notifications\ScriptAttackNotification;
 
@@ -15,7 +17,10 @@ class RecipeControllerHelpersTest extends TestCase
     private $class;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
     public function setUp(): void
     {
@@ -25,10 +30,11 @@ class RecipeControllerHelpersTest extends TestCase
 
     /**
      * @author Cho
+     * @return void
      */
     public function tearDown(): void
     {
-        \File::cleanDirectory(storage_path('logs'));
+        File::cleanDirectory(storage_path('logs'));
         parent::tearDown();
     }
 
@@ -89,7 +95,7 @@ class RecipeControllerHelpersTest extends TestCase
      */
     public function method_dispatchDeleteFileJob_dispatches_the_job(): void
     {
-        $this->expectsJobs(\App\Jobs\DeleteFileJob::class);
+        $this->expectsJobs(DeleteFileJob::class);
         $this->class->dispatchDeleteFileJob('lorem.jpg');
     }
 
@@ -99,7 +105,7 @@ class RecipeControllerHelpersTest extends TestCase
      */
     public function method_dispatchDeleteFileJob_not_dispatches_the_job_if_filename_is_default_jpg(): void
     {
-        $this->doesntExpectJobs(\App\Jobs\DeleteFileJob::class);
+        $this->doesntExpectJobs(DeleteFileJob::class);
         $this->class->dispatchDeleteFileJob('default.jpg');
     }
 
@@ -112,7 +118,7 @@ class RecipeControllerHelpersTest extends TestCase
         $cache = ['popular_recipes', 'random_recipes', 'unapproved_notif'];
 
         array_walk($cache, function ($name) {
-            cache()->put($name, str_random(5));
+            cache()->put($name, string_random(5));
         });
 
         $this->class->clearCache();

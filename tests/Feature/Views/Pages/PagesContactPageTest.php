@@ -40,8 +40,8 @@ class PagesContactPageTest extends TestCase
      */
     public function user_cant_send_feedback_message_more_then_once_per_day(): void
     {
-        $first_data = ['email' => 'test@emil.com', 'message' => str_random(20)];
-        $second_data = ['email' => 'test2@emil.com', 'message' => str_random(20)];
+        $first_data = ['email' => 'test@emil.com', 'message' => string_random(20)];
+        $second_data = ['email' => 'test2@emil.com', 'message' => string_random(20)];
 
         // First attempt to send a message, should be successful
         $this->post(action('Admin\FeedbackController@store'), $first_data);

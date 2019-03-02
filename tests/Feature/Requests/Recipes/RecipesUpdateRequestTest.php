@@ -13,22 +13,36 @@ class RecipesUpdateRequestTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * @var array $data
+     */
     private $data;
+
+    /**
+     * @var \App\Models\User $user
+     */
     private $user;
+
+    /**
+     * @var \App\Models\Recipe $recipe
+     */
     private $recipe;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         $this->data = [
-            'title' => str_random(30),
-            'intro' => str_random(200),
-            'ingredients' => str_random(300),
-            'text' => str_random(400),
+            'title' => string_random(30),
+            'intro' => string_random(200),
+            'ingredients' => string_random(300),
+            'text' => string_random(400),
             'meal' => mt_rand(1, 3),
             'time' => mt_rand(1, 200),
             'categories' => [0 => 2, 1 => 3],
@@ -59,7 +73,7 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function title_must_be_not_short(): void
     {
-        $this->data['title'] = str_random(config('valid.recipes.title.min') - 1);
+        $this->data['title'] = string_random(config('valid.recipes.title.min') - 1);
         $this->makeRequest();
         $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
@@ -70,7 +84,7 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function title_must_be_not_long(): void
     {
-        $this->data['title'] = str_random(config('valid.recipes.title.max') + 1);
+        $this->data['title'] = string_random(config('valid.recipes.title.max') + 1);
         $this->makeRequest();
         $this->assertTrue(Recipe::where(_('title'), $this->data['title'])->doesntExist());
     }
@@ -81,7 +95,7 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function intro_must_be_not_short(): void
     {
-        $this->data['intro'] = str_random(config('valid.recipes.intro.min') - 1);
+        $this->data['intro'] = string_random(config('valid.recipes.intro.min') - 1);
         $this->makeRequest();
         $this->assertTrue(Recipe::where(_('intro'), $this->data['intro'])->doesntExist());
     }
@@ -92,7 +106,7 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function intro_must_be_not_long(): void
     {
-        $this->data['intro'] = str_random(config('valid.recipes.intro.max') + 1);
+        $this->data['intro'] = string_random(config('valid.recipes.intro.max') + 1);
         $this->makeRequest();
         $this->assertTrue(Recipe::where(_('intro'), $this->data['intro'])->doesntExist());
     }
@@ -103,7 +117,7 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function ingredients_must_be_not_short(): void
     {
-        $this->data['ingredients'] = str_random(config('valid.recipes.ingredients.min') - 1);
+        $this->data['ingredients'] = string_random(config('valid.recipes.ingredients.min') - 1);
         $this->makeRequest();
         $this->assertTrue(Recipe::where(_('ingredients'), $this->data['ingredients'])->doesntExist());
     }
@@ -114,7 +128,7 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function ingredients_must_be_not_long(): void
     {
-        $this->data['ingredients'] = str_random(config('valid.recipes.ingredients.max') + 1);
+        $this->data['ingredients'] = string_random(config('valid.recipes.ingredients.max') + 1);
         $this->makeRequest();
         $this->assertTrue(Recipe::where(_('ingredients'), $this->data['ingredients'])->doesntExist());
     }
@@ -125,7 +139,7 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function text_must_be_not_short(): void
     {
-        $this->data['text'] = str_random(config('valid.recipes.text.min') - 1);
+        $this->data['text'] = string_random(config('valid.recipes.text.min') - 1);
         $this->makeRequest();
         $this->assertTrue(Recipe::where(_('text'), $this->data['text'])->doesntExist());
     }
@@ -136,7 +150,7 @@ class RecipesUpdateRequestTest extends TestCase
      */
     public function text_must_be_not_long(): void
     {
-        $this->data['text'] = str_random(config('valid.recipes.text.max') + 1);
+        $this->data['text'] = string_random(config('valid.recipes.text.max') + 1);
         $this->makeRequest();
         $this->assertTrue(Recipe::where(_('text'), $this->data['text'])->doesntExist());
     }

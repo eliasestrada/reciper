@@ -6,13 +6,23 @@ use Tests\TestCase;
 
 class FeedbackRequestTest extends TestCase
 {
+    /**
+     * @var int $msg_min
+     */
     private $msg_min;
+
+    /**
+     * @var int $msg_max
+     */
     private $msg_max;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->msg_min = config('valid.feedback.contact.message.min');
@@ -39,7 +49,7 @@ class FeedbackRequestTest extends TestCase
      */
     public function contact_email_is_required(): void
     {
-        $data = ['email' => '', 'message' => str_random(50)];
+        $data = ['email' => '', 'message' => string_random(50)];
 
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
@@ -52,7 +62,7 @@ class FeedbackRequestTest extends TestCase
      */
     public function email_should_be_email_format(): void
     {
-        $data = ['email' => 'testing@mail', 'message' => str_random(50)];
+        $data = ['email' => 'testing@@mail', 'message' => string_random(50)];
 
         $this->followingRedirects()
             ->post(action('Admin\FeedbackController@store'), $data)
@@ -67,7 +77,7 @@ class FeedbackRequestTest extends TestCase
     {
         $data = [
             'email' => 'other@email.com',
-            'message' => str_random($this->msg_min - 1),
+            'message' => string_random($this->msg_min - 1),
         ];
 
         $this->followingRedirects()
@@ -83,7 +93,7 @@ class FeedbackRequestTest extends TestCase
     {
         $data = [
             'email' => 'somerandom@gmail.com',
-            'message' => str_random($this->msg_max + 1),
+            'message' => string_random($this->msg_max + 1),
         ];
 
         $this->followingRedirects()
@@ -97,7 +107,7 @@ class FeedbackRequestTest extends TestCase
      */
     public function recipe_id_field_must_be_integer(): void
     {
-        $data = ['message' => str_random(50), 'recipe_id' => 'h'];
+        $data = ['message' => string_random(50), 'recipe_id' => 'h'];
         $this->post(action('Admin\FeedbackController@store'), $data);
         $this->assertDatabaseMissing('feedback', $data);
     }

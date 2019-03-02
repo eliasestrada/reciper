@@ -18,7 +18,10 @@ class ViewRepoTest extends TestCase
     private $repo;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
     public function setUp(): void
     {

@@ -7,10 +7,16 @@ use App\Models\User;
 
 class RecipesStoreRequestTest extends TestCase
 {
+    /**
+     * @var \App\Models\User $user
+     */
     private $user;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
     public function setUp(): void
     {
@@ -37,7 +43,7 @@ class RecipesStoreRequestTest extends TestCase
     {
         $this->actingAs($this->user)
             ->post(action('RecipeController@store'), [
-                'title' => str_random(config('valid.recipes.title.min') - 1),
+                'title' => string_random(config('valid.recipes.title.min') - 1),
             ])
             ->assertRedirect('/users');
     }
@@ -50,7 +56,7 @@ class RecipesStoreRequestTest extends TestCase
     {
         $this->actingAs($this->user)
             ->post(action('RecipeController@store'), [
-                'title' => str_random(config('valid.recipes.title.max') + 1),
+                'title' => string_random(config('valid.recipes.title.max') + 1),
             ])
             ->assertRedirect('/users');
     }

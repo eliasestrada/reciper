@@ -48,8 +48,8 @@ class MasterHelpCreatePageTest extends TestCase
     public function admin_can_add_new_help_answer(): void
     {
         $form_data = [
-            'title' => str_random(17),
-            'text' => str_random(27),
+            'title' => string_random(17),
+            'text' => string_random(27),
             'category' => 1,
         ];
 

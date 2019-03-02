@@ -10,11 +10,21 @@ class MasterHelpEditPageTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * @var \App\Models\Help $help
+     */
     private $help;
+
+    /**
+     * @var string $url
+     */
     private $url;
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
     public function setUp(): void
     {
@@ -62,8 +72,8 @@ class MasterHelpEditPageTest extends TestCase
     public function admin_can_add_new_help_material(): void
     {
         $form_data = [
-            'title' => $title = str_random(17),
-            'text' => str_random(27),
+            'title' => $title = string_random(17),
+            'text' => string_random(27),
             'category' => 1,
         ];
 
@@ -84,8 +94,8 @@ class MasterHelpEditPageTest extends TestCase
     {
         $help = create(Help::class);
         $form_data = [
-            'title' => str_random(17),
-            'text' => str_random(27),
+            'title' => string_random(17),
+            'text' => string_random(27),
             'category' => 1,
         ];
 

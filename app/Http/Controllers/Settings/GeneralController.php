@@ -86,7 +86,7 @@ class GeneralController extends Controller
             return back()->withError(trans('settings.email_change_once_per_week'));
         }
 
-        $user->update(['email' => request('email'), 'token' => str_random(30)]);
+        $user->update(['email' => request('email'), 'token' => string_random(30)]);
         $user->notify(new VerifyEmailNotification($user));
 
         // Add user to cache for 1 week

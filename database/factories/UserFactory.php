@@ -4,7 +4,7 @@ use App\Models\User;
 
 $factory->define(User::class, function () {
     return [
-        'name' => str_random(10),
+        'name' => string_random(10),
         'status' => '',
         'email' => mt_rand(0, 10000) . '@mail.ru',
         'token' => null,

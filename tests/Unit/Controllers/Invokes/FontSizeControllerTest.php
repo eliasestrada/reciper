@@ -7,9 +7,12 @@ use Tests\TestCase;
 class FontSizeControllerTest extends TestCase
 {
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         cookie()->forget('r_font_size');

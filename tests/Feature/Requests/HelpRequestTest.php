@@ -10,24 +10,31 @@ class HelpRequestTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * @var array $data
+     */
     private $data = [];
 
     /**
+     * Setup the test environment
+     * 
      * @author Cho
+     * @return void
      */
     public function setUp(): void
     {
         parent::setUp();
 
         $this->data = [
-            'title' => str_random('30'),
-            'text' => str_random('70'),
+            'title' => string_random(30),
+            'text' => string_random(70),
             'category' => 1,
         ];
     }
 
     /**
      * @author Cho
+     * @return void
      */
     public function tearDown(): void
     {
@@ -53,7 +60,7 @@ class HelpRequestTest extends TestCase
      */
     public function title_must_be_not_short(): void
     {
-        $this->data['title'] = str_random(config('valid.help.title.min') - 1);
+        $this->data['title'] = string_random(config('valid.help.title.min') - 1);
     }
 
     /**
@@ -62,7 +69,7 @@ class HelpRequestTest extends TestCase
      */
     public function title_must_be_not_long(): void
     {
-        $this->data['title'] = str_random(config('valid.help.title.max') + 1);
+        $this->data['title'] = string_random(config('valid.help.title.max') + 1);
     }
 
     /**
@@ -80,7 +87,7 @@ class HelpRequestTest extends TestCase
      */
     public function text_must_be_not_short(): void
     {
-        $this->data['text'] = str_random(config('valid.help.text.min') - 1);
+        $this->data['text'] = string_random(config('valid.help.text.min') - 1);
     }
 
     /**
@@ -89,7 +96,7 @@ class HelpRequestTest extends TestCase
      */
     public function text_must_be_not_long(): void
     {
-        $this->data['text'] = str_random(config('valid.help.text.max') + 1);
+        $this->data['text'] = string_random(config('valid.help.text.max') + 1);
     }
 
     /**
