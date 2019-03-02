@@ -11,31 +11,55 @@
     <div class="col s12 m7 l8 mt-3">
         <div class="row">
             <div class="col s12 paper-dark settings-section mt-0">
+
+                {{-- General setting form --}}
                 <form action="{{ action('Settings\GeneralController@updateGeneral') }}" method="post">
-                    @csrf @method('put')
+                    @csrf
+                    @method('put')
+
                     {{-- Name --}}
                     <h2 class="header">@lang('settings.reciper_name')</h2>
                     <div class="input-field">
                         <label for="name">@lang('forms.name')</label>
-                        <input type="text" name="name" id="name" value="{{ user()->name }}" data-length="{{ config('valid.settings.general.name.max') }}" class="counter" maxlength="{{ config('valid.settings.general.name.max') }}" minlength="{{ config('valid.settings.general.name.min') }}">
+                        <input type="text"
+                            id="name"
+                            name="name"
+                            value="{{ user()->name }}"
+                            data-length="{{ config('valid.settings.general.name.max') }}"
+                            class="counter"
+                            minlength="{{ config('valid.settings.general.name.min') }}"
+                            maxlength="{{ config('valid.settings.general.name.max') }}"
+                        >
                         @include('includes.input-error', ['field' => 'name'])
                     </div>
+
                     {{-- Status --}}
                     <div class="input-field">
-                        <textarea id="status" class="materialize-textarea counter" data-length="{{ config('valid.settings.general.status.max') }}" name="status" maxlength="{{ config('valid.settings.general.status.max') }}">{{ (user()->status ?? old('status')) }}</textarea>
+                        <textarea id="status"
+                            class="materialize-textarea counter"
+                            data-length="{{ config('valid.settings.general.status.max') }}"
+                            name="status"
+                            maxlength="{{ config('valid.settings.general.status.max') }}"
+                        >{{ (user()->status ?? old('status')) }}</textarea>
+
                         <label for="status">@lang('settings.status')</label>
+
                         @include('includes.input-error', ['field' => 'status'])
                     </div>
+
+                    {{-- Save button --}}
                     <button class="btn-small mt-2" type="submit">
                         <i class="fas fa-save left"></i>
                         @lang('forms.save')
                     </button>
                 </form>
             </div>
-            {{-- Email --}}
+
+            {{-- Change Email --}}
             <div class="col s12 paper-dark settings-section">
                 <form action="{{ action('Settings\GeneralController@updateEmail') }}" method="post">
-                    @csrf @method('put')
+                    @csrf
+                    @method('put')
 
                     <h2 class="header">@lang('forms.email')</h2>
 
@@ -44,7 +68,15 @@
                             @lang('forms.email_desc')
                             @include('includes.tip', ['tip' => trans('tips.email_settings_tip')])
                         </label>
-                        <input type="text" name="email" id="email" value="{{ user()->email }}" data-length="{{ config('valid.settings.email.max') }}" class="counter" maxlength="{{ config('valid.settings.email.max') }}">
+                        <input type="text"
+                            name="email"
+                            id="email"
+                            value="{{ user()->email }}"
+                            data-length="{{ config('valid.settings.email.max') }}"
+                            class="counter"
+                            maxlength="{{ config('valid.settings.email.max') }}"
+                        />
+
                         @include('includes.input-error', ['field' => 'email'])
 
                         @if (!empty(user()->email))
@@ -55,35 +87,59 @@
                             </span>
                         @endif
                     </div>
+
+                    {{-- Save button --}}
                     <button class="btn-small mt-2" type="submit">
                         <i class="fas fa-save left"></i>
                         @lang('forms.save')
                     </button>
                 </form>
             </div>
-            {{-- Password --}}
+
+            {{-- Change Password Form --}}
             <div class="col s12 paper-dark settings-section">
                 <h2 class="header">@lang('forms.change_pwd')</h2>
+
                 <form action="{{ action('Settings\GeneralController@updatePassword') }}" method="post">
-                    @method('put') @csrf
+                    @method('put')
+                    @csrf
+
+                    {{-- Old password input --}}
                     <div class="input-field">
                         <label for="old_password">@lang('forms.current_pwd')</label>
-                        {{-- <input type="password" name="old_password" id="old_password" minlength="{{ config('valid.settings.password.min') }}" maxlength="{{ config('valid.settings.password.max') }}"> --}}
-                        <input type="password" name="old_password" id="old_password">
+                        <input type="password"
+                            name="old_password"
+                            id="old_password"
+                            minlength="{{ config('valid.settings.password.min') }}"
+                            maxlength="{{ config('valid.settings.password.max') }}"
+                        />
                         @include('includes.input-error', ['field' => 'old_password'])
                     </div>
 
+                    {{-- Password input --}}
                     <div class="input-field">
                         <label for="new_password">@lang('forms.new_pwd')</label>
-                        <input type="password" name="password" id="new_password" minlength="{{ config('valid.settings.password.min') }}" maxlength="{{ config('valid.settings.password.max') }}">
+                        <input type="password"
+                            name="password"
+                            id="new_password"
+                            minlength="{{ config('valid.settings.password.min') }}"
+                            maxlength="{{ config('valid.settings.password.max') }}"
+                        />
                         @include('includes.input-error', ['field' => 'password'])
                     </div>
 
+                    {{-- Confirm password input --}}
                     <div class="input-field">
                         <label for="password_confirmation">@lang('forms.repeat_new_pwd')</label>
-                        <input type="password" name="password_confirmation" id="password_confirmation" minlength="{{ config('valid.settings.password.min') }}" maxlength="{{ config('valid.settings.password.max') }}">
+                        <input type="password"
+                            name="password_confirmation"
+                            id="password_confirmation"
+                            minlength="{{ config('valid.settings.password.min') }}"
+                            maxlength="{{ config('valid.settings.password.max') }}"
+                        />
                     </div>
 
+                    {{-- Save button --}}
                     <button class="btn-small mt-2" type="submit">
                         <i class="fas fa-save left"></i>
                         @lang('forms.save')
@@ -91,8 +147,14 @@
                 </form>
             </div>
         </div>
+
+        {{-- Delete account modal --}}
         <div class="center">
-            <a href="#delete-account-modal" title="@lang('settings.delete_account')" class="modal-trigger red-text" id="_modal-trigger">
+            <a href="#delete-account-modal"
+                title="@lang('settings.delete_account')"
+                class="modal-trigger red-text"
+                id="_modal-trigger"
+            >
                 @lang('settings.delete_account')
             </a>
         </div>
