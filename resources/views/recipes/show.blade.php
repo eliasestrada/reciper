@@ -101,7 +101,7 @@
                         {{-- single-recipe > user-icon --}}
                         <a href="/users/{{ $recipe->user->username }}"
                             class="single-recipe__user-icon z-depth-2 hoverable {{ $xp->getColor() }}"
-                            style="background:#484074 url({{ asset('storage/small/users/' . $recipe->user->photo) }})"
+                            style="background:#484074 url({{ asset("storage/small/users/{$recipe->user->photo}") }})"
                             title="@lang('users.go_to_profile') {{ $recipe->user->getName() }}"
                         ></a>
 
@@ -153,7 +153,7 @@
                                 style="width:100%; border-radius:7px 7px 0 0"
                                 v-on:load="runLazyLoadImagesForVue($event.target)"
                                 :alt="recipe.title"
-                            >
+                            />
                         </a>
                     </div>
                     <div class="card-content p-3" v-text="recipe.title">
@@ -165,27 +165,27 @@
     </div>
 </section>
 
-
 <!-- report-recipe-modal structure -->
 @if (visitor_id() != $recipe->user_id)
     <div id="report-recipe-modal" class="modal not-printable">
         <div class="modal-content reset">
             <form action="{{ action('Admin\FeedbackController@store') }}" method="post">
+
                 @csrf
 
                 <h5>@lang('recipes.report_recipe')</h5>
                 <p>@lang('feedback.report_message_desc')</p>
 
                 <div class="input-field mt-4">
-                    <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
+                    <input type="hidden" name="recipe_id" value="{{ $recipe->id }}" />
 
-                    <textarea name="message" id="message"
-                        minlength="{{ config('valid.feedback.contact.message.min') }}"
+                    <textarea name="message"
+                        id="message"
                         class="materialize-textarea counter"
+                        minlength="{{ config('valid.feedback.contact.message.min') }}"
                         data-length="{{ config('valid.feedback.contact.message.max') }}"
                         required
-                    >{{ old('message') }}
-                    </textarea>
+                    >{{ old('message') }}</textarea>
 
                     <label for="message">@lang('forms.message')</label>
                 </div>
