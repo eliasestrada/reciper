@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repos;
+namespace App\Repos\Resources;
 
 use App\Models\Visitor;
 use Illuminate\Database\QueryException;
