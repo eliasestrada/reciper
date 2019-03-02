@@ -46,10 +46,8 @@ class ManageUsersRequestTest extends TestCase
     {
         $this->actingAs(create_user('master'))
             ->put(action('Master\ManageUserController@update', [
-                'id' => $this->user->id,
-            ]), [
-                'message' => string_random(40),
-            ]);
+                'id' => $this->user->id
+            ]), ['message' => string_random(40)]);
     }
 
     /**
@@ -61,10 +59,7 @@ class ManageUsersRequestTest extends TestCase
         $this->actingAs(create_user('master'))
             ->put(action('Master\ManageUserController@update', [
                 'id' => $this->user->id,
-            ]), [
-                'days' => 2,
-                'message' => '',
-            ]);
+            ]), ['days' => 2, 'message' => '']);
     }
 
     /**
@@ -76,10 +71,7 @@ class ManageUsersRequestTest extends TestCase
         $this->actingAs(create_user('master'))
             ->put(action('Master\ManageUserController@update', [
                 'id' => $this->user->id,
-            ]), [
-                'days' => 'gg',
-                'message' => string_random(40),
-            ]);
+            ]), ['days' => 'gg', 'message' => string_random(40)]);
     }
 
     /**
