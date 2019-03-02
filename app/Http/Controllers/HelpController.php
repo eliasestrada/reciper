@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Help;
 use App\Repos\HelpRepo;
 use Illuminate\View\View;
 use App\Repos\HelpCategoryRepo;
@@ -10,28 +9,49 @@ use App\Repos\HelpCategoryRepo;
 class HelpController extends Controller
 {
     /**
+     * @var \App\Repos\HelpRepo $help_repo
+     */
+    private $help_repo;
+
+    /**
+     * @var \App\Repos\HelpCategoryRepo $help_category_repo
+     */
+    private $help_category_repo;
+
+    /**
+     * @param \App\Repos\HelpRepo $help_repo
+     * @param \App\Repos\HelpCategoryRepo $help_category_repo
+     * @return void
+     */
+    public function __construct(HelpRepo $help_repo, HelpCategoryRepo $help_category_repo)
+    {
+        $this->help_repo = $help_repo;
+        $this->help_category_repo = $help_category_repo;
+    }
+
+    /**
      * @return \Illuminate\Http\View
      */
-    public function index(HelpRepo $help_repo, HelpCategoryRepo $help_category_repo): View
+    public function index(): View
     {
         return view('help.index', [
-            'help_list' => $help_repo->getCache(),
-            'help_categories' => $help_category_repo->getCache(),
+            'help_list' => $this->help_repo->getCache(),
+            'help_categories' => $this->help_category_repo->getCache(),
         ]);
     }
 
     /**
      * Show single help material with sidebar navigation
      *
-     * @param \App\Models\Help $help
+     * @param int $id
      * @return \Illuminate\View\View
      */
-    public function show(Help $help, HelpRepo $help_repo, HelpCategoryRepo $help_category_repo): View
+    public function show(int $id): View
     {
         return view('help.show', [
-            'help' => $help,
-            'help_list' => $help_repo->getCache(),
-            'help_categories' => $help_category_repo->getCache(),
+            'help' => $this->help_repo->find($id),
+            'help_list' => $this->help_repo->getCache(),
+            'help_categories' => $this->help_category_repo->getCache(),
         ]);
     }
 }
