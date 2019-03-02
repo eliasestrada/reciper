@@ -10,13 +10,16 @@ class PopularRecipesComposer
 {
     /**
      * Bind data to the view
-     * @param  View  $view
+     * 
+     * @param \Illuminate\View\View $view
      * @return void
      */
     public function compose(View $view): void
     {
+        $cache_time = config('cache.timing.popular_recipes');
+
         try {
-            $popular_recipes = cache()->remember('popular_recipes', config('cache.timing.popular_recipes'), function () {
+            $popular_recipes = cache()->remember('popular_recipes', $cache_time, function () {
                 return Recipe::select('slug', _('title') . ' as title')
                     ->withCount('likes')
                     ->orderBy('likes_count', 'desc')

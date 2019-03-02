@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Settings;
 
-use App\Models\User;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Settings\EmailRequest;
@@ -90,7 +88,8 @@ class GeneralController extends Controller
         $user->notify(new VerifyEmailNotification($user));
 
         // Add user to cache for 1 week
-        cache()->put("user:{$user->id}:changed_email", 1, 10080);
+        $cache_time = config('cache.timing.user_changed_email');
+        cache()->put("user:{$user->id}:changed_email", 1, $cache_time);
 
         return back()->withSuccess(trans('settings.saved_now_verify_email'));
     }

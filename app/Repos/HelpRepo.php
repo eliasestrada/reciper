@@ -12,8 +12,10 @@ class HelpRepo
      */
     public function getCache(): array
     {
+        $cache_time = config('cache.timing.help_list');
+
         try {
-            return cache()->remember('help_list', 10, function () {
+            return cache()->remember('help_list', $cache_time, function () {
                 return Help::orderBy(_('title'))->get()->toArray();
             });
         } catch (QueryException $e) {

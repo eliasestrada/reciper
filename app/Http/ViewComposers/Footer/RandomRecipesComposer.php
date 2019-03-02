@@ -10,13 +10,16 @@ class RandomRecipesComposer
 {
     /**
      * Bind data to the view
-     * @param  View  $view
+     * 
+     * @param \Illuminate\View\View $view
      * @return void
      */
     public function compose(View $view): void
     {
+        $cache_time = config('cache.timing.random_recipes');
+
         try {
-            $random_recipes = cache()->remember('random_recipes', config('cache.timing.random_recipes'), function () {
+            $random_recipes = cache()->remember('random_recipes', $cache_time, function () {
                 return Recipe::select('slug', _('title') . ' as title')
                     ->inRandomOrder()
                     ->done(1)

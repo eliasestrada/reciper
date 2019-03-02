@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use Carbon\Carbon;
 use App\Models\Like;
-use App\Models\User;
 use App\Models\TopRecipers;
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -15,7 +14,8 @@ class TopRecipersJob
     use Dispatchable, Queueable;
 
     /**
-     * Execute the job.
+     * Execute the job
+     * 
      * @codeCoverageIgnore
      * @return void
      */
@@ -27,6 +27,7 @@ class TopRecipersJob
 
     /**
      * Function helper covered by tests
+     * 
      * @return array
      */
     public function makeCachedListOfTopRecipers(): array
@@ -39,7 +40,8 @@ class TopRecipersJob
         $users = $this->getArrayOfUsernames($likes);
         $top_recipers = $this->combineArrayValues($users);
 
-        cache()->put('top_recipers', $top_recipers, 1440);
+        $cache_time = config('cache.timing.top_recipers');
+        cache()->put('top_recipers', $top_recipers, $cache_time);
 
         return $top_recipers;
     }

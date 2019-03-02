@@ -25,7 +25,11 @@ return [
 
     // Timing for certain parts in app in minutes
     'timing' => [
-        'popular_recipes' => 10,
-        'random_recipes' => 10,
+        'popular_recipes' => 10 * 60, // 10 min
+        'random_recipes' => 10 * 60, // 10 min
+        'help_categories' => 10 * 60,  // 10 min
+        'help_list' => 10 * 60, // 10 min
+        'user_changed_email' => 10080 * 60, // 1 week
+        'top_recipers' => 1440 * 60, //
     ],
 ];
