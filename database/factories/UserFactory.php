@@ -23,7 +23,7 @@ $factory->define(User::class, function () {
 });
 
 $factory->afterMaking(User::class, function ($user) {
-    $user->id = mt_rand(20, 9999);
+    $user->id = mt_rand(1000, 999999);
 });
 
 $factory->state(User::class, 'admin', function () {
