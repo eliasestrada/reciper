@@ -49,7 +49,7 @@ class AdminApprovesShowPageTest extends TestCase
     public function user_cant_see_the_page(): void
     {
         $this->actingAs(make(User::class))
-            ->get("/admin/approves/{$this->unapproved_recipe->id}")
+            ->get("/admin/approves/{$this->unapproved_recipe->slug}")
             ->assertRedirect('/');
     }
 
@@ -60,12 +60,12 @@ class AdminApprovesShowPageTest extends TestCase
     public function view_is_accessable_by_any_admin(): void
     {
         $this->actingAs($this->admin)
-            ->get("/admin/approves/{$this->unapproved_recipe->id}")
+            ->get("/admin/approves/{$this->unapproved_recipe->slug}")
             ->assertViewIs('admin.approves.show')
             ->assertOk();
 
         $this->actingAs(create_user('admin'))
-            ->get("/admin/approves/{$this->unapproved_recipe->id}")
+            ->get("/admin/approves/{$this->unapproved_recipe->slug}")
             ->assertOk();
     }
 
@@ -78,7 +78,7 @@ class AdminApprovesShowPageTest extends TestCase
         $other_admin = create_user('admin');
 
         $this->actingAs($other_admin)
-            ->get("/admin/approves/{$this->unapproved_recipe->id}")
+            ->get("/admin/approves/{$this->unapproved_recipe->slug}")
             ->assertDontSee('<i class="fas fa-thumbs-up right"></i>')
             ->assertDontSee('<i class="fas fa-thumbs-down right"></i>');
     }
@@ -91,7 +91,7 @@ class AdminApprovesShowPageTest extends TestCase
     {
         $this->actingAs($this->admin)
             ->post(action('Admin\ApproveController@approve', [
-                'recipe' => $this->unapproved_recipe->id,
+                'recipe' => $this->unapproved_recipe->slug,
             ]))
             ->assertRedirect("/recipes/{$this->unapproved_recipe->slug}");
     }
@@ -109,7 +109,7 @@ class AdminApprovesShowPageTest extends TestCase
 
         $this->actingAs($this->admin)
             ->post(action('Admin\ApproveController@approve', [
-                'recipe' => $this->unapproved_recipe->id,
+                'recipe' => $this->unapproved_recipe->slug,
             ]));
     }
 
@@ -126,7 +126,7 @@ class AdminApprovesShowPageTest extends TestCase
 
         $this->actingAs($this->admin)
             ->post(action('Admin\ApproveController@disapprove', [
-                'recipe' => $this->unapproved_recipe->id,
+                'recipe' => $this->unapproved_recipe->slug,
                 'message' => string_random(20),
             ]));
     }
@@ -142,7 +142,7 @@ class AdminApprovesShowPageTest extends TestCase
             _('approved') => 0,
         ]);
 
-        $this->actingAs($this->admin)->get("/admin/approves/{$recipe->id}");
+        $this->actingAs($this->admin)->get("/admin/approves/{$recipe->slug}");
         $this->assertDatabaseHas('recipes', [
             'id' => $recipe->id,
             _('approver_id', true) => $this->admin->id,
