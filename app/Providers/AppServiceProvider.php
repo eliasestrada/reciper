@@ -16,27 +16,14 @@ class AppServiceProvider extends ServiceProvider
     {
         \Schema::defaultStringLength(191);
 
-        $this->showListOfCategories();
+
         $this->horizonRightsChecker();
         $this->enableSqlQueryLogging(false);
+        view()->share('categories', (new CategoryRepo)->getCache());
 
         if ($this->app->env === 'production') {
             url()->forceScheme('https');
         }
-    }
-
-    /**
-     * @return void
-     */
-    public function showListOfCategories(): void
-    {
-        $categories = cache()->rememberForever('categories', function () {
-            return (new CategoryRepo)->getAllInArray();
-        });
-
-        view()->share('categories', array_map(function ($cat) {
-            return ['id' => $cat['id'], 'name' => $cat[_('name')]];
-        }, $categories));
     }
 
     /**
