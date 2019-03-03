@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Feature\Repos;
+namespace Tests\Feature\Repos\Controllers;
 
 use Tests\TestCase;
 use App\Models\Meal;
-use App\Repos\MealRepo;
+use App\Repos\Controllers\MealRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class MealRepoTest extends TestCase
@@ -12,7 +12,7 @@ class MealRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\MealRepo $repo
+     * @var \App\Repos\Controllers\MealRepo $repo
      */
     private $repo;
 

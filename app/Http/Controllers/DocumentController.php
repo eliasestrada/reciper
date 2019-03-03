@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
-use App\Repos\DocumentRepo;
+use App\Repos\Controllers\DocumentRepo;
 
 class DocumentController extends Controller
 {
     /**
-     * @var \App\Repos\DocumentRepo $repo
+     * @var \App\Repos\Controllers\DocumentRepo $repo
      */
     public $repo;
 
     /**
-     * @param \App\Repos\DocumentRepo $repo
+     * @param \App\Repos\Controllers\DocumentRepo $repo
      * @return void
      */
     public function __construct(DocumentRepo $repo)

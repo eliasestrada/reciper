@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Feature\Repos;
+namespace Tests\Feature\Repos\Controllers;
 
 use Tests\TestCase;
 use App\Models\Document;
-use App\Repos\DocumentRepo;
+use App\Repos\Controllers\DocumentRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class DocumentRepoTest extends TestCase
@@ -12,7 +12,7 @@ class DocumentRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\DocumentRepo $repo
+     * @var \App\Repos\Controllers\DocumentRepo $repo
      */
     private $repo;
 

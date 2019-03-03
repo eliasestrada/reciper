@@ -2,7 +2,7 @@
 
 namespace App\Http\Responses\Controllers\Admin\Approves;
 
-use App\Repos\RecipeRepo;
+use App\Repos\Controllers\RecipeRepo;
 use Illuminate\Contracts\Support\Responsable;
 
 class IndexResponse implements Responsable

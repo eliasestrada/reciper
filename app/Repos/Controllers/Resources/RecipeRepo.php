@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repos\Resources;
+namespace App\Repos\Controllers\Resources;
 
 use App\Models\Recipe;
 use Illuminate\Database\QueryException;

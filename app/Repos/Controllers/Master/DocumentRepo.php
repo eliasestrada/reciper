@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repos\Master;
+namespace App\Repos\Controllers\Master;
 
 use App\Models\Document;
 use Illuminate\Database\QueryException;

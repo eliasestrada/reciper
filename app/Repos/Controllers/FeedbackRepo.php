@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repos;
+namespace App\Repos\Controllers;
 
 use App\Models\Feedback;
 use Illuminate\Database\QueryException;

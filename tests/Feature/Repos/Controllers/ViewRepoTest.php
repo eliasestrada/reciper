@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Feature\Repos;
+namespace Tests\Feature\Repos\Controllers;
 
 use Tests\TestCase;
 use App\Models\View;
 use App\Models\Visitor;
-use App\Repos\ViewRepo;
+use App\Repos\Controllers\ViewRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ViewRepoTest extends TestCase
@@ -13,7 +13,7 @@ class ViewRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\ViewRepo $repo
+     * @var \App\Repos\Controllers\ViewRepo $repo
      */
     private $repo;
 

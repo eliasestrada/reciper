@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repos;
+namespace App\Repos\Controllers;
 
 use App\Models\Recipe;
 use Illuminate\Support\Collection;
@@ -105,7 +105,7 @@ class RecipeRepo
      *
      * @param int $limit Limit results
      * @param int|null $visitor_id
-     * @param \App\Repos\ViewRepo|null $view_repo
+     * @param \App\Repos\Controllers\ViewRepo|null $view_repo
      * @return \Illuminate\Support\Collection
      */
     public static function getRandomUnseen(int $limit = 12, ?int $visitor_id = null, ?ViewRepo $view_repo = null): Collection

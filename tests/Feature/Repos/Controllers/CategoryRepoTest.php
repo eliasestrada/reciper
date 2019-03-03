@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Feature\Repos;
+namespace Tests\Feature\Repos\Controllers;
 
 use Tests\TestCase;
 use App\Models\Category;
-use App\Repos\CategoryRepo;
+use App\Repos\Controllers\CategoryRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CategoryRepoTest extends TestCase
@@ -12,7 +12,7 @@ class CategoryRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\CategoryRepo $repo
+     * @var \App\Repos\Controllers\CategoryRepo $repo
      */
     private $repo;
 
