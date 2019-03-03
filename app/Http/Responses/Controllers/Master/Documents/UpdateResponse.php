@@ -2,22 +2,26 @@
 
 namespace App\Http\Responses\Controllers\Master\Documents;
 
-use App\Models\Document;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Support\Responsable;
+use App\Repos\Controllers\Master\DocumentRepo;
 
 class UpdateResponse implements Responsable
 {
-    protected $document;
+    /**
+     * @var \App\Models\Document $document
+     */
+    private $document;
 
     /**
-     * @param \App\Models\Document $document
+     * @param int $id
+     * @param \App\Repos\Controllers\Master $document
      * @return void
      */
-    public function __construct(Document $document)
+    public function __construct(int $id, DocumentRepo $repo)
     {
-        $this->document = $document;
+        $this->document = $repo->find($id);
     }
 
     /**

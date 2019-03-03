@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Master;
 
-use App\Models\Document;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DocumentRequest;
 use App\Repos\Controllers\Master\DocumentRepo;
@@ -52,7 +50,7 @@ class DocumentController extends Controller
     /**
      * Return view with edit document form
      *
-     * @param int $id Document id
+     * @param int $id
      * @return \Illuminate\View\View
      */
     public function edit(int $id): View
@@ -66,22 +64,22 @@ class DocumentController extends Controller
      * Update given document
      *
      * @param \App\Http\Requests\DocumentRequest $requet
-     * @param \App\Models\Document $document
+     * @param int $id
      * @return \App\Http\Responses\Controllers\Master\Documents\UpdateResponse
      */
-    public function update(DocumentRequest $request, Document $document): UpdateResponse
+    public function update(DocumentRequest $request, int $id): UpdateResponse
     {
-        return new UpdateResponse($document);
+        return new UpdateResponse($id, $this->repo);
     }
 
     /**
      * Delete given document
      *
-     * @param \App\Models\Document $document
+     * @param int $id
      * @return \App\Http\Responses\Controllers\Master\Documents\DestroyResponse
      */
-    public function destroy(Document $document): DestroyResponse
+    public function destroy(int $id): DestroyResponse
     {
-        return new DestroyResponse($document);
+        return new DestroyResponse($id, $this->repo);
     }
 }
