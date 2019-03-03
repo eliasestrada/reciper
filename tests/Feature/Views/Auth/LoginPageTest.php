@@ -37,22 +37,26 @@ class LoginPageTest extends TestCase
      */
     public function user_can_login(): void
     {
-        $form_data = ['username' => create(User::class)->username, 'password' => '111111'];
+        $form_data = [
+            'username' => create_user()->username,
+            'password' => '11111111'
+        ];
         $this->post('/login', $form_data)->assertRedirect('/dashboard');
     }
 
     /**
      * We will login user and create cookie to check them
-     * @author Cho
+     * 
      * @test
-     * @return void
+     * @author Cho
      */
     public function remember_me_functionality_works(): void
     {
-        $user = create(User::class);
+        $user = create_user();
+
         $response = $this->post('/login', [
             'username' => $user->username,
-            'password' => '111111',
+            'password' => '11111111',
             'remember' => 'on',
         ]);
 
