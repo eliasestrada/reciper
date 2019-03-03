@@ -32,12 +32,12 @@ class DocumentRepoTest extends TestCase
      * @author Cho
      * @test
      */
-    public function paginateAllWithReadyStatus_method_returns_all_records_from_db(): void
+    public function paginateWithReadyStatus_method_returns_all_records_from_db(): void
     {
         create(Document::class, [], 2, 'draft');
 
-        $ready_docs = $this->repo->paginateAllWithReadyStatus(1);
-        $not_ready_docs = $this->repo->paginateAllWithReadyStatus(0);
+        $ready_docs = $this->repo->paginateWithReadyStatus(1);
+        $not_ready_docs = $this->repo->paginateWithReadyStatus(0);
 
         $this->assertCount(1, $ready_docs);
         $this->assertCount(2, $not_ready_docs);

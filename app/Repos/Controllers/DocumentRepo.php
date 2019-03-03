@@ -21,7 +21,7 @@ class DocumentRepo
      * @param int $ready
      * @return \Illuminate\Pagination\LenghtAwarePaginator
      */
-    public function paginateAllWithReadyStatus(int $ready = 1): ?LengthAwarePaginator
+    public function paginateWithReadyStatus(int $ready = 1): ?LengthAwarePaginator
     {
         try {
             return Document::query()->isReady($ready)->paginate(20)->onEachSide(1);

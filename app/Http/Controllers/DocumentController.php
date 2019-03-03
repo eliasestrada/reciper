@@ -10,7 +10,7 @@ class DocumentController extends Controller
     /**
      * @var \App\Repos\Controllers\DocumentRepo $repo
      */
-    public $repo;
+    private $repo;
 
     /**
      * @param \App\Repos\Controllers\DocumentRepo $repo
@@ -31,11 +31,11 @@ class DocumentController extends Controller
         return view('documents.index', [
             'documents' => [
                 [
-                    'docs' => $this->repo->paginateAllWithReadyStatus(1),
+                    'docs' => $this->repo->paginateWithReadyStatus(1),
                     'name' => 'published',
                 ],
                 [
-                    'docs' => $this->repo->paginateAllWithReadyStatus(0),
+                    'docs' => $this->repo->paginateWithReadyStatus(0),
                     'name' => 'drafts',
                 ],
             ],
