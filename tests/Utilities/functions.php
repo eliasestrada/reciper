@@ -3,42 +3,50 @@
 use App\Models\User;
 
 /**
- * @author Cho
+ * @param mixed $class
+ * @param array $attributes
+ * @param null|int $times
+ * @param null|string $state
+ * @return mixed
  */
-function create($class, $attributes = [], $times = null, $state = null)
+function create($class, array $attributes = [], ?int $times = null, ?string $state = null)
 {
-    if ($state) {
-        return factory($class, $times)->state($state)->create($attributes);
-    }
-    return factory($class, $times)->create($attributes);
+    return $state
+        ? factory($class, $times)->state($state)->create($attributes)
+        : factory($class, $times)->create($attributes);
 }
 
 /**
- * @author Cho
+ * @param mixed $class
+ * @param array $attributes
+ * @param int|null $times
+ * @param string|null $state
+ * @return mixed
  */
-function make($class, $attributes = [], $times = null, $state = null)
+function make($class, array $attributes = [], ?int $times = null, ?string $state = null)
 {
-    if ($state) {
-        return factory($class, $times)->state($state)->make($attributes);
-    }
-    return factory($class, $times)->make($attributes);
+    return $state
+        ? factory($class, $times)->state($state)->make($attributes)
+        : factory($class, $times)->make($attributes);
 }
 
 /**
- * @author Cho
+ * @param string|null $role
+ * @param array $attributes
+ * @param int|null $times
+ * @return mixed
  */
-function create_user($role = null, $attributes = [], $times = null)
+function create_user(?string $role = null, array $attributes = [], ?int $times = null)
 {
-    if ($role) {
-        return factory(User::class, $times)->states($role)->create($attributes);
-    }
-    return factory(User::class, $times)->create($attributes);
+    return $role
+        ? factory(User::class, $times)->states($role)->create($attributes)
+        : factory(User::class, $times)->create($attributes);
 }
 
 /**
  * Helper function to make fake photo
  * for user
- * @author Cho
+ * 
  * @return string
  */
 function uploadFakePhoto(): string
@@ -52,7 +60,7 @@ function uploadFakePhoto(): string
 /**
  * Helper function to make fake image
  * for recipe
- * @author Cho
+ * 
  * @return string
  */
 function uploadFakeImage(): string
