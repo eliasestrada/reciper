@@ -3,14 +3,14 @@
 namespace App\Http\Responses\Controllers\Recipes;
 
 use App\Models\User;
-use App\Repos\Controllers\MealRepo;
-use App\Repos\Controllers\RecipeRepo;
+use App\Repos\MealRepo;
+use App\Repos\RecipeRepo;
 use Illuminate\Contracts\Support\Responsable;
 
 class EditResponse implements Responsable
 {
     /**
-     * @var \App\Repos\Controllers\MealRepo $meal_repo
+     * @var \App\Repos\MealRepo $meal_repo
      */
     private $meal_repo;
 
@@ -26,8 +26,8 @@ class EditResponse implements Responsable
 
     /**
      * @param string $slug
-     * @param \App\Repos\Controllers\RecipeRepo $recipe_repo
-     * @param \App\Repos\Controllers\MealRepo $meal_repo
+     * @param \App\Repos\RecipeRepo $recipe_repo
+     * @param \App\Repos\MealRepo $meal_repo
      * @param \App\Models\User|null $user
      * @return void
      */

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Master;
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DocumentRequest;
-use App\Repos\Controllers\Master\DocumentRepo;
+use App\Repos\DocumentRepo;
 use App\Http\Responses\Controllers\Master\Documents\StoreResponse;
 use App\Http\Responses\Controllers\Master\Documents\UpdateResponse;
 use App\Http\Responses\Controllers\Master\Documents\DestroyResponse;
@@ -13,7 +13,7 @@ use App\Http\Responses\Controllers\Master\Documents\DestroyResponse;
 class DocumentController extends Controller
 {
     /**
-     * @var \App\Repos\Controllers\Master\DocumentRepo $repo
+     * @var \App\Repos\DocumentRepo $repo
      */
     private $repo;
 

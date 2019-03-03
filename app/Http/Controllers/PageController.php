@@ -7,7 +7,7 @@ use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\View\View as ViewResponse;
-use App\Repos\Controllers\RecipeRepo;
+use App\Repos\RecipeRepo;
 
 class PageController extends Controller
 {

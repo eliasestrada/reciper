@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Repos\Controllers\HelpRepo;
+use App\Repos\HelpRepo;
 use Illuminate\View\View;
-use App\Repos\Controllers\HelpCategoryRepo;
+use App\Repos\HelpCategoryRepo;
 
 class HelpController extends Controller
 {
     /**
-     * @var \App\Repos\Controllers\HelpRepo $help_repo
+     * @var \App\Repos\HelpRepo $help_repo
      */
     private $help_repo;
 
     /**
-     * @var \App\Repos\Controllers\HelpCategoryRepo $help_category_repo
+     * @var \App\Repos\HelpCategoryRepo $help_category_repo
      */
     private $help_category_repo;
 
     /**
-     * @param \App\Repos\Controllers\HelpRepo $help_repo
-     * @param \App\Repos\Controllers\HelpCategoryRepo $help_category_repo
+     * @param \App\Repos\HelpRepo $help_repo
+     * @param \App\Repos\HelpCategoryRepo $help_category_repo
      * @return void
      */
     public function __construct(HelpRepo $help_repo, HelpCategoryRepo $help_category_repo)

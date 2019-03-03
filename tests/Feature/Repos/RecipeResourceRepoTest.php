@@ -1,21 +1,21 @@
 <?php
 
-namespace Tests\Feature\Repos\Controllers\Resources;
+namespace Tests\Feature\Repos;
 
 use Tests\TestCase;
 use App\Models\View;
 use App\Models\Recipe;
 use App\Models\Visitor;
 use App\Models\Category;
-use App\Repos\Controllers\Resources\RecipeRepo;
+use App\Repos\RecipeResourceRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class RecipeRepoTest extends TestCase
+class RecipeResourceRepoTest extends TestCase
 {
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\Controllers\Resources\RecipeRepo $repo
+     * @var \App\Repos\RecipeResourceRepo $repo
      */
     private $repo;
 
@@ -28,7 +28,7 @@ class RecipeRepoTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->repo = new RecipeRepo;
+        $this->repo = new RecipeResourceRepo;
     }
 
     /**

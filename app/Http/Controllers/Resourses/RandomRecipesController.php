@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Resourses;
 
-use App\Repos\Controllers\RecipeRepo;
+use App\Repos\RecipeRepo;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipesRandomResource;
 

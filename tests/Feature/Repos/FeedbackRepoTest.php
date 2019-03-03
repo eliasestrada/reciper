@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Feature\Repos\Controllers;
+namespace Tests\Feature\Repos;
 
 use Tests\TestCase;
 use App\Models\Recipe;
 use App\Models\Visitor;
 use App\Models\Feedback;
-use App\Repos\Controllers\FeedbackRepo;
+use App\Repos\FeedbackRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class FeedbackRepoTest extends TestCase
@@ -14,7 +14,7 @@ class FeedbackRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\Controllers\FeedbackRepo $repo
+     * @var \App\Repos\FeedbackRepo $repo
      */
     private $repo;
 

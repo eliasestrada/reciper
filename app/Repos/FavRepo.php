@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repos\Controllers;
+namespace App\Repos;
 
 use App\Models\Fav;
 use Illuminate\Support\Collection;

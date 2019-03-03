@@ -8,7 +8,7 @@ use App\Models\Recipe;
 use App\Models\Popularity;
 use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Support\Responsable;
-use App\Repos\Controllers\RecipeRepo;
+use App\Repos\RecipeRepo;
 
 class ShowResponse implements Responsable
 {
@@ -19,7 +19,7 @@ class ShowResponse implements Responsable
 
     /**
      * @param string $slug
-     * @param \App\Repos\Controllers\RecipeRepo $recipe_repo
+     * @param \App\Repos\RecipeRepo $recipe_repo
      * @return void
      */
     public function __construct(string $slug, RecipeRepo $recipe_repo)

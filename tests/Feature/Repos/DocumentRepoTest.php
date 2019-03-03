@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Feature\Repos\Controllers;
+namespace Tests\Feature\Repos;
 
 use Tests\TestCase;
 use App\Models\Document;
-use App\Repos\Controllers\DocumentRepo;
+use App\Repos\DocumentRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class DocumentRepoTest extends TestCase
@@ -12,7 +12,7 @@ class DocumentRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\Controllers\DocumentRepo $repo
+     * @var \App\Repos\DocumentRepo $repo
      */
     private $repo;
 
@@ -26,6 +26,17 @@ class DocumentRepoTest extends TestCase
     {
         parent::setUp();
         $this->repo = new DocumentRepo;
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_find_returns_document_by_given_id(): void
+    {
+        $document = create(Document::class);
+        $result = $this->repo->find($document->id);
+        $this->assertEquals($document->toBase(), $result->toBase());
     }
 
     /**

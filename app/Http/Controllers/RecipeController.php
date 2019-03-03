@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
-use App\Repos\Controllers\FavRepo;
-use App\Repos\Controllers\MealRepo;
-use App\Repos\Controllers\RecipeRepo;
+use App\Repos\FavRepo;
+use App\Repos\MealRepo;
+use App\Repos\RecipeRepo;
 use Illuminate\View\View as ViewResponse;
 use App\Http\Requests\Recipes\RecipeStoreRequest;
 use App\Http\Requests\Recipes\RecipeUpdateRequest;
@@ -18,12 +18,12 @@ use App\Http\Responses\Controllers\Recipes\DestroyResponse;
 class RecipeController extends Controller
 {
     /**
-     * @var \App\Repos\Controllers\RecipeRepo $repo
+     * @var \App\Repos\RecipeRepo $repo
      */
     private $repo;
 
     /**
-     * @param \App\Repos\Controllers\RecipeRepo $repo
+     * @param \App\Repos\RecipeRepo $repo
      * @return void
      */
     public function __construct(RecipeRepo $repo)
@@ -33,7 +33,7 @@ class RecipeController extends Controller
     }
 
     /**
-     * @param \App\Repos\Controllers\FavRepo
+     * @param \App\Repos\FavRepo
      * @return \Illuminate\View\View
      */
     public function index(FavRepo $favs): ViewResponse
@@ -65,7 +65,7 @@ class RecipeController extends Controller
 
     /**
      * @param string $slug
-     * @param \App\Repos\Controllers\MealRepo $meal_repo
+     * @param \App\Repos\MealRepo $meal_repo
      * @return \App\Http\Responses\Controllers\Recipes\EditResponse
      */
     public function edit(string $slug, MealRepo $meal_repo): EditResponse

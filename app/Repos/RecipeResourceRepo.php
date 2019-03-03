@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repos\Controllers\Resources;
+namespace App\Repos;
 
 use App\Models\Recipe;
 use Illuminate\Database\QueryException;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class RecipeRepo
+class RecipeResourceRepo
 {
     /**
      * @param int|null $pagin Pagination value

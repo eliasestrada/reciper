@@ -4,14 +4,14 @@ namespace App\Http\Responses\Controllers\Admin\Feedback;
 
 use App\Models\Feedback;
 use App\Models\User;
-use App\Repos\Controllers\FeedbackRepo;
+use App\Repos\FeedbackRepo;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\View\View;
 
 class IndexResponse implements Responsable
 {
     /**
-     * @var \App\Repos\Controllers\FeedbackRepo $repo
+     * @var \App\Repos\FeedbackRepo $repo
      */
     protected $repo;
 

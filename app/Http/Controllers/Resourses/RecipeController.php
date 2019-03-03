@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Resourses;
 
+use App\Repos\VisitorRepo;
 use Illuminate\Support\Str;
-use App\Repos\Controllers\Resources\RecipeRepo;
-use App\Repos\Controllers\Resources\VisitorRepo;
+use App\Repos\RecipeResourceRepo;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipesResource;
 use App\Helpers\Controllers\RecipeHelpers;
@@ -15,21 +15,21 @@ class RecipeController extends Controller
     use RecipeHelpers;
 
     /**
-     * @var \App\Repos\Controllers\RecipeRepo
+     * @var \App\Repos\RecipeResourceRepo
      */
     public $recipe_repo;
 
     /**
-     * @var \App\Repos\Controllers\VisitorRepo
+     * @var \App\Repos\VisitorRepo
      */
     public $visitor_repo;
 
     /**
-     * @param \App\Repos\Controllers\RecipeRepo $recipe_repo
-     * @param \App\Repos\Controllers\VisitorRepo $visitor_repo
+     * @param \App\Repos\RecipeResourceRepo $recipe_repo
+     * @param \App\Repos\VisitorRepo $visitor_repo
      * @return void
      */
-    public function __construct(RecipeRepo $recipe_repo, VisitorRepo $visitor_repo)
+    public function __construct(RecipeResourceRepo $recipe_repo, VisitorRepo $visitor_repo)
     {
         $this->recipe_repo = $recipe_repo;
         $this->visitor_repo = $visitor_repo;

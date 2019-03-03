@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\Feature\Repos\Controllers;
+namespace Tests\Feature\Repos;
 
 use Tests\TestCase;
 use App\Models\Help;
-use App\Repos\Controllers\HelpRepo;
+use App\Repos\HelpRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class HelpRepoTest extends TestCase
@@ -12,7 +12,7 @@ class HelpRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\Controllers\HelpRepo $repo
+     * @var \App\Repos\HelpRepo $repo
      */
     private $repo;
 

@@ -3,7 +3,7 @@
 namespace App\Http\Responses\Controllers\Admin\Feedback;
 
 use App\Models\Feedback;
-use App\Repos\Controllers\FeedbackRepo;
+use App\Repos\FeedbackRepo;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\RedirectResponse;
@@ -11,7 +11,7 @@ use Illuminate\Http\RedirectResponse;
 class StoreResponse implements Responsable
 {
     /**
-     * @var \App\Repos\Controllers\FeedbackRepo $repo
+     * @var \App\Repos\FeedbackRepo $repo
      */
     protected $repo;
 

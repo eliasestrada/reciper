@@ -20,8 +20,8 @@ class RecipesUpdateResponseTest extends TestCase
      */
     private function classReponse(Recipe $recipe): UpdateResponse
     {
-        /** @var \App\Repos\Controllers\RecipeRepo $recipe_repo */
-        $recipe_repo = $this->createMock(\App\Repos\Controllers\RecipeRepo::class);
+        /** @var \App\Repos\RecipeRepo $recipe_repo */
+        $recipe_repo = $this->createMock(\App\Repos\RecipeRepo::class);
         $recipe_repo->method('find')->willReturn($recipe);
 
         return new UpdateResponse('some-slug', $recipe_repo);
