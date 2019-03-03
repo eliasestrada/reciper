@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Resourses;
 
-use App\Repos\RecipeRepo;
-use App\Repos\VisitorRepo;
 use Illuminate\Support\Str;
+use App\Repos\Resources\RecipeRepo;
+use App\Repos\Resources\VisitorRepo;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RecipesResource;
 use App\Helpers\Controllers\RecipeHelpers;
