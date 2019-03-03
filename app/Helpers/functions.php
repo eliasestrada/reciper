@@ -268,13 +268,15 @@ function help_link(string $title, $link): string
 
 /**
  * @param $exception
- * @param string $file
- * @return void
+ * @param mixed $return What this function should return
+ * @return mixed
  */
-function no_connection_error($exception, string $file): void
+function report_error($exception, $return = null)
 {
-    logger()->error($exception->getMessage() . " in file $file.php");
+    logger()->error($exception);
     session()->flash('error', trans('messages.query_error'));
+
+    return $return ? $return : null;
 }
 
 /**
