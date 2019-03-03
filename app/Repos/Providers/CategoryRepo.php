@@ -8,17 +8,20 @@ use Illuminate\Database\QueryException;
 class CategoryRepo
 {
     /**
-     * Get all categories in array
-     *
      * @return array
      */
-    public function getAllInArray(): array
+    public function getCache(): array
     {
-        try {
-            return Category::get()->toArray();
-        } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return [];
-        }
+        $categories = cache()->rememberForever('categories', function () {
+            try {
+                return Category::get()->toArray();
+            } catch (QueryException $e) {
+                return report_error($e, []);
+            }
+        });
+
+        return array_map(function ($cat) {
+            return ['id' => $cat['id'], 'name' => $cat[_('name')]];
+        }, $categories);
     }
 }

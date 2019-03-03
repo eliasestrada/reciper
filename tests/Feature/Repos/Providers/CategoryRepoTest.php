@@ -32,17 +32,18 @@ class CategoryRepoTest extends TestCase
      * @author Cho
      * @test
      */
-    public function get_method_returns_collection(): void
+    public function method_getCache_returns_all_categories_from_db(): void
     {
-        $this->assertTrue(is_array($this->repo->getAllInArray()));
+        $this->assertCount(Category::count(), $this->repo->getCache());
     }
 
     /**
      * @author Cho
      * @test
      */
-    public function get_method_returns_all_categories_from_db(): void
+    public function method_getCache_returns_cache(): void
     {
-        $this->assertCount(Category::count(), $this->repo->getAllInArray());
+        $this->repo->getCache();
+        $this->assertCount(Category::count(), cache()->get('categories'));
     }
 }
