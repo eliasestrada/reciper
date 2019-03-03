@@ -2,7 +2,10 @@
 
 namespace Tests\Unit\Helpers;
 
+use File;
+use Mockery;
 use Tests\TestCase;
+use App\Models\Visitor;
 
 class FunctionsTest extends TestCase
 {
@@ -102,7 +105,7 @@ class FunctionsTest extends TestCase
      */
     public function visitor_id_function_returns_correct_data(): void
     {
-        $expected = make(\App\Models\Visitor::class)->value('id');
+        $expected = make(Visitor::class)->value('id');
         $this->assertEquals($expected, visitor_id());
     }
 
@@ -110,16 +113,17 @@ class FunctionsTest extends TestCase
      * @author Cho
      * @test
      */
-    public function no_connection_error_function_flashes_message_and_logs_given_error(): void
+    public function report_error_function_flashes_message_and_logs_given_error(): void
     {
-        $exception = \Mockery::mock('Exception');
+        $exception = Mockery::mock('Exception');
         $exception->shouldReceive('getMessage')->andReturn('Lorem');
+        $date = date('Y-m-d');
 
-        no_connection_error($exception, 'SomeFile');
+        report_error($exception);
 
-        $this->assertFileExists(storage_path('logs/laravel-' . date('Y-m-d') . '.log'));
+        $this->assertFileExists(storage_path("logs/laravel-{$date}.log"));
         $this->get('/')->assertSessionHas('error', trans('messages.query_error'));
 
-        \File::delete(storage_path('logs/laravel-' . date('Y-m-d') . '.log'));
+        File::delete(storage_path("logs/laravel-{$date}.log"));
     }
 }
