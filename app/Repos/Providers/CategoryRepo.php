@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repos\Controllers;
+namespace App\Repos\Providers;
 
 use App\Models\Category;
 use Illuminate\Database\QueryException;
