@@ -7,6 +7,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DocumentRequest;
+use App\Repos\Controllers\Master\DocumentRepo;
 use App\Http\Responses\Controllers\Master\Documents\StoreResponse;
 use App\Http\Responses\Controllers\Master\Documents\UpdateResponse;
 use App\Http\Responses\Controllers\Master\Documents\DestroyResponse;
@@ -14,11 +15,17 @@ use App\Http\Responses\Controllers\Master\Documents\DestroyResponse;
 class DocumentController extends Controller
 {
     /**
+     * @var \App\Repos\Controllers\Master\DocumentRepo $repo
+     */
+    private $repo;
+
+    /**
      * @return void
      */
-    public function __construct()
+    public function __construct(DocumentRepo $repo)
     {
         $this->middleware('master');
+        $this->repo = $repo;
     }
 
     /**
@@ -45,12 +52,14 @@ class DocumentController extends Controller
     /**
      * Return view with edit document form
      *
-     * @param \App\Models\Document $document
+     * @param int $id Document id
      * @return \Illuminate\View\View
      */
-    public function edit(Document $document): View
+    public function edit(int $id): View
     {
-        return view('master.documents.edit', compact('document'));
+        return view('master.documents.edit', [
+            'document' => $this->repo->find($id),
+        ]);
     }
 
     /**
