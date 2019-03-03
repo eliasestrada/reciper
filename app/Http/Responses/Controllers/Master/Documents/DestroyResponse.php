@@ -32,8 +32,7 @@ class DestroyResponse implements Responsable
             $this->document->delete();
             return $this->successResponse();
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return redirect('/documents');
+            return report_error($e, redirect('/documents'));
         }
     }
 

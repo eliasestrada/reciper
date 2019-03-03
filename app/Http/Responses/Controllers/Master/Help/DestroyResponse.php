@@ -32,8 +32,7 @@ class DestroyResponse implements Responsable
 
             return redirect('/help')->withSuccess(trans('help.help_deleted'));
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 

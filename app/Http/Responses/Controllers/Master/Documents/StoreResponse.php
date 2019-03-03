@@ -22,8 +22,7 @@ class StoreResponse implements Responsable
             ]);
             return redirect("/master/documents/{$document->id}/edit");
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 }

@@ -39,8 +39,7 @@ class RegisterController extends Controller
                 }),
             ]);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return view('auth.register');
+            return report_error($e, view('auth.register'));
         }
     }
 

@@ -16,8 +16,7 @@ class FavRepo
         try {
             return Fav::get(['recipe_id', 'user_id']);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return collect();
+            return report_error($e, collect());
         }
     }
 }

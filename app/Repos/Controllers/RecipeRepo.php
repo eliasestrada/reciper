@@ -41,8 +41,7 @@ class RecipeRepo
                 ->paginate(30)
                 ->onEachSide(1);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return collect();
+            return report_error($e, collect());
         }
     }
 
@@ -59,7 +58,7 @@ class RecipeRepo
                 ->paginate(30)
                 ->onEachSide(1);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
+            report_error($e, __CLASS__);
             return collect();
         }
     }
@@ -77,7 +76,7 @@ class RecipeRepo
                 ->paginate(30)
                 ->onEachSide(1);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
+            report_error($e, __CLASS__);
             return collect();
         }
     }
@@ -94,7 +93,7 @@ class RecipeRepo
                 ->ready(1)
                 ->value('id');
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
+            report_error($e, __CLASS__);
             return null;
         }
     }

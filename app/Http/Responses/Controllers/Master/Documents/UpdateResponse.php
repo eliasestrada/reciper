@@ -31,8 +31,7 @@ class UpdateResponse implements Responsable
             $this->cleanCache();
             return $this->response($request);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 

@@ -19,8 +19,7 @@ class ViewRepo
         try {
             return View::whereVisitorId($visitor_id)->pluck('recipe_id');
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return collect();
+            return report_error($e, collect());
         }
     }
 }

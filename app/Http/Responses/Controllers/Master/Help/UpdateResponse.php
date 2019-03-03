@@ -33,8 +33,7 @@ class UpdateResponse implements Responsable
             return redirect("/master/help/{$this->help->id}/edit")
                 ->withSuccess(trans('help.help_updated'));
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 

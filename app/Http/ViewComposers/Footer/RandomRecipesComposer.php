@@ -29,8 +29,8 @@ class RandomRecipesComposer
             });
             $view->with(compact('random_recipes'));
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
             $view->with('random_recipes', []);
+            report_error($e);
         }
     }
 }

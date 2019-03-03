@@ -19,8 +19,7 @@ class PageController extends Controller
         try {
             $recipes = $recipe_repo->getRandomUnseen(24);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            $recipes = collect();
+            $recipes = report_error($e, collect());
         }
         return view('pages.home', compact('recipes'));
     }
@@ -70,7 +69,7 @@ class PageController extends Controller
                 ->done(1)
                 ->paginate(12);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
+            report_error($e, __CLASS__);
         }
     }
 
@@ -85,7 +84,7 @@ class PageController extends Controller
         try {
             $result = User::whereId($request)->first();
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
+            report_error($e, __CLASS__);
         }
 
         return is_null($result) ? null : $result->username;

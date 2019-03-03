@@ -16,8 +16,7 @@ class MealRepo
         try {
             return Meal::get();
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return collect();
+            return report_error($e, collect());
         }
     }
 
@@ -33,7 +32,7 @@ class MealRepo
                 return Meal::get()->toArray();
             });
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
+            report_error($e, __CLASS__);
             return [];
         }
     }

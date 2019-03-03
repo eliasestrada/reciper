@@ -31,7 +31,7 @@ class PopularRecipesComposer
             $view->with(compact('popular_recipes'));
         } catch (QueryException $e) {
             $view->with('popular_recipes', []);
-            no_connection_error($e, __CLASS__);
+            report_error($e);
         }
     }
 }

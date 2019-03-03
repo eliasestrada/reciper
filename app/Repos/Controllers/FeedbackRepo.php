@@ -23,8 +23,7 @@ class FeedbackRepo
                 ['is_report', 1],
             ])->exists();
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 
@@ -40,7 +39,7 @@ class FeedbackRepo
                 ['created_at', '>', now()->subDay()],
             ])->exists();
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
+            report_error($e, __CLASS__);
             return null;
         }
     }
@@ -54,7 +53,7 @@ class FeedbackRepo
         try {
             return Feedback::whereLang($lang)->latest()->paginate(20)->onEachSide(1);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
+            report_error($e, __CLASS__);
             return null;
         }
     }

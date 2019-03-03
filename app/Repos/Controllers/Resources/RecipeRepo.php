@@ -20,8 +20,7 @@ class RecipeRepo
                 ->done(1)
                 ->paginate($pagin);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 
@@ -34,7 +33,7 @@ class RecipeRepo
         try {
             return Recipe::whereSimple(1)->done(1)->paginate($pagin);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
+            report_error($e, __CLASS__);
             return null;
         }
     }
@@ -58,7 +57,7 @@ class RecipeRepo
                 ->done(1)
                 ->paginate($pagin);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
+            report_error($e, __CLASS__);
             return null;
         }
     }
@@ -83,7 +82,7 @@ class RecipeRepo
 
             return $result;
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
+            report_error($e, __CLASS__);
             return null;
         }
     }
@@ -97,7 +96,7 @@ class RecipeRepo
         try {
             return Recipe::latest()->done(1)->paginate($pagin);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
+            report_error($e, __CLASS__);
             return null;
         }
     }
@@ -121,7 +120,7 @@ class RecipeRepo
                 ->done(1)
                 ->paginate($pagin);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
+            report_error($e, __CLASS__);
             return null;
         }
     }

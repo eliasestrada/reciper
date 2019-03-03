@@ -23,8 +23,7 @@ class StoreResponse implements Responsable
                 trans('help.help_message_is_created')
             );
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 

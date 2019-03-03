@@ -19,8 +19,7 @@ class HelpRepo
                 return Help::orderBy(_('title'))->get()->toArray();
             });
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return [];
+            return report_error($e, []);
         }
     }
 
@@ -33,7 +32,7 @@ class HelpRepo
         try {
             return Help::find($id);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
+            report_error($e, __CLASS__);
             return null;
         }
     }

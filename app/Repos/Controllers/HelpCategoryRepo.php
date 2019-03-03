@@ -18,8 +18,7 @@ class HelpCategoryRepo
                 return HelpCategory::get()->toArray();
             });
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return [];
+            return report_error($e, []);
         }
     }
 }

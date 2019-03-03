@@ -45,8 +45,7 @@ class StoreResponse implements Responsable
             $this->createFeedback($request);
             return back()->withSuccess(trans('feedback.success_message'));
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 

@@ -26,8 +26,7 @@ class DocumentRepo
         try {
             return Document::query()->isReady($ready)->paginate(20)->onEachSide(1);
         } catch (QueryException $e) {
-            no_connection_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 }
