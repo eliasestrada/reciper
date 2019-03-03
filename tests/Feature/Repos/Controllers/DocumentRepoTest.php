@@ -42,15 +42,4 @@ class DocumentRepoTest extends TestCase
         $this->assertCount(1, $ready_docs);
         $this->assertCount(2, $not_ready_docs);
     }
-
-    /**
-     * @author Cho
-     * @test
-     */
-    public function method_find_returns_document_by_given_id(): void
-    {
-        $document = create(Document::class);
-        $result = $this->repo->find($document->id);
-        $this->assertEquals($document->toBase(), $result->toBase());
-    }
 }

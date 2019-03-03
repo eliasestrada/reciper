@@ -5,18 +5,10 @@ namespace App\Repos\Controllers;
 use App\Models\Document;
 use Illuminate\Database\QueryException;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Repos\Controllers\Base\DocumentRepoBase;
 
-class DocumentRepo
+class DocumentRepo extends DocumentRepoBase
 {
-    /**
-     * @param int $document_id
-     * @return \App\Models\Document
-     */
-    public function find(int $document_id): Document
-    {
-        return Document::find($document_id);
-    }
-
     /**
      * @param int $ready
      * @return \Illuminate\Pagination\LenghtAwarePaginator
