@@ -14,10 +14,10 @@ class IndexResponse implements Responsable
     public function toResponse($request)
     {
         $recipe_repo = new RecipeRepo;
-        $already_checking = $recipe_repo->getIdOfTheRecipeThatUserIsChecking(user()->id);
+        $slug = $recipe_repo->getSlugOfTheRecipeThatUserIsChecking(user()->id);
 
-        if ($already_checking) {
-            return redirect("/admin/approves/{$already_checking}")
+        if ($slug) {
+            return redirect("/admin/approves/{$slug}")
                 ->withSuccess(trans('approves.finish_checking'));
         }
 

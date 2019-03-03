@@ -11,15 +11,23 @@
             @if ($approver_id == user()->id)
                 <p>@lang('recipes.approve_or_not')</p>
 
-                {{-- Approve --}}
-                <form action="{{ action('Admin\ApproveController@approve', ['id' => $recipe->id]) }}" method="post" class="d-inline-block">
+                {{-- Approve form --}}
+                <form action="{{ action('Admin\ApproveController@approve', ['id' => $recipe->slug]) }}"
+                    method="post"
+                    class="d-inline-block"
+                >
                     @csrf
-                    <button class="btn green confirm" type="submit" data-confirm="@lang('recipes.are_you_sure_to_publish')">
+
+                    {{-- Approve button --}}
+                    <button class="btn green confirm"
+                        type="submit"
+                        data-confirm="@lang('recipes.are_you_sure_to_publish')"
+                    >
                         @lang('messages.yes') <i class="fas fa-thumbs-up right"></i>
                     </button>
                 </form>
 
-                {{-- Disapprove --}}
+                {{-- Disapprove button --}}
                 <a href="#disapprove-modal" class="btn red modal-trigger">
                     @lang('messages.no') <i class="fas fa-thumbs-down right"></i>
                 </a>
@@ -27,17 +35,31 @@
                 <!--  disapprove-publishing-modal structure -->
                 <div id="disapprove-modal" class="modal">
                     <div class="modal-content reset">
-                        <form action="{{ action('Admin\ApproveController@disapprove', ['recipe' => $recipe->id]) }}" method="post">
+                        <form action="{{ action('Admin\ApproveController@disapprove', ['recipe' => $recipe->slug]) }}"
+                            method="post"
+                        >
                             @csrf
+
                             <p>@lang('notifications.set_message_desc')</p>
+
                             <div class="input-field">
                                 <label for="textarea1">* @lang('notifications.set_message')</label>
-                                <textarea name="message" id="textarea1" class="materialize-textarea counter" data-length="{{ config('valid.approves.disapprove.message.max') }}" required></textarea>
+                                <textarea name="message"
+                                    id="textarea1"
+                                    class="materialize-textarea counter"
+                                    data-length="{{ config('valid.approves.disapprove.message.max') }}"
+                                    required
+                                ></textarea>
+
                                 @include('includes.input-error', ['field' => 'message'])
                             </div>
 
+                            {{-- Disapprove button --}}
                             <div class="input-field">
-                                <button class="btn red confirm" type="submit" data-confirm="@lang('recipes.are_you_sure_to_cancel')">
+                                <button class="btn red confirm"
+                                    type="submit"
+                                    data-confirm="@lang('recipes.are_you_sure_to_cancel')"
+                                >
                                     @lang('forms.send')
                                 </button>
                             </div>
@@ -47,16 +69,38 @@
             @else
                 <div class="no-select">
                     {{-- Approver icon --}}
-                    <a href="/users/{{ $recipe->approver->username }}" title="@lang('users.go_to_profile')">
-                        <img src="{{ asset('storage/small/users/' . $recipe->approver->image) }}" class="circle" style="border:3px solid green" alt="{{ $recipe->approver->getName() }}" width="50">
-                        <i class="fas fa-search fa-15x paper circle p-1" style="color:green;transform:translateX(-20px)"></i>
+                    <a href="/users/{{ $recipe->approver->username }}"
+                        title="@lang('users.go_to_profile')"
+                    >
+                        <img src="{{ asset("storage/small/users/{$recipe->approver->image}") }}"
+                            class="circle"
+                            style="border:3px solid green"
+                            alt="{{ $recipe->approver->getName() }}"
+                            width="50"
+                        />
+                        <i class="fas fa-search fa-15x paper circle p-1"
+                            style="color:green;transform:translateX(-20px)"
+                        ></i>
                     </a>
+
                     <i class="fas fa-arrow-right fa-3x green-text mr-4"></i>
+
                     {{-- Author icon --}}
-                    <a href="/users/{{ $recipe->user->username }}" title="@lang('users.go_to_profile')">
-                        <img src="{{ asset('storage/small/users/' . $recipe->user->image) }}" class="circle" style="border:3px solid green" alt="{{ $recipe->approver->getName() }}" width="50">
-                        <i class="fas fa-file-alt fa-15x paper p-1" style="color:green;transform:translateX(-20px)"></i><br>
+                    <a href="/users/{{ $recipe->user->username }}"
+                        title="@lang('users.go_to_profile')"
+                    >
+                        <img src="{{ asset("storage/small/users/{$recipe->user->image}") }}"
+                            class="circle"
+                            style="border:3px solid green"
+                            alt="{{ $recipe->approver->getName() }}"
+                            width="50"
+                        />
+                        <i class="fas fa-file-alt fa-15x paper p-1"
+                            style="color:green;transform:translateX(-20px)"
+                        ></i>
+                        <br>
                     </a>
+
                     <p class="main-text my-1">
                         {!! trans('approves.currently_approving', [
                             'admin' => $recipe->approver->getName(),

@@ -83,15 +83,15 @@ class RecipeRepo
 
     /**
      * @param int $user_id
-     * @return int
+     * @return string
      */
-    public function getIdOfTheRecipeThatUserIsChecking(int $user_id): ?int
+    public function getSlugOfTheRecipeThatUserIsChecking(int $user_id): ?string
     {
         try {
             return Recipe::where(_('approver_id', true), $user_id)
                 ->approved(0)
                 ->ready(1)
-                ->value('id');
+                ->value('slug');
         } catch (QueryException $e) {
             report_error($e, __CLASS__);
             return null;

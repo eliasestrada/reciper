@@ -41,7 +41,7 @@ class AdminApprovesIndexPageTest extends TestCase
         $recipe = create(Recipe::class, [_('approved') => 0, _('approver_id', true) => 0]);
 
         $this->actingAs(create_user('admin'))
-            ->get('/admin/approves/')
+            ->get('/admin/approves')
             ->assertSeeText(string_limit($recipe->getTitle(), 45));
     }
 
@@ -56,6 +56,6 @@ class AdminApprovesIndexPageTest extends TestCase
 
         $this->actingAs($admin)
             ->get('/admin/approves')
-            ->assertRedirect("/admin/approves/{$recipe->id}");
+            ->assertRedirect("/admin/approves/{$recipe->slug}");
     }
 }

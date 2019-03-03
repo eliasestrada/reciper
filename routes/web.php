@@ -54,9 +54,9 @@ Route::prefix('settings')->namespace('Settings')->group(function () {
 // Admin ===========
 Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('approves', 'ApproveController@index');
-    Route::get('approves/{recipe}', 'ApproveController@show');
-    Route::post('answer/approve/{recipe}', 'ApproveController@approve');
-    Route::post('answer/disapprove/{recipe}', 'ApproveController@disapprove');
+    Route::get('approves/{slug}', 'ApproveController@show');
+    Route::post('answer/approve/{slug}', 'ApproveController@approve');
+    Route::post('answer/disapprove/{slug}', 'ApproveController@disapprove');
     Route::resource('feedback', FeedbackController::class)->only(['index', 'show', 'destroy']);
 });
 

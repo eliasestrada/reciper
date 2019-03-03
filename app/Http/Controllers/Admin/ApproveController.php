@@ -34,11 +34,12 @@ class ApproveController extends Controller
     /**
      * Show single recipe
      *
-     * @param \App\Models\Recipe $recipe
+     * @param string $slug
      * @return \App\Http\Responses\Controllers\Admin\Approves\ShowResponse
      */
-    public function show(Recipe $recipe): ShowResponse
+    public function show(string $slug): ShowResponse
     {
+        $recipe = Recipe::whereSlug($slug)->first();
         return new ShowResponse($recipe);
     }
 
@@ -46,11 +47,12 @@ class ApproveController extends Controller
      * Approve given recipe
      * Dispaches event \App\Events\RecipeGotApproved
      *
-     * @param \App\Models\Recipe $recipe
+     * @param string $slug
      * @return \App\Http\Responses\Controllers\Admin\Approves\ApproveResponse
      */
-    public function approve(Recipe $recipe): ApproveResponse
+    public function approve(string $slug): ApproveResponse
     {
+        $recipe = Recipe::whereSlug($slug)->first();
         return new ApproveResponse($recipe);
     }
 
@@ -58,12 +60,13 @@ class ApproveController extends Controller
      * Disapprove given recipe
      * Dispaches event \App\Events\RecipeGotCanceled
      *
-     * @param \App\Models\Recipe $recipe
+     * @param string $slug
      * @param \App\Http\Requests\DisapproveRequest $request
      * @return \App\Http\Responses\Controllers\Admin\Approves\ApproveResponse
      */
-    public function disapprove(Recipe $recipe, DisapproveRequest $request): DisapproveResponse
+    public function disapprove(string $slug, DisapproveRequest $request): DisapproveResponse
     {
+        $recipe = Recipe::whereSlug($slug)->first();
         return new DisapproveResponse($recipe);
     }
 }
