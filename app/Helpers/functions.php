@@ -7,8 +7,7 @@ use Illuminate\Support\Str;
  * @param string $string
  * @return string
  */
-function custom_strip_tags(string $string): string
-{
+function custom_strip_tags(string $string): string {
     $allowed = '<h1><h2><h3><h4><h5><h6><p><br><br><b><li><ol><ul><strong><span>';
     return strip_tags($string, $allowed);
 }
@@ -16,8 +15,7 @@ function custom_strip_tags(string $string): string
 /**
  * Helper for cookie
  */
-function getCookie($name)
-{
+function getCookie($name) {
     return request()->cookie($name);
 }
 
@@ -26,8 +24,7 @@ function getCookie($name)
  * @param string $str
  * @return array
  */
-function to_array_of_list_items(? string $str): array
-{
+function to_array_of_list_items(? string $str): array {
     $string_with_no_tags = strip_tags($str, '<li>');
 
     $array_of_lines = explode("\n", preg_replace("/[\r\n]+/", "\n", $string_with_no_tags));
@@ -45,8 +42,7 @@ function to_array_of_list_items(? string $str): array
 }
 
 // Shortcut
-function user()
-{
+function user() {
     return auth()->user();
 }
 
@@ -54,8 +50,7 @@ function user()
  * @param int $length
  * @return string
  */
-function string_random(int $length = 16): string
-{
+function string_random(int $length = 16): string {
     return Str::random($length);
 }
 
@@ -65,8 +60,7 @@ function string_random(int $length = 16): string
  * @param string $end
  * @return string
  */
-function string_limit(string $value, int $limit = 100, $end = '...'): string
-{
+function string_limit(string $value, int $limit = 100, $end = '...'): string {
     return Str::limit($value, $limit, $end);
 }
 
@@ -75,8 +69,7 @@ function string_limit(string $value, int $limit = 100, $end = '...'): string
  * @param bool $before
  * @return string
  */
-function _(? string $str = null, bool $before = false): string
-{
+function _(? string $str = null, bool $before = false): string {
     $lang = app()->getLocale();
     if ($str) {
         return $before ? "{$lang}_{$str}" : "{$str}_{$lang}";
@@ -89,8 +82,7 @@ function _(? string $str = null, bool $before = false): string
  * @param int|null $num2
  * @return string
  */
-function set_as_selected_if_equal(?int $num1, ?int $num2): string
-{
+function set_as_selected_if_equal(?int $num1, ?int $num2): string {
     return $num1 === $num2 ? 'selected' : '';
 }
 
@@ -101,8 +93,7 @@ function set_as_selected_if_equal(?int $num1, ?int $num2): string
  * @param string
  * @return
  */
-function style_timestamp(string $path): string
-{
+function style_timestamp(string $path): string {
     try {
         $timestamp = '?v=' . \File::lastModified(public_path() . $path);
     } catch (Exception $e) {
@@ -118,8 +109,7 @@ function style_timestamp(string $path): string
  * @param string
  * @return
  */
-function script_timestamp(string $path): string
-{
+function script_timestamp(string $path): string {
     try {
         $timestamp = '?v=' . File::lastModified(public_path() . $path);
     } catch (Exception $e) {
@@ -132,8 +122,7 @@ function script_timestamp(string $path): string
  * @param array $routes
  * @return string
  */
-function active_if_route_is(array $routes): string
-{
+function active_if_route_is(array $routes): string {
     foreach ($routes as $route) {
         $route_starts_with_slash = $route[0] == '/' && strlen($route) != 1;
         $given_request = $route_starts_with_slash ? substr($route, 1) : $route;
@@ -153,8 +142,7 @@ function active_if_route_is(array $routes): string
  * @param mixed $number
  * @return mixed
  */
-function readable_number($number)
-{
+function readable_number($number) {
     switch (true) {
         case $number < 900: // 0 - 900
             $new_number = number_format($number);
@@ -196,8 +184,7 @@ function readable_number($number)
  * @param string $value
  * @return string
  */
-function get_online_icon(string $value): string
-{
+function get_online_icon(string $value): string {
     $seconds = [trans('date.second'), trans('date.seconds'), trans('date.seconds2')];
     $minutes = [trans('date.minute'), trans('date.minutes'), trans('date.minutes2')];
     $url_string = explode(' ', $value);
@@ -217,8 +204,7 @@ function get_online_icon(string $value): string
  * @param bool|null $show_data
  * @return void
  */
-function dump_sql(? bool $show_data = false): void
-{
+function dump_sql(? bool $show_data = false): void {
     \DB::listen(function ($query) use ($show_data) {
         dump($query->sql);
         if ($show_data) {
@@ -229,9 +215,10 @@ function dump_sql(? bool $show_data = false): void
 
 /**
  * It returns visitor_id even if cookie is not set
+ * 
+ * @return int
  */
-function visitor_id()
-{
+function visitor_id(): int {
     if (request()->cookie('r_rotsiv')) {
         return request()->cookie('r_rotsiv');
     }
@@ -247,8 +234,7 @@ function visitor_id()
  * @param string $color
  * @return string
  */
-function tip(? string $header = null, string $message, string $color = 'green-text'): string
-{
+function tip(? string $header = null, string $message, string $color = 'green-text'): string {
     $header = $header ? "<b>{$header}:</b> " : '';
     return '<br><br><span class="' . $color . '">' . $header . $message . '<span>';
 }
@@ -259,8 +245,7 @@ function tip(? string $header = null, string $message, string $color = 'green-te
  * @param $link
  * @return string
  */
-function help_link(string $title, $link): string
-{
+function help_link(string $title, $link): string {
     $url = url(is_int($link) ? '/help/' . $link : $link);
 
     return "<a href='{$url}' class='red-text text-hover'>{$title} <i class='fas fa-external-link-square-alt' style='font-size:10px;transform:translateY(-4.5px)'></i></a>";
@@ -282,8 +267,7 @@ function report_error($exception, $return = null)
 /**
  * @return string
  */
-function setRandomBgColor(): string
-{
+function setRandomBgColor(): string {
     return 'background-color: rgba(
         ' . mt_rand(0, 255) . ',
         ' . mt_rand(0, 255) . ',
@@ -295,7 +279,13 @@ function setRandomBgColor(): string
 /**
  * @return string
  */
-function setLayout(): string
-{
+function setLayout(): string {
     return auth()->check() ? 'layouts.auth' : 'layouts.guest';
+}
+
+/**
+ * @return string|null
+ */
+function dark_theme(): ?string {
+    return getCookie('r_dark_theme') ? 'dark-theme' : null;
 }

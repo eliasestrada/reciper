@@ -5,7 +5,8 @@
     @include('includes.head')
     <title>@lang('logs.logs') {{ log_viewer()->version() }}</title>
 </head>
-<body class="{{ request()->cookie('r_dark_theme') ? 'dark-theme' : '' }}">
+
+<body class="{{ dark_theme() }}">
 
     @include('includes.nav.sidenav')
     @include('includes.nav.navbar')

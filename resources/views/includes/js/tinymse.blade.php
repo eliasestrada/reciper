@@ -3,7 +3,7 @@
         path_absolute: "{{ url('/') }}/",
         selector: "#text",
         themes: "modern",
-        skin: "{{ request()->cookie('r_dark_theme') ? 'dark' : 'light' }}",
+        skin: "{{ dark_theme() ? 'dark' : 'light' }}",
         language: '{{ _() }}',
         plugins: [
             "autolink lists link preview wordcount fullscreen paste",
