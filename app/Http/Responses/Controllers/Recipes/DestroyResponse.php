@@ -2,7 +2,7 @@
 
 namespace App\Http\Responses\Controllers\Recipes;
 
-use App\Models\Recipe;
+use App\Repos\RecipeRepo;
 use App\Helpers\Controllers\RecipeHelpers;
 use Illuminate\Contracts\Support\Responsable;
 
@@ -13,12 +13,13 @@ class DestroyResponse implements Responsable
     protected $recipe;
 
     /**
-     * @param \App\Models\Recipe $recipe
+     * @param string $slug
+     * @param \App\Repos\RecipeRepo $repo
      * @return void
      */
-    public function __construct(Recipe $recipe)
+    public function __construct(string $slug, RecipeRepo $repo)
     {
-        $this->recipe = $recipe;
+        $this->recipe = $repo->find($slug);
     }
 
     /**

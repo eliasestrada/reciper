@@ -271,7 +271,7 @@ class RecipesEditPageTest extends TestCase
         ]);
 
         $this->actingAs($user)->delete(action('RecipeController@destroy', [
-            'recipe' => $recipe->id,
+            'recipe' => $recipe->slug,
         ]));
 
         Queue::assertPushed(DeleteFileJob::class);

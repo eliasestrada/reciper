@@ -36,7 +36,7 @@
 
             {{--  Delete button  --}}
             <delete-recipe-btn inline-template
-                recipe-id="{{ $recipe->id }}"
+                recipe-slug="{{ $recipe->slug }}"
                 deleted-fail="{{ trans('recipes.deleted_fail') }}"
                 confirm="{{ trans('recipes.are_you_sure_to_delete') }}"
             >

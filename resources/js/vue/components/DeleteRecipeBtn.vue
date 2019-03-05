@@ -6,12 +6,12 @@ export default {
         }
     },
 
-    props: ['confirm', 'recipeId', 'deletedFail'],
+    props: ['confirm', 'recipeSlug', 'deletedFail'],
 
     methods: {
         deleteRecipe() {
             if (confirm(this.confirm)) {
-                this.$axios.delete(`/recipes/${this.recipeId}`)
+                this.$axios.delete(`/recipes/${this.recipeSlug}`)
                     .then(data => {
                         data.data === 'success'
                             ? (window.location.href = '/users/other/my-recipes')

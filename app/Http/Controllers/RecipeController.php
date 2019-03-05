@@ -88,11 +88,11 @@ class RecipeController extends Controller
     /**
      * Delete recipe form database
      *
-     * @param \App\Models\Recipe $recipe
+     * @param string $slug
      * @return \App\Http\Responses\Controllers\Recipes\DestroyResponse
      */
-    public function destroy(Recipe $recipe): DestroyResponse
+    public function destroy(string $slug): DestroyResponse
     {
-        return new DestroyResponse($recipe);
+        return new DestroyResponse($slug, $this->repo);
     }
 }
