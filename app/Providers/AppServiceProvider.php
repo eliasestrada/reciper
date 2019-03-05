@@ -16,14 +16,12 @@ class AppServiceProvider extends ServiceProvider
     {
         \Schema::defaultStringLength(191);
 
-
         $this->horizonRightsChecker();
         $this->enableSqlQueryLogging(false);
-        view()->share('categories', (new CategoryRepo)->getCache());
+        $this->app->env === 'production' ? url()->forceScheme('https') : null;
 
-        if ($this->app->env === 'production') {
-            url()->forceScheme('https');
-        }
+        view()->share('categories', (new CategoryRepo)->getCache());
+        dark_theme() ? Horizon::night() : null;
     }
 
     /**
@@ -31,14 +29,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function horizonRightsChecker(): void
     {
-        /** @var \Closure $onlyMaster */
-        $onlyMaster = function ($request) {
+        Horizon::auth(function ($request) {
             if ($request->user() && $request->user()->hasRole('master') || $this->app->isLocal()) {
                 return true;
             }
             throw new UnauthorizedHttpException('Unauthorized');
-        };
-        Horizon::auth($onlyMaster);
+        });
     }
 
 
