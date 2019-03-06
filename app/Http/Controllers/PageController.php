@@ -90,6 +90,6 @@ class PageController extends Controller
             $result = report_error($e);
         }
 
-        return $result ?? $result->username;
+        return $result ? $result->username : null;
     }
 }
