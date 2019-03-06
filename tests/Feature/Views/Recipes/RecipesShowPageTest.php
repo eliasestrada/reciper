@@ -35,7 +35,7 @@ class RecipesShowPageTest extends TestCase
             'recipe_id' => 1,
         ];
 
-        $this->post(action('Admin\FeedbackController@store'), $data);
+        $this->post(action('FeedbackController@store'), $data);
         $this->assertDatabaseHas('feedback', $data);
     }
 
@@ -47,13 +47,13 @@ class RecipesShowPageTest extends TestCase
     {
         $data = ['message' => string_random(40), 'recipe_id' => 1];
 
-        $this->post(action('Admin\FeedbackController@store'), $data);
+        $this->post(action('FeedbackController@store'), $data);
         $this->assertDatabaseHas('feedback', $data);
 
         // Changin message but recipe is the same
         $data['message'] = string_random(45);
 
-        $this->post(action('Admin\FeedbackController@store'), $data);
+        $this->post(action('FeedbackController@store'), $data);
         $this->assertDatabaseMissing('feedback', $data);
     }
 
@@ -66,7 +66,7 @@ class RecipesShowPageTest extends TestCase
         $data = ['message' => string_random(40), 'recipe_id' => 1];
 
         // First request
-        $this->post(action('Admin\FeedbackController@store'), $data);
+        $this->post(action('FeedbackController@store'), $data);
         $this->assertDatabaseHas('feedback', $data);
 
         // Changing created_at field to minus day and changing message
@@ -74,7 +74,7 @@ class RecipesShowPageTest extends TestCase
         $data['message'] = string_random(45);
 
         // Making another request (imitating the next day)
-        $this->post(action('Admin\FeedbackController@store'), $data);
+        $this->post(action('FeedbackController@store'), $data);
         $this->assertDatabaseHas('feedback', $data);
     }
 
@@ -88,11 +88,11 @@ class RecipesShowPageTest extends TestCase
         $data2 = ['message' => string_random(45), 'recipe_id' => create(Recipe::class)->id];
 
         // First report
-        $this->post(action('Admin\FeedbackController@store'), $data1);
+        $this->post(action('FeedbackController@store'), $data1);
         $this->assertDatabaseHas('feedback', $data1);
 
         // Second report
-        $this->post(action('Admin\FeedbackController@store'), $data2);
+        $this->post(action('FeedbackController@store'), $data2);
         $this->assertDatabaseHas('feedback', $data2);
     }
 

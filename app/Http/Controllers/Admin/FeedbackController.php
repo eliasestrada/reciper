@@ -6,9 +6,7 @@ use App\Models\Feedback;
 use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\FeedbackRequest;
 use App\Http\Responses\Controllers\Admin\Feedback\IndexResponse;
-use App\Http\Responses\Controllers\Admin\Feedback\StoreResponse;
 
 class FeedbackController extends Controller
 {
@@ -17,7 +15,7 @@ class FeedbackController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin')->except(['store']);
+        $this->middleware('admin');
     }
 
     /**
@@ -29,17 +27,6 @@ class FeedbackController extends Controller
     public function index(): IndexResponse
     {
         return new IndexResponse;
-    }
-
-    /**
-     * Store a newly created report or feedback in database
-     *
-     * @param \App\Http\Requests\FeedbackRequest $request
-     * @return \App\Http\Responses\Controllers\Admin\Feedback\StoreResponse
-     */
-    public function store(FeedbackRequest $request): StoreResponse
-    {
-        return new StoreResponse;
     }
 
     /**

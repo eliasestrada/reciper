@@ -14,7 +14,7 @@
             </div>
         @else
             <p>@lang('contact.intro')</p>
-            <form action="{{ action('Admin\FeedbackController@store') }}" method="post">
+            <form action="{{ action('FeedbackController@store') }}" method="post">
                 <div class="input-field"> @csrf
                     <i class="fas fa-at prefix"></i>
                     <input type="email" name="email" value="{{ old('email') }}" id="email">

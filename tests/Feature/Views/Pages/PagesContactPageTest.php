@@ -27,7 +27,7 @@ class PagesContactPageTest extends TestCase
      */
     public function anyone_can_send_feedback_message(): void
     {
-        $this->post(action('Admin\FeedbackController@store'), $data = [
+        $this->post(action('FeedbackController@store'), $data = [
             'email' => 'test@emil.com',
             'message' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit',
         ]);
@@ -44,11 +44,11 @@ class PagesContactPageTest extends TestCase
         $second_data = ['email' => 'test2@emil.com', 'message' => string_random(20)];
 
         // First attempt to send a message, should be successful
-        $this->post(action('Admin\FeedbackController@store'), $first_data);
+        $this->post(action('FeedbackController@store'), $first_data);
         $this->assertDatabaseHas('feedback', $first_data);
 
         // Second attempt to send a message, should be denied
-        $this->post(action('Admin\FeedbackController@store'), $second_data);
+        $this->post(action('FeedbackController@store'), $second_data);
         $this->assertDatabaseMissing('feedback', $second_data);
     }
 
@@ -62,14 +62,14 @@ class PagesContactPageTest extends TestCase
         $second_data = ['email' => 'testing@emil.com', 'message' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit'];
 
         // Make first request
-        $this->post(action('Admin\FeedbackController@store'), $first_data);
+        $this->post(action('FeedbackController@store'), $first_data);
         $this->assertDatabaseHas('feedback', $first_data);
 
         // Change created_at to minus day
         Feedback::latest()->first()->update(['created_at' => now()->subDay()]);
 
         // Make second request (imitating the next day)
-        $this->post(action('Admin\FeedbackController@store'), $second_data);
+        $this->post(action('FeedbackController@store'), $second_data);
         $this->assertDatabaseHas('feedback', $second_data);
     }
 }

@@ -29,7 +29,7 @@ Route::prefix('users')->group(function () {
 Route::get('/', 'PageController@home');
 Route::view('contact', 'pages.contact');
 Route::get('search', 'PageController@search');
-Route::post('admin/feedback', 'Admin\FeedbackController@store');
+Route::post('feedback', 'FeedbackController@store');
 
 Route::resource('recipes', RecipeController::class);
 Route::resource('help', HelpController::class)->only(['index', 'show']);

@@ -169,7 +169,7 @@
 @if (visitor_id() != $recipe->user_id)
     <div id="report-recipe-modal" class="modal not-printable">
         <div class="modal-content reset">
-            <form action="{{ action('Admin\FeedbackController@store') }}" method="post">
+            <form action="{{ action('FeedbackController@store') }}" method="post">
 
                 @csrf
 

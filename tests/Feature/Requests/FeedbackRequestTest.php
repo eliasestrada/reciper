@@ -39,7 +39,7 @@ class FeedbackRequestTest extends TestCase
         $data = ['email' => 'johntest@mail.ru', 'message' => ''];
 
         $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), $data)
+            ->post(action('FeedbackController@store'), $data)
             ->assertSeeText(trans('contact.contact_message_required'));
     }
 
@@ -52,7 +52,7 @@ class FeedbackRequestTest extends TestCase
         $data = ['email' => '', 'message' => string_random(50)];
 
         $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), $data)
+            ->post(action('FeedbackController@store'), $data)
             ->assertSeeText(trans('contact.contact_email_required'));
     }
 
@@ -65,7 +65,7 @@ class FeedbackRequestTest extends TestCase
         $data = ['email' => 'testing@@mail', 'message' => string_random(50)];
 
         $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), $data)
+            ->post(action('FeedbackController@store'), $data)
             ->assertSeeText(trans('contact.contact_email_email'));
     }
 
@@ -81,7 +81,7 @@ class FeedbackRequestTest extends TestCase
         ];
 
         $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), $data)
+            ->post(action('FeedbackController@store'), $data)
             ->assertSeeText(preg_replace('/:min/', $this->msg_min, trans('contact.contact_message_min')));
     }
 
@@ -97,7 +97,7 @@ class FeedbackRequestTest extends TestCase
         ];
 
         $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), $data)
+            ->post(action('FeedbackController@store'), $data)
             ->assertSeeText(preg_replace('/:max/', $this->msg_max, trans('contact.contact_message_max')));
     }
 
@@ -108,7 +108,7 @@ class FeedbackRequestTest extends TestCase
     public function recipe_id_field_must_be_integer(): void
     {
         $data = ['message' => string_random(50), 'recipe_id' => 'h'];
-        $this->post(action('Admin\FeedbackController@store'), $data);
+        $this->post(action('FeedbackController@store'), $data);
         $this->assertDatabaseMissing('feedback', $data);
     }
 
@@ -120,7 +120,7 @@ class FeedbackRequestTest extends TestCase
     {
         $data = ['message' => '', 'recipe_id' => 3];
         $this->followingRedirects()
-            ->post(action('Admin\FeedbackController@store'), $data)
+            ->post(action('FeedbackController@store'), $data)
             ->assertSeeText(trans('contact.contact_message_required'));
     }
 }
