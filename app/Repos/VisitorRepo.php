@@ -11,6 +11,7 @@ class VisitorRepo
      * Return id of the visitor by given ip address, if no ip provided
      * then take ip from request
      * 
+     * @throws \Illuminate\Database\QueryException
      * @param string|null $ip
      * @return int|null
      */

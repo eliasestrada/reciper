@@ -10,6 +10,8 @@ class VisitorProvider extends ServiceProvider
 {
     /**
      * Bootstrap services
+     * 
+     * @throws \Illuminate\Database\QueryException
      * @return void
      */
     public function boot(): void

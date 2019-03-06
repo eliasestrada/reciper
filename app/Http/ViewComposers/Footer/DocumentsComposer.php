@@ -11,6 +11,7 @@ class DocumentsComposer
     /**
      * Bind data to the view
      * 
+     * @throws \Illuminate\Database\QueryException
      * @param \Illuminate\View\View $view
      * @return void
      */

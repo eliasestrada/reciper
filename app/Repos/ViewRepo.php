@@ -9,6 +9,7 @@ use Illuminate\Support\Collection;
 class ViewRepo
 {
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param int|null $visitor_id
      * @return \Illuminate\Support\Collection
      */

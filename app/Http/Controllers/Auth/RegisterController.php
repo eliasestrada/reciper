@@ -30,6 +30,10 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    /**
+     * @throws \Illuminate\Database\QueryException
+     * @return void
+     */
     public function showRegistrationForm()
     {
         try {
@@ -46,7 +50,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)

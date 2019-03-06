@@ -21,6 +21,7 @@ class DestroyResponse implements Responsable
     }
 
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|null
      */

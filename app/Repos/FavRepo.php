@@ -9,6 +9,7 @@ use Illuminate\Database\QueryException;
 class FavRepo
 {
     /**
+     * @throws \Illuminate\Database\QueryException
      * @return \Illuminate\Support\Collection
      */
     public function all(): Collection

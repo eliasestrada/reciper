@@ -7,6 +7,7 @@ use App\Models\HelpCategory;
 class HelpCategoryRepo
 {
     /**
+     * @throws \Illuminate\Database\QueryException
      * @return array
      */
     public function getCache(): array

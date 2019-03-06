@@ -15,6 +15,7 @@ trait RecipeHelpers
      * Loops through given array and looks for
      * javascript script tag
      *
+     * @throws \Illuminate\Database\QueryException
      * @param array $fields (All fields from request except _method and _token)
      * @param \App\Models\User $user (optional for unit testing)
      * @return bool

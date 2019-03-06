@@ -9,6 +9,7 @@ use Illuminate\Database\QueryException;
 class MealRepo
 {
     /**
+     * @throws \Illuminate\Database\QueryException
      * @return \Illuminate\Support\Collection
      */
     public function all(): Collection
@@ -23,6 +24,7 @@ class MealRepo
     /**
      * Selects common fields from db and caching them
      *
+     * @throws \Illuminate\Database\QueryException
      * @return array
      */
     public function getWithCache(): array
@@ -32,8 +34,7 @@ class MealRepo
                 return Meal::get()->toArray();
             });
         } catch (QueryException $e) {
-            report_error($e, __CLASS__);
-            return [];
+            return report_error($e, []);
         }
     }
 }

@@ -58,6 +58,7 @@ class ShowResponse implements Responsable
      *  Mark that visitor saw the recipe if he didn't
      *  Else increment visits column by one
      *
+     * @throws \Illuminate\Database\QueryException
      * @return void
      */
     protected function handlePopularityAndViews(): void

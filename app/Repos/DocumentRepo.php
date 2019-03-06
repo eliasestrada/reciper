@@ -10,6 +10,7 @@ use App\Repos\Base\DocumentRepoBase;
 class DocumentRepo
 {
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param int $document_id
      * @return \App\Models\Document|null
      */
@@ -23,6 +24,7 @@ class DocumentRepo
     }
 
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param int $ready
      * @return \Illuminate\Pagination\LenghtAwarePaginator
      */

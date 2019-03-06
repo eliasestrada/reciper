@@ -8,6 +8,7 @@ use Illuminate\Database\QueryException;
 class CategoryRepo
 {
     /**
+     * @throws \Illuminate\Database\QueryException
      * @return array
      */
     public function getCache(): array

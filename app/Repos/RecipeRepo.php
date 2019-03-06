@@ -9,26 +9,37 @@ use Illuminate\Database\QueryException;
 class RecipeRepo
 {
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param string $slug
-     * @return \App\Models\Recipe
+     * @return \App\Models\Recipe|null
      */
-    public function find(string $slug): Recipe
+    public function find(string $slug): ?Recipe
     {
-        return Recipe::whereSlug($slug)->first();
+        try {
+            return Recipe::whereSlug($slug)->first();
+        } catch (QueryException $e) {
+            return report_error($e);
+        }
     }
 
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param string $slug
-     * @return \App\Models\Recipe
+     * @return \App\Models\Recipe|null
      */
-    public function findWithAuthor(string $slug): Recipe
+    public function findWithAuthor(string $slug): ?Recipe
     {
-        return Recipe::with('user:id,username,photo,name,xp')
-            ->whereSlug($slug)
-            ->first();
+        try {
+            return Recipe::with('user:id,username,photo,name,xp')
+                ->whereSlug($slug)
+                ->first();
+        } catch (QueryException $e) {
+            return report_error($e);
+        }
     }
 
     /**
+     * @throws \Illuminate\Database\QueryException
      * @return mixed
      */
     public function paginateUnapprovedWaiting()
@@ -46,6 +57,7 @@ class RecipeRepo
     }
 
     /**
+     * @throws \Illuminate\Database\QueryException
      * @return mixed
      */
     public function paginateUnapprovedChecking()
@@ -58,12 +70,12 @@ class RecipeRepo
                 ->paginate(30)
                 ->onEachSide(1);
         } catch (QueryException $e) {
-            report_error($e, __CLASS__);
-            return collect();
+            return report_error($e, collect());
         }
     }
 
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param int $user_id
      * @return mixed
      */
@@ -76,12 +88,12 @@ class RecipeRepo
                 ->paginate(30)
                 ->onEachSide(1);
         } catch (QueryException $e) {
-            report_error($e, __CLASS__);
-            return collect();
+            return report_error($e, collect());
         }
     }
 
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param int $user_id
      * @return string
      */
@@ -93,8 +105,7 @@ class RecipeRepo
                 ->ready(1)
                 ->value('slug');
         } catch (QueryException $e) {
-            report_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 
@@ -102,6 +113,7 @@ class RecipeRepo
      * Returns only those recipes that user haven't seen, if there no recipes
      * the he haven't seen, shows just random recipes
      *
+     * @throws \Illuminate\Database\QueryException
      * @param int $limit Limit results
      * @param int|null $visitor_id
      * @param \App\Repos\ViewRepo|null $view_repo
@@ -111,25 +123,30 @@ class RecipeRepo
     {
         $viewed = ($view_repo ?? new ViewRepo)->pluckViewedRecipeIds($visitor_id);
 
-        /** @var array $where_condition */
         $where_condition = $viewed->map(function ($recipe_id) {
             return ['id', '!=', $recipe_id];
         })->toArray();
 
-        /** @var \Closure $select_unseen_callback */
-        $select_unseen_callback = function ($query) use ($where_condition) {
-            return $query->where($where_condition);
-        };
+        try {
+            $enough_recipes = Recipe::where($where_condition)
+                ->done(1)
+                ->count() < $limit / 2;
+        } catch (QueryException $e) {
+            $enough_recipes = false;
+        }
 
-        /** @var bool $enough_recipes Check if recipes result is less than half of the limit */
-        $enough_recipes = Recipe::where($where_condition)->done(1)->count() < $limit / 2;
-
-        return Recipe::with(['favs', 'likes'])
+        try {
+            return Recipe::with(['favs', 'likes'])
                 ->select(['id', 'slug', 'image', _('title'), _('intro')])
                 ->inRandomOrder()
-                ->when($enough_recipes, $select_unseen_callback)
+                ->when($enough_recipes, function ($query) use ($where_condition) {
+                    return $query->where($where_condition);
+                })
                 ->done(1)
                 ->limit($limit)
                 ->get();
+        } catch (QueryException $e) {
+            return report_error($e, collect());
+        }
     }
 }

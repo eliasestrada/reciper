@@ -8,6 +8,7 @@ use Illuminate\Database\QueryException;
 class HelpRepo
 {
     /**
+     * @throws \Illuminate\Database\QueryException
      * @return array
      */
     public function getCache(): array
@@ -24,6 +25,7 @@ class HelpRepo
     }
 
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param int $id
      * @return \App\Models\Help|null
      */
@@ -32,8 +34,7 @@ class HelpRepo
         try {
             return Help::find($id);
         } catch (QueryException $e) {
-            report_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 }

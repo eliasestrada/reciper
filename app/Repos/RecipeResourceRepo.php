@@ -9,6 +9,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class RecipeResourceRepo
 {
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param int|null $pagin Pagination value
      * @return \Illuminate\Pagination\LengthAwarePaginator|null
      */
@@ -25,6 +26,7 @@ class RecipeResourceRepo
     }
 
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param int|null $pagin Pagination value
      * @return \Illuminate\Pagination\LengthAwarePaginator|null
      */
@@ -33,36 +35,33 @@ class RecipeResourceRepo
         try {
             return Recipe::whereSimple(1)->done(1)->paginate($pagin);
         } catch (QueryException $e) {
-            report_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
     /**
      * Searching for recipes with specific meal time
      *
+     * @throws \Illuminate\Database\QueryException
      * @param string $meal Meal time
      * @param int|null $pagin Pagination value
      * @return \Illuminate\Pagination\LengthAwarePaginator|null
      */
     public function paginateWithMealTime(string $meal, ?int $pagin = 8): ?LengthAwarePaginator
     {
-        /** @var \Closure $queryWithMealCallback */
-        $queryWithMealCallback = function ($query) use ($meal, $pagin) {
-            $query->whereNameEn($meal);
-        };
-
         try {
             return Recipe::with('meal:name_en')
-                ->whereHas('meal', $queryWithMealCallback)
+                ->whereHas('meal', function ($query) use ($meal, $pagin) {
+                    $query->whereNameEn($meal);
+                })
                 ->done(1)
                 ->paginate($pagin);
         } catch (QueryException $e) {
-            report_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param int $visitor_id
      * @param int|null $pagin Pagination value
      * @return \Illuminate\Pagination\LengthAwarePaginator|null
@@ -82,12 +81,12 @@ class RecipeResourceRepo
 
             return $result;
         } catch (QueryException $e) {
-            report_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param int|null $pagin Pagination value
      * @return \Illuminate\Pagination\LengthAwarePaginator|null
      */
@@ -96,14 +95,14 @@ class RecipeResourceRepo
         try {
             return Recipe::latest()->done(1)->paginate($pagin);
         } catch (QueryException $e) {
-            report_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 
     /**
      * Searching for recipes with provided category id
      * 
+     * @throws \Illuminate\Database\QueryException
      * @param int $category_id
      * @param int|null $pagin Pagination value
      * @return \Illuminate\Pagination\LengthAwarePaginator|null
@@ -120,8 +119,7 @@ class RecipeResourceRepo
                 ->done(1)
                 ->paginate($pagin);
         } catch (QueryException $e) {
-            report_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 }

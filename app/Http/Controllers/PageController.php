@@ -12,6 +12,7 @@ use App\Repos\RecipeRepo;
 class PageController extends Controller
 {
     /**
+     * @throws \Illuminate\Database\QueryException
      * @return \Illuminate\View\View
      */
     public function home(RecipeRepo $recipe_repo): ViewResponse
@@ -57,6 +58,7 @@ class PageController extends Controller
     /**
      * Helper that searches for recipes
      *
+     * @throws \Illuminate\Database\QueryException
      * @param string $request
      * @return Illuminate\Pagination\LengthAwarePaginator or void
      */
@@ -69,13 +71,14 @@ class PageController extends Controller
                 ->done(1)
                 ->paginate(12);
         } catch (QueryException $e) {
-            report_error($e, __CLASS__);
+            return report_error($e);
         }
     }
 
     /**
      * Helper that searches for user by user id
      *
+     * @throws \Illuminate\Database\QueryException
      * @param string $request
      * @return string|null
      */
@@ -84,9 +87,9 @@ class PageController extends Controller
         try {
             $result = User::whereId($request)->first();
         } catch (QueryException $e) {
-            report_error($e, __CLASS__);
+            $result = report_error($e);
         }
 
-        return is_null($result) ? null : $result->username;
+        return $result ?? $result->username;
     }
 }
