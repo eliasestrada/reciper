@@ -2,10 +2,10 @@
 
 namespace App\Http\Responses\Controllers\Admin\Approves;
 
-use App\Models\Recipe;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Support\Responsable;
 use App\Helpers\Controllers\Admin\ApproveHelpers;
+use App\Repos\RecipeRepo;
 
 class ApproveResponse implements Responsable
 {
@@ -14,12 +14,13 @@ class ApproveResponse implements Responsable
     protected $recipe;
 
     /**
-     * @param \App\Models\Recipe $recipe
+     * @param string $slug
+     * @param \App\Repos\RecipeRepo $recipe_repo
      * @return void
      */
-    public function __construct(Recipe $recipe)
+    public function __construct(string $slug, RecipeRepo $recipe_repo)
     {
-        $this->recipe = $recipe;
+        $this->recipe = $recipe_repo->find($slug);
     }
 
     /**

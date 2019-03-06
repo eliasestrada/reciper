@@ -9,15 +9,23 @@ use App\Http\Responses\Controllers\Admin\Approves\ShowResponse;
 use App\Http\Responses\Controllers\Admin\Approves\IndexResponse;
 use App\Http\Responses\Controllers\Admin\Approves\ApproveResponse;
 use App\Http\Responses\Controllers\Admin\Approves\DisapproveResponse;
+use App\Repos\RecipeRepo;
 
 class ApproveController extends Controller
 {
     /**
+     * @var \App\Repos\RecipeRepo $recipe_repo
+     */
+    private $recipe_repo;
+
+    /**
+     * @param \App\Repos\RecipeRepo $recipe_repo
      * @return void
      */
-    public function __construct()
+    public function __construct(RecipeRepo $recipe_repo)
     {
         $this->middleware('admin');
+        $this->recipe_repo = $recipe_repo;
     }
 
     /**
@@ -28,7 +36,7 @@ class ApproveController extends Controller
      */
     public function index(): IndexResponse
     {
-        return new IndexResponse;
+        return new IndexResponse($this->recipe_repo);
     }
 
     /**
@@ -39,8 +47,7 @@ class ApproveController extends Controller
      */
     public function show(string $slug): ShowResponse
     {
-        $recipe = Recipe::whereSlug($slug)->first();
-        return new ShowResponse($recipe);
+        return new ShowResponse($slug, $this->recipe_repo);
     }
 
     /**
@@ -52,8 +59,7 @@ class ApproveController extends Controller
      */
     public function approve(string $slug): ApproveResponse
     {
-        $recipe = Recipe::whereSlug($slug)->first();
-        return new ApproveResponse($recipe);
+        return new ApproveResponse($slug, $this->recipe_repo);
     }
 
     /**
@@ -66,7 +72,6 @@ class ApproveController extends Controller
      */
     public function disapprove(string $slug, DisapproveRequest $request): DisapproveResponse
     {
-        $recipe = Recipe::whereSlug($slug)->first();
-        return new DisapproveResponse($recipe);
+        return new DisapproveResponse($slug, $this->recipe_repo);
     }
 }
