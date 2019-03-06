@@ -9,6 +9,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class FeedbackRepo
 {
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param int $visitor_id
      * @param int $recipe_id
      * @return bool
@@ -28,6 +29,7 @@ class FeedbackRepo
     }
 
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param int $visitor_id
      * @return bool
      */
@@ -39,12 +41,12 @@ class FeedbackRepo
                 ['created_at', '>', now()->subDay()],
             ])->exists();
         } catch (QueryException $e) {
-            report_error($e, __CLASS__);
-            return null;
+            return report_error($e);
         }
     }
 
     /**
+     * @throws \Illuminate\Database\QueryException
      * @param string $lang
      * @return \Illuminate\Pagination\LengthAwarePaginator|null
      */
@@ -53,8 +55,21 @@ class FeedbackRepo
         try {
             return Feedback::whereLang($lang)->latest()->paginate(20)->onEachSide(1);
         } catch (QueryException $e) {
-            report_error($e, __CLASS__);
-            return null;
+            return report_error($e);
+        }
+    }
+
+    /**
+     * @throws \Illuminate\Database\QueryException
+     * @param int $id
+     * @return \App\Models\Feedback|null
+     */
+    public function find(int $id): ?Feedback
+    {
+        try {
+            return Feedback::find($id);
+        } catch (QueryException $e) {
+            return report_error($e);
         }
     }
 }

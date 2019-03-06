@@ -100,4 +100,14 @@ class FeedbackRepoTest extends TestCase
         create(Feedback::class, ['lang' => 'ru'], 1);
         $this->assertCount(0, $this->repo->paginateWithLanguage('en'));
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_find_returns_feedback_with_given_id(): void
+    {
+        $feed = create(Feedback::class);
+        $this->assertEquals($feed->toBase(), $this->repo->find($feed->id)->toBase());
+    }
 }

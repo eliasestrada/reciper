@@ -7,15 +7,23 @@ use Illuminate\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Responses\Controllers\Admin\Feedback\IndexResponse;
+use App\Repos\FeedbackRepo;
 
 class FeedbackController extends Controller
 {
     /**
+     * @var \App\Repos\FeedbackRepo $repo
+     */
+    private $repo;
+
+    /**
+     * @param \App\Repos\FeedbackRepo $repo
      * @return void
      */
-    public function __construct()
+    public function __construct(FeedbackRepo $repo)
     {
         $this->middleware('admin');
+        $this->repo = $repo;
     }
 
     /**
@@ -32,23 +40,25 @@ class FeedbackController extends Controller
     /**
      * Display single feedback message
      *
-     * @param \App\Models\Feedback $feedback
+     * @param int $id
      * @return \Illuminate\View\View
      */
-    public function show(Feedback $feedback): View
+    public function show(int $id): View
     {
-        return view('admin.feedback.show', compact('feedback'));
+        return view('admin.feedback.show', [
+            'feedback' => $this->repo->find($id)
+        ]);
     }
 
     /**
      * Remove feedback message from database
      *
-     * @param \App\Models\Feedback $feedback
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Feedback $feedback): RedirectResponse
+    public function destroy(int $id): RedirectResponse
     {
-        $feedback->delete();
+        $this->repo->find($id)->delete();
 
         cache()->forget('feedback_notif');
 

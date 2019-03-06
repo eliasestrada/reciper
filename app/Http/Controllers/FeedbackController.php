@@ -8,14 +8,6 @@ use App\Http\Responses\Controllers\Admin\Feedback\StoreResponse;
 class FeedbackController extends Controller
 {
     /**
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Store a newly created report or feedback in database
      *
      * @param \App\Http\Requests\FeedbackRequest $request
