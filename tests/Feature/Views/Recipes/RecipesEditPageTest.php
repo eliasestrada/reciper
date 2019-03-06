@@ -287,7 +287,7 @@ class RecipesEditPageTest extends TestCase
         $recipe = create(Recipe::class, ['user_id' => $user->id], null, 'draft');
 
         $this->withoutJobs();
-        $this->actingAs($user)->delete("/recipes/{$recipe->id}");
+        $this->actingAs($user)->delete("/recipes/{$recipe->slug}");
         $this->assertDatabaseMissing('recipes', ['id' => $recipe->id]);
     }
 
