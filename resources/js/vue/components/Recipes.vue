@@ -8,6 +8,7 @@
                             <div class="placeholder-image"
                                 :style="{ 'background-color': setRandomBgColor() }"
                             ></div>
+
                             <img class="activator lazy-load-img-vue"
                                 :src="`storage/small/recipes/${recipe.image}`"
                                 :alt="recipe.title"
@@ -19,6 +20,7 @@
                         <span style="height:75%" class="card-title activator">
                             {{ recipe.title }}
                         </span>
+
                         <div style="height:25%">
                             <div class="left">
                                 <btn-favs
@@ -29,10 +31,12 @@
                                     :user-id="userId"
                                 ></btn-favs>
                             </div>
+
                             <span class="left card-time">
                                 <i class="fas fa-clock fa-1x z-depth-2 main-light circle red-text ml-5 mr-1"></i>
                                 {{ recipe.time }} {{ mins }}
                             </span>
+
                             <i class="fas fa-ellipsis-h right fa-15x red-text activator px-1"></i>
                         </div>
                     </div>
@@ -41,7 +45,9 @@
                         <div>
                             <i class="fas fa-times right red-text card-title p-1"></i>
                         </div>
-                        <a class="btn-small mt-3" :href="`/recipes/${recipe.slug}`">{{ go }}</a>
+                        <a class="btn-small mt-3" :href="`/recipes/${recipe.slug}`">
+                            {{ go }}
+                        </a>
                         <p>{{ recipe.intro }}</p>
                     </div>
                 </div>

@@ -1,2 +1,2 @@
-import './vue/vue';
-import './vanilla/vanilla';
+import './vue/vue'
+import './vanilla/vanilla'
