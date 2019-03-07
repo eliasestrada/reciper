@@ -42,7 +42,7 @@ class HelpRepoTest extends TestCase
         $this->assertArrayHasKey(_('title'), $result[0]);
         $this->assertArrayHasKey('help_category_id', $result[0]);
     }
-    
+
     /**
      * @author Cho
      * @test
