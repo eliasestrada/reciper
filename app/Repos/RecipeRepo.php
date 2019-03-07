@@ -5,6 +5,7 @@ namespace App\Repos;
 use App\Models\Recipe;
 use Illuminate\Support\Collection;
 use Illuminate\Database\QueryException;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class RecipeRepo
 {
@@ -147,6 +148,28 @@ class RecipeRepo
                 ->get();
         } catch (QueryException $e) {
             return report_error($e, collect());
+        }
+    }
+
+    /**
+     * @throws \Illuminate\Database\QueryException
+     * @param int $user_id
+     * @param array|null $columns
+     * @return \Illuminate\Pagination\LengthAwarePaginator|null
+     */
+    public function paginateUserRecipesWithCountColumns(int $user_id, ?array $columns = null): ?LengthAwarePaginator
+    {
+        try {
+            return Recipe::whereUserId($user_id)
+                ->when($columns, function ($query) use ($columns) {
+                    $query->withCount($columns);
+                })
+                ->done(1)
+                ->latest()
+                ->paginate(20)
+                ->onEachSide(1);
+        } catch (QueryException $e) {
+            return report_error($e);
         }
     }
 }

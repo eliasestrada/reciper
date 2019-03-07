@@ -119,4 +119,36 @@ class RecipeRepoTest extends TestCase
         $result = $this->repo->findWithAuthor($recipe->slug);
         $this->assertEquals($recipe->user->username, $result->user->username);
     }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_paginateUserRecipesWithCountColumns_returns_user_recipes(): void
+    {
+        $user_id = create_user()->id;
+        $recipe = create(Recipe::class, compact('user_id'));
+        $result = $this->repo->paginateUserRecipesWithCountColumns($user_id);
+
+        $this->assertNotNull($result->where('id', $recipe->id)->first());
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_paginateUserRecipesWithCountColumns_returns_user_recipes_with_given_count_columns(): void
+    {
+        $user_id = create_user()->id;
+        $recipe = create(Recipe::class, compact('user_id'));
+        $count_columns = ['favs', 'likes', 'views'];
+
+        $result = $this->repo->paginateUserRecipesWithCountColumns(
+            $user_id, $count_columns
+        )->first()->toArray();
+
+        array_walk($count_columns, function ($column) use ($result) {
+            $this->assertArrayHasKey("{$column}_count", $result);
+        }); 
+    }
 }
