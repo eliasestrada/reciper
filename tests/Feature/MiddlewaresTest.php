@@ -11,7 +11,6 @@ class MiddlewaresTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function online_check_is_updated_to_now_after_user_visits_the_app(): void
@@ -25,7 +24,6 @@ class MiddlewaresTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function online_check_is_updated_after_5_minutes(): void
@@ -36,7 +34,6 @@ class MiddlewaresTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function online_check_is_not_updated_after_first_visit_within_5_minutes(): void

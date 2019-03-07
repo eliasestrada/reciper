@@ -10,7 +10,6 @@ class DisapproveRequestTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @return void
      */
     public function tearDown(): void
@@ -23,7 +22,6 @@ class DisapproveRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function message_is_required(): void
@@ -36,7 +34,6 @@ class DisapproveRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function message_must_be_not_short(): void
@@ -49,7 +46,6 @@ class DisapproveRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function message_must_be_not_long(): void

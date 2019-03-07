@@ -9,7 +9,6 @@ use App\Models\User;
 class UserTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function user_model_has_attributes(): void
@@ -20,7 +19,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_model_has_relationship_with_recipe_model(): void
@@ -29,7 +27,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_model_has_relationship_with_fav_model(): void
@@ -40,7 +37,6 @@ class UserTest extends TestCase
     /**
      * Ban::put() last param is set to false which means that instead of creating
      * ban record in DB just make it in memory
-     * @author Cho
      * @test
      */
     public function user_model_has_relationship_with_ban_model(): void
@@ -52,7 +48,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function hasRole_method_returns_false_if_user_does_not_have_given_role(): void
@@ -61,7 +56,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function isActive_method_returns_true_if_table_column_active_is_set_to_1(): void
@@ -71,7 +65,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function isActive_method_returns_fasle_if_table_column_active_is_set_to_0(): void
@@ -81,7 +74,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getName_method_returns_name_if_column_name_is_not_null(): void
@@ -91,7 +83,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getName_method_returns_username_if_name_column_is_null(): void
@@ -101,7 +92,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getStatusColor_method_returns_RED_color_if_user_is_not_active(): void
@@ -111,7 +101,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getStatusColor_method_returns_GREEN_color_if_user_is_active(): void
@@ -121,7 +110,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getStatusColor_method_returns_MAIN_color_if_user_is_banned(): void
@@ -135,7 +123,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function verified_method_returns_true_if_user_has_token_field_empty(): void
@@ -145,7 +132,6 @@ class UserTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_firstUser_returns_first_user_from_database(): void

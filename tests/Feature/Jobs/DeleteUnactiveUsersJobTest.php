@@ -16,7 +16,6 @@ class DeleteUnactiveUsersJobTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -26,7 +25,6 @@ class DeleteUnactiveUsersJobTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function handle_method_deletes_all_unactive_users_that_have_not_been_updated_30_days_or_more(): void
@@ -44,7 +42,6 @@ class DeleteUnactiveUsersJobTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function handle_method_doesnt_delete_unactive_users_that_have_not_been_updated_less_than_30_days(): void
@@ -62,7 +59,6 @@ class DeleteUnactiveUsersJobTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function handle_method_doesnt_delete_active_users_that_have_not_been_updated(): void
@@ -80,7 +76,6 @@ class DeleteUnactiveUsersJobTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function handle_method_dispaches_DeleteFileJob_when_deletes_user(): void
@@ -96,7 +91,6 @@ class DeleteUnactiveUsersJobTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function handle_method_deletes_unactive_users_even_if_they_have_some_roles(): void
@@ -114,7 +108,6 @@ class DeleteUnactiveUsersJobTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function handle_method_deletes_unactive_user_even_if_he_has_favorite_recipe(): void

@@ -8,7 +8,6 @@ use App\Models\Meal;
 class MealTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function meal_model_has_attributes(): void
@@ -19,7 +18,6 @@ class MealTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getName_method_returns_name_column_from_database(): void

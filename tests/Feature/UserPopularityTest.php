@@ -14,7 +14,6 @@ class UserPopularityTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function user_gets_popularity_points_for_adding_his_recipe_to_favs(): void
@@ -31,7 +30,6 @@ class UserPopularityTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_looses_popularity_points_for_removing_his_recipe_from_favs(): void
@@ -49,7 +47,6 @@ class UserPopularityTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_gets_popularity_points_for_like(): void
@@ -66,7 +63,6 @@ class UserPopularityTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_looses_popularity_points_for_dislike(): void

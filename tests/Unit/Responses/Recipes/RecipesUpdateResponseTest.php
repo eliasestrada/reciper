@@ -28,7 +28,6 @@ class RecipesUpdateResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_isSimple_returns_true_if_recipe_time_less_then_59(): void
@@ -44,7 +43,6 @@ class RecipesUpdateResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_isSimple_returns_false_if_recipe_time_more_then_59(): void
@@ -63,7 +61,6 @@ class RecipesUpdateResponseTest extends TestCase
      * If allowed number of rows 20, and ingredients with text have 20 rows,
      * test must pass
      * 
-     * @author Cho
      * @test
      * */
     public function method_isSimple_returns_true_if_rows_number_allowed(): void
@@ -87,7 +84,6 @@ class RecipesUpdateResponseTest extends TestCase
      * If allowed number of rows 20, and ingredients with text have 21 rows,
      * test must fail
      * 
-     * @author Cho
      * @test
      * */
     public function method_isSimple_returns_false_if_rows_more_then_allowed(): void
@@ -108,7 +104,6 @@ class RecipesUpdateResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_saveImageIfExist_uploads_file_and_saves_it_in_2_folders(): void
@@ -131,7 +126,6 @@ class RecipesUpdateResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_saveImageIfExist_returns_null_if_user_doent_have_a_file(): void
@@ -142,7 +136,6 @@ class RecipesUpdateResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_fireEventAndRedirectWithSuccess_fires_event(): void
@@ -152,7 +145,6 @@ class RecipesUpdateResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_createDirectories_creates_directories_in_given_paths(): void

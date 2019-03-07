@@ -15,7 +15,6 @@ class RecipesStoreRequestTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -25,7 +24,6 @@ class RecipesStoreRequestTest extends TestCase
         $this->actingAs($this->user)->get('/users');
     }
     /**
-     * @author Cho
      * @test
      */
     public function title_is_required(): void
@@ -36,7 +34,6 @@ class RecipesStoreRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function title_must_be_not_short(): void
@@ -49,7 +46,6 @@ class RecipesStoreRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function title_must_be_not_long(): void

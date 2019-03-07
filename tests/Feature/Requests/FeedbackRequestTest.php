@@ -19,7 +19,6 @@ class FeedbackRequestTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -31,7 +30,6 @@ class FeedbackRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function contact_message_is_required(): void
@@ -44,7 +42,6 @@ class FeedbackRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function contact_email_is_required(): void
@@ -57,7 +54,6 @@ class FeedbackRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function email_should_be_email_format(): void
@@ -70,7 +66,6 @@ class FeedbackRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function message_has_to_be_not_short(): void
@@ -86,7 +81,6 @@ class FeedbackRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function message_has_to_be_not_long(): void
@@ -102,7 +96,6 @@ class FeedbackRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function recipe_id_field_must_be_integer(): void
@@ -113,7 +106,6 @@ class FeedbackRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function message_field_required_even_with_recipe_id_field(): void

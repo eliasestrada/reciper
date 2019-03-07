@@ -32,7 +32,6 @@ class GeneralRequestTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -47,7 +46,6 @@ class GeneralRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function name_must_be_not_short(): void
@@ -58,7 +56,6 @@ class GeneralRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function name_must_be_not_long(): void

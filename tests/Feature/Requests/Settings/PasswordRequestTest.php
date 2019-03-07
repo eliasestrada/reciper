@@ -32,7 +32,6 @@ class PasswordRequestTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -47,7 +46,6 @@ class PasswordRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function old_password_is_required(): void
@@ -59,7 +57,6 @@ class PasswordRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function old_password_must_be_string(): void
@@ -72,7 +69,6 @@ class PasswordRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function password_must_be_string(): void
@@ -85,7 +81,6 @@ class PasswordRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function password_is_required(): void
@@ -98,7 +93,6 @@ class PasswordRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function password_must_be_not_short(): void
@@ -111,7 +105,6 @@ class PasswordRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function password_must_be_not_long(): void
@@ -124,7 +117,6 @@ class PasswordRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function password_must_be_confirmed(): void

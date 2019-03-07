@@ -19,7 +19,6 @@ class MealRepoTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -29,7 +28,6 @@ class MealRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_All_returns_whole_collection(): void
@@ -44,7 +42,6 @@ class MealRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getWithCache_method_returs_array_of_cached_meal_list()

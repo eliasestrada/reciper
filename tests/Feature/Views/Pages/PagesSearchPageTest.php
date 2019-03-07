@@ -11,7 +11,6 @@ class PagesSearchPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function view_is_accessable(): void
@@ -22,7 +21,6 @@ class PagesSearchPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function search_form_shows_results_after_submitting(): void
@@ -32,7 +30,6 @@ class PagesSearchPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function when_nothing_found_message_appears(): void
@@ -42,7 +39,6 @@ class PagesSearchPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function admin_can_search_for_user_by_id(): void
@@ -53,7 +49,6 @@ class PagesSearchPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cant_search_for_user_by_id(): void

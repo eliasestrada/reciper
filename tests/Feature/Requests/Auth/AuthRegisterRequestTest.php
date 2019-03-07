@@ -14,7 +14,6 @@ class AuthRegisterRequestTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -29,7 +28,6 @@ class AuthRegisterRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function password_is_required(): void
@@ -41,7 +39,6 @@ class AuthRegisterRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function password_must_be_string(): void
@@ -54,7 +51,6 @@ class AuthRegisterRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function password_must_be_not_short(): void
@@ -68,7 +64,6 @@ class AuthRegisterRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function password_must_be_not_long(): void
@@ -82,7 +77,6 @@ class AuthRegisterRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function password_must_be_confirmed(): void
@@ -95,7 +89,6 @@ class AuthRegisterRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function username_must_be_not_short(): void
@@ -109,7 +102,6 @@ class AuthRegisterRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function username_must_be_not_long(): void
@@ -123,7 +115,6 @@ class AuthRegisterRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function username_must_be_string(): void
@@ -136,7 +127,6 @@ class AuthRegisterRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function username_must_be_unique(): void
@@ -149,7 +139,6 @@ class AuthRegisterRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function username_must_be_alpha_dash(): void
@@ -165,7 +154,6 @@ class AuthRegisterRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function username_must_be_latin_with_dash_or_underscore(): void

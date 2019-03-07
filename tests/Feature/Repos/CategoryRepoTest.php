@@ -19,7 +19,6 @@ class CategoryRepoTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -29,7 +28,6 @@ class CategoryRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_getCache_returns_all_categories_from_db(): void
@@ -38,7 +36,6 @@ class CategoryRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_getCache_returns_cache(): void

@@ -12,7 +12,6 @@ class AdminApprovesIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function admin_can_see_the_page(): void
@@ -24,7 +23,6 @@ class AdminApprovesIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cant_see_the_page(): void
@@ -33,7 +31,6 @@ class AdminApprovesIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function recipe_is_seen_if_it_is_ready_for_approving(): void
@@ -46,7 +43,6 @@ class AdminApprovesIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function admin_redirects_to_recipe_that_he_forgot_to_approve_or_cancel(): void

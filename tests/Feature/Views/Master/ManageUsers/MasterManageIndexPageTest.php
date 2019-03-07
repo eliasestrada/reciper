@@ -11,7 +11,6 @@ class MasterManageUsersIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function master_can_see_the_page(): void
@@ -22,7 +21,6 @@ class MasterManageUsersIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function admin_cant_view_the_page(): void
@@ -33,7 +31,6 @@ class MasterManageUsersIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cant_view_the_page(): void

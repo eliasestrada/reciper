@@ -12,7 +12,6 @@ abstract class DuskTestCase extends BaseTestCase
     use CreatesApplication;
 
     /**
-     * @author Cho
      * @return void
      */
     public function tearDown(): void

@@ -19,7 +19,6 @@ class VisitorRepoTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -29,7 +28,6 @@ class VisitorRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_getVisitorId_returns_only_id_of_the_visitor_by_given_ip_address(): void

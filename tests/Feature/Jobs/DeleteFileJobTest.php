@@ -9,7 +9,6 @@ use App\Jobs\DeleteFileJob;
 class DeleteFileJobTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function deleteFile_method_deletes_given_file_from_storage(): void

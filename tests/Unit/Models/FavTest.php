@@ -8,7 +8,6 @@ use Tests\TestCase;
 class FavTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function fav_model_has_attributes(): void
@@ -18,7 +17,6 @@ class FavTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function fav_model_has_relationship_with_user_model(): void

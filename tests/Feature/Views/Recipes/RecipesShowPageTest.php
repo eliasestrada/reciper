@@ -15,7 +15,6 @@ class RecipesShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function view_is_accessable(): void
@@ -25,7 +24,6 @@ class RecipesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_report_recipe_by_sending_message(): void
@@ -40,7 +38,6 @@ class RecipesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cant_report_same_recipe_twice_per_day(): void
@@ -58,7 +55,6 @@ class RecipesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_report_same_recipe_once_per_day(): void
@@ -79,7 +75,6 @@ class RecipesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_report_2_recipes_in_the_same_day(): void
@@ -97,7 +92,6 @@ class RecipesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function auth_user_can_add_recipe_to_favs(): void
@@ -116,7 +110,6 @@ class RecipesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function auth_user_can_delete_recipe_from_favs(): void
@@ -136,7 +129,6 @@ class RecipesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_like_and_dislikethe_recipe(): void
@@ -151,7 +143,6 @@ class RecipesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function DeleteFileJob_dispached_after_making_request_to_download_ingredients(): void
@@ -165,7 +156,6 @@ class RecipesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function like_is_added_after_user_makes_like_post_request(): void
@@ -175,7 +165,6 @@ class RecipesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function like_is_removed_after_user_makes_second_like_post_request(): void

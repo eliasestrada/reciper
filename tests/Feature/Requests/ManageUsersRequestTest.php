@@ -17,7 +17,6 @@ class ManageUsersRequestTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -27,7 +26,6 @@ class ManageUsersRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @return void
      */
     public function tearDown(): void
@@ -39,7 +37,6 @@ class ManageUsersRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function ban_days_field_is_required(): void
@@ -51,7 +48,6 @@ class ManageUsersRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function ban_message_fiels_is_required(): void
@@ -63,7 +59,6 @@ class ManageUsersRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function ban_days_field_must_be_numeric(): void
@@ -75,7 +70,6 @@ class ManageUsersRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function ban_message_must_be_not_short(): void
@@ -90,7 +84,6 @@ class ManageUsersRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function ban_message_must_be_not_long(): void

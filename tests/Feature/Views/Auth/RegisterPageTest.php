@@ -11,7 +11,6 @@ class RegisterPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function auth_user_cant_see_the_page(): void
@@ -22,7 +21,6 @@ class RegisterPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function guest_can_see_the_page(): void
@@ -33,7 +31,6 @@ class RegisterPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function new_user_can_register_with_correct_data(): void

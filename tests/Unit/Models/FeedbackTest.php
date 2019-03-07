@@ -8,7 +8,6 @@ use App\Models\Feedback;
 class FeedbackTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function feedback_model_has_attributes(): void

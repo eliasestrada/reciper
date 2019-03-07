@@ -8,7 +8,6 @@ use App\Models\Recipe;
 class RecipeTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function recipe_model_has_attributes(): void
@@ -17,7 +16,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function recipe_model_has_relationship_with_user_model(): void
@@ -26,7 +24,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function recipe_model_has_relationship_with_category_model(): void
@@ -35,7 +32,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function recipe_model_has_relationship_with_meal_model(): void
@@ -44,7 +40,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function recipe_model_has_relationship_with_like_model(): void
@@ -53,7 +48,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function recipe_model_has_relationship_with_fav_model(): void
@@ -62,7 +56,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function recipe_model_has_relationship_with_view_model(): void
@@ -71,7 +64,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function recipe_model_has_relationship_with_user_model_called_approver(): void
@@ -80,7 +72,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getTitle_method_returns_title_row(): void
@@ -90,7 +81,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getIngredients_method_returns_ingredients_row(): void
@@ -100,7 +90,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getIntro_method_returns_intro_row(): void
@@ -110,7 +99,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getText_method_returns_text_row(): void
@@ -120,7 +108,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function isReady_method_returns_true_when_ready_column_set_to_one(): void
@@ -130,7 +117,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function isApproved_method_returns_true_when_approved_column_set_to_one(): void
@@ -140,7 +126,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function isDone_method_returns_true_when_ready_and_approved_columns_set_to_one(): void
@@ -150,7 +135,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function isPublished_method_returns_true_when_published_column_is_set_to_one(): void
@@ -160,7 +144,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getStatusText_method_returns_status_text(): void
@@ -177,7 +160,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getStatusIcon_method_returns_check_icon_when_recipe_is_ready_and_approved(): void
@@ -187,7 +169,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getStatusIcon_method_returns_pen_icon_when_recipe_is_not_ready(): void
@@ -197,7 +178,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getStatusIcon_method_returns_clock_icon_when_recipe_is_ready_but_not_approved_yet(): void
@@ -207,7 +187,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getStatusColor_method_returns_green_color_when_recipe_is_ready_and_approved(): void
@@ -217,7 +196,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getStatusColor_method_returns_red_color_when_recipe_is_in_drafts(): void
@@ -227,7 +205,6 @@ class RecipeTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getStatusColor_method_returns_orange_color_when_recipe_is_ready_but_not_approved_yet(): void

@@ -22,7 +22,6 @@ class RecipeResourceRepoTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -32,7 +31,6 @@ class RecipeResourceRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateAllSimple_doesnt_return_not_simple_recipes(): void
@@ -43,7 +41,6 @@ class RecipeResourceRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateWithMealTime_returns_recipes_with_given_meal_time(): void
@@ -59,7 +56,6 @@ class RecipeResourceRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateViewedByVisitor_returns_recipes_viewed_by_given_visitor(): void
@@ -71,7 +67,6 @@ class RecipeResourceRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateViewedByVisitor_returns_recipes_ordered_by_latest(): void
@@ -89,7 +84,6 @@ class RecipeResourceRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateByLikes_returns_aditional_likes_count_column(): void
@@ -98,7 +92,6 @@ class RecipeResourceRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateLatest_returns_latest_recipes_that_are_ready_and_approved(): void
@@ -109,7 +102,6 @@ class RecipeResourceRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateLatest_returns_recipes_where_first_recipe_is_the_most_recent(): void
@@ -120,7 +112,6 @@ class RecipeResourceRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateWithCategoryId_returns_recipes_with_given_category_id(): void

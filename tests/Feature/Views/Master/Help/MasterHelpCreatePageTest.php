@@ -10,7 +10,6 @@ class MasterHelpCreatePageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function page_is_accessible_by_admin(): void
@@ -22,7 +21,6 @@ class MasterHelpCreatePageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function page_is_not_accessible_by_user(): void
@@ -33,7 +31,6 @@ class MasterHelpCreatePageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function page_is_not_accessible_by_guest(): void
@@ -42,7 +39,6 @@ class MasterHelpCreatePageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function admin_can_add_new_help_answer(): void

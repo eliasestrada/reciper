@@ -11,7 +11,6 @@ class UsersShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_see_the_page(): void
@@ -23,7 +22,6 @@ class UsersShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function guest_can_see_users_show_page(): void
@@ -33,7 +31,6 @@ class UsersShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function noone_can_see_user_page_after_diactivating(): void
@@ -43,7 +40,6 @@ class UsersShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_sees_activate_account_form_when_is_not_active(): void
@@ -58,7 +54,6 @@ class UsersShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_does_not_see_activate_account_form_when_is_active(): void
@@ -73,7 +68,6 @@ class UsersShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function unactive_user_can_recover_account(): void
@@ -91,7 +85,6 @@ class UsersShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function if_user_not_found_redirect_to_users_with_message(): void

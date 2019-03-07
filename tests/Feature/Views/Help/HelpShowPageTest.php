@@ -8,7 +8,6 @@ use App\Models\Help;
 class HelpShowPageTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function page_is_accessible(): void

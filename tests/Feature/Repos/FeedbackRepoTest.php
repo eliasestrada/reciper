@@ -21,7 +21,6 @@ class FeedbackRepoTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -31,7 +30,6 @@ class FeedbackRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_alreadyReportedToday_returns_true_if_given_recipe_was_reported_today(): void
@@ -46,7 +44,6 @@ class FeedbackRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_alreadyReportedToday_returns_false_if_given_recipe_wasnt_reported_today(): void
@@ -61,7 +58,6 @@ class FeedbackRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_alreadyContactedToday_returns_true_if_visitor_send_message_today(): void
@@ -72,7 +68,6 @@ class FeedbackRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_alreadyContactedToday_returns_false_if_visitor_didnt_send_message_today(): void
@@ -82,7 +77,6 @@ class FeedbackRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateWithLanguage_returns_paginated_feeds_with_given_language(): void
@@ -92,7 +86,6 @@ class FeedbackRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateWithLanguage_returns_0_if_given_language_doesnt_have_feeds(): void
@@ -102,7 +95,6 @@ class FeedbackRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_find_returns_feedback_with_given_id(): void

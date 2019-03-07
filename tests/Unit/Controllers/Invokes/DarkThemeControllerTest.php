@@ -7,7 +7,6 @@ use Tests\TestCase;
 class DarkThemeControllerTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function user_got_cookie_after_dark_theme_switcher_request_with_state_of_1(): void

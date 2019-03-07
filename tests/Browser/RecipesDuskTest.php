@@ -9,7 +9,6 @@ use Tests\DuskTestCase;
 class RecipesDuskTest extends DuskTestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function user_can_like_and_dislike_recipe(): void
@@ -28,7 +27,6 @@ class RecipesDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_add_recipe_to_favs_on_show_page(): void
@@ -47,7 +45,6 @@ class RecipesDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_add_recipe_to_favs_on_recipes_index_page(): void
@@ -64,7 +61,6 @@ class RecipesDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_add_recipe_to_favs_on_pages_home_page(): void
@@ -81,7 +77,6 @@ class RecipesDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_remove_recipe_from_favs_on_favorites_index_page(): void
@@ -101,7 +96,6 @@ class RecipesDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_open_recipe_menu_by_clicking_open_menu_button(): void
@@ -114,7 +108,6 @@ class RecipesDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function recipe_is_deleted_after_click_on_delete_recipe_button(): void

@@ -17,7 +17,6 @@ class LogsShowPageTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -27,7 +26,6 @@ class LogsShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function master_can_see_the_page(): void
@@ -44,7 +42,6 @@ class LogsShowPageTest extends TestCase
 
     /**
      * Function helper
-     * @author Cho
      * @return string
      */
     private function createLogFile(): string

@@ -23,7 +23,6 @@ class MasterHelpEditPageTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -34,7 +33,6 @@ class MasterHelpEditPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function page_is_accessible_by_admin(): void
@@ -46,7 +44,6 @@ class MasterHelpEditPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function page_is_not_accessible_by_user(): void
@@ -57,7 +54,6 @@ class MasterHelpEditPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function page_is_not_accessible_by_guest(): void
@@ -66,7 +62,6 @@ class MasterHelpEditPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function admin_can_add_new_help_material(): void
@@ -87,7 +82,6 @@ class MasterHelpEditPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function admin_can_update_help_material(): void
@@ -112,7 +106,6 @@ class MasterHelpEditPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function admin_can_delete_help_material(): void

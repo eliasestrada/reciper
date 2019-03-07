@@ -17,7 +17,6 @@ class DeleteNotificationsJobTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -27,7 +26,6 @@ class DeleteNotificationsJobTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function deleteNotifications_method_deletes_all_checked_notifications(): void
@@ -38,7 +36,6 @@ class DeleteNotificationsJobTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function deleteNotifications_method_does_not_delete_not_checked_notifications(): void

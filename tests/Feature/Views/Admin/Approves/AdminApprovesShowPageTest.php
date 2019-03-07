@@ -27,7 +27,6 @@ class AdminApprovesShowPageTest extends TestCase
      * Setup the test environment
      * Creating admin and recipe with his id in approver_id column
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -43,7 +42,6 @@ class AdminApprovesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cant_see_the_page(): void
@@ -54,7 +52,6 @@ class AdminApprovesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function view_is_accessable_by_any_admin(): void
@@ -70,7 +67,6 @@ class AdminApprovesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function second_checker_cant_see_approve_and_disapprove_buttons(): void
@@ -84,7 +80,6 @@ class AdminApprovesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function admin_approves_recipe_and_got_redirected_to_approved_recipe(): void
@@ -97,7 +92,6 @@ class AdminApprovesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function notification_is_sent_after_approving_the_recipe(): void
@@ -114,7 +108,6 @@ class AdminApprovesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function notification_is_sent_after_canceling_the_recipe(): void
@@ -132,7 +125,6 @@ class AdminApprovesShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function approver_id_column_changes_to_id_of_the_first_admin_who_is_cheking_the_recipe(): void

@@ -9,7 +9,6 @@ use App\Models\HelpCategory;
 class HelpCategoryTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function help_category_model_has_attributes(): void
@@ -20,7 +19,6 @@ class HelpCategoryTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getTitle_method_returns_title_from_database_column(): void

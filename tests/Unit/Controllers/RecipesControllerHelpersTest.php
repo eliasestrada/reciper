@@ -19,7 +19,6 @@ class RecipeControllerHelpersTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -29,7 +28,6 @@ class RecipeControllerHelpersTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @return void
      */
     public function tearDown(): void
@@ -39,7 +37,6 @@ class RecipeControllerHelpersTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_checkForScriptTags_returns_true_if_title_has_script_tag(): void
@@ -49,7 +46,6 @@ class RecipeControllerHelpersTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_checkForScriptTags_returns_false_if_title_has_no_script_tag(): void
@@ -61,7 +57,6 @@ class RecipeControllerHelpersTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_checkForScriptTags_notifies_master_user_about_a_script_attack(): void
@@ -73,7 +68,6 @@ class RecipeControllerHelpersTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_checkForScriptTags_creates_logs_about_a_script_attack(): void
@@ -90,7 +84,6 @@ class RecipeControllerHelpersTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_dispatchDeleteFileJob_dispatches_the_job(): void
@@ -100,7 +93,6 @@ class RecipeControllerHelpersTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_dispatchDeleteFileJob_not_dispatches_the_job_if_filename_is_default_jpg(): void
@@ -110,7 +102,6 @@ class RecipeControllerHelpersTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_clearCache_deletes_3_cache_values(): void

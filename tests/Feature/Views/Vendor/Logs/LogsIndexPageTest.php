@@ -17,7 +17,6 @@ class LogsIndexPageTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -27,7 +26,6 @@ class LogsIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function master_can_see_the_page(): void
@@ -41,7 +39,6 @@ class LogsIndexPageTest extends TestCase
     /**
      * Skip test for Windows machine to prevent causing error
      * 
-     * @author Cho
      * @test
      * */
     public function master_can_delete_log_file(): void

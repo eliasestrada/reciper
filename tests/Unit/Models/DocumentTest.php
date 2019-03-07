@@ -8,7 +8,6 @@ use App\Models\Document;
 class DocumentTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function document_model_has_attributes(): void
@@ -17,7 +16,6 @@ class DocumentTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getTitle_method_returns_title_column(): void
@@ -27,7 +25,6 @@ class DocumentTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getText_method_returns_text_column(): void
@@ -37,7 +34,6 @@ class DocumentTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function isReady_method_returns_true_when_column_ready_is_set_to_1(): void

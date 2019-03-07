@@ -11,7 +11,6 @@ class TrashIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function view_is_accessable_by_master(): void
@@ -23,7 +22,6 @@ class TrashIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function view_is_not_accessable_by_user(): void
@@ -34,7 +32,6 @@ class TrashIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function view_is_not_accessable_by_admin(): void
@@ -45,7 +42,6 @@ class TrashIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function master_can_see_trashed_materials(): void
@@ -58,7 +54,6 @@ class TrashIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function master_can_delete_trashed_material(): void
@@ -77,7 +72,6 @@ class TrashIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function master_can_restore_trashed_material(): void

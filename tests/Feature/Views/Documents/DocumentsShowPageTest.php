@@ -12,7 +12,6 @@ class DocumentsShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_see_the_page_if_document_is_ready(): void
@@ -23,7 +22,6 @@ class DocumentsShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cant_see_the_page_if_document_is_not_ready(): void
@@ -36,7 +34,6 @@ class DocumentsShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function master_can_see_the_page_if_document_is_not_ready(): void

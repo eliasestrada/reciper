@@ -7,7 +7,6 @@ use Tests\TestCase;
 class RecipesIndexPageTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function view_is_accessable(): void
@@ -16,7 +15,6 @@ class RecipesIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function recipe_can_be_created_by_auth(): void
@@ -36,7 +34,6 @@ class RecipesIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function recipe_cant_be_created_by_guest(): void

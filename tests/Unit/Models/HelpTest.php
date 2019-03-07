@@ -8,7 +8,6 @@ use App\Models\Help;
 class HelpTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function help_model_has_attributes(): void
@@ -19,7 +18,6 @@ class HelpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getTitle_method_returns_title_from_database_column(): void
@@ -29,7 +27,6 @@ class HelpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getText_method_returns_text_from_database_column(): void

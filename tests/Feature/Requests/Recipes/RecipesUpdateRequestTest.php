@@ -31,7 +31,6 @@ class RecipesUpdateRequestTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -68,7 +67,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function title_must_be_not_short(): void
@@ -79,7 +77,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function title_must_be_not_long(): void
@@ -90,7 +87,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function intro_must_be_not_short(): void
@@ -101,7 +97,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function intro_must_be_not_long(): void
@@ -112,7 +107,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function ingredients_must_be_not_short(): void
@@ -123,7 +117,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function ingredients_must_be_not_long(): void
@@ -134,7 +127,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function text_must_be_not_short(): void
@@ -145,7 +137,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function text_must_be_not_long(): void
@@ -156,7 +147,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function meal_must_be_numeric(): void
@@ -167,7 +157,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function meal_must_be_between_numbers(): void
@@ -178,7 +167,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function categories_are_required(): void
@@ -190,7 +178,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function categories_must_be_distinct(): void
@@ -202,7 +189,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function categories_must_be_numeric(): void
@@ -214,7 +200,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function categories_must_be_between_numbers(): void
@@ -226,7 +211,6 @@ class RecipesUpdateRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function categories_correct_data(): void

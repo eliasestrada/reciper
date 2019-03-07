@@ -12,7 +12,6 @@ class AdminFeedbackIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function admin_can_see_the_page(): void
@@ -24,7 +23,6 @@ class AdminFeedbackIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cant_see_the_page(): void
@@ -33,7 +31,6 @@ class AdminFeedbackIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function admin_sees_the_message_if_it_exist(): void
@@ -52,7 +49,6 @@ class AdminFeedbackIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function feedback_message_can_be_deleted_by_admin(): void

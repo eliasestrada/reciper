@@ -8,7 +8,6 @@ use App\Models\Help;
 class HelpIndexPageTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function page_is_accessible(): void
@@ -19,7 +18,6 @@ class HelpIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function queries_are_cached_when_someone_visits_the_page(): void

@@ -14,7 +14,6 @@ class SettingsPhotoIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_see_the_page(): void
@@ -26,7 +25,6 @@ class SettingsPhotoIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function guest_cant_see_the_page(): void
@@ -35,7 +33,6 @@ class SettingsPhotoIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_upload_new_profile_photo(): void
@@ -52,7 +49,6 @@ class SettingsPhotoIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function delete_photo_request_dispaches_job_DeleteFileJob(): void
@@ -64,7 +60,6 @@ class SettingsPhotoIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function if_profile_photo_is_default_DeleteFileJob_is_not_queued(): void
@@ -78,7 +73,6 @@ class SettingsPhotoIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function after_delete_photo_request_photo_column_is_set_to_default_jpg(): void
@@ -93,7 +87,6 @@ class SettingsPhotoIndexPageTest extends TestCase
     /**
      * Helper function
      *
-     * @author Cho
      * @param string $photo_path
      * @return void
      */

@@ -26,7 +26,6 @@ class UserXpTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -38,7 +37,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_gets_exp_for_approving_recipe(): void
@@ -51,7 +49,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_doesnt_get_exp_for_approving_recipe_if_it_was_approved_before(): void
@@ -64,7 +61,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_doesnt_get_exp_for_approving_recipe_if_he_has_maximum_xp(): void
@@ -77,7 +73,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_gets_amount_of_points_that_left_if_he_has_almost_maximum_exp(): void
@@ -90,7 +85,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function reset_streak_days_if_user_visited_app_after_2_days(): void
@@ -101,7 +95,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_got_strike_cookie_when_first_time_visits_app(): void
@@ -115,7 +108,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function update_streak_check_to_now_after_visiting_the_app(): void
@@ -128,7 +120,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function streak_check_is_not_updated_when_already_visited_today_hour_ago(): void
@@ -139,7 +130,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function streak_check_is_not_updated_when_already_visited_today_23_hours_ago(): void
@@ -150,7 +140,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function add_streak_day_if_user_visited_app_next_days(): void
@@ -161,7 +150,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function dont_add_streak_day_if_user_visited_app_in_hour(): void
@@ -172,7 +160,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function dont_add_streak_day_if_user_visited_app_in_23_hours(): void
@@ -183,7 +170,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function add_1_xp_for_1_day_in_a_row(): void
@@ -198,7 +184,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function dont_add_xp_if_user_visited_app_in_hour(): void
@@ -213,7 +198,6 @@ class UserXpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function dont_add_xp_if_user_visited_app_in_23_hours(): void

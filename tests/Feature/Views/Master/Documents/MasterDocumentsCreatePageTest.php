@@ -12,7 +12,6 @@ class MasterDocumentsCreatePageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function master_can_see_the_page(): void
@@ -24,7 +23,6 @@ class MasterDocumentsCreatePageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cant_see_the_page(): void
@@ -35,7 +33,6 @@ class MasterDocumentsCreatePageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function master_can_create_document(): void
@@ -53,7 +50,6 @@ class MasterDocumentsCreatePageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cant_delete_document(): void
@@ -66,7 +62,6 @@ class MasterDocumentsCreatePageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function master_cant_delete_main_first_document(): void

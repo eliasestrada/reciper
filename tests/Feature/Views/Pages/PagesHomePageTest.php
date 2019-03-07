@@ -7,7 +7,6 @@ use Tests\TestCase;
 class PagesHomePageTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function view_is_accessable(): void

@@ -8,7 +8,6 @@ use App\Models\Role;
 class RoleTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function role_model_has_attributes(): void
@@ -18,7 +17,6 @@ class RoleTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function role_model_has_relationship_with_user(): void

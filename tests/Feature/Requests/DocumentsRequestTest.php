@@ -10,7 +10,6 @@ class DocumentsRuqusetTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function title_required(): void
@@ -26,7 +25,6 @@ class DocumentsRuqusetTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function text_required(): void
@@ -42,7 +40,6 @@ class DocumentsRuqusetTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function title_must_be_not_short(): void
@@ -58,7 +55,6 @@ class DocumentsRuqusetTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function title_must_be_not_long(): void
@@ -74,7 +70,6 @@ class DocumentsRuqusetTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function text_must_be_not_short(): void
@@ -90,7 +85,6 @@ class DocumentsRuqusetTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function text_must_be_not_long(): void

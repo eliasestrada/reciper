@@ -10,7 +10,6 @@ class DocumentsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function master_can_see_the_page(): void
@@ -22,7 +21,6 @@ class DocumentsIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function guest_can_see_the_page(): void

@@ -9,7 +9,6 @@ class FontSizeControllerTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -19,7 +18,6 @@ class FontSizeControllerTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_got_cookie_after_fontSizeSwitcher_request(): void

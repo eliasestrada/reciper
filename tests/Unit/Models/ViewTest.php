@@ -8,7 +8,6 @@ use App\Models\View;
 class ViewTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function view_model_has_attributes(): void

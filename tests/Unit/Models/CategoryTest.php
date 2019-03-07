@@ -8,7 +8,6 @@ use App\Models\Category;
 class CategoryTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function category_model_has_attributes(): void
@@ -18,7 +17,6 @@ class CategoryTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function category_model_has_relationships_with_recipe_model(): void
@@ -27,7 +25,6 @@ class CategoryTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getName_method_returns_name_column(): void

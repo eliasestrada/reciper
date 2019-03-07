@@ -19,7 +19,6 @@ class DocumentRepoTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -29,7 +28,6 @@ class DocumentRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_find_returns_document_by_given_id(): void
@@ -40,7 +38,6 @@ class DocumentRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function paginateWithReadyStatus_method_returns_all_records_from_db(): void

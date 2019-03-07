@@ -7,7 +7,6 @@ use Tests\TestCase;
 class Errors404PageTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function page_404_not_found_shows_up(): void
@@ -16,7 +15,6 @@ class Errors404PageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function page_503_be_right_back_shows_up(): void

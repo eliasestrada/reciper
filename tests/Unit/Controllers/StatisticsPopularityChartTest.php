@@ -10,7 +10,6 @@ use App\Http\Controllers\Api\StatisticController;
 class StatisticsPopularityChartTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function getDataFromUser_throws_exception_if_first_parameter_is_not_acceptable(): void
@@ -22,7 +21,6 @@ class StatisticsPopularityChartTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getDataFromUser_method_first_param_can_have_one_of_three_values(): void
@@ -35,7 +33,6 @@ class StatisticsPopularityChartTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getDataFromUser_returns_month_names_from_latest_to_newest(): void
@@ -50,7 +47,6 @@ class StatisticsPopularityChartTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getDataFromUser_returns_sum_of_null_if_no_favs_were_found_for_this_user(): void
@@ -60,7 +56,6 @@ class StatisticsPopularityChartTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function makeArrayOfRules_method_generates_rules_list(): void
@@ -78,7 +73,6 @@ class StatisticsPopularityChartTest extends TestCase
     /**
      * In $expect variable we need to subtract 11 on the first lap, 10 on the second etc
      * That's why I'm adding month and then subtract months on this lap
-     * @author Cho
      * @test
      * */
     public function makeArrayOfRules_contains_12_months_from_from_this_month(): void
@@ -94,7 +88,6 @@ class StatisticsPopularityChartTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function convertMonthNumberToName_method_converts_date(): void

@@ -29,7 +29,6 @@ class ApprovesDisapproveResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_toResponse_redirects_without_success_header_if_recipe_is_already_approved(): void
@@ -42,7 +41,6 @@ class ApprovesDisapproveResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_toResponse_redirects_without_success_header_if_recipe_is_in_drafts(): void
@@ -55,7 +53,6 @@ class ApprovesDisapproveResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_toResponse_redirects_with_success_header_if_recipe_is_ready_and_not_approved(): void

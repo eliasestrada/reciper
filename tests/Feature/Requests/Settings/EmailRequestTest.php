@@ -17,7 +17,6 @@ class EmailRequestTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -30,7 +29,6 @@ class EmailRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function email_must_be_not_long(): void

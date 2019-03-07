@@ -8,7 +8,6 @@ use App\Models\User;
 class UsersIndexPageTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function view_has_data(): void
@@ -20,7 +19,6 @@ class UsersIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function guest_can_see_the_page(): void

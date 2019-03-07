@@ -8,7 +8,6 @@ use Tests\DuskTestCase;
 class FormsDuskTest extends DuskTestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function user_can_deactivate_his_account(): void
@@ -28,7 +27,7 @@ class FormsDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
+     * @ Cho
      * @test
      */
     public function password_becomes_visible_after_clicking_eye_icon_on_login_page(): void
@@ -43,7 +42,6 @@ class FormsDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function password_becomes_visible_after_clicking_eye_icon_on_register_page(): void
@@ -66,7 +64,6 @@ class FormsDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function guest_can_read_terms_document_when_registering(): void

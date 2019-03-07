@@ -18,7 +18,6 @@ class UserRepoTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -28,7 +27,6 @@ class UserRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_find_returns_user_by_given_username(): void
@@ -39,7 +37,6 @@ class UserRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateActiveUsers_returns_active_users(): void
@@ -50,7 +47,6 @@ class UserRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateActiveUsers_doesnt_return_not_active_users(): void

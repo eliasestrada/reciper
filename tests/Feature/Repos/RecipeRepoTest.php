@@ -19,7 +19,6 @@ class RecipeRepoTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -29,7 +28,6 @@ class RecipeRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateUnapprovedWaiting_returns_recipes_that_are_waiting_to_be_approved(): void
@@ -46,7 +44,6 @@ class RecipeRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateUnapprovedChecking_returns_recipes_that_are_being_checked(): void
@@ -62,7 +59,6 @@ class RecipeRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateMyApproves_returns_recipes_approved_by_certain_admin(): void
@@ -81,7 +77,6 @@ class RecipeRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_getRecipeSlugThatAdminIsChecking_returns_id_of_recipe_that_user_is_checking(): void
@@ -99,7 +94,6 @@ class RecipeRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_find_returns_recipe_by_given_slug(): void
@@ -110,7 +104,6 @@ class RecipeRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_findWithAuthor_returns_recipe_by_given_slug_with_user_db_record(): void
@@ -121,7 +114,6 @@ class RecipeRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateUserRecipesWithCountColumns_returns_user_recipes(): void
@@ -134,7 +126,6 @@ class RecipeRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_paginateUserRecipesWithCountColumns_returns_user_recipes_with_given_count_columns(): void

@@ -8,7 +8,6 @@ use Tests\DuskTestCase;
 class NavbarDuskTest extends DuskTestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function theme_changes_to_dark_after_swithing_it_on(): void
@@ -26,7 +25,6 @@ class NavbarDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function dark_theme_remains_after_turning_it_on_and_going_to_another_page(): void
@@ -42,7 +40,6 @@ class NavbarDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_use_navbar_search_to_find_recipe(): void
@@ -57,7 +54,6 @@ class NavbarDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function categories_dropdown_appears_after_clicking_the_button(): void
@@ -71,7 +67,6 @@ class NavbarDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function sidenav_appears_after_clicking_trigger_hamburger_menu(): void
@@ -86,7 +81,6 @@ class NavbarDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function admin_menu_appears_after_clicking_admin_button(): void
@@ -103,7 +97,6 @@ class NavbarDuskTest extends DuskTestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function admin_menu_is_invisible_for_simple_users(): void

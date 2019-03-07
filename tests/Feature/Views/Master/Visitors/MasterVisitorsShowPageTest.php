@@ -19,7 +19,6 @@ class MasterVisitorsShowPageTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -29,7 +28,6 @@ class MasterVisitorsShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function master_can_see_the_page(): void
@@ -41,7 +39,6 @@ class MasterVisitorsShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function admin_cant_see_the_page(): void
@@ -52,7 +49,6 @@ class MasterVisitorsShowPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cant_see_the_page(): void

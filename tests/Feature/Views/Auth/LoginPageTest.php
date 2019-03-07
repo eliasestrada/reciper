@@ -12,7 +12,6 @@ class LoginPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cant_see_the_page(): void
@@ -23,7 +22,6 @@ class LoginPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function guest_can_see_the_page(): void
@@ -32,7 +30,6 @@ class LoginPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_login(): void
@@ -48,7 +45,6 @@ class LoginPageTest extends TestCase
      * We will login user and create cookie to check them
      * 
      * @test
-     * @author Cho
      */
     public function remember_me_functionality_works(): void
     {

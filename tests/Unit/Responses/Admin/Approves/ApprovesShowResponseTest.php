@@ -26,7 +26,6 @@ class ApprovesShowResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_toResponse_redirects_with_status_302_if_recipe_is_already_approved(): void
@@ -37,7 +36,6 @@ class ApprovesShowResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_toResponse_redirects_if_recipe_is_in_frafts(): void
@@ -48,7 +46,6 @@ class ApprovesShowResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_toResponse_returns_view_if_recipe_is_ready_and_not_approved(): void

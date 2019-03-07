@@ -11,7 +11,6 @@ class PasswordsEmailTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function guest_can_see_the_page(): void
@@ -22,7 +21,6 @@ class PasswordsEmailTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function auth_user_cant_see_the_page(): void

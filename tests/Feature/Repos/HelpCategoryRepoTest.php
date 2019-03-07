@@ -19,7 +19,6 @@ class HelpCategoryRepoTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -29,7 +28,6 @@ class HelpCategoryRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getCache_method_returns_all_help_category_records_from_db(): void

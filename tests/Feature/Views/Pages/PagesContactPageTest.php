@@ -11,7 +11,6 @@ class PagesContactPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function view_is_accessable(): void
@@ -22,7 +21,6 @@ class PagesContactPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function anyone_can_send_feedback_message(): void
@@ -35,7 +33,6 @@ class PagesContactPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cant_send_feedback_message_more_then_once_per_day(): void
@@ -53,7 +50,6 @@ class PagesContactPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_send_message_after_a_day_since_the_last_message(): void

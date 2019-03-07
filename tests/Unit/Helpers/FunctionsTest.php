@@ -10,7 +10,6 @@ use App\Models\Visitor;
 class FunctionsTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function toArrayOfListItems_helper_returns_array(): void
@@ -24,7 +23,6 @@ class FunctionsTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function toArrayOfListItems_helper_removes_empty_lines(): void
@@ -35,7 +33,6 @@ class FunctionsTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function get_online_icon_helper_should_return_correct_state(): void
@@ -54,7 +51,6 @@ class FunctionsTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @dataProvider readableNumberHelperDataProvider
      * @test
      */
@@ -84,7 +80,6 @@ class FunctionsTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function active_if_route_is_helper_returns_active_string(): void
@@ -100,7 +95,6 @@ class FunctionsTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function visitor_id_function_returns_correct_data(): void
@@ -110,7 +104,6 @@ class FunctionsTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function report_error_function_flashes_message_and_logs_given_error(): void

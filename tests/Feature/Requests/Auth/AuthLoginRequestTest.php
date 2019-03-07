@@ -25,7 +25,6 @@ class AuthLoginRequestTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -39,7 +38,6 @@ class AuthLoginRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function username_is_required(): void
@@ -50,7 +48,6 @@ class AuthLoginRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function password_is_required(): void
@@ -61,7 +58,6 @@ class AuthLoginRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function password_must_be_string(): void

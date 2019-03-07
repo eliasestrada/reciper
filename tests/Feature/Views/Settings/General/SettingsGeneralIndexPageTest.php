@@ -12,7 +12,6 @@ class SettingsGeneralIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_see_the_page(): void
@@ -24,7 +23,6 @@ class SettingsGeneralIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function guest_cant_see_the_page(): void
@@ -33,7 +31,6 @@ class SettingsGeneralIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_update_his_name(): void
@@ -48,7 +45,6 @@ class SettingsGeneralIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_change_about_me_information(): void
@@ -66,7 +62,6 @@ class SettingsGeneralIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_change_his_pwd(): void
@@ -83,7 +78,6 @@ class SettingsGeneralIndexPageTest extends TestCase
 
     /**
      * ['m' => 'd'] doent metter for request
-     * @author Cho
      * @test
      * */
     public function user_can_deactivate_account(): void
@@ -94,7 +88,6 @@ class SettingsGeneralIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cant_deactivate_account_with_wrong_password(): void
@@ -108,7 +101,6 @@ class SettingsGeneralIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function sending_notification_after_saving_email_address(): void
@@ -122,7 +114,6 @@ class SettingsGeneralIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cant_change_email_if_he_already_changed_it(): void

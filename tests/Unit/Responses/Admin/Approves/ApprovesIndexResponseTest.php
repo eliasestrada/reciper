@@ -22,7 +22,6 @@ class ApprovesIndesResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_toResponse_redirects_if_getRecipeSlugThatAdminIsChecking_finds_recipe_slug(): void
@@ -36,7 +35,6 @@ class ApprovesIndesResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_toResponse_returns_view_if_getRecipeSlugThatAdminIsChecking_returns_null(): void
@@ -50,7 +48,6 @@ class ApprovesIndesResponseTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_getRecipesArray_returns_array_with_3_arrays(): void

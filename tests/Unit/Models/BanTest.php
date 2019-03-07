@@ -9,7 +9,6 @@ use App\Models\User;
 class BanTest extends TestCase
 {
     /**
-     * @author Cho
      * @test
      */
     public function ban_model_has_attributes(): void
@@ -20,7 +19,6 @@ class BanTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function put_method_adds_user_to_ban_list(): void
@@ -31,7 +29,6 @@ class BanTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function ban_model_has_relationship_with_user_model(): void

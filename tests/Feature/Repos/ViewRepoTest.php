@@ -20,7 +20,6 @@ class ViewRepoTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -30,7 +29,6 @@ class ViewRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_pluckViewedRecipeIds_returns_recipe_ids(): void

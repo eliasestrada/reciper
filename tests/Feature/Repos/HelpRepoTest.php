@@ -19,7 +19,6 @@ class HelpRepoTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -29,7 +28,6 @@ class HelpRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_getCache_returns_all_help_records_from_db(): void
@@ -44,7 +42,6 @@ class HelpRepoTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function method_find_returns_help_article_with_given_id(): void

@@ -10,7 +10,6 @@ class DashboardPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
      public function page_redirect_user_to_his_profile(): void
@@ -20,7 +19,6 @@ class DashboardPageTest extends TestCase
      }
 
     /**
-     * @author Cho
      * @test
      */
      public function page_redirect_guest_to_home_page(): void

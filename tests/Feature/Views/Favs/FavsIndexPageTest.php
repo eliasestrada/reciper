@@ -13,7 +13,6 @@ class FavsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_see_the_page(): void
@@ -25,7 +24,6 @@ class FavsIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function guest_cant_see_the_page(): void
@@ -34,7 +32,6 @@ class FavsIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_sees_recipe_that_added_to_favs(): void
@@ -49,7 +46,6 @@ class FavsIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_dont_see_recipe_after_its_deleted(): void
@@ -67,7 +63,6 @@ class FavsIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_can_delete_recipe_from_favs(): void
@@ -80,7 +75,6 @@ class FavsIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_doesnt_see_recipe_if_category_of_this_recipe_is_not_selected(): void
@@ -97,7 +91,6 @@ class FavsIndexPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_sees_recipe_if_category_of_this_recipe_is_selected(): void

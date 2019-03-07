@@ -18,7 +18,6 @@ class HelpRequestTest extends TestCase
     /**
      * Setup the test environment
      * 
-     * @author Cho
      * @return void
      */
     public function setUp(): void
@@ -33,7 +32,6 @@ class HelpRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @return void
      */
     public function tearDown(): void
@@ -46,7 +44,6 @@ class HelpRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function title_is_required(): void
@@ -55,7 +52,6 @@ class HelpRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function title_must_be_not_short(): void
@@ -64,7 +60,6 @@ class HelpRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function title_must_be_not_long(): void
@@ -73,7 +68,6 @@ class HelpRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function text_is_required(): void
@@ -82,7 +76,6 @@ class HelpRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function text_must_be_not_short(): void
@@ -91,7 +84,6 @@ class HelpRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function text_must_be_not_long(): void
@@ -100,7 +92,6 @@ class HelpRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function category_is_required(): void
@@ -109,7 +100,6 @@ class HelpRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function category_must_be_numeric(): void
@@ -118,7 +108,6 @@ class HelpRequestTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function category_must_be_beetwen_numbers(): void

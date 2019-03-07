@@ -12,7 +12,6 @@ class MasterDocumentsEditPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
      * @test
      */
     public function master_can_see_the_page(): void
@@ -24,7 +23,6 @@ class MasterDocumentsEditPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function user_cannot_see_the_page(): void
@@ -35,7 +33,6 @@ class MasterDocumentsEditPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function master_can_move_documents_to_drafts_by_updating_document(): void
@@ -54,7 +51,6 @@ class MasterDocumentsEditPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function master_cant_move_main_first_document_to_drafts(): void
@@ -70,7 +66,6 @@ class MasterDocumentsEditPageTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function master_can_delete_document(): void
