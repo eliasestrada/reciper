@@ -6,16 +6,26 @@
             </div>
 
             @guest
-                <a href="/login" class="btn waves-effect waves-light min-w mb-2" title="@lang('auth.login')">
+                <a href="/login"
+                    class="btn waves-effect waves-light min-w mb-2"
+                    title="@lang('auth.login')"
+                >
                     @lang('auth.login')
                 </a>
+
                 <br>
-                <a href="/register" class="btn waves-effect waves-light min-w mb-2" title="@lang('auth.register')">
+
+                <a href="/register"
+                    class="btn waves-effect waves-light min-w mb-2"
+                    title="@lang('auth.register')"
+                >
                     @lang('auth.register')
                 </a>
             @else
                 <a href="/users/{{ user()->username }}">
-                    <img class="circle z-depth-1 hoverable" src="{{ asset('storage/big/users/' . user()->photo) }}">
+                    <img class="circle z-depth-1 hoverable"
+                        src="{{ asset('storage/big/users/' . user()->photo) }}"
+                    >
                 </a>
                 <a href="/users/{{ user()->username }}">
                     <span class="white-text name">{{ user()->getName() }}</span>

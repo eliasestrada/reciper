@@ -177,7 +177,7 @@
                 <p>@lang('feedback.report_message_desc')</p>
 
                 <div class="input-field mt-4">
-                    <input type="hidden" name="recipe_id" value="{{ $recipe->id }}" />
+                    <input type="hidden" name="recipe_id" value="{{ $recipe->id }}">
 
                     <textarea name="message"
                         id="message"

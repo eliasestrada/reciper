@@ -35,7 +35,7 @@
                         >
                             @method('put') @csrf
 
-                            <input type="hidden" name="table" value="help" />
+                            <input type="hidden" name="table" value="help">
 
                             {{-- Restore button --}}
                             <button type="submit"
@@ -56,7 +56,7 @@
                             @method('delete')
                             @csrf
 
-                            <input type="hidden" name="table" value="help" />
+                            <input type="hidden" name="table" value="help">
 
                             {{-- Delete button --}}
                             <button type="submit"

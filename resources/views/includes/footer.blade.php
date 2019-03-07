@@ -162,7 +162,7 @@
 
         <div class="footer-copyright mt-4 row">
             <div class="col s12 m1 l1 offset-m3 offset-l4 m">
-                <img src="{{ asset('storage/other/logo.png') }}" alt="logo" height="50" />
+                <img src="{{ asset('storage/other/logo.png') }}" alt="logo" height="50">
             </div>
             <div class="col s12 m5 l3 left-align">
                 <div class="valign-wrapper" style="height:70px">

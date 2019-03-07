@@ -8,7 +8,11 @@
                             <div class="placeholder-image"
                                 style="{{ setRandomBgColor() }}"
                             ></div>
-                            <img src="{{ asset('storage/small/recipes/'.$recipe->image) }}" class="activator lazy-load-img" alt="{{ $recipe->getTitle() }}">
+
+                            <img src="{{ asset("storage/small/recipes/{$recipe->image}") }}"
+                                class="activator lazy-load-img"
+                                alt="{{ $recipe->getTitle() }}"
+                            >
                         </a>
                     </div>
                     <div class="card-content min-h">
@@ -24,7 +28,9 @@
                                         :user-id="{{ auth()->check() ? user()->id : 'null' }}"
                                         tooltip="@lang('messages.u_need_to_login')"
                                     >
-                                        <i class="star d-inline-block grey circle mx-2" style="width:10px;height:10px;"></i> 
+                                        <i class="star d-inline-block grey circle mx-2"
+                                            style="width:10px;height:10px;"
+                                        ></i> 
                                         ...
                                     </btn-favs>
                                 </div>
@@ -39,9 +45,11 @@
                     <div class="card-reveal">
                         <span class="card-title">{{ $recipe->getTitle() }}</span>
                         <div><i class="fas fa-times right red-text card-title p-1"></i></div>
+
                         <a class="btn-small mt-3" href="/recipes/{{ $recipe->slug }}">
                             @lang('messages.go')
                         </a>
+
                         <p class="text">{{ $recipe->getIntro() }}</p>
                     </div>
                 </div>

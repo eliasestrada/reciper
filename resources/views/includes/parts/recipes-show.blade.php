@@ -4,7 +4,8 @@
     <div class="placeholder-image"
         style="padding-bottom:67%; border-radius:4px; {{ setRandomBgColor() }}"
     ></div>
-    <img src="{{ asset('storage/big/recipes/'.$recipe->image) }}"
+
+    <img src="{{ asset("storage/big/recipes/{$recipe->image}") }}"
         alt="{{ $recipe->getTitle() }}"
         class="single-recipe__img-wrapper__img z-depth-1 not-printable lazy-load-img"
     >
@@ -21,19 +22,32 @@
 
 {{--  Time  --}}
 <div class="my-3 font-scalable" style="font-size:{{ $cookie }}em">
-    <i class="fas fa-clock fa-15x z-depth-2 circle red-text mr-2 tooltipped" data-tooltip="@lang('tips.recipes_time')"></i>
+    <i class="fas fa-clock fa-15x z-depth-2 circle red-text mr-2 tooltipped"
+        data-tooltip="@lang('tips.recipes_time')"
+    ></i>
     {{ $recipe->time }} @lang('recipes.min').
 </div>
 
 {{-- Increase Font-Size --}}
 <div class="min-w mt-2 not-printable" style="opacity:.7">
     <i class="fas fa-plus fa-1x mr-2"></i>
-    <button type="button" class="hoverable waves-effect waves-green btn-floating btn-small green d-inline-block m-0 p-0" id="inc-font-size">
+
+    {{-- Button increase font size --}}
+    <button type="button"
+        class="hoverable waves-effect waves-green btn-floating btn-small green d-inline-block m-0 p-0"
+        id="inc-font-size"
+    >
         <i class="fas fa-font fa-1x"></i>
     </button>
-    <button type="button" class="hoverable waves-effect waves-red btn-floating btn-small d-inline-block red m-0 p-0" id="dic-font-size">
+
+    {{-- Button dicrease font size --}}
+    <button type="button"
+        class="hoverable waves-effect waves-red btn-floating btn-small d-inline-block red m-0 p-0"
+        id="dic-font-size"
+    >
         <i class="fas fa-font fa-1x"></i>
     </button>
+
     <i class="fas fa-minus fa-1x ml-2"></i>
 </div>
 
@@ -48,6 +62,7 @@
 <div class="frames single-recipe__items py-4 px-3 z-depth-1 font-scalable" style="font-size:{{ $cookie }}em">
     <ul class="m-0">
         @include('includes.vue-preloader')
+
         @foreach ($recipe->ingredientsWithListItems() as $item)
             <list-item class-names="m-1 btn-small" v-cloak>
                 <i slot="icon-on" class="fas fa-check-square fa-2x green-text"></i>
@@ -61,6 +76,8 @@
     <div class="px-3 pt-4">
         <form method="post" action="{{ action('Invokes\DownloadIngredientsController', ['id' => $recipe->id]) }}">
             @csrf
+
+            {{-- Download ingredients button --}}
             <button type="submit"
                 class="btn-small not-printable confirm"
                 data-confirm="@lang('recipes.are_you_sure_to_download')"
