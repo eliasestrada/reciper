@@ -76,10 +76,10 @@ class RecipeRepo
 
     /**
      * @throws \Illuminate\Database\QueryException
-     * @param int $user_id
+     * @param int|null $user_id
      * @return mixed
      */
-    public function paginateMyApproves(int $user_id)
+    public function paginateMyApproves(?int $user_id)
     {
         try {
             return Recipe::oldest()
@@ -94,10 +94,10 @@ class RecipeRepo
 
     /**
      * @throws \Illuminate\Database\QueryException
-     * @param int $user_id
+     * @param int|null $user_id
      * @return string
      */
-    public function getRecipeSlugThatAdminIsChecking(int $user_id): ?string
+    public function getRecipeSlugThatAdminIsChecking(?int $user_id): ?string
     {
         try {
             return Recipe::where(_('approver_id', true), $user_id)
