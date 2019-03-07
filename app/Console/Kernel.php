@@ -25,9 +25,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // At 00:00
-        $schedule->job(new \App\Jobs\TopRecipersJob)->dailyAt('00:00');
-
         // At 03:00
         $schedule->job(new \App\Jobs\DeleteUnactiveUsersJob)->dailyAt('03:00');
         $schedule->job(new \App\Jobs\DeleteNotificationsJob)->dailyAt('03:03');

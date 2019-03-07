@@ -1,40 +1,8 @@
 <footer class="px-5 pb-5">
     <div class="row pt-0 page">
 
-        {{--  Top recipers  --}}
         <div class="col s12 m6 l3 left-align">
-            <ul class="unstyled-list">
-                <li>
-                    <strong>@lang('pages.top_recipers')</strong>
-                    <span class="main-light-text d-block"
-                        style="font-size:14px;transform:translateY(-5.5px)"
-                    >
-                        @lang('pages.most_popular') <i class="fas fa-heart red-text"></i>
-                    </span>
-                    <span class="main-light-text d-block"
-                        style="font-size:14px;transform:translateY(-10px)"
-                    >
-                        @lang('pages.in_a_day')
-                    </span>
-                </li>
-                @forelse (cache()->get('top_recipers', []) as $key => $value)
-                    <li>
-                        <a href="/users/{{ $key }}"
-                            class="{{ active_if_route_is(["users/$key"]) }}"
-                        >
-                            <i class="fas fa-crown" style="font-size:0.8em;color:orange"></i> 
-                            {{ $key }} 
-                            <span style="color:orange">
-                                <i class="fas fa-heart" style="font-size:0.6em"></i> {{ $value }}
-                            </span>
-                        </a>
-                    </li>
-                @empty
-                    <span class="grey-text">
-                        <i class="fas fa-meh"></i> @lang('pages.no_recipers')
-                    </span>
-                @endforelse
-            </ul>
+            <ul class="unstyled-list"></ul>
         </div>
         
         {{--  Random recipes  --}}
