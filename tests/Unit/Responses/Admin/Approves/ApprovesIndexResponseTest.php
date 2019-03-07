@@ -4,7 +4,6 @@ namespace Tests\Unit\Repos\Admin;
 
 use Tests\TestCase;
 use App\Models\User;
-use App\Repos\UserRepo;
 use App\Repos\RecipeRepo;
 use Illuminate\View\View;
 use App\Http\Responses\Controllers\Admin\Approves\IndexResponse;
@@ -19,11 +18,7 @@ class ApprovesIndesResponseTest extends TestCase
      */
     private function classReponse(RecipeRepo $recipe_repo): IndexResponse
     {
-        /** @var \App\Repos\UserRepo $user_repo */
-        $user_repo = $this->createMock(UserRepo::class);
-        $user_repo->method('find')->willReturn(make(User::class));
-
-        return new IndexResponse($recipe_repo, $user_repo, 1);
+        return new IndexResponse($recipe_repo, $this->createMock(User::class));
     }
 
     /**
