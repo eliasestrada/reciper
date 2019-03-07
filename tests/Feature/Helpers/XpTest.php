@@ -12,7 +12,22 @@ class XpTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @author Cho
+     * @var \App\Models\Xp $xp
+     */
+    private $xp;
+
+    /**
+     * Setup the test environment
+     *
+     * @return void
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->xp = new Xp;
+    }
+
+    /**
      * @test
      */
     public function xp_helper_has_attributes(): void
@@ -24,12 +39,11 @@ class XpTest extends TestCase
     /**
      * Loop through all levels and assert that user's xp points matches level
      *
-     * @author Cho
      * @test
      */
     public function getLevel_method_returns_current_users_level_depending_on_users_current_xp(): void
     {
-        $xp = new Xp(make(User::class));
+        $xp = $this->xp->takeUser(make(User::class));
 
         foreach ($xp->levels as $level => $values) {
             $xp->user->xp = mt_rand($values['min'], $values['max']);
@@ -38,12 +52,11 @@ class XpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function minXpForCurrentLevel_method_returns_minimum_value_of_xp_for_current_users_level(): void
     {
-        $xp = new Xp(make(User::class));
+        $xp = $this->xp->takeUser(make(User::class));
 
         foreach ($xp->levels as $level) {
             $xp->user->xp = mt_rand($level['min'], $level['max']);
@@ -52,12 +65,11 @@ class XpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function maxXpForCurrentLevel_method_returns_maximum_value_of_xp_for_current_users_level(): void
     {
-        $xp = new Xp(make(User::class));
+        $xp = $this->xp->takeUser(make(User::class));
 
         foreach ($xp->levels as $level) {
             $xp->user->xp = mt_rand($level['min'], $level['max']);
@@ -66,12 +78,11 @@ class XpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getPercent_method_always_returns_100_percent_on_each_level_if_user_has_maximum_xp(): void
     {
-        $current_xp = new Xp(make(User::class));
+        $current_xp = $this->xp->takeUser(make(User::class));
 
         foreach ($current_xp->levels as $values) {
             $current_xp->user->xp = $values['max'];
@@ -83,12 +94,12 @@ class XpTest extends TestCase
      * when user has maximum level, getPercent will return 100, that's why
      * I use condition in loop, check if current level is the last, if yes
      * then expected value should be not 0 but 100
-     * @author Cho
+     * 
      * @test
      */
     public function getPercent_method_always_returns_0_percent_on_each_level_if_user_has_minimum_xp(): void
     {
-        $current_xp = new Xp(make(User::class));
+        $current_xp = $this->xp->takeUser(make(User::class));
         $last_level = 10;
 
         foreach ($current_xp->levels as $level => $values) {
@@ -99,25 +110,23 @@ class XpTest extends TestCase
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function add_method_adds_xp_and_returns_true_if_added_successfuly(): void
     {
         $user = create_user('', ['xp' => 0]);
-        $response = (new Xp($user))->add(32.0);
+        $response = $this->xp->takeUser($user)->add(32.0);
         $this->assertTrue((bool) $response);
     }
 
     /**
-     * @author Cho
      * @dataProvider addForStreakDays_method_adds_2_xp_points_for_2_days_in_a_row_provider
      * @test
      */
     public function addForStreakDays_method_adds_2_xp_points_for_2_days_in_a_row($streak_days): void
     {
         $user = create_user('', ['streak_days' => $streak_days, 'xp' => 0]);
-        (new Xp($user))->addForStreakDays();
+        $this->xp->takeUser($user)->addForStreakDays();
         $this->assertEquals($streak_days, $user->xp);
     }
 
@@ -134,7 +143,6 @@ class XpTest extends TestCase
     /**
      * 30 xp is maximum xp user can get
      *
-     * @author Cho
      * @test
      */
     public function addForStreakDays_method_adds_30_xp_points_for_31_days_in_a_row(): void
@@ -143,19 +151,18 @@ class XpTest extends TestCase
         $days_in_a_row = 31;
 
         $user = create_user('', ['streak_days' => $days_in_a_row, 'xp' => 0]);
-        (new Xp($user))->addForStreakDays();
+        $this->xp->takeUser($user)->addForStreakDays();
 
         $this->assertEquals($expect_xp, User::whereId($user->id)->value('xp'));
     }
 
     /**
-     * @author Cho
      * @test
      */
     public function getColor_method_returns_correct_color(): void
     {
         $user = create_user('', ['xp' => 1]);
-        $xp = new Xp($user);
+        $xp = $this->xp->takeUser($user);
         $this->assertEquals('', $xp->getColor());
 
         $user->xp = $xp->levels[4]['min'];
@@ -166,5 +173,24 @@ class XpTest extends TestCase
 
         $user->xp = $xp->levels[10]['min'];
         $this->assertEquals('purple-color', $xp->getColor());
+    }
+
+    /**
+     * @test
+     */
+    public function method_takeUser_returns_xp_object(): void
+    {
+        $xp = $this->xp->takeUser(make(User::class));
+        $this->assertInstanceOf(Xp::class, $xp);
+    }
+
+    /**
+     * @test
+     */
+    public function method_takeUser_sets_user_as_property(): void
+    {
+        $user = make(User::class);
+        $xp = $this->xp->takeUser($user);
+        $this->assertEquals($user->toBase(), $xp->user->toBase());
     }
 }

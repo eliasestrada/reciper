@@ -42,9 +42,10 @@ class UserController extends Controller
     /**
      * @param string $username
      * @param \App\Repos\RecipeRepo $recipe_repo
+     * @param \App\Models\Xp $xp
      * @return mixed
      */
-    public function show(string $username, RecipeRepo $recipe_repo)
+    public function show(string $username, RecipeRepo $recipe_repo, Xp $xp)
     {
         $user = $this->repo->find($username);
 
@@ -56,7 +57,7 @@ class UserController extends Controller
             'likes', 'views', 'favs'
         ]);
 
-        $xp = new Xp($user);
+        $xp->takeUser($user);
         $max_xp_for_current_level = $xp->maxXpForCurrentLevel() + 1;
         $level_higher_than_max = $xp->minXpForCurrentLevel() >= config('custom.max_xp');
         $max_xp = $level_higher_than_max ? '' : "/ {$max_xp_for_current_level}";

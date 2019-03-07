@@ -5,9 +5,9 @@ namespace App\Models;
 class Xp
 {
     /**
-     * @var \App\Models\User $user
+     * @var \App\Models\User|null $user
      */
-    public $user;
+    public $user = null;
 
     /**
      * @var array $levels
@@ -26,12 +26,13 @@ class Xp
     ];
 
     /**
-     * @param \App\Models\User|Auth $user
-     * @return void
+     * @param \App\Models\User $user
+     * @return \App\Models\Xp
      */
-    public function __construct($user)
+    public function takeUser(User $user): Xp
     {
         $this->user = $user;
+        return $this;
     }
 
     /**
