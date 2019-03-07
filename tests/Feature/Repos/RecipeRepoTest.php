@@ -84,7 +84,7 @@ class RecipeRepoTest extends TestCase
      * @author Cho
      * @test
      */
-    public function method_getSlugOfTheRecipeThatUserIsChecking_returns_id_of_recipe_that_user_is_checking(): void
+    public function method_getRecipeSlugThatAdminIsChecking_returns_id_of_recipe_that_user_is_checking(): void
     {
         $user = create_user('admin');
 
@@ -93,7 +93,7 @@ class RecipeRepoTest extends TestCase
             _('approved') => 0,
             _('approver_id', true) => $user->id,
         ]);
-        $result = $this->repo->getSlugOfTheRecipeThatUserIsChecking($user->id);
+        $result = $this->repo->getRecipeSlugThatAdminIsChecking($user->id);
 
         $this->assertEquals($recipe->slug, $result);
     }

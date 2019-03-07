@@ -34,7 +34,7 @@ class IndexResponse implements Responsable
      */
     public function toResponse($request)
     {
-        $slug = $this->recipe_repo->getSlugOfTheRecipeThatUserIsChecking($this->user->id);
+        $slug = $this->recipe_repo->getRecipeSlugThatAdminIsChecking($this->user->id);
 
         if ($slug) {
             return redirect("/admin/approves/{$slug}")
@@ -42,20 +42,28 @@ class IndexResponse implements Responsable
         }
 
         return view('admin.approves.index', [
-            'recipes' => [
-                [
-                    'name' => 'unapproved_waiting',
-                    'recipes' => $this->recipe_repo->paginateUnapprovedWaiting(),
-                ],
-                [
-                    'name' => 'unapproved_checking',
-                    'recipes' => $this->recipe_repo->paginateUnapprovedChecking(),
-                ],
-                [
-                    'name' => 'my_approves',
-                    'recipes' => $this->recipe_repo->paginateMyApproves(user()->id),
-                ],
-            ],
+            'recipes' => $this->getRecipesArray(),
         ]);
+    }
+
+    /**
+     * @return array
+     */
+    public function getRecipesArray(): array
+    {
+        return [
+            [
+                'name' => 'unapproved_waiting',
+                'recipes' => $this->recipe_repo->paginateUnapprovedWaiting(),
+            ],
+            [
+                'name' => 'unapproved_checking',
+                'recipes' => $this->recipe_repo->paginateUnapprovedChecking(),
+            ],
+            [
+                'name' => 'my_approves',
+                'recipes' => $this->recipe_repo->paginateMyApproves(user()->id),
+            ],
+        ];
     }
 }
