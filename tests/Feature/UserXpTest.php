@@ -14,12 +14,12 @@ class UserXpTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var int $xp_for_approve
+     * @var int
      */
     private $xp_for_approve;
 
     /**
-     * @var int $max_xp
+     * @var int
      */
     private $max_xp;
 

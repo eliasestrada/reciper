@@ -12,7 +12,7 @@ use App\Repos\FeedbackRepo;
 class FeedbackController extends Controller
 {
     /**
-     * @var \App\Repos\FeedbackRepo $repo
+     * @var \App\Repos\FeedbackRepo
      */
     private $repo;
 

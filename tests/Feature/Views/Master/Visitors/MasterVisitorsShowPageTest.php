@@ -12,7 +12,7 @@ class MasterVisitorsShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Models\Visitor $visitor
+     * @var \App\Models\Visitor
      */
     private $visitor;
 

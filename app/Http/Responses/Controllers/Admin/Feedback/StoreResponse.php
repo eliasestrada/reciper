@@ -11,7 +11,7 @@ use Illuminate\Http\RedirectResponse;
 class StoreResponse implements Responsable
 {
     /**
-     * @var \App\Repos\FeedbackRepo $repo
+     * \App\Repos\FeedbackRepo
      */
     protected $repo;
 

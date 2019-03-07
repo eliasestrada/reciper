@@ -11,7 +11,7 @@ class HelpRequestTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var array $data
+     * @var array
      */
     private $data = [];
 

@@ -12,7 +12,7 @@ class HelpRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\HelpRepo $repo
+     * @var \App\Repos\HelpRepo
      */
     private $repo;
 

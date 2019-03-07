@@ -13,7 +13,7 @@ use Illuminate\Http\RedirectResponse;
 class UserController extends Controller
 {
     /**
-     * @var \App\Repos\UserRepo $repo
+     * @var \App\Repos\UserRepo
      */
     private $repo;
 

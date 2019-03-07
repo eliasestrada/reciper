@@ -12,7 +12,7 @@ class XpTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Models\Xp $xp
+     * @var \App\Models\Xp
      */
     private $xp;
 

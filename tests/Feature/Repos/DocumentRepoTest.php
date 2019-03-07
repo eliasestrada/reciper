@@ -12,7 +12,7 @@ class DocumentRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\DocumentRepo $repo
+     * @var \App\Repos\DocumentRepo
      */
     private $repo;
 

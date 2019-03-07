@@ -9,13 +9,19 @@ class DebugProvider extends ServiceProvider
 {
     /**
      * If set to true, you will be able to see all sql queries
-     * @var boolean
+     * 
+     * @var bool
      */
     protected $show_sql = false;
+
+    /**
+     * @var bool
+     */
     protected $show_bindings = false;
 
     /**
      * Bootstrap services
+     * 
      * @return void
      */
     public function boot()
@@ -51,6 +57,5 @@ class DebugProvider extends ServiceProvider
         if ($this->app->environment('local', 'testing')) {
             $this->app->register(DuskServiceProvider::class);
         }
-
     }
 }

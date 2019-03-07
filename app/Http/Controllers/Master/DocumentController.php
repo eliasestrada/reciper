@@ -13,7 +13,7 @@ use App\Http\Responses\Controllers\Master\Documents\DestroyResponse;
 class DocumentController extends Controller
 {
     /**
-     * @var \App\Repos\DocumentRepo $repo
+     * @var \App\Repos\DocumentRepo
      */
     private $repo;
 

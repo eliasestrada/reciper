@@ -10,17 +10,17 @@ use Illuminate\Contracts\Support\Responsable;
 class EditResponse implements Responsable
 {
     /**
-     * @var \App\Repos\MealRepo $meal_repo
+     * @var \App\Repos\MealRepo
      */
     private $meal_repo;
 
     /**
-     * @var \App\Models\Recipe $recipe
+     * @var \App\Models\Recipe
      */
     private $recipe;
 
     /**
-     * @var \App\Models\User $user
+     * @var \App\Models\User
      */
     private $user;
 

@@ -13,7 +13,7 @@ use App\Repos\RecipeRepo;
 class ShowResponse implements Responsable
 {
     /**
-     * @var \App\Models\Recipe $recipe
+     * @var \App\Models\Recipe
      */
     protected $recipe;
 

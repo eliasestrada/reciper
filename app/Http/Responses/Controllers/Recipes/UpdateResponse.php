@@ -16,12 +16,12 @@ class UpdateResponse implements Responsable
     use RecipeHelpers;
 
     /**
-     * @var \App\Models\Recipe $recipe
+     * @var \App\Models\Recipe
      */
     private $recipe;
 
     /**
-     * @var string $filename
+     * @var string
      */
     private $filename;
 

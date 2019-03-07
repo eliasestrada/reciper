@@ -10,7 +10,7 @@ class UserGotXpPoints extends Notification
     use Queueable;
 
     /**
-     * @var int $points
+     * @var int
      */
     protected $points;
 

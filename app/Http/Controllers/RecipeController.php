@@ -18,7 +18,7 @@ use App\Http\Responses\Controllers\Recipes\DestroyResponse;
 class RecipeController extends Controller
 {
     /**
-     * @var \App\Repos\RecipeRepo $repo
+     * @var \App\Repos\RecipeRepo
      */
     private $repo;
 

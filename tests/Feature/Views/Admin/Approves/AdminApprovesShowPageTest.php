@@ -14,12 +14,12 @@ class AdminApprovesShowPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Models\Recipe $unapproved_recipe
+     * @var \App\Models\Recipe
      */
     private $unapproved_recipe;
 
     /**
-     * @var \App\Models\User $admin
+     * @var \App\Models\User
      */
     private $admin;
 

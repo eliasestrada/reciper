@@ -13,14 +13,14 @@ class User extends Authenticatable
     /**
      * Guarder columns
      *
-     * @var array $guarded
+     * @var array
      */
     protected $guarded = ['id'];
 
     /**
      * Hide fields when displaying data
      *
-     * @var array $hidden
+     * @var array
      */
     protected $hidden = ['password', 'remember_token'];
 

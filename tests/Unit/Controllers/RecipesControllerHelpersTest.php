@@ -12,7 +12,7 @@ use App\Notifications\ScriptAttackNotification;
 class RecipeControllerHelpersTest extends TestCase
 {
     /**
-     * @var \App\Helpers\Controllers\RecipeHelpers $class
+     * @var \App\Helpers\Controllers\RecipeHelpers
      */
     private $class;
 

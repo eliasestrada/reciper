@@ -11,12 +11,12 @@ use PHPUnit\Framework\MockObject\MockObject;
 class IndexResponse implements Responsable
 {
     /**
-     * @var \App\Repos\RecipeRepo $recipe_repo
+     * @var \App\Repos\RecipeRepo
      */
     private $recipe_repo;
 
     /**
-     * @var \App\Models\User $user
+     * @var \App\Models\User
      */
     private $user;
 

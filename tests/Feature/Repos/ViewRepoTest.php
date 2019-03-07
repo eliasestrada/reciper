@@ -13,7 +13,7 @@ class ViewRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\ViewRepo $repo
+     * @var \App\Repos\ViewRepo
      */
     private $repo;
 

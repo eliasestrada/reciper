@@ -11,7 +11,7 @@ class UserRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\UserRepo $repo
+     * @var \App\Repos\UserRepo
      */
     private $repo;
 

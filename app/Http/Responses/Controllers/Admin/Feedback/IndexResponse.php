@@ -11,7 +11,7 @@ use Illuminate\View\View;
 class IndexResponse implements Responsable
 {
     /**
-     * @var \App\Repos\FeedbackRepo $repo
+     * @var \App\Repos\FeedbackRepo
      */
     protected $repo;
 

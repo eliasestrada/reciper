@@ -8,12 +8,12 @@ use App\Repos\DocumentRepo;
 class DocumentController extends Controller
 {
     /**
-     * @var \App\Repos\DocumentRepo $repo
+     * @var \App\Repos\DocumentRepo
      */
     private $repo;
 
     /**
-     * @param \App\Repos\DocumentRepo $repo
+     * @param \App\Repos\DocumentRepo
      * @return void
      */
     public function __construct(DocumentRepo $repo)

@@ -9,14 +9,14 @@ class Fav extends Model
     /**
      * Guarder columns
      *
-     * @var array $guarded
+     * @var array
      */
     protected $guarded = ['id'];
 
     /**
      * Use or not laravel timestamps
      *
-     * @var bool $timestamps
+     * @var bool
      */
     public $timestamps = false;
 

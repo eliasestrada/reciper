@@ -14,17 +14,17 @@ class RecipesUpdateRequestTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var array $data
+     * @var array
      */
     private $data;
 
     /**
-     * @var \App\Models\User $user
+     * @var \App\Models\User
      */
     private $user;
 
     /**
-     * @var \App\Models\Recipe $recipe
+     * @var \App\Models\Recipe
      */
     private $recipe;
 

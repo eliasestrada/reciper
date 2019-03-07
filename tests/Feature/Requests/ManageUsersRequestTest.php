@@ -10,7 +10,7 @@ class ManageUsersRequestTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Models\User $user
+     * @var \App\Models\User
      */
     private $user;
 

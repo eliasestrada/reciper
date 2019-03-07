@@ -10,7 +10,7 @@ use App\Repos\DocumentRepo;
 class UpdateResponse implements Responsable
 {
     /**
-     * @var \App\Models\Document $document
+     * @var \App\Models\Document
      */
     private $document;
 

@@ -9,21 +9,21 @@ class HelpCategory extends Model
     /**
      * Guarder columns
      *
-     * @var array $guarded
+     * @var array
      */
     protected $guarded = ['id'];
 
     /**
      * String that represents the name of the table
      *
-     * @var string $table
+     * @var string
      */
     protected $table = 'help_categories';
 
     /**
      * Use or not laravel timestamps
      *
-     * @var bool $timestamps
+     * @var bool
      */
     public $timestamps = false;
 

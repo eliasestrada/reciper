@@ -10,22 +10,22 @@ class PasswordRequestTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Models\User $user
+     * @var \App\Models\User
      */
     private $user;
 
     /**
-     * @var int $pwd_max
+     * @var int
      */
     private $pwd_max;
 
     /**
-     * @var int $pwd_min
+     * @var int
      */
     private $pwd_min;
 
     /**
-     * @var \Illuminate\Foundation\Testing\TestResponse $request
+     * @var \Illuminate\Foundation\Testing\TestResponse
      */
     private $request;
 

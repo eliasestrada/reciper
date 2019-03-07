@@ -15,7 +15,7 @@ class RecipeResourceRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\RecipeResourceRepo $repo
+     * @var \App\Repos\RecipeResourceRepo
      */
     private $repo;
 

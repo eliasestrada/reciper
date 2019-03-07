@@ -10,7 +10,7 @@ use Illuminate\Contracts\Support\Responsable;
 class DestroyResponse implements Responsable
 {
     /**
-     * @var \App\Models\Document $document
+     * @var \App\Models\Document
      */
     private $document;
 

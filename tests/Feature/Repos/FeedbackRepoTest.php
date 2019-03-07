@@ -14,7 +14,7 @@ class FeedbackRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\FeedbackRepo $repo
+     * @var \App\Repos\FeedbackRepo
      */
     private $repo;
 

@@ -8,7 +8,7 @@ use App\Models\User;
 class RecipesStoreRequestTest extends TestCase
 {
     /**
-     * @var \App\Models\User $user
+     * @var \App\Models\User
      */
     private $user;
 

@@ -11,12 +11,12 @@ class MasterHelpEditPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Models\Help $help
+     * @var \App\Models\Help
      */
     private $help;
 
     /**
-     * @var string $url
+     * @var string
      */
     private $url;
 

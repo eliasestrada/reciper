@@ -8,17 +8,17 @@ use App\Models\User;
 class AuthLoginRequestTest extends TestCase
 {
     /**
-     * @var \App\Models\User $user
+     * @var \App\Models\User
      */
     private $user;
 
     /**
-     * @var int $pwd_max
+     * @var int
      */
     private $pwd_max;
 
     /**
-     * @var int $pwd_min
+     * @var int
      */
     private $pwd_min;
 

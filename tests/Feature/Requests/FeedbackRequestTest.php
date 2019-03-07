@@ -7,12 +7,12 @@ use Tests\TestCase;
 class FeedbackRequestTest extends TestCase
 {
     /**
-     * @var int $msg_min
+     * @var int
      */
     private $msg_min;
 
     /**
-     * @var int $msg_max
+     * @var int
      */
     private $msg_max;
 

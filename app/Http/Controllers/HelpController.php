@@ -9,12 +9,12 @@ use App\Repos\HelpCategoryRepo;
 class HelpController extends Controller
 {
     /**
-     * @var \App\Repos\HelpRepo $help_repo
+     * @var \App\Repos\HelpRepo
      */
     private $help_repo;
 
     /**
-     * @var \App\Repos\HelpCategoryRepo $help_category_repo
+     * @var \App\Repos\HelpCategoryRepo
      */
     private $help_category_repo;
 

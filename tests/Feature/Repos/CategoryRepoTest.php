@@ -12,7 +12,7 @@ class CategoryRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\CategoryRepo $repo
+     * @var \App\Repos\CategoryRepo
      */
     private $repo;
 

@@ -12,7 +12,7 @@ class HelpCategoryRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\HelpCategoryRepo $repo
+     * @var \App\Repos\HelpCategoryRepo
      */
     private $repo;
 

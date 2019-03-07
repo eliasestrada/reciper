@@ -12,7 +12,7 @@ class VisitorRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\VisitorRepo $repo
+     * @var \App\Repos\VisitorRepo
      */
     private $repo;
 

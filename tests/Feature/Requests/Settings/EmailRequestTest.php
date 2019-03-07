@@ -10,7 +10,7 @@ class EmailRequestTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var int $email_max
+     * @var int
      */
     private $email_max;
 

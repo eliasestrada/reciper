@@ -12,7 +12,7 @@ class Recipe extends Model
     /**
      * Guarder columns
      *
-     * @var array $guarded
+     * @var array
      */
     protected $guarded = ['id'];
 

@@ -7,7 +7,7 @@ use Tests\TestCase;
 class AuthRegisterRequestTest extends TestCase
 {
     /**
-     * @var array $data
+     * @var array
      */
     private $data = [];
 

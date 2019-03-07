@@ -1,4 +1,5 @@
 <?php
+namespace App\Http\Controllers\Admin;
 
 namespace App\Http\Controllers\Admin;
 
@@ -14,7 +15,7 @@ use App\Repos\RecipeRepo;
 class ApproveController extends Controller
 {
     /**
-     * @var \App\Repos\RecipeRepo $recipe_repo
+     * @var \App\Repos\RecipeRepo
      */
     private $recipe_repo;
 

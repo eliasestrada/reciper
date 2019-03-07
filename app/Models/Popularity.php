@@ -7,7 +7,7 @@ use App\Models\User;
 class Popularity
 {
     /**
-     * @var \App\Models\User $user
+     * @var \App\Models\User
      */
     protected $user;
 

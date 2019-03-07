@@ -10,7 +10,7 @@ class LogsIndexPageTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Models\User $master
+     * @var \App\Models\User
      */
     private $master;
 

@@ -10,22 +10,22 @@ class GeneralRequestTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var int $name_min
+     * @var int
      */
     private $name_min;
 
     /**
-     * @var int $name_max
+     * @var int
      */
     private $name_max;
 
     /**
-     * @var int $about_me_max
+     * @var int
      */
     private $about_me_max;
 
     /**
-     * @var \Illuminate\Foundation\Testing\TestResponse $request
+     * @var \Illuminate\Foundation\Testing\TestResponse
      */
     private $request;
 

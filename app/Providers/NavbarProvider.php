@@ -9,7 +9,7 @@ class NavbarProvider extends ServiceProvider
     /**
      * All navbar composer namespaces
      *
-     * @var array $composers
+     * @var array
      */
     private $composers = [
         \App\Http\ViewComposers\Navbar\NotificationsComposer::class,

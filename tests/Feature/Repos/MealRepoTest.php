@@ -12,7 +12,7 @@ class MealRepoTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @var \App\Repos\MealRepo $repo
+     * @var \App\Repos\MealRepo
      */
     private $repo;
 
