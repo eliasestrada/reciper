@@ -31,10 +31,10 @@ class UserRepoTest extends TestCase
      * @author Cho
      * @test
      */
-    public function method_find_returns_user_with_given_id(): void
+    public function method_find_returns_user_by_given_username(): void
     {
         $user = create_user();
-        $result = $this->repo->find($user->id);
+        $result = $this->repo->find($user->username);
         $this->assertEquals($user->toBase(), $result->toBase());
     }
 
