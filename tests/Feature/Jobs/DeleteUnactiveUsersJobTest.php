@@ -32,8 +32,8 @@ class DeleteUnactiveUsersJobTest extends TestCase
     public function handle_method_deletes_all_unactive_users_that_have_not_been_updated_30_days_or_more(): void
     {
         $unactive_users = [
-            'first' => create_user('', ['active' => 0, 'updated_at' => now()->subDays(31)]),
-            'second' => create_user('', ['active' => 0, 'updated_at' => now()->subDays(30)]),
+            'first' => create_user('not_active', ['updated_at' => now()->subDays(31)]),
+            'second' => create_user('not_active', ['updated_at' => now()->subDays(30)]),
         ];
 
         $this->withoutJobs();
@@ -50,8 +50,8 @@ class DeleteUnactiveUsersJobTest extends TestCase
     public function handle_method_doesnt_delete_unactive_users_that_have_not_been_updated_less_than_30_days(): void
     {
         $unactive_users = [
-            'first' => create_user('', ['active' => 0, 'updated_at' => now()->subDays(29)]),
-            'second' => create_user('', ['active' => 0, 'updated_at' => now()->subDays(28)]),
+            'first' => create_user('not_active', ['updated_at' => now()->subDays(29)]),
+            'second' => create_user('not_active', ['updated_at' => now()->subDays(28)]),
         ];
 
         $this->withoutJobs();
@@ -87,8 +87,7 @@ class DeleteUnactiveUsersJobTest extends TestCase
     {
         $this->expectsJobs(\App\Jobs\DeleteFileJob::class);
 
-        create_user('', [
-            'active' => 0,
+        create_user('not_active', [
             'photo' => 'some.jpg',
             'updated_at' => now()->subMonths(2),
         ]);
@@ -120,7 +119,7 @@ class DeleteUnactiveUsersJobTest extends TestCase
      */
     public function handle_method_deletes_unactive_user_even_if_he_has_favorite_recipe(): void
     {
-        $user = create_user('', ['active' => 0, 'updated_at' => now()->subMonths(2)]);
+        $user = create_user('not_active', ['updated_at' => now()->subMonths(2)]);
         $recipe_id = create(Recipe::class)->id;
 
         $user->favs()->create(compact('recipe_id'));

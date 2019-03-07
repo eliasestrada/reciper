@@ -38,7 +38,7 @@ class UsersShowPageTest extends TestCase
      */
     public function noone_can_see_user_page_after_diactivating(): void
     {
-        $user = create_user('', ['active' => 0]);
+        $user = create_user('not_active');
         $this->get("/users/{$user->username}")->assertSeeText(trans('users.user_is_not_active'));
     }
 
@@ -48,7 +48,7 @@ class UsersShowPageTest extends TestCase
      */
     public function user_sees_activate_account_form_when_is_not_active(): void
     {
-        $user = create_user('', ['active' => 0]);
+        $user = create_user('not_active');
 
         $this->actingAs($user)
             ->get("/users/{$user->username}")
@@ -78,7 +78,7 @@ class UsersShowPageTest extends TestCase
      */
     public function unactive_user_can_recover_account(): void
     {
-        $user = create_user('', ['active' => 0]);
+        $user = create_user('not_active');
 
         $this->actingAs($user)
             ->post(action([UserController::class, 'store']))
