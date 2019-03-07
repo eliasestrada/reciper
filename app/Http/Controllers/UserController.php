@@ -5,18 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\Xp;
 use App\Models\User;
 use App\Models\Recipe;
+use App\Repos\UserRepo;
 use Illuminate\View\View;
-use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
     /**
+     * @var \App\Repos\UserRepo $repo
+     */
+    private $repo;
+
+    /**
+     * @param \App\Repos\UserRepo $repo
      * @return void
      */
-    public function __construct()
+    public function __construct(UserRepo $repo)
     {
         $this->middleware('auth')->except(['index', 'show', 'store']);
+        $this->repo = $repo;
     }
 
     /**
@@ -26,19 +33,14 @@ class UserController extends Controller
      */
     public function index(): View
     {
-        return view('users.index', [
-            'users' => User::whereActive(1)
-                ->orderBy('name')
-                ->paginate(36)
-                ->onEachSide(1),
-        ]);
+        return view('users.index', $this->repo->paginateActiveUsers(36));
     }
 
     /**
-     * @param \App\Models\User $user
+     * @param string $username
      * @return mixed
      */
-    public function show($username)
+    public function show(string $username)
     {
         $user = User::whereUsername($username)->first();
 
