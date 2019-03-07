@@ -2,6 +2,7 @@
 
 namespace App\Http\Responses\Controllers\Admin\Approves;
 
+use App\Repos\UserRepo;
 use App\Repos\RecipeRepo;
 use Illuminate\Contracts\Support\Responsable;
 
@@ -19,13 +20,14 @@ class IndexResponse implements Responsable
 
     /**
      * @param \App\Repos\RecipeRepo $recipe_repo
-     * @param \App\Models\User $user
+     * @param \App\Models\UserRepo $user_repo This param for easy mocking
+     * @param int|null $user_id This param for easy mocking
      * @return void
      */
-    public function __construct(RecipeRepo $recipe_repo, ?User $user = null)
+    public function __construct(RecipeRepo $recipe_repo, ?UserRepo $user_repo = null, ?int $user_id = null)
     {
         $this->recipe_repo = $recipe_repo;
-        $this->user = $user ?? user();
+        $this->user = $user_id && $user_repo ? $user_repo->find($user_id) : user();
     }
 
     /**
@@ -62,7 +64,7 @@ class IndexResponse implements Responsable
             ],
             [
                 'name' => 'my_approves',
-                'recipes' => $this->recipe_repo->paginateMyApproves(user()->id),
+                'recipes' => $this->recipe_repo->paginateMyApproves($this->user->id),
             ],
         ];
     }

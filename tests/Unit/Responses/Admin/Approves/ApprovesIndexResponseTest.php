@@ -4,7 +4,9 @@ namespace Tests\Unit\Repos\Admin;
 
 use Tests\TestCase;
 use App\Models\User;
-use App\Models\Recipe;
+use App\Repos\UserRepo;
+use App\Repos\RecipeRepo;
+use Illuminate\View\View;
 use App\Http\Responses\Controllers\Admin\Approves\IndexResponse;
 
 class ApprovesIndesResponseTest extends TestCase
@@ -12,34 +14,59 @@ class ApprovesIndesResponseTest extends TestCase
     /**
      * Function helper
      *
-     * @param \App\Models\Recipe $recipe
+     * @param \App\Repos\RecipeRepo $recipe_repo
      * @return \App\Http\Responses\Controllers\Approves\IndexResponse
      */
-    // private function classReponse(Recipe $recipe, User $user): IndexResponse
-    // {
-    //     /** @var \App\Models\User $user */
-    //     $user_mock = Mockery::mock(User::class);
-    //     $user_mock->shouldReceive('id')->once();
-    //     $user_mock->method('find')->willReturn($recipe);
+    private function classReponse(RecipeRepo $recipe_repo): IndexResponse
+    {
+        /** @var \App\Repos\UserRepo $user_repo */
+        $user_repo = $this->createMock(UserRepo::class);
+        $user_repo->method('find')->willReturn(make(User::class));
 
-    //     /** @var \App\Repos\RecipeRepo $recipe_mock */
-    //     $recipe_mock = $this->createMock(RecipeRepo::class);
-    //     $recipe_mock->method('find')->willReturn($recipe);
-
-    //     return new IndexResponse($recipe_mock, $user_mock);
-    // }
+        return new IndexResponse($recipe_repo, $user_repo, 1);
+    }
 
     /**
      * @author Cho
      * @test
      */
-    public function method_toResponse_redirects_with_status_302_if_recipe(): void
+    public function method_toResponse_redirects_if_getRecipeSlugThatAdminIsChecking_finds_recipe_slug(): void
     {
-        $this->markTestIncomplete();
-        // $recipe = make(Recipe::class, [_('approved') => 0]);
-        // $user = make(User::class);
-        // $response = $this->classReponse($recipe, $user)->toResponse(null);
+        /** @var \App\Repos\RecipeRepo $recipe_repo */
+        $recipe_repo = $this->createMock(RecipeRepo::class);
+        $recipe_repo->method('getRecipeSlugThatAdminIsChecking')->willReturn(string_random(7));
 
-        // $this->assertEquals(302, $response->getStatusCode());
+        $response = $this->classReponse($recipe_repo)->toResponse(null);
+        $this->assertEquals(302, $response->getStatusCode());
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_toResponse_returns_view_if_getRecipeSlugThatAdminIsChecking_returns_null(): void
+    {
+        /** @var \App\Repos\RecipeRepo $recipe_repo */
+        $recipe_repo = $this->createMock(RecipeRepo::class);
+        $recipe_repo->method('getRecipeSlugThatAdminIsChecking')->willReturn(null);
+
+        $response = $this->classReponse($recipe_repo)->toResponse(null);
+        $this->assertInstanceOf(View::class, $response);
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_getRecipesArray_returns_array_with_3_arrays(): void
+    {
+        /** @var \App\Repos\RecipeRepo $recipe_repo */
+        $recipe_repo = $this->createMock(RecipeRepo::class);
+        $response = $this->classReponse($recipe_repo)->getRecipesArray();
+
+        array_walk($response, function ($single_arr) {
+            $this->assertArrayHasKey('name', $single_arr);
+            $this->assertArrayHasKey('recipes', $single_arr);
+        });
     }
 }
