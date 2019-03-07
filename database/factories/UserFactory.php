@@ -26,6 +26,10 @@ $factory->afterMaking(User::class, function ($user) {
     $user->id = mt_rand(1000, 999999);
 });
 
+$factory->state(User::class, 'not_active', function () {
+    return ['active' => 0];
+});
+
 $factory->state(User::class, 'admin', function () {
     return [];
 });
