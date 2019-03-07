@@ -41,7 +41,3 @@ $factory->afterCreatingState(User::class, 'admin', function ($user) {
 $factory->afterCreatingState(User::class, 'master', function ($user) {
     $user->roles()->attach([2]);
 });
-
-$factory->state(User::class, 'with_photo', function () {
-    return ['photo' => uploadFakePhoto()];
-});

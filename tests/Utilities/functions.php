@@ -44,20 +44,6 @@ function create_user(?string $role = null, array $attributes = [], ?int $times =
 }
 
 /**
- * Helper function to make fake photo
- * for user
- * 
- * @return string
- */
-function uploadFakePhoto(): string
-{
-    $random = mt_rand(1, 45);
-    copy(base_path("../tools/people/{$random}.jpg"), storage_path("app/public/small/users/{$random}.jpg"));
-    copy(base_path("../tools/people/{$random}.jpg"), storage_path("app/public/big/users/{$random}.jpg"));
-    return "{$random}.jpg";
-}
-
-/**
  * Helper function to make fake image
  * for recipe
  * 
