@@ -6,6 +6,7 @@ use App\Models\Xp;
 use App\Models\User;
 use App\Models\Recipe;
 use App\Repos\UserRepo;
+use App\Repos\RecipeRepo;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -40,24 +41,20 @@ class UserController extends Controller
 
     /**
      * @param string $username
+     * @param \App\Repos\RecipeRepo $recipe_repo
      * @return mixed
      */
-    public function show(string $username)
+    public function show(string $username, RecipeRepo $recipe_repo)
     {
-        $user = User::whereUsername($username)->first();
+        $user = $this->repo->find($username);
 
         if (!$user) {
             return redirect('/users')->withError(trans('users.user_not_found'));
         }
 
-        $recipes = Recipe::whereUserId($user->id)
-            ->withCount('likes')
-            ->withCount('views')
-            ->withCount('favs')
-            ->done(1)
-            ->latest()
-            ->paginate(20)
-            ->onEachSide(1);
+        $recipes = $recipe_repo->paginateUserRecipesWithCountColumns($user->id, [
+            'likes', 'views', 'favs'
+        ]);
 
         $xp = new Xp($user);
         $max_xp_for_current_level = $xp->maxXpForCurrentLevel() + 1;
