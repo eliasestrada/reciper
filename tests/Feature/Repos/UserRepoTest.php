@@ -3,7 +3,6 @@
 namespace Tests\Feature\Repos;
 
 use Tests\TestCase;
-use App\Models\User;
 use App\Repos\UserRepo;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -34,8 +33,30 @@ class UserRepoTest extends TestCase
      */
     public function method_find_returns_user_with_given_id(): void
     {
-        $user = create(User::class);
+        $user = create_user();
         $result = $this->repo->find($user->id);
         $this->assertEquals($user->toBase(), $result->toBase());
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_paginateActiveUsers_returns_active_users(): void
+    {
+        $active_user = create_user();
+        $result = $this->repo->paginateActiveUsers();
+        $this->assertNotNull($result->where('id', $active_user->id)->first());
+    }
+
+    /**
+     * @author Cho
+     * @test
+     */
+    public function method_paginateActiveUsers_doesnt_return_not_active_users(): void
+    {
+        $not_active_user = create_user('not_active');
+        $result = $this->repo->paginateActiveUsers();
+        $this->assertNull($result->where('id', $not_active_user->id)->first());
     }
 }
