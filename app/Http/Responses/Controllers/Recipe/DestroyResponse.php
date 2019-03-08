@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Responses\Controllers\Recipes;
+namespace App\Http\Responses\Controllers\Recipe;
 
 use App\Repos\RecipeRepo;
 use App\Helpers\Controllers\RecipeHelpers;

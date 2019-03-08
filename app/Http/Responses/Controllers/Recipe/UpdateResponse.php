@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Responses\Controllers\Recipes;
+namespace App\Http\Responses\Controllers\Recipe;
 
 use File;
 use Image;

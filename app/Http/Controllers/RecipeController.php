@@ -9,11 +9,11 @@ use App\Repos\RecipeRepo;
 use Illuminate\View\View as ViewResponse;
 use App\Http\Requests\Recipes\RecipeStoreRequest;
 use App\Http\Requests\Recipes\RecipeUpdateRequest;
-use App\Http\Responses\Controllers\Recipes\EditResponse;
-use App\Http\Responses\Controllers\Recipes\ShowResponse;
-use App\Http\Responses\Controllers\Recipes\StoreResponse;
-use App\Http\Responses\Controllers\Recipes\UpdateResponse;
-use App\Http\Responses\Controllers\Recipes\DestroyResponse;
+use App\Http\Responses\Controllers\Recipe\EditResponse;
+use App\Http\Responses\Controllers\Recipe\ShowResponse;
+use App\Http\Responses\Controllers\Recipe\StoreResponse;
+use App\Http\Responses\Controllers\Recipe\UpdateResponse;
+use App\Http\Responses\Controllers\Recipe\DestroyResponse;
 
 class RecipeController extends Controller
 {
@@ -45,7 +45,7 @@ class RecipeController extends Controller
      * It will save the recipe to a database with title only
      *
      * @param \App\Http\Requests\Recipes\RecipeStoreRequest $request
-     * @return \App\Http\Responses\Controllers\Recipes\StoreResponse
+     * @return \App\Http\Responses\Controllers\Recipe\StoreResponse
      */
     public function store(RecipeStoreRequest $request): StoreResponse
     {
@@ -56,7 +56,7 @@ class RecipeController extends Controller
      * It will show the recipe on a single page
      *
      * @param string $slug
-     * @return \App\Http\Responses\Controllers\Recipes\ShowResponse
+     * @return \App\Http\Responses\Controllers\Recipe\ShowResponse
      */
     public function show(string $slug): ShowResponse
     {
@@ -66,7 +66,7 @@ class RecipeController extends Controller
     /**
      * @param string $slug
      * @param \App\Repos\MealRepo $meal_repo
-     * @return \App\Http\Responses\Controllers\Recipes\EditResponse
+     * @return \App\Http\Responses\Controllers\Recipe\EditResponse
      */
     public function edit(string $slug, MealRepo $meal_repo): EditResponse
     {
@@ -78,7 +78,7 @@ class RecipeController extends Controller
      *
      * @param \App\Http\Requests\Recipes\RecipeUpdateRequest $request
      * @param string $slug
-     * @return \App\Http\Responses\Controllers\Recipes\UpdateResponse
+     * @return \App\Http\Responses\Controllers\Recipe\UpdateResponse
      */
     public function update(RecipeUpdateRequest $request, string $slug): UpdateResponse
     {
@@ -89,7 +89,7 @@ class RecipeController extends Controller
      * Delete recipe form database
      *
      * @param string $slug
-     * @return \App\Http\Responses\Controllers\Recipes\DestroyResponse
+     * @return \App\Http\Responses\Controllers\Recipe\DestroyResponse
      */
     public function destroy(string $slug): DestroyResponse
     {

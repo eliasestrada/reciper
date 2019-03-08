@@ -8,7 +8,7 @@ use Tests\TestCase;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
-use App\Http\Responses\Controllers\Recipes\UpdateResponse;
+use App\Http\Responses\Controllers\Recipe\UpdateResponse;
 
 class RecipesUpdateResponseTest extends TestCase
 {
@@ -16,7 +16,7 @@ class RecipesUpdateResponseTest extends TestCase
      * Function helper
      *
      * @param \App\Models\Recipe $recipe
-     * @return \App\Http\Responses\Controllers\Recipes\UpdateResponse
+     * @return \App\Http\Responses\Controllers\Recipe\UpdateResponse
      */
     private function classReponse(Recipe $recipe): UpdateResponse
     {
