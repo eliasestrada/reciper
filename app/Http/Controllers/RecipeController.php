@@ -58,11 +58,13 @@ class RecipeController extends Controller
      * It will show the recipe on a single page
      *
      * @param string $slug
+     * @param \App\Models\Xp $xp
+     * @param \App\Models\Popularity $popularity
      * @return \App\Http\Responses\Controllers\Recipe\ShowResponse
      */
-    public function show(string $slug): ShowResponse
+    public function show(string $slug, Xp $xp, Popularity $popularity): ShowResponse
     {
-        return new ShowResponse($slug, $this->repo, new Xp, new Popularity);
+        return new ShowResponse($slug, $this->repo, $xp, $popularity);
     }
 
     /**
