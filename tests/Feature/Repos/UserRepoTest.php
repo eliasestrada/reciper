@@ -39,6 +39,16 @@ class UserRepoTest extends TestCase
     /**
      * @test
      */
+    public function method_find_returns_user_by_given_id(): void
+    {
+        $user = create_user();
+        $result = $this->repo->find($user->id);
+        $this->assertEquals($user->toBase(), $result->toBase());
+    }
+
+    /**
+     * @test
+     */
     public function method_paginateActiveUsers_returns_active_users(): void
     {
         $active_user = create_user();

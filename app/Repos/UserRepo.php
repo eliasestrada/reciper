@@ -10,13 +10,13 @@ class UserRepo
 {
     /**
      * @throws \Illuminate\Database\QueryException
-     * @param string|null $username
+     * @param string|int|null $key Can be 'id' or 'username'
      * @return \App\Models\User|null
      */
-    public function find(?string $username): ?User
+    public function find($key): ?User
     {
         try {
-            return User::whereUsername($username)->first();
+            return User::where(is_int($key) ? 'id' : 'username', $key)->first();
         } catch (QueryException $e) {
             return report_error($e);
         }
