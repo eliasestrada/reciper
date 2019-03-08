@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Xp;
 use App\Models\Recipe;
 use App\Repos\FavRepo;
 use App\Repos\MealRepo;
 use App\Repos\RecipeRepo;
+use App\Models\Popularity;
 use Illuminate\View\View as ViewResponse;
 use App\Http\Requests\Recipes\RecipeStoreRequest;
 use App\Http\Requests\Recipes\RecipeUpdateRequest;
@@ -60,7 +62,7 @@ class RecipeController extends Controller
      */
     public function show(string $slug): ShowResponse
     {
-        return new ShowResponse($slug, $this->repo);
+        return new ShowResponse($slug, $this->repo, new Xp, new Popularity);
     }
 
     /**

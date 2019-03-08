@@ -3,12 +3,10 @@
 namespace App\Http\Responses\Controllers\Recipe;
 
 use App\Models\Xp;
-use App\Models\User;
-use App\Models\Recipe;
+use App\Repos\RecipeRepo;
 use App\Models\Popularity;
 use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Support\Responsable;
-use App\Repos\RecipeRepo;
 
 class ShowResponse implements Responsable
 {
@@ -23,15 +21,21 @@ class ShowResponse implements Responsable
     private $xp;
 
     /**
+     * @var \App\Models\Popularity
+     */
+    private $popularity;
+
+    /**
      * @param string $slug
-     * @param \App\Repos\RecipeRepo $recipe_repo
-     * @param \App\Models\Xp|null $xp
+     * @param \App\Models\Xp $xp
+     * @param \App\Models\Popularity $popularity
      * @return void
      */
-    public function __construct(string $slug, RecipeRepo $recipe_repo, ?Xp $xp = null)
+    public function __construct(string $slug, RecipeRepo $recipe_repo, Xp $xp, Popularity $popularity)
     {
         $this->recipe = $recipe_repo->findWithAuthor($slug);
-        $this->xp = $xp ?? new Xp;
+        $this->xp = $xp;
+        $this->popularity = $popularity;
     }
 
     /**
@@ -74,7 +78,7 @@ class ShowResponse implements Responsable
             try {
                 $this->recipe->views()->create(['visitor_id' => visitor_id()]);
                 if ($this->recipe->user_id) {
-                    $popularity = new Popularity(User::find($this->recipe->user_id));
+                    $popularity = $this->popularity->takeUser($this->recipe->user);
                     $popularity->add(config('custom.popularity_for_view'));
                 }
             } catch (QueryException $e) {
