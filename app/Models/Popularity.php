@@ -2,22 +2,21 @@
 
 namespace App\Models;
 
-use App\Models\User;
-
 class Popularity
 {
     /**
      * @var \App\Models\User
      */
-    protected $user;
+    public $user;
 
     /**
      * @param \App\Models\User $user
-     * @return void
+     * @return \App\Models\Popularity
      */
-    public function __construct(User $user)
+    public function takeUser(User $user): Popularity
     {
         $this->user = $user;
+        return $this;
     }
 
     /**
