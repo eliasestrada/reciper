@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use Event;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Recipe;
@@ -41,7 +40,7 @@ class UserXpTest extends TestCase
      */
     public function user_gets_exp_for_approving_recipe(): void
     {
-        $user = create_user('', ['xp' => 0]);
+        $user = create_user(null, ['xp' => 0]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, _('published') => 0]);
 
         event(new RecipeGotApproved($recipe));
@@ -53,7 +52,7 @@ class UserXpTest extends TestCase
      */
     public function user_doesnt_get_exp_for_approving_recipe_if_it_was_approved_before(): void
     {
-        $user = create_user('', ['xp' => 0]);
+        $user = create_user(null, ['xp' => 0]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, _('published') => 1]);
 
         event(new RecipeGotApproved($recipe));
@@ -65,7 +64,7 @@ class UserXpTest extends TestCase
      */
     public function user_doesnt_get_exp_for_approving_recipe_if_he_has_maximum_xp(): void
     {
-        $user = create_user('', ['xp' => $this->max_xp]);
+        $user = create_user(null, ['xp' => $this->max_xp]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, _('published') => 0]);
 
         event(new RecipeGotApproved($recipe));
@@ -77,7 +76,7 @@ class UserXpTest extends TestCase
      */
     public function user_gets_amount_of_points_that_left_if_he_has_almost_maximum_exp(): void
     {
-        $user = create_user('', ['xp' => $this->max_xp - $this->xp_for_approve]);
+        $user = create_user(null, ['xp' => $this->max_xp - $this->xp_for_approve]);
         $recipe = make(Recipe::class, ['user_id' => $user->id, _('published') => 0]);
 
         event(new RecipeGotApproved($recipe));
@@ -89,7 +88,10 @@ class UserXpTest extends TestCase
      */
     public function reset_streak_days_if_user_visited_app_after_2_days(): void
     {
-        $user = create_user('', ['streak_check' => now()->subDays(2), 'online_check' => now()->subHour()]);
+        $user = create_user(null, [
+            'streak_check' => now()->subDays(2),
+            'online_check' => now()->subHour()
+        ]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_days' => 0]);
     }
@@ -99,7 +101,7 @@ class UserXpTest extends TestCase
      */
     public function user_got_strike_cookie_when_first_time_visits_app(): void
     {
-        $user = create_user('', [
+        $user = create_user(null, [
             'streak_days' => 1,
             'streak_check' => now()->subDay(),
             'online_check' => now()->subHour(),
@@ -112,7 +114,10 @@ class UserXpTest extends TestCase
      */
     public function update_streak_check_to_now_after_visiting_the_app(): void
     {
-        $user = create_user('', ['streak_check' => $date = now()->subDay(), 'online_check' => now()->subHour()]);
+        $user = create_user(null, [
+            'streak_check' => now()->subDay(),
+            'online_check' => now()->subHour()
+        ]);
         $this->actingAs($user)->get('/');
 
         $user_streak_date = User::whereId($user->id)->value('streak_check');
@@ -124,7 +129,10 @@ class UserXpTest extends TestCase
      */
     public function streak_check_is_not_updated_when_already_visited_today_hour_ago(): void
     {
-        $user = create_user('', ['streak_check' => $date = now()->subHour(), 'online_check' => now()->subHour()]);
+        $user = create_user(null, [
+            'streak_check' => $date = now()->subHour(),
+            'online_check' => now()->subHour()
+        ]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_check' => $date]);
     }
@@ -134,7 +142,10 @@ class UserXpTest extends TestCase
      */
     public function streak_check_is_not_updated_when_already_visited_today_23_hours_ago(): void
     {
-        $user = create_user('', ['streak_check' => $date = now()->subHours(23), 'online_check' => now()->subHour()]);
+        $user = create_user(null, [
+            'streak_check' => $date = now()->subHours(23),
+            'online_check' => now()->subHour()
+        ]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_check' => $date]);
     }
@@ -144,7 +155,10 @@ class UserXpTest extends TestCase
      */
     public function add_streak_day_if_user_visited_app_next_days(): void
     {
-        $user = create_user('', ['streak_check' => now()->subDay(), 'online_check' => now()->subHour()]);
+        $user = create_user(null, [
+            'streak_check' => now()->subDay(),
+            'online_check' => now()->subHour()
+        ]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_days' => 1]);
     }
@@ -154,7 +168,10 @@ class UserXpTest extends TestCase
      */
     public function dont_add_streak_day_if_user_visited_app_in_hour(): void
     {
-        $user = create_user('', ['streak_check' => now()->subHour(), 'online_check' => now()->subHour()]);
+        $user = create_user(null, [
+            'streak_check' => now()->subHour(),
+            'online_check' => now()->subHour()
+        ]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_days' => 0]);
     }
@@ -164,7 +181,10 @@ class UserXpTest extends TestCase
      */
     public function dont_add_streak_day_if_user_visited_app_in_23_hours(): void
     {
-        $user = create_user('', ['streak_check' => now()->subHours(23), 'online_check' => now()->subHour()]);
+        $user = create_user(null, [
+            'streak_check' => now()->subHours(23),
+            'online_check' => now()->subHour()
+        ]);
         $this->actingAs($user)->get('/');
         $this->assertDatabaseHas('users', ['id' => $user->id, 'streak_days' => 0]);
     }
@@ -174,8 +194,8 @@ class UserXpTest extends TestCase
      */
     public function add_1_xp_for_1_day_in_a_row(): void
     {
-        $user = create_user('', [
-            'streak_check' => now()->subDay(),
+        $user = create_user(null, [
+            'streak_check' => now()->subDay()->subHour(),
             'online_check' => now()->subHour(),
             'xp' => 0,
         ]);
@@ -188,7 +208,7 @@ class UserXpTest extends TestCase
      */
     public function dont_add_xp_if_user_visited_app_in_hour(): void
     {
-        $user = create_user('', [
+        $user = create_user(null, [
             'streak_check' => now()->subHour(),
             'online_check' => now()->subHour(),
             'xp' => 0,
@@ -202,7 +222,7 @@ class UserXpTest extends TestCase
      */
     public function dont_add_xp_if_user_visited_app_in_23_hours(): void
     {
-        $user = create_user('', [
+        $user = create_user(null, [
             'streak_check' => now()->subHours(23),
             'online_check' => now()->subHour(),
             'xp' => 0,

@@ -12,13 +12,15 @@ class AddExpForRecipe
      * Add xp point to a user for the recipe
      *
      * @param RecipeGotApproved  $event
+     * @param \App\Models\Xp|null $xp
      * @return void
      */
-    public function handle(RecipeGotApproved $event)
+    public function handle(RecipeGotApproved $event, ?Xp $xp = null)
     {
         if (!$event->recipe->isPublished()) {
-            $xp = new Xp(User::find($event->recipe->user_id));
-            $xp->add(config('custom.xp_for_approve'));
+            ($xp ?? new Xp)
+                ->takeUser(User::find($event->recipe->user_id))
+                ->add(config('custom.xp_for_approve'));
         }
     }
 }
