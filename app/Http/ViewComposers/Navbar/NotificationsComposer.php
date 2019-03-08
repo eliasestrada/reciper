@@ -8,7 +8,8 @@ class NotificationsComposer
 {
     /**
      * Bind data to the view
-     * @param  View  $view
+     * 
+     * @param \Illuminate\View\View $view
      * @return void
      */
     public function compose(View $view): void
@@ -19,7 +20,7 @@ class NotificationsComposer
                 ->select('data', 'created_at', 'read_at')
                 ->get();
 
-            $has_notifications = $notifications->where('read_at', '=', null)->count() > 0;
+            $has_notifications = $notifications->where('read_at', null)->count() > 0;
 
             $view->with('notifications', $notifications->toArray());
             $view->with(compact('has_notifications'));
