@@ -15,16 +15,23 @@ class ShowResponse implements Responsable
     /**
      * @var \App\Models\Recipe
      */
-    protected $recipe;
+    private $recipe;
+
+    /**
+     * @var \App\Models\Xp
+     */
+    private $xp;
 
     /**
      * @param string $slug
      * @param \App\Repos\RecipeRepo $recipe_repo
+     * @param \App\Models\Xp|null $xp
      * @return void
      */
-    public function __construct(string $slug, RecipeRepo $recipe_repo)
+    public function __construct(string $slug, RecipeRepo $recipe_repo, ?Xp $xp = null)
     {
         $this->recipe = $recipe_repo->findWithAuthor($slug);
+        $this->xp = $xp ?? new Xp;
     }
 
     /**
@@ -49,7 +56,7 @@ class ShowResponse implements Responsable
 
         return view('recipes.show', [
             'recipe' => $this->recipe,
-            'xp' => $this->recipe->user ? new Xp($this->recipe->user) : [],
+            'xp' => $this->recipe->user ? $this->xp->takeUser($this->recipe->user) : [],
             'cookie' => getCookie('r_font_size') ?? '1.0',
         ]);
     }
@@ -71,7 +78,7 @@ class ShowResponse implements Responsable
                     $popularity->add(config('custom.popularity_for_view'));
                 }
             } catch (QueryException $e) {
-                // do nothing
+                report_error($e);
             }
         } else {
             $this->recipe->views()->whereVisitorId(visitor_id())->increment('visits');
