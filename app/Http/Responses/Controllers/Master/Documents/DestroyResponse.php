@@ -2,8 +2,8 @@
 
 namespace App\Http\Responses\Controllers\Master\Documents;
 
+use App\Models\Document;
 use Illuminate\Http\RedirectResponse;
-use App\Repos\DocumentRepo;
 use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Support\Responsable;
 
@@ -15,13 +15,12 @@ class DestroyResponse implements Responsable
     private $document;
 
     /**
-     * @param int $id
-     * @param \App\Repos\DocumentRepo $repo
+     * @param \App\Models\Document|null $document
      * @return void
      */
-    public function __construct(int $id, DocumentRepo $repo)
+    public function __construct(?Document $document)
     {
-        $this->document = $repo->find($id);
+        $this->document = $document;
     }
 
     /**

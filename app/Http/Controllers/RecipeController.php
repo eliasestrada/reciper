@@ -64,7 +64,7 @@ class RecipeController extends Controller
      */
     public function show(string $slug, Xp $xp, Popularity $popularity): ShowResponse
     {
-        return new ShowResponse($slug, $this->repo, $xp, $popularity);
+        return new ShowResponse($this->repo->findWithAuthor($slug), $xp, $popularity);
     }
 
     /**
@@ -74,7 +74,7 @@ class RecipeController extends Controller
      */
     public function edit(string $slug, MealRepo $meal_repo): EditResponse
     {
-        return new EditResponse($slug, $this->repo, $meal_repo);
+        return new EditResponse($this->repo->find($slug), $meal_repo);
     }
 
     /**
@@ -86,7 +86,7 @@ class RecipeController extends Controller
      */
     public function update(RecipeUpdateRequest $request, string $slug): UpdateResponse
     {
-        return new UpdateResponse($slug, $this->repo);
+        return new UpdateResponse($this->repo->find($slug));
     }
 
     /**
@@ -97,6 +97,6 @@ class RecipeController extends Controller
      */
     public function destroy(string $slug): DestroyResponse
     {
-        return new DestroyResponse($slug, $this->repo);
+        return new DestroyResponse($this->repo->find($slug));
     }
 }

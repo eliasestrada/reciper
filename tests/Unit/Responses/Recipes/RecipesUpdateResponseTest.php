@@ -13,21 +13,6 @@ use App\Http\Responses\Controllers\Recipe\UpdateResponse;
 class RecipesUpdateResponseTest extends TestCase
 {
     /**
-     * Function helper
-     *
-     * @param \App\Models\Recipe $recipe
-     * @return \App\Http\Responses\Controllers\Recipe\UpdateResponse
-     */
-    private function classReponse(Recipe $recipe): UpdateResponse
-    {
-        /** @var \App\Repos\RecipeRepo $recipe_repo */
-        $recipe_repo = $this->createMock(\App\Repos\RecipeRepo::class);
-        $recipe_repo->method('find')->willReturn($recipe);
-
-        return new UpdateResponse('some-slug', $recipe_repo);
-    }
-
-    /**
      * @test
      */
     public function method_isSimple_returns_true_if_recipe_time_less_then_59(): void
@@ -38,7 +23,7 @@ class RecipesUpdateResponseTest extends TestCase
             'time' => 59,
         ]);
         $request = Request::create(null, null, $recipe->toArray());
-        $response = $this->classReponse($recipe);
+        $response = new UpdateResponse($recipe);
         $this->assertTrue($response->isSimple($request));
     }
 
@@ -53,7 +38,7 @@ class RecipesUpdateResponseTest extends TestCase
             'time' => 60,
         ]);
         $request = Request::create(null, null, $recipe->toArray());
-        $response = $this->classReponse($recipe);
+        $response = new UpdateResponse($recipe);
         $this->assertFalse($response->isSimple($request));
     }
 
@@ -75,7 +60,7 @@ class RecipesUpdateResponseTest extends TestCase
         }
 
         $request = Request::create(null, null, $recipe->toArray());
-        $response = $this->classReponse($recipe);
+        $response = new UpdateResponse($recipe);
 
         $this->assertTrue($response->isSimple($request));
     }
@@ -98,7 +83,7 @@ class RecipesUpdateResponseTest extends TestCase
         }
 
         $request = Request::create(null, null, $recipe->toArray());
-        $response = $this->classReponse($recipe);
+        $response = new UpdateResponse($recipe);
 
         $this->assertFalse($response->isSimple($request));
     }
@@ -109,7 +94,8 @@ class RecipesUpdateResponseTest extends TestCase
     public function method_saveImageIfExist_uploads_file_and_saves_it_in_2_folders(): void
     {
         $image = UploadedFile::fake()->image('image.jpg');
-        $response = $this->classReponse(Recipe::make());
+        $response = new UpdateResponse(Recipe::make());
+
         $filename = $response->saveImageIfExist($image, 'slug');
 
         $this->assertNotNull($filename);
@@ -130,7 +116,7 @@ class RecipesUpdateResponseTest extends TestCase
      */
     public function method_saveImageIfExist_returns_null_if_user_doent_have_a_file(): void
     {
-        $response = $this->classReponse(Recipe::make());
+        $response = new UpdateResponse(Recipe::make());
         $filename = $response->saveImageIfExist(null, 'slug');
         $this->assertNull($filename);
     }
@@ -141,7 +127,7 @@ class RecipesUpdateResponseTest extends TestCase
     public function method_fireEventAndRedirectWithSuccess_fires_event(): void
     {
         $this->expectsEvents(\App\Events\RecipeGotApproved::class);
-        $this->classReponse(Recipe::make())->fireEventAndRedirectWithSuccess();
+        (new UpdateResponse(Recipe::make()))->fireEventAndRedirectWithSuccess();
     }
 
     /**
@@ -150,7 +136,7 @@ class RecipesUpdateResponseTest extends TestCase
     public function method_createDirectories_creates_directories_in_given_paths(): void
     {
         $directory = storage_path('framework/testing/' . string_random(5));
-        $this->classReponse(Recipe::make())->createDirectories([$directory]);
+        (new UpdateResponse(Recipe::make()))->createDirectories([$directory]);
         $this->assertDirectoryExists($directory);
 
         // Clean after test by removing created directory

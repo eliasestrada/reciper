@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Xp;
-use App\Models\User;
 use App\Models\Recipe;
 use App\Repos\UserRepo;
 use App\Repos\RecipeRepo;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Responses\Controllers\User\ShowResponse;
 
 class UserController extends Controller
 {
@@ -43,26 +43,11 @@ class UserController extends Controller
      * @param string $username
      * @param \App\Repos\RecipeRepo $recipe_repo
      * @param \App\Models\Xp $xp
-     * @return mixed
+     * @return \App\Http\Responses\Controllers\User\ShowResponse
      */
-    public function show(string $username, RecipeRepo $recipe_repo, Xp $xp)
+    public function show(string $username, RecipeRepo $recipe_repo, Xp $xp): ShowResponse
     {
-        $user = $this->repo->find($username);
-
-        if (!$user) {
-            return redirect('/users')->withError(trans('users.user_not_found'));
-        }
-
-        $recipes = $recipe_repo->paginateUserRecipesWithCountColumns($user->id, [
-            'likes', 'views', 'favs'
-        ]);
-
-        $xp->takeUser($user);
-        $max_xp_for_current_level = $xp->maxXpForCurrentLevel() + 1;
-        $level_higher_than_max = $xp->minXpForCurrentLevel() >= config('custom.max_xp');
-        $max_xp = $level_higher_than_max ? '' : "/ {$max_xp_for_current_level}";
-
-        return view('users.show', compact('recipes', 'user', 'xp', 'max_xp'));
+        return new ShowResponse($this->repo->find($username), $recipe_repo, $xp);
     }
 
     /**

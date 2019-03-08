@@ -2,7 +2,6 @@
 
 namespace App\Http\Responses\Controllers\Admin\Feedback;
 
-use App\Models\Feedback;
 use App\Models\User;
 use App\Repos\FeedbackRepo;
 use Illuminate\Contracts\Support\Responsable;
@@ -13,14 +12,15 @@ class IndexResponse implements Responsable
     /**
      * @var \App\Repos\FeedbackRepo
      */
-    protected $repo;
+    private $repo;
 
     /**
+     * @param \App\Repos\FeedbackRepo $repo
      * @return void
      */
-    public function __construct()
+    public function __construct(FeedbackRepo $repo)
     {
-        $this->repo = new FeedbackRepo;
+        $this->repo = $repo;
     }
 
     /**

@@ -69,7 +69,7 @@ class DocumentController extends Controller
      */
     public function update(DocumentRequest $request, int $id): UpdateResponse
     {
-        return new UpdateResponse($id, $this->repo);
+        return new UpdateResponse($this->repo->find($id));
     }
 
     /**
@@ -80,6 +80,6 @@ class DocumentController extends Controller
      */
     public function destroy(int $id): DestroyResponse
     {
-        return new DestroyResponse($id, $this->repo);
+        return new DestroyResponse($this->repo->find($id));
     }
 }

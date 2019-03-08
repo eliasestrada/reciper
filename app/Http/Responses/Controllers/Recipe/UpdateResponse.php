@@ -4,7 +4,7 @@ namespace App\Http\Responses\Controllers\Recipe;
 
 use File;
 use Image;
-use App\Repos\RecipeRepo;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Http\RedirectResponse;
@@ -16,7 +16,7 @@ class UpdateResponse implements Responsable
     use RecipeHelpers;
 
     /**
-     * @var \App\Models\Recipe
+     * @var \App\Models\Recipe|null
      */
     private $recipe;
 
@@ -26,13 +26,12 @@ class UpdateResponse implements Responsable
     private $filename;
 
     /**
-     * @param string $slug
-     * @param \App\Repos\RecipeRepo $recipe_repo
+     * @param \App\Models\Recipe|null $recipe
      * @return void
      */
-    public function __construct(string $slug, RecipeRepo $recipe_repo)
+    public function __construct(?Recipe $recipe)
     {
-        $this->recipe = $recipe_repo->find($slug);
+        $this->recipe = $recipe;
     }
 
     /**

@@ -9,7 +9,10 @@ use Illuminate\Contracts\Support\Responsable;
 
 class DestroyResponse implements Responsable
 {
-    protected $help;
+    /**
+     * @var \App\Models\Help
+     */
+    private $help;
 
     /**
      * @param \App\Models\Help $help

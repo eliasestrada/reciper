@@ -2,25 +2,27 @@
 
 namespace App\Http\Responses\Controllers\Admin\Approves;
 
+use App\Models\Recipe;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Support\Responsable;
 use App\Helpers\Controllers\Admin\ApproveHelpers;
-use App\Repos\RecipeRepo;
 
 class DisapproveResponse implements Responsable
 {
     use ApproveHelpers;
 
-    protected $recipe;
+    /**
+     * @param \App\Models\Recipe|null
+     */
+    private $recipe;
 
     /**
-     * @param string $slug
-     * @param \App\Repos\RecipeRepo $recipe_repo
+     * @param \App\Models\Recipe|null $recipe
      * @return void
      */
-    public function __construct(string $slug, RecipeRepo $recipe_repo)
+    public function __construct(?Recipe $recipe)
     {
-        $this->recipe = $recipe_repo->find($slug);
+        $this->recipe = $recipe;
     }
 
     /**

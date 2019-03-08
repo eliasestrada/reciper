@@ -2,24 +2,34 @@
 
 namespace App\Http\Responses\Controllers\Recipe;
 
-use App\Repos\RecipeRepo;
+use App\Models\Recipe;
 use App\Helpers\Controllers\RecipeHelpers;
 use Illuminate\Contracts\Support\Responsable;
+use Illuminate\Foundation\Auth\User;
 
 class DestroyResponse implements Responsable
 {
     use RecipeHelpers;
 
-    protected $recipe;
+    /**
+     * @var \App\Models\Recipe
+     */
+    private $recipe;
 
     /**
-     * @param string $slug
-     * @param \App\Repos\RecipeRepo $repo
+     * @var \App\Models\User|null
+     */
+    private $user;
+
+    /**
+     * @param \App\Models\Recipe $recipe
+     * @param \App\Models\User|null $user
      * @return void
      */
-    public function __construct(string $slug, RecipeRepo $repo)
+    public function __construct(Recipe $recipe, ?User $user = null)
     {
-        $this->recipe = $repo->find($slug);
+        $this->recipe = $recipe;
+        $this->user = $user ?? user();
     }
 
     /**
@@ -28,7 +38,7 @@ class DestroyResponse implements Responsable
      */
     public function toResponse($request): string
     {
-        if ($this->recipe->user_id !== user()->id) {
+        if ($this->recipe->user_id !== $this->user->id) {
             return 'failed';
         }
 

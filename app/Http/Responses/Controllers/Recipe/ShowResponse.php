@@ -3,15 +3,15 @@
 namespace App\Http\Responses\Controllers\Recipe;
 
 use App\Models\Xp;
-use App\Repos\RecipeRepo;
 use App\Models\Popularity;
 use Illuminate\Database\QueryException;
 use Illuminate\Contracts\Support\Responsable;
+use App\Models\Recipe;
 
 class ShowResponse implements Responsable
 {
     /**
-     * @var \App\Models\Recipe
+     * @var \App\Models\Recipe|null
      */
     private $recipe;
 
@@ -26,15 +26,14 @@ class ShowResponse implements Responsable
     private $popularity;
 
     /**
-     * @param string $slug
-     * @param \App\Repos\RecipeRepo $recipe_repo
+     * @param \App\Models\Recipe|null $recipe
      * @param \App\Models\Xp $xp
      * @param \App\Models\Popularity $popularity
      * @return void
      */
-    public function __construct(string $slug, RecipeRepo $recipe_repo, Xp $xp, Popularity $popularity)
+    public function __construct(?Recipe $recipe, Xp $xp, Popularity $popularity)
     {
-        $this->recipe = $recipe_repo->findWithAuthor($slug);
+        $this->recipe = $recipe;
         $this->xp = $xp;
         $this->popularity = $popularity;
     }

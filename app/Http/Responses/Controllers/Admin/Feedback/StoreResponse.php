@@ -11,16 +11,17 @@ use Illuminate\Http\RedirectResponse;
 class StoreResponse implements Responsable
 {
     /**
-     * \App\Repos\FeedbackRepo
+     * @var \App\Repos\FeedbackRepo
      */
-    protected $repo;
+    private $repo;
 
     /**
+     * @param \App\Repos\FeedbackRepo $repo
      * @return void
      */
-    public function __construct()
+    public function __construct(FeedbackRepo $repo)
     {
-        $this->repo= new FeedbackRepo;
+        $this->repo = $repo;
     }
 
     /**

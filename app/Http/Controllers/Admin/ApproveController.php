@@ -48,7 +48,7 @@ class ApproveController extends Controller
      */
     public function show(string $slug): ShowResponse
     {
-        return new ShowResponse($slug, $this->recipe_repo);
+        return new ShowResponse($this->recipe_repo->find($slug));
     }
 
     /**
@@ -60,7 +60,7 @@ class ApproveController extends Controller
      */
     public function approve(string $slug): ApproveResponse
     {
-        return new ApproveResponse($slug, $this->recipe_repo);
+        return new ApproveResponse($this->recipe_repo->find($slug));
     }
 
     /**
@@ -73,6 +73,6 @@ class ApproveController extends Controller
      */
     public function disapprove(string $slug, DisapproveRequest $request): DisapproveResponse
     {
-        return new DisapproveResponse($slug, $this->recipe_repo);
+        return new DisapproveResponse($this->recipe_repo->find($slug));
     }
 }

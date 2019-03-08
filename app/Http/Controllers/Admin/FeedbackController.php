@@ -34,7 +34,7 @@ class FeedbackController extends Controller
      */
     public function index(): IndexResponse
     {
-        return new IndexResponse;
+        return new IndexResponse($this->repo);
     }
 
     /**

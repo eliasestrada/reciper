@@ -3,8 +3,8 @@
 namespace App\Http\Responses\Controllers\Recipe;
 
 use App\Models\User;
+use App\Models\Recipe;
 use App\Repos\MealRepo;
-use App\Repos\RecipeRepo;
 use Illuminate\Contracts\Support\Responsable;
 
 class EditResponse implements Responsable
@@ -15,7 +15,7 @@ class EditResponse implements Responsable
     private $meal_repo;
 
     /**
-     * @var \App\Models\Recipe
+     * @var \App\Models\Recipe|null
      */
     private $recipe;
 
@@ -25,16 +25,15 @@ class EditResponse implements Responsable
     private $user;
 
     /**
-     * @param string $slug
-     * @param \App\Repos\RecipeRepo $recipe_repo
+     * @param \App\Models\Recipe|null $recipe
      * @param \App\Repos\MealRepo $meal_repo
      * @param \App\Models\User|null $user
      * @return void
      */
-    public function __construct(string $slug, RecipeRepo $recipe_repo, MealRepo $meal_repo, ?User $user = null)
+    public function __construct(?Recipe $recipe, MealRepo $meal_repo, ?User $user = null)
     {
         $this->user = $user ?? user();
-        $this->recipe = $recipe_repo->find($slug);
+        $this->recipe = $recipe;
         $this->meal_repo = $meal_repo;
     }
 

@@ -22,13 +22,13 @@ class IndexResponse implements Responsable
 
     /**
      * @param \App\Repos\RecipeRepo $recipe_repo
-     * @param \PHPUnit\Framework\MockObject\MockObject|null $user_mock | For testing purposes
+     * @param \App\Models\User|null $user
      * @return void
      */
-    public function __construct(RecipeRepo $recipe_repo, ?MockObject $user_mock = null)
+    public function __construct(RecipeRepo $recipe_repo, ?User $user = null)
     {
         $this->recipe_repo = $recipe_repo;
-        $this->user = $user_mock ?? user();
+        $this->user = $user ?? user();
     }
 
     /**
