@@ -27,6 +27,7 @@ class ShowResponse implements Responsable
 
     /**
      * @param string $slug
+     * @param \App\Repos\RecipeRepo $recipe_repo
      * @param \App\Models\Xp $xp
      * @param \App\Models\Popularity $popularity
      * @return void
