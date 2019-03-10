@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Recipe;
-use App\Models\Popularity;
-use App\Http\Controllers\Controller;
 use App\Repos\UserRepo;
+use App\Models\Popularity;
+use Illuminate\Http\Response;
+use App\Http\Controllers\Controller;
 
 class LikeController extends Controller
 {
