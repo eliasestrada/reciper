@@ -4,11 +4,22 @@ namespace Tests\Unit\Repos\Admin;
 
 use Tests\TestCase;
 use App\Models\Recipe;
-use App\Repos\RecipeRepo;
 use App\Http\Responses\Controllers\Admin\Approves\ApproveResponse;
 
 class ApprovesApproveResponseTest extends TestCase
 {
+    /**
+     * Setup the test environment
+     *
+     * @return void
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->withoutNotifications();
+        $this->withoutEvents();
+    }
+
     /**
      * @test
      */

@@ -10,6 +10,18 @@ use App\Http\Responses\Controllers\Admin\Approves\DisapproveResponse;
 class ApprovesDisapproveResponseTest extends TestCase
 {
     /**
+     * Setup the test environment
+     *
+     * @return void
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+        $this->withoutNotifications();
+        $this->withoutEvents();
+    }
+
+    /**
      * @test
      */
     public function method_toResponse_redirects_without_success_header_if_recipe_is_already_approved(): void
