@@ -52,6 +52,7 @@ class StatisticController extends Controller
             ->where('created_at', '>=', now()->subYear())
             ->get();
 
+        // Takes rules array and fills out the 'sum' column with data
         foreach ($rules as $key => $rule) {
             $rules[$key]['sum'] += $recipes->map(function ($recipe) use ($rule, $column) {
                 return $recipe[$column]
