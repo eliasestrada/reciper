@@ -82,7 +82,7 @@ class ShowResponse implements Responsable
                     $popularity->add(config('custom.popularity_for_view'));
                 }
             } catch (QueryException $e) {
-                report_error($e);
+                logger()->error($e);
             }
         } else {
             $this->recipe->views()->whereVisitorId(visitor_id())->increment('visits');
