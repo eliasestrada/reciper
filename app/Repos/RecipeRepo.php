@@ -112,35 +112,37 @@ class RecipeRepo
 
     /**
      * Returns only those recipes that user haven't seen, if there no recipes
-     * the he haven't seen, shows just random recipes
+     * returns just random recipes without condition
      *
      * @throws \Illuminate\Database\QueryException
-     * @param int $limit Limit results
-     * @param int|null $visitor_id
-     * @param \App\Repos\ViewRepo|null $view_repo
+     * @param int $limit Limit how many recipes take from database
+     * @param int $visitor_id
+     * @param \App\Repos\ViewRepo $view_repo
      * @return \Illuminate\Support\Collection
      */
-    public static function getRandomUnseen(int $limit = 12, ?int $visitor_id = null, ?ViewRepo $view_repo = null): Collection
+    public static function getRandomUnseen(int $limit = 12, int $visitor_id, ViewRepo $view_repo): Collection
     {
-        $viewed = ($view_repo ?? new ViewRepo)->pluckViewedRecipeIds($visitor_id);
-
-        $where_condition = $viewed->map(function ($recipe_id) {
-            return ['id', '!=', $recipe_id];
-        })->toArray();
+        /** @var array Array of arrays for use in where statement query */
+        $where_condition = array_map(function ($viewed_recipe_id) {
+            return ['id', '!=', $viewed_recipe_id];
+        }, $view_repo->getViewedRecipeIds($visitor_id));
 
         try {
-            $enough_recipes = Recipe::where($where_condition)
+            /** @var int How many recipes visitor haven't seen */
+            $havent_seen_recipes = Recipe::where($where_condition)
                 ->done(1)
-                ->count() < $limit / 2;
+                ->count();
         } catch (QueryException $e) {
-            $enough_recipes = false;
+            $havent_seen_recipes = 0;
+            logger()->error($e);
         }
 
         try {
             return Recipe::with(['favs', 'likes'])
                 ->select(['id', 'slug', 'image', _('title'), _('intro')])
                 ->inRandomOrder()
-                ->when($enough_recipes, function ($query) use ($where_condition) {
+                /** If not seen recipes more than half of all displayed, apply where statement */
+                ->when($havent_seen_recipes > $limit / 2, function ($query) use ($where_condition) {
                     return $query->where($where_condition);
                 })
                 ->done(1)

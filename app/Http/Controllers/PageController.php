@@ -8,21 +8,21 @@ use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\View\View as ViewResponse;
 use App\Repos\RecipeRepo;
+use App\Repos\ViewRepo;
 
 class PageController extends Controller
 {
     /**
      * @throws \Illuminate\Database\QueryException
+     * @param \App\Repos\RecipeRepo $recipe_repo
+     * @param \App\Repos\ViewRepo $view_repo
      * @return \Illuminate\View\View
      */
-    public function home(RecipeRepo $recipe_repo): ViewResponse
+    public function home(RecipeRepo $recipe_repo, ViewRepo $view_repo): ViewResponse
     {
-        try {
-            $recipes = $recipe_repo->getRandomUnseen(24);
-        } catch (QueryException $e) {
-            $recipes = report_error($e, collect());
-        }
-        return view('pages.home', compact('recipes'));
+        return view('pages.home', [
+            'recipes' => $recipe_repo->getRandomUnseen(24, visitor_id(), $view_repo),
+        ]);
     }
 
     /**
