@@ -31,14 +31,14 @@ class ViewRepoTest extends TestCase
     /**
      * @test
      */
-    public function method_pluckViewedRecipeIds_returns_recipe_ids(): void
+    public function method_getViewedRecipeIds_returns_recipe_ids(): void
     {
         $recipe_id = 1;
         $visitor_id = create(Visitor::class)->id;
         $view = create(View::class, compact('visitor_id', 'recipe_id'));
 
-        $result = $this->repo->pluckViewedRecipeIds($visitor_id);
+        $result = $this->repo->getViewedRecipeIds($visitor_id);
 
-        $this->assertEquals($recipe_id, $result->first());
+        $this->assertEquals($recipe_id, $result[0]);
     }
 }

@@ -11,16 +11,16 @@ class ViewRepo
     /**
      * @throws \Illuminate\Database\QueryException
      * @param int|null $visitor_id
-     * @return \Illuminate\Support\Collection
+     * @return array
      */
-    public function pluckViewedRecipeIds(?int $visitor_id = null): Collection
+    public function getViewedRecipeIds(?int $visitor_id = null): array
     {
         $visitor_id = $visitor_id ?? visitor_id();
 
         try {
-            return View::whereVisitorId($visitor_id)->pluck('recipe_id');
+            return View::whereVisitorId($visitor_id)->pluck('recipe_id')->toArray();
         } catch (QueryException $e) {
-            return report_error($e, collect());
+            return report_error($e, []);
         }
     }
 }
