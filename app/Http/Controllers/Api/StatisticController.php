@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Exception;
 use App\Models\User;
 use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
@@ -24,62 +25,40 @@ class StatisticController extends Controller
      */
     public function popularityChart(): StatisticsPopularityChartResponse
     {
-        $chart_data = [
+        return new StatisticsPopularityChartResponse([
             'views' => $this->getDataFromUser('views'),
             'likes' => $this->getDataFromUser('likes'),
             'favs' => $this->getDataFromUser('favs'),
-        ];
-
-        return new StatisticsPopularityChartResponse($chart_data);
+        ]);
     }
 
     /**
      * Function helper that looks for all data for statistics
      *
      * @param string $column
-     * @param \App\Models\User|null
-     * @return \Illuminate\Support\Collection
-     */
-    public function getDataFromUser(string $column, ?User $user = null): Collection
-    {
-        if ($column != 'likes' && $column != 'views' && $column != 'favs') {
-            throw new \Exception('getDataFromUser 1 parameter can only have one of three values. Given value does not match any of them');
-        }
-
-        $rules = $this->makeArrayOfRules();
-        $rules_filled = $this->populateWithSumOfLikes($rules, $column, ($user ?? user()));
-
-        return collect($this->convertMonthNumberToName($rules_filled));
-    }
-
-    /**
-     * This helper function creates array with needed attributes
-     *
+     * @param \App\Models\User|null $user
      * @return array
      */
-    public function makeArrayOfRules(): array
+    public function getDataFromUser(string $column, ?User $user = null): array
     {
-        return array_map(function ($month_number) {
+        if (!in_array($column, ['likes', 'views', 'favs'])) {
+            $msg = 'getDataFromUser 1 parameter can only have one of three values. Given value does not match any of them';
+            throw new Exception($msg);
+        }
+
+        $rules = array_map(function ($num) {
             return [
-                'month' => now()->startOfMonth()->subMonths($month_number - 1)->month,
-                'from' => now()->startOfMonth()->subMonths($month_number - 1),
-                'to' => now()->startOfMonth()->subMonths($month_number - 2),
+                'month' => now()->startOfMonth()->subMonths($num - 1)->month,
+                'from' => now()->startOfMonth()->subMonths($num - 1)->toDateString(),
+                'to' => now()->startOfMonth()->subMonths($num - 2)->toDateString(),
                 'sum' => 0,
             ];
         }, [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
-    }
 
-    /**
-     * Take array of rules and populate it with real data
-     *
-     * @param array $rules
-     * @param string $column
-     * @param \App\Models\User $user
-     * @return array
-     */
-    public function populateWithSumOfLikes(array $rules, string $column, User $user): array
-    {
-        $recipes = $user->recipes()->where('created_at', '>=', now()->subYear())->get();
+        $recipes = ($user ?? user())
+            ->recipes()
+            ->where('created_at', '>=', now()->subYear())
+            ->get();
 
         foreach ($rules as $key => $rule) {
             $rules[$key]['sum'] += $recipes->map(function ($recipe) use ($rule, $column) {
@@ -89,20 +68,21 @@ class StatisticController extends Controller
                     ->count();
             })->sum();
         }
-        return $rules;
+
+        return $this->convertMonthNumberToName($rules);
     }
 
     /**
      * Convert month number to month name
      *
      * @param array $rules
-     * @return \Illuminate\Support\Collection
+     * @return array
      */
-    public function convertMonthNumberToName(array $rules): Collection
+    public function convertMonthNumberToName(array $rules): array
     {
-        return collect($rules)->map(function ($rule) {
+        return array_map(function ($rule) {
             $rule['month'] = trans("date.month_{$rule['month']}");
             return $rule;
-        });
+        }, $rules);
     }
 }

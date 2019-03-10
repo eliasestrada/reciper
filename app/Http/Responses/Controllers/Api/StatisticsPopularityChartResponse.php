@@ -6,7 +6,10 @@ use Illuminate\Contracts\Support\Responsable;
 
 class StatisticsPopularityChartResponse implements Responsable
 {
-    protected $chart_data = [];
+    /**
+     * @var array
+     */
+    private $chart_data = [];
 
     /**
      * @param array $chart_data
@@ -24,7 +27,7 @@ class StatisticsPopularityChartResponse implements Responsable
     public function toResponse($request): array
     {
         return [
-            'labels' => $this->chart_data['views']->pluck('month'),
+            'labels' => array_column($this->chart_data['views'], 'month'),
             'options' => [],
             'datasets' => [
                 [
@@ -32,21 +35,21 @@ class StatisticsPopularityChartResponse implements Responsable
                     'fill' => false,
                     'backgroundColor' => '#484074',
                     'borderColor' => '#484074',
-                    'data' => $this->chart_data['views']->pluck('sum'),
+                    'data' => array_column($this->chart_data['views'], 'sum'),
                 ],
                 [
                     'label' => trans('users.likes'),
                     'fill' => false,
                     'backgroundColor' => '#cf4545',
                     'borderColor' => '#cf4545',
-                    'data' => $this->chart_data['likes']->pluck('sum'),
+                    'data' => array_column($this->chart_data['likes'], 'sum'),
                 ],
                 [
                     'label' => trans('messages.favorites'),
                     'fill' => false,
                     'backgroundColor' => '#d49d10',
                     'borderColor' => '#d49d10',
-                    'data' => $this->chart_data['favs']->pluck('sum'),
+                    'data' => array_column($this->chart_data['favs'], 'sum'),
                 ],
             ],
         ];
