@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use Exception;
 use App\Models\User;
-use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
 use App\Http\Responses\Controllers\Api\StatisticsPopularityChartResponse;
 
@@ -46,14 +45,7 @@ class StatisticController extends Controller
             throw new Exception($msg);
         }
 
-        $rules = array_map(function ($num) {
-            return [
-                'month' => now()->startOfMonth()->subMonths($num - 1)->month,
-                'from' => now()->startOfMonth()->subMonths($num - 1)->toDateString(),
-                'to' => now()->startOfMonth()->subMonths($num - 2)->toDateString(),
-                'sum' => 0,
-            ];
-        }, [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
+        $rules = $this->generateMonthsDataArray();
 
         $recipes = ($user ?? user())
             ->recipes()
@@ -84,5 +76,20 @@ class StatisticController extends Controller
             $rule['month'] = trans("date.month_{$rule['month']}");
             return $rule;
         }, $rules);
+    }
+
+    /**
+     * @return array
+     */
+    public function generateMonthsDataArray(): array
+    {
+        return array_map(function ($num) {
+            return [
+                'month' => now()->startOfMonth()->subMonths($num - 1)->month,
+                'from' => now()->startOfMonth()->subMonths($num - 1)->toDateString(),
+                'to' => now()->startOfMonth()->subMonths($num - 2)->toDateString(),
+                'sum' => 0,
+            ];
+        }, [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
     }
 }
