@@ -39,7 +39,7 @@ The idea is that depending on what language is currently selected, user or visit
 
 ##### For docker people
 
-* Clone, enter reciper folder and run `./run.sh`
+* Clone, enter reciper folder and run `./run`
 
 # Editional information
 
