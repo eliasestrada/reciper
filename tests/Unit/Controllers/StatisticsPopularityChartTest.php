@@ -4,7 +4,6 @@ namespace Tests\Unit\Controllers\Statistics;
 
 use Exception;
 use Tests\TestCase;
-use App\Models\User;
 use App\Http\Controllers\Api\StatisticController;
 
 class StatisticsPopularityChartTest extends TestCase
@@ -31,7 +30,7 @@ class StatisticsPopularityChartTest extends TestCase
     public function getDataFromUser_throws_exception_if_first_parameter_is_not_acceptable(): void
     {
         $this->expectException(Exception::class);
-        $this->class->getDataFromUser('something', make(User::class));
+        $this->class->generateArrayWithChartData('something', []);
     }
 
     /**
@@ -40,9 +39,9 @@ class StatisticsPopularityChartTest extends TestCase
      * 
      * @test
      */
-    public function generateMonthsDataArray_contains_12_months_from_from_current_month(): void
+    public function generateRulesArray_contains_12_months_from_from_current_month(): void
     {
-        $method = $this->class->generateMonthsDataArray();
+        $method = $this->class->generateRulesArray();
         $months_of_the_year = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
         foreach ($months_of_the_year as $key => $month) {
@@ -55,9 +54,9 @@ class StatisticsPopularityChartTest extends TestCase
     /**
      * @test
      */
-    public function generateMonthsDataArray_contains_12_month_dates_starting_from_current_to_latest_date_in_current_year(): void
+    public function generateRulesArray_contains_12_month_dates_starting_from_current_to_latest_date_in_current_year(): void
     {
-        $method = $this->class->generateMonthsDataArray();
+        $method = $this->class->generateRulesArray();
         $months_of_the_year = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
 
         foreach ($months_of_the_year as $key => $month) {
