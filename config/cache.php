@@ -30,5 +30,6 @@ return [
         'help_categories' => 10 * 60,  // 10 min
         'help_list' => 10 * 60, // 10 min
         'user_changed_email' => 10080 * 60, // 1 week
+        'user_statistics_data' => 180 * 60, // 3 hour
     ],
 ];

@@ -142,4 +142,23 @@ class RecipeRepoTest extends TestCase
             $this->assertArrayHasKey("{$column}_count", $result);
         }); 
     }
+
+    /**
+     * @test
+     */
+    public function method_getCachedUserRecipesForTheLastYear_returns_recipes_for_the_last_year(): void
+    {
+        $user_id = create_user()->id;
+        $recipes = [
+            create(Recipe::class, ['created_at' => now()->subMonths(11)->subDays(30), 'user_id' => $user_id]),
+            create(Recipe::class, ['created_at' => now()->subMonths(5), 'user_id' => $user_id]),
+            create(Recipe::class, ['user_id' => $user_id]),
+        ];
+
+        $result = $this->repo->getCachedUserRecipesForTheLastYear($user_id);
+
+        array_walk($recipes, function ($recipe) use ($result) {
+            $this->assertNotNull($result->where('id', $recipe->id)->first());
+        });
+    }
 }
