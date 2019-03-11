@@ -146,7 +146,7 @@ class RecipeRepoTest extends TestCase
     /**
      * @test
      */
-    public function method_getCachedUserRecipesForTheLastYear_returns_recipes_for_the_last_year(): void
+    public function method_getUserRecipesForTheLastYear_returns_recipes_for_the_last_year(): void
     {
         $user_id = create_user()->id;
         $recipes = [
@@ -155,7 +155,7 @@ class RecipeRepoTest extends TestCase
             create(Recipe::class, ['user_id' => $user_id]),
         ];
 
-        $result = $this->repo->getCachedUserRecipesForTheLastYear($user_id);
+        $result = $this->repo->getUserRecipesForTheLastYear($user_id);
 
         array_walk($recipes, function ($recipe) use ($result) {
             $this->assertNotNull($result->where('id', $recipe->id)->first());

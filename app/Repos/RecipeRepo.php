@@ -181,17 +181,12 @@ class RecipeRepo
      * @param array|null $columns
      * @return Illuminate\Support\Collection
      */
-    public function getCachedUserRecipesForTheLastYear(int $user_id, ?array $columns = null): Collection
+    public function getUserRecipesForTheLastYear(int $user_id, ?array $columns = null): Collection
     {
-        $ttl = config('cache.timing.timing.user_statistics_data');
-        $key = "user:{$user_id}:chart_data";
-
         try {
-            return cache()->remember($key, $ttl, function () use ($user_id, $columns) {
-                return Recipe::whereUserId($user_id)
-                    ->where('created_at', '>=', now()->subYear())
-                    ->get($columns ?? ['id', 'created_at']);
-            });
+            return Recipe::whereUserId($user_id)
+                ->where('created_at', '>=', now()->subYear())
+                ->get($columns ?? ['id', 'created_at']);
         } catch (QueryException $e) {
             return report_error($e, collect());
         }
