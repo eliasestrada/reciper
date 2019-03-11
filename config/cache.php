@@ -21,7 +21,7 @@ return [
         ],
     ],
 
-    'prefix' => env('CACHE_PREFIX', 'c'),
+    'prefix' => env('CACHE_PREFIX', null),
 
     // Timing for certain parts in app in minutes
     'timing' => [
