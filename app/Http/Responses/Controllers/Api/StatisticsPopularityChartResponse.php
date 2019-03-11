@@ -19,7 +19,7 @@ class StatisticsPopularityChartResponse implements Responsable
     private $user_id;
 
     /**
-     * @param array $chart_data
+     * @param \Illuminate\Support\Collection $chart_data
      * @param int|null $user_id
      * @return void
      */
