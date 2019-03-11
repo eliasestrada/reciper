@@ -261,7 +261,7 @@ function report_error($exception, $return = null)
     logger()->error($exception);
     session()->flash('error', trans('messages.query_error'));
 
-    return $return ? $return : null;
+    return $return;
 }
 
 /**
