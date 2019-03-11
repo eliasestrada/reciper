@@ -1,15 +1,16 @@
 <?php
 
-namespace Tests\Unit\Controllers\Statistics;
+namespace Tests\Unit\Responses\Api;
 
 use Exception;
 use Tests\TestCase;
-use App\Http\Controllers\Api\StatisticController;
+use App\Http\Responses\Controllers\Api\StatisticsPopularityChartResponse;
+use App\Models\User;
 
-class StatisticsPopularityChartTest extends TestCase
+class StatisticsPopularityChartResponseTest extends TestCase
 {
     /**
-     * @var \App\Http\Controllers\Api\StatisticController
+     * @var \App\Http\Responses\Controllers\Api\StatisticsPopularityChartResponse
      */
     private $class;
 
@@ -21,7 +22,8 @@ class StatisticsPopularityChartTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->class = new StatisticController;
+        $user = make(User::class);
+        $this->class = new StatisticsPopularityChartResponse(collect(), $user->id);
     }
 
     /**
