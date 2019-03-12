@@ -11,13 +11,13 @@ class RecipeRepo
 {
     /**
      * @throws \Illuminate\Database\QueryException
-     * @param string $slug
+     * @param string|int $key can be 'id' or 'slug'
      * @return \App\Models\Recipe|null
      */
-    public function find(string $slug): ?Recipe
+    public function find($key): ?Recipe
     {
         try {
-            return Recipe::whereSlug($slug)->first();
+            return Recipe::where(is_int($key) ? 'id' : 'slug', $key)->first();
         } catch (QueryException $e) {
             return report_error($e);
         }

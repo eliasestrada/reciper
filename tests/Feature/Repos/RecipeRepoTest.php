@@ -96,6 +96,16 @@ class RecipeRepoTest extends TestCase
     /**
      * @test
      */
+    public function method_find_returns_recipe_by_given_id(): void
+    {
+        $recipe = create(Recipe::class);
+        $result = $this->repo->find($recipe->id);
+        $this->assertEquals($recipe->toBase(), $result->toBase());
+    }
+
+    /**
+     * @test
+     */
     public function method_find_returns_recipe_by_given_slug(): void
     {
         $recipe = create(Recipe::class);

@@ -10,7 +10,7 @@ class UserRepo
 {
     /**
      * @throws \Illuminate\Database\QueryException
-     * @param string|int|null $key Can be 'id' or 'username'
+     * @param string|int|null $key can be 'id' or 'username'
      * @return \App\Models\User|null
      */
     public function find($key): ?User
