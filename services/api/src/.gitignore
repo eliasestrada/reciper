@@ -1,4 +1,5 @@
 /vendor
+/node-modules
 /.idea
 Homestead.json
 Homestead.yaml
