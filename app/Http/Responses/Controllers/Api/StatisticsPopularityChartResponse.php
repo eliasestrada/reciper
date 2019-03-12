@@ -2,7 +2,6 @@
 
 namespace App\Http\Responses\Controllers\Api;
 
-use Redis;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Support\Collection;
 
