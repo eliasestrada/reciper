@@ -1,0 +1,17 @@
+.env
+node_modules
+vendor
+xdebug
+npm-debug.log
+yarn-error.log
+dump.rdb
+.phpunit.result.cache
+
+storage/*.key
+storage/logs/*
+storage/framework/testing
+
+public/mix-manifest.json
+public/storage
+public/js/*
+public/css/*
