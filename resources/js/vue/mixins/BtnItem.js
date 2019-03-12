@@ -7,7 +7,7 @@ export default {
         }
     },
 
-    props: ['recipeId', 'items', 'userId', 'tooltip', 'audioPath'],
+    props: ['recipeId', 'recipeSlug', 'items', 'userId', 'tooltip', 'audioPath'],
 
     created() {
         this.toggleActive()

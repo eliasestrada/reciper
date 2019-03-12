@@ -26,7 +26,7 @@ import BtnItem from '../mixins/BtnItem'
 export default {
     data() {
         return {
-            url: `/favs/${this.recipeId}`,
+            url: `/favs/${this.recipeSlug}`,
         }
     },
     mixins: [BtnItem],

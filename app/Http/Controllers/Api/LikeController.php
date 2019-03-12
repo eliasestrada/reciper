@@ -35,13 +35,13 @@ class LikeController extends Controller
     /**
      * Add like to particular recipe
      *
-     * @param int $recipe_id
+     * @param string $slug
      * @param \App\Models\Popularity $popularity
      * @return \App\Http\Responses\Controllers\Api\Like\StoreResponse
      */
-    public function store(int $recipe_id, Popularity $popularity): StoreResponse
+    public function store(string $slug, Popularity $popularity): StoreResponse
     {
-        $recipe = $this->recipe_repo->find($recipe_id);
+        $recipe = $this->recipe_repo->find($slug);
         $recipe_author = $this->user_repo->find($recipe->user_id);
 
         return new StoreResponse($recipe, $popularity->takeUser($recipe_author));

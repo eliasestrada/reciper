@@ -7,8 +7,8 @@ Auth::routes();
 // Web APIs
 Route::namespace ('Api')->group(function () {
     Route::get('popularity-chart', 'StatisticController@popularityChart');
-    Route::post('favs/{recipe}', 'FavController@store');
-    Route::post('likes/{recipe}', 'LikeController@store');
+    Route::post('favs/{recipe_slug}', 'FavController@store');
+    Route::post('likes/{recipe_slug}', 'LikeController@store');
 });
 
 Route::get('favs/{category?}', 'FavController@index');
