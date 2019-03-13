@@ -13,8 +13,12 @@ storage/framework/testing
 
 public/mix-manifest.json
 public/storage
-public/js/*
-public/css/*
+public/js/app.js
+public/js/chart.js
+public/js/app.js.map
+public/js/chart.js.map
+public/css/app.css
+public/css/app.css.map
 
 yarn.lock
 package-lock.json
