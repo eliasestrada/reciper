@@ -50,14 +50,6 @@ services:
     working_dir: /var/www
     command: composer install --ignore-platform-reqs
 
-  reciper_composer_api:
-    image: composer
-    container_name: reciper_composer_api
-    volumes: 
-      - ./services/api/src:/var/www
-    working_dir: /var/www
-    command: composer install --ignore-platform-reqs
-
   reciper_node:
     image: node:8-alpine
     container_name: reciper_node
@@ -71,18 +63,6 @@ services:
     container_name: reciper_redis
     ports:
       - 6380:6379
-
-  reciper_api:
-    # image: serhiicho/reciper:php
-    build: services/api
-    working_dir: /var/www
-    container_name: reciper_api
-    ports: 
-      - 9003:9000
-    volumes: 
-      - ./services/api/src:/var/www
-      - ./services/api/php-fpm.conf:/etc/php-fpm.d/php-fpm.conf
-      - ./services/api/logs:/var/log/php
 
   # reciper_selenium:
   #   image: selenium/standalone-chrome
