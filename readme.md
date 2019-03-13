@@ -1,5 +1,7 @@
 ![reciper](https://github.com/SerhiiCho/reciper/blob/master/storage/app/public/other/wallpaper.jpg?raw=true)
 
+**Reciper is a micro-service app and requires [Docker](https://www.docker.com)**
+
 # About
 
 ##### What is it?
@@ -20,27 +22,6 @@ All Russian translation files are in `resources/lang/ru` folder, they will be co
 
 The idea is that depending on what language is currently selected, user or visitor sees materials with chosen language. I have some duplicate fields in database like *title_ru* and *title_en*, *text_ru* and *text_en* etc.. And depending on what language is selected it shows needed fields. Also any author of the recipe will be able to translate his or her recipe from Russian to English or vice versa.
 
-# Get started
-
-##### For non docker people
-
-* Clone and enter downloaded folder
-* `cp .env.example .env` copy the *env.example* and create *.env*
-* Open just created *.env* file and fill database credentials
-* Create database with the name that you filled in *.env* file in DB_DATABASE field
-* `composer install` to install all PHP packages
-* `npm install` to install node modules
-* `npm run prod` to compile sass and vue files
-* `php artisan key:generate` to generate laravel app key
-* `php artisan wipe`, migrate all migrations and seed the database
-* `php artisan storage:link`, create a link in public folder to storage
-* `php artisan serve` to start a server *(go to localhost:8000)*
-*. `vendor/bin/phpunit` make sure tests are green
-
-##### For docker people
-
-* Clone, enter reciper folder and run `./run`
-
 # Editional information
 
 ##### Used technologies
@@ -60,3 +41,7 @@ The idea is that depending on what language is currently selected, user or visit
 > Note that if you want to login as admin, you need to use these credentials:
 > **Username:** master
 > **Password:** 111111
+
+# Get started
+
+**Clone, enter reciper folder and run `./run`**
