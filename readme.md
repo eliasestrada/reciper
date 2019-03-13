@@ -1,4 +1,4 @@
-![reciper](https://github.com/SerhiiCho/reciper/blob/master/storage/app/public/other/wallpaper.jpg?raw=true)
+![reciper](https://raw.githubusercontent.com/SerhiiCho/reciper/master/services/php/src/storage/app/public/other/wallpaper.jpg)
 
 **Reciper is a micro-service app and requires [Docker](https://www.docker.com)**
 
